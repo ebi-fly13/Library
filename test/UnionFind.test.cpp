@@ -1,4 +1,4 @@
-#define PROBLEM "https://atcoder.jp/contests/practice2/tasks/practice2_a"
+#define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 
 #include "../data_structure/UnionFind.hpp"
 
