@@ -65,7 +65,7 @@ title: Segtree
 
 モノイドの列$(a_0,a_1,\dots,a_{n-1})$に対して各種操作ができるデータ構造である.
 
-# コンストラクタ
+## コンストラクタ
 
 ```cpp
 (1) Segtree<Monoid, op, e> seg(int n)
@@ -91,7 +91,7 @@ Segtree<int, op, e> seg(n);
 
 計算量$O(n)$
 
-# Operator
+## Operator
 -   ```seg.set(int p, Monoid x)```
     -   $a_p$に$x$を代入する.
     -   時間計算量$O(\log n)$
