@@ -5,7 +5,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: data_structure/Segtree.hpp
-      title: data_structure/Segtree.hpp
+      title: Segtree
     - icon: ':heavy_check_mark:'
       path: data_structure/UnionFind.hpp
       title: data_structure/UnionFind.hpp
