@@ -1,4 +1,9 @@
-## Segtree
+---
+title: Segtree
+documentation_of: //data_structure/Segtree.hpp
+---
+
+## 説明
 
 モノイドの列$(a_0,a_1,\dots,a_{n-1})$に対して各種操作ができるデータ構造である.
 
