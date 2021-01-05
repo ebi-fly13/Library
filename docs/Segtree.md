@@ -9,7 +9,7 @@ documentation_of: //data_structure/Segtree.hpp
 
 # コンストラクタ
 
-```
+```cpp
 (1) Segtree<Monoid, op, e> seg(int n)
 (2) Segtree<Monoid, op, e> seg(std::vector<Monoid> v)
 ```
@@ -19,9 +19,16 @@ documentation_of: //data_structure/Segtree.hpp
 
 を定義する必要がある.例としてRange Sum Queryならば以下のようになる.
 
-```
-int op(int a, int b) { return a+b; }
-int e() { return 0; }
+```cpp
+int op(int a, int b) { 
+    return a+b; 
+}
+
+int e() { 
+    return 0; 
+}
+
+Segtree<int, op, e> seg(n);
 ```
 
 計算量$O(n)$
