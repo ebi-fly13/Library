@@ -3,6 +3,9 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
+    - icon: ':warning:'
+      path: data_structure/SWAG.hpp
+      title: data_structure/SWAG.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/Segtree.hpp
       title: Segtree
