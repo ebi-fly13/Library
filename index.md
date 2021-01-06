@@ -4,6 +4,9 @@ data:
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
+      path: data_structure/DuelSegtree.hpp
+      title: data_structure/DuelSegtree.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/SWAG.hpp
       title: SlidingWindowAggregation
     - icon: ':heavy_check_mark:'
@@ -23,6 +26,9 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/DuelSegtree.test.cpp
+      title: test/DuelSegtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/SWAG.test.cpp
       title: test/SWAG.test.cpp
