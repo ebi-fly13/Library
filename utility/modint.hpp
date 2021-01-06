@@ -3,7 +3,7 @@
 /*
     author: noshi91
     reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006
-    noshi91のブログで公開しているmodintを元にinv(), pow()を追加したものです
+    noshi91のブログで公開されているmodintを元にinv(), pow()を追加したものです
 */
 
 #include <cstdint>
