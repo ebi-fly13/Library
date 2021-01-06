@@ -1,5 +1,9 @@
 #pragma once
 
+/*
+    reference: https://scrapbox.io/data-structures/Sliding_Window_Aggregation
+*/
+
 #include <stack>
 #include <cassert>
 
@@ -8,8 +12,8 @@ struct SWAG {
 private:
     struct Node {
         Semigroup value;
-        Semigroup fold_back;
-        Node(Semigroup value, Semigroup fold_back) : value(value), fold_back(fold_back) { }
+        Semigroup fold;
+        Node(Semigroup value, Semigroup fold) : value(value), fold(fold) { }
     };
 
     void move() {
@@ -20,7 +24,7 @@ private:
         while(!back.empty()) {
             Node p = back.top();
             back.pop();
-            p.fold_back = op(p.value, front.top().fold_back);
+            p.fold = op(p.value, front.top().fold);
             front.push(p);
         }
     }
@@ -44,7 +48,7 @@ public:
         Node node(x,x);
         if(back.size()!=0) {
             Node p = back.top();
-            node.fold_back = op(p.fold_back, node.fold_back);
+            node.fold = op(p.fold, node.fold);
         }
         back.push(node);
     }
@@ -60,13 +64,13 @@ public:
     Semigroup fold_all() {
         assert(!empty());
         if(front.empty()) {
-            return back.top().fold_back;
+            return back.top().fold;
         }
         else if(back.empty()){
-            return front.top().fold_back;
+            return front.top().fold;
         }
         else{
-            return op(front.top().fold_back, back.top().fold_back);
+            return op(front.top().fold, back.top().fold);
         }
     }
 };
