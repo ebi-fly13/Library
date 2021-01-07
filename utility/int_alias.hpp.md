@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/LiChaoSegmentTree.test.cpp
+    title: test/LiChaoSegmentTree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
   _pathExtension: hpp
@@ -24,6 +27,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/dijkstra.test.cpp
+  - test/LiChaoSegmentTree.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:
