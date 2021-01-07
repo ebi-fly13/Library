@@ -23,8 +23,8 @@ data:
     \n            x[i] = _x[i];\r\n        }\r\n        T tmax = std::numeric_limits<T>::max();\r\
     \n        data.assign(2*n-1, line<T>(0, tmax));\r\n    }\r\n\r\n    void add_line(line<T>\
     \ y, int l = 0, int r = -1, int index = 0) {\r\n        if(r<0) r = n;\r\n   \
-    \     int left = (f(y, l) < f(data[index], l));\r\n        int mid = (f(y, (l+r)/2)\
-    \ < f(data[index], (l+r)/2));\r\n        int right = (f(y, r-1) < f(data[index],\
+    \     bool left = (f(y, l) < f(data[index], l));\r\n        bool mid = (f(y, (l+r)/2)\
+    \ < f(data[index], (l+r)/2));\r\n        bool right = (f(y, r-1) < f(data[index],\
     \ r-1));\r\n        if(left && right) {\r\n            data[index] = y;\r\n  \
     \          return;\r\n        }\r\n        if(!(left || right)){\r\n         \
     \   return;\r\n        }\r\n        if(mid) {\r\n            swap(y, data[index]);\r\
@@ -47,9 +47,9 @@ data:
     \ i = 0; i<_n; i++){\r\n            x[i] = _x[i];\r\n        }\r\n        T tmax\
     \ = std::numeric_limits<T>::max();\r\n        data.assign(2*n-1, line<T>(0, tmax));\r\
     \n    }\r\n\r\n    void add_line(line<T> y, int l = 0, int r = -1, int index =\
-    \ 0) {\r\n        if(r<0) r = n;\r\n        int left = (f(y, l) < f(data[index],\
-    \ l));\r\n        int mid = (f(y, (l+r)/2) < f(data[index], (l+r)/2));\r\n   \
-    \     int right = (f(y, r-1) < f(data[index], r-1));\r\n        if(left && right)\
+    \ 0) {\r\n        if(r<0) r = n;\r\n        bool left = (f(y, l) < f(data[index],\
+    \ l));\r\n        bool mid = (f(y, (l+r)/2) < f(data[index], (l+r)/2));\r\n  \
+    \      bool right = (f(y, r-1) < f(data[index], r-1));\r\n        if(left && right)\
     \ {\r\n            data[index] = y;\r\n            return;\r\n        }\r\n  \
     \      if(!(left || right)){\r\n            return;\r\n        }\r\n        if(mid)\
     \ {\r\n            swap(y, data[index]);\r\n            left = !left;\r\n    \
@@ -63,7 +63,7 @@ data:
   isVerificationFile: false
   path: data_structure/LiChaoSegmentTree.hpp
   requiredBy: []
-  timestamp: '2021-01-08 01:25:14+09:00'
+  timestamp: '2021-01-08 01:36:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/LiChaoSegmentTree.test.cpp
