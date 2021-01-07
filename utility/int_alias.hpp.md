@@ -2,9 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/dijkstra.test.cpp
+    title: test/dijkstra.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include\
@@ -18,8 +21,9 @@ data:
   path: utility/int_alias.hpp
   requiredBy: []
   timestamp: '2021-01-04 23:30:25+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/dijkstra.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:

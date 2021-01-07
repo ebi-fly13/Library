@@ -15,9 +15,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/UnionFind.hpp
       title: data_structure/UnionFind.hpp
+  - name: graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: graph/dijkstra.hpp
+      title: graph/dijkstra.hpp
+    - icon: ':heavy_check_mark:'
+      path: graph/template.hpp
+      title: graph/template.hpp
   - name: utility
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
     - icon: ':heavy_check_mark:'
@@ -38,5 +46,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/dijkstra.test.cpp
+      title: test/dijkstra.test.cpp
 layout: toppage
 ---
