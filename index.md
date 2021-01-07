@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: String
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: String/Z_Algorithm.hpp
+      title: String/Z_Algorithm.hpp
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -46,6 +51,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Z_Algorithm.test.cpp
+      title: test/Z_Algorithm.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/dijkstra.test.cpp
       title: test/dijkstra.test.cpp
