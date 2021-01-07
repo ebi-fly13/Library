@@ -43,9 +43,9 @@ public:
 
     void add_line(line<T> y, int l = 0, int r = -1, int index = 0) {
         if(r<0) r = n;
-        int left = (f(y, l) < f(data[index], l));
-        int mid = (f(y, (l+r)/2) < f(data[index], (l+r)/2));
-        int right = (f(y, r-1) < f(data[index], r-1));
+        bool left = (f(y, l) < f(data[index], l));
+        bool mid = (f(y, (l+r)/2) < f(data[index], (l+r)/2));
+        bool right = (f(y, r-1) < f(data[index], r-1));
         if(left && right) {
             data[index] = y;
             return;
