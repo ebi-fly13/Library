@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <vector>
 #include <limits>
+#include <cassert>
 
 template<class T>
 struct line {
@@ -64,6 +65,22 @@ public:
         else {
             add_line(y, (l+r)/2, r, 2*index+2);
         }
+    }
+
+    void add_segment(line<T> y, int lx, int rx, int l = 0, int r = -1, int index = 0) {
+        assert(lx<=rx);
+        assert(0<=lx);
+        assert(rx<=n);
+        if(r<0) r = n;
+        if(r<= lx || rx<= l) {
+            return;
+        }
+        if(lx <= l && r <= rx) {
+            add_line(y, l, r, index);
+            return;
+        }
+        add_segment(y, lx, rx, l, (l+r)/2, 2*index+1);
+        add_segment(y, lx, rx, (l+r)/2, r, 2*index+2);
     }
 
     T get(int i) {
