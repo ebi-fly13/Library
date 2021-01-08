@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/DynamicSegmentTree.test.cpp
+    title: test/DynamicSegmentTree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
   _pathExtension: hpp
@@ -77,6 +80,7 @@ data:
   timestamp: '2021-01-08 12:17:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/DynamicSegmentTree.test.cpp
   - test/SWAG.test.cpp
 documentation_of: utility/modint.hpp
 layout: document

@@ -12,6 +12,9 @@ data:
       path: data_structure/DuelSegtree.hpp
       title: data_structure/DuelSegtree.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structure/DynamicSegmentTree.hpp
+      title: data_structure/DynamicSegmentTree.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/LiChaoSegmentTree.hpp
       title: data_structure/LiChaoSegmentTree.hpp
     - icon: ':heavy_check_mark:'
@@ -45,6 +48,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/DuelSegtree.test.cpp
       title: test/DuelSegtree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/DynamicSegmentTree.test.cpp
+      title: test/DynamicSegmentTree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/LiChaoSegmentTree.test.cpp
       title: test/LiChaoSegmentTree.test.cpp
