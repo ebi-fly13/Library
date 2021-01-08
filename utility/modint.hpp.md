@@ -39,7 +39,8 @@ data:
     \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n"
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
+    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\n"
   code: "#pragma once\r\n\r\n/*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
     \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
     \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
@@ -67,12 +68,13 @@ data:
     \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n"
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
+    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;"
   dependsOn: []
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy: []
-  timestamp: '2021-01-06 14:39:06+09:00'
+  timestamp: '2021-01-08 12:17:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/SWAG.test.cpp

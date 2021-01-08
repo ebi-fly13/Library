@@ -67,8 +67,9 @@ data:
     \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n#line 5 \"\
-    test/SWAG.test.cpp\"\n\r\n#include <iostream>\r\n\r\nusing mint = modint<998244353>;\r\
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
+    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\n\
+    #line 5 \"test/SWAG.test.cpp\"\n\r\n#include <iostream>\r\n\r\nusing mint = modint<998244353>;\r\
     \n\r\nstruct F {\r\n    mint a,b;\r\n    F(mint a, mint b) : a(a), b(b) {  }\r\
     \n};\r\n\r\nF op(F f1, F f2) {\r\n    return F(f2.a*f1.a, f2.a*f1.b+f2.b);\r\n\
     }\r\n\r\nint main() {\r\n    SWAG<F, op> swag;\r\n    int q; std::cin >> q;\r\n\
@@ -98,7 +99,7 @@ data:
   isVerificationFile: true
   path: test/SWAG.test.cpp
   requiredBy: []
-  timestamp: '2021-01-06 14:39:06+09:00'
+  timestamp: '2021-01-08 12:17:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/SWAG.test.cpp
