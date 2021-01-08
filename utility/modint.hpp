@@ -73,3 +73,6 @@ public:
         return pow(Modulus-2);
     }
 };
+
+using modint998244353 = modint<998244353>;
+using modint1000000007 = modint<1000000007>;
