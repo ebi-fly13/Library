@@ -52,6 +52,9 @@ data:
       path: test/SWAG.test.cpp
       title: test/SWAG.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/SegmentAddGetMin.test.cpp
+      title: test/SegmentAddGetMin.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/Segtree.test.cpp
       title: test/Segtree.test.cpp
     - icon: ':heavy_check_mark:'

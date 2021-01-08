@@ -7,6 +7,9 @@ data:
     path: test/LiChaoSegmentTree.test.cpp
     title: test/LiChaoSegmentTree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/SegmentAddGetMin.test.cpp
+    title: test/SegmentAddGetMin.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
   _pathExtension: hpp
@@ -26,6 +29,7 @@ data:
   timestamp: '2021-01-04 23:30:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/SegmentAddGetMin.test.cpp
   - test/dijkstra.test.cpp
   - test/LiChaoSegmentTree.test.cpp
 documentation_of: utility/int_alias.hpp
