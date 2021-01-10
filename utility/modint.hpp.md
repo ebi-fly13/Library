@@ -7,6 +7,9 @@ data:
     path: test/DynamicSegmentTree.test.cpp
     title: test/DynamicSegmentTree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/LazySegtree.test.cpp
+    title: test/LazySegtree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
   _pathExtension: hpp
@@ -81,6 +84,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/DynamicSegmentTree.test.cpp
+  - test/LazySegtree.test.cpp
   - test/SWAG.test.cpp
 documentation_of: utility/modint.hpp
 layout: document
