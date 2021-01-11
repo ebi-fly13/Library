@@ -5,6 +5,7 @@
 "test/LiChaoSegmentTree.test.cpp": "2021-01-08 10:18:13 +0900",
 "test/SWAG.test.cpp": "2021-01-08 12:17:52 +0900",
 "test/SegmentAddGetMin.test.cpp": "2021-01-08 10:18:13 +0900",
+"test/SegmentTreeBeats.test.cpp": "2021-01-11 23:28:53 +0900",
 "test/Segtree.test.cpp": "2021-01-05 22:26:45 +0900",
 "test/UnionFind.test.cpp": "2021-01-05 01:00:26 +0900",
 "test/Z_Algorithm.test.cpp": "2021-01-07 23:37:54 +0900",
