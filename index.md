@@ -24,6 +24,9 @@ data:
       path: data_structure/SWAG.hpp
       title: SlidingWindowAggregation
     - icon: ':heavy_check_mark:'
+      path: data_structure/SegmentTreeBeats.hpp
+      title: data_structure/SegmentTreeBeats.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/Segtree.hpp
       title: Segtree
     - icon: ':heavy_check_mark:'
@@ -66,6 +69,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/SegmentAddGetMin.test.cpp
       title: test/SegmentAddGetMin.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/SegmentTreeBeats.test.cpp
+      title: test/SegmentTreeBeats.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/Segtree.test.cpp
       title: test/Segtree.test.cpp

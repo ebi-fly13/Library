@@ -10,6 +10,9 @@ data:
     path: test/SegmentAddGetMin.test.cpp
     title: test/SegmentAddGetMin.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/SegmentTreeBeats.test.cpp
+    title: test/SegmentTreeBeats.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
   _pathExtension: hpp
@@ -30,6 +33,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/SegmentAddGetMin.test.cpp
+  - test/SegmentTreeBeats.test.cpp
   - test/dijkstra.test.cpp
   - test/LiChaoSegmentTree.test.cpp
 documentation_of: utility/int_alias.hpp
