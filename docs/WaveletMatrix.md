@@ -31,4 +31,4 @@ WaveletMatrix<T> wm(std::vector<T> v);
     -   時間計算量$O(\log \sigma)$
 -   ```wm.quantile(int l, int r, int k)```
     -   $[l,r)$に含まれる要素について$k$番目に小さい値を返す
-    -   時間計算量$O(\log \simga)$
+    -   時間計算量$O(\log \sigma)$
