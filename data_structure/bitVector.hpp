@@ -77,6 +77,23 @@ struct bitVector {
         }
         return r;
     }
+
+    int select0(int k) {
+        if(k==0) return 0;
+        if(length-rank(length)< (u32)k) return -1;
+        u32 l = 0;
+        u32 r = length;
+        while(r-l>1) {
+            u32 mid = (r+l)/2;
+            if(mid-rank(mid) >= (u32)k) {
+                r = mid;
+            }
+            else {
+                l = mid;
+            }
+        }
+        return r;
+    }
 };
 
 u32 bitVector::cw = 1024;
