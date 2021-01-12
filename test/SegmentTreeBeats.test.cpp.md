@@ -91,11 +91,11 @@ data:
     \n        return prod(l, r, nl, (nl+nr)/2, 2*index+1) + prod(l, r, (nl+nr)/2,\
     \ nr, 2*index+2);\r\n    }\r\n};\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include\
     \ <cstddef>\r\n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\nusing i64\
-    \ = std::int64_t;\r\nusing u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing usize = std::size_t;\n#line 5 \"test/SegmentTreeBeats.test.cpp\"\n\r\n\
-    #include <iostream>\r\n#line 8 \"test/SegmentTreeBeats.test.cpp\"\n\r\nusing S\
-    \ = i64;\r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n  \
-    \  std::vector<i64> a(n);\r\n    for(int i = 0; i<n; i++) {\r\n        std::cin\
+    \ = std::int64_t;\r\nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\
+    \nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n#line 5 \"test/SegmentTreeBeats.test.cpp\"\
+    \n\r\n#include <iostream>\r\n#line 8 \"test/SegmentTreeBeats.test.cpp\"\n\r\n\
+    using S = i64;\r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\
+    \n    std::vector<i64> a(n);\r\n    for(int i = 0; i<n; i++) {\r\n        std::cin\
     \ >> a[i];\r\n    }\r\n    SegmentTreeBeats<S> seg(a);\r\n    while(q--) {\r\n\
     \        int t;\r\n        std::cin >> t;\r\n        if(t==0) {\r\n          \
     \  int l,r;\r\n            i64 b;\r\n            std::cin >> l >> r >> b;\r\n\
@@ -127,7 +127,7 @@ data:
   isVerificationFile: true
   path: test/SegmentTreeBeats.test.cpp
   requiredBy: []
-  timestamp: '2021-01-11 23:28:53+09:00'
+  timestamp: '2021-01-12 22:18:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/SegmentTreeBeats.test.cpp

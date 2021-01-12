@@ -4,21 +4,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/WaveletMatrix.hpp
+    title: data_structure/WaveletMatrix.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/WaveletMatrix.test.cpp
+    title: test/WaveletMatrix.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://misteer.hatenablog.com/entry/bit-vector
   bundledCode: "#line 2 \"data_structure/bitVector.hpp\"\n\r\n#line 2 \"utility/int_alias.hpp\"\
     \n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\
-    \nusing i64 = std::int64_t;\r\nusing u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing usize = std::size_t;\n#line 4 \"data_structure/bitVector.hpp\"\n\r\n/*\r\
-    \n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\n*/\r\n\r\n\
-    #include <vector>\r\n\r\nstruct bitVector {\r\n    u32 length, cn, bn;\r\n   \
-    \ static u32 cw, bw; // chunk, block \u306E\u9577\u3055 cw = (lg N)^2, bw = (lg\
-    \ N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16> bit;\r\n    std::vector<u32>\
+    \nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\
+    \nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n#line 4 \"data_structure/bitVector.hpp\"\
+    \n\r\n/*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\n\
+    */\r\n\r\n#include <vector>\r\n\r\nstruct bitVector {\r\n    u32 length, cn, bn;\r\
+    \n    static u32 cw, bw; // chunk, block \u306E\u9577\u3055 cw = (lg N)^2, bw\
+    \ = (lg N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16> bit;\r\n    std::vector<u32>\
     \ chunk;\r\n    std::vector<std::vector<u16>> blocks;\r\n\r\n    bitVector(int\
     \ n) : length(n) {\r\n        cn = (length+cw-1)/cw;\r\n        bn = cw/bw;\r\n\
     \        bit.assign(cn*bn, 0);\r\n        chunk.assign(cn+1,0);\r\n        blocks.assign(cn,\
@@ -42,8 +48,13 @@ data:
     \ length;\r\n        while(r-l>1) {\r\n            u32 mid = (r+l)/2;\r\n    \
     \        if(rank(mid) >= k) {\r\n                r = mid;\r\n            }\r\n\
     \            else {\r\n                l = mid;\r\n            }\r\n        }\r\
-    \n        return r;\r\n    }\r\n};\r\n\r\nu32 bitVector::cw = 1024;\r\nu32 bitVector::bw\
-    \ = 16;\n"
+    \n        return r;\r\n    }\r\n\r\n    int select0(int k) {\r\n        if(k==0)\
+    \ return 0;\r\n        if(length-rank(length)< (u32)k) return -1;\r\n        u32\
+    \ l = 0;\r\n        u32 r = length;\r\n        while(r-l>1) {\r\n            u32\
+    \ mid = (r+l)/2;\r\n            if(mid-rank(mid) >= (u32)k) {\r\n            \
+    \    r = mid;\r\n            }\r\n            else {\r\n                l = mid;\r\
+    \n            }\r\n        }\r\n        return r;\r\n    }\r\n};\r\n\r\nu32 bitVector::cw\
+    \ = 1024;\r\nu32 bitVector::bw = 16;\n"
   code: "#pragma once\r\n\r\n#include \"../utility/int_alias.hpp\"\r\n\r\n/*\r\n \
     \   reference: https://misteer.hatenablog.com/entry/bit-vector\r\n*/\r\n\r\n#include\
     \ <vector>\r\n\r\nstruct bitVector {\r\n    u32 length, cn, bn;\r\n    static\
@@ -72,15 +83,23 @@ data:
     \ while(r-l>1) {\r\n            u32 mid = (r+l)/2;\r\n            if(rank(mid)\
     \ >= k) {\r\n                r = mid;\r\n            }\r\n            else {\r\
     \n                l = mid;\r\n            }\r\n        }\r\n        return r;\r\
-    \n    }\r\n};\r\n\r\nu32 bitVector::cw = 1024;\r\nu32 bitVector::bw = 16;"
+    \n    }\r\n\r\n    int select0(int k) {\r\n        if(k==0) return 0;\r\n    \
+    \    if(length-rank(length)< (u32)k) return -1;\r\n        u32 l = 0;\r\n    \
+    \    u32 r = length;\r\n        while(r-l>1) {\r\n            u32 mid = (r+l)/2;\r\
+    \n            if(mid-rank(mid) >= (u32)k) {\r\n                r = mid;\r\n  \
+    \          }\r\n            else {\r\n                l = mid;\r\n           \
+    \ }\r\n        }\r\n        return r;\r\n    }\r\n};\r\n\r\nu32 bitVector::cw\
+    \ = 1024;\r\nu32 bitVector::bw = 16;"
   dependsOn:
   - utility/int_alias.hpp
   isVerificationFile: false
   path: data_structure/bitVector.hpp
-  requiredBy: []
-  timestamp: '2021-01-12 17:51:32+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  requiredBy:
+  - data_structure/WaveletMatrix.hpp
+  timestamp: '2021-01-12 22:19:17+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/WaveletMatrix.test.cpp
 documentation_of: data_structure/bitVector.hpp
 layout: document
 redirect_from:

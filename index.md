@@ -32,7 +32,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/UnionFind.hpp
       title: data_structure/UnionFind.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
+      path: data_structure/WaveletMatrix.hpp
+      title: data_structure/WaveletMatrix.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
   - name: graph
@@ -81,6 +84,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/WaveletMatrix.test.cpp
+      title: test/WaveletMatrix.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/Z_Algorithm.test.cpp
       title: test/Z_Algorithm.test.cpp
