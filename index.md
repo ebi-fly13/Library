@@ -32,6 +32,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/UnionFind.hpp
       title: data_structure/UnionFind.hpp
+    - icon: ':warning:'
+      path: data_structure/bitVector.hpp
+      title: data_structure/bitVector.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
