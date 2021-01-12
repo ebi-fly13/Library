@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: data_structure/WaveletMatrix.hpp
-    title: data_structure/WaveletMatrix.hpp
+    title: WaveletMatrix
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/WaveletMatrix.test.cpp

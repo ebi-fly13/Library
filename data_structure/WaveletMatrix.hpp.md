@@ -80,19 +80,19 @@ data:
     \ --bit) {\r\n            if(x & ((T)1 << bit)) {\r\n                k = border[bit]\
     \ + mat[bit].rank(k);\r\n            }\r\n            else {\r\n             \
     \   k = k-mat[bit].rank(k);\r\n            }\r\n        }\r\n        return k-map[x];\r\
-    \n    }\r\n\r\n    int select(T x, int k) {\r\n        k = map[x] + k + 1;\r\n\
-    \        for(int bit = 0; bit<wordsize; ++bit) {\r\n            if(x & ((T)1 <<\
-    \ bit)) {\r\n                k = mat[bit].select(k-border[bit]);\r\n         \
-    \   }\r\n            else {\r\n                k = mat[bit].select0(k);\r\n  \
-    \          }\r\n        }\r\n        return k-1;\r\n    }\r\n\r\n    T quantile(int\
-    \ l, int r, int k) {\r\n        T val = 0;\r\n        for(int bit = wordsize-1;\
-    \ bit>=0; --bit) {\r\n            int rank_l = mat[bit].rank(l);\r\n         \
-    \   int rank_r = mat[bit].rank(r);\r\n            int one = rank_r - rank_l;\r\
-    \n            int zero = r-l-one;\r\n            if(k<=zero) {\r\n           \
-    \     l -= rank_l;\r\n                r -= rank_r;\r\n            }\r\n      \
-    \      else {\r\n                val |= (T)1 << bit;\r\n                l = border[bit]\
-    \ + rank_l;\r\n                r = border[bit] + rank_r;\r\n                k\
-    \ -= zero;\r\n            }\r\n        }\r\n        return val;\r\n    }\r\n};\n"
+    \n    }\r\n\r\n    int select(T x, int k) {\r\n        k = map[x] + k;\r\n   \
+    \     for(int bit = 0; bit<wordsize; ++bit) {\r\n            if(x & ((T)1 << bit))\
+    \ {\r\n                k = mat[bit].select(k-border[bit]);\r\n            }\r\n\
+    \            else {\r\n                k = mat[bit].select0(k);\r\n          \
+    \  }\r\n        }\r\n        return k-1;\r\n    }\r\n\r\n    T quantile(int l,\
+    \ int r, int k) {\r\n        T val = 0;\r\n        for(int bit = wordsize-1; bit>=0;\
+    \ --bit) {\r\n            int rank_l = mat[bit].rank(l);\r\n            int rank_r\
+    \ = mat[bit].rank(r);\r\n            int one = rank_r - rank_l;\r\n          \
+    \  int zero = r-l-one;\r\n            if(k<=zero) {\r\n                l -= rank_l;\r\
+    \n                r -= rank_r;\r\n            }\r\n            else {\r\n    \
+    \            val |= (T)1 << bit;\r\n                l = border[bit] + rank_l;\r\
+    \n                r = border[bit] + rank_r;\r\n                k -= zero;\r\n\
+    \            }\r\n        }\r\n        return val;\r\n    }\r\n};\n"
   code: "#pragma once\r\n\r\n#include \"../data_structure/bitVector.hpp\"\r\n\r\n\
     /*\r\n    reference: https://miti-7.hatenablog.com/entry/2018/04/28/152259\r\n\
     */\r\n\r\n#include <vector>\r\n#include <limits>\r\n#include <map>\r\n\r\ntemplate<class\
@@ -119,33 +119,57 @@ data:
     \ --bit) {\r\n            if(x & ((T)1 << bit)) {\r\n                k = border[bit]\
     \ + mat[bit].rank(k);\r\n            }\r\n            else {\r\n             \
     \   k = k-mat[bit].rank(k);\r\n            }\r\n        }\r\n        return k-map[x];\r\
-    \n    }\r\n\r\n    int select(T x, int k) {\r\n        k = map[x] + k + 1;\r\n\
-    \        for(int bit = 0; bit<wordsize; ++bit) {\r\n            if(x & ((T)1 <<\
-    \ bit)) {\r\n                k = mat[bit].select(k-border[bit]);\r\n         \
-    \   }\r\n            else {\r\n                k = mat[bit].select0(k);\r\n  \
-    \          }\r\n        }\r\n        return k-1;\r\n    }\r\n\r\n    T quantile(int\
-    \ l, int r, int k) {\r\n        T val = 0;\r\n        for(int bit = wordsize-1;\
-    \ bit>=0; --bit) {\r\n            int rank_l = mat[bit].rank(l);\r\n         \
-    \   int rank_r = mat[bit].rank(r);\r\n            int one = rank_r - rank_l;\r\
-    \n            int zero = r-l-one;\r\n            if(k<=zero) {\r\n           \
-    \     l -= rank_l;\r\n                r -= rank_r;\r\n            }\r\n      \
-    \      else {\r\n                val |= (T)1 << bit;\r\n                l = border[bit]\
-    \ + rank_l;\r\n                r = border[bit] + rank_r;\r\n                k\
-    \ -= zero;\r\n            }\r\n        }\r\n        return val;\r\n    }\r\n};"
+    \n    }\r\n\r\n    int select(T x, int k) {\r\n        k = map[x] + k;\r\n   \
+    \     for(int bit = 0; bit<wordsize; ++bit) {\r\n            if(x & ((T)1 << bit))\
+    \ {\r\n                k = mat[bit].select(k-border[bit]);\r\n            }\r\n\
+    \            else {\r\n                k = mat[bit].select0(k);\r\n          \
+    \  }\r\n        }\r\n        return k-1;\r\n    }\r\n\r\n    T quantile(int l,\
+    \ int r, int k) {\r\n        T val = 0;\r\n        for(int bit = wordsize-1; bit>=0;\
+    \ --bit) {\r\n            int rank_l = mat[bit].rank(l);\r\n            int rank_r\
+    \ = mat[bit].rank(r);\r\n            int one = rank_r - rank_l;\r\n          \
+    \  int zero = r-l-one;\r\n            if(k<=zero) {\r\n                l -= rank_l;\r\
+    \n                r -= rank_r;\r\n            }\r\n            else {\r\n    \
+    \            val |= (T)1 << bit;\r\n                l = border[bit] + rank_l;\r\
+    \n                r = border[bit] + rank_r;\r\n                k -= zero;\r\n\
+    \            }\r\n        }\r\n        return val;\r\n    }\r\n};"
   dependsOn:
   - data_structure/bitVector.hpp
   - utility/int_alias.hpp
   isVerificationFile: false
   path: data_structure/WaveletMatrix.hpp
   requiredBy: []
-  timestamp: '2021-01-12 22:19:17+09:00'
+  timestamp: '2021-01-12 23:06:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/WaveletMatrix.test.cpp
 documentation_of: data_structure/WaveletMatrix.hpp
 layout: document
-redirect_from:
-- /library/data_structure/WaveletMatrix.hpp
-- /library/data_structure/WaveletMatrix.hpp.html
-title: data_structure/WaveletMatrix.hpp
+title: WaveletMatrix
 ---
+
+## 説明
+
+整数列$(a_0, a_1, \dots, a_{n-1})$を扱う静的なデータ構造である.
+
+## コンストラクタ
+
+```cpp
+WaveletMatrix<T> wm(std::vector<T> v);
+```
+
+-   整数型$T$
+-   制数列$(a_0, a_1, \dots, a_{n-1})$
+
+を用いる.
+
+## Operator
+
+-   ```wm.access(int i)```
+    -   $a_i$を返す
+    -   時間計算量$O(\log \sigma)$
+-   ```wm.rank(int r, T x)```
+    -   $[0,r)$に含まれる$x$の数を返す.
+    -   時間計算量$O(\log \sigma)$
+-   ```wm.select(T x, int k)```
+    -   整数列$(a_0, a_1, \dots, a_{n-1})$に対して$x$が$k$番目に現れる$index$を返す
+    -   時間計算量$O(\log \sigma)$

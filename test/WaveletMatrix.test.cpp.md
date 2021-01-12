@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data_structure/WaveletMatrix.hpp
-    title: data_structure/WaveletMatrix.hpp
+    title: WaveletMatrix
   - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
@@ -83,25 +83,25 @@ data:
     \ --bit) {\r\n            if(x & ((T)1 << bit)) {\r\n                k = border[bit]\
     \ + mat[bit].rank(k);\r\n            }\r\n            else {\r\n             \
     \   k = k-mat[bit].rank(k);\r\n            }\r\n        }\r\n        return k-map[x];\r\
-    \n    }\r\n\r\n    int select(T x, int k) {\r\n        k = map[x] + k + 1;\r\n\
-    \        for(int bit = 0; bit<wordsize; ++bit) {\r\n            if(x & ((T)1 <<\
-    \ bit)) {\r\n                k = mat[bit].select(k-border[bit]);\r\n         \
-    \   }\r\n            else {\r\n                k = mat[bit].select0(k);\r\n  \
-    \          }\r\n        }\r\n        return k-1;\r\n    }\r\n\r\n    T quantile(int\
-    \ l, int r, int k) {\r\n        T val = 0;\r\n        for(int bit = wordsize-1;\
-    \ bit>=0; --bit) {\r\n            int rank_l = mat[bit].rank(l);\r\n         \
-    \   int rank_r = mat[bit].rank(r);\r\n            int one = rank_r - rank_l;\r\
-    \n            int zero = r-l-one;\r\n            if(k<=zero) {\r\n           \
-    \     l -= rank_l;\r\n                r -= rank_r;\r\n            }\r\n      \
-    \      else {\r\n                val |= (T)1 << bit;\r\n                l = border[bit]\
-    \ + rank_l;\r\n                r = border[bit] + rank_r;\r\n                k\
-    \ -= zero;\r\n            }\r\n        }\r\n        return val;\r\n    }\r\n};\n\
-    #line 5 \"test/WaveletMatrix.test.cpp\"\n\r\n#include <iostream>\r\n#line 8 \"\
-    test/WaveletMatrix.test.cpp\"\n\r\nint main(){\r\n    int n,q;\r\n    std::cin\
-    \ >> n >> q;\r\n    std::vector<i64> a(n);\r\n    for(int i = 0; i<n; i++) {\r\
-    \n        std::cin >> a[i];\r\n    }\r\n    WaveletMatrix<i64> wm(a);\r\n    while(q--)\
-    \ {\r\n        int l,r,k; std::cin >> l >> r >> k;\r\n        std::cout << wm.quantile(l,r,k+1)\
-    \ << std::endl;\r\n    }\r\n}\n"
+    \n    }\r\n\r\n    int select(T x, int k) {\r\n        k = map[x] + k;\r\n   \
+    \     for(int bit = 0; bit<wordsize; ++bit) {\r\n            if(x & ((T)1 << bit))\
+    \ {\r\n                k = mat[bit].select(k-border[bit]);\r\n            }\r\n\
+    \            else {\r\n                k = mat[bit].select0(k);\r\n          \
+    \  }\r\n        }\r\n        return k-1;\r\n    }\r\n\r\n    T quantile(int l,\
+    \ int r, int k) {\r\n        T val = 0;\r\n        for(int bit = wordsize-1; bit>=0;\
+    \ --bit) {\r\n            int rank_l = mat[bit].rank(l);\r\n            int rank_r\
+    \ = mat[bit].rank(r);\r\n            int one = rank_r - rank_l;\r\n          \
+    \  int zero = r-l-one;\r\n            if(k<=zero) {\r\n                l -= rank_l;\r\
+    \n                r -= rank_r;\r\n            }\r\n            else {\r\n    \
+    \            val |= (T)1 << bit;\r\n                l = border[bit] + rank_l;\r\
+    \n                r = border[bit] + rank_r;\r\n                k -= zero;\r\n\
+    \            }\r\n        }\r\n        return val;\r\n    }\r\n};\n#line 5 \"\
+    test/WaveletMatrix.test.cpp\"\n\r\n#include <iostream>\r\n#line 8 \"test/WaveletMatrix.test.cpp\"\
+    \n\r\nint main(){\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    std::vector<i64>\
+    \ a(n);\r\n    for(int i = 0; i<n; i++) {\r\n        std::cin >> a[i];\r\n   \
+    \ }\r\n    WaveletMatrix<i64> wm(a);\r\n    while(q--) {\r\n        int l,r,k;\
+    \ std::cin >> l >> r >> k;\r\n        std::cout << wm.quantile(l,r,k+1) << std::endl;\r\
+    \n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\r\n\
     \r\n#include \"../data_structure/WaveletMatrix.hpp\"\r\n#include \"../utility/int_alias.hpp\"\
     \r\n\r\n#include <iostream>\r\n#include <vector>\r\n\r\nint main(){\r\n    int\
@@ -116,7 +116,7 @@ data:
   isVerificationFile: true
   path: test/WaveletMatrix.test.cpp
   requiredBy: []
-  timestamp: '2021-01-12 22:19:17+09:00'
+  timestamp: '2021-01-12 23:06:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/WaveletMatrix.test.cpp
