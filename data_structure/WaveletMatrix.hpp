@@ -74,7 +74,7 @@ public:
     }
 
     int select(T x, int k) {
-        k = map[x] + k + 1;
+        k = map[x] + k;
         for(int bit = 0; bit<wordsize; ++bit) {
             if(x & ((T)1 << bit)) {
                 k = mat[bit].select(k-border[bit]);
