@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: data_structure/bitVector.hpp
+    title: data_structure/bitVector.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/LiChaoSegmentTree.test.cpp
@@ -28,7 +31,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: utility/int_alias.hpp
-  requiredBy: []
+  requiredBy:
+  - data_structure/bitVector.hpp
   timestamp: '2021-01-04 23:30:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
