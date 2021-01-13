@@ -1,3 +1,5 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/set_xor_min"
+
 #include "../data_structure/BinaryTrie.hpp"
 
 #include <iostream>

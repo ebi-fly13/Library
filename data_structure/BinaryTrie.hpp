@@ -1,5 +1,9 @@
 #pragma once
 
+/*
+    reference: https://kazuma8128.hatenablog.com/entry/2018/05/06/022654
+*/
+
 #include <algorithm>
 
 template<class T>
