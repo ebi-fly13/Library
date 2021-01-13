@@ -5,10 +5,12 @@
 #include <iostream>
 
 int main(){
-    int q; std::cin >> q;
+    int q;
+    std::cin >> q;
     BinaryTrie<int> set(31);
     while(q--) {
-        int t, x; std::cin >> t >> x;
+        int t, x;
+        std::cin >> t >> x;
         if(t==0) {
             if(!set.find(x)) {
                 set.insert(x);
