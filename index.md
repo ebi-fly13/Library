@@ -8,6 +8,9 @@ data:
       title: String/Z_Algorithm.hpp
   - name: data_structure
     pages:
+    - icon: ':x:'
+      path: data_structure/BinaryTrie.hpp
+      title: data_structure/BinaryTrie.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/DuelSegtree.hpp
       title: data_structure/DuelSegtree.hpp
@@ -57,6 +60,9 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':x:'
+      path: test/BinaryTrie.test.cpp
+      title: test/BinaryTrie.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/DuelSegtree.test.cpp
       title: test/DuelSegtree.test.cpp
