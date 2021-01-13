@@ -8,7 +8,7 @@ data:
       title: String/Z_Algorithm.hpp
   - name: data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/BinaryTrie.hpp
       title: data_structure/BinaryTrie.hpp
     - icon: ':heavy_check_mark:'
@@ -60,7 +60,7 @@ data:
   verificationCategories:
   - name: test
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/BinaryTrie.test.cpp
       title: test/BinaryTrie.test.cpp
     - icon: ':heavy_check_mark:'

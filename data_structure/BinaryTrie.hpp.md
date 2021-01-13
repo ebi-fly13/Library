@@ -3,17 +3,19 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/BinaryTrie.test.cpp
     title: test/BinaryTrie.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"data_structure/BinaryTrie.hpp\"\n\r\n#include <algorithm>\r\
-    \n\r\ntemplate<class T>\r\nstruct BinaryTrie {\r\nprivate:\r\n    struct Node\
-    \ {\r\n        int cnt;\r\n        Node *chr[2] = {nullptr, nullptr};\r\n    \
-    \    Node(int c=0) : cnt(c) { }\r\n    };\r\n\r\n    using node_ptr = Node*;\r\
+    links:
+    - https://kazuma8128.hatenablog.com/entry/2018/05/06/022654
+  bundledCode: "#line 2 \"data_structure/BinaryTrie.hpp\"\n\r\n/*\r\n    reference:\
+    \ https://kazuma8128.hatenablog.com/entry/2018/05/06/022654\r\n*/\r\n\r\n#include\
+    \ <algorithm>\r\n\r\ntemplate<class T>\r\nstruct BinaryTrie {\r\nprivate:\r\n\
+    \    struct Node {\r\n        int cnt;\r\n        Node *chr[2] = {nullptr, nullptr};\r\
+    \n        Node(int c=0) : cnt(c) { }\r\n    };\r\n\r\n    using node_ptr = Node*;\r\
     \n\r\n    node_ptr root;\r\n\r\n    int bit_size;\r\npublic:\r\n    BinaryTrie(int\
     \ bit_size = 32) : bit_size(bit_size) {\r\n        root = new Node();\r\n    }\
     \ \r\n\r\n    void insert(T x) {\r\n        node_ptr now = root;\r\n        now->cnt++;\r\
@@ -53,14 +55,15 @@ data:
     \n            }\r\n            else {\r\n                if(p==0) x ^= (T)1 <<\
     \ i;\r\n                now = now->chr[std::abs(p-1)];\r\n            }\r\n  \
     \      }\r\n        return x;\r\n    }\r\n};\n"
-  code: "#pragma once\r\n\r\n#include <algorithm>\r\n\r\ntemplate<class T>\r\nstruct\
-    \ BinaryTrie {\r\nprivate:\r\n    struct Node {\r\n        int cnt;\r\n      \
-    \  Node *chr[2] = {nullptr, nullptr};\r\n        Node(int c=0) : cnt(c) { }\r\n\
-    \    };\r\n\r\n    using node_ptr = Node*;\r\n\r\n    node_ptr root;\r\n\r\n \
-    \   int bit_size;\r\npublic:\r\n    BinaryTrie(int bit_size = 32) : bit_size(bit_size)\
-    \ {\r\n        root = new Node();\r\n    } \r\n\r\n    void insert(T x) {\r\n\
-    \        node_ptr now = root;\r\n        now->cnt++;\r\n        for(int i = bit_size-1;\
-    \ i>=0; i--) {\r\n            int p =  (x & ((T)1 << i))>0;\r\n            if(!now->chr[p])\
+  code: "#pragma once\r\n\r\n/*\r\n    reference: https://kazuma8128.hatenablog.com/entry/2018/05/06/022654\r\
+    \n*/\r\n\r\n#include <algorithm>\r\n\r\ntemplate<class T>\r\nstruct BinaryTrie\
+    \ {\r\nprivate:\r\n    struct Node {\r\n        int cnt;\r\n        Node *chr[2]\
+    \ = {nullptr, nullptr};\r\n        Node(int c=0) : cnt(c) { }\r\n    };\r\n\r\n\
+    \    using node_ptr = Node*;\r\n\r\n    node_ptr root;\r\n\r\n    int bit_size;\r\
+    \npublic:\r\n    BinaryTrie(int bit_size = 32) : bit_size(bit_size) {\r\n    \
+    \    root = new Node();\r\n    } \r\n\r\n    void insert(T x) {\r\n        node_ptr\
+    \ now = root;\r\n        now->cnt++;\r\n        for(int i = bit_size-1; i>=0;\
+    \ i--) {\r\n            int p =  (x & ((T)1 << i))>0;\r\n            if(!now->chr[p])\
     \ {\r\n                now->chr[p] = new Node();\r\n            }\r\n        \
     \    now = now->chr[p];\r\n            now->cnt++;\r\n        }\r\n    }\r\n\r\
     \n    void erase(T x) {\r\n        if(!find(x)) return;\r\n        node_ptr now\
@@ -99,8 +102,8 @@ data:
   isVerificationFile: false
   path: data_structure/BinaryTrie.hpp
   requiredBy: []
-  timestamp: '2021-01-13 18:55:45+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-01-13 18:57:15+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/BinaryTrie.test.cpp
 documentation_of: data_structure/BinaryTrie.hpp
