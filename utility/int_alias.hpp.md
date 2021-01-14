@@ -10,6 +10,9 @@ data:
     title: data_structure/bitVector.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/ImplicitTreap.test.cpp
+    title: test/ImplicitTreap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/LiChaoSegmentTree.test.cpp
     title: test/LiChaoSegmentTree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -44,10 +47,11 @@ data:
   timestamp: '2021-01-12 22:18:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/WaveletMatrix.test.cpp
-  - test/SegmentAddGetMin.test.cpp
-  - test/SegmentTreeBeats.test.cpp
   - test/dijkstra.test.cpp
+  - test/SegmentTreeBeats.test.cpp
+  - test/SegmentAddGetMin.test.cpp
+  - test/WaveletMatrix.test.cpp
+  - test/ImplicitTreap.test.cpp
   - test/LiChaoSegmentTree.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document

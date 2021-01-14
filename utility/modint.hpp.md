@@ -7,6 +7,9 @@ data:
     path: test/DynamicSegmentTree.test.cpp
     title: test/DynamicSegmentTree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/ImplicitTreap.test.cpp
+    title: test/ImplicitTreap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -83,9 +86,10 @@ data:
   timestamp: '2021-01-08 12:17:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/DynamicSegmentTree.test.cpp
-  - test/LazySegtree.test.cpp
   - test/SWAG.test.cpp
+  - test/DynamicSegmentTree.test.cpp
+  - test/ImplicitTreap.test.cpp
+  - test/LazySegtree.test.cpp
 documentation_of: utility/modint.hpp
 layout: document
 redirect_from:
