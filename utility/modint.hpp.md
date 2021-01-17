@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: algorithm/convolution.hpp
+    title: algorithm/convolution.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/DynamicSegmentTree.test.cpp
@@ -15,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/convolution.test.cpp
+    title: test/convolution.test.cpp
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -82,13 +88,15 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: utility/modint.hpp
-  requiredBy: []
+  requiredBy:
+  - algorithm/convolution.hpp
   timestamp: '2021-01-08 12:17:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/SWAG.test.cpp
   - test/DynamicSegmentTree.test.cpp
   - test/ImplicitTreap.test.cpp
+  - test/convolution.test.cpp
   - test/LazySegtree.test.cpp
 documentation_of: utility/modint.hpp
 layout: document

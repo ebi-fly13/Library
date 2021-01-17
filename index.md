@@ -6,6 +6,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/Z_Algorithm.hpp
       title: String/Z_Algorithm.hpp
+  - name: algorithm
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: algorithm/convolution.hpp
+      title: algorithm/convolution.hpp
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -102,6 +107,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Z_Algorithm.test.cpp
       title: test/Z_Algorithm.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/convolution.test.cpp
+      title: test/convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/dijkstra.test.cpp
       title: test/dijkstra.test.cpp
