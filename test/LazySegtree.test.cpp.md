@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/LazySegtree.hpp
     title: data_structure/LazySegtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -55,16 +55,17 @@ data:
     \ntemplate<std::uint_fast64_t Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\
     \n\r\npublic:\r\n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept\
     \ : a(x % Modulus) {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n\
-    \    constexpr const u64 &value() const noexcept { return a; }\r\n    constexpr\
-    \ modint operator+(const modint rhs) const noexcept {\r\n        return modint(*this)\
-    \ += rhs;\r\n    }\r\n    constexpr modint operator-(const modint rhs) const noexcept\
-    \ {\r\n        return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n   \
-    \ }\r\n    constexpr modint operator/(const modint rhs) const noexcept {\r\n \
-    \       return modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const\
-    \ modint rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\
-    \n            a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
+    \    constexpr u64 &val() noexcept { return a; }\r\n    constexpr const u64 &value()\
+    \ const noexcept { return a; }\r\n    constexpr modint operator+(const modint\
+    \ rhs) const noexcept {\r\n        return modint(*this) += rhs;\r\n    }\r\n \
+    \   constexpr modint operator-(const modint rhs) const noexcept {\r\n        return\
+    \ modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const modint\
+    \ rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n    }\r\n \
+    \   constexpr modint operator/(const modint rhs) const noexcept {\r\n        return\
+    \ modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const modint\
+    \ rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\n  \
+    \          a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n  \
+    \  constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
     \ < rhs.a) {\r\n        a += Modulus;\r\n        }\r\n        a -= rhs.a;\r\n\
     \        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
     \ rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\n        return *this;\r\
@@ -115,8 +116,8 @@ data:
   isVerificationFile: true
   path: test/LazySegtree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 11:46:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-01-18 21:40:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/LazySegtree.test.cpp
 layout: document

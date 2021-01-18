@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/DynamicSegmentTree.hpp
     title: data_structure/DynamicSegmentTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -58,31 +58,31 @@ data:
     \u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<std::uint_fast64_t\
     \ Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\n\r\npublic:\r\
     \n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept : a(x % Modulus)\
-    \ {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n    constexpr const\
-    \ u64 &value() const noexcept { return a; }\r\n    constexpr modint operator+(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) += rhs;\r\n   \
-    \ }\r\n    constexpr modint operator-(const modint rhs) const noexcept {\r\n \
-    \       return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n   \
-    \ }\r\n    constexpr modint operator/(const modint rhs) const noexcept {\r\n \
-    \       return modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const\
-    \ modint rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\
-    \n            a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
-    \ < rhs.a) {\r\n        a += Modulus;\r\n        }\r\n        a -= rhs.a;\r\n\
-    \        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
-    \ rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator/=(modint rhs) noexcept {\r\n       \
-    \ u64 exp = Modulus - 2;\r\n        while (exp) {\r\n        if (exp % 2) {\r\n\
-    \            *this *= rhs;\r\n        }\r\n        rhs *= rhs;\r\n        exp\
-    \ /= 2;\r\n        }\r\n        return *this;\r\n    }\r\n    modint pow(u64 n)\
-    \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
-    \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
-    \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
-    \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
-    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
-    } // namespace ebi\n#line 5 \"test/DynamicSegmentTree.test.cpp\"\n\r\n#include\
+    \ {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n    constexpr u64\
+    \ &val() noexcept { return a; }\r\n    constexpr const u64 &value() const noexcept\
+    \ { return a; }\r\n    constexpr modint operator+(const modint rhs) const noexcept\
+    \ {\r\n        return modint(*this) += rhs;\r\n    }\r\n    constexpr modint operator-(const\
+    \ modint rhs) const noexcept {\r\n        return modint(*this) -= rhs;\r\n   \
+    \ }\r\n    constexpr modint operator*(const modint rhs) const noexcept {\r\n \
+    \       return modint(*this) *= rhs;\r\n    }\r\n    constexpr modint operator/(const\
+    \ modint rhs) const noexcept {\r\n        return modint(*this) /= rhs;\r\n   \
+    \ }\r\n    constexpr modint &operator+=(const modint rhs) noexcept {\r\n     \
+    \   a += rhs.a;\r\n        if (a >= Modulus) {\r\n            a -= Modulus;\r\n\
+    \        }\r\n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const\
+    \ modint rhs) noexcept {\r\n        if (a < rhs.a) {\r\n        a += Modulus;\r\
+    \n        }\r\n        a -= rhs.a;\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator*=(const modint rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(modint rhs)\
+    \ noexcept {\r\n        u64 exp = Modulus - 2;\r\n        while (exp) {\r\n  \
+    \      if (exp % 2) {\r\n            *this *= rhs;\r\n        }\r\n        rhs\
+    \ *= rhs;\r\n        exp /= 2;\r\n        }\r\n        return *this;\r\n    }\r\
+    \n    modint pow(u64 n) const noexcept {\r\n        modint res = 1;\r\n      \
+    \  modint x = a;\r\n        while(n>0){\r\n            if(n&1) res *= x;\r\n \
+    \           x *= x;\r\n            n >>=1;\r\n        }\r\n        return res;\r\
+    \n    }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\
+    \n\r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\n\
+    using modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
+    \n\r\n} // namespace ebi\n#line 5 \"test/DynamicSegmentTree.test.cpp\"\n\r\n#include\
     \ <iostream>\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n \
     \   mint a,b;\r\n    F(mint a, mint b) : a(a), b(b) { }\r\n};\r\n\r\nF op(F f1,\
     \ F f2) {\r\n    return F(f2.a*f1.a, f2.a*f1.b+f2.b);\r\n}\r\n\r\nF e() {\r\n\
@@ -115,7 +115,7 @@ data:
   isVerificationFile: true
   path: test/DynamicSegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 11:46:55+09:00'
+  timestamp: '2021-01-18 21:40:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/DynamicSegmentTree.test.cpp

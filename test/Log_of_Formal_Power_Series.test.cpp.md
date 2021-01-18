@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
@@ -32,16 +32,17 @@ data:
     \ntemplate<std::uint_fast64_t Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\
     \n\r\npublic:\r\n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept\
     \ : a(x % Modulus) {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n\
-    \    constexpr const u64 &value() const noexcept { return a; }\r\n    constexpr\
-    \ modint operator+(const modint rhs) const noexcept {\r\n        return modint(*this)\
-    \ += rhs;\r\n    }\r\n    constexpr modint operator-(const modint rhs) const noexcept\
-    \ {\r\n        return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n   \
-    \ }\r\n    constexpr modint operator/(const modint rhs) const noexcept {\r\n \
-    \       return modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const\
-    \ modint rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\
-    \n            a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
+    \    constexpr u64 &val() noexcept { return a; }\r\n    constexpr const u64 &value()\
+    \ const noexcept { return a; }\r\n    constexpr modint operator+(const modint\
+    \ rhs) const noexcept {\r\n        return modint(*this) += rhs;\r\n    }\r\n \
+    \   constexpr modint operator-(const modint rhs) const noexcept {\r\n        return\
+    \ modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const modint\
+    \ rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n    }\r\n \
+    \   constexpr modint operator/(const modint rhs) const noexcept {\r\n        return\
+    \ modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const modint\
+    \ rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\n  \
+    \          a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n  \
+    \  constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
     \ < rhs.a) {\r\n        a += Modulus;\r\n        }\r\n        a -= rhs.a;\r\n\
     \        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
     \ rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\n        return *this;\r\
@@ -107,13 +108,18 @@ data:
     \ FPS h = f*g;\r\n            h.erase(h.begin(), h.begin()+n/2);\r\n         \
     \   h.resize(n);\r\n            h = h*g;\r\n            for(int i = 0; i<n/2;\
     \ i++) {\r\n                g[i+n/2] -= h[i];\r\n            }\r\n        }\r\n\
-    \        g.resize(sz);\r\n        return g;\r\n    }\r\n\r\n    FPS differential()\
-    \ {\r\n        int n = deg();\r\n        FPS g(n);\r\n        for(int i = 0; i<n-1;\
-    \ i++) {\r\n            g[i] = (*this)[i+1]*(i+1);\r\n        }\r\n        g[n-1]\
-    \ = 0;\r\n        return g;\r\n    }\r\n\r\n    FPS integral() {\r\n        int\
-    \ n = deg();\r\n        FPS g(n+1);\r\n        g[0] = 0;\r\n        for(int i\
-    \ = 0; i<n; i++) {\r\n            g[i+1] = (*this)[i]/(mint(i+1));\r\n       \
-    \ }\r\n        return g;\r\n    }\r\n\r\n    FPS log() {\r\n        assert((*this)[0].value()\
+    \        g.resize(sz);\r\n        return g;\r\n    }\r\n\r\n    FPS exp() {\r\n\
+    \        assert((*this)[0].val() == 0);\r\n        int n = 1, sz = deg();\r\n\
+    \        FPS g(n);\r\n        g[0] = 1;\r\n        while(n < sz) {\r\n       \
+    \     n <<= 1;\r\n            FPS f((*this).begin(), (*this).begin()+std::min(sz,\
+    \ n));\r\n            f.resize(n);\r\n            g.resize(n);\r\n           \
+    \ g = g*(f-g.log()) + g;\r\n        }\r\n        return g;\r\n    }\r\n\r\n  \
+    \  FPS differential() {\r\n        int n = deg();\r\n        FPS g(n);\r\n   \
+    \     for(int i = 0; i<n-1; i++) {\r\n            g[i] = (*this)[i+1]*(i+1);\r\
+    \n        }\r\n        g[n-1] = 0;\r\n        return g;\r\n    }\r\n\r\n    FPS\
+    \ integral() {\r\n        int n = deg();\r\n        FPS g(n+1);\r\n        g[0]\
+    \ = 0;\r\n        for(int i = 0; i<n; i++) {\r\n            g[i+1] = (*this)[i]/(mint(i+1));\r\
+    \n        }\r\n        return g;\r\n    }\r\n\r\n    FPS log() {\r\n        assert((*this)[0].val()\
     \ == 1);\r\n        FPS g = (*this).differential()/(*this);\r\n        return\
     \ g.integral();\r\n    }\r\n\r\n    int deg() const {\r\n        return (*this).size();\r\
     \n    }\r\n};\r\n\r\n} // namespace ebi\n#line 4 \"test/Log_of_Formal_Power_Series.test.cpp\"\
@@ -137,8 +143,8 @@ data:
   isVerificationFile: true
   path: test/Log_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 18:44:15+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-01-18 21:40:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Log_of_Formal_Power_Series.test.cpp
 layout: document
