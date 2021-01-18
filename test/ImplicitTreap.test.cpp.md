@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/ImplicitTreap.hpp
     title: data_structure/ImplicitTreap.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -112,16 +112,17 @@ data:
     \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
-    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\n} // namespace ebi\n#line 6 \"test/ImplicitTreap.test.cpp\"\n\r\n#include\
-    \ <iostream>\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n \
-    \   mint a;\r\n    int size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n   \
-    \ F(mint a, mint b) : a(a), b(b) { }\r\n};\r\n\r\nS op(S l, S r) { return S{l.a\
-    \ + r.a, l.size + r.size}; }\r\n\r\nS e() { return S{0, 0}; }\r\n\r\nS mapping(F\
-    \ l, S r) { return S{r.a * l.a + (mint)r.size * l.b, r.size}; }\r\n\r\nF composition(F\
-    \ l, F r) { return F{r.a * l.a, r.b * l.a + l.b}; }\r\n\r\nF id() { return F{1,\
-    \ 0}; }\r\n\r\nint main() {\r\n    ebi::ImplicitTreap<S,op,e,F,mapping,composition,id>\
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
+    \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
+    } // namespace ebi\n#line 6 \"test/ImplicitTreap.test.cpp\"\n\r\n#include <iostream>\r\
+    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n\
+    \    int size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint\
+    \ b) : a(a), b(b) { }\r\n};\r\n\r\nS op(S l, S r) { return S{l.a + r.a, l.size\
+    \ + r.size}; }\r\n\r\nS e() { return S{0, 0}; }\r\n\r\nS mapping(F l, S r) { return\
+    \ S{r.a * l.a + (mint)r.size * l.b, r.size}; }\r\n\r\nF composition(F l, F r)\
+    \ { return F{r.a * l.a, r.b * l.a + l.b}; }\r\n\r\nF id() { return F{1, 0}; }\r\
+    \n\r\nint main() {\r\n    ebi::ImplicitTreap<S,op,e,F,mapping,composition,id>\
     \ treap;\r\n    int n,q; std::cin >> n >> q;\r\n    for(int i = 0; i<n; i++) {\r\
     \n        i64 a; std::cin >> a;\r\n        treap.insert(i, {a, 1});\r\n    }\r\
     \n    while(q--) {\r\n        int t; std::cin >> t;\r\n        if(t==0) {\r\n\
@@ -163,7 +164,7 @@ data:
   isVerificationFile: true
   path: test/ImplicitTreap.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
+  timestamp: '2021-01-18 11:46:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/ImplicitTreap.test.cpp

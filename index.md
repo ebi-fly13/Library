@@ -3,12 +3,12 @@ data:
   libraryCategories:
   - name: String
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/Z_Algorithm.hpp
       title: String/Z_Algorithm.hpp
   - name: algorithm
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
   - name: data_structure
@@ -51,18 +51,18 @@ data:
       title: data_structure/bitVector.hpp
   - name: graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
   verificationCategories:
@@ -104,13 +104,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/WaveletMatrix.test.cpp
       title: test/WaveletMatrix.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Z_Algorithm.test.cpp
       title: test/Z_Algorithm.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/convolution.test.cpp
       title: test/convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/dijkstra.test.cpp
       title: test/dijkstra.test.cpp
 layout: toppage

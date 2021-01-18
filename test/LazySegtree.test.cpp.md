@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/LazySegtree.hpp
     title: data_structure/LazySegtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -75,10 +75,11 @@ data:
     \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
-    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\n} // namespace ebi\n#line 5 \"test/LazySegtree.test.cpp\"\n\r\n#include\
-    \ <iostream>\r\n#line 8 \"test/LazySegtree.test.cpp\"\n\r\nusing mint = ebi::modint998244353;\r\
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
+    \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
+    } // namespace ebi\n#line 5 \"test/LazySegtree.test.cpp\"\n\r\n#include <iostream>\r\
+    \n#line 8 \"test/LazySegtree.test.cpp\"\n\r\nusing mint = ebi::modint998244353;\r\
     \n\r\nstruct S {\r\n    mint a;\r\n    int size;\r\n};\r\n\r\nstruct F {\r\n \
     \   mint a, b;\r\n    F(mint a, mint b) : a(a), b(b) { }\r\n};\r\n\r\nS op(S l,\
     \ S r) { return S{l.a + r.a, l.size + r.size}; }\r\n\r\nS e() { return S{0, 0};\
@@ -114,7 +115,7 @@ data:
   isVerificationFile: true
   path: test/LazySegtree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
+  timestamp: '2021-01-18 11:46:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/LazySegtree.test.cpp

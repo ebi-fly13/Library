@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://hcpc-hokudai.github.io/archive/math_fft_002.pdf
@@ -44,22 +44,23 @@ data:
     \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
-    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\n} // namespace ebi\n#line 9 \"algorithm/convolution.hpp\"\n\r\n#include\
-    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\nusing mint = ebi::modint998244353;\r\n\
-    \r\nnamespace internal {\r\n\r\nconst mint primitive_root = 3;\r\n\r\nconstexpr\
-    \ int mod = 998244353;\r\n\r\nvoid dft(std::vector<mint> &f) {\r\n    int n =\
-    \ f.size();\r\n    if(n==1) return;\r\n    std::vector<mint> a(n/2), b(n/2);\r\
-    \n    for(int i = 0; i<n/2; ++i) {\r\n        a[i] = f[2*i];\r\n        b[i] =\
-    \ f[2*i+1];\r\n    }\r\n    dft(a);\r\n    dft(b);\r\n    const mint zeta = primitive_root.pow((mod-1)/n);\r\
-    \n    mint x = 1;\r\n    for(int i = 0; i<n; ++i) {\r\n        f[i] = a[i%(n/2)]\
-    \ + x*b[i%(n/2)];\r\n        x *= zeta;\r\n    }\r\n}\r\n\r\nvoid inv_dft(std::vector<mint>\
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
+    \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
+    } // namespace ebi\n#line 9 \"algorithm/convolution.hpp\"\n\r\n#include <vector>\r\
+    \n\r\nnamespace ebi {\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nnamespace\
+    \ internal {\r\n\r\nconstexpr mint primitive_root = 3;\r\n\r\nvoid dft(std::vector<mint>\
     \ &f) {\r\n    int n = f.size();\r\n    if(n==1) return;\r\n    std::vector<mint>\
     \ a(n/2), b(n/2);\r\n    for(int i = 0; i<n/2; ++i) {\r\n        a[i] = f[2*i];\r\
-    \n        b[i] = f[2*i+1];\r\n    }\r\n    inv_dft(a);\r\n    inv_dft(b);\r\n\
-    \    const mint inv_zeta = primitive_root.pow((mod-1)/n).inv();\r\n    mint x\
-    \ = 1;\r\n    for(int i = 0; i<n; ++i) {\r\n        f[i] = a[i%(n/2)] + x*b[i%(n/2)];\r\
+    \n        b[i] = f[2*i+1];\r\n    }\r\n    dft(a);\r\n    dft(b);\r\n    const\
+    \ mint zeta = primitive_root.pow((mint::mod()-1)/n);\r\n    mint x = 1;\r\n  \
+    \  for(int i = 0; i<n; ++i) {\r\n        f[i] = a[i%(n/2)] + x*b[i%(n/2)];\r\n\
+    \        x *= zeta;\r\n    }\r\n}\r\n\r\nvoid inv_dft(std::vector<mint> &f) {\r\
+    \n    int n = f.size();\r\n    if(n==1) return;\r\n    std::vector<mint> a(n/2),\
+    \ b(n/2);\r\n    for(int i = 0; i<n/2; ++i) {\r\n        a[i] = f[2*i];\r\n  \
+    \      b[i] = f[2*i+1];\r\n    }\r\n    inv_dft(a);\r\n    inv_dft(b);\r\n   \
+    \ const mint inv_zeta = primitive_root.pow((mint::mod()-1)/n).inv();\r\n    mint\
+    \ x = 1;\r\n    for(int i = 0; i<n; ++i) {\r\n        f[i] = a[i%(n/2)] + x*b[i%(n/2)];\r\
     \n        x *= inv_zeta;\r\n    }\r\n}\r\n\r\n} // namespace internal\r\n\r\n\
     std::vector<mint> convolution(const std::vector<mint> &f, const std::vector<mint>\
     \ &g) {\r\n    int n = 1;\r\n    while(n < (int)f.size() + (int)g.size() - 1)\
@@ -73,22 +74,22 @@ data:
     \n    mod 998244353 \u4E0A\u3067\u306E\u7573\u307F\u8FBC\u307F\u3092 O(N log N)\
     \ \u3067\u6C42\u3081\u308B.\r\n*/\r\n\r\n#include \"../utility/modint.hpp\"\r\n\
     \r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nusing mint = ebi::modint998244353;\r\
-    \n\r\nnamespace internal {\r\n\r\nconst mint primitive_root = 3;\r\n\r\nconstexpr\
-    \ int mod = 998244353;\r\n\r\nvoid dft(std::vector<mint> &f) {\r\n    int n =\
-    \ f.size();\r\n    if(n==1) return;\r\n    std::vector<mint> a(n/2), b(n/2);\r\
-    \n    for(int i = 0; i<n/2; ++i) {\r\n        a[i] = f[2*i];\r\n        b[i] =\
-    \ f[2*i+1];\r\n    }\r\n    dft(a);\r\n    dft(b);\r\n    const mint zeta = primitive_root.pow((mod-1)/n);\r\
+    \n\r\nnamespace internal {\r\n\r\nconstexpr mint primitive_root = 3;\r\n\r\nvoid\
+    \ dft(std::vector<mint> &f) {\r\n    int n = f.size();\r\n    if(n==1) return;\r\
+    \n    std::vector<mint> a(n/2), b(n/2);\r\n    for(int i = 0; i<n/2; ++i) {\r\n\
+    \        a[i] = f[2*i];\r\n        b[i] = f[2*i+1];\r\n    }\r\n    dft(a);\r\n\
+    \    dft(b);\r\n    const mint zeta = primitive_root.pow((mint::mod()-1)/n);\r\
     \n    mint x = 1;\r\n    for(int i = 0; i<n; ++i) {\r\n        f[i] = a[i%(n/2)]\
     \ + x*b[i%(n/2)];\r\n        x *= zeta;\r\n    }\r\n}\r\n\r\nvoid inv_dft(std::vector<mint>\
     \ &f) {\r\n    int n = f.size();\r\n    if(n==1) return;\r\n    std::vector<mint>\
     \ a(n/2), b(n/2);\r\n    for(int i = 0; i<n/2; ++i) {\r\n        a[i] = f[2*i];\r\
     \n        b[i] = f[2*i+1];\r\n    }\r\n    inv_dft(a);\r\n    inv_dft(b);\r\n\
-    \    const mint inv_zeta = primitive_root.pow((mod-1)/n).inv();\r\n    mint x\
-    \ = 1;\r\n    for(int i = 0; i<n; ++i) {\r\n        f[i] = a[i%(n/2)] + x*b[i%(n/2)];\r\
-    \n        x *= inv_zeta;\r\n    }\r\n}\r\n\r\n} // namespace internal\r\n\r\n\
-    std::vector<mint> convolution(const std::vector<mint> &f, const std::vector<mint>\
-    \ &g) {\r\n    int n = 1;\r\n    while(n < (int)f.size() + (int)g.size() - 1)\
-    \ n <<= 1;\r\n    std::vector<mint> a(n,0), b(n,0), fg(n,0);\r\n    std::copy(f.begin(),\
+    \    const mint inv_zeta = primitive_root.pow((mint::mod()-1)/n).inv();\r\n  \
+    \  mint x = 1;\r\n    for(int i = 0; i<n; ++i) {\r\n        f[i] = a[i%(n/2)]\
+    \ + x*b[i%(n/2)];\r\n        x *= inv_zeta;\r\n    }\r\n}\r\n\r\n} // namespace\
+    \ internal\r\n\r\nstd::vector<mint> convolution(const std::vector<mint> &f, const\
+    \ std::vector<mint> &g) {\r\n    int n = 1;\r\n    while(n < (int)f.size() + (int)g.size()\
+    \ - 1) n <<= 1;\r\n    std::vector<mint> a(n,0), b(n,0), fg(n,0);\r\n    std::copy(f.begin(),\
     \ f.end(), a.begin());\r\n    std::copy(g.begin(), g.end(), b.begin());\r\n  \
     \  internal::dft(a);\r\n    internal::dft(b);\r\n    for(int i = 0; i<n; ++i)\
     \ {\r\n        fg[i] = a[i]*b[i];\r\n    }\r\n    internal::inv_dft(fg);\r\n \
@@ -99,8 +100,8 @@ data:
   isVerificationFile: false
   path: algorithm/convolution.hpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-01-18 11:46:55+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution.test.cpp
 documentation_of: algorithm/convolution.hpp

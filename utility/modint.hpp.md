@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
   _extendedVerifiedWith:
@@ -18,11 +18,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://noshi91.hatenablog.com/entry/2019/03/31/174006
@@ -54,9 +54,10 @@ data:
     \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
-    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\n} // namespace ebi\n"
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
+    \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
+    } // namespace ebi\n"
   code: "#pragma once\r\n\r\n/*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
     \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
     \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
@@ -84,16 +85,17 @@ data:
     \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
-    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\n} // namespace ebi"
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
+    \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
+    } // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy:
   - algorithm/convolution.hpp
-  timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-01-18 11:46:55+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/SWAG.test.cpp
   - test/DynamicSegmentTree.test.cpp

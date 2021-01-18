@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Z_Algorithm.test.cpp
     title: test/Z_Algorithm.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://snuke.hatenablog.com/entry/2014/12/03/214243
@@ -40,7 +40,7 @@ data:
   path: String/Z_Algorithm.hpp
   requiredBy: []
   timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Z_Algorithm.test.cpp
 documentation_of: String/Z_Algorithm.hpp
