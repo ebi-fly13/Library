@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/SWAG.hpp
     title: SlidingWindowAggregation
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -102,7 +102,7 @@ data:
   isVerificationFile: true
   path: test/SWAG.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 11:46:55+09:00'
+  timestamp: '2021-01-18 21:40:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/SWAG.test.cpp

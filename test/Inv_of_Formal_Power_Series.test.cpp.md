@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
   - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -142,7 +142,7 @@ data:
   isVerificationFile: true
   path: test/Inv_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 21:33:21+09:00'
+  timestamp: '2021-01-18 21:40:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Inv_of_Formal_Power_Series.test.cpp

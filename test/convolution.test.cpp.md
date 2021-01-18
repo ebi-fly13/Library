@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
@@ -96,8 +96,8 @@ data:
   isVerificationFile: true
   path: test/convolution.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 17:23:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-01-18 21:40:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/convolution.test.cpp
 layout: document

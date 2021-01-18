@@ -5,12 +5,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
+  - icon: ':x:'
+    path: graph/scc_graph.hpp
+    title: graph/scc_graph.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
+  - icon: ':x:'
+    path: test/scc_graph.test.cpp
+    title: test/scc_graph.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
@@ -26,11 +32,13 @@ data:
   isVerificationFile: false
   path: graph/template.hpp
   requiredBy:
+  - graph/scc_graph.hpp
   - graph/dijkstra.hpp
   timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/dijkstra.test.cpp
+  - test/scc_graph.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:

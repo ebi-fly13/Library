@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/LazySegtree.hpp
     title: data_structure/LazySegtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -116,7 +116,7 @@ data:
   isVerificationFile: true
   path: test/LazySegtree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 11:46:55+09:00'
+  timestamp: '2021-01-18 21:40:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/LazySegtree.test.cpp
