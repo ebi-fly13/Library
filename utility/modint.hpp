@@ -19,6 +19,7 @@ public:
 
     constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}
     constexpr u64 &value() noexcept { return a; }
+    constexpr u64 &val() noexcept { return a; }
     constexpr const u64 &value() const noexcept { return a; }
     constexpr modint operator+(const modint rhs) const noexcept {
         return modint(*this) += rhs;

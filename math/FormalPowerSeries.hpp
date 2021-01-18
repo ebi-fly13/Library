@@ -91,6 +91,7 @@ public:
     }
 
     FPS exp() {
+        assert((*this)[0].val() == 0);
         int n = 1, sz = deg();
         FPS g(n);
         g[0] = 1;
@@ -125,7 +126,7 @@ public:
     }
 
     FPS log() {
-        assert((*this)[0].value() == 1);
+        assert((*this)[0].val() == 1);
         FPS g = (*this).differential()/(*this);
         return g.integral();
     }
