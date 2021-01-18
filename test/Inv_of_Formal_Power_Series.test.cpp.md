@@ -1,24 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    links: []
-  bundledCode: "#line 2 \"math/FormalPowerSeries.hpp\"\n\r\n#line 2 \"algorithm/convolution.hpp\"\
-    \n\r\n/*\r\n    reference: https://hcpc-hokudai.github.io/archive/math_fft_002.pdf\r\
+    PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
+    links:
+    - https://judge.yosupo.jp/problem/inv_of_formal_power_series
+  bundledCode: "#line 1 \"test/Inv_of_Formal_Power_Series.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\r\n\r\n#line\
+    \ 2 \"math/FormalPowerSeries.hpp\"\n\r\n#line 2 \"algorithm/convolution.hpp\"\n\
+    \r\n/*\r\n    reference: https://hcpc-hokudai.github.io/archive/math_fft_002.pdf\r\
     \n    mod 998244353 \u4E0A\u3067\u306E\u7573\u307F\u8FBC\u307F\u3092 O(N log N)\
     \ \u3067\u6C42\u3081\u308B.\r\n*/\r\n\r\n#line 2 \"utility/modint.hpp\"\n\r\n\
     /*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
@@ -102,14 +106,15 @@ data:
     \ i++) {\r\n                g[i+n/2] -= h[i];\r\n            }\r\n        }\r\n\
     \        g.resize(sz);\r\n        return g;\r\n    }\r\n\r\n    int deg() const\
     \ {\r\n        return (*this).size();\r\n    }\r\n};\r\n\r\n} // namespace ebi\n\
-    #line 2 \"test/Inv_of_Formal_Power_Series.test.cpp\"\n\r\n#include <iostream>\r\
+    #line 4 \"test/Inv_of_Formal_Power_Series.test.cpp\"\n\r\n#include <iostream>\r\
     \n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries\
     \ a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin >> a[i].a;\r\n \
     \   }\r\n    ebi::FormalPowerSeries b = a.inv();\r\n    for(int i = 0; i<n; ++i)\
     \ {\r\n        std::cout << b[i].value() << \" \";\r\n    }\r\n    std::cout <<\
     \ std::endl;\r\n}\n"
-  code: "#include \"../math/FormalPowerSeries.hpp\"\r\n\r\n#include <iostream>\r\n\
-    \r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+    \r\n\r\n#include \"../math/FormalPowerSeries.hpp\"\r\n\r\n#include <iostream>\r\
+    \n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries\
     \ a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin >> a[i].a;\r\n \
     \   }\r\n    ebi::FormalPowerSeries b = a.inv();\r\n    for(int i = 0; i<n; ++i)\
     \ {\r\n        std::cout << b[i].value() << \" \";\r\n    }\r\n    std::cout <<\
@@ -121,8 +126,8 @@ data:
   isVerificationFile: true
   path: test/Inv_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 17:23:40+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-01-18 17:38:19+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Inv_of_Formal_Power_Series.test.cpp
 layout: document
