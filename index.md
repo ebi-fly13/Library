@@ -8,7 +8,7 @@ data:
       title: String/Z_Algorithm.hpp
   - name: algorithm
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
   - name: data_structure
@@ -54,10 +54,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
   - name: math
@@ -70,7 +70,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
   verificationCategories:
@@ -124,13 +124,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Z_Algorithm.test.cpp
       title: test/Z_Algorithm.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/convolution.test.cpp
       title: test/convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/dijkstra.test.cpp
       title: test/dijkstra.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/scc_graph.test.cpp
       title: test/scc_graph.test.cpp
 layout: toppage

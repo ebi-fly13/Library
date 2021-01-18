@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/scc_graph.test.cpp
     title: test/scc_graph.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/scc_graph.hpp\"\n\r\n#line 2 \"graph/template.hpp\"\
@@ -64,7 +64,7 @@ data:
   path: graph/scc_graph.hpp
   requiredBy: []
   timestamp: '2021-01-19 00:38:59+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/scc_graph.test.cpp
 documentation_of: graph/scc_graph.hpp
