@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <cassert>
 
 /*
     reference: https://opt-cp.com/fps-fast-algorithms/
@@ -29,6 +30,9 @@ public:
     FPS operator*(const FPS &rhs) const noexcept {
         return FPS(*this) *= rhs;
     }
+    FPS operator/(const FPS &rhs) const noexcept {
+        return FPS(*this) /= rhs;
+    }
 
     FPS &operator+=(const FPS &rhs) noexcept {
         int sz = std::min(deg(), rhs.deg());
@@ -50,6 +54,11 @@ public:
         int n = deg();
         *this = convolution(*this, rhs);
         (*this).resize(n);
+        return *this;
+    }
+
+    FPS &operator/=(const FPS &rhs) noexcept {
+        *this *= rhs.inv();
         return *this;
     }
 
@@ -79,6 +88,32 @@ public:
         }
         g.resize(sz);
         return g;
+    }
+
+    FPS differential() {
+        int n = deg();
+        FPS g(n);
+        for(int i = 0; i<n-1; i++) {
+            g[i] = (*this)[i+1]*(i+1);
+        }
+        g[n-1] = 0;
+        return g;
+    }
+
+    FPS integral() {
+        int n = deg();
+        FPS g(n+1);
+        g[0] = 0;
+        for(int i = 0; i<n; i++) {
+            g[i+1] = (*this)[i]/(mint(i+1));
+        }
+        return g;
+    }
+
+    FPS log() {
+        assert((*this)[0].value() == 1);
+        FPS g = (*this).differential()/(*this);
+        return g.integral();
     }
 
     int deg() const {
