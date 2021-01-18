@@ -2,6 +2,8 @@
 
 #include <vector>
 
+namespace ebi {
+
 template<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
 struct DuelSegtree {
 private:
@@ -50,3 +52,5 @@ public:
         return;
     }
 };
+
+} // namespace ebi

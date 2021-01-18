@@ -2,6 +2,8 @@
 
 #include <vector>
 
+namespace ebi {
+
 struct UnionFind {
 private:
     std::vector<int> par;
@@ -39,3 +41,5 @@ public:
         return c;
     }
 };
+
+} // namespace ebi

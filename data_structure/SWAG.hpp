@@ -7,6 +7,8 @@
 #include <stack>
 #include <cassert>
 
+namespace ebi {
+
 template<class Semigroup, Semigroup (*op)(Semigroup, Semigroup)>
 struct SWAG {
 private:
@@ -74,3 +76,5 @@ public:
         }
     }
 };
+
+} // namespace ebi

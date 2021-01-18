@@ -15,7 +15,7 @@ int main() {
     for(int i = 0; i<n; i++) {
         std::cin >> a[i];
     }
-    SegmentTreeBeats<S> seg(a);
+    ebi::SegmentTreeBeats<S> seg(a);
     while(q--) {
         int t;
         std::cin >> t;

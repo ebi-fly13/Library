@@ -7,6 +7,8 @@
     reference: https://snuke.hatenablog.com/entry/2014/12/03/214243
 */
 
+namespace ebi {
+
 std::vector<int> Z_Algorithm(const std::string &s) {
     int n = s.size();
     std::vector<int> prefix(n);
@@ -30,3 +32,5 @@ std::vector<int> Z_Algorithm(const std::string &s) {
     }
     return prefix;
 }
+
+} // namespace ebi

@@ -9,7 +9,11 @@
 
 #include <vector>
 
-using mint = modint998244353;
+namespace ebi {
+
+using mint = ebi::modint998244353;
+
+namespace internal {
 
 const mint primitive_root = 3;
 
@@ -51,20 +55,24 @@ void inv_dft(std::vector<mint> &f) {
     }
 }
 
+} // namespace internal
+
 std::vector<mint> convolution(const std::vector<mint> &f, const std::vector<mint> &g) {
     int n = 1;
     while(n < (int)f.size() + (int)g.size() - 1) n <<= 1;
     std::vector<mint> a(n,0), b(n,0), fg(n,0);
     std::copy(f.begin(), f.end(), a.begin());
     std::copy(g.begin(), g.end(), b.begin());
-    dft(a);
-    dft(b);
+    internal::dft(a);
+    internal::dft(b);
     for(int i = 0; i<n; ++i) {
         fg[i] = a[i]*b[i];
     }
-    inv_dft(fg);
+    internal::inv_dft(fg);
     for(int i = 0; i<n; ++i) {
         fg[i] /= mint(n);
     }
     return fg;
 }
+
+} // namespace ebi

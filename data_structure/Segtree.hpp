@@ -2,6 +2,8 @@
 
 #include <vector>
 
+namespace ebi {
+
 template<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
 struct Segtree {
 private:
@@ -53,3 +55,5 @@ public:
 
     Monoid operator [] (int p) { return data[n+p-1]; }
 };
+
+} // namespace ebi

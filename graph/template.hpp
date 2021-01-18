@@ -2,6 +2,8 @@
 
 #include <vector>
 
+namespace ebi {
+
 template<class T>
 struct Edge {
     int to;
@@ -13,3 +15,5 @@ template<class T>
 using Graph = std::vector<std::vector<Edge<T>>>;
 
 using graph = std::vector<std::vector<int>>;
+
+} // namespace ebi

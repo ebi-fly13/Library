@@ -6,6 +6,8 @@
 #include <limits>
 #include <queue>
 
+namespace ebi {
+
 template<class T>
 std::vector<T> dijkstra(int s, int n, const Graph<T> &g){
     typedef std::pair<T, int> P;
@@ -26,3 +28,5 @@ std::vector<T> dijkstra(int s, int n, const Graph<T> &g){
     }
     return d;
 }
+
+} // namespace ebi

@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <vector>
 
+namespace ebi {
+
 template<class S>
 struct SegmentTreeBeats {
 private:
@@ -183,3 +185,5 @@ public:
         return prod(l, r, nl, (nl+nr)/2, 2*index+1) + prod(l, r, (nl+nr)/2, nr, 2*index+2);
     }
 };
+
+} // namespace ebi

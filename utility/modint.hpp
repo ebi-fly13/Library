@@ -8,6 +8,8 @@
 
 #include <cstdint>
 
+namespace ebi {
+
 template<std::uint_fast64_t Modulus>
 class modint {
   using u64 = std::uint_fast64_t;
@@ -76,3 +78,5 @@ public:
 
 using modint998244353 = modint<998244353>;
 using modint1000000007 = modint<1000000007>;
+
+} // namespace ebi

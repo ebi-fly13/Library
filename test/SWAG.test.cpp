@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-using mint = modint<998244353>;
+using mint = ebi::modint998244353;
 
 struct F {
     mint a,b;
@@ -17,7 +17,7 @@ F op(F f1, F f2) {
 }
 
 int main() {
-    SWAG<F, op> swag;
+    ebi::SWAG<F, op> swag;
     int q; std::cin >> q;
     while(q--){
         int t; std::cin >> t;

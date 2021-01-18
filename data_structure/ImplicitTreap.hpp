@@ -9,6 +9,8 @@
 
 #include <random>
 
+namespace ebi {
+
 template<
     class S,
     S (*op)(S, S),
@@ -167,3 +169,5 @@ public:
         return ret;
     }
 };
+
+} // namespace ebi

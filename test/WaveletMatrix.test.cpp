@@ -13,7 +13,7 @@ int main(){
     for(int i = 0; i<n; i++) {
         std::cin >> a[i];
     }
-    WaveletMatrix<i64> wm(a);
+    ebi::WaveletMatrix<i64> wm(a);
     while(q--) {
         int l,r,k; std::cin >> l >> r >> k;
         std::cout << wm.quantile(l,r,k+1) << std::endl;

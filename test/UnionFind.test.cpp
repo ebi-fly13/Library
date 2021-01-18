@@ -6,7 +6,7 @@
 
 int main(){
     int n,q; std::cin >> n >> q;
-    UnionFind uf(n);
+    ebi::UnionFind uf(n);
     while(q--){
         int t,u,v; std::cin >> t >> u >> v;
         if(t==0){

@@ -7,7 +7,7 @@
 int main(){
     int q;
     std::cin >> q;
-    BinaryTrie<int> set(31);
+    ebi::BinaryTrie<int> set(31);
     while(q--) {
         int t, x;
         std::cin >> t >> x;

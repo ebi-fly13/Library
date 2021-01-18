@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-using mint = modint998244353;
+using mint = ebi::modint998244353;
 
 struct F {
     mint a,b;
@@ -22,7 +22,7 @@ F e() {
 
 int main(){
     int n,q; std::cin >> n >> q;
-    DynamicSegmentTree<F, op, e> seg(n);
+    ebi::DynamicSegmentTree<F, op, e> seg(n);
     for(int i = 0; i<n; i++) {
         int a,b; std::cin >> a >> b;
         seg.set(i, F(a,b));

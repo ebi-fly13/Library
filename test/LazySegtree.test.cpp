@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-using mint = modint998244353;
+using mint = ebi::modint998244353;
 
 struct S {
     mint a;
@@ -36,7 +36,7 @@ int main(){
         std::cin >> a;
         v[i] = {a,1};
     }
-    LazySegtree<S,op,e,F,mapping,merge,id> seg(v);
+    ebi::LazySegtree<S,op,e,F,mapping,merge,id> seg(v);
     while(q--) {
         int t; std::cin >> t;
         if(t==0) {

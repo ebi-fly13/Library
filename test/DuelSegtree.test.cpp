@@ -15,7 +15,7 @@ int e(){
 
 int main() {
     int n,q; std::cin >> n >> q;
-    DuelSegtree<int, op, e> dseg(n);
+    ebi::DuelSegtree<int, op, e> dseg(n);
     while(q--){
         int flag;
         std::cin >> flag;

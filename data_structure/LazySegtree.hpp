@@ -7,6 +7,8 @@
 
 #include <vector>
 
+namespace ebi {
+
 template<
     class S,
     S (*op)(S, S),
@@ -86,3 +88,5 @@ public:
         return;
     }
 };
+
+} // namespace ebi

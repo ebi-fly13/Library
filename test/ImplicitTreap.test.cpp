@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-using mint = modint998244353;
+using mint = ebi::modint998244353;
 
 struct S {
     mint a;
@@ -29,7 +29,7 @@ F composition(F l, F r) { return F{r.a * l.a, r.b * l.a + l.b}; }
 F id() { return F{1, 0}; }
 
 int main() {
-    ImplicitTreap<S,op,e,F,mapping,composition,id> treap;
+    ebi::ImplicitTreap<S,op,e,F,mapping,composition,id> treap;
     int n,q; std::cin >> n >> q;
     for(int i = 0; i<n; i++) {
         i64 a; std::cin >> a;

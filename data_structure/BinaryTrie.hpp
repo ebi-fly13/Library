@@ -6,6 +6,8 @@
 
 #include <algorithm>
 
+namespace ebi {
+
 template<class T>
 struct BinaryTrie {
 private:
@@ -127,3 +129,5 @@ public:
         return x;
     }
 };
+
+} // namespace ebi

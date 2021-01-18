@@ -5,6 +5,8 @@
 #include <limits>
 #include <cassert>
 
+namespace ebi {
+
 template<class T>
 struct line {
     T a,b;
@@ -93,3 +95,5 @@ public:
         return val;
     }
 };
+
+} // namespace ebi

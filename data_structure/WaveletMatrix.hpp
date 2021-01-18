@@ -10,6 +10,8 @@
 #include <limits>
 #include <map>
 
+namespace ebi {
+
 template<class T>
 struct WaveletMatrix {
 private:
@@ -107,3 +109,5 @@ public:
         return val;
     }
 };
+
+} // namespace ebi

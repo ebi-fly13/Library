@@ -16,7 +16,7 @@ int main(){
     for(int i = 0; i<n; i++){
         std::cin >> a[i];
     }
-    Segtree<i64, op, e> seg(a);
+    ebi::Segtree<i64, op, e> seg(a);
     while(q--){
         int t;
         std::cin >> t;

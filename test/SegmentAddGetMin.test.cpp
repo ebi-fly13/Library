@@ -10,7 +10,7 @@
 int main(){
     int n,q; std::cin >> n >> q;
     std::vector<std::pair<i64, i64>> lr(n);
-    std::vector<line<i64>> y(n);
+    std::vector<ebi::line<i64>> y(n);
     std::vector<i64> x;
     for(int i = 0; i<n; i++){
         std::cin >> lr[i].first >> lr[i].second;
@@ -37,7 +37,7 @@ int main(){
     std::sort(x.begin(), x.end());
     x.erase(unique(x.begin(), x.end()), x.end());
     x.emplace_back(1e9+10);
-    LiChaoSegmentTree<i64> seg(x);
+    ebi::LiChaoSegmentTree<i64> seg(x);
     for(int i = 0; i<n; i++) {
         int l = std::lower_bound(x.begin(), x.end(), lr[i].first) - x.begin();
         int r = std::lower_bound(x.begin(), x.end(), lr[i].second) - x.begin();
@@ -47,7 +47,7 @@ int main(){
         if(query[i][0]==0) {
             int l = std::lower_bound(x.begin(), x.end(), query[i][1]) - x.begin();
             int r = std::lower_bound(x.begin(), x.end(), query[i][2]) - x.begin();
-            line<i64> ya(query[i][3], query[i][4]);
+            ebi::line<i64> ya(query[i][3], query[i][4]);
             seg.add_segment(ya, l, r);
         }
         else {

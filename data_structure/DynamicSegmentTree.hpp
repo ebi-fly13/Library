@@ -1,5 +1,7 @@
 #pragma once
 
+namespace ebi {
+
 template<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
 struct DynamicSegmentTree {
 private:
@@ -94,3 +96,5 @@ public:
         return now->val;
     }
 };
+
+} // namespace ebi

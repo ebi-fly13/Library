@@ -8,6 +8,8 @@
 
 #include <vector>
 
+namespace ebi {
+
 struct bitVector {
     u32 length, cn, bn;
     static u32 cw, bw; // chunk, block の長さ cw = (lg N)^2, bw = (lg N)/2 とする.
@@ -98,3 +100,5 @@ struct bitVector {
 
 u32 bitVector::cw = 1024;
 u32 bitVector::bw = 16;
+
+} // namespace ebi
