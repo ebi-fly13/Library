@@ -15,9 +15,7 @@ using mint = ebi::modint998244353;
 
 namespace internal {
 
-const mint primitive_root = 3;
-
-constexpr int mod = 998244353;
+constexpr mint primitive_root = 3;
 
 void dft(std::vector<mint> &f) {
     int n = f.size();
@@ -29,7 +27,7 @@ void dft(std::vector<mint> &f) {
     }
     dft(a);
     dft(b);
-    const mint zeta = primitive_root.pow((mod-1)/n);
+    const mint zeta = primitive_root.pow((mint::mod()-1)/n);
     mint x = 1;
     for(int i = 0; i<n; ++i) {
         f[i] = a[i%(n/2)] + x*b[i%(n/2)];
@@ -47,7 +45,7 @@ void inv_dft(std::vector<mint> &f) {
     }
     inv_dft(a);
     inv_dft(b);
-    const mint inv_zeta = primitive_root.pow((mod-1)/n).inv();
+    const mint inv_zeta = primitive_root.pow((mint::mod()-1)/n).inv();
     mint x = 1;
     for(int i = 0; i<n; ++i) {
         f[i] = a[i%(n/2)] + x*b[i%(n/2)];

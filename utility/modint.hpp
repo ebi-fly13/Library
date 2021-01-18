@@ -74,6 +74,10 @@ public:
     modint inv() const {
         return pow(Modulus-2);
     }
+
+    static u64 mod() {
+        return Modulus;
+    }
 };
 
 using modint998244353 = modint<998244353>;
