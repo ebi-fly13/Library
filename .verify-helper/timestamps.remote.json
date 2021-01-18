@@ -3,6 +3,7 @@
 "test/DuelSegtree.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/DynamicSegmentTree.test.cpp": "2021-01-18 11:46:55 +0900",
 "test/ImplicitTreap.test.cpp": "2021-01-18 11:46:55 +0900",
+"test/Inv_of_Formal_Power_Series.test.cpp": "2021-01-18 17:38:19 +0900",
 "test/LazySegtree.test.cpp": "2021-01-18 11:46:55 +0900",
 "test/LiChaoSegmentTree.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/SWAG.test.cpp": "2021-01-18 11:46:55 +0900",
