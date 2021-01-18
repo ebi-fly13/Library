@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/SWAG.hpp
     title: SlidingWindowAggregation
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -102,8 +102,8 @@ data:
   isVerificationFile: true
   path: test/SWAG.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 21:40:11+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-01-18 11:46:55+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/SWAG.test.cpp
 layout: document

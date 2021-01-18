@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://scrapbox.io/data-structures/Sliding_Window_Aggregation
@@ -62,7 +62,7 @@ data:
   path: data_structure/SWAG.hpp
   requiredBy: []
   timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/SWAG.test.cpp
 documentation_of: data_structure/SWAG.hpp
