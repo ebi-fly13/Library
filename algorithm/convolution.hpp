@@ -67,8 +67,9 @@ std::vector<mint> convolution(const std::vector<mint> &f, const std::vector<mint
         fg[i] = a[i]*b[i];
     }
     internal::inv_dft(fg);
+    mint in = mint(n).inv();
     for(int i = 0; i<n; ++i) {
-        fg[i] /= mint(n);
+        fg[i] *= in;
     }
     return fg;
 }
