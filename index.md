@@ -95,6 +95,9 @@ data:
       path: test/LiChaoSegmentTree.test.cpp
       title: test/LiChaoSegmentTree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/Log_of_Formal_Power_Series.test.cpp
+      title: test/Log_of_Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/SWAG.test.cpp
       title: test/SWAG.test.cpp
     - icon: ':heavy_check_mark:'

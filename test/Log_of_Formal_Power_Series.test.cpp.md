@@ -16,11 +16,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/inv_of_formal_power_series
-  bundledCode: "#line 1 \"test/Inv_of_Formal_Power_Series.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\r\n\r\n#line\
+    - https://judge.yosupo.jp/problem/log_of_formal_power_series
+  bundledCode: "#line 1 \"test/Log_of_Formal_Power_Series.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\r\n\r\n#line\
     \ 2 \"math/FormalPowerSeries.hpp\"\n\r\n#line 2 \"algorithm/convolution.hpp\"\n\
     \r\n/*\r\n    reference: https://hcpc-hokudai.github.io/archive/math_fft_002.pdf\r\
     \n    mod 998244353 \u4E0A\u3067\u306E\u7573\u307F\u8FBC\u307F\u3092 O(N log N)\
@@ -116,33 +116,34 @@ data:
     \ }\r\n        return g;\r\n    }\r\n\r\n    FPS log() {\r\n        assert((*this)[0].value()\
     \ == 1);\r\n        FPS g = (*this).differential()/(*this);\r\n        return\
     \ g.integral();\r\n    }\r\n\r\n    int deg() const {\r\n        return (*this).size();\r\
-    \n    }\r\n};\r\n\r\n} // namespace ebi\n#line 4 \"test/Inv_of_Formal_Power_Series.test.cpp\"\
+    \n    }\r\n};\r\n\r\n} // namespace ebi\n#line 4 \"test/Log_of_Formal_Power_Series.test.cpp\"\
     \n\r\n#include <iostream>\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >>\
     \ n;\r\n    ebi::FormalPowerSeries a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n\
-    \        std::cin >> a[i].a;\r\n    }\r\n    ebi::FormalPowerSeries b = a.inv();\r\
-    \n    for(int i = 0; i<n; ++i) {\r\n        std::cout << b[i].value() << \" \"\
-    ;\r\n    }\r\n    std::cout << std::endl;\r\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+    \        int val;\r\n        std::cin >> val;\r\n        a[i] = val;\r\n    }\r\
+    \n    ebi::FormalPowerSeries b = a.log();\r\n    for(int i = 0; i<n; ++i) {\r\n\
+    \        std::cout << b[i].value() << \" \";\r\n    }\r\n    std::cout << std::endl;\r\
+    \n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \r\n\r\n#include \"../math/FormalPowerSeries.hpp\"\r\n\r\n#include <iostream>\r\
     \n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries\
-    \ a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin >> a[i].a;\r\n \
-    \   }\r\n    ebi::FormalPowerSeries b = a.inv();\r\n    for(int i = 0; i<n; ++i)\
-    \ {\r\n        std::cout << b[i].value() << \" \";\r\n    }\r\n    std::cout <<\
-    \ std::endl;\r\n}"
+    \ a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n        int val;\r\n        std::cin\
+    \ >> val;\r\n        a[i] = val;\r\n    }\r\n    ebi::FormalPowerSeries b = a.log();\r\
+    \n    for(int i = 0; i<n; ++i) {\r\n        std::cout << b[i].value() << \" \"\
+    ;\r\n    }\r\n    std::cout << std::endl;\r\n}"
   dependsOn:
   - math/FormalPowerSeries.hpp
   - algorithm/convolution.hpp
   - utility/modint.hpp
   isVerificationFile: true
-  path: test/Inv_of_Formal_Power_Series.test.cpp
+  path: test/Log_of_Formal_Power_Series.test.cpp
   requiredBy: []
   timestamp: '2021-01-18 18:44:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Inv_of_Formal_Power_Series.test.cpp
+documentation_of: test/Log_of_Formal_Power_Series.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Inv_of_Formal_Power_Series.test.cpp
-- /verify/test/Inv_of_Formal_Power_Series.test.cpp.html
-title: test/Inv_of_Formal_Power_Series.test.cpp
+- /verify/test/Log_of_Formal_Power_Series.test.cpp
+- /verify/test/Log_of_Formal_Power_Series.test.cpp.html
+title: test/Log_of_Formal_Power_Series.test.cpp
 ---

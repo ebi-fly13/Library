@@ -13,6 +13,9 @@ data:
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Log_of_Formal_Power_Series.test.cpp
+    title: test/Log_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
   _pathExtension: hpp
@@ -111,6 +114,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp
 documentation_of: algorithm/convolution.hpp
 layout: document

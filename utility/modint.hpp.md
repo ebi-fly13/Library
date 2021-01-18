@@ -22,6 +22,9 @@ data:
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Log_of_Formal_Power_Series.test.cpp
+    title: test/Log_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
   - icon: ':heavy_check_mark:'
@@ -108,6 +111,7 @@ data:
   - test/DynamicSegmentTree.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/ImplicitTreap.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp
   - test/LazySegtree.test.cpp
 documentation_of: utility/modint.hpp

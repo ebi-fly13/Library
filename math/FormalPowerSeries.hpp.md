@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Log_of_Formal_Power_Series.test.cpp
+    title: test/Log_of_Formal_Power_Series.test.cpp
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -75,23 +78,26 @@ data:
     \   mint in = mint(n).inv();\r\n    for(int i = 0; i<n; ++i) {\r\n        fg[i]\
     \ *= in;\r\n    }\r\n    return fg;\r\n}\r\n\r\n} // namespace ebi\n#line 5 \"\
     math/FormalPowerSeries.hpp\"\n\r\n#line 7 \"math/FormalPowerSeries.hpp\"\n#include\
-    \ <algorithm>\r\n\r\n/*\r\n    reference: https://opt-cp.com/fps-fast-algorithms/\r\
+    \ <algorithm>\r\n#include <cassert>\r\n\r\n/*\r\n    reference: https://opt-cp.com/fps-fast-algorithms/\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nstruct\
     \ FormalPowerSeries : std::vector<mint> {\r\nprivate:\r\n    using std::vector<mint>::vector;\r\
     \n    using std::vector<mint>::vector::operator=;\r\n    using FPS = FormalPowerSeries;\r\
     \npublic:\r\n    FPS operator+(const FPS &rhs) const noexcept {\r\n        return\
     \ FPS(*this) += rhs;\r\n    }\r\n    FPS operator-(const FPS &rhs) const noexcept\
     \ {\r\n        return FPS(*this) -= rhs;\r\n    }\r\n    FPS operator*(const FPS\
-    \ &rhs) const noexcept {\r\n        return FPS(*this) *= rhs;\r\n    }\r\n\r\n\
-    \    FPS &operator+=(const FPS &rhs) noexcept {\r\n        int sz = std::min(deg(),\
-    \ rhs.deg());\r\n        for(int i = 0; i< sz; ++i) {\r\n            (*this)[i]\
-    \ += rhs[i];\r\n        }\r\n        return *this;\r\n    }\r\n\r\n    FPS &operator-=(const\
-    \ FPS &rhs) noexcept {\r\n        int sz = std::min(deg(), rhs.deg());\r\n   \
-    \     for(int i = 0; i< sz; ++i) {\r\n            (*this)[i] -= rhs[i];\r\n  \
-    \      }\r\n        return *this;\r\n    }\r\n\r\n    FPS &operator*=(const FPS\
-    \ &rhs) noexcept {\r\n        int n = deg();\r\n        *this = convolution(*this,\
-    \ rhs);\r\n        (*this).resize(n);\r\n        return *this;\r\n    }\r\n\r\n\
-    \    FPS &operator*=(const mint rhs) noexcept {\r\n        for(int i = 0; i<deg();\
+    \ &rhs) const noexcept {\r\n        return FPS(*this) *= rhs;\r\n    }\r\n   \
+    \ FPS operator/(const FPS &rhs) const noexcept {\r\n        return FPS(*this)\
+    \ /= rhs;\r\n    }\r\n\r\n    FPS &operator+=(const FPS &rhs) noexcept {\r\n \
+    \       int sz = std::min(deg(), rhs.deg());\r\n        for(int i = 0; i< sz;\
+    \ ++i) {\r\n            (*this)[i] += rhs[i];\r\n        }\r\n        return *this;\r\
+    \n    }\r\n\r\n    FPS &operator-=(const FPS &rhs) noexcept {\r\n        int sz\
+    \ = std::min(deg(), rhs.deg());\r\n        for(int i = 0; i< sz; ++i) {\r\n  \
+    \          (*this)[i] -= rhs[i];\r\n        }\r\n        return *this;\r\n   \
+    \ }\r\n\r\n    FPS &operator*=(const FPS &rhs) noexcept {\r\n        int n = deg();\r\
+    \n        *this = convolution(*this, rhs);\r\n        (*this).resize(n);\r\n \
+    \       return *this;\r\n    }\r\n\r\n    FPS &operator/=(const FPS &rhs) noexcept\
+    \ {\r\n        *this *= rhs.inv();\r\n        return *this;\r\n    }\r\n\r\n \
+    \   FPS &operator*=(const mint rhs) noexcept {\r\n        for(int i = 0; i<deg();\
     \ ++i) {\r\n            (*this)[i] *= rhs;\r\n        }\r\n        return *this;\r\
     \n    }\r\n\r\n    FPS inv() const {\r\n        int n = 1, sz = deg();\r\n   \
     \     FPS g(n);\r\n        g[0] = (*this)[0].inv();\r\n        while(n < sz) {\r\
@@ -100,27 +106,38 @@ data:
     \ FPS h = f*g;\r\n            h.erase(h.begin(), h.begin()+n/2);\r\n         \
     \   h.resize(n);\r\n            h = h*g;\r\n            for(int i = 0; i<n/2;\
     \ i++) {\r\n                g[i+n/2] -= h[i];\r\n            }\r\n        }\r\n\
-    \        g.resize(sz);\r\n        return g;\r\n    }\r\n\r\n    int deg() const\
-    \ {\r\n        return (*this).size();\r\n    }\r\n};\r\n\r\n} // namespace ebi\n"
+    \        g.resize(sz);\r\n        return g;\r\n    }\r\n\r\n    FPS differential()\
+    \ {\r\n        int n = deg();\r\n        FPS g(n);\r\n        for(int i = 0; i<n-1;\
+    \ i++) {\r\n            g[i] = (*this)[i+1]*(i+1);\r\n        }\r\n        g[n-1]\
+    \ = 0;\r\n        return g;\r\n    }\r\n\r\n    FPS integral() {\r\n        int\
+    \ n = deg();\r\n        FPS g(n+1);\r\n        g[0] = 0;\r\n        for(int i\
+    \ = 0; i<n; i++) {\r\n            g[i+1] = (*this)[i]/(mint(i+1));\r\n       \
+    \ }\r\n        return g;\r\n    }\r\n\r\n    FPS log() {\r\n        assert((*this)[0].value()\
+    \ == 1);\r\n        FPS g = (*this).differential()/(*this);\r\n        return\
+    \ g.integral();\r\n    }\r\n\r\n    int deg() const {\r\n        return (*this).size();\r\
+    \n    }\r\n};\r\n\r\n} // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include \"../algorithm/convolution.hpp\"\r\n#include\
     \ \"../utility/modint.hpp\"\r\n\r\n#include <vector>\r\n#include <algorithm>\r\
-    \n\r\n/*\r\n    reference: https://opt-cp.com/fps-fast-algorithms/\r\n*/\r\n\r\
-    \nnamespace ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nstruct FormalPowerSeries\
-    \ : std::vector<mint> {\r\nprivate:\r\n    using std::vector<mint>::vector;\r\n\
-    \    using std::vector<mint>::vector::operator=;\r\n    using FPS = FormalPowerSeries;\r\
+    \n#include <cassert>\r\n\r\n/*\r\n    reference: https://opt-cp.com/fps-fast-algorithms/\r\
+    \n*/\r\n\r\nnamespace ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nstruct\
+    \ FormalPowerSeries : std::vector<mint> {\r\nprivate:\r\n    using std::vector<mint>::vector;\r\
+    \n    using std::vector<mint>::vector::operator=;\r\n    using FPS = FormalPowerSeries;\r\
     \npublic:\r\n    FPS operator+(const FPS &rhs) const noexcept {\r\n        return\
     \ FPS(*this) += rhs;\r\n    }\r\n    FPS operator-(const FPS &rhs) const noexcept\
     \ {\r\n        return FPS(*this) -= rhs;\r\n    }\r\n    FPS operator*(const FPS\
-    \ &rhs) const noexcept {\r\n        return FPS(*this) *= rhs;\r\n    }\r\n\r\n\
-    \    FPS &operator+=(const FPS &rhs) noexcept {\r\n        int sz = std::min(deg(),\
-    \ rhs.deg());\r\n        for(int i = 0; i< sz; ++i) {\r\n            (*this)[i]\
-    \ += rhs[i];\r\n        }\r\n        return *this;\r\n    }\r\n\r\n    FPS &operator-=(const\
-    \ FPS &rhs) noexcept {\r\n        int sz = std::min(deg(), rhs.deg());\r\n   \
-    \     for(int i = 0; i< sz; ++i) {\r\n            (*this)[i] -= rhs[i];\r\n  \
-    \      }\r\n        return *this;\r\n    }\r\n\r\n    FPS &operator*=(const FPS\
-    \ &rhs) noexcept {\r\n        int n = deg();\r\n        *this = convolution(*this,\
-    \ rhs);\r\n        (*this).resize(n);\r\n        return *this;\r\n    }\r\n\r\n\
-    \    FPS &operator*=(const mint rhs) noexcept {\r\n        for(int i = 0; i<deg();\
+    \ &rhs) const noexcept {\r\n        return FPS(*this) *= rhs;\r\n    }\r\n   \
+    \ FPS operator/(const FPS &rhs) const noexcept {\r\n        return FPS(*this)\
+    \ /= rhs;\r\n    }\r\n\r\n    FPS &operator+=(const FPS &rhs) noexcept {\r\n \
+    \       int sz = std::min(deg(), rhs.deg());\r\n        for(int i = 0; i< sz;\
+    \ ++i) {\r\n            (*this)[i] += rhs[i];\r\n        }\r\n        return *this;\r\
+    \n    }\r\n\r\n    FPS &operator-=(const FPS &rhs) noexcept {\r\n        int sz\
+    \ = std::min(deg(), rhs.deg());\r\n        for(int i = 0; i< sz; ++i) {\r\n  \
+    \          (*this)[i] -= rhs[i];\r\n        }\r\n        return *this;\r\n   \
+    \ }\r\n\r\n    FPS &operator*=(const FPS &rhs) noexcept {\r\n        int n = deg();\r\
+    \n        *this = convolution(*this, rhs);\r\n        (*this).resize(n);\r\n \
+    \       return *this;\r\n    }\r\n\r\n    FPS &operator/=(const FPS &rhs) noexcept\
+    \ {\r\n        *this *= rhs.inv();\r\n        return *this;\r\n    }\r\n\r\n \
+    \   FPS &operator*=(const mint rhs) noexcept {\r\n        for(int i = 0; i<deg();\
     \ ++i) {\r\n            (*this)[i] *= rhs;\r\n        }\r\n        return *this;\r\
     \n    }\r\n\r\n    FPS inv() const {\r\n        int n = 1, sz = deg();\r\n   \
     \     FPS g(n);\r\n        g[0] = (*this)[0].inv();\r\n        while(n < sz) {\r\
@@ -129,18 +146,27 @@ data:
     \ FPS h = f*g;\r\n            h.erase(h.begin(), h.begin()+n/2);\r\n         \
     \   h.resize(n);\r\n            h = h*g;\r\n            for(int i = 0; i<n/2;\
     \ i++) {\r\n                g[i+n/2] -= h[i];\r\n            }\r\n        }\r\n\
-    \        g.resize(sz);\r\n        return g;\r\n    }\r\n\r\n    int deg() const\
-    \ {\r\n        return (*this).size();\r\n    }\r\n};\r\n\r\n} // namespace ebi"
+    \        g.resize(sz);\r\n        return g;\r\n    }\r\n\r\n    FPS differential()\
+    \ {\r\n        int n = deg();\r\n        FPS g(n);\r\n        for(int i = 0; i<n-1;\
+    \ i++) {\r\n            g[i] = (*this)[i+1]*(i+1);\r\n        }\r\n        g[n-1]\
+    \ = 0;\r\n        return g;\r\n    }\r\n\r\n    FPS integral() {\r\n        int\
+    \ n = deg();\r\n        FPS g(n+1);\r\n        g[0] = 0;\r\n        for(int i\
+    \ = 0; i<n; i++) {\r\n            g[i+1] = (*this)[i]/(mint(i+1));\r\n       \
+    \ }\r\n        return g;\r\n    }\r\n\r\n    FPS log() {\r\n        assert((*this)[0].value()\
+    \ == 1);\r\n        FPS g = (*this).differential()/(*this);\r\n        return\
+    \ g.integral();\r\n    }\r\n\r\n    int deg() const {\r\n        return (*this).size();\r\
+    \n    }\r\n};\r\n\r\n} // namespace ebi"
   dependsOn:
   - algorithm/convolution.hpp
   - utility/modint.hpp
   isVerificationFile: false
   path: math/FormalPowerSeries.hpp
   requiredBy: []
-  timestamp: '2021-01-18 17:23:40+09:00'
+  timestamp: '2021-01-18 18:44:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
 documentation_of: math/FormalPowerSeries.hpp
 layout: document
 redirect_from:
