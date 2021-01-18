@@ -6,6 +6,7 @@
 */
 
 #include <vector>
+#include <cassert>
 
 namespace ebi {
 
@@ -86,6 +87,25 @@ public:
         apply(l, r, f, (nl+nr)/2, nr, 2*index+2);
         data[index] = op(data[2*index+1], data[2*index+2]);
         return;
+    }
+
+    S get(int i) {
+        int l = 0, r = n;
+        int k = 0;
+        while(r-l>1) {
+            eval(k, l, r);
+            int mid = (l+r)/2;
+            if(i<mid) {
+                k = 2*k+1;
+                r = mid;
+            }
+            else {
+                k = 2*k+2;
+                l = mid;
+            }
+        }
+        eval(k, l, r);
+        return data[k];
     }
 };
 
