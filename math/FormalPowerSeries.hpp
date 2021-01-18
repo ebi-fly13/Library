@@ -90,6 +90,20 @@ public:
         return g;
     }
 
+    FPS exp() {
+        int n = 1, sz = deg();
+        FPS g(n);
+        g[0] = 1;
+        while(n < sz) {
+            n <<= 1;
+            FPS f((*this).begin(), (*this).begin()+std::min(sz, n));
+            f.resize(n);
+            g.resize(n);
+            g = g*(f-g.log()) + g;
+        }
+        return g;
+    }
+
     FPS differential() {
         int n = deg();
         FPS g(n);
