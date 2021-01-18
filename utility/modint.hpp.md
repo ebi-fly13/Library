@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
   _extendedVerifiedWith:
@@ -18,11 +18,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://noshi91.hatenablog.com/entry/2019/03/31/174006
@@ -30,7 +30,7 @@ data:
     \    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\n   \
     \ noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\u308B\
     modint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\u306E\
-    \u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n\r\ntemplate<std::uint_fast64_t\
+    \u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<std::uint_fast64_t\
     \ Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\n\r\npublic:\r\
     \n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept : a(x % Modulus)\
     \ {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n    constexpr const\
@@ -55,18 +55,19 @@ data:
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
     \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
-    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\n"
+    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
+    \n\r\n} // namespace ebi\n"
   code: "#pragma once\r\n\r\n/*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
     \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
     \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
-    \u306E\u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n\r\ntemplate<std::uint_fast64_t\
-    \ Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\n\r\npublic:\r\
-    \n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept : a(x % Modulus)\
-    \ {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n    constexpr const\
-    \ u64 &value() const noexcept { return a; }\r\n    constexpr modint operator+(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) += rhs;\r\n   \
-    \ }\r\n    constexpr modint operator-(const modint rhs) const noexcept {\r\n \
-    \       return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
+    \u306E\u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n\r\nnamespace ebi {\r\n\r\
+    \ntemplate<std::uint_fast64_t Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\
+    \n\r\npublic:\r\n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept\
+    \ : a(x % Modulus) {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n\
+    \    constexpr const u64 &value() const noexcept { return a; }\r\n    constexpr\
+    \ modint operator+(const modint rhs) const noexcept {\r\n        return modint(*this)\
+    \ += rhs;\r\n    }\r\n    constexpr modint operator-(const modint rhs) const noexcept\
+    \ {\r\n        return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
     \ modint rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n   \
     \ }\r\n    constexpr modint operator/(const modint rhs) const noexcept {\r\n \
     \       return modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const\
@@ -84,14 +85,15 @@ data:
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
     \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
-    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;"
+    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
+    \n\r\n} // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy:
   - algorithm/convolution.hpp
-  timestamp: '2021-01-08 12:17:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-01-18 10:56:54+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/SWAG.test.cpp
   - test/DynamicSegmentTree.test.cpp

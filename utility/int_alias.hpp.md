@@ -24,11 +24,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include\
@@ -45,7 +45,7 @@ data:
   - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
   timestamp: '2021-01-12 22:18:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/dijkstra.test.cpp
   - test/SegmentTreeBeats.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/LazySegtree.hpp
     title: data_structure/LazySegtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -19,14 +19,14 @@ data:
   bundledCode: "#line 1 \"test/LazySegtree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
     \r\n\r\n#line 2 \"data_structure/LazySegtree.hpp\"\n\r\n/*\r\n    reference: https://beet-aizu.hatenablog.com/entry/2017/12/01/225955\r\
     \n               https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html\r\
-    \n*/\r\n\r\n#include <vector>\r\n\r\ntemplate<\r\n    class S,\r\n    S (*op)(S,\
-    \ S),\r\n    S (*e)(),\r\n    class F,\r\n    S (*mapping)(F, S),\r\n    F (*merge)(F,\
-    \ F),\r\n    F (*id)()>\r\nstruct LazySegtree {\r\nprivate:\r\n    std::vector<S>\
-    \ data;\r\n    std::vector<F> lazy;\r\n    int n;\r\n\r\n    void eval(int index,\
-    \ int l, int r) {\r\n        data[index] = mapping(lazy[index], data[index]);\r\
-    \n        if(r-l>1) {\r\n            lazy[2*index+1] = merge(lazy[index] ,lazy[2*index+1]);\r\
-    \n            lazy[2*index+2] = merge(lazy[index] ,lazy[2*index+2]);\r\n     \
-    \   }\r\n        lazy[index] = id();\r\n    }\r\n\r\npublic:\r\n    LazySegtree(int\
+    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<\r\n    class\
+    \ S,\r\n    S (*op)(S, S),\r\n    S (*e)(),\r\n    class F,\r\n    S (*mapping)(F,\
+    \ S),\r\n    F (*merge)(F, F),\r\n    F (*id)()>\r\nstruct LazySegtree {\r\nprivate:\r\
+    \n    std::vector<S> data;\r\n    std::vector<F> lazy;\r\n    int n;\r\n\r\n \
+    \   void eval(int index, int l, int r) {\r\n        data[index] = mapping(lazy[index],\
+    \ data[index]);\r\n        if(r-l>1) {\r\n            lazy[2*index+1] = merge(lazy[index]\
+    \ ,lazy[2*index+1]);\r\n            lazy[2*index+2] = merge(lazy[index] ,lazy[2*index+2]);\r\
+    \n        }\r\n        lazy[index] = id();\r\n    }\r\n\r\npublic:\r\n    LazySegtree(int\
     \ _n) : n(1) {\r\n        while(n<_n) {\r\n            n <<= 1;\r\n        }\r\
     \n        data.assign(2*n-1, e());\r\n        lazy.assign(2*n-1, id());\r\n  \
     \  }\r\n\r\n    LazySegtree(std::vector<S> v) : n(1) {\r\n        int _n = v.size();\r\
@@ -47,18 +47,18 @@ data:
     \    eval(index, nl, nr);\r\n            return;\r\n        }\r\n        apply(l,\
     \ r, f, nl, (nl+nr)/2, 2*index+1);\r\n        apply(l, r, f, (nl+nr)/2, nr, 2*index+2);\r\
     \n        data[index] = op(data[2*index+1], data[2*index+2]);\r\n        return;\r\
-    \n    }\r\n};\n#line 2 \"utility/modint.hpp\"\n\r\n/*\r\n    author: noshi91\r\
-    \n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\n  \
-    \  noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\u308B\
-    modint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\u306E\
-    \u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n\r\ntemplate<std::uint_fast64_t\
-    \ Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\n\r\npublic:\r\
-    \n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept : a(x % Modulus)\
-    \ {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n    constexpr const\
-    \ u64 &value() const noexcept { return a; }\r\n    constexpr modint operator+(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) += rhs;\r\n   \
-    \ }\r\n    constexpr modint operator-(const modint rhs) const noexcept {\r\n \
-    \       return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
+    \n    }\r\n};\r\n\r\n} // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n\
+    /*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
+    \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
+    \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
+    \u306E\u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n\r\nnamespace ebi {\r\n\r\
+    \ntemplate<std::uint_fast64_t Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\
+    \n\r\npublic:\r\n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept\
+    \ : a(x % Modulus) {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n\
+    \    constexpr const u64 &value() const noexcept { return a; }\r\n    constexpr\
+    \ modint operator+(const modint rhs) const noexcept {\r\n        return modint(*this)\
+    \ += rhs;\r\n    }\r\n    constexpr modint operator-(const modint rhs) const noexcept\
+    \ {\r\n        return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
     \ modint rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n   \
     \ }\r\n    constexpr modint operator/(const modint rhs) const noexcept {\r\n \
     \       return modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const\
@@ -76,25 +76,9 @@ data:
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
     \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n};\r\n\r\nusing\
-    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\n\
-    #line 5 \"test/LazySegtree.test.cpp\"\n\r\n#include <iostream>\r\n#line 8 \"test/LazySegtree.test.cpp\"\
-    \n\r\nusing mint = modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n    int\
-    \ size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint b) : a(a),\
-    \ b(b) { }\r\n};\r\n\r\nS op(S l, S r) { return S{l.a + r.a, l.size + r.size};\
-    \ }\r\n\r\nS e() { return S{0, 0}; }\r\n\r\nS mapping(F l, S r) { return S{r.a\
-    \ * l.a + (mint)r.size * l.b, r.size}; }\r\n\r\nF merge(F l, F r) { return F{r.a\
-    \ * l.a, r.b * l.a + l.b}; }\r\n\r\nF id() { return F{1, 0}; }\r\n\r\nint main(){\r\
-    \n    int n,q; std::cin >> n >> q;\r\n    std::vector<S> v(n);\r\n    for(int\
-    \ i = 0; i<n; i++) {\r\n        int a;\r\n        std::cin >> a;\r\n        v[i]\
-    \ = {a,1};\r\n    }\r\n    LazySegtree<S,op,e,F,mapping,merge,id> seg(v);\r\n\
-    \    while(q--) {\r\n        int t; std::cin >> t;\r\n        if(t==0) {\r\n \
-    \           int l,r,b,c; std::cin >> l >> r >> b >> c;\r\n            seg.apply(l,r,F(b,c));\r\
-    \n        }\r\n        else {\r\n            int l,r; std::cin >> l >> r;\r\n\
-    \            std::cout << seg.prod(l,r).a.value() << std::endl;\r\n        }\r\
-    \n    }\r\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
-    \r\n\r\n#include \"../data_structure/LazySegtree.hpp\"\r\n#include \"../utility/modint.hpp\"\
-    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n\r\nusing mint = modint998244353;\r\
+    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
+    \n\r\n} // namespace ebi\n#line 5 \"test/LazySegtree.test.cpp\"\n\r\n#include\
+    \ <iostream>\r\n#line 8 \"test/LazySegtree.test.cpp\"\n\r\nusing mint = ebi::modint998244353;\r\
     \n\r\nstruct S {\r\n    mint a;\r\n    int size;\r\n};\r\n\r\nstruct F {\r\n \
     \   mint a, b;\r\n    F(mint a, mint b) : a(a), b(b) { }\r\n};\r\n\r\nS op(S l,\
     \ S r) { return S{l.a + r.a, l.size + r.size}; }\r\n\r\nS e() { return S{0, 0};\
@@ -102,7 +86,23 @@ data:
     \ }\r\n\r\nF merge(F l, F r) { return F{r.a * l.a, r.b * l.a + l.b}; }\r\n\r\n\
     F id() { return F{1, 0}; }\r\n\r\nint main(){\r\n    int n,q; std::cin >> n >>\
     \ q;\r\n    std::vector<S> v(n);\r\n    for(int i = 0; i<n; i++) {\r\n       \
-    \ int a;\r\n        std::cin >> a;\r\n        v[i] = {a,1};\r\n    }\r\n    LazySegtree<S,op,e,F,mapping,merge,id>\
+    \ int a;\r\n        std::cin >> a;\r\n        v[i] = {a,1};\r\n    }\r\n    ebi::LazySegtree<S,op,e,F,mapping,merge,id>\
+    \ seg(v);\r\n    while(q--) {\r\n        int t; std::cin >> t;\r\n        if(t==0)\
+    \ {\r\n            int l,r,b,c; std::cin >> l >> r >> b >> c;\r\n            seg.apply(l,r,F(b,c));\r\
+    \n        }\r\n        else {\r\n            int l,r; std::cin >> l >> r;\r\n\
+    \            std::cout << seg.prod(l,r).a.value() << std::endl;\r\n        }\r\
+    \n    }\r\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
+    \r\n\r\n#include \"../data_structure/LazySegtree.hpp\"\r\n#include \"../utility/modint.hpp\"\
+    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n\r\nusing mint = ebi::modint998244353;\r\
+    \n\r\nstruct S {\r\n    mint a;\r\n    int size;\r\n};\r\n\r\nstruct F {\r\n \
+    \   mint a, b;\r\n    F(mint a, mint b) : a(a), b(b) { }\r\n};\r\n\r\nS op(S l,\
+    \ S r) { return S{l.a + r.a, l.size + r.size}; }\r\n\r\nS e() { return S{0, 0};\
+    \ }\r\n\r\nS mapping(F l, S r) { return S{r.a * l.a + (mint)r.size * l.b, r.size};\
+    \ }\r\n\r\nF merge(F l, F r) { return F{r.a * l.a, r.b * l.a + l.b}; }\r\n\r\n\
+    F id() { return F{1, 0}; }\r\n\r\nint main(){\r\n    int n,q; std::cin >> n >>\
+    \ q;\r\n    std::vector<S> v(n);\r\n    for(int i = 0; i<n; i++) {\r\n       \
+    \ int a;\r\n        std::cin >> a;\r\n        v[i] = {a,1};\r\n    }\r\n    ebi::LazySegtree<S,op,e,F,mapping,merge,id>\
     \ seg(v);\r\n    while(q--) {\r\n        int t; std::cin >> t;\r\n        if(t==0)\
     \ {\r\n            int l,r,b,c; std::cin >> l >> r >> b >> c;\r\n            seg.apply(l,r,F(b,c));\r\
     \n        }\r\n        else {\r\n            int l,r; std::cin >> l >> r;\r\n\
@@ -114,7 +114,7 @@ data:
   isVerificationFile: true
   path: test/LazySegtree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-10 17:52:38+09:00'
+  timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/LazySegtree.test.cpp

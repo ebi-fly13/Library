@@ -15,14 +15,14 @@ data:
     - https://judge.yosupo.jp/problem/set_xor_min
   bundledCode: "#line 1 \"test/BinaryTrie.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\
     \r\n\r\n#line 2 \"data_structure/BinaryTrie.hpp\"\n\r\n/*\r\n    reference: https://kazuma8128.hatenablog.com/entry/2018/05/06/022654\r\
-    \n*/\r\n\r\n#include <algorithm>\r\n\r\ntemplate<class T>\r\nstruct BinaryTrie\
-    \ {\r\nprivate:\r\n    struct Node {\r\n        int cnt;\r\n        Node *chr[2]\
-    \ = {nullptr, nullptr};\r\n        Node(int c=0) : cnt(c) { }\r\n    };\r\n\r\n\
-    \    using node_ptr = Node*;\r\n\r\n    node_ptr root;\r\n\r\n    int bit_size;\r\
-    \npublic:\r\n    BinaryTrie(int bit_size = 32) : bit_size(bit_size) {\r\n    \
-    \    root = new Node();\r\n    } \r\n\r\n    void insert(T x) {\r\n        node_ptr\
-    \ now = root;\r\n        now->cnt++;\r\n        for(int i = bit_size-1; i>=0;\
-    \ i--) {\r\n            int p =  (x & ((T)1 << i))>0;\r\n            if(!now->chr[p])\
+    \n*/\r\n\r\n#include <algorithm>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
+    \ T>\r\nstruct BinaryTrie {\r\nprivate:\r\n    struct Node {\r\n        int cnt;\r\
+    \n        Node *chr[2] = {nullptr, nullptr};\r\n        Node(int c=0) : cnt(c)\
+    \ { }\r\n    };\r\n\r\n    using node_ptr = Node*;\r\n\r\n    node_ptr root;\r\
+    \n\r\n    int bit_size;\r\npublic:\r\n    BinaryTrie(int bit_size = 32) : bit_size(bit_size)\
+    \ {\r\n        root = new Node();\r\n    } \r\n\r\n    void insert(T x) {\r\n\
+    \        node_ptr now = root;\r\n        now->cnt++;\r\n        for(int i = bit_size-1;\
+    \ i>=0; i--) {\r\n            int p =  (x & ((T)1 << i))>0;\r\n            if(!now->chr[p])\
     \ {\r\n                now->chr[p] = new Node();\r\n            }\r\n        \
     \    now = now->chr[p];\r\n            now->cnt++;\r\n        }\r\n    }\r\n\r\
     \n    void erase(T x) {\r\n        if(!find(x)) return;\r\n        node_ptr now\
@@ -56,20 +56,20 @@ data:
     \ && now->chr[p]->cnt > 0) {\r\n                if(p) x ^= ((T)1 << i);\r\n  \
     \              now = now->chr[p];\r\n            }\r\n            else {\r\n \
     \               if(p==0) x ^= (T)1 << i;\r\n                now = now->chr[std::abs(p-1)];\r\
-    \n            }\r\n        }\r\n        return x;\r\n    }\r\n};\n#line 4 \"test/BinaryTrie.test.cpp\"\
-    \n\r\n#include <iostream>\r\n\r\nint main(){\r\n    int q;\r\n    std::cin >>\
-    \ q;\r\n    BinaryTrie<int> set(31);\r\n    while(q--) {\r\n        int t, x;\r\
-    \n        std::cin >> t >> x;\r\n        if(t==0) {\r\n            if(!set.find(x))\
-    \ {\r\n                set.insert(x);\r\n            }\r\n        }\r\n      \
-    \  else if(t==1) {\r\n            set.erase(x);\r\n        }\r\n        else {\r\
-    \n            std::cout << set.min_element(x) << std::endl;\r\n        }\r\n \
-    \   }\r\n}\n"
+    \n            }\r\n        }\r\n        return x;\r\n    }\r\n};\r\n\r\n} // namespace\
+    \ ebi\n#line 4 \"test/BinaryTrie.test.cpp\"\n\r\n#include <iostream>\r\n\r\nint\
+    \ main(){\r\n    int q;\r\n    std::cin >> q;\r\n    ebi::BinaryTrie<int> set(31);\r\
+    \n    while(q--) {\r\n        int t, x;\r\n        std::cin >> t >> x;\r\n   \
+    \     if(t==0) {\r\n            if(!set.find(x)) {\r\n                set.insert(x);\r\
+    \n            }\r\n        }\r\n        else if(t==1) {\r\n            set.erase(x);\r\
+    \n        }\r\n        else {\r\n            std::cout << set.min_element(x) <<\
+    \ std::endl;\r\n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\r\n\r\n#include\
     \ \"../data_structure/BinaryTrie.hpp\"\r\n\r\n#include <iostream>\r\n\r\nint main(){\r\
-    \n    int q;\r\n    std::cin >> q;\r\n    BinaryTrie<int> set(31);\r\n    while(q--)\
-    \ {\r\n        int t, x;\r\n        std::cin >> t >> x;\r\n        if(t==0) {\r\
-    \n            if(!set.find(x)) {\r\n                set.insert(x);\r\n       \
-    \     }\r\n        }\r\n        else if(t==1) {\r\n            set.erase(x);\r\
+    \n    int q;\r\n    std::cin >> q;\r\n    ebi::BinaryTrie<int> set(31);\r\n  \
+    \  while(q--) {\r\n        int t, x;\r\n        std::cin >> t >> x;\r\n      \
+    \  if(t==0) {\r\n            if(!set.find(x)) {\r\n                set.insert(x);\r\
+    \n            }\r\n        }\r\n        else if(t==1) {\r\n            set.erase(x);\r\
     \n        }\r\n        else {\r\n            std::cout << set.min_element(x) <<\
     \ std::endl;\r\n        }\r\n    }\r\n}"
   dependsOn:
@@ -77,7 +77,7 @@ data:
   isVerificationFile: true
   path: test/BinaryTrie.test.cpp
   requiredBy: []
-  timestamp: '2021-01-13 21:46:13+09:00'
+  timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/BinaryTrie.test.cpp

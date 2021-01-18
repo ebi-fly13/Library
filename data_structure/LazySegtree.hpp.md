@@ -14,14 +14,14 @@ data:
     - https://beet-aizu.hatenablog.com/entry/2017/12/01/225955
   bundledCode: "#line 2 \"data_structure/LazySegtree.hpp\"\n\r\n/*\r\n    reference:\
     \ https://beet-aizu.hatenablog.com/entry/2017/12/01/225955\r\n               https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html\r\
-    \n*/\r\n\r\n#include <vector>\r\n\r\ntemplate<\r\n    class S,\r\n    S (*op)(S,\
-    \ S),\r\n    S (*e)(),\r\n    class F,\r\n    S (*mapping)(F, S),\r\n    F (*merge)(F,\
-    \ F),\r\n    F (*id)()>\r\nstruct LazySegtree {\r\nprivate:\r\n    std::vector<S>\
-    \ data;\r\n    std::vector<F> lazy;\r\n    int n;\r\n\r\n    void eval(int index,\
-    \ int l, int r) {\r\n        data[index] = mapping(lazy[index], data[index]);\r\
-    \n        if(r-l>1) {\r\n            lazy[2*index+1] = merge(lazy[index] ,lazy[2*index+1]);\r\
-    \n            lazy[2*index+2] = merge(lazy[index] ,lazy[2*index+2]);\r\n     \
-    \   }\r\n        lazy[index] = id();\r\n    }\r\n\r\npublic:\r\n    LazySegtree(int\
+    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<\r\n    class\
+    \ S,\r\n    S (*op)(S, S),\r\n    S (*e)(),\r\n    class F,\r\n    S (*mapping)(F,\
+    \ S),\r\n    F (*merge)(F, F),\r\n    F (*id)()>\r\nstruct LazySegtree {\r\nprivate:\r\
+    \n    std::vector<S> data;\r\n    std::vector<F> lazy;\r\n    int n;\r\n\r\n \
+    \   void eval(int index, int l, int r) {\r\n        data[index] = mapping(lazy[index],\
+    \ data[index]);\r\n        if(r-l>1) {\r\n            lazy[2*index+1] = merge(lazy[index]\
+    \ ,lazy[2*index+1]);\r\n            lazy[2*index+2] = merge(lazy[index] ,lazy[2*index+2]);\r\
+    \n        }\r\n        lazy[index] = id();\r\n    }\r\n\r\npublic:\r\n    LazySegtree(int\
     \ _n) : n(1) {\r\n        while(n<_n) {\r\n            n <<= 1;\r\n        }\r\
     \n        data.assign(2*n-1, e());\r\n        lazy.assign(2*n-1, id());\r\n  \
     \  }\r\n\r\n    LazySegtree(std::vector<S> v) : n(1) {\r\n        int _n = v.size();\r\
@@ -42,17 +42,17 @@ data:
     \    eval(index, nl, nr);\r\n            return;\r\n        }\r\n        apply(l,\
     \ r, f, nl, (nl+nr)/2, 2*index+1);\r\n        apply(l, r, f, (nl+nr)/2, nr, 2*index+2);\r\
     \n        data[index] = op(data[2*index+1], data[2*index+2]);\r\n        return;\r\
-    \n    }\r\n};\n"
+    \n    }\r\n};\r\n\r\n} // namespace ebi\n"
   code: "#pragma once\r\n\r\n/*\r\n    reference: https://beet-aizu.hatenablog.com/entry/2017/12/01/225955\r\
     \n               https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html\r\
-    \n*/\r\n\r\n#include <vector>\r\n\r\ntemplate<\r\n    class S,\r\n    S (*op)(S,\
-    \ S),\r\n    S (*e)(),\r\n    class F,\r\n    S (*mapping)(F, S),\r\n    F (*merge)(F,\
-    \ F),\r\n    F (*id)()>\r\nstruct LazySegtree {\r\nprivate:\r\n    std::vector<S>\
-    \ data;\r\n    std::vector<F> lazy;\r\n    int n;\r\n\r\n    void eval(int index,\
-    \ int l, int r) {\r\n        data[index] = mapping(lazy[index], data[index]);\r\
-    \n        if(r-l>1) {\r\n            lazy[2*index+1] = merge(lazy[index] ,lazy[2*index+1]);\r\
-    \n            lazy[2*index+2] = merge(lazy[index] ,lazy[2*index+2]);\r\n     \
-    \   }\r\n        lazy[index] = id();\r\n    }\r\n\r\npublic:\r\n    LazySegtree(int\
+    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<\r\n    class\
+    \ S,\r\n    S (*op)(S, S),\r\n    S (*e)(),\r\n    class F,\r\n    S (*mapping)(F,\
+    \ S),\r\n    F (*merge)(F, F),\r\n    F (*id)()>\r\nstruct LazySegtree {\r\nprivate:\r\
+    \n    std::vector<S> data;\r\n    std::vector<F> lazy;\r\n    int n;\r\n\r\n \
+    \   void eval(int index, int l, int r) {\r\n        data[index] = mapping(lazy[index],\
+    \ data[index]);\r\n        if(r-l>1) {\r\n            lazy[2*index+1] = merge(lazy[index]\
+    \ ,lazy[2*index+1]);\r\n            lazy[2*index+2] = merge(lazy[index] ,lazy[2*index+2]);\r\
+    \n        }\r\n        lazy[index] = id();\r\n    }\r\n\r\npublic:\r\n    LazySegtree(int\
     \ _n) : n(1) {\r\n        while(n<_n) {\r\n            n <<= 1;\r\n        }\r\
     \n        data.assign(2*n-1, e());\r\n        lazy.assign(2*n-1, id());\r\n  \
     \  }\r\n\r\n    LazySegtree(std::vector<S> v) : n(1) {\r\n        int _n = v.size();\r\
@@ -73,12 +73,12 @@ data:
     \    eval(index, nl, nr);\r\n            return;\r\n        }\r\n        apply(l,\
     \ r, f, nl, (nl+nr)/2, 2*index+1);\r\n        apply(l, r, f, (nl+nr)/2, nr, 2*index+2);\r\
     \n        data[index] = op(data[2*index+1], data[2*index+2]);\r\n        return;\r\
-    \n    }\r\n};"
+    \n    }\r\n};\r\n\r\n} // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/LazySegtree.hpp
   requiredBy: []
-  timestamp: '2021-01-10 17:52:38+09:00'
+  timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/LazySegtree.test.cpp
