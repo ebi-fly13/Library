@@ -1,16 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: math/FormalPowerSeries.hpp
+    title: math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/Inv_of_Formal_Power_Series.test.cpp
+    title: test/Inv_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://hcpc-hokudai.github.io/archive/math_fft_002.pdf
@@ -68,8 +74,8 @@ data:
     \ f.end(), a.begin());\r\n    std::copy(g.begin(), g.end(), b.begin());\r\n  \
     \  internal::dft(a);\r\n    internal::dft(b);\r\n    for(int i = 0; i<n; ++i)\
     \ {\r\n        fg[i] = a[i]*b[i];\r\n    }\r\n    internal::inv_dft(fg);\r\n \
-    \   for(int i = 0; i<n; ++i) {\r\n        fg[i] /= mint(n);\r\n    }\r\n    return\
-    \ fg;\r\n}\r\n\r\n} // namespace ebi\n"
+    \   mint in = mint(n).inv();\r\n    for(int i = 0; i<n; ++i) {\r\n        fg[i]\
+    \ *= in;\r\n    }\r\n    return fg;\r\n}\r\n\r\n} // namespace ebi\n"
   code: "#pragma once\r\n\r\n/*\r\n    reference: https://hcpc-hokudai.github.io/archive/math_fft_002.pdf\r\
     \n    mod 998244353 \u4E0A\u3067\u306E\u7573\u307F\u8FBC\u307F\u3092 O(N log N)\
     \ \u3067\u6C42\u3081\u308B.\r\n*/\r\n\r\n#include \"../utility/modint.hpp\"\r\n\
@@ -93,16 +99,18 @@ data:
     \ f.end(), a.begin());\r\n    std::copy(g.begin(), g.end(), b.begin());\r\n  \
     \  internal::dft(a);\r\n    internal::dft(b);\r\n    for(int i = 0; i<n; ++i)\
     \ {\r\n        fg[i] = a[i]*b[i];\r\n    }\r\n    internal::inv_dft(fg);\r\n \
-    \   for(int i = 0; i<n; ++i) {\r\n        fg[i] /= mint(n);\r\n    }\r\n    return\
-    \ fg;\r\n}\r\n\r\n} // namespace ebi"
+    \   mint in = mint(n).inv();\r\n    for(int i = 0; i<n; ++i) {\r\n        fg[i]\
+    \ *= in;\r\n    }\r\n    return fg;\r\n}\r\n\r\n} // namespace ebi"
   dependsOn:
   - utility/modint.hpp
   isVerificationFile: false
   path: algorithm/convolution.hpp
-  requiredBy: []
-  timestamp: '2021-01-18 11:46:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  requiredBy:
+  - math/FormalPowerSeries.hpp
+  timestamp: '2021-01-18 17:23:40+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/Inv_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp
 documentation_of: algorithm/convolution.hpp
 layout: document

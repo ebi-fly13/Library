@@ -4,20 +4,21 @@ data:
   - icon: ':question:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
+  - icon: ':x:'
+    path: math/FormalPowerSeries.hpp
+    title: math/FormalPowerSeries.hpp
   - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
-    links:
-    - https://judge.yosupo.jp/problem/convolution_mod
-  bundledCode: "#line 1 \"test/convolution.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\
-    \r\n\r\n#line 2 \"algorithm/convolution.hpp\"\n\r\n/*\r\n    reference: https://hcpc-hokudai.github.io/archive/math_fft_002.pdf\r\
+    links: []
+  bundledCode: "#line 2 \"math/FormalPowerSeries.hpp\"\n\r\n#line 2 \"algorithm/convolution.hpp\"\
+    \n\r\n/*\r\n    reference: https://hcpc-hokudai.github.io/archive/math_fft_002.pdf\r\
     \n    mod 998244353 \u4E0A\u3067\u306E\u7573\u307F\u8FBC\u307F\u3092 O(N log N)\
     \ \u3067\u6C42\u3081\u308B.\r\n*/\r\n\r\n#line 2 \"utility/modint.hpp\"\n\r\n\
     /*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
@@ -73,35 +74,60 @@ data:
     \ {\r\n        fg[i] = a[i]*b[i];\r\n    }\r\n    internal::inv_dft(fg);\r\n \
     \   mint in = mint(n).inv();\r\n    for(int i = 0; i<n; ++i) {\r\n        fg[i]\
     \ *= in;\r\n    }\r\n    return fg;\r\n}\r\n\r\n} // namespace ebi\n#line 5 \"\
-    test/convolution.test.cpp\"\n\r\n#include <iostream>\r\n\r\nusing mint = ebi::modint998244353;\r\
-    \n\r\nint main() {\r\n    int n,m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint>\
-    \ a(n),b(m);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin >> a[i].a;\r\
-    \n    }\r\n    for(int i = 0; i<m; ++i) {\r\n        std::cin >> b[i].a;\r\n \
-    \   }\r\n    auto c = ebi::convolution(a, b);\r\n    for(int i = 0; i<n+m-1; ++i)\
-    \ {\r\n        std::cout << c[i].value() << \" \";\r\n    }\r\n    std::cout <<\
-    \ '\\n';\r\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\r\n\r\
-    \n#include \"../algorithm/convolution.hpp\"\r\n#include \"../utility/modint.hpp\"\
-    \r\n\r\n#include <iostream>\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\n\
-    int main() {\r\n    int n,m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint>\
-    \ a(n),b(m);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin >> a[i].a;\r\
-    \n    }\r\n    for(int i = 0; i<m; ++i) {\r\n        std::cin >> b[i].a;\r\n \
-    \   }\r\n    auto c = ebi::convolution(a, b);\r\n    for(int i = 0; i<n+m-1; ++i)\
-    \ {\r\n        std::cout << c[i].value() << \" \";\r\n    }\r\n    std::cout <<\
-    \ '\\n';\r\n}"
+    math/FormalPowerSeries.hpp\"\n\r\n#line 7 \"math/FormalPowerSeries.hpp\"\n#include\
+    \ <algorithm>\r\n\r\n/*\r\n    reference: https://opt-cp.com/fps-fast-algorithms/\r\
+    \n*/\r\n\r\nnamespace ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nstruct\
+    \ FormalPowerSeries : std::vector<mint> {\r\nprivate:\r\n    using std::vector<mint>::vector;\r\
+    \n    using std::vector<mint>::vector::operator=;\r\n    using FPS = FormalPowerSeries;\r\
+    \npublic:\r\n    FPS operator+(const FPS &rhs) const noexcept {\r\n        return\
+    \ FPS(*this) += rhs;\r\n    }\r\n    FPS operator-(const FPS &rhs) const noexcept\
+    \ {\r\n        return FPS(*this) -= rhs;\r\n    }\r\n    FPS operator*(const FPS\
+    \ &rhs) const noexcept {\r\n        return FPS(*this) *= rhs;\r\n    }\r\n\r\n\
+    \    FPS &operator+=(const FPS &rhs) noexcept {\r\n        int sz = std::min(deg(),\
+    \ rhs.deg());\r\n        for(int i = 0; i< sz; ++i) {\r\n            (*this)[i]\
+    \ += rhs[i];\r\n        }\r\n        return *this;\r\n    }\r\n\r\n    FPS &operator-=(const\
+    \ FPS &rhs) noexcept {\r\n        int sz = std::min(deg(), rhs.deg());\r\n   \
+    \     for(int i = 0; i< sz; ++i) {\r\n            (*this)[i] -= rhs[i];\r\n  \
+    \      }\r\n        return *this;\r\n    }\r\n\r\n    FPS &operator*=(const FPS\
+    \ &rhs) noexcept {\r\n        int n = deg();\r\n        *this = convolution(*this,\
+    \ rhs);\r\n        (*this).resize(n);\r\n        return *this;\r\n    }\r\n\r\n\
+    \    FPS &operator*=(const mint rhs) noexcept {\r\n        for(int i = 0; i<deg();\
+    \ ++i) {\r\n            (*this)[i] *= rhs;\r\n        }\r\n        return *this;\r\
+    \n    }\r\n\r\n    FPS inv() const {\r\n        int n = 1, sz = deg();\r\n   \
+    \     FPS g(n);\r\n        g[0] = (*this)[0].inv();\r\n        while(n < sz) {\r\
+    \n            n <<= 1;\r\n            FPS f((*this).begin(), (*this).begin()+std::min(sz,\
+    \ n));\r\n            f.resize(n);\r\n            g.resize(n);\r\n           \
+    \ FPS h = f*g;\r\n            h.erase(h.begin(), h.begin()+n/2);\r\n         \
+    \   h.resize(n);\r\n            h = h*g;\r\n            for(int i = 0; i<n/2;\
+    \ i++) {\r\n                g[i+n/2] -= h[i];\r\n            }\r\n        }\r\n\
+    \        g.resize(sz);\r\n        return g;\r\n    }\r\n\r\n    int deg() const\
+    \ {\r\n        return (*this).size();\r\n    }\r\n};\r\n\r\n} // namespace ebi\n\
+    #line 2 \"test/Inv_of_Formal_Power_Series.test.cpp\"\n\r\n#include <iostream>\r\
+    \n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries\
+    \ a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin >> a[i].a;\r\n \
+    \   }\r\n    ebi::FormalPowerSeries b = a.inv();\r\n    for(int i = 0; i<n; ++i)\
+    \ {\r\n        std::cout << b[i].value() << \" \";\r\n    }\r\n    std::cout <<\
+    \ std::endl;\r\n}\n"
+  code: "#include \"../math/FormalPowerSeries.hpp\"\r\n\r\n#include <iostream>\r\n\
+    \r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries\
+    \ a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin >> a[i].a;\r\n \
+    \   }\r\n    ebi::FormalPowerSeries b = a.inv();\r\n    for(int i = 0; i<n; ++i)\
+    \ {\r\n        std::cout << b[i].value() << \" \";\r\n    }\r\n    std::cout <<\
+    \ std::endl;\r\n}"
   dependsOn:
+  - math/FormalPowerSeries.hpp
   - algorithm/convolution.hpp
   - utility/modint.hpp
   isVerificationFile: true
-  path: test/convolution.test.cpp
+  path: test/Inv_of_Formal_Power_Series.test.cpp
   requiredBy: []
   timestamp: '2021-01-18 17:23:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/convolution.test.cpp
+documentation_of: test/Inv_of_Formal_Power_Series.test.cpp
 layout: document
 redirect_from:
-- /verify/test/convolution.test.cpp
-- /verify/test/convolution.test.cpp.html
-title: test/convolution.test.cpp
+- /verify/test/Inv_of_Formal_Power_Series.test.cpp
+- /verify/test/Inv_of_Formal_Power_Series.test.cpp.html
+title: test/Inv_of_Formal_Power_Series.test.cpp
 ---

@@ -8,7 +8,7 @@ data:
       title: String/Z_Algorithm.hpp
   - name: algorithm
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
   - name: data_structure
@@ -57,12 +57,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
+  - name: math
+    pages:
+    - icon: ':x:'
+      path: math/FormalPowerSeries.hpp
+      title: math/FormalPowerSeries.hpp
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
   verificationCategories:
@@ -80,6 +85,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/ImplicitTreap.test.cpp
       title: test/ImplicitTreap.test.cpp
+    - icon: ':x:'
+      path: test/Inv_of_Formal_Power_Series.test.cpp
+      title: test/Inv_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/LazySegtree.test.cpp
       title: test/LazySegtree.test.cpp
