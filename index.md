@@ -51,7 +51,7 @@ data:
       title: data_structure/bitVector.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/fibonacci_heap.hpp
-      title: data_structure/fibonacci_heap.hpp
+      title: fibonacci_heap
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data_structure/fibonacci_heap.hpp
-    title: data_structure/fibonacci_heap.hpp
+    title: fibonacci_heap
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
@@ -31,21 +31,19 @@ data:
     \n\r\n#line 2 \"data_structure/fibonacci_heap.hpp\"\n\r\n/*\r\n    reference:\
     \ http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf\r\
     \n               https://rsk0315.hatenablog.com/entry/2019/10/29/151823\r\n  \
-    \             https://en.wikipedia.org/wiki/Fibonacci_heap\r\n               \r\
-    \n    \u30D0\u30B0\u304C\u57CB\u3081\u8FBC\u307E\u308C\u3066\u3044\u308B\u53EF\
-    \u80FD\u6027\u304C\u975E\u5E38\u306B\u9AD8\u3044\u3067\u3059\u6CE8\u610F\r\n*/\r\
-    \n\r\n#include <cassert>\r\n#line 13 \"data_structure/fibonacci_heap.hpp\"\n#include\
-    \ <queue>\r\n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\ntemplate<class\
-    \ K, class T>\r\nstruct fibheap_node {\r\n    fibheap_node *par, *prev, *next,\
-    \ *chr;\r\n    int sz = 0;\r\n    bool damaged = 0;\r\n    K ord;\r\n    T val;\r\
-    \n    fibheap_node(K k, T val) : par(nullptr), prev(this), next(this), chr(nullptr),\
-    \ ord(k), val(val) { }\r\n\r\n    void emplace_back(fibheap_node *e) {\r\n   \
-    \     if(e == nullptr) return;\r\n        prev->next = e;\r\n        e->prev->next\
-    \ = this;\r\n        std::swap(e->prev, prev);\r\n    }\r\n\r\n    void cut_par()\
-    \ {\r\n        if(par == nullptr) return;\r\n        par->sz--;\r\n        if(par->sz\
-    \ == 0) {\r\n            par->chr = nullptr;\r\n        }\r\n        if(par->chr\
-    \ == this) {\r\n            par->chr = next;\r\n        }\r\n        cut();\r\n\
-    \        par = nullptr;\r\n    }\r\n\r\n    void cut() {\r\n        next->prev\
+    \             https://en.wikipedia.org/wiki/Fibonacci_heap\r\n*/\r\n\r\n#include\
+    \ <cassert>\r\n#line 11 \"data_structure/fibonacci_heap.hpp\"\n#include <queue>\r\
+    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\ntemplate<class K, class\
+    \ T>\r\nstruct fibheap_node {\r\n    fibheap_node *par, *prev, *next, *chr;\r\n\
+    \    int sz = 0;\r\n    bool damaged = 0;\r\n    K ord;\r\n    T val;\r\n    fibheap_node(K\
+    \ k, T val) : par(nullptr), prev(this), next(this), chr(nullptr), ord(k), val(val)\
+    \ { }\r\n\r\n    void emplace_back(fibheap_node *e) {\r\n        if(e == nullptr)\
+    \ return;\r\n        prev->next = e;\r\n        e->prev->next = this;\r\n    \
+    \    std::swap(e->prev, prev);\r\n    }\r\n\r\n    void cut_par() {\r\n      \
+    \  if(par == nullptr) return;\r\n        par->sz--;\r\n        if(par->sz == 0)\
+    \ {\r\n            par->chr = nullptr;\r\n        }\r\n        if(par->chr ==\
+    \ this) {\r\n            par->chr = next;\r\n        }\r\n        cut();\r\n \
+    \       par = nullptr;\r\n    }\r\n\r\n    void cut() {\r\n        next->prev\
     \ = prev;\r\n        prev->next = next;\r\n        next = prev = this;\r\n   \
     \ }\r\n\r\n    int size() const {\r\n        return sz;\r\n    }\r\n};\r\n\r\n\
     }\r\n\r\ntemplate<class K, class T, bool (*op)(K, K)>\r\nstruct fibonacci_heap\
@@ -136,7 +134,7 @@ data:
   isVerificationFile: true
   path: test/fibonacci_heap.test.cpp
   requiredBy: []
-  timestamp: '2021-01-23 01:02:12+09:00'
+  timestamp: '2021-01-23 01:34:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fibonacci_heap.test.cpp
