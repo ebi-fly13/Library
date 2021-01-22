@@ -4,8 +4,6 @@
     reference: http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf
                https://rsk0315.hatenablog.com/entry/2019/10/29/151823
                https://en.wikipedia.org/wiki/Fibonacci_heap
-               
-    バグが埋め込まれている可能性が非常に高いです注意
 */
 
 #include <cassert>
