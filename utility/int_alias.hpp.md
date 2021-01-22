@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fibonacci_heap.test.cpp
+    title: test/fibonacci_heap.test.cpp
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
@@ -47,11 +50,12 @@ data:
   timestamp: '2021-01-12 22:18:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dijkstra.test.cpp
-  - test/SegmentTreeBeats.test.cpp
-  - test/SegmentAddGetMin.test.cpp
   - test/WaveletMatrix.test.cpp
+  - test/SegmentAddGetMin.test.cpp
+  - test/SegmentTreeBeats.test.cpp
   - test/ImplicitTreap.test.cpp
+  - test/fibonacci_heap.test.cpp
+  - test/dijkstra.test.cpp
   - test/LiChaoSegmentTree.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document

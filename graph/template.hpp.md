@@ -6,12 +6,18 @@ data:
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
   - icon: ':heavy_check_mark:'
+    path: graph/dijkstra_fibheap.hpp
+    title: graph/dijkstra_fibheap.hpp
+  - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fibonacci_heap.test.cpp
+    title: test/fibonacci_heap.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/scc_graph.test.cpp
     title: test/scc_graph.test.cpp
@@ -34,11 +40,13 @@ data:
   requiredBy:
   - graph/scc_graph.hpp
   - graph/dijkstra.hpp
+  - graph/dijkstra_fibheap.hpp
   timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dijkstra.test.cpp
+  - test/fibonacci_heap.test.cpp
   - test/scc_graph.test.cpp
+  - test/dijkstra.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:

@@ -111,14 +111,14 @@ data:
   timestamp: '2021-01-18 21:40:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/SWAG.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
+  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/convolution.test.cpp
   - test/DynamicSegmentTree.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Inv_of_Formal_Power_Series.test.cpp
   - test/ImplicitTreap.test.cpp
-  - test/Log_of_Formal_Power_Series.test.cpp
-  - test/convolution.test.cpp
   - test/LazySegtree.test.cpp
+  - test/SWAG.test.cpp
 documentation_of: utility/modint.hpp
 layout: document
 redirect_from:

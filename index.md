@@ -49,11 +49,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/fibonacci_heap.hpp
+      title: data_structure/fibonacci_heap.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
+    - icon: ':heavy_check_mark:'
+      path: graph/dijkstra_fibheap.hpp
+      title: graph/dijkstra_fibheap.hpp
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
@@ -130,6 +136,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/dijkstra.test.cpp
       title: test/dijkstra.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/fibonacci_heap.test.cpp
+      title: test/fibonacci_heap.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/scc_graph.test.cpp
       title: test/scc_graph.test.cpp
