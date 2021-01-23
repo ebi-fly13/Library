@@ -21,6 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

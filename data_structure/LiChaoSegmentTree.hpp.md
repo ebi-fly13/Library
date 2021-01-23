@@ -9,6 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/SegmentAddGetMin.test.cpp
     title: test/SegmentAddGetMin.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

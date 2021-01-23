@@ -30,6 +30,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fibonacci_heap.test.cpp
     title: test/fibonacci_heap.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

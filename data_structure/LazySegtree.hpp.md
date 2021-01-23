@@ -6,6 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

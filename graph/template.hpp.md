@@ -21,6 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/scc_graph.test.cpp
     title: test/scc_graph.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:

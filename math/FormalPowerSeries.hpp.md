@@ -18,6 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
