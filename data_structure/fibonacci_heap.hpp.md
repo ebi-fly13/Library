@@ -191,7 +191,7 @@ fibonacci_heap<int, int, op> heap;
 -   ```heap.push(K k, T val)```
     -   heapに優先度$k$の値$val$をpushしそのポインタを返す.
     -   時間計算量$O(1)$
--    ```heap.pop()```
+-   ```heap.pop()```
     -   heapの優先度最小の値をheapから取り除く.
     -   償却計算量$O(\log n)$
 -   ```heap.top()```
