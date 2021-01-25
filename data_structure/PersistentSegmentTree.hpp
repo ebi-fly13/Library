@@ -139,4 +139,4 @@ public:
     }
 };
 
-}
+} // namespace ebi
