@@ -14,6 +14,11 @@ S e() {
     return 0;
 }
 
+struct query {
+    int ver;
+    int l,r;
+};
+
 int main() {
     int n,q;
     std::cin >> n >> q;
@@ -22,7 +27,7 @@ int main() {
         std::cin >> a[i];
     }
     ebi::PersistentSegmentTree<S, op, e> seg(a);
-    std::vector<int> Q,L,R;
+    std::vector<query> Q;
     while(q--) {
         int flag;
         std::cin >> flag;
@@ -33,14 +38,13 @@ int main() {
             seg.set(seg.latest(), p, seg.get(seg.latest(), p)+x);
         }
         else {
-            int l,r;
-            std::cin >> l >> r;
-            Q.emplace_back(seg.latest());
-            L.emplace_back(l);
-            R.emplace_back(r);
+            query p;
+            std::cin >> p.l >> p.r;
+            p.ver = seg.latest();
+            Q.emplace_back(p);
         }
     }
     for(int i = 0; i<(int)Q.size(); ++i) {
-        std::cout << seg.prod(Q[i], L[i], R[i]) << std::endl;
+        std::cout << seg.prod(Q[i].ver, Q[i].l, Q[i].r) << std::endl;
     }
 }
