@@ -67,7 +67,7 @@ data:
     \ prod(l, r, 0, n, roots[ver]);\r\n    }\r\n\r\n    Monoid all_prod(int ver) {\r\
     \n        assert(ver<time);\r\n        assert(roots[ver]->par == nullptr);\r\n\
     \        return roots[ver]->val;\r\n    }\r\n\r\n    int latest() {\r\n      \
-    \  return time-1;\r\n    }\r\n};\r\n\r\n}\n#line 4 \"test/PersistentSegmentTree.test.cpp\"\
+    \  return time-1;\r\n    }\r\n};\r\n\r\n} // namespace ebi\n#line 4 \"test/PersistentSegmentTree.test.cpp\"\
     \n\r\n#include <iostream>\r\n#include <cstdint>\r\n#line 8 \"test/PersistentSegmentTree.test.cpp\"\
     \n\r\nusing S = std::int64_t;\r\nS op(S a, S b) {\r\n    return a+b;\r\n}\r\n\
     S e() {\r\n    return 0;\r\n}\r\n\r\nstruct query {\r\n    int ver;\r\n    int\
@@ -102,7 +102,7 @@ data:
   isVerificationFile: true
   path: test/PersistentSegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-25 17:42:06+09:00'
+  timestamp: '2021-01-25 18:32:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/PersistentSegmentTree.test.cpp

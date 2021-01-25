@@ -64,7 +64,7 @@ data:
     \ prod(l, r, 0, n, roots[ver]);\r\n    }\r\n\r\n    Monoid all_prod(int ver) {\r\
     \n        assert(ver<time);\r\n        assert(roots[ver]->par == nullptr);\r\n\
     \        return roots[ver]->val;\r\n    }\r\n\r\n    int latest() {\r\n      \
-    \  return time-1;\r\n    }\r\n};\r\n\r\n}\n"
+    \  return time-1;\r\n    }\r\n};\r\n\r\n} // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n#include <cassert>\r\n\r\n/*\r\n\
     \    reference: https://37zigen.com/persistent-segment-tree/\r\n*/\r\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\
@@ -116,12 +116,12 @@ data:
     \ prod(l, r, 0, n, roots[ver]);\r\n    }\r\n\r\n    Monoid all_prod(int ver) {\r\
     \n        assert(ver<time);\r\n        assert(roots[ver]->par == nullptr);\r\n\
     \        return roots[ver]->val;\r\n    }\r\n\r\n    int latest() {\r\n      \
-    \  return time-1;\r\n    }\r\n};\r\n\r\n}"
+    \  return time-1;\r\n    }\r\n};\r\n\r\n} // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/PersistentSegmentTree.hpp
   requiredBy: []
-  timestamp: '2021-01-25 17:16:08+09:00'
+  timestamp: '2021-01-25 18:32:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/PersistentSegmentTree.test.cpp
