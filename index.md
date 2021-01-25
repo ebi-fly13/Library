@@ -32,6 +32,9 @@ data:
       path: data_structure/LiChaoSegmentTree.hpp
       title: data_structure/LiChaoSegmentTree.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structure/PersistentSegmentTree.hpp
+      title: data_structure/PersistentSegmentTree.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/SWAG.hpp
       title: SlidingWindowAggregation
     - icon: ':heavy_check_mark:'
@@ -109,6 +112,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Log_of_Formal_Power_Series.test.cpp
       title: test/Log_of_Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/PersistentSegmentTree.test.cpp
+      title: test/PersistentSegmentTree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/SWAG.test.cpp
       title: test/SWAG.test.cpp
