@@ -55,6 +55,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/fibonacci_heap.hpp
       title: fibonacci_heap
+  - name: geometry
+    pages:
+    - icon: ':x:'
+      path: geometry/template.hpp
+      title: geometry/template.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -145,6 +150,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fibonacci_heap.test.cpp
       title: test/fibonacci_heap.test.cpp
+    - icon: ':x:'
+      path: test/point.test.cpp
+      title: test/point.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/scc_graph.test.cpp
       title: test/scc_graph.test.cpp

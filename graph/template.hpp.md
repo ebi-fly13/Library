@@ -40,14 +40,14 @@ data:
   path: graph/template.hpp
   requiredBy:
   - graph/scc_graph.hpp
-  - graph/dijkstra.hpp
   - graph/dijkstra_fibheap.hpp
+  - graph/dijkstra.hpp
   timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/dijkstra.test.cpp
   - test/fibonacci_heap.test.cpp
   - test/scc_graph.test.cpp
-  - test/dijkstra.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:
