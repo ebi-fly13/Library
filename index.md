@@ -57,6 +57,12 @@ data:
       title: fibonacci_heap
   - name: geometry
     pages:
+    - icon: ':warning:'
+      path: geometry/all.hpp
+      title: geometry/all.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/intersection.hpp
+      title: geometry/intersection.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/isp.hpp
       title: isp
@@ -153,6 +159,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fibonacci_heap.test.cpp
       title: test/fibonacci_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/intersection.test.cpp
+      title: test/intersection.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/isp.test.cpp
       title: test/isp.test.cpp

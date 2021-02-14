@@ -3,9 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: geometry/intersection.hpp
+    title: geometry/intersection.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/isp.hpp
     title: isp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/intersection.test.cpp
+    title: test/intersection.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/isp.test.cpp
     title: test/isp.test.cpp
@@ -90,12 +96,14 @@ data:
   isVerificationFile: false
   path: geometry/template.hpp
   requiredBy:
+  - geometry/intersection.hpp
   - geometry/isp.hpp
   timestamp: '2021-02-14 17:17:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/point.test.cpp
   - test/isp.test.cpp
+  - test/intersection.test.cpp
 documentation_of: geometry/template.hpp
 layout: document
 redirect_from:
