@@ -58,6 +58,9 @@ data:
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'
+      path: geometry/isp.hpp
+      title: geometry/isp.hpp
+    - icon: ':heavy_check_mark:'
       path: geometry/template.hpp
       title: geometry/template.hpp
   - name: graph
@@ -150,6 +153,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fibonacci_heap.test.cpp
       title: test/fibonacci_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/isp.test.cpp
+      title: test/isp.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/point.test.cpp
       title: test/point.test.cpp
