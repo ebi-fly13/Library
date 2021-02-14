@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: geometry/isp.hpp
-    title: geometry/isp.hpp
+    title: isp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/isp.test.cpp

@@ -69,8 +69,16 @@ data:
   - test/isp.test.cpp
 documentation_of: geometry/isp.hpp
 layout: document
-redirect_from:
-- /library/geometry/isp.hpp
-- /library/geometry/isp.hpp.html
-title: geometry/isp.hpp
+title: isp
 ---
+
+# 説明
+
+点の進行方向を求める関数.
+
+- ```int isp(point a, point b, point c)```
+    - 左に曲がる場合:$+1$ 
+    - 右に曲がる場合:$-1$
+    - c-a-bの順に並ぶ:$-2$
+    - a-b-cの順に並ぶ:$+2$
+    - a-c-bの順に並ぶ:$0$
