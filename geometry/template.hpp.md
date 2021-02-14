@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/point.test.cpp
     title: test/point.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/template.hpp\"\n\r\n#include <cmath>\r\n#include\
@@ -85,7 +85,7 @@ data:
   path: geometry/template.hpp
   requiredBy: []
   timestamp: '2021-02-14 17:17:34+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/point.test.cpp
 documentation_of: geometry/template.hpp

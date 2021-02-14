@@ -1,42 +1,43 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/template.hpp
     title: geometry/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.0000001'
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
   bundledCode: "#line 1 \"test/point.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\
-    \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
-    #line 2 \"geometry/template.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
-    \n\r\nnamespace ebi {\r\n\r\nconstexpr double EPS = 1e-10;\r\n\r\nnamespace internal\
-    \ {\r\n\r\nint sgn(double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\
-    \n}\r\n\r\ndouble add(double a, double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a)\
-    \ + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\
-    \n\r\nstruct point {\r\n    double x,y;\r\n\r\n    point() { }\r\n\r\n    point(double\
-    \ x, double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point rhs)\
-    \ noexcept {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y,\
-    \ rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator-=(const\
-    \ point rhs) noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y\
-    \ = internal::add(y, -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point\
-    \ &operator*=(const double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\
-    \n        return *this;\r\n    }\r\n\r\n    point &operator/=(const double k)\
-    \ {\r\n        assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n        y /=\
-    \ k;\r\n        return *this;\r\n    }\r\n\r\n    point operator+(const point\
-    \ rhs) const noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\n\r\n\
-    \    point operator-(const point rhs) const noexcept {\r\n        return point(*this)\
-    \ -= rhs;\r\n    }\r\n\r\n    point operator*(const double rhs) const noexcept\
-    \ {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n    point operator/(const\
-    \ double rhs) const {\r\n        return point(*this) /= rhs;\r\n    }\r\n\r\n\
-    \    double abs() const noexcept {\r\n        return std::sqrt(internal::add(x*x,\
+    \r\n#define ERROR 0.0000001\r\n\r\n#include <iostream>\r\n#include <iomanip>\r\
+    \n#include <limits>\r\n\r\n#line 2 \"geometry/template.hpp\"\n\r\n#include <cmath>\r\
+    \n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr double EPS = 1e-10;\r\
+    \n\r\nnamespace internal {\r\n\r\nint sgn(double a) {\r\n    return (a<-EPS) ?\
+    \ -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\ndouble add(double a, double b) {\r\n    if(std::abs(a+b)\
+    \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
+    } // namespace internal\r\n\r\nstruct point {\r\n    double x,y;\r\n\r\n    point()\
+    \ { }\r\n\r\n    point(double x, double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const\
+    \ point rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\n        y =\
+    \ internal::add(y, rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point\
+    \ &operator-=(const point rhs) noexcept {\r\n        x = internal::add(x, -rhs.x);\r\
+    \n        y = internal::add(y, -rhs.y);\r\n        return *this;\r\n    }\r\n\r\
+    \n    point &operator*=(const double k) noexcept {\r\n        x *= k;\r\n    \
+    \    y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point &operator/=(const\
+    \ double k) {\r\n        assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n \
+    \       y /= k;\r\n        return *this;\r\n    }\r\n\r\n    point operator+(const\
+    \ point rhs) const noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\
+    \n\r\n    point operator-(const point rhs) const noexcept {\r\n        return\
+    \ point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const double rhs) const\
+    \ noexcept {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n    point\
+    \ operator/(const double rhs) const {\r\n        return point(*this) /= rhs;\r\
+    \n    }\r\n\r\n    double abs() const noexcept {\r\n        return std::sqrt(internal::add(x*x,\
     \ y*y));\r\n    }\r\n\r\n    double dot(const point rhs) const noexcept {\r\n\
     \        return internal::add(x*rhs.x, y*rhs.y);\r\n    }\r\n\r\n    double det(const\
     \ point rhs) const noexcept {\r\n        return internal::add(x*rhs.y, -y*rhs.x);\r\
@@ -50,27 +51,28 @@ data:
     \ a(x1, y1), b(x2, y2) { }\r\n\r\n    point proj(const point &p) {\r\n       \
     \ return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\r\n    }\r\n\r\n    point relf(const\
     \ point &p) {\r\n        return proj(p)*double(2) - p;\r\n    }\r\n};\r\n\r\n\
-    }\n#line 8 \"test/point.test.cpp\"\n\r\nint main() {\r\n    std::cout << std::fixed\
+    }\n#line 9 \"test/point.test.cpp\"\n\r\nint main() {\r\n    std::cout << std::fixed\
     \ << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\n    std::cin >> x1 >>\
     \ y1 >> x2 >> y2;\r\n    ebi::line l(x1,y1,x2,y2);\r\n    int q;\r\n    std::cin\
     \ >> q;\r\n    while(q--) {\r\n        double x,y;\r\n        std::cin >> x >>\
     \ y;\r\n        ebi::point p(x,y);\r\n        ebi::point ans = l.relf(p);\r\n\
     \        std::cout << ans.x << \" \" << ans.y << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\
-    \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
-    #include \"../geometry/template.hpp\"\r\n\r\nint main() {\r\n    std::cout <<\
-    \ std::fixed << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\n    std::cin\
-    \ >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line l(x1,y1,x2,y2);\r\n    int q;\r\n\
-    \    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\n        std::cin\
-    \ >> x >> y;\r\n        ebi::point p(x,y);\r\n        ebi::point ans = l.relf(p);\r\
-    \n        std::cout << ans.x << \" \" << ans.y << std::endl;\r\n    }\r\n}"
+    \r\n#define ERROR 0.0000001\r\n\r\n#include <iostream>\r\n#include <iomanip>\r\
+    \n#include <limits>\r\n\r\n#include \"../geometry/template.hpp\"\r\n\r\nint main()\
+    \ {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\
+    \n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line l(x1,y1,x2,y2);\r\n \
+    \   int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\n\
+    \        std::cin >> x >> y;\r\n        ebi::point p(x,y);\r\n        ebi::point\
+    \ ans = l.relf(p);\r\n        std::cout << ans.x << \" \" << ans.y << std::endl;\r\
+    \n    }\r\n}"
   dependsOn:
   - geometry/template.hpp
   isVerificationFile: true
   path: test/point.test.cpp
   requiredBy: []
-  timestamp: '2021-02-14 17:17:34+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-02-14 17:25:03+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/point.test.cpp
 layout: document

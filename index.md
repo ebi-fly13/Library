@@ -57,7 +57,7 @@ data:
       title: fibonacci_heap
   - name: geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/template.hpp
       title: geometry/template.hpp
   - name: graph
@@ -150,7 +150,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fibonacci_heap.test.cpp
       title: test/fibonacci_heap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/point.test.cpp
       title: test/point.test.cpp
     - icon: ':heavy_check_mark:'
