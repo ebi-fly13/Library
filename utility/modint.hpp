@@ -84,4 +84,9 @@ public:
 using modint998244353 = modint<998244353>;
 using modint1000000007 = modint<1000000007>;
 
+template<std::uint_fast64_t Modulus>
+std::ostream& operator<<(std::ostream& os, modint<Modulus> a){
+    return os << a.val();
+}
+
 } // namespace ebi
