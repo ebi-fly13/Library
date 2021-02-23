@@ -8,7 +8,7 @@ data:
       title: String/Z_Algorithm.hpp
   - name: algorithm
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
   - name: data_structure
@@ -19,7 +19,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/DuelSegtree.hpp
       title: data_structure/DuelSegtree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/DynamicSegmentTree.hpp
       title: data_structure/DynamicSegmentTree.hpp
     - icon: ':heavy_check_mark:'
@@ -88,7 +88,7 @@ data:
       title: graph/template.hpp
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: math/FormalPowerSeries.hpp
       title: math/FormalPowerSeries.hpp
   - name: utility
@@ -108,10 +108,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/DuelSegtree.test.cpp
       title: test/DuelSegtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/DynamicSegmentTree.test.cpp
       title: test/DynamicSegmentTree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Exp_of_Formal_Power_Series.test.cpp
       title: test/Exp_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
@@ -120,7 +120,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/ImplicitTreap.test.cpp
       title: test/ImplicitTreap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Inv_of_Formal_Power_Series.test.cpp
       title: test/Inv_of_Formal_Power_Series.test.cpp
     - icon: ':x:'

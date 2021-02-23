@@ -89,48 +89,49 @@ data:
     \ https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\n    noshi91\u306E\u30D6\
     \u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\u308Bmodint\u3092\u5143\
     \u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\u306E\u3067\u3059\r\n*/\r\
-    \n\r\n#line 10 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate<std::uint_fast64_t\
-    \ Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\n\r\npublic:\r\
-    \n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept : a(x % Modulus)\
-    \ {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n    constexpr u64\
-    \ &val() noexcept { return a; }\r\n    constexpr const u64 &value() const noexcept\
-    \ { return a; }\r\n    constexpr modint operator+(const modint rhs) const noexcept\
-    \ {\r\n        return modint(*this) += rhs;\r\n    }\r\n    constexpr modint operator-(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) -= rhs;\r\n   \
-    \ }\r\n    constexpr modint operator*(const modint rhs) const noexcept {\r\n \
-    \       return modint(*this) *= rhs;\r\n    }\r\n    constexpr modint operator/(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) /= rhs;\r\n   \
-    \ }\r\n    constexpr modint &operator+=(const modint rhs) noexcept {\r\n     \
-    \   a += rhs.a;\r\n        if (a >= Modulus) {\r\n            a -= Modulus;\r\n\
-    \        }\r\n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const\
-    \ modint rhs) noexcept {\r\n        if (a < rhs.a) {\r\n        a += Modulus;\r\
-    \n        }\r\n        a -= rhs.a;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator*=(const modint rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(modint rhs)\
-    \ noexcept {\r\n        u64 exp = Modulus - 2;\r\n        while (exp) {\r\n  \
-    \      if (exp % 2) {\r\n            *this *= rhs;\r\n        }\r\n        rhs\
-    \ *= rhs;\r\n        exp /= 2;\r\n        }\r\n        return *this;\r\n    }\r\
-    \n    modint pow(u64 n) const noexcept {\r\n        modint res = 1;\r\n      \
-    \  modint x = a;\r\n        while(n>0){\r\n            if(n&1) res *= x;\r\n \
-    \           x *= x;\r\n            n >>=1;\r\n        }\r\n        return res;\r\
-    \n    }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\
-    \n\r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\n\
-    using modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\ntemplate<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
+    \n\r\n#line 10 \"utility/modint.hpp\"\n#include <iostream>\r\n\r\nnamespace ebi\
+    \ {\r\n\r\ntemplate<std::uint_fast64_t Modulus>\r\nclass modint {\r\n  using u64\
+    \ = std::uint_fast64_t;\r\n\r\npublic:\r\n    u64 a;\r\n\r\n    constexpr modint(const\
+    \ u64 x = 0) noexcept : a(x % Modulus) {}\r\n    constexpr u64 &value() noexcept\
+    \ { return a; }\r\n    constexpr u64 &val() noexcept { return a; }\r\n    constexpr\
+    \ const u64 &value() const noexcept { return a; }\r\n    constexpr modint operator+(const\
+    \ modint rhs) const noexcept {\r\n        return modint(*this) += rhs;\r\n   \
+    \ }\r\n    constexpr modint operator-(const modint rhs) const noexcept {\r\n \
+    \       return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
+    \ modint rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n   \
+    \ }\r\n    constexpr modint operator/(const modint rhs) const noexcept {\r\n \
+    \       return modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const\
+    \ modint rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\
+    \n            a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
+    \ < rhs.a) {\r\n        a += Modulus;\r\n        }\r\n        a -= rhs.a;\r\n\
+    \        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
+    \ rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator/=(modint rhs) noexcept {\r\n       \
+    \ u64 exp = Modulus - 2;\r\n        while (exp) {\r\n        if (exp % 2) {\r\n\
+    \            *this *= rhs;\r\n        }\r\n        rhs *= rhs;\r\n        exp\
+    \ /= 2;\r\n        }\r\n        return *this;\r\n    }\r\n    modint pow(u64 n)\
+    \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
+    \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
+    \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
+    \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
+    template<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
     \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
-    \ ebi\n#line 6 \"test/ImplicitTreap.test.cpp\"\n\r\n#include <iostream>\r\n\r\n\
-    using mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n    int\
-    \ size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint b) : a(a),\
-    \ b(b) { }\r\n};\r\n\r\nS op(S l, S r) { return S{l.a + r.a, l.size + r.size};\
-    \ }\r\n\r\nS e() { return S{0, 0}; }\r\n\r\nS mapping(F l, S r) { return S{r.a\
-    \ * l.a + (mint)r.size * l.b, r.size}; }\r\n\r\nF composition(F l, F r) { return\
-    \ F{r.a * l.a, r.b * l.a + l.b}; }\r\n\r\nF id() { return F{1, 0}; }\r\n\r\nint\
-    \ main() {\r\n    ebi::ImplicitTreap<S,op,e,F,mapping,composition,id> treap;\r\
-    \n    int n,q; std::cin >> n >> q;\r\n    for(int i = 0; i<n; i++) {\r\n     \
-    \   i64 a; std::cin >> a;\r\n        treap.insert(i, {a, 1});\r\n    }\r\n   \
-    \ while(q--) {\r\n        int t; std::cin >> t;\r\n        if(t==0) {\r\n    \
-    \        int i;\r\n            i64 x;\r\n            std::cin >> i >> x;\r\n \
-    \           treap.insert(i, {x, 1});\r\n        }\r\n        else if(t==1) {\r\
+    \ ebi\n#line 6 \"test/ImplicitTreap.test.cpp\"\n\r\n#line 8 \"test/ImplicitTreap.test.cpp\"\
+    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n\
+    \    int size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint\
+    \ b) : a(a), b(b) { }\r\n};\r\n\r\nS op(S l, S r) { return S{l.a + r.a, l.size\
+    \ + r.size}; }\r\n\r\nS e() { return S{0, 0}; }\r\n\r\nS mapping(F l, S r) { return\
+    \ S{r.a * l.a + (mint)r.size * l.b, r.size}; }\r\n\r\nF composition(F l, F r)\
+    \ { return F{r.a * l.a, r.b * l.a + l.b}; }\r\n\r\nF id() { return F{1, 0}; }\r\
+    \n\r\nint main() {\r\n    ebi::ImplicitTreap<S,op,e,F,mapping,composition,id>\
+    \ treap;\r\n    int n,q; std::cin >> n >> q;\r\n    for(int i = 0; i<n; i++) {\r\
+    \n        i64 a; std::cin >> a;\r\n        treap.insert(i, {a, 1});\r\n    }\r\
+    \n    while(q--) {\r\n        int t; std::cin >> t;\r\n        if(t==0) {\r\n\
+    \            int i;\r\n            i64 x;\r\n            std::cin >> i >> x;\r\
+    \n            treap.insert(i, {x, 1});\r\n        }\r\n        else if(t==1) {\r\
     \n            int i;\r\n            std::cin >> i;\r\n            treap.erase(i);\r\
     \n        }\r\n        else if(t==2){\r\n            int l,r;\r\n            std::cin\
     \ >> l >> r;\r\n            treap.reverse(l,r);\r\n        }\r\n        else if(t==3)\
@@ -167,7 +168,7 @@ data:
   isVerificationFile: true
   path: test/ImplicitTreap.test.cpp
   requiredBy: []
-  timestamp: '2021-02-24 00:39:29+09:00'
+  timestamp: '2021-02-24 01:12:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/ImplicitTreap.test.cpp

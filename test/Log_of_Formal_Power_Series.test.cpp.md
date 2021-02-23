@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   - icon: ':question:'
@@ -29,35 +29,35 @@ data:
     /*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
     \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
     \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
-    \u306E\u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n\r\nnamespace ebi {\r\n\r\
-    \ntemplate<std::uint_fast64_t Modulus>\r\nclass modint {\r\n  using u64 = std::uint_fast64_t;\r\
-    \n\r\npublic:\r\n    u64 a;\r\n\r\n    constexpr modint(const u64 x = 0) noexcept\
-    \ : a(x % Modulus) {}\r\n    constexpr u64 &value() noexcept { return a; }\r\n\
-    \    constexpr u64 &val() noexcept { return a; }\r\n    constexpr const u64 &value()\
-    \ const noexcept { return a; }\r\n    constexpr modint operator+(const modint\
-    \ rhs) const noexcept {\r\n        return modint(*this) += rhs;\r\n    }\r\n \
-    \   constexpr modint operator-(const modint rhs) const noexcept {\r\n        return\
-    \ modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const modint\
-    \ rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n    }\r\n \
-    \   constexpr modint operator/(const modint rhs) const noexcept {\r\n        return\
-    \ modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const modint\
-    \ rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\n  \
-    \          a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n  \
-    \  constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
-    \ < rhs.a) {\r\n        a += Modulus;\r\n        }\r\n        a -= rhs.a;\r\n\
-    \        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
-    \ rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator/=(modint rhs) noexcept {\r\n       \
-    \ u64 exp = Modulus - 2;\r\n        while (exp) {\r\n        if (exp % 2) {\r\n\
-    \            *this *= rhs;\r\n        }\r\n        rhs *= rhs;\r\n        exp\
-    \ /= 2;\r\n        }\r\n        return *this;\r\n    }\r\n    modint pow(u64 n)\
-    \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
-    \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
-    \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
-    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
-    \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
-    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
-    template<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
+    \u306E\u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n#include <iostream>\r\n\r\
+    \nnamespace ebi {\r\n\r\ntemplate<std::uint_fast64_t Modulus>\r\nclass modint\
+    \ {\r\n  using u64 = std::uint_fast64_t;\r\n\r\npublic:\r\n    u64 a;\r\n\r\n\
+    \    constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}\r\n    constexpr\
+    \ u64 &value() noexcept { return a; }\r\n    constexpr u64 &val() noexcept { return\
+    \ a; }\r\n    constexpr const u64 &value() const noexcept { return a; }\r\n  \
+    \  constexpr modint operator+(const modint rhs) const noexcept {\r\n        return\
+    \ modint(*this) += rhs;\r\n    }\r\n    constexpr modint operator-(const modint\
+    \ rhs) const noexcept {\r\n        return modint(*this) -= rhs;\r\n    }\r\n \
+    \   constexpr modint operator*(const modint rhs) const noexcept {\r\n        return\
+    \ modint(*this) *= rhs;\r\n    }\r\n    constexpr modint operator/(const modint\
+    \ rhs) const noexcept {\r\n        return modint(*this) /= rhs;\r\n    }\r\n \
+    \   constexpr modint &operator+=(const modint rhs) noexcept {\r\n        a +=\
+    \ rhs.a;\r\n        if (a >= Modulus) {\r\n            a -= Modulus;\r\n     \
+    \   }\r\n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const\
+    \ modint rhs) noexcept {\r\n        if (a < rhs.a) {\r\n        a += Modulus;\r\
+    \n        }\r\n        a -= rhs.a;\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator*=(const modint rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(modint rhs)\
+    \ noexcept {\r\n        u64 exp = Modulus - 2;\r\n        while (exp) {\r\n  \
+    \      if (exp % 2) {\r\n            *this *= rhs;\r\n        }\r\n        rhs\
+    \ *= rhs;\r\n        exp /= 2;\r\n        }\r\n        return *this;\r\n    }\r\
+    \n    modint pow(u64 n) const noexcept {\r\n        modint res = 1;\r\n      \
+    \  modint x = a;\r\n        while(n>0){\r\n            if(n&1) res *= x;\r\n \
+    \           x *= x;\r\n            n >>=1;\r\n        }\r\n        return res;\r\
+    \n    }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\
+    \n\r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\n\
+    using modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
+    \n\r\ntemplate<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
     \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
     \ ebi\n#line 9 \"algorithm/convolution.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
     \ ebi {\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nnamespace internal {\r\
@@ -126,12 +126,12 @@ data:
     \ == 1);\r\n        FPS g = (*this).differential()/(*this);\r\n        return\
     \ g.integral();\r\n    }\r\n\r\n    int deg() const {\r\n        return (*this).size();\r\
     \n    }\r\n};\r\n\r\n} // namespace ebi\n#line 4 \"test/Log_of_Formal_Power_Series.test.cpp\"\
-    \n\r\n#include <iostream>\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >>\
-    \ n;\r\n    ebi::FormalPowerSeries a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n\
-    \        int val;\r\n        std::cin >> val;\r\n        a[i] = val;\r\n    }\r\
-    \n    ebi::FormalPowerSeries b = a.log();\r\n    for(int i = 0; i<n; ++i) {\r\n\
-    \        std::cout << b[i].value() << \" \";\r\n    }\r\n    std::cout << std::endl;\r\
-    \n}\n"
+    \n\r\n#line 6 \"test/Log_of_Formal_Power_Series.test.cpp\"\n\r\nint main() {\r\
+    \n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries a(n);\r\n   \
+    \ for(int i = 0; i<n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\
+    \n        a[i] = val;\r\n    }\r\n    ebi::FormalPowerSeries b = a.log();\r\n\
+    \    for(int i = 0; i<n; ++i) {\r\n        std::cout << b[i].value() << \" \"\
+    ;\r\n    }\r\n    std::cout << std::endl;\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \r\n\r\n#include \"../math/FormalPowerSeries.hpp\"\r\n\r\n#include <iostream>\r\
     \n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries\
@@ -146,7 +146,7 @@ data:
   isVerificationFile: true
   path: test/Log_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2021-02-24 00:39:29+09:00'
+  timestamp: '2021-02-24 01:12:28+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Log_of_Formal_Power_Series.test.cpp
