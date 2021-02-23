@@ -7,6 +7,7 @@
 */
 
 #include <cstdint>
+#include <iostream>
 
 namespace ebi {
 
