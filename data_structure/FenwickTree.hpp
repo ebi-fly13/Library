@@ -33,6 +33,21 @@ public:
     T sum(int l, int r) {
         return prefix_sum(r)-prefix_sum(l);
     }
+
+    // prefix_sum(x) >= key となる最小のxを返す関数 O(log N)
+    int lower_bound(T key) {
+        if(key<=0) return 0;
+        int x = 0;
+        int max = 1;
+        while((max<<1) <= n) max <<= 1;
+        for(int k = max; k>0; k >>= 1) {
+            if(x+k<=n && data[x+k]<key) {
+                x += k;
+                key -= data[x];
+            }
+        }
+        return x+1;
+    }
 };
 
-}
+} // namespace ebi
