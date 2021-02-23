@@ -27,9 +27,15 @@ data:
     \    T prefix_sum(int i) {\r\n        assert(0<=i && i<=n);\r\n        T ret =\
     \ 0;\r\n        for(int x = i; x>0; x -= x & -x) {\r\n            ret += data[x];\r\
     \n        }\r\n        return ret;\r\n    }\r\n\r\n    T sum(int l, int r) {\r\
-    \n        return prefix_sum(r)-prefix_sum(l);\r\n    }\r\n};\r\n\r\n}\n#line 2\
-    \ \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\
-    \nusing i32 = std::int32_t;\r\nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\
+    \n        return prefix_sum(r)-prefix_sum(l);\r\n    }\r\n\r\n    // prefix_sum(x)\
+    \ >= key \u3068\u306A\u308B\u6700\u5C0F\u306Ex\u3092\u8FD4\u3059\u95A2\u6570 O(log\
+    \ N)\r\n    int lower_bound(T key) {\r\n        if(key<=0) return 0;\r\n     \
+    \   int x = 0;\r\n        int max = 1;\r\n        while((max<<1) <= n) max <<=\
+    \ 1;\r\n        for(int k = max; k>0; k >>= 1) {\r\n            if(x+k<=n && data[x+k]<key)\
+    \ {\r\n                x += k;\r\n                key -= data[x];\r\n        \
+    \    }\r\n        }\r\n        return x+1;\r\n    }\r\n};\r\n\r\n} // namespace\
+    \ ebi\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include <cstdint>\r\
+    \n\r\nusing i32 = std::int32_t;\r\nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\
     \nusing u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n\
     #line 5 \"test/FenwickTree.test.cpp\"\n\r\n#include <iostream>\r\n\r\nint main(){\r\
     \n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::FenwickTree<i64> fw(n);\r\
@@ -57,7 +63,7 @@ data:
   isVerificationFile: true
   path: test/FenwickTree.test.cpp
   requiredBy: []
-  timestamp: '2021-02-24 00:39:29+09:00'
+  timestamp: '2021-02-24 01:07:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/FenwickTree.test.cpp
