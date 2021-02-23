@@ -1,0 +1,49 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/FenwickTree.test.cpp
+    title: test/FenwickTree.test.cpp
+  _isVerificationFailed: false
+  _pathExtension: hpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    links: []
+  bundledCode: "#line 2 \"data_structure/FenwickTree.hpp\"\n\r\n#include <vector>\r\
+    \n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct\
+    \ FenwickTree {\r\nprivate:\r\n    int n;\r\n    std::vector<T> data;\r\n\r\n\
+    public:\r\n    FenwickTree(int _n) : n(_n), data(std::vector<T>(_n+1, T(0))) {\
+    \ }\r\n\r\n    void add(int i, T val) {\r\n        i++;\r\n        for(int x =\
+    \ i; x <= n; x += x & -x) {\r\n            data[x] += val;\r\n        }\r\n  \
+    \  }\r\n\r\n    T prefix_sum(int i) {\r\n        assert(0<=i && i<=n);\r\n   \
+    \     T ret = 0;\r\n        for(int x = i; x>0; x -= x & -x) {\r\n           \
+    \ ret += data[x];\r\n        }\r\n        return ret;\r\n    }\r\n\r\n    T sum(int\
+    \ l, int r) {\r\n        return prefix_sum(r)-prefix_sum(l);\r\n    }\r\n};\r\n\
+    \r\n}\n"
+  code: "#pragma once\r\n\r\n#include <vector>\r\n#include <cassert>\r\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate<class T>\r\nstruct FenwickTree {\r\nprivate:\r\n    int\
+    \ n;\r\n    std::vector<T> data;\r\n\r\npublic:\r\n    FenwickTree(int _n) : n(_n),\
+    \ data(std::vector<T>(_n+1, T(0))) { }\r\n\r\n    void add(int i, T val) {\r\n\
+    \        i++;\r\n        for(int x = i; x <= n; x += x & -x) {\r\n           \
+    \ data[x] += val;\r\n        }\r\n    }\r\n\r\n    T prefix_sum(int i) {\r\n \
+    \       assert(0<=i && i<=n);\r\n        T ret = 0;\r\n        for(int x = i;\
+    \ x>0; x -= x & -x) {\r\n            ret += data[x];\r\n        }\r\n        return\
+    \ ret;\r\n    }\r\n\r\n    T sum(int l, int r) {\r\n        return prefix_sum(r)-prefix_sum(l);\r\
+    \n    }\r\n};\r\n\r\n}"
+  dependsOn: []
+  isVerificationFile: false
+  path: data_structure/FenwickTree.hpp
+  requiredBy: []
+  timestamp: '2021-02-24 00:39:29+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/FenwickTree.test.cpp
+documentation_of: data_structure/FenwickTree.hpp
+layout: document
+redirect_from:
+- /library/data_structure/FenwickTree.hpp
+- /library/data_structure/FenwickTree.hpp.html
+title: data_structure/FenwickTree.hpp
+---

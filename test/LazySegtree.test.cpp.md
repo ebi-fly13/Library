@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/LazySegtree.hpp
     title: data_structure/LazySegtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -86,12 +86,14 @@ data:
     \n    }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\
     \n\r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\n\
     using modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\n} // namespace ebi\n#line 5 \"test/LazySegtree.test.cpp\"\n\r\n#include\
-    \ <iostream>\r\n#line 8 \"test/LazySegtree.test.cpp\"\n\r\nusing mint = ebi::modint998244353;\r\
-    \n\r\nstruct S {\r\n    mint a;\r\n    int size;\r\n};\r\n\r\nstruct F {\r\n \
-    \   mint a, b;\r\n    F(mint a, mint b) : a(a), b(b) { }\r\n};\r\n\r\nS op(S l,\
-    \ S r) { return S{l.a + r.a, l.size + r.size}; }\r\n\r\nS e() { return S{0, 0};\
-    \ }\r\n\r\nS mapping(F l, S r) { return S{r.a * l.a + (mint)r.size * l.b, r.size};\
+    \n\r\ntemplate<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
+    \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
+    \ ebi\n#line 5 \"test/LazySegtree.test.cpp\"\n\r\n#include <iostream>\r\n#line\
+    \ 8 \"test/LazySegtree.test.cpp\"\n\r\nusing mint = ebi::modint998244353;\r\n\r\
+    \nstruct S {\r\n    mint a;\r\n    int size;\r\n};\r\n\r\nstruct F {\r\n    mint\
+    \ a, b;\r\n    F(mint a, mint b) : a(a), b(b) { }\r\n};\r\n\r\nS op(S l, S r)\
+    \ { return S{l.a + r.a, l.size + r.size}; }\r\n\r\nS e() { return S{0, 0}; }\r\
+    \n\r\nS mapping(F l, S r) { return S{r.a * l.a + (mint)r.size * l.b, r.size};\
     \ }\r\n\r\nF merge(F l, F r) { return F{r.a * l.a, r.b * l.a + l.b}; }\r\n\r\n\
     F id() { return F{1, 0}; }\r\n\r\nint main(){\r\n    int n,q; std::cin >> n >>\
     \ q;\r\n    std::vector<S> v(n);\r\n    for(int i = 0; i<n; i++) {\r\n       \
@@ -123,8 +125,8 @@ data:
   isVerificationFile: true
   path: test/LazySegtree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-19 01:12:36+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-02-24 00:39:29+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/LazySegtree.test.cpp
 layout: document

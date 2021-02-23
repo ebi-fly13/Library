@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/DynamicSegmentTree.hpp
     title: data_structure/DynamicSegmentTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -83,19 +83,20 @@ data:
     \n    }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\
     \n\r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\n\
     using modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\n} // namespace ebi\n#line 5 \"test/DynamicSegmentTree.test.cpp\"\n\r\n#include\
-    \ <iostream>\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n \
-    \   mint a,b;\r\n    F(mint a, mint b) : a(a), b(b) { }\r\n};\r\n\r\nF op(F f1,\
-    \ F f2) {\r\n    return F(f2.a*f1.a, f2.a*f1.b+f2.b);\r\n}\r\n\r\nF e() {\r\n\
-    \    return F(1,0);\r\n}\r\n\r\nint main(){\r\n    int n,q; std::cin >> n >> q;\r\
-    \n    ebi::DynamicSegmentTree<F, op, e> seg(n);\r\n    for(int i = 0; i<n; i++)\
-    \ {\r\n        int a,b; std::cin >> a >> b;\r\n        seg.set(i, F(a,b));\r\n\
-    \    }\r\n    while(q--) {\r\n        int t; std::cin >> t;\r\n        if(t==0)\
-    \ {\r\n            int p, c, d;\r\n            std::cin >> p >> c >> d;\r\n  \
-    \          seg.set(p, F(c,d));\r\n        }\r\n        else {\r\n            int\
-    \ l,r,x; std::cin >> l >> r >> x;\r\n            auto f = seg.prod(l,r);\r\n \
-    \           std::cout << (f.a*x + f.b).value() << std::endl;\r\n        }\r\n\
-    \    }\r\n}\n"
+    \n\r\ntemplate<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
+    \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
+    \ ebi\n#line 5 \"test/DynamicSegmentTree.test.cpp\"\n\r\n#include <iostream>\r\
+    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a,b;\r\n\
+    \    F(mint a, mint b) : a(a), b(b) { }\r\n};\r\n\r\nF op(F f1, F f2) {\r\n  \
+    \  return F(f2.a*f1.a, f2.a*f1.b+f2.b);\r\n}\r\n\r\nF e() {\r\n    return F(1,0);\r\
+    \n}\r\n\r\nint main(){\r\n    int n,q; std::cin >> n >> q;\r\n    ebi::DynamicSegmentTree<F,\
+    \ op, e> seg(n);\r\n    for(int i = 0; i<n; i++) {\r\n        int a,b; std::cin\
+    \ >> a >> b;\r\n        seg.set(i, F(a,b));\r\n    }\r\n    while(q--) {\r\n \
+    \       int t; std::cin >> t;\r\n        if(t==0) {\r\n            int p, c, d;\r\
+    \n            std::cin >> p >> c >> d;\r\n            seg.set(p, F(c,d));\r\n\
+    \        }\r\n        else {\r\n            int l,r,x; std::cin >> l >> r >> x;\r\
+    \n            auto f = seg.prod(l,r);\r\n            std::cout << (f.a*x + f.b).value()\
+    \ << std::endl;\r\n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \r\n\r\n#include \"../data_structure/DynamicSegmentTree.hpp\"\r\n#include \"../utility/modint.hpp\"\
     \r\n\r\n#include <iostream>\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\n\
@@ -116,8 +117,8 @@ data:
   isVerificationFile: true
   path: test/DynamicSegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 21:40:11+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-02-24 00:39:29+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/DynamicSegmentTree.test.cpp
 layout: document

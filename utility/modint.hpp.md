@@ -2,40 +2,40 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/DynamicSegmentTree.test.cpp
     title: test/DynamicSegmentTree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Exp_of_Formal_Power_Series.test.cpp
     title: test/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://noshi91.hatenablog.com/entry/2019/03/31/174006
@@ -70,7 +70,9 @@ data:
     \n    }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\
     \n\r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\n\
     using modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\n} // namespace ebi\n"
+    \n\r\ntemplate<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
+    \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
+    \ ebi\n"
   code: "#pragma once\r\n\r\n/*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
     \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
     \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
@@ -102,15 +104,17 @@ data:
     \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
     \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
     \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
-    } // namespace ebi"
+    template<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
+    \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
+    \ ebi"
   dependsOn: []
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy:
   - algorithm/convolution.hpp
   - math/FormalPowerSeries.hpp
-  timestamp: '2021-01-18 21:40:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-02-24 00:39:29+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/LazySegtree.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp

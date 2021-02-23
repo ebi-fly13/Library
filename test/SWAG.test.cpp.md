@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/SWAG.hpp
     title: SlidingWindowAggregation
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -72,18 +72,20 @@ data:
     \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
     \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
     \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
-    } // namespace ebi\n#line 5 \"test/SWAG.test.cpp\"\n\r\n#include <iostream>\r\n\
-    \r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a,b;\r\n\
-    \    F(mint a, mint b) : a(a), b(b) {  }\r\n};\r\n\r\nF op(F f1, F f2) {\r\n \
-    \   return F(f2.a*f1.a, f2.a*f1.b+f2.b);\r\n}\r\n\r\nint main() {\r\n    ebi::SWAG<F,\
-    \ op> swag;\r\n    int q; std::cin >> q;\r\n    while(q--){\r\n        int t;\
-    \ std::cin >> t;\r\n        if(t==0){\r\n            int a,b; std::cin >> a >>\
-    \ b;\r\n            swag.push(F(a,b));\r\n        }\r\n        else if(t==1){\r\
-    \n            swag.pop();\r\n        }\r\n        else{\r\n            int x;\
-    \ std::cin >> x;\r\n            if(swag.empty()){\r\n                std::cout\
-    \ << x << std::endl;\r\n                continue;\r\n            }\r\n       \
-    \     auto f = swag.fold_all();\r\n            std::cout << (f.a*(mint)x + f.b).value()\
-    \ << std::endl;\r\n        }\r\n    }\r\n}\n"
+    template<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
+    \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
+    \ ebi\n#line 5 \"test/SWAG.test.cpp\"\n\r\n#include <iostream>\r\n\r\nusing mint\
+    \ = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a,b;\r\n    F(mint a,\
+    \ mint b) : a(a), b(b) {  }\r\n};\r\n\r\nF op(F f1, F f2) {\r\n    return F(f2.a*f1.a,\
+    \ f2.a*f1.b+f2.b);\r\n}\r\n\r\nint main() {\r\n    ebi::SWAG<F, op> swag;\r\n\
+    \    int q; std::cin >> q;\r\n    while(q--){\r\n        int t; std::cin >> t;\r\
+    \n        if(t==0){\r\n            int a,b; std::cin >> a >> b;\r\n          \
+    \  swag.push(F(a,b));\r\n        }\r\n        else if(t==1){\r\n            swag.pop();\r\
+    \n        }\r\n        else{\r\n            int x; std::cin >> x;\r\n        \
+    \    if(swag.empty()){\r\n                std::cout << x << std::endl;\r\n   \
+    \             continue;\r\n            }\r\n            auto f = swag.fold_all();\r\
+    \n            std::cout << (f.a*(mint)x + f.b).value() << std::endl;\r\n     \
+    \   }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \r\n\r\n#include \"../data_structure/SWAG.hpp\"\r\n#include \"../utility/modint.hpp\"\
     \r\n\r\n#include <iostream>\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\n\
@@ -103,8 +105,8 @@ data:
   isVerificationFile: true
   path: test/SWAG.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 21:40:11+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-02-24 00:39:29+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/SWAG.test.cpp
 layout: document

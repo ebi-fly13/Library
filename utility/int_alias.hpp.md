@@ -10,6 +10,9 @@ data:
     title: data_structure/bitVector.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/FenwickTree.test.cpp
+    title: test/FenwickTree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
   - icon: ':heavy_check_mark:'
@@ -54,6 +57,7 @@ data:
   - test/dijkstra.test.cpp
   - test/fibonacci_heap.test.cpp
   - test/LiChaoSegmentTree.test.cpp
+  - test/FenwickTree.test.cpp
   - test/ImplicitTreap.test.cpp
   - test/SegmentTreeBeats.test.cpp
   - test/SegmentAddGetMin.test.cpp

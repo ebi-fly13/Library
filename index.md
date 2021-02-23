@@ -8,7 +8,7 @@ data:
       title: String/Z_Algorithm.hpp
   - name: algorithm
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
   - name: data_structure
@@ -19,13 +19,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/DuelSegtree.hpp
       title: data_structure/DuelSegtree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/DynamicSegmentTree.hpp
       title: data_structure/DynamicSegmentTree.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structure/FenwickTree.hpp
+      title: data_structure/FenwickTree.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/ImplicitTreap.hpp
       title: data_structure/ImplicitTreap.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/LazySegtree.hpp
       title: data_structure/LazySegtree.hpp
     - icon: ':heavy_check_mark:'
@@ -34,7 +37,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/PersistentSegmentTree.hpp
       title: data_structure/PersistentSegmentTree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/SWAG.hpp
       title: SlidingWindowAggregation
     - icon: ':heavy_check_mark:'
@@ -85,7 +88,7 @@ data:
       title: graph/template.hpp
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/FormalPowerSeries.hpp
       title: math/FormalPowerSeries.hpp
   - name: utility
@@ -93,7 +96,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
   verificationCategories:
@@ -105,31 +108,34 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/DuelSegtree.test.cpp
       title: test/DuelSegtree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/DynamicSegmentTree.test.cpp
       title: test/DynamicSegmentTree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Exp_of_Formal_Power_Series.test.cpp
       title: test/Exp_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/FenwickTree.test.cpp
+      title: test/FenwickTree.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/ImplicitTreap.test.cpp
       title: test/ImplicitTreap.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Inv_of_Formal_Power_Series.test.cpp
       title: test/Inv_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/LazySegtree.test.cpp
       title: test/LazySegtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/LiChaoSegmentTree.test.cpp
       title: test/LiChaoSegmentTree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Log_of_Formal_Power_Series.test.cpp
       title: test/Log_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/PersistentSegmentTree.test.cpp
       title: test/PersistentSegmentTree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/SWAG.test.cpp
       title: test/SWAG.test.cpp
     - icon: ':heavy_check_mark:'
@@ -150,7 +156,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Z_Algorithm.test.cpp
       title: test/Z_Algorithm.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/convolution.test.cpp
       title: test/convolution.test.cpp
     - icon: ':heavy_check_mark:'

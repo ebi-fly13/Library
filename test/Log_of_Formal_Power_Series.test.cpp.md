@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
@@ -57,10 +57,12 @@ data:
     \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
     \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
     \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
-    } // namespace ebi\n#line 9 \"algorithm/convolution.hpp\"\n\r\n#include <vector>\r\
-    \n\r\nnamespace ebi {\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nnamespace\
-    \ internal {\r\n\r\nconstexpr mint primitive_root = 3;\r\n\r\nvoid dft(std::vector<mint>\
-    \ &f) {\r\n    int n = f.size();\r\n    if(n==1) return;\r\n    std::vector<mint>\
+    template<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
+    \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
+    \ ebi\n#line 9 \"algorithm/convolution.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
+    \ ebi {\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nnamespace internal {\r\
+    \n\r\nconstexpr mint primitive_root = 3;\r\n\r\nvoid dft(std::vector<mint> &f)\
+    \ {\r\n    int n = f.size();\r\n    if(n==1) return;\r\n    std::vector<mint>\
     \ a(n/2), b(n/2);\r\n    for(int i = 0; i<n/2; ++i) {\r\n        a[i] = f[2*i];\r\
     \n        b[i] = f[2*i+1];\r\n    }\r\n    dft(a);\r\n    dft(b);\r\n    const\
     \ mint zeta = primitive_root.pow((mint::mod()-1)/n);\r\n    mint x = 1;\r\n  \
@@ -144,8 +146,8 @@ data:
   isVerificationFile: true
   path: test/Log_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 21:40:11+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-02-24 00:39:29+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Log_of_Formal_Power_Series.test.cpp
 layout: document
