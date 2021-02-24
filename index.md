@@ -28,7 +28,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/ImplicitTreap.hpp
       title: data_structure/ImplicitTreap.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/LazySegtree.hpp
       title: data_structure/LazySegtree.hpp
     - icon: ':heavy_check_mark:'
@@ -123,7 +123,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Inv_of_Formal_Power_Series.test.cpp
       title: test/Inv_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/LazySegtree.test.cpp
       title: test/LazySegtree.test.cpp
     - icon: ':heavy_check_mark:'
