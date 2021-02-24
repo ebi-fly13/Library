@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
@@ -130,15 +130,15 @@ data:
     \n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries a(n);\r\n   \
     \ for(int i = 0; i<n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\
     \n        a[i] = val;\r\n    }\r\n    ebi::FormalPowerSeries b = a.log();\r\n\
-    \    for(int i = 0; i<n; ++i) {\r\n        std::cout << b[i].value() << \" \"\
-    ;\r\n    }\r\n    std::cout << std::endl;\r\n}\n"
+    \    for(int i = 0; i<n; ++i) {\r\n        std::cout << b[i].val() << \" \";\r\
+    \n    }\r\n    std::cout << std::endl;\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \r\n\r\n#include \"../math/FormalPowerSeries.hpp\"\r\n\r\n#include <iostream>\r\
     \n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    ebi::FormalPowerSeries\
     \ a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n        int val;\r\n        std::cin\
     \ >> val;\r\n        a[i] = val;\r\n    }\r\n    ebi::FormalPowerSeries b = a.log();\r\
-    \n    for(int i = 0; i<n; ++i) {\r\n        std::cout << b[i].value() << \" \"\
-    ;\r\n    }\r\n    std::cout << std::endl;\r\n}"
+    \n    for(int i = 0; i<n; ++i) {\r\n        std::cout << b[i].val() << \" \";\r\
+    \n    }\r\n    std::cout << std::endl;\r\n}"
   dependsOn:
   - math/FormalPowerSeries.hpp
   - algorithm/convolution.hpp
@@ -146,8 +146,8 @@ data:
   isVerificationFile: true
   path: test/Log_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2021-02-24 01:12:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-02-24 13:19:13+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Log_of_Formal_Power_Series.test.cpp
 layout: document

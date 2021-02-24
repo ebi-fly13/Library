@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/SWAG.hpp
     title: SlidingWindowAggregation
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -84,8 +84,8 @@ data:
     \n        }\r\n        else{\r\n            int x; std::cin >> x;\r\n        \
     \    if(swag.empty()){\r\n                std::cout << x << std::endl;\r\n   \
     \             continue;\r\n            }\r\n            auto f = swag.fold_all();\r\
-    \n            std::cout << (f.a*(mint)x + f.b).value() << std::endl;\r\n     \
-    \   }\r\n    }\r\n}\n"
+    \n            std::cout << (f.a*(mint)x + f.b).val() << std::endl;\r\n       \
+    \ }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \r\n\r\n#include \"../data_structure/SWAG.hpp\"\r\n#include \"../utility/modint.hpp\"\
     \r\n\r\n#include <iostream>\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\n\
@@ -98,15 +98,15 @@ data:
     \        else{\r\n            int x; std::cin >> x;\r\n            if(swag.empty()){\r\
     \n                std::cout << x << std::endl;\r\n                continue;\r\n\
     \            }\r\n            auto f = swag.fold_all();\r\n            std::cout\
-    \ << (f.a*(mint)x + f.b).value() << std::endl;\r\n        }\r\n    }\r\n}"
+    \ << (f.a*(mint)x + f.b).val() << std::endl;\r\n        }\r\n    }\r\n}"
   dependsOn:
   - data_structure/SWAG.hpp
   - utility/modint.hpp
   isVerificationFile: true
   path: test/SWAG.test.cpp
   requiredBy: []
-  timestamp: '2021-02-24 01:12:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-02-24 13:19:13+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/SWAG.test.cpp
 layout: document

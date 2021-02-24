@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
@@ -82,7 +82,7 @@ data:
     \ >> n >> m;\r\n    std::vector<mint> a(n),b(m);\r\n    for(int i = 0; i<n; ++i)\
     \ {\r\n        std::cin >> a[i].a;\r\n    }\r\n    for(int i = 0; i<m; ++i) {\r\
     \n        std::cin >> b[i].a;\r\n    }\r\n    auto c = ebi::convolution(a, b);\r\
-    \n    for(int i = 0; i<n+m-1; ++i) {\r\n        std::cout << c[i].value() << \"\
+    \n    for(int i = 0; i<n+m-1; ++i) {\r\n        std::cout << c[i].val() << \"\
     \ \";\r\n    }\r\n    std::cout << '\\n';\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\r\n\r\
     \n#include \"../algorithm/convolution.hpp\"\r\n#include \"../utility/modint.hpp\"\
@@ -91,7 +91,7 @@ data:
     \ a(n),b(m);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin >> a[i].a;\r\
     \n    }\r\n    for(int i = 0; i<m; ++i) {\r\n        std::cin >> b[i].a;\r\n \
     \   }\r\n    auto c = ebi::convolution(a, b);\r\n    for(int i = 0; i<n+m-1; ++i)\
-    \ {\r\n        std::cout << c[i].value() << \" \";\r\n    }\r\n    std::cout <<\
+    \ {\r\n        std::cout << c[i].val() << \" \";\r\n    }\r\n    std::cout <<\
     \ '\\n';\r\n}"
   dependsOn:
   - algorithm/convolution.hpp
@@ -99,8 +99,8 @@ data:
   isVerificationFile: true
   path: test/convolution.test.cpp
   requiredBy: []
-  timestamp: '2021-02-24 01:12:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-02-24 13:19:13+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution.test.cpp
 layout: document
