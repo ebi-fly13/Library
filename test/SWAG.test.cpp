@@ -35,7 +35,7 @@ int main() {
                 continue;
             }
             auto f = swag.fold_all();
-            std::cout << (f.a*(mint)x + f.b).value() << std::endl;
+            std::cout << (f.a*(mint)x + f.b).val() << std::endl;
         }
     }
 }

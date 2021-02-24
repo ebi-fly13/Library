@@ -15,7 +15,7 @@ int main() {
     }
     ebi::FormalPowerSeries b = a.log();
     for(int i = 0; i<n; ++i) {
-        std::cout << b[i].value() << " ";
+        std::cout << b[i].val() << " ";
     }
     std::cout << std::endl;
 }
