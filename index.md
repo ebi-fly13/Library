@@ -47,11 +47,20 @@ data:
       path: data_structure/Segtree.hpp
       title: Segtree
     - icon: ':heavy_check_mark:'
+      path: data_structure/Stream.hpp
+      title: data_structure/Stream.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/Suspension.hpp
+      title: data_structure/Suspension.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/UnionFind.hpp
       title: data_structure/UnionFind.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/WaveletMatrix.hpp
       title: WaveletMatrix
+    - icon: ':heavy_check_mark:'
+      path: data_structure/bankers_queue.hpp
+      title: data_structure/bankers_queue.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
@@ -156,6 +165,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Z_Algorithm.test.cpp
       title: test/Z_Algorithm.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/bankers_queue.test.cpp
+      title: test/bankers_queue.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/convolution.test.cpp
       title: test/convolution.test.cpp
