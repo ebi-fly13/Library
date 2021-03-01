@@ -17,6 +17,7 @@
 "test/UnionFind.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/WaveletMatrix.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/Z_Algorithm.test.cpp": "2021-01-18 10:56:54 +0900",
+"test/bankers_queue.test.cpp": "2021-03-01 14:43:05 +0900",
 "test/convolution.test.cpp": "2021-02-24 13:19:13 +0900",
 "test/dijkstra.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/fibonacci_heap.test.cpp": "2021-01-23 01:34:05 +0900",
