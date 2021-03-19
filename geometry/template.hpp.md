@@ -96,8 +96,8 @@ data:
   isVerificationFile: false
   path: geometry/template.hpp
   requiredBy:
-  - geometry/intersection.hpp
   - geometry/isp.hpp
+  - geometry/intersection.hpp
   timestamp: '2021-02-14 17:17:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

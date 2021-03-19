@@ -100,6 +100,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/FormalPowerSeries.hpp
       title: math/FormalPowerSeries.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/eratosthenes_sieve.hpp
+      title: math/eratosthenes_sieve.hpp
+    - icon: ':warning:'
+      path: math/linear_sieve.hpp
+      title: math/linear_sieve.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/pow.hpp
+      title: math/pow.hpp
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
@@ -175,6 +184,9 @@ data:
       path: test/dijkstra.test.cpp
       title: test/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/eratosthenes_sieve.test.cpp
+      title: test/eratosthenes_sieve.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/fibonacci_heap.test.cpp
       title: test/fibonacci_heap.test.cpp
     - icon: ':heavy_check_mark:'
@@ -186,6 +198,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/point.test.cpp
       title: test/point.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/pow.test.cpp
+      title: test/pow.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/scc_graph.test.cpp
       title: test/scc_graph.test.cpp

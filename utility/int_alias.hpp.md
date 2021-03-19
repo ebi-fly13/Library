@@ -8,6 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
+  - icon: ':warning:'
+    path: math/linear_sieve.hpp
+    title: math/linear_sieve.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/pow.hpp
+    title: math/pow.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/FenwickTree.test.cpp
@@ -33,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fibonacci_heap.test.cpp
     title: test/fibonacci_heap.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/pow.test.cpp
+    title: test/pow.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -49,19 +58,22 @@ data:
   isVerificationFile: false
   path: utility/int_alias.hpp
   requiredBy:
-  - data_structure/bitVector.hpp
+  - math/linear_sieve.hpp
+  - math/pow.hpp
   - data_structure/WaveletMatrix.hpp
+  - data_structure/bitVector.hpp
   timestamp: '2021-01-12 22:18:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dijkstra.test.cpp
-  - test/fibonacci_heap.test.cpp
-  - test/LiChaoSegmentTree.test.cpp
-  - test/FenwickTree.test.cpp
   - test/ImplicitTreap.test.cpp
+  - test/LiChaoSegmentTree.test.cpp
+  - test/dijkstra.test.cpp
+  - test/pow.test.cpp
+  - test/FenwickTree.test.cpp
+  - test/WaveletMatrix.test.cpp
   - test/SegmentTreeBeats.test.cpp
   - test/SegmentAddGetMin.test.cpp
-  - test/WaveletMatrix.test.cpp
+  - test/fibonacci_heap.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:
