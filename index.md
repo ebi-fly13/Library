@@ -67,6 +67,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/fibonacci_heap.hpp
       title: fibonacci_heap
+    - icon: ':warning:'
+      path: data_structure/partially_persistent_unionfind.hpp
+      title: data_structure/partially_persistent_unionfind.hpp
   - name: geometry
     pages:
     - icon: ':warning:'
