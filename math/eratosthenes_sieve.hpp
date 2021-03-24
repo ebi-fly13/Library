@@ -10,14 +10,15 @@ namespace ebi {
 
 struct eratosthenes_sieve {
 private:
+    using i64 = std::int_fast64_t;
     int n;
     std::vector<bool> table;
 public:
     eratosthenes_sieve(int n) : n(n), table(std::vector<bool>(n+1, true)) {
-        for(int i = 2; i<=n; i++) {
+        for(i64 i = 2; i*i<=n; i++) {
             if(!table[i]) continue;
-            for(int j = i + i; j <= n; j += i) {
-                table[j] = false;
+            for(i64 j = i; i*j <= n; j++) {
+                table[i*j] = false;
             }
         }
     }
