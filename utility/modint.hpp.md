@@ -33,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/subset_convolution.test.cpp
+    title: test/subset_convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -119,12 +122,13 @@ data:
   verifiedWith:
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/ImplicitTreap.test.cpp
+  - test/subset_convolution.test.cpp
   - test/convolution.test.cpp
-  - test/LazySegtree.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Inv_of_Formal_Power_Series.test.cpp
-  - test/DynamicSegmentTree.test.cpp
   - test/SWAG.test.cpp
+  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/LazySegtree.test.cpp
+  - test/DynamicSegmentTree.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
 documentation_of: utility/modint.hpp
 layout: document
 redirect_from:

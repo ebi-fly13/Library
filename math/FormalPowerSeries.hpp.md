@@ -183,8 +183,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Log_of_Formal_Power_Series.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
 documentation_of: math/FormalPowerSeries.hpp
 layout: document
 redirect_from:

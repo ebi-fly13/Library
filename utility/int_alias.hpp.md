@@ -66,14 +66,14 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/ImplicitTreap.test.cpp
-  - test/LiChaoSegmentTree.test.cpp
-  - test/dijkstra.test.cpp
-  - test/pow.test.cpp
   - test/FenwickTree.test.cpp
-  - test/WaveletMatrix.test.cpp
-  - test/SegmentTreeBeats.test.cpp
-  - test/SegmentAddGetMin.test.cpp
+  - test/LiChaoSegmentTree.test.cpp
   - test/fibonacci_heap.test.cpp
+  - test/SegmentTreeBeats.test.cpp
+  - test/pow.test.cpp
+  - test/WaveletMatrix.test.cpp
+  - test/SegmentAddGetMin.test.cpp
+  - test/dijkstra.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:

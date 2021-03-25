@@ -11,6 +11,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
+    - icon: ':heavy_check_mark:'
+      path: algorithm/subset_convolution.hpp
+      title: algorithm/subset_convolution.hpp
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -210,5 +213,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/scc_graph.test.cpp
       title: test/scc_graph.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/subset_convolution.test.cpp
+      title: test/subset_convolution.test.cpp
 layout: toppage
 ---
