@@ -1,17 +1,19 @@
 #pragma once
 
+#include <memory>
+
 namespace ebi {
 
 template<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
 struct DynamicSegmentTree {
 private:
+    struct Node;
+    using node_ptr = std::shared_ptr<Node>;
     struct Node {
         Monoid val;
-        Node *left, *right, *par;
-        Node(Node *_par = nullptr) : val(e()), left(nullptr), right(nullptr), par(_par) { }
+        node_ptr left, right, par;
+        Node(node_ptr _par = nullptr) : val(e()), left(nullptr), right(nullptr), par(_par) { }
     };
-
-    using node_ptr = Node*;
 
     node_ptr root;
     int n;
@@ -21,7 +23,7 @@ public:
         while(n<_n) {
             n <<= 1;
         }
-        root = new Node();
+        root = std::make_shared<Node>();
     }
 
     void set(int i, Monoid x) {
@@ -31,14 +33,14 @@ public:
             int mid = (l+r)/2;
             if(i<mid) {
                 if(!now->left) {
-                    now->left = new Node(now);
+                    now->left = std::make_shared<Node>(now);
                 }
                 now = now->left;
                 r = mid;
             }
             else {
                 if(!now->right) {
-                    now->right = new Node(now);
+                    now->right = std::make_shared<Node>(now);
                 }
                 now = now->right;
                 l = mid;
