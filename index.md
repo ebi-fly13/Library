@@ -73,6 +73,12 @@ data:
     - icon: ':warning:'
       path: data_structure/partially_persistent_unionfind.hpp
       title: data_structure/partially_persistent_unionfind.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/persistent_array.hpp
+      title: data_structure/persistent_array.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/persistent_unionfind.hpp
+      title: data_structure/persistent_unionfind.hpp
   - name: geometry
     pages:
     - icon: ':warning:'
@@ -204,6 +210,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/isp.test.cpp
       title: test/isp.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/persistent_unionfind.test.cpp
+      title: test/persistent_unionfind.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/point.test.cpp
       title: test/point.test.cpp

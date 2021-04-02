@@ -39,9 +39,9 @@ data:
   isVerificationFile: false
   path: graph/template.hpp
   requiredBy:
-  - graph/scc_graph.hpp
-  - graph/dijkstra_fibheap.hpp
   - graph/dijkstra.hpp
+  - graph/dijkstra_fibheap.hpp
+  - graph/scc_graph.hpp
   timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
