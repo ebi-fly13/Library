@@ -25,6 +25,7 @@
 "test/fibonacci_heap.test.cpp": "2021-01-23 01:34:05 +0900",
 "test/intersection.test.cpp": "2021-02-14 18:21:53 +0900",
 "test/isp.test.cpp": "2021-02-14 17:50:46 +0900",
+"test/persistent_unionfind.test.cpp": "2021-04-02 19:30:59 +0900",
 "test/point.test.cpp": "2021-02-14 17:25:03 +0900",
 "test/pow.test.cpp": "2021-03-19 15:15:41 +0900",
 "test/scc_graph.test.cpp": "2021-01-19 00:38:59 +0900",
