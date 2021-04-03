@@ -109,6 +109,9 @@ data:
       title: graph/template.hpp
   - name: math
     pages:
+    - icon: ':warning:'
+      path: math/DirichletSeries.hpp
+      title: math/DirichletSeries.hpp
     - icon: ':heavy_check_mark:'
       path: math/FormalPowerSeries.hpp
       title: math/FormalPowerSeries.hpp
