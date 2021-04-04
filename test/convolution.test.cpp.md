@@ -48,13 +48,16 @@ data:
     \ *= rhs;\r\n        exp /= 2;\r\n        }\r\n        return *this;\r\n    }\r\
     \n    constexpr modint operator-() const { return modint() - *this; }\r\n    bool\
     \ operator==(const u64 rhs) {\r\n        return a == rhs;\r\n    }\r\n    bool\
-    \ operator!=(const u64 rhs) {\r\n        return a != rhs;\r\n    }\r\n\r\n   \
-    \ modint pow(u64 n) const noexcept {\r\n        modint res = 1;\r\n        modint\
-    \ x = a;\r\n        while(n>0){\r\n            if(n&1) res *= x;\r\n         \
-    \   x *= x;\r\n            n >>=1;\r\n        }\r\n        return res;\r\n   \
-    \ }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\
-    \r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing\
-    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
+    \ operator!=(const u64 rhs) {\r\n        return a != rhs;\r\n    }\r\n    constexpr\
+    \ modint& operator++() {\r\n        a++;\r\n        if( a == mod() ) a = 0;\r\n\
+    \        return *this;\r\n    }\r\n    constexpr modint& operator--() {\r\n  \
+    \      if( a == 0 ) a = mod();\r\n        a--;\r\n        return *this;\r\n  \
+    \  }\r\n\r\n    modint pow(u64 n) const noexcept {\r\n        modint res = 1;\r\
+    \n        modint x = a;\r\n        while(n>0){\r\n            if(n&1) res *= x;\r\
+    \n            x *= x;\r\n            n >>=1;\r\n        }\r\n        return res;\r\
+    \n    }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\
+    \n\r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\n\
+    using modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
     \n\r\ntemplate<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
     \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
     \ ebi\n#line 9 \"algorithm/convolution.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
@@ -102,7 +105,7 @@ data:
   isVerificationFile: true
   path: test/convolution.test.cpp
   requiredBy: []
-  timestamp: '2021-04-04 16:53:11+09:00'
+  timestamp: '2021-04-04 17:12:45+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/convolution.test.cpp
