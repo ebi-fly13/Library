@@ -33,6 +33,33 @@ private:
         lazy[index] = id();
     }
 
+    S _prod(int l, int r, int nl = 0, int nr = -1, int index = 0) {
+        if(nr < 0) nr = n;
+        if(nr<=l || r<=nl) {
+            return e();
+        }
+        eval(index, nl, nr);
+        if(l<=nl && nr<=r) {
+            return data[index];
+        }
+        return op(_prod(l, r, nl, (nl+nr)/2, 2*index+1), _prod(l, r, (nl+nr)/2, nr, 2*index+2));
+    }
+
+    void _apply(int l, int r, F f, int nl = 0, int nr = -1, int index = 0) {
+        if(nr<0) nr = n;
+        eval(index, nl, nr);
+        if(nr<=l || r<=nl) return;
+        if(l<=nl && nr<=r) {
+            lazy[index] = merge(f, lazy[index]);
+            eval(index, nl, nr);
+            return;
+        }
+        _apply(l, r, f, nl, (nl+nr)/2, 2*index+1);
+        _apply(l, r, f, (nl+nr)/2, nr, 2*index+2);
+        data[index] = op(data[2*index+1], data[2*index+2]);
+        return;
+    }
+
 public:
     LazySegtree(int _n) : n(1) {
         while(n<_n) {
@@ -57,16 +84,8 @@ public:
         }
     }
 
-    S prod(int l, int r, int nl = 0, int nr = -1, int index = 0) {
-        if(nr < 0) nr = n;
-        if(nr<=l || r<=nl) {
-            return e();
-        }
-        eval(index, nl, nr);
-        if(l<=nl && nr<=r) {
-            return data[index];
-        }
-        return op(prod(l, r, nl, (nl+nr)/2, 2*index+1), prod(l, r, (nl+nr)/2, nr, 2*index+2));
+    S prod(int l, int r) {
+        return _prod(l, r);
     }
 
     S all_prod() {
@@ -74,19 +93,8 @@ public:
         return data[0];
     }
 
-    void apply(int l, int r, F f, int nl = 0, int nr = -1, int index = 0) {
-        if(nr<0) nr = n;
-        eval(index, nl, nr);
-        if(nr<=l || r<=nl) return;
-        if(l<=nl && nr<=r) {
-            lazy[index] = merge(f, lazy[index]);
-            eval(index, nl, nr);
-            return;
-        }
-        apply(l, r, f, nl, (nl+nr)/2, 2*index+1);
-        apply(l, r, f, (nl+nr)/2, nr, 2*index+2);
-        data[index] = op(data[2*index+1], data[2*index+2]);
-        return;
+    void apply(int l, int r, F f) {
+        _apply(l, r, f);
     }
 
     S get(int i) {
