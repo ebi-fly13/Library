@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: Matrix
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Matrix/SquareMatrix.hpp
+      title: Matrix/SquareMatrix.hpp
   - name: String
     pages:
     - icon: ':heavy_check_mark:'
@@ -138,6 +143,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/BinaryTrie.test.cpp
       title: test/BinaryTrie.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Determinant_of_Matrix.test.cpp
+      title: test/Determinant_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/DuelSegtree.test.cpp
       title: test/DuelSegtree.test.cpp

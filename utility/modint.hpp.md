@@ -10,6 +10,9 @@ data:
     title: math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/Determinant_of_Matrix.test.cpp
+    title: test/Determinant_of_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/DynamicSegmentTree.test.cpp
     title: test/DynamicSegmentTree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -121,6 +124,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Determinant_of_Matrix.test.cpp
   - test/LazySegtree.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp
