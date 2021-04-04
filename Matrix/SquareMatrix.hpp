@@ -99,7 +99,7 @@ public:
         return d;
     }
 
-    static Self identity(size_t N) {
+    static Self identity() {
         Self res;
         for(size_t i = 0; i < N; ++i) {
             res[i][i] = 1;
