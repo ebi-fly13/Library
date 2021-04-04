@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -110,7 +110,10 @@ data:
     \n    }\r\n    constexpr modint &operator/=(modint rhs) noexcept {\r\n       \
     \ u64 exp = Modulus - 2;\r\n        while (exp) {\r\n        if (exp % 2) {\r\n\
     \            *this *= rhs;\r\n        }\r\n        rhs *= rhs;\r\n        exp\
-    \ /= 2;\r\n        }\r\n        return *this;\r\n    }\r\n    modint pow(u64 n)\
+    \ /= 2;\r\n        }\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ operator-() const { return modint() - *this; }\r\n    bool operator==(const\
+    \ u64 rhs) {\r\n        return a == rhs;\r\n    }\r\n    bool operator!=(const\
+    \ u64 rhs) {\r\n        return a != rhs;\r\n    }\r\n\r\n    modint pow(u64 n)\
     \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
     \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
     \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
@@ -168,7 +171,7 @@ data:
   isVerificationFile: true
   path: test/ImplicitTreap.test.cpp
   requiredBy: []
-  timestamp: '2021-02-24 01:12:28+09:00'
+  timestamp: '2021-04-04 16:53:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/ImplicitTreap.test.cpp

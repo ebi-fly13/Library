@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/DynamicSegmentTree.hpp
     title: data_structure/DynamicSegmentTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -78,12 +78,15 @@ data:
     \ noexcept {\r\n        u64 exp = Modulus - 2;\r\n        while (exp) {\r\n  \
     \      if (exp % 2) {\r\n            *this *= rhs;\r\n        }\r\n        rhs\
     \ *= rhs;\r\n        exp /= 2;\r\n        }\r\n        return *this;\r\n    }\r\
-    \n    modint pow(u64 n) const noexcept {\r\n        modint res = 1;\r\n      \
-    \  modint x = a;\r\n        while(n>0){\r\n            if(n&1) res *= x;\r\n \
-    \           x *= x;\r\n            n >>=1;\r\n        }\r\n        return res;\r\
-    \n    }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\
-    \n\r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\n\
-    using modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
+    \n    constexpr modint operator-() const { return modint() - *this; }\r\n    bool\
+    \ operator==(const u64 rhs) {\r\n        return a == rhs;\r\n    }\r\n    bool\
+    \ operator!=(const u64 rhs) {\r\n        return a != rhs;\r\n    }\r\n\r\n   \
+    \ modint pow(u64 n) const noexcept {\r\n        modint res = 1;\r\n        modint\
+    \ x = a;\r\n        while(n>0){\r\n            if(n&1) res *= x;\r\n         \
+    \   x *= x;\r\n            n >>=1;\r\n        }\r\n        return res;\r\n   \
+    \ }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\
+    \r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing\
+    \ modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
     \n\r\ntemplate<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
     \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
     \ ebi\n#line 5 \"test/DynamicSegmentTree.test.cpp\"\n\r\n#line 7 \"test/DynamicSegmentTree.test.cpp\"\
@@ -118,7 +121,7 @@ data:
   isVerificationFile: true
   path: test/DynamicSegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2021-04-03 00:32:52+09:00'
+  timestamp: '2021-04-04 16:53:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/DynamicSegmentTree.test.cpp

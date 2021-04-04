@@ -36,24 +36,24 @@ data:
     \ > 0) {\r\n            if(n & 1) res *= x;\r\n            x *= x;\r\n       \
     \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    Field det()\
     \ {\r\n        Self res = *this;\r\n        Field d = 1;\r\n        for(size_t\
-    \ i = 0; i < N; ++i) {\r\n            if(res[i][i].val() == 0) {\r\n         \
-    \       int flag = -1;\r\n                for(size_t j = i+1; j < N; ++j) {\r\n\
-    \                    if(res[j][i].val() != 0) {\r\n                        flag\
-    \ = j;\r\n                        break;\r\n                    }\r\n        \
-    \        }\r\n                if(flag < 0) {\r\n                    return 0;\r\
-    \n                }\r\n                std::swap(res[i], res[flag]);\r\n     \
-    \           d = Field(0)-d;\r\n            }\r\n            Field inv = res[i][i].inv();\r\
-    \n            for(size_t j = i+1; j < N; ++j) {\r\n                Field fac =\
-    \ res[j][i]*inv;\r\n                for(size_t k = i; k < N; ++k) {\r\n      \
-    \              res[j][k] -= fac * res[i][k];\r\n                }\r\n        \
-    \    }\r\n            d *= res[i][i];\r\n        }\r\n        return d;\r\n  \
-    \  }\r\n\r\n    static Self identity(size_t N) {\r\n        Self res;\r\n    \
-    \    for(size_t i = 0; i < N; ++i) {\r\n            res[i][i] = 1;\r\n       \
-    \ }\r\n        return res;\r\n    }\r\n\r\n    std::vector<Field> &operator []\
-    \ (size_t i) { return mat[i]; }\r\n\r\n    static void set_size(size_t n) {\r\n\
-    \        N = n;\r\n    }\r\n\r\nprivate:\r\n    std::vector<std::vector<Field>>\
-    \ mat;\r\n    static size_t N;\r\n};\r\n\r\ntemplate<class Field>\r\nsize_t SquareMatrix<Field>::N\
-    \ = 0;\r\n\r\n}\n"
+    \ i = 0; i < N; ++i) {\r\n            if(res[i][i] == 0) {\r\n               \
+    \ int flag = -1;\r\n                for(size_t j = i+1; j < N; ++j) {\r\n    \
+    \                if(res[j][i] != 0) {\r\n                        flag = j;\r\n\
+    \                        break;\r\n                    }\r\n                }\r\
+    \n                if(flag < 0) {\r\n                    return 0;\r\n        \
+    \        }\r\n                std::swap(res[i], res[flag]);\r\n              \
+    \  d = -d;\r\n            }\r\n            Field inv = res[i][i].inv();\r\n  \
+    \          for(size_t j = i+1; j < N; ++j) {\r\n                Field fac = res[j][i]*inv;\r\
+    \n                for(size_t k = i; k < N; ++k) {\r\n                    res[j][k]\
+    \ -= fac * res[i][k];\r\n                }\r\n            }\r\n            d *=\
+    \ res[i][i];\r\n        }\r\n        return d;\r\n    }\r\n\r\n    static Self\
+    \ identity(size_t N) {\r\n        Self res;\r\n        for(size_t i = 0; i < N;\
+    \ ++i) {\r\n            res[i][i] = 1;\r\n        }\r\n        return res;\r\n\
+    \    }\r\n\r\n    std::vector<Field> &operator [] (size_t i) { return mat[i];\
+    \ }\r\n\r\n    static void set_size(size_t n) {\r\n        N = n;\r\n    }\r\n\
+    \r\nprivate:\r\n    std::vector<std::vector<Field>> mat;\r\n    static size_t\
+    \ N;\r\n};\r\n\r\ntemplate<class Field>\r\nsize_t SquareMatrix<Field>::N = 0;\r\
+    \n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
     \ Field>\r\nstruct SquareMatrix {\r\nprivate:\r\n    using Self = SquareMatrix<Field>;\r\
     \n    using size_t = std::size_t;\r\n    using u64 = std::uint_fast64_t;\r\npublic:\r\
@@ -78,20 +78,20 @@ data:
     \ Self x = *this;\r\n        while(n > 0) {\r\n            if(n & 1) res *= x;\r\
     \n            x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\
     \n    }\r\n\r\n    Field det() {\r\n        Self res = *this;\r\n        Field\
-    \ d = 1;\r\n        for(size_t i = 0; i < N; ++i) {\r\n            if(res[i][i].val()\
+    \ d = 1;\r\n        for(size_t i = 0; i < N; ++i) {\r\n            if(res[i][i]\
     \ == 0) {\r\n                int flag = -1;\r\n                for(size_t j =\
-    \ i+1; j < N; ++j) {\r\n                    if(res[j][i].val() != 0) {\r\n   \
-    \                     flag = j;\r\n                        break;\r\n        \
-    \            }\r\n                }\r\n                if(flag < 0) {\r\n    \
-    \                return 0;\r\n                }\r\n                std::swap(res[i],\
-    \ res[flag]);\r\n                d = Field(0)-d;\r\n            }\r\n        \
-    \    Field inv = res[i][i].inv();\r\n            for(size_t j = i+1; j < N; ++j)\
-    \ {\r\n                Field fac = res[j][i]*inv;\r\n                for(size_t\
-    \ k = i; k < N; ++k) {\r\n                    res[j][k] -= fac * res[i][k];\r\n\
-    \                }\r\n            }\r\n            d *= res[i][i];\r\n       \
-    \ }\r\n        return d;\r\n    }\r\n\r\n    static Self identity(size_t N) {\r\
-    \n        Self res;\r\n        for(size_t i = 0; i < N; ++i) {\r\n           \
-    \ res[i][i] = 1;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    std::vector<Field>\
+    \ i+1; j < N; ++j) {\r\n                    if(res[j][i] != 0) {\r\n         \
+    \               flag = j;\r\n                        break;\r\n              \
+    \      }\r\n                }\r\n                if(flag < 0) {\r\n          \
+    \          return 0;\r\n                }\r\n                std::swap(res[i],\
+    \ res[flag]);\r\n                d = -d;\r\n            }\r\n            Field\
+    \ inv = res[i][i].inv();\r\n            for(size_t j = i+1; j < N; ++j) {\r\n\
+    \                Field fac = res[j][i]*inv;\r\n                for(size_t k =\
+    \ i; k < N; ++k) {\r\n                    res[j][k] -= fac * res[i][k];\r\n  \
+    \              }\r\n            }\r\n            d *= res[i][i];\r\n        }\r\
+    \n        return d;\r\n    }\r\n\r\n    static Self identity(size_t N) {\r\n \
+    \       Self res;\r\n        for(size_t i = 0; i < N; ++i) {\r\n            res[i][i]\
+    \ = 1;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    std::vector<Field>\
     \ &operator [] (size_t i) { return mat[i]; }\r\n\r\n    static void set_size(size_t\
     \ n) {\r\n        N = n;\r\n    }\r\n\r\nprivate:\r\n    std::vector<std::vector<Field>>\
     \ mat;\r\n    static size_t N;\r\n};\r\n\r\ntemplate<class Field>\r\nsize_t SquareMatrix<Field>::N\
@@ -100,7 +100,7 @@ data:
   isVerificationFile: false
   path: Matrix/SquareMatrix.hpp
   requiredBy: []
-  timestamp: '2021-04-04 16:33:22+09:00'
+  timestamp: '2021-04-04 16:53:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Determinant_of_Matrix.test.cpp
