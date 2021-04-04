@@ -70,6 +70,16 @@ public:
     bool operator!=(const u64 rhs) {
         return a != rhs;
     }
+    constexpr modint& operator++() {
+        a++;
+        if( a == mod() ) a = 0;
+        return *this;
+    }
+    constexpr modint& operator--() {
+        if( a == 0 ) a = mod();
+        a--;
+        return *this;
+    }
 
     modint pow(u64 n) const noexcept {
         modint res = 1;
