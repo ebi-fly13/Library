@@ -63,6 +63,14 @@ public:
         }
         return *this;
     }
+    constexpr modint operator-() const { return modint() - *this; }
+    bool operator==(const u64 rhs) {
+        return a == rhs;
+    }
+    bool operator!=(const u64 rhs) {
+        return a != rhs;
+    }
+
     modint pow(u64 n) const noexcept {
         modint res = 1;
         modint x = a;

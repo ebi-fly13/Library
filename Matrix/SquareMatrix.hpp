@@ -73,10 +73,10 @@ public:
         Self res = *this;
         Field d = 1;
         for(size_t i = 0; i < N; ++i) {
-            if(res[i][i].val() == 0) {
+            if(res[i][i] == 0) {
                 int flag = -1;
                 for(size_t j = i+1; j < N; ++j) {
-                    if(res[j][i].val() != 0) {
+                    if(res[j][i] != 0) {
                         flag = j;
                         break;
                     }
@@ -85,7 +85,7 @@ public:
                     return 0;
                 }
                 std::swap(res[i], res[flag]);
-                d = Field(0)-d;
+                d = -d;
             }
             Field inv = res[i][i].inv();
             for(size_t j = i+1; j < N; ++j) {
