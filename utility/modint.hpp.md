@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
@@ -21,27 +21,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://noshi91.hatenablog.com/entry/2019/03/31/174006
@@ -133,7 +133,7 @@ data:
   - math/FormalPowerSeries.hpp
   - algorithm/convolution.hpp
   timestamp: '2021-04-04 17:12:45+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Determinant_of_Matrix.test.cpp

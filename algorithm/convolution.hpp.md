@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Exp_of_Formal_Power_Series.test.cpp
     title: test/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://hcpc-hokudai.github.io/archive/math_fft_002.pdf
@@ -124,7 +124,7 @@ data:
   requiredBy:
   - math/FormalPowerSeries.hpp
   timestamp: '2021-04-04 17:12:45+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
