@@ -73,8 +73,8 @@ data:
   timestamp: '2021-02-14 17:50:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/isp.test.cpp
   - test/intersection.test.cpp
+  - test/isp.test.cpp
 documentation_of: geometry/isp.hpp
 layout: document
 title: isp

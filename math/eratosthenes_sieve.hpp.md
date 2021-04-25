@@ -45,8 +45,8 @@ data:
   timestamp: '2021-03-24 16:36:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/enumerate_primes.test.cpp
   - test/eratosthenes_sieve.test.cpp
+  - test/enumerate_primes.test.cpp
 documentation_of: math/eratosthenes_sieve.hpp
 layout: document
 redirect_from:

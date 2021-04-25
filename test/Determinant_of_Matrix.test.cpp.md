@@ -23,48 +23,48 @@ data:
     \ {\r\n\r\ntemplate<class Field>\r\nstruct SquareMatrix {\r\nprivate:\r\n    using\
     \ Self = SquareMatrix<Field>;\r\n    using size_t = std::size_t;\r\n    using\
     \ u64 = std::uint_fast64_t;\r\npublic:\r\n    SquareMatrix(Field val = 0) : mat(std::vector(N,\
-    \ std::vector<Field>(N, val))) { }\r\n\r\n    Self operator+(const Self &rhs)\
-    \ const noexcept {\r\n        return Self(*this) += rhs;\r\n    }\r\n\r\n    Self\
-    \ operator-(const Self &rhs) const noexcept {\r\n        return Self(*this) -=\
-    \ rhs;\r\n    }\r\n\r\n    Self operator*(const Self &rhs) const noexcept {\r\n\
-    \        return Self(*this) *= rhs;\r\n    }\r\n\r\n    Self &operator+=(const\
-    \ Self &rhs) noexcept {\r\n        for(size_t i =  0; i < N; ++i) {\r\n      \
-    \      for(size_t j = 0; j < N; ++j) {\r\n                mat[i][j] += rhs[i][j];\r\
-    \n            }\r\n        }\r\n        return *this;\r\n    }\r\n\r\n    Self\
-    \ &operator-=(const Self &rhs) noexcept {\r\n        for(size_t i =  0; i < N;\
-    \ ++i) {\r\n            for(size_t j = 0; j < N; ++j) {\r\n                mat[i][j]\
-    \ -= rhs[i][j];\r\n            }\r\n        }\r\n        return *this;\r\n   \
-    \ }\r\n\r\n    Self &operator*=(const Self &rhs) noexcept {\r\n        Self ret;\r\
-    \n        for(size_t i = 0; i < N; ++i) {\r\n            for(size_t j = 0; j <\
-    \ N; ++j) {\r\n                for(size_t k = 0; k < N; ++k) {\r\n           \
-    \         ret[i][j] += mat[i][k]*rhs[k][j];\r\n                }\r\n         \
-    \   }\r\n        }\r\n        return *this = ret;\r\n    }\r\n\r\n    Self pow(u64\
-    \ n) {\r\n        Self res;\r\n        for(size_t i = 0; i < N;  ++i) {\r\n  \
-    \          res[i][i] = 1;\r\n        }\r\n        Self x = *this;\r\n        while(n\
-    \ > 0) {\r\n            if(n & 1) res *= x;\r\n            x *= x;\r\n       \
-    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    Field det()\
-    \ {\r\n        Self res = *this;\r\n        Field d = 1;\r\n        for(size_t\
-    \ i = 0; i < N; ++i) {\r\n            if(res[i][i] == 0) {\r\n               \
-    \ int flag = -1;\r\n                for(size_t j = i+1; j < N; ++j) {\r\n    \
-    \                if(res[j][i] != 0) {\r\n                        flag = j;\r\n\
-    \                        break;\r\n                    }\r\n                }\r\
-    \n                if(flag < 0) {\r\n                    return 0;\r\n        \
-    \        }\r\n                std::swap(res[i], res[flag]);\r\n              \
-    \  d = -d;\r\n            }\r\n            Field inv = res[i][i].inv();\r\n  \
-    \          for(size_t j = i+1; j < N; ++j) {\r\n                Field fac = res[j][i]*inv;\r\
-    \n                for(size_t k = i; k < N; ++k) {\r\n                    res[j][k]\
-    \ -= fac * res[i][k];\r\n                }\r\n            }\r\n            d *=\
-    \ res[i][i];\r\n        }\r\n        return d;\r\n    }\r\n\r\n    static Self\
-    \ identity() {\r\n        Self res;\r\n        for(size_t i = 0; i < N; ++i) {\r\
-    \n            res[i][i] = 1;\r\n        }\r\n        return res;\r\n    }\r\n\r\
-    \n    std::vector<Field> &operator [] (size_t i) { return mat[i]; }\r\n\r\n  \
-    \  static void set_size(size_t n) {\r\n        N = n;\r\n    }\r\n\r\nprivate:\r\
-    \n    std::vector<std::vector<Field>> mat;\r\n    static size_t N;\r\n};\r\n\r\
-    \ntemplate<class Field>\r\nsize_t SquareMatrix<Field>::N = 0;\r\n\r\n}\n#line\
-    \ 2 \"utility/modint.hpp\"\n\r\n/*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
-    \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
-    \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
-    \u306E\u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n#line 11 \"utility/modint.hpp\"\
+    \ std::vector<Field>(N, val))) { }\r\n\r\n    Self operator+(Self &rhs) const\
+    \ noexcept {\r\n        return Self(*this) += rhs;\r\n    }\r\n\r\n    Self operator-(Self\
+    \ &rhs) const noexcept {\r\n        return Self(*this) -= rhs;\r\n    }\r\n\r\n\
+    \    Self operator*(Self &rhs) const noexcept {\r\n        return Self(*this)\
+    \ *= rhs;\r\n    }\r\n\r\n    Self &operator+=(Self &rhs) noexcept {\r\n     \
+    \   for(size_t i =  0; i < N; ++i) {\r\n            for(size_t j = 0; j < N; ++j)\
+    \ {\r\n                mat[i][j] += rhs[i][j];\r\n            }\r\n        }\r\
+    \n        return *this;\r\n    }\r\n\r\n    Self &operator-=(Self &rhs) noexcept\
+    \ {\r\n        for(size_t i =  0; i < N; ++i) {\r\n            for(size_t j =\
+    \ 0; j < N; ++j) {\r\n                mat[i][j] -= rhs[i][j];\r\n            }\r\
+    \n        }\r\n        return *this;\r\n    }\r\n\r\n    Self &operator*=(Self\
+    \ &rhs) noexcept {\r\n        Self ret;\r\n        for(size_t i = 0; i < N; ++i)\
+    \ {\r\n            for(size_t j = 0; j < N; ++j) {\r\n                for(size_t\
+    \ k = 0; k < N; ++k) {\r\n                    ret[i][j] += mat[i][k]*rhs[k][j];\r\
+    \n                }\r\n            }\r\n        }\r\n        return *this = ret;\r\
+    \n    }\r\n\r\n    Self pow(u64 n) const {\r\n        Self res;\r\n        for(size_t\
+    \ i = 0; i < N;  ++i) {\r\n            res[i][i] = 1;\r\n        }\r\n       \
+    \ Self x = *this;\r\n        while(n > 0) {\r\n            if(n & 1) res *= x;\r\
+    \n            x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\
+    \n    }\r\n\r\n    Field det() const {\r\n        Self res = *this;\r\n      \
+    \  Field d = 1;\r\n        for(size_t i = 0; i < N; ++i) {\r\n            if(res[i][i]\
+    \ == 0) {\r\n                int flag = -1;\r\n                for(size_t j =\
+    \ i+1; j < N; ++j) {\r\n                    if(res[j][i] != 0) {\r\n         \
+    \               flag = j;\r\n                        break;\r\n              \
+    \      }\r\n                }\r\n                if(flag < 0) {\r\n          \
+    \          return 0;\r\n                }\r\n                std::swap(res[i],\
+    \ res[flag]);\r\n                d = -d;\r\n            }\r\n            Field\
+    \ inv = res[i][i].inv();\r\n            for(size_t j = i+1; j < N; ++j) {\r\n\
+    \                Field fac = res[j][i]*inv;\r\n                for(size_t k =\
+    \ i; k < N; ++k) {\r\n                    res[j][k] -= fac * res[i][k];\r\n  \
+    \              }\r\n            }\r\n            d *= res[i][i];\r\n        }\r\
+    \n        return d;\r\n    }\r\n\r\n    static Self identity() {\r\n        Self\
+    \ res;\r\n        for(size_t i = 0; i < N; ++i) {\r\n            res[i][i] = 1;\r\
+    \n        }\r\n        return res;\r\n    }\r\n\r\n    std::vector<Field> &operator\
+    \ [] (size_t i) { return mat[i]; }\r\n\r\n    static void set_size(size_t n) {\r\
+    \n        N = n;\r\n    }\r\n\r\nprivate:\r\n    std::vector<std::vector<Field>>\
+    \ mat;\r\n    static size_t N;\r\n};\r\n\r\ntemplate<class Field>\r\nsize_t SquareMatrix<Field>::N\
+    \ = 0;\r\n\r\n}\n#line 2 \"utility/modint.hpp\"\n\r\n/*\r\n    author: noshi91\r\
+    \n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\n  \
+    \  noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\u308B\
+    modint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\u306E\
+    \u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n#line 11 \"utility/modint.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\ntemplate<std::uint_fast64_t Modulus>\r\nclass modint\
     \ {\r\n  using u64 = std::uint_fast64_t;\r\n\r\npublic:\r\n    u64 a;\r\n\r\n\
     \    constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}\r\n    constexpr\
@@ -120,7 +120,7 @@ data:
   isVerificationFile: true
   path: test/Determinant_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2021-04-04 17:55:19+09:00'
+  timestamp: '2021-04-25 12:46:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Determinant_of_Matrix.test.cpp
