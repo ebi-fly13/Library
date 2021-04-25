@@ -1,4 +1,6 @@
 *.out
 main.cpp
+a.cpp
+atcoder
 *.txt
 combination.hpp

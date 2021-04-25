@@ -13,19 +13,19 @@ private:
 public:
     SquareMatrix(Field val = 0) : mat(std::vector(N, std::vector<Field>(N, val))) { }
 
-    Self operator+(const Self &rhs) const noexcept {
+    Self operator+(Self &rhs) const noexcept {
         return Self(*this) += rhs;
     }
 
-    Self operator-(const Self &rhs) const noexcept {
+    Self operator-(Self &rhs) const noexcept {
         return Self(*this) -= rhs;
     }
 
-    Self operator*(const Self &rhs) const noexcept {
+    Self operator*(Self &rhs) const noexcept {
         return Self(*this) *= rhs;
     }
 
-    Self &operator+=(const Self &rhs) noexcept {
+    Self &operator+=(Self &rhs) noexcept {
         for(size_t i =  0; i < N; ++i) {
             for(size_t j = 0; j < N; ++j) {
                 mat[i][j] += rhs[i][j];
@@ -34,7 +34,7 @@ public:
         return *this;
     }
 
-    Self &operator-=(const Self &rhs) noexcept {
+    Self &operator-=(Self &rhs) noexcept {
         for(size_t i =  0; i < N; ++i) {
             for(size_t j = 0; j < N; ++j) {
                 mat[i][j] -= rhs[i][j];
@@ -43,7 +43,7 @@ public:
         return *this;
     }
 
-    Self &operator*=(const Self &rhs) noexcept {
+    Self &operator*=(Self &rhs) noexcept {
         Self ret;
         for(size_t i = 0; i < N; ++i) {
             for(size_t j = 0; j < N; ++j) {
@@ -55,7 +55,7 @@ public:
         return *this = ret;
     }
 
-    Self pow(u64 n) {
+    Self pow(u64 n) const {
         Self res;
         for(size_t i = 0; i < N;  ++i) {
             res[i][i] = 1;
@@ -69,7 +69,7 @@ public:
         return res;
     }
 
-    Field det() {
+    Field det() const {
         Self res = *this;
         Field d = 1;
         for(size_t i = 0; i < N; ++i) {
