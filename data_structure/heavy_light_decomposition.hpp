@@ -96,6 +96,10 @@ public:
         }
         return op(sum_u, sum_v);
     }
+
+    Monoid subtree_prod(int u) {
+        return seg_l.prod(in[u], out[u]);
+    }
 };
 
 }
