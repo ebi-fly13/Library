@@ -28,8 +28,9 @@ data:
     \           return e();\r\n        }\r\n        if(tl<=l && r<=tr){\r\n      \
     \      return data[index];\r\n        }\r\n        return op(prod(tl, tr, l, (l+r)/2,\
     \ 2*index+1), prod(tl, tr, (l+r)/2, r, 2*index+2));\r\n    }\r\n\r\n    Monoid\
-    \ all_prod() { return data[0]; }\r\n\r\n    Monoid operator [] (int p) { return\
-    \ data[n+p-1]; }\r\n};\r\n\r\n} // namespace ebi\n"
+    \ all_prod() { return data[0]; }\r\n\r\n    Monoid get(int p) { return data[n+p-1];\
+    \ }\r\n\r\n    Monoid operator [] (int p) { return data[n+p-1]; }\r\n};\r\n\r\n\
+    } // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
     \ Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct Segtree {\r\n\
     private:\r\n    std::vector<Monoid> data;\r\n    int n;\r\npublic:\r\n    Segtree(int\
@@ -47,13 +48,13 @@ data:
     \n        }\r\n        if(tl<=l && r<=tr){\r\n            return data[index];\r\
     \n        }\r\n        return op(prod(tl, tr, l, (l+r)/2, 2*index+1), prod(tl,\
     \ tr, (l+r)/2, r, 2*index+2));\r\n    }\r\n\r\n    Monoid all_prod() { return\
-    \ data[0]; }\r\n\r\n    Monoid operator [] (int p) { return data[n+p-1]; }\r\n\
-    };\r\n\r\n} // namespace ebi"
+    \ data[0]; }\r\n\r\n    Monoid get(int p) { return data[n+p-1]; }\r\n\r\n    Monoid\
+    \ operator [] (int p) { return data[n+p-1]; }\r\n};\r\n\r\n} // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/Segtree.hpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
+  timestamp: '2021-05-03 16:11:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Segtree.test.cpp

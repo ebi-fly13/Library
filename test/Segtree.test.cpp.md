@@ -32,16 +32,17 @@ data:
     \           return e();\r\n        }\r\n        if(tl<=l && r<=tr){\r\n      \
     \      return data[index];\r\n        }\r\n        return op(prod(tl, tr, l, (l+r)/2,\
     \ 2*index+1), prod(tl, tr, (l+r)/2, r, 2*index+2));\r\n    }\r\n\r\n    Monoid\
-    \ all_prod() { return data[0]; }\r\n\r\n    Monoid operator [] (int p) { return\
-    \ data[n+p-1]; }\r\n};\r\n\r\n} // namespace ebi\n#line 4 \"test/Segtree.test.cpp\"\
-    \n\r\n#include <iostream>\r\n#include <cstdint>\r\n\r\nusing i64 = std::int64_t;\r\
-    \n\r\ni64 op(i64 a, i64 b) { return a+b; }\r\ni64 e() { return (i64)0; }\r\n\r\
-    \nint main(){\r\n    int n,q; std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\
-    \n    for(int i = 0; i<n; i++){\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::Segtree<i64,\
-    \ op, e> seg(a);\r\n    while(q--){\r\n        int t;\r\n        std::cin >> t;\r\
-    \n        if(t==0){\r\n            int p; i64 x; std::cin >> p >> x;\r\n     \
-    \       seg.set(p,seg[p]+x);\r\n        }\r\n        else{\r\n            int\
-    \ l,r; std::cin >> l >> r;\r\n            std::cout << seg.prod(l,r) << std::endl;\r\
+    \ all_prod() { return data[0]; }\r\n\r\n    Monoid get(int p) { return data[n+p-1];\
+    \ }\r\n\r\n    Monoid operator [] (int p) { return data[n+p-1]; }\r\n};\r\n\r\n\
+    } // namespace ebi\n#line 4 \"test/Segtree.test.cpp\"\n\r\n#include <iostream>\r\
+    \n#include <cstdint>\r\n\r\nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64\
+    \ b) { return a+b; }\r\ni64 e() { return (i64)0; }\r\n\r\nint main(){\r\n    int\
+    \ n,q; std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\n    for(int i = 0;\
+    \ i<n; i++){\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::Segtree<i64, op,\
+    \ e> seg(a);\r\n    while(q--){\r\n        int t;\r\n        std::cin >> t;\r\n\
+    \        if(t==0){\r\n            int p; i64 x; std::cin >> p >> x;\r\n      \
+    \      seg.set(p,seg[p]+x);\r\n        }\r\n        else{\r\n            int l,r;\
+    \ std::cin >> l >> r;\r\n            std::cout << seg.prod(l,r) << std::endl;\r\
     \n        }\r\n    }\r\n    return 0;\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\r\
     \n\r\n#include \"../data_structure/Segtree.hpp\"\r\n\r\n#include <iostream>\r\n\
@@ -59,7 +60,7 @@ data:
   isVerificationFile: true
   path: test/Segtree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
+  timestamp: '2021-05-03 16:11:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Segtree.test.cpp
