@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: data_structure/heavy_light_decomposition.hpp
+    title: data_structure/heavy_light_decomposition.hpp
+  - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
   - icon: ':heavy_check_mark:'
@@ -21,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/scc_graph.test.cpp
     title: test/scc_graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_path_sum.test.cpp
+    title: test/vertex_add_path_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -39,6 +45,7 @@ data:
   isVerificationFile: false
   path: graph/template.hpp
   requiredBy:
+  - data_structure/heavy_light_decomposition.hpp
   - graph/dijkstra.hpp
   - graph/scc_graph.hpp
   - graph/dijkstra_fibheap.hpp
@@ -46,6 +53,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/dijkstra.test.cpp
+  - test/vertex_add_path_sum.test.cpp
   - test/scc_graph.test.cpp
   - test/fibonacci_heap.test.cpp
 documentation_of: graph/template.hpp

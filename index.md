@@ -75,6 +75,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/fibonacci_heap.hpp
       title: fibonacci_heap
+    - icon: ':heavy_check_mark:'
+      path: data_structure/heavy_light_decomposition.hpp
+      title: data_structure/heavy_light_decomposition.hpp
     - icon: ':warning:'
       path: data_structure/partially_persistent_unionfind.hpp
       title: data_structure/partially_persistent_unionfind.hpp
@@ -236,5 +239,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/subset_convolution.test.cpp
       title: test/subset_convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/vertex_add_path_sum.test.cpp
+      title: test/vertex_add_path_sum.test.cpp
 layout: toppage
 ---
