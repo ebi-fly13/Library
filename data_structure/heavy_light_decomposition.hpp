@@ -13,7 +13,7 @@ private:
     int n, t = 0;
     std::vector<int> sz, in, out, nxt, up;
     graph g;
-    Segtree<Monoid, op, e> seg;
+    Segtree<Monoid, op, e> seg_l, seg_r;
 
     void dfs_sz(int v = 0) {
         sz[v] = 1;
@@ -21,7 +21,7 @@ private:
             up[u] = v;
             dfs_sz(u);
             sz[v] += sz[u];
-            if(sz[u] > sz[g[v][0]]) std::swap(g[v][0], u);
+            if(sz[u] > sz[g[v][0]] || g[v][0] == up[v]) std::swap(g[v][0], u);
         }
     }
 
@@ -35,7 +35,7 @@ private:
         out[v] = t;
     }
 public:
-    heavy_light_decomposition(int _n) : n(_n), sz(_n, 0), in(_n, 0), out(_n, 0), nxt(_n, 0), up(_n, -1), g(_n), seg(_n) { }
+    heavy_light_decomposition(int _n) : n(_n), sz(_n, 0), in(_n, 0), out(_n, 0), nxt(_n, 0), up(_n, -1), g(_n), seg_l(_n), seg_r(_n) { }
 
     void add_edge(int v, int u) {
         g[v].emplace_back(u);
@@ -62,37 +62,39 @@ public:
 
     void set(const std::vector<Monoid> &a) {
         for(int i = 0; i < n; ++i) {
-            seg.set(in[i], a[i]);
+            seg_l.set(in[i], a[i]);
+            seg_r.set(n-1-in[i], a[i]);
         }
     }
 
     void set(int i, Monoid x) {
-        seg.set(in[i], x);
+        seg_l.set(in[i], x);
+        seg_r.set(n-1-in[i], x);
     }
 
     Monoid get(int i) {
-        return seg.get(in[i]);
+        return seg_l.get(in[i]);
     }
 
     Monoid path_prod(int u, int v) {
-        Monoid sum_l = e(), sum_r = e();
+        Monoid sum_u = e(), sum_v = e();
         while(nxt[u] != nxt[v]) {
             if(sz[u] > sz[v]) {
-                sum_l = op(sum_l, seg.prod(in[nxt[u]], in[u]+1));
+                sum_u = op(sum_u, seg_r.prod(n-1-in[u], n-in[nxt[u]]));
                 u = up[nxt[u]];
             }
             else {
-                sum_r = op(seg.prod(in[nxt[v]], in[v]+1), sum_r);
+                sum_v = op(seg_l.prod(in[nxt[v]], in[v]+1), sum_v);
                 v = up[nxt[v]];
             }
         }
         if(in[u] < in[v]) {
-            sum_r = op(seg.prod(in[u], in[v]+1), sum_r);
+            sum_v = op(seg_l.prod(in[u], in[v]+1), sum_v);
         }
         else {
-            sum_l = op(sum_l, seg.prod(in[v], in[u]+1));
+            sum_u = op(sum_u, seg_r.prod(n-1-in[u], n-in[v]));
         }
-        return op(sum_l, sum_r);
+        return op(sum_u, sum_v);
     }
 };
 
