@@ -5,6 +5,10 @@
 
 #include <vector>
 
+/*
+    reference: https://codeforces.com/blog/entry/53170
+*/
+
 namespace ebi {
 
 template<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
