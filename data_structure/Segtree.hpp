@@ -53,6 +53,8 @@ public:
 
     Monoid all_prod() { return data[0]; }
 
+    Monoid get(int p) { return data[n+p-1]; }
+
     Monoid operator [] (int p) { return data[n+p-1]; }
 };
 
