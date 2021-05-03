@@ -39,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_set_path_compositie.test.cpp
+    title: test/vertex_set_path_compositie.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -144,6 +147,7 @@ data:
   - test/DynamicSegmentTree.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/SWAG.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
   - test/convolution.test.cpp
 documentation_of: utility/modint.hpp
 layout: document

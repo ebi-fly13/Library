@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_set_path_compositie.test.cpp
+    title: test/vertex_set_path_compositie.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -46,74 +49,79 @@ data:
     \n\nnamespace ebi {\n\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid\
     \ (*e)()>\nstruct heavy_light_decomposition {\nprivate:\n    int n, t = 0;\n \
     \   std::vector<int> sz, in, out, nxt, up;\n    graph g;\n    Segtree<Monoid,\
-    \ op, e> seg;\n\n    void dfs_sz(int v = 0) {\n        sz[v] = 1;\n        for(auto\
-    \ &u : g[v]) if(u != up[v]) {\n            up[u] = v;\n            dfs_sz(u);\n\
-    \            sz[v] += sz[u];\n            if(sz[u] > sz[g[v][0]]) std::swap(g[v][0],\
-    \ u);\n        }\n    }\n\n    void dfs_hld(int v = 0) {\n        in[v] = t++;\n\
-    \        for(const auto &u: g[v]) if(u != up[v]) {\n            nxt[u] = (u ==\
-    \ g[v][0]) ? nxt[v] : u;\n            sz[u] = (u == g[v][0]) ? sz[v] : sz[v]+1;\n\
-    \            dfs_hld(u);\n        }\n        out[v] = t;\n    }\npublic:\n   \
-    \ heavy_light_decomposition(int _n) : n(_n), sz(_n, 0), in(_n, 0), out(_n, 0),\
-    \ nxt(_n, 0), up(_n, -1), g(_n), seg(_n) { }\n\n    void add_edge(int v, int u)\
-    \ {\n        g[v].emplace_back(u);\n        g[u].emplace_back(v);\n    }\n\n \
-    \   void build(int root = 0) {\n        dfs_sz(root);\n        sz.assign(n, 0);\n\
-    \        dfs_hld(root);\n    }\n\n    int lca(int u, int v) {\n        while(nxt[u]\
-    \ != nxt[v]) {\n            if(sz[u] > sz[v]) {\n                u = up[nxt[u]];\n\
-    \            }\n            else {\n                v = up[nxt[v]];\n        \
-    \    }\n        }\n        return (in[u] < in[v]) ? u : v;\n    }\n\n    void\
-    \ set(const std::vector<Monoid> &a) {\n        for(int i = 0; i < n; ++i) {\n\
-    \            seg.set(in[i], a[i]);\n        }\n    }\n\n    void set(int i, Monoid\
-    \ x) {\n        seg.set(in[i], x);\n    }\n\n    Monoid get(int i) {\n       \
-    \ return seg.get(in[i]);\n    }\n\n    Monoid path_prod(int u, int v) {\n    \
-    \    Monoid sum_l = e(), sum_r = e();\n        while(nxt[u] != nxt[v]) {\n   \
-    \         if(sz[u] > sz[v]) {\n                sum_l = op(sum_l, seg.prod(in[nxt[u]],\
-    \ in[u]+1));\n                u = up[nxt[u]];\n            }\n            else\
-    \ {\n                sum_r = op(seg.prod(in[nxt[v]], in[v]+1), sum_r);\n     \
-    \           v = up[nxt[v]];\n            }\n        }\n        if(in[u] < in[v])\
-    \ {\n            sum_r = op(seg.prod(in[u], in[v]+1), sum_r);\n        }\n   \
-    \     else {\n            sum_l = op(sum_l, seg.prod(in[v], in[u]+1));\n     \
-    \   }\n        return op(sum_l, sum_r);\n    }\n};\n\n}\n"
+    \ op, e> seg_l, seg_r;\n\n    void dfs_sz(int v = 0) {\n        sz[v] = 1;\n \
+    \       for(auto &u : g[v]) if(u != up[v]) {\n            up[u] = v;\n       \
+    \     dfs_sz(u);\n            sz[v] += sz[u];\n            if(sz[u] > sz[g[v][0]]\
+    \ || g[v][0] == up[v]) std::swap(g[v][0], u);\n        }\n    }\n\n    void dfs_hld(int\
+    \ v = 0) {\n        in[v] = t++;\n        for(const auto &u: g[v]) if(u != up[v])\
+    \ {\n            nxt[u] = (u == g[v][0]) ? nxt[v] : u;\n            sz[u] = (u\
+    \ == g[v][0]) ? sz[v] : sz[v]+1;\n            dfs_hld(u);\n        }\n       \
+    \ out[v] = t;\n    }\npublic:\n    heavy_light_decomposition(int _n) : n(_n),\
+    \ sz(_n, 0), in(_n, 0), out(_n, 0), nxt(_n, 0), up(_n, -1), g(_n), seg_l(_n),\
+    \ seg_r(_n) { }\n\n    void add_edge(int v, int u) {\n        g[v].emplace_back(u);\n\
+    \        g[u].emplace_back(v);\n    }\n\n    void build(int root = 0) {\n    \
+    \    dfs_sz(root);\n        sz.assign(n, 0);\n        dfs_hld(root);\n    }\n\n\
+    \    int lca(int u, int v) {\n        while(nxt[u] != nxt[v]) {\n            if(sz[u]\
+    \ > sz[v]) {\n                u = up[nxt[u]];\n            }\n            else\
+    \ {\n                v = up[nxt[v]];\n            }\n        }\n        return\
+    \ (in[u] < in[v]) ? u : v;\n    }\n\n    void set(const std::vector<Monoid> &a)\
+    \ {\n        for(int i = 0; i < n; ++i) {\n            seg_l.set(in[i], a[i]);\n\
+    \            seg_r.set(n-1-in[i], a[i]);\n        }\n    }\n\n    void set(int\
+    \ i, Monoid x) {\n        seg_l.set(in[i], x);\n        seg_r.set(n-1-in[i], x);\n\
+    \    }\n\n    Monoid get(int i) {\n        return seg_l.get(in[i]);\n    }\n\n\
+    \    Monoid path_prod(int u, int v) {\n        Monoid sum_u = e(), sum_v = e();\n\
+    \        while(nxt[u] != nxt[v]) {\n            if(sz[u] > sz[v]) {\n        \
+    \        sum_u = op(sum_u, seg_r.prod(n-1-in[u], n-in[nxt[u]]));\n           \
+    \     u = up[nxt[u]];\n            }\n            else {\n                sum_v\
+    \ = op(seg_l.prod(in[nxt[v]], in[v]+1), sum_v);\n                v = up[nxt[v]];\n\
+    \            }\n        }\n        if(in[u] < in[v]) {\n            sum_v = op(seg_l.prod(in[u],\
+    \ in[v]+1), sum_v);\n        }\n        else {\n            sum_u = op(sum_u,\
+    \ seg_r.prod(n-1-in[u], n-in[v]));\n        }\n        return op(sum_u, sum_v);\n\
+    \    }\n};\n\n}\n"
   code: "#pragma once\n\n#include \"../data_structure/Segtree.hpp\"\n#include \"../graph/template.hpp\"\
     \n\n#include <vector>\n\nnamespace ebi {\n\ntemplate<class Monoid, Monoid (*op)(Monoid,\
     \ Monoid), Monoid (*e)()>\nstruct heavy_light_decomposition {\nprivate:\n    int\
     \ n, t = 0;\n    std::vector<int> sz, in, out, nxt, up;\n    graph g;\n    Segtree<Monoid,\
-    \ op, e> seg;\n\n    void dfs_sz(int v = 0) {\n        sz[v] = 1;\n        for(auto\
-    \ &u : g[v]) if(u != up[v]) {\n            up[u] = v;\n            dfs_sz(u);\n\
-    \            sz[v] += sz[u];\n            if(sz[u] > sz[g[v][0]]) std::swap(g[v][0],\
-    \ u);\n        }\n    }\n\n    void dfs_hld(int v = 0) {\n        in[v] = t++;\n\
-    \        for(const auto &u: g[v]) if(u != up[v]) {\n            nxt[u] = (u ==\
-    \ g[v][0]) ? nxt[v] : u;\n            sz[u] = (u == g[v][0]) ? sz[v] : sz[v]+1;\n\
-    \            dfs_hld(u);\n        }\n        out[v] = t;\n    }\npublic:\n   \
-    \ heavy_light_decomposition(int _n) : n(_n), sz(_n, 0), in(_n, 0), out(_n, 0),\
-    \ nxt(_n, 0), up(_n, -1), g(_n), seg(_n) { }\n\n    void add_edge(int v, int u)\
-    \ {\n        g[v].emplace_back(u);\n        g[u].emplace_back(v);\n    }\n\n \
-    \   void build(int root = 0) {\n        dfs_sz(root);\n        sz.assign(n, 0);\n\
-    \        dfs_hld(root);\n    }\n\n    int lca(int u, int v) {\n        while(nxt[u]\
-    \ != nxt[v]) {\n            if(sz[u] > sz[v]) {\n                u = up[nxt[u]];\n\
-    \            }\n            else {\n                v = up[nxt[v]];\n        \
-    \    }\n        }\n        return (in[u] < in[v]) ? u : v;\n    }\n\n    void\
-    \ set(const std::vector<Monoid> &a) {\n        for(int i = 0; i < n; ++i) {\n\
-    \            seg.set(in[i], a[i]);\n        }\n    }\n\n    void set(int i, Monoid\
-    \ x) {\n        seg.set(in[i], x);\n    }\n\n    Monoid get(int i) {\n       \
-    \ return seg.get(in[i]);\n    }\n\n    Monoid path_prod(int u, int v) {\n    \
-    \    Monoid sum_l = e(), sum_r = e();\n        while(nxt[u] != nxt[v]) {\n   \
-    \         if(sz[u] > sz[v]) {\n                sum_l = op(sum_l, seg.prod(in[nxt[u]],\
-    \ in[u]+1));\n                u = up[nxt[u]];\n            }\n            else\
-    \ {\n                sum_r = op(seg.prod(in[nxt[v]], in[v]+1), sum_r);\n     \
-    \           v = up[nxt[v]];\n            }\n        }\n        if(in[u] < in[v])\
-    \ {\n            sum_r = op(seg.prod(in[u], in[v]+1), sum_r);\n        }\n   \
-    \     else {\n            sum_l = op(sum_l, seg.prod(in[v], in[u]+1));\n     \
-    \   }\n        return op(sum_l, sum_r);\n    }\n};\n\n}\n"
+    \ op, e> seg_l, seg_r;\n\n    void dfs_sz(int v = 0) {\n        sz[v] = 1;\n \
+    \       for(auto &u : g[v]) if(u != up[v]) {\n            up[u] = v;\n       \
+    \     dfs_sz(u);\n            sz[v] += sz[u];\n            if(sz[u] > sz[g[v][0]]\
+    \ || g[v][0] == up[v]) std::swap(g[v][0], u);\n        }\n    }\n\n    void dfs_hld(int\
+    \ v = 0) {\n        in[v] = t++;\n        for(const auto &u: g[v]) if(u != up[v])\
+    \ {\n            nxt[u] = (u == g[v][0]) ? nxt[v] : u;\n            sz[u] = (u\
+    \ == g[v][0]) ? sz[v] : sz[v]+1;\n            dfs_hld(u);\n        }\n       \
+    \ out[v] = t;\n    }\npublic:\n    heavy_light_decomposition(int _n) : n(_n),\
+    \ sz(_n, 0), in(_n, 0), out(_n, 0), nxt(_n, 0), up(_n, -1), g(_n), seg_l(_n),\
+    \ seg_r(_n) { }\n\n    void add_edge(int v, int u) {\n        g[v].emplace_back(u);\n\
+    \        g[u].emplace_back(v);\n    }\n\n    void build(int root = 0) {\n    \
+    \    dfs_sz(root);\n        sz.assign(n, 0);\n        dfs_hld(root);\n    }\n\n\
+    \    int lca(int u, int v) {\n        while(nxt[u] != nxt[v]) {\n            if(sz[u]\
+    \ > sz[v]) {\n                u = up[nxt[u]];\n            }\n            else\
+    \ {\n                v = up[nxt[v]];\n            }\n        }\n        return\
+    \ (in[u] < in[v]) ? u : v;\n    }\n\n    void set(const std::vector<Monoid> &a)\
+    \ {\n        for(int i = 0; i < n; ++i) {\n            seg_l.set(in[i], a[i]);\n\
+    \            seg_r.set(n-1-in[i], a[i]);\n        }\n    }\n\n    void set(int\
+    \ i, Monoid x) {\n        seg_l.set(in[i], x);\n        seg_r.set(n-1-in[i], x);\n\
+    \    }\n\n    Monoid get(int i) {\n        return seg_l.get(in[i]);\n    }\n\n\
+    \    Monoid path_prod(int u, int v) {\n        Monoid sum_u = e(), sum_v = e();\n\
+    \        while(nxt[u] != nxt[v]) {\n            if(sz[u] > sz[v]) {\n        \
+    \        sum_u = op(sum_u, seg_r.prod(n-1-in[u], n-in[nxt[u]]));\n           \
+    \     u = up[nxt[u]];\n            }\n            else {\n                sum_v\
+    \ = op(seg_l.prod(in[nxt[v]], in[v]+1), sum_v);\n                v = up[nxt[v]];\n\
+    \            }\n        }\n        if(in[u] < in[v]) {\n            sum_v = op(seg_l.prod(in[u],\
+    \ in[v]+1), sum_v);\n        }\n        else {\n            sum_u = op(sum_u,\
+    \ seg_r.prod(n-1-in[u], n-in[v]));\n        }\n        return op(sum_u, sum_v);\n\
+    \    }\n};\n\n}\n"
   dependsOn:
   - data_structure/Segtree.hpp
   - graph/template.hpp
   isVerificationFile: false
   path: data_structure/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2021-05-03 16:17:12+09:00'
+  timestamp: '2021-05-03 17:12:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_path_sum.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
 documentation_of: data_structure/heavy_light_decomposition.hpp
 layout: document
 redirect_from:
