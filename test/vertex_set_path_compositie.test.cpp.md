@@ -81,8 +81,9 @@ data:
     \                v = up[nxt[v]];\n            }\n        }\n        if(in[u] <\
     \ in[v]) {\n            sum_v = op(seg_l.prod(in[u], in[v]+1), sum_v);\n     \
     \   }\n        else {\n            sum_u = op(sum_u, seg_r.prod(n-1-in[u], n-in[v]));\n\
-    \        }\n        return op(sum_u, sum_v);\n    }\n};\n\n}\n#line 2 \"utility/modint.hpp\"\
-    \n\r\n/*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
+    \        }\n        return op(sum_u, sum_v);\n    }\n\n    Monoid subtree_prod(int\
+    \ u) {\n        return seg_l.prod(in[u], out[u]);\n    }\n};\n\n}\n#line 2 \"\
+    utility/modint.hpp\"\n\r\n/*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
     \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
     \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
     \u306E\u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n#include <iostream>\r\n\r\
@@ -161,7 +162,7 @@ data:
   isVerificationFile: true
   path: test/vertex_set_path_compositie.test.cpp
   requiredBy: []
-  timestamp: '2021-05-03 17:12:58+09:00'
+  timestamp: '2021-05-03 17:22:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/vertex_set_path_compositie.test.cpp

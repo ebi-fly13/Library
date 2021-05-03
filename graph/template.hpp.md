@@ -14,6 +14,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
+  - icon: ':warning:'
+    path: test/vertex_add_subtree_sum.text.cpp
+    title: test/vertex_add_subtree_sum.text.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
@@ -48,6 +51,7 @@ data:
   isVerificationFile: false
   path: graph/template.hpp
   requiredBy:
+  - test/vertex_add_subtree_sum.text.cpp
   - data_structure/heavy_light_decomposition.hpp
   - graph/dijkstra.hpp
   - graph/scc_graph.hpp

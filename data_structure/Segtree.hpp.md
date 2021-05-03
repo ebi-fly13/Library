@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/heavy_light_decomposition.hpp
     title: data_structure/heavy_light_decomposition.hpp
+  - icon: ':warning:'
+    path: test/vertex_add_subtree_sum.text.cpp
+    title: test/vertex_add_subtree_sum.text.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Segtree.test.cpp
@@ -63,6 +66,7 @@ data:
   isVerificationFile: false
   path: data_structure/Segtree.hpp
   requiredBy:
+  - test/vertex_add_subtree_sum.text.cpp
   - data_structure/heavy_light_decomposition.hpp
   timestamp: '2021-05-03 16:11:06+09:00'
   verificationStatus: LIBRARY_ALL_AC

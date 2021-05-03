@@ -7,7 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: test/vertex_add_subtree_sum.text.cpp
+    title: test/vertex_add_subtree_sum.text.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
@@ -77,6 +80,7 @@ data:
     \            }\n        }\n        if(in[u] < in[v]) {\n            sum_v = op(seg_l.prod(in[u],\
     \ in[v]+1), sum_v);\n        }\n        else {\n            sum_u = op(sum_u,\
     \ seg_r.prod(n-1-in[u], n-in[v]));\n        }\n        return op(sum_u, sum_v);\n\
+    \    }\n\n    Monoid subtree_prod(int u) {\n        return seg_l.prod(in[u], out[u]);\n\
     \    }\n};\n\n}\n"
   code: "#pragma once\n\n#include \"../data_structure/Segtree.hpp\"\n#include \"../graph/template.hpp\"\
     \n\n#include <vector>\n\nnamespace ebi {\n\ntemplate<class Monoid, Monoid (*op)(Monoid,\
@@ -110,14 +114,16 @@ data:
     \            }\n        }\n        if(in[u] < in[v]) {\n            sum_v = op(seg_l.prod(in[u],\
     \ in[v]+1), sum_v);\n        }\n        else {\n            sum_u = op(sum_u,\
     \ seg_r.prod(n-1-in[u], n-in[v]));\n        }\n        return op(sum_u, sum_v);\n\
+    \    }\n\n    Monoid subtree_prod(int u) {\n        return seg_l.prod(in[u], out[u]);\n\
     \    }\n};\n\n}\n"
   dependsOn:
   - data_structure/Segtree.hpp
   - graph/template.hpp
   isVerificationFile: false
   path: data_structure/heavy_light_decomposition.hpp
-  requiredBy: []
-  timestamp: '2021-05-03 17:12:58+09:00'
+  requiredBy:
+  - test/vertex_add_subtree_sum.text.cpp
+  timestamp: '2021-05-03 17:22:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_path_sum.test.cpp

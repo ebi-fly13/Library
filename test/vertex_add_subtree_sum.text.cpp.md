@@ -14,14 +14,12 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
     links:
-    - https://judge.yosupo.jp/problem/vertex_add_path_sum
-  bundledCode: "#line 1 \"test/vertex_add_path_sum.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\n#line 2 \"data_structure/heavy_light_decomposition.hpp\"\
+    - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
+  bundledCode: "#line 1 \"test/vertex_add_subtree_sum.text.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\n#line 2 \"data_structure/heavy_light_decomposition.hpp\"\
     \n\n#line 2 \"data_structure/Segtree.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\
     \nstruct Segtree {\r\nprivate:\r\n    std::vector<Monoid> data;\r\n    int n;\r\
@@ -79,45 +77,45 @@ data:
     \ in[v]+1), sum_v);\n        }\n        else {\n            sum_u = op(sum_u,\
     \ seg_r.prod(n-1-in[u], n-in[v]));\n        }\n        return op(sum_u, sum_v);\n\
     \    }\n\n    Monoid subtree_prod(int u) {\n        return seg_l.prod(in[u], out[u]);\n\
-    \    }\n};\n\n}\n#line 4 \"test/vertex_add_path_sum.test.cpp\"\n\n#include <iostream>\n\
-    #line 7 \"test/vertex_add_path_sum.test.cpp\"\n\nusing i64 = std::int64_t;\ni64\
-    \ op(i64 a, i64 b) { return a+b; }\ni64 e() { return 0; }\n\nint main() {\n  \
-    \  int n,q;\n    std::cin >> n >> q;\n    std::vector<i64> a(n);\n    for(int\
-    \ i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n    ebi::heavy_light_decomposition<i64,\
-    \ op, e> hld(n);\n    for(int i = 0; i < n-1; ++i) {\n        int u,v;\n     \
-    \   std::cin >> u >> v;\n        hld.add_edge(u,v);\n    }\n    hld.build();\n\
-    \    hld.set(a);\n    while(q--) {\n        int flag;\n        std::cin >> flag;\n\
-    \        if(flag == 0) {\n            int p;\n            i64 x;\n           \
-    \ std::cin >> p >> x;\n            hld.set(p, hld.get(p) + x);\n        }\n  \
-    \      else {\n            int u,v;\n            std::cin >> u >> v;\n       \
-    \     std::cout << hld.path_prod(u, v) << std::endl;\n        }   \n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
-    \n#include \"../data_structure/heavy_light_decomposition.hpp\"\n\n#include <iostream>\n\
+    \    }\n};\n\n}\n#line 4 \"test/vertex_add_subtree_sum.text.cpp\"\n\n#include\
+    \ <iostream>\n#line 7 \"test/vertex_add_subtree_sum.text.cpp\"\n\nusing i64 =\
+    \ std::int64_t;\ni64 op(i64 a, i64 b) { return a+b; }\ni64 e() { return 0; }\n\
+    \nint main() {\n    int n,q;\n    std::cin >> n >> q;\n    std::vector<i64> a(n);\n\
+    \    for(int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n    ebi::heavy_light_decomposition<i64,\
+    \ op, e> hld(n);\n    for(int i = 1; i < n; ++i) {\n        int p;\n        std::cin\
+    \ >> p;\n        hld.add_edge(i, p);\n    }\n    hld.build();\n    hld.set(a);\n\
+    \    while(q--) {\n        int flag;\n        std::cin >> flag;\n        if(flag\
+    \ == 0) {\n            int u;\n            i64 x;\n            std::cin >> u >>\
+    \ x;\n            hld.set(u, hld.get(u) + x);\n        }\n        else {\n   \
+    \         int u;\n            std::cin >> u;\n            std::cout << hld.subtree_prod(u)\
+    \ << '\\n';\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
+    \n\n#include \"../data_structure/heavy_light_decomposition.hpp\"\n\n#include <iostream>\n\
     #include <vector>\n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) { return\
     \ a+b; }\ni64 e() { return 0; }\n\nint main() {\n    int n,q;\n    std::cin >>\
     \ n >> q;\n    std::vector<i64> a(n);\n    for(int i = 0; i < n; ++i) {\n    \
     \    std::cin >> a[i];\n    }\n    ebi::heavy_light_decomposition<i64, op, e>\
-    \ hld(n);\n    for(int i = 0; i < n-1; ++i) {\n        int u,v;\n        std::cin\
-    \ >> u >> v;\n        hld.add_edge(u,v);\n    }\n    hld.build();\n    hld.set(a);\n\
+    \ hld(n);\n    for(int i = 1; i < n; ++i) {\n        int p;\n        std::cin\
+    \ >> p;\n        hld.add_edge(i, p);\n    }\n    hld.build();\n    hld.set(a);\n\
     \    while(q--) {\n        int flag;\n        std::cin >> flag;\n        if(flag\
-    \ == 0) {\n            int p;\n            i64 x;\n            std::cin >> p >>\
-    \ x;\n            hld.set(p, hld.get(p) + x);\n        }\n        else {\n   \
-    \         int u,v;\n            std::cin >> u >> v;\n            std::cout <<\
-    \ hld.path_prod(u, v) << std::endl;\n        }   \n    }\n}"
+    \ == 0) {\n            int u;\n            i64 x;\n            std::cin >> u >>\
+    \ x;\n            hld.set(u, hld.get(u) + x);\n        }\n        else {\n   \
+    \         int u;\n            std::cin >> u;\n            std::cout << hld.subtree_prod(u)\
+    \ << '\\n';\n        }\n    }\n}"
   dependsOn:
   - data_structure/heavy_light_decomposition.hpp
   - data_structure/Segtree.hpp
   - graph/template.hpp
-  isVerificationFile: true
-  path: test/vertex_add_path_sum.test.cpp
+  isVerificationFile: false
+  path: test/vertex_add_subtree_sum.text.cpp
   requiredBy: []
   timestamp: '2021-05-03 17:22:56+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: test/vertex_add_path_sum.test.cpp
+documentation_of: test/vertex_add_subtree_sum.text.cpp
 layout: document
 redirect_from:
-- /verify/test/vertex_add_path_sum.test.cpp
-- /verify/test/vertex_add_path_sum.test.cpp.html
-title: test/vertex_add_path_sum.test.cpp
+- /library/test/vertex_add_subtree_sum.text.cpp
+- /library/test/vertex_add_subtree_sum.text.cpp.html
+title: test/vertex_add_subtree_sum.text.cpp
 ---
