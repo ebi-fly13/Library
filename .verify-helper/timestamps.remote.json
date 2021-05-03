@@ -31,6 +31,6 @@
 "test/pow.test.cpp": "2021-03-19 15:15:41 +0900",
 "test/scc_graph.test.cpp": "2021-01-19 00:38:59 +0900",
 "test/subset_convolution.test.cpp": "2021-04-04 17:12:45 +0900",
-"test/vertex_add_path_sum.test.cpp": "2021-05-03 17:12:58 +0900",
-"test/vertex_set_path_compositie.test.cpp": "2021-05-03 17:12:58 +0900"
+"test/vertex_add_path_sum.test.cpp": "2021-05-03 17:22:56 +0900",
+"test/vertex_set_path_compositie.test.cpp": "2021-05-03 17:22:56 +0900"
 }
