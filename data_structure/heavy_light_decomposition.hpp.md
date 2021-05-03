@@ -7,14 +7,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: test/vertex_add_subtree_sum.text.cpp
-    title: test/vertex_add_subtree_sum.text.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_subtree_sum.test.cpp
+    title: test/vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
@@ -121,13 +121,13 @@ data:
   - graph/template.hpp
   isVerificationFile: false
   path: data_structure/heavy_light_decomposition.hpp
-  requiredBy:
-  - test/vertex_add_subtree_sum.text.cpp
+  requiredBy: []
   timestamp: '2021-05-03 17:22:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_path_sum.test.cpp
   - test/vertex_set_path_compositie.test.cpp
+  - test/vertex_add_subtree_sum.test.cpp
 documentation_of: data_structure/heavy_light_decomposition.hpp
 layout: document
 redirect_from:

@@ -5,9 +5,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/heavy_light_decomposition.hpp
     title: data_structure/heavy_light_decomposition.hpp
-  - icon: ':warning:'
-    path: test/vertex_add_subtree_sum.text.cpp
-    title: test/vertex_add_subtree_sum.text.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Segtree.test.cpp
@@ -15,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_subtree_sum.test.cpp
+    title: test/vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
@@ -66,7 +66,6 @@ data:
   isVerificationFile: false
   path: data_structure/Segtree.hpp
   requiredBy:
-  - test/vertex_add_subtree_sum.text.cpp
   - data_structure/heavy_light_decomposition.hpp
   timestamp: '2021-05-03 16:11:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -74,6 +73,7 @@ data:
   - test/vertex_add_path_sum.test.cpp
   - test/vertex_set_path_compositie.test.cpp
   - test/Segtree.test.cpp
+  - test/vertex_add_subtree_sum.test.cpp
 documentation_of: data_structure/Segtree.hpp
 layout: document
 title: Segtree

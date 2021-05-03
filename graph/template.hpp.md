@@ -14,9 +14,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
-  - icon: ':warning:'
-    path: test/vertex_add_subtree_sum.text.cpp
-    title: test/vertex_add_subtree_sum.text.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
@@ -30,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_subtree_sum.test.cpp
+    title: test/vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
@@ -51,7 +51,6 @@ data:
   isVerificationFile: false
   path: graph/template.hpp
   requiredBy:
-  - test/vertex_add_subtree_sum.text.cpp
   - data_structure/heavy_light_decomposition.hpp
   - graph/dijkstra.hpp
   - graph/scc_graph.hpp
@@ -64,6 +63,7 @@ data:
   - test/scc_graph.test.cpp
   - test/vertex_set_path_compositie.test.cpp
   - test/fibonacci_heap.test.cpp
+  - test/vertex_add_subtree_sum.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:

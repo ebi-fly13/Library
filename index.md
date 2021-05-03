@@ -132,11 +132,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/pow.hpp
       title: math/pow.hpp
-  - name: test
-    pages:
-    - icon: ':warning:'
-      path: test/vertex_add_subtree_sum.text.cpp
-      title: test/vertex_add_subtree_sum.text.cpp
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
@@ -247,6 +242,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/vertex_add_path_sum.test.cpp
       title: test/vertex_add_path_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/vertex_add_subtree_sum.test.cpp
+      title: test/vertex_add_subtree_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/vertex_set_path_compositie.test.cpp
       title: test/vertex_set_path_compositie.test.cpp

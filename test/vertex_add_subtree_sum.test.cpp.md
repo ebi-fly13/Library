@@ -14,11 +14,13 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
     links:
     - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
-  bundledCode: "#line 1 \"test/vertex_add_subtree_sum.text.cpp\"\n#define PROBLEM\
+  bundledCode: "#line 1 \"test/vertex_add_subtree_sum.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\n#line 2 \"data_structure/heavy_light_decomposition.hpp\"\
     \n\n#line 2 \"data_structure/Segtree.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\
@@ -77,8 +79,8 @@ data:
     \ in[v]+1), sum_v);\n        }\n        else {\n            sum_u = op(sum_u,\
     \ seg_r.prod(n-1-in[u], n-in[v]));\n        }\n        return op(sum_u, sum_v);\n\
     \    }\n\n    Monoid subtree_prod(int u) {\n        return seg_l.prod(in[u], out[u]);\n\
-    \    }\n};\n\n}\n#line 4 \"test/vertex_add_subtree_sum.text.cpp\"\n\n#include\
-    \ <iostream>\n#line 7 \"test/vertex_add_subtree_sum.text.cpp\"\n\nusing i64 =\
+    \    }\n};\n\n}\n#line 4 \"test/vertex_add_subtree_sum.test.cpp\"\n\n#include\
+    \ <iostream>\n#line 7 \"test/vertex_add_subtree_sum.test.cpp\"\n\nusing i64 =\
     \ std::int64_t;\ni64 op(i64 a, i64 b) { return a+b; }\ni64 e() { return 0; }\n\
     \nint main() {\n    int n,q;\n    std::cin >> n >> q;\n    std::vector<i64> a(n);\n\
     \    for(int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n    ebi::heavy_light_decomposition<i64,\
@@ -106,16 +108,16 @@ data:
   - data_structure/heavy_light_decomposition.hpp
   - data_structure/Segtree.hpp
   - graph/template.hpp
-  isVerificationFile: false
-  path: test/vertex_add_subtree_sum.text.cpp
+  isVerificationFile: true
+  path: test/vertex_add_subtree_sum.test.cpp
   requiredBy: []
-  timestamp: '2021-05-03 17:22:56+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2021-05-03 18:23:33+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/vertex_add_subtree_sum.text.cpp
+documentation_of: test/vertex_add_subtree_sum.test.cpp
 layout: document
 redirect_from:
-- /library/test/vertex_add_subtree_sum.text.cpp
-- /library/test/vertex_add_subtree_sum.text.cpp.html
-title: test/vertex_add_subtree_sum.text.cpp
+- /verify/test/vertex_add_subtree_sum.test.cpp
+- /verify/test/vertex_add_subtree_sum.test.cpp.html
+title: test/vertex_add_subtree_sum.test.cpp
 ---
