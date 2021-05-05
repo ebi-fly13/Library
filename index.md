@@ -79,6 +79,9 @@ data:
       path: data_structure/heavy_light_decomposition.hpp
       title: data_structure/heavy_light_decomposition.hpp
     - icon: ':warning:'
+      path: data_structure/online_mex.hpp
+      title: data_structure/online_mex.hpp
+    - icon: ':warning:'
       path: data_structure/partially_persistent_unionfind.hpp
       title: data_structure/partially_persistent_unionfind.hpp
     - icon: ':heavy_check_mark:'
