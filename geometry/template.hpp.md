@@ -102,8 +102,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/intersection.test.cpp
-  - test/point.test.cpp
   - test/isp.test.cpp
+  - test/point.test.cpp
 documentation_of: geometry/template.hpp
 layout: document
 redirect_from:
