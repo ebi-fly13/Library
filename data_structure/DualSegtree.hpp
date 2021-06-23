@@ -5,19 +5,19 @@
 namespace ebi {
 
 template<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
-struct DuelSegtree {
+struct DualSegtree {
 private:
     std::vector<Monoid> data;
     int n;
 public:
-    DuelSegtree(int _n) : n(1) {
+    DualSegtree(int _n) : n(1) {
         while(n<_n){
             n <<= 1;
         }
         data.assign(2*n-1, e());
     }
 
-    DuelSegtree(std::vector<Monoid> v) : n(1) {
+    DualSegtree(std::vector<Monoid> v) : n(1) {
         int _n = v.size();
         while(n<_n){
             n <<= 1;

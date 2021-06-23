@@ -1,6 +1,6 @@
 #define PROBLEM "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E"
 
-#include "../data_structure/DuelSegtree.hpp"
+#include "../data_structure/DualSegtree.hpp"
 
 #include <iostream>
 #include <vector>
@@ -15,7 +15,7 @@ int e(){
 
 int main() {
     int n,q; std::cin >> n >> q;
-    ebi::DuelSegtree<int, op, e> dseg(n);
+    ebi::DualSegtree<int, op, e> dseg(n);
     while(q--){
         int flag;
         std::cin >> flag;
