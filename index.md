@@ -25,8 +25,8 @@ data:
       path: data_structure/BinaryTrie.hpp
       title: data_structure/BinaryTrie.hpp
     - icon: ':heavy_check_mark:'
-      path: data_structure/DuelSegtree.hpp
-      title: data_structure/DuelSegtree.hpp
+      path: data_structure/DualSegtree.hpp
+      title: data_structure/DualSegtree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/DynamicSegmentTree.hpp
       title: data_structure/DynamicSegmentTree.hpp
@@ -153,8 +153,8 @@ data:
       path: test/Determinant_of_Matrix.test.cpp
       title: test/Determinant_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/DuelSegtree.test.cpp
-      title: test/DuelSegtree.test.cpp
+      path: test/DualSegtree.test.cpp
+      title: test/DualSegtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/DynamicSegmentTree.test.cpp
       title: test/DynamicSegmentTree.test.cpp

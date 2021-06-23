@@ -4,19 +4,19 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/DuelSegtree.test.cpp
-    title: test/DuelSegtree.test.cpp
+    path: test/DualSegtree.test.cpp
+    title: test/DualSegtree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/DuelSegtree.hpp\"\n\r\n#include <vector>\r\
+  bundledCode: "#line 2 \"data_structure/DualSegtree.hpp\"\n\r\n#include <vector>\r\
     \n\r\nnamespace ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid),\
-    \ Monoid (*e)()>\r\nstruct DuelSegtree {\r\nprivate:\r\n    std::vector<Monoid>\
-    \ data;\r\n    int n;\r\npublic:\r\n    DuelSegtree(int _n) : n(1) {\r\n     \
+    \ Monoid (*e)()>\r\nstruct DualSegtree {\r\nprivate:\r\n    std::vector<Monoid>\
+    \ data;\r\n    int n;\r\npublic:\r\n    DualSegtree(int _n) : n(1) {\r\n     \
     \   while(n<_n){\r\n            n <<= 1;\r\n        }\r\n        data.assign(2*n-1,\
-    \ e());\r\n    }\r\n\r\n    DuelSegtree(std::vector<Monoid> v) : n(1) {\r\n  \
+    \ e());\r\n    }\r\n\r\n    DualSegtree(std::vector<Monoid> v) : n(1) {\r\n  \
     \      int _n = v.size();\r\n        while(n<_n){\r\n            n <<= 1;\r\n\
     \        }\r\n        data.assign(2*n-1, e());\r\n        for(int i = 0; i<_n;\
     \ i++){\r\n            data[i+n-1] = v[i];\r\n        }\r\n    }\r\n\r\n    Monoid\
@@ -30,10 +30,10 @@ data:
     \n        apply(tl, tr, x,(l+r)/2, r, 2*index+2);\r\n        return;\r\n    }\r\
     \n};\r\n\r\n} // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
-    \ Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct DuelSegtree {\r\
-    \nprivate:\r\n    std::vector<Monoid> data;\r\n    int n;\r\npublic:\r\n    DuelSegtree(int\
+    \ Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct DualSegtree {\r\
+    \nprivate:\r\n    std::vector<Monoid> data;\r\n    int n;\r\npublic:\r\n    DualSegtree(int\
     \ _n) : n(1) {\r\n        while(n<_n){\r\n            n <<= 1;\r\n        }\r\n\
-    \        data.assign(2*n-1, e());\r\n    }\r\n\r\n    DuelSegtree(std::vector<Monoid>\
+    \        data.assign(2*n-1, e());\r\n    }\r\n\r\n    DualSegtree(std::vector<Monoid>\
     \ v) : n(1) {\r\n        int _n = v.size();\r\n        while(n<_n){\r\n      \
     \      n <<= 1;\r\n        }\r\n        data.assign(2*n-1, e());\r\n        for(int\
     \ i = 0; i<_n; i++){\r\n            data[i+n-1] = v[i];\r\n        }\r\n    }\r\
@@ -48,16 +48,16 @@ data:
     \n    }\r\n};\r\n\r\n} // namespace ebi"
   dependsOn: []
   isVerificationFile: false
-  path: data_structure/DuelSegtree.hpp
+  path: data_structure/DualSegtree.hpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
+  timestamp: '2021-06-23 13:29:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/DuelSegtree.test.cpp
-documentation_of: data_structure/DuelSegtree.hpp
+  - test/DualSegtree.test.cpp
+documentation_of: data_structure/DualSegtree.hpp
 layout: document
 redirect_from:
-- /library/data_structure/DuelSegtree.hpp
-- /library/data_structure/DuelSegtree.hpp.html
-title: data_structure/DuelSegtree.hpp
+- /library/data_structure/DualSegtree.hpp
+- /library/data_structure/DualSegtree.hpp.html
+title: data_structure/DualSegtree.hpp
 ---
