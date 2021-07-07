@@ -37,6 +37,7 @@ public:
 
     std::vector<u64> pow_table(int k, u64 mod) {
         std::vector<u64> table(n+1,1);
+        table[0] = 0;
         for(int i = 2; i<= n; i++) {
             if(sieve[i] == i) {
                 table[i] = pow(u64(i), k, mod);
