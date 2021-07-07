@@ -37,11 +37,12 @@ data:
     \n                sieve[p*i] = p;\r\n            }\r\n        }\r\n    }\r\n\r\
     \n    std::vector<int> prime_table() {\r\n        return prime;\r\n    }\r\n\r\
     \n    std::vector<u64> pow_table(int k, u64 mod) {\r\n        std::vector<u64>\
-    \ table(n+1,1);\r\n        for(int i = 2; i<= n; i++) {\r\n            if(sieve[i]\
-    \ == i) {\r\n                table[i] = pow(u64(i), k, mod);\r\n             \
-    \   continue;\r\n            }\r\n            table[i] = table[sieve[i]]*table[i/sieve[i]]%mod;\r\
-    \n        }\r\n        return table;\r\n    }\r\n\r\n    std::vector<u64> inv_table(u64\
-    \ mod) {\r\n        return pow_table(mod-2, mod);\r\n    }\r\n};\r\n\r\n}\r\n"
+    \ table(n+1,1);\r\n        table[0] = 0;\r\n        for(int i = 2; i<= n; i++)\
+    \ {\r\n            if(sieve[i] == i) {\r\n                table[i] = pow(u64(i),\
+    \ k, mod);\r\n                continue;\r\n            }\r\n            table[i]\
+    \ = table[sieve[i]]*table[i/sieve[i]]%mod;\r\n        }\r\n        return table;\r\
+    \n    }\r\n\r\n    std::vector<u64> inv_table(u64 mod) {\r\n        return pow_table(mod-2,\
+    \ mod);\r\n    }\r\n};\r\n\r\n}\r\n"
   code: "#pragma once\r\n\r\n#include \"../math/pow.hpp\"\r\n#include \"../utility/int_alias.hpp\"\
     \r\n\r\n/*\r\n    reference: https://37zigen.com/linear-sieve/\r\n*/\r\n\r\n#include\
     \ <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve {\r\nprivate:\r\n\
@@ -54,18 +55,19 @@ data:
     \n                sieve[p*i] = p;\r\n            }\r\n        }\r\n    }\r\n\r\
     \n    std::vector<int> prime_table() {\r\n        return prime;\r\n    }\r\n\r\
     \n    std::vector<u64> pow_table(int k, u64 mod) {\r\n        std::vector<u64>\
-    \ table(n+1,1);\r\n        for(int i = 2; i<= n; i++) {\r\n            if(sieve[i]\
-    \ == i) {\r\n                table[i] = pow(u64(i), k, mod);\r\n             \
-    \   continue;\r\n            }\r\n            table[i] = table[sieve[i]]*table[i/sieve[i]]%mod;\r\
-    \n        }\r\n        return table;\r\n    }\r\n\r\n    std::vector<u64> inv_table(u64\
-    \ mod) {\r\n        return pow_table(mod-2, mod);\r\n    }\r\n};\r\n\r\n}\r\n"
+    \ table(n+1,1);\r\n        table[0] = 0;\r\n        for(int i = 2; i<= n; i++)\
+    \ {\r\n            if(sieve[i] == i) {\r\n                table[i] = pow(u64(i),\
+    \ k, mod);\r\n                continue;\r\n            }\r\n            table[i]\
+    \ = table[sieve[i]]*table[i/sieve[i]]%mod;\r\n        }\r\n        return table;\r\
+    \n    }\r\n\r\n    std::vector<u64> inv_table(u64 mod) {\r\n        return pow_table(mod-2,\
+    \ mod);\r\n    }\r\n};\r\n\r\n}\r\n"
   dependsOn:
   - math/pow.hpp
   - utility/int_alias.hpp
   isVerificationFile: false
   path: math/linear_sieve.hpp
   requiredBy: []
-  timestamp: '2021-03-19 15:15:41+09:00'
+  timestamp: '2021-07-07 23:01:18+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/linear_sieve.hpp
