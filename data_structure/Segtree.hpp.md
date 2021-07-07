@@ -71,9 +71,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_path_sum.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
   - test/Segtree.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
 documentation_of: data_structure/Segtree.hpp
 layout: document
 title: Segtree

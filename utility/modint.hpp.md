@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
+  - icon: ':warning:'
+    path: math/lagrange_interpolation.hpp
+    title: math/lagrange_interpolation.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Determinant_of_Matrix.test.cpp
@@ -133,21 +136,22 @@ data:
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy:
-  - algorithm/convolution.hpp
   - math/FormalPowerSeries.hpp
+  - math/lagrange_interpolation.hpp
+  - algorithm/convolution.hpp
   timestamp: '2021-04-04 17:12:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/subset_convolution.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/DynamicSegmentTree.test.cpp
   - test/LazySegtree.test.cpp
-  - test/ImplicitTreap.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
-  - test/convolution.test.cpp
-  - test/Inv_of_Formal_Power_Series.test.cpp
   - test/SWAG.test.cpp
   - test/Determinant_of_Matrix.test.cpp
-  - test/DynamicSegmentTree.test.cpp
+  - test/ImplicitTreap.test.cpp
+  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
+  - test/convolution.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
 documentation_of: utility/modint.hpp
 layout: document

@@ -130,6 +130,9 @@ data:
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
     - icon: ':warning:'
+      path: math/lagrange_interpolation.hpp
+      title: math/lagrange_interpolation.hpp
+    - icon: ':warning:'
       path: math/linear_sieve.hpp
       title: math/linear_sieve.hpp
     - icon: ':heavy_check_mark:'

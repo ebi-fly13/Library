@@ -58,12 +58,12 @@ data:
   timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dijkstra.test.cpp
   - test/vertex_add_path_sum.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
-  - test/scc_graph.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
   - test/fibonacci_heap.test.cpp
+  - test/dijkstra.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
+  - test/scc_graph.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:
