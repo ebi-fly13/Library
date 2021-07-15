@@ -72,6 +72,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
+    - icon: ':warning:'
+      path: data_structure/compress.hpp
+      title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/fibonacci_heap.hpp
       title: fibonacci_heap
