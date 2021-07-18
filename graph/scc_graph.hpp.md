@@ -4,11 +4,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: algorithm/two_sat.hpp
+    title: algorithm/two_sat.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/scc_graph.test.cpp
     title: test/scc_graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/two_sat.test.cpp
+    title: test/two_sat.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -65,10 +71,12 @@ data:
   - graph/template.hpp
   isVerificationFile: false
   path: graph/scc_graph.hpp
-  requiredBy: []
+  requiredBy:
+  - algorithm/two_sat.hpp
   timestamp: '2021-07-18 12:42:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/two_sat.test.cpp
   - test/scc_graph.test.cpp
 documentation_of: graph/scc_graph.hpp
 layout: document

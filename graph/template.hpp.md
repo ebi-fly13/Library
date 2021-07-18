@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: algorithm/two_sat.hpp
+    title: algorithm/two_sat.hpp
+  - icon: ':heavy_check_mark:'
     path: data_structure/heavy_light_decomposition.hpp
     title: data_structure/heavy_light_decomposition.hpp
   - icon: ':heavy_check_mark:'
@@ -24,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/scc_graph.test.cpp
     title: test/scc_graph.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/two_sat.test.cpp
+    title: test/two_sat.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
@@ -55,6 +61,7 @@ data:
   - graph/dijkstra_fibheap.hpp
   - graph/scc_graph.hpp
   - data_structure/heavy_light_decomposition.hpp
+  - algorithm/two_sat.hpp
   timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -63,6 +70,7 @@ data:
   - test/fibonacci_heap.test.cpp
   - test/dijkstra.test.cpp
   - test/vertex_set_path_compositie.test.cpp
+  - test/two_sat.test.cpp
   - test/scc_graph.test.cpp
 documentation_of: graph/template.hpp
 layout: document

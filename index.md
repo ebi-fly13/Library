@@ -19,6 +19,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/subset_convolution.hpp
       title: algorithm/subset_convolution.hpp
+    - icon: ':heavy_check_mark:'
+      path: algorithm/two_sat.hpp
+      title: algorithm/two_sat.hpp
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -248,6 +251,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/subset_convolution.test.cpp
       title: test/subset_convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/two_sat.test.cpp
+      title: test/two_sat.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/vertex_add_path_sum.test.cpp
       title: test/vertex_add_path_sum.test.cpp
