@@ -67,6 +67,10 @@ public:
         return res;
     }
 
+    std::vector<int> scc_id() {
+        return cmp;
+    }
+
     bool same(int u, int v) {
         return cmp[u]==cmp[v];
     }
