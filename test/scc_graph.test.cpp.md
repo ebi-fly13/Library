@@ -41,16 +41,16 @@ data:
     \ {\r\n                rdfs(v);\r\n                k++;\r\n            }\r\n \
     \       }\r\n        std::vector<std::vector<int>> res(k);\r\n        for(int\
     \ i = 0; i<n; i++) {\r\n            res[cmp[i]].emplace_back(i);\r\n        }\r\
-    \n        return res;\r\n    }\r\n\r\n    bool same(int u, int v) {\r\n      \
-    \  return cmp[u]==cmp[v];\r\n    }\r\n};\r\n\r\n} // namespace ebi\n#line 5 \"\
-    test/scc_graph.test.cpp\"\n\r\n#include <iostream>\r\n\r\nint main() {\r\n   \
-    \ int n,m;\r\n    std::cin >> n >> m;\r\n    ebi::scc_graph g(n);\r\n    for(int\
-    \ i = 0; i<m; ++i) {\r\n        int a,b;\r\n        std::cin >> a >> b;\r\n  \
-    \      g.add_edge(a,b);\r\n    }\r\n    auto scc = g.scc();\r\n    int sz = scc.size();\r\
-    \n    std::cout << sz << '\\n';\r\n    for(int i = 0; i<sz; ++i) {\r\n       \
-    \ std::cout << scc[i].size();\r\n        for(auto v: scc[i]) {\r\n           \
-    \ std::cout << \" \" << v;\r\n        }\r\n        std::cout << '\\n';\r\n   \
-    \ }\r\n}\n"
+    \n        return res;\r\n    }\r\n\r\n    std::vector<int> scc_id() {\r\n    \
+    \    return cmp;\r\n    }\r\n\r\n    bool same(int u, int v) {\r\n        return\
+    \ cmp[u]==cmp[v];\r\n    }\r\n};\r\n\r\n} // namespace ebi\n#line 5 \"test/scc_graph.test.cpp\"\
+    \n\r\n#include <iostream>\r\n\r\nint main() {\r\n    int n,m;\r\n    std::cin\
+    \ >> n >> m;\r\n    ebi::scc_graph g(n);\r\n    for(int i = 0; i<m; ++i) {\r\n\
+    \        int a,b;\r\n        std::cin >> a >> b;\r\n        g.add_edge(a,b);\r\
+    \n    }\r\n    auto scc = g.scc();\r\n    int sz = scc.size();\r\n    std::cout\
+    \ << sz << '\\n';\r\n    for(int i = 0; i<sz; ++i) {\r\n        std::cout << scc[i].size();\r\
+    \n        for(auto v: scc[i]) {\r\n            std::cout << \" \" << v;\r\n  \
+    \      }\r\n        std::cout << '\\n';\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\r\n\r\n#include \"\
     ../graph/template.hpp\"\r\n#include \"../graph/scc_graph.hpp\"\r\n\r\n#include\
     \ <iostream>\r\n\r\nint main() {\r\n    int n,m;\r\n    std::cin >> n >> m;\r\n\
@@ -66,7 +66,7 @@ data:
   isVerificationFile: true
   path: test/scc_graph.test.cpp
   requiredBy: []
-  timestamp: '2021-01-19 00:38:59+09:00'
+  timestamp: '2021-07-18 12:42:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/scc_graph.test.cpp

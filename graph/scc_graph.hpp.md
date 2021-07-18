@@ -37,8 +37,9 @@ data:
     \ {\r\n                rdfs(v);\r\n                k++;\r\n            }\r\n \
     \       }\r\n        std::vector<std::vector<int>> res(k);\r\n        for(int\
     \ i = 0; i<n; i++) {\r\n            res[cmp[i]].emplace_back(i);\r\n        }\r\
-    \n        return res;\r\n    }\r\n\r\n    bool same(int u, int v) {\r\n      \
-    \  return cmp[u]==cmp[v];\r\n    }\r\n};\r\n\r\n} // namespace ebi\n"
+    \n        return res;\r\n    }\r\n\r\n    std::vector<int> scc_id() {\r\n    \
+    \    return cmp;\r\n    }\r\n\r\n    bool same(int u, int v) {\r\n        return\
+    \ cmp[u]==cmp[v];\r\n    }\r\n};\r\n\r\n} // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include \"../graph/template.hpp\"\r\n\r\n#include <vector>\r\
     \n#include <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nstruct scc_graph {\r\nprivate:\r\
     \n    graph g,rg;\r\n    int n,k;\r\n\r\n    std::vector<int> vs, cmp;\r\n   \
@@ -57,14 +58,15 @@ data:
     \ &v: vs) {\r\n            if(cmp[v]<0) {\r\n                rdfs(v);\r\n    \
     \            k++;\r\n            }\r\n        }\r\n        std::vector<std::vector<int>>\
     \ res(k);\r\n        for(int i = 0; i<n; i++) {\r\n            res[cmp[i]].emplace_back(i);\r\
-    \n        }\r\n        return res;\r\n    }\r\n\r\n    bool same(int u, int v)\
-    \ {\r\n        return cmp[u]==cmp[v];\r\n    }\r\n};\r\n\r\n} // namespace ebi"
+    \n        }\r\n        return res;\r\n    }\r\n\r\n    std::vector<int> scc_id()\
+    \ {\r\n        return cmp;\r\n    }\r\n\r\n    bool same(int u, int v) {\r\n \
+    \       return cmp[u]==cmp[v];\r\n    }\r\n};\r\n\r\n} // namespace ebi"
   dependsOn:
   - graph/template.hpp
   isVerificationFile: false
   path: graph/scc_graph.hpp
   requiredBy: []
-  timestamp: '2021-01-19 00:38:59+09:00'
+  timestamp: '2021-07-18 12:42:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/scc_graph.test.cpp
