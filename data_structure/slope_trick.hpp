@@ -4,6 +4,10 @@
 #include <queue>
 #include <cassert>
 
+/*
+    reference: https://maspypy.com/slope-trick-1-%e8%a7%a3%e8%aa%ac%e7%b7%a8
+*/
+
 namespace ebi {
 
 template<class T>
