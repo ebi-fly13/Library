@@ -96,6 +96,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/persistent_unionfind.hpp
       title: data_structure/persistent_unionfind.hpp
+    - icon: ':warning:'
+      path: data_structure/slope_trick.hpp
+      title: data_structure/slope_trick.hpp
   - name: geometry
     pages:
     - icon: ':warning:'
