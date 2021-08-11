@@ -97,6 +97,9 @@ data:
       path: data_structure/persistent_unionfind.hpp
       title: data_structure/persistent_unionfind.hpp
     - icon: ':warning:'
+      path: data_structure/segtree_2d.hpp
+      title: data_structure/segtree_2d.hpp
+    - icon: ':warning:'
       path: data_structure/slope_trick.hpp
       title: data_structure/slope_trick.hpp
   - name: geometry

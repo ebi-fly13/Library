@@ -76,8 +76,8 @@ data:
   timestamp: '2021-07-18 12:42:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/two_sat.test.cpp
   - test/scc_graph.test.cpp
+  - test/two_sat.test.cpp
 documentation_of: graph/scc_graph.hpp
 layout: document
 redirect_from:

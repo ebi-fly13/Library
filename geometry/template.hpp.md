@@ -101,9 +101,9 @@ data:
   timestamp: '2021-02-14 17:17:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/point.test.cpp
   - test/intersection.test.cpp
   - test/isp.test.cpp
+  - test/point.test.cpp
 documentation_of: geometry/template.hpp
 layout: document
 redirect_from:
