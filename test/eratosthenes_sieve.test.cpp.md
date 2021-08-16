@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C
@@ -24,10 +24,20 @@ data:
     \ {\r\n            if(!table[i]) continue;\r\n            for(i64 j = i; i*j <=\
     \ n; j++) {\r\n                table[i*j] = false;\r\n            }\r\n      \
     \  }\r\n    }\r\n\r\n    bool is_prime(int p) {\r\n        return table[p];\r\n\
-    \    }\r\n\r\n    std::vector<int> prime_table(int m = -1) {\r\n        if(m <\
-    \ 0) m = n;\r\n        std::vector<int> prime;\r\n        for(int i = 2; i<=m;\
-    \ i++) {\r\n            if(table[i]) prime.emplace_back(i);\r\n        }\r\n \
-    \       return prime;\r\n    }\r\n};\r\n\r\n}\n#line 6 \"test/eratosthenes_sieve.test.cpp\"\
+    \    }\r\n\r\n    template<class T>\r\n    std::vector<T> fast_zeta(const std::vector<T>\
+    \ &f) {\r\n        std::vector<T> F = f;\r\n        int sz = f.size();\r\n   \
+    \     assert(sz <= n+1);\r\n        for(int i = 2; i < sz; i++) {\r\n        \
+    \    if(!table[i]) continue;\r\n            for(int j = (sz-1)/i; j >= 1; j--)\
+    \ {\r\n                F[j] += F[j * i];\r\n            }\r\n        }\r\n   \
+    \     return F;\r\n    }\r\n\r\n    template<class T>\r\n    std::vector<T> fast_mobius(const\
+    \ std::vector<T> &F) {\r\n        std::vector<T> f = F;\r\n        int sz = F.size();\r\
+    \n        assert(sz <= n+1);\r\n        for(int i = 2; i < sz; i++) {\r\n    \
+    \        if(!table[i]) continue;\r\n            for(int j = 1; j*i < sz; j++)\
+    \ {\r\n                f[j] -= f[j * i];\r\n            }\r\n        }\r\n   \
+    \     return f;\r\n    }\r\n\r\n    std::vector<int> prime_table(int m = -1) {\r\
+    \n        if(m < 0) m = n;\r\n        std::vector<int> prime;\r\n        for(int\
+    \ i = 2; i<=m; i++) {\r\n            if(table[i]) prime.emplace_back(i);\r\n \
+    \       }\r\n        return prime;\r\n    }\r\n};\r\n\r\n}\n#line 6 \"test/eratosthenes_sieve.test.cpp\"\
     \n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    ebi::eratosthenes_sieve\
     \ sieve(1e8);\r\n    int ans = 0;\r\n    for(int i = 0; i<n; i++) {\r\n      \
     \  int p;\r\n        std::cin >> p;\r\n        if(sieve.is_prime(p)) ans++;\r\n\
@@ -43,8 +53,8 @@ data:
   isVerificationFile: true
   path: test/eratosthenes_sieve.test.cpp
   requiredBy: []
-  timestamp: '2021-05-03 16:17:12+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-08-16 17:42:28+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/eratosthenes_sieve.test.cpp
 layout: document
