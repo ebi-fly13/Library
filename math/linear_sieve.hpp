@@ -35,6 +35,41 @@ public:
         return prime;
     }
 
+    std::vector<std::pair<int,int>> factorize(int n) {
+        std::vector<std::pair<int,int>> res;
+        while(n > 1) {
+            int p = sieve[n];
+            int exp = 0;
+            if(p < 0) {
+                res.emplace_back(n, 1);
+                break;
+            }
+            while(sieve[n] == p) {
+                n /= p;
+                exp++;
+            }
+            res.emplace_back(p, exp);
+        }
+        return res;
+    }
+
+    std::vector<int> divisors(int n) {
+        std::vector<int> res;
+        res.emplace_back(1);
+        auto pf = factorize(n);
+        for(auto p: pf) {
+            int sz = res.size();
+            for(int i = 0; i < sz; i++) {
+                int ret = 1;
+                for(int j = 0; j < p.second; j++) {
+                    ret *= p.first;
+                    res.emplace_back(res[i] * ret);
+                }
+            }
+        }
+        return res;
+    }
+
     std::vector<u64> pow_table(int k, u64 mod) {
         std::vector<u64> table(n+1,1);
         table[0] = 0;
