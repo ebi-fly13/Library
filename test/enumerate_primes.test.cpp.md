@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_primes
@@ -16,7 +16,7 @@ data:
     - https://judge.yosupo.jp/problem/enumerate_primes
   bundledCode: "#line 1 \"test/enumerate_primes.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_primes\"\
     \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"math/eratosthenes_sieve.hpp\"\n\r\
-    \n#include <vector>\r\n\r\n/*\r\n    reference: https://37zigen.com/sieve-eratosthenes/\r\
+    \n#include <vector>\r\n#include <cassert>\r\n\r\n/*\r\n    reference: https://37zigen.com/sieve-eratosthenes/\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\nstruct eratosthenes_sieve {\r\nprivate:\r\n\
     \    using i64 = std::int_fast64_t;\r\n    int n;\r\n    std::vector<bool> table;\r\
     \npublic:\r\n    eratosthenes_sieve(int n) : n(n), table(std::vector<bool>(n+1,\
@@ -55,8 +55,8 @@ data:
   isVerificationFile: true
   path: test/enumerate_primes.test.cpp
   requiredBy: []
-  timestamp: '2021-08-16 17:42:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-08-16 18:05:12+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/enumerate_primes.test.cpp
 layout: document

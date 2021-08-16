@@ -141,7 +141,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/FormalPowerSeries.hpp
       title: math/FormalPowerSeries.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
     - icon: ':warning:'
@@ -230,10 +230,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/dijkstra.test.cpp
       title: test/dijkstra.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/enumerate_primes.test.cpp
       title: test/enumerate_primes.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/eratosthenes_sieve.test.cpp
       title: test/eratosthenes_sieve.test.cpp
     - icon: ':heavy_check_mark:'
