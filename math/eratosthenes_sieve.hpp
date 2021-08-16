@@ -1,6 +1,7 @@
 #pragma once 
 
 #include <vector>
+#include <cassert>
 
 /*
     reference: https://37zigen.com/sieve-eratosthenes/
