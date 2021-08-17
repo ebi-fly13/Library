@@ -29,6 +29,7 @@
 "test/persistent_unionfind.test.cpp": "2021-04-02 19:30:59 +0900",
 "test/point.test.cpp": "2021-02-14 17:25:03 +0900",
 "test/pow.test.cpp": "2021-03-19 15:15:41 +0900",
+"test/rectangle_sum.test.cpp": "2021-08-17 18:06:29 +0900",
 "test/scc_graph.test.cpp": "2021-07-18 12:42:28 +0900",
 "test/subset_convolution.test.cpp": "2021-04-04 17:12:45 +0900",
 "test/two_sat.test.cpp": "2021-07-18 13:18:17 +0900",
