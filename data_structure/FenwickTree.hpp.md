@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/FenwickTree.test.cpp
     title: test/FenwickTree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/static_range_inversion_query.test.cpp
+    title: test/static_range_inversion_query.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -51,6 +54,7 @@ data:
   timestamp: '2021-02-24 01:07:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/static_range_inversion_query.test.cpp
   - test/FenwickTree.test.cpp
 documentation_of: data_structure/FenwickTree.hpp
 layout: document

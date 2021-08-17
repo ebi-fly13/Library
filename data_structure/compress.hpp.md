@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/rectangle_sum.test.cpp
     title: test/rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/static_range_inversion_query.test.cpp
+    title: test/static_range_inversion_query.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -43,6 +46,7 @@ data:
   verifiedWith:
   - test/point_add_rectangle_sum.test.cpp
   - test/rectangle_sum.test.cpp
+  - test/static_range_inversion_query.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 redirect_from:

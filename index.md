@@ -17,6 +17,9 @@ data:
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
     - icon: ':heavy_check_mark:'
+      path: algorithm/mo_algorithm.hpp
+      title: algorithm/mo_algorithm.hpp
+    - icon: ':heavy_check_mark:'
       path: algorithm/subset_convolution.hpp
       title: algorithm/subset_convolution.hpp
     - icon: ':heavy_check_mark:'
@@ -263,6 +266,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/scc_graph.test.cpp
       title: test/scc_graph.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/static_range_inversion_query.test.cpp
+      title: test/static_range_inversion_query.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/subset_convolution.test.cpp
       title: test/subset_convolution.test.cpp
