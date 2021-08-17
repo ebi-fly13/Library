@@ -48,7 +48,7 @@ public:
     void set(int x, int y, Monoid val) {
         int k = n+x-1;
         int ty = std::lower_bound(data[k].begin(), data[k].end(), y) - data[k].begin();
-        seg[k].set(ty, val);
+        seg[k].set(ty, op(seg[k].get(ty), val));
         while(k > 0) {
             k = (k-1)/2;
             ty = std::lower_bound(data[k].begin(), data[k].end(), y) - data[k].begin();
