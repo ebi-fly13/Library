@@ -5,13 +5,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/heavy_light_decomposition.hpp
     title: data_structure/heavy_light_decomposition.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree_2d.hpp
     title: data_structure/segtree_2d.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Segtree.test.cpp
     title: test/Segtree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/rectangle_sum.test.cpp
+    title: test/rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
@@ -77,6 +80,7 @@ data:
   - test/vertex_add_path_sum.test.cpp
   - test/Segtree.test.cpp
   - test/vertex_set_path_compositie.test.cpp
+  - test/rectangle_sum.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
 documentation_of: data_structure/Segtree.hpp
 layout: document

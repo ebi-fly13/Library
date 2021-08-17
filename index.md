@@ -75,7 +75,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
@@ -96,7 +96,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/persistent_unionfind.hpp
       title: data_structure/persistent_unionfind.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: data_structure/segtree_2d.hpp
     - icon: ':warning:'
@@ -254,6 +254,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/pow.test.cpp
       title: test/pow.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/rectangle_sum.test.cpp
+      title: test/rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/scc_graph.test.cpp
       title: test/scc_graph.test.cpp
