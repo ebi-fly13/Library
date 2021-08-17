@@ -252,6 +252,9 @@ data:
       path: test/point.test.cpp
       title: test/point.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/point_add_rectangle_sum.test.cpp
+      title: test/point_add_rectangle_sum.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/pow.test.cpp
       title: test/pow.test.cpp
     - icon: ':heavy_check_mark:'

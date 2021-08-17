@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/point_add_rectangle_sum.test.cpp
+    title: test/point_add_rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/rectangle_sum.test.cpp
     title: test/rectangle_sum.test.cpp
   _isVerificationFailed: false
@@ -38,6 +41,7 @@ data:
   timestamp: '2021-08-17 18:06:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/point_add_rectangle_sum.test.cpp
   - test/rectangle_sum.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
