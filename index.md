@@ -134,6 +134,9 @@ data:
       path: graph/dijkstra_fibheap.hpp
       title: graph/dijkstra_fibheap.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/lowest_common_ancestor.hpp
+      title: graph/lowest_common_ancestor.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
     - icon: ':heavy_check_mark:'
@@ -251,6 +254,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/isp.test.cpp
       title: test/isp.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/lowest_common_ancestor.test.cpp
+      title: test/lowest_common_ancestor.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/persistent_unionfind.test.cpp
       title: test/persistent_unionfind.test.cpp

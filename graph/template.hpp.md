@@ -15,6 +15,9 @@ data:
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
   - icon: ':heavy_check_mark:'
+    path: graph/lowest_common_ancestor.hpp
+    title: graph/lowest_common_ancestor.hpp
+  - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
   _extendedVerifiedWith:
@@ -24,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fibonacci_heap.test.cpp
     title: test/fibonacci_heap.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/lowest_common_ancestor.test.cpp
+    title: test/lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/scc_graph.test.cpp
     title: test/scc_graph.test.cpp
@@ -59,6 +65,7 @@ data:
   requiredBy:
   - algorithm/two_sat.hpp
   - graph/scc_graph.hpp
+  - graph/lowest_common_ancestor.hpp
   - graph/dijkstra_fibheap.hpp
   - graph/dijkstra.hpp
   - data_structure/heavy_light_decomposition.hpp
@@ -71,6 +78,7 @@ data:
   - test/vertex_set_path_compositie.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
   - test/dijkstra.test.cpp
+  - test/lowest_common_ancestor.test.cpp
   - test/fibonacci_heap.test.cpp
 documentation_of: graph/template.hpp
 layout: document
