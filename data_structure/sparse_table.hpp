@@ -25,6 +25,19 @@ public:
         }
     }
 
+    void build(const std::vector<Band> &a) {
+        n = (int)a.size();
+        table = std::vector(std::__lg(n) + 1, std::vector<Band>(n));
+        for(int i = 0; i < n; i++) {
+            table[0][i] = a[i];
+        }
+        for(int k = 1; (1<<k) <= n; k++) {
+            for(int i = 0; i < n; i++) {
+                table[k][i] = op(table[k-1][i], table[k-1][i + (1<<(k-1))]);
+            }
+        }
+    }
+
     // [l, r)
     Band fold(int l, int r) {
         int k = std::__lg(r-l);
