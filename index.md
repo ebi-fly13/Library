@@ -105,6 +105,9 @@ data:
     - icon: ':warning:'
       path: data_structure/slope_trick.hpp
       title: data_structure/slope_trick.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/sparse_table.hpp
+      title: data_structure/sparse_table.hpp
   - name: geometry
     pages:
     - icon: ':warning:'
@@ -269,6 +272,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/static_range_inversion_query.test.cpp
       title: test/static_range_inversion_query.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/static_rmq.test.cpp
+      title: test/static_rmq.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/subset_convolution.test.cpp
       title: test/subset_convolution.test.cpp
