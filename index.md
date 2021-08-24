@@ -11,10 +11,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/Z_Algorithm.hpp
       title: String/Z_Algorithm.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: String/aho_corasick.hpp
       title: String/aho_corasick.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: String/trie.hpp
       title: String/trie.hpp
   - name: algorithm
@@ -236,6 +236,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Z_Algorithm.test.cpp
       title: test/Z_Algorithm.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj_2873.test.cpp
+      title: test/aoj_2873.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/bankers_queue.test.cpp
       title: test/bankers_queue.test.cpp
