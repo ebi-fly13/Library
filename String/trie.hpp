@@ -78,6 +78,7 @@ public:
     }
 private:
     using Node = internal::trie_node<char_size>;
+protected:
     std::vector<Node> nodes;
 };
 
