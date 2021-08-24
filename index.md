@@ -12,6 +12,9 @@ data:
       path: String/Z_Algorithm.hpp
       title: String/Z_Algorithm.hpp
     - icon: ':warning:'
+      path: String/aho_corasick.hpp
+      title: String/aho_corasick.hpp
+    - icon: ':warning:'
       path: String/trie.hpp
       title: String/trie.hpp
   - name: algorithm

@@ -35,8 +35,8 @@ data:
     \           if(nxt < 0) {\r\n                return -1;\r\n            }\r\n \
     \           idx = nxt;\r\n        }\r\n        return prefix ? true : (nodes[idx].accept.size()\
     \ > 0);\r\n    }\r\n\r\n    int size() const {\r\n        return int(nodes.size());\r\
-    \n    }\r\nprivate:\r\n    using Node = internal::trie_node<char_size>;\r\n  \
-    \  std::vector<Node> nodes;\r\n};\r\n\r\n}\n"
+    \n    }\r\nprivate:\r\n    using Node = internal::trie_node<char_size>;\r\nprotected:\r\
+    \n    std::vector<Node> nodes;\r\n};\r\n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n#include <cassert>\r\n\r\nnamespace\
     \ ebi {\r\n\r\nnamespace internal {\r\n\r\ntemplate<int char_size>\r\nstruct trie_node\
     \ {\r\n    int common;\r\n    int nxt[char_size];\r\n    std::vector<int> accept;\r\
@@ -64,13 +64,13 @@ data:
     \           if(nxt < 0) {\r\n                return -1;\r\n            }\r\n \
     \           idx = nxt;\r\n        }\r\n        return prefix ? true : (nodes[idx].accept.size()\
     \ > 0);\r\n    }\r\n\r\n    int size() const {\r\n        return int(nodes.size());\r\
-    \n    }\r\nprivate:\r\n    using Node = internal::trie_node<char_size>;\r\n  \
-    \  std::vector<Node> nodes;\r\n};\r\n\r\n}"
+    \n    }\r\nprivate:\r\n    using Node = internal::trie_node<char_size>;\r\nprotected:\r\
+    \n    std::vector<Node> nodes;\r\n};\r\n\r\n}"
   dependsOn: []
   isVerificationFile: false
   path: String/trie.hpp
   requiredBy: []
-  timestamp: '2021-08-24 16:27:18+09:00'
+  timestamp: '2021-08-24 18:32:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/trie.hpp
