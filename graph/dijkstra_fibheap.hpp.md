@@ -84,13 +84,18 @@ data:
     \n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n    T cost;\r\
     \n    Edge(int to, T cost=1) : to(to), cost(cost) { }\r\n};\r\n\r\ntemplate<class\
-    \ T>\r\nusing Graph = std::vector<std::vector<Edge<T>>>;\r\n\r\nusing graph =\
-    \ std::vector<std::vector<int>>;\r\n\r\n} // namespace ebi\n#line 5 \"graph/dijkstra_fibheap.hpp\"\
-    \n\r\n#line 7 \"graph/dijkstra_fibheap.hpp\"\n#include <limits>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate<class T>\r\nbool op(T a, T b) {\r\n    return a<=b;\r\n\
-    }\r\n\r\ntemplate<class T>\r\nstd::vector<T> dijkstra(int s, int n, const Graph<T>\
-    \ &g){\r\n    std::vector<T> d(n, std::numeric_limits<T>::max());\r\n    fibonacci_heap<T,\
-    \ int, op> que;\r\n    d[s] = 0;\r\n    std::vector<internal::fibheap_node<T,int>*>\
+    \ T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
+    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
+    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
+    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
+    \ ebi\n#line 5 \"graph/dijkstra_fibheap.hpp\"\n\r\n#line 7 \"graph/dijkstra_fibheap.hpp\"\
+    \n#include <limits>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nbool op(T\
+    \ a, T b) {\r\n    return a<=b;\r\n}\r\n\r\ntemplate<class T>\r\nstd::vector<T>\
+    \ dijkstra(int s, int n, const Graph<T> &g){\r\n    std::vector<T> d(n, std::numeric_limits<T>::max());\r\
+    \n    fibonacci_heap<T, int, op> que;\r\n    d[s] = 0;\r\n    std::vector<internal::fibheap_node<T,int>*>\
     \ p(n, nullptr);\r\n    p[s] = que.push(0, s);\r\n    while(!que.empty()){\r\n\
     \        que.is_valid();\r\n        int v = que.top();\r\n        //debug(v, d[v]);\r\
     \n        que.pop();\r\n        for(auto e: g[v]){\r\n            if(d[e.to]>d[v]+e.cost){\r\
@@ -119,7 +124,7 @@ data:
   isVerificationFile: false
   path: graph/dijkstra_fibheap.hpp
   requiredBy: []
-  timestamp: '2021-01-23 01:34:05+09:00'
+  timestamp: '2021-08-24 22:55:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fibonacci_heap.test.cpp

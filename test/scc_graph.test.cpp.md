@@ -21,13 +21,19 @@ data:
     \r\n\r\n#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n    T cost;\r\
     \n    Edge(int to, T cost=1) : to(to), cost(cost) { }\r\n};\r\n\r\ntemplate<class\
-    \ T>\r\nusing Graph = std::vector<std::vector<Edge<T>>>;\r\n\r\nusing graph =\
-    \ std::vector<std::vector<int>>;\r\n\r\n} // namespace ebi\n#line 2 \"graph/scc_graph.hpp\"\
-    \n\r\n#line 4 \"graph/scc_graph.hpp\"\n\r\n#line 6 \"graph/scc_graph.hpp\"\n#include\
-    \ <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nstruct scc_graph {\r\nprivate:\r\n\
-    \    graph g,rg;\r\n    int n,k;\r\n\r\n    std::vector<int> vs, cmp;\r\n    std::vector<bool>\
-    \ seen;\r\n\r\n    void dfs(int v) {\r\n        seen[v] = true;\r\n        for(auto\
-    \ &nv: g[v]) {\r\n            if(!seen[nv]) dfs(nv);\r\n        }\r\n        vs.emplace_back(v);\r\
+    \ T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
+    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
+    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
+    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
+    \ ebi\n#line 2 \"graph/scc_graph.hpp\"\n\r\n#line 4 \"graph/scc_graph.hpp\"\n\r\
+    \n#line 6 \"graph/scc_graph.hpp\"\n#include <algorithm>\r\n\r\nnamespace ebi {\r\
+    \n\r\nstruct scc_graph {\r\nprivate:\r\n    graph g,rg;\r\n    int n,k;\r\n\r\n\
+    \    std::vector<int> vs, cmp;\r\n    std::vector<bool> seen;\r\n\r\n    void\
+    \ dfs(int v) {\r\n        seen[v] = true;\r\n        for(auto &nv: g[v]) {\r\n\
+    \            if(!seen[nv]) dfs(nv);\r\n        }\r\n        vs.emplace_back(v);\r\
     \n    }\r\n\r\n    void rdfs(int v) {\r\n        cmp[v] = k;\r\n        for(auto\
     \ nv: rg[v]) {\r\n            if(cmp[nv]<0) {\r\n                rdfs(nv);\r\n\
     \            }\r\n        }\r\n    }\r\n\r\n\r\npublic:\r\n    scc_graph(int n)\
@@ -66,7 +72,7 @@ data:
   isVerificationFile: true
   path: test/scc_graph.test.cpp
   requiredBy: []
-  timestamp: '2021-07-18 12:42:28+09:00'
+  timestamp: '2021-08-24 22:55:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/scc_graph.test.cpp

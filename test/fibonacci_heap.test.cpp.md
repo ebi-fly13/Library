@@ -27,10 +27,15 @@ data:
     \r\n\r\n#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n    T cost;\r\
     \n    Edge(int to, T cost=1) : to(to), cost(cost) { }\r\n};\r\n\r\ntemplate<class\
-    \ T>\r\nusing Graph = std::vector<std::vector<Edge<T>>>;\r\n\r\nusing graph =\
-    \ std::vector<std::vector<int>>;\r\n\r\n} // namespace ebi\n#line 2 \"graph/dijkstra_fibheap.hpp\"\
-    \n\r\n#line 2 \"data_structure/fibonacci_heap.hpp\"\n\r\n/*\r\n    reference:\
-    \ http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf\r\
+    \ T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
+    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
+    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
+    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
+    \ ebi\n#line 2 \"graph/dijkstra_fibheap.hpp\"\n\r\n#line 2 \"data_structure/fibonacci_heap.hpp\"\
+    \n\r\n/*\r\n    reference: http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf\r\
     \n               https://rsk0315.hatenablog.com/entry/2019/10/29/151823\r\n  \
     \             https://en.wikipedia.org/wiki/Fibonacci_heap\r\n*/\r\n\r\n#include\
     \ <cassert>\r\n#line 11 \"data_structure/fibonacci_heap.hpp\"\n#include <queue>\r\
@@ -135,7 +140,7 @@ data:
   isVerificationFile: true
   path: test/fibonacci_heap.test.cpp
   requiredBy: []
-  timestamp: '2021-01-23 01:34:05+09:00'
+  timestamp: '2021-08-24 22:55:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fibonacci_heap.test.cpp
