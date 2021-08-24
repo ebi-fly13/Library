@@ -18,6 +18,7 @@
 "test/UnionFind.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/WaveletMatrix.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/Z_Algorithm.test.cpp": "2021-01-18 10:56:54 +0900",
+"test/aoj_2873.test.cpp": "2021-08-24 18:40:57 +0900",
 "test/bankers_queue.test.cpp": "2021-03-01 14:43:05 +0900",
 "test/convolution.test.cpp": "2021-04-04 17:12:45 +0900",
 "test/dijkstra.test.cpp": "2021-01-18 10:56:54 +0900",
