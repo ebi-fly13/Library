@@ -12,8 +12,22 @@ struct Edge {
 };
 
 template<class T>
-using Graph = std::vector<std::vector<Edge<T>>>;
+struct Graph : std::vector<std::vector<Edge<T>>> {
+    using std::vector<std::vector<Edge<T>>>::vector;
+    void add_edge(int u, int v, T w, bool directed = false) {
+        (*this)[u].emplace_back(v, w);
+        if(directed) return; 
+        (*this)[v].emplace_back(u, w);
+    }
+};
 
-using graph = std::vector<std::vector<int>>;
+struct graph : std::vector<std::vector<int>> {
+    using std::vector<std::vector<int>>::vector;
+    void add_edge(int u, int v, bool directed = false) {
+        (*this)[u].emplace_back(v);
+        if(directed) return;
+        (*this)[v].emplace_back(u);
+    }
+};
 
 } // namespace ebi
