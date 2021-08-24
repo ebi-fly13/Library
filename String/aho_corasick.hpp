@@ -1,7 +1,13 @@
 #pragma once
 
 #include <vector>
+#include <string.h>
+#include <queue>
+#include <algorithm>
+#include <map>
 #include <cassert>
+
+#include "trie.hpp"
 
 namespace ebi {
 
