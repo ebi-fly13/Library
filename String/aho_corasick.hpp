@@ -70,6 +70,17 @@ public:
         return map;
     }
 
+    template<class F>
+    void query(const std::string &str, F func, int now = 0) {
+        for(int i = 0; i < int(str.size()); ++i) {
+            move_nxt(now, str[i] - margin);
+            for(const auto &a: this->nodes[now].accept) {
+                func(a, i);
+            }
+        }
+        return;
+    }
+
     std::pair<int,int> move(const char &c, int now) {
         int sum = 0;
         move_nxt(now, c - margin);
