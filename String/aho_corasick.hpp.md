@@ -7,8 +7,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/aoj_2873.test.cpp
-    title: test/aoj_2873.test.cpp
+    path: test/aoj/aoj_2863.test.cpp
+    title: test/aoj/aoj_2863.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2873.test.cpp
+    title: test/aoj/aoj_2873.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -73,11 +76,15 @@ data:
     \ int now = 0) {\r\n        std::map<int, int> map;\r\n        for(const auto\
     \ &c: str) {\r\n            move_nxt(now, c - margin);\r\n            for(const\
     \ auto &a: this->nodes[now].accept) {\r\n                map[a]++;\r\n       \
-    \     }\r\n        }\r\n        return map;\r\n    }\r\n\r\n    std::pair<int,int>\
-    \ move(const char &c, int now) {\r\n        int sum = 0;\r\n        move_nxt(now,\
-    \ c - margin);\r\n        sum += correct[now];\r\n        return {sum, now};\r\
-    \n    }\r\nprivate:\r\n    const int FAIL = char_size;\r\n    std::vector<int>\
-    \ correct;\r\n};\r\n\r\n}\r\n"
+    \     }\r\n        }\r\n        return map;\r\n    }\r\n\r\n    template<class\
+    \ F>\r\n    void query(const std::string &str, F func, int now = 0) {\r\n    \
+    \    for(int i = 0; i < int(str.size()); ++i) {\r\n            move_nxt(now, str[i]\
+    \ - margin);\r\n            for(const auto &a: this->nodes[now].accept) {\r\n\
+    \                func(a, i);\r\n            }\r\n        }\r\n        return;\r\
+    \n    }\r\n\r\n    std::pair<int,int> move(const char &c, int now) {\r\n     \
+    \   int sum = 0;\r\n        move_nxt(now, c - margin);\r\n        sum += correct[now];\r\
+    \n        return {sum, now};\r\n    }\r\nprivate:\r\n    const int FAIL = char_size;\r\
+    \n    std::vector<int> correct;\r\n};\r\n\r\n}\r\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n#include <string.h>\r\n#include\
     \ <queue>\r\n#include <algorithm>\r\n#include <map>\r\n#include <cassert>\r\n\r\
     \n#include \"trie.hpp\"\r\n\r\nnamespace ebi {\r\n\r\ntemplate<int char_size,\
@@ -108,20 +115,25 @@ data:
     \ int now = 0) {\r\n        std::map<int, int> map;\r\n        for(const auto\
     \ &c: str) {\r\n            move_nxt(now, c - margin);\r\n            for(const\
     \ auto &a: this->nodes[now].accept) {\r\n                map[a]++;\r\n       \
-    \     }\r\n        }\r\n        return map;\r\n    }\r\n\r\n    std::pair<int,int>\
-    \ move(const char &c, int now) {\r\n        int sum = 0;\r\n        move_nxt(now,\
-    \ c - margin);\r\n        sum += correct[now];\r\n        return {sum, now};\r\
-    \n    }\r\nprivate:\r\n    const int FAIL = char_size;\r\n    std::vector<int>\
-    \ correct;\r\n};\r\n\r\n}\r\n"
+    \     }\r\n        }\r\n        return map;\r\n    }\r\n\r\n    template<class\
+    \ F>\r\n    void query(const std::string &str, F func, int now = 0) {\r\n    \
+    \    for(int i = 0; i < int(str.size()); ++i) {\r\n            move_nxt(now, str[i]\
+    \ - margin);\r\n            for(const auto &a: this->nodes[now].accept) {\r\n\
+    \                func(a, i);\r\n            }\r\n        }\r\n        return;\r\
+    \n    }\r\n\r\n    std::pair<int,int> move(const char &c, int now) {\r\n     \
+    \   int sum = 0;\r\n        move_nxt(now, c - margin);\r\n        sum += correct[now];\r\
+    \n        return {sum, now};\r\n    }\r\nprivate:\r\n    const int FAIL = char_size;\r\
+    \n    std::vector<int> correct;\r\n};\r\n\r\n}\r\n"
   dependsOn:
   - String/trie.hpp
   isVerificationFile: false
   path: String/aho_corasick.hpp
   requiredBy: []
-  timestamp: '2021-08-24 18:40:57+09:00'
+  timestamp: '2021-08-25 17:31:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj_2873.test.cpp
+  - test/aoj/aoj_2873.test.cpp
+  - test/aoj/aoj_2863.test.cpp
 documentation_of: String/aho_corasick.hpp
 layout: document
 redirect_from:

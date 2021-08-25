@@ -237,9 +237,6 @@ data:
       path: test/Z_Algorithm.test.cpp
       title: test/Z_Algorithm.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/aoj_2873.test.cpp
-      title: test/aoj_2873.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/bankers_queue.test.cpp
       title: test/bankers_queue.test.cpp
     - icon: ':heavy_check_mark:'
@@ -305,5 +302,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/vertex_set_path_compositie.test.cpp
       title: test/vertex_set_path_compositie.test.cpp
+  - name: test/aoj
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj_2863.test.cpp
+      title: test/aoj/aoj_2863.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj_2873.test.cpp
+      title: test/aoj/aoj_2873.test.cpp
 layout: toppage
 ---

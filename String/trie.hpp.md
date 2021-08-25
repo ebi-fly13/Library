@@ -7,8 +7,11 @@ data:
     title: String/aho_corasick.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/aoj_2873.test.cpp
-    title: test/aoj_2873.test.cpp
+    path: test/aoj/aoj_2863.test.cpp
+    title: test/aoj/aoj_2863.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2873.test.cpp
+    title: test/aoj/aoj_2873.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -80,7 +83,8 @@ data:
   timestamp: '2021-08-24 18:40:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj_2873.test.cpp
+  - test/aoj/aoj_2873.test.cpp
+  - test/aoj/aoj_2863.test.cpp
 documentation_of: String/trie.hpp
 layout: document
 redirect_from:
