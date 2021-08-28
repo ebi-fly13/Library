@@ -35,7 +35,7 @@ public:
 
     int count_group(){
         int c = 0;
-        for(int i = 0; i<par.size(); i++){
+        for(int i = 0; i<int(par.size()); i++){
             if(par[i]<0) c++; 
         }
         return c;
