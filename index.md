@@ -15,6 +15,9 @@ data:
       path: String/aho_corasick.hpp
       title: String/aho_corasick.hpp
     - icon: ':heavy_check_mark:'
+      path: String/rolling_hash.hpp
+      title: String/rolling_hash.hpp
+    - icon: ':heavy_check_mark:'
       path: String/trie.hpp
       title: String/trie.hpp
   - name: algorithm
@@ -176,6 +179,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
+    - icon: ':heavy_check_mark:'
+      path: utility/random_number_generator_64.hpp
+      title: utility/random_number_generator_64.hpp
   verificationCategories:
   - name: test
     pages:
@@ -304,6 +310,9 @@ data:
       title: test/vertex_set_path_compositie.test.cpp
   - name: test/aoj
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj_2444.test.cpp
+      title: test/aoj/aoj_2444.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2863.test.cpp
       title: test/aoj/aoj_2863.test.cpp
