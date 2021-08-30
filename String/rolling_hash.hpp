@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <cstdint>
+#include <cassert>
 
 #include "utility/random_number_generator_64.hpp"
 
@@ -39,6 +40,7 @@ private:
     }
 public:
     rolling_hash(const std::string &_s) : s(_s), sz(_s.size()) {
+        assert(int(base.size()) == n && n > 0);
         base_pow.resize(n);
         hash.resize(n);
         for(int i = 0; i < n; ++i) {
@@ -90,6 +92,6 @@ public:
 };
 
 template<int n>
-std::vector<std::uint64_t> rolling_hash<n>::base = {12345, 10000000};
+std::vector<std::uint64_t> rolling_hash<n>::base {};
 
 }
