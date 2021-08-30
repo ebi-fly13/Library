@@ -39,7 +39,7 @@ private:
         return res;
     }
 public:
-    rolling_hash(const std::string &_s) : s(_s), sz(_s.size()) {
+    rolling_hash(const std::string &s) : sz(s.size()) {
         assert(int(base.size()) == n && n > 0);
         base_pow.resize(n);
         hash.resize(n);
@@ -69,7 +69,7 @@ public:
         std::vector<u64> res(n, 0);
         for(int i = 0; i < n; ++i) {
             for(int j = l; j < r; ++j) {
-                res[i] = safe_mod(safe_mul(res[i], base[i]) + s[i] + h);
+                res[i] = safe_mod(safe_mul(res[i], base[i]) + str[i] + h);
             }
         }
         return res;
@@ -83,7 +83,6 @@ public:
         }
     }
 private:
-    std::string s;
     size_t sz;
     std::vector<std::vector<u64>> base_pow;
     std::vector<std::vector<u64>> hash;
