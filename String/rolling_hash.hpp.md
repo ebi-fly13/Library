@@ -35,10 +35,10 @@ data:
     \n    u64 safe_mod(const u64 &a) const {\r\n        u64 au = a >> 61;\r\n    \
     \    u64 ad = a & mod;\r\n        u64 res = au + ad;\r\n        if(res >= mod)\
     \ res -= mod;\r\n        return res;\r\n    }\r\npublic:\r\n    rolling_hash(const\
-    \ std::string &_s) : s(_s), sz(_s.size()) {\r\n        assert(int(base.size())\
-    \ == n && n > 0);\r\n        base_pow.resize(n);\r\n        hash.resize(n);\r\n\
-    \        for(int i = 0; i < n; ++i) {\r\n            base_pow[i].reserve(sz+1);\r\
-    \n            base_pow[i].emplace_back(1);\r\n            hash[i].reserve(sz+1);\r\
+    \ std::string &s) : sz(s.size()) {\r\n        assert(int(base.size()) == n &&\
+    \ n > 0);\r\n        base_pow.resize(n);\r\n        hash.resize(n);\r\n      \
+    \  for(int i = 0; i < n; ++i) {\r\n            base_pow[i].reserve(sz+1);\r\n\
+    \            base_pow[i].emplace_back(1);\r\n            hash[i].reserve(sz+1);\r\
     \n            hash[i].emplace_back(0);\r\n            for(const auto &c: s) {\r\
     \n                hash[i].emplace_back(safe_mod(safe_mul(hash[i].back(), base[i])\
     \ + c + h));\r\n                base_pow[i].emplace_back(safe_mod(safe_mul(base_pow[i].back(),\
@@ -50,14 +50,13 @@ data:
     \ &str, int l = 0, int r = -1) const {\r\n        if(r < 0) r = int(str.size());\r\
     \n        std::vector<u64> res(n, 0);\r\n        for(int i = 0; i < n; ++i) {\r\
     \n            for(int j = l; j < r; ++j) {\r\n                res[i] = safe_mod(safe_mul(res[i],\
-    \ base[i]) + s[i] + h);\r\n            }\r\n        }\r\n        return res;\r\
+    \ base[i]) + str[i] + h);\r\n            }\r\n        }\r\n        return res;\r\
     \n    }\r\n\r\n    static void set_base() {\r\n        random_number_generator_64\
     \ rnd;\r\n        base.resize(n);\r\n        for(int i = 0; i < n; ++i) {\r\n\
     \            base[i] = rnd.get(0, (1UL<<61) - 1);\r\n        }\r\n    }\r\nprivate:\r\
-    \n    std::string s;\r\n    size_t sz;\r\n    std::vector<std::vector<u64>> base_pow;\r\
-    \n    std::vector<std::vector<u64>> hash;\r\npublic:\r\n    static std::vector<u64>\
-    \ base;\r\n};\r\n\r\ntemplate<int n>\r\nstd::vector<std::uint64_t> rolling_hash<n>::base\
-    \ {};\r\n\r\n}\n"
+    \n    size_t sz;\r\n    std::vector<std::vector<u64>> base_pow;\r\n    std::vector<std::vector<u64>>\
+    \ hash;\r\npublic:\r\n    static std::vector<u64> base;\r\n};\r\n\r\ntemplate<int\
+    \ n>\r\nstd::vector<std::uint64_t> rolling_hash<n>::base {};\r\n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n#include <cstdint>\r\n#include <cassert>\r\
     \n\r\n#include \"utility/random_number_generator_64.hpp\"\r\n\r\n/*\r\n    reference:\
     \ https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\n*/\r\n\r\nnamespace\
@@ -71,12 +70,12 @@ data:
     \ (au * bu * 2 + midu + (midd << 31) + ad * bd);\r\n    }\r\n\r\n    u64 safe_mod(const\
     \ u64 &a) const {\r\n        u64 au = a >> 61;\r\n        u64 ad = a & mod;\r\n\
     \        u64 res = au + ad;\r\n        if(res >= mod) res -= mod;\r\n        return\
-    \ res;\r\n    }\r\npublic:\r\n    rolling_hash(const std::string &_s) : s(_s),\
-    \ sz(_s.size()) {\r\n        assert(int(base.size()) == n && n > 0);\r\n     \
-    \   base_pow.resize(n);\r\n        hash.resize(n);\r\n        for(int i = 0; i\
-    \ < n; ++i) {\r\n            base_pow[i].reserve(sz+1);\r\n            base_pow[i].emplace_back(1);\r\
-    \n            hash[i].reserve(sz+1);\r\n            hash[i].emplace_back(0);\r\
-    \n            for(const auto &c: s) {\r\n                hash[i].emplace_back(safe_mod(safe_mul(hash[i].back(),\
+    \ res;\r\n    }\r\npublic:\r\n    rolling_hash(const std::string &s) : sz(s.size())\
+    \ {\r\n        assert(int(base.size()) == n && n > 0);\r\n        base_pow.resize(n);\r\
+    \n        hash.resize(n);\r\n        for(int i = 0; i < n; ++i) {\r\n        \
+    \    base_pow[i].reserve(sz+1);\r\n            base_pow[i].emplace_back(1);\r\n\
+    \            hash[i].reserve(sz+1);\r\n            hash[i].emplace_back(0);\r\n\
+    \            for(const auto &c: s) {\r\n                hash[i].emplace_back(safe_mod(safe_mul(hash[i].back(),\
     \ base[i]) + c + h));\r\n                base_pow[i].emplace_back(safe_mod(safe_mul(base_pow[i].back(),\
     \ base[i])));\r\n            }\r\n        }\r\n    }\r\n\r\n    // [l, r)\r\n\
     \    std::vector<u64> get_hash(int l, int r) const {\r\n        std::vector<u64>\
@@ -86,20 +85,19 @@ data:
     \ &str, int l = 0, int r = -1) const {\r\n        if(r < 0) r = int(str.size());\r\
     \n        std::vector<u64> res(n, 0);\r\n        for(int i = 0; i < n; ++i) {\r\
     \n            for(int j = l; j < r; ++j) {\r\n                res[i] = safe_mod(safe_mul(res[i],\
-    \ base[i]) + s[i] + h);\r\n            }\r\n        }\r\n        return res;\r\
+    \ base[i]) + str[i] + h);\r\n            }\r\n        }\r\n        return res;\r\
     \n    }\r\n\r\n    static void set_base() {\r\n        random_number_generator_64\
     \ rnd;\r\n        base.resize(n);\r\n        for(int i = 0; i < n; ++i) {\r\n\
     \            base[i] = rnd.get(0, (1UL<<61) - 1);\r\n        }\r\n    }\r\nprivate:\r\
-    \n    std::string s;\r\n    size_t sz;\r\n    std::vector<std::vector<u64>> base_pow;\r\
-    \n    std::vector<std::vector<u64>> hash;\r\npublic:\r\n    static std::vector<u64>\
-    \ base;\r\n};\r\n\r\ntemplate<int n>\r\nstd::vector<std::uint64_t> rolling_hash<n>::base\
-    \ {};\r\n\r\n}"
+    \n    size_t sz;\r\n    std::vector<std::vector<u64>> base_pow;\r\n    std::vector<std::vector<u64>>\
+    \ hash;\r\npublic:\r\n    static std::vector<u64> base;\r\n};\r\n\r\ntemplate<int\
+    \ n>\r\nstd::vector<std::uint64_t> rolling_hash<n>::base {};\r\n\r\n}"
   dependsOn:
   - utility/random_number_generator_64.hpp
   isVerificationFile: false
   path: String/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2021-08-30 18:00:13+09:00'
+  timestamp: '2021-08-30 18:02:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
