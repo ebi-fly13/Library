@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../graph/lowest_common_ancestor.hpp"
+#include "../tree/lowest_common_ancestor.hpp"
 
 int main() {
     int n,q;
