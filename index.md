@@ -143,9 +143,6 @@ data:
       path: graph/dijkstra_fibheap.hpp
       title: graph/dijkstra_fibheap.hpp
     - icon: ':heavy_check_mark:'
-      path: graph/lowest_common_ancestor.hpp
-      title: graph/lowest_common_ancestor.hpp
-    - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
     - icon: ':heavy_check_mark:'
@@ -171,6 +168,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/pow.hpp
       title: math/pow.hpp
+  - name: tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: tree/lowest_common_ancestor.hpp
+      title: tree/lowest_common_ancestor.hpp
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'

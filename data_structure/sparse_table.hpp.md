@@ -3,8 +3,8 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: graph/lowest_common_ancestor.hpp
-    title: graph/lowest_common_ancestor.hpp
+    path: tree/lowest_common_ancestor.hpp
+    title: tree/lowest_common_ancestor.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/lowest_common_ancestor.test.cpp
@@ -59,7 +59,7 @@ data:
   isVerificationFile: false
   path: data_structure/sparse_table.hpp
   requiredBy:
-  - graph/lowest_common_ancestor.hpp
+  - tree/lowest_common_ancestor.hpp
   timestamp: '2021-08-21 16:42:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

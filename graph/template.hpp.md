@@ -15,11 +15,11 @@ data:
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
   - icon: ':heavy_check_mark:'
-    path: graph/lowest_common_ancestor.hpp
-    title: graph/lowest_common_ancestor.hpp
-  - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
+  - icon: ':heavy_check_mark:'
+    path: tree/lowest_common_ancestor.hpp
+    title: tree/lowest_common_ancestor.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
@@ -77,8 +77,8 @@ data:
   path: graph/template.hpp
   requiredBy:
   - algorithm/two_sat.hpp
+  - tree/lowest_common_ancestor.hpp
   - graph/scc_graph.hpp
-  - graph/lowest_common_ancestor.hpp
   - graph/dijkstra_fibheap.hpp
   - graph/dijkstra.hpp
   - data_structure/heavy_light_decomposition.hpp
