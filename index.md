@@ -170,6 +170,9 @@ data:
       title: math/pow.hpp
   - name: tree
     pages:
+    - icon: ':warning:'
+      path: tree/centroid_decomposition.hpp
+      title: tree/centroid_decomposition.hpp
     - icon: ':heavy_check_mark:'
       path: tree/lowest_common_ancestor.hpp
       title: tree/lowest_common_ancestor.hpp
