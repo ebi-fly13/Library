@@ -16,6 +16,7 @@ int main() {
     std::string s;
     std::cin >> s;
     std::map<std::vector<u64>, int> map;
+    ebi::rolling_hash<2>::set_base();
     ebi::rolling_hash<2> rh(s);
     int l = 0;
     int r = 1;
@@ -37,8 +38,7 @@ int main() {
         else {
             assert(0);
         }
-        auto p = rh.get_hash(l, r);
-        map[p] = 1;
+        map[rh.get_hash(l, r)] = 1;
     }
     std::cout << int(map.size()) << '\n';
 }
