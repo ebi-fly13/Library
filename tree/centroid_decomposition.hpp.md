@@ -45,10 +45,11 @@ data:
     \ = build(nv, depth + 1);\r\n            belong[c].emplace_back(ch);\r\n     \
     \       par[ch] = c;\r\n        }\r\n        dead[c] = false;\r\n        return\
     \ root = c;\r\n    }\r\n\r\n    void add_edge(int u, int v) {\r\n        g[u].emplace_back(v);\r\
-    \n        g[v].emplace_back(u);\r\n    }\r\nprivate:\r\n    int n;\r\n    int\
-    \ root;\r\n    graph g;\r\n    std::vector<bool> dead;\r\n    std::vector<int>\
-    \ sz;\r\n    std::vector<int> par;\r\n    std::vector<std::vector<int>> belong;\r\
-    \n};\r\n\r\n}\n"
+    \n        g[v].emplace_back(u);\r\n    }\r\n\r\n    int parent(int v) {\r\n  \
+    \      return par[v];\r\n    }\r\nprivate:\r\n    int n;\r\n    int root;\r\n\
+    \    graph g;\r\n    std::vector<bool> dead;\r\n    std::vector<int> sz;\r\n \
+    \   std::vector<int> par;\r\n    std::vector<std::vector<int>> belong;\r\n};\r\
+    \n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n\r\n#include \"graph/template.hpp\"\
     \r\n\r\n/*\r\n    reference: https://qiita.com/drken/items/4b4c3f1824339b090202\r\
     \n               https://ferin-tech.hatenablog.com/entry/2020/03/06/162311\r\n\
@@ -70,16 +71,17 @@ data:
     \ = build(nv, depth + 1);\r\n            belong[c].emplace_back(ch);\r\n     \
     \       par[ch] = c;\r\n        }\r\n        dead[c] = false;\r\n        return\
     \ root = c;\r\n    }\r\n\r\n    void add_edge(int u, int v) {\r\n        g[u].emplace_back(v);\r\
-    \n        g[v].emplace_back(u);\r\n    }\r\nprivate:\r\n    int n;\r\n    int\
-    \ root;\r\n    graph g;\r\n    std::vector<bool> dead;\r\n    std::vector<int>\
-    \ sz;\r\n    std::vector<int> par;\r\n    std::vector<std::vector<int>> belong;\r\
-    \n};\r\n\r\n}"
+    \n        g[v].emplace_back(u);\r\n    }\r\n\r\n    int parent(int v) {\r\n  \
+    \      return par[v];\r\n    }\r\nprivate:\r\n    int n;\r\n    int root;\r\n\
+    \    graph g;\r\n    std::vector<bool> dead;\r\n    std::vector<int> sz;\r\n \
+    \   std::vector<int> par;\r\n    std::vector<std::vector<int>> belong;\r\n};\r\
+    \n\r\n}"
   dependsOn:
   - graph/template.hpp
   isVerificationFile: false
   path: tree/centroid_decomposition.hpp
   requiredBy: []
-  timestamp: '2021-08-31 00:48:27+09:00'
+  timestamp: '2021-08-31 14:46:52+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: tree/centroid_decomposition.hpp

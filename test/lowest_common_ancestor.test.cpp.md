@@ -30,18 +30,18 @@ data:
     \  sparse_table(const std::vector<Band> &a) : n(a.size()) {\r\n        table =\
     \ std::vector(std::__lg(n) + 1, std::vector<Band>(n));\r\n        for(int i =\
     \ 0; i < n; i++) {\r\n            table[0][i] = a[i];\r\n        }\r\n       \
-    \ for(int k = 1; (1<<k) <= n; k++) {\r\n            for(int i = 0; i < n; i++)\
-    \ {\r\n                table[k][i] = op(table[k-1][i], table[k-1][i + (1<<(k-1))]);\r\
-    \n            }\r\n        }\r\n    }\r\n\r\n    void build(const std::vector<Band>\
-    \ &a) {\r\n        n = (int)a.size();\r\n        table = std::vector(std::__lg(n)\
+    \ for(int k = 1; (1<<k) <= n; k++) {\r\n            for(int i = 0; i + (1<<k)\
+    \ <= n; i++) {\r\n                table[k][i] = op(table[k-1][i], table[k-1][i\
+    \ + (1<<(k-1))]);\r\n            }\r\n        }\r\n    }\r\n\r\n    void build(const\
+    \ std::vector<Band> &a) {\r\n        n = (int)a.size();\r\n        table = std::vector(std::__lg(n)\
     \ + 1, std::vector<Band>(n));\r\n        for(int i = 0; i < n; i++) {\r\n    \
     \        table[0][i] = a[i];\r\n        }\r\n        for(int k = 1; (1<<k) <=\
-    \ n; k++) {\r\n            for(int i = 0; i < n; i++) {\r\n                table[k][i]\
-    \ = op(table[k-1][i], table[k-1][i + (1<<(k-1))]);\r\n            }\r\n      \
-    \  }\r\n    }\r\n\r\n    // [l, r)\r\n    Band fold(int l, int r) {\r\n      \
-    \  int k = std::__lg(r-l);\r\n        return op(table[k][l], table[k][r-(1<<k)]);\r\
-    \n    }\r\nprivate:\r\n    int n;\r\n    std::vector<std::vector<Band>> table;\r\
-    \n};\r\n\r\n}\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\
+    \ n; k++) {\r\n            for(int i = 0; i + (1<<k) <= n; i++) {\r\n        \
+    \        table[k][i] = op(table[k-1][i], table[k-1][i + (1<<(k-1))]);\r\n    \
+    \        }\r\n        }\r\n    }\r\n\r\n    // [l, r)\r\n    Band fold(int l,\
+    \ int r) {\r\n        int k = std::__lg(r-l);\r\n        return op(table[k][l],\
+    \ table[k][r-(1<<k)]);\r\n    }\r\nprivate:\r\n    int n;\r\n    std::vector<std::vector<Band>>\
+    \ table;\r\n};\r\n\r\n}\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\
     \n    T cost;\r\n    Edge(int to, T cost=1) : to(to), cost(cost) { }\r\n};\r\n\
     \r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n\
@@ -90,7 +90,7 @@ data:
   isVerificationFile: true
   path: test/lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2021-08-31 00:44:32+09:00'
+  timestamp: '2021-08-31 14:46:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/lowest_common_ancestor.test.cpp
