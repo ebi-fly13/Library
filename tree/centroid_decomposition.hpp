@@ -51,6 +51,10 @@ public:
         g[u].emplace_back(v);
         g[v].emplace_back(u);
     }
+
+    int parent(int v) {
+        return par[v];
+    }
 private:
     int n;
     int root;

@@ -19,7 +19,7 @@ public:
             table[0][i] = a[i];
         }
         for(int k = 1; (1<<k) <= n; k++) {
-            for(int i = 0; i < n; i++) {
+            for(int i = 0; i + (1<<k) <= n; i++) {
                 table[k][i] = op(table[k-1][i], table[k-1][i + (1<<(k-1))]);
             }
         }
@@ -32,7 +32,7 @@ public:
             table[0][i] = a[i];
         }
         for(int k = 1; (1<<k) <= n; k++) {
-            for(int i = 0; i < n; i++) {
+            for(int i = 0; i + (1<<k) <= n; i++) {
                 table[k][i] = op(table[k-1][i], table[k-1][i + (1<<(k-1))]);
             }
         }
