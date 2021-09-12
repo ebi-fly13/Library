@@ -108,6 +108,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/persistent_unionfind.hpp
       title: data_structure/persistent_unionfind.hpp
+    - icon: ':warning:'
+      path: data_structure/removable_priority_queue.hpp
+      title: data_structure/removable_priority_queue.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: data_structure/segtree_2d.hpp
