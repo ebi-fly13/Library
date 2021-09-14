@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy: []
@@ -24,9 +24,9 @@ data:
     #include <iomanip>\n\n#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n\
     #include <cassert>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\
     \n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS)\
-    \ ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\ndouble add(long double a, long double b)\
-    \ {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n \
-    \   return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct point {\r\n\
+    \ ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a, long double\
+    \ b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n\
+    \    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct point {\r\n\
     \    long double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double\
     \ x, long double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point\
     \ rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y,\
@@ -66,14 +66,17 @@ data:
     \ <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\r\n        return true;\r\
     \n    }\r\n    return false;\r\n}\r\n\r\npoint cross_point(const point &a, const\
     \ point &b, const point &c, const point &d) {\r\n    return a + (b-a) * det(c\
-    \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\
-    \n\n#line 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace\
-    \ ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double\
-    \ y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const\
-    \ point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p)\
-    \ const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point\
-    \ relf(const point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\
-    \n    long double distance(const point &c) const {\n    return std::abs(det(c\
+    \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\nlong double area(const std::vector<point>\
+    \ &p) {\r\n    long double s = 0;\r\n    int n = p.size();\r\n    for(int i =\
+    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 == n) ? 0\
+    \ : i+1]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}\n#line 2\
+    \ \"geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\
+    \n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1,\
+    \ long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\
+    \n    line(const point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const\
+    \ point &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\
+    \n    point relf(const point &p) const {\n        return proj(p)*double(2) - p;\n\
+    \    }\n\n    long double distance(const point &c) const {\n    return std::abs(det(c\
     \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
     \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
     \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
@@ -111,7 +114,7 @@ data:
   isVerificationFile: true
   path: test/geometry/cross_point.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 00:27:48+09:00'
+  timestamp: '2021-09-15 00:58:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/cross_point.test.cpp
