@@ -123,9 +123,6 @@ data:
   - name: geometry
     pages:
     - icon: ':warning:'
-      path: geometry/all.hpp
-      title: geometry/all.hpp
-    - icon: ':warning:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
     - icon: ':heavy_check_mark:'
