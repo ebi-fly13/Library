@@ -5,15 +5,15 @@
 
 namespace ebi {
 
-constexpr double EPS = 1e-10;
+constexpr long double EPS = 1e-10;
 
 namespace internal {
 
-int sgn(double a) {
+int sgn(long double a) {
     return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;
 }
 
-double add(double a, double b) {
+double add(long double a, long double b) {
     if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;
     return a+b;
 }
@@ -21,11 +21,11 @@ double add(double a, double b) {
 } // namespace internal
 
 struct point {
-    double x,y;
+    long double x,y;
 
-    point() { }
+    point() = default;
 
-    point(double x, double y) : x(x), y(y) { }
+    point(long double x, long double y) : x(x), y(y) { }
 
     point &operator+=(const point rhs) noexcept {
         x = internal::add(x, rhs.x);
@@ -39,44 +39,44 @@ struct point {
         return *this;
     }
 
-    point &operator*=(const double k) noexcept {
+    point &operator*=(const long double k) noexcept {
         x *= k;
         y *= k;
         return *this;
     }
 
-    point &operator/=(const double k) {
+    point &operator/=(const long double k) {
         assert(internal::sgn(k)!=0);
         x /= k;
         y /= k;
         return *this;
     }
 
-    point operator+(const point rhs) const noexcept {
+    point operator+(const point &rhs) const noexcept {
         return point(*this) += rhs;
     }
 
-    point operator-(const point rhs) const noexcept {
+    point operator-(const point &rhs) const noexcept {
         return point(*this) -= rhs;
     }
 
-    point operator*(const double rhs) const noexcept {
+    point operator*(const long double rhs) const noexcept {
         return point(*this) *= rhs;
     }
 
-    point operator/(const double rhs) const {
+    point operator/(const long double rhs) const {
         return point(*this) /= rhs;
     }
 
-    double abs() const noexcept {
+    long double abs() const noexcept {
         return std::sqrt(internal::add(x*x, y*y));
     }
 
-    double dot(const point rhs) const noexcept {
+    long double dot(const point rhs) const noexcept {
         return internal::add(x*rhs.x, y*rhs.y);
     }
 
-    double det(const point rhs) const noexcept {
+    long double det(const point rhs) const noexcept {
         return internal::add(x*rhs.y, -y*rhs.x);
     }
 
@@ -86,22 +86,22 @@ struct point {
     }
 };
 
-double dot(const point &a, const point &b) {
+long double dot(const point &a, const point &b) {
     return a.dot(b);
 }
 
-double det(const point &a, const point &b) {
+long double det(const point &a, const point &b) {
     return a.det(b);
 }
 
-double norm(const point &a) {
+long double norm(const point &a) {
     return internal::add(a.x*a.x, a.y*a.y);
 }
 
 struct line {
     point a,b;
 
-    line(double x1, double y1, double x2, double y2) : a(x1, y1), b(x2, y2) { }
+    line(long double x1, long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }
 
     point proj(const point &p) {
         return a + (b-a)*(dot(b-a,p-a)/norm(b-a));
