@@ -9,7 +9,7 @@ data:
     title: geometry/line_segment.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
-    title: geometry
+    title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

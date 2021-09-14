@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
-    title: geometry
+    title: point
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp

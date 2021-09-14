@@ -137,7 +137,7 @@ data:
   - test/geometry/cross_point.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
-title: geometry
+title: point
 ---
 
 # 説明
