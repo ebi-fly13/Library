@@ -14,23 +14,27 @@ struct line {
 
     line(point &a, point &b) : a(a), b(b) { }
 
-    point proj(const point &p) {
+    point proj(const point &p) const {
         return a + (b-a)*(dot(b-a,p-a)/norm(b-a));
     }
 
-    point relf(const point &p) {
+    point relf(const point &p) const {
         return proj(p)*double(2) - p;
+    }
+
+    long double distance(const point &c) const {
+    return std::abs(det(c - a, b - a)/abs(b-a));
     }
 };
 
 int intersection(const line &a, const line &b) {
-    if(det(a.b-a.a, b.a-b.b) != 0) {
-        if(dot(a.b-a.a, b.b-b.a) == 0) { // 垂直
+    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {
+        if(internal::sgn(dot(a.b-a.a, b.b-b.a)) == 0) { // 垂直
             return 1;
         }
         return 0; // 交差
     }
-    else if(det(a.b-a.a, b.a-a.a) != 0) { // 平行
+    else if(internal::sgn(det(a.b-a.a, b.a-a.a)) != 0) { // 平行
         return 2;
     }
     else { // 同一直線
@@ -42,6 +46,20 @@ int intersection(const line &a, const line &b) {
 point cross_point(const line &s, const line &t) {
     assert(intersection(s, t) < 2);
     return s.a + (s.b - s.a) * det(t.a - s.a, t.b - t.a) / det(s.b - s.a, t.b - t.a);
+}
+
+// 直線aと点cの距離
+long double distance(const line &a, const point &c) {
+    return std::abs(det(c-a.a, a.b - a.a)/abs(a.b-a.a));
+}
+
+long double distance(const line &a, const line &b) {
+    if(intersection(a, b) < 2) {
+        return 0;
+    }
+    else {
+        return distance(a, b.a);
+    }
 }
 
 }

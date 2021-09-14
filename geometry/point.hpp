@@ -104,6 +104,10 @@ long double det(const point &a, const point &b) {
     return a.det(b);
 }
 
+long double abs(const point &a) {
+    return a.abs();
+}
+
 long double norm(const point &a) {
     return internal::add(a.x*a.x, a.y*a.y);
 }
@@ -117,8 +121,9 @@ int isp(const point &a, const point &b, const point &c) {
     return flag;
 }
 
+// 線分ab, cd が交わるか判定
 bool intersection_line_segment(const point &a, const point &b, const point &c, const point &d) {
-    if(isp(a,b,c)*isp(a,b,d) <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {
+    if(internal::sgn(isp(a,b,c)*isp(a,b,d)) <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {
         return true;
     }
     return false;
