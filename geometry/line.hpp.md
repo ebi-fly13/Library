@@ -10,6 +10,9 @@ data:
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/distance.test.cpp
+    title: test/geometry/distance.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
   - icon: ':heavy_check_mark:'
@@ -113,6 +116,7 @@ data:
   timestamp: '2021-09-15 00:04:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/geometry/distance.test.cpp
   - test/geometry/intersection.test.cpp
   - test/geometry/reflection.test.cpp
   - test/geometry/cross_point.test.cpp

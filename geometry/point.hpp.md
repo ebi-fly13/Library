@@ -5,13 +5,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/distance.test.cpp
+    title: test/geometry/distance.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
@@ -128,6 +131,7 @@ data:
   timestamp: '2021-09-15 00:04:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/geometry/distance.test.cpp
   - test/geometry/intersection.test.cpp
   - test/geometry/reflection.test.cpp
   - test/geometry/isp.test.cpp

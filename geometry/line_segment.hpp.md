@@ -5,10 +5,13 @@ data:
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/distance.test.cpp
+    title: test/geometry/distance.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line_segment.hpp\"\n\n#include <cmath>\n#include\
@@ -92,8 +95,9 @@ data:
   path: geometry/line_segment.hpp
   requiredBy: []
   timestamp: '2021-09-15 00:04:32+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/geometry/distance.test.cpp
 documentation_of: geometry/line_segment.hpp
 layout: document
 redirect_from:
