@@ -2,22 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/geometry/intersection.test.cpp
+    title: test/geometry/intersection.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/intersection.test.cpp
-    title: test/intersection.test.cpp
+    path: test/geometry/intersection_line_segment.test.cpp
+    title: test/geometry/intersection_line_segment.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/isp.test.cpp
-    title: test/isp.test.cpp
+    path: test/geometry/isp.test.cpp
+    title: test/geometry/isp.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/point.test.cpp
-    title: test/point.test.cpp
-  _isVerificationFailed: false
+    path: test/geometry/reflection.test.cpp
+    title: test/geometry/reflection.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
@@ -57,8 +60,8 @@ data:
     \n}\r\n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int\
     \ flag = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
     \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection(const point &a, const\
-    \ point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
+    \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
+    \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
     \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
     \   return false;\r\n}\r\n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <cmath>\r\n#include <cassert>\r\n\r\nnamespace\
@@ -98,8 +101,8 @@ data:
     \n}\r\n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int\
     \ flag = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
     \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection(const point &a, const\
-    \ point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
+    \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
+    \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
     \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
     \   return false;\r\n}\r\n\r\n}"
   dependsOn: []
@@ -107,12 +110,13 @@ data:
   path: geometry/point.hpp
   requiredBy:
   - geometry/line.hpp
-  timestamp: '2021-09-14 22:15:30+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-14 22:42:43+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/intersection.test.cpp
-  - test/point.test.cpp
-  - test/isp.test.cpp
+  - test/geometry/intersection.test.cpp
+  - test/geometry/reflection.test.cpp
+  - test/geometry/isp.test.cpp
+  - test/geometry/intersection_line_segment.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
 redirect_from:

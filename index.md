@@ -128,10 +128,10 @@ data:
     - icon: ':warning:'
       path: geometry/intersection.hpp
       title: geometry/intersection.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/line.hpp
       title: geometry/line.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/point.hpp
       title: geometry/point.hpp
   - name: graph
@@ -266,20 +266,11 @@ data:
       path: test/fibonacci_heap.test.cpp
       title: test/fibonacci_heap.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/intersection.test.cpp
-      title: test/intersection.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/isp.test.cpp
-      title: test/isp.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/lowest_common_ancestor.test.cpp
       title: test/lowest_common_ancestor.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/persistent_unionfind.test.cpp
       title: test/persistent_unionfind.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/point.test.cpp
-      title: test/point.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/point_add_rectangle_sum.test.cpp
       title: test/point_add_rectangle_sum.test.cpp
@@ -324,5 +315,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2873.test.cpp
       title: test/aoj/aoj_2873.test.cpp
+  - name: test/geometry
+    pages:
+    - icon: ':x:'
+      path: test/geometry/intersection.test.cpp
+      title: test/geometry/intersection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/geometry/intersection_line_segment.test.cpp
+      title: test/geometry/intersection_line_segment.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/geometry/isp.test.cpp
+      title: test/geometry/isp.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/geometry/reflection.test.cpp
+      title: test/geometry/reflection.test.cpp
 layout: toppage
 ---

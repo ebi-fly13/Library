@@ -5,23 +5,21 @@ data:
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/geometry/intersection.test.cpp
-    title: test/geometry/intersection.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/reflection.test.cpp
-    title: test/geometry/reflection.test.cpp
-  _isVerificationFailed: true
-  _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
-    \n#line 2 \"geometry/point.hpp\"\n\r\n#line 5 \"geometry/point.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\
-    \n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\
-    \n}\r\n\r\ndouble add(long double a, long double b) {\r\n    if(std::abs(a+b)\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C
+  bundledCode: "#line 1 \"test/geometry/isp.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
+    \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
+    #line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\n\
+    \r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace\
+    \ internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS)\
+    \ ? 1 : 0;\r\n}\r\n\r\ndouble add(long double a, long double b) {\r\n    if(std::abs(a+b)\
     \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
     } // namespace internal\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n\
     \    point() = default;\r\n\r\n    point(long double x, long double y) : x(x),\
@@ -58,42 +56,43 @@ data:
     \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
     \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
     \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
-    \   return false;\r\n}\r\n\r\n}\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi\
-    \ {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double y1,\
-    \ long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(point\
-    \ &a, point &b) : a(a), b(b) { }\n\n    point proj(const point &p) {\n       \
-    \ return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const point\
-    \ &p) {\n        return proj(p)*double(2) - p;\n    }\n};\n\nint intersection(const\
-    \ line &a, const line &b) {\n    if(det(a.b-a.a, b.a-b.b) != 0) {\n        if(dot(a.b-a.a,\
-    \ b.b-b.a) == 0) { // \u5782\u76F4\n            return 1;\n        }\n       \
-    \ return 0; // \u4EA4\u5DEE\n    }\n    else if(det(a.b-a.a, b.a-a.a) != 0) {\
-    \ // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\u76F4\u7DDA\
-    \n        return 3;\n    }\n}\n\n}\n"
-  code: "#pragma once\n\n#include <cmath>\n#include <cassert>\n\n#include \"point.hpp\"\
-    \n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1,\
-    \ long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\
-    \n    line(point &a, point &b) : a(a), b(b) { }\n\n    point proj(const point\
-    \ &p) {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point\
-    \ relf(const point &p) {\n        return proj(p)*double(2) - p;\n    }\n};\n\n\
-    int intersection(const line &a, const line &b) {\n    if(det(a.b-a.a, b.a-b.b)\
-    \ != 0) {\n        if(dot(a.b-a.a, b.b-b.a) == 0) { // \u5782\u76F4\n        \
-    \    return 1;\n        }\n        return 0; // \u4EA4\u5DEE\n    }\n    else\
-    \ if(det(a.b-a.a, b.a-a.a) != 0) { // \u5E73\u884C\n        return 2;\n    }\n\
-    \    else { // \u540C\u4E00\u76F4\u7DDA\n        return 3;\n    }\n}\n\n}"
+    \   return false;\r\n}\r\n\r\n}\n#line 8 \"test/geometry/isp.test.cpp\"\n\r\n\
+    int main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n    double\
+    \ x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point p0(x1,\
+    \ y1), p1(x2, y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n\
+    \        double x,y;\r\n        std::cin >> x >> y;\r\n        int flag = ebi::isp(p0,\
+    \ p1, ebi::point(x,y));\r\n        std::string ans;\r\n        if(flag == 1) {\r\
+    \n            ans = \"COUNTER_CLOCKWISE\";\r\n        }\r\n        else if(flag\
+    \ == -1) {\r\n            ans = \"CLOCKWISE\";\r\n        }\r\n        else if(flag\
+    \ == -2) {\r\n            ans = \"ONLINE_BACK\";\r\n        }\r\n        else\
+    \ if(flag == 2) {\r\n            ans = \"ONLINE_FRONT\";\r\n        }\r\n    \
+    \    else {\r\n            ans = \"ON_SEGMENT\";\r\n        }\r\n        std::cout\
+    \ << ans << std::endl;\r\n    }\r\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
+    \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
+    #include \"geometry/point.hpp\"\r\n\r\nint main() {\r\n    std::cout << std::fixed\
+    \ << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\n    std::cin >> x1 >>\
+    \ y1 >> x2 >> y2;\r\n    ebi::point p0(x1, y1), p1(x2, y2);\r\n    int q;\r\n\
+    \    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\n        std::cin\
+    \ >> x >> y;\r\n        int flag = ebi::isp(p0, p1, ebi::point(x,y));\r\n    \
+    \    std::string ans;\r\n        if(flag == 1) {\r\n            ans = \"COUNTER_CLOCKWISE\"\
+    ;\r\n        }\r\n        else if(flag == -1) {\r\n            ans = \"CLOCKWISE\"\
+    ;\r\n        }\r\n        else if(flag == -2) {\r\n            ans = \"ONLINE_BACK\"\
+    ;\r\n        }\r\n        else if(flag == 2) {\r\n            ans = \"ONLINE_FRONT\"\
+    ;\r\n        }\r\n        else {\r\n            ans = \"ON_SEGMENT\";\r\n    \
+    \    }\r\n        std::cout << ans << std::endl;\r\n    }\r\n}"
   dependsOn:
   - geometry/point.hpp
-  isVerificationFile: false
-  path: geometry/line.hpp
+  isVerificationFile: true
+  path: test/geometry/isp.test.cpp
   requiredBy: []
   timestamp: '2021-09-14 22:42:43+09:00'
-  verificationStatus: LIBRARY_SOME_WA
-  verifiedWith:
-  - test/geometry/intersection.test.cpp
-  - test/geometry/reflection.test.cpp
-documentation_of: geometry/line.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/geometry/isp.test.cpp
 layout: document
 redirect_from:
-- /library/geometry/line.hpp
-- /library/geometry/line.hpp.html
-title: geometry/line.hpp
+- /verify/test/geometry/isp.test.cpp
+- /verify/test/geometry/isp.test.cpp.html
+title: test/geometry/isp.test.cpp
 ---

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy: []
@@ -11,13 +11,14 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/2/CGL_2_B
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C
-  bundledCode: "#line 1 \"test/isp.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
-    \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
-    #line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\n\
-    \r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/2/CGL_2_B
+  bundledCode: "#line 1 \"test/geometry/intersection_line_segment.test.cpp\"\n#define\
+    \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/2/CGL_2_B\"\
+    \n\n#include <iostream>\n#include <iomanip>\n#include <limits>\n#include <vector>\n\
+    \n#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
+    \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace\
     \ internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS)\
     \ ? 1 : 0;\r\n}\r\n\r\ndouble add(long double a, long double b) {\r\n    if(std::abs(a+b)\
     \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
@@ -53,46 +54,37 @@ data:
     \n}\r\n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int\
     \ flag = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
     \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection(const point &a, const\
-    \ point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
+    \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
+    \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
     \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
-    \   return false;\r\n}\r\n\r\n}\n#line 8 \"test/isp.test.cpp\"\n\r\nint main()\
-    \ {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\
-    \n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point p0(x1, y1), p1(x2, y2);\r\
-    \n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\
-    \n        std::cin >> x >> y;\r\n        int flag = ebi::isp(p0, p1, ebi::point(x,y));\r\
-    \n        std::string ans;\r\n        if(flag == 1) {\r\n            ans = \"\
-    COUNTER_CLOCKWISE\";\r\n        }\r\n        else if(flag == -1) {\r\n       \
-    \     ans = \"CLOCKWISE\";\r\n        }\r\n        else if(flag == -2) {\r\n \
-    \           ans = \"ONLINE_BACK\";\r\n        }\r\n        else if(flag == 2)\
-    \ {\r\n            ans = \"ONLINE_FRONT\";\r\n        }\r\n        else {\r\n\
-    \            ans = \"ON_SEGMENT\";\r\n        }\r\n        std::cout << ans <<\
-    \ std::endl;\r\n    }\r\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
-    \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
-    #include \"../geometry/point.hpp\"\r\n\r\nint main() {\r\n    std::cout << std::fixed\
-    \ << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\n    std::cin >> x1 >>\
-    \ y1 >> x2 >> y2;\r\n    ebi::point p0(x1, y1), p1(x2, y2);\r\n    int q;\r\n\
-    \    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\n        std::cin\
-    \ >> x >> y;\r\n        int flag = ebi::isp(p0, p1, ebi::point(x,y));\r\n    \
-    \    std::string ans;\r\n        if(flag == 1) {\r\n            ans = \"COUNTER_CLOCKWISE\"\
-    ;\r\n        }\r\n        else if(flag == -1) {\r\n            ans = \"CLOCKWISE\"\
-    ;\r\n        }\r\n        else if(flag == -2) {\r\n            ans = \"ONLINE_BACK\"\
-    ;\r\n        }\r\n        else if(flag == 2) {\r\n            ans = \"ONLINE_FRONT\"\
-    ;\r\n        }\r\n        else {\r\n            ans = \"ON_SEGMENT\";\r\n    \
-    \    }\r\n        std::cout << ans << std::endl;\r\n    }\r\n}"
+    \   return false;\r\n}\r\n\r\n}\n#line 9 \"test/geometry/intersection_line_segment.test.cpp\"\
+    \n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n    int\
+    \ q;\n    std::cin >> q;\n    while(q--) {\n        double x,y;\n        std::vector<ebi::point>\
+    \ p(4);\n        for(int i = 0; i<4; i++) {\n            std::cin >> x >> y;\n\
+    \            p[i] = ebi::point(x,y);\n        }\n        if(ebi::intersection_line_segment(p[0],p[1],p[2],p[3]))\
+    \ {\n            std::cout << 1 << std::endl;\n        }\n        else {\n   \
+    \         std::cout << 0 << std::endl;\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/2/CGL_2_B\"\
+    \n\n#include <iostream>\n#include <iomanip>\n#include <limits>\n#include <vector>\n\
+    \n#include \"geometry/point.hpp\"\n\nint main() {\n    std::cout << std::fixed\
+    \ << std::setprecision(15);\n    int q;\n    std::cin >> q;\n    while(q--) {\n\
+    \        double x,y;\n        std::vector<ebi::point> p(4);\n        for(int i\
+    \ = 0; i<4; i++) {\n            std::cin >> x >> y;\n            p[i] = ebi::point(x,y);\n\
+    \        }\n        if(ebi::intersection_line_segment(p[0],p[1],p[2],p[3])) {\n\
+    \            std::cout << 1 << std::endl;\n        }\n        else {\n       \
+    \     std::cout << 0 << std::endl;\n        }\n    }\n}"
   dependsOn:
   - geometry/point.hpp
   isVerificationFile: true
-  path: test/isp.test.cpp
+  path: test/geometry/intersection_line_segment.test.cpp
   requiredBy: []
-  timestamp: '2021-09-14 22:15:30+09:00'
+  timestamp: '2021-09-14 22:42:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/isp.test.cpp
+documentation_of: test/geometry/intersection_line_segment.test.cpp
 layout: document
 redirect_from:
-- /verify/test/isp.test.cpp
-- /verify/test/isp.test.cpp.html
-title: test/isp.test.cpp
+- /verify/test/geometry/intersection_line_segment.test.cpp
+- /verify/test/geometry/intersection_line_segment.test.cpp.html
+title: test/geometry/intersection_line_segment.test.cpp
 ---
