@@ -1,5 +1,5 @@
 ---
-title: geometry
+title: point
 documentation_of: //geometry/point.hpp
 ---
 
