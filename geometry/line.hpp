@@ -42,6 +42,10 @@ int intersection(const line &a, const line &b) {
     }
 }
 
+point cross_point(const point &a, const point &b, const point &c, const point &d) {
+    return a + (b-a) * det(c - a, d - c) / det(b - a, d - c);
+}
+
 // 交点があるか確認する！
 point cross_point(const line &s, const line &t) {
     assert(intersection(s, t) < 2);

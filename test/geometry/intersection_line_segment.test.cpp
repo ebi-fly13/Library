@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "geometry/point.hpp"
+#include "geometry/line_segment.hpp"
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

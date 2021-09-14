@@ -17,6 +17,14 @@ struct line_segment {
 };
 
 // 線分ab, cd が交わるか判定
+bool intersection_line_segment(const point &a, const point &b, const point &c, const point &d) {
+    if(internal::sgn(isp(a,b,c)*isp(a,b,d)) <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {
+        return true;
+    }
+    return false;
+}
+
+// 線分ab, cd が交わるか判定
 bool intersection(const line_segment &a, const line_segment &b) {
     return intersection_line_segment(a.a, a.b, b.a, b.b);
 }

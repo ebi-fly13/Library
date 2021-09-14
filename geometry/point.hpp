@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <cassert>
+#include <vector>
 
 namespace ebi {
 
@@ -119,28 +120,6 @@ int isp(const point &a, const point &b, const point &c) {
         if(internal::sgn(dot(a-b, c-b))<0) return +2;
     }
     return flag;
-}
-
-// 線分ab, cd が交わるか判定
-bool intersection_line_segment(const point &a, const point &b, const point &c, const point &d) {
-    if(internal::sgn(isp(a,b,c)*isp(a,b,d)) <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {
-        return true;
-    }
-    return false;
-}
-
-point cross_point(const point &a, const point &b, const point &c, const point &d) {
-    return a + (b-a) * det(c - a, d - c) / det(b - a, d - c);
-}
-
-long double area(const std::vector<point> &p) {
-    long double s = 0;
-    int n = p.size();
-    for(int i = 0; i < n; i++) {
-        s = internal::add(s, det(p[i], p[(i+1 != n) ? i+1 : 0]));
-    }
-    s /= 2.0;
-    return s;
 }
 
 }
