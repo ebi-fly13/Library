@@ -125,15 +125,15 @@ data:
     - icon: ':warning:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: geometry/intersection.hpp
       title: geometry/intersection.hpp
     - icon: ':heavy_check_mark:'
-      path: geometry/isp.hpp
-      title: isp
+      path: geometry/line.hpp
+      title: geometry/line.hpp
     - icon: ':heavy_check_mark:'
-      path: geometry/template.hpp
-      title: geometry/template.hpp
+      path: geometry/point.hpp
+      title: geometry/point.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
