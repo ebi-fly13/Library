@@ -5,7 +5,8 @@
 #include <iomanip>
 #include <limits>
 
-#include "../geometry/template.hpp"
+#include "../geometry/point.hpp"
+#include "../geometry/line.hpp"
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

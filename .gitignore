@@ -4,5 +4,6 @@ a.cpp
 atcoder
 *.txt
 combination.hpp
+combined.cpp
 splay_tree.hpp
 submit.cpp

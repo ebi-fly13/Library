@@ -1,9 +1,11 @@
 ---
-title: isp
-documentation_of: //geometry/isp.hpp
+title: geometry
+documentation_of: //geometry/template.hpp
 ---
 
 # 説明
+
+## isp
 
 点の進行方向を求める関数.
 

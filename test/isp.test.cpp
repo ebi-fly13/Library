@@ -4,8 +4,7 @@
 #include <iomanip>
 #include <limits>
 
-#include "../geometry/template.hpp"
-#include "../geometry/isp.hpp"
+#include "../geometry/point.hpp"
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

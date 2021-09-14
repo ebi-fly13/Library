@@ -5,8 +5,7 @@
 #include <limits>
 #include <vector>
 
-#include "../geometry/template.hpp"
-#include "../geometry/intersection.hpp"
+#include "../geometry/point.hpp"
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

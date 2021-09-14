@@ -68,6 +68,10 @@ struct point {
         return point(*this) /= rhs;
     }
 
+    point operator-() const noexcept {
+        return point(0, 0) - *this;
+    }
+
     long double abs() const noexcept {
         return std::sqrt(internal::add(x*x, y*y));
     }
@@ -80,6 +84,12 @@ struct point {
         return internal::add(x*rhs.y, -y*rhs.x);
     }
 
+    // arctan(y/x) (単位はラジアン)
+    long double arg() const {
+        return std::atan2(y, x);
+    }
+
+    // x昇順, その後y昇順
     bool operator<(const point &rhs) const noexcept {
         if(internal::sgn(x-rhs.x)) return internal::sgn(x-rhs.x)<0;
         return internal::sgn(y-rhs.y)<0;
@@ -98,18 +108,20 @@ long double norm(const point &a) {
     return internal::add(a.x*a.x, a.y*a.y);
 }
 
-struct line {
-    point a,b;
-
-    line(long double x1, long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }
-
-    point proj(const point &p) {
-        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));
+int isp(const point &a, const point &b, const point &c) {
+    int flag = internal::sgn(det(b-a,c-a));
+    if(flag == 0) {
+        if(internal::sgn(dot(b-a, c-a))<0) return -2;
+        if(internal::sgn(dot(a-b, c-b))<0) return +2;
     }
+    return flag;
+}
 
-    point relf(const point &p) {
-        return proj(p)*double(2) - p;
+bool intersection(const point &a, const point &b, const point &c, const point &d) {
+    if(isp(a,b,c)*isp(a,b,d) <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {
+        return true;
     }
-};
+    return false;
+}
 
 }
