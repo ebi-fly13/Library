@@ -71,13 +71,13 @@ data:
     \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\
     \n\n#line 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace\
     \ ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double\
-    \ y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(point\
-    \ &a, point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const {\n \
-    \       return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
-    \ point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\n    long\
-    \ double distance(const point &c) const {\n    return std::abs(det(c - a, b -\
-    \ a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line &b) {\n\
-    \    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
+    \ y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const\
+    \ point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p)\
+    \ const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point\
+    \ relf(const point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\
+    \n    long double distance(const point &c) const {\n    return std::abs(det(c\
+    \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
+    \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
     \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
     \  return 0; // \u4EA4\u5DEE\n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a))\
     \ != 0) { // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\
@@ -90,20 +90,25 @@ data:
     \ line &a, const line &b) {\n    if(intersection(a, b) < 2) {\n        return\
     \ 0;\n    }\n    else {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line\
     \ 2 \"geometry/line_segment.hpp\"\n\n#line 5 \"geometry/line_segment.hpp\"\n\n\
-    #line 7 \"geometry/line_segment.hpp\"\n\nnamespace ebi {\n\nstruct line_segment\
+    #line 8 \"geometry/line_segment.hpp\"\n\nnamespace ebi {\n\nstruct line_segment\
     \ {\n    point a, b;\n\n    line_segment(long double x1, long double y1, long\
     \ double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line_segment(point\
     \ &a, point &b) : a(a), b(b) { }\n};\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\
-    \u308B\u304B\u5224\u5B9A\nbool intersection_line_segment(const line_segment &a,\
-    \ const line_segment &b) {\n    return intersection_line_segment(a.a, a.b, b.a,\
-    \ b.b);\n}\n\nlong double distance(const line_segment &a, const point &c) {\n\
-    \    if(internal::sgn(dot(a.b - a.a, c - a.a)) < 0) {\n        return abs(c-a.a);\n\
-    \    }\n    else if(internal::sgn(dot(a.a - a.b, c - a.b)) < 0) {\n        return\
-    \ abs(c-a.b);\n    }\n    else {\n        return std::abs(det(c - a.a, a.b - a.a)/abs(a.b-a.a));\n\
-    \    }\n}\n\nlong double distance(const line_segment &a, const line_segment &b)\
-    \ {\n    if(intersection_line_segment(a, b)) {\n        return 0;\n    }\n   \
-    \ else {\n        return std::min(std::min(distance(a, b.a), distance(a, b.b)),\
-    \ std::min(distance(b, a.a), distance(b, a.b)));\n    }\n}\n\n}\n#line 12 \"test/geometry/distance.test.cpp\"\
+    \u308B\u304B\u5224\u5B9A\nbool intersection(const line_segment &a, const line_segment\
+    \ &b) {\n    return intersection_line_segment(a.a, a.b, b.a, b.b);\n}\n\nbool\
+    \ intersection(const line &a, const line_segment &b) {\n    if(internal::sgn(det(b.a\
+    \ - a.a, a.b)) * internal::sgn(det(b.b - a.a, a.b)) < 0) {\n        return true;\n\
+    \    }\n    else {\n        return false;\n    }\n}\n\nlong double distance(const\
+    \ line_segment &a, const point &c) {\n    if(internal::sgn(dot(a.b - a.a, c -\
+    \ a.a)) < 0) {\n        return abs(c-a.a);\n    }\n    else if(internal::sgn(dot(a.a\
+    \ - a.b, c - a.b)) < 0) {\n        return abs(c-a.b);\n    }\n    else {\n   \
+    \     return std::abs(det(c - a.a, a.b - a.a)/abs(a.b-a.a));\n    }\n}\n\nlong\
+    \ double distance(const line_segment &a, const line_segment &b) {\n    if(intersection(a,\
+    \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(std::min(distance(a,\
+    \ b.a), distance(a, b.b)), std::min(distance(b, a.a), distance(b, a.b)));\n  \
+    \  }\n}\n\nlong double distance(const line &a, const line_segment &b) {\n    if(intersection(a,\
+    \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(distance(a,\
+    \ b.a), distance(a, b.b));\n    }\n}\n\n}\n#line 12 \"test/geometry/distance.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int q;\n    std::cin >> q;\n    while(q--)\
     \ {\n        point p0, p1, p2, p3;\n        std::cin >> p0.x >> p0.y >> p1.x >>\
     \ p1.y;\n        std::cin >> p2.x >> p2.y >> p3.x >> p3.y;\n        std::cout\
@@ -128,7 +133,7 @@ data:
   isVerificationFile: true
   path: test/geometry/distance.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 00:09:36+09:00'
+  timestamp: '2021-09-15 00:27:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/distance.test.cpp

@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: geometry/line_segment.hpp
+    title: geometry/line_segment.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/geometry/cross_point.test.cpp
@@ -71,9 +74,9 @@ data:
     \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\n}\n#line 7 \"geometry/line.hpp\"\
     \n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1,\
     \ long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\
-    \n    line(point &a, point &b) : a(a), b(b) { }\n\n    point proj(const point\
-    \ &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n \
-    \   point relf(const point &p) const {\n        return proj(p)*double(2) - p;\n\
+    \n    line(const point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const\
+    \ point &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\
+    \n    point relf(const point &p) const {\n        return proj(p)*double(2) - p;\n\
     \    }\n\n    long double distance(const point &c) const {\n    return std::abs(det(c\
     \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
     \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
@@ -91,9 +94,9 @@ data:
   code: "#pragma once\n\n#include <cmath>\n#include <cassert>\n\n#include \"point.hpp\"\
     \n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1,\
     \ long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\
-    \n    line(point &a, point &b) : a(a), b(b) { }\n\n    point proj(const point\
-    \ &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n \
-    \   point relf(const point &p) const {\n        return proj(p)*double(2) - p;\n\
+    \n    line(const point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const\
+    \ point &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\
+    \n    point relf(const point &p) const {\n        return proj(p)*double(2) - p;\n\
     \    }\n\n    long double distance(const point &c) const {\n    return std::abs(det(c\
     \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
     \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
@@ -112,8 +115,9 @@ data:
   - geometry/point.hpp
   isVerificationFile: false
   path: geometry/line.hpp
-  requiredBy: []
-  timestamp: '2021-09-15 00:04:32+09:00'
+  requiredBy:
+  - geometry/line_segment.hpp
+  timestamp: '2021-09-15 00:27:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/distance.test.cpp
