@@ -82,8 +82,8 @@ data:
     \ point &b, const point &c, const point &d) {\r\n    return a + (b-a) * det(c\
     \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\nlong double area(const std::vector<point>\
     \ &p) {\r\n    long double s = 0;\r\n    int n = p.size();\r\n    for(int i =\
-    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 == n) ? 0\
-    \ : i+1]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}\n"
+    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 != n) ? i+1\
+    \ : 0]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <cmath>\r\n#include <cassert>\r\n\r\nnamespace\
     \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\
     \n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\
@@ -130,15 +130,15 @@ data:
     \ point &b, const point &c, const point &d) {\r\n    return a + (b-a) * det(c\
     \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\nlong double area(const std::vector<point>\
     \ &p) {\r\n    long double s = 0;\r\n    int n = p.size();\r\n    for(int i =\
-    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 == n) ? 0\
-    \ : i+1]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}"
+    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 != n) ? i+1\
+    \ : 0]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}"
   dependsOn: []
   isVerificationFile: false
   path: geometry/point.hpp
   requiredBy:
   - geometry/line_segment.hpp
   - geometry/line.hpp
-  timestamp: '2021-09-15 00:58:21+09:00'
+  timestamp: '2021-09-15 01:03:02+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/geometry/distance.test.cpp

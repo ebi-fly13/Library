@@ -64,9 +64,9 @@ data:
     \ point &b, const point &c, const point &d) {\r\n    return a + (b-a) * det(c\
     \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\nlong double area(const std::vector<point>\
     \ &p) {\r\n    long double s = 0;\r\n    int n = p.size();\r\n    for(int i =\
-    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 == n) ? 0\
-    \ : i+1]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}\n#line 9\
-    \ \"test/geometry/intersection_line_segment.test.cpp\"\n\nint main() {\n    std::cout\
+    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 != n) ? i+1\
+    \ : 0]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}\n#line 9 \"\
+    test/geometry/intersection_line_segment.test.cpp\"\n\nint main() {\n    std::cout\
     \ << std::fixed << std::setprecision(15);\n    int q;\n    std::cin >> q;\n  \
     \  while(q--) {\n        double x,y;\n        std::vector<ebi::point> p(4);\n\
     \        for(int i = 0; i<4; i++) {\n            std::cin >> x >> y;\n       \
@@ -87,7 +87,7 @@ data:
   isVerificationFile: true
   path: test/geometry/intersection_line_segment.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 00:58:21+09:00'
+  timestamp: '2021-09-15 01:03:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/intersection_line_segment.test.cpp

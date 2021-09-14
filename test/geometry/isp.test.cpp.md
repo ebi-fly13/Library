@@ -63,9 +63,9 @@ data:
     \ point &b, const point &c, const point &d) {\r\n    return a + (b-a) * det(c\
     \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\nlong double area(const std::vector<point>\
     \ &p) {\r\n    long double s = 0;\r\n    int n = p.size();\r\n    for(int i =\
-    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 == n) ? 0\
-    \ : i+1]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}\n#line 8\
-    \ \"test/geometry/isp.test.cpp\"\n\r\nint main() {\r\n    std::cout << std::fixed\
+    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 != n) ? i+1\
+    \ : 0]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}\n#line 8 \"\
+    test/geometry/isp.test.cpp\"\n\r\nint main() {\r\n    std::cout << std::fixed\
     \ << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\n    std::cin >> x1 >>\
     \ y1 >> x2 >> y2;\r\n    ebi::point p0(x1, y1), p1(x2, y2);\r\n    int q;\r\n\
     \    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\n        std::cin\
@@ -94,7 +94,7 @@ data:
   isVerificationFile: true
   path: test/geometry/isp.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 00:58:21+09:00'
+  timestamp: '2021-09-15 01:03:02+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/isp.test.cpp

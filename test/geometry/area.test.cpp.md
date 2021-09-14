@@ -69,9 +69,9 @@ data:
     \ point &b, const point &c, const point &d) {\r\n    return a + (b-a) * det(c\
     \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\nlong double area(const std::vector<point>\
     \ &p) {\r\n    long double s = 0;\r\n    int n = p.size();\r\n    for(int i =\
-    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 == n) ? 0\
-    \ : i+1]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}\n#line 2\
-    \ \"geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\
+    \ 0; i < n; i++) {\r\n        s = internal::add(s, det(p[i], p[(i+1 != n) ? i+1\
+    \ : 0]));\r\n    }\r\n    s /= 2.0;\r\n    return s;\r\n}\r\n\r\n}\n#line 2 \"\
+    geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\
     \n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1,\
     \ long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\
     \n    line(const point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const\
@@ -131,7 +131,7 @@ data:
   isVerificationFile: true
   path: test/geometry/area.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 00:58:21+09:00'
+  timestamp: '2021-09-15 01:03:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/area.test.cpp
