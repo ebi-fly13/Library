@@ -13,7 +13,7 @@ int sgn(long double a) {
     return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;
 }
 
-double add(long double a, long double b) {
+long double add(long double a, long double b) {
     if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;
     return a+b;
 }
@@ -131,6 +131,16 @@ bool intersection_line_segment(const point &a, const point &b, const point &c, c
 
 point cross_point(const point &a, const point &b, const point &c, const point &d) {
     return a + (b-a) * det(c - a, d - c) / det(b - a, d - c);
+}
+
+long double area(const std::vector<point> &p) {
+    long double s = 0;
+    int n = p.size();
+    for(int i = 0; i < n; i++) {
+        s = internal::add(s, det(p[i], p[(i+1 == n) ? 0 : i+1]));
+    }
+    s /= 2.0;
+    return s;
 }
 
 }
