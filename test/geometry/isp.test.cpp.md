@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy: []
@@ -56,18 +56,20 @@ data:
     \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
     \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
     \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
-    \   return false;\r\n}\r\n\r\n}\n#line 8 \"test/geometry/isp.test.cpp\"\n\r\n\
-    int main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n    double\
-    \ x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point p0(x1,\
-    \ y1), p1(x2, y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n\
-    \        double x,y;\r\n        std::cin >> x >> y;\r\n        int flag = ebi::isp(p0,\
-    \ p1, ebi::point(x,y));\r\n        std::string ans;\r\n        if(flag == 1) {\r\
-    \n            ans = \"COUNTER_CLOCKWISE\";\r\n        }\r\n        else if(flag\
-    \ == -1) {\r\n            ans = \"CLOCKWISE\";\r\n        }\r\n        else if(flag\
-    \ == -2) {\r\n            ans = \"ONLINE_BACK\";\r\n        }\r\n        else\
-    \ if(flag == 2) {\r\n            ans = \"ONLINE_FRONT\";\r\n        }\r\n    \
-    \    else {\r\n            ans = \"ON_SEGMENT\";\r\n        }\r\n        std::cout\
-    \ << ans << std::endl;\r\n    }\r\n}\n"
+    \   return false;\r\n}\r\n\r\npoint cross_point(const point &a, const point &b,\
+    \ const point &c, const point &d) {\r\n    return a + (b-a) * det(c - a, d - c)\
+    \ / det(b - a, d - c);\r\n}\r\n\r\n}\n#line 8 \"test/geometry/isp.test.cpp\"\n\
+    \r\nint main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n\
+    \    double x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point\
+    \ p0(x1, y1), p1(x2, y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--)\
+    \ {\r\n        double x,y;\r\n        std::cin >> x >> y;\r\n        int flag\
+    \ = ebi::isp(p0, p1, ebi::point(x,y));\r\n        std::string ans;\r\n       \
+    \ if(flag == 1) {\r\n            ans = \"COUNTER_CLOCKWISE\";\r\n        }\r\n\
+    \        else if(flag == -1) {\r\n            ans = \"CLOCKWISE\";\r\n       \
+    \ }\r\n        else if(flag == -2) {\r\n            ans = \"ONLINE_BACK\";\r\n\
+    \        }\r\n        else if(flag == 2) {\r\n            ans = \"ONLINE_FRONT\"\
+    ;\r\n        }\r\n        else {\r\n            ans = \"ON_SEGMENT\";\r\n    \
+    \    }\r\n        std::cout << ans << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
     \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
     #include \"geometry/point.hpp\"\r\n\r\nint main() {\r\n    std::cout << std::fixed\
@@ -86,7 +88,7 @@ data:
   isVerificationFile: true
   path: test/geometry/isp.test.cpp
   requiredBy: []
-  timestamp: '2021-09-14 22:42:43+09:00'
+  timestamp: '2021-09-14 23:05:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/isp.test.cpp

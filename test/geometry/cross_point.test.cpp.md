@@ -14,15 +14,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.0000001'
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
+    ERROR: '0.00000001'
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_C
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
-  bundledCode: "#line 1 \"test/geometry/reflection.test.cpp\"\n#define PROBLEM \"\
-    https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\r\n#define\
-    \ ERROR 0.0000001\r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include\
-    \ <limits>\r\n\r\n#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include\
-    \ <cassert>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_C
+  bundledCode: "#line 1 \"test/geometry/cross_point.test.cpp\"\n#define PROBLEM \"\
+    https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_C\"\n#define\
+    \ ERROR 0.00000001\n\n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\
+    #include <iomanip>\n\n#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n\
+    #include <cassert>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\
     \n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS)\
     \ ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\ndouble add(long double a, long double b)\
     \ {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n \
@@ -78,35 +78,37 @@ data:
     \n        return 3;\n    }\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\u304B\u78BA\
     \u8A8D\u3059\u308B\uFF01\npoint cross_point(const line &s, const line &t) {\n\
     \    assert(intersection(s, t) < 2);\n    return s.a + (s.b - s.a) * det(t.a -\
-    \ s.a, t.b - t.a) / det(s.b - s.a, t.b - t.a);\n}\n\n}\n#line 10 \"test/geometry/reflection.test.cpp\"\
-    \n\r\nint main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n\
-    \    double x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line\
-    \ l(x1,y1,x2,y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n\
-    \        double x,y;\r\n        std::cin >> x >> y;\r\n        ebi::point p(x,y);\r\
-    \n        ebi::point ans = l.relf(p);\r\n        std::cout << ans.x << \" \" <<\
-    \ ans.y << std::endl;\r\n    }\r\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\
-    \r\n#define ERROR 0.0000001\r\n\r\n#include <iostream>\r\n#include <iomanip>\r\
-    \n#include <limits>\r\n\r\n#include \"geometry/point.hpp\"\r\n#include \"geometry/line.hpp\"\
-    \r\n\r\nint main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\
-    \n    double x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line\
-    \ l(x1,y1,x2,y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n\
-    \        double x,y;\r\n        std::cin >> x >> y;\r\n        ebi::point p(x,y);\r\
-    \n        ebi::point ans = l.relf(p);\r\n        std::cout << ans.x << \" \" <<\
-    \ ans.y << std::endl;\r\n    }\r\n}"
+    \ s.a, t.b - t.a) / det(s.b - s.a, t.b - t.a);\n}\n\n}\n#line 12 \"test/geometry/cross_point.test.cpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int q;\n    std::cin >> q;\n    while(q--)\
+    \ {\n        point p0, p1, p2, p3;\n        std::cin >> p0.x >> p0.y >> p1.x >>\
+    \ p1.y;\n        std::cin >> p2.x >> p2.y >> p3.x >> p3.y;\n        point cross\
+    \ = cross_point(p0, p1, p2, p3);\n        std::cout << cross.x << \" \" << cross.y\
+    \ << '\\n';\n    }\n}\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_C\"\
+    \n#define ERROR 0.00000001\n\n\n#include <iostream>\n#include <vector>\n#include\
+    \ <algorithm>\n#include <iomanip>\n\n#include \"geometry/point.hpp\"\n#include\
+    \ \"geometry/line.hpp\"\n\nnamespace ebi {\n\nvoid main_() {\n    int q;\n   \
+    \ std::cin >> q;\n    while(q--) {\n        point p0, p1, p2, p3;\n        std::cin\
+    \ >> p0.x >> p0.y >> p1.x >> p1.y;\n        std::cin >> p2.x >> p2.y >> p3.x >>\
+    \ p3.y;\n        point cross = cross_point(p0, p1, p2, p3);\n        std::cout\
+    \ << cross.x << \" \" << cross.y << '\\n';\n    }\n}\n\n}\n\nint main() {\n  \
+    \  std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}"
   dependsOn:
   - geometry/point.hpp
   - geometry/line.hpp
   isVerificationFile: true
-  path: test/geometry/reflection.test.cpp
+  path: test/geometry/cross_point.test.cpp
   requiredBy: []
   timestamp: '2021-09-14 23:05:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/geometry/reflection.test.cpp
+documentation_of: test/geometry/cross_point.test.cpp
 layout: document
 redirect_from:
-- /verify/test/geometry/reflection.test.cpp
-- /verify/test/geometry/reflection.test.cpp.html
-title: test/geometry/reflection.test.cpp
+- /verify/test/geometry/cross_point.test.cpp
+- /verify/test/geometry/cross_point.test.cpp.html
+title: test/geometry/cross_point.test.cpp
 ---

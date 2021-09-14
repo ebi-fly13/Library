@@ -2,11 +2,14 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/cross_point.test.cpp
+    title: test/geometry/cross_point.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
   - icon: ':heavy_check_mark:'
@@ -18,9 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
@@ -63,7 +66,9 @@ data:
     \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
     \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
     \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
-    \   return false;\r\n}\r\n\r\n}\n"
+    \   return false;\r\n}\r\n\r\npoint cross_point(const point &a, const point &b,\
+    \ const point &c, const point &d) {\r\n    return a + (b-a) * det(c - a, d - c)\
+    \ / det(b - a, d - c);\r\n}\r\n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <cmath>\r\n#include <cassert>\r\n\r\nnamespace\
     \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\
     \n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\
@@ -104,19 +109,22 @@ data:
     \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
     \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
     \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
-    \   return false;\r\n}\r\n\r\n}"
+    \   return false;\r\n}\r\n\r\npoint cross_point(const point &a, const point &b,\
+    \ const point &c, const point &d) {\r\n    return a + (b-a) * det(c - a, d - c)\
+    \ / det(b - a, d - c);\r\n}\r\n\r\n}"
   dependsOn: []
   isVerificationFile: false
   path: geometry/point.hpp
   requiredBy:
   - geometry/line.hpp
-  timestamp: '2021-09-14 22:42:43+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-09-14 23:05:33+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/intersection.test.cpp
   - test/geometry/reflection.test.cpp
   - test/geometry/isp.test.cpp
   - test/geometry/intersection_line_segment.test.cpp
+  - test/geometry/cross_point.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
 redirect_from:

@@ -125,13 +125,10 @@ data:
     - icon: ':warning:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
-    - icon: ':warning:'
-      path: geometry/intersection.hpp
-      title: geometry/intersection.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
       title: geometry/line.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
       title: geometry/point.hpp
   - name: graph
@@ -317,7 +314,10 @@ data:
       title: test/aoj/aoj_2873.test.cpp
   - name: test/geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
+      path: test/geometry/cross_point.test.cpp
+      title: test/geometry/cross_point.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/geometry/intersection.test.cpp
       title: test/geometry/intersection.test.cpp
     - icon: ':heavy_check_mark:'

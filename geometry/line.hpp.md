@@ -1,20 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: geometry/point.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/cross_point.test.cpp
+    title: test/geometry/cross_point.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
@@ -58,9 +61,11 @@ data:
     \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
     \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
     \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
-    \   return false;\r\n}\r\n\r\n}\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi\
-    \ {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double y1,\
-    \ long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(point\
+    \   return false;\r\n}\r\n\r\npoint cross_point(const point &a, const point &b,\
+    \ const point &c, const point &d) {\r\n    return a + (b-a) * det(c - a, d - c)\
+    \ / det(b - a, d - c);\r\n}\r\n\r\n}\n#line 7 \"geometry/line.hpp\"\n\nnamespace\
+    \ ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double\
+    \ y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(point\
     \ &a, point &b) : a(a), b(b) { }\n\n    point proj(const point &p) {\n       \
     \ return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const point\
     \ &p) {\n        return proj(p)*double(2) - p;\n    }\n};\n\nint intersection(const\
@@ -68,7 +73,10 @@ data:
     \ b.b-b.a) == 0) { // \u5782\u76F4\n            return 1;\n        }\n       \
     \ return 0; // \u4EA4\u5DEE\n    }\n    else if(det(a.b-a.a, b.a-a.a) != 0) {\
     \ // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\u76F4\u7DDA\
-    \n        return 3;\n    }\n}\n\n}\n"
+    \n        return 3;\n    }\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\u304B\u78BA\
+    \u8A8D\u3059\u308B\uFF01\npoint cross_point(const line &s, const line &t) {\n\
+    \    assert(intersection(s, t) < 2);\n    return s.a + (s.b - s.a) * det(t.a -\
+    \ s.a, t.b - t.a) / det(s.b - s.a, t.b - t.a);\n}\n\n}\n"
   code: "#pragma once\n\n#include <cmath>\n#include <cassert>\n\n#include \"point.hpp\"\
     \n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1,\
     \ long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\
@@ -79,17 +87,22 @@ data:
     \ != 0) {\n        if(dot(a.b-a.a, b.b-b.a) == 0) { // \u5782\u76F4\n        \
     \    return 1;\n        }\n        return 0; // \u4EA4\u5DEE\n    }\n    else\
     \ if(det(a.b-a.a, b.a-a.a) != 0) { // \u5E73\u884C\n        return 2;\n    }\n\
-    \    else { // \u540C\u4E00\u76F4\u7DDA\n        return 3;\n    }\n}\n\n}"
+    \    else { // \u540C\u4E00\u76F4\u7DDA\n        return 3;\n    }\n}\n\n// \u4EA4\
+    \u70B9\u304C\u3042\u308B\u304B\u78BA\u8A8D\u3059\u308B\uFF01\npoint cross_point(const\
+    \ line &s, const line &t) {\n    assert(intersection(s, t) < 2);\n    return s.a\
+    \ + (s.b - s.a) * det(t.a - s.a, t.b - t.a) / det(s.b - s.a, t.b - t.a);\n}\n\n\
+    }"
   dependsOn:
   - geometry/point.hpp
   isVerificationFile: false
   path: geometry/line.hpp
   requiredBy: []
-  timestamp: '2021-09-14 22:42:43+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-09-14 23:05:33+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/intersection.test.cpp
   - test/geometry/reflection.test.cpp
+  - test/geometry/cross_point.test.cpp
 documentation_of: geometry/line.hpp
 layout: document
 redirect_from:
