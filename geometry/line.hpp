@@ -12,7 +12,7 @@ struct line {
 
     line(long double x1, long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }
 
-    line(point &a, point &b) : a(a), b(b) { }
+    line(const point &a, const point &b) : a(a), b(b) { }
 
     point proj(const point &p) const {
         return a + (b-a)*(dot(b-a,p-a)/norm(b-a));

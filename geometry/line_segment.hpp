@@ -4,6 +4,7 @@
 #include <cassert>
 
 #include "point.hpp"
+#include "line.hpp"
 
 namespace ebi {
 
@@ -16,8 +17,17 @@ struct line_segment {
 };
 
 // 線分ab, cd が交わるか判定
-bool intersection_line_segment(const line_segment &a, const line_segment &b) {
+bool intersection(const line_segment &a, const line_segment &b) {
     return intersection_line_segment(a.a, a.b, b.a, b.b);
+}
+
+bool intersection(const line &a, const line_segment &b) {
+    if(internal::sgn(det(b.a - a.a, a.b)) * internal::sgn(det(b.b - a.a, a.b)) < 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 long double distance(const line_segment &a, const point &c) {
@@ -33,11 +43,20 @@ long double distance(const line_segment &a, const point &c) {
 }
 
 long double distance(const line_segment &a, const line_segment &b) {
-    if(intersection_line_segment(a, b)) {
+    if(intersection(a, b)) {
         return 0;
     }
     else {
         return std::min(std::min(distance(a, b.a), distance(a, b.b)), std::min(distance(b, a.a), distance(b, a.b)));
+    }
+}
+
+long double distance(const line &a, const line_segment &b) {
+    if(intersection(a, b)) {
+        return 0;
+    }
+    else {
+        return std::min(distance(a, b.a), distance(a, b.b));
     }
 }
 
