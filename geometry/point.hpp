@@ -124,4 +124,8 @@ bool intersection_line_segment(const point &a, const point &b, const point &c, c
     return false;
 }
 
+point cross_point(const point &a, const point &b, const point &c, const point &d) {
+    return a + (b-a) * det(c - a, d - c) / det(b - a, d - c);
+}
+
 }
