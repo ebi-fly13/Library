@@ -2,36 +2,34 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/convex.hpp
+    title: geometry/convex.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/line_segment.hpp
+    title: geometry/line_segment.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/area.test.cpp
-    title: test/geometry/area.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/distance.test.cpp
-    title: test/geometry/distance.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/intersection_line_segment.test.cpp
-    title: test/geometry/intersection_line_segment.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/is_convex.test.cpp
-    title: test/geometry/is_convex.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"geometry/line_segment.hpp\"\n\n#include <cmath>\n#include\
-    \ <cassert>\n\n#line 2 \"geometry/point.hpp\"\n\r\n#line 5 \"geometry/point.hpp\"\
-    \n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS =\
-    \ 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n    return\
-    \ (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a,\
-    \ long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b)))\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B
+  bundledCode: "#line 1 \"test/geometry/is_convex.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <iomanip>\n\
+    \n#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
+    \n#line 6 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\nconstexpr long double\
+    \ EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n\
+    \    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long\
+    \ double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b)))\
     \ return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct\
     \ point {\r\n    long double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long\
     \ double x, long double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const\
@@ -89,12 +87,13 @@ data:
     \   return std::abs(det(c-a.a, a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const\
     \ line &a, const line &b) {\n    if(intersection(a, b) < 2) {\n        return\
     \ 0;\n    }\n    else {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line\
-    \ 8 \"geometry/line_segment.hpp\"\n\nnamespace ebi {\n\nstruct line_segment {\n\
-    \    point a, b;\n\n    line_segment(long double x1, long double y1, long double\
-    \ x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line_segment(point &a,\
-    \ point &b) : a(a), b(b) { }\n};\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\
-    \u304B\u5224\u5B9A\nbool intersection_line_segment(const point &a, const point\
-    \ &b, const point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
+    \ 2 \"geometry/line_segment.hpp\"\n\n#line 5 \"geometry/line_segment.hpp\"\n\n\
+    #line 8 \"geometry/line_segment.hpp\"\n\nnamespace ebi {\n\nstruct line_segment\
+    \ {\n    point a, b;\n\n    line_segment(long double x1, long double y1, long\
+    \ double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line_segment(point\
+    \ &a, point &b) : a(a), b(b) { }\n};\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\
+    \u308B\u304B\u5224\u5B9A\nbool intersection_line_segment(const point &a, const\
+    \ point &b, const point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
     \ <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\n        return true;\n\
     \    }\n    return false;\n}\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\
     \u304B\u5224\u5B9A\nbool intersection(const line_segment &a, const line_segment\
@@ -111,48 +110,48 @@ data:
     \ b.a), distance(a, b.b)), std::min(distance(b, a.a), distance(b, a.b)));\n  \
     \  }\n}\n\nlong double distance(const line &a, const line_segment &b) {\n    if(intersection(a,\
     \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(distance(a,\
-    \ b.a), distance(a, b.b));\n    }\n}\n\n}\n"
-  code: "#pragma once\n\n#include <cmath>\n#include <cassert>\n\n#include \"point.hpp\"\
-    \n#include \"line.hpp\"\n\nnamespace ebi {\n\nstruct line_segment {\n    point\
-    \ a, b;\n\n    line_segment(long double x1, long double y1, long double x2, long\
-    \ double y2) : a(x1, y1), b(x2, y2) { }\n\n    line_segment(point &a, point &b)\
-    \ : a(a), b(b) { }\n};\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\u304B\
-    \u5224\u5B9A\nbool intersection_line_segment(const point &a, const point &b, const\
-    \ point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d)) <=\
-    \ 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\n        return true;\n  \
-    \  }\n    return false;\n}\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\u304B\
-    \u5224\u5B9A\nbool intersection(const line_segment &a, const line_segment &b)\
-    \ {\n    return intersection_line_segment(a.a, a.b, b.a, b.b);\n}\n\nbool intersection(const\
-    \ line &a, const line_segment &b) {\n    if(internal::sgn(det(b.a - a.a, a.b))\
-    \ * internal::sgn(det(b.b - a.a, a.b)) < 0) {\n        return true;\n    }\n \
-    \   else {\n        return false;\n    }\n}\n\nlong double distance(const line_segment\
-    \ &a, const point &c) {\n    if(internal::sgn(dot(a.b - a.a, c - a.a)) < 0) {\n\
-    \        return abs(c-a.a);\n    }\n    else if(internal::sgn(dot(a.a - a.b, c\
-    \ - a.b)) < 0) {\n        return abs(c-a.b);\n    }\n    else {\n        return\
-    \ std::abs(det(c - a.a, a.b - a.a)/abs(a.b-a.a));\n    }\n}\n\nlong double distance(const\
-    \ line_segment &a, const line_segment &b) {\n    if(intersection(a, b)) {\n  \
-    \      return 0;\n    }\n    else {\n        return std::min(std::min(distance(a,\
-    \ b.a), distance(a, b.b)), std::min(distance(b, a.a), distance(b, a.b)));\n  \
-    \  }\n}\n\nlong double distance(const line &a, const line_segment &b) {\n    if(intersection(a,\
-    \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(distance(a,\
-    \ b.a), distance(a, b.b));\n    }\n}\n\n}"
+    \ b.a), distance(a, b.b));\n    }\n}\n\n}\n#line 2 \"geometry/convex.hpp\"\n\n\
+    #line 5 \"geometry/convex.hpp\"\n\n#line 7 \"geometry/convex.hpp\"\n\nnamespace\
+    \ ebi {\n\nlong double area(const std::vector<point> &p) {\n    long double s\
+    \ = 0;\n    int n = p.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
+    \ det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n\
+    }\n\n// \u51F8\u591A\u89D2\u5F62\u304B\u5224\u5B9A. p\u306B\u53CD\u6642\u8A08\u56DE\
+    \u308A\u3067\u70B9\u304C\u5165\u3063\u3066\u3044\u308B\u3068\u4EEE\u5B9A\nbool\
+    \ is_convex(const std::vector<point> &p) {\n    int n = p.size();\n    for(int\
+    \ i = 0; i < n; i++) {\n        if(isp(p[i], p[(i+1 != n) ? i+1 : 0], p[(i+2 <\
+    \ n) ? i+2 : (i+2)%n]) == -1) {\n            return false;\n        }\n    }\n\
+    \    return true;\n}\n\n}\n#line 12 \"test/geometry/is_convex.test.cpp\"\n\nnamespace\
+    \ ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
+    \ p(n);\n    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    if(is_convex(p))\
+    \ {\n        std::cout << \"1\\n\";\n    }\n    else {\n        std::cout << \"\
+    0\\n\";\n    }\n}\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <iomanip>\n\
+    \n#include \"geometry/point.hpp\"\n#include \"geometry/line.hpp\"\n#include \"\
+    geometry/line_segment.hpp\"\n#include \"geometry/convex.hpp\"\n\nnamespace ebi\
+    \ {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
+    \ p(n);\n    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    if(is_convex(p))\
+    \ {\n        std::cout << \"1\\n\";\n    }\n    else {\n        std::cout << \"\
+    0\\n\";\n    }\n}\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }"
   dependsOn:
   - geometry/point.hpp
   - geometry/line.hpp
-  isVerificationFile: false
-  path: geometry/line_segment.hpp
+  - geometry/line_segment.hpp
+  - geometry/convex.hpp
+  isVerificationFile: true
+  path: test/geometry/is_convex.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 01:14:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/geometry/distance.test.cpp
-  - test/geometry/is_convex.test.cpp
-  - test/geometry/area.test.cpp
-  - test/geometry/intersection_line_segment.test.cpp
-documentation_of: geometry/line_segment.hpp
+  timestamp: '2021-09-15 01:29:53+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/geometry/is_convex.test.cpp
 layout: document
 redirect_from:
-- /library/geometry/line_segment.hpp
-- /library/geometry/line_segment.hpp.html
-title: geometry/line_segment.hpp
+- /verify/test/geometry/is_convex.test.cpp
+- /verify/test/geometry/is_convex.test.cpp.html
+title: test/geometry/is_convex.test.cpp
 ---

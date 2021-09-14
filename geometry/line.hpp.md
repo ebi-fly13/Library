@@ -25,6 +25,9 @@ data:
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/is_convex.test.cpp
+    title: test/geometry/is_convex.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
   _isVerificationFailed: false
@@ -126,6 +129,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/distance.test.cpp
+  - test/geometry/is_convex.test.cpp
   - test/geometry/intersection.test.cpp
   - test/geometry/area.test.cpp
   - test/geometry/reflection.test.cpp

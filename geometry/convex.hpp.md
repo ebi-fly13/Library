@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/is_convex.test.cpp
+    title: test/geometry/is_convex.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -58,22 +61,31 @@ data:
     long double area(const std::vector<point> &p) {\n    long double s = 0;\n    int\
     \ n = p.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
     \ det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n\
-    }\n\nbool is_convex(const std::vector<point> &p) {\n    int n = p.size();\n  \
-    \  for(int i = 0; i < n; i++) {\n    }\n}\n\n}\n"
+    }\n\n// \u51F8\u591A\u89D2\u5F62\u304B\u5224\u5B9A. p\u306B\u53CD\u6642\u8A08\u56DE\
+    \u308A\u3067\u70B9\u304C\u5165\u3063\u3066\u3044\u308B\u3068\u4EEE\u5B9A\nbool\
+    \ is_convex(const std::vector<point> &p) {\n    int n = p.size();\n    for(int\
+    \ i = 0; i < n; i++) {\n        if(isp(p[i], p[(i+1 != n) ? i+1 : 0], p[(i+2 <\
+    \ n) ? i+2 : (i+2)%n]) == -1) {\n            return false;\n        }\n    }\n\
+    \    return true;\n}\n\n}\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"point.hpp\"\
     \n\nnamespace ebi {\n\nlong double area(const std::vector<point> &p) {\n    long\
     \ double s = 0;\n    int n = p.size();\n    for(int i = 0; i < n; i++) {\n   \
     \     s = internal::add(s, det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s\
-    \ /= 2.0;\n    return s;\n}\n\nbool is_convex(const std::vector<point> &p) {\n\
-    \    int n = p.size();\n    for(int i = 0; i < n; i++) {\n    }\n}\n\n}"
+    \ /= 2.0;\n    return s;\n}\n\n// \u51F8\u591A\u89D2\u5F62\u304B\u5224\u5B9A.\
+    \ p\u306B\u53CD\u6642\u8A08\u56DE\u308A\u3067\u70B9\u304C\u5165\u3063\u3066\u3044\
+    \u308B\u3068\u4EEE\u5B9A\nbool is_convex(const std::vector<point> &p) {\n    int\
+    \ n = p.size();\n    for(int i = 0; i < n; i++) {\n        if(isp(p[i], p[(i+1\
+    \ != n) ? i+1 : 0], p[(i+2 < n) ? i+2 : (i+2)%n]) == -1) {\n            return\
+    \ false;\n        }\n    }\n    return true;\n}\n\n}"
   dependsOn:
   - geometry/point.hpp
   isVerificationFile: false
   path: geometry/convex.hpp
   requiredBy: []
-  timestamp: '2021-09-15 01:19:01+09:00'
+  timestamp: '2021-09-15 01:29:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/geometry/is_convex.test.cpp
   - test/geometry/area.test.cpp
 documentation_of: geometry/convex.hpp
 layout: document

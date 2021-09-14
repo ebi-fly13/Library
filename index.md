@@ -336,6 +336,9 @@ data:
       path: test/geometry/intersection_line_segment.test.cpp
       title: test/geometry/intersection_line_segment.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/geometry/is_convex.test.cpp
+      title: test/geometry/is_convex.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/geometry/isp.test.cpp
       title: test/geometry/isp.test.cpp
     - icon: ':heavy_check_mark:'

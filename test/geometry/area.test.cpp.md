@@ -115,9 +115,13 @@ data:
     \ ebi {\n\nlong double area(const std::vector<point> &p) {\n    long double s\
     \ = 0;\n    int n = p.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
     \ det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n\
-    }\n\nbool is_convex(const std::vector<point> &p) {\n    int n = p.size();\n  \
-    \  for(int i = 0; i < n; i++) {\n    }\n}\n\n}\n#line 12 \"test/geometry/area.test.cpp\"\
-    \n\nnamespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
+    }\n\n// \u51F8\u591A\u89D2\u5F62\u304B\u5224\u5B9A. p\u306B\u53CD\u6642\u8A08\u56DE\
+    \u308A\u3067\u70B9\u304C\u5165\u3063\u3066\u3044\u308B\u3068\u4EEE\u5B9A\nbool\
+    \ is_convex(const std::vector<point> &p) {\n    int n = p.size();\n    for(int\
+    \ i = 0; i < n; i++) {\n        if(isp(p[i], p[(i+1 != n) ? i+1 : 0], p[(i+2 <\
+    \ n) ? i+2 : (i+2)%n]) == -1) {\n            return false;\n        }\n    }\n\
+    \    return true;\n}\n\n}\n#line 12 \"test/geometry/area.test.cpp\"\n\nnamespace\
+    \ ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
     \ p(n);\n    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    std::cout\
     \ << area(p) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed <<\
     \ std::setprecision(1);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
@@ -139,7 +143,7 @@ data:
   isVerificationFile: true
   path: test/geometry/area.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 01:19:01+09:00'
+  timestamp: '2021-09-15 01:29:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/area.test.cpp
