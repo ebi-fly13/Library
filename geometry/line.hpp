@@ -22,5 +22,20 @@ struct line {
         return proj(p)*double(2) - p;
     }
 };
-    
+
+int intersection(const line &a, const line &b) {
+    if(det(a.b-a.a, b.a-b.b) != 0) {
+        if(dot(a.b-a.a, b.b-b.a) == 0) { // 垂直
+            return 1;
+        }
+        return 0; // 交差
+    }
+    else if(det(a.b-a.a, b.a-a.a) != 0) { // 平行
+        return 2;
+    }
+    else { // 同一直線
+        return 3;
+    }
+}
+
 }
