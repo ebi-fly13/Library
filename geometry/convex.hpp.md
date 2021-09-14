@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
-    title: geometry/point.hpp
+    title: geometry
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/convex.hpp\"\n\n#include <cassert>\n#include <vector>\n\
@@ -59,22 +59,20 @@ data:
     \ n = p.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
     \ det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n\
     }\n\nbool is_convex(const std::vector<point> &p) {\n    int n = p.size();\n  \
-    \  for(int i = 0; i < n; i++) {\n        if(isp(p[i], p[(i+1 != n) ? i+1 : 0],\
-    \ p[(i+2 < n) ? i+2 : (i+2)%n]) == );\n    }\n}\n\n}\n"
+    \  for(int i = 0; i < n; i++) {\n    }\n}\n\n}\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"point.hpp\"\
     \n\nnamespace ebi {\n\nlong double area(const std::vector<point> &p) {\n    long\
     \ double s = 0;\n    int n = p.size();\n    for(int i = 0; i < n; i++) {\n   \
     \     s = internal::add(s, det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s\
     \ /= 2.0;\n    return s;\n}\n\nbool is_convex(const std::vector<point> &p) {\n\
-    \    int n = p.size();\n    for(int i = 0; i < n; i++) {\n        if(isp(p[i],\
-    \ p[(i+1 != n) ? i+1 : 0], p[(i+2 < n) ? i+2 : (i+2)%n]) == );\n    }\n}\n\n}"
+    \    int n = p.size();\n    for(int i = 0; i < n; i++) {\n    }\n}\n\n}"
   dependsOn:
   - geometry/point.hpp
   isVerificationFile: false
   path: geometry/convex.hpp
   requiredBy: []
-  timestamp: '2021-09-15 01:14:50+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-09-15 01:19:01+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/area.test.cpp
 documentation_of: geometry/convex.hpp

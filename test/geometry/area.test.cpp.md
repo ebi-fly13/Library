@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex.hpp
     title: geometry/convex.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
-    title: geometry/point.hpp
+    title: geometry
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_A
@@ -116,8 +116,7 @@ data:
     \ = 0;\n    int n = p.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
     \ det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n\
     }\n\nbool is_convex(const std::vector<point> &p) {\n    int n = p.size();\n  \
-    \  for(int i = 0; i < n; i++) {\n        if(isp(p[i], p[(i+1 != n) ? i+1 : 0],\
-    \ p[(i+2 < n) ? i+2 : (i+2)%n]) == );\n    }\n}\n\n}\n#line 12 \"test/geometry/area.test.cpp\"\
+    \  for(int i = 0; i < n; i++) {\n    }\n}\n\n}\n#line 12 \"test/geometry/area.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
     \ p(n);\n    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    std::cout\
     \ << area(p) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed <<\
@@ -140,8 +139,8 @@ data:
   isVerificationFile: true
   path: test/geometry/area.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 01:14:50+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-15 01:19:01+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/area.test.cpp
 layout: document

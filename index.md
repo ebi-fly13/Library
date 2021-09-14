@@ -122,21 +122,21 @@ data:
       title: data_structure/sparse_table.hpp
   - name: geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/convex.hpp
       title: geometry/convex.hpp
     - icon: ':warning:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
       title: geometry/line.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/line_segment.hpp
       title: geometry/line_segment.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
-      title: geometry/point.hpp
+      title: geometry
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -320,7 +320,7 @@ data:
       title: test/aoj/aoj_2873.test.cpp
   - name: test/geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/area.test.cpp
       title: test/geometry/area.test.cpp
     - icon: ':heavy_check_mark:'

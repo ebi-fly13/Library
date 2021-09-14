@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/convex.hpp
     title: geometry/convex.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
   - icon: ':heavy_check_mark:'
@@ -33,9 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
@@ -126,7 +126,7 @@ data:
   - geometry/convex.hpp
   - geometry/line.hpp
   timestamp: '2021-09-15 01:14:50+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/distance.test.cpp
   - test/geometry/intersection.test.cpp
@@ -137,8 +137,22 @@ data:
   - test/geometry/cross_point.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
-redirect_from:
-- /library/geometry/point.hpp
-- /library/geometry/point.hpp.html
-title: geometry/point.hpp
+title: geometry
 ---
+
+# 説明
+
+計算幾何で用いる点(point)
+
+# 関数
+
+## isp
+
+点の進行方向を求める関数.
+
+- ```int isp(point a, point b, point c)```
+    - 左に曲がる場合:$+1$ 
+    - 右に曲がる場合:$-1$
+    - c-a-bの順に並ぶ:$-2$
+    - a-b-cの順に並ぶ:$+2$
+    - a-c-bの順に並ぶ:$0$
