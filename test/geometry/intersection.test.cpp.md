@@ -53,38 +53,47 @@ data:
     \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nlong double dot(const\
     \ point &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double\
     \ det(const point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong\
-    \ double norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\
-    \n}\r\n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int\
-    \ flag = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
+    \ double abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double\
+    \ norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\
+    \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
+    \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
     \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
-    \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
-    \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
-    \   return false;\r\n}\r\n\r\npoint cross_point(const point &a, const point &b,\
-    \ const point &c, const point &d) {\r\n    return a + (b-a) * det(c - a, d - c)\
-    \ / det(b - a, d - c);\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 5\
-    \ \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\n\
-    struct line {\n    point a,b;\n\n    line(long double x1, long double y1, long\
-    \ double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(point &a,\
-    \ point &b) : a(a), b(b) { }\n\n    point proj(const point &p) {\n        return\
-    \ a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const point &p)\
-    \ {\n        return proj(p)*double(2) - p;\n    }\n};\n\nint intersection(const\
-    \ line &a, const line &b) {\n    if(det(a.b-a.a, b.a-b.b) != 0) {\n        if(dot(a.b-a.a,\
-    \ b.b-b.a) == 0) { // \u5782\u76F4\n            return 1;\n        }\n       \
-    \ return 0; // \u4EA4\u5DEE\n    }\n    else if(det(a.b-a.a, b.a-a.a) != 0) {\
-    \ // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\u76F4\u7DDA\
-    \n        return 3;\n    }\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\u304B\u78BA\
-    \u8A8D\u3059\u308B\uFF01\npoint cross_point(const line &s, const line &t) {\n\
-    \    assert(intersection(s, t) < 2);\n    return s.a + (s.b - s.a) * det(t.a -\
-    \ s.a, t.b - t.a) / det(s.b - s.a, t.b - t.a);\n}\n\n}\n#line 10 \"test/geometry/intersection.test.cpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nvoid main_() {\r\n    int q;\r\n    std::cin >> q;\r\
-    \n    while(q--) {\r\n        point p0, p1, p2, p3;\r\n        std::cin >> p0.x\
-    \ >> p0.y >> p1.x >> p1.y;\r\n        std::cin >> p2.x >> p2.y >> p3.x >> p3.y;\r\
-    \n        line s1(p0, p1);\r\n        line s2(p2, p3);\r\n        int flag = intersection(s1,\
-    \ s2);\r\n        if(flag == 3) flag = 2;\r\n        std::cout << flag << '\\\
-    n';\r\n    }\r\n}\r\n\r\n}\r\n\r\nint main() {\r\n    std::cout << std::fixed\
-    \ << std::setprecision(15);\r\n    std::cin.tie(nullptr);\r\n    std::ios::sync_with_stdio(false);\r\
-    \n    ebi::main_();\r\n}\n"
+    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\
+    \u308B\u304B\u5224\u5B9A\r\nbool intersection_line_segment(const point &a, const\
+    \ point &b, const point &c, const point &d) {\r\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
+    \ <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\r\n        return true;\r\
+    \n    }\r\n    return false;\r\n}\r\n\r\npoint cross_point(const point &a, const\
+    \ point &b, const point &c, const point &d) {\r\n    return a + (b-a) * det(c\
+    \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\
+    \n\n#line 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace\
+    \ ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double\
+    \ y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(point\
+    \ &a, point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const {\n \
+    \       return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
+    \ point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\n    long\
+    \ double distance(const point &c) const {\n    return std::abs(det(c - a, b -\
+    \ a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line &b) {\n\
+    \    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
+    \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
+    \  return 0; // \u4EA4\u5DEE\n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a))\
+    \ != 0) { // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\
+    \u76F4\u7DDA\n        return 3;\n    }\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\
+    \u304B\u78BA\u8A8D\u3059\u308B\uFF01\npoint cross_point(const line &s, const line\
+    \ &t) {\n    assert(intersection(s, t) < 2);\n    return s.a + (s.b - s.a) * det(t.a\
+    \ - s.a, t.b - t.a) / det(s.b - s.a, t.b - t.a);\n}\n\n// \u76F4\u7DDAa\u3068\u70B9\
+    c\u306E\u8DDD\u96E2\nlong double distance(const line &a, const point &c) {\n \
+    \   return std::abs(det(c-a.a, a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const\
+    \ line &a, const line &b) {\n    if(intersection(a, b) < 2) {\n        return\
+    \ 0;\n    }\n    else {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line\
+    \ 10 \"test/geometry/intersection.test.cpp\"\n\r\nnamespace ebi {\r\n\r\nvoid\
+    \ main_() {\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n      \
+    \  point p0, p1, p2, p3;\r\n        std::cin >> p0.x >> p0.y >> p1.x >> p1.y;\r\
+    \n        std::cin >> p2.x >> p2.y >> p3.x >> p3.y;\r\n        line s1(p0, p1);\r\
+    \n        line s2(p2, p3);\r\n        int flag = intersection(s1, s2);\r\n   \
+    \     if(flag == 3) flag = 2;\r\n        std::cout << flag << '\\n';\r\n    }\r\
+    \n}\r\n\r\n}\r\n\r\nint main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\
+    \n    std::cin.tie(nullptr);\r\n    std::ios::sync_with_stdio(false);\r\n    ebi::main_();\r\
+    \n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_A\"\
     \r\n\r\n#include <iostream>\r\n#include <vector>\r\n#include <algorithm>\r\n#include\
     \ <iomanip>\r\n\r\n#include \"geometry/point.hpp\"\r\n#include \"geometry/line.hpp\"\
@@ -102,7 +111,7 @@ data:
   isVerificationFile: true
   path: test/geometry/intersection.test.cpp
   requiredBy: []
-  timestamp: '2021-09-14 23:05:33+09:00'
+  timestamp: '2021-09-15 00:04:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/intersection.test.cpp

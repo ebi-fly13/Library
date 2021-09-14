@@ -128,6 +128,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
       title: geometry/line.hpp
+    - icon: ':warning:'
+      path: geometry/line_segment.hpp
+      title: geometry/line_segment.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
       title: geometry/point.hpp

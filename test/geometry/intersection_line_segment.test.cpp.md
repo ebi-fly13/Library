@@ -50,16 +50,18 @@ data:
     \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nlong double dot(const\
     \ point &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double\
     \ det(const point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong\
-    \ double norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\
-    \n}\r\n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int\
-    \ flag = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
+    \ double abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double\
+    \ norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\
+    \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
+    \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
     \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\nbool intersection_line_segment(const point\
-    \ &a, const point &b, const point &c, const point &d) {\r\n    if(isp(a,b,c)*isp(a,b,d)\
-    \ <= 0 && isp(c,d,a)*isp(c,d,b) <= 0) {\r\n        return true;\r\n    }\r\n \
-    \   return false;\r\n}\r\n\r\npoint cross_point(const point &a, const point &b,\
-    \ const point &c, const point &d) {\r\n    return a + (b-a) * det(c - a, d - c)\
-    \ / det(b - a, d - c);\r\n}\r\n\r\n}\n#line 9 \"test/geometry/intersection_line_segment.test.cpp\"\
+    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\
+    \u308B\u304B\u5224\u5B9A\r\nbool intersection_line_segment(const point &a, const\
+    \ point &b, const point &c, const point &d) {\r\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
+    \ <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\r\n        return true;\r\
+    \n    }\r\n    return false;\r\n}\r\n\r\npoint cross_point(const point &a, const\
+    \ point &b, const point &c, const point &d) {\r\n    return a + (b-a) * det(c\
+    \ - a, d - c) / det(b - a, d - c);\r\n}\r\n\r\n}\n#line 9 \"test/geometry/intersection_line_segment.test.cpp\"\
     \n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n    int\
     \ q;\n    std::cin >> q;\n    while(q--) {\n        double x,y;\n        std::vector<ebi::point>\
     \ p(4);\n        for(int i = 0; i<4; i++) {\n            std::cin >> x >> y;\n\
@@ -80,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/geometry/intersection_line_segment.test.cpp
   requiredBy: []
-  timestamp: '2021-09-14 23:05:33+09:00'
+  timestamp: '2021-09-15 00:04:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/intersection_line_segment.test.cpp
