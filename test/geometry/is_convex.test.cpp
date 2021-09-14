@@ -8,7 +8,7 @@
 #include "geometry/point.hpp"
 #include "geometry/line.hpp"
 #include "geometry/line_segment.hpp"
-#include "geometry/convex.hpp"
+#include "geometry/polygon.hpp"
 
 namespace ebi {
 
