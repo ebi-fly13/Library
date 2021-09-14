@@ -122,9 +122,6 @@ data:
       title: data_structure/sparse_table.hpp
   - name: geometry
     pages:
-    - icon: ':heavy_check_mark:'
-      path: geometry/convex.hpp
-      title: geometry/convex.hpp
     - icon: ':warning:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
@@ -137,6 +134,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
       title: point
+    - icon: ':heavy_check_mark:'
+      path: geometry/polygon.hpp
+      title: geometry/polygon.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'

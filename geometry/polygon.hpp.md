@@ -17,7 +17,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"geometry/convex.hpp\"\n\n#include <cassert>\n#include <vector>\n\
+  bundledCode: "#line 2 \"geometry/polygon.hpp\"\n\n#include <cassert>\n#include <vector>\n\
     \n#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#line 6 \"geometry/point.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace\
     \ internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS)\
@@ -57,7 +57,7 @@ data:
     \ &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\n   \
     \ if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\n\
     \        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
-    \ flag;\r\n}\r\n\r\n}\n#line 7 \"geometry/convex.hpp\"\n\nnamespace ebi {\n\n\
+    \ flag;\r\n}\r\n\r\n}\n#line 7 \"geometry/polygon.hpp\"\n\nnamespace ebi {\n\n\
     long double area(const std::vector<point> &p) {\n    long double s = 0;\n    int\
     \ n = p.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
     \ det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n\
@@ -80,17 +80,17 @@ data:
   dependsOn:
   - geometry/point.hpp
   isVerificationFile: false
-  path: geometry/convex.hpp
+  path: geometry/polygon.hpp
   requiredBy: []
-  timestamp: '2021-09-15 01:29:53+09:00'
+  timestamp: '2021-09-15 01:40:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/is_convex.test.cpp
   - test/geometry/area.test.cpp
-documentation_of: geometry/convex.hpp
+documentation_of: geometry/polygon.hpp
 layout: document
 redirect_from:
-- /library/geometry/convex.hpp
-- /library/geometry/convex.hpp.html
-title: geometry/convex.hpp
+- /library/geometry/polygon.hpp
+- /library/geometry/polygon.hpp.html
+title: geometry/polygon.hpp
 ---

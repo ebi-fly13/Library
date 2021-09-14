@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: geometry/convex.hpp
-    title: geometry/convex.hpp
-  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
@@ -13,6 +10,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon.hpp
+    title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -110,8 +110,8 @@ data:
     \ b.a), distance(a, b.b)), std::min(distance(b, a.a), distance(b, a.b)));\n  \
     \  }\n}\n\nlong double distance(const line &a, const line_segment &b) {\n    if(intersection(a,\
     \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(distance(a,\
-    \ b.a), distance(a, b.b));\n    }\n}\n\n}\n#line 2 \"geometry/convex.hpp\"\n\n\
-    #line 5 \"geometry/convex.hpp\"\n\n#line 7 \"geometry/convex.hpp\"\n\nnamespace\
+    \ b.a), distance(a, b.b));\n    }\n}\n\n}\n#line 2 \"geometry/polygon.hpp\"\n\n\
+    #line 5 \"geometry/polygon.hpp\"\n\n#line 7 \"geometry/polygon.hpp\"\n\nnamespace\
     \ ebi {\n\nlong double area(const std::vector<point> &p) {\n    long double s\
     \ = 0;\n    int n = p.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
     \ det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n\
@@ -129,7 +129,7 @@ data:
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_A\"\
     \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <iomanip>\n\
     \n#include \"geometry/point.hpp\"\n#include \"geometry/line.hpp\"\n#include \"\
-    geometry/line_segment.hpp\"\n#include \"geometry/convex.hpp\"\n\nnamespace ebi\
+    geometry/line_segment.hpp\"\n#include  \"geometry/polygon.hpp\"\n\nnamespace ebi\
     \ {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
     \ p(n);\n    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    std::cout\
     \ << area(p) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed <<\
@@ -139,11 +139,11 @@ data:
   - geometry/point.hpp
   - geometry/line.hpp
   - geometry/line_segment.hpp
-  - geometry/convex.hpp
+  - geometry/polygon.hpp
   isVerificationFile: true
   path: test/geometry/area.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 01:29:53+09:00'
+  timestamp: '2021-09-15 01:40:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/area.test.cpp

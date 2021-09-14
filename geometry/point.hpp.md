@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: geometry/convex.hpp
-    title: geometry/convex.hpp
-  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon.hpp
+    title: geometry/polygon.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/geometry/area.test.cpp
@@ -126,7 +126,7 @@ data:
   path: geometry/point.hpp
   requiredBy:
   - geometry/line_segment.hpp
-  - geometry/convex.hpp
+  - geometry/polygon.hpp
   - geometry/line.hpp
   timestamp: '2021-09-15 01:14:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
