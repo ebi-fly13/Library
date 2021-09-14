@@ -17,10 +17,15 @@ long double area(const std::vector<point> &p) {
     return s;
 }
 
+// 凸多角形か判定. pに反時計回りで点が入っていると仮定
 bool is_convex(const std::vector<point> &p) {
     int n = p.size();
     for(int i = 0; i < n; i++) {
+        if(isp(p[i], p[(i+1 != n) ? i+1 : 0], p[(i+2 < n) ? i+2 : (i+2)%n]) == -1) {
+            return false;
+        }
     }
+    return true;
 }
 
 }
