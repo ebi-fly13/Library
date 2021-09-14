@@ -1,9 +1,13 @@
 ---
 title: geometry
-documentation_of: //geometry/template.hpp
+documentation_of: //geometry/point.hpp
 ---
 
 # 説明
+
+計算幾何で用いる点(point)
+
+# 関数
 
 ## isp
 
