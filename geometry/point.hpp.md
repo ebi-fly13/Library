@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
   - icon: ':heavy_check_mark:'
@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/closest_pair.test.cpp
+    title: test/geometry/closest_pair.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/contains.test.cpp
     title: test/geometry/contains.test.cpp
@@ -33,21 +36,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/isp.test.cpp
     title: test/geometry/isp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
@@ -89,7 +92,24 @@ data:
     \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
     \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
     \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\n}\n"
+    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
+    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
+    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
+    \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
+    \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
+    \ l, mid), self(self, mid, r));\r\n        std::vector<point> b;\r\n        b.reserve(r-l);\r\
+    \n        int j = mid;\r\n        for(int i = l; i < mid; i++) {\r\n         \
+    \   while(j < r && p[j].y <= p[i].y) {\r\n                b.emplace_back(p[j++]);\r\
+    \n            }\r\n            b.emplace_back(p[i]);\r\n        }\r\n        while(j\
+    \ < r) {\r\n            b.emplace_back(p[j++]);\r\n        }\r\n        for(int\
+    \ i = 0; i < r-l; i++) {\r\n            p[l+i] = b[i];\r\n        }\r\n      \
+    \  b.clear();\r\n        for(int i = l; i < r; i++) {\r\n            if(std::abs(p[i].x\
+    \ - x) >= d) continue;\r\n            for(int j = int(b.size())-1; j >= 0; j--)\
+    \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
+    \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
+    \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
+    \n}\n"
   code: "#pragma once\r\n\r\n#include <cmath>\r\n#include <cassert>\r\n#include <vector>\r\
     \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace\
     \ internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS)\
@@ -129,7 +149,24 @@ data:
     \ &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\n   \
     \ if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\n\
     \        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
-    \ flag;\r\n}\r\n\r\n}"
+    \ flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\u8FD1\u70B9\u5BFE\u3092\
+    \u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point> p)\
+    \ {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
+    \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
+    \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
+    \ l, mid), self(self, mid, r));\r\n        std::vector<point> b;\r\n        b.reserve(r-l);\r\
+    \n        int j = mid;\r\n        for(int i = l; i < mid; i++) {\r\n         \
+    \   while(j < r && p[j].y <= p[i].y) {\r\n                b.emplace_back(p[j++]);\r\
+    \n            }\r\n            b.emplace_back(p[i]);\r\n        }\r\n        while(j\
+    \ < r) {\r\n            b.emplace_back(p[j++]);\r\n        }\r\n        for(int\
+    \ i = 0; i < r-l; i++) {\r\n            p[l+i] = b[i];\r\n        }\r\n      \
+    \  b.clear();\r\n        for(int i = l; i < r; i++) {\r\n            if(std::abs(p[i].x\
+    \ - x) >= d) continue;\r\n            for(int j = int(b.size())-1; j >= 0; j--)\
+    \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
+    \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
+    \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
+    \n}"
   dependsOn: []
   isVerificationFile: false
   path: geometry/point.hpp
@@ -137,9 +174,10 @@ data:
   - geometry/line_segment.hpp
   - geometry/polygon.hpp
   - geometry/line.hpp
-  timestamp: '2021-09-15 01:14:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-15 17:11:10+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/geometry/closest_pair.test.cpp
   - test/geometry/convex_diameter.test.cpp
   - test/geometry/distance.test.cpp
   - test/geometry/convex_polygon_cut.test.cpp

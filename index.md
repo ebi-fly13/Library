@@ -125,13 +125,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/line.hpp
       title: geometry/line.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/line_segment.hpp
       title: geometry/line_segment.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/point.hpp
       title: point
     - icon: ':heavy_check_mark:'
@@ -324,6 +324,9 @@ data:
       path: test/geometry/area.test.cpp
       title: test/geometry/area.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/geometry/closest_pair.test.cpp
+      title: test/geometry/closest_pair.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/geometry/contains.test.cpp
       title: test/geometry/contains.test.cpp
     - icon: ':heavy_check_mark:'
@@ -344,16 +347,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/intersection.test.cpp
       title: test/geometry/intersection.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/geometry/intersection_line_segment.test.cpp
       title: test/geometry/intersection_line_segment.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/geometry/is_convex.test.cpp
       title: test/geometry/is_convex.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/geometry/isp.test.cpp
       title: test/geometry/isp.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/geometry/reflection.test.cpp
       title: test/geometry/reflection.test.cpp
 layout: toppage

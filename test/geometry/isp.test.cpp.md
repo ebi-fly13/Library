@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C
@@ -55,18 +55,35 @@ data:
     \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
     \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
     \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\n}\n#line 8 \"test/geometry/isp.test.cpp\"\
-    \n\r\nint main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n\
-    \    double x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point\
-    \ p0(x1, y1), p1(x2, y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--)\
-    \ {\r\n        double x,y;\r\n        std::cin >> x >> y;\r\n        int flag\
-    \ = ebi::isp(p0, p1, ebi::point(x,y));\r\n        std::string ans;\r\n       \
-    \ if(flag == 1) {\r\n            ans = \"COUNTER_CLOCKWISE\";\r\n        }\r\n\
-    \        else if(flag == -1) {\r\n            ans = \"CLOCKWISE\";\r\n       \
-    \ }\r\n        else if(flag == -2) {\r\n            ans = \"ONLINE_BACK\";\r\n\
-    \        }\r\n        else if(flag == 2) {\r\n            ans = \"ONLINE_FRONT\"\
-    ;\r\n        }\r\n        else {\r\n            ans = \"ON_SEGMENT\";\r\n    \
-    \    }\r\n        std::cout << ans << std::endl;\r\n    }\r\n}\n"
+    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
+    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
+    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
+    \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
+    \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
+    \ l, mid), self(self, mid, r));\r\n        std::vector<point> b;\r\n        b.reserve(r-l);\r\
+    \n        int j = mid;\r\n        for(int i = l; i < mid; i++) {\r\n         \
+    \   while(j < r && p[j].y <= p[i].y) {\r\n                b.emplace_back(p[j++]);\r\
+    \n            }\r\n            b.emplace_back(p[i]);\r\n        }\r\n        while(j\
+    \ < r) {\r\n            b.emplace_back(p[j++]);\r\n        }\r\n        for(int\
+    \ i = 0; i < r-l; i++) {\r\n            p[l+i] = b[i];\r\n        }\r\n      \
+    \  b.clear();\r\n        for(int i = l; i < r; i++) {\r\n            if(std::abs(p[i].x\
+    \ - x) >= d) continue;\r\n            for(int j = int(b.size())-1; j >= 0; j--)\
+    \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
+    \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
+    \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
+    \n}\n#line 8 \"test/geometry/isp.test.cpp\"\n\r\nint main() {\r\n    std::cout\
+    \ << std::fixed << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\n    std::cin\
+    \ >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point p0(x1, y1), p1(x2, y2);\r\n    int\
+    \ q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\n    \
+    \    std::cin >> x >> y;\r\n        int flag = ebi::isp(p0, p1, ebi::point(x,y));\r\
+    \n        std::string ans;\r\n        if(flag == 1) {\r\n            ans = \"\
+    COUNTER_CLOCKWISE\";\r\n        }\r\n        else if(flag == -1) {\r\n       \
+    \     ans = \"CLOCKWISE\";\r\n        }\r\n        else if(flag == -2) {\r\n \
+    \           ans = \"ONLINE_BACK\";\r\n        }\r\n        else if(flag == 2)\
+    \ {\r\n            ans = \"ONLINE_FRONT\";\r\n        }\r\n        else {\r\n\
+    \            ans = \"ON_SEGMENT\";\r\n        }\r\n        std::cout << ans <<\
+    \ std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
     \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
     #include \"geometry/point.hpp\"\r\n\r\nint main() {\r\n    std::cout << std::fixed\
@@ -85,8 +102,8 @@ data:
   isVerificationFile: true
   path: test/geometry/isp.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 01:14:50+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-15 17:11:10+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/isp.test.cpp
 layout: document

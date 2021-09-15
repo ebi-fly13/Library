@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.0000001'
@@ -60,35 +60,52 @@ data:
     \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
     \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
     \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\n\n#line\
-    \ 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\
-    \nstruct line {\n    point a,b;\n\n    line(long double x1, long double y1, long\
-    \ double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const point\
-    \ &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const\
-    \ {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
-    \ point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\n    long\
-    \ double distance(const point &c) const {\n    return std::abs(det(c - a, b -\
-    \ a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line &b) {\n\
-    \    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
-    \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
-    \  return 0; // \u4EA4\u5DEE\n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a))\
-    \ != 0) { // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\
-    \u76F4\u7DDA\n        return 3;\n    }\n}\n\npoint cross_point(const point &a,\
-    \ const point &b, const point &c, const point &d) {\n    return a + (b-a) * det(c\
-    \ - a, d - c) / det(b - a, d - c);\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\u304B\
-    \u78BA\u8A8D\u3059\u308B\uFF01\npoint cross_point(const line &s, const line &t)\
-    \ {\n    assert(intersection(s, t) < 2);\n    return s.a + (s.b - s.a) * det(t.a\
-    \ - s.a, t.b - t.a) / det(s.b - s.a, t.b - t.a);\n}\n\n// \u76F4\u7DDAa\u3068\u70B9\
-    c\u306E\u8DDD\u96E2\nlong double distance(const line &a, const point &c) {\n \
-    \   return std::abs(det(c-a.a, a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const\
-    \ line &a, const line &b) {\n    if(intersection(a, b) < 2) {\n        return\
-    \ 0;\n    }\n    else {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line\
-    \ 10 \"test/geometry/reflection.test.cpp\"\n\r\nint main() {\r\n    std::cout\
-    \ << std::fixed << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\n    std::cin\
-    \ >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line l(x1,y1,x2,y2);\r\n    int q;\r\n\
-    \    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\n        std::cin\
-    \ >> x >> y;\r\n        ebi::point p(x,y);\r\n        ebi::point ans = l.relf(p);\r\
-    \n        std::cout << ans.x << \" \" << ans.y << std::endl;\r\n    }\r\n}\n"
+    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
+    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
+    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
+    \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
+    \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
+    \ l, mid), self(self, mid, r));\r\n        std::vector<point> b;\r\n        b.reserve(r-l);\r\
+    \n        int j = mid;\r\n        for(int i = l; i < mid; i++) {\r\n         \
+    \   while(j < r && p[j].y <= p[i].y) {\r\n                b.emplace_back(p[j++]);\r\
+    \n            }\r\n            b.emplace_back(p[i]);\r\n        }\r\n        while(j\
+    \ < r) {\r\n            b.emplace_back(p[j++]);\r\n        }\r\n        for(int\
+    \ i = 0; i < r-l; i++) {\r\n            p[l+i] = b[i];\r\n        }\r\n      \
+    \  b.clear();\r\n        for(int i = l; i < r; i++) {\r\n            if(std::abs(p[i].x\
+    \ - x) >= d) continue;\r\n            for(int j = int(b.size())-1; j >= 0; j--)\
+    \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
+    \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
+    \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
+    \n}\n#line 2 \"geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\n#line 7\
+    \ \"geometry/line.hpp\"\n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n\
+    \    line(long double x1, long double y1, long double x2, long double y2) : a(x1,\
+    \ y1), b(x2, y2) { }\n\n    line(const point &a, const point &b) : a(a), b(b)\
+    \ { }\n\n    point proj(const point &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n\
+    \    }\n\n    point relf(const point &p) const {\n        return proj(p)*double(2)\
+    \ - p;\n    }\n\n    long double distance(const point &c) const {\n    return\
+    \ std::abs(det(c - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line\
+    \ &a, const line &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n\
+    \        if(internal::sgn(dot(a.b-a.a, b.b-b.a)) == 0) { // \u5782\u76F4\n   \
+    \         return 1;\n        }\n        return 0; // \u4EA4\u5DEE\n    }\n   \
+    \ else if(internal::sgn(det(a.b-a.a, b.a-a.a)) != 0) { // \u5E73\u884C\n     \
+    \   return 2;\n    }\n    else { // \u540C\u4E00\u76F4\u7DDA\n        return 3;\n\
+    \    }\n}\n\npoint cross_point(const point &a, const point &b, const point &c,\
+    \ const point &d) {\n    return a + (b-a) * det(c - a, d - c) / det(b - a, d -\
+    \ c);\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\u304B\u78BA\u8A8D\u3059\u308B\uFF01\
+    \npoint cross_point(const line &s, const line &t) {\n    assert(intersection(s,\
+    \ t) < 2);\n    return s.a + (s.b - s.a) * det(t.a - s.a, t.b - t.a) / det(s.b\
+    \ - s.a, t.b - t.a);\n}\n\n// \u76F4\u7DDAa\u3068\u70B9c\u306E\u8DDD\u96E2\nlong\
+    \ double distance(const line &a, const point &c) {\n    return std::abs(det(c-a.a,\
+    \ a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const line &a, const line\
+    \ &b) {\n    if(intersection(a, b) < 2) {\n        return 0;\n    }\n    else\
+    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 10 \"test/geometry/reflection.test.cpp\"\
+    \n\r\nint main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n\
+    \    double x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line\
+    \ l(x1,y1,x2,y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n\
+    \        double x,y;\r\n        std::cin >> x >> y;\r\n        ebi::point p(x,y);\r\
+    \n        ebi::point ans = l.relf(p);\r\n        std::cout << ans.x << \" \" <<\
+    \ ans.y << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\
     \r\n#define ERROR 0.0000001\r\n\r\n#include <iostream>\r\n#include <iomanip>\r\
     \n#include <limits>\r\n\r\n#include \"geometry/point.hpp\"\r\n#include \"geometry/line.hpp\"\
@@ -104,8 +121,8 @@ data:
   isVerificationFile: true
   path: test/geometry/reflection.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 01:14:50+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-15 17:11:10+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/reflection.test.cpp
 layout: document
