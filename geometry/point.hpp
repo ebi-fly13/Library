@@ -4,6 +4,7 @@
 #include <cassert>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 namespace ebi {
 
