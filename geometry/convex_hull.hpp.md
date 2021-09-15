@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/convex_hull.test.cpp
+    title: test/geometry/convex_hull.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.jp/contests/typical90/submissions/24974484
@@ -21,13 +24,15 @@ data:
     \ Point &rhs) const noexcept {\r\n        return Point(*this) -= rhs;\r\n    }\r\
     \n\r\n    T det(const Point &rhs) const noexcept {\r\n        return x * rhs.y\
     \ - y * rhs.x;\r\n    }\r\n};\r\n\r\ntemplate<class T>\r\nstd::vector<Point<T>>\
-    \ convex_hull(int n, std::vector<Point<T>> p) {\r\n    std::sort(p.begin(), p.end(),\
-    \ [](const Point<T> &a, const Point<T> &b) { return a.x != b.x ? a.x < b.x : a.y\
-    \ < b.y; });\r\n    std::vector<Point<T>> g1, g2;\r\n    int k1 = 0, k2 = 0;\r\
-    \n    for(int i = 0; i < n; i++) {\r\n        while(k1 > 1 && (g1[k1-1]-g1[k1-2]).det(p[i]-g1[k1-1])\
-    \ <= 0) {\r\n            g1.pop_back();\r\n            k1--;\r\n        }\r\n\
-    \        while(k2 > 1 && (g2[k2-1]-g2[k2-2]).det(p[i]-g2[k2-1]) >= 0) {\r\n  \
-    \          g2.pop_back();\r\n            k2--;\r\n        }\r\n        g1.push_back(p[i]);\r\
+    \ convex_hull(int n, std::vector<Point<T>> p, bool on = false) {\r\n    std::sort(p.begin(),\
+    \ p.end(), [](const Point<T> &a, const Point<T> &b) { return a.x != b.x ? a.x\
+    \ < b.x : a.y < b.y; });\r\n    std::vector<Point<T>> g1, g2;\r\n    int k1 =\
+    \ 0, k2 = 0;\r\n    for(int i = 0; i < n; i++) {\r\n        while(k1 > 1 && (g1[k1-1]-g1[k1-2]).det(p[i]-g1[k1-1])\
+    \ <= 0) {\r\n            if(on && (g1[k1-1]-g1[k1-2]).det(p[i]-g1[k1-1]) == 0)\
+    \ break;\r\n            g1.pop_back();\r\n            k1--;\r\n        }\r\n \
+    \       while(k2 > 1 && (g2[k2-1]-g2[k2-2]).det(p[i]-g2[k2-1]) >= 0) {\r\n   \
+    \         if(on && (g2[k2-1]-g2[k2-2]).det(p[i]-g2[k2-1]) == 0) break;\r\n   \
+    \         g2.pop_back();\r\n            k2--;\r\n        }\r\n        g1.push_back(p[i]);\r\
     \n        k1++;\r\n        g2.push_back(p[i]);\r\n        k2++;\r\n    }\r\n \
     \   std::vector<Point<T>> ch(k1+k2-2);\r\n    for(int i = 0; i < k1; i++) {\r\n\
     \        ch[i] = g1[i];\r\n    }\r\n    for(int i = k2-2; i > 0; i--) {\r\n  \
@@ -43,13 +48,15 @@ data:
     \ Point &rhs) const noexcept {\r\n        return Point(*this) -= rhs;\r\n    }\r\
     \n\r\n    T det(const Point &rhs) const noexcept {\r\n        return x * rhs.y\
     \ - y * rhs.x;\r\n    }\r\n};\r\n\r\ntemplate<class T>\r\nstd::vector<Point<T>>\
-    \ convex_hull(int n, std::vector<Point<T>> p) {\r\n    std::sort(p.begin(), p.end(),\
-    \ [](const Point<T> &a, const Point<T> &b) { return a.x != b.x ? a.x < b.x : a.y\
-    \ < b.y; });\r\n    std::vector<Point<T>> g1, g2;\r\n    int k1 = 0, k2 = 0;\r\
-    \n    for(int i = 0; i < n; i++) {\r\n        while(k1 > 1 && (g1[k1-1]-g1[k1-2]).det(p[i]-g1[k1-1])\
-    \ <= 0) {\r\n            g1.pop_back();\r\n            k1--;\r\n        }\r\n\
-    \        while(k2 > 1 && (g2[k2-1]-g2[k2-2]).det(p[i]-g2[k2-1]) >= 0) {\r\n  \
-    \          g2.pop_back();\r\n            k2--;\r\n        }\r\n        g1.push_back(p[i]);\r\
+    \ convex_hull(int n, std::vector<Point<T>> p, bool on = false) {\r\n    std::sort(p.begin(),\
+    \ p.end(), [](const Point<T> &a, const Point<T> &b) { return a.x != b.x ? a.x\
+    \ < b.x : a.y < b.y; });\r\n    std::vector<Point<T>> g1, g2;\r\n    int k1 =\
+    \ 0, k2 = 0;\r\n    for(int i = 0; i < n; i++) {\r\n        while(k1 > 1 && (g1[k1-1]-g1[k1-2]).det(p[i]-g1[k1-1])\
+    \ <= 0) {\r\n            if(on && (g1[k1-1]-g1[k1-2]).det(p[i]-g1[k1-1]) == 0)\
+    \ break;\r\n            g1.pop_back();\r\n            k1--;\r\n        }\r\n \
+    \       while(k2 > 1 && (g2[k2-1]-g2[k2-2]).det(p[i]-g2[k2-1]) >= 0) {\r\n   \
+    \         if(on && (g2[k2-1]-g2[k2-2]).det(p[i]-g2[k2-1]) == 0) break;\r\n   \
+    \         g2.pop_back();\r\n            k2--;\r\n        }\r\n        g1.push_back(p[i]);\r\
     \n        k1++;\r\n        g2.push_back(p[i]);\r\n        k2++;\r\n    }\r\n \
     \   std::vector<Point<T>> ch(k1+k2-2);\r\n    for(int i = 0; i < k1; i++) {\r\n\
     \        ch[i] = g1[i];\r\n    }\r\n    for(int i = k2-2; i > 0; i--) {\r\n  \
@@ -58,9 +65,10 @@ data:
   isVerificationFile: false
   path: geometry/convex_hull.hpp
   requiredBy: []
-  timestamp: '2021-08-12 18:50:39+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2021-09-15 13:37:32+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/geometry/convex_hull.test.cpp
 documentation_of: geometry/convex_hull.hpp
 layout: document
 redirect_from:

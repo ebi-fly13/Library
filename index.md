@@ -122,7 +122,7 @@ data:
       title: data_structure/sparse_table.hpp
   - name: geometry
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
     - icon: ':heavy_check_mark:'
@@ -326,6 +326,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/contains.test.cpp
       title: test/geometry/contains.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/geometry/convex_hull.test.cpp
+      title: test/geometry/convex_hull.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/geometry/cross_point.test.cpp
       title: test/geometry/cross_point.test.cpp
