@@ -10,6 +10,9 @@ data:
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/contains.test.cpp
+    title: test/geometry/contains.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
   _isVerificationFailed: false
@@ -58,34 +61,47 @@ data:
     \ if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\n\
     \        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
     \ flag;\r\n}\r\n\r\n}\n#line 7 \"geometry/polygon.hpp\"\n\nnamespace ebi {\n\n\
-    long double area(const std::vector<point> &p) {\n    long double s = 0;\n    int\
-    \ n = p.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
-    \ det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n\
-    }\n\n// \u51F8\u591A\u89D2\u5F62\u304B\u5224\u5B9A. p\u306B\u53CD\u6642\u8A08\u56DE\
-    \u308A\u3067\u70B9\u304C\u5165\u3063\u3066\u3044\u308B\u3068\u4EEE\u5B9A\nbool\
-    \ is_convex(const std::vector<point> &p) {\n    int n = p.size();\n    for(int\
-    \ i = 0; i < n; i++) {\n        if(isp(p[i], p[(i+1 != n) ? i+1 : 0], p[(i+2 <\
-    \ n) ? i+2 : (i+2)%n]) == -1) {\n            return false;\n        }\n    }\n\
-    \    return true;\n}\n\n}\n"
+    using Polygon = std::vector<point>;\n\nlong double area(const Polygon &poly) {\n\
+    \    long double s = 0;\n    int n = poly.size();\n    for(int i = 0; i < n; i++)\
+    \ {\n        s = internal::add(s, det(poly[i], poly[(i+1 != n) ? i+1 : 0]));\n\
+    \    }\n    s /= 2.0;\n    return s;\n}\n\n// \u51F8\u591A\u89D2\u5F62\u304B\u5224\
+    \u5B9A. p\u306B\u53CD\u6642\u8A08\u56DE\u308A\u3067\u70B9\u304C\u5165\u3063\u3066\
+    \u3044\u308B\u3068\u4EEE\u5B9A\nbool is_convex(const Polygon &poly) {\n    int\
+    \ n = poly.size();\n    for(int i = 0; i < n; i++) {\n        if(isp(poly[i],\
+    \ poly[(i+1 != n) ? i+1 : 0], poly[(i+2 < n) ? i+2 : (i+2)%n]) == -1) {\n    \
+    \        return false;\n        }\n    }\n    return true;\n}\n\nenum {\n    OUT,\
+    \ ON, IN\n};\n\nint contains(const std::vector<point> &poly, const point &p) {\n\
+    \    bool in = false;\n    int n = poly.size();\n    for(int i = 0; i < n; i++)\
+    \ {\n        point a = poly[i] - p;\n        point b = poly[(i+1 < n) ? i+1 :\
+    \ 0] - p;\n        if(a.y > b.y) std::swap(a, b);\n        if(a.y <= 0 && 0 <\
+    \ b.y && det(a, b) < 0) in = !in;\n        if(det(a, b) == 0 && dot(a, b) <= 0)\
+    \ return ON;\n    }\n    return in ? IN : OUT;\n}\n\n}\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"point.hpp\"\
-    \n\nnamespace ebi {\n\nlong double area(const std::vector<point> &p) {\n    long\
-    \ double s = 0;\n    int n = p.size();\n    for(int i = 0; i < n; i++) {\n   \
-    \     s = internal::add(s, det(p[i], p[(i+1 != n) ? i+1 : 0]));\n    }\n    s\
-    \ /= 2.0;\n    return s;\n}\n\n// \u51F8\u591A\u89D2\u5F62\u304B\u5224\u5B9A.\
-    \ p\u306B\u53CD\u6642\u8A08\u56DE\u308A\u3067\u70B9\u304C\u5165\u3063\u3066\u3044\
-    \u308B\u3068\u4EEE\u5B9A\nbool is_convex(const std::vector<point> &p) {\n    int\
-    \ n = p.size();\n    for(int i = 0; i < n; i++) {\n        if(isp(p[i], p[(i+1\
-    \ != n) ? i+1 : 0], p[(i+2 < n) ? i+2 : (i+2)%n]) == -1) {\n            return\
-    \ false;\n        }\n    }\n    return true;\n}\n\n}"
+    \n\nnamespace ebi {\n\nusing Polygon = std::vector<point>;\n\nlong double area(const\
+    \ Polygon &poly) {\n    long double s = 0;\n    int n = poly.size();\n    for(int\
+    \ i = 0; i < n; i++) {\n        s = internal::add(s, det(poly[i], poly[(i+1 !=\
+    \ n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n}\n\n// \u51F8\u591A\u89D2\
+    \u5F62\u304B\u5224\u5B9A. p\u306B\u53CD\u6642\u8A08\u56DE\u308A\u3067\u70B9\u304C\
+    \u5165\u3063\u3066\u3044\u308B\u3068\u4EEE\u5B9A\nbool is_convex(const Polygon\
+    \ &poly) {\n    int n = poly.size();\n    for(int i = 0; i < n; i++) {\n     \
+    \   if(isp(poly[i], poly[(i+1 != n) ? i+1 : 0], poly[(i+2 < n) ? i+2 : (i+2)%n])\
+    \ == -1) {\n            return false;\n        }\n    }\n    return true;\n}\n\
+    \nenum {\n    OUT, ON, IN\n};\n\nint contains(const std::vector<point> &poly,\
+    \ const point &p) {\n    bool in = false;\n    int n = poly.size();\n    for(int\
+    \ i = 0; i < n; i++) {\n        point a = poly[i] - p;\n        point b = poly[(i+1\
+    \ < n) ? i+1 : 0] - p;\n        if(a.y > b.y) std::swap(a, b);\n        if(a.y\
+    \ <= 0 && 0 < b.y && det(a, b) < 0) in = !in;\n        if(det(a, b) == 0 && dot(a,\
+    \ b) <= 0) return ON;\n    }\n    return in ? IN : OUT;\n}\n\n}"
   dependsOn:
   - geometry/point.hpp
   isVerificationFile: false
   path: geometry/polygon.hpp
   requiredBy: []
-  timestamp: '2021-09-15 01:40:29+09:00'
+  timestamp: '2021-09-15 12:28:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/is_convex.test.cpp
+  - test/geometry/contains.test.cpp
   - test/geometry/area.test.cpp
 documentation_of: geometry/polygon.hpp
 layout: document

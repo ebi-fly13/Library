@@ -16,6 +16,9 @@ data:
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/contains.test.cpp
+    title: test/geometry/contains.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
   - icon: ':heavy_check_mark:'
@@ -134,6 +137,7 @@ data:
   - test/geometry/distance.test.cpp
   - test/geometry/is_convex.test.cpp
   - test/geometry/intersection.test.cpp
+  - test/geometry/contains.test.cpp
   - test/geometry/area.test.cpp
   - test/geometry/reflection.test.cpp
   - test/geometry/isp.test.cpp
