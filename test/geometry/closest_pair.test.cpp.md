@@ -19,7 +19,7 @@ data:
     https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A\"\n#define\
     \ ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\
     #include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/point.hpp\"\
-    \n\r\n#include <cmath>\r\n#line 6 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\
+    \n\r\n#include <cmath>\r\n#line 7 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\
     \n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint\
     \ sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\
     \r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b) <\
@@ -49,17 +49,19 @@ data:
     \ arg() const {\r\n        return std::atan2(y, x);\r\n    }\r\n\r\n    // x\u6607\
     \u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n    bool operator<(const point &rhs)\
     \ const noexcept {\r\n        if(internal::sgn(x-rhs.x)) return internal::sgn(x-rhs.x)<0;\r\
-    \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nlong double dot(const\
-    \ point &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double\
-    \ det(const point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong\
-    \ double abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double\
-    \ norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\
-    \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
-    \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
-    \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
-    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
-    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nstd::ostream&\
+    \ operator<<(std::ostream& os, const point &a) {\r\n    return os << a.x << \"\
+    \ \" << a.y;\r\n}\r\n\r\nlong double dot(const point &a, const point &b) {\r\n\
+    \    return a.dot(b);\r\n}\r\n\r\nlong double det(const point &a, const point\
+    \ &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong double abs(const point &a) {\r\
+    \n    return a.abs();\r\n}\r\n\r\nlong double norm(const point &a) {\r\n    return\
+    \ internal::add(a.x*a.x, a.y*a.y);\r\n}\r\n\r\nint isp(const point &a, const point\
+    \ &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\n   \
+    \ if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\n\
+    \        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
+    \ flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\u8FD1\u70B9\u5BFE\u3092\
+    \u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point> p)\
+    \ {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
     \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
     \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
     \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
@@ -94,7 +96,7 @@ data:
   isVerificationFile: true
   path: test/geometry/closest_pair.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 17:11:10+09:00'
+  timestamp: '2021-09-15 20:35:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/closest_pair.test.cpp
