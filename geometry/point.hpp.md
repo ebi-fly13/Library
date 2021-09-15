@@ -19,6 +19,9 @@ data:
     path: test/geometry/contains.test.cpp
     title: test/geometry/contains.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/convex_diameter.test.cpp
+    title: test/geometry/convex_diameter.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
   - icon: ':heavy_check_mark:'
@@ -134,6 +137,7 @@ data:
   timestamp: '2021-09-15 01:14:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/geometry/convex_diameter.test.cpp
   - test/geometry/distance.test.cpp
   - test/geometry/is_convex.test.cpp
   - test/geometry/intersection.test.cpp

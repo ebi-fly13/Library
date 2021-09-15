@@ -327,6 +327,9 @@ data:
       path: test/geometry/contains.test.cpp
       title: test/geometry/contains.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/geometry/convex_diameter.test.cpp
+      title: test/geometry/convex_diameter.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/geometry/convex_hull.test.cpp
       title: test/geometry/convex_hull.test.cpp
     - icon: ':heavy_check_mark:'

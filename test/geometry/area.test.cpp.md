@@ -121,12 +121,23 @@ data:
     \ &poly) {\n    int n = poly.size();\n    for(int i = 0; i < n; i++) {\n     \
     \   if(isp(poly[i], poly[(i+1 != n) ? i+1 : 0], poly[(i+2 < n) ? i+2 : (i+2)%n])\
     \ == -1) {\n            return false;\n        }\n    }\n    return true;\n}\n\
-    \nenum {\n    OUT, ON, IN\n};\n\nint contains(const std::vector<point> &poly,\
-    \ const point &p) {\n    bool in = false;\n    int n = poly.size();\n    for(int\
-    \ i = 0; i < n; i++) {\n        point a = poly[i] - p;\n        point b = poly[(i+1\
-    \ < n) ? i+1 : 0] - p;\n        if(a.y > b.y) std::swap(a, b);\n        if(a.y\
-    \ <= 0 && 0 < b.y && det(a, b) < 0) in = !in;\n        if(det(a, b) == 0 && dot(a,\
-    \ b) <= 0) return ON;\n    }\n    return in ? IN : OUT;\n}\n\n}\n#line 12 \"test/geometry/area.test.cpp\"\
+    \nenum {\n    OUT, ON, IN\n};\n\nint contains(const Polygon &poly, const point\
+    \ &p) {\n    bool in = false;\n    int n = poly.size();\n    for(int i = 0; i\
+    \ < n; i++) {\n        point a = poly[i] - p;\n        point b = poly[(i+1 < n)\
+    \ ? i+1 : 0] - p;\n        if(a.y > b.y) std::swap(a, b);\n        if(a.y <= 0\
+    \ && 0 < b.y && det(a, b) < 0) in = !in;\n        if(det(a, b) == 0 && dot(a,\
+    \ b) <= 0) return ON;\n    }\n    return in ? IN : OUT;\n}\n\nlong double convex_diameter(const\
+    \ Polygon &convex_poly) {\n    int n = convex_poly.size();\n    int is = 0, js\
+    \ = 0;\n    for(int i = 1; i < n; i++) {\n        if(convex_poly[i].y > convex_poly[is].y)\
+    \ is = i;\n        if(convex_poly[i].y < convex_poly[js].y) js = i;\n    }\n \
+    \   long double max = (convex_poly[is]-convex_poly[js]).abs();\n    int i, max_i,\
+    \ j, max_j;\n    i = max_i = is;\n    j = max_j = js;\n    do {\n        if(det(convex_poly[(i+1\
+    \ < n) ? i+1 : 0] - convex_poly[i], convex_poly[(j+1 < n) ? j+1 : 0] - convex_poly[j])\
+    \ >= 0) {\n            j = (j+1 < n) ? j+1 : 0;\n        }\n        else {\n \
+    \           i = (i+1 < n) ? i+1 : 0;\n        }\n        if((convex_poly[i] -\
+    \ convex_poly[j]).abs() > max) {\n            max = (convex_poly[i] - convex_poly[j]).abs();\n\
+    \            max_i = i;\n            max_j = j;\n        }\n    } while(i != is\
+    \ || j != js);\n    return max;\n}\n\n}\n#line 12 \"test/geometry/area.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
     \ p(n);\n    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    std::cout\
     \ << area(p) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed <<\
@@ -149,7 +160,7 @@ data:
   isVerificationFile: true
   path: test/geometry/area.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 12:28:10+09:00'
+  timestamp: '2021-09-15 15:38:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/area.test.cpp
