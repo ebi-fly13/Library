@@ -333,6 +333,9 @@ data:
       path: test/geometry/convex_hull.test.cpp
       title: test/geometry/convex_hull.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/geometry/convex_polygon_cut.test.cpp
+      title: test/geometry/convex_polygon_cut.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/geometry/cross_point.test.cpp
       title: test/geometry/cross_point.test.cpp
     - icon: ':heavy_check_mark:'

@@ -22,6 +22,9 @@ data:
     path: test/geometry/convex_diameter.test.cpp
     title: test/geometry/convex_diameter.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/convex_polygon_cut.test.cpp
+    title: test/geometry/convex_polygon_cut.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
   - icon: ':heavy_check_mark:'
@@ -139,6 +142,7 @@ data:
   verifiedWith:
   - test/geometry/convex_diameter.test.cpp
   - test/geometry/distance.test.cpp
+  - test/geometry/convex_polygon_cut.test.cpp
   - test/geometry/is_convex.test.cpp
   - test/geometry/intersection.test.cpp
   - test/geometry/contains.test.cpp

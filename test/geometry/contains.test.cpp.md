@@ -111,7 +111,7 @@ data:
     \  }\n}\n\nlong double distance(const line &a, const line_segment &b) {\n    if(intersection(a,\
     \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(distance(a,\
     \ b.a), distance(a, b.b));\n    }\n}\n\n}\n#line 2 \"geometry/polygon.hpp\"\n\n\
-    #line 5 \"geometry/polygon.hpp\"\n\n#line 7 \"geometry/polygon.hpp\"\n\nnamespace\
+    #line 5 \"geometry/polygon.hpp\"\n\n#line 8 \"geometry/polygon.hpp\"\n\nnamespace\
     \ ebi {\n\nusing Polygon = std::vector<point>;\n\nlong double area(const Polygon\
     \ &poly) {\n    long double s = 0;\n    int n = poly.size();\n    for(int i =\
     \ 0; i < n; i++) {\n        s = internal::add(s, det(poly[i], poly[(i+1 != n)\
@@ -137,7 +137,14 @@ data:
     \           i = (i+1 < n) ? i+1 : 0;\n        }\n        if((convex_poly[i] -\
     \ convex_poly[j]).abs() > max) {\n            max = (convex_poly[i] - convex_poly[j]).abs();\n\
     \            max_i = i;\n            max_j = j;\n        }\n    } while(i != is\
-    \ || j != js);\n    return max;\n}\n\n}\n#line 12 \"test/geometry/contains.test.cpp\"\
+    \ || j != js);\n    return max;\n}\n\nPolygon convex_polygon_cut(const Polygon\
+    \ &poly, const line &l) {\n    Polygon ret;\n    int n = poly.size();\n    for(int\
+    \ i = 0; i < n; i++) {\n        const point &now = poly[i];\n        const point\
+    \ &nxt = poly[(i+1 < n) ? i+1 : 0];\n        long double cf = det(l.a - now, l.b\
+    \ - now);\n        long double cs = det(l.a - nxt, l.b - nxt);\n        if(internal::sgn(cf)\
+    \ >= 0) {\n            ret.emplace_back(now);\n        }\n        if(internal::sgn(cf)\
+    \ * internal::sgn(cs) < 0) {\n            ret.emplace_back(cross_point(line(now,\
+    \ nxt), l));\n        }\n    }\n    return ret;\n}\n\n}\n#line 12 \"test/geometry/contains.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    Polygon\
     \ poly(n);\n    for(auto &[x, y]: poly) {\n        std::cin >> x >> y;\n    }\n\
     \    int q;\n    std::cin >> q;\n    while(q--) {\n        point p;\n        std::cin\
@@ -163,7 +170,7 @@ data:
   isVerificationFile: true
   path: test/geometry/contains.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 15:38:31+09:00'
+  timestamp: '2021-09-15 16:08:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/contains.test.cpp

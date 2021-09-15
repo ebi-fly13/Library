@@ -18,11 +18,11 @@ data:
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_B
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_C
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_B
-  bundledCode: "#line 1 \"test/geometry/convex_diameter.test.cpp\"\n#define PROBLEM\
-    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_B\"\n#define\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_C
+  bundledCode: "#line 1 \"test/geometry/convex_polygon_cut.test.cpp\"\n#define PROBLEM\
+    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_C\"\n#define\
     \ ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\
     #include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/point.hpp\"\
     \n\r\n#include <cmath>\r\n#line 6 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\
@@ -63,13 +63,12 @@ data:
     \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
     \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
     \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\n}\n#line 2 \"geometry/polygon.hpp\"\n\n\
-    #line 5 \"geometry/polygon.hpp\"\n\n#line 2 \"geometry/line.hpp\"\n\n#line 5 \"\
-    geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\nstruct\
-    \ line {\n    point a,b;\n\n    line(long double x1, long double y1, long double\
-    \ x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const point &a, const\
-    \ point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const {\n     \
-    \   return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
+    \n    }\r\n    return flag;\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\n\n#line\
+    \ 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\
+    \nstruct line {\n    point a,b;\n\n    line(long double x1, long double y1, long\
+    \ double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const point\
+    \ &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const\
+    \ {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
     \ point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\n    long\
     \ double distance(const point &c) const {\n    return std::abs(det(c - a, b -\
     \ a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line &b) {\n\
@@ -87,7 +86,8 @@ data:
     \   return std::abs(det(c-a.a, a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const\
     \ line &a, const line &b) {\n    if(intersection(a, b) < 2) {\n        return\
     \ 0;\n    }\n    else {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line\
-    \ 8 \"geometry/polygon.hpp\"\n\nnamespace ebi {\n\nusing Polygon = std::vector<point>;\n\
+    \ 2 \"geometry/polygon.hpp\"\n\n#line 5 \"geometry/polygon.hpp\"\n\n#line 8 \"\
+    geometry/polygon.hpp\"\n\nnamespace ebi {\n\nusing Polygon = std::vector<point>;\n\
     \nlong double area(const Polygon &poly) {\n    long double s = 0;\n    int n =\
     \ poly.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
     \ det(poly[i], poly[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return\
@@ -120,37 +120,41 @@ data:
     \ double cs = det(l.a - nxt, l.b - nxt);\n        if(internal::sgn(cf) >= 0) {\n\
     \            ret.emplace_back(now);\n        }\n        if(internal::sgn(cf) *\
     \ internal::sgn(cs) < 0) {\n            ret.emplace_back(cross_point(line(now,\
-    \ nxt), l));\n        }\n    }\n    return ret;\n}\n\n}\n#line 13 \"test/geometry/convex_diameter.test.cpp\"\
+    \ nxt), l));\n        }\n    }\n    return ret;\n}\n\n}\n#line 14 \"test/geometry/convex_polygon_cut.test.cpp\"\
     \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n\
     \    std::cin >> n;\n    std::vector<point> poly(n);\n    for(auto &[x, y]: poly)\
-    \ {\n        std::cin >> x >> y;\n    }\n    std::cout << convex_diameter(poly)\
-    \ << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
-    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
-    }\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_B\"\
+    \ {\n        std::cin >> x >> y;\n    }\n    int q;\n    std::cin >> q;\n    while(q--)\
+    \ {\n        point p1, p2;\n        std::cin >> p1.x >> p1.y >> p2.x >> p2.y;\n\
+    \        auto p = convex_polygon_cut(poly, line(p1, p2));\n        std::cout <<\
+    \ area(p) << '\\n';\n    }\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
+    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    ebi::main_();\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_C\"\
     \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
-    #include \"geometry/point.hpp\"\n#include \"geometry/polygon.hpp\"\n\nnamespace\
-    \ ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n    std::cin\
-    \ >> n;\n    std::vector<point> poly(n);\n    for(auto &[x, y]: poly) {\n    \
-    \    std::cin >> x >> y;\n    }\n    std::cout << convex_diameter(poly) << '\\\
-    n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
-    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
-    }"
+    #include \"geometry/point.hpp\"\n#include \"geometry/line.hpp\"\n#include \"geometry/polygon.hpp\"\
+    \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n\
+    \    std::cin >> n;\n    std::vector<point> poly(n);\n    for(auto &[x, y]: poly)\
+    \ {\n        std::cin >> x >> y;\n    }\n    int q;\n    std::cin >> q;\n    while(q--)\
+    \ {\n        point p1, p2;\n        std::cin >> p1.x >> p1.y >> p2.x >> p2.y;\n\
+    \        auto p = convex_polygon_cut(poly, line(p1, p2));\n        std::cout <<\
+    \ area(p) << '\\n';\n    }\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
+    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    ebi::main_();\n}"
   dependsOn:
   - geometry/point.hpp
-  - geometry/polygon.hpp
   - geometry/line.hpp
+  - geometry/polygon.hpp
   isVerificationFile: true
-  path: test/geometry/convex_diameter.test.cpp
+  path: test/geometry/convex_polygon_cut.test.cpp
   requiredBy: []
   timestamp: '2021-09-15 16:08:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/geometry/convex_diameter.test.cpp
+documentation_of: test/geometry/convex_polygon_cut.test.cpp
 layout: document
 redirect_from:
-- /verify/test/geometry/convex_diameter.test.cpp
-- /verify/test/geometry/convex_diameter.test.cpp.html
-title: test/geometry/convex_diameter.test.cpp
+- /verify/test/geometry/convex_polygon_cut.test.cpp
+- /verify/test/geometry/convex_polygon_cut.test.cpp.html
+title: test/geometry/convex_polygon_cut.test.cpp
 ---
