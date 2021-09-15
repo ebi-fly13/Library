@@ -359,5 +359,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/reflection.test.cpp
       title: test/geometry/reflection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/geometry/segment_intersection.test.cpp
+      title: test/geometry/segment_intersection.test.cpp
 layout: toppage
 ---
