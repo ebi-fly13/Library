@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "point.hpp"
+#include "line.hpp"
 
 namespace ebi {
 
@@ -72,6 +73,24 @@ long double convex_diameter(const Polygon &convex_poly) {
         }
     } while(i != is || j != js);
     return max;
+}
+
+Polygon convex_polygon_cut(const Polygon &poly, const line &l) {
+    Polygon ret;
+    int n = poly.size();
+    for(int i = 0; i < n; i++) {
+        const point &now = poly[i];
+        const point &nxt = poly[(i+1 < n) ? i+1 : 0];
+        long double cf = det(l.a - now, l.b - now);
+        long double cs = det(l.a - nxt, l.b - nxt);
+        if(internal::sgn(cf) >= 0) {
+            ret.emplace_back(now);
+        }
+        if(internal::sgn(cf) * internal::sgn(cs) < 0) {
+            ret.emplace_back(cross_point(line(now, nxt), l));
+        }
+    }
+    return ret;
 }
 
 }
