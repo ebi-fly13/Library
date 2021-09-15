@@ -3,6 +3,7 @@
 #include <cmath>
 #include <cassert>
 #include <vector>
+#include <iostream>
 
 namespace ebi {
 
@@ -96,6 +97,10 @@ struct point {
         return internal::sgn(y-rhs.y)<0;
     }
 };
+
+std::ostream& operator<<(std::ostream& os, const point &a) {
+    return os << a.x << " " << a.y;
+}
 
 long double dot(const point &a, const point &b) {
     return a.dot(b);
