@@ -34,7 +34,7 @@ enum {
     OUT, ON, IN
 };
 
-int contains(const std::vector<point> &poly, const point &p) {
+int contains(const Polygon &poly, const point &p) {
     bool in = false;
     int n = poly.size();
     for(int i = 0; i < n; i++) {
@@ -45,6 +45,33 @@ int contains(const std::vector<point> &poly, const point &p) {
         if(det(a, b) == 0 && dot(a, b) <= 0) return ON;
     }
     return in ? IN : OUT;
+}
+
+long double convex_diameter(const Polygon &convex_poly) {
+    int n = convex_poly.size();
+    int is = 0, js = 0;
+    for(int i = 1; i < n; i++) {
+        if(convex_poly[i].y > convex_poly[is].y) is = i;
+        if(convex_poly[i].y < convex_poly[js].y) js = i;
+    }
+    long double max = (convex_poly[is]-convex_poly[js]).abs();
+    int i, max_i, j, max_j;
+    i = max_i = is;
+    j = max_j = js;
+    do {
+        if(det(convex_poly[(i+1 < n) ? i+1 : 0] - convex_poly[i], convex_poly[(j+1 < n) ? j+1 : 0] - convex_poly[j]) >= 0) {
+            j = (j+1 < n) ? j+1 : 0;
+        }
+        else {
+            i = (i+1 < n) ? i+1 : 0;
+        }
+        if((convex_poly[i] - convex_poly[j]).abs() > max) {
+            max = (convex_poly[i] - convex_poly[j]).abs();
+            max_i = i;
+            max_j = j;
+        }
+    } while(i != is || j != js);
+    return max;
 }
 
 }
