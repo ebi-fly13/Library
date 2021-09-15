@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
@@ -18,33 +18,33 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/distance.test.cpp
     title: test/geometry/distance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line_segment.hpp\"\n\n#include <cmath>\n#include\
     \ <cassert>\n\n#line 2 \"geometry/point.hpp\"\n\r\n#line 5 \"geometry/point.hpp\"\
-    \n#include <vector>\r\n#include <iostream>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr\
-    \ long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double\
-    \ a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double\
-    \ add(long double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a)\
-    \ + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\
-    \n\r\nstruct point {\r\n    long double x,y;\r\n\r\n    point() = default;\r\n\
-    \r\n    point(long double x, long double y) : x(x), y(y) { }\r\n\r\n    point\
-    \ &operator+=(const point rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\
-    \n        y = internal::add(y, rhs.y);\r\n        return *this;\r\n    }\r\n\r\
-    \n    point &operator-=(const point rhs) noexcept {\r\n        x = internal::add(x,\
-    \ -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\n        return *this;\r\
-    \n    }\r\n\r\n    point &operator*=(const long double k) noexcept {\r\n     \
-    \   x *= k;\r\n        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point\
-    \ &operator/=(const long double k) {\r\n        assert(internal::sgn(k)!=0);\r\
+    \n#include <vector>\r\n#include <iostream>\r\n#include <algorithm>\r\n\r\nnamespace\
+    \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\
+    \n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\
+    \n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
+    \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
+    } // namespace internal\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n\
+    \    point() = default;\r\n\r\n    point(long double x, long double y) : x(x),\
+    \ y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\n      \
+    \  x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n  \
+    \      return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
+    \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const long double\
+    \ k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return *this;\r\
+    \n    }\r\n\r\n    point &operator/=(const long double k) {\r\n        assert(internal::sgn(k)!=0);\r\
     \n        x /= k;\r\n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n\
     \    point operator+(const point &rhs) const noexcept {\r\n        return point(*this)\
     \ += rhs;\r\n    }\r\n\r\n    point operator-(const point &rhs) const noexcept\
@@ -163,8 +163,8 @@ data:
   isVerificationFile: false
   path: geometry/line_segment.hpp
   requiredBy: []
-  timestamp: '2021-09-15 20:35:17+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-09-15 20:45:16+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/distance.test.cpp
   - test/geometry/is_convex.test.cpp

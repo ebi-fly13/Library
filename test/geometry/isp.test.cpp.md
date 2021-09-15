@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C
@@ -17,20 +17,20 @@ data:
   bundledCode: "#line 1 \"test/geometry/isp.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
     \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
     #line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\n\
-    #include <vector>\r\n#line 7 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\
-    \nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long\
-    \ double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong\
-    \ double add(long double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a)\
-    \ + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\
-    \n\r\nstruct point {\r\n    long double x,y;\r\n\r\n    point() = default;\r\n\
-    \r\n    point(long double x, long double y) : x(x), y(y) { }\r\n\r\n    point\
-    \ &operator+=(const point rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\
-    \n        y = internal::add(y, rhs.y);\r\n        return *this;\r\n    }\r\n\r\
-    \n    point &operator-=(const point rhs) noexcept {\r\n        x = internal::add(x,\
-    \ -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\n        return *this;\r\
-    \n    }\r\n\r\n    point &operator*=(const long double k) noexcept {\r\n     \
-    \   x *= k;\r\n        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point\
-    \ &operator/=(const long double k) {\r\n        assert(internal::sgn(k)!=0);\r\
+    #include <vector>\r\n#line 7 \"geometry/point.hpp\"\n#include <algorithm>\r\n\r\
+    \nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal\
+    \ {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1\
+    \ : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
+    \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
+    } // namespace internal\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n\
+    \    point() = default;\r\n\r\n    point(long double x, long double y) : x(x),\
+    \ y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\n      \
+    \  x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n  \
+    \      return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
+    \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const long double\
+    \ k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return *this;\r\
+    \n    }\r\n\r\n    point &operator/=(const long double k) {\r\n        assert(internal::sgn(k)!=0);\r\
     \n        x /= k;\r\n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n\
     \    point operator+(const point &rhs) const noexcept {\r\n        return point(*this)\
     \ += rhs;\r\n    }\r\n\r\n    point operator-(const point &rhs) const noexcept\
@@ -104,8 +104,8 @@ data:
   isVerificationFile: true
   path: test/geometry/isp.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 20:35:17+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-15 20:45:16+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/isp.test.cpp
 layout: document

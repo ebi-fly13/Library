@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   - icon: ':heavy_check_mark:'
@@ -25,7 +25,7 @@ data:
     \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_B\"\n#define\
     \ ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\
     #include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/point.hpp\"\
-    \n\r\n#include <cmath>\r\n#line 7 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\
+    \n\r\n#include <cmath>\r\n#line 8 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\
     \n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint\
     \ sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\
     \r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b) <\
@@ -162,7 +162,7 @@ data:
   isVerificationFile: true
   path: test/geometry/convex_diameter.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 20:35:17+09:00'
+  timestamp: '2021-09-15 20:45:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/convex_diameter.test.cpp
