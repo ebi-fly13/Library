@@ -35,16 +35,18 @@ struct Point {
 };
 
 template<class T>
-std::vector<Point<T>> convex_hull(int n, std::vector<Point<T>> p) {
+std::vector<Point<T>> convex_hull(int n, std::vector<Point<T>> p, bool on = false) {
     std::sort(p.begin(), p.end(), [](const Point<T> &a, const Point<T> &b) { return a.x != b.x ? a.x < b.x : a.y < b.y; });
     std::vector<Point<T>> g1, g2;
     int k1 = 0, k2 = 0;
     for(int i = 0; i < n; i++) {
         while(k1 > 1 && (g1[k1-1]-g1[k1-2]).det(p[i]-g1[k1-1]) <= 0) {
+            if(on && (g1[k1-1]-g1[k1-2]).det(p[i]-g1[k1-1]) == 0) break;
             g1.pop_back();
             k1--;
         }
         while(k2 > 1 && (g2[k2-1]-g2[k2-2]).det(p[i]-g2[k2-1]) >= 0) {
+            if(on && (g2[k2-1]-g2[k2-2]).det(p[i]-g2[k2-1]) == 0) break;
             g2.pop_back();
             k2--;
         }
