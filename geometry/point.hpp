@@ -122,4 +122,44 @@ int isp(const point &a, const point &b, const point &c) {
     return flag;
 }
 
+// 分割統治で最近点対を求める O(N log N)
+long double closest_pair(std::vector<point> p) {
+    std::sort(p.begin(), p.end());
+    int n = p.size();
+    auto f = [&](auto &&self, int l, int r) -> long double {
+        if(r-l == 1) {
+            return 1e9;
+        }
+        int mid = (l+r)/2;
+        long double x = p[mid].x;
+        long double d = std::min(self(self, l, mid), self(self, mid, r));
+        std::vector<point> b;
+        b.reserve(r-l);
+        int j = mid;
+        for(int i = l; i < mid; i++) {
+            while(j < r && p[j].y <= p[i].y) {
+                b.emplace_back(p[j++]);
+            }
+            b.emplace_back(p[i]);
+        }
+        while(j < r) {
+            b.emplace_back(p[j++]);
+        }
+        for(int i = 0; i < r-l; i++) {
+            p[l+i] = b[i];
+        }
+        b.clear();
+        for(int i = l; i < r; i++) {
+            if(std::abs(p[i].x - x) >= d) continue;
+            for(int j = int(b.size())-1; j >= 0; j--) {
+                if(p[i].y - b[j].y >= d) break;
+                d = std::min(d, abs(p[i]-b[j]));
+            }
+            b.emplace_back(p[i]);
+        }
+        return d;
+    };
+    return f(f, 0, n);
+}
+
 }
