@@ -8,23 +8,24 @@ data:
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/geometry/incircle_of_triangle.test.cpp
+    title: test/geometry/incircle_of_triangle.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/intersection_circle.test.cpp
+    title: test/geometry/intersection_circle.test.cpp
+  _isVerificationFailed: true
+  _pathExtension: hpp
+  _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_A
-    links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_A
-  bundledCode: "#line 1 \"test/geometry/intersection.test.cpp\"\n#define PROBLEM \"\
-    https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_A\"\r\n\r\n#include\
-    \ <iostream>\r\n#include <vector>\r\n#include <algorithm>\r\n#include <iomanip>\r\
-    \n\r\n#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
-    \n#line 8 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\nconstexpr long double\
-    \ EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n\
-    \    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long\
-    \ double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b)))\
+    links: []
+  bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
+    \r\n#include <cmath>\r\n#include <cassert>\r\n#include <vector>\r\n#include <iostream>\r\
+    \n#include <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS\
+    \ = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n   \
+    \ return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long double\
+    \ a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b)))\
     \ return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct\
     \ point {\r\n    long double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long\
     \ double x, long double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const\
@@ -100,39 +101,48 @@ data:
     \ double distance(const line &a, const point &c) {\n    return std::abs(det(c-a.a,\
     \ a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const line &a, const line\
     \ &b) {\n    if(intersection(a, b) < 2) {\n        return 0;\n    }\n    else\
-    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 10 \"test/geometry/intersection.test.cpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nvoid main_() {\r\n    int q;\r\n    std::cin >> q;\r\
-    \n    while(q--) {\r\n        point p0, p1, p2, p3;\r\n        std::cin >> p0.x\
-    \ >> p0.y >> p1.x >> p1.y;\r\n        std::cin >> p2.x >> p2.y >> p3.x >> p3.y;\r\
-    \n        line s1(p0, p1);\r\n        line s2(p2, p3);\r\n        int flag = intersection(s1,\
-    \ s2);\r\n        if(flag == 3) flag = 2;\r\n        std::cout << flag << '\\\
-    n';\r\n    }\r\n}\r\n\r\n}\r\n\r\nint main() {\r\n    std::cout << std::fixed\
-    \ << std::setprecision(15);\r\n    std::cin.tie(nullptr);\r\n    std::ios::sync_with_stdio(false);\r\
-    \n    ebi::main_();\r\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_A\"\
-    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n#include <algorithm>\r\n#include\
-    \ <iomanip>\r\n\r\n#include \"geometry/point.hpp\"\r\n#include \"geometry/line.hpp\"\
-    \r\n\r\nnamespace ebi {\r\n\r\nvoid main_() {\r\n    int q;\r\n    std::cin >>\
-    \ q;\r\n    while(q--) {\r\n        point p0, p1, p2, p3;\r\n        std::cin\
-    \ >> p0.x >> p0.y >> p1.x >> p1.y;\r\n        std::cin >> p2.x >> p2.y >> p3.x\
-    \ >> p3.y;\r\n        line s1(p0, p1);\r\n        line s2(p2, p3);\r\n       \
-    \ int flag = intersection(s1, s2);\r\n        if(flag == 3) flag = 2;\r\n    \
-    \    std::cout << flag << '\\n';\r\n    }\r\n}\r\n\r\n}\r\n\r\nint main() {\r\n\
-    \    std::cout << std::fixed << std::setprecision(15);\r\n    std::cin.tie(nullptr);\r\
-    \n    std::ios::sync_with_stdio(false);\r\n    ebi::main_();\r\n}"
+    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 5 \"geometry/circle.hpp\"\
+    \n\nnamespace ebi {\n\nstruct circle {\n    point c;\n    long double r;\n   \
+    \ circle() = default;\n    circle(const point &c, long double r) : c(c), r(r)\
+    \ { } \n};\n\nint intersection(const circle &c1, const circle &c2) {\n    long\
+    \ double d = abs(c1.c - c2.c);\n    long double r1 = c1.r, r2 = c2.r;\n    if(r1\
+    \ < r2) std::swap(r1, r2); \n    if(d > internal::add(r1, r2)) {\n        return\
+    \ 4;\n    }\n    else if(d == internal::add(r1, r2)) {\n        return 3;\n  \
+    \  }\n    else if(d > internal::add(r1, -r2)) {\n        return 2;\n    }\n  \
+    \  else if(d == internal::add(r1, -r2)) {\n        return 1;\n    }\n    else\
+    \ {\n        return 0;\n    }\n}\n\ncircle incircle_of_triangle(const point &A,\
+    \ const point &B, const point &C) {\n    long double a = abs(B-C), b = abs(C-A),\
+    \ c = abs(A-B);\n    point in = A * a + B * b + C * c;\n    in /= (a + b + c);\n\
+    \    long double r = distance(line(A, B), in);\n    return circle(in, r);\n}\n\
+    \n}\n"
+  code: "#pragma once\n\n#include \"point.hpp\"\n#include \"line.hpp\"\n\nnamespace\
+    \ ebi {\n\nstruct circle {\n    point c;\n    long double r;\n    circle() = default;\n\
+    \    circle(const point &c, long double r) : c(c), r(r) { } \n};\n\nint intersection(const\
+    \ circle &c1, const circle &c2) {\n    long double d = abs(c1.c - c2.c);\n   \
+    \ long double r1 = c1.r, r2 = c2.r;\n    if(r1 < r2) std::swap(r1, r2); \n   \
+    \ if(d > internal::add(r1, r2)) {\n        return 4;\n    }\n    else if(d ==\
+    \ internal::add(r1, r2)) {\n        return 3;\n    }\n    else if(d > internal::add(r1,\
+    \ -r2)) {\n        return 2;\n    }\n    else if(d == internal::add(r1, -r2))\
+    \ {\n        return 1;\n    }\n    else {\n        return 0;\n    }\n}\n\ncircle\
+    \ incircle_of_triangle(const point &A, const point &B, const point &C) {\n   \
+    \ long double a = abs(B-C), b = abs(C-A), c = abs(A-B);\n    point in = A * a\
+    \ + B * b + C * c;\n    in /= (a + b + c);\n    long double r = distance(line(A,\
+    \ B), in);\n    return circle(in, r);\n}\n\n}"
   dependsOn:
   - geometry/point.hpp
   - geometry/line.hpp
-  isVerificationFile: true
-  path: test/geometry/intersection.test.cpp
+  isVerificationFile: false
+  path: geometry/circle.hpp
   requiredBy: []
-  timestamp: '2021-09-15 20:45:16+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: test/geometry/intersection.test.cpp
+  timestamp: '2021-09-16 12:50:18+09:00'
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/geometry/intersection_circle.test.cpp
+  - test/geometry/incircle_of_triangle.test.cpp
+documentation_of: geometry/circle.hpp
 layout: document
 redirect_from:
-- /verify/test/geometry/intersection.test.cpp
-- /verify/test/geometry/intersection.test.cpp.html
-title: test/geometry/intersection.test.cpp
+- /library/geometry/circle.hpp
+- /library/geometry/circle.hpp.html
+title: geometry/circle.hpp
 ---

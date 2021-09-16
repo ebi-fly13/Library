@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':question:'
@@ -9,20 +12,19 @@ data:
     title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.0000001'
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
-  bundledCode: "#line 1 \"test/geometry/reflection.test.cpp\"\n#define PROBLEM \"\
-    https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\r\n#define\
-    \ ERROR 0.0000001\r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include\
-    \ <limits>\r\n\r\n#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include\
-    \ <cassert>\r\n#include <vector>\r\n#line 7 \"geometry/point.hpp\"\n#include <algorithm>\r\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B
+  bundledCode: "#line 1 \"test/geometry/incircle_of_triangle.test.cpp\"\n#define PROBLEM\
+    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B\"\n\n#include\
+    \ <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n#include\
+    \ <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/circle.hpp\"\n\n#line 2\
+    \ \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#line 8 \"geometry/point.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace\
     \ internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS)\
     \ ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n   \
@@ -101,35 +103,49 @@ data:
     \ double distance(const line &a, const point &c) {\n    return std::abs(det(c-a.a,\
     \ a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const line &a, const line\
     \ &b) {\n    if(intersection(a, b) < 2) {\n        return 0;\n    }\n    else\
-    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 10 \"test/geometry/reflection.test.cpp\"\
-    \n\r\nint main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n\
-    \    double x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line\
-    \ l(x1,y1,x2,y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n\
-    \        double x,y;\r\n        std::cin >> x >> y;\r\n        ebi::point p(x,y);\r\
-    \n        ebi::point ans = l.relf(p);\r\n        std::cout << ans.x << \" \" <<\
-    \ ans.y << std::endl;\r\n    }\r\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\
-    \r\n#define ERROR 0.0000001\r\n\r\n#include <iostream>\r\n#include <iomanip>\r\
-    \n#include <limits>\r\n\r\n#include \"geometry/point.hpp\"\r\n#include \"geometry/line.hpp\"\
-    \r\n\r\nint main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\
-    \n    double x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line\
-    \ l(x1,y1,x2,y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n\
-    \        double x,y;\r\n        std::cin >> x >> y;\r\n        ebi::point p(x,y);\r\
-    \n        ebi::point ans = l.relf(p);\r\n        std::cout << ans.x << \" \" <<\
-    \ ans.y << std::endl;\r\n    }\r\n}"
+    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 5 \"geometry/circle.hpp\"\
+    \n\nnamespace ebi {\n\nstruct circle {\n    point c;\n    long double r;\n   \
+    \ circle() = default;\n    circle(const point &c, long double r) : c(c), r(r)\
+    \ { } \n};\n\nint intersection(const circle &c1, const circle &c2) {\n    long\
+    \ double d = abs(c1.c - c2.c);\n    long double r1 = c1.r, r2 = c2.r;\n    if(r1\
+    \ < r2) std::swap(r1, r2); \n    if(d > internal::add(r1, r2)) {\n        return\
+    \ 4;\n    }\n    else if(d == internal::add(r1, r2)) {\n        return 3;\n  \
+    \  }\n    else if(d > internal::add(r1, -r2)) {\n        return 2;\n    }\n  \
+    \  else if(d == internal::add(r1, -r2)) {\n        return 1;\n    }\n    else\
+    \ {\n        return 0;\n    }\n}\n\ncircle incircle_of_triangle(const point &A,\
+    \ const point &B, const point &C) {\n    long double a = abs(B-C), b = abs(C-A),\
+    \ c = abs(A-B);\n    point in = A * a + B * b + C * c;\n    in /= (a + b + c);\n\
+    \    long double r = distance(line(A, B), in);\n    return circle(in, r);\n}\n\
+    \n}\n#line 11 \"test/geometry/incircle_of_triangle.test.cpp\"\n\nnamespace ebi\
+    \ {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    point a, b, c;\n    std::cin\
+    \ >> a.x >> a.y;\n    std::cin >> b.x >> b.y;\n    std::cin >> c.x >> c.y;\n \
+    \   circle in = incircle_of_triangle(a, b, c);\n    std::cout << in.c << \" \"\
+    \ << in.r << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\
+    #include <iomanip>\n#include <cstdint>\n\n#include \"geometry/circle.hpp\"\n\n\
+    namespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    point a, b,\
+    \ c;\n    std::cin >> a.x >> a.y;\n    std::cin >> b.x >> b.y;\n    std::cin >>\
+    \ c.x >> c.y;\n    circle in = incircle_of_triangle(a, b, c);\n    std::cout <<\
+    \ in.c << \" \" << in.r << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
+    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    ebi::main_();\n}"
   dependsOn:
+  - geometry/circle.hpp
   - geometry/point.hpp
   - geometry/line.hpp
   isVerificationFile: true
-  path: test/geometry/reflection.test.cpp
+  path: test/geometry/incircle_of_triangle.test.cpp
   requiredBy: []
-  timestamp: '2021-09-15 20:45:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-16 12:50:18+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/geometry/reflection.test.cpp
+documentation_of: test/geometry/incircle_of_triangle.test.cpp
 layout: document
 redirect_from:
-- /verify/test/geometry/reflection.test.cpp
-- /verify/test/geometry/reflection.test.cpp.html
-title: test/geometry/reflection.test.cpp
+- /verify/test/geometry/incircle_of_triangle.test.cpp
+- /verify/test/geometry/incircle_of_triangle.test.cpp.html
+title: test/geometry/incircle_of_triangle.test.cpp
 ---

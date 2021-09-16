@@ -2,7 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
@@ -33,9 +36,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/distance.test.cpp
     title: test/geometry/distance.test.cpp
+  - icon: ':x:'
+    path: test/geometry/incircle_of_triangle.test.cpp
+    title: test/geometry/incircle_of_triangle.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/intersection_circle.test.cpp
+    title: test/geometry/intersection_circle.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
@@ -48,9 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
@@ -176,10 +185,11 @@ data:
   path: geometry/point.hpp
   requiredBy:
   - geometry/line_segment.hpp
+  - geometry/circle.hpp
   - geometry/polygon.hpp
   - geometry/line.hpp
   timestamp: '2021-09-15 20:45:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/geometry/closest_pair.test.cpp
   - test/geometry/convex_diameter.test.cpp
@@ -188,9 +198,11 @@ data:
   - test/geometry/is_convex.test.cpp
   - test/geometry/intersection.test.cpp
   - test/geometry/contains.test.cpp
+  - test/geometry/intersection_circle.test.cpp
   - test/geometry/area.test.cpp
   - test/geometry/reflection.test.cpp
   - test/geometry/isp.test.cpp
+  - test/geometry/incircle_of_triangle.test.cpp
   - test/geometry/intersection_line_segment.test.cpp
   - test/geometry/cross_point.test.cpp
 documentation_of: geometry/point.hpp

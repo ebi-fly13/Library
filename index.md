@@ -122,16 +122,19 @@ data:
       title: data_structure/sparse_table.hpp
   - name: geometry
     pages:
+    - icon: ':question:'
+      path: geometry/circle.hpp
+      title: geometry/circle.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/line.hpp
       title: geometry/line.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/line_segment.hpp
       title: geometry/line_segment.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/point.hpp
       title: point
     - icon: ':heavy_check_mark:'
@@ -344,9 +347,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/distance.test.cpp
       title: test/geometry/distance.test.cpp
+    - icon: ':x:'
+      path: test/geometry/incircle_of_triangle.test.cpp
+      title: test/geometry/incircle_of_triangle.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/geometry/intersection.test.cpp
       title: test/geometry/intersection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/geometry/intersection_circle.test.cpp
+      title: test/geometry/intersection_circle.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/geometry/intersection_line_segment.test.cpp
       title: test/geometry/intersection_line_segment.test.cpp
