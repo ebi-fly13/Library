@@ -1,4 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C"
 #define ERROR 0.00000001
 
 #include <iostream>
@@ -19,7 +19,7 @@ void main_() {
     std::cin >> a.x >> a.y;
     std::cin >> b.x >> b.y;
     std::cin >> c.x >> c.y;
-    circle in = incircle_of_triangle(a, b, c);
+    circle in = circumscribed_circle_of_triangle(a, b, c);
     std::cout << in.c << " " << in.r << '\n';
 }
 

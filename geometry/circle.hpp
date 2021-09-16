@@ -41,4 +41,11 @@ circle incircle_of_triangle(const point &A, const point &B, const point &C) {
     return circle(in, r);
 }
 
+circle circumscribed_circle_of_triangle(const point &A, const point &B, const point &C) {
+    line p((A+B)/2, (A+B)/2+rot90(B-A));
+    line q((B+C)/2, (B+C)/2+rot90(C-B));
+    point cross = cross_point(p, q);
+    return circle(cross, abs(A-cross));
+}
+
 }

@@ -103,6 +103,15 @@ std::ostream& operator<<(std::ostream& os, const point &a) {
     return os << a.x << " " << a.y;
 }
 
+// 点a をang(ラジアン)回転する
+point rot(const point &a, long double ang) {
+    return point(std::cos(ang) * a.x - std::sin(ang) * a.y, std::sin(ang) * a.x + std::cos(ang) * a.y);
+} 
+
+point rot90(const point &a) {
+    return point(-a.y, a.x);
+}
+
 long double dot(const point &a, const point &b) {
     return a.dot(b);
 }
