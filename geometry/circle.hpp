@@ -5,6 +5,8 @@
 
 #include "point.hpp"
 #include "line.hpp"
+#include "line_segment.hpp"
+#include "polygon.hpp"
 
 namespace ebi {
 
@@ -88,6 +90,17 @@ std::vector<point> cross_point(const circle &c1, const circle &c2) {
     return ps;
 }
 
+std::vector<point> cross_point(const circle &c, const line_segment &ls) {
+    std::vector<point> ps = cross_point(c, line(ls.a, ls.b));
+    std::vector<point> ret;
+    for(auto p: ps) {
+        if(internal::sgn(distance(ls, p)) == 0) {
+            ret.emplace_back(p);
+        }
+    }
+    return ret;
+}
+
 std::vector<point> tangent_to_circle(const circle &c, const point &p) {
     std::vector<point> ps;
     point v = p - c.c;
@@ -146,6 +159,37 @@ std::vector<line> tangent(circle c1, circle c2) {
         ret.emplace_back(p, p + rot90(v));
     }
     return ret;
+}
+
+long double calc_common_area(const circle &c, const Polygon &poly) {
+    if(int(poly.size()) < 3) return 0.0;
+    long double s = 0;
+    int n = poly.size();
+    auto cross_area = [&](auto &&self, const point &a, const point b) -> long double {
+        point va = c.c - a, vb = c.c - b;
+        long double f = det(va, vb)/2.0, ret = 0.0;
+        if(internal::sgn(f) == 0) return 0.0;
+        if(std::max(va.abs(), vb.abs()) < c.r + EPS) return f;
+        if(internal::sgn(internal::add(distance(line_segment(a, b), c.c), -c.r)) >= 0) {
+            return c.r * c.r * (vb * conj(va)).arg() / 2.0;
+        }
+        auto ps = cross_point(c, line_segment(a, b));
+        if(int(ps.size()) == 1) ps.emplace_back(ps.back());
+        std::vector<point> tot = {a, ps[0], ps[1], b};
+        std::sort(tot.begin(), tot.end());
+        if(b < a) {
+            std::reverse(tot.begin(), tot.end());
+        }
+        int sz = tot.size();
+        for(int i = 0; i+1 < sz; i++) {
+            ret += self(self, tot[i], tot[i+1]);
+        }
+        return ret;
+    };
+    for(int i = 0; i < n; i++) {
+        s += cross_area(cross_area, poly[i], poly[(i+1 < n) ? i+1 : 0]);
+    }
+    return s;
 }
 
 }

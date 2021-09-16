@@ -13,7 +13,7 @@ struct line_segment {
 
     line_segment(long double x1, long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }
 
-    line_segment(point &a, point &b) : a(a), b(b) { }
+    line_segment(const point &a, const point &b) : a(a), b(b) { }
 };
 
 // 線分ab, cd が交わるか判定

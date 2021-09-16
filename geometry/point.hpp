@@ -42,6 +42,14 @@ struct point {
         return *this;
     }
 
+    point &operator*=(const point rhs) noexcept {
+        long double _x = internal::add(x*rhs.x, -y*rhs.y);
+        long double _y = internal::add(x*rhs.y, y*rhs.x);
+        x = _x;
+        y = _y;
+        return *this;
+    }
+
     point &operator*=(const long double k) noexcept {
         x *= k;
         y *= k;
@@ -61,6 +69,10 @@ struct point {
 
     point operator-(const point &rhs) const noexcept {
         return point(*this) -= rhs;
+    }
+
+    point operator*(const point &rhs) const noexcept {
+        return point(*this) *= rhs;
     }
 
     point operator*(const long double rhs) const noexcept {
@@ -105,6 +117,10 @@ std::ostream& operator<<(std::ostream& os, const point &a) {
 
 std::istream& operator>>(std::istream& os, point &a) {
     return os >> a.x >> a.y;
+}
+
+point conj(const point &a) {
+    return point(a.x, -a.y);
 }
 
 // 点a をang(ラジアン)回転する
