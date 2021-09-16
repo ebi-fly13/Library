@@ -56,21 +56,22 @@ data:
     \    bool operator<(const point &rhs) const noexcept {\r\n        if(internal::sgn(x-rhs.x))\
     \ return internal::sgn(x-rhs.x)<0;\r\n        return internal::sgn(y-rhs.y)<0;\r\
     \n    }\r\n};\r\n\r\nstd::ostream& operator<<(std::ostream& os, const point &a)\
-    \ {\r\n    return os << a.x << \" \" << a.y;\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\
-    \u30B8\u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long\
-    \ double ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y,\
-    \ std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const point\
-    \ &a) {\r\n    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const point\
-    \ &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double det(const\
-    \ point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong double\
-    \ abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double norm(const\
-    \ point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\n\r\nint isp(const\
-    \ point &a, const point &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\
-    \n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\
-    \n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
-    \ flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\u8FD1\u70B9\u5BFE\u3092\
-    \u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point> p)\
-    \ {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \ {\r\n    return os << a.x << \" \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream&\
+    \ os, point &a) {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\n// \u70B9a \u3092\
+    ang(\u30E9\u30B8\u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point\
+    \ &a, long double ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang)\
+    \ * a.y, std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const\
+    \ point &a) {\r\n    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const\
+    \ point &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double\
+    \ det(const point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong\
+    \ double abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double\
+    \ norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\
+    \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
+    \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
+    \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
+    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
+    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
+    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
     \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
     \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
     \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
@@ -128,12 +129,21 @@ data:
     \    }\n    else if(d < c.r) {\n        point p = l.proj(c.c);\n        point\
     \ v = l.b - l.a;\n        v = v*std::sqrt(std::max(internal::add(c.r * c.r, -d\
     \ * d) , (long double)0)) / v.abs(); \n        ps.emplace_back(p + v);\n     \
-    \   ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\n}\n#line 11 \"test/geometry/intersection_circle.test.cpp\"\
-    \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    circle\
-    \ c1, c2;\n    std::cin >> c1.c.x >> c1.c.y >> c1.r;\n    std::cin >> c2.c.x >>\
-    \ c2.c.y >> c2.r;\n    std::cout << intersection(c1, c2) << '\\n';\n}\n\n}\n\n\
-    int main() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
+    \   ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\nstd::vector<point> cross_point(const\
+    \ circle &c1, const circle &c2) {\n    std::vector<point> ps;\n    int flag =\
+    \ intersection(c1, c2);\n    if(flag == 0 || flag == 4) {\n        return ps;\n\
+    \    }\n    long double d = (c2.c - c1.c).abs();\n    long double x = internal::add(internal::add(d*d,\
+    \ c1.r*c1.r),-c2.r * c2.r) / (2.0*d);\n    point p = c1.c + (c2.c - c1.c) * x\
+    \ / d;\n    point v = rot90(c2.c - c1.c);\n    if(flag == 1 || flag == 3) {\n\
+    \        ps.emplace_back(p);\n    }\n    else {\n        v = v * std::sqrt(std::max(internal::add(c1.r\
+    \ * c1.r, -x * x) , (long double)0)) / v.abs(); \n        ps.emplace_back(p +\
+    \ v);\n        ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\n}\n#line 11\
+    \ \"test/geometry/intersection_circle.test.cpp\"\n\nnamespace ebi {\n\nusing i64\
+    \ = std::int64_t;\n\nvoid main_() {\n    circle c1, c2;\n    std::cin >> c1.c.x\
+    \ >> c1.c.y >> c1.r;\n    std::cin >> c2.c.x >> c2.c.y >> c2.r;\n    std::cout\
+    \ << intersection(c1, c2) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout <<\
+    \ std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    ebi::main_();\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A\"\
     \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\
     #include <iomanip>\n#include <cstdint>\n\n#include \"geometry/circle.hpp\"\n\n\
@@ -149,7 +159,7 @@ data:
   isVerificationFile: true
   path: test/geometry/intersection_circle.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 14:51:16+09:00'
+  timestamp: '2021-09-16 15:40:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/intersection_circle.test.cpp

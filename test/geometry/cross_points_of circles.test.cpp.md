@@ -18,11 +18,11 @@ data:
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C
-  bundledCode: "#line 1 \"test/geometry/circumscribed_circle_of_triangle.test.cpp\"\
-    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E
+  bundledCode: "#line 1 \"test/geometry/cross_points_of circles.test.cpp\"\n#define\
+    \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E\"\
     \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
     #line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\r\n#include\
@@ -140,36 +140,39 @@ data:
     \        ps.emplace_back(p);\n    }\n    else {\n        v = v * std::sqrt(std::max(internal::add(c1.r\
     \ * c1.r, -x * x) , (long double)0)) / v.abs(); \n        ps.emplace_back(p +\
     \ v);\n        ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\n}\n#line 12\
-    \ \"test/geometry/circumscribed_circle_of_triangle.test.cpp\"\n\nnamespace ebi\
-    \ {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    point a, b, c;\n    std::cin\
-    \ >> a.x >> a.y;\n    std::cin >> b.x >> b.y;\n    std::cin >> c.x >> c.y;\n \
-    \   circle in = circumscribed_circle_of_triangle(a, b, c);\n    std::cout << in.c\
-    \ << \" \" << in.r << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
-    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    \    ebi::main_();\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C\"\
+    \ \"test/geometry/cross_points_of circles.test.cpp\"\n\nnamespace ebi {\n\nusing\
+    \ i64 = std::int64_t;\n\nvoid main_() {\n    circle c1, c2;\n    std::cin >> c1.c\
+    \ >> c1.r;\n    std::cin >> c2.c >> c2.r;\n    auto ps = cross_point(c1, c2);\n\
+    \    if(int(ps.size()) == 1) {\n        ps.emplace_back(ps.back());\n    }\n \
+    \   std::sort(ps.begin(), ps.end());\n    for(auto p: ps) {\n        std::cout\
+    \ << p << \" \";\n    }\n    std::cout << '\\n';\n}\n\n}\n\nint main() {\n   \
+    \ std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E\"\
     \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
     #include \"geometry/circle.hpp\"\n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\
-    \nvoid main_() {\n    point a, b, c;\n    std::cin >> a.x >> a.y;\n    std::cin\
-    \ >> b.x >> b.y;\n    std::cin >> c.x >> c.y;\n    circle in = circumscribed_circle_of_triangle(a,\
-    \ b, c);\n    std::cout << in.c << \" \" << in.r << '\\n';\n}\n\n}\n\nint main()\
-    \ {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}"
+    \nvoid main_() {\n    circle c1, c2;\n    std::cin >> c1.c >> c1.r;\n    std::cin\
+    \ >> c2.c >> c2.r;\n    auto ps = cross_point(c1, c2);\n    if(int(ps.size())\
+    \ == 1) {\n        ps.emplace_back(ps.back());\n    }\n    std::sort(ps.begin(),\
+    \ ps.end());\n    for(auto p: ps) {\n        std::cout << p << \" \";\n    }\n\
+    \    std::cout << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
+    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    ebi::main_();\n}"
   dependsOn:
   - geometry/circle.hpp
   - geometry/point.hpp
   - geometry/line.hpp
   isVerificationFile: true
-  path: test/geometry/circumscribed_circle_of_triangle.test.cpp
+  path: test/geometry/cross_points_of circles.test.cpp
   requiredBy: []
   timestamp: '2021-09-16 15:40:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/geometry/circumscribed_circle_of_triangle.test.cpp
+documentation_of: test/geometry/cross_points_of circles.test.cpp
 layout: document
 redirect_from:
-- /verify/test/geometry/circumscribed_circle_of_triangle.test.cpp
-- /verify/test/geometry/circumscribed_circle_of_triangle.test.cpp.html
-title: test/geometry/circumscribed_circle_of_triangle.test.cpp
+- /verify/test/geometry/cross_points_of circles.test.cpp
+- /verify/test/geometry/cross_points_of circles.test.cpp.html
+title: test/geometry/cross_points_of circles.test.cpp
 ---
