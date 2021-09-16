@@ -8,6 +8,7 @@
 #include <iomanip>
 #include <cstdint>
 
+#include "geometry/point.hpp"
 #include "geometry/circle.hpp"
 
 namespace ebi {
