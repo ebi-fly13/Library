@@ -48,4 +48,20 @@ circle circumscribed_circle_of_triangle(const point &A, const point &B, const po
     return circle(cross, abs(A-cross));
 }
 
+std::vector<point> cross_point(const circle &c, const line &l) {
+    std::vector<point> ps;
+    long double d = distance(l, c.c);
+    if(d == c.r) {
+        ps.emplace_back(l.proj(c.c));
+    }
+    else if(d < c.r) {
+        point p = l.proj(c.c);
+        point v = l.b - l.a;
+        v = v*std::sqrt(std::max(internal::add(c.r * c.r, -d * d) , (long double)0)) / v.abs(); 
+        ps.emplace_back(p + v);
+        ps.emplace_back(p - v);
+    }
+    return ps;
+}
+
 }
