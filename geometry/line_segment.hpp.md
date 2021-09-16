@@ -7,23 +7,50 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/circumscribed_circle_of_triangle.test.cpp
+    title: test/geometry/circumscribed_circle_of_triangle.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/common_area.test.cpp
+    title: test/geometry/common_area.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/common_tangent.test.cpp
+    title: test/geometry/common_tangent.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/contains.test.cpp
     title: test/geometry/contains.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/cross_points_of circles.test.cpp
+    title: test/geometry/cross_points_of circles.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/cross_points_of_circle_and_line.test.cpp
+    title: test/geometry/cross_points_of_circle_and_line.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/distance.test.cpp
     title: test/geometry/distance.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/incircle_of_triangle.test.cpp
+    title: test/geometry/incircle_of_triangle.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/intersection_circle.test.cpp
+    title: test/geometry/intersection_circle.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/tangent_to_circle.test.cpp
+    title: test/geometry/tangent_to_circle.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -42,13 +69,18 @@ data:
     \  x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n  \
     \      return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
     \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
-    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const long double\
-    \ k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return *this;\r\
-    \n    }\r\n\r\n    point &operator/=(const long double k) {\r\n        assert(internal::sgn(k)!=0);\r\
-    \n        x /= k;\r\n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n\
-    \    point operator+(const point &rhs) const noexcept {\r\n        return point(*this)\
-    \ += rhs;\r\n    }\r\n\r\n    point operator-(const point &rhs) const noexcept\
-    \ {\r\n        return point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs)\
+    \ noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n\
+    \        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
+    \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
+    \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
+    \    assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n        y /= k;\r\n  \
+    \      return *this;\r\n    }\r\n\r\n    point operator+(const point &rhs) const\
+    \ noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\n\r\n    point\
+    \ operator-(const point &rhs) const noexcept {\r\n        return point(*this)\
+    \ -= rhs;\r\n    }\r\n\r\n    point operator*(const point &rhs) const noexcept\
+    \ {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n    point operator*(const\
     \ long double rhs) const noexcept {\r\n        return point(*this) *= rhs;\r\n\
     \    }\r\n\r\n    point operator/(const long double rhs) const {\r\n        return\
     \ point(*this) /= rhs;\r\n    }\r\n\r\n    point operator-() const noexcept {\r\
@@ -64,9 +96,10 @@ data:
     \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nstd::ostream&\
     \ operator<<(std::ostream& os, const point &a) {\r\n    return os << a.x << \"\
     \ \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream& os, point &a)\
-    \ {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\u30B8\
-    \u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long double\
-    \ ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y, std::sin(ang)\
+    \ {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\npoint conj(const point &a) {\r\
+    \n    return point(a.x, -a.y);\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\u30B8\u30A2\
+    \u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long double ang)\
+    \ {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y, std::sin(ang)\
     \ * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const point &a) {\r\n\
     \    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const point &a, const\
     \ point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double det(const point\
@@ -118,8 +151,8 @@ data:
     \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 8 \"geometry/line_segment.hpp\"\
     \n\nnamespace ebi {\n\nstruct line_segment {\n    point a, b;\n\n    line_segment(long\
     \ double x1, long double y1, long double x2, long double y2) : a(x1, y1), b(x2,\
-    \ y2) { }\n\n    line_segment(point &a, point &b) : a(a), b(b) { }\n};\n\n// \u7DDA\
-    \u5206ab, cd \u304C\u4EA4\u308F\u308B\u304B\u5224\u5B9A\nbool intersection_line_segment(const\
+    \ y2) { }\n\n    line_segment(const point &a, const point &b) : a(a), b(b) { }\n\
+    };\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\u304B\u5224\u5B9A\nbool intersection_line_segment(const\
     \ point &a, const point &b, const point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
     \ <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\n        return true;\n\
     \    }\n    return false;\n}\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\
@@ -141,23 +174,23 @@ data:
   code: "#pragma once\n\n#include <cmath>\n#include <cassert>\n\n#include \"point.hpp\"\
     \n#include \"line.hpp\"\n\nnamespace ebi {\n\nstruct line_segment {\n    point\
     \ a, b;\n\n    line_segment(long double x1, long double y1, long double x2, long\
-    \ double y2) : a(x1, y1), b(x2, y2) { }\n\n    line_segment(point &a, point &b)\
-    \ : a(a), b(b) { }\n};\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\u304B\
-    \u5224\u5B9A\nbool intersection_line_segment(const point &a, const point &b, const\
-    \ point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d)) <=\
-    \ 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\n        return true;\n  \
-    \  }\n    return false;\n}\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\u304B\
-    \u5224\u5B9A\nbool intersection(const line_segment &a, const line_segment &b)\
-    \ {\n    return intersection_line_segment(a.a, a.b, b.a, b.b);\n}\n\nbool intersection(const\
-    \ line &a, const line_segment &b) {\n    if(internal::sgn(det(b.a - a.a, a.b))\
-    \ * internal::sgn(det(b.b - a.a, a.b)) < 0) {\n        return true;\n    }\n \
-    \   else {\n        return false;\n    }\n}\n\nlong double distance(const line_segment\
-    \ &a, const point &c) {\n    if(internal::sgn(dot(a.b - a.a, c - a.a)) < 0) {\n\
-    \        return abs(c-a.a);\n    }\n    else if(internal::sgn(dot(a.a - a.b, c\
-    \ - a.b)) < 0) {\n        return abs(c-a.b);\n    }\n    else {\n        return\
-    \ std::abs(det(c - a.a, a.b - a.a)/abs(a.b-a.a));\n    }\n}\n\nlong double distance(const\
-    \ line_segment &a, const line_segment &b) {\n    if(intersection(a, b)) {\n  \
-    \      return 0;\n    }\n    else {\n        return std::min(std::min(distance(a,\
+    \ double y2) : a(x1, y1), b(x2, y2) { }\n\n    line_segment(const point &a, const\
+    \ point &b) : a(a), b(b) { }\n};\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\
+    \u304B\u5224\u5B9A\nbool intersection_line_segment(const point &a, const point\
+    \ &b, const point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
+    \ <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\n        return true;\n\
+    \    }\n    return false;\n}\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\
+    \u304B\u5224\u5B9A\nbool intersection(const line_segment &a, const line_segment\
+    \ &b) {\n    return intersection_line_segment(a.a, a.b, b.a, b.b);\n}\n\nbool\
+    \ intersection(const line &a, const line_segment &b) {\n    if(internal::sgn(det(b.a\
+    \ - a.a, a.b)) * internal::sgn(det(b.b - a.a, a.b)) < 0) {\n        return true;\n\
+    \    }\n    else {\n        return false;\n    }\n}\n\nlong double distance(const\
+    \ line_segment &a, const point &c) {\n    if(internal::sgn(dot(a.b - a.a, c -\
+    \ a.a)) < 0) {\n        return abs(c-a.a);\n    }\n    else if(internal::sgn(dot(a.a\
+    \ - a.b, c - a.b)) < 0) {\n        return abs(c-a.b);\n    }\n    else {\n   \
+    \     return std::abs(det(c - a.a, a.b - a.a)/abs(a.b-a.a));\n    }\n}\n\nlong\
+    \ double distance(const line_segment &a, const line_segment &b) {\n    if(intersection(a,\
+    \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(std::min(distance(a,\
     \ b.a), distance(a, b.b)), std::min(distance(b, a.a), distance(b, a.b)));\n  \
     \  }\n}\n\nlong double distance(const line &a, const line_segment &b) {\n    if(intersection(a,\
     \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(distance(a,\
@@ -167,15 +200,24 @@ data:
   - geometry/line.hpp
   isVerificationFile: false
   path: geometry/line_segment.hpp
-  requiredBy: []
-  timestamp: '2021-09-16 15:40:52+09:00'
+  requiredBy:
+  - geometry/circle.hpp
+  timestamp: '2021-09-16 23:15:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/geometry/incircle_of_triangle.test.cpp
+  - test/geometry/common_area.test.cpp
   - test/geometry/area.test.cpp
   - test/geometry/contains.test.cpp
+  - test/geometry/intersection_circle.test.cpp
   - test/geometry/intersection_line_segment.test.cpp
+  - test/geometry/cross_points_of_circle_and_line.test.cpp
+  - test/geometry/common_tangent.test.cpp
+  - test/geometry/cross_points_of circles.test.cpp
+  - test/geometry/tangent_to_circle.test.cpp
   - test/geometry/distance.test.cpp
   - test/geometry/is_convex.test.cpp
+  - test/geometry/circumscribed_circle_of_triangle.test.cpp
 documentation_of: geometry/line_segment.hpp
 layout: document
 redirect_from:

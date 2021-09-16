@@ -33,37 +33,42 @@ data:
     \n        y = internal::add(y, rhs.y);\r\n        return *this;\r\n    }\r\n\r\
     \n    point &operator-=(const point rhs) noexcept {\r\n        x = internal::add(x,\
     \ -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\n        return *this;\r\
-    \n    }\r\n\r\n    point &operator*=(const long double k) noexcept {\r\n     \
-    \   x *= k;\r\n        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point\
+    \n    }\r\n\r\n    point &operator*=(const point rhs) noexcept {\r\n        long\
+    \ double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n        long double _y = internal::add(x*rhs.y,\
+    \ y*rhs.x);\r\n        x = _x;\r\n        y = _y;\r\n        return *this;\r\n\
+    \    }\r\n\r\n    point &operator*=(const long double k) noexcept {\r\n      \
+    \  x *= k;\r\n        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point\
     \ &operator/=(const long double k) {\r\n        assert(internal::sgn(k)!=0);\r\
     \n        x /= k;\r\n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n\
     \    point operator+(const point &rhs) const noexcept {\r\n        return point(*this)\
     \ += rhs;\r\n    }\r\n\r\n    point operator-(const point &rhs) const noexcept\
     \ {\r\n        return point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const\
-    \ long double rhs) const noexcept {\r\n        return point(*this) *= rhs;\r\n\
-    \    }\r\n\r\n    point operator/(const long double rhs) const {\r\n        return\
-    \ point(*this) /= rhs;\r\n    }\r\n\r\n    point operator-() const noexcept {\r\
-    \n        return point(0, 0) - *this;\r\n    }\r\n\r\n    long double abs() const\
-    \ noexcept {\r\n        return std::sqrt(internal::add(x*x, y*y));\r\n    }\r\n\
-    \r\n    long double dot(const point rhs) const noexcept {\r\n        return internal::add(x*rhs.x,\
-    \ y*rhs.y);\r\n    }\r\n\r\n    long double det(const point rhs) const noexcept\
-    \ {\r\n        return internal::add(x*rhs.y, -y*rhs.x);\r\n    }\r\n\r\n    //\
-    \ arctan(y/x) (\u5358\u4F4D\u306F\u30E9\u30B8\u30A2\u30F3)\r\n    long double\
-    \ arg() const {\r\n        return std::atan2(y, x);\r\n    }\r\n\r\n    // x\u6607\
-    \u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n    bool operator<(const point &rhs)\
-    \ const noexcept {\r\n        if(internal::sgn(x-rhs.x)) return internal::sgn(x-rhs.x)<0;\r\
-    \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nstd::ostream&\
-    \ operator<<(std::ostream& os, const point &a) {\r\n    return os << a.x << \"\
-    \ \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream& os, point &a)\
-    \ {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\u30B8\
-    \u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long double\
-    \ ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y, std::sin(ang)\
-    \ * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const point &a) {\r\n\
-    \    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const point &a, const\
-    \ point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double det(const point\
-    \ &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong double abs(const\
-    \ point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double norm(const point\
-    \ &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\n\r\nint isp(const\
+    \ point &rhs) const noexcept {\r\n        return point(*this) *= rhs;\r\n    }\r\
+    \n\r\n    point operator*(const long double rhs) const noexcept {\r\n        return\
+    \ point(*this) *= rhs;\r\n    }\r\n\r\n    point operator/(const long double rhs)\
+    \ const {\r\n        return point(*this) /= rhs;\r\n    }\r\n\r\n    point operator-()\
+    \ const noexcept {\r\n        return point(0, 0) - *this;\r\n    }\r\n\r\n   \
+    \ long double abs() const noexcept {\r\n        return std::sqrt(internal::add(x*x,\
+    \ y*y));\r\n    }\r\n\r\n    long double dot(const point rhs) const noexcept {\r\
+    \n        return internal::add(x*rhs.x, y*rhs.y);\r\n    }\r\n\r\n    long double\
+    \ det(const point rhs) const noexcept {\r\n        return internal::add(x*rhs.y,\
+    \ -y*rhs.x);\r\n    }\r\n\r\n    // arctan(y/x) (\u5358\u4F4D\u306F\u30E9\u30B8\
+    \u30A2\u30F3)\r\n    long double arg() const {\r\n        return std::atan2(y,\
+    \ x);\r\n    }\r\n\r\n    // x\u6607\u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n\
+    \    bool operator<(const point &rhs) const noexcept {\r\n        if(internal::sgn(x-rhs.x))\
+    \ return internal::sgn(x-rhs.x)<0;\r\n        return internal::sgn(y-rhs.y)<0;\r\
+    \n    }\r\n};\r\n\r\nstd::ostream& operator<<(std::ostream& os, const point &a)\
+    \ {\r\n    return os << a.x << \" \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream&\
+    \ os, point &a) {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\npoint conj(const\
+    \ point &a) {\r\n    return point(a.x, -a.y);\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\
+    \u30B8\u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long\
+    \ double ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y,\
+    \ std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const point\
+    \ &a) {\r\n    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const point\
+    \ &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double det(const\
+    \ point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong double\
+    \ abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double norm(const\
+    \ point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\n\r\nint isp(const\
     \ point &a, const point &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\
     \n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\
     \n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
@@ -130,7 +135,7 @@ data:
   isVerificationFile: true
   path: test/geometry/cross_point.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 15:40:52+09:00'
+  timestamp: '2021-09-16 23:15:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/cross_point.test.cpp

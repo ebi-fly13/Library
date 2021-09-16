@@ -8,8 +8,14 @@ data:
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
+    path: geometry/line_segment.hpp
+    title: geometry/line_segment.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
+  - icon: ':heavy_check_mark:'
+    path: geometry/polygon.hpp
+    title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -37,13 +43,18 @@ data:
     \  x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n  \
     \      return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
     \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
-    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const long double\
-    \ k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return *this;\r\
-    \n    }\r\n\r\n    point &operator/=(const long double k) {\r\n        assert(internal::sgn(k)!=0);\r\
-    \n        x /= k;\r\n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n\
-    \    point operator+(const point &rhs) const noexcept {\r\n        return point(*this)\
-    \ += rhs;\r\n    }\r\n\r\n    point operator-(const point &rhs) const noexcept\
-    \ {\r\n        return point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs)\
+    \ noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n\
+    \        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
+    \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
+    \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
+    \    assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n        y /= k;\r\n  \
+    \      return *this;\r\n    }\r\n\r\n    point operator+(const point &rhs) const\
+    \ noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\n\r\n    point\
+    \ operator-(const point &rhs) const noexcept {\r\n        return point(*this)\
+    \ -= rhs;\r\n    }\r\n\r\n    point operator*(const point &rhs) const noexcept\
+    \ {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n    point operator*(const\
     \ long double rhs) const noexcept {\r\n        return point(*this) *= rhs;\r\n\
     \    }\r\n\r\n    point operator/(const long double rhs) const {\r\n        return\
     \ point(*this) /= rhs;\r\n    }\r\n\r\n    point operator-() const noexcept {\r\
@@ -59,9 +70,10 @@ data:
     \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nstd::ostream&\
     \ operator<<(std::ostream& os, const point &a) {\r\n    return os << a.x << \"\
     \ \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream& os, point &a)\
-    \ {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\u30B8\
-    \u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long double\
-    \ ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y, std::sin(ang)\
+    \ {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\npoint conj(const point &a) {\r\
+    \n    return point(a.x, -a.y);\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\u30B8\u30A2\
+    \u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long double ang)\
+    \ {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y, std::sin(ang)\
     \ * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const point &a) {\r\n\
     \    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const point &a, const\
     \ point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double det(const point\
@@ -110,7 +122,64 @@ data:
     \ double distance(const line &a, const point &c) {\n    return std::abs(det(c-a.a,\
     \ a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const line &a, const line\
     \ &b) {\n    if(intersection(a, b) < 2) {\n        return 0;\n    }\n    else\
-    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 8 \"geometry/circle.hpp\"\
+    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 2 \"geometry/line_segment.hpp\"\
+    \n\n#line 5 \"geometry/line_segment.hpp\"\n\n#line 8 \"geometry/line_segment.hpp\"\
+    \n\nnamespace ebi {\n\nstruct line_segment {\n    point a, b;\n\n    line_segment(long\
+    \ double x1, long double y1, long double x2, long double y2) : a(x1, y1), b(x2,\
+    \ y2) { }\n\n    line_segment(const point &a, const point &b) : a(a), b(b) { }\n\
+    };\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\u304B\u5224\u5B9A\nbool intersection_line_segment(const\
+    \ point &a, const point &b, const point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
+    \ <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\n        return true;\n\
+    \    }\n    return false;\n}\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\
+    \u304B\u5224\u5B9A\nbool intersection(const line_segment &a, const line_segment\
+    \ &b) {\n    return intersection_line_segment(a.a, a.b, b.a, b.b);\n}\n\nbool\
+    \ intersection(const line &a, const line_segment &b) {\n    if(internal::sgn(det(b.a\
+    \ - a.a, a.b)) * internal::sgn(det(b.b - a.a, a.b)) < 0) {\n        return true;\n\
+    \    }\n    else {\n        return false;\n    }\n}\n\nlong double distance(const\
+    \ line_segment &a, const point &c) {\n    if(internal::sgn(dot(a.b - a.a, c -\
+    \ a.a)) < 0) {\n        return abs(c-a.a);\n    }\n    else if(internal::sgn(dot(a.a\
+    \ - a.b, c - a.b)) < 0) {\n        return abs(c-a.b);\n    }\n    else {\n   \
+    \     return std::abs(det(c - a.a, a.b - a.a)/abs(a.b-a.a));\n    }\n}\n\nlong\
+    \ double distance(const line_segment &a, const line_segment &b) {\n    if(intersection(a,\
+    \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(std::min(distance(a,\
+    \ b.a), distance(a, b.b)), std::min(distance(b, a.a), distance(b, a.b)));\n  \
+    \  }\n}\n\nlong double distance(const line &a, const line_segment &b) {\n    if(intersection(a,\
+    \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(distance(a,\
+    \ b.a), distance(a, b.b));\n    }\n}\n\n}\n#line 2 \"geometry/polygon.hpp\"\n\n\
+    #line 5 \"geometry/polygon.hpp\"\n\n#line 8 \"geometry/polygon.hpp\"\n\nnamespace\
+    \ ebi {\n\nusing Polygon = std::vector<point>;\n\nlong double area(const Polygon\
+    \ &poly) {\n    long double s = 0;\n    int n = poly.size();\n    for(int i =\
+    \ 0; i < n; i++) {\n        s = internal::add(s, det(poly[i], poly[(i+1 != n)\
+    \ ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n}\n\n// \u51F8\u591A\u89D2\
+    \u5F62\u304B\u5224\u5B9A. p\u306B\u53CD\u6642\u8A08\u56DE\u308A\u3067\u70B9\u304C\
+    \u5165\u3063\u3066\u3044\u308B\u3068\u4EEE\u5B9A\nbool is_convex(const Polygon\
+    \ &poly) {\n    int n = poly.size();\n    for(int i = 0; i < n; i++) {\n     \
+    \   if(isp(poly[i], poly[(i+1 != n) ? i+1 : 0], poly[(i+2 < n) ? i+2 : (i+2)%n])\
+    \ == -1) {\n            return false;\n        }\n    }\n    return true;\n}\n\
+    \nenum {\n    OUT, ON, IN\n};\n\nint contains(const Polygon &poly, const point\
+    \ &p) {\n    bool in = false;\n    int n = poly.size();\n    for(int i = 0; i\
+    \ < n; i++) {\n        point a = poly[i] - p;\n        point b = poly[(i+1 < n)\
+    \ ? i+1 : 0] - p;\n        if(a.y > b.y) std::swap(a, b);\n        if(a.y <= 0\
+    \ && 0 < b.y && det(a, b) < 0) in = !in;\n        if(det(a, b) == 0 && dot(a,\
+    \ b) <= 0) return ON;\n    }\n    return in ? IN : OUT;\n}\n\nlong double convex_diameter(const\
+    \ Polygon &convex_poly) {\n    int n = convex_poly.size();\n    int is = 0, js\
+    \ = 0;\n    for(int i = 1; i < n; i++) {\n        if(convex_poly[i].y > convex_poly[is].y)\
+    \ is = i;\n        if(convex_poly[i].y < convex_poly[js].y) js = i;\n    }\n \
+    \   long double max = (convex_poly[is]-convex_poly[js]).abs();\n    int i, max_i,\
+    \ j, max_j;\n    i = max_i = is;\n    j = max_j = js;\n    do {\n        if(det(convex_poly[(i+1\
+    \ < n) ? i+1 : 0] - convex_poly[i], convex_poly[(j+1 < n) ? j+1 : 0] - convex_poly[j])\
+    \ >= 0) {\n            j = (j+1 < n) ? j+1 : 0;\n        }\n        else {\n \
+    \           i = (i+1 < n) ? i+1 : 0;\n        }\n        if((convex_poly[i] -\
+    \ convex_poly[j]).abs() > max) {\n            max = (convex_poly[i] - convex_poly[j]).abs();\n\
+    \            max_i = i;\n            max_j = j;\n        }\n    } while(i != is\
+    \ || j != js);\n    return max;\n}\n\nPolygon convex_polygon_cut(const Polygon\
+    \ &poly, const line &l) {\n    Polygon ret;\n    int n = poly.size();\n    for(int\
+    \ i = 0; i < n; i++) {\n        const point &now = poly[i];\n        const point\
+    \ &nxt = poly[(i+1 < n) ? i+1 : 0];\n        long double cf = det(l.a - now, l.b\
+    \ - now);\n        long double cs = det(l.a - nxt, l.b - nxt);\n        if(internal::sgn(cf)\
+    \ >= 0) {\n            ret.emplace_back(now);\n        }\n        if(internal::sgn(cf)\
+    \ * internal::sgn(cs) < 0) {\n            ret.emplace_back(cross_point(line(now,\
+    \ nxt), l));\n        }\n    }\n    return ret;\n}\n\n}\n#line 10 \"geometry/circle.hpp\"\
     \n\nnamespace ebi {\n\nstruct circle {\n    point c;\n    long double r;\n   \
     \ circle() = default;\n    circle(const point &c, long double r) : c(c), r(r)\
     \ { } \n};\n\nint intersection(const circle &c1, const circle &c2) {\n    long\
@@ -140,17 +209,21 @@ data:
     \        ps.emplace_back(p);\n    }\n    else {\n        v = v * std::sqrt(std::max(internal::add(c1.r\
     \ * c1.r, -x * x) , (long double)0)) / v.abs(); \n        ps.emplace_back(p +\
     \ v);\n        ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\nstd::vector<point>\
-    \ tangent_to_circle(const circle &c, const point &p) {\n    std::vector<point>\
-    \ ps;\n    point v = p - c.c;\n    long double d = v.abs();\n    long double h\
-    \ = std::sqrt(std::max(internal::add(norm(v), -c.r * c.r), (long double)(0.0)));\n\
-    \    long double cos = c.r / d, sin = h / d;\n    point f(internal::add(v.x *\
-    \ cos , - v.y * sin), internal::add(v.x * sin, v.y * cos));\n    point g(internal::add(v.x\
-    \ * cos, v.y * sin), internal::add(- v.x * sin, v.y * cos));\n    f = f * c.r\
-    \ / f.abs();\n    g = g * c.r / g.abs();\n    ps.emplace_back(c.c + f);\n    ps.emplace_back(c.c\
-    \ + g);\n    return ps;\n}\n\nstd::vector<line> tangent(circle c1, circle c2)\
-    \ {\n    std::vector<line> ret;\n    int flag = intersection(c1, c2);\n    if(flag\
-    \ == 2 || flag == 3 || flag == 4) {\n        if(c1.r == c2.r) {\n            point\
-    \ v = c2.c - c1.c;\n            v = rot90(v * c1.r / abs(v));\n            ret.emplace_back(line(c1.c\
+    \ cross_point(const circle &c, const line_segment &ls) {\n    std::vector<point>\
+    \ ps = cross_point(c, line(ls.a, ls.b));\n    std::vector<point> ret;\n    for(auto\
+    \ p: ps) {\n        if(internal::sgn(distance(ls, p)) == 0) {\n            ret.emplace_back(p);\n\
+    \        }\n    }\n    return ret;\n}\n\nstd::vector<point> tangent_to_circle(const\
+    \ circle &c, const point &p) {\n    std::vector<point> ps;\n    point v = p -\
+    \ c.c;\n    long double d = v.abs();\n    long double h = std::sqrt(std::max(internal::add(norm(v),\
+    \ -c.r * c.r), (long double)(0.0)));\n    long double cos = c.r / d, sin = h /\
+    \ d;\n    point f(internal::add(v.x * cos , - v.y * sin), internal::add(v.x *\
+    \ sin, v.y * cos));\n    point g(internal::add(v.x * cos, v.y * sin), internal::add(-\
+    \ v.x * sin, v.y * cos));\n    f = f * c.r / f.abs();\n    g = g * c.r / g.abs();\n\
+    \    ps.emplace_back(c.c + f);\n    ps.emplace_back(c.c + g);\n    return ps;\n\
+    }\n\nstd::vector<line> tangent(circle c1, circle c2) {\n    std::vector<line>\
+    \ ret;\n    int flag = intersection(c1, c2);\n    if(flag == 2 || flag == 3 ||\
+    \ flag == 4) {\n        if(c1.r == c2.r) {\n            point v = c2.c - c1.c;\n\
+    \            v = rot90(v * c1.r / abs(v));\n            ret.emplace_back(line(c1.c\
     \ + v, c2.c + v));\n            ret.emplace_back(line(c1.c - v, c2.c - v));\n\
     \        }\n        else {\n            point v = c1.c * (-c2.r) + c2.c * c1.r;\n\
     \            v = v / (c1.r - c2.r);\n            auto bs = tangent_to_circle(c1,\
@@ -166,14 +239,30 @@ data:
     \            ret.emplace_back(line(bs[i], as[i]));\n        }\n    }\n    else\
     \ if(flag == 3) {\n        point v = c2.c - c1.c;\n        v = v * c1.r / v.abs();\n\
     \        point p = c1.c + v;\n        ret.emplace_back(p, p + rot90(v));\n   \
-    \ }\n    return ret;\n}\n\n}\n#line 12 \"test/geometry/cross_points_of circles.test.cpp\"\
-    \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    circle\
-    \ c1, c2;\n    std::cin >> c1.c >> c1.r;\n    std::cin >> c2.c >> c2.r;\n    auto\
-    \ ps = cross_point(c1, c2);\n    if(int(ps.size()) == 1) {\n        ps.emplace_back(ps.back());\n\
-    \    }\n    std::sort(ps.begin(), ps.end());\n    for(auto p: ps) {\n        std::cout\
-    \ << p << \" \";\n    }\n    std::cout << '\\n';\n}\n\n}\n\nint main() {\n   \
-    \ std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
+    \ }\n    return ret;\n}\n\nlong double calc_common_area(const circle &c, const\
+    \ Polygon &poly) {\n    if(int(poly.size()) < 3) return 0.0;\n    long double\
+    \ s = 0;\n    int n = poly.size();\n    auto cross_area = [&](auto &&self, const\
+    \ point &a, const point b) -> long double {\n        point va = c.c - a, vb =\
+    \ c.c - b;\n        long double f = det(va, vb)/2.0, ret = 0.0;\n        if(internal::sgn(f)\
+    \ == 0) return 0.0;\n        if(std::max(va.abs(), vb.abs()) < c.r + EPS) return\
+    \ f;\n        if(internal::sgn(internal::add(distance(line_segment(a, b), c.c),\
+    \ -c.r)) >= 0) {\n            return c.r * c.r * (vb * conj(va)).arg() / 2.0;\n\
+    \        }\n        auto ps = cross_point(c, line_segment(a, b));\n        if(int(ps.size())\
+    \ == 1) ps.emplace_back(ps.back());\n        std::vector<point> tot = {a, ps[0],\
+    \ ps[1], b};\n        std::sort(tot.begin(), tot.end());\n        if(b < a) {\n\
+    \            std::reverse(tot.begin(), tot.end());\n        }\n        int sz\
+    \ = tot.size();\n        for(int i = 0; i+1 < sz; i++) {\n            ret += self(self,\
+    \ tot[i], tot[i+1]);\n        }\n        return ret;\n    };\n    for(int i =\
+    \ 0; i < n; i++) {\n        s += cross_area(cross_area, poly[i], poly[(i+1 < n)\
+    \ ? i+1 : 0]);\n    }\n    return s;\n}\n\n}\n#line 12 \"test/geometry/cross_points_of\
+    \ circles.test.cpp\"\n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_()\
+    \ {\n    circle c1, c2;\n    std::cin >> c1.c >> c1.r;\n    std::cin >> c2.c >>\
+    \ c2.r;\n    auto ps = cross_point(c1, c2);\n    if(int(ps.size()) == 1) {\n \
+    \       ps.emplace_back(ps.back());\n    }\n    std::sort(ps.begin(), ps.end());\n\
+    \    for(auto p: ps) {\n        std::cout << p << \" \";\n    }\n    std::cout\
+    \ << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E\"\
     \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
@@ -189,10 +278,12 @@ data:
   - geometry/circle.hpp
   - geometry/point.hpp
   - geometry/line.hpp
+  - geometry/line_segment.hpp
+  - geometry/polygon.hpp
   isVerificationFile: true
   path: test/geometry/cross_points_of circles.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 21:05:00+09:00'
+  timestamp: '2021-09-16 23:15:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/cross_points_of circles.test.cpp
