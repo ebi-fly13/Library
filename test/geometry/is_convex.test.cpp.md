@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B
@@ -193,7 +193,7 @@ data:
   path: test/geometry/is_convex.test.cpp
   requiredBy: []
   timestamp: '2021-09-16 15:40:52+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/is_convex.test.cpp
 layout: document

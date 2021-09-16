@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
@@ -21,12 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/convex_polygon_cut.test.cpp
     title: test/geometry/convex_polygon_cut.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/polygon.hpp\"\n\n#include <cassert>\n#include <vector>\n\
@@ -191,7 +191,7 @@ data:
   path: geometry/polygon.hpp
   requiredBy: []
   timestamp: '2021-09-16 15:40:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/convex_diameter.test.cpp
   - test/geometry/convex_polygon_cut.test.cpp

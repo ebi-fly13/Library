@@ -18,11 +18,11 @@ data:
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_F
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B
-  bundledCode: "#line 1 \"test/geometry/incircle_of_triangle.test.cpp\"\n#define PROBLEM\
-    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B\"\n#define\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_F
+  bundledCode: "#line 1 \"test/geometry/tangent_to_circle.test.cpp\"\n#define PROBLEM\
+    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_F\"\n#define\
     \ ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\
     #include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/circle.hpp\"\
     \n\n#line 4 \"geometry/circle.hpp\"\n#include <cmath>\n\n#line 2 \"geometry/point.hpp\"\
@@ -147,36 +147,37 @@ data:
     \ cos , - v.y * sin), internal::add(v.x * sin, v.y * cos));\n    point g(internal::add(v.x\
     \ * cos, v.y * sin), internal::add(- v.x * sin, v.y * cos));\n    f = f * c.r\
     \ / f.abs();\n    g = g * c.r / g.abs();\n    ps.emplace_back(c.c + f);\n    ps.emplace_back(c.c\
-    \ + g);\n    return ps;\n}\n\n}\n#line 12 \"test/geometry/incircle_of_triangle.test.cpp\"\
-    \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    point\
-    \ a, b, c;\n    std::cin >> a.x >> a.y;\n    std::cin >> b.x >> b.y;\n    std::cin\
-    \ >> c.x >> c.y;\n    circle in = incircle_of_triangle(a, b, c);\n    std::cout\
-    \ << in.c << \" \" << in.r << '\\n';\n}\n\n}\n\nint main() {\n    std::cout <<\
-    \ std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    \    ebi::main_();\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B\"\
+    \ + g);\n    return ps;\n}\n\n}\n#line 12 \"test/geometry/tangent_to_circle.test.cpp\"\
+    \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    circle\
+    \ c;\n    point p;\n    std::cin >> p;\n    std::cin >> c.c >> c.r;\n    auto\
+    \ ps = tangent_to_circle(c, p);\n    std::sort(ps.begin(), ps.end());\n    for(auto\
+    \ p: ps) {\n        std::cout << p << '\\n';\n    }\n}\n\n}\n\nint main() {\n\
+    \    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_F\"\
     \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
     #include \"geometry/circle.hpp\"\n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\
-    \nvoid main_() {\n    point a, b, c;\n    std::cin >> a.x >> a.y;\n    std::cin\
-    \ >> b.x >> b.y;\n    std::cin >> c.x >> c.y;\n    circle in = incircle_of_triangle(a,\
-    \ b, c);\n    std::cout << in.c << \" \" << in.r << '\\n';\n}\n\n}\n\nint main()\
-    \ {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}"
+    \nvoid main_() {\n    circle c;\n    point p;\n    std::cin >> p;\n    std::cin\
+    \ >> c.c >> c.r;\n    auto ps = tangent_to_circle(c, p);\n    std::sort(ps.begin(),\
+    \ ps.end());\n    for(auto p: ps) {\n        std::cout << p << '\\n';\n    }\n\
+    }\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }"
   dependsOn:
   - geometry/circle.hpp
   - geometry/point.hpp
   - geometry/line.hpp
   isVerificationFile: true
-  path: test/geometry/incircle_of_triangle.test.cpp
+  path: test/geometry/tangent_to_circle.test.cpp
   requiredBy: []
   timestamp: '2021-09-16 16:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/geometry/incircle_of_triangle.test.cpp
+documentation_of: test/geometry/tangent_to_circle.test.cpp
 layout: document
 redirect_from:
-- /verify/test/geometry/incircle_of_triangle.test.cpp
-- /verify/test/geometry/incircle_of_triangle.test.cpp.html
-title: test/geometry/incircle_of_triangle.test.cpp
+- /verify/test/geometry/tangent_to_circle.test.cpp
+- /verify/test/geometry/tangent_to_circle.test.cpp.html
+title: test/geometry/tangent_to_circle.test.cpp
 ---

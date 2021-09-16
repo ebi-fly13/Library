@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
@@ -23,55 +23,56 @@ data:
   bundledCode: "#line 1 \"test/geometry/intersection_circle.test.cpp\"\n#define PROBLEM\
     \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A\"\n\n#include\
     \ <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n#include\
-    \ <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/circle.hpp\"\n\n#line 2\
-    \ \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#line 8 \"geometry/point.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace\
-    \ internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS)\
-    \ ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n   \
-    \ if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return\
-    \ a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct point {\r\n    long double\
-    \ x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double x, long double\
-    \ y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\
-    \n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\
-    \n        return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs)\
-    \ noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y,\
-    \ -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
-    \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
-    \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
-    \    assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n        y /= k;\r\n  \
-    \      return *this;\r\n    }\r\n\r\n    point operator+(const point &rhs) const\
-    \ noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\n\r\n    point\
-    \ operator-(const point &rhs) const noexcept {\r\n        return point(*this)\
-    \ -= rhs;\r\n    }\r\n\r\n    point operator*(const long double rhs) const noexcept\
-    \ {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n    point operator/(const\
-    \ long double rhs) const {\r\n        return point(*this) /= rhs;\r\n    }\r\n\
-    \r\n    point operator-() const noexcept {\r\n        return point(0, 0) - *this;\r\
-    \n    }\r\n\r\n    long double abs() const noexcept {\r\n        return std::sqrt(internal::add(x*x,\
-    \ y*y));\r\n    }\r\n\r\n    long double dot(const point rhs) const noexcept {\r\
-    \n        return internal::add(x*rhs.x, y*rhs.y);\r\n    }\r\n\r\n    long double\
-    \ det(const point rhs) const noexcept {\r\n        return internal::add(x*rhs.y,\
-    \ -y*rhs.x);\r\n    }\r\n\r\n    // arctan(y/x) (\u5358\u4F4D\u306F\u30E9\u30B8\
-    \u30A2\u30F3)\r\n    long double arg() const {\r\n        return std::atan2(y,\
-    \ x);\r\n    }\r\n\r\n    // x\u6607\u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n\
-    \    bool operator<(const point &rhs) const noexcept {\r\n        if(internal::sgn(x-rhs.x))\
-    \ return internal::sgn(x-rhs.x)<0;\r\n        return internal::sgn(y-rhs.y)<0;\r\
-    \n    }\r\n};\r\n\r\nstd::ostream& operator<<(std::ostream& os, const point &a)\
-    \ {\r\n    return os << a.x << \" \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream&\
-    \ os, point &a) {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\n// \u70B9a \u3092\
-    ang(\u30E9\u30B8\u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point\
-    \ &a, long double ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang)\
-    \ * a.y, std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const\
-    \ point &a) {\r\n    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const\
-    \ point &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double\
-    \ det(const point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong\
-    \ double abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double\
-    \ norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\
-    \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
-    \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
-    \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
-    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
-    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \ <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/circle.hpp\"\n\n#line 4\
+    \ \"geometry/circle.hpp\"\n#include <cmath>\n\n#line 2 \"geometry/point.hpp\"\n\
+    \r\n#line 8 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\nconstexpr long\
+    \ double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a)\
+    \ {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long\
+    \ double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b)))\
+    \ return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct\
+    \ point {\r\n    long double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long\
+    \ double x, long double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const\
+    \ point rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\n        y =\
+    \ internal::add(y, rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point\
+    \ &operator-=(const point rhs) noexcept {\r\n        x = internal::add(x, -rhs.x);\r\
+    \n        y = internal::add(y, -rhs.y);\r\n        return *this;\r\n    }\r\n\r\
+    \n    point &operator*=(const long double k) noexcept {\r\n        x *= k;\r\n\
+    \        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point &operator/=(const\
+    \ long double k) {\r\n        assert(internal::sgn(k)!=0);\r\n        x /= k;\r\
+    \n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n    point operator+(const\
+    \ point &rhs) const noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\
+    \n\r\n    point operator-(const point &rhs) const noexcept {\r\n        return\
+    \ point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const long double rhs)\
+    \ const noexcept {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n   \
+    \ point operator/(const long double rhs) const {\r\n        return point(*this)\
+    \ /= rhs;\r\n    }\r\n\r\n    point operator-() const noexcept {\r\n        return\
+    \ point(0, 0) - *this;\r\n    }\r\n\r\n    long double abs() const noexcept {\r\
+    \n        return std::sqrt(internal::add(x*x, y*y));\r\n    }\r\n\r\n    long\
+    \ double dot(const point rhs) const noexcept {\r\n        return internal::add(x*rhs.x,\
+    \ y*rhs.y);\r\n    }\r\n\r\n    long double det(const point rhs) const noexcept\
+    \ {\r\n        return internal::add(x*rhs.y, -y*rhs.x);\r\n    }\r\n\r\n    //\
+    \ arctan(y/x) (\u5358\u4F4D\u306F\u30E9\u30B8\u30A2\u30F3)\r\n    long double\
+    \ arg() const {\r\n        return std::atan2(y, x);\r\n    }\r\n\r\n    // x\u6607\
+    \u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n    bool operator<(const point &rhs)\
+    \ const noexcept {\r\n        if(internal::sgn(x-rhs.x)) return internal::sgn(x-rhs.x)<0;\r\
+    \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nstd::ostream&\
+    \ operator<<(std::ostream& os, const point &a) {\r\n    return os << a.x << \"\
+    \ \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream& os, point &a)\
+    \ {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\u30B8\
+    \u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long double\
+    \ ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y, std::sin(ang)\
+    \ * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const point &a) {\r\n\
+    \    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const point &a, const\
+    \ point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double det(const point\
+    \ &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong double abs(const\
+    \ point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double norm(const point\
+    \ &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\n\r\nint isp(const\
+    \ point &a, const point &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\
+    \n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\
+    \n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
+    \ flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\u8FD1\u70B9\u5BFE\u3092\
+    \u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point> p)\
+    \ {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
     \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
     \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
     \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
@@ -108,7 +109,7 @@ data:
     \ double distance(const line &a, const point &c) {\n    return std::abs(det(c-a.a,\
     \ a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const line &a, const line\
     \ &b) {\n    if(intersection(a, b) < 2) {\n        return 0;\n    }\n    else\
-    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 5 \"geometry/circle.hpp\"\
+    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 8 \"geometry/circle.hpp\"\
     \n\nnamespace ebi {\n\nstruct circle {\n    point c;\n    long double r;\n   \
     \ circle() = default;\n    circle(const point &c, long double r) : c(c), r(r)\
     \ { } \n};\n\nint intersection(const circle &c1, const circle &c2) {\n    long\
@@ -137,13 +138,20 @@ data:
     \ / d;\n    point v = rot90(c2.c - c1.c);\n    if(flag == 1 || flag == 3) {\n\
     \        ps.emplace_back(p);\n    }\n    else {\n        v = v * std::sqrt(std::max(internal::add(c1.r\
     \ * c1.r, -x * x) , (long double)0)) / v.abs(); \n        ps.emplace_back(p +\
-    \ v);\n        ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\n}\n#line 11\
-    \ \"test/geometry/intersection_circle.test.cpp\"\n\nnamespace ebi {\n\nusing i64\
-    \ = std::int64_t;\n\nvoid main_() {\n    circle c1, c2;\n    std::cin >> c1.c.x\
-    \ >> c1.c.y >> c1.r;\n    std::cin >> c2.c.x >> c2.c.y >> c2.r;\n    std::cout\
-    \ << intersection(c1, c2) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout <<\
-    \ std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    \    ebi::main_();\n}\n"
+    \ v);\n        ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\nstd::vector<point>\
+    \ tangent_to_circle(const circle &c, const point &p) {\n    std::vector<point>\
+    \ ps;\n    point v = p - c.c;\n    long double d = v.abs();\n    long double h\
+    \ = std::sqrt(std::max(internal::add(norm(v), -c.r * c.r), (long double)(0.0)));\n\
+    \    long double cos = c.r / d, sin = h / d;\n    point f(internal::add(v.x *\
+    \ cos , - v.y * sin), internal::add(v.x * sin, v.y * cos));\n    point g(internal::add(v.x\
+    \ * cos, v.y * sin), internal::add(- v.x * sin, v.y * cos));\n    f = f * c.r\
+    \ / f.abs();\n    g = g * c.r / g.abs();\n    ps.emplace_back(c.c + f);\n    ps.emplace_back(c.c\
+    \ + g);\n    return ps;\n}\n\n}\n#line 11 \"test/geometry/intersection_circle.test.cpp\"\
+    \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    circle\
+    \ c1, c2;\n    std::cin >> c1.c.x >> c1.c.y >> c1.r;\n    std::cin >> c2.c.x >>\
+    \ c2.c.y >> c2.r;\n    std::cout << intersection(c1, c2) << '\\n';\n}\n\n}\n\n\
+    int main() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A\"\
     \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\
     #include <iomanip>\n#include <cstdint>\n\n#include \"geometry/circle.hpp\"\n\n\
@@ -159,7 +167,7 @@ data:
   isVerificationFile: true
   path: test/geometry/intersection_circle.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 15:40:52+09:00'
+  timestamp: '2021-09-16 16:24:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/intersection_circle.test.cpp

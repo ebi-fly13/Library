@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of circles.test.cpp
     title: test/geometry/cross_points_of circles.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of_circle_and_line.test.cpp
     title: test/geometry/cross_points_of_circle_and_line.test.cpp
   - icon: ':heavy_check_mark:'
@@ -24,28 +24,32 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/intersection_circle.test.cpp
     title: test/geometry/intersection_circle.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/tangent_to_circle.test.cpp
+    title: test/geometry/tangent_to_circle.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
-    \r\n#include <cmath>\r\n#include <cassert>\r\n#include <vector>\r\n#include <iostream>\r\
-    \n#include <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS\
-    \ = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n   \
-    \ return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long double\
-    \ a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b)))\
-    \ return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct\
-    \ point {\r\n    long double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long\
-    \ double x, long double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const\
-    \ point rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\n        y =\
-    \ internal::add(y, rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point\
-    \ &operator-=(const point rhs) noexcept {\r\n        x = internal::add(x, -rhs.x);\r\
-    \n        y = internal::add(y, -rhs.y);\r\n        return *this;\r\n    }\r\n\r\
-    \n    point &operator*=(const long double k) noexcept {\r\n        x *= k;\r\n\
-    \        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point &operator/=(const\
-    \ long double k) {\r\n        assert(internal::sgn(k)!=0);\r\n        x /= k;\r\
-    \n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n    point operator+(const\
+  bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#include <vector>\n#include <cmath>\n\
+    \n#line 2 \"geometry/point.hpp\"\n\r\n#line 4 \"geometry/point.hpp\"\n#include\
+    \ <cassert>\r\n#line 6 \"geometry/point.hpp\"\n#include <iostream>\r\n#include\
+    \ <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\
+    \n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS)\
+    \ ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a, long double\
+    \ b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n\
+    \    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct point {\r\n\
+    \    long double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double\
+    \ x, long double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point\
+    \ rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y,\
+    \ rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator-=(const\
+    \ point rhs) noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y\
+    \ = internal::add(y, -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point\
+    \ &operator*=(const long double k) noexcept {\r\n        x *= k;\r\n        y\
+    \ *= k;\r\n        return *this;\r\n    }\r\n\r\n    point &operator/=(const long\
+    \ double k) {\r\n        assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n \
+    \       y /= k;\r\n        return *this;\r\n    }\r\n\r\n    point operator+(const\
     \ point &rhs) const noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\
     \n\r\n    point operator-(const point &rhs) const noexcept {\r\n        return\
     \ point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const long double rhs)\
@@ -115,7 +119,7 @@ data:
     \ double distance(const line &a, const point &c) {\n    return std::abs(det(c-a.a,\
     \ a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const line &a, const line\
     \ &b) {\n    if(intersection(a, b) < 2) {\n        return 0;\n    }\n    else\
-    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 5 \"geometry/circle.hpp\"\
+    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 8 \"geometry/circle.hpp\"\
     \n\nnamespace ebi {\n\nstruct circle {\n    point c;\n    long double r;\n   \
     \ circle() = default;\n    circle(const point &c, long double r) : c(c), r(r)\
     \ { } \n};\n\nint intersection(const circle &c1, const circle &c2) {\n    long\
@@ -144,49 +148,67 @@ data:
     \ / d;\n    point v = rot90(c2.c - c1.c);\n    if(flag == 1 || flag == 3) {\n\
     \        ps.emplace_back(p);\n    }\n    else {\n        v = v * std::sqrt(std::max(internal::add(c1.r\
     \ * c1.r, -x * x) , (long double)0)) / v.abs(); \n        ps.emplace_back(p +\
-    \ v);\n        ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\n}\n"
-  code: "#pragma once\n\n#include \"point.hpp\"\n#include \"line.hpp\"\n\nnamespace\
-    \ ebi {\n\nstruct circle {\n    point c;\n    long double r;\n    circle() = default;\n\
-    \    circle(const point &c, long double r) : c(c), r(r) { } \n};\n\nint intersection(const\
-    \ circle &c1, const circle &c2) {\n    long double d = abs(c1.c - c2.c);\n   \
-    \ long double r1 = c1.r, r2 = c2.r;\n    if(r1 < r2) std::swap(r1, r2); \n   \
-    \ if(d > internal::add(r1, r2)) {\n        return 4;\n    }\n    else if(d ==\
-    \ internal::add(r1, r2)) {\n        return 3;\n    }\n    else if(d > internal::add(r1,\
-    \ -r2)) {\n        return 2;\n    }\n    else if(d == internal::add(r1, -r2))\
-    \ {\n        return 1;\n    }\n    else {\n        return 0;\n    }\n}\n\ncircle\
-    \ incircle_of_triangle(const point &A, const point &B, const point &C) {\n   \
-    \ long double a = abs(B-C), b = abs(C-A), c = abs(A-B);\n    point in = A * a\
-    \ + B * b + C * c;\n    in /= (a + b + c);\n    long double r = distance(line(A,\
-    \ B), in);\n    return circle(in, r);\n}\n\ncircle circumscribed_circle_of_triangle(const\
-    \ point &A, const point &B, const point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n\
-    \    line q((B+C)/2, (B+C)/2+rot90(C-B));\n    point cross = cross_point(p, q);\n\
-    \    return circle(cross, abs(A-cross));\n}\n\nstd::vector<point> cross_point(const\
-    \ circle &c, const line &l) {\n    std::vector<point> ps;\n    long double d =\
-    \ distance(l, c.c);\n    if(d == c.r) {\n        ps.emplace_back(l.proj(c.c));\n\
-    \    }\n    else if(d < c.r) {\n        point p = l.proj(c.c);\n        point\
-    \ v = l.b - l.a;\n        v = v*std::sqrt(std::max(internal::add(c.r * c.r, -d\
-    \ * d) , (long double)0)) / v.abs(); \n        ps.emplace_back(p + v);\n     \
-    \   ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\nstd::vector<point> cross_point(const\
-    \ circle &c1, const circle &c2) {\n    std::vector<point> ps;\n    int flag =\
-    \ intersection(c1, c2);\n    if(flag == 0 || flag == 4) {\n        return ps;\n\
-    \    }\n    long double d = (c2.c - c1.c).abs();\n    long double x = internal::add(internal::add(d*d,\
+    \ v);\n        ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\nstd::vector<point>\
+    \ tangent_to_circle(const circle &c, const point &p) {\n    std::vector<point>\
+    \ ps;\n    point v = p - c.c;\n    long double d = v.abs();\n    long double h\
+    \ = std::sqrt(std::max(internal::add(norm(v), -c.r * c.r), (long double)(0.0)));\n\
+    \    long double cos = c.r / d, sin = h / d;\n    point f(internal::add(v.x *\
+    \ cos , - v.y * sin), internal::add(v.x * sin, v.y * cos));\n    point g(internal::add(v.x\
+    \ * cos, v.y * sin), internal::add(- v.x * sin, v.y * cos));\n    f = f * c.r\
+    \ / f.abs();\n    g = g * c.r / g.abs();\n    ps.emplace_back(c.c + f);\n    ps.emplace_back(c.c\
+    \ + g);\n    return ps;\n}\n\n}\n"
+  code: "#pragma once\n\n#include <vector>\n#include <cmath>\n\n#include \"point.hpp\"\
+    \n#include \"line.hpp\"\n\nnamespace ebi {\n\nstruct circle {\n    point c;\n\
+    \    long double r;\n    circle() = default;\n    circle(const point &c, long\
+    \ double r) : c(c), r(r) { } \n};\n\nint intersection(const circle &c1, const\
+    \ circle &c2) {\n    long double d = abs(c1.c - c2.c);\n    long double r1 = c1.r,\
+    \ r2 = c2.r;\n    if(r1 < r2) std::swap(r1, r2); \n    if(d > internal::add(r1,\
+    \ r2)) {\n        return 4;\n    }\n    else if(d == internal::add(r1, r2)) {\n\
+    \        return 3;\n    }\n    else if(d > internal::add(r1, -r2)) {\n       \
+    \ return 2;\n    }\n    else if(d == internal::add(r1, -r2)) {\n        return\
+    \ 1;\n    }\n    else {\n        return 0;\n    }\n}\n\ncircle incircle_of_triangle(const\
+    \ point &A, const point &B, const point &C) {\n    long double a = abs(B-C), b\
+    \ = abs(C-A), c = abs(A-B);\n    point in = A * a + B * b + C * c;\n    in /=\
+    \ (a + b + c);\n    long double r = distance(line(A, B), in);\n    return circle(in,\
+    \ r);\n}\n\ncircle circumscribed_circle_of_triangle(const point &A, const point\
+    \ &B, const point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n    line q((B+C)/2,\
+    \ (B+C)/2+rot90(C-B));\n    point cross = cross_point(p, q);\n    return circle(cross,\
+    \ abs(A-cross));\n}\n\nstd::vector<point> cross_point(const circle &c, const line\
+    \ &l) {\n    std::vector<point> ps;\n    long double d = distance(l, c.c);\n \
+    \   if(d == c.r) {\n        ps.emplace_back(l.proj(c.c));\n    }\n    else if(d\
+    \ < c.r) {\n        point p = l.proj(c.c);\n        point v = l.b - l.a;\n   \
+    \     v = v*std::sqrt(std::max(internal::add(c.r * c.r, -d * d) , (long double)0))\
+    \ / v.abs(); \n        ps.emplace_back(p + v);\n        ps.emplace_back(p - v);\n\
+    \    }\n    return ps;\n}\n\nstd::vector<point> cross_point(const circle &c1,\
+    \ const circle &c2) {\n    std::vector<point> ps;\n    int flag = intersection(c1,\
+    \ c2);\n    if(flag == 0 || flag == 4) {\n        return ps;\n    }\n    long\
+    \ double d = (c2.c - c1.c).abs();\n    long double x = internal::add(internal::add(d*d,\
     \ c1.r*c1.r),-c2.r * c2.r) / (2.0*d);\n    point p = c1.c + (c2.c - c1.c) * x\
     \ / d;\n    point v = rot90(c2.c - c1.c);\n    if(flag == 1 || flag == 3) {\n\
     \        ps.emplace_back(p);\n    }\n    else {\n        v = v * std::sqrt(std::max(internal::add(c1.r\
     \ * c1.r, -x * x) , (long double)0)) / v.abs(); \n        ps.emplace_back(p +\
-    \ v);\n        ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\n}"
+    \ v);\n        ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\nstd::vector<point>\
+    \ tangent_to_circle(const circle &c, const point &p) {\n    std::vector<point>\
+    \ ps;\n    point v = p - c.c;\n    long double d = v.abs();\n    long double h\
+    \ = std::sqrt(std::max(internal::add(norm(v), -c.r * c.r), (long double)(0.0)));\n\
+    \    long double cos = c.r / d, sin = h / d;\n    point f(internal::add(v.x *\
+    \ cos , - v.y * sin), internal::add(v.x * sin, v.y * cos));\n    point g(internal::add(v.x\
+    \ * cos, v.y * sin), internal::add(- v.x * sin, v.y * cos));\n    f = f * c.r\
+    \ / f.abs();\n    g = g * c.r / g.abs();\n    ps.emplace_back(c.c + f);\n    ps.emplace_back(c.c\
+    \ + g);\n    return ps;\n}\n\n}"
   dependsOn:
   - geometry/point.hpp
   - geometry/line.hpp
   isVerificationFile: false
   path: geometry/circle.hpp
   requiredBy: []
-  timestamp: '2021-09-16 15:40:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-09-16 16:24:17+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/cross_points_of_circle_and_line.test.cpp
   - test/geometry/circumscribed_circle_of_triangle.test.cpp
   - test/geometry/cross_points_of circles.test.cpp
+  - test/geometry/tangent_to_circle.test.cpp
   - test/geometry/intersection_circle.test.cpp
   - test/geometry/incircle_of_triangle.test.cpp
 documentation_of: geometry/circle.hpp

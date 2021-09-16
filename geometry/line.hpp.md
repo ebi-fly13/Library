@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedVerifiedWith:
@@ -36,7 +36,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of circles.test.cpp
     title: test/geometry/cross_points_of circles.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of_circle_and_line.test.cpp
     title: test/geometry/cross_points_of_circle_and_line.test.cpp
   - icon: ':heavy_check_mark:'
@@ -54,15 +54,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/tangent_to_circle.test.cpp
+    title: test/geometry/tangent_to_circle.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
@@ -182,7 +185,7 @@ data:
   - geometry/circle.hpp
   - geometry/polygon.hpp
   timestamp: '2021-09-16 15:40:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/convex_diameter.test.cpp
   - test/geometry/distance.test.cpp
@@ -192,6 +195,7 @@ data:
   - test/geometry/is_convex.test.cpp
   - test/geometry/intersection.test.cpp
   - test/geometry/cross_points_of circles.test.cpp
+  - test/geometry/tangent_to_circle.test.cpp
   - test/geometry/contains.test.cpp
   - test/geometry/intersection_circle.test.cpp
   - test/geometry/area.test.cpp
