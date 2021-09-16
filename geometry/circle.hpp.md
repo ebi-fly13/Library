@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
@@ -12,15 +12,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/circumscribed_circle_of_triangle.test.cpp
     title: test/geometry/circumscribed_circle_of_triangle.test.cpp
+  - icon: ':x:'
+    path: test/geometry/cross_points_of_circle_and_line.test.cpp
+    title: test/geometry/cross_points_of_circle_and_line.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/incircle_of_triangle.test.cpp
     title: test/geometry/incircle_of_triangle.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/intersection_circle.test.cpp
     title: test/geometry/intersection_circle.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
@@ -123,7 +126,12 @@ data:
     \ncircle circumscribed_circle_of_triangle(const point &A, const point &B, const\
     \ point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n    line q((B+C)/2, (B+C)/2+rot90(C-B));\n\
     \    point cross = cross_point(p, q);\n    return circle(cross, abs(A-cross));\n\
-    }\n\n}\n"
+    }\n\nstd::vector<point> cross_point(const circle &c, const line &l) {\n    std::vector<point>\
+    \ ps;\n    long double d = distance(l, c.c);\n    if(d == c.r) {\n        ps.emplace_back(l.proj(c.c));\n\
+    \    }\n    else if(d < c.r) {\n        point p = l.proj(c.c);\n        point\
+    \ v = l.b - l.a;\n        v = v*std::sqrt(std::max(internal::add(c.r * c.r, -d\
+    \ * d) , (long double)0)) / v.abs(); \n        ps.emplace_back(p + v);\n     \
+    \   ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\n}\n"
   code: "#pragma once\n\n#include \"point.hpp\"\n#include \"line.hpp\"\n\nnamespace\
     \ ebi {\n\nstruct circle {\n    point c;\n    long double r;\n    circle() = default;\n\
     \    circle(const point &c, long double r) : c(c), r(r) { } \n};\n\nint intersection(const\
@@ -139,16 +147,23 @@ data:
     \ B), in);\n    return circle(in, r);\n}\n\ncircle circumscribed_circle_of_triangle(const\
     \ point &A, const point &B, const point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n\
     \    line q((B+C)/2, (B+C)/2+rot90(C-B));\n    point cross = cross_point(p, q);\n\
-    \    return circle(cross, abs(A-cross));\n}\n\n}"
+    \    return circle(cross, abs(A-cross));\n}\n\nstd::vector<point> cross_point(const\
+    \ circle &c, const line &l) {\n    std::vector<point> ps;\n    long double d =\
+    \ distance(l, c.c);\n    if(d == c.r) {\n        ps.emplace_back(l.proj(c.c));\n\
+    \    }\n    else if(d < c.r) {\n        point p = l.proj(c.c);\n        point\
+    \ v = l.b - l.a;\n        v = v*std::sqrt(std::max(internal::add(c.r * c.r, -d\
+    \ * d) , (long double)0)) / v.abs(); \n        ps.emplace_back(p + v);\n     \
+    \   ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\n}"
   dependsOn:
   - geometry/point.hpp
   - geometry/line.hpp
   isVerificationFile: false
   path: geometry/circle.hpp
   requiredBy: []
-  timestamp: '2021-09-16 13:12:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-16 14:51:16+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/geometry/cross_points_of_circle_and_line.test.cpp
   - test/geometry/circumscribed_circle_of_triangle.test.cpp
   - test/geometry/intersection_circle.test.cpp
   - test/geometry/incircle_of_triangle.test.cpp

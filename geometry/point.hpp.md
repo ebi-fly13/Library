@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
@@ -36,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
+  - icon: ':x:'
+    path: test/geometry/cross_points_of_circle_and_line.test.cpp
+    title: test/geometry/cross_points_of_circle_and_line.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/distance.test.cpp
     title: test/geometry/distance.test.cpp
@@ -60,9 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\
@@ -198,11 +201,12 @@ data:
   - geometry/polygon.hpp
   - geometry/line.hpp
   timestamp: '2021-09-16 13:12:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/geometry/closest_pair.test.cpp
   - test/geometry/convex_diameter.test.cpp
   - test/geometry/distance.test.cpp
+  - test/geometry/cross_points_of_circle_and_line.test.cpp
   - test/geometry/convex_polygon_cut.test.cpp
   - test/geometry/circumscribed_circle_of_triangle.test.cpp
   - test/geometry/is_convex.test.cpp

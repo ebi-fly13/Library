@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
@@ -124,9 +124,14 @@ data:
     \ncircle circumscribed_circle_of_triangle(const point &A, const point &B, const\
     \ point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n    line q((B+C)/2, (B+C)/2+rot90(C-B));\n\
     \    point cross = cross_point(p, q);\n    return circle(cross, abs(A-cross));\n\
-    }\n\n}\n#line 12 \"test/geometry/circumscribed_circle_of_triangle.test.cpp\"\n\
-    \nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    point a,\
-    \ b, c;\n    std::cin >> a.x >> a.y;\n    std::cin >> b.x >> b.y;\n    std::cin\
+    }\n\nstd::vector<point> cross_point(const circle &c, const line &l) {\n    std::vector<point>\
+    \ ps;\n    long double d = distance(l, c.c);\n    if(d == c.r) {\n        ps.emplace_back(l.proj(c.c));\n\
+    \    }\n    else if(d < c.r) {\n        point p = l.proj(c.c);\n        point\
+    \ v = l.b - l.a;\n        v = v*std::sqrt(std::max(internal::add(c.r * c.r, -d\
+    \ * d) , (long double)0)) / v.abs(); \n        ps.emplace_back(p + v);\n     \
+    \   ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\n}\n#line 12 \"test/geometry/circumscribed_circle_of_triangle.test.cpp\"\
+    \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    point\
+    \ a, b, c;\n    std::cin >> a.x >> a.y;\n    std::cin >> b.x >> b.y;\n    std::cin\
     \ >> c.x >> c.y;\n    circle in = circumscribed_circle_of_triangle(a, b, c);\n\
     \    std::cout << in.c << \" \" << in.r << '\\n';\n}\n\n}\n\nint main() {\n  \
     \  std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
@@ -147,7 +152,7 @@ data:
   isVerificationFile: true
   path: test/geometry/circumscribed_circle_of_triangle.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 13:12:51+09:00'
+  timestamp: '2021-09-16 14:51:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/circumscribed_circle_of_triangle.test.cpp
