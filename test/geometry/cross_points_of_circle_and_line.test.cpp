@@ -1,4 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_D"
 #define ERROR 0.00000001
 
 #include <iostream>
@@ -9,6 +9,7 @@
 #include <cstdint>
 
 #include "geometry/point.hpp"
+#include "geometry/line.hpp"
 #include "geometry/circle.hpp"
 
 namespace ebi {
