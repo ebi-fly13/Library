@@ -103,4 +103,49 @@ std::vector<point> tangent_to_circle(const circle &c, const point &p) {
     return ps;
 }
 
+std::vector<line> tangent(circle c1, circle c2) {
+    std::vector<line> ret;
+    int flag = intersection(c1, c2);
+    if(flag == 2 || flag == 3 || flag == 4) {
+        if(c1.r == c2.r) {
+            point v = c2.c - c1.c;
+            v = rot90(v * c1.r / abs(v));
+            ret.emplace_back(line(c1.c + v, c2.c + v));
+            ret.emplace_back(line(c1.c - v, c2.c - v));
+        }
+        else {
+            point v = c1.c * (-c2.r) + c2.c * c1.r;
+            v = v / (c1.r - c2.r);
+            auto bs = tangent_to_circle(c1, v);
+            auto as = tangent_to_circle(c2, v);
+            for(int i = 0; i < (int)std::min(bs.size(), as.size()); i++) {
+                ret.emplace_back(line(bs[i], as[i]));
+            }
+        }
+    }
+    else if(flag == 1) {
+        point v = c2.c - c1.c;
+        if(c1.r > c2.r) v = v * c1.r / v.abs();
+        else v = v * (-c1.r) / v.abs();
+        point p = c1.c + v;
+        ret.emplace_back(line(p, p + rot90(v)));
+    }
+    if(flag == 4) {
+        point p = c1.c * c2.r + c2.c * c1.r;
+        p = p / (c1.r + c2.r);
+        auto bs = tangent_to_circle(c1, p);
+        auto as = tangent_to_circle(c2, p);
+        for(int i = 0; i < (int)std::min(bs.size(), as.size()); i++) {
+            ret.emplace_back(line(bs[i], as[i]));
+        }
+    }
+    else if(flag == 3) {
+        point v = c2.c - c1.c;
+        v = v * c1.r / v.abs();
+        point p = c1.c + v;
+        ret.emplace_back(p, p + rot90(v));
+    }
+    return ret;
+}
+
 }
