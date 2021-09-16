@@ -36,6 +36,7 @@
 "test/geometry/cross_point.test.cpp": "2021-09-15 20:45:16 +0900",
 "test/geometry/distance.test.cpp": "2021-09-15 20:45:16 +0900",
 "test/geometry/intersection.test.cpp": "2021-09-15 20:45:16 +0900",
+"test/geometry/intersection_circle.test.cpp": "2021-09-16 12:50:18 +0900",
 "test/geometry/intersection_line_segment.test.cpp": "2021-09-15 20:45:16 +0900",
 "test/geometry/is_convex.test.cpp": "2021-09-15 20:45:16 +0900",
 "test/geometry/isp.test.cpp": "2021-09-15 20:45:16 +0900",
