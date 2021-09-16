@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
@@ -56,17 +56,21 @@ data:
     \    bool operator<(const point &rhs) const noexcept {\r\n        if(internal::sgn(x-rhs.x))\
     \ return internal::sgn(x-rhs.x)<0;\r\n        return internal::sgn(y-rhs.y)<0;\r\
     \n    }\r\n};\r\n\r\nstd::ostream& operator<<(std::ostream& os, const point &a)\
-    \ {\r\n    return os << a.x << \" \" << a.y;\r\n}\r\n\r\nlong double dot(const\
-    \ point &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double\
-    \ det(const point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong\
-    \ double abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double\
-    \ norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\
-    \n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int flag\
-    \ = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
-    \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
-    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
-    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \ {\r\n    return os << a.x << \" \" << a.y;\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\
+    \u30B8\u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long\
+    \ double ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y,\
+    \ std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const point\
+    \ &a) {\r\n    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const point\
+    \ &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double det(const\
+    \ point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong double\
+    \ abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double norm(const\
+    \ point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\n\r\nint isp(const\
+    \ point &a, const point &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\
+    \n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\
+    \n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
+    \ flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\u8FD1\u70B9\u5BFE\u3092\
+    \u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point> p)\
+    \ {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
     \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
     \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
     \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
@@ -116,7 +120,10 @@ data:
     \ const point &B, const point &C) {\n    long double a = abs(B-C), b = abs(C-A),\
     \ c = abs(A-B);\n    point in = A * a + B * b + C * c;\n    in /= (a + b + c);\n\
     \    long double r = distance(line(A, B), in);\n    return circle(in, r);\n}\n\
-    \n}\n#line 11 \"test/geometry/intersection_circle.test.cpp\"\n\nnamespace ebi\
+    \ncircle circumscribed_circle_of_triangle(const point &A, const point &B, const\
+    \ point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n    line q((B+C)/2, (B+C)/2+rot90(C-B));\n\
+    \    point cross = cross_point(p, q);\n    return circle(cross, abs(A-cross));\n\
+    }\n\n}\n#line 11 \"test/geometry/intersection_circle.test.cpp\"\n\nnamespace ebi\
     \ {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    circle c1, c2;\n    std::cin\
     \ >> c1.c.x >> c1.c.y >> c1.r;\n    std::cin >> c2.c.x >> c2.c.y >> c2.r;\n  \
     \  std::cout << intersection(c1, c2) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout\
@@ -137,7 +144,7 @@ data:
   isVerificationFile: true
   path: test/geometry/intersection_circle.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 12:50:18+09:00'
+  timestamp: '2021-09-16 13:12:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/intersection_circle.test.cpp

@@ -122,19 +122,19 @@ data:
       title: data_structure/sparse_table.hpp
   - name: geometry
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/circle.hpp
       title: geometry/circle.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
       title: geometry/line.hpp
     - icon: ':heavy_check_mark:'
       path: geometry/line_segment.hpp
       title: geometry/line_segment.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
       title: point
     - icon: ':heavy_check_mark:'
@@ -327,6 +327,9 @@ data:
       path: test/geometry/area.test.cpp
       title: test/geometry/area.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/geometry/circumscribed_circle_of_triangle.test.cpp
+      title: test/geometry/circumscribed_circle_of_triangle.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/geometry/closest_pair.test.cpp
       title: test/geometry/closest_pair.test.cpp
     - icon: ':heavy_check_mark:'
@@ -347,7 +350,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/distance.test.cpp
       title: test/geometry/distance.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/incircle_of_triangle.test.cpp
       title: test/geometry/incircle_of_triangle.test.cpp
     - icon: ':heavy_check_mark:'

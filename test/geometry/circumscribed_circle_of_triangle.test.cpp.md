@@ -2,53 +2,54 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: geometry/circle.hpp
+    title: geometry/circle.hpp
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/circumscribed_circle_of_triangle.test.cpp
-    title: test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/incircle_of_triangle.test.cpp
-    title: test/geometry/incircle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/intersection_circle.test.cpp
-    title: test/geometry/intersection_circle.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\
-    \r\n#include <cmath>\r\n#include <cassert>\r\n#include <vector>\r\n#include <iostream>\r\
-    \n#include <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS\
-    \ = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n   \
-    \ return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long double\
-    \ a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b)))\
-    \ return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct\
-    \ point {\r\n    long double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long\
-    \ double x, long double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const\
-    \ point rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\n        y =\
-    \ internal::add(y, rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point\
-    \ &operator-=(const point rhs) noexcept {\r\n        x = internal::add(x, -rhs.x);\r\
-    \n        y = internal::add(y, -rhs.y);\r\n        return *this;\r\n    }\r\n\r\
-    \n    point &operator*=(const long double k) noexcept {\r\n        x *= k;\r\n\
-    \        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point &operator/=(const\
-    \ long double k) {\r\n        assert(internal::sgn(k)!=0);\r\n        x /= k;\r\
-    \n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n    point operator+(const\
-    \ point &rhs) const noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\
-    \n\r\n    point operator-(const point &rhs) const noexcept {\r\n        return\
-    \ point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const long double rhs)\
-    \ const noexcept {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n   \
-    \ point operator/(const long double rhs) const {\r\n        return point(*this)\
-    \ /= rhs;\r\n    }\r\n\r\n    point operator-() const noexcept {\r\n        return\
-    \ point(0, 0) - *this;\r\n    }\r\n\r\n    long double abs() const noexcept {\r\
-    \n        return std::sqrt(internal::add(x*x, y*y));\r\n    }\r\n\r\n    long\
-    \ double dot(const point rhs) const noexcept {\r\n        return internal::add(x*rhs.x,\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.00000001'
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C
+  bundledCode: "#line 1 \"test/geometry/circumscribed_circle_of_triangle.test.cpp\"\
+    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C\"\
+    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
+    \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
+    #line 2 \"geometry/circle.hpp\"\n\n#line 2 \"geometry/point.hpp\"\n\r\n#include\
+    \ <cmath>\r\n#line 8 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\nconstexpr\
+    \ long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double\
+    \ a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double\
+    \ add(long double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a)\
+    \ + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\
+    \n\r\nstruct point {\r\n    long double x,y;\r\n\r\n    point() = default;\r\n\
+    \r\n    point(long double x, long double y) : x(x), y(y) { }\r\n\r\n    point\
+    \ &operator+=(const point rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\
+    \n        y = internal::add(y, rhs.y);\r\n        return *this;\r\n    }\r\n\r\
+    \n    point &operator-=(const point rhs) noexcept {\r\n        x = internal::add(x,\
+    \ -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\n        return *this;\r\
+    \n    }\r\n\r\n    point &operator*=(const long double k) noexcept {\r\n     \
+    \   x *= k;\r\n        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point\
+    \ &operator/=(const long double k) {\r\n        assert(internal::sgn(k)!=0);\r\
+    \n        x /= k;\r\n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n\
+    \    point operator+(const point &rhs) const noexcept {\r\n        return point(*this)\
+    \ += rhs;\r\n    }\r\n\r\n    point operator-(const point &rhs) const noexcept\
+    \ {\r\n        return point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const\
+    \ long double rhs) const noexcept {\r\n        return point(*this) *= rhs;\r\n\
+    \    }\r\n\r\n    point operator/(const long double rhs) const {\r\n        return\
+    \ point(*this) /= rhs;\r\n    }\r\n\r\n    point operator-() const noexcept {\r\
+    \n        return point(0, 0) - *this;\r\n    }\r\n\r\n    long double abs() const\
+    \ noexcept {\r\n        return std::sqrt(internal::add(x*x, y*y));\r\n    }\r\n\
+    \r\n    long double dot(const point rhs) const noexcept {\r\n        return internal::add(x*rhs.x,\
     \ y*rhs.y);\r\n    }\r\n\r\n    long double det(const point rhs) const noexcept\
     \ {\r\n        return internal::add(x*rhs.y, -y*rhs.x);\r\n    }\r\n\r\n    //\
     \ arctan(y/x) (\u5358\u4F4D\u306F\u30E9\u30B8\u30A2\u30F3)\r\n    long double\
@@ -123,39 +124,36 @@ data:
     \ncircle circumscribed_circle_of_triangle(const point &A, const point &B, const\
     \ point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n    line q((B+C)/2, (B+C)/2+rot90(C-B));\n\
     \    point cross = cross_point(p, q);\n    return circle(cross, abs(A-cross));\n\
-    }\n\n}\n"
-  code: "#pragma once\n\n#include \"point.hpp\"\n#include \"line.hpp\"\n\nnamespace\
-    \ ebi {\n\nstruct circle {\n    point c;\n    long double r;\n    circle() = default;\n\
-    \    circle(const point &c, long double r) : c(c), r(r) { } \n};\n\nint intersection(const\
-    \ circle &c1, const circle &c2) {\n    long double d = abs(c1.c - c2.c);\n   \
-    \ long double r1 = c1.r, r2 = c2.r;\n    if(r1 < r2) std::swap(r1, r2); \n   \
-    \ if(d > internal::add(r1, r2)) {\n        return 4;\n    }\n    else if(d ==\
-    \ internal::add(r1, r2)) {\n        return 3;\n    }\n    else if(d > internal::add(r1,\
-    \ -r2)) {\n        return 2;\n    }\n    else if(d == internal::add(r1, -r2))\
-    \ {\n        return 1;\n    }\n    else {\n        return 0;\n    }\n}\n\ncircle\
-    \ incircle_of_triangle(const point &A, const point &B, const point &C) {\n   \
-    \ long double a = abs(B-C), b = abs(C-A), c = abs(A-B);\n    point in = A * a\
-    \ + B * b + C * c;\n    in /= (a + b + c);\n    long double r = distance(line(A,\
-    \ B), in);\n    return circle(in, r);\n}\n\ncircle circumscribed_circle_of_triangle(const\
-    \ point &A, const point &B, const point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n\
-    \    line q((B+C)/2, (B+C)/2+rot90(C-B));\n    point cross = cross_point(p, q);\n\
-    \    return circle(cross, abs(A-cross));\n}\n\n}"
+    }\n\n}\n#line 12 \"test/geometry/circumscribed_circle_of_triangle.test.cpp\"\n\
+    \nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    point a,\
+    \ b, c;\n    std::cin >> a.x >> a.y;\n    std::cin >> b.x >> b.y;\n    std::cin\
+    \ >> c.x >> c.y;\n    circle in = circumscribed_circle_of_triangle(a, b, c);\n\
+    \    std::cout << in.c << \" \" << in.r << '\\n';\n}\n\n}\n\nint main() {\n  \
+    \  std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C\"\
+    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
+    \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
+    #include \"geometry/circle.hpp\"\n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\
+    \nvoid main_() {\n    point a, b, c;\n    std::cin >> a.x >> a.y;\n    std::cin\
+    \ >> b.x >> b.y;\n    std::cin >> c.x >> c.y;\n    circle in = circumscribed_circle_of_triangle(a,\
+    \ b, c);\n    std::cout << in.c << \" \" << in.r << '\\n';\n}\n\n}\n\nint main()\
+    \ {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}"
   dependsOn:
+  - geometry/circle.hpp
   - geometry/point.hpp
   - geometry/line.hpp
-  isVerificationFile: false
-  path: geometry/circle.hpp
+  isVerificationFile: true
+  path: test/geometry/circumscribed_circle_of_triangle.test.cpp
   requiredBy: []
   timestamp: '2021-09-16 13:12:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - test/geometry/intersection_circle.test.cpp
-  - test/geometry/incircle_of_triangle.test.cpp
-documentation_of: geometry/circle.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/geometry/circumscribed_circle_of_triangle.test.cpp
 layout: document
 redirect_from:
-- /library/geometry/circle.hpp
-- /library/geometry/circle.hpp.html
-title: geometry/circle.hpp
+- /verify/test/geometry/circumscribed_circle_of_triangle.test.cpp
+- /verify/test/geometry/circumscribed_circle_of_triangle.test.cpp.html
+title: test/geometry/circumscribed_circle_of_triangle.test.cpp
 ---

@@ -1,11 +1,11 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   - icon: ':heavy_check_mark:'
@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/circumscribed_circle_of_triangle.test.cpp
+    title: test/geometry/circumscribed_circle_of_triangle.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/contains.test.cpp
     title: test/geometry/contains.test.cpp
@@ -33,7 +36,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/distance.test.cpp
     title: test/geometry/distance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/incircle_of_triangle.test.cpp
     title: test/geometry/incircle_of_triangle.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,9 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
@@ -90,17 +93,20 @@ data:
     \ const noexcept {\r\n        if(internal::sgn(x-rhs.x)) return internal::sgn(x-rhs.x)<0;\r\
     \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nstd::ostream&\
     \ operator<<(std::ostream& os, const point &a) {\r\n    return os << a.x << \"\
-    \ \" << a.y;\r\n}\r\n\r\nlong double dot(const point &a, const point &b) {\r\n\
-    \    return a.dot(b);\r\n}\r\n\r\nlong double det(const point &a, const point\
-    \ &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong double abs(const point &a) {\r\
-    \n    return a.abs();\r\n}\r\n\r\nlong double norm(const point &a) {\r\n    return\
-    \ internal::add(a.x*a.x, a.y*a.y);\r\n}\r\n\r\nint isp(const point &a, const point\
-    \ &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\n   \
-    \ if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\n\
-    \        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
-    \ flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\u8FD1\u70B9\u5BFE\u3092\
-    \u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point> p)\
-    \ {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \ \" << a.y;\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\u30B8\u30A2\u30F3)\u56DE\u8EE2\
+    \u3059\u308B\r\npoint rot(const point &a, long double ang) {\r\n    return point(std::cos(ang)\
+    \ * a.x - std::sin(ang) * a.y, std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n\
+    } \r\n\r\npoint rot90(const point &a) {\r\n    return point(-a.y, a.x);\r\n}\r\
+    \n\r\nlong double dot(const point &a, const point &b) {\r\n    return a.dot(b);\r\
+    \n}\r\n\r\nlong double det(const point &a, const point &b) {\r\n    return a.det(b);\r\
+    \n}\r\n\r\nlong double abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\
+    \nlong double norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\
+    \n}\r\n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int\
+    \ flag = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
+    \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
+    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
+    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
+    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
     \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
     \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
     \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
@@ -167,12 +173,13 @@ data:
   - geometry/line_segment.hpp
   - geometry/circle.hpp
   - geometry/polygon.hpp
-  timestamp: '2021-09-15 20:45:16+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2021-09-16 13:12:51+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/convex_diameter.test.cpp
   - test/geometry/distance.test.cpp
   - test/geometry/convex_polygon_cut.test.cpp
+  - test/geometry/circumscribed_circle_of_triangle.test.cpp
   - test/geometry/is_convex.test.cpp
   - test/geometry/intersection.test.cpp
   - test/geometry/contains.test.cpp
