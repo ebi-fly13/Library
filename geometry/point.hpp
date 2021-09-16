@@ -103,6 +103,10 @@ std::ostream& operator<<(std::ostream& os, const point &a) {
     return os << a.x << " " << a.y;
 }
 
+std::istream& operator>>(std::istream& os, point &a) {
+    return os >> a.x >> a.y;
+}
+
 // 点a をang(ラジアン)回転する
 point rot(const point &a, long double ang) {
     return point(std::cos(ang) * a.x - std::sin(ang) * a.y, std::sin(ang) * a.x + std::cos(ang) * a.y);

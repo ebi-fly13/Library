@@ -64,4 +64,25 @@ std::vector<point> cross_point(const circle &c, const line &l) {
     return ps;
 }
 
+std::vector<point> cross_point(const circle &c1, const circle &c2) {
+    std::vector<point> ps;
+    int flag = intersection(c1, c2);
+    if(flag == 0 || flag == 4) {
+        return ps;
+    }
+    long double d = (c2.c - c1.c).abs();
+    long double x = internal::add(internal::add(d*d, c1.r*c1.r),-c2.r * c2.r) / (2.0*d);
+    point p = c1.c + (c2.c - c1.c) * x / d;
+    point v = rot90(c2.c - c1.c);
+    if(flag == 1 || flag == 3) {
+        ps.emplace_back(p);
+    }
+    else {
+        v = v * std::sqrt(std::max(internal::add(c1.r * c1.r, -x * x) , (long double)0)) / v.abs(); 
+        ps.emplace_back(p + v);
+        ps.emplace_back(p - v);
+    }
+    return ps;
+}
+
 }
