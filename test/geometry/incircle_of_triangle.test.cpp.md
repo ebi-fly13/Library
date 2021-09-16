@@ -147,7 +147,26 @@ data:
     \ cos , - v.y * sin), internal::add(v.x * sin, v.y * cos));\n    point g(internal::add(v.x\
     \ * cos, v.y * sin), internal::add(- v.x * sin, v.y * cos));\n    f = f * c.r\
     \ / f.abs();\n    g = g * c.r / g.abs();\n    ps.emplace_back(c.c + f);\n    ps.emplace_back(c.c\
-    \ + g);\n    return ps;\n}\n\n}\n#line 12 \"test/geometry/incircle_of_triangle.test.cpp\"\
+    \ + g);\n    return ps;\n}\n\nstd::vector<line> tangent(circle c1, circle c2)\
+    \ {\n    std::vector<line> ret;\n    int flag = intersection(c1, c2);\n    if(flag\
+    \ == 2 || flag == 3 || flag == 4) {\n        if(c1.r == c2.r) {\n            point\
+    \ v = c2.c - c1.c;\n            v = rot90(v * c1.r / abs(v));\n            ret.emplace_back(line(c1.c\
+    \ + v, c2.c + v));\n            ret.emplace_back(line(c1.c - v, c2.c - v));\n\
+    \        }\n        else {\n            point v = c1.c * (-c2.r) + c2.c * c1.r;\n\
+    \            v = v / (c1.r - c2.r);\n            auto bs = tangent_to_circle(c1,\
+    \ v);\n            auto as = tangent_to_circle(c2, v);\n            for(int i\
+    \ = 0; i < (int)std::min(bs.size(), as.size()); i++) {\n                ret.emplace_back(line(bs[i],\
+    \ as[i]));\n            }\n        }\n    }\n    else if(flag == 1) {\n      \
+    \  point v = c2.c - c1.c;\n        if(c1.r > c2.r) v = v * c1.r / v.abs();\n \
+    \       else v = v * (-c1.r) / v.abs();\n        point p = c1.c + v;\n       \
+    \ ret.emplace_back(line(p, p + rot90(v)));\n    }\n    if(flag == 4) {\n     \
+    \   point p = c1.c * c2.r + c2.c * c1.r;\n        p = p / (c1.r + c2.r);\n   \
+    \     auto bs = tangent_to_circle(c1, p);\n        auto as = tangent_to_circle(c2,\
+    \ p);\n        for(int i = 0; i < (int)std::min(bs.size(), as.size()); i++) {\n\
+    \            ret.emplace_back(line(bs[i], as[i]));\n        }\n    }\n    else\
+    \ if(flag == 3) {\n        point v = c2.c - c1.c;\n        v = v * c1.r / v.abs();\n\
+    \        point p = c1.c + v;\n        ret.emplace_back(p, p + rot90(v));\n   \
+    \ }\n    return ret;\n}\n\n}\n#line 12 \"test/geometry/incircle_of_triangle.test.cpp\"\
     \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    point\
     \ a, b, c;\n    std::cin >> a.x >> a.y;\n    std::cin >> b.x >> b.y;\n    std::cin\
     \ >> c.x >> c.y;\n    circle in = incircle_of_triangle(a, b, c);\n    std::cout\
@@ -170,7 +189,7 @@ data:
   isVerificationFile: true
   path: test/geometry/incircle_of_triangle.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 16:24:17+09:00'
+  timestamp: '2021-09-16 21:05:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/incircle_of_triangle.test.cpp

@@ -171,11 +171,11 @@ data:
   timestamp: '2021-09-16 15:40:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/geometry/area.test.cpp
+  - test/geometry/contains.test.cpp
+  - test/geometry/intersection_line_segment.test.cpp
   - test/geometry/distance.test.cpp
   - test/geometry/is_convex.test.cpp
-  - test/geometry/contains.test.cpp
-  - test/geometry/area.test.cpp
-  - test/geometry/intersection_line_segment.test.cpp
 documentation_of: geometry/line_segment.hpp
 layout: document
 redirect_from:

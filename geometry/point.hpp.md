@@ -25,6 +25,9 @@ data:
     path: test/geometry/closest_pair.test.cpp
     title: test/geometry/closest_pair.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/common_tangent.test.cpp
+    title: test/geometry/common_tangent.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/contains.test.cpp
     title: test/geometry/contains.test.cpp
   - icon: ':heavy_check_mark:'
@@ -213,24 +216,25 @@ data:
   timestamp: '2021-09-16 15:40:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/geometry/closest_pair.test.cpp
-  - test/geometry/convex_diameter.test.cpp
-  - test/geometry/distance.test.cpp
-  - test/geometry/cross_points_of_circle_and_line.test.cpp
-  - test/geometry/convex_polygon_cut.test.cpp
-  - test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - test/geometry/is_convex.test.cpp
+  - test/geometry/cross_point.test.cpp
+  - test/geometry/incircle_of_triangle.test.cpp
+  - test/geometry/area.test.cpp
   - test/geometry/intersection.test.cpp
+  - test/geometry/contains.test.cpp
+  - test/geometry/isp.test.cpp
+  - test/geometry/reflection.test.cpp
+  - test/geometry/convex_diameter.test.cpp
+  - test/geometry/intersection_circle.test.cpp
+  - test/geometry/intersection_line_segment.test.cpp
+  - test/geometry/cross_points_of_circle_and_line.test.cpp
+  - test/geometry/common_tangent.test.cpp
   - test/geometry/cross_points_of circles.test.cpp
   - test/geometry/tangent_to_circle.test.cpp
-  - test/geometry/contains.test.cpp
-  - test/geometry/intersection_circle.test.cpp
-  - test/geometry/area.test.cpp
-  - test/geometry/reflection.test.cpp
-  - test/geometry/isp.test.cpp
-  - test/geometry/incircle_of_triangle.test.cpp
-  - test/geometry/intersection_line_segment.test.cpp
-  - test/geometry/cross_point.test.cpp
+  - test/geometry/distance.test.cpp
+  - test/geometry/closest_pair.test.cpp
+  - test/geometry/is_convex.test.cpp
+  - test/geometry/circumscribed_circle_of_triangle.test.cpp
+  - test/geometry/convex_polygon_cut.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
 title: point

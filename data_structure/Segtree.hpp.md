@@ -80,12 +80,12 @@ data:
   timestamp: '2021-05-03 16:11:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/vertex_add_path_sum.test.cpp
-  - test/Segtree.test.cpp
-  - test/point_add_rectangle_sum.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
-  - test/rectangle_sum.test.cpp
   - test/vertex_set_path_compositie.test.cpp
+  - test/point_add_rectangle_sum.test.cpp
+  - test/Segtree.test.cpp
+  - test/rectangle_sum.test.cpp
+  - test/vertex_add_path_sum.test.cpp
 documentation_of: data_structure/Segtree.hpp
 layout: document
 title: Segtree

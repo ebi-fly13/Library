@@ -193,11 +193,11 @@ data:
   timestamp: '2021-09-16 15:40:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/geometry/convex_diameter.test.cpp
-  - test/geometry/convex_polygon_cut.test.cpp
-  - test/geometry/is_convex.test.cpp
-  - test/geometry/contains.test.cpp
   - test/geometry/area.test.cpp
+  - test/geometry/contains.test.cpp
+  - test/geometry/convex_diameter.test.cpp
+  - test/geometry/is_convex.test.cpp
+  - test/geometry/convex_polygon_cut.test.cpp
 documentation_of: geometry/polygon.hpp
 layout: document
 redirect_from:
