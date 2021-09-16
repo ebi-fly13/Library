@@ -336,6 +336,9 @@ data:
       path: test/geometry/common_area.test.cpp
       title: test/geometry/common_area.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/geometry/common_area_circles.test.cpp
+      title: test/geometry/common_area_circles.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/geometry/common_tangent.test.cpp
       title: test/geometry/common_tangent.test.cpp
     - icon: ':heavy_check_mark:'

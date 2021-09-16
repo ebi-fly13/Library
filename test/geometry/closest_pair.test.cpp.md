@@ -87,12 +87,16 @@ data:
     \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
     \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
     \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
-    \n}\n#line 12 \"test/geometry/closest_pair.test.cpp\"\n\nnamespace ebi {\n\nusing\
-    \ i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
-    \ p(n);\n    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    std::cout\
-    \ << closest_pair(p) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
-    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    \    ebi::main_();\n}\n"
+    \n// \u2220ABC\u3092\u6C42\u3081\u308B(\u30E9\u30B8\u30A2\u30F3)\r\nlong double\
+    \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
+    \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
+    \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
+    \n}\r\n\r\n}\n#line 12 \"test/geometry/closest_pair.test.cpp\"\n\nnamespace ebi\
+    \ {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n    std::cin >>\
+    \ n;\n    std::vector<point> p(n);\n    for(auto &[x, y]: p) {\n        std::cin\
+    \ >> x >> y;\n    }\n    std::cout << closest_pair(p) << '\\n';\n}\n\n}\n\nint\
+    \ main() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A\"\
     \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
@@ -107,7 +111,7 @@ data:
   isVerificationFile: true
   path: test/geometry/closest_pair.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 23:15:23+09:00'
+  timestamp: '2021-09-17 00:38:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/closest_pair.test.cpp

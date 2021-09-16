@@ -24,20 +24,19 @@ data:
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_I
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E
-  bundledCode: "#line 1 \"test/geometry/cross_points_of circles.test.cpp\"\n#define\
-    \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E\"\
-    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
-    \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
-    #line 2 \"geometry/circle.hpp\"\n\n#line 4 \"geometry/circle.hpp\"\n#include <cmath>\n\
-    \n#line 2 \"geometry/point.hpp\"\n\r\n#line 8 \"geometry/point.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\
-    \n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\
-    \n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
-    \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
-    } // namespace internal\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_I
+  bundledCode: "#line 1 \"test/geometry/common_area_circles.test.cpp\"\n#define PROBLEM\
+    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_I\"\n#define\
+    \ ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\
+    #include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/point.hpp\"\
+    \n\r\n#include <cmath>\r\n#line 8 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\
+    \n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint\
+    \ sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\
+    \r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b) <\
+    \ EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n}\
+    \ // namespace internal\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n\
     \    point() = default;\r\n\r\n    point(long double x, long double y) : x(x),\
     \ y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\n      \
     \  x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n  \
@@ -104,23 +103,24 @@ data:
     \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
     \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
     \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
-    \n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\
-    \n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\nstruct line {\n    point\
-    \ a,b;\n\n    line(long double x1, long double y1, long double x2, long double\
-    \ y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const point &a, const point &b) :\
-    \ a(a), b(b) { }\n\n    point proj(const point &p) const {\n        return a +\
-    \ (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const point &p) const\
-    \ {\n        return proj(p)*double(2) - p;\n    }\n\n    long double distance(const\
-    \ point &c) const {\n    return std::abs(det(c - a, b - a)/abs(b-a));\n    }\n\
-    };\n\nint intersection(const line &a, const line &b) {\n    if(internal::sgn(det(a.b-a.a,\
-    \ b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a, b.b-b.a)) == 0) { //\
-    \ \u5782\u76F4\n            return 1;\n        }\n        return 0; // \u4EA4\u5DEE\
-    \n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a)) != 0) { // \u5E73\u884C\
-    \n        return 2;\n    }\n    else { // \u540C\u4E00\u76F4\u7DDA\n        return\
-    \ 3;\n    }\n}\n\npoint cross_point(const point &a, const point &b, const point\
-    \ &c, const point &d) {\n    return a + (b-a) * det(c - a, d - c) / det(b - a,\
-    \ d - c);\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\u304B\u78BA\u8A8D\u3059\u308B\
-    \uFF01\npoint cross_point(const line &s, const line &t) {\n    assert(intersection(s,\
+    \n}\r\n\r\n}\n#line 2 \"geometry/circle.hpp\"\n\n#line 5 \"geometry/circle.hpp\"\
+    \n\n#line 2 \"geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\n#line 7\
+    \ \"geometry/line.hpp\"\n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n\
+    \    line(long double x1, long double y1, long double x2, long double y2) : a(x1,\
+    \ y1), b(x2, y2) { }\n\n    line(const point &a, const point &b) : a(a), b(b)\
+    \ { }\n\n    point proj(const point &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n\
+    \    }\n\n    point relf(const point &p) const {\n        return proj(p)*double(2)\
+    \ - p;\n    }\n\n    long double distance(const point &c) const {\n    return\
+    \ std::abs(det(c - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line\
+    \ &a, const line &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n\
+    \        if(internal::sgn(dot(a.b-a.a, b.b-b.a)) == 0) { // \u5782\u76F4\n   \
+    \         return 1;\n        }\n        return 0; // \u4EA4\u5DEE\n    }\n   \
+    \ else if(internal::sgn(det(a.b-a.a, b.a-a.a)) != 0) { // \u5E73\u884C\n     \
+    \   return 2;\n    }\n    else { // \u540C\u4E00\u76F4\u7DDA\n        return 3;\n\
+    \    }\n}\n\npoint cross_point(const point &a, const point &b, const point &c,\
+    \ const point &d) {\n    return a + (b-a) * det(c - a, d - c) / det(b - a, d -\
+    \ c);\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\u304B\u78BA\u8A8D\u3059\u308B\uFF01\
+    \npoint cross_point(const line &s, const line &t) {\n    assert(intersection(s,\
     \ t) < 2);\n    return s.a + (s.b - s.a) * det(t.a - s.a, t.b - t.a) / det(s.b\
     \ - s.a, t.b - t.a);\n}\n\n// \u76F4\u7DDAa\u3068\u70B9c\u306E\u8DDD\u96E2\nlong\
     \ double distance(const line &a, const point &c) {\n    return std::abs(det(c-a.a,\
@@ -269,41 +269,37 @@ data:
     \ * std::sin(theta1*2)/2.0);\n        long double theta2 = std::acos(internal::add(internal::add(c2.r*c2.r,\
     \ d*d), -c1.r*c1.r)/(2.0*c2.r*d));\n        long double area2 = internal::add(c2.r\
     \ * c2.r * theta2, - c2.r * c2.r * std::sin(theta2*2)/2.0);\n        return internal::add(area1,\
-    \ area2);\n    }\n}\n\n}\n#line 12 \"test/geometry/cross_points_of circles.test.cpp\"\
+    \ area2);\n    }\n}\n\n}\n#line 13 \"test/geometry/common_area_circles.test.cpp\"\
     \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    circle\
-    \ c1, c2;\n    std::cin >> c1.c >> c1.r;\n    std::cin >> c2.c >> c2.r;\n    auto\
-    \ ps = cross_point(c1, c2);\n    if(int(ps.size()) == 1) {\n        ps.emplace_back(ps.back());\n\
-    \    }\n    std::sort(ps.begin(), ps.end());\n    for(auto p: ps) {\n        std::cout\
-    \ << p << \" \";\n    }\n    std::cout << '\\n';\n}\n\n}\n\nint main() {\n   \
-    \ std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_E\"\
+    \ c1, c2;\n    std::cin >> c1.c >> c1.r;\n    std::cin >> c2.c >> c2.r;\n    std::cout\
+    \ << common_area(c1, c2) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
+    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    ebi::main_();\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_I\"\
     \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
-    #include \"geometry/circle.hpp\"\n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\
-    \nvoid main_() {\n    circle c1, c2;\n    std::cin >> c1.c >> c1.r;\n    std::cin\
-    \ >> c2.c >> c2.r;\n    auto ps = cross_point(c1, c2);\n    if(int(ps.size())\
-    \ == 1) {\n        ps.emplace_back(ps.back());\n    }\n    std::sort(ps.begin(),\
-    \ ps.end());\n    for(auto p: ps) {\n        std::cout << p << \" \";\n    }\n\
-    \    std::cout << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
+    #include \"geometry/point.hpp\"\n#include \"geometry/circle.hpp\"\n\nnamespace\
+    \ ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    circle c1, c2;\n \
+    \   std::cin >> c1.c >> c1.r;\n    std::cin >> c2.c >> c2.r;\n    std::cout <<\
+    \ common_area(c1, c2) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
     \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
     \    ebi::main_();\n}"
   dependsOn:
-  - geometry/circle.hpp
   - geometry/point.hpp
+  - geometry/circle.hpp
   - geometry/line.hpp
   - geometry/line_segment.hpp
   - geometry/polygon.hpp
   isVerificationFile: true
-  path: test/geometry/cross_points_of circles.test.cpp
+  path: test/geometry/common_area_circles.test.cpp
   requiredBy: []
   timestamp: '2021-09-17 00:38:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/geometry/cross_points_of circles.test.cpp
+documentation_of: test/geometry/common_area_circles.test.cpp
 layout: document
 redirect_from:
-- /verify/test/geometry/cross_points_of circles.test.cpp
-- /verify/test/geometry/cross_points_of circles.test.cpp.html
-title: test/geometry/cross_points_of circles.test.cpp
+- /verify/test/geometry/common_area_circles.test.cpp
+- /verify/test/geometry/common_area_circles.test.cpp.html
+title: test/geometry/common_area_circles.test.cpp
 ---

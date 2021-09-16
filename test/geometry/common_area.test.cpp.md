@@ -99,36 +99,40 @@ data:
     \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
     \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
     \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
-    \n}\n#line 2 \"geometry/circle.hpp\"\n\n#line 5 \"geometry/circle.hpp\"\n\n#line\
-    \ 2 \"geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\
-    \n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1,\
-    \ long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\
-    \n    line(const point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const\
-    \ point &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\
-    \n    point relf(const point &p) const {\n        return proj(p)*double(2) - p;\n\
-    \    }\n\n    long double distance(const point &c) const {\n    return std::abs(det(c\
-    \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
-    \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
-    \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
-    \  return 0; // \u4EA4\u5DEE\n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a))\
-    \ != 0) { // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\
-    \u76F4\u7DDA\n        return 3;\n    }\n}\n\npoint cross_point(const point &a,\
-    \ const point &b, const point &c, const point &d) {\n    return a + (b-a) * det(c\
-    \ - a, d - c) / det(b - a, d - c);\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\u304B\
-    \u78BA\u8A8D\u3059\u308B\uFF01\npoint cross_point(const line &s, const line &t)\
-    \ {\n    assert(intersection(s, t) < 2);\n    return s.a + (s.b - s.a) * det(t.a\
-    \ - s.a, t.b - t.a) / det(s.b - s.a, t.b - t.a);\n}\n\n// \u76F4\u7DDAa\u3068\u70B9\
-    c\u306E\u8DDD\u96E2\nlong double distance(const line &a, const point &c) {\n \
-    \   return std::abs(det(c-a.a, a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const\
-    \ line &a, const line &b) {\n    if(intersection(a, b) < 2) {\n        return\
-    \ 0;\n    }\n    else {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line\
-    \ 2 \"geometry/line_segment.hpp\"\n\n#line 5 \"geometry/line_segment.hpp\"\n\n\
-    #line 8 \"geometry/line_segment.hpp\"\n\nnamespace ebi {\n\nstruct line_segment\
-    \ {\n    point a, b;\n\n    line_segment(long double x1, long double y1, long\
-    \ double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line_segment(const\
-    \ point &a, const point &b) : a(a), b(b) { }\n};\n\n// \u7DDA\u5206ab, cd \u304C\
-    \u4EA4\u308F\u308B\u304B\u5224\u5B9A\nbool intersection_line_segment(const point\
-    \ &a, const point &b, const point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
+    \n// \u2220ABC\u3092\u6C42\u3081\u308B(\u30E9\u30B8\u30A2\u30F3)\r\nlong double\
+    \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
+    \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
+    \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
+    \n}\r\n\r\n}\n#line 2 \"geometry/circle.hpp\"\n\n#line 5 \"geometry/circle.hpp\"\
+    \n\n#line 2 \"geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\n#line 7\
+    \ \"geometry/line.hpp\"\n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n\
+    \    line(long double x1, long double y1, long double x2, long double y2) : a(x1,\
+    \ y1), b(x2, y2) { }\n\n    line(const point &a, const point &b) : a(a), b(b)\
+    \ { }\n\n    point proj(const point &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n\
+    \    }\n\n    point relf(const point &p) const {\n        return proj(p)*double(2)\
+    \ - p;\n    }\n\n    long double distance(const point &c) const {\n    return\
+    \ std::abs(det(c - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line\
+    \ &a, const line &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n\
+    \        if(internal::sgn(dot(a.b-a.a, b.b-b.a)) == 0) { // \u5782\u76F4\n   \
+    \         return 1;\n        }\n        return 0; // \u4EA4\u5DEE\n    }\n   \
+    \ else if(internal::sgn(det(a.b-a.a, b.a-a.a)) != 0) { // \u5E73\u884C\n     \
+    \   return 2;\n    }\n    else { // \u540C\u4E00\u76F4\u7DDA\n        return 3;\n\
+    \    }\n}\n\npoint cross_point(const point &a, const point &b, const point &c,\
+    \ const point &d) {\n    return a + (b-a) * det(c - a, d - c) / det(b - a, d -\
+    \ c);\n}\n\n// \u4EA4\u70B9\u304C\u3042\u308B\u304B\u78BA\u8A8D\u3059\u308B\uFF01\
+    \npoint cross_point(const line &s, const line &t) {\n    assert(intersection(s,\
+    \ t) < 2);\n    return s.a + (s.b - s.a) * det(t.a - s.a, t.b - t.a) / det(s.b\
+    \ - s.a, t.b - t.a);\n}\n\n// \u76F4\u7DDAa\u3068\u70B9c\u306E\u8DDD\u96E2\nlong\
+    \ double distance(const line &a, const point &c) {\n    return std::abs(det(c-a.a,\
+    \ a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const line &a, const line\
+    \ &b) {\n    if(intersection(a, b) < 2) {\n        return 0;\n    }\n    else\
+    \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 2 \"geometry/line_segment.hpp\"\
+    \n\n#line 5 \"geometry/line_segment.hpp\"\n\n#line 8 \"geometry/line_segment.hpp\"\
+    \n\nnamespace ebi {\n\nstruct line_segment {\n    point a, b;\n\n    line_segment(long\
+    \ double x1, long double y1, long double x2, long double y2) : a(x1, y1), b(x2,\
+    \ y2) { }\n\n    line_segment(const point &a, const point &b) : a(a), b(b) { }\n\
+    };\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\u304B\u5224\u5B9A\nbool intersection_line_segment(const\
+    \ point &a, const point &b, const point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
     \ <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\n        return true;\n\
     \    }\n    return false;\n}\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\
     \u304B\u5224\u5B9A\nbool intersection(const line_segment &a, const line_segment\
@@ -180,30 +184,31 @@ data:
     \ >= 0) {\n            ret.emplace_back(now);\n        }\n        if(internal::sgn(cf)\
     \ * internal::sgn(cs) < 0) {\n            ret.emplace_back(cross_point(line(now,\
     \ nxt), l));\n        }\n    }\n    return ret;\n}\n\n}\n#line 10 \"geometry/circle.hpp\"\
-    \n\nnamespace ebi {\n\nstruct circle {\n    point c;\n    long double r;\n   \
-    \ circle() = default;\n    circle(const point &c, long double r) : c(c), r(r)\
-    \ { } \n};\n\nint intersection(const circle &c1, const circle &c2) {\n    long\
-    \ double d = abs(c1.c - c2.c);\n    long double r1 = c1.r, r2 = c2.r;\n    if(r1\
-    \ < r2) std::swap(r1, r2); \n    if(d > internal::add(r1, r2)) {\n        return\
-    \ 4;\n    }\n    else if(d == internal::add(r1, r2)) {\n        return 3;\n  \
-    \  }\n    else if(d > internal::add(r1, -r2)) {\n        return 2;\n    }\n  \
-    \  else if(d == internal::add(r1, -r2)) {\n        return 1;\n    }\n    else\
-    \ {\n        return 0;\n    }\n}\n\ncircle incircle_of_triangle(const point &A,\
-    \ const point &B, const point &C) {\n    long double a = abs(B-C), b = abs(C-A),\
-    \ c = abs(A-B);\n    point in = A * a + B * b + C * c;\n    in /= (a + b + c);\n\
-    \    long double r = distance(line(A, B), in);\n    return circle(in, r);\n}\n\
-    \ncircle circumscribed_circle_of_triangle(const point &A, const point &B, const\
-    \ point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n    line q((B+C)/2, (B+C)/2+rot90(C-B));\n\
-    \    point cross = cross_point(p, q);\n    return circle(cross, abs(A-cross));\n\
-    }\n\nstd::vector<point> cross_point(const circle &c, const line &l) {\n    std::vector<point>\
-    \ ps;\n    long double d = distance(l, c.c);\n    if(d == c.r) {\n        ps.emplace_back(l.proj(c.c));\n\
-    \    }\n    else if(d < c.r) {\n        point p = l.proj(c.c);\n        point\
-    \ v = l.b - l.a;\n        v = v*std::sqrt(std::max(internal::add(c.r * c.r, -d\
-    \ * d) , (long double)0)) / v.abs(); \n        ps.emplace_back(p + v);\n     \
-    \   ps.emplace_back(p - v);\n    }\n    return ps;\n}\n\nstd::vector<point> cross_point(const\
-    \ circle &c1, const circle &c2) {\n    std::vector<point> ps;\n    int flag =\
-    \ intersection(c1, c2);\n    if(flag == 0 || flag == 4) {\n        return ps;\n\
-    \    }\n    long double d = (c2.c - c1.c).abs();\n    long double x = internal::add(internal::add(d*d,\
+    \n\nnamespace ebi {\n\nconst long double PI = std::acos(-1);\n\nstruct circle\
+    \ {\n    point c;\n    long double r;\n    circle() = default;\n    circle(const\
+    \ point &c, long double r) : c(c), r(r) { } \n};\n\nint intersection(const circle\
+    \ &c1, const circle &c2) {\n    long double d = abs(c1.c - c2.c);\n    long double\
+    \ r1 = c1.r, r2 = c2.r;\n    if(r1 < r2) std::swap(r1, r2); \n    if(d > internal::add(r1,\
+    \ r2)) {\n        return 4;\n    }\n    else if(d == internal::add(r1, r2)) {\n\
+    \        return 3;\n    }\n    else if(d > internal::add(r1, -r2)) {\n       \
+    \ return 2;\n    }\n    else if(d == internal::add(r1, -r2)) {\n        return\
+    \ 1;\n    }\n    else {\n        return 0;\n    }\n}\n\ncircle incircle_of_triangle(const\
+    \ point &A, const point &B, const point &C) {\n    long double a = abs(B-C), b\
+    \ = abs(C-A), c = abs(A-B);\n    point in = A * a + B * b + C * c;\n    in /=\
+    \ (a + b + c);\n    long double r = distance(line(A, B), in);\n    return circle(in,\
+    \ r);\n}\n\ncircle circumscribed_circle_of_triangle(const point &A, const point\
+    \ &B, const point &C) {\n    line p((A+B)/2, (A+B)/2+rot90(B-A));\n    line q((B+C)/2,\
+    \ (B+C)/2+rot90(C-B));\n    point cross = cross_point(p, q);\n    return circle(cross,\
+    \ abs(A-cross));\n}\n\nstd::vector<point> cross_point(const circle &c, const line\
+    \ &l) {\n    std::vector<point> ps;\n    long double d = distance(l, c.c);\n \
+    \   if(d == c.r) {\n        ps.emplace_back(l.proj(c.c));\n    }\n    else if(d\
+    \ < c.r) {\n        point p = l.proj(c.c);\n        point v = l.b - l.a;\n   \
+    \     v = v*std::sqrt(std::max(internal::add(c.r * c.r, -d * d) , (long double)0))\
+    \ / v.abs(); \n        ps.emplace_back(p + v);\n        ps.emplace_back(p - v);\n\
+    \    }\n    return ps;\n}\n\nstd::vector<point> cross_point(const circle &c1,\
+    \ const circle &c2) {\n    std::vector<point> ps;\n    int flag = intersection(c1,\
+    \ c2);\n    if(flag == 0 || flag == 4) {\n        return ps;\n    }\n    long\
+    \ double d = (c2.c - c1.c).abs();\n    long double x = internal::add(internal::add(d*d,\
     \ c1.r*c1.r),-c2.r * c2.r) / (2.0*d);\n    point p = c1.c + (c2.c - c1.c) * x\
     \ / d;\n    point v = rot90(c2.c - c1.c);\n    if(flag == 1 || flag == 3) {\n\
     \        ps.emplace_back(p);\n    }\n    else {\n        v = v * std::sqrt(std::max(internal::add(c1.r\
@@ -254,9 +259,19 @@ data:
     \ = tot.size();\n        for(int i = 0; i+1 < sz; i++) {\n            ret += self(self,\
     \ tot[i], tot[i+1]);\n        }\n        return ret;\n    };\n    for(int i =\
     \ 0; i < n; i++) {\n        s += cross_area(cross_area, poly[i], poly[(i+1 < n)\
-    \ ? i+1 : 0]);\n    }\n    return s;\n}\n\n}\n#line 13 \"test/geometry/common_area.test.cpp\"\
-    \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n\
-    \    circle c;\n    c.c = point(0.0, 0.0);\n    std::cin >> n >> c.r;\n    std::vector<point>\
+    \ ? i+1 : 0]);\n    }\n    return s;\n}\n\nlong double common_area(const circle\
+    \ &c1, const circle &c2) {\n    int flag = intersection(c1, c2);\n    if(flag\
+    \ == 3 || flag == 4) return 0.0;\n    else if(flag == 0 || flag == 1) {\n    \
+    \    long double r = std::min(c1.r, c2.r);\n        return PI * r * r;\n    }\n\
+    \    else {\n        long double d = (c1.c - c2.c).abs();\n        long double\
+    \ theta1 = std::acos(internal::add(internal::add(c1.r*c1.r, d*d), -c2.r*c2.r)/(2.0*c1.r*d));\n\
+    \        long double area1 = internal::add(c1.r * c1.r * theta1, - c1.r * c1.r\
+    \ * std::sin(theta1*2)/2.0);\n        long double theta2 = std::acos(internal::add(internal::add(c2.r*c2.r,\
+    \ d*d), -c1.r*c1.r)/(2.0*c2.r*d));\n        long double area2 = internal::add(c2.r\
+    \ * c2.r * theta2, - c2.r * c2.r * std::sin(theta2*2)/2.0);\n        return internal::add(area1,\
+    \ area2);\n    }\n}\n\n}\n#line 13 \"test/geometry/common_area.test.cpp\"\n\n\
+    namespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n \
+    \   circle c;\n    c.c = point(0.0, 0.0);\n    std::cin >> n >> c.r;\n    std::vector<point>\
     \ poly(n);\n    for(int i = 0; i < n; i++) {\n        std::cin >> poly[i];\n \
     \   }\n    std::cout << calc_common_area(c, poly) << '\\n';\n}\n\n}\n\nint main()\
     \ {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
@@ -280,7 +295,7 @@ data:
   isVerificationFile: true
   path: test/geometry/common_area.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 23:15:23+09:00'
+  timestamp: '2021-09-17 00:38:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/common_area.test.cpp

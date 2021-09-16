@@ -28,6 +28,9 @@ data:
     path: test/geometry/common_area.test.cpp
     title: test/geometry/common_area.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/geometry/common_area_circles.test.cpp
+    title: test/geometry/common_area_circles.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/common_tangent.test.cpp
     title: test/geometry/common_tangent.test.cpp
   - icon: ':heavy_check_mark:'
@@ -149,7 +152,11 @@ data:
     \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
     \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
     \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
-    \n}\n"
+    \n// \u2220ABC\u3092\u6C42\u3081\u308B(\u30E9\u30B8\u30A2\u30F3)\r\nlong double\
+    \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
+    \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
+    \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
+    \n}\r\n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <cmath>\r\n#include <cassert>\r\n#include <vector>\r\
     \n#include <iostream>\r\n#include <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr\
     \ long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double\
@@ -218,7 +225,11 @@ data:
     \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
     \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
     \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
-    \n}"
+    \n// \u2220ABC\u3092\u6C42\u3081\u308B(\u30E9\u30B8\u30A2\u30F3)\r\nlong double\
+    \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
+    \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
+    \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
+    \n}\r\n\r\n}"
   dependsOn: []
   isVerificationFile: false
   path: geometry/point.hpp
@@ -227,7 +238,7 @@ data:
   - geometry/circle.hpp
   - geometry/polygon.hpp
   - geometry/line.hpp
-  timestamp: '2021-09-16 23:15:23+09:00'
+  timestamp: '2021-09-17 00:38:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/cross_point.test.cpp
@@ -237,6 +248,7 @@ data:
   - test/geometry/intersection.test.cpp
   - test/geometry/contains.test.cpp
   - test/geometry/isp.test.cpp
+  - test/geometry/common_area_circles.test.cpp
   - test/geometry/reflection.test.cpp
   - test/geometry/convex_diameter.test.cpp
   - test/geometry/intersection_circle.test.cpp

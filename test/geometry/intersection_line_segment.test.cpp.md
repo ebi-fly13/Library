@@ -92,7 +92,11 @@ data:
     \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
     \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
     \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
-    \n}\n#line 2 \"geometry/line_segment.hpp\"\n\n#line 5 \"geometry/line_segment.hpp\"\
+    \n// \u2220ABC\u3092\u6C42\u3081\u308B(\u30E9\u30B8\u30A2\u30F3)\r\nlong double\
+    \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
+    \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
+    \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
+    \n}\r\n\r\n}\n#line 2 \"geometry/line_segment.hpp\"\n\n#line 5 \"geometry/line_segment.hpp\"\
     \n\n#line 2 \"geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\n#line 7\
     \ \"geometry/line.hpp\"\n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n\
     \    line(long double x1, long double y1, long double x2, long double y2) : a(x1,\
@@ -160,7 +164,7 @@ data:
   isVerificationFile: true
   path: test/geometry/intersection_line_segment.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 23:15:23+09:00'
+  timestamp: '2021-09-17 00:38:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/intersection_line_segment.test.cpp

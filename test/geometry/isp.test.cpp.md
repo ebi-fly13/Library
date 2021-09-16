@@ -85,11 +85,15 @@ data:
     \ {\r\n                if(p[i].y - b[j].y >= d) break;\r\n                d =\
     \ std::min(d, abs(p[i]-b[j]));\r\n            }\r\n            b.emplace_back(p[i]);\r\
     \n        }\r\n        return d;\r\n    };\r\n    return f(f, 0, n);\r\n}\r\n\r\
-    \n}\n#line 8 \"test/geometry/isp.test.cpp\"\n\r\nint main() {\r\n    std::cout\
-    \ << std::fixed << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\n    std::cin\
-    \ >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point p0(x1, y1), p1(x2, y2);\r\n    int\
-    \ q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\n    \
-    \    std::cin >> x >> y;\r\n        int flag = ebi::isp(p0, p1, ebi::point(x,y));\r\
+    \n// \u2220ABC\u3092\u6C42\u3081\u308B(\u30E9\u30B8\u30A2\u30F3)\r\nlong double\
+    \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
+    \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
+    \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
+    \n}\r\n\r\n}\n#line 8 \"test/geometry/isp.test.cpp\"\n\r\nint main() {\r\n   \
+    \ std::cout << std::fixed << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\
+    \n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point p0(x1, y1), p1(x2, y2);\r\
+    \n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\
+    \n        std::cin >> x >> y;\r\n        int flag = ebi::isp(p0, p1, ebi::point(x,y));\r\
     \n        std::string ans;\r\n        if(flag == 1) {\r\n            ans = \"\
     COUNTER_CLOCKWISE\";\r\n        }\r\n        else if(flag == -1) {\r\n       \
     \     ans = \"CLOCKWISE\";\r\n        }\r\n        else if(flag == -2) {\r\n \
@@ -115,7 +119,7 @@ data:
   isVerificationFile: true
   path: test/geometry/isp.test.cpp
   requiredBy: []
-  timestamp: '2021-09-16 23:15:23+09:00'
+  timestamp: '2021-09-17 00:38:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/isp.test.cpp
