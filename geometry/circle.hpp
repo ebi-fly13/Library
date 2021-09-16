@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 #include "point.hpp"
 #include "line.hpp"
 
@@ -82,6 +84,21 @@ std::vector<point> cross_point(const circle &c1, const circle &c2) {
         ps.emplace_back(p + v);
         ps.emplace_back(p - v);
     }
+    return ps;
+}
+
+std::vector<point> tangent_to_circle(const circle &c, const point &p) {
+    std::vector<point> ps;
+    point v = p - c.c;
+    long double d = v.abs();
+    long double h = std::sqrt(std::max(internal::add(norm(v), -c.r * c.r), (long double)(0.0)));
+    long double cos = c.r / d, sin = h / d;
+    point f(internal::add(v.x * cos , - v.y * sin), internal::add(v.x * sin, v.y * cos));
+    point g(internal::add(v.x * cos, v.y * sin), internal::add(- v.x * sin, v.y * cos));
+    f = f * c.r / f.abs();
+    g = g * c.r / g.abs();
+    ps.emplace_back(c.c + f);
+    ps.emplace_back(c.c + g);
     return ps;
 }
 
