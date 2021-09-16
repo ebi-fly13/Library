@@ -197,4 +197,11 @@ long double closest_pair(std::vector<point> p) {
     return f(f, 0, n);
 }
 
+// ∠ABCを求める(ラジアン)
+long double angle(const point &A, const point &B, const point &C) {
+    long double a = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();
+    long double cos = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);
+    return std::acos(cos);
+}
+
 }

@@ -10,6 +10,8 @@
 
 namespace ebi {
 
+const long double PI = std::acos(-1);
+
 struct circle {
     point c;
     long double r;
@@ -190,6 +192,23 @@ long double calc_common_area(const circle &c, const Polygon &poly) {
         s += cross_area(cross_area, poly[i], poly[(i+1 < n) ? i+1 : 0]);
     }
     return s;
+}
+
+long double common_area(const circle &c1, const circle &c2) {
+    int flag = intersection(c1, c2);
+    if(flag == 3 || flag == 4) return 0.0;
+    else if(flag == 0 || flag == 1) {
+        long double r = std::min(c1.r, c2.r);
+        return PI * r * r;
+    }
+    else {
+        long double d = (c1.c - c2.c).abs();
+        long double theta1 = std::acos(internal::add(internal::add(c1.r*c1.r, d*d), -c2.r*c2.r)/(2.0*c1.r*d));
+        long double area1 = internal::add(c1.r * c1.r * theta1, - c1.r * c1.r * std::sin(theta1*2)/2.0);
+        long double theta2 = std::acos(internal::add(internal::add(c2.r*c2.r, d*d), -c1.r*c1.r)/(2.0*c2.r*d));
+        long double area2 = internal::add(c2.r * c2.r * theta2, - c2.r * c2.r * std::sin(theta2*2)/2.0);
+        return internal::add(area1, area2);
+    }
 }
 
 }
