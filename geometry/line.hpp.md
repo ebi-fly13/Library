@@ -1,88 +1,88 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/circumscribed_circle_of_triangle.test.cpp
     title: test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_area.test.cpp
     title: test/geometry/common_area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_area_circles.test.cpp
     title: test/geometry/common_area_circles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_tangent.test.cpp
     title: test/geometry/common_tangent.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/contains.test.cpp
     title: test/geometry/contains.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/convex_diameter.test.cpp
     title: test/geometry/convex_diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/convex_polygon_cut.test.cpp
     title: test/geometry/convex_polygon_cut.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_points_of circles.test.cpp
     title: test/geometry/cross_points_of circles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_points_of_circle_and_line.test.cpp
     title: test/geometry/cross_points_of_circle_and_line.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/distance.test.cpp
     title: test/geometry/distance.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/incircle_of_triangle.test.cpp
     title: test/geometry/incircle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection_circle.test.cpp
     title: test/geometry/intersection_circle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/tangent_to_circle.test.cpp
     title: test/geometry/tangent_to_circle.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
-    \n#line 2 \"geometry/point.hpp\"\n\r\n#line 5 \"geometry/point.hpp\"\n#include\
-    \ <vector>\r\n#include <iostream>\r\n#include <algorithm>\r\n\r\nnamespace ebi\
-    \ {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\
-    \nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n\
-    }\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
+    \n#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#line 6 \"geometry/point.hpp\"\
+    \n#include <vector>\r\n#include <iostream>\r\n#include <algorithm>\r\n\r\nnamespace\
+    \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\
+    \n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\
+    \n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
     \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
     } // namespace internal\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n\
     \    point() = default;\r\n\r\n    point(long double x, long double y) : x(x),\
@@ -151,15 +151,24 @@ data:
     \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
     \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
     \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
-    \n}\r\n\r\n}\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\nstruct line\
-    \ {\n    point a,b;\n\n    line(long double x1, long double y1, long double x2,\
-    \ long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const point &a, const\
-    \ point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const {\n     \
-    \   return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
-    \ point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\n    long\
-    \ double distance(const point &c) const {\n    return std::abs(det(c - a, b -\
-    \ a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line &b) {\n\
-    \    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
+    \n}\r\n\r\nvoid arg_sort(std::vector<std::pair<std::int64_t,std::int64_t>> &a)\
+    \ {\r\n    int n = a.size();\r\n    std::vector ps(4, std::vector<Point>());\r\
+    \n    auto idx = [](Point v) -> int {\r\n        if(v.second >= 0) return (v.first\
+    \ >= 0) ? 0 : 1;\r\n        else return (v.first >= 0) ? 3 : 2;\r\n    };\r\n\
+    \    for(auto p: a) {\r\n        assert(!(p.first == 0 && p.second == 0));\r\n\
+    \        ps[idx(p)].emplace_back(p);\r\n    }\r\n    a.clear();\r\n    a.reserve(n);\r\
+    \n    for(int i = 0; i < 4; i++) {\r\n        std::sort(ps[i].begin(), ps[i].end(),\
+    \ [](Point &p1, Point &p2) -> bool { return p1.first * p2.second - p2.first *\
+    \ p1.second > 0; });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n   \
+    \ }\r\n    return;\r\n}\r\n\r\n}\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi\
+    \ {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double y1,\
+    \ long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const\
+    \ point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p)\
+    \ const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point\
+    \ relf(const point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\
+    \n    long double distance(const point &c) const {\n    return std::abs(det(c\
+    \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
+    \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
     \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
     \  return 0; // \u4EA4\u5DEE\n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a))\
     \ != 0) { // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\
@@ -203,8 +212,8 @@ data:
   - geometry/line_segment.hpp
   - geometry/circle.hpp
   - geometry/polygon.hpp
-  timestamp: '2021-09-17 00:38:07+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-09-18 00:05:33+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/cross_point.test.cpp
   - test/geometry/incircle_of_triangle.test.cpp

@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C
@@ -16,42 +16,42 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C
   bundledCode: "#line 1 \"test/geometry/isp.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
     \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
-    #line 2 \"geometry/point.hpp\"\n\r\n#include <cmath>\r\n#include <cassert>\r\n\
-    #include <vector>\r\n#line 7 \"geometry/point.hpp\"\n#include <algorithm>\r\n\r\
-    \nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal\
-    \ {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1\
-    \ : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
-    \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
-    } // namespace internal\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n\
-    \    point() = default;\r\n\r\n    point(long double x, long double y) : x(x),\
-    \ y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\n      \
-    \  x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n  \
-    \      return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
-    \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
-    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs)\
-    \ noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n\
-    \        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
-    \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
-    \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
-    \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
-    \    assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n        y /= k;\r\n  \
-    \      return *this;\r\n    }\r\n\r\n    point operator+(const point &rhs) const\
-    \ noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\n\r\n    point\
-    \ operator-(const point &rhs) const noexcept {\r\n        return point(*this)\
-    \ -= rhs;\r\n    }\r\n\r\n    point operator*(const point &rhs) const noexcept\
-    \ {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n    point operator*(const\
-    \ long double rhs) const noexcept {\r\n        return point(*this) *= rhs;\r\n\
-    \    }\r\n\r\n    point operator/(const long double rhs) const {\r\n        return\
-    \ point(*this) /= rhs;\r\n    }\r\n\r\n    point operator-() const noexcept {\r\
-    \n        return point(0, 0) - *this;\r\n    }\r\n\r\n    long double abs() const\
-    \ noexcept {\r\n        return std::sqrt(internal::add(x*x, y*y));\r\n    }\r\n\
-    \r\n    long double dot(const point rhs) const noexcept {\r\n        return internal::add(x*rhs.x,\
-    \ y*rhs.y);\r\n    }\r\n\r\n    long double det(const point rhs) const noexcept\
-    \ {\r\n        return internal::add(x*rhs.y, -y*rhs.x);\r\n    }\r\n\r\n    //\
-    \ arctan(y/x) (\u5358\u4F4D\u306F\u30E9\u30B8\u30A2\u30F3)\r\n    long double\
-    \ arg() const {\r\n        return std::atan2(y, x);\r\n    }\r\n\r\n    // x\u6607\
-    \u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n    bool operator<(const point &rhs)\
-    \ const noexcept {\r\n        if(internal::sgn(x-rhs.x)) return internal::sgn(x-rhs.x)<0;\r\
+    #line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#include <cmath>\r\n\
+    #include <cassert>\r\n#include <vector>\r\n#line 8 \"geometry/point.hpp\"\n#include\
+    \ <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\
+    \n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS)\
+    \ ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a, long double\
+    \ b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n\
+    \    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nstruct point {\r\n\
+    \    long double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double\
+    \ x, long double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point\
+    \ rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y,\
+    \ rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator-=(const\
+    \ point rhs) noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y\
+    \ = internal::add(y, -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point\
+    \ &operator*=(const point rhs) noexcept {\r\n        long double _x = internal::add(x*rhs.x,\
+    \ -y*rhs.y);\r\n        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n\
+    \        x = _x;\r\n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n\
+    \    point &operator*=(const long double k) noexcept {\r\n        x *= k;\r\n\
+    \        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point &operator/=(const\
+    \ long double k) {\r\n        assert(internal::sgn(k)!=0);\r\n        x /= k;\r\
+    \n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n    point operator+(const\
+    \ point &rhs) const noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\
+    \n\r\n    point operator-(const point &rhs) const noexcept {\r\n        return\
+    \ point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const point &rhs) const\
+    \ noexcept {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n    point\
+    \ operator*(const long double rhs) const noexcept {\r\n        return point(*this)\
+    \ *= rhs;\r\n    }\r\n\r\n    point operator/(const long double rhs) const {\r\
+    \n        return point(*this) /= rhs;\r\n    }\r\n\r\n    point operator-() const\
+    \ noexcept {\r\n        return point(0, 0) - *this;\r\n    }\r\n\r\n    long double\
+    \ abs() const noexcept {\r\n        return std::sqrt(internal::add(x*x, y*y));\r\
+    \n    }\r\n\r\n    long double dot(const point rhs) const noexcept {\r\n     \
+    \   return internal::add(x*rhs.x, y*rhs.y);\r\n    }\r\n\r\n    long double det(const\
+    \ point rhs) const noexcept {\r\n        return internal::add(x*rhs.y, -y*rhs.x);\r\
+    \n    }\r\n\r\n    // arctan(y/x) (\u5358\u4F4D\u306F\u30E9\u30B8\u30A2\u30F3\
+    )\r\n    long double arg() const {\r\n        return std::atan2(y, x);\r\n   \
+    \ }\r\n\r\n    // x\u6607\u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n    bool operator<(const\
+    \ point &rhs) const noexcept {\r\n        if(internal::sgn(x-rhs.x)) return internal::sgn(x-rhs.x)<0;\r\
     \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n};\r\n\r\nstd::ostream&\
     \ operator<<(std::ostream& os, const point &a) {\r\n    return os << a.x << \"\
     \ \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream& os, point &a)\
@@ -89,18 +89,27 @@ data:
     \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
     \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
     \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
-    \n}\r\n\r\n}\n#line 8 \"test/geometry/isp.test.cpp\"\n\r\nint main() {\r\n   \
-    \ std::cout << std::fixed << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\
-    \n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point p0(x1, y1), p1(x2, y2);\r\
-    \n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\
-    \n        std::cin >> x >> y;\r\n        int flag = ebi::isp(p0, p1, ebi::point(x,y));\r\
-    \n        std::string ans;\r\n        if(flag == 1) {\r\n            ans = \"\
-    COUNTER_CLOCKWISE\";\r\n        }\r\n        else if(flag == -1) {\r\n       \
-    \     ans = \"CLOCKWISE\";\r\n        }\r\n        else if(flag == -2) {\r\n \
-    \           ans = \"ONLINE_BACK\";\r\n        }\r\n        else if(flag == 2)\
-    \ {\r\n            ans = \"ONLINE_FRONT\";\r\n        }\r\n        else {\r\n\
-    \            ans = \"ON_SEGMENT\";\r\n        }\r\n        std::cout << ans <<\
-    \ std::endl;\r\n    }\r\n}\n"
+    \n}\r\n\r\nvoid arg_sort(std::vector<std::pair<std::int64_t,std::int64_t>> &a)\
+    \ {\r\n    int n = a.size();\r\n    std::vector ps(4, std::vector<Point>());\r\
+    \n    auto idx = [](Point v) -> int {\r\n        if(v.second >= 0) return (v.first\
+    \ >= 0) ? 0 : 1;\r\n        else return (v.first >= 0) ? 3 : 2;\r\n    };\r\n\
+    \    for(auto p: a) {\r\n        assert(!(p.first == 0 && p.second == 0));\r\n\
+    \        ps[idx(p)].emplace_back(p);\r\n    }\r\n    a.clear();\r\n    a.reserve(n);\r\
+    \n    for(int i = 0; i < 4; i++) {\r\n        std::sort(ps[i].begin(), ps[i].end(),\
+    \ [](Point &p1, Point &p2) -> bool { return p1.first * p2.second - p2.first *\
+    \ p1.second > 0; });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n   \
+    \ }\r\n    return;\r\n}\r\n\r\n}\n#line 8 \"test/geometry/isp.test.cpp\"\n\r\n\
+    int main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n    double\
+    \ x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::point p0(x1,\
+    \ y1), p1(x2, y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n\
+    \        double x,y;\r\n        std::cin >> x >> y;\r\n        int flag = ebi::isp(p0,\
+    \ p1, ebi::point(x,y));\r\n        std::string ans;\r\n        if(flag == 1) {\r\
+    \n            ans = \"COUNTER_CLOCKWISE\";\r\n        }\r\n        else if(flag\
+    \ == -1) {\r\n            ans = \"CLOCKWISE\";\r\n        }\r\n        else if(flag\
+    \ == -2) {\r\n            ans = \"ONLINE_BACK\";\r\n        }\r\n        else\
+    \ if(flag == 2) {\r\n            ans = \"ONLINE_FRONT\";\r\n        }\r\n    \
+    \    else {\r\n            ans = \"ON_SEGMENT\";\r\n        }\r\n        std::cout\
+    \ << ans << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_C\"\
     \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
     #include \"geometry/point.hpp\"\r\n\r\nint main() {\r\n    std::cout << std::fixed\
@@ -119,8 +128,8 @@ data:
   isVerificationFile: true
   path: test/geometry/isp.test.cpp
   requiredBy: []
-  timestamp: '2021-09-17 00:38:07+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-09-18 00:05:33+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/isp.test.cpp
 layout: document
