@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <cmath>
 #include <cassert>
 #include <vector>
@@ -202,6 +203,26 @@ long double angle(const point &A, const point &B, const point &C) {
     long double a = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();
     long double cos = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);
     return std::acos(cos);
+}
+
+void arg_sort(std::vector<std::pair<std::int64_t,std::int64_t>> &a) {
+    int n = a.size();
+    std::vector ps(4, std::vector<Point>());
+    auto idx = [](Point v) -> int {
+        if(v.second >= 0) return (v.first >= 0) ? 0 : 1;
+        else return (v.first >= 0) ? 3 : 2;
+    };
+    for(auto p: a) {
+        assert(!(p.first == 0 && p.second == 0));
+        ps[idx(p)].emplace_back(p);
+    }
+    a.clear();
+    a.reserve(n);
+    for(int i = 0; i < 4; i++) {
+        std::sort(ps[i].begin(), ps[i].end(), [](Point &p1, Point &p2) -> bool { return p1.first * p2.second - p2.first * p1.second > 0; });
+        for(auto &p: ps[i]) a.emplace_back(p);
+    }
+    return;
 }
 
 }
