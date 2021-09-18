@@ -91,22 +91,35 @@ data:
     \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
     \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
     \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
-    \n}\r\n\r\ntemplate<class T>\r\nvoid arg_sort(std::vector<std::pair<T , T>> &a)\
-    \ {\r\n    using Point = std::pair<T, T>;\r\n    int n = a.size();\r\n    std::vector\
-    \ ps(4, std::vector<Point>());\r\n    auto idx = [](Point v) -> int {\r\n    \
-    \    if(v.second >= 0) return (v.first >= 0) ? 0 : 1;\r\n        else return (v.first\
-    \ >= 0) ? 3 : 2;\r\n    };\r\n    for(auto p: a) {\r\n        assert(!(p.first\
-    \ == 0 && p.second == 0));\r\n        ps[idx(p)].emplace_back(p);\r\n    }\r\n\
-    \    a.clear();\r\n    a.reserve(n);\r\n    for(int i = 0; i < 4; i++) {\r\n \
-    \       std::sort(ps[i].begin(), ps[i].end(), [](Point &p1, Point &p2) -> bool\
-    \ { return p1.first * p2.second - p2.first * p1.second > 0; });\r\n        for(auto\
-    \ &p: ps[i]) a.emplace_back(p);\r\n    }\r\n    return;\r\n}\r\n\r\n}\n#line 12\
-    \ \"test/geometry/closest_pair.test.cpp\"\n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\
-    \nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point> p(n);\n\
-    \    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    std::cout\
-    \ << closest_pair(p) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
-    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    \    ebi::main_();\n}\n"
+    \n}\r\n\r\nvoid arg_sort(std::vector<point> &a) {\r\n    int n = a.size();\r\n\
+    \    std::vector ps(4, std::vector<point>());\r\n    auto idx = [](point v) ->\
+    \ int {\r\n        if(v.y >= 0) return (v.x >= 0) ? 0 : 1;\r\n        else return\
+    \ (v.x >= 0) ? 3 : 2;\r\n    };\r\n    for(auto p: a) {\r\n        assert(!(p.x\
+    \ == 0 && p.y == 0));\r\n        ps[idx(p)].emplace_back(p);\r\n    }\r\n    a.clear();\r\
+    \n    a.reserve(n);\r\n    for(int i = 0; i < 4; i++) {\r\n        std::sort(ps[i].begin(),\
+    \ ps[i].end(), \r\n            [](point &p1, point &p2) -> bool {\r\n        \
+    \        int flag = internal::sgn(internal::add(p1.x * p2.y, - p2.x * p1.y));\r\
+    \n                return flag == 0 ? (norm(p1) < norm(p2)) : flag > 0;\r\n   \
+    \         });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n    }\r\n \
+    \   return;\r\n}\r\n\r\ntemplate<class T>\r\nvoid arg_sort_ll(std::vector<std::pair<T\
+    \ , T>> &a) {\r\n    using Point = std::pair<T, T>;\r\n    int n = a.size();\r\
+    \n    std::vector ps(4, std::vector<Point>());\r\n    auto idx = [](Point v) ->\
+    \ int {\r\n        if(v.second >= 0) return (v.first >= 0) ? 0 : 1;\r\n      \
+    \  else return (v.first >= 0) ? 3 : 2;\r\n    };\r\n    for(auto p: a) {\r\n \
+    \       assert(!(p.first == 0 && p.second == 0));\r\n        ps[idx(p)].emplace_back(p);\r\
+    \n    }\r\n    a.clear();\r\n    a.reserve(n);\r\n    for(int i = 0; i < 4; i++)\
+    \ {\r\n        std::sort(ps[i].begin(), ps[i].end(), \r\n            [](Point\
+    \ &p1, Point &p2) -> bool { \r\n                T flag = p1.first * p2.second\
+    \ - p2.first * p1.second;\r\n                return flag == 0 ? (p1.first * p1.first\
+    \ + p1.second * p1.second < p2.first * p2.first + p2.second * p2.second) : flag\
+    \ > 0;\r\n            });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n\
+    \    }\r\n    return;\r\n}\r\n\r\n}\n#line 12 \"test/geometry/closest_pair.test.cpp\"\
+    \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n\
+    \    std::cin >> n;\n    std::vector<point> p(n);\n    for(auto &[x, y]: p) {\n\
+    \        std::cin >> x >> y;\n    }\n    std::cout << closest_pair(p) << '\\n';\n\
+    }\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A\"\
     \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
@@ -121,7 +134,7 @@ data:
   isVerificationFile: true
   path: test/geometry/closest_pair.test.cpp
   requiredBy: []
-  timestamp: '2021-09-18 11:40:59+09:00'
+  timestamp: '2021-09-18 14:37:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/closest_pair.test.cpp
