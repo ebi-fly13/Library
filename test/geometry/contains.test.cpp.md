@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_C
@@ -98,25 +98,25 @@ data:
     \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
     \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
     \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
-    \n}\r\n\r\nvoid arg_sort(std::vector<std::pair<std::int64_t,std::int64_t>> &a)\
-    \ {\r\n    int n = a.size();\r\n    std::vector ps(4, std::vector<Point>());\r\
-    \n    auto idx = [](Point v) -> int {\r\n        if(v.second >= 0) return (v.first\
-    \ >= 0) ? 0 : 1;\r\n        else return (v.first >= 0) ? 3 : 2;\r\n    };\r\n\
-    \    for(auto p: a) {\r\n        assert(!(p.first == 0 && p.second == 0));\r\n\
-    \        ps[idx(p)].emplace_back(p);\r\n    }\r\n    a.clear();\r\n    a.reserve(n);\r\
-    \n    for(int i = 0; i < 4; i++) {\r\n        std::sort(ps[i].begin(), ps[i].end(),\
-    \ [](Point &p1, Point &p2) -> bool { return p1.first * p2.second - p2.first *\
-    \ p1.second > 0; });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n   \
-    \ }\r\n    return;\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 5 \"\
-    geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\nstruct\
-    \ line {\n    point a,b;\n\n    line(long double x1, long double y1, long double\
-    \ x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const point &a, const\
-    \ point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const {\n     \
-    \   return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
-    \ point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\n    long\
-    \ double distance(const point &c) const {\n    return std::abs(det(c - a, b -\
-    \ a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line &b) {\n\
-    \    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
+    \n}\r\n\r\ntemplate<class T>\r\nvoid arg_sort(std::vector<std::pair<T , T>> &a)\
+    \ {\r\n    using Point = std::pair<T, T>;\r\n    int n = a.size();\r\n    std::vector\
+    \ ps(4, std::vector<Point>());\r\n    auto idx = [](Point v) -> int {\r\n    \
+    \    if(v.second >= 0) return (v.first >= 0) ? 0 : 1;\r\n        else return (v.first\
+    \ >= 0) ? 3 : 2;\r\n    };\r\n    for(auto p: a) {\r\n        assert(!(p.first\
+    \ == 0 && p.second == 0));\r\n        ps[idx(p)].emplace_back(p);\r\n    }\r\n\
+    \    a.clear();\r\n    a.reserve(n);\r\n    for(int i = 0; i < 4; i++) {\r\n \
+    \       std::sort(ps[i].begin(), ps[i].end(), [](Point &p1, Point &p2) -> bool\
+    \ { return p1.first * p2.second - p2.first * p1.second > 0; });\r\n        for(auto\
+    \ &p: ps[i]) a.emplace_back(p);\r\n    }\r\n    return;\r\n}\r\n\r\n}\n#line 2\
+    \ \"geometry/line.hpp\"\n\n#line 5 \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\
+    \n\nnamespace ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1,\
+    \ long double y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\
+    \n    line(const point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const\
+    \ point &p) const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\
+    \n    point relf(const point &p) const {\n        return proj(p)*double(2) - p;\n\
+    \    }\n\n    long double distance(const point &c) const {\n    return std::abs(det(c\
+    \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
+    \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
     \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
     \  return 0; // \u4EA4\u5DEE\n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a))\
     \ != 0) { // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\
@@ -213,8 +213,8 @@ data:
   isVerificationFile: true
   path: test/geometry/contains.test.cpp
   requiredBy: []
-  timestamp: '2021-09-18 00:05:33+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-09-18 11:40:59+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/contains.test.cpp
 layout: document

@@ -2,85 +2,85 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/circumscribed_circle_of_triangle.test.cpp
     title: test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/closest_pair.test.cpp
     title: test/geometry/closest_pair.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/common_area.test.cpp
     title: test/geometry/common_area.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/common_area_circles.test.cpp
     title: test/geometry/common_area_circles.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/common_tangent.test.cpp
     title: test/geometry/common_tangent.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/contains.test.cpp
     title: test/geometry/contains.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/convex_diameter.test.cpp
     title: test/geometry/convex_diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/convex_polygon_cut.test.cpp
     title: test/geometry/convex_polygon_cut.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of circles.test.cpp
     title: test/geometry/cross_points_of circles.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of_circle_and_line.test.cpp
     title: test/geometry/cross_points_of_circle_and_line.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/distance.test.cpp
     title: test/geometry/distance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/incircle_of_triangle.test.cpp
     title: test/geometry/incircle_of_triangle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/intersection_circle.test.cpp
     title: test/geometry/intersection_circle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/isp.test.cpp
     title: test/geometry/isp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/tangent_to_circle.test.cpp
     title: test/geometry/tangent_to_circle.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#include\
@@ -156,16 +156,16 @@ data:
     \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
     \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
     \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
-    \n}\r\n\r\nvoid arg_sort(std::vector<std::pair<std::int64_t,std::int64_t>> &a)\
-    \ {\r\n    int n = a.size();\r\n    std::vector ps(4, std::vector<Point>());\r\
-    \n    auto idx = [](Point v) -> int {\r\n        if(v.second >= 0) return (v.first\
-    \ >= 0) ? 0 : 1;\r\n        else return (v.first >= 0) ? 3 : 2;\r\n    };\r\n\
-    \    for(auto p: a) {\r\n        assert(!(p.first == 0 && p.second == 0));\r\n\
-    \        ps[idx(p)].emplace_back(p);\r\n    }\r\n    a.clear();\r\n    a.reserve(n);\r\
-    \n    for(int i = 0; i < 4; i++) {\r\n        std::sort(ps[i].begin(), ps[i].end(),\
-    \ [](Point &p1, Point &p2) -> bool { return p1.first * p2.second - p2.first *\
-    \ p1.second > 0; });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n   \
-    \ }\r\n    return;\r\n}\r\n\r\n}\n"
+    \n}\r\n\r\ntemplate<class T>\r\nvoid arg_sort(std::vector<std::pair<T , T>> &a)\
+    \ {\r\n    using Point = std::pair<T, T>;\r\n    int n = a.size();\r\n    std::vector\
+    \ ps(4, std::vector<Point>());\r\n    auto idx = [](Point v) -> int {\r\n    \
+    \    if(v.second >= 0) return (v.first >= 0) ? 0 : 1;\r\n        else return (v.first\
+    \ >= 0) ? 3 : 2;\r\n    };\r\n    for(auto p: a) {\r\n        assert(!(p.first\
+    \ == 0 && p.second == 0));\r\n        ps[idx(p)].emplace_back(p);\r\n    }\r\n\
+    \    a.clear();\r\n    a.reserve(n);\r\n    for(int i = 0; i < 4; i++) {\r\n \
+    \       std::sort(ps[i].begin(), ps[i].end(), [](Point &p1, Point &p2) -> bool\
+    \ { return p1.first * p2.second - p2.first * p1.second > 0; });\r\n        for(auto\
+    \ &p: ps[i]) a.emplace_back(p);\r\n    }\r\n    return;\r\n}\r\n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <cstdint>\r\n#include <cmath>\r\n#include <cassert>\r\
     \n#include <vector>\r\n#include <iostream>\r\n#include <algorithm>\r\n\r\nnamespace\
     \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\
@@ -239,16 +239,16 @@ data:
     \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
     \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
     \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
-    \n}\r\n\r\nvoid arg_sort(std::vector<std::pair<std::int64_t,std::int64_t>> &a)\
-    \ {\r\n    int n = a.size();\r\n    std::vector ps(4, std::vector<Point>());\r\
-    \n    auto idx = [](Point v) -> int {\r\n        if(v.second >= 0) return (v.first\
-    \ >= 0) ? 0 : 1;\r\n        else return (v.first >= 0) ? 3 : 2;\r\n    };\r\n\
-    \    for(auto p: a) {\r\n        assert(!(p.first == 0 && p.second == 0));\r\n\
-    \        ps[idx(p)].emplace_back(p);\r\n    }\r\n    a.clear();\r\n    a.reserve(n);\r\
-    \n    for(int i = 0; i < 4; i++) {\r\n        std::sort(ps[i].begin(), ps[i].end(),\
-    \ [](Point &p1, Point &p2) -> bool { return p1.first * p2.second - p2.first *\
-    \ p1.second > 0; });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n   \
-    \ }\r\n    return;\r\n}\r\n\r\n}"
+    \n}\r\n\r\ntemplate<class T>\r\nvoid arg_sort(std::vector<std::pair<T , T>> &a)\
+    \ {\r\n    using Point = std::pair<T, T>;\r\n    int n = a.size();\r\n    std::vector\
+    \ ps(4, std::vector<Point>());\r\n    auto idx = [](Point v) -> int {\r\n    \
+    \    if(v.second >= 0) return (v.first >= 0) ? 0 : 1;\r\n        else return (v.first\
+    \ >= 0) ? 3 : 2;\r\n    };\r\n    for(auto p: a) {\r\n        assert(!(p.first\
+    \ == 0 && p.second == 0));\r\n        ps[idx(p)].emplace_back(p);\r\n    }\r\n\
+    \    a.clear();\r\n    a.reserve(n);\r\n    for(int i = 0; i < 4; i++) {\r\n \
+    \       std::sort(ps[i].begin(), ps[i].end(), [](Point &p1, Point &p2) -> bool\
+    \ { return p1.first * p2.second - p2.first * p1.second > 0; });\r\n        for(auto\
+    \ &p: ps[i]) a.emplace_back(p);\r\n    }\r\n    return;\r\n}\r\n\r\n}"
   dependsOn: []
   isVerificationFile: false
   path: geometry/point.hpp
@@ -257,8 +257,8 @@ data:
   - geometry/circle.hpp
   - geometry/polygon.hpp
   - geometry/line.hpp
-  timestamp: '2021-09-18 00:05:33+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-09-18 11:40:59+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/cross_point.test.cpp
   - test/geometry/incircle_of_triangle.test.cpp
