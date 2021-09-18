@@ -205,8 +205,32 @@ long double angle(const point &A, const point &B, const point &C) {
     return std::acos(cos);
 }
 
+void arg_sort(std::vector<point> &a) {
+    int n = a.size();
+    std::vector ps(4, std::vector<point>());
+    auto idx = [](point v) -> int {
+        if(v.y >= 0) return (v.x >= 0) ? 0 : 1;
+        else return (v.x >= 0) ? 3 : 2;
+    };
+    for(auto p: a) {
+        assert(!(p.x == 0 && p.y == 0));
+        ps[idx(p)].emplace_back(p);
+    }
+    a.clear();
+    a.reserve(n);
+    for(int i = 0; i < 4; i++) {
+        std::sort(ps[i].begin(), ps[i].end(), 
+            [](point &p1, point &p2) -> bool {
+                int flag = internal::sgn(internal::add(p1.x * p2.y, - p2.x * p1.y));
+                return flag == 0 ? (norm(p1) < norm(p2)) : flag > 0;
+            });
+        for(auto &p: ps[i]) a.emplace_back(p);
+    }
+    return;
+}
+
 template<class T>
-void arg_sort(std::vector<std::pair<T , T>> &a) {
+void arg_sort_ll(std::vector<std::pair<T , T>> &a) {
     using Point = std::pair<T, T>;
     int n = a.size();
     std::vector ps(4, std::vector<Point>());
@@ -221,7 +245,11 @@ void arg_sort(std::vector<std::pair<T , T>> &a) {
     a.clear();
     a.reserve(n);
     for(int i = 0; i < 4; i++) {
-        std::sort(ps[i].begin(), ps[i].end(), [](Point &p1, Point &p2) -> bool { return p1.first * p2.second - p2.first * p1.second > 0; });
+        std::sort(ps[i].begin(), ps[i].end(), 
+            [](Point &p1, Point &p2) -> bool { 
+                T flag = p1.first * p2.second - p2.first * p1.second;
+                return flag == 0 ? (p1.first * p1.first + p1.second * p1.second < p2.first * p2.first + p2.second * p2.second) : flag > 0;
+            });
         for(auto &p: ps[i]) a.emplace_back(p);
     }
     return;
