@@ -205,7 +205,9 @@ long double angle(const point &A, const point &B, const point &C) {
     return std::acos(cos);
 }
 
-void arg_sort(std::vector<std::pair<std::int64_t,std::int64_t>> &a) {
+template<class T>
+void arg_sort(std::vector<std::pair<T , T>> &a) {
+    using Point = std::pair<T, T>;
     int n = a.size();
     std::vector ps(4, std::vector<Point>());
     auto idx = [](Point v) -> int {
