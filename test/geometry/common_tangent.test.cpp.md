@@ -150,61 +150,65 @@ data:
     \ &b) {\n    if(intersection(a, b) < 2) {\n        return 0;\n    }\n    else\
     \ {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line 2 \"geometry/line_segment.hpp\"\
     \n\n#line 5 \"geometry/line_segment.hpp\"\n\n#line 8 \"geometry/line_segment.hpp\"\
-    \n\nnamespace ebi {\n\nstruct line_segment {\n    point a, b;\n\n    line_segment(long\
-    \ double x1, long double y1, long double x2, long double y2) : a(x1, y1), b(x2,\
-    \ y2) { }\n\n    line_segment(const point &a, const point &b) : a(a), b(b) { }\n\
-    };\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\u304B\u5224\u5B9A\nbool intersection_line_segment(const\
-    \ point &a, const point &b, const point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
+    \n\nnamespace ebi {\n\nstruct line_segment {\n    point a, b;\n\n    line_segment()\
+    \ = default;\n\n    line_segment(long double x1, long double y1, long double x2,\
+    \ long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line_segment(const point &a,\
+    \ const point &b) : a(a), b(b) { }\n};\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\
+    \u308B\u304B\u5224\u5B9A\nbool intersection_line_segment(const point &a, const\
+    \ point &b, const point &c, const point &d) {\n    if(internal::sgn(isp(a,b,c)*isp(a,b,d))\
     \ <= 0 && internal::sgn(isp(c,d,a)*isp(c,d,b)) <= 0) {\n        return true;\n\
     \    }\n    return false;\n}\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\
     \u304B\u5224\u5B9A\nbool intersection(const line_segment &a, const line_segment\
     \ &b) {\n    return intersection_line_segment(a.a, a.b, b.a, b.b);\n}\n\nbool\
     \ intersection(const line &a, const line_segment &b) {\n    if(internal::sgn(det(b.a\
     \ - a.a, a.b)) * internal::sgn(det(b.b - a.a, a.b)) < 0) {\n        return true;\n\
-    \    }\n    else {\n        return false;\n    }\n}\n\nlong double distance(const\
-    \ line_segment &a, const point &c) {\n    if(internal::sgn(dot(a.b - a.a, c -\
-    \ a.a)) < 0) {\n        return abs(c-a.a);\n    }\n    else if(internal::sgn(dot(a.a\
-    \ - a.b, c - a.b)) < 0) {\n        return abs(c-a.b);\n    }\n    else {\n   \
-    \     return std::abs(det(c - a.a, a.b - a.a)/abs(a.b-a.a));\n    }\n}\n\nlong\
-    \ double distance(const line_segment &a, const line_segment &b) {\n    if(intersection(a,\
-    \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(std::min(distance(a,\
-    \ b.a), distance(a, b.b)), std::min(distance(b, a.a), distance(b, a.b)));\n  \
-    \  }\n}\n\nlong double distance(const line &a, const line_segment &b) {\n    if(intersection(a,\
-    \ b)) {\n        return 0;\n    }\n    else {\n        return std::min(distance(a,\
-    \ b.a), distance(a, b.b));\n    }\n}\n\n}\n#line 2 \"geometry/polygon.hpp\"\n\n\
-    #line 5 \"geometry/polygon.hpp\"\n\n#line 8 \"geometry/polygon.hpp\"\n\nnamespace\
-    \ ebi {\n\nusing Polygon = std::vector<point>;\n\nlong double area(const Polygon\
-    \ &poly) {\n    long double s = 0;\n    int n = poly.size();\n    for(int i =\
-    \ 0; i < n; i++) {\n        s = internal::add(s, det(poly[i], poly[(i+1 != n)\
-    \ ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return s;\n}\n\n// \u51F8\u591A\u89D2\
-    \u5F62\u304B\u5224\u5B9A. p\u306B\u53CD\u6642\u8A08\u56DE\u308A\u3067\u70B9\u304C\
-    \u5165\u3063\u3066\u3044\u308B\u3068\u4EEE\u5B9A\nbool is_convex(const Polygon\
-    \ &poly) {\n    int n = poly.size();\n    for(int i = 0; i < n; i++) {\n     \
-    \   if(isp(poly[i], poly[(i+1 != n) ? i+1 : 0], poly[(i+2 < n) ? i+2 : (i+2)%n])\
-    \ == -1) {\n            return false;\n        }\n    }\n    return true;\n}\n\
-    \nenum {\n    OUT, ON, IN\n};\n\nint contains(const Polygon &poly, const point\
-    \ &p) {\n    bool in = false;\n    int n = poly.size();\n    for(int i = 0; i\
-    \ < n; i++) {\n        point a = poly[i] - p;\n        point b = poly[(i+1 < n)\
-    \ ? i+1 : 0] - p;\n        if(a.y > b.y) std::swap(a, b);\n        if(a.y <= 0\
-    \ && 0 < b.y && det(a, b) < 0) in = !in;\n        if(det(a, b) == 0 && dot(a,\
-    \ b) <= 0) return ON;\n    }\n    return in ? IN : OUT;\n}\n\nlong double convex_diameter(const\
-    \ Polygon &convex_poly) {\n    int n = convex_poly.size();\n    int is = 0, js\
-    \ = 0;\n    for(int i = 1; i < n; i++) {\n        if(convex_poly[i].y > convex_poly[is].y)\
-    \ is = i;\n        if(convex_poly[i].y < convex_poly[js].y) js = i;\n    }\n \
-    \   long double max = (convex_poly[is]-convex_poly[js]).abs();\n    int i, max_i,\
-    \ j, max_j;\n    i = max_i = is;\n    j = max_j = js;\n    do {\n        if(det(convex_poly[(i+1\
-    \ < n) ? i+1 : 0] - convex_poly[i], convex_poly[(j+1 < n) ? j+1 : 0] - convex_poly[j])\
-    \ >= 0) {\n            j = (j+1 < n) ? j+1 : 0;\n        }\n        else {\n \
-    \           i = (i+1 < n) ? i+1 : 0;\n        }\n        if((convex_poly[i] -\
-    \ convex_poly[j]).abs() > max) {\n            max = (convex_poly[i] - convex_poly[j]).abs();\n\
-    \            max_i = i;\n            max_j = j;\n        }\n    } while(i != is\
-    \ || j != js);\n    return max;\n}\n\nPolygon convex_polygon_cut(const Polygon\
-    \ &poly, const line &l) {\n    Polygon ret;\n    int n = poly.size();\n    for(int\
-    \ i = 0; i < n; i++) {\n        const point &now = poly[i];\n        const point\
-    \ &nxt = poly[(i+1 < n) ? i+1 : 0];\n        long double cf = det(l.a - now, l.b\
-    \ - now);\n        long double cs = det(l.a - nxt, l.b - nxt);\n        if(internal::sgn(cf)\
-    \ >= 0) {\n            ret.emplace_back(now);\n        }\n        if(internal::sgn(cf)\
-    \ * internal::sgn(cs) < 0) {\n            ret.emplace_back(cross_point(line(now,\
+    \    }\n    else {\n        return false;\n    }\n}\n\npoint cross_point(const\
+    \ line_segment &s, const line_segment &t) {\n    assert(intersection(s, t));\n\
+    \    return s.a + (s.b - s.a) * det(t.a - s.a, t.b - t.a) / det(s.b - s.a, t.b\
+    \ - t.a);\n}\n\nlong double distance(const line_segment &a, const point &c) {\n\
+    \    if(internal::sgn(dot(a.b - a.a, c - a.a)) < 0) {\n        return abs(c-a.a);\n\
+    \    }\n    else if(internal::sgn(dot(a.a - a.b, c - a.b)) < 0) {\n        return\
+    \ abs(c-a.b);\n    }\n    else {\n        return std::abs(det(c - a.a, a.b - a.a)/abs(a.b-a.a));\n\
+    \    }\n}\n\nlong double distance(const line_segment &a, const line_segment &b)\
+    \ {\n    if(intersection(a, b)) {\n        return 0;\n    }\n    else {\n    \
+    \    return std::min(std::min(distance(a, b.a), distance(a, b.b)), std::min(distance(b,\
+    \ a.a), distance(b, a.b)));\n    }\n}\n\nlong double distance(const line &a, const\
+    \ line_segment &b) {\n    if(intersection(a, b)) {\n        return 0;\n    }\n\
+    \    else {\n        return std::min(distance(a, b.a), distance(a, b.b));\n  \
+    \  }\n}\n\n}\n#line 2 \"geometry/polygon.hpp\"\n\n#line 5 \"geometry/polygon.hpp\"\
+    \n\n#line 8 \"geometry/polygon.hpp\"\n\nnamespace ebi {\n\nusing Polygon = std::vector<point>;\n\
+    \nlong double area(const Polygon &poly) {\n    long double s = 0;\n    int n =\
+    \ poly.size();\n    for(int i = 0; i < n; i++) {\n        s = internal::add(s,\
+    \ det(poly[i], poly[(i+1 != n) ? i+1 : 0]));\n    }\n    s /= 2.0;\n    return\
+    \ s;\n}\n\n// \u51F8\u591A\u89D2\u5F62\u304B\u5224\u5B9A. p\u306B\u53CD\u6642\u8A08\
+    \u56DE\u308A\u3067\u70B9\u304C\u5165\u3063\u3066\u3044\u308B\u3068\u4EEE\u5B9A\
+    \nbool is_convex(const Polygon &poly) {\n    int n = poly.size();\n    for(int\
+    \ i = 0; i < n; i++) {\n        if(isp(poly[i], poly[(i+1 != n) ? i+1 : 0], poly[(i+2\
+    \ < n) ? i+2 : (i+2)%n]) == -1) {\n            return false;\n        }\n    }\n\
+    \    return true;\n}\n\nenum {\n    OUT, ON, IN\n};\n\nint contains(const Polygon\
+    \ &poly, const point &p) {\n    bool in = false;\n    int n = poly.size();\n \
+    \   for(int i = 0; i < n; i++) {\n        point a = poly[i] - p;\n        point\
+    \ b = poly[(i+1 < n) ? i+1 : 0] - p;\n        if(a.y > b.y) std::swap(a, b);\n\
+    \        if(a.y <= 0 && 0 < b.y && det(a, b) < 0) in = !in;\n        if(det(a,\
+    \ b) == 0 && dot(a, b) <= 0) return ON;\n    }\n    return in ? IN : OUT;\n}\n\
+    \nlong double convex_diameter(const Polygon &convex_poly) {\n    int n = convex_poly.size();\n\
+    \    int is = 0, js = 0;\n    for(int i = 1; i < n; i++) {\n        if(convex_poly[i].y\
+    \ > convex_poly[is].y) is = i;\n        if(convex_poly[i].y < convex_poly[js].y)\
+    \ js = i;\n    }\n    long double max = (convex_poly[is]-convex_poly[js]).abs();\n\
+    \    int i, max_i, j, max_j;\n    i = max_i = is;\n    j = max_j = js;\n    do\
+    \ {\n        if(det(convex_poly[(i+1 < n) ? i+1 : 0] - convex_poly[i], convex_poly[(j+1\
+    \ < n) ? j+1 : 0] - convex_poly[j]) >= 0) {\n            j = (j+1 < n) ? j+1 :\
+    \ 0;\n        }\n        else {\n            i = (i+1 < n) ? i+1 : 0;\n      \
+    \  }\n        if((convex_poly[i] - convex_poly[j]).abs() > max) {\n          \
+    \  max = (convex_poly[i] - convex_poly[j]).abs();\n            max_i = i;\n  \
+    \          max_j = j;\n        }\n    } while(i != is || j != js);\n    return\
+    \ max;\n}\n\nPolygon convex_polygon_cut(const Polygon &poly, const line &l) {\n\
+    \    Polygon ret;\n    int n = poly.size();\n    for(int i = 0; i < n; i++) {\n\
+    \        const point &now = poly[i];\n        const point &nxt = poly[(i+1 < n)\
+    \ ? i+1 : 0];\n        long double cf = det(l.a - now, l.b - now);\n        long\
+    \ double cs = det(l.a - nxt, l.b - nxt);\n        if(internal::sgn(cf) >= 0) {\n\
+    \            ret.emplace_back(now);\n        }\n        if(internal::sgn(cf) *\
+    \ internal::sgn(cs) < 0) {\n            ret.emplace_back(cross_point(line(now,\
     \ nxt), l));\n        }\n    }\n    return ret;\n}\n\n}\n#line 10 \"geometry/circle.hpp\"\
     \n\nnamespace ebi {\n\nconst long double PI = std::acos(-1);\n\nstruct circle\
     \ {\n    point c;\n    long double r;\n    circle() = default;\n    circle(const\
@@ -319,7 +323,7 @@ data:
   isVerificationFile: true
   path: test/geometry/common_tangent.test.cpp
   requiredBy: []
-  timestamp: '2021-09-18 14:37:55+09:00'
+  timestamp: '2021-10-14 14:29:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/common_tangent.test.cpp

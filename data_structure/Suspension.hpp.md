@@ -45,8 +45,8 @@ data:
   isVerificationFile: false
   path: data_structure/Suspension.hpp
   requiredBy:
-  - data_structure/bankers_queue.hpp
   - data_structure/Stream.hpp
+  - data_structure/bankers_queue.hpp
   timestamp: '2021-03-01 14:43:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
