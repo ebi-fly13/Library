@@ -13,6 +13,9 @@ data:
     path: test/Segtree.test.cpp
     title: test/Segtree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_1645.test.cpp
+    title: test/aoj/aoj_1645.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/point_add_rectangle_sum.test.cpp
     title: test/point_add_rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -82,6 +85,7 @@ data:
   verifiedWith:
   - test/vertex_add_path_sum.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
+  - test/aoj/aoj_1645.test.cpp
   - test/vertex_set_path_compositie.test.cpp
   - test/rectangle_sum.test.cpp
   - test/point_add_rectangle_sum.test.cpp
