@@ -74,6 +74,23 @@ public:
     bool same(int u, int v) {
         return cmp[u]==cmp[v];
     }
+
+    graph create_graph() {
+        graph t(k);
+        for(int i = 0; i < n; i++) {
+            int v = cmp[i];
+            for(auto to: g[i]) {
+                int nv = cmp[to];
+                if(v == nv) continue;
+                t[v].emplace_back(nv);
+            }
+        }
+        for(int i = 0; i < k; i++) {
+            std::sort(t[i].begin(), t[i].end());
+            t[i].erase(std::unique(t[i].begin(), t[i].end()), t[i].end());
+        }
+        return t;
+    }
 };
 
 } // namespace ebi
