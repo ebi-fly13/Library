@@ -51,7 +51,14 @@ data:
     \ res(k);\r\n        for(int i = 0; i<n; i++) {\r\n            res[cmp[i]].emplace_back(i);\r\
     \n        }\r\n        return res;\r\n    }\r\n\r\n    std::vector<int> scc_id()\
     \ {\r\n        return cmp;\r\n    }\r\n\r\n    bool same(int u, int v) {\r\n \
-    \       return cmp[u]==cmp[v];\r\n    }\r\n};\r\n\r\n} // namespace ebi\n"
+    \       return cmp[u]==cmp[v];\r\n    }\r\n\r\n    graph create_graph() {\r\n\
+    \        graph t(k);\r\n        for(int i = 0; i < n; i++) {\r\n            int\
+    \ v = cmp[i];\r\n            for(auto to: g[i]) {\r\n                int nv =\
+    \ cmp[to];\r\n                if(v == nv) continue;\r\n                t[v].emplace_back(nv);\r\
+    \n            }\r\n        }\r\n        for(int i = 0; i < k; i++) {\r\n     \
+    \       std::sort(t[i].begin(), t[i].end());\r\n            t[i].erase(std::unique(t[i].begin(),\
+    \ t[i].end()), t[i].end());\r\n        }\r\n        return t;\r\n    }\r\n};\r\
+    \n\r\n} // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include \"../graph/template.hpp\"\r\n\r\n#include <vector>\r\
     \n#include <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nstruct scc_graph {\r\nprivate:\r\
     \n    graph g,rg;\r\n    int n,k;\r\n\r\n    std::vector<int> vs, cmp;\r\n   \
@@ -72,14 +79,21 @@ data:
     \ res(k);\r\n        for(int i = 0; i<n; i++) {\r\n            res[cmp[i]].emplace_back(i);\r\
     \n        }\r\n        return res;\r\n    }\r\n\r\n    std::vector<int> scc_id()\
     \ {\r\n        return cmp;\r\n    }\r\n\r\n    bool same(int u, int v) {\r\n \
-    \       return cmp[u]==cmp[v];\r\n    }\r\n};\r\n\r\n} // namespace ebi"
+    \       return cmp[u]==cmp[v];\r\n    }\r\n\r\n    graph create_graph() {\r\n\
+    \        graph t(k);\r\n        for(int i = 0; i < n; i++) {\r\n            int\
+    \ v = cmp[i];\r\n            for(auto to: g[i]) {\r\n                int nv =\
+    \ cmp[to];\r\n                if(v == nv) continue;\r\n                t[v].emplace_back(nv);\r\
+    \n            }\r\n        }\r\n        for(int i = 0; i < k; i++) {\r\n     \
+    \       std::sort(t[i].begin(), t[i].end());\r\n            t[i].erase(std::unique(t[i].begin(),\
+    \ t[i].end()), t[i].end());\r\n        }\r\n        return t;\r\n    }\r\n};\r\
+    \n\r\n} // namespace ebi"
   dependsOn:
   - graph/template.hpp
   isVerificationFile: false
   path: graph/scc_graph.hpp
   requiredBy:
   - algorithm/two_sat.hpp
-  timestamp: '2021-08-24 22:55:36+09:00'
+  timestamp: '2021-10-17 17:09:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/two_sat.test.cpp

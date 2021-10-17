@@ -49,18 +49,25 @@ data:
     \ res(k);\r\n        for(int i = 0; i<n; i++) {\r\n            res[cmp[i]].emplace_back(i);\r\
     \n        }\r\n        return res;\r\n    }\r\n\r\n    std::vector<int> scc_id()\
     \ {\r\n        return cmp;\r\n    }\r\n\r\n    bool same(int u, int v) {\r\n \
-    \       return cmp[u]==cmp[v];\r\n    }\r\n};\r\n\r\n} // namespace ebi\n#line\
-    \ 6 \"algorithm/two_sat.hpp\"\n\nnamespace ebi {\n\nstruct two_sat {\npublic:\n\
-    \    two_sat(int _n) : n(_n), scc(2*n) { }\n\n    void add_clause(int p, bool\
-    \ _p, int q, bool _q) {\n        assert(0 <= p && p < n);\n        assert(0 <=\
-    \ q && q < n);\n        scc.add_edge(2*p + (_p ? 1 : 0), 2*q + (_q ? 0 : 1));\n\
-    \        scc.add_edge(2*q + (_q ? 1 : 0), 2*p + (_p ? 0 : 1));\n    }\n\n    bool\
-    \ satisfiable() {\n        scc.scc();\n        std::vector<int> id = scc.scc_id();\n\
-    \        _answer.resize(n);\n        for(int i = 0; i < n; i++) {\n          \
-    \  if(id[2*i] == id[2*i + 1]) {\n                return false;\n            }\n\
-    \            _answer[i] = id[2*i] > id[2*i + 1];\n        }\n        return true;\n\
-    \    }\n\n    std::vector<bool> answer() {\n        return _answer;\n    }\nprivate:\n\
-    \    int n;\n    scc_graph scc;\n    std::vector<bool> _answer;\n};\n\n}\n"
+    \       return cmp[u]==cmp[v];\r\n    }\r\n\r\n    graph create_graph() {\r\n\
+    \        graph t(k);\r\n        for(int i = 0; i < n; i++) {\r\n            int\
+    \ v = cmp[i];\r\n            for(auto to: g[i]) {\r\n                int nv =\
+    \ cmp[to];\r\n                if(v == nv) continue;\r\n                t[v].emplace_back(nv);\r\
+    \n            }\r\n        }\r\n        for(int i = 0; i < k; i++) {\r\n     \
+    \       std::sort(t[i].begin(), t[i].end());\r\n            t[i].erase(std::unique(t[i].begin(),\
+    \ t[i].end()), t[i].end());\r\n        }\r\n        return t;\r\n    }\r\n};\r\
+    \n\r\n} // namespace ebi\n#line 6 \"algorithm/two_sat.hpp\"\n\nnamespace ebi {\n\
+    \nstruct two_sat {\npublic:\n    two_sat(int _n) : n(_n), scc(2*n) { }\n\n   \
+    \ void add_clause(int p, bool _p, int q, bool _q) {\n        assert(0 <= p &&\
+    \ p < n);\n        assert(0 <= q && q < n);\n        scc.add_edge(2*p + (_p ?\
+    \ 1 : 0), 2*q + (_q ? 0 : 1));\n        scc.add_edge(2*q + (_q ? 1 : 0), 2*p +\
+    \ (_p ? 0 : 1));\n    }\n\n    bool satisfiable() {\n        scc.scc();\n    \
+    \    std::vector<int> id = scc.scc_id();\n        _answer.resize(n);\n       \
+    \ for(int i = 0; i < n; i++) {\n            if(id[2*i] == id[2*i + 1]) {\n   \
+    \             return false;\n            }\n            _answer[i] = id[2*i] >\
+    \ id[2*i + 1];\n        }\n        return true;\n    }\n\n    std::vector<bool>\
+    \ answer() {\n        return _answer;\n    }\nprivate:\n    int n;\n    scc_graph\
+    \ scc;\n    std::vector<bool> _answer;\n};\n\n}\n"
   code: "#pragma once\n\n#include <cassert>\n\n#include \"../graph/scc_graph.hpp\"\
     \n\nnamespace ebi {\n\nstruct two_sat {\npublic:\n    two_sat(int _n) : n(_n),\
     \ scc(2*n) { }\n\n    void add_clause(int p, bool _p, int q, bool _q) {\n    \
@@ -79,7 +86,7 @@ data:
   isVerificationFile: false
   path: algorithm/two_sat.hpp
   requiredBy: []
-  timestamp: '2021-08-24 22:55:36+09:00'
+  timestamp: '2021-10-17 17:09:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/two_sat.test.cpp
