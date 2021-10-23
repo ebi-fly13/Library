@@ -145,6 +145,22 @@ public:
         return val[right];
     }
 
+    int left_val() const {
+        return val[left];
+    }
+
+    int front_val() const {
+        return val[front];
+    }
+
+    int back_val() const {
+        return val[back];
+    }
+
+    int down_val() const {
+        return val[down];
+    }
+
     bool operator==(const Dice &rhs) const noexcept {
         std::vector<int> ret(6);
         for(const auto &idx: alldice) {
