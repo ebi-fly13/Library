@@ -59,16 +59,20 @@ data:
     \ {\n        return val[right];\n    }\n\n    int left_val() const {\n       \
     \ return val[left];\n    }\n\n    int front_val() const {\n        return val[front];\n\
     \    }\n\n    int back_val() const {\n        return val[back];\n    }\n\n   \
-    \ int down_val() const {\n        return val[down];\n    }\n\n    bool operator==(const\
-    \ Dice &rhs) const noexcept {\n        std::vector<int> ret(6);\n        for(const\
-    \ auto &idx: alldice) {\n            for(int i = 0; i < 6; i++) {\n          \
-    \      ret[i] = val[idx[i]];\n            }\n            if(ret == rhs.val) return\
-    \ true;\n        }\n        return false;\n    }\n\n    std::vector<int> val =\
-    \ {0, 1, 2, 3, 4, 5};\n};\n\nstd::istream& operator>>(std::istream& os, Dice &d)\
-    \ {\n    return os >> d.val[0] >> d.val[1] >> d.val[2] >> d.val[3] >> d.val[4]\
-    \ >> d.val[5];  \n}\n\n}\n#line 6 \"test/Dice/dice3.test.cpp\"\n\nint main() {\n\
-    \    ebi::Dice a, b;\n    std::cin >> a >> b;\n    if(a == b) std::cout << \"\
-    Yes\\n\";\n    else std::cout << \"No\\n\";\n}\n"
+    \ int down_val() const {\n        return val[down];\n    }\n\n    std::vector<int>\
+    \ now() const {\n        std::vector<int> ret(6);\n        ret[0] = top_val();\n\
+    \        ret[1] = front_val();\n        ret[2] = right_val();\n        ret[3]\
+    \ = left_val();\n        ret[4] = back_val();\n        ret[5] = down_val();\n\
+    \        return ret;\n    }\n\n    bool operator==(const Dice &rhs) const noexcept\
+    \ {\n        std::vector<int> ret(6);\n        for(const auto &idx: alldice) {\n\
+    \            for(int i = 0; i < 6; i++) {\n                ret[i] = val[idx[i]];\n\
+    \            }\n            if(ret == rhs.val) return true;\n        }\n     \
+    \   return false;\n    }\n\n    std::vector<int> val = {0, 1, 2, 3, 4, 5};\n};\n\
+    \nstd::istream& operator>>(std::istream& os, Dice &d) {\n    return os >> d.val[0]\
+    \ >> d.val[1] >> d.val[2] >> d.val[3] >> d.val[4] >> d.val[5];  \n}\n\n}\n#line\
+    \ 6 \"test/Dice/dice3.test.cpp\"\n\nint main() {\n    ebi::Dice a, b;\n    std::cin\
+    \ >> a >> b;\n    if(a == b) std::cout << \"Yes\\n\";\n    else std::cout << \"\
+    No\\n\";\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_11_C\"\
     \n\n#include <iostream>\n\n#include \"../../Dice/Dice.hpp\"\n\nint main() {\n\
     \    ebi::Dice a, b;\n    std::cin >> a >> b;\n    if(a == b) std::cout << \"\
@@ -78,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/Dice/dice3.test.cpp
   requiredBy: []
-  timestamp: '2021-10-23 12:14:20+09:00'
+  timestamp: '2021-10-23 12:51:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Dice/dice3.test.cpp
