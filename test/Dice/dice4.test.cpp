@@ -15,7 +15,7 @@ int main() {
         for(int j = i+1; j < n; j++) {
             if(d[i] == d[j]) {
                 std::cout << "No\n";
-                return;
+                return 0;
             }
         }
     }
