@@ -161,6 +161,17 @@ public:
         return val[down];
     }
 
+    std::vector<int> now() const {
+        std::vector<int> ret(6);
+        ret[0] = top_val();
+        ret[1] = front_val();
+        ret[2] = right_val();
+        ret[3] = left_val();
+        ret[4] = back_val();
+        ret[5] = down_val();
+        return ret;
+    }
+
     bool operator==(const Dice &rhs) const noexcept {
         std::vector<int> ret(6);
         for(const auto &idx: alldice) {
