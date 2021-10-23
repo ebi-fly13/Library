@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: Dice
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Dice/Dice.hpp
+      title: Dice/Dice.hpp
   - name: Matrix
     pages:
     - icon: ':heavy_check_mark:'
@@ -316,6 +321,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/vertex_set_path_compositie.test.cpp
       title: test/vertex_set_path_compositie.test.cpp
+  - name: test/Dice
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/Dice/dice1.test.cpp
+      title: test/Dice/dice1.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Dice/dice2.test.cpp
+      title: test/Dice/dice2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Dice/dice3.test.cpp
+      title: test/Dice/dice3.test.cpp
   - name: test/aoj
     pages:
     - icon: ':heavy_check_mark:'
