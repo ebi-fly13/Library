@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Dice/dice3.test.cpp
     title: test/Dice/dice3.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Dice/dice4.test.cpp
     title: test/Dice/dice4.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Dice/Dice.hpp\"\n\n#include <iostream>\n#include <vector>\n\
@@ -129,7 +129,7 @@ data:
   path: Dice/Dice.hpp
   requiredBy: []
   timestamp: '2021-10-23 12:14:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Dice/dice3.test.cpp
   - test/Dice/dice4.test.cpp

@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: Dice
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Dice/Dice.hpp
       title: Dice/Dice.hpp
   - name: Matrix
@@ -332,7 +332,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Dice/dice3.test.cpp
       title: test/Dice/dice3.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Dice/dice4.test.cpp
       title: test/Dice/dice4.test.cpp
   - name: test/aoj

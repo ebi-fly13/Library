@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Dice/Dice.hpp
     title: Dice/Dice.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_11_D
@@ -70,22 +70,22 @@ data:
     \    int n;\n    std::cin >> n;\n    std::vector<ebi::Dice> d(n);\n    for(int\
     \ i = 0; i < n; i++) {\n        std::cin >> d[i];\n    }\n    for(int i = 0; i\
     \ < n; i++) {\n        for(int j = i+1; j < n; j++) {\n            if(d[i] ==\
-    \ d[j]) {\n                std::cout << \"No\\n\";\n                return;\n\
+    \ d[j]) {\n                std::cout << \"No\\n\";\n                return 0;\n\
     \            }\n        }\n    }\n    std::cout << \"Yes\\n\";\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_11_D\"\
     \n\n#include <iostream>\n\n#include \"../../Dice/Dice.hpp\"\n\nint main() {\n\
     \    int n;\n    std::cin >> n;\n    std::vector<ebi::Dice> d(n);\n    for(int\
     \ i = 0; i < n; i++) {\n        std::cin >> d[i];\n    }\n    for(int i = 0; i\
     \ < n; i++) {\n        for(int j = i+1; j < n; j++) {\n            if(d[i] ==\
-    \ d[j]) {\n                std::cout << \"No\\n\";\n                return;\n\
+    \ d[j]) {\n                std::cout << \"No\\n\";\n                return 0;\n\
     \            }\n        }\n    }\n    std::cout << \"Yes\\n\";\n}"
   dependsOn:
   - Dice/Dice.hpp
   isVerificationFile: true
   path: test/Dice/dice4.test.cpp
   requiredBy: []
-  timestamp: '2021-10-23 12:14:20+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-10-23 12:17:36+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Dice/dice4.test.cpp
 layout: document
