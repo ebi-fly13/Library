@@ -12,9 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Dice/dice3.test.cpp
     title: test/Dice/dice3.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/Dice/dice4.test.cpp
+    title: test/Dice/dice4.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Dice/Dice.hpp\"\n\n#include <iostream>\n#include <vector>\n\
@@ -58,14 +61,17 @@ data:
     \ j = 0; j < 4; j++) {\n                ret.emplace_back(d);\n               \
     \ d.rollE();\n            }\n        }\n        return ret;\n    }\n\n    int\
     \ top_val() const {\n        return val[up];\n    }\n\n    int right_val() const\
-    \ {\n        return val[right];\n    }\n\n    bool operator==(const Dice &rhs)\
-    \ const noexcept {\n        std::vector<int> ret(6);\n        for(const auto &idx:\
-    \ alldice) {\n            for(int i = 0; i < 6; i++) {\n                ret[i]\
-    \ = val[idx[i]];\n            }\n            if(ret == rhs.val) return true;\n\
-    \        }\n        return false;\n    }\n\n    std::vector<int> val = {0, 1,\
-    \ 2, 3, 4, 5};\n};\n\nstd::istream& operator>>(std::istream& os, Dice &d) {\n\
-    \    return os >> d.val[0] >> d.val[1] >> d.val[2] >> d.val[3] >> d.val[4] >>\
-    \ d.val[5];  \n}\n\n}\n"
+    \ {\n        return val[right];\n    }\n\n    int left_val() const {\n       \
+    \ return val[left];\n    }\n\n    int front_val() const {\n        return val[front];\n\
+    \    }\n\n    int back_val() const {\n        return val[back];\n    }\n\n   \
+    \ int down_val() const {\n        return val[down];\n    }\n\n    bool operator==(const\
+    \ Dice &rhs) const noexcept {\n        std::vector<int> ret(6);\n        for(const\
+    \ auto &idx: alldice) {\n            for(int i = 0; i < 6; i++) {\n          \
+    \      ret[i] = val[idx[i]];\n            }\n            if(ret == rhs.val) return\
+    \ true;\n        }\n        return false;\n    }\n\n    std::vector<int> val =\
+    \ {0, 1, 2, 3, 4, 5};\n};\n\nstd::istream& operator>>(std::istream& os, Dice &d)\
+    \ {\n    return os >> d.val[0] >> d.val[1] >> d.val[2] >> d.val[3] >> d.val[4]\
+    \ >> d.val[5];  \n}\n\n}\n"
   code: "#pragma once\n\n#include <iostream>\n#include <vector>\n#include <cassert>\n\
     \nnamespace ebi {\n\nconst std::vector<std::vector<int>> alldice = { \n    { 0,\
     \ 1, 2, 3, 4, 5 },\n    { 3, 1, 0, 5, 4, 2 },\n    { 5, 1, 3, 2, 4, 0 },\n   \
@@ -107,22 +113,26 @@ data:
     \ j = 0; j < 4; j++) {\n                ret.emplace_back(d);\n               \
     \ d.rollE();\n            }\n        }\n        return ret;\n    }\n\n    int\
     \ top_val() const {\n        return val[up];\n    }\n\n    int right_val() const\
-    \ {\n        return val[right];\n    }\n\n    bool operator==(const Dice &rhs)\
-    \ const noexcept {\n        std::vector<int> ret(6);\n        for(const auto &idx:\
-    \ alldice) {\n            for(int i = 0; i < 6; i++) {\n                ret[i]\
-    \ = val[idx[i]];\n            }\n            if(ret == rhs.val) return true;\n\
-    \        }\n        return false;\n    }\n\n    std::vector<int> val = {0, 1,\
-    \ 2, 3, 4, 5};\n};\n\nstd::istream& operator>>(std::istream& os, Dice &d) {\n\
-    \    return os >> d.val[0] >> d.val[1] >> d.val[2] >> d.val[3] >> d.val[4] >>\
-    \ d.val[5];  \n}\n\n}"
+    \ {\n        return val[right];\n    }\n\n    int left_val() const {\n       \
+    \ return val[left];\n    }\n\n    int front_val() const {\n        return val[front];\n\
+    \    }\n\n    int back_val() const {\n        return val[back];\n    }\n\n   \
+    \ int down_val() const {\n        return val[down];\n    }\n\n    bool operator==(const\
+    \ Dice &rhs) const noexcept {\n        std::vector<int> ret(6);\n        for(const\
+    \ auto &idx: alldice) {\n            for(int i = 0; i < 6; i++) {\n          \
+    \      ret[i] = val[idx[i]];\n            }\n            if(ret == rhs.val) return\
+    \ true;\n        }\n        return false;\n    }\n\n    std::vector<int> val =\
+    \ {0, 1, 2, 3, 4, 5};\n};\n\nstd::istream& operator>>(std::istream& os, Dice &d)\
+    \ {\n    return os >> d.val[0] >> d.val[1] >> d.val[2] >> d.val[3] >> d.val[4]\
+    \ >> d.val[5];  \n}\n\n}"
   dependsOn: []
   isVerificationFile: false
   path: Dice/Dice.hpp
   requiredBy: []
-  timestamp: '2021-10-23 11:28:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2021-10-23 12:14:20+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Dice/dice3.test.cpp
+  - test/Dice/dice4.test.cpp
   - test/Dice/dice1.test.cpp
   - test/Dice/dice2.test.cpp
 documentation_of: Dice/Dice.hpp
