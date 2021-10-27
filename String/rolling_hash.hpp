@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <cassert>
 
-#include "utility/random_number_generator_64.hpp"
+#include "../utility/random_number_generator_64.hpp"
 
 /*
     reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
