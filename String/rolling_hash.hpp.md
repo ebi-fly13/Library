@@ -58,12 +58,12 @@ data:
     \ hash;\r\npublic:\r\n    static std::vector<u64> base;\r\n};\r\n\r\ntemplate<int\
     \ n>\r\nstd::vector<std::uint64_t> rolling_hash<n>::base {};\r\n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n#include <cstdint>\r\n#include <cassert>\r\
-    \n\r\n#include \"utility/random_number_generator_64.hpp\"\r\n\r\n/*\r\n    reference:\
-    \ https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\n*/\r\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate<int n>\r\nstruct rolling_hash {\r\nprivate:\r\n    using\
-    \ u64 = std::uint64_t;\r\n    const u64 mod = (1UL<<61) - 1;\r\n    const u64\
-    \ MASK31 = (1UL<<31) - 1;\r\n    const u64 MASK30 = (1UL<<30) - 1;\r\n    const\
-    \ u64 h = 100;\r\n    const u64 buffer = mod * 4;\r\n\r\n    u64 safe_mul(const\
+    \n\r\n#include \"../utility/random_number_generator_64.hpp\"\r\n\r\n/*\r\n   \
+    \ reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\n*/\r\n\r\n\
+    namespace ebi {\r\n\r\ntemplate<int n>\r\nstruct rolling_hash {\r\nprivate:\r\n\
+    \    using u64 = std::uint64_t;\r\n    const u64 mod = (1UL<<61) - 1;\r\n    const\
+    \ u64 MASK31 = (1UL<<31) - 1;\r\n    const u64 MASK30 = (1UL<<30) - 1;\r\n   \
+    \ const u64 h = 100;\r\n    const u64 buffer = mod * 4;\r\n\r\n    u64 safe_mul(const\
     \ u64 &a, const u64 &b) const {\r\n        u64 au = a>>31, ad = a&MASK31;\r\n\
     \        u64 bu = b>>31, bd = b&MASK31;\r\n        u64 mid = ad*bu + au*bd;\r\n\
     \        u64 midu = mid>>30;\r\n        u64 midd = mid&MASK30;\r\n        return\
@@ -97,7 +97,7 @@ data:
   isVerificationFile: false
   path: String/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2021-08-30 18:02:28+09:00'
+  timestamp: '2021-10-27 11:57:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
