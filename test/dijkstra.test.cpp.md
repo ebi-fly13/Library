@@ -23,8 +23,8 @@ data:
   bundledCode: "#line 1 \"test/dijkstra.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
     \r\n\r\n#line 2 \"graph/dijkstra.hpp\"\n\r\n#line 2 \"graph/template.hpp\"\n\r\
     \n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct\
-    \ Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int to, T cost=1) : to(to),\
-    \ cost(cost) { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>>\
+    \ Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to),\
+    \ cost(_cost) { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>>\
     \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
     \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
@@ -70,7 +70,7 @@ data:
   isVerificationFile: true
   path: test/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2021-08-24 22:55:36+09:00'
+  timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/dijkstra.test.cpp

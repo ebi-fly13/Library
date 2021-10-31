@@ -43,9 +43,9 @@ data:
     \ table[k][r-(1<<k)]);\r\n    }\r\nprivate:\r\n    int n;\r\n    std::vector<std::vector<Band>>\
     \ table;\r\n};\r\n\r\n}\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\
-    \n    T cost;\r\n    Edge(int to, T cost=1) : to(to), cost(cost) { }\r\n};\r\n\
-    \r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n\
-    \    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
+    \n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\
+    \n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\
+    \n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
     \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
@@ -90,7 +90,7 @@ data:
   isVerificationFile: true
   path: test/lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2021-08-31 14:46:52+09:00'
+  timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/lowest_common_ancestor.test.cpp

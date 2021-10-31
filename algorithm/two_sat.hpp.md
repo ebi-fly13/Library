@@ -20,9 +20,9 @@ data:
   bundledCode: "#line 2 \"algorithm/two_sat.hpp\"\n\n#include <cassert>\n\n#line 2\
     \ \"graph/scc_graph.hpp\"\n\r\n#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\
     \n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\
-    \n    T cost;\r\n    Edge(int to, T cost=1) : to(to), cost(cost) { }\r\n};\r\n\
-    \r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n\
-    \    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
+    \n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\
+    \n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\
+    \n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
     \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
@@ -86,7 +86,7 @@ data:
   isVerificationFile: false
   path: algorithm/two_sat.hpp
   requiredBy: []
-  timestamp: '2021-10-17 17:09:31+09:00'
+  timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/two_sat.test.cpp

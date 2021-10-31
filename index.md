@@ -162,6 +162,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
+    - icon: ':warning:'
+      path: graph/submodular.hpp
+      title: graph/submodular.hpp
     - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
