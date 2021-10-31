@@ -98,6 +98,16 @@ public:
         front = buff;
     }
 
+    void roll(char c) {
+        if(c == 'N') rollN(); 
+        else if(c == 'S') rollS();
+        else if(c == 'E') rollE();
+        else if(c == 'W') rollW();
+        else if(c == 'R') rollR();
+        else if(c == 'L') rollL();
+        else assert(0);
+    }
+
     int get_index(int x) const {
         for(int i = 0; i < 6; i++) {
             if(val[i] == x) return i;

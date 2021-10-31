@@ -8,7 +8,7 @@ template<class T>
 struct Edge {
     int to;
     T cost;
-    Edge(int to, T cost=1) : to(to), cost(cost) { }
+    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }
 };
 
 template<class T>
