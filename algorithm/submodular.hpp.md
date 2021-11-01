@@ -9,7 +9,7 @@ data:
   attributes:
     links:
     - https://theory-and-me.hatenablog.com/entry/2020/03/17/180157
-  bundledCode: "#line 2 \"graph/submodular.hpp\"\n\n/*\n    reference: https://theory-and-me.hatenablog.com/entry/2020/03/17/180157\n\
+  bundledCode: "#line 2 \"algorithm/submodular.hpp\"\n\n/*\n    reference: https://theory-and-me.hatenablog.com/entry/2020/03/17/180157\n\
     \    depends on mf_graph in atcoder library(acl).\n*/\n\nnamespace ebi {\n\ntemplate<class\
     \ Cap>\nstruct submodular {\npublic:\n    submodular(int n, int add_vertex = 0)\
     \ : gh(n + add_vertex +2), s(n), t(n+1), max(n+add_vertex+2),u(n+2)  { }\n\n \
@@ -73,15 +73,15 @@ data:
     \ gh;\n    int s,t;\n    int max;\n    int u;\n    Cap R = 0;\n};\n\n}"
   dependsOn: []
   isVerificationFile: false
-  path: graph/submodular.hpp
+  path: algorithm/submodular.hpp
   requiredBy: []
-  timestamp: '2021-10-31 17:00:41+09:00'
+  timestamp: '2021-11-01 15:33:43+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: graph/submodular.hpp
+documentation_of: algorithm/submodular.hpp
 layout: document
 redirect_from:
-- /library/graph/submodular.hpp
-- /library/graph/submodular.hpp.html
-title: graph/submodular.hpp
+- /library/algorithm/submodular.hpp
+- /library/algorithm/submodular.hpp.html
+title: algorithm/submodular.hpp
 ---
