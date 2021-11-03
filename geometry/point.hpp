@@ -26,8 +26,8 @@ long double add(long double a, long double b) {
 
 } // namespace internal
 
-ld arg_to_radian(ld arg) {
-    return PI * arg / ld(180);
+long double arg_to_radian(long double arg) {
+    return PI * arg / (long double)(180);
 }
 
 struct point {
