@@ -11,6 +11,8 @@ namespace ebi {
 
 constexpr long double EPS = 1e-10;
 
+const long double PI = std::acos(-1);
+
 namespace internal {
 
 int sgn(long double a) {
@@ -23,6 +25,10 @@ long double add(long double a, long double b) {
 }
 
 } // namespace internal
+
+ld arg_to_radian(ld arg) {
+    return PI * arg / ld(180);
+}
 
 struct point {
     long double x,y;

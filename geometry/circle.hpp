@@ -10,8 +10,6 @@
 
 namespace ebi {
 
-const long double PI = std::acos(-1);
-
 struct circle {
     point c;
     long double r;

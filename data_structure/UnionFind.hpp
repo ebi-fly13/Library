@@ -40,6 +40,12 @@ public:
         }
         return c;
     }
+
+    void clear() {
+        for(int i = 0; i < int(par.size()); i++) {
+            par[i] = -1;
+        }
+    }
 };
 
 } // namespace ebi
