@@ -1,50 +1,50 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/circumscribed_circle_of_triangle.test.cpp
     title: test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/common_area.test.cpp
     title: test/geometry/common_area.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/common_area_circles.test.cpp
     title: test/geometry/common_area_circles.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/common_tangent.test.cpp
     title: test/geometry/common_tangent.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of circles.test.cpp
     title: test/geometry/cross_points_of circles.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of_circle_and_line.test.cpp
     title: test/geometry/cross_points_of_circle_and_line.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/incircle_of_triangle.test.cpp
     title: test/geometry/incircle_of_triangle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/intersection_circle.test.cpp
     title: test/geometry/intersection_circle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/tangent_to_circle.test.cpp
     title: test/geometry/tangent_to_circle.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#include <vector>\n#include <cmath>\n\
@@ -55,18 +55,18 @@ data:
     \ {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1\
     \ : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
     \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
-    } // namespace internal\r\n\r\nld arg_to_radian(ld arg) {\r\n    return PI * arg\
-    \ / ld(180);\r\n}\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n    point()\
-    \ = default;\r\n\r\n    point(long double x, long double y) : x(x), y(y) { }\r\
-    \n\r\n    point &operator+=(const point rhs) noexcept {\r\n        x = internal::add(x,\
-    \ rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n        return *this;\r\n\
-    \    }\r\n\r\n    point &operator-=(const point rhs) noexcept {\r\n        x =\
-    \ internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\n     \
-    \   return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs) noexcept\
-    \ {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n        long\
-    \ double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\n        y\
-    \ = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const long\
-    \ double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
+    } // namespace internal\r\n\r\nlong double arg_to_radian(long double arg) {\r\n\
+    \    return PI * arg / (long double)(180);\r\n}\r\n\r\nstruct point {\r\n    long\
+    \ double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double x, long\
+    \ double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept\
+    \ {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs)\
+    \ noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y,\
+    \ -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ point rhs) noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\
+    \n        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
+    \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
     \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
     \    assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n        y /= k;\r\n  \
     \      return *this;\r\n    }\r\n\r\n    point operator+(const point &rhs) const\
@@ -409,8 +409,8 @@ data:
   isVerificationFile: false
   path: geometry/circle.hpp
   requiredBy: []
-  timestamp: '2021-11-03 22:06:55+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-11-03 22:54:51+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/incircle_of_triangle.test.cpp
   - test/geometry/cross_points_of circles.test.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.0000001'
@@ -28,18 +28,18 @@ data:
     \ {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1\
     \ : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
     \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
-    } // namespace internal\r\n\r\nld arg_to_radian(ld arg) {\r\n    return PI * arg\
-    \ / ld(180);\r\n}\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n    point()\
-    \ = default;\r\n\r\n    point(long double x, long double y) : x(x), y(y) { }\r\
-    \n\r\n    point &operator+=(const point rhs) noexcept {\r\n        x = internal::add(x,\
-    \ rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n        return *this;\r\n\
-    \    }\r\n\r\n    point &operator-=(const point rhs) noexcept {\r\n        x =\
-    \ internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\n     \
-    \   return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs) noexcept\
-    \ {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n        long\
-    \ double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\n        y\
-    \ = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const long\
-    \ double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
+    } // namespace internal\r\n\r\nlong double arg_to_radian(long double arg) {\r\n\
+    \    return PI * arg / (long double)(180);\r\n}\r\n\r\nstruct point {\r\n    long\
+    \ double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double x, long\
+    \ double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept\
+    \ {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs)\
+    \ noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y,\
+    \ -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ point rhs) noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\
+    \n        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
+    \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
     \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
     \    assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n        y /= k;\r\n  \
     \      return *this;\r\n    }\r\n\r\n    point operator+(const point &rhs) const\
@@ -162,8 +162,8 @@ data:
   isVerificationFile: true
   path: test/geometry/reflection.test.cpp
   requiredBy: []
-  timestamp: '2021-11-03 22:06:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-11-03 22:54:51+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/reflection.test.cpp
 layout: document
