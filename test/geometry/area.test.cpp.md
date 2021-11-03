@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_A
@@ -27,19 +27,20 @@ data:
     \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <iomanip>\n\
     \n#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#include <cmath>\r\
     \n#include <cassert>\r\n#line 9 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\
-    \r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\n\r\nint\
-    \ sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\
-    \r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b) <\
-    \ EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n}\
-    \ // namespace internal\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n\
-    \    point() = default;\r\n\r\n    point(long double x, long double y) : x(x),\
-    \ y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\n      \
-    \  x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n  \
-    \      return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
-    \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
-    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs)\
-    \ noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n\
-    \        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
+    \r\nconstexpr long double EPS = 1e-10;\r\n\r\nconst long double PI = std::acos(-1);\r\
+    \n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS)\
+    \ ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a, long double\
+    \ b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n\
+    \    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nld arg_to_radian(ld\
+    \ arg) {\r\n    return PI * arg / ld(180);\r\n}\r\n\r\nstruct point {\r\n    long\
+    \ double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double x, long\
+    \ double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept\
+    \ {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs)\
+    \ noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y,\
+    \ -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ point rhs) noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\
+    \n        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
     \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
     \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
     \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
@@ -226,8 +227,8 @@ data:
   isVerificationFile: true
   path: test/geometry/area.test.cpp
   requiredBy: []
-  timestamp: '2021-10-14 14:29:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-11-03 22:06:55+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/area.test.cpp
 layout: document

@@ -22,8 +22,9 @@ data:
     \   else return par[x] = leader(par[x]);\r\n    }\r\n\r\n    int size(int x){\r\
     \n        return -par[leader(x)];\r\n    }\r\n\r\n    int count_group(){\r\n \
     \       int c = 0;\r\n        for(int i = 0; i<int(par.size()); i++){\r\n    \
-    \        if(par[i]<0) c++; \r\n        }\r\n        return c;\r\n    }\r\n};\r\
-    \n\r\n} // namespace ebi\n"
+    \        if(par[i]<0) c++; \r\n        }\r\n        return c;\r\n    }\r\n\r\n\
+    \    void clear() {\r\n        for(int i = 0; i < int(par.size()); i++) {\r\n\
+    \            par[i] = -1;\r\n        }\r\n    }\r\n};\r\n\r\n} // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct\
     \ UnionFind {\r\nprivate:\r\n    std::vector<int> par;\r\n\r\npublic:\r\n    UnionFind(int\
     \ n=0): par(n,-1){ }\r\n\r\n    bool same(int x,int y){\r\n        return leader(x)==leader(y);\r\
@@ -34,13 +35,14 @@ data:
     \    else return par[x] = leader(par[x]);\r\n    }\r\n\r\n    int size(int x){\r\
     \n        return -par[leader(x)];\r\n    }\r\n\r\n    int count_group(){\r\n \
     \       int c = 0;\r\n        for(int i = 0; i<int(par.size()); i++){\r\n    \
-    \        if(par[i]<0) c++; \r\n        }\r\n        return c;\r\n    }\r\n};\r\
-    \n\r\n} // namespace ebi"
+    \        if(par[i]<0) c++; \r\n        }\r\n        return c;\r\n    }\r\n\r\n\
+    \    void clear() {\r\n        for(int i = 0; i < int(par.size()); i++) {\r\n\
+    \            par[i] = -1;\r\n        }\r\n    }\r\n};\r\n\r\n} // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/UnionFind.hpp
   requiredBy: []
-  timestamp: '2021-08-29 00:37:41+09:00'
+  timestamp: '2021-11-03 22:06:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/UnionFind.test.cpp

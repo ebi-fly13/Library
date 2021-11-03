@@ -1,98 +1,99 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/circumscribed_circle_of_triangle.test.cpp
     title: test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_area.test.cpp
     title: test/geometry/common_area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_area_circles.test.cpp
     title: test/geometry/common_area_circles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_tangent.test.cpp
     title: test/geometry/common_tangent.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/contains.test.cpp
     title: test/geometry/contains.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/convex_diameter.test.cpp
     title: test/geometry/convex_diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/convex_polygon_cut.test.cpp
     title: test/geometry/convex_polygon_cut.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_points_of circles.test.cpp
     title: test/geometry/cross_points_of circles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_points_of_circle_and_line.test.cpp
     title: test/geometry/cross_points_of_circle_and_line.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/distance.test.cpp
     title: test/geometry/distance.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/incircle_of_triangle.test.cpp
     title: test/geometry/incircle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection_circle.test.cpp
     title: test/geometry/intersection_circle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/tangent_to_circle.test.cpp
     title: test/geometry/tangent_to_circle.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
     \n#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#line 6 \"geometry/point.hpp\"\
     \n#include <vector>\r\n#include <iostream>\r\n#include <algorithm>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nnamespace internal {\r\
-    \n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\
-    \n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
-    \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
-    } // namespace internal\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n\
-    \    point() = default;\r\n\r\n    point(long double x, long double y) : x(x),\
-    \ y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\n      \
-    \  x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n  \
-    \      return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
-    \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
-    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs)\
-    \ noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n\
-    \        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
+    \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nconst long double PI\
+    \ = std::acos(-1);\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\
+    \n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long\
+    \ double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b)))\
+    \ return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nld arg_to_radian(ld\
+    \ arg) {\r\n    return PI * arg / ld(180);\r\n}\r\n\r\nstruct point {\r\n    long\
+    \ double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double x, long\
+    \ double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept\
+    \ {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs)\
+    \ noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y,\
+    \ -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ point rhs) noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\
+    \n        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
     \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
     \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
     \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
@@ -223,30 +224,30 @@ data:
   path: geometry/line.hpp
   requiredBy:
   - geometry/circle.hpp
-  - geometry/line_segment.hpp
   - geometry/polygon.hpp
-  timestamp: '2021-09-18 14:37:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - geometry/line_segment.hpp
+  timestamp: '2021-11-03 22:06:55+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/geometry/area.test.cpp
-  - test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - test/geometry/reflection.test.cpp
-  - test/geometry/convex_diameter.test.cpp
-  - test/geometry/distance.test.cpp
-  - test/geometry/cross_points_of_circle_and_line.test.cpp
-  - test/geometry/common_area_circles.test.cpp
-  - test/geometry/is_convex.test.cpp
-  - test/geometry/tangent_to_circle.test.cpp
-  - test/geometry/contains.test.cpp
-  - test/geometry/common_tangent.test.cpp
-  - test/geometry/incircle_of_triangle.test.cpp
-  - test/geometry/intersection.test.cpp
-  - test/geometry/intersection_circle.test.cpp
   - test/geometry/convex_polygon_cut.test.cpp
-  - test/geometry/intersection_line_segment.test.cpp
-  - test/geometry/cross_point.test.cpp
+  - test/geometry/incircle_of_triangle.test.cpp
   - test/geometry/cross_points_of circles.test.cpp
+  - test/geometry/intersection_line_segment.test.cpp
+  - test/geometry/circumscribed_circle_of_triangle.test.cpp
+  - test/geometry/is_convex.test.cpp
+  - test/geometry/contains.test.cpp
+  - test/geometry/intersection.test.cpp
+  - test/geometry/tangent_to_circle.test.cpp
   - test/geometry/common_area.test.cpp
+  - test/geometry/intersection_circle.test.cpp
+  - test/geometry/convex_diameter.test.cpp
+  - test/geometry/common_tangent.test.cpp
+  - test/geometry/cross_point.test.cpp
+  - test/geometry/distance.test.cpp
+  - test/geometry/common_area_circles.test.cpp
+  - test/geometry/area.test.cpp
+  - test/geometry/cross_points_of_circle_and_line.test.cpp
+  - test/geometry/reflection.test.cpp
 documentation_of: geometry/line.hpp
 layout: document
 redirect_from:

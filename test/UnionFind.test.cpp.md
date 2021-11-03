@@ -26,11 +26,13 @@ data:
     \   else return par[x] = leader(par[x]);\r\n    }\r\n\r\n    int size(int x){\r\
     \n        return -par[leader(x)];\r\n    }\r\n\r\n    int count_group(){\r\n \
     \       int c = 0;\r\n        for(int i = 0; i<int(par.size()); i++){\r\n    \
-    \        if(par[i]<0) c++; \r\n        }\r\n        return c;\r\n    }\r\n};\r\
-    \n\r\n} // namespace ebi\n#line 4 \"test/UnionFind.test.cpp\"\n\r\n#include <iostream>\r\
-    \n\r\nint main(){\r\n    int n,q; std::cin >> n >> q;\r\n    ebi::UnionFind uf(n);\r\
-    \n    while(q--){\r\n        int t,u,v; std::cin >> t >> u >> v;\r\n        if(t==0){\r\
-    \n            uf.merge(u,v);\r\n        }\r\n        else{\r\n            if(uf.same(u,v)){\r\
+    \        if(par[i]<0) c++; \r\n        }\r\n        return c;\r\n    }\r\n\r\n\
+    \    void clear() {\r\n        for(int i = 0; i < int(par.size()); i++) {\r\n\
+    \            par[i] = -1;\r\n        }\r\n    }\r\n};\r\n\r\n} // namespace ebi\n\
+    #line 4 \"test/UnionFind.test.cpp\"\n\r\n#include <iostream>\r\n\r\nint main(){\r\
+    \n    int n,q; std::cin >> n >> q;\r\n    ebi::UnionFind uf(n);\r\n    while(q--){\r\
+    \n        int t,u,v; std::cin >> t >> u >> v;\r\n        if(t==0){\r\n       \
+    \     uf.merge(u,v);\r\n        }\r\n        else{\r\n            if(uf.same(u,v)){\r\
     \n                std::cout << \"1\\n\";\r\n            }\r\n            else{\r\
     \n                std::cout << \"0\\n\";\r\n            }\r\n        }\r\n   \
     \ }\r\n    return 0;\r\n}\n"
@@ -47,7 +49,7 @@ data:
   isVerificationFile: true
   path: test/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2021-08-29 00:37:41+09:00'
+  timestamp: '2021-11-03 22:06:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/UnionFind.test.cpp
