@@ -122,6 +122,9 @@ data:
     - icon: ':warning:'
       path: data_structure/removable_priority_queue.hpp
       title: data_structure/removable_priority_queue.hpp
+    - icon: ':x:'
+      path: data_structure/section_set.hpp
+      title: data_structure/section_set.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: data_structure/segtree_2d.hpp
@@ -343,6 +346,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_1645.test.cpp
       title: test/aoj/aoj_1645.test.cpp
+    - icon: ':x:'
+      path: test/aoj/aoj_2152.test.cpp
+      title: test/aoj/aoj_2152.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2444.test.cpp
       title: test/aoj/aoj_2444.test.cpp
