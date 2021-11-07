@@ -41,8 +41,12 @@ data:
     \  bool find(T l, T r) const {\n        auto itr = std::prev(set.upper_bound({l,\
     \ std::numeric_limits<T>::max()}));\n        if(r <= itr->second) {\n        \
     \    assert(itr->first <= l);\n            return true;\n        }\n        else\
-    \ {\n            return false;\n        }\n    }\n\n    std::pair<T,T> lower_bound(T\
-    \ l) const {\n        return *set.lower_bound({l, -1});\n    }\n};\n\n}\n"
+    \ {\n            return false;\n        }\n    }\n\n    std::pair<T,T> belong(T\
+    \ x) const {\n        auto itr = std::prev(set.upper_bound({x, std::numeric_limits<T>::max()}));\n\
+    \        if(x <= itr->second) {\n            assert(itr->first <= x);\n      \
+    \      return *itr;\n        }\n        else {\n            return {0, 0};\n \
+    \       }\n    }\n\n    std::pair<T,T> lower_bound(T l) const {\n        return\
+    \ *set.lower_bound({l, -1});\n    }\n};\n\n}\n"
   code: "#pragma once\n\n#include <set>\n#include <cassert>\n#include <limits>\n\n\
     namespace ebi {\n\ntemplate<class T>\nstruct section_set {\nprivate:\n    std::set<std::pair<T,T>>\
     \ set;\npublic:\n    section_set() {\n        set.insert({std::numeric_limits<T>::min(),\
@@ -72,13 +76,17 @@ data:
     \  bool find(T l, T r) const {\n        auto itr = std::prev(set.upper_bound({l,\
     \ std::numeric_limits<T>::max()}));\n        if(r <= itr->second) {\n        \
     \    assert(itr->first <= l);\n            return true;\n        }\n        else\
-    \ {\n            return false;\n        }\n    }\n\n    std::pair<T,T> lower_bound(T\
-    \ l) const {\n        return *set.lower_bound({l, -1});\n    }\n};\n\n}"
+    \ {\n            return false;\n        }\n    }\n\n    std::pair<T,T> belong(T\
+    \ x) const {\n        auto itr = std::prev(set.upper_bound({x, std::numeric_limits<T>::max()}));\n\
+    \        if(x <= itr->second) {\n            assert(itr->first <= x);\n      \
+    \      return *itr;\n        }\n        else {\n            return {0, 0};\n \
+    \       }\n    }\n\n    std::pair<T,T> lower_bound(T l) const {\n        return\
+    \ *set.lower_bound({l, -1});\n    }\n};\n\n}"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/section_set.hpp
   requiredBy: []
-  timestamp: '2021-11-07 00:52:40+09:00'
+  timestamp: '2021-11-07 13:38:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2152.test.cpp
