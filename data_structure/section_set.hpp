@@ -82,6 +82,17 @@ public:
         }
     }
 
+    std::pair<T,T> belong(T x) const {
+        auto itr = std::prev(set.upper_bound({x, std::numeric_limits<T>::max()}));
+        if(x <= itr->second) {
+            assert(itr->first <= x);
+            return *itr;
+        }
+        else {
+            return {0, 0};
+        }
+    }
+
     std::pair<T,T> lower_bound(T l) const {
         return *set.lower_bound({l, -1});
     }
