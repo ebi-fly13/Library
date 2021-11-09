@@ -1,6 +1,6 @@
 ---
 title: Segtree
-documentation_of: //data_structure/Segtree.hpp
+documentation_of: //data_structure/segtree.hpp
 ---
 
 ## 説明
