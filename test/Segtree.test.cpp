@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
-#include "../data_structure/Segtree.hpp"
+#include "../data_structure/segtree.hpp"
 
 #include <iostream>
 #include <cstdint>
@@ -16,7 +16,7 @@ int main(){
     for(int i = 0; i<n; i++){
         std::cin >> a[i];
     }
-    ebi::Segtree<i64, op, e> seg(a);
+    ebi::segtree<i64, op, e> seg(a);
     while(q--){
         int t;
         std::cin >> t;

@@ -6,7 +6,7 @@
     verify   : http://codeforces.com/contest/893/submission/125531718
 */
 
-#include "../data_structure/Segtree.hpp"
+#include "../data_structure/segtree.hpp"
 
 namespace ebi {
 
@@ -64,7 +64,7 @@ public:
         for(int i = 0; i < 2*n - 1; ++i) {
             std::sort(data[i].begin(), data[i].end());
             data[i].erase(std::unique(data[i].begin(), data[i].end()), data[i].end());
-            seg.emplace_back(Segtree<Monoid, op, e>(int(data[i].size())));
+            seg.emplace_back(segtree<Monoid, op, e>(int(data[i].size())));
         }
     }
 
@@ -82,7 +82,7 @@ public:
     }
 private:
     std::vector< std::vector< Monoid > > data;
-    std::vector< Segtree< Monoid, op, e> > seg;
+    std::vector< segtree< Monoid, op, e> > seg;
     int n;
 };
 

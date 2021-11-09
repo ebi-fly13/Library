@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../data_structure/Segtree.hpp"
+#include "../data_structure/segtree.hpp"
 #include "../graph/template.hpp"
 
 #include <vector>
@@ -17,7 +17,7 @@ private:
     int n, t = 0;
     std::vector<int> sz, in, out, nxt, up;
     graph g;
-    Segtree<Monoid, op, e> seg_l, seg_r;
+    segtree<Monoid, op, e> seg_l, seg_r;
 
     void dfs_sz(int v = 0) {
         sz[v] = 1;

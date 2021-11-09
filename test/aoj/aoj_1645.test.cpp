@@ -15,7 +15,7 @@ std::ostream& operator<<(std::ostream& os, std::vector<T> vec) {
 }
 
 #include "data_structure/undo_unionfind.hpp"
-#include "data_structure/Segtree.hpp"
+#include "../../data_structure/segtree.hpp"
 
 namespace ebi {
  
@@ -51,7 +51,7 @@ void main_() {
             uf.merge(a, b);
             table[s[i]].emplace_back(i);
         }
-        Segtree<int , op, e> seg(n);
+        segtree<int , op, e> seg(n);
         rep(i,0,n) {
             if(uf.par[i] < 0) {
                 seg.set(i, -uf.par[i]);

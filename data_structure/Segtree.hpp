@@ -5,57 +5,63 @@
 namespace ebi {
 
 template<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
-struct Segtree {
+struct segtree {
 private:
-    std::vector<Monoid> data;
     int n;
+    std::vector<Monoid> data;
 public:
-    Segtree(int _n) : n(1) {
-        while(n<_n){
+    segtree(int _n) : n(1) {
+        while(n < _n) {
             n <<= 1;
         }
-        data.assign(2*n-1, e());
+        data.assign(2*n, e());
+        return;
     }
 
-    Segtree(std::vector<Monoid> v) : n(1) {
-        int _n = v.size();
-        while(n<_n){
+    segtree(const std::vector<Monoid> &v) : n(1) {
+        while(n < (int)v.size()) {
             n <<= 1;
         }
-        data.assign(2*n-1, e());
-        for(int i = 0; i<_n; i++){
-            data[n+i-1] = v[i];
+        data.assign(2*n, e());
+        std::copy(v.begin(), v.end(), data.begin() + n);
+        for(int i = n-1; i > 0; i--) {
+            data[i] = op(data[i<<1|0], data[i<<1|1]);
         }
-        for(int i = n-2; i>=0; i--){
-            data[i] = op(data[2*i+1], data[2*i+2]);
-        }
+        return;
     }
 
-    void set(int p, Monoid x){
-        int k = n+p-1;
-        data[k] = x;
-        while(k>0){
-            k = (k-1)/2;
-            data[k] = op(data[2*k+1], data[2*k+2]);
+    void set(int p, Monoid x) {
+        p += n;
+        data[p] = x;
+        while(p > 1) {
+            p >>= 1;
+            data[p] = op(data[p<<1|0], data[p<<1|1]);
         }
+        return;
     }
 
-    Monoid prod(int tl, int tr, int l=0, int r=-1, int index=0){
-        if(r<0) r = n;
-        if(tr<=l || r<=tl){
-            return e();
-        }
-        if(tl<=l && r<=tr){
-            return data[index];
-        }
-        return op(prod(tl, tr, l, (l+r)/2, 2*index+1), prod(tl, tr, (l+r)/2, r, 2*index+2));
+    Monoid get(int p) const {
+        return data[p+n];
     }
 
-    Monoid all_prod() { return data[0]; }
+    Monoid prod(int l, int r) const {
+        Monoid left = e(), right = e();
+        l += n;
+        r += n;
+        while(l < r) {
+            if(l & 1) left = op(left, data[l++]);
+            if(r & 1) right = op(data[--r], right);
+            l >>= 1;
+            r >>= 1;
+        }
+        return op(left, right);
+    }
 
-    Monoid get(int p) { return data[n+p-1]; }
+    Monoid all_prod() const {
+        return data[1];
+    }
 
-    Monoid operator [] (int p) { return data[n+p-1]; }
+    Monoid operator [] (int p) const { return data[n+p]; }
 };
 
 } // namespace ebi
