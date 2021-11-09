@@ -1,95 +1,62 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: data_structure/heavy_light_decomposition.hpp
-    title: data_structure/heavy_light_decomposition.hpp
-  - icon: ':heavy_check_mark:'
-    path: data_structure/segtree_2d.hpp
-    title: data_structure/segtree_2d.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Segtree.test.cpp
-    title: test/Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_1645.test.cpp
-    title: test/aoj/aoj_1645.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/point_add_rectangle_sum.test.cpp
-    title: test/point_add_rectangle_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/rectangle_sum.test.cpp
-    title: test/rectangle_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/vertex_add_path_sum.test.cpp
-    title: test/vertex_add_path_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/vertex_add_subtree_sum.test.cpp
-    title: test/vertex_add_subtree_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/vertex_set_path_compositie.test.cpp
-    title: test/vertex_set_path_compositie.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/Segtree.hpp\"\n\r\n#include <vector>\r\n\r\
     \nnamespace ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid),\
-    \ Monoid (*e)()>\r\nstruct Segtree {\r\nprivate:\r\n    std::vector<Monoid> data;\r\
-    \n    int n;\r\npublic:\r\n    Segtree(int _n) : n(1) {\r\n        while(n<_n){\r\
-    \n            n <<= 1;\r\n        }\r\n        data.assign(2*n-1, e());\r\n  \
-    \  }\r\n\r\n    Segtree(std::vector<Monoid> v) : n(1) {\r\n        int _n = v.size();\r\
-    \n        while(n<_n){\r\n            n <<= 1;\r\n        }\r\n        data.assign(2*n-1,\
-    \ e());\r\n        for(int i = 0; i<_n; i++){\r\n            data[n+i-1] = v[i];\r\
-    \n        }\r\n        for(int i = n-2; i>=0; i--){\r\n            data[i] = op(data[2*i+1],\
-    \ data[2*i+2]);\r\n        }\r\n    }\r\n\r\n    void set(int p, Monoid x){\r\n\
-    \        int k = n+p-1;\r\n        data[k] = x;\r\n        while(k>0){\r\n   \
-    \         k = (k-1)/2;\r\n            data[k] = op(data[2*k+1], data[2*k+2]);\r\
-    \n        }\r\n    }\r\n\r\n    Monoid prod(int tl, int tr, int l=0, int r=-1,\
-    \ int index=0){\r\n        if(r<0) r = n;\r\n        if(tr<=l || r<=tl){\r\n \
-    \           return e();\r\n        }\r\n        if(tl<=l && r<=tr){\r\n      \
-    \      return data[index];\r\n        }\r\n        return op(prod(tl, tr, l, (l+r)/2,\
-    \ 2*index+1), prod(tl, tr, (l+r)/2, r, 2*index+2));\r\n    }\r\n\r\n    Monoid\
-    \ all_prod() { return data[0]; }\r\n\r\n    Monoid get(int p) { return data[n+p-1];\
-    \ }\r\n\r\n    Monoid operator [] (int p) { return data[n+p-1]; }\r\n};\r\n\r\n\
+    \ Monoid (*e)()>\r\nstruct segtree {\r\nprivate:\r\n    int n;\r\n    std::vector<Monoid>\
+    \ data;\r\npublic:\r\n    segtree(int _n) : n(1) {\r\n        while(n < _n) {\r\
+    \n            n <<= 1;\r\n        }\r\n        data.assign(2*n, e());\r\n    \
+    \    return;\r\n    }\r\n\r\n    segtree(const std::vector<Monoid> &v) : n(1)\
+    \ {\r\n        while(n < (int)v.size()) {\r\n            n <<= 1;\r\n        }\r\
+    \n        data.assign(2*n, e());\r\n        std::copy(v.begin(), v.end(), data.begin()\
+    \ + n);\r\n        for(int i = n-1; i > 0; i--) {\r\n            data[i] = op(data[i<<1|0],\
+    \ data[i<<1|1]);\r\n        }\r\n        return;\r\n    }\r\n\r\n    void set(int\
+    \ p, Monoid x) {\r\n        p += n;\r\n        data[p] = x;\r\n        while(p\
+    \ > 1) {\r\n            p >>= 1;\r\n            data[p] = op(data[p<<1|0], data[p<<1|1]);\r\
+    \n        }\r\n        return;\r\n    }\r\n\r\n    Monoid get(int p) const {\r\
+    \n        return data[p+n];\r\n    }\r\n\r\n    Monoid prod(int l, int r) const\
+    \ {\r\n        Monoid left = e(), right = e();\r\n        l += n;\r\n        r\
+    \ += n;\r\n        while(l < r) {\r\n            if(l & 1) left = op(left, data[l++]);\r\
+    \n            if(r & 1) right = op(data[--r], right);\r\n            l >>= 1;\r\
+    \n            r >>= 1;\r\n        }\r\n        return op(left, right);\r\n   \
+    \ }\r\n\r\n    Monoid all_prod() const {\r\n        return data[1];\r\n    }\r\
+    \n\r\n    Monoid operator [] (int p) const { return data[n+p]; }\r\n};\r\n\r\n\
     } // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
-    \ Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct Segtree {\r\n\
-    private:\r\n    std::vector<Monoid> data;\r\n    int n;\r\npublic:\r\n    Segtree(int\
-    \ _n) : n(1) {\r\n        while(n<_n){\r\n            n <<= 1;\r\n        }\r\n\
-    \        data.assign(2*n-1, e());\r\n    }\r\n\r\n    Segtree(std::vector<Monoid>\
-    \ v) : n(1) {\r\n        int _n = v.size();\r\n        while(n<_n){\r\n      \
-    \      n <<= 1;\r\n        }\r\n        data.assign(2*n-1, e());\r\n        for(int\
-    \ i = 0; i<_n; i++){\r\n            data[n+i-1] = v[i];\r\n        }\r\n     \
-    \   for(int i = n-2; i>=0; i--){\r\n            data[i] = op(data[2*i+1], data[2*i+2]);\r\
-    \n        }\r\n    }\r\n\r\n    void set(int p, Monoid x){\r\n        int k =\
-    \ n+p-1;\r\n        data[k] = x;\r\n        while(k>0){\r\n            k = (k-1)/2;\r\
-    \n            data[k] = op(data[2*k+1], data[2*k+2]);\r\n        }\r\n    }\r\n\
-    \r\n    Monoid prod(int tl, int tr, int l=0, int r=-1, int index=0){\r\n     \
-    \   if(r<0) r = n;\r\n        if(tr<=l || r<=tl){\r\n            return e();\r\
-    \n        }\r\n        if(tl<=l && r<=tr){\r\n            return data[index];\r\
-    \n        }\r\n        return op(prod(tl, tr, l, (l+r)/2, 2*index+1), prod(tl,\
-    \ tr, (l+r)/2, r, 2*index+2));\r\n    }\r\n\r\n    Monoid all_prod() { return\
-    \ data[0]; }\r\n\r\n    Monoid get(int p) { return data[n+p-1]; }\r\n\r\n    Monoid\
-    \ operator [] (int p) { return data[n+p-1]; }\r\n};\r\n\r\n} // namespace ebi"
+    \ Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct segtree {\r\n\
+    private:\r\n    int n;\r\n    std::vector<Monoid> data;\r\npublic:\r\n    segtree(int\
+    \ _n) : n(1) {\r\n        while(n < _n) {\r\n            n <<= 1;\r\n        }\r\
+    \n        data.assign(2*n, e());\r\n        return;\r\n    }\r\n\r\n    segtree(const\
+    \ std::vector<Monoid> &v) : n(1) {\r\n        while(n < (int)v.size()) {\r\n \
+    \           n <<= 1;\r\n        }\r\n        data.assign(2*n, e());\r\n      \
+    \  std::copy(v.begin(), v.end(), data.begin() + n);\r\n        for(int i = n-1;\
+    \ i > 0; i--) {\r\n            data[i] = op(data[i<<1|0], data[i<<1|1]);\r\n \
+    \       }\r\n        return;\r\n    }\r\n\r\n    void set(int p, Monoid x) {\r\
+    \n        p += n;\r\n        data[p] = x;\r\n        while(p > 1) {\r\n      \
+    \      p >>= 1;\r\n            data[p] = op(data[p<<1|0], data[p<<1|1]);\r\n \
+    \       }\r\n        return;\r\n    }\r\n\r\n    Monoid get(int p) const {\r\n\
+    \        return data[p+n];\r\n    }\r\n\r\n    Monoid prod(int l, int r) const\
+    \ {\r\n        Monoid left = e(), right = e();\r\n        l += n;\r\n        r\
+    \ += n;\r\n        while(l < r) {\r\n            if(l & 1) left = op(left, data[l++]);\r\
+    \n            if(r & 1) right = op(data[--r], right);\r\n            l >>= 1;\r\
+    \n            r >>= 1;\r\n        }\r\n        return op(left, right);\r\n   \
+    \ }\r\n\r\n    Monoid all_prod() const {\r\n        return data[1];\r\n    }\r\
+    \n\r\n    Monoid operator [] (int p) const { return data[n+p]; }\r\n};\r\n\r\n\
+    } // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/Segtree.hpp
-  requiredBy:
-  - data_structure/segtree_2d.hpp
-  - data_structure/heavy_light_decomposition.hpp
-  timestamp: '2021-05-03 16:11:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/Segtree.test.cpp
-  - test/vertex_add_path_sum.test.cpp
-  - test/aoj/aoj_1645.test.cpp
-  - test/rectangle_sum.test.cpp
-  - test/vertex_add_subtree_sum.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
-  - test/point_add_rectangle_sum.test.cpp
+  requiredBy: []
+  timestamp: '2021-11-09 19:44:48+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: data_structure/Segtree.hpp
 layout: document
 title: Segtree
