@@ -1,21 +1,50 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/segtree.hpp
+    title: Segtree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
-  attributes: {}
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n  File \"/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \  File \"/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: ../data_structure/segtree.hpp:\
-    \ line -1: no such header\n"
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
+    links:
+    - https://judge.yosupo.jp/problem/point_add_range_sum
+  bundledCode: "#line 1 \"test/Segtree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\
+    \r\n\r\n#line 2 \"data_structure/segtree.hpp\"\n\r\n#include <vector>\r\n\r\n\
+    namespace ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid\
+    \ (*e)()>\r\nstruct segtree {\r\nprivate:\r\n    int n;\r\n    std::vector<Monoid>\
+    \ data;\r\npublic:\r\n    segtree(int _n) : n(1) {\r\n        while(n < _n) {\r\
+    \n            n <<= 1;\r\n        }\r\n        data.assign(2*n, e());\r\n    \
+    \    return;\r\n    }\r\n\r\n    segtree(const std::vector<Monoid> &v) : n(1)\
+    \ {\r\n        while(n < (int)v.size()) {\r\n            n <<= 1;\r\n        }\r\
+    \n        data.assign(2*n, e());\r\n        std::copy(v.begin(), v.end(), data.begin()\
+    \ + n);\r\n        for(int i = n-1; i > 0; i--) {\r\n            data[i] = op(data[i<<1|0],\
+    \ data[i<<1|1]);\r\n        }\r\n        return;\r\n    }\r\n\r\n    void set(int\
+    \ p, Monoid x) {\r\n        p += n;\r\n        data[p] = x;\r\n        while(p\
+    \ > 1) {\r\n            p >>= 1;\r\n            data[p] = op(data[p<<1|0], data[p<<1|1]);\r\
+    \n        }\r\n        return;\r\n    }\r\n\r\n    Monoid get(int p) const {\r\
+    \n        return data[p+n];\r\n    }\r\n\r\n    Monoid prod(int l, int r) const\
+    \ {\r\n        Monoid left = e(), right = e();\r\n        l += n;\r\n        r\
+    \ += n;\r\n        while(l < r) {\r\n            if(l & 1) left = op(left, data[l++]);\r\
+    \n            if(r & 1) right = op(data[--r], right);\r\n            l >>= 1;\r\
+    \n            r >>= 1;\r\n        }\r\n        return op(left, right);\r\n   \
+    \ }\r\n\r\n    Monoid all_prod() const {\r\n        return data[1];\r\n    }\r\
+    \n\r\n    Monoid operator [] (int p) const { return data[n+p]; }\r\n};\r\n\r\n\
+    } // namespace ebi\r\n#line 4 \"test/Segtree.test.cpp\"\n\r\n#include <iostream>\r\
+    \n#include <cstdint>\r\n\r\nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64\
+    \ b) { return a+b; }\r\ni64 e() { return (i64)0; }\r\n\r\nint main(){\r\n    int\
+    \ n,q; std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\n    for(int i = 0;\
+    \ i<n; i++){\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::segtree<i64, op,\
+    \ e> seg(a);\r\n    while(q--){\r\n        int t;\r\n        std::cin >> t;\r\n\
+    \        if(t==0){\r\n            int p; i64 x; std::cin >> p >> x;\r\n      \
+    \      seg.set(p,seg[p]+x);\r\n        }\r\n        else{\r\n            int l,r;\
+    \ std::cin >> l >> r;\r\n            std::cout << seg.prod(l,r) << std::endl;\r\
+    \n        }\r\n    }\r\n    return 0;\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\r\
     \n\r\n#include \"../data_structure/segtree.hpp\"\r\n\r\n#include <iostream>\r\n\
     #include <cstdint>\r\n\r\nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b)\
@@ -27,12 +56,13 @@ data:
     \      seg.set(p,seg[p]+x);\r\n        }\r\n        else{\r\n            int l,r;\
     \ std::cin >> l >> r;\r\n            std::cout << seg.prod(l,r) << std::endl;\r\
     \n        }\r\n    }\r\n    return 0;\r\n}"
-  dependsOn: []
+  dependsOn:
+  - data_structure/segtree.hpp
   isVerificationFile: true
   path: test/Segtree.test.cpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-11-09 19:49:13+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Segtree.test.cpp
 layout: document

@@ -1,14 +1,41 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/heavy_light_decomposition.hpp
+    title: data_structure/heavy_light_decomposition.hpp
+  - icon: ':heavy_check_mark:'
+    path: data_structure/segtree_2d.hpp
+    title: data_structure/segtree_2d.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Segtree.test.cpp
+    title: test/Segtree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_1645.test.cpp
+    title: test/aoj/aoj_1645.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/point_add_rectangle_sum.test.cpp
+    title: test/point_add_rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/rectangle_sum.test.cpp
+    title: test/rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_path_sum.test.cpp
+    title: test/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_subtree_sum.test.cpp
+    title: test/vertex_add_subtree_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_set_path_compositie.test.cpp
+    title: test/vertex_set_path_compositie.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/Segtree.hpp\"\n\r\n#include <vector>\r\n\r\
+  bundledCode: "#line 2 \"data_structure/segtree.hpp\"\n\r\n#include <vector>\r\n\r\
     \nnamespace ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid),\
     \ Monoid (*e)()>\r\nstruct segtree {\r\nprivate:\r\n    int n;\r\n    std::vector<Monoid>\
     \ data;\r\npublic:\r\n    segtree(int _n) : n(1) {\r\n        while(n < _n) {\r\
@@ -28,7 +55,7 @@ data:
     \n            r >>= 1;\r\n        }\r\n        return op(left, right);\r\n   \
     \ }\r\n\r\n    Monoid all_prod() const {\r\n        return data[1];\r\n    }\r\
     \n\r\n    Monoid operator [] (int p) const { return data[n+p]; }\r\n};\r\n\r\n\
-    } // namespace ebi\n"
+    } // namespace ebi\r\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
     \ Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct segtree {\r\n\
     private:\r\n    int n;\r\n    std::vector<Monoid> data;\r\npublic:\r\n    segtree(int\
@@ -49,15 +76,24 @@ data:
     \n            r >>= 1;\r\n        }\r\n        return op(left, right);\r\n   \
     \ }\r\n\r\n    Monoid all_prod() const {\r\n        return data[1];\r\n    }\r\
     \n\r\n    Monoid operator [] (int p) const { return data[n+p]; }\r\n};\r\n\r\n\
-    } // namespace ebi"
+    } // namespace ebi\r\n"
   dependsOn: []
   isVerificationFile: false
-  path: data_structure/Segtree.hpp
-  requiredBy: []
-  timestamp: '2021-11-09 19:44:48+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: data_structure/Segtree.hpp
+  path: data_structure/segtree.hpp
+  requiredBy:
+  - data_structure/segtree_2d.hpp
+  - data_structure/heavy_light_decomposition.hpp
+  timestamp: '2021-11-09 19:49:13+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/Segtree.test.cpp
+  - test/vertex_add_path_sum.test.cpp
+  - test/aoj/aoj_1645.test.cpp
+  - test/rectangle_sum.test.cpp
+  - test/vertex_add_subtree_sum.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
+  - test/point_add_rectangle_sum.test.cpp
+documentation_of: data_structure/segtree.hpp
 layout: document
 title: Segtree
 ---

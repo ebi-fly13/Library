@@ -6,6 +6,9 @@ data:
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
   - icon: ':heavy_check_mark:'
+    path: data_structure/heavy_light_decomposition.hpp
+    title: data_structure/heavy_light_decomposition.hpp
+  - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
   - icon: ':heavy_check_mark:'
@@ -36,6 +39,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/two_sat.test.cpp
     title: test/two_sat.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_path_sum.test.cpp
+    title: test/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_subtree_sum.test.cpp
+    title: test/vertex_add_subtree_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_set_path_compositie.test.cpp
+    title: test/vertex_set_path_compositie.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -73,14 +85,18 @@ data:
   - graph/dijkstra_fibheap.hpp
   - graph/scc_graph.hpp
   - algorithm/two_sat.hpp
+  - data_structure/heavy_light_decomposition.hpp
   timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/scc_graph.test.cpp
+  - test/vertex_add_path_sum.test.cpp
   - test/dijkstra.test.cpp
   - test/lowest_common_ancestor.test.cpp
   - test/two_sat.test.cpp
   - test/fibonacci_heap.test.cpp
+  - test/vertex_add_subtree_sum.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:
