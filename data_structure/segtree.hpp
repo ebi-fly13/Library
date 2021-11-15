@@ -8,30 +8,33 @@ template<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
 struct segtree {
 private:
     int n;
+    int size;
     std::vector<Monoid> data;
 public:
-    segtree(int _n) : n(1) {
-        while(n < _n) {
-            n <<= 1;
+    segtree(int _n) : n(_n), size(1) {
+        while(size < _n) {
+            size <<= 1;
         }
-        data.assign(2*n, e());
+        data.assign(2*size, e());
         return;
     }
 
-    segtree(const std::vector<Monoid> &v) : n(1) {
-        while(n < (int)v.size()) {
-            n <<= 1;
+    segtree(const std::vector<Monoid> &v) : size(1) {
+        n = (int)v.size();
+        while(size < n) {
+            size <<= 1;
         }
-        data.assign(2*n, e());
-        std::copy(v.begin(), v.end(), data.begin() + n);
-        for(int i = n-1; i > 0; i--) {
+        data.assign(2*size, e());
+        std::copy(v.begin(), v.end(), data.begin() + size);
+        for(int i = size-1; i > 0; i--) {
             data[i] = op(data[i<<1|0], data[i<<1|1]);
         }
         return;
     }
 
     void set(int p, Monoid x) {
-        p += n;
+        assert(0 <= p && p < n);
+        p += size;
         data[p] = x;
         while(p > 1) {
             p >>= 1;
@@ -41,13 +44,15 @@ public:
     }
 
     Monoid get(int p) const {
-        return data[p+n];
+        assert(0 <= p && p < n);
+        return data[p+size];
     }
 
     Monoid prod(int l, int r) const {
+        assert(0 <= l && l <= r && r <= n);
         Monoid left = e(), right = e();
-        l += n;
-        r += n;
+        l += size;
+        r += size;
         while(l < r) {
             if(l & 1) left = op(left, data[l++]);
             if(r & 1) right = op(data[--r], right);
@@ -61,7 +66,7 @@ public:
         return data[1];
     }
 
-    Monoid operator [] (int p) const { return data[n+p]; }
+    Monoid operator [] (int p) const { return data[size+p]; }
 };
 
 } // namespace ebi
