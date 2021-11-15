@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/heavy_light_decomposition.hpp
     title: data_structure/heavy_light_decomposition.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: Segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -26,12 +26,12 @@ data:
   bundledCode: "#line 1 \"test/vertex_set_path_compositie.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/vertex_set_path_composite\"\n\n#line 2 \"\
     data_structure/heavy_light_decomposition.hpp\"\n\n#line 2 \"data_structure/segtree.hpp\"\
-    \n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class Monoid, Monoid\
-    \ (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct segtree {\r\nprivate:\r\n  \
-    \  int n;\r\n    int size;\r\n    std::vector<Monoid> data;\r\npublic:\r\n   \
-    \ segtree(int _n) : n(_n), size(1) {\r\n        while(size < _n) {\r\n       \
-    \     size <<= 1;\r\n        }\r\n        data.assign(2*size, e());\r\n      \
-    \  return;\r\n    }\r\n\r\n    segtree(const std::vector<Monoid> &v) : size(1)\
+    \n\r\n#include <vector>\r\n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
+    \ Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct segtree {\r\n\
+    private:\r\n    int n;\r\n    int size;\r\n    std::vector<Monoid> data;\r\npublic:\r\
+    \n    segtree(int _n) : n(_n), size(1) {\r\n        while(size < _n) {\r\n   \
+    \         size <<= 1;\r\n        }\r\n        data.assign(2*size, e());\r\n  \
+    \      return;\r\n    }\r\n\r\n    segtree(const std::vector<Monoid> &v) : size(1)\
     \ {\r\n        n = (int)v.size();\r\n        while(size < n) {\r\n           \
     \ size <<= 1;\r\n        }\r\n        data.assign(2*size, e());\r\n        std::copy(v.begin(),\
     \ v.end(), data.begin() + size);\r\n        for(int i = size-1; i > 0; i--) {\r\
@@ -173,8 +173,8 @@ data:
   isVerificationFile: true
   path: test/vertex_set_path_compositie.test.cpp
   requiredBy: []
-  timestamp: '2021-11-15 17:56:03+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-11-15 18:01:08+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/vertex_set_path_compositie.test.cpp
 layout: document

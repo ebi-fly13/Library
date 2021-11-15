@@ -1,46 +1,46 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: Segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/vertex_add_subtree_sum.test.cpp
     title: test/vertex_add_subtree_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://codeforces.com/blog/entry/53170
   bundledCode: "#line 2 \"data_structure/heavy_light_decomposition.hpp\"\n\n#line\
-    \ 2 \"data_structure/segtree.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace ebi\
-    \ {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\
-    \nstruct segtree {\r\nprivate:\r\n    int n;\r\n    int size;\r\n    std::vector<Monoid>\
-    \ data;\r\npublic:\r\n    segtree(int _n) : n(_n), size(1) {\r\n        while(size\
-    \ < _n) {\r\n            size <<= 1;\r\n        }\r\n        data.assign(2*size,\
-    \ e());\r\n        return;\r\n    }\r\n\r\n    segtree(const std::vector<Monoid>\
-    \ &v) : size(1) {\r\n        n = (int)v.size();\r\n        while(size < n) {\r\
-    \n            size <<= 1;\r\n        }\r\n        data.assign(2*size, e());\r\n\
-    \        std::copy(v.begin(), v.end(), data.begin() + size);\r\n        for(int\
-    \ i = size-1; i > 0; i--) {\r\n            data[i] = op(data[i<<1|0], data[i<<1|1]);\r\
-    \n        }\r\n        return;\r\n    }\r\n\r\n    void set(int p, Monoid x) {\r\
-    \n        assert(0 <= p && p < n);\r\n        p += size;\r\n        data[p] =\
-    \ x;\r\n        while(p > 1) {\r\n            p >>= 1;\r\n            data[p]\
-    \ = op(data[p<<1|0], data[p<<1|1]);\r\n        }\r\n        return;\r\n    }\r\
-    \n\r\n    Monoid get(int p) const {\r\n        assert(0 <= p && p < n);\r\n  \
-    \      return data[p+size];\r\n    }\r\n\r\n    Monoid prod(int l, int r) const\
+    \ 2 \"data_structure/segtree.hpp\"\n\r\n#include <vector>\r\n#include <cassert>\r\
+    \n\r\nnamespace ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid),\
+    \ Monoid (*e)()>\r\nstruct segtree {\r\nprivate:\r\n    int n;\r\n    int size;\r\
+    \n    std::vector<Monoid> data;\r\npublic:\r\n    segtree(int _n) : n(_n), size(1)\
+    \ {\r\n        while(size < _n) {\r\n            size <<= 1;\r\n        }\r\n\
+    \        data.assign(2*size, e());\r\n        return;\r\n    }\r\n\r\n    segtree(const\
+    \ std::vector<Monoid> &v) : size(1) {\r\n        n = (int)v.size();\r\n      \
+    \  while(size < n) {\r\n            size <<= 1;\r\n        }\r\n        data.assign(2*size,\
+    \ e());\r\n        std::copy(v.begin(), v.end(), data.begin() + size);\r\n   \
+    \     for(int i = size-1; i > 0; i--) {\r\n            data[i] = op(data[i<<1|0],\
+    \ data[i<<1|1]);\r\n        }\r\n        return;\r\n    }\r\n\r\n    void set(int\
+    \ p, Monoid x) {\r\n        assert(0 <= p && p < n);\r\n        p += size;\r\n\
+    \        data[p] = x;\r\n        while(p > 1) {\r\n            p >>= 1;\r\n  \
+    \          data[p] = op(data[p<<1|0], data[p<<1|1]);\r\n        }\r\n        return;\r\
+    \n    }\r\n\r\n    Monoid get(int p) const {\r\n        assert(0 <= p && p < n);\r\
+    \n        return data[p+size];\r\n    }\r\n\r\n    Monoid prod(int l, int r) const\
     \ {\r\n        assert(0 <= l && l <= r && r <= n);\r\n        Monoid left = e(),\
     \ right = e();\r\n        l += size;\r\n        r += size;\r\n        while(l\
     \ < r) {\r\n            if(l & 1) left = op(left, data[l++]);\r\n            if(r\
@@ -134,8 +134,8 @@ data:
   isVerificationFile: false
   path: data_structure/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2021-11-15 17:56:03+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-11-15 18:01:08+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_path_sum.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
