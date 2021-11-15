@@ -95,13 +95,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/fibonacci_heap.hpp
       title: fibonacci_heap
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/heavy_light_decomposition.hpp
       title: data_structure/heavy_light_decomposition.hpp
     - icon: ':warning:'
@@ -122,10 +122,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: data_structure/section_set.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/segtree.hpp
       title: Segtree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/segtree_2d.hpp
       title: data_structure/segtree_2d.hpp
     - icon: ':warning:'
@@ -168,7 +168,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/template.hpp
       title: graph/template.hpp
   - name: math
@@ -204,7 +204,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -258,7 +258,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/SegmentTreeBeats.test.cpp
       title: test/SegmentTreeBeats.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Segtree.test.cpp
       title: test/Segtree.test.cpp
     - icon: ':heavy_check_mark:'
@@ -294,13 +294,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/persistent_unionfind.test.cpp
       title: test/persistent_unionfind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/point_add_rectangle_sum.test.cpp
       title: test/point_add_rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/pow.test.cpp
       title: test/pow.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/rectangle_sum.test.cpp
       title: test/rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -318,13 +318,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/two_sat.test.cpp
       title: test/two_sat.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/vertex_add_path_sum.test.cpp
       title: test/vertex_add_path_sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/vertex_add_subtree_sum.test.cpp
       title: test/vertex_add_subtree_sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/vertex_set_path_compositie.test.cpp
       title: test/vertex_set_path_compositie.test.cpp
   - name: test/Dice

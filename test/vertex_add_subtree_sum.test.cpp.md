@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/heavy_light_decomposition.hpp
     title: data_structure/heavy_light_decomposition.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: Segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
@@ -24,30 +24,32 @@ data:
     \ \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\n#line 2 \"data_structure/heavy_light_decomposition.hpp\"\
     \n\n#line 2 \"data_structure/segtree.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\
-    \nstruct segtree {\r\nprivate:\r\n    int n;\r\n    std::vector<Monoid> data;\r\
-    \npublic:\r\n    segtree(int _n) : n(1) {\r\n        while(n < _n) {\r\n     \
-    \       n <<= 1;\r\n        }\r\n        data.assign(2*n, e());\r\n        return;\r\
-    \n    }\r\n\r\n    segtree(const std::vector<Monoid> &v) : n(1) {\r\n        while(n\
-    \ < (int)v.size()) {\r\n            n <<= 1;\r\n        }\r\n        data.assign(2*n,\
-    \ e());\r\n        std::copy(v.begin(), v.end(), data.begin() + n);\r\n      \
-    \  for(int i = n-1; i > 0; i--) {\r\n            data[i] = op(data[i<<1|0], data[i<<1|1]);\r\
+    \nstruct segtree {\r\nprivate:\r\n    int n;\r\n    int size;\r\n    std::vector<Monoid>\
+    \ data;\r\npublic:\r\n    segtree(int _n) : n(_n), size(1) {\r\n        while(size\
+    \ < _n) {\r\n            size <<= 1;\r\n        }\r\n        data.assign(2*size,\
+    \ e());\r\n        return;\r\n    }\r\n\r\n    segtree(const std::vector<Monoid>\
+    \ &v) : size(1) {\r\n        n = (int)v.size();\r\n        while(size < n) {\r\
+    \n            size <<= 1;\r\n        }\r\n        data.assign(2*size, e());\r\n\
+    \        std::copy(v.begin(), v.end(), data.begin() + size);\r\n        for(int\
+    \ i = size-1; i > 0; i--) {\r\n            data[i] = op(data[i<<1|0], data[i<<1|1]);\r\
     \n        }\r\n        return;\r\n    }\r\n\r\n    void set(int p, Monoid x) {\r\
-    \n        p += n;\r\n        data[p] = x;\r\n        while(p > 1) {\r\n      \
-    \      p >>= 1;\r\n            data[p] = op(data[p<<1|0], data[p<<1|1]);\r\n \
-    \       }\r\n        return;\r\n    }\r\n\r\n    Monoid get(int p) const {\r\n\
-    \        return data[p+n];\r\n    }\r\n\r\n    Monoid prod(int l, int r) const\
-    \ {\r\n        Monoid left = e(), right = e();\r\n        l += n;\r\n        r\
-    \ += n;\r\n        while(l < r) {\r\n            if(l & 1) left = op(left, data[l++]);\r\
-    \n            if(r & 1) right = op(data[--r], right);\r\n            l >>= 1;\r\
-    \n            r >>= 1;\r\n        }\r\n        return op(left, right);\r\n   \
-    \ }\r\n\r\n    Monoid all_prod() const {\r\n        return data[1];\r\n    }\r\
-    \n\r\n    Monoid operator [] (int p) const { return data[n+p]; }\r\n};\r\n\r\n\
-    } // namespace ebi\r\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\
-    \n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\
-    \n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\
-    \n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
-    \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \n        assert(0 <= p && p < n);\r\n        p += size;\r\n        data[p] =\
+    \ x;\r\n        while(p > 1) {\r\n            p >>= 1;\r\n            data[p]\
+    \ = op(data[p<<1|0], data[p<<1|1]);\r\n        }\r\n        return;\r\n    }\r\
+    \n\r\n    Monoid get(int p) const {\r\n        assert(0 <= p && p < n);\r\n  \
+    \      return data[p+size];\r\n    }\r\n\r\n    Monoid prod(int l, int r) const\
+    \ {\r\n        assert(0 <= l && l <= r && r <= n);\r\n        Monoid left = e(),\
+    \ right = e();\r\n        l += size;\r\n        r += size;\r\n        while(l\
+    \ < r) {\r\n            if(l & 1) left = op(left, data[l++]);\r\n            if(r\
+    \ & 1) right = op(data[--r], right);\r\n            l >>= 1;\r\n            r\
+    \ >>= 1;\r\n        }\r\n        return op(left, right);\r\n    }\r\n\r\n    Monoid\
+    \ all_prod() const {\r\n        return data[1];\r\n    }\r\n\r\n    Monoid operator\
+    \ [] (int p) const { return data[size+p]; }\r\n};\r\n\r\n} // namespace ebi\r\n\
+    #line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n    T cost;\r\
+    \n    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\n\r\ntemplate<class\
+    \ T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
@@ -119,8 +121,8 @@ data:
   isVerificationFile: true
   path: test/vertex_add_subtree_sum.test.cpp
   requiredBy: []
-  timestamp: '2021-11-09 19:49:13+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2021-11-15 17:56:03+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/vertex_add_subtree_sum.test.cpp
 layout: document
