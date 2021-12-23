@@ -47,9 +47,9 @@ data:
   timestamp: '2021-08-17 18:06:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/geometry/segment_intersection.test.cpp
   - test/rectangle_sum.test.cpp
   - test/static_range_inversion_query.test.cpp
+  - test/geometry/segment_intersection.test.cpp
   - test/point_add_rectangle_sum.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
