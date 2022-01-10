@@ -140,6 +140,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
+    - icon: ':warning:'
+      path: data_structure/splay_tree.hpp
+      title: data_structure/splay_tree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/undo_unionfind.hpp
       title: data_structure/undo_unionfind.hpp
