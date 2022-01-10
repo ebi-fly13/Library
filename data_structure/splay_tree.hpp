@@ -2,6 +2,7 @@
 
 #include <limits>
 #include <memory>
+#include <optional>
 
 namespace ebi {
 
@@ -172,28 +173,28 @@ struct splay_tree {
         return;
     }
 
-    T lower_bound(T x) {
-        if(!root) return std::numeric_limits<T>::max();
+    std::optional<T> lower_bound(T x) {
+        if(!root) return std::nullopt;
         search(x);
         if (x <= root->val) return root->val;
-        if(!root->rch) return std::numeric_limits<T>::max();
+        if(!root->rch) return std::nullopt;
         auto node = root->rch;
         while(node->lch) {
             node = node->lch;
         }
-        return node->val;
+        return std::make_optional<T>(node->val);
     }
 
-    T upper_bound(T x) {
-        if(!root) return std::numeric_limits<T>::max();
+    std::optional<T> upper_bound(T x) {
+        if(!root) return std::nullopt;
         search(x);
-        if(x < root->val) return root->val;
-        if(!root->rch) return std::numeric_limits<T>::max();
+        if(x < root->val) return std::make_shared<T>(root->val);
+        if(!root->rch) return std::nullopt;
         auto node = root->rch;
         while(node->lch) {
             node = node->lch;
         }
-        return node->val;
+        return std::make_optional<T>(node->val);
     }
 
     int size() const { return root ? root->sz : 0; }
