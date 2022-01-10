@@ -19,6 +19,7 @@
 "test/SegmentAddGetMin.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/SegmentTreeBeats.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/Segtree.test.cpp": "2021-11-15 18:01:08 +0900",
+"test/Static_Range_Frequency.test.cpp": "2022-01-10 06:39:24 +0900",
 "test/UnionFind.test.cpp": "2021-11-03 22:06:55 +0900",
 "test/WaveletMatrix.test.cpp": "2021-01-18 10:56:54 +0900",
 "test/Z_Algorithm.test.cpp": "2021-01-18 10:56:54 +0900",
