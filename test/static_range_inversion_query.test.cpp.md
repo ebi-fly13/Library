@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/FenwickTree.hpp
     title: data_structure/FenwickTree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   _extendedRequiredBy: []
@@ -54,7 +54,7 @@ data:
     \ 1) {\r\n            if(x+k<=n && data[x+k]<key) {\r\n                x += k;\r\
     \n                key -= data[x];\r\n            }\r\n        }\r\n        return\
     \ x+1;\r\n    }\r\n};\r\n\r\n} // namespace ebi\n#line 2 \"data_structure/compress.hpp\"\
-    \n\n#line 5 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
+    \n\n#line 6 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
     \ T>\nstruct compress {\nprivate:\n    std::vector<T> cp;\n    bool flag = false;\n\
     public:\n    compress() = default;\n\n    compress(std::vector<T> cp) : cp(cp)\
     \ {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
@@ -111,7 +111,7 @@ data:
   isVerificationFile: true
   path: test/static_range_inversion_query.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 15:45:18+09:00'
+  timestamp: '2022-01-10 15:56:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/static_range_inversion_query.test.cpp

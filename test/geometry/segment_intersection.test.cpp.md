@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/FenwickTree.hpp
     title: data_structure/FenwickTree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   _extendedRequiredBy: []
@@ -21,7 +21,7 @@ data:
     \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_6_A\"\n\n#include\
     \ <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n#include\
     \ <iomanip>\n#include <cstdint>\n#include <map>\n\n#line 2 \"data_structure/compress.hpp\"\
-    \n\n#line 5 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
+    \n\n#line 6 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
     \ T>\nstruct compress {\nprivate:\n    std::vector<T> cp;\n    bool flag = false;\n\
     public:\n    compress() = default;\n\n    compress(std::vector<T> cp) : cp(cp)\
     \ {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
@@ -93,7 +93,7 @@ data:
   isVerificationFile: true
   path: test/geometry/segment_intersection.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 15:45:18+09:00'
+  timestamp: '2022-01-10 15:56:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/segment_intersection.test.cpp

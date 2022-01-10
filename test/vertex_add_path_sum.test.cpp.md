@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/heavy_light_decomposition.hpp
     title: data_structure/heavy_light_decomposition.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: Segtree
   - icon: ':heavy_check_mark:'
