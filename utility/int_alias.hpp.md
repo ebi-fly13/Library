@@ -31,6 +31,9 @@ data:
     path: test/SegmentTreeBeats.test.cpp
     title: test/SegmentTreeBeats.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Static_Range_Frequency.test.cpp
+    title: test/Static_Range_Frequency.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -71,6 +74,7 @@ data:
   - test/pow.test.cpp
   - test/dijkstra.test.cpp
   - test/fibonacci_heap.test.cpp
+  - test/Static_Range_Frequency.test.cpp
   - test/SegmentTreeBeats.test.cpp
   - test/FenwickTree.test.cpp
   - test/LiChaoSegmentTree.test.cpp

@@ -2,36 +2,38 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/WaveletMatrix.hpp
+    title: WaveletMatrix
+  - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
   - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Static_Range_Frequency.test.cpp
-    title: test/Static_Range_Frequency.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/WaveletMatrix.test.cpp
-    title: test/WaveletMatrix.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/static_range_frequency
     links:
-    - https://miti-7.hatenablog.com/entry/2018/04/28/152259
-  bundledCode: "#line 2 \"data_structure/WaveletMatrix.hpp\"\n\r\n#line 2 \"data_structure/bitVector.hpp\"\
-    \n\r\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include <cstdint>\r\
-    \n\r\nusing i32 = std::int32_t;\r\nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\
-    \nusing u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n\
+    - https://judge.yosupo.jp/problem/static_range_frequency
+  bundledCode: "#line 1 \"test/Static_Range_Frequency.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\n\n#include <vector>\n\
+    #include <cstdint>\n#include <iostream>\n\n#line 2 \"data_structure/WaveletMatrix.hpp\"\
+    \n\r\n#line 2 \"data_structure/bitVector.hpp\"\n\r\n#line 2 \"utility/int_alias.hpp\"\
+    \n\r\n#include <cstddef>\r\n#line 5 \"utility/int_alias.hpp\"\n\r\nusing i32 =\
+    \ std::int32_t;\r\nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\n\
+    using u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n\
     #line 4 \"data_structure/bitVector.hpp\"\n\r\n/*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\
-    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct bitVector {\r\
-    \n    u32 length, cn, bn;\r\n    static u32 cw, bw; // chunk, block \u306E\u9577\
-    \u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16>\
-    \ bit;\r\n    std::vector<u32> chunk;\r\n    std::vector<std::vector<u16>> blocks;\r\
-    \n\r\n    bitVector(int n) : length(n) {\r\n        cn = (length+cw-1)/cw;\r\n\
-    \        bn = cw/bw;\r\n        bit.assign(cn*bn, 0);\r\n        chunk.assign(cn+1,0);\r\
+    \n*/\r\n\r\n#line 10 \"data_structure/bitVector.hpp\"\n\r\nnamespace ebi {\r\n\
+    \r\nstruct bitVector {\r\n    u32 length, cn, bn;\r\n    static u32 cw, bw; //\
+    \ chunk, block \u306E\u9577\u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B\
+    .\r\n    std::vector<u16> bit;\r\n    std::vector<u32> chunk;\r\n    std::vector<std::vector<u16>>\
+    \ blocks;\r\n\r\n    bitVector(int n) : length(n) {\r\n        cn = (length+cw-1)/cw;\r\
+    \n        bn = cw/bw;\r\n        bit.assign(cn*bn, 0);\r\n        chunk.assign(cn+1,0);\r\
     \n        blocks.assign(cn, std::vector<u16>(bn, 0));\r\n    }\r\n\r\n    void\
     \ set(int k, int b) {\r\n        u32 i = k/bw;\r\n        u32 j = k%bw;\r\n  \
     \      if(b == 0) {\r\n            bit[i] &= ~(1<<j);\r\n        }\r\n       \
@@ -98,89 +100,35 @@ data:
     \            val |= (T)1 << bit;\r\n                l = border[bit] + rank_l;\r\
     \n                r = border[bit] + rank_r;\r\n                k -= zero;\r\n\
     \            }\r\n        }\r\n        return val;\r\n    }\r\n};\r\n\r\n} //\
-    \ namespace ebi\n"
-  code: "#pragma once\r\n\r\n#include \"../data_structure/bitVector.hpp\"\r\n\r\n\
-    /*\r\n    reference: https://miti-7.hatenablog.com/entry/2018/04/28/152259\r\n\
-    */\r\n\r\n#include <vector>\r\n#include <limits>\r\n#include <map>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate<class T>\r\nstruct WaveletMatrix {\r\nprivate:\r\n   \
-    \ int wordsize = std::numeric_limits<T>::digits;\r\n    int n;\r\n    std::vector<bitVector>\
-    \ mat;\r\n    std::vector<int> border;\r\n    std::map<T,int> map;\r\n\r\npublic:\r\
-    \n    WaveletMatrix(std::vector<T> v) : n(v.size()), mat(wordsize, bitVector(n)),\
-    \ border(wordsize) {\r\n        for(int bit = wordsize-1; bit>=0; --bit) {\r\n\
-    \            std::vector<T> one, zero;\r\n            zero.reserve(n);\r\n   \
-    \         for(int i = 0; i<n; ++i) {\r\n                if(v[i] & ((T)1 << bit))\
-    \ {\r\n                    one.emplace_back(v[i]);\r\n                    mat[bit].set(i,\
-    \ 1);\r\n                }\r\n                else {\r\n                    zero.emplace_back(v[i]);\r\
-    \n                }\r\n            }\r\n            border[bit] = zero.size();\r\
-    \n            mat[bit].build();\r\n            std::copy(one.begin(), one.end(),\
-    \ std::back_inserter(zero));\r\n            v = zero;\r\n        }\r\n       \
-    \ for(int i = 0; i<n; i++) {\r\n            if(map[v[i]]==0) {\r\n           \
-    \     map[v[i]] = i;\r\n            }\r\n        }\r\n    }\r\n\r\n    T access(int\
-    \ i) {\r\n        T val = 0;\r\n        int k = i;\r\n        for(int bit = wordsize-1;\
-    \ bit>=0; --bit) {\r\n            if(mat[bit].access(k) == 1) {\r\n          \
-    \      val |= ((T)1 << bit);\r\n                k = border[bit] + mat[bit].rank(k);\r\
-    \n            }\r\n            else {\r\n                k = k-mat[bit].rank(k);\r\
-    \n            }\r\n        }\r\n        return val;\r\n    }\r\n\r\n    int rank(int\
-    \ r, T x) {\r\n        int k = r;\r\n        for(int bit = wordsize-1; bit>=0;\
-    \ --bit) {\r\n            if(x & ((T)1 << bit)) {\r\n                k = border[bit]\
-    \ + mat[bit].rank(k);\r\n            }\r\n            else {\r\n             \
-    \   k = k-mat[bit].rank(k);\r\n            }\r\n        }\r\n        return k-map[x];\r\
-    \n    }\r\n\r\n    int select(T x, int k) {\r\n        k = map[x] + k;\r\n   \
-    \     for(int bit = 0; bit<wordsize; ++bit) {\r\n            if(x & ((T)1 << bit))\
-    \ {\r\n                k = mat[bit].select(k-border[bit]);\r\n            }\r\n\
-    \            else {\r\n                k = mat[bit].select0(k);\r\n          \
-    \  }\r\n        }\r\n        return k-1;\r\n    }\r\n\r\n    T quantile(int l,\
-    \ int r, int k) {\r\n        T val = 0;\r\n        for(int bit = wordsize-1; bit>=0;\
-    \ --bit) {\r\n            int rank_l = mat[bit].rank(l);\r\n            int rank_r\
-    \ = mat[bit].rank(r);\r\n            int one = rank_r - rank_l;\r\n          \
-    \  int zero = r-l-one;\r\n            if(k<=zero) {\r\n                l -= rank_l;\r\
-    \n                r -= rank_r;\r\n            }\r\n            else {\r\n    \
-    \            val |= (T)1 << bit;\r\n                l = border[bit] + rank_l;\r\
-    \n                r = border[bit] + rank_r;\r\n                k -= zero;\r\n\
-    \            }\r\n        }\r\n        return val;\r\n    }\r\n};\r\n\r\n} //\
-    \ namespace ebi"
+    \ namespace ebi\n#line 9 \"test/Static_Range_Frequency.test.cpp\"\n\nint main()\
+    \ {\n    int n,q;\n    std::cin >> n >> q;\n    std::vector<int> a(n);\n    for(auto\
+    \ &val: a) {\n        std::cin >> val;\n    }\n    ebi::WaveletMatrix<int> wm(a);\n\
+    \    while(q--) {\n        int l,r,x;\n        std::cin >> l >> r >> x;\n    \
+    \    if(l == r) {\n            std::cout << \"0\\n\";\n            continue;\n\
+    \        }\n        std::cout << wm.rank(r, x) - wm.rank(l, x) << '\\n';\n   \
+    \ }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
+    \n\n\n#include <vector>\n#include <cstdint>\n#include <iostream>\n\n#include \"\
+    data_structure/WaveletMatrix.hpp\"\n\nint main() {\n    int n,q;\n    std::cin\
+    \ >> n >> q;\n    std::vector<int> a(n);\n    for(auto &val: a) {\n        std::cin\
+    \ >> val;\n    }\n    ebi::WaveletMatrix<int> wm(a);\n    while(q--) {\n     \
+    \   int l,r,x;\n        std::cin >> l >> r >> x;\n        if(l == r) {\n     \
+    \       std::cout << \"0\\n\";\n            continue;\n        }\n        std::cout\
+    \ << wm.rank(r, x) - wm.rank(l, x) << '\\n';\n    }\n    return 0;\n}"
   dependsOn:
+  - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
   - utility/int_alias.hpp
-  isVerificationFile: false
-  path: data_structure/WaveletMatrix.hpp
+  isVerificationFile: true
+  path: test/Static_Range_Frequency.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/WaveletMatrix.test.cpp
-  - test/Static_Range_Frequency.test.cpp
-documentation_of: data_structure/WaveletMatrix.hpp
+  timestamp: '2022-01-10 06:39:24+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/Static_Range_Frequency.test.cpp
 layout: document
-title: WaveletMatrix
+redirect_from:
+- /verify/test/Static_Range_Frequency.test.cpp
+- /verify/test/Static_Range_Frequency.test.cpp.html
+title: test/Static_Range_Frequency.test.cpp
 ---
-
-## 説明
-
-整数列$(a_0, a_1, \dots, a_{n-1})$を扱う静的なデータ構造である.
-
-## コンストラクタ
-
-```cpp
-WaveletMatrix<T> wm(std::vector<T> v);
-```
-
--   整数型$T$
--   制数列$(a_0, a_1, \dots, a_{n-1})$
-
-を用いる.
-
-## Operator
-
--   ```wm.access(int i)```
-    -   $a_i$を返す
-    -   時間計算量$O(\log \sigma)$
--   ```wm.rank(int r, T x)```
-    -   $[0,r)$に含まれる$x$の数を返す.
-    -   時間計算量$O(\log \sigma)$
--   ```wm.select(T x, int k)```
-    -   整数列$(a_0, a_1, \dots, a_{n-1})$に対して$x$が$k$番目に現れる$index$を返す
-    -   時間計算量$O(\log \sigma)$
--   ```wm.quantile(int l, int r, int k)```
-    -   $[l,r)$に含まれる要素について$k$番目に小さい値を返す
-    -   時間計算量$O(\log \sigma)$

@@ -10,6 +10,9 @@ data:
     title: WaveletMatrix
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/Static_Range_Frequency.test.cpp
+    title: test/Static_Range_Frequency.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
   _isVerificationFailed: false
@@ -101,6 +104,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/WaveletMatrix.test.cpp
+  - test/Static_Range_Frequency.test.cpp
 documentation_of: data_structure/bitVector.hpp
 layout: document
 redirect_from:

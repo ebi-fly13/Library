@@ -119,6 +119,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/persistent_unionfind.hpp
       title: data_structure/persistent_unionfind.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/predecessor_set.hpp
+      title: data_structure/predecessor_set.hpp
     - icon: ':warning:'
       path: data_structure/removable_priority_queue.hpp
       title: data_structure/removable_priority_queue.hpp
@@ -265,6 +268,9 @@ data:
       path: test/Segtree.test.cpp
       title: test/Segtree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/Static_Range_Frequency.test.cpp
+      title: test/Static_Range_Frequency.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
     - icon: ':heavy_check_mark:'
@@ -303,6 +309,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/pow.test.cpp
       title: test/pow.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/predecessor_set.test.cpp
+      title: test/predecessor_set.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/rectangle_sum.test.cpp
       title: test/rectangle_sum.test.cpp
