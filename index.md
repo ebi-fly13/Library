@@ -105,6 +105,9 @@ data:
       path: data_structure/heavy_light_decomposition.hpp
       title: data_structure/heavy_light_decomposition.hpp
     - icon: ':warning:'
+      path: data_structure/kd_tree.hpp
+      title: data_structure/kd_tree.hpp
+    - icon: ':warning:'
       path: data_structure/online_mex.hpp
       title: data_structure/online_mex.hpp
     - icon: ':warning:'
