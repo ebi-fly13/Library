@@ -36,6 +36,11 @@ public:
     int size() const {
         return cp.size();
     }
+
+    T val(int idx) const {
+        assert(0 <= idx && idx < (int)cp.size());
+        return cp[idx];
+    }
 };
 
 }
