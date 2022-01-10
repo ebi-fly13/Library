@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: Segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segtree_2d.hpp
     title: data_structure/segtree_2d.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -32,9 +32,11 @@ data:
     \        flag = false;\n    }\n\n    int get(const T &val) {\n        if(flag\
     \ == false) build();\n        return std::lower_bound(cp.begin(), cp.end(), val)\
     \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
-    \    }\n};\n\n}\n#line 3 \"data_structure/segtree_2d.hpp\"\n\r\n/*\r\n    reference:\
-    \ https://blog.hamayanhamayan.com/entry/2017/12/09/015937\r\n    verify   : http://codeforces.com/contest/893/submission/125531718\r\
-    \n*/\r\n\r\n#line 2 \"data_structure/segtree.hpp\"\n\r\n#line 4 \"data_structure/segtree.hpp\"\
+    \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
+    \        return cp[idx];\n    }\n};\n\n}\n#line 3 \"data_structure/segtree_2d.hpp\"\
+    \n\r\n/*\r\n    reference: https://blog.hamayanhamayan.com/entry/2017/12/09/015937\r\
+    \n    verify   : http://codeforces.com/contest/893/submission/125531718\r\n*/\r\
+    \n\r\n#line 2 \"data_structure/segtree.hpp\"\n\r\n#line 4 \"data_structure/segtree.hpp\"\
     \n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class Monoid, Monoid\
     \ (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct segtree {\r\nprivate:\r\n  \
     \  int n;\r\n    int size;\r\n    std::vector<Monoid> data;\r\npublic:\r\n   \
@@ -141,8 +143,8 @@ data:
   isVerificationFile: true
   path: test/point_add_rectangle_sum.test.cpp
   requiredBy: []
-  timestamp: '2021-11-15 18:01:08+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2022-01-10 15:45:18+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/point_add_rectangle_sum.test.cpp
 layout: document

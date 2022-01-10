@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: Segtree
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/point_add_rectangle_sum.test.cpp
     title: test/point_add_rectangle_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/rectangle_sum.test.cpp
     title: test/rectangle_sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - http://codeforces.com/contest/893/submission/125531718
@@ -121,7 +121,7 @@ data:
   path: data_structure/segtree_2d.hpp
   requiredBy: []
   timestamp: '2021-11-15 18:01:08+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/rectangle_sum.test.cpp
   - test/point_add_rectangle_sum.test.cpp

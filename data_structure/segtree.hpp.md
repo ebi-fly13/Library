@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/heavy_light_decomposition.hpp
     title: data_structure/heavy_light_decomposition.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segtree_2d.hpp
     title: data_structure/segtree_2d.hpp
   _extendedVerifiedWith:
@@ -15,10 +15,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_1645.test.cpp
     title: test/aoj/aoj_1645.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/point_add_rectangle_sum.test.cpp
     title: test/point_add_rectangle_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/rectangle_sum.test.cpp
     title: test/rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,9 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/segtree.hpp\"\n\r\n#include <vector>\r\n\
@@ -89,7 +89,7 @@ data:
   - data_structure/segtree_2d.hpp
   - data_structure/heavy_light_decomposition.hpp
   timestamp: '2021-11-15 18:01:08+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/vertex_set_path_compositie.test.cpp
   - test/aoj/aoj_1645.test.cpp

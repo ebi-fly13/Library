@@ -95,7 +95,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
@@ -128,10 +128,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: data_structure/section_set.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/segtree.hpp
       title: Segtree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/segtree_2d.hpp
       title: data_structure/segtree_2d.hpp
     - icon: ':warning:'
@@ -303,7 +303,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/persistent_unionfind.test.cpp
       title: test/persistent_unionfind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/point_add_rectangle_sum.test.cpp
       title: test/point_add_rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -312,7 +312,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/predecessor_set.test.cpp
       title: test/predecessor_set.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/rectangle_sum.test.cpp
       title: test/rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'

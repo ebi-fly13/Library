@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/FenwickTree.hpp
     title: data_structure/FenwickTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   _extendedRequiredBy: []
@@ -63,8 +63,9 @@ data:
     \        flag = false;\n    }\n\n    int get(const T &val) {\n        if(flag\
     \ == false) build();\n        return std::lower_bound(cp.begin(), cp.end(), val)\
     \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
-    \    }\n};\n\n}\n#line 12 \"test/static_range_inversion_query.test.cpp\"\n\r\n\
-    using u64 = std::uint64_t;\r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin\
+    \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
+    \        return cp[idx];\n    }\n};\n\n}\n#line 12 \"test/static_range_inversion_query.test.cpp\"\
+    \n\r\nusing u64 = std::uint64_t;\r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin\
     \ >> n >> q;\r\n    std::vector<int> a(n);\r\n    std::vector<int> l(q), r(q);\r\
     \n    ebi::compress<int> cp;\r\n    for(int i = 0; i < n; i++) {\r\n        std::cin\
     \ >> a[i];\r\n        cp.add(a[i]);\r\n    }\r\n    cp.build();\r\n    for(int\
@@ -110,7 +111,7 @@ data:
   isVerificationFile: true
   path: test/static_range_inversion_query.test.cpp
   requiredBy: []
-  timestamp: '2021-08-18 00:16:55+09:00'
+  timestamp: '2022-01-10 15:45:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/static_range_inversion_query.test.cpp

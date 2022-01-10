@@ -6,18 +6,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/segment_intersection.test.cpp
     title: test/geometry/segment_intersection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/point_add_rectangle_sum.test.cpp
     title: test/point_add_rectangle_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/rectangle_sum.test.cpp
     title: test/rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/static_range_inversion_query.test.cpp
     title: test/static_range_inversion_query.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/compress.hpp\"\n\n#include <vector>\n#include\
@@ -29,7 +29,8 @@ data:
     \ {\n        cp.emplace_back(val);\n        flag = false;\n    }\n\n    int get(const\
     \ T &val) {\n        if(flag == false) build();\n        return std::lower_bound(cp.begin(),\
     \ cp.end(), val) - cp.begin();\n    }\n\n    int size() const {\n        return\
-    \ cp.size();\n    }\n};\n\n}\n"
+    \ cp.size();\n    }\n\n    T val(int idx) const {\n        assert(0 <= idx &&\
+    \ idx < (int)cp.size());\n        return cp[idx];\n    }\n};\n\n}\n"
   code: "#pragma once\n\n#include <vector>\n#include <algorithm>\n\nnamespace ebi\
     \ {\n\ntemplate<class T>\nstruct compress {\nprivate:\n    std::vector<T> cp;\n\
     \    bool flag = false;\npublic:\n    compress() = default;\n\n    compress(std::vector<T>\
@@ -39,13 +40,14 @@ data:
     \        flag = false;\n    }\n\n    int get(const T &val) {\n        if(flag\
     \ == false) build();\n        return std::lower_bound(cp.begin(), cp.end(), val)\
     \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
-    \    }\n};\n\n}"
+    \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
+    \        return cp[idx];\n    }\n};\n\n}"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/compress.hpp
   requiredBy: []
-  timestamp: '2021-08-17 18:06:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2022-01-10 15:45:18+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/rectangle_sum.test.cpp
   - test/static_range_inversion_query.test.cpp
