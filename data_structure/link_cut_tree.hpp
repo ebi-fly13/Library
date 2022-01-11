@@ -1,9 +1,7 @@
 #pragma once
 
 #include <cassert>
-#include <limits>
 #include <memory>
-#include <optional>
 
 namespace ebi {
 
@@ -277,6 +275,7 @@ struct link_cut_tree {
         return vs;
     }
 
+    /*
     void DEBUG() {
         for (auto node : vertex) {
             debug(node->index, node->val.value, node->sum.value);
@@ -291,6 +290,7 @@ struct link_cut_tree {
             }
         }
     }
+    */
 
    private:
     std::vector<node_ptr> vertex;
