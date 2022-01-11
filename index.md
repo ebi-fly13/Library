@@ -107,6 +107,9 @@ data:
     - icon: ':warning:'
       path: data_structure/kd_tree.hpp
       title: data_structure/kd_tree.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/link_cut_tree.hpp
+      title: data_structure/link_cut_tree.hpp
     - icon: ':warning:'
       path: data_structure/online_mex.hpp
       title: data_structure/online_mex.hpp
@@ -234,6 +237,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/DynamicSegmentTree.test.cpp
       title: test/DynamicSegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp
+      title: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/Exp_of_Formal_Power_Series.test.cpp
       title: test/Exp_of_Formal_Power_Series.test.cpp
