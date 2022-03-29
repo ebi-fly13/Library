@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cstdint>
+#include <vector>
 #include <tuple>
 
 #include "data_structure/range_tree.hpp"
