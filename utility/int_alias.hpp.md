@@ -68,16 +68,16 @@ data:
   timestamp: '2021-01-12 22:18:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/SegmentAddGetMin.test.cpp
-  - test/ImplicitTreap.test.cpp
-  - test/WaveletMatrix.test.cpp
-  - test/pow.test.cpp
-  - test/dijkstra.test.cpp
-  - test/fibonacci_heap.test.cpp
-  - test/Static_Range_Frequency.test.cpp
-  - test/SegmentTreeBeats.test.cpp
   - test/FenwickTree.test.cpp
+  - test/fibonacci_heap.test.cpp
   - test/LiChaoSegmentTree.test.cpp
+  - test/Static_Range_Frequency.test.cpp
+  - test/pow.test.cpp
+  - test/ImplicitTreap.test.cpp
+  - test/SegmentAddGetMin.test.cpp
+  - test/WaveletMatrix.test.cpp
+  - test/dijkstra.test.cpp
+  - test/SegmentTreeBeats.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:

@@ -125,6 +125,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/predecessor_set.hpp
       title: data_structure/predecessor_set.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/range_tree.hpp
+      title: data_structure/range_tree.hpp
     - icon: ':warning:'
       path: data_structure/removable_priority_queue.hpp
       title: data_structure/removable_priority_queue.hpp
@@ -321,6 +324,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/predecessor_set.test.cpp
       title: test/predecessor_set.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/range_tree.test.cpp
+      title: test/range_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/rectangle_sum.test.cpp
       title: test/rectangle_sum.test.cpp
