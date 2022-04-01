@@ -47,7 +47,7 @@ bool isAlpha(char c) {
 }
 
 bool isalpha(char c) {
-    return 'a' <= c && c <= 'Z';
+    return 'a' <= c && c <= 'z';
 }
 
 }
