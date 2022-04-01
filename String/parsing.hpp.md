@@ -23,7 +23,7 @@ data:
     \ << \"'\" << std::endl;\n        throw ParseError();\n    }\n}\n\nbool isdigit(char\
     \ c) {\n    return '0' <= c && c <= '9';\n}\n\nbool isAlpha(char c) {\n    return\
     \ 'A' <= c && c <= 'Z';\n}\n\nbool isalpha(char c) {\n    return 'a' <= c && c\
-    \ <= 'Z';\n}\n\n}\n"
+    \ <= 'z';\n}\n\n}\n"
   code: "#pragma once\n\n#include <iostream>\n#include <string>\n#include <cctype>\n\
     \n/*\n    reference: https://gist.github.com/draftcode/1357281\n*/\n\nnamespace\
     \ ebi {\n\ntypedef std::string::const_iterator State;\nclass ParseError {};\n\n\
@@ -37,12 +37,12 @@ data:
     \      std::cerr << *begin++;\n        }\n        std::cerr << \"'\" << std::endl;\n\
     \        throw ParseError();\n    }\n}\n\nbool isdigit(char c) {\n    return '0'\
     \ <= c && c <= '9';\n}\n\nbool isAlpha(char c) {\n    return 'A' <= c && c <=\
-    \ 'Z';\n}\n\nbool isalpha(char c) {\n    return 'a' <= c && c <= 'Z';\n}\n\n}"
+    \ 'Z';\n}\n\nbool isalpha(char c) {\n    return 'a' <= c && c <= 'z';\n}\n\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: String/parsing.hpp
   requiredBy: []
-  timestamp: '2021-10-16 12:06:31+09:00'
+  timestamp: '2022-04-01 12:19:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/parsing.hpp
