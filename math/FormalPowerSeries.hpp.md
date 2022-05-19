@@ -188,8 +188,8 @@ data:
   timestamp: '2021-04-04 17:12:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
 documentation_of: math/FormalPowerSeries.hpp
 layout: document

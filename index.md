@@ -48,9 +48,6 @@ data:
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
-      path: data_structure/BinaryTrie.hpp
-      title: data_structure/BinaryTrie.hpp
-    - icon: ':heavy_check_mark:'
       path: data_structure/DualSegtree.hpp
       title: data_structure/DualSegtree.hpp
     - icon: ':heavy_check_mark:'
@@ -92,6 +89,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/bankers_queue.hpp
       title: data_structure/bankers_queue.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/binary_trie.hpp
+      title: data_structure/binary_trie.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
@@ -229,9 +229,6 @@ data:
   - name: test
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/BinaryTrie.test.cpp
-      title: test/BinaryTrie.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/Determinant_of_Matrix.test.cpp
       title: test/Determinant_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
@@ -294,6 +291,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/bankers_queue.test.cpp
       title: test/bankers_queue.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/binary_trie.test.cpp
+      title: test/binary_trie.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/convolution.test.cpp
       title: test/convolution.test.cpp
