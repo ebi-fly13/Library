@@ -63,8 +63,8 @@ data:
   timestamp: '2021-08-31 14:46:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/lowest_common_ancestor.test.cpp
   - test/static_rmq.test.cpp
+  - test/lowest_common_ancestor.test.cpp
 documentation_of: data_structure/sparse_table.hpp
 layout: document
 redirect_from:

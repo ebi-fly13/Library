@@ -50,10 +50,10 @@ data:
   timestamp: '2022-01-10 15:56:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/static_range_inversion_query.test.cpp
   - test/point_add_rectangle_sum.test.cpp
   - test/rectangle_sum.test.cpp
   - test/geometry/segment_intersection.test.cpp
+  - test/static_range_inversion_query.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 redirect_from:

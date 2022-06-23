@@ -103,8 +103,8 @@ data:
   timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Static_Range_Frequency.test.cpp
   - test/WaveletMatrix.test.cpp
+  - test/Static_Range_Frequency.test.cpp
 documentation_of: data_structure/bitVector.hpp
 layout: document
 redirect_from:
