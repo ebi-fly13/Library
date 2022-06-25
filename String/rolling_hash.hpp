@@ -91,6 +91,6 @@ public:
 };
 
 template<int n>
-std::vector<std::uint64_t> rolling_hash<n>::base {};
+std::vector<std::uint64_t> rolling_hash<n>::base {12345,10000000};
 
 }
