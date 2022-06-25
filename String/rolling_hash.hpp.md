@@ -56,7 +56,8 @@ data:
     \            base[i] = rnd.get(0, (1UL<<61) - 1);\r\n        }\r\n    }\r\nprivate:\r\
     \n    size_t sz;\r\n    std::vector<std::vector<u64>> base_pow;\r\n    std::vector<std::vector<u64>>\
     \ hash;\r\npublic:\r\n    static std::vector<u64> base;\r\n};\r\n\r\ntemplate<int\
-    \ n>\r\nstd::vector<std::uint64_t> rolling_hash<n>::base {};\r\n\r\n}\n"
+    \ n>\r\nstd::vector<std::uint64_t> rolling_hash<n>::base {12345,10000000};\r\n\
+    \r\n}\r\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n#include <cstdint>\r\n#include <cassert>\r\
     \n\r\n#include \"../utility/random_number_generator_64.hpp\"\r\n\r\n/*\r\n   \
     \ reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\n*/\r\n\r\n\
@@ -91,13 +92,14 @@ data:
     \            base[i] = rnd.get(0, (1UL<<61) - 1);\r\n        }\r\n    }\r\nprivate:\r\
     \n    size_t sz;\r\n    std::vector<std::vector<u64>> base_pow;\r\n    std::vector<std::vector<u64>>\
     \ hash;\r\npublic:\r\n    static std::vector<u64> base;\r\n};\r\n\r\ntemplate<int\
-    \ n>\r\nstd::vector<std::uint64_t> rolling_hash<n>::base {};\r\n\r\n}"
+    \ n>\r\nstd::vector<std::uint64_t> rolling_hash<n>::base {12345,10000000};\r\n\
+    \r\n}\r\n"
   dependsOn:
   - utility/random_number_generator_64.hpp
   isVerificationFile: false
   path: String/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2021-10-27 11:57:53+09:00'
+  timestamp: '2022-06-26 00:12:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
