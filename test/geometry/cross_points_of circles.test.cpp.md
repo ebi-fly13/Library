@@ -161,13 +161,13 @@ data:
     \    }\n    return false;\n}\n\n// \u7DDA\u5206ab, cd \u304C\u4EA4\u308F\u308B\
     \u304B\u5224\u5B9A\nbool intersection(const line_segment &a, const line_segment\
     \ &b) {\n    return intersection_line_segment(a.a, a.b, b.a, b.b);\n}\n\nbool\
-    \ intersection(const line &a, const line_segment &b) {\n    if(internal::sgn(det(b.a\
-    \ - a.a, a.b)) * internal::sgn(det(b.b - a.a, a.b)) < 0) {\n        return true;\n\
-    \    }\n    else {\n        return false;\n    }\n}\n\npoint cross_point(const\
-    \ line_segment &s, const line_segment &t) {\n    assert(intersection(s, t));\n\
-    \    return s.a + (s.b - s.a) * det(t.a - s.a, t.b - t.a) / det(s.b - s.a, t.b\
-    \ - t.a);\n}\n\nlong double distance(const line_segment &a, const point &c) {\n\
-    \    if(internal::sgn(dot(a.b - a.a, c - a.a)) < 0) {\n        return abs(c-a.a);\n\
+    \ intersection(const line &a, const line_segment &b) {\n    if(internal::sgn(det(a.b\
+    \ - a.a, b.a - a.a)) * internal::sgn(det(a.b - a.a, b.b - a.a)) < 0) {\n     \
+    \   return true;\n    }\n    else {\n        return false;\n    }\n}\n\npoint\
+    \ cross_point(const line_segment &s, const line_segment &t) {\n    assert(intersection(s,\
+    \ t));\n    return s.a + (s.b - s.a) * det(t.a - s.a, t.b - t.a) / det(s.b - s.a,\
+    \ t.b - t.a);\n}\n\nlong double distance(const line_segment &a, const point &c)\
+    \ {\n    if(internal::sgn(dot(a.b - a.a, c - a.a)) < 0) {\n        return abs(c-a.a);\n\
     \    }\n    else if(internal::sgn(dot(a.a - a.b, c - a.b)) < 0) {\n        return\
     \ abs(c-a.b);\n    }\n    else {\n        return std::abs(det(c - a.a, a.b - a.a)/abs(a.b-a.a));\n\
     \    }\n}\n\nlong double distance(const line_segment &a, const line_segment &b)\
@@ -323,7 +323,7 @@ data:
   isVerificationFile: true
   path: test/geometry/cross_points_of circles.test.cpp
   requiredBy: []
-  timestamp: '2021-11-03 22:54:51+09:00'
+  timestamp: '2022-07-06 16:30:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/cross_points_of circles.test.cpp
