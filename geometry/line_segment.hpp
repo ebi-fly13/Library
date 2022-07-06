@@ -32,7 +32,7 @@ bool intersection(const line_segment &a, const line_segment &b) {
 }
 
 bool intersection(const line &a, const line_segment &b) {
-    if(internal::sgn(det(b.a - a.a, a.b)) * internal::sgn(det(b.b - a.a, a.b)) < 0) {
+    if(internal::sgn(det(a.b - a.a, b.a - a.a)) * internal::sgn(det(a.b - a.a, b.b - a.a)) < 0) {
         return true;
     }
     else {
