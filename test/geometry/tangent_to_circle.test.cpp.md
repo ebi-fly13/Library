@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/point.hpp
     title: point
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
@@ -33,7 +33,7 @@ data:
     #include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/circle.hpp\"\
     \n\n#line 4 \"geometry/circle.hpp\"\n#include <cmath>\n\n#line 2 \"geometry/point.hpp\"\
     \n\r\n#line 9 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\nconstexpr long\
-    \ double EPS = 1e-10;\r\n\r\nconst long double PI = std::acos(-1);\r\n\r\nnamespace\
+    \ double EPS = 1e-7;\r\n\r\nconst long double PI = std::acos(-1);\r\n\r\nnamespace\
     \ internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS)\
     \ ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n   \
     \ if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return\
@@ -328,7 +328,7 @@ data:
   isVerificationFile: true
   path: test/geometry/tangent_to_circle.test.cpp
   requiredBy: []
-  timestamp: '2022-07-08 00:14:34+09:00'
+  timestamp: '2022-07-08 00:25:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/tangent_to_circle.test.cpp
