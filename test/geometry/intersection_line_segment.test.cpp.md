@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
@@ -25,7 +25,7 @@ data:
     \n\n#include <iostream>\n#include <iomanip>\n#include <limits>\n#include <vector>\n\
     \n#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#include <cmath>\r\
     \n#include <cassert>\r\n#line 8 \"geometry/point.hpp\"\n#include <algorithm>\r\
-    \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-7;\r\n\r\nconst long\
+    \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nconst long\
     \ double PI = std::acos(-1);\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double\
     \ a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double\
     \ add(long double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a)\
@@ -199,7 +199,7 @@ data:
   isVerificationFile: true
   path: test/geometry/intersection_line_segment.test.cpp
   requiredBy: []
-  timestamp: '2022-07-08 00:25:58+09:00'
+  timestamp: '2022-07-08 00:50:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/intersection_line_segment.test.cpp

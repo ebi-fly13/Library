@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
   _extendedVerifiedWith:
@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/common_area.test.cpp
     title: test/geometry/common_area.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/common_area_circles.test.cpp
     title: test/geometry/common_area_circles.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,7 +36,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/convex_polygon_cut.test.cpp
     title: test/geometry/convex_polygon_cut.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of circles.test.cpp
     title: test/geometry/cross_points_of circles.test.cpp
   - icon: ':heavy_check_mark:'
@@ -54,15 +54,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/tangent_to_circle.test.cpp
     title: test/geometry/tangent_to_circle.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/polygon.hpp\"\n\n#include <cassert>\n#include <vector>\n\
     \n#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#include <cmath>\r\
     \n#line 7 \"geometry/point.hpp\"\n#include <iostream>\r\n#include <algorithm>\r\
-    \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-7;\r\n\r\nconst long\
+    \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nconst long\
     \ double PI = std::acos(-1);\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double\
     \ a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double\
     \ add(long double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a)\
@@ -263,8 +263,8 @@ data:
   path: geometry/polygon.hpp
   requiredBy:
   - geometry/circle.hpp
-  timestamp: '2022-07-08 00:25:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2022-07-08 00:50:54+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/circumscribed_circle_of_triangle.test.cpp
   - test/geometry/tangent_to_circle.test.cpp

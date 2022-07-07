@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedVerifiedWith:
@@ -27,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/common_area.test.cpp
     title: test/geometry/common_area.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/common_area_circles.test.cpp
     title: test/geometry/common_area_circles.test.cpp
   - icon: ':heavy_check_mark:'
@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/cross_points_of circles.test.cpp
     title: test/geometry/cross_points_of circles.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,15 +78,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/tangent_to_circle.test.cpp
     title: test/geometry/tangent_to_circle.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#include\
     \ <cmath>\r\n#include <cassert>\r\n#include <vector>\r\n#include <iostream>\r\n\
     #include <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS =\
-    \ 1e-7;\r\n\r\nconst long double PI = std::acos(-1);\r\n\r\nnamespace internal\
+    \ 1e-10;\r\n\r\nconst long double PI = std::acos(-1);\r\n\r\nnamespace internal\
     \ {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1\
     \ : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
     \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
@@ -190,8 +190,8 @@ data:
     \    }\r\n    return;\r\n}\r\n\r\n}\n"
   code: "#pragma once\r\n\r\n#include <cstdint>\r\n#include <cmath>\r\n#include <cassert>\r\
     \n#include <vector>\r\n#include <iostream>\r\n#include <algorithm>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\nconstexpr long double EPS = 1e-7;\r\n\r\nconst long double PI =\
-    \ std::acos(-1);\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\
+    \ ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nconst long double PI\
+    \ = std::acos(-1);\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\
     \n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long\
     \ double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b)))\
     \ return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nlong\
@@ -300,8 +300,8 @@ data:
   - geometry/polygon.hpp
   - geometry/line_segment.hpp
   - geometry/circle.hpp
-  timestamp: '2022-07-08 00:25:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2022-07-08 00:50:54+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/intersection_line_segment.test.cpp
   - test/geometry/circumscribed_circle_of_triangle.test.cpp

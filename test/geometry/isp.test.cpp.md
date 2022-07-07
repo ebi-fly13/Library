@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
@@ -18,7 +18,7 @@ data:
     \r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include <limits>\r\n\r\n\
     #line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#include <cmath>\r\n\
     #include <cassert>\r\n#include <vector>\r\n#line 8 \"geometry/point.hpp\"\n#include\
-    \ <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-7;\r\
+    \ <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\
     \n\r\nconst long double PI = std::acos(-1);\r\n\r\nnamespace internal {\r\n\r\n\
     int sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\
     \n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
@@ -150,7 +150,7 @@ data:
   isVerificationFile: true
   path: test/geometry/isp.test.cpp
   requiredBy: []
-  timestamp: '2022-07-08 00:25:58+09:00'
+  timestamp: '2022-07-08 00:50:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/isp.test.cpp
