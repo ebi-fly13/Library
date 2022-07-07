@@ -9,7 +9,7 @@
 
 namespace ebi {
 
-constexpr long double EPS = 1e-10;
+constexpr long double EPS = 1e-7;
 
 const long double PI = std::acos(-1);
 
