@@ -69,24 +69,28 @@ data:
     \ x);\r\n    }\r\n\r\n    // x\u6607\u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n\
     \    bool operator<(const point &rhs) const noexcept {\r\n        if(internal::sgn(x-rhs.x))\
     \ return internal::sgn(x-rhs.x)<0;\r\n        return internal::sgn(y-rhs.y)<0;\r\
-    \n    }\r\n};\r\n\r\nstd::ostream& operator<<(std::ostream& os, const point &a)\
-    \ {\r\n    return os << a.x << \" \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream&\
-    \ os, point &a) {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\npoint conj(const\
-    \ point &a) {\r\n    return point(a.x, -a.y);\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\
-    \u30B8\u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long\
-    \ double ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y,\
-    \ std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const point\
-    \ &a) {\r\n    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const point\
-    \ &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double det(const\
-    \ point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong double\
-    \ abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double norm(const\
-    \ point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\n\r\nint isp(const\
-    \ point &a, const point &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\
-    \n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\
-    \n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
-    \ flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\u8FD1\u70B9\u5BFE\u3092\
-    \u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point> p)\
-    \ {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+    \n    }\r\n\r\n    bool operator==(const point &rhs) const noexcept {\r\n    \
+    \    if (internal::sgn(x - rhs.x) == 0 && internal::sgn(y - rhs.y) == 0)\r\n \
+    \           return true;\r\n        else\r\n            return false;\r\n    }\r\
+    \n\r\n    bool operator!=(const point &rhs) const noexcept {\r\n        return\
+    \ !((*this) == rhs);\r\n    }\r\n};\r\n\r\nstd::ostream& operator<<(std::ostream&\
+    \ os, const point &a) {\r\n    return os << a.x << \" \" << a.y;\r\n}\r\n\r\n\
+    std::istream& operator>>(std::istream& os, point &a) {\r\n    return os >> a.x\
+    \ >> a.y;\r\n}\r\n\r\npoint conj(const point &a) {\r\n    return point(a.x, -a.y);\r\
+    \n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\u30B8\u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\
+    \r\npoint rot(const point &a, long double ang) {\r\n    return point(std::cos(ang)\
+    \ * a.x - std::sin(ang) * a.y, std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n\
+    } \r\n\r\npoint rot90(const point &a) {\r\n    return point(-a.y, a.x);\r\n}\r\
+    \n\r\nlong double dot(const point &a, const point &b) {\r\n    return a.dot(b);\r\
+    \n}\r\n\r\nlong double det(const point &a, const point &b) {\r\n    return a.det(b);\r\
+    \n}\r\n\r\nlong double abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\
+    \nlong double norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\
+    \n}\r\n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int\
+    \ flag = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
+    \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
+    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
+    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
+    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
     \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
     \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
     \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
@@ -105,17 +109,20 @@ data:
     \ angle(const point &A, const point &B, const point &C) {\r\n    long double a\
     \ = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();\r\n    long double cos\
     \ = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);\r\n    return std::acos(cos);\r\
-    \n}\r\n\r\nvoid arg_sort(std::vector<point> &a) {\r\n    int n = a.size();\r\n\
-    \    std::vector ps(4, std::vector<point>());\r\n    auto idx = [](point v) ->\
-    \ int {\r\n        if(v.y >= 0) return (v.x >= 0) ? 0 : 1;\r\n        else return\
-    \ (v.x >= 0) ? 3 : 2;\r\n    };\r\n    for(auto p: a) {\r\n        assert(!(p.x\
-    \ == 0 && p.y == 0));\r\n        ps[idx(p)].emplace_back(p);\r\n    }\r\n    a.clear();\r\
-    \n    a.reserve(n);\r\n    for(int i = 0; i < 4; i++) {\r\n        std::sort(ps[i].begin(),\
-    \ ps[i].end(), \r\n            [](point &p1, point &p2) -> bool {\r\n        \
-    \        int flag = internal::sgn(internal::add(p1.x * p2.y, - p2.x * p1.y));\r\
-    \n                return flag == 0 ? (norm(p1) < norm(p2)) : flag > 0;\r\n   \
-    \         });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n    }\r\n \
-    \   return;\r\n}\r\n\r\ntemplate<class T>\r\nvoid arg_sort_ll(std::vector<std::pair<T\
+    \n}\r\n\r\n// \u7B26\u53F7\u4ED8\u304D\r\nlong double calc_ang(point a, point\
+    \ b, point c) {\r\n    long double cos = dot((a-b), (c-b)) / (abs(a-b) * abs(c-b));\r\
+    \n    long double sin = det((a-b), (c-b)) / (abs(a-b) * abs(c-b));\r\n    return\
+    \ std::atan2(sin, cos);\r\n}\r\n\r\nvoid arg_sort(std::vector<point> &a) {\r\n\
+    \    int n = a.size();\r\n    std::vector ps(4, std::vector<point>());\r\n   \
+    \ auto idx = [](point v) -> int {\r\n        if(v.y >= 0) return (v.x >= 0) ?\
+    \ 0 : 1;\r\n        else return (v.x >= 0) ? 3 : 2;\r\n    };\r\n    for(auto\
+    \ p: a) {\r\n        assert(!(p.x == 0 && p.y == 0));\r\n        ps[idx(p)].emplace_back(p);\r\
+    \n    }\r\n    a.clear();\r\n    a.reserve(n);\r\n    for(int i = 0; i < 4; i++)\
+    \ {\r\n        std::sort(ps[i].begin(), ps[i].end(), \r\n            [](point\
+    \ &p1, point &p2) -> bool {\r\n                int flag = internal::sgn(internal::add(p1.x\
+    \ * p2.y, - p2.x * p1.y));\r\n                return flag == 0 ? (norm(p1) < norm(p2))\
+    \ : flag > 0;\r\n            });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\
+    \n    }\r\n    return;\r\n}\r\n\r\ntemplate<class T>\r\nvoid arg_sort_ll(std::vector<std::pair<T\
     \ , T>> &a) {\r\n    using Point = std::pair<T, T>;\r\n    int n = a.size();\r\
     \n    std::vector ps(4, std::vector<Point>());\r\n    auto idx = [](Point v) ->\
     \ int {\r\n        if(v.second >= 0) return (v.first >= 0) ? 0 : 1;\r\n      \
@@ -320,7 +327,7 @@ data:
   isVerificationFile: true
   path: test/geometry/incircle_of_triangle.test.cpp
   requiredBy: []
-  timestamp: '2022-07-06 16:30:24+09:00'
+  timestamp: '2022-07-08 00:14:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/incircle_of_triangle.test.cpp
