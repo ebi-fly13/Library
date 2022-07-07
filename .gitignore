@@ -9,3 +9,4 @@ submit.cpp
 expander.py
 ac-library
 *.code-workspace
+*.json
