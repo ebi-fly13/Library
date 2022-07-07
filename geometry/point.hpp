@@ -116,6 +116,17 @@ struct point {
         if(internal::sgn(x-rhs.x)) return internal::sgn(x-rhs.x)<0;
         return internal::sgn(y-rhs.y)<0;
     }
+
+    bool operator==(const point &rhs) const noexcept {
+        if (internal::sgn(x - rhs.x) == 0 && internal::sgn(y - rhs.y) == 0)
+            return true;
+        else
+            return false;
+    }
+
+    bool operator!=(const point &rhs) const noexcept {
+        return !((*this) == rhs);
+    }
 };
 
 std::ostream& operator<<(std::ostream& os, const point &a) {
@@ -209,6 +220,13 @@ long double angle(const point &A, const point &B, const point &C) {
     long double a = (B - C).abs(), b = (C - A).abs(), c = (A - B).abs();
     long double cos = internal::add(internal::add(a*a, c*c), -b*b)/(2.0*c*a);
     return std::acos(cos);
+}
+
+// 符号付き
+long double calc_ang(point a, point b, point c) {
+    long double cos = dot((a-b), (c-b)) / (abs(a-b) * abs(c-b));
+    long double sin = det((a-b), (c-b)) / (abs(a-b) * abs(c-b));
+    return std::atan2(sin, cos);
 }
 
 void arg_sort(std::vector<point> &a) {
