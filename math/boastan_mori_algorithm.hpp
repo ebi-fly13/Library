@@ -6,7 +6,7 @@
 namespace ebi {
 
 template<class T, std::vector<T> (*convolution)(const std::vector<T> &, const std::vector<T> &)>
-T boastan_mori_algorithm(std::int64_t n, std::vector<T> p, std::vector<T> q) {
+T bostan_mori_algorithm(std::int64_t n, std::vector<T> p, std::vector<T> q) {
     while(n > 0) {
         auto q_neg = q;
         for(int i = 1; i < (int)q_neg.size(); i += 2) q_neg[i] = -q_neg[i];
@@ -29,7 +29,7 @@ T kitamasa(std::int64_t n, std::vector<T> a, std::vector<T> c) {
     c.insert(c.begin(), 1);
     auto p = convolution(a, c);
     p.resize(d);
-    return boastan_mori_algorithm<T, convolution>(n, p, c);
+    return bostan_mori_algorithm<T, convolution>(n, p, c);
 }
 
 }
