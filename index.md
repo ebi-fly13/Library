@@ -194,6 +194,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/FormalPowerSeries.hpp
       title: math/FormalPowerSeries.hpp
+    - icon: ':warning:'
+      path: math/boastan_mori_algorithm.hpp
+      title: math/boastan_mori_algorithm.hpp
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp

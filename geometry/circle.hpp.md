@@ -419,15 +419,15 @@ data:
   timestamp: '2022-07-08 00:50:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/geometry/common_area_circles.test.cpp
   - test/geometry/circumscribed_circle_of_triangle.test.cpp
   - test/geometry/tangent_to_circle.test.cpp
   - test/geometry/common_tangent.test.cpp
   - test/geometry/cross_points_of_circle_and_line.test.cpp
   - test/geometry/common_area.test.cpp
-  - test/geometry/intersection_circle.test.cpp
-  - test/geometry/cross_points_of circles.test.cpp
   - test/geometry/incircle_of_triangle.test.cpp
-  - test/geometry/common_area_circles.test.cpp
+  - test/geometry/cross_points_of circles.test.cpp
+  - test/geometry/intersection_circle.test.cpp
 documentation_of: geometry/circle.hpp
 layout: document
 redirect_from:
