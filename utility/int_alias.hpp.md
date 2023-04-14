@@ -61,23 +61,23 @@ data:
   isVerificationFile: false
   path: utility/int_alias.hpp
   requiredBy:
-  - math/pow.hpp
   - math/linear_sieve.hpp
-  - data_structure/WaveletMatrix.hpp
+  - math/pow.hpp
   - data_structure/bitVector.hpp
+  - data_structure/WaveletMatrix.hpp
   timestamp: '2021-01-12 22:18:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/ImplicitTreap.test.cpp
   - test/FenwickTree.test.cpp
   - test/WaveletMatrix.test.cpp
-  - test/Static_Range_Frequency.test.cpp
-  - test/SegmentTreeBeats.test.cpp
-  - test/LiChaoSegmentTree.test.cpp
   - test/pow.test.cpp
-  - test/SegmentAddGetMin.test.cpp
+  - test/Static_Range_Frequency.test.cpp
   - test/dijkstra.test.cpp
+  - test/ImplicitTreap.test.cpp
+  - test/SegmentAddGetMin.test.cpp
+  - test/LiChaoSegmentTree.test.cpp
   - test/fibonacci_heap.test.cpp
+  - test/SegmentTreeBeats.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:

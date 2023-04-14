@@ -83,8 +83,8 @@ data:
   timestamp: '2021-08-24 18:40:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_2863.test.cpp
   - test/aoj/aoj_2873.test.cpp
+  - test/aoj/aoj_2863.test.cpp
 documentation_of: String/trie.hpp
 layout: document
 redirect_from:
