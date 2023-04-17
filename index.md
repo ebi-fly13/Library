@@ -209,11 +209,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/pow.hpp
       title: math/pow.hpp
+  - name: test
+    pages:
+    - icon: ':warning:'
+      path: test/level_ancestor_lca.cpp
+      title: test/level_ancestor_lca.cpp
   - name: tree
     pages:
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
+    - icon: ':warning:'
+      path: tree/level_ancestor.hpp
+      title: tree/level_ancestor.hpp
     - icon: ':heavy_check_mark:'
       path: tree/lowest_common_ancestor.hpp
       title: tree/lowest_common_ancestor.hpp
