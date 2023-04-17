@@ -23,9 +23,6 @@ data:
   - icon: ':warning:'
     path: tree/centroid_decomposition.hpp
     title: tree/centroid_decomposition.hpp
-  - icon: ':heavy_check_mark:'
-    path: tree/lowest_common_ancestor.hpp
-    title: tree/lowest_common_ancestor.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
@@ -86,7 +83,6 @@ data:
   - graph/dijkstra.hpp
   - graph/dijkstra_fibheap.hpp
   - tree/centroid_decomposition.hpp
-  - tree/lowest_common_ancestor.hpp
   - data_structure/heavy_light_decomposition.hpp
   - test/level_ancestor_lca.cpp
   - algorithm/two_sat.hpp
