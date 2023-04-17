@@ -8,10 +8,16 @@ data:
   - icon: ':warning:'
     path: test/level_ancestor_lca.cpp
     title: test/level_ancestor_lca.cpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Jump_on_Tree.test.cpp
+    title: test/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/level_ancestor_lca.test.cpp
+    title: test/level_ancestor_lca.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/level_ancestor.hpp\"\n\r\n#include <vector>\r\n#include\
@@ -55,8 +61,10 @@ data:
   - test/level_ancestor_lca.cpp
   - test/Jump_on_Tree.cpp
   timestamp: '2023-04-17 15:17:39+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/Jump_on_Tree.test.cpp
+  - test/level_ancestor_lca.test.cpp
 documentation_of: tree/level_ancestor.hpp
 layout: document
 redirect_from:

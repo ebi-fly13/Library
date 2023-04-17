@@ -28,11 +28,17 @@ data:
     title: tree/centroid_decomposition.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/Jump_on_Tree.test.cpp
+    title: test/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fibonacci_heap.test.cpp
     title: test/fibonacci_heap.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/level_ancestor_lca.test.cpp
+    title: test/level_ancestor_lca.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/lowest_common_ancestor.test.cpp
     title: test/lowest_common_ancestor.test.cpp
@@ -93,6 +99,7 @@ data:
   timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/Jump_on_Tree.test.cpp
   - test/vertex_add_path_sum.test.cpp
   - test/dijkstra.test.cpp
   - test/two_sat.test.cpp
@@ -101,6 +108,7 @@ data:
   - test/scc_graph.test.cpp
   - test/fibonacci_heap.test.cpp
   - test/lowest_common_ancestor.test.cpp
+  - test/level_ancestor_lca.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:

@@ -222,7 +222,7 @@ data:
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/level_ancestor.hpp
       title: tree/level_ancestor.hpp
     - icon: ':heavy_check_mark:'
@@ -266,6 +266,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Inv_of_Formal_Power_Series.test.cpp
       title: test/Inv_of_Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Jump_on_Tree.test.cpp
+      title: test/Jump_on_Tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/LazySegtree.test.cpp
       title: test/LazySegtree.test.cpp
@@ -323,6 +326,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fibonacci_heap.test.cpp
       title: test/fibonacci_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/level_ancestor_lca.test.cpp
+      title: test/level_ancestor_lca.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/lowest_common_ancestor.test.cpp
       title: test/lowest_common_ancestor.test.cpp

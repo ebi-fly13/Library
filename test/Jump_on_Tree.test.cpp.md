@@ -17,11 +17,13 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
     links:
     - https://judge.yosupo.jp/problem/jump_on_tree
-  bundledCode: "#line 1 \"test/Jump_on_Tree.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\
+  bundledCode: "#line 1 \"test/Jump_on_Tree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\
     \r\n\r\n#line 2 \"tree/level_ancestor.hpp\"\n\r\n#include <vector>\r\n#include\
     \ <algorithm>\r\n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\nstruct level_ancestor\
     \ {\r\nprivate:\r\n    int n;\r\n    std::vector<int> in;\r\n    std::vector<int>\
@@ -84,10 +86,10 @@ data:
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
     \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
-    \ ebi\n#line 6 \"test/Jump_on_Tree.cpp\"\n\r\n#include <iostream>\r\n\r\nint main()\
-    \ {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::graph g(n);\r\n   \
-    \ for(int i = 0; i < n-1; i++) {\r\n        int a,b;\r\n        std::cin >> a\
-    \ >> b;\r\n        g.add_edge(a, b);\r\n    }\r\n    ebi::level_ancestor la(g);\r\
+    \ ebi\n#line 6 \"test/Jump_on_Tree.test.cpp\"\n\r\n#include <iostream>\r\n\r\n\
+    int main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::graph g(n);\r\
+    \n    for(int i = 0; i < n-1; i++) {\r\n        int a,b;\r\n        std::cin >>\
+    \ a >> b;\r\n        g.add_edge(a, b);\r\n    }\r\n    ebi::level_ancestor la(g);\r\
     \n    ebi::lowest_common_ancestor lca(g);\r\n    while(q--) {\r\n        int s,t,i;\r\
     \n        std::cin >> s >> t >> i;\r\n        int d = lca.distance(s, t);\r\n\
     \        if(i > d) {\r\n            std::cout << \"-1\\n\";\r\n            continue;\r\
@@ -115,16 +117,16 @@ data:
   - tree/lowest_common_ancestor.hpp
   - data_structure/sparse_table.hpp
   - graph/template.hpp
-  isVerificationFile: false
-  path: test/Jump_on_Tree.cpp
+  isVerificationFile: true
+  path: test/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-04-17 16:38:42+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2023-04-17 16:41:35+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Jump_on_Tree.cpp
+documentation_of: test/Jump_on_Tree.test.cpp
 layout: document
 redirect_from:
-- /library/test/Jump_on_Tree.cpp
-- /library/test/Jump_on_Tree.cpp.html
-title: test/Jump_on_Tree.cpp
+- /verify/test/Jump_on_Tree.test.cpp
+- /verify/test/Jump_on_Tree.test.cpp.html
+title: test/Jump_on_Tree.test.cpp
 ---

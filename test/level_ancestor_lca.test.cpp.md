@@ -11,11 +11,13 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
     - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"test/level_ancestor_lca.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\
+  bundledCode: "#line 1 \"test/level_ancestor_lca.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\
     \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"graph/template.hpp\"\n\r\n#include\
     \ <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n\
     \    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to), cost(_cost)\
@@ -43,7 +45,7 @@ data:
     \n        }\r\n    }\r\n\r\n    int query(int u, int k) const {\r\n        int\
     \ m = depths[u] - k;\r\n        assert(m >= 0);\r\n        return inv_in[*std::prev(std::upper_bound(s[m].begin(),\
     \ s[m].end(), in[u]))];\r\n    }\r\n\r\n    int depth(int u) const {\r\n     \
-    \   return depths[u];\r\n    }\r\n};\r\n\r\n}\n#line 7 \"test/level_ancestor_lca.cpp\"\
+    \   return depths[u];\r\n    }\r\n};\r\n\r\n}\n#line 7 \"test/level_ancestor_lca.test.cpp\"\
     \n\r\nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::graph\
     \ g(n);\r\n    for(int i = 1; i < n; i++) {\r\n        int p;\r\n        std::cin\
     \ >> p;\r\n        g.add_edge(p, i);\r\n    }\r\n    ebi::level_ancestor la(g);\r\
@@ -71,16 +73,16 @@ data:
   dependsOn:
   - graph/template.hpp
   - tree/level_ancestor.hpp
-  isVerificationFile: false
-  path: test/level_ancestor_lca.cpp
+  isVerificationFile: true
+  path: test/level_ancestor_lca.test.cpp
   requiredBy: []
-  timestamp: '2023-04-17 15:17:39+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2023-04-17 16:41:35+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/level_ancestor_lca.cpp
+documentation_of: test/level_ancestor_lca.test.cpp
 layout: document
 redirect_from:
-- /library/test/level_ancestor_lca.cpp
-- /library/test/level_ancestor_lca.cpp.html
-title: test/level_ancestor_lca.cpp
+- /verify/test/level_ancestor_lca.test.cpp
+- /verify/test/level_ancestor_lca.test.cpp.html
+title: test/level_ancestor_lca.test.cpp
 ---
