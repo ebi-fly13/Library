@@ -18,6 +18,9 @@ data:
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
   - icon: ':warning:'
+    path: test/Jump_on_Tree.cpp
+    title: test/Jump_on_Tree.cpp
+  - icon: ':warning:'
     path: test/level_ancestor_lca.cpp
     title: test/level_ancestor_lca.cpp
   - icon: ':warning:'
@@ -85,6 +88,7 @@ data:
   - tree/centroid_decomposition.hpp
   - data_structure/heavy_light_decomposition.hpp
   - test/level_ancestor_lca.cpp
+  - test/Jump_on_Tree.cpp
   - algorithm/two_sat.hpp
   timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
