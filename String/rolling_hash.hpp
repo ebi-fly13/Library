@@ -16,9 +16,9 @@ template<int n>
 struct rolling_hash {
 private:
     using u64 = std::uint64_t;
-    const u64 mod = (1UL<<61) - 1;
-    const u64 MASK31 = (1UL<<31) - 1;
-    const u64 MASK30 = (1UL<<30) - 1;
+    const u64 mod = (1ull<<61) - 1;
+    const u64 MASK31 = (1ull<<31) - 1;
+    const u64 MASK30 = (1ull<<30) - 1;
     const u64 h = 100;
     const u64 buffer = mod * 4;
 
