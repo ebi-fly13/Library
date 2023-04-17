@@ -3,7 +3,6 @@
 #include <vector>
 
 #include "../data_structure/sparse_table.hpp"
-#include "../graph/template.hpp"
 
 namespace ebi {
 
@@ -15,19 +14,12 @@ namespace internal_lca {
 
 struct lowest_common_ancestor {
 public:
-    lowest_common_ancestor(int _n) : n(_n), id(_n), depth(_n), g(_n) { }
-
-    void add_edge(int u, int v) {
-        g[u].emplace_back(v);
-        g[v].emplace_back(u);
-    }
-
-    void build(int root = 0) {
+    lowest_common_ancestor(const std::vector<std::vector<int>> &gh, int root = 0) : n(gh.size()), id(n), depth(n)  {
         auto dfs = [&](auto &&self, int v, int par = -1, int d = 0) -> void {
             id[v] = int(vs.size());
             depth[v] = d;
             vs.emplace_back(v, d);
-            for(const auto &nv: g[v]) if(nv != par) {
+            for(const auto &nv: gh[v]) if(nv != par) {
                 self(self, nv, v, d+1);
                 vs.emplace_back(v, d);
             }
@@ -51,7 +43,6 @@ private:
     int n;
     std::vector<int> id, depth;
     std::vector<std::pair<int,int>> vs;
-    graph g;
     sparse_table<std::pair<int,int>, internal_lca::op> st;
 };
 

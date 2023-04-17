@@ -3,17 +3,18 @@
 #include <iostream>
 
 #include "../tree/lowest_common_ancestor.hpp"
+#include "graph/template.hpp"
 
 int main() {
     int n,q;
     std::cin >> n >> q;
-    ebi::lowest_common_ancestor lca(n);
+    ebi::graph g(n);
     for(int i = 1; i < n; i++) {
         int p;
         std::cin >> p;
-        lca.add_edge(p, i);
+        g.add_edge(p, i);
     }
-    lca.build();
+    ebi::lowest_common_ancestor lca(g);
     while(q--) {
         int u,v;
         std::cin >> u >> v;
