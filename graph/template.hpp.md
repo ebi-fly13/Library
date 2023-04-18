@@ -18,9 +18,6 @@ data:
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
   - icon: ':warning:'
-    path: test/level_ancestor_lca.cpp
-    title: test/level_ancestor_lca.cpp
-  - icon: ':warning:'
     path: tree/centroid_decomposition.hpp
     title: tree/centroid_decomposition.hpp
   _extendedVerifiedWith:
@@ -90,7 +87,6 @@ data:
   - graph/dijkstra_fibheap.hpp
   - tree/centroid_decomposition.hpp
   - data_structure/heavy_light_decomposition.hpp
-  - test/level_ancestor_lca.cpp
   - algorithm/two_sat.hpp
   timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: LIBRARY_ALL_AC

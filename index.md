@@ -209,11 +209,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/pow.hpp
       title: math/pow.hpp
-  - name: test
-    pages:
-    - icon: ':warning:'
-      path: test/level_ancestor_lca.cpp
-      title: test/level_ancestor_lca.cpp
   - name: tree
     pages:
     - icon: ':warning:'

@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: test/level_ancestor_lca.cpp
-    title: test/level_ancestor_lca.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Jump_on_Tree.test.cpp
@@ -54,8 +51,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: tree/level_ancestor.hpp
-  requiredBy:
-  - test/level_ancestor_lca.cpp
+  requiredBy: []
   timestamp: '2023-04-17 15:17:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
