@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <cassert>
 
 /*
     reference: https://gist.github.com/draftcode/1357281
@@ -27,14 +28,7 @@ void consume(State &begin, char expected) {
     if (*begin == expected) {
         begin++;
     } else {
-        std::cerr << "Expected '" << expected << "' but got '" << *begin << "'"
-            << std::endl;
-        std::cerr << "Rest string is '";
-        while (*begin) {
-            std::cerr << *begin++;
-        }
-        std::cerr << "'" << std::endl;
-        throw ParseError();
+        assert(0);
     }
 }
 
