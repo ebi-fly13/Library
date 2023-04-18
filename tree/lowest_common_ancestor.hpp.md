@@ -4,10 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: test/Jump_on_Tree.cpp
-    title: test/Jump_on_Tree.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Jump_on_Tree.test.cpp
@@ -78,8 +75,7 @@ data:
   - data_structure/sparse_table.hpp
   isVerificationFile: false
   path: tree/lowest_common_ancestor.hpp
-  requiredBy:
-  - test/Jump_on_Tree.cpp
+  requiredBy: []
   timestamp: '2023-04-17 15:31:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: test/Jump_on_Tree.cpp
-    title: test/Jump_on_Tree.cpp
   - icon: ':heavy_check_mark:'
     path: tree/lowest_common_ancestor.hpp
     title: tree/lowest_common_ancestor.hpp
@@ -66,7 +63,6 @@ data:
   path: data_structure/sparse_table.hpp
   requiredBy:
   - tree/lowest_common_ancestor.hpp
-  - test/Jump_on_Tree.cpp
   timestamp: '2021-08-31 14:46:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

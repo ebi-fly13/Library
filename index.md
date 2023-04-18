@@ -212,9 +212,6 @@ data:
   - name: test
     pages:
     - icon: ':warning:'
-      path: test/Jump_on_Tree.cpp
-      title: test/Jump_on_Tree.cpp
-    - icon: ':warning:'
       path: test/level_ancestor_lca.cpp
       title: test/level_ancestor_lca.cpp
   - name: tree

@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: test/Jump_on_Tree.cpp
-    title: test/Jump_on_Tree.cpp
-  - icon: ':warning:'
     path: test/level_ancestor_lca.cpp
     title: test/level_ancestor_lca.cpp
   _extendedVerifiedWith:
@@ -59,7 +56,6 @@ data:
   path: tree/level_ancestor.hpp
   requiredBy:
   - test/level_ancestor_lca.cpp
-  - test/Jump_on_Tree.cpp
   timestamp: '2023-04-17 15:17:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
