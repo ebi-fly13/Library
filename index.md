@@ -231,6 +231,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/random_number_generator_64.hpp
       title: utility/random_number_generator_64.hpp
+    - icon: ':heavy_check_mark:'
+      path: utility/safe_mod.hpp
+      title: utility/safe_mod.hpp
   verificationCategories:
   - name: test
     pages:
