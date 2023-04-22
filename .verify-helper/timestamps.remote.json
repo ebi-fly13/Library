@@ -72,7 +72,7 @@
 "test/static_rmq.test.cpp": "2021-08-31 14:46:52 +0900",
 "test/subset_convolution.test.cpp": "2021-04-04 17:12:45 +0900",
 "test/two_sat.test.cpp": "2021-10-31 15:43:33 +0900",
-"test/vertex_add_path_sum.test.cpp": "2021-11-15 18:01:08 +0900",
+"test/vertex_add_path_sum.test.cpp": "2023-04-22 18:39:10 +0900",
 "test/vertex_add_subtree_sum.test.cpp": "2021-11-15 18:01:08 +0900",
 "test/vertex_set_path_compositie.test.cpp": "2021-11-15 18:01:08 +0900"
 }
