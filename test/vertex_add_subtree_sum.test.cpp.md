@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/heavy_light_decomposition.hpp
-    title: data_structure/heavy_light_decomposition.hpp
-  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: Segtree
   - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
+  - icon: ':heavy_check_mark:'
+    path: tree/heavy_light_decomposition.hpp
+    title: tree/heavy_light_decomposition.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -21,23 +21,22 @@ data:
     links:
     - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
   bundledCode: "#line 1 \"test/vertex_add_subtree_sum.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\n#line 2 \"data_structure/heavy_light_decomposition.hpp\"\
-    \n\n#line 2 \"data_structure/segtree.hpp\"\n\r\n#include <vector>\r\n#include\
-    \ <cassert>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class Monoid, Monoid (*op)(Monoid,\
-    \ Monoid), Monoid (*e)()>\r\nstruct segtree {\r\nprivate:\r\n    int n;\r\n  \
-    \  int size;\r\n    std::vector<Monoid> data;\r\npublic:\r\n    segtree(int _n)\
-    \ : n(_n), size(1) {\r\n        while(size < _n) {\r\n            size <<= 1;\r\
-    \n        }\r\n        data.assign(2*size, e());\r\n        return;\r\n    }\r\
-    \n\r\n    segtree(const std::vector<Monoid> &v) : size(1) {\r\n        n = (int)v.size();\r\
-    \n        while(size < n) {\r\n            size <<= 1;\r\n        }\r\n      \
-    \  data.assign(2*size, e());\r\n        std::copy(v.begin(), v.end(), data.begin()\
-    \ + size);\r\n        for(int i = size-1; i > 0; i--) {\r\n            data[i]\
-    \ = op(data[i<<1|0], data[i<<1|1]);\r\n        }\r\n        return;\r\n    }\r\
-    \n\r\n    void set(int p, Monoid x) {\r\n        assert(0 <= p && p < n);\r\n\
-    \        p += size;\r\n        data[p] = x;\r\n        while(p > 1) {\r\n    \
-    \        p >>= 1;\r\n            data[p] = op(data[p<<1|0], data[p<<1|1]);\r\n\
-    \        }\r\n        return;\r\n    }\r\n\r\n    Monoid get(int p) const {\r\n\
-    \        assert(0 <= p && p < n);\r\n        return data[p+size];\r\n    }\r\n\
+    \ \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\n#line 2 \"data_structure/segtree.hpp\"\
+    \n\r\n#include <vector>\r\n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
+    \ Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct segtree {\r\n\
+    private:\r\n    int n;\r\n    int size;\r\n    std::vector<Monoid> data;\r\npublic:\r\
+    \n    segtree(int _n) : n(_n), size(1) {\r\n        while(size < _n) {\r\n   \
+    \         size <<= 1;\r\n        }\r\n        data.assign(2*size, e());\r\n  \
+    \      return;\r\n    }\r\n\r\n    segtree(const std::vector<Monoid> &v) : size(1)\
+    \ {\r\n        n = (int)v.size();\r\n        while(size < n) {\r\n           \
+    \ size <<= 1;\r\n        }\r\n        data.assign(2*size, e());\r\n        std::copy(v.begin(),\
+    \ v.end(), data.begin() + size);\r\n        for(int i = size-1; i > 0; i--) {\r\
+    \n            data[i] = op(data[i<<1|0], data[i<<1|1]);\r\n        }\r\n     \
+    \   return;\r\n    }\r\n\r\n    void set(int p, Monoid x) {\r\n        assert(0\
+    \ <= p && p < n);\r\n        p += size;\r\n        data[p] = x;\r\n        while(p\
+    \ > 1) {\r\n            p >>= 1;\r\n            data[p] = op(data[p<<1|0], data[p<<1|1]);\r\
+    \n        }\r\n        return;\r\n    }\r\n\r\n    Monoid get(int p) const {\r\
+    \n        assert(0 <= p && p < n);\r\n        return data[p+size];\r\n    }\r\n\
     \r\n    Monoid prod(int l, int r) const {\r\n        assert(0 <= l && l <= r &&\
     \ r <= n);\r\n        Monoid left = e(), right = e();\r\n        l += size;\r\n\
     \        r += size;\r\n        while(l < r) {\r\n            if(l & 1) left =\
@@ -45,84 +44,93 @@ data:
     \n            l >>= 1;\r\n            r >>= 1;\r\n        }\r\n        return\
     \ op(left, right);\r\n    }\r\n\r\n    Monoid all_prod() const {\r\n        return\
     \ data[1];\r\n    }\r\n\r\n    Monoid operator [] (int p) const { return data[size+p];\
-    \ }\r\n};\r\n\r\n} // namespace ebi\r\n#line 2 \"graph/template.hpp\"\n\r\n#line\
-    \ 4 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct\
-    \ Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to),\
-    \ cost(_cost) { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>>\
-    \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
+    \ }\r\n};\r\n\r\n} // namespace ebi\r\n#line 2 \"tree/heavy_light_decomposition.hpp\"\
+    \n\n#include <iostream>\n#line 5 \"tree/heavy_light_decomposition.hpp\"\n\nnamespace\
+    \ ebi {\n\nstruct heavy_light_decomposition {\n   private:\n    void dfs_sz(int\
+    \ v) {\n        for (auto &nv : g[v]) {\n            if (nv == par[v]) continue;\n\
+    \            par[nv] = v;\n            depth[nv] = depth[v] + 1;\n           \
+    \ dfs_sz(nv);\n            sz[v] += sz[nv];\n            if (sz[nv] > sz[g[v][0]]\
+    \ || g[v][0] == par[v])\n                std::swap(nv, g[v][0]);\n        }\n\
+    \    }\n\n    void dfs_hld(int v) {\n        static int t = 0;\n        in[v]\
+    \ = t++;\n        for (auto nv : g[v]) {\n            if (nv == par[v]) continue;\n\
+    \            nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);\n            dfs_hld(nv);\n\
+    \        }\n        out[v] = t;\n    }\n\n    // [u, v) \u30D1\u30B9\u306E\u53D6\
+    \u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> ascend(int\
+    \ u, int v) const {\n        std::vector<std::pair<int, int>> res;\n        while\
+    \ (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n   \
+    \         u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
+    \ in[v] + 1);\n        return res;\n    }\n\n    // (u, v] \u30D1\u30B9\u306E\u53D6\
+    \u5F97 (u \u306F v \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> descend(int\
+    \ u, int v) const {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v])\
+    \ return {{in[u] + 1, in[v]}};\n        auto res = descend(u, par[nxt[v]]);\n\
+    \        res.emplace_back(in[nxt[v]], in[v]);\n        return res;\n    }\n\n\
+    \   public:\n    heavy_light_decomposition(const std::vector<std::vector<int>>\
+    \ &gh,\n                              int root = 0)\n        : n(gh.size()),\n\
+    \          g(gh),\n          sz(n, 1),\n          in(n),\n          out(n),\n\
+    \          nxt(n),\n          par(n, -1),\n          depth(n, 0) {\n        dfs_sz(root);\n\
+    \        dfs_hld(root);\n    }\n\n    int idx(int u) const { return in[u]; }\n\
+    \n    int lca(int u, int v) const {\n        while (nxt[u] != nxt[v]) {\n    \
+    \        if (in[u] < in[v]) std::swap(u, v);\n            u = par[nxt[u]];\n \
+    \       }\n        return depth[u] < depth[v] ? u : v;\n    }\n\n    int distance(int\
+    \ u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u, v)];\n\
+    \    }\n\n    template <class F>\n    void path_noncommutative_query(int u, int\
+    \ v, const F &f) const {\n        int l = lca(u, v);\n        for (auto [a, b]\
+    \ : ascend(u, l)) f(a + 1, b);\n        f(in[l], in[l] + 1);\n        for (auto\
+    \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    template <class F>\n    void\
+    \ subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
+    \ out[u]);\n    }\n\n   private:\n    int n;\n    std::vector<std::vector<int>>\
+    \ g;\n    std::vector<int> sz, in, out, nxt, par, depth;\n};\n\n}  // namespace\
+    \ ebi\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\n\
+    namespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n \
+    \   T cost;\r\n    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\
+    \n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\
+    \n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
     \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
     \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
-    \ ebi\n#line 5 \"data_structure/heavy_light_decomposition.hpp\"\n\n#line 7 \"\
-    data_structure/heavy_light_decomposition.hpp\"\n\n/*\n    reference: https://codeforces.com/blog/entry/53170\n\
-    */\n\nnamespace ebi {\n\ntemplate<class Monoid, Monoid (*op)(Monoid, Monoid),\
-    \ Monoid (*e)()>\nstruct heavy_light_decomposition {\nprivate:\n    int n, t =\
-    \ 0;\n    std::vector<int> sz, in, out, nxt, up;\n    graph g;\n    segtree<Monoid,\
-    \ op, e> seg_l, seg_r;\n\n    void dfs_sz(int v = 0) {\n        sz[v] = 1;\n \
-    \       for(auto &u : g[v]) if(u != up[v]) {\n            up[u] = v;\n       \
-    \     dfs_sz(u);\n            sz[v] += sz[u];\n            if(sz[u] > sz[g[v][0]]\
-    \ || g[v][0] == up[v]) std::swap(g[v][0], u);\n        }\n    }\n\n    void dfs_hld(int\
-    \ v = 0) {\n        in[v] = t++;\n        for(const auto &u: g[v]) if(u != up[v])\
-    \ {\n            nxt[u] = (u == g[v][0]) ? nxt[v] : u;\n            sz[u] = (u\
-    \ == g[v][0]) ? sz[v] : sz[v]+1;\n            dfs_hld(u);\n        }\n       \
-    \ out[v] = t;\n    }\npublic:\n    heavy_light_decomposition(int _n) : n(_n),\
-    \ sz(_n, 0), in(_n, 0), out(_n, 0), nxt(_n, 0), up(_n, -1), g(_n), seg_l(_n),\
-    \ seg_r(_n) { }\n\n    void add_edge(int v, int u) {\n        g[v].emplace_back(u);\n\
-    \        g[u].emplace_back(v);\n    }\n\n    void build(int root = 0) {\n    \
-    \    dfs_sz(root);\n        sz.assign(n, 0);\n        dfs_hld(root);\n    }\n\n\
-    \    int lca(int u, int v) {\n        while(nxt[u] != nxt[v]) {\n            if(sz[u]\
-    \ > sz[v]) {\n                u = up[nxt[u]];\n            }\n            else\
-    \ {\n                v = up[nxt[v]];\n            }\n        }\n        return\
-    \ (in[u] < in[v]) ? u : v;\n    }\n\n    void set(const std::vector<Monoid> &a)\
-    \ {\n        for(int i = 0; i < n; ++i) {\n            seg_l.set(in[i], a[i]);\n\
-    \            seg_r.set(n-1-in[i], a[i]);\n        }\n    }\n\n    void set(int\
-    \ i, Monoid x) {\n        seg_l.set(in[i], x);\n        seg_r.set(n-1-in[i], x);\n\
-    \    }\n\n    Monoid get(int i) {\n        return seg_l.get(in[i]);\n    }\n\n\
-    \    Monoid path_prod(int u, int v) {\n        Monoid sum_u = e(), sum_v = e();\n\
-    \        while(nxt[u] != nxt[v]) {\n            if(sz[u] > sz[v]) {\n        \
-    \        sum_u = op(sum_u, seg_r.prod(n-1-in[u], n-in[nxt[u]]));\n           \
-    \     u = up[nxt[u]];\n            }\n            else {\n                sum_v\
-    \ = op(seg_l.prod(in[nxt[v]], in[v]+1), sum_v);\n                v = up[nxt[v]];\n\
-    \            }\n        }\n        if(in[u] < in[v]) {\n            sum_v = op(seg_l.prod(in[u],\
-    \ in[v]+1), sum_v);\n        }\n        else {\n            sum_u = op(sum_u,\
-    \ seg_r.prod(n-1-in[u], n-in[v]));\n        }\n        return op(sum_u, sum_v);\n\
-    \    }\n\n    Monoid subtree_prod(int u) {\n        return seg_l.prod(in[u], out[u]);\n\
-    \    }\n};\n\n}\n#line 4 \"test/vertex_add_subtree_sum.test.cpp\"\n\n#include\
-    \ <iostream>\n#line 7 \"test/vertex_add_subtree_sum.test.cpp\"\n\nusing i64 =\
-    \ std::int64_t;\ni64 op(i64 a, i64 b) { return a+b; }\ni64 e() { return 0; }\n\
-    \nint main() {\n    int n,q;\n    std::cin >> n >> q;\n    std::vector<i64> a(n);\n\
-    \    for(int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n    ebi::heavy_light_decomposition<i64,\
-    \ op, e> hld(n);\n    for(int i = 1; i < n; ++i) {\n        int p;\n        std::cin\
-    \ >> p;\n        hld.add_edge(i, p);\n    }\n    hld.build();\n    hld.set(a);\n\
-    \    while(q--) {\n        int flag;\n        std::cin >> flag;\n        if(flag\
+    \ ebi\n#line 6 \"test/vertex_add_subtree_sum.test.cpp\"\n\n#line 9 \"test/vertex_add_subtree_sum.test.cpp\"\
+    \n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) { return a+b; }\ni64 e() {\
+    \ return 0; }\n\nint main() {\n    int n,q;\n    std::cin >> n >> q;\n    std::vector<i64>\
+    \ a(n);\n    for(int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n\
+    \    ebi::graph g(n);\n    for(int i = 1; i < n; ++i) {\n        int p;\n    \
+    \    std::cin >> p;\n        g.add_edge(p, i);\n    }\n    ebi::heavy_light_decomposition\
+    \ hld(g);\n    ebi::segtree<i64, op, e> seg(n);\n    auto set = [&](int u, i64\
+    \ x) {\n        int idx = hld.idx(u);\n        seg.set(idx, seg.get(idx) + x);\n\
+    \    };\n    for(int i = 0; i < n; i++) set(i, a[i]);\n    i64 ans = 0;\n    auto\
+    \ f = [&](int l, int r) {\n        ans = op(ans, seg.prod(l, r));\n    };\n  \
+    \  while(q--) {\n        int flag;\n        std::cin >> flag;\n        if(flag\
     \ == 0) {\n            int u;\n            i64 x;\n            std::cin >> u >>\
-    \ x;\n            hld.set(u, hld.get(u) + x);\n        }\n        else {\n   \
-    \         int u;\n            std::cin >> u;\n            std::cout << hld.subtree_prod(u)\
-    \ << '\\n';\n        }\n    }\n}\n"
+    \ x;\n            set(u, x);\n        }\n        else {\n            int u;\n\
+    \            std::cin >> u;\n            ans = e();\n            hld.subtree_query(u,\
+    \ true, f);\n            std::cout << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
-    \n\n#include \"../data_structure/heavy_light_decomposition.hpp\"\n\n#include <iostream>\n\
-    #include <vector>\n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) { return\
-    \ a+b; }\ni64 e() { return 0; }\n\nint main() {\n    int n,q;\n    std::cin >>\
-    \ n >> q;\n    std::vector<i64> a(n);\n    for(int i = 0; i < n; ++i) {\n    \
-    \    std::cin >> a[i];\n    }\n    ebi::heavy_light_decomposition<i64, op, e>\
-    \ hld(n);\n    for(int i = 1; i < n; ++i) {\n        int p;\n        std::cin\
-    \ >> p;\n        hld.add_edge(i, p);\n    }\n    hld.build();\n    hld.set(a);\n\
-    \    while(q--) {\n        int flag;\n        std::cin >> flag;\n        if(flag\
+    \n\n#include \"../data_structure/segtree.hpp\"\n#include \"../tree/heavy_light_decomposition.hpp\"\
+    \n#include \"../graph/template.hpp\"\n\n#include <iostream>\n#include <vector>\n\
+    \nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) { return a+b; }\ni64 e() { return\
+    \ 0; }\n\nint main() {\n    int n,q;\n    std::cin >> n >> q;\n    std::vector<i64>\
+    \ a(n);\n    for(int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n\
+    \    ebi::graph g(n);\n    for(int i = 1; i < n; ++i) {\n        int p;\n    \
+    \    std::cin >> p;\n        g.add_edge(p, i);\n    }\n    ebi::heavy_light_decomposition\
+    \ hld(g);\n    ebi::segtree<i64, op, e> seg(n);\n    auto set = [&](int u, i64\
+    \ x) {\n        int idx = hld.idx(u);\n        seg.set(idx, seg.get(idx) + x);\n\
+    \    };\n    for(int i = 0; i < n; i++) set(i, a[i]);\n    i64 ans = 0;\n    auto\
+    \ f = [&](int l, int r) {\n        ans = op(ans, seg.prod(l, r));\n    };\n  \
+    \  while(q--) {\n        int flag;\n        std::cin >> flag;\n        if(flag\
     \ == 0) {\n            int u;\n            i64 x;\n            std::cin >> u >>\
-    \ x;\n            hld.set(u, hld.get(u) + x);\n        }\n        else {\n   \
-    \         int u;\n            std::cin >> u;\n            std::cout << hld.subtree_prod(u)\
-    \ << '\\n';\n        }\n    }\n}"
+    \ x;\n            set(u, x);\n        }\n        else {\n            int u;\n\
+    \            std::cin >> u;\n            ans = e();\n            hld.subtree_query(u,\
+    \ true, f);\n            std::cout << ans << '\\n';\n        }\n    }\n}"
   dependsOn:
-  - data_structure/heavy_light_decomposition.hpp
   - data_structure/segtree.hpp
+  - tree/heavy_light_decomposition.hpp
   - graph/template.hpp
   isVerificationFile: true
   path: test/vertex_add_subtree_sum.test.cpp
   requiredBy: []
-  timestamp: '2021-11-15 18:01:08+09:00'
+  timestamp: '2023-04-22 18:49:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/vertex_add_subtree_sum.test.cpp

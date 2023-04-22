@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: data_structure/heavy_light_decomposition.hpp
     title: data_structure/heavy_light_decomposition.hpp
   - icon: ':heavy_check_mark:'
@@ -48,9 +48,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_subtree_sum.test.cpp
     title: test/vertex_add_subtree_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/vertex_set_path_compositie.test.cpp
-    title: test/vertex_set_path_compositie.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -95,7 +92,6 @@ data:
   - test/vertex_add_path_sum.test.cpp
   - test/dijkstra.test.cpp
   - test/two_sat.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
   - test/scc_graph.test.cpp
   - test/fibonacci_heap.test.cpp

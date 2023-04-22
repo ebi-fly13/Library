@@ -6,6 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_add_subtree_sum.test.cpp
+    title: test/vertex_add_subtree_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/vertex_set_path_compositie.test.cpp
+    title: test/vertex_set_path_compositie.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -91,6 +97,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_path_sum.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
+  - test/vertex_add_subtree_sum.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
 redirect_from:
