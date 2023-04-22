@@ -1,6 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/vertex_set_path_composite"
 
-#include "../data_structure/heavy_light_decomposition.hpp"
+#include "../tree/heavy_light_decomposition.hpp"
+#include "../data_structure/segtree.hpp"
 #include "../utility/modint.hpp"
 
 #include <iostream>
@@ -10,51 +11,61 @@ using mint = ebi::modint998244353;
 
 using i64 = std::int64_t;
 
-struct F {
-    mint a,b;
-    F(mint a, mint b) : a(a), b(b) { }
+struct S {
+    mint c, d;
 };
 
-F op(F f1, F f2) {
-    return F(f2.a*f1.a, f2.a*f1.b+f2.b);
-}
+S op(S a, S b) { return {b.c * a.c, b.c * a.d + b.d}; }
 
-F e() {
-    return F(1,0);
-}
+S e() { return {1, 0}; }
 
 int main() {
-    int n,q;
+    int n, q;
     std::cin >> n >> q;
-    std::vector<F> f(n, F(1,0));
-    for(int i = 0; i < n; ++i) {
-        int a,b;
+    std::vector g(n, std::vector<int>());
+    std::vector<S> fx(n);
+    for(int i = 0; i < n; i++) {
+        int a, b;
         std::cin >> a >> b;
-        f[i] = F(a,b);
+        fx[i] = {a, b};
     }
-    ebi::heavy_light_decomposition<F, op, e> hld(n);
-    for(int i = 0; i < n-1; ++i) {
-        int u,v;
+    for(int i = 0; i < n-1; i++) {
+        int u, v;
         std::cin >> u >> v;
-        hld.add_edge(u,v);
+        g[u].emplace_back(v);
+        g[v].emplace_back(u);
     }
-    hld.build();
-    hld.set(f);
-    while(q--) {
-        int flag;
-        std::cin >> flag;
-        if(flag == 0) {
-            int p;
-            int c, d;
-            std::cin >> p >> c >> d;
-            hld.set(p, F(c,d));
+    ebi::heavy_light_decomposition hld(g);
+    ebi::segtree<S, op, e> seg1(n);
+    ebi::segtree<S, op, e> seg2(n);
+    for(int i = 0; i < n; i++) {
+        int idx = hld.idx(i);
+        seg1.set(idx, fx[i]);
+        seg2.set(n - 1 - idx, fx[i]);
+    }
+    S ans = e();
+    auto f = [&](int l, int r) -> void {
+        if (l <= r) {
+            ans = op(ans, seg1.prod(l, r));
+        } else {
+            ans = op(ans, seg2.prod(n - l, n - r));
         }
-        else {
-            int u,v;
-            i64 x;
+    };
+    while (q--) {
+        int t;
+        std::cin >> t;
+        if (t == 0) {
+            int p, c, d;
+            std::cin >> p >> c >> d;
+            int idx = hld.idx(p);
+            seg1.set(idx, {c, d});
+            seg2.set(n - 1 - idx, {c, d});
+        } else {
+            int u, v, x;
             std::cin >> u >> v >> x;
-            F f_px = hld.path_prod(u, v);
-            std::cout << (f_px.a * x + f_px.b).val() << std::endl;
+            ans = e();
+            hld.path_noncommutative_query(u, v, f);
+            std::cout << (ans.c * x + ans.d).val() << '\n';
         }
     }
 }
