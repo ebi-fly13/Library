@@ -5,9 +5,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':warning:'
-    path: data_structure/heavy_light_decomposition.hpp
-    title: data_structure/heavy_light_decomposition.hpp
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
@@ -83,7 +80,6 @@ data:
   - graph/dijkstra.hpp
   - graph/dijkstra_fibheap.hpp
   - tree/centroid_decomposition.hpp
-  - data_structure/heavy_light_decomposition.hpp
   - algorithm/two_sat.hpp
   timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: LIBRARY_ALL_AC

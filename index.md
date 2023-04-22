@@ -102,9 +102,6 @@ data:
       path: data_structure/fibonacci_heap.hpp
       title: fibonacci_heap
     - icon: ':warning:'
-      path: data_structure/heavy_light_decomposition.hpp
-      title: data_structure/heavy_light_decomposition.hpp
-    - icon: ':warning:'
       path: data_structure/kd_tree.hpp
       title: data_structure/kd_tree.hpp
     - icon: ':heavy_check_mark:'

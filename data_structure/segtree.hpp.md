@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: data_structure/heavy_light_decomposition.hpp
-    title: data_structure/heavy_light_decomposition.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/segtree_2d.hpp
     title: data_structure/segtree_2d.hpp
@@ -86,7 +83,6 @@ data:
   isVerificationFile: false
   path: data_structure/segtree.hpp
   requiredBy:
-  - data_structure/heavy_light_decomposition.hpp
   - data_structure/segtree_2d.hpp
   timestamp: '2021-11-15 18:01:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
