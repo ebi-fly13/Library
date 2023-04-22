@@ -215,6 +215,9 @@ data:
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
     - icon: ':heavy_check_mark:'
+      path: tree/heavy_light_decomposition.hpp
+      title: tree/heavy_light_decomposition.hpp
+    - icon: ':heavy_check_mark:'
       path: tree/level_ancestor.hpp
       title: tree/level_ancestor.hpp
     - icon: ':heavy_check_mark:'
