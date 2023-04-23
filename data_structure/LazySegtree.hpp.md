@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2450.test.cpp
+    title: test/aoj/aoj_2450.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -99,6 +102,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/LazySegtree.test.cpp
+  - test/aoj/aoj_2450.test.cpp
 documentation_of: data_structure/LazySegtree.hpp
 layout: document
 redirect_from:

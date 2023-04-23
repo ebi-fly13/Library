@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2450.test.cpp
+    title: test/aoj/aoj_2450.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -98,6 +101,7 @@ data:
   verifiedWith:
   - test/vertex_add_path_sum.test.cpp
   - test/vertex_set_path_compositie.test.cpp
+  - test/aoj/aoj_2450.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document

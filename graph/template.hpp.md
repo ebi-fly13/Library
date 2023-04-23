@@ -22,6 +22,9 @@ data:
     path: test/Jump_on_Tree.test.cpp
     title: test/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2450.test.cpp
+    title: test/aoj/aoj_2450.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
@@ -88,6 +91,7 @@ data:
   - test/vertex_add_path_sum.test.cpp
   - test/dijkstra.test.cpp
   - test/two_sat.test.cpp
+  - test/aoj/aoj_2450.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
   - test/scc_graph.test.cpp
   - test/fibonacci_heap.test.cpp
