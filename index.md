@@ -133,7 +133,7 @@ data:
       title: data_structure/section_set.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
-      title: Segtree
+      title: segtree
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: data_structure/segtree_2d.hpp

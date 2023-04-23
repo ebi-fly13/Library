@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
-    title: Segtree
+    title: segtree
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: tree/heavy_light_decomposition.hpp
@@ -58,67 +58,82 @@ data:
     \ out[u]);\n    }\n\n   private:\n    int n;\n    std::vector<std::vector<int>>\
     \ g;\n    std::vector<int> sz, in, out, nxt, par, depth;\n};\n\n}  // namespace\
     \ ebi\n#line 2 \"data_structure/segtree.hpp\"\n\r\n#line 4 \"data_structure/segtree.hpp\"\
-    \n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class Monoid, Monoid\
-    \ (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct segtree {\r\nprivate:\r\n  \
-    \  int n;\r\n    int size;\r\n    std::vector<Monoid> data;\r\npublic:\r\n   \
-    \ segtree(int _n) : n(_n), size(1) {\r\n        while(size < _n) {\r\n       \
-    \     size <<= 1;\r\n        }\r\n        data.assign(2*size, e());\r\n      \
-    \  return;\r\n    }\r\n\r\n    segtree(const std::vector<Monoid> &v) : size(1)\
-    \ {\r\n        n = (int)v.size();\r\n        while(size < n) {\r\n           \
-    \ size <<= 1;\r\n        }\r\n        data.assign(2*size, e());\r\n        std::copy(v.begin(),\
-    \ v.end(), data.begin() + size);\r\n        for(int i = size-1; i > 0; i--) {\r\
-    \n            data[i] = op(data[i<<1|0], data[i<<1|1]);\r\n        }\r\n     \
-    \   return;\r\n    }\r\n\r\n    void set(int p, Monoid x) {\r\n        assert(0\
-    \ <= p && p < n);\r\n        p += size;\r\n        data[p] = x;\r\n        while(p\
-    \ > 1) {\r\n            p >>= 1;\r\n            data[p] = op(data[p<<1|0], data[p<<1|1]);\r\
-    \n        }\r\n        return;\r\n    }\r\n\r\n    Monoid get(int p) const {\r\
-    \n        assert(0 <= p && p < n);\r\n        return data[p+size];\r\n    }\r\n\
-    \r\n    Monoid prod(int l, int r) const {\r\n        assert(0 <= l && l <= r &&\
-    \ r <= n);\r\n        Monoid left = e(), right = e();\r\n        l += size;\r\n\
-    \        r += size;\r\n        while(l < r) {\r\n            if(l & 1) left =\
-    \ op(left, data[l++]);\r\n            if(r & 1) right = op(data[--r], right);\r\
-    \n            l >>= 1;\r\n            r >>= 1;\r\n        }\r\n        return\
-    \ op(left, right);\r\n    }\r\n\r\n    Monoid all_prod() const {\r\n        return\
-    \ data[1];\r\n    }\r\n\r\n    Monoid operator [] (int p) const { return data[size+p];\
-    \ }\r\n};\r\n\r\n} // namespace ebi\r\n#line 2 \"utility/modint.hpp\"\n\r\n/*\r\
-    \n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
-    \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
-    \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
-    \u306E\u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n#line 11 \"utility/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate<std::uint_fast64_t Modulus>\r\nclass modint\
-    \ {\r\n  using u64 = std::uint_fast64_t;\r\n\r\npublic:\r\n    u64 a;\r\n\r\n\
-    \    constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}\r\n    constexpr\
-    \ u64 &value() noexcept { return a; }\r\n    constexpr u64 &val() noexcept { return\
-    \ a; }\r\n    constexpr const u64 &value() const noexcept { return a; }\r\n  \
-    \  constexpr modint operator+(const modint rhs) const noexcept {\r\n        return\
-    \ modint(*this) += rhs;\r\n    }\r\n    constexpr modint operator-(const modint\
-    \ rhs) const noexcept {\r\n        return modint(*this) -= rhs;\r\n    }\r\n \
-    \   constexpr modint operator*(const modint rhs) const noexcept {\r\n        return\
-    \ modint(*this) *= rhs;\r\n    }\r\n    constexpr modint operator/(const modint\
-    \ rhs) const noexcept {\r\n        return modint(*this) /= rhs;\r\n    }\r\n \
-    \   constexpr modint &operator+=(const modint rhs) noexcept {\r\n        a +=\
-    \ rhs.a;\r\n        if (a >= Modulus) {\r\n            a -= Modulus;\r\n     \
-    \   }\r\n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const\
-    \ modint rhs) noexcept {\r\n        if (a < rhs.a) {\r\n        a += Modulus;\r\
-    \n        }\r\n        a -= rhs.a;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator*=(const modint rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(modint rhs)\
-    \ noexcept {\r\n        u64 exp = Modulus - 2;\r\n        while (exp) {\r\n  \
-    \      if (exp % 2) {\r\n            *this *= rhs;\r\n        }\r\n        rhs\
-    \ *= rhs;\r\n        exp /= 2;\r\n        }\r\n        return *this;\r\n    }\r\
-    \n    constexpr modint operator-() const { return modint() - *this; }\r\n    bool\
-    \ operator==(const u64 rhs) {\r\n        return a == rhs;\r\n    }\r\n    bool\
-    \ operator!=(const u64 rhs) {\r\n        return a != rhs;\r\n    }\r\n    constexpr\
-    \ modint& operator++() {\r\n        a++;\r\n        if( a == mod() ) a = 0;\r\n\
-    \        return *this;\r\n    }\r\n    constexpr modint& operator--() {\r\n  \
-    \      if( a == 0 ) a = mod();\r\n        a--;\r\n        return *this;\r\n  \
-    \  }\r\n\r\n    modint pow(u64 n) const noexcept {\r\n        modint res = 1;\r\
-    \n        modint x = a;\r\n        while(n>0){\r\n            if(n&1) res *= x;\r\
-    \n            x *= x;\r\n            n >>=1;\r\n        }\r\n        return res;\r\
-    \n    }\r\n    modint inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\
-    \n\r\n    static u64 mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\n\
-    using modint998244353 = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\
-    \n\r\ntemplate<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
+    \n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S,\
+    \ S), S (*e)()>\r\nstruct segtree {\r\n   private:\r\n    int n;\r\n    int sz;\r\
+    \n    std::vector<S> data;\r\n\r\n    void update(int i) { data[i] = op(data[2\
+    \ * i], data[2 * i + 1]); }\r\n\r\n   public:\r\n    segtree(int n) : segtree(std::vector<S>(n,\
+    \ e())) {}\r\n    segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {\r\
+    \n        while (sz < n) sz *= 2;\r\n        data = std::vector<S>(2 * sz, e());\r\
+    \n        for(int i = 0; i < n; i++) { data[sz + i] = v[i]; }\r\n        for(int\
+    \ i = sz-1; i >= 1; i--) update(i);\r\n    }\r\n\r\n    void set(int p, S x) {\r\
+    \n        assert(0 <= p && p < n);\r\n        p += sz;\r\n        data[p] = x;\r\
+    \n        while (p > 1) {\r\n            p >>= 1;\r\n            update(p);\r\n\
+    \        }\r\n    }\r\n\r\n    S get(int p) {\r\n        assert(0 <= p && p <\
+    \ n);\r\n        return data[p + sz];\r\n    }\r\n\r\n    S prod(int l, int r)\
+    \ {\r\n        assert(0 <= l && l <= r && r <= n);\r\n        S sml = e(), smr\
+    \ = e();\r\n        l += sz;\r\n        r += sz;\r\n        while (l < r) {\r\n\
+    \            if (l & 1) sml = op(sml, data[l++]);\r\n            if (r & 1) smr\
+    \ = op(data[--r], smr);\r\n            l >>= 1;\r\n            r >>= 1;\r\n  \
+    \      }\r\n        return op(sml, smr);\r\n    }\r\n\r\n    S all_prod() { return\
+    \ data[1]; }\r\n\r\n    template <class F>\r\n    int max_right(int l, F f) {\r\
+    \n        assert(0 <= l && l < n);\r\n        assert(f(e()));\r\n        if (l\
+    \ == n) return n;\r\n        l += sz;\r\n        S sm = e();\r\n        do {\r\
+    \n            while (l % 2 == 0) l >>= 1;\r\n            if (!f(op(sm, data[l])))\
+    \ {\r\n                while (l < sz) {\r\n                    l = 2 * l;\r\n\
+    \                    if (f(op(sm, data[l]))) {\r\n                        sm =\
+    \ op(sm, data[l]);\r\n                        l++;\r\n                    }\r\n\
+    \                }\r\n                return l - sz;\r\n            }\r\n    \
+    \        sm = op(sm, data[l]);\r\n            l++;\r\n        } while ((l & -l)\
+    \ != l);\r\n        return n;\r\n    }\r\n\r\n    template <class F>\r\n    int\
+    \ min_left(int r, F f) {\r\n        assert(0 <= r && r <= n);\r\n        assert(f(e()));\r\
+    \n        if (r == 0) return 0;\r\n        r += sz;\r\n        S sm = e();\r\n\
+    \        do {\r\n            r--;\r\n            while (r > 1 && (r % 2)) r >>=\
+    \ 1;\r\n            if (!f(op(data[r], sm))) {\r\n                while (r < sz)\
+    \ {\r\n                    r = 2 * r + 1;\r\n                    if (f(op(data[r],\
+    \ sm))) {\r\n                        sm = op(data[r], sm);\r\n               \
+    \         r--;\r\n                    }\r\n                }\r\n             \
+    \   return r + 1 - sz;\r\n            }\r\n            sm = op(data[r], sm);\r\
+    \n        } while ((r & -r) != r);\r\n        return 0;\r\n    }\r\n\r\n    S\
+    \ operator [] (int p) const { return data[sz+p]; }\r\n};\r\n\r\n} // namespace\
+    \ ebi\r\n#line 2 \"utility/modint.hpp\"\n\r\n/*\r\n    author: noshi91\r\n   \
+    \ reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\n    noshi91\u306E\
+    \u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\u308Bmodint\u3092\
+    \u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\u306E\u3067\u3059\
+    \r\n*/\r\n\r\n#include <cstdint>\r\n#line 11 \"utility/modint.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate<std::uint_fast64_t Modulus>\r\nclass modint {\r\n  using\
+    \ u64 = std::uint_fast64_t;\r\n\r\npublic:\r\n    u64 a;\r\n\r\n    constexpr\
+    \ modint(const u64 x = 0) noexcept : a(x % Modulus) {}\r\n    constexpr u64 &value()\
+    \ noexcept { return a; }\r\n    constexpr u64 &val() noexcept { return a; }\r\n\
+    \    constexpr const u64 &value() const noexcept { return a; }\r\n    constexpr\
+    \ modint operator+(const modint rhs) const noexcept {\r\n        return modint(*this)\
+    \ += rhs;\r\n    }\r\n    constexpr modint operator-(const modint rhs) const noexcept\
+    \ {\r\n        return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
+    \ modint rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n   \
+    \ }\r\n    constexpr modint operator/(const modint rhs) const noexcept {\r\n \
+    \       return modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const\
+    \ modint rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\
+    \n            a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
+    \ < rhs.a) {\r\n        a += Modulus;\r\n        }\r\n        a -= rhs.a;\r\n\
+    \        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
+    \ rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator/=(modint rhs) noexcept {\r\n       \
+    \ u64 exp = Modulus - 2;\r\n        while (exp) {\r\n        if (exp % 2) {\r\n\
+    \            *this *= rhs;\r\n        }\r\n        rhs *= rhs;\r\n        exp\
+    \ /= 2;\r\n        }\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ operator-() const { return modint() - *this; }\r\n    bool operator==(const\
+    \ u64 rhs) {\r\n        return a == rhs;\r\n    }\r\n    bool operator!=(const\
+    \ u64 rhs) {\r\n        return a != rhs;\r\n    }\r\n    constexpr modint& operator++()\
+    \ {\r\n        a++;\r\n        if( a == mod() ) a = 0;\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint& operator--() {\r\n        if( a == 0 ) a = mod();\r\
+    \n        a--;\r\n        return *this;\r\n    }\r\n\r\n    modint pow(u64 n)\
+    \ const noexcept {\r\n        modint res = 1;\r\n        modint x = a;\r\n   \
+    \     while(n>0){\r\n            if(n&1) res *= x;\r\n            x *= x;\r\n\
+    \            n >>=1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
+    \ inv() const {\r\n        return pow(Modulus-2);\r\n    }\r\n\r\n    static u64\
+    \ mod() {\r\n        return Modulus;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
+    template<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
     \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
     \ ebi\n#line 6 \"test/vertex_set_path_compositie.test.cpp\"\n\n#line 9 \"test/vertex_set_path_compositie.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nusing i64 = std::int64_t;\n\nstruct\
@@ -171,7 +186,7 @@ data:
   isVerificationFile: true
   path: test/vertex_set_path_compositie.test.cpp
   requiredBy: []
-  timestamp: '2023-04-22 18:49:50+09:00'
+  timestamp: '2023-04-23 15:36:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/vertex_set_path_compositie.test.cpp
