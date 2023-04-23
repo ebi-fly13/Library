@@ -27,6 +27,7 @@
 "test/aoj/aoj_1645.test.cpp": "2021-11-15 18:01:08 +0900",
 "test/aoj/aoj_2152.test.cpp": "2021-11-07 13:38:29 +0900",
 "test/aoj/aoj_2444.test.cpp": "2023-04-19 18:25:00 +0900",
+"test/aoj/aoj_2450.test.cpp": "2023-04-23 14:21:09 +0900",
 "test/aoj/aoj_2863.test.cpp": "2021-08-25 17:31:50 +0900",
 "test/aoj/aoj_2873.test.cpp": "2021-08-25 17:31:50 +0900",
 "test/bankers_queue.test.cpp": "2021-03-01 14:43:05 +0900",
