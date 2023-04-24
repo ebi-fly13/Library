@@ -96,11 +96,11 @@ int main() {
         std::cin >> t >> a >> b >> c;
         a--; b--;
         if(t == 1) {
-            hld.path_noncommutative_query(a, b, apply);
+            hld.path_noncommutative_query(a, b, true, apply);
         }
         else {
             ans = e();
-            hld.path_noncommutative_query(a, b, prod);
+            hld.path_noncommutative_query(a, b, true, prod);
             std::cout << ans.ans << '\n';
         }
     }

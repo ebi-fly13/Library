@@ -64,7 +64,7 @@ int main() {
             int u, v, x;
             std::cin >> u >> v >> x;
             ans = e();
-            hld.path_noncommutative_query(u, v, f);
+            hld.path_noncommutative_query(u, v, true, f);
             std::cout << (ans.c * x + ans.d).val() << '\n';
         }
     }

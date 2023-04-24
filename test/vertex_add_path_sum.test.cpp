@@ -51,7 +51,7 @@ int main() {
             int u,v;
             std::cin >> u >> v;
             ans = e();
-            hld.path_noncommutative_query(u, v, f);
+            hld.path_noncommutative_query(u, v, true, f);
             std::cout << ans << '\n';
         }   
     }
