@@ -9,7 +9,7 @@ data:
     title: graph/template.hpp
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
-    title: tree/heavy_light_decomposition.hpp
+    title: heavy light decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -89,18 +89,18 @@ data:
     \       }\n        return depth[u] < depth[v] ? u : v;\n    }\n\n    int distance(int\
     \ u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u, v)];\n\
     \    }\n\n    template <class F>\n    void path_noncommutative_query(int u, int\
-    \ v, const F &f) const {\n        int l = lca(u, v);\n        for (auto [a, b]\
-    \ : ascend(u, l)) f(a + 1, b);\n        f(in[l], in[l] + 1);\n        for (auto\
-    \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    template <class F>\n    void\
-    \ subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
-    \ out[u]);\n    }\n\n   private:\n    int n;\n    std::vector<std::vector<int>>\
-    \ g;\n    std::vector<int> sz, in, out, nxt, par, depth;\n};\n\n}  // namespace\
-    \ ebi\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\n\
-    namespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n \
-    \   T cost;\r\n    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\
-    \n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\
-    \n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
-    \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \ v, bool vertex, const F &f) const {\n        int l = lca(u, v);\n        for\
+    \ (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if(vertex) f(in[l], in[l]\
+    \ + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n   \
+    \ template <class F>\n    void subtree_query(int u, bool vertex, const F &f) {\n\
+    \        f(in[u] + int(!vertex), out[u]);\n    }\n\n   private:\n    int n;\n\
+    \    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out, nxt,\
+    \ par, depth;\n};\n\n}  // namespace ebi\n#line 2 \"graph/template.hpp\"\n\r\n\
+    #line 4 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\
+    \nstruct Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1)\
+    \ : to(_to), cost(_cost) { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph :\
+    \ std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
@@ -121,7 +121,8 @@ data:
     \           int p;\n            i64 x;\n            std::cin >> p >> x;\n    \
     \        set(p, x);\n        }\n        else {\n            int u,v;\n       \
     \     std::cin >> u >> v;\n            ans = e();\n            hld.path_noncommutative_query(u,\
-    \ v, f);\n            std::cout << ans << '\\n';\n        }   \n    }\n}\n"
+    \ v, true, f);\n            std::cout << ans << '\\n';\n        }   \n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
     \n#include \"../data_structure/segtree.hpp\"\n#include \"../tree/heavy_light_decomposition.hpp\"\
     \n#include \"../graph/template.hpp\"\n\n#include <iostream>\n#include <vector>\n\
@@ -139,7 +140,7 @@ data:
     \           int p;\n            i64 x;\n            std::cin >> p >> x;\n    \
     \        set(p, x);\n        }\n        else {\n            int u,v;\n       \
     \     std::cin >> u >> v;\n            ans = e();\n            hld.path_noncommutative_query(u,\
-    \ v, f);\n            std::cout << ans << '\\n';\n        }   \n    }\n}"
+    \ v, true, f);\n            std::cout << ans << '\\n';\n        }   \n    }\n}"
   dependsOn:
   - data_structure/segtree.hpp
   - tree/heavy_light_decomposition.hpp
@@ -147,7 +148,7 @@ data:
   isVerificationFile: true
   path: test/vertex_add_path_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 15:36:52+09:00'
+  timestamp: '2023-04-24 21:46:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/vertex_add_path_sum.test.cpp

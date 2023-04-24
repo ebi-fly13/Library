@@ -6,7 +6,7 @@ data:
     title: segtree
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
-    title: tree/heavy_light_decomposition.hpp
+    title: heavy light decomposition
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
@@ -51,23 +51,24 @@ data:
     \       }\n        return depth[u] < depth[v] ? u : v;\n    }\n\n    int distance(int\
     \ u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u, v)];\n\
     \    }\n\n    template <class F>\n    void path_noncommutative_query(int u, int\
-    \ v, const F &f) const {\n        int l = lca(u, v);\n        for (auto [a, b]\
-    \ : ascend(u, l)) f(a + 1, b);\n        f(in[l], in[l] + 1);\n        for (auto\
-    \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    template <class F>\n    void\
-    \ subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
-    \ out[u]);\n    }\n\n   private:\n    int n;\n    std::vector<std::vector<int>>\
-    \ g;\n    std::vector<int> sz, in, out, nxt, par, depth;\n};\n\n}  // namespace\
-    \ ebi\n#line 2 \"data_structure/segtree.hpp\"\n\r\n#line 4 \"data_structure/segtree.hpp\"\
-    \n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S,\
-    \ S), S (*e)()>\r\nstruct segtree {\r\n   private:\r\n    int n;\r\n    int sz;\r\
-    \n    std::vector<S> data;\r\n\r\n    void update(int i) { data[i] = op(data[2\
-    \ * i], data[2 * i + 1]); }\r\n\r\n   public:\r\n    segtree(int n) : segtree(std::vector<S>(n,\
-    \ e())) {}\r\n    segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {\r\
-    \n        while (sz < n) sz *= 2;\r\n        data = std::vector<S>(2 * sz, e());\r\
-    \n        for(int i = 0; i < n; i++) { data[sz + i] = v[i]; }\r\n        for(int\
-    \ i = sz-1; i >= 1; i--) update(i);\r\n    }\r\n\r\n    void set(int p, S x) {\r\
-    \n        assert(0 <= p && p < n);\r\n        p += sz;\r\n        data[p] = x;\r\
-    \n        while (p > 1) {\r\n            p >>= 1;\r\n            update(p);\r\n\
+    \ v, bool vertex, const F &f) const {\n        int l = lca(u, v);\n        for\
+    \ (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if(vertex) f(in[l], in[l]\
+    \ + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n   \
+    \ template <class F>\n    void subtree_query(int u, bool vertex, const F &f) {\n\
+    \        f(in[u] + int(!vertex), out[u]);\n    }\n\n   private:\n    int n;\n\
+    \    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out, nxt,\
+    \ par, depth;\n};\n\n}  // namespace ebi\n#line 2 \"data_structure/segtree.hpp\"\
+    \n\r\n#line 4 \"data_structure/segtree.hpp\"\n#include <cassert>\r\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)()>\r\nstruct segtree {\r\
+    \n   private:\r\n    int n;\r\n    int sz;\r\n    std::vector<S> data;\r\n\r\n\
+    \    void update(int i) { data[i] = op(data[2 * i], data[2 * i + 1]); }\r\n\r\n\
+    \   public:\r\n    segtree(int n) : segtree(std::vector<S>(n, e())) {}\r\n   \
+    \ segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {\r\n        while\
+    \ (sz < n) sz *= 2;\r\n        data = std::vector<S>(2 * sz, e());\r\n       \
+    \ for(int i = 0; i < n; i++) { data[sz + i] = v[i]; }\r\n        for(int i = sz-1;\
+    \ i >= 1; i--) update(i);\r\n    }\r\n\r\n    void set(int p, S x) {\r\n     \
+    \   assert(0 <= p && p < n);\r\n        p += sz;\r\n        data[p] = x;\r\n \
+    \       while (p > 1) {\r\n            p >>= 1;\r\n            update(p);\r\n\
     \        }\r\n    }\r\n\r\n    S get(int p) {\r\n        assert(0 <= p && p <\
     \ n);\r\n        return data[p + sz];\r\n    }\r\n\r\n    S prod(int l, int r)\
     \ {\r\n        assert(0 <= l && l <= r && r <= n);\r\n        S sml = e(), smr\
@@ -154,8 +155,8 @@ data:
     \   std::cin >> p >> c >> d;\n            int idx = hld.idx(p);\n            seg1.set(idx,\
     \ {c, d});\n            seg2.set(n - 1 - idx, {c, d});\n        } else {\n   \
     \         int u, v, x;\n            std::cin >> u >> v >> x;\n            ans\
-    \ = e();\n            hld.path_noncommutative_query(u, v, f);\n            std::cout\
-    \ << (ans.c * x + ans.d).val() << '\\n';\n        }\n    }\n}\n"
+    \ = e();\n            hld.path_noncommutative_query(u, v, true, f);\n        \
+    \    std::cout << (ans.c * x + ans.d).val() << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_set_path_composite\"\
     \n\n#include \"../tree/heavy_light_decomposition.hpp\"\n#include \"../data_structure/segtree.hpp\"\
     \n#include \"../utility/modint.hpp\"\n\n#include <iostream>\n#include <vector>\n\
@@ -177,8 +178,8 @@ data:
     \   std::cin >> p >> c >> d;\n            int idx = hld.idx(p);\n            seg1.set(idx,\
     \ {c, d});\n            seg2.set(n - 1 - idx, {c, d});\n        } else {\n   \
     \         int u, v, x;\n            std::cin >> u >> v >> x;\n            ans\
-    \ = e();\n            hld.path_noncommutative_query(u, v, f);\n            std::cout\
-    \ << (ans.c * x + ans.d).val() << '\\n';\n        }\n    }\n}"
+    \ = e();\n            hld.path_noncommutative_query(u, v, true, f);\n        \
+    \    std::cout << (ans.c * x + ans.d).val() << '\\n';\n        }\n    }\n}"
   dependsOn:
   - tree/heavy_light_decomposition.hpp
   - data_structure/segtree.hpp
@@ -186,7 +187,7 @@ data:
   isVerificationFile: true
   path: test/vertex_set_path_compositie.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 15:36:52+09:00'
+  timestamp: '2023-04-24 21:46:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/vertex_set_path_compositie.test.cpp

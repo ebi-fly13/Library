@@ -49,13 +49,13 @@ data:
     \       }\n        return depth[u] < depth[v] ? u : v;\n    }\n\n    int distance(int\
     \ u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u, v)];\n\
     \    }\n\n    template <class F>\n    void path_noncommutative_query(int u, int\
-    \ v, const F &f) const {\n        int l = lca(u, v);\n        for (auto [a, b]\
-    \ : ascend(u, l)) f(a + 1, b);\n        f(in[l], in[l] + 1);\n        for (auto\
-    \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    template <class F>\n    void\
-    \ subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
-    \ out[u]);\n    }\n\n   private:\n    int n;\n    std::vector<std::vector<int>>\
-    \ g;\n    std::vector<int> sz, in, out, nxt, par, depth;\n};\n\n}  // namespace\
-    \ ebi\n"
+    \ v, bool vertex, const F &f) const {\n        int l = lca(u, v);\n        for\
+    \ (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if(vertex) f(in[l], in[l]\
+    \ + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n   \
+    \ template <class F>\n    void subtree_query(int u, bool vertex, const F &f) {\n\
+    \        f(in[u] + int(!vertex), out[u]);\n    }\n\n   private:\n    int n;\n\
+    \    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out, nxt,\
+    \ par, depth;\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <iostream>\n#include <vector>\n\nnamespace ebi {\n\
     \nstruct heavy_light_decomposition {\n   private:\n    void dfs_sz(int v) {\n\
     \        for (auto &nv : g[v]) {\n            if (nv == par[v]) continue;\n  \
@@ -85,18 +85,18 @@ data:
     \       }\n        return depth[u] < depth[v] ? u : v;\n    }\n\n    int distance(int\
     \ u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u, v)];\n\
     \    }\n\n    template <class F>\n    void path_noncommutative_query(int u, int\
-    \ v, const F &f) const {\n        int l = lca(u, v);\n        for (auto [a, b]\
-    \ : ascend(u, l)) f(a + 1, b);\n        f(in[l], in[l] + 1);\n        for (auto\
-    \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    template <class F>\n    void\
-    \ subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
-    \ out[u]);\n    }\n\n   private:\n    int n;\n    std::vector<std::vector<int>>\
-    \ g;\n    std::vector<int> sz, in, out, nxt, par, depth;\n};\n\n}  // namespace\
-    \ ebi"
+    \ v, bool vertex, const F &f) const {\n        int l = lca(u, v);\n        for\
+    \ (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if(vertex) f(in[l], in[l]\
+    \ + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n   \
+    \ template <class F>\n    void subtree_query(int u, bool vertex, const F &f) {\n\
+    \        f(in[u] + int(!vertex), out[u]);\n    }\n\n   private:\n    int n;\n\
+    \    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out, nxt,\
+    \ par, depth;\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-04-22 18:39:10+09:00'
+  timestamp: '2023-04-24 21:46:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_path_sum.test.cpp
@@ -105,8 +105,69 @@ data:
   - test/vertex_add_subtree_sum.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
-redirect_from:
-- /library/tree/heavy_light_decomposition.hpp
-- /library/tree/heavy_light_decomposition.hpp.html
-title: tree/heavy_light_decomposition.hpp
+title: heavy light decomposition
 ---
+
+## 説明
+
+木をHLDする。パスクエリ、部分木クエリを処理することができる。
+
+### コンストラクタ
+
+`HeavyLightDecomposition(std::vector<std::vector<int>> g, int root = 0)`
+
+木グラフ g と root ノード番号を与えてHLDする。デフォルトで root は頂点 0
+
+### idx(int u)
+
+頂点 u のDFS行きがけ順の番号を返す。このidxの位置にデータ構造のインデックスを対応させればパスクエリや部分木クエリを処理することができる。具体的には使い方を参照。
+
+### lca(int u, int v)
+
+頂点 u, v のLCAを返す。
+
+### distance(int u, int v)
+
+頂点 u, v の距離を返す。
+
+### path_noncommutative_query(int u, int v, bool vertex, const F &f)
+
+パス u-v にクエリ`f`を適用する。非可換。vertexがtrueのとき、頂点に属性がある。vertexがfalseのとき、辺に属性がある。親-子間の辺属性は子のidxに持つ。
+
+### subtree_query(int u, bool vertex, const F &f)
+
+頂点 u の部分木にクエリ`f`を適用する。vertexがtrueのとき、根頂点である u にもクエリを適用する。
+
+## 使い方
+
+```
+int main() {
+    int n, m;
+    std::cin >> n >> m;
+    std::vector<std::vector<int>> g(n);
+    rep(i,0,m) {
+        int u,v;
+        std::cin >> u >> v;
+        g[u].emplace_back(v);
+        g[v].emplace_back(u);
+    }
+    lib::HeavyLightDecomposition hld(g);
+    segtree<S, op, e> seg1(n) 
+    segtree<S, op_rev, e> seg2(n);
+    auto set = [&](int u, S x) {
+        int idx = hld.idx(u);
+        seg1.set(idx, x);
+        seg2.set(idx, x);
+    };
+    S ans = e();
+    auto f = [&](int l, int r) {
+        if(l <= r) ans = op(ans, seg1.prod(l, r));
+        else ans = op(ans, seg2.prod(r, l)); 
+    };
+    int u,v;
+    std::cin >> u >> v;
+    ans = e();
+    hld.path_noncommutative_query(u, v, true, f);
+    std::cout << ans << '\n';
+}
+```
