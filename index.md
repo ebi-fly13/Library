@@ -20,6 +20,9 @@ data:
       path: String/aho_corasick.hpp
       title: String/aho_corasick.hpp
     - icon: ':warning:'
+      path: String/palindromic_tree.hpp
+      title: String/palindromic_tree.hpp
+    - icon: ':warning:'
       path: String/parsing.hpp
       title: String/parsing.hpp
     - icon: ':heavy_check_mark:'

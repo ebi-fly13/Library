@@ -101,8 +101,8 @@ data:
   timestamp: '2021-04-04 17:43:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/LazySegtree.test.cpp
   - test/aoj/aoj_2450.test.cpp
+  - test/LazySegtree.test.cpp
 documentation_of: data_structure/LazySegtree.hpp
 layout: document
 redirect_from:
