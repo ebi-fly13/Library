@@ -125,6 +125,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/predecessor_set.hpp
       title: data_structure/predecessor_set.hpp
+    - icon: ':x:'
+      path: data_structure/range_query_binary_trie.hpp
+      title: data_structure/range_query_binary_trie.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/range_tree.hpp
       title: data_structure/range_tree.hpp
@@ -406,6 +409,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2873.test.cpp
       title: test/aoj/aoj_2873.test.cpp
+    - icon: ':x:'
+      path: test/aoj/aoj_3333.test.cpp
+      title: test/aoj/aoj_3333.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'
