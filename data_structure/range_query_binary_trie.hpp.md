@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/aoj/aoj_3333.test.cpp
-    title: test/aoj/aoj_3333.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/range_query_binary_trie.hpp\"\n\n#include\
@@ -71,9 +68,8 @@ data:
   path: data_structure/range_query_binary_trie.hpp
   requiredBy: []
   timestamp: '2023-05-04 20:40:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/aoj/aoj_3333.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: data_structure/range_query_binary_trie.hpp
 layout: document
 redirect_from:
