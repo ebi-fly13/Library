@@ -55,7 +55,12 @@ struct centroid_decomposition {
         build();
     }
 
-    int parent(int v) { return par[v]; }
+    std::pair<int, std::vector<std::vector<int>>>
+    get_centroid_decomposition_tree() const {
+        return {root, belong};
+    }
+
+    int parent(int v) const { return par[v]; }
 
    private:
     int n;
