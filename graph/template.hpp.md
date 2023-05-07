@@ -14,9 +14,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
-  - icon: ':warning:'
-    path: tree/centroid_decomposition.hpp
-    title: tree/centroid_decomposition.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Jump_on_Tree.test.cpp
@@ -82,7 +79,6 @@ data:
   - graph/scc_graph.hpp
   - graph/dijkstra_fibheap.hpp
   - graph/dijkstra.hpp
-  - tree/centroid_decomposition.hpp
   - algorithm/two_sat.hpp
   timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
