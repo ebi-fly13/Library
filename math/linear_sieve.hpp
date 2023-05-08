@@ -12,7 +12,7 @@
 
 namespace ebi {
 
-template <class modint> struct linear_sieve {
+struct linear_sieve {
   private:
     using u64 = std::uint64_t;
     int n;
@@ -98,7 +98,7 @@ template <class modint> struct linear_sieve {
         return f;
     }
 
-    std::vector<modint> pow_table(int k) {
+    template <class modint> std::vector<modint> pow_table(int k) {
         std::vector<modint> table(n + 1, 1);
         table[0] = 0;
         for (int i = 2; i <= n; i++) {
@@ -111,7 +111,7 @@ template <class modint> struct linear_sieve {
         return table;
     }
 
-    std::vector<modint> inv_table() {
+    template <class modint> std::vector<modint> inv_table() {
         return pow_table(modint::mod() - 2);
     }
 };
