@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/enumerate_primes.test.cpp
     title: test/enumerate_primes.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: test/eratosthenes_sieve.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://37zigen.com/sieve-eratosthenes/
@@ -67,7 +67,7 @@ data:
   path: math/eratosthenes_sieve.hpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/enumerate_primes.test.cpp
   - test/eratosthenes_sieve.test.cpp

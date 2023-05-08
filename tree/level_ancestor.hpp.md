@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Jump_on_Tree.test.cpp
     title: test/Jump_on_Tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/level_ancestor_lca.test.cpp
     title: test/level_ancestor_lca.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/level_ancestor.hpp\"\n\r\n#include <algorithm>\r\n\
@@ -56,7 +56,7 @@ data:
   path: tree/level_ancestor.hpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/level_ancestor_lca.test.cpp
   - test/Jump_on_Tree.test.cpp

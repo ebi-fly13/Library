@@ -6,15 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/FenwickTree.test.cpp
     title: test/FenwickTree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/segment_intersection.test.cpp
     title: test/geometry/segment_intersection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/static_range_inversion_query.test.cpp
     title: test/static_range_inversion_query.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/FenwickTree.hpp\"\n\r\n#include <cassert>\r\
@@ -56,7 +56,7 @@ data:
   path: data_structure/FenwickTree.hpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/static_range_inversion_query.test.cpp
   - test/geometry/segment_intersection.test.cpp
