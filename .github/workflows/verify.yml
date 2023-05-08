@@ -17,6 +17,13 @@ jobs:
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
 
+    - name: Run tests
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+        GH_PAT: ${{ secrets.GH_PAT }}
+      run: oj-verify all
+
     - name: install chalng-format
       run: |
         sudo apt update
@@ -24,7 +31,7 @@ jobs:
       
     - name: Apply clang-format
       run: |
-        clang-format -i $(find . -name "*.h" -or -name "*.cpp")
+        clang-format -i $(find . -name "*.hpp" -or -name "*.cpp")
 
     - uses: stefanzweifel/git-auto-commit-action@v4
       env:
@@ -32,10 +39,3 @@ jobs:
         GH_PAT: ${{ secrets.GH_PAT }}
       with:
         commit_message: Apply clang-format
-
-    - name: Run tests
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-        GH_PAT: ${{ secrets.GH_PAT }}
-      run: oj-verify all
