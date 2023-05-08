@@ -19,7 +19,7 @@ data:
     \n\n#include <cstdint>\n#include <iostream>\n#include <vector>\n\n#line 2 \"data_structure/link_cut_tree.hpp\"\
     \n\n#include <cassert>\n#include <memory>\n\nnamespace ebi {\n\ntemplate <class\
     \ S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S),\n          F (*composition)(F,\
-    \ F), F (*id)()>\nstruct link_cut_tree {\n   private:\n    struct Node;\n    using\
+    \ F), F (*id)()>\nstruct link_cut_tree {\n  private:\n    struct Node;\n    using\
     \ node_ptr = std::shared_ptr<Node>;\n\n    struct Node {\n        int index;\n\
     \        S val, sum, rev_sum;\n        F lazy;\n        node_ptr lch, rch, par;\n\
     \        bool rev;\n\n        Node(int _index, S _val)\n            : index(_index),\n\
@@ -89,7 +89,7 @@ data:
     \        assert(child->lch);\n        auto parent = child->lch;\n        child->lch\
     \ = nullptr;\n        parent->par = nullptr;\n        return;\n    }\n\n    void\
     \ evert(node_ptr node) {\n        expose(node);\n        node->toggle();\n   \
-    \     node->pushdown();\n        return;\n    }\n\n   public:\n    link_cut_tree(int\
+    \     node->pushdown();\n        return;\n    }\n\n  public:\n    link_cut_tree(int\
     \ n) : vertex(n) {}\n\n    link_cut_tree(const std::vector<S> &a) {\n        int\
     \ n = a.size();\n        vertex.resize(n);\n        for (int i = 0; i < n; i++)\
     \ make_node(i, a[i]);\n    }\n\n    void add_edge(int i, int j) {\n        evert(vertex[i]);\n\
@@ -112,33 +112,33 @@ data:
     \   if (node->par) {\n                debug(node->par->index);\n            }\n\
     \            if (node->lch) {\n                debug(node->lch->index);\n    \
     \        }\n            if (node->rch) {\n                debug(node->rch->index);\n\
-    \            }\n        }\n    }\n    */\n\n   private:\n    std::vector<node_ptr>\
+    \            }\n        }\n    }\n    */\n\n  private:\n    std::vector<node_ptr>\
     \ vertex;\n};\n\n}  // namespace ebi\n#line 9 \"test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp\"\
     \n\nusing i64 = std::int64_t;\n\nstruct S {\n    i64 value;\n    int size;\n};\n\
-    \nusing F = i64;\n\nS op(S a, S b) { return {a.value + b.value, a.size + b.size};\
-    \ }\nS e() { return {0, 0}; }\nS mapping(F f, S x) { return {x.value + f * x.size,\
-    \ x.size}; }\nF composition(F f, F g) { return f + g; }\nF id() { return 0; }\n\
-    \nint main() {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<S> a(n);\n\
-    \    for (auto &s : a) {\n        std::cin >> s.value;\n        s.size = 1;\n\
-    \    }\n    ebi::link_cut_tree<S, op, e, F, mapping, composition, id> lct(a);\n\
-    \    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        std::cin >>\
-    \ u >> v;\n        lct.add_edge(u, v);\n    }\n    while (q--) {\n        int\
-    \ t;\n        std::cin >> t;\n        if (t == 0) {\n            int u, v, w,\
-    \ x;\n            std::cin >> u >> v >> w >> x;\n            lct.erase_edge(u,\
-    \ v);\n            lct.add_edge(w, x);\n        } else if (t == 1) {\n       \
-    \     int p;\n            F x;\n            std::cin >> p >> x;\n            lct.set(p,\
-    \ {lct.get(p).value + x, 1});\n        } else {\n            int u, v;\n     \
-    \       std::cin >> u >> v;\n            std::cout << lct.prod(u, v).value <<\
-    \ '\\n';\n        }\n    }\n}\n"
+    \nusing F = i64;\n\nS op(S a, S b) {\n    return {a.value + b.value, a.size +\
+    \ b.size};\n}\nS e() {\n    return {0, 0};\n}\nS mapping(F f, S x) {\n    return\
+    \ {x.value + f * x.size, x.size};\n}\nF composition(F f, F g) {\n    return f\
+    \ + g;\n}\nF id() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin\
+    \ >> n >> q;\n    std::vector<S> a(n);\n    for (auto &s : a) {\n        std::cin\
+    \ >> s.value;\n        s.size = 1;\n    }\n    ebi::link_cut_tree<S, op, e, F,\
+    \ mapping, composition, id> lct(a);\n    for (int i = 0; i < n - 1; i++) {\n \
+    \       int u, v;\n        std::cin >> u >> v;\n        lct.add_edge(u, v);\n\
+    \    }\n    while (q--) {\n        int t;\n        std::cin >> t;\n        if\
+    \ (t == 0) {\n            int u, v, w, x;\n            std::cin >> u >> v >> w\
+    \ >> x;\n            lct.erase_edge(u, v);\n            lct.add_edge(w, x);\n\
+    \        } else if (t == 1) {\n            int p;\n            F x;\n        \
+    \    std::cin >> p >> x;\n            lct.set(p, {lct.get(p).value + x, 1});\n\
+    \        } else {\n            int u, v;\n            std::cin >> u >> v;\n  \
+    \          std::cout << lct.prod(u, v).value << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_path_sum\"\
     \n\n#include <cstdint>\n#include <iostream>\n#include <vector>\n\n#include \"\
     data_structure/link_cut_tree.hpp\"\n\nusing i64 = std::int64_t;\n\nstruct S {\n\
-    \    i64 value;\n    int size;\n};\n\nusing F = i64;\n\nS op(S a, S b) { return\
-    \ {a.value + b.value, a.size + b.size}; }\nS e() { return {0, 0}; }\nS mapping(F\
-    \ f, S x) { return {x.value + f * x.size, x.size}; }\nF composition(F f, F g)\
-    \ { return f + g; }\nF id() { return 0; }\n\nint main() {\n    int n, q;\n   \
-    \ std::cin >> n >> q;\n    std::vector<S> a(n);\n    for (auto &s : a) {\n   \
-    \     std::cin >> s.value;\n        s.size = 1;\n    }\n    ebi::link_cut_tree<S,\
+    \    i64 value;\n    int size;\n};\n\nusing F = i64;\n\nS op(S a, S b) {\n   \
+    \ return {a.value + b.value, a.size + b.size};\n}\nS e() {\n    return {0, 0};\n\
+    }\nS mapping(F f, S x) {\n    return {x.value + f * x.size, x.size};\n}\nF composition(F\
+    \ f, F g) {\n    return f + g;\n}\nF id() {\n    return 0;\n}\n\nint main() {\n\
+    \    int n, q;\n    std::cin >> n >> q;\n    std::vector<S> a(n);\n    for (auto\
+    \ &s : a) {\n        std::cin >> s.value;\n        s.size = 1;\n    }\n    ebi::link_cut_tree<S,\
     \ op, e, F, mapping, composition, id> lct(a);\n    for (int i = 0; i < n - 1;\
     \ i++) {\n        int u, v;\n        std::cin >> u >> v;\n        lct.add_edge(u,\
     \ v);\n    }\n    while (q--) {\n        int t;\n        std::cin >> t;\n    \
@@ -154,7 +154,7 @@ data:
   isVerificationFile: true
   path: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2022-01-11 10:23:19+09:00'
+  timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp

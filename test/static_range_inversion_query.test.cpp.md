@@ -23,48 +23,50 @@ data:
   bundledCode: "#line 1 \"test/static_range_inversion_query.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\r\n\r\n#include\
     \ <algorithm>\r\n#include <cstdint>\r\n#include <iostream>\r\n#include <numeric>\r\
-    \n#include <vector>\r\n\r\n#line 2 \"algorithm/mo_algorithm.hpp\"\n\r\n#line 5\
+    \n#include <vector>\r\n\r\n#line 2 \"algorithm/mo_algorithm.hpp\"\n\r\n#line 4\
     \ \"algorithm/mo_algorithm.hpp\"\n#include <cmath>\r\n#line 7 \"algorithm/mo_algorithm.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate<class IL, class IR, class DL, class DR,\
-    \ class O>\r\nvoid mo_algorithm(const int &n, const std::vector<int> &l, const\
-    \ std::vector<int> &r, const IL &insert_left, const IR &insert_right, const DL\
-    \ &delete_left, const DR &delete_right, const O &out) {\r\n    const int q = l.size();\r\
-    \n    const int block =  n/std::max<int>(1, std::sqrt(n));\r\n    std::vector<int>\
+    \n\r\nnamespace ebi {\r\n\r\ntemplate <class IL, class IR, class DL, class DR,\
+    \ class O>\r\nvoid mo_algorithm(const int &n, const std::vector<int> &l,\r\n \
+    \                 const std::vector<int> &r, const IL &insert_left,\r\n      \
+    \            const IR &insert_right, const DL &delete_left,\r\n              \
+    \    const DR &delete_right, const O &out) {\r\n    const int q = l.size();\r\n\
+    \    const int block = n / std::max<int>(1, std::sqrt(n));\r\n    std::vector<int>\
     \ order(q, 0);\r\n    iota(order.begin(), order.end(), 0);\r\n    std::sort(order.begin(),\
-    \ order.end(), [&](int i, int j) {\r\n        int bi = l[i]/block;\r\n       \
-    \ int bj = l[j]/block;\r\n        return bi != bj ? bi < bj : bi & 1 ? r[i] >\
-    \ r[j] : r[i] < r[j];\r\n    });\r\n    int nl = 0, nr = 0;\r\n    for(auto i:\
-    \ order) {\r\n        while(l[i] < nl) insert_left(--nl);\r\n        while(nr\
-    \ < r[i]) insert_right(nr++);\r\n        while(nl < l[i]) delete_left(nl++);\r\
-    \n        while(r[i] < nr) delete_right(--nr);\r\n        out(i);\r\n    }\r\n\
-    \    return;\r\n}\r\n\r\n}\n#line 2 \"data_structure/FenwickTree.hpp\"\n\r\n#line\
-    \ 4 \"data_structure/FenwickTree.hpp\"\n#include <cassert>\r\n\r\nnamespace ebi\
-    \ {\r\n\r\ntemplate<class T>\r\nstruct FenwickTree {\r\nprivate:\r\n    int n;\r\
-    \n    std::vector<T> data;\r\n\r\npublic:\r\n    FenwickTree(int _n) : n(_n),\
-    \ data(std::vector<T>(_n+1, T(0))) { }\r\n\r\n    void add(int i, T val) {\r\n\
-    \        i++;\r\n        for(int x = i; x <= n; x += x & -x) {\r\n           \
-    \ data[x] += val;\r\n        }\r\n    }\r\n\r\n    T prefix_sum(int i) {\r\n \
-    \       assert(0<=i && i<=n);\r\n        T ret = 0;\r\n        for(int x = i;\
-    \ x>0; x -= x & -x) {\r\n            ret += data[x];\r\n        }\r\n        return\
-    \ ret;\r\n    }\r\n\r\n    T sum(int l, int r) {\r\n        return prefix_sum(r)-prefix_sum(l);\r\
-    \n    }\r\n\r\n    // prefix_sum(x) >= key \u3068\u306A\u308B\u6700\u5C0F\u306E\
-    x\u3092\u8FD4\u3059\u95A2\u6570 O(log N)\r\n    int lower_bound(T key) {\r\n \
-    \       if(key<=0) return 0;\r\n        int x = 0;\r\n        int max = 1;\r\n\
-    \        while((max<<1) <= n) max <<= 1;\r\n        for(int k = max; k>0; k >>=\
-    \ 1) {\r\n            if(x+k<=n && data[x+k]<key) {\r\n                x += k;\r\
-    \n                key -= data[x];\r\n            }\r\n        }\r\n        return\
-    \ x+1;\r\n    }\r\n};\r\n\r\n} // namespace ebi\n#line 2 \"data_structure/compress.hpp\"\
-    \n\n#line 6 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
-    \ T>\nstruct compress {\nprivate:\n    std::vector<T> cp;\n    bool flag = false;\n\
-    public:\n    compress() = default;\n\n    compress(std::vector<T> cp) : cp(cp)\
+    \ order.end(), [&](int i, int j) {\r\n        int bi = l[i] / block;\r\n     \
+    \   int bj = l[j] / block;\r\n        return bi != bj ? bi < bj : bi & 1 ? r[i]\
+    \ > r[j] : r[i] < r[j];\r\n    });\r\n    int nl = 0, nr = 0;\r\n    for (auto\
+    \ i : order) {\r\n        while (l[i] < nl) insert_left(--nl);\r\n        while\
+    \ (nr < r[i]) insert_right(nr++);\r\n        while (nl < l[i]) delete_left(nl++);\r\
+    \n        while (r[i] < nr) delete_right(--nr);\r\n        out(i);\r\n    }\r\n\
+    \    return;\r\n}\r\n\r\n}  // namespace ebi\n#line 2 \"data_structure/FenwickTree.hpp\"\
+    \n\r\n#include <cassert>\r\n#line 5 \"data_structure/FenwickTree.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <class T> struct FenwickTree {\r\n  private:\r\n    int\
+    \ n;\r\n    std::vector<T> data;\r\n\r\n  public:\r\n    FenwickTree(int _n) :\
+    \ n(_n), data(std::vector<T>(_n + 1, T(0))) {}\r\n\r\n    void add(int i, T val)\
+    \ {\r\n        i++;\r\n        for (int x = i; x <= n; x += x & -x) {\r\n    \
+    \        data[x] += val;\r\n        }\r\n    }\r\n\r\n    T prefix_sum(int i)\
+    \ {\r\n        assert(0 <= i && i <= n);\r\n        T ret = 0;\r\n        for\
+    \ (int x = i; x > 0; x -= x & -x) {\r\n            ret += data[x];\r\n       \
+    \ }\r\n        return ret;\r\n    }\r\n\r\n    T sum(int l, int r) {\r\n     \
+    \   return prefix_sum(r) - prefix_sum(l);\r\n    }\r\n\r\n    // prefix_sum(x)\
+    \ >= key \u3068\u306A\u308B\u6700\u5C0F\u306Ex\u3092\u8FD4\u3059\u95A2\u6570 O(log\
+    \ N)\r\n    int lower_bound(T key) {\r\n        if (key <= 0) return 0;\r\n  \
+    \      int x = 0;\r\n        int max = 1;\r\n        while ((max << 1) <= n) max\
+    \ <<= 1;\r\n        for (int k = max; k > 0; k >>= 1) {\r\n            if (x +\
+    \ k <= n && data[x + k] < key) {\r\n                x += k;\r\n              \
+    \  key -= data[x];\r\n            }\r\n        }\r\n        return x + 1;\r\n\
+    \    }\r\n};\r\n\r\n}  // namespace ebi\n#line 2 \"data_structure/compress.hpp\"\
+    \n\n#line 6 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ T> struct compress {\n  private:\n    std::vector<T> cp;\n    bool flag = false;\n\
+    \n  public:\n    compress() = default;\n\n    compress(std::vector<T> cp) : cp(cp)\
     \ {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
     \ cp.end());\n        cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n\
     \        flag = true;\n    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n\
-    \        flag = false;\n    }\n\n    int get(const T &val) {\n        if(flag\
+    \        flag = false;\n    }\n\n    int get(const T &val) {\n        if (flag\
     \ == false) build();\n        return std::lower_bound(cp.begin(), cp.end(), val)\
     \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
     \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
-    \        return cp[idx];\n    }\n};\n\n}\n#line 12 \"test/static_range_inversion_query.test.cpp\"\
+    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 12 \"test/static_range_inversion_query.test.cpp\"\
     \n\r\nusing u64 = std::uint64_t;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin\
     \ >> n >> q;\r\n    std::vector<int> a(n);\r\n    std::vector<int> l(q), r(q);\r\
     \n    ebi::compress<int> cp;\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin\
@@ -112,7 +114,7 @@ data:
   isVerificationFile: true
   path: test/static_range_inversion_query.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 05:33:08+00:00'
+  timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/static_range_inversion_query.test.cpp

@@ -22,32 +22,32 @@ data:
     \n\n#include <algorithm>\n#include <cassert>\n#include <cstdint>\n#include <iomanip>\n\
     #include <iostream>\n#include <map>\n#include <vector>\n\n#line 2 \"data_structure/FenwickTree.hpp\"\
     \n\r\n#line 5 \"data_structure/FenwickTree.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
-    template<class T>\r\nstruct FenwickTree {\r\nprivate:\r\n    int n;\r\n    std::vector<T>\
-    \ data;\r\n\r\npublic:\r\n    FenwickTree(int _n) : n(_n), data(std::vector<T>(_n+1,\
-    \ T(0))) { }\r\n\r\n    void add(int i, T val) {\r\n        i++;\r\n        for(int\
-    \ x = i; x <= n; x += x & -x) {\r\n            data[x] += val;\r\n        }\r\n\
-    \    }\r\n\r\n    T prefix_sum(int i) {\r\n        assert(0<=i && i<=n);\r\n \
-    \       T ret = 0;\r\n        for(int x = i; x>0; x -= x & -x) {\r\n         \
-    \   ret += data[x];\r\n        }\r\n        return ret;\r\n    }\r\n\r\n    T\
-    \ sum(int l, int r) {\r\n        return prefix_sum(r)-prefix_sum(l);\r\n    }\r\
-    \n\r\n    // prefix_sum(x) >= key \u3068\u306A\u308B\u6700\u5C0F\u306Ex\u3092\u8FD4\
-    \u3059\u95A2\u6570 O(log N)\r\n    int lower_bound(T key) {\r\n        if(key<=0)\
-    \ return 0;\r\n        int x = 0;\r\n        int max = 1;\r\n        while((max<<1)\
-    \ <= n) max <<= 1;\r\n        for(int k = max; k>0; k >>= 1) {\r\n           \
-    \ if(x+k<=n && data[x+k]<key) {\r\n                x += k;\r\n               \
-    \ key -= data[x];\r\n            }\r\n        }\r\n        return x+1;\r\n   \
-    \ }\r\n};\r\n\r\n} // namespace ebi\n#line 2 \"data_structure/compress.hpp\"\n\
-    \n#line 6 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
-    \ T>\nstruct compress {\nprivate:\n    std::vector<T> cp;\n    bool flag = false;\n\
-    public:\n    compress() = default;\n\n    compress(std::vector<T> cp) : cp(cp)\
-    \ {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
+    template <class T> struct FenwickTree {\r\n  private:\r\n    int n;\r\n    std::vector<T>\
+    \ data;\r\n\r\n  public:\r\n    FenwickTree(int _n) : n(_n), data(std::vector<T>(_n\
+    \ + 1, T(0))) {}\r\n\r\n    void add(int i, T val) {\r\n        i++;\r\n     \
+    \   for (int x = i; x <= n; x += x & -x) {\r\n            data[x] += val;\r\n\
+    \        }\r\n    }\r\n\r\n    T prefix_sum(int i) {\r\n        assert(0 <= i\
+    \ && i <= n);\r\n        T ret = 0;\r\n        for (int x = i; x > 0; x -= x &\
+    \ -x) {\r\n            ret += data[x];\r\n        }\r\n        return ret;\r\n\
+    \    }\r\n\r\n    T sum(int l, int r) {\r\n        return prefix_sum(r) - prefix_sum(l);\r\
+    \n    }\r\n\r\n    // prefix_sum(x) >= key \u3068\u306A\u308B\u6700\u5C0F\u306E\
+    x\u3092\u8FD4\u3059\u95A2\u6570 O(log N)\r\n    int lower_bound(T key) {\r\n \
+    \       if (key <= 0) return 0;\r\n        int x = 0;\r\n        int max = 1;\r\
+    \n        while ((max << 1) <= n) max <<= 1;\r\n        for (int k = max; k >\
+    \ 0; k >>= 1) {\r\n            if (x + k <= n && data[x + k] < key) {\r\n    \
+    \            x += k;\r\n                key -= data[x];\r\n            }\r\n \
+    \       }\r\n        return x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
+    #line 2 \"data_structure/compress.hpp\"\n\n#line 6 \"data_structure/compress.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> struct compress {\n  private:\n    std::vector<T>\
+    \ cp;\n    bool flag = false;\n\n  public:\n    compress() = default;\n\n    compress(std::vector<T>\
+    \ cp) : cp(cp) {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
     \ cp.end());\n        cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n\
     \        flag = true;\n    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n\
-    \        flag = false;\n    }\n\n    int get(const T &val) {\n        if(flag\
+    \        flag = false;\n    }\n\n    int get(const T &val) {\n        if (flag\
     \ == false) build();\n        return std::lower_bound(cp.begin(), cp.end(), val)\
     \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
     \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
-    \        return cp[idx];\n    }\n};\n\n}\n#line 14 \"test/geometry/segment_intersection.test.cpp\"\
+    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 14 \"test/geometry/segment_intersection.test.cpp\"\
     \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n\
     \    std::cin >> n;\n    std::map<i64, std::vector<std::pair<i64, i64>>> xmap,\
     \ ymap;\n    compress<i64> cp;\n    std::vector<i64> ret;\n    for (int i = 0;\
@@ -93,7 +93,7 @@ data:
   isVerificationFile: true
   path: test/geometry/segment_intersection.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 05:33:08+00:00'
+  timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/segment_intersection.test.cpp

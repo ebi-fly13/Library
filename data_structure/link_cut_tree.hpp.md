@@ -14,7 +14,7 @@ data:
   bundledCode: "#line 2 \"data_structure/link_cut_tree.hpp\"\n\n#include <cassert>\n\
     #include <memory>\n\nnamespace ebi {\n\ntemplate <class S, S (*op)(S, S), S (*e)(),\
     \ class F, S (*mapping)(F, S),\n          F (*composition)(F, F), F (*id)()>\n\
-    struct link_cut_tree {\n   private:\n    struct Node;\n    using node_ptr = std::shared_ptr<Node>;\n\
+    struct link_cut_tree {\n  private:\n    struct Node;\n    using node_ptr = std::shared_ptr<Node>;\n\
     \n    struct Node {\n        int index;\n        S val, sum, rev_sum;\n      \
     \  F lazy;\n        node_ptr lch, rch, par;\n        bool rev;\n\n        Node(int\
     \ _index, S _val)\n            : index(_index),\n              val(_val),\n  \
@@ -84,7 +84,7 @@ data:
     \        assert(child->lch);\n        auto parent = child->lch;\n        child->lch\
     \ = nullptr;\n        parent->par = nullptr;\n        return;\n    }\n\n    void\
     \ evert(node_ptr node) {\n        expose(node);\n        node->toggle();\n   \
-    \     node->pushdown();\n        return;\n    }\n\n   public:\n    link_cut_tree(int\
+    \     node->pushdown();\n        return;\n    }\n\n  public:\n    link_cut_tree(int\
     \ n) : vertex(n) {}\n\n    link_cut_tree(const std::vector<S> &a) {\n        int\
     \ n = a.size();\n        vertex.resize(n);\n        for (int i = 0; i < n; i++)\
     \ make_node(i, a[i]);\n    }\n\n    void add_edge(int i, int j) {\n        evert(vertex[i]);\n\
@@ -107,11 +107,11 @@ data:
     \   if (node->par) {\n                debug(node->par->index);\n            }\n\
     \            if (node->lch) {\n                debug(node->lch->index);\n    \
     \        }\n            if (node->rch) {\n                debug(node->rch->index);\n\
-    \            }\n        }\n    }\n    */\n\n   private:\n    std::vector<node_ptr>\
+    \            }\n        }\n    }\n    */\n\n  private:\n    std::vector<node_ptr>\
     \ vertex;\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <memory>\n\nnamespace ebi {\n\
     \ntemplate <class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S),\n \
-    \         F (*composition)(F, F), F (*id)()>\nstruct link_cut_tree {\n   private:\n\
+    \         F (*composition)(F, F), F (*id)()>\nstruct link_cut_tree {\n  private:\n\
     \    struct Node;\n    using node_ptr = std::shared_ptr<Node>;\n\n    struct Node\
     \ {\n        int index;\n        S val, sum, rev_sum;\n        F lazy;\n     \
     \   node_ptr lch, rch, par;\n        bool rev;\n\n        Node(int _index, S _val)\n\
@@ -182,7 +182,7 @@ data:
     \        assert(child->lch);\n        auto parent = child->lch;\n        child->lch\
     \ = nullptr;\n        parent->par = nullptr;\n        return;\n    }\n\n    void\
     \ evert(node_ptr node) {\n        expose(node);\n        node->toggle();\n   \
-    \     node->pushdown();\n        return;\n    }\n\n   public:\n    link_cut_tree(int\
+    \     node->pushdown();\n        return;\n    }\n\n  public:\n    link_cut_tree(int\
     \ n) : vertex(n) {}\n\n    link_cut_tree(const std::vector<S> &a) {\n        int\
     \ n = a.size();\n        vertex.resize(n);\n        for (int i = 0; i < n; i++)\
     \ make_node(i, a[i]);\n    }\n\n    void add_edge(int i, int j) {\n        evert(vertex[i]);\n\
@@ -205,13 +205,13 @@ data:
     \   if (node->par) {\n                debug(node->par->index);\n            }\n\
     \            if (node->lch) {\n                debug(node->lch->index);\n    \
     \        }\n            if (node->rch) {\n                debug(node->rch->index);\n\
-    \            }\n        }\n    }\n    */\n\n   private:\n    std::vector<node_ptr>\
+    \            }\n        }\n    }\n    */\n\n  private:\n    std::vector<node_ptr>\
     \ vertex;\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/link_cut_tree.hpp
   requiredBy: []
-  timestamp: '2022-01-11 10:23:19+09:00'
+  timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp

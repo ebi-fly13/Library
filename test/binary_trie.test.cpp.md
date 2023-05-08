@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/binary_trie.hpp
     title: data_structure/binary_trie.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/set_xor_min
@@ -18,10 +18,10 @@ data:
     \r\n\r\n#line 2 \"data_structure/binary_trie.hpp\"\n\r\n/*\r\n    reference: https://kazuma8128.hatenablog.com/entry/2018/05/06/022654\r\
     \n*/\r\n\r\n#include <algorithm>\r\n#include <array>\r\n#include <cassert>\r\n\
     #include <climits>\r\n#include <memory>\r\n\r\nnamespace ebi {\r\n\r\ntemplate\
-    \ <class T>\r\nstruct binary_trie {\r\n   private:\r\n    struct Node;\r\n   \
-    \ using node_ptr = std::shared_ptr<Node>;\r\n    struct Node {\r\n        int\
-    \ count = 0;\r\n        std::array<node_ptr, 2> childs;\r\n        Node() = default;\r\
-    \n    };\r\n\r\n   public:\r\n    binary_trie() = default;\r\n\r\n    void insert(const\
+    \ <class T> struct binary_trie {\r\n  private:\r\n    struct Node;\r\n    using\
+    \ node_ptr = std::shared_ptr<Node>;\r\n    struct Node {\r\n        int count\
+    \ = 0;\r\n        std::array<node_ptr, 2> childs;\r\n        Node() = default;\r\
+    \n    };\r\n\r\n  public:\r\n    binary_trie() = default;\r\n\r\n    void insert(const\
     \ T x) {\r\n        node_ptr now = root;\r\n        now->count++;\r\n        for\
     \ (int i = bit_size - 1; i >= 0; i--) {\r\n            int index = (x >> i) &\
     \ 1;\r\n            if (now->childs[index] == nullptr) {\r\n                now->childs[index]\
@@ -53,15 +53,16 @@ data:
     \n            } else if (now->childs[index ^ 1] &&\r\n                       now->childs[index\
     \ ^ 1]->count > 0) {\r\n                now = now->childs[index ^ 1];\r\n    \
     \        } else {\r\n                assert(0);\r\n            }\r\n        }\r\
-    \n    }\r\n\r\n    int size() const { return root->count; }\r\n\r\n   private:\r\
-    \n    const size_t bit_size = sizeof(T) * CHAR_BIT;\r\n    node_ptr root = std::make_shared<Node>();\r\
-    \n};\r\n\r\n}  // namespace ebi\n#line 4 \"test/binary_trie.test.cpp\"\n\r\n#include\
-    \ <iostream>\r\n\r\nint main() {\r\n    int q;\r\n    std::cin >> q;\r\n    ebi::binary_trie<int>\
-    \ trie;\r\n    while (q--) {\r\n        int t, x;\r\n        std::cin >> t >>\
-    \ x;\r\n        if (t == 0) {\r\n            if (!trie.find(x)) trie.insert(x);\r\
-    \n        } else if (t == 1) {\r\n            if (trie.find(x)) trie.erase(x);\r\
-    \n        } else {\r\n            std::cout << trie.min_element(x) << '\\n';\r\
-    \n        }\r\n    }\r\n}\n"
+    \n    }\r\n\r\n    int size() const {\r\n        return root->count;\r\n    }\r\
+    \n\r\n  private:\r\n    const size_t bit_size = sizeof(T) * CHAR_BIT;\r\n    node_ptr\
+    \ root = std::make_shared<Node>();\r\n};\r\n\r\n}  // namespace ebi\n#line 4 \"\
+    test/binary_trie.test.cpp\"\n\r\n#include <iostream>\r\n\r\nint main() {\r\n \
+    \   int q;\r\n    std::cin >> q;\r\n    ebi::binary_trie<int> trie;\r\n    while\
+    \ (q--) {\r\n        int t, x;\r\n        std::cin >> t >> x;\r\n        if (t\
+    \ == 0) {\r\n            if (!trie.find(x)) trie.insert(x);\r\n        } else\
+    \ if (t == 1) {\r\n            if (trie.find(x)) trie.erase(x);\r\n        } else\
+    \ {\r\n            std::cout << trie.min_element(x) << '\\n';\r\n        }\r\n\
+    \    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\r\n\r\n#include\
     \ \"../data_structure/binary_trie.hpp\"\r\n\r\n#include <iostream>\r\n\r\nint\
     \ main() {\r\n    int q;\r\n    std::cin >> q;\r\n    ebi::binary_trie<int> trie;\r\
@@ -75,8 +76,8 @@ data:
   isVerificationFile: true
   path: test/binary_trie.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 05:33:08+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 16:51:58+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/binary_trie.test.cpp
 layout: document

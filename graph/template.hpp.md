@@ -5,7 +5,7 @@ data:
   - icon: ':x:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
   - icon: ':x:'
@@ -15,13 +15,13 @@ data:
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Jump_on_Tree.test.cpp
     title: test/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
   - icon: ':x:'
@@ -47,30 +47,30 @@ data:
     title: test/vertex_add_subtree_sum.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n    T cost;\r\
-    \n    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\n\r\ntemplate<class\
-    \ T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \ ebi {\r\n\r\ntemplate <class T> struct Edge {\r\n    int to;\r\n    T cost;\r\
+    \n    Edge(int _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate\
+    \ <class T> struct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
     \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
-    \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
+    \ w);\r\n        if (directed) return;\r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
-    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
+    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\n"
-  code: "#pragma once\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
-    \ T>\r\nstruct Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1)\
-    \ : to(_to), cost(_cost) { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph :\
-    \ std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+  code: "#pragma once\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate\
+    \ <class T> struct Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T\
+    \ _cost = 1) : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate <class T> struct\
+    \ Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
     \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
-    \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
+    \ w);\r\n        if (directed) return;\r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
-    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
+    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi"
   dependsOn: []
   isVerificationFile: false
@@ -80,8 +80,8 @@ data:
   - graph/dijkstra_fibheap.hpp
   - graph/dijkstra.hpp
   - algorithm/two_sat.hpp
-  timestamp: '2021-10-31 15:43:33+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-05-08 16:51:58+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/level_ancestor_lca.test.cpp
   - test/two_sat.test.cpp

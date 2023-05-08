@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/LiChaoSegmentTree.hpp
     title: data_structure/LiChaoSegmentTree.hpp
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/line_add_get_min
@@ -19,37 +19,39 @@ data:
     - https://judge.yosupo.jp/problem/line_add_get_min
   bundledCode: "#line 1 \"test/LiChaoSegmentTree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\
     \r\n\r\n#line 2 \"data_structure/LiChaoSegmentTree.hpp\"\n\r\n#include <algorithm>\r\
-    \n#include <vector>\r\n#include <limits>\r\n#include <cassert>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate<class T>\r\nstruct line {\r\n    T a,b;\r\n    line(T\
-    \ a=0, T b=0) : a(a), b(b) { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct LiChaoSegmentTree\
-    \ {\r\nprivate:\r\n    std::vector<line<T>> data;\r\n    std::vector<T> x;\r\n\
-    \    int n;\r\n\r\n    T f(line<T> y, int i) {\r\n        return y.a*x[i]+y.b;\r\
-    \n    }\r\n\r\n    void swap(line<T> &a, line<T> &b) {\r\n        line<T> c =\
-    \ a;\r\n        a = b;\r\n        b = c;\r\n    }\r\n\r\npublic:\r\n    LiChaoSegmentTree(std::vector<T>\
-    \ _x) : n(1) {\r\n        int _n = _x.size();\r\n        while(n<_n){\r\n    \
-    \        n <<= 1;\r\n        }\r\n        x.assign(n, _x[_n-1]);\r\n        for(int\
-    \ i = 0; i<_n; i++){\r\n            x[i] = _x[i];\r\n        }\r\n        T tmax\
-    \ = std::numeric_limits<T>::max();\r\n        data.assign(2*n-1, line<T>(0, tmax));\r\
-    \n    }\r\n\r\n    void add_line(line<T> y, int l = 0, int r = -1, int index =\
-    \ 0) {\r\n        if(r<0) r = n;\r\n        bool left = (f(y, l) < f(data[index],\
-    \ l));\r\n        bool mid = (f(y, (l+r)/2) < f(data[index], (l+r)/2));\r\n  \
-    \      bool right = (f(y, r-1) < f(data[index], r-1));\r\n        if(left && right)\
-    \ {\r\n            data[index] = y;\r\n            return;\r\n        }\r\n  \
-    \      if(!(left || right)){\r\n            return;\r\n        }\r\n        if(mid)\
-    \ {\r\n            swap(y, data[index]);\r\n            left = !left;\r\n    \
-    \        right = !right;\r\n        }\r\n        if(left) {\r\n            add_line(y,\
-    \ l, (l+r)/2, 2*index+1);\r\n        }\r\n        else {\r\n            add_line(y,\
-    \ (l+r)/2, r, 2*index+2);\r\n        }\r\n    }\r\n\r\n    void add_segment(line<T>\
-    \ y, int lx, int rx, int l = 0, int r = -1, int index = 0) {\r\n        assert(lx<=rx);\r\
-    \n        assert(0<=lx);\r\n        assert(rx<=n);\r\n        if(r<0) r = n;\r\
-    \n        if(r<= lx || rx<= l) {\r\n            return;\r\n        }\r\n     \
-    \   if(lx <= l && r <= rx) {\r\n            add_line(y, l, r, index);\r\n    \
-    \        return;\r\n        }\r\n        add_segment(y, lx, rx, l, (l+r)/2, 2*index+1);\r\
-    \n        add_segment(y, lx, rx, (l+r)/2, r, 2*index+2);\r\n    }\r\n\r\n    T\
-    \ get(int i) {\r\n        int k = i+n-1;\r\n        T val = f(data[k], i);\r\n\
-    \        while(k>0){\r\n            k = (k-1)/2;\r\n            val = std::min(val,\
+    \n#include <cassert>\r\n#include <limits>\r\n#include <vector>\r\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <class T> struct line {\r\n    T a, b;\r\n    line(T a\
+    \ = 0, T b = 0) : a(a), b(b) {}\r\n};\r\n\r\ntemplate <class T> struct LiChaoSegmentTree\
+    \ {\r\n  private:\r\n    std::vector<line<T>> data;\r\n    std::vector<T> x;\r\
+    \n    int n;\r\n\r\n    T f(line<T> y, int i) {\r\n        return y.a * x[i] +\
+    \ y.b;\r\n    }\r\n\r\n    void swap(line<T> &a, line<T> &b) {\r\n        line<T>\
+    \ c = a;\r\n        a = b;\r\n        b = c;\r\n    }\r\n\r\n  public:\r\n   \
+    \ LiChaoSegmentTree(std::vector<T> _x) : n(1) {\r\n        int _n = _x.size();\r\
+    \n        while (n < _n) {\r\n            n <<= 1;\r\n        }\r\n        x.assign(n,\
+    \ _x[_n - 1]);\r\n        for (int i = 0; i < _n; i++) {\r\n            x[i] =\
+    \ _x[i];\r\n        }\r\n        T tmax = std::numeric_limits<T>::max();\r\n \
+    \       data.assign(2 * n - 1, line<T>(0, tmax));\r\n    }\r\n\r\n    void add_line(line<T>\
+    \ y, int l = 0, int r = -1, int index = 0) {\r\n        if (r < 0) r = n;\r\n\
+    \        bool left = (f(y, l) < f(data[index], l));\r\n        bool mid = (f(y,\
+    \ (l + r) / 2) < f(data[index], (l + r) / 2));\r\n        bool right = (f(y, r\
+    \ - 1) < f(data[index], r - 1));\r\n        if (left && right) {\r\n         \
+    \   data[index] = y;\r\n            return;\r\n        }\r\n        if (!(left\
+    \ || right)) {\r\n            return;\r\n        }\r\n        if (mid) {\r\n \
+    \           swap(y, data[index]);\r\n            left = !left;\r\n           \
+    \ right = !right;\r\n        }\r\n        if (left) {\r\n            add_line(y,\
+    \ l, (l + r) / 2, 2 * index + 1);\r\n        } else {\r\n            add_line(y,\
+    \ (l + r) / 2, r, 2 * index + 2);\r\n        }\r\n    }\r\n\r\n    void add_segment(line<T>\
+    \ y, int lx, int rx, int l = 0, int r = -1,\r\n                     int index\
+    \ = 0) {\r\n        assert(lx <= rx);\r\n        assert(0 <= lx);\r\n        assert(rx\
+    \ <= n);\r\n        if (r < 0) r = n;\r\n        if (r <= lx || rx <= l) {\r\n\
+    \            return;\r\n        }\r\n        if (lx <= l && r <= rx) {\r\n   \
+    \         add_line(y, l, r, index);\r\n            return;\r\n        }\r\n  \
+    \      add_segment(y, lx, rx, l, (l + r) / 2, 2 * index + 1);\r\n        add_segment(y,\
+    \ lx, rx, (l + r) / 2, r, 2 * index + 2);\r\n    }\r\n\r\n    T get(int i) {\r\
+    \n        int k = i + n - 1;\r\n        T val = f(data[k], i);\r\n        while\
+    \ (k > 0) {\r\n            k = (k - 1) / 2;\r\n            val = std::min(val,\
     \ f(data[k], i));\r\n        }\r\n        return val;\r\n    }\r\n};\r\n\r\n}\
-    \ // namespace ebi\n#line 4 \"test/LiChaoSegmentTree.test.cpp\"\n\r\n#include\
+    \  // namespace ebi\n#line 4 \"test/LiChaoSegmentTree.test.cpp\"\n\r\n#include\
     \ <iostream>\r\n\r\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\
     \n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\nusing i64 = std::int64_t;\r\
     \nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\
@@ -95,8 +97,8 @@ data:
   isVerificationFile: true
   path: test/LiChaoSegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 05:33:08+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 16:51:58+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/LiChaoSegmentTree.test.cpp
 layout: document

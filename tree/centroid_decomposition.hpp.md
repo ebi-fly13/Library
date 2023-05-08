@@ -13,7 +13,7 @@ data:
   bundledCode: "#line 2 \"tree/centroid_decomposition.hpp\"\n\r\n#include <vector>\r\
     \n\r\n/*\r\n    reference: https://qiita.com/drken/items/4b4c3f1824339b090202\r\
     \n               https://ferin-tech.hatenablog.com/entry/2020/03/06/162311\r\n\
-    */\r\n\r\nnamespace ebi {\r\n\r\nstruct centroid_decomposition {\r\n   private:\r\
+    */\r\n\r\nnamespace ebi {\r\n\r\nstruct centroid_decomposition {\r\n  private:\r\
     \n    int find_centroid(int _root) {\r\n        auto get_size = [&](auto &&self,\
     \ int v, int p = -1) -> int {\r\n            sz[v] = 1;\r\n            for (auto\
     \ nv : g[v])\r\n                if (nv != p && !dead[nv]) {\r\n              \
@@ -28,18 +28,19 @@ data:
     \ : g[c])\r\n            if (!dead[nv]) {\r\n                int ch = build(nv,\
     \ depth + 1);\r\n                belong[c].emplace_back(ch);\r\n             \
     \   par[ch] = c;\r\n            }\r\n        dead[c] = false;\r\n        return\
-    \ root = c;\r\n    }\r\n\r\n   public:\r\n    centroid_decomposition(const std::vector<std::vector<int>>\
+    \ root = c;\r\n    }\r\n\r\n  public:\r\n    centroid_decomposition(const std::vector<std::vector<int>>\
     \ &_g)\r\n        : n(int(_g.size())),\r\n          g(_g),\r\n          dead(n,\
     \ false),\r\n          sz(n, -1),\r\n          par(n, -1),\r\n          belong(n)\
     \ {\r\n        build();\r\n    }\r\n\r\n    std::pair<int, std::vector<std::vector<int>>>\r\
     \n    get_centroid_decomposition_tree() const {\r\n        return {root, belong};\r\
-    \n    }\r\n\r\n    int parent(int v) const { return par[v]; }\r\n\r\n   private:\r\
-    \n    int n;\r\n    int root;\r\n    std::vector<std::vector<int>> g;\r\n    std::vector<bool>\
-    \ dead;\r\n    std::vector<int> sz;\r\n    std::vector<int> par;\r\n    std::vector<std::vector<int>>\
-    \ belong;\r\n};\r\n\r\n}  // namespace ebi\n"
+    \n    }\r\n\r\n    int parent(int v) const {\r\n        return par[v];\r\n   \
+    \ }\r\n\r\n  private:\r\n    int n;\r\n    int root;\r\n    std::vector<std::vector<int>>\
+    \ g;\r\n    std::vector<bool> dead;\r\n    std::vector<int> sz;\r\n    std::vector<int>\
+    \ par;\r\n    std::vector<std::vector<int>> belong;\r\n};\r\n\r\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n\r\n/*\r\n    reference: https://qiita.com/drken/items/4b4c3f1824339b090202\r\
     \n               https://ferin-tech.hatenablog.com/entry/2020/03/06/162311\r\n\
-    */\r\n\r\nnamespace ebi {\r\n\r\nstruct centroid_decomposition {\r\n   private:\r\
+    */\r\n\r\nnamespace ebi {\r\n\r\nstruct centroid_decomposition {\r\n  private:\r\
     \n    int find_centroid(int _root) {\r\n        auto get_size = [&](auto &&self,\
     \ int v, int p = -1) -> int {\r\n            sz[v] = 1;\r\n            for (auto\
     \ nv : g[v])\r\n                if (nv != p && !dead[nv]) {\r\n              \
@@ -54,20 +55,21 @@ data:
     \ : g[c])\r\n            if (!dead[nv]) {\r\n                int ch = build(nv,\
     \ depth + 1);\r\n                belong[c].emplace_back(ch);\r\n             \
     \   par[ch] = c;\r\n            }\r\n        dead[c] = false;\r\n        return\
-    \ root = c;\r\n    }\r\n\r\n   public:\r\n    centroid_decomposition(const std::vector<std::vector<int>>\
+    \ root = c;\r\n    }\r\n\r\n  public:\r\n    centroid_decomposition(const std::vector<std::vector<int>>\
     \ &_g)\r\n        : n(int(_g.size())),\r\n          g(_g),\r\n          dead(n,\
     \ false),\r\n          sz(n, -1),\r\n          par(n, -1),\r\n          belong(n)\
     \ {\r\n        build();\r\n    }\r\n\r\n    std::pair<int, std::vector<std::vector<int>>>\r\
     \n    get_centroid_decomposition_tree() const {\r\n        return {root, belong};\r\
-    \n    }\r\n\r\n    int parent(int v) const { return par[v]; }\r\n\r\n   private:\r\
-    \n    int n;\r\n    int root;\r\n    std::vector<std::vector<int>> g;\r\n    std::vector<bool>\
-    \ dead;\r\n    std::vector<int> sz;\r\n    std::vector<int> par;\r\n    std::vector<std::vector<int>>\
-    \ belong;\r\n};\r\n\r\n}  // namespace ebi"
+    \n    }\r\n\r\n    int parent(int v) const {\r\n        return par[v];\r\n   \
+    \ }\r\n\r\n  private:\r\n    int n;\r\n    int root;\r\n    std::vector<std::vector<int>>\
+    \ g;\r\n    std::vector<bool> dead;\r\n    std::vector<int> sz;\r\n    std::vector<int>\
+    \ par;\r\n    std::vector<std::vector<int>> belong;\r\n};\r\n\r\n}  // namespace\
+    \ ebi"
   dependsOn: []
   isVerificationFile: false
   path: tree/centroid_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-05-07 16:40:33+09:00'
+  timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: tree/centroid_decomposition.hpp

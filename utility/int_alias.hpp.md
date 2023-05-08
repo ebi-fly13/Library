@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/WaveletMatrix.hpp
     title: WaveletMatrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
   - icon: ':warning:'
@@ -21,22 +21,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/LiChaoSegmentTree.test.cpp
     title: test/LiChaoSegmentTree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/SegmentAddGetMin.test.cpp
     title: test/SegmentAddGetMin.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/SegmentTreeBeats.test.cpp
     title: test/SegmentTreeBeats.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Static_Range_Frequency.test.cpp
     title: test/Static_Range_Frequency.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
   - icon: ':x:'
