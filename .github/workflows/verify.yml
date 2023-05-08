@@ -25,6 +25,9 @@ jobs:
         clang-format -i $(find . -name "*.h" -or -name "*.cpp")
 
     - uses: stefanzweifel/git-auto-commit-action@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_PAT: ${{ secrets.GH_PAT }}
       with:
         commit_message: Apply clang-format
 
