@@ -1,3 +1,9 @@
 BasedOnStyle: Google
 IndentWidth: 4
-AllowShortFunctionsOnASingleLine: Empty
+AccessModifierOffset: -2
+
+# for competitive programing
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakTemplateDeclarations: false

@@ -23,8 +23,10 @@ jobs:
     - name: Apply clang-format
       run: |
         clang-format -i $(find . -name "*.h" -or -name "*.cpp")
-        git add .
-        git commit -m "apply clang-format"
+
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Apply clang-format
 
     - name: Run tests
       env:
