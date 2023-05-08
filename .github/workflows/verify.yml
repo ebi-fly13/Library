@@ -15,6 +15,18 @@ jobs:
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
 
+    - name: install chalng-format
+      uses: actions/checkout@v1
+      run: |
+        sudo apt update
+        sudo apt install clang-format
+      
+    - name: Apply clang-format
+      run: |
+        clang-format -i ${find . -name "*.h" -or -name ".cpp"}
+        git add .
+        git commit -m "apply clang-format"
+
     - name: Run tests
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
