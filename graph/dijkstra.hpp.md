@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []

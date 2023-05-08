@@ -21,10 +21,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/LiChaoSegmentTree.test.cpp
     title: test/LiChaoSegmentTree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/SegmentAddGetMin.test.cpp
     title: test/SegmentAddGetMin.test.cpp
   - icon: ':x:'

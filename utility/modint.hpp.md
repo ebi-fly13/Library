@@ -5,7 +5,7 @@ data:
   - icon: ':question:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   - icon: ':warning:'
@@ -24,16 +24,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
   - icon: ':x:'

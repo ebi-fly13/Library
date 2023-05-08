@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: tree/lowest_common_ancestor.hpp
     title: tree/lowest_common_ancestor.hpp
   _extendedRequiredBy: []

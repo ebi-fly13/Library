@@ -30,20 +30,20 @@ data:
     \ 4 \"test/Z_Algorithm.test.cpp\"\n\r\n#include <iostream>\r\n#line 7 \"test/Z_Algorithm.test.cpp\"\
     \n\r\nint main() {\r\n    std::string s;\r\n    std::cin >> s;\r\n    auto A =\
     \ ebi::Z_Algorithm(s);\r\n    std::cout << A[0];\r\n    for (int i = 1; i < s.size();\
-    \ i++) {\r\n        std::cout << \" \" << A[i];\r\n    }\r\n    std::cout << std::endl;\r\
-    \n}\n"
+    \ i++) {\r\n        std::cout << \" \" << A[i];\r\n    }\r\n    std::cout << '\\\
+    n';\r\n}\r\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\r\n\r\n#include\
     \ \"../String/Z_Algorithm.hpp\"\r\n\r\n#include <iostream>\r\n#include <vector>\r\
     \n\r\nint main() {\r\n    std::string s;\r\n    std::cin >> s;\r\n    auto A =\
     \ ebi::Z_Algorithm(s);\r\n    std::cout << A[0];\r\n    for (int i = 1; i < s.size();\
-    \ i++) {\r\n        std::cout << \" \" << A[i];\r\n    }\r\n    std::cout << std::endl;\r\
-    \n}"
+    \ i++) {\r\n        std::cout << \" \" << A[i];\r\n    }\r\n    std::cout << '\\\
+    n';\r\n}\r\n"
   dependsOn:
   - String/Z_Algorithm.hpp
   isVerificationFile: true
   path: test/Z_Algorithm.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-05-08 17:19:05+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Z_Algorithm.test.cpp

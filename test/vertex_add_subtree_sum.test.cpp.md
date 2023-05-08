@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   - icon: ':x:'

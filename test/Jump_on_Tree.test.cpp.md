@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: tree/level_ancestor.hpp
     title: tree/level_ancestor.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: tree/lowest_common_ancestor.hpp
     title: tree/lowest_common_ancestor.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
@@ -126,7 +126,7 @@ data:
   path: test/Jump_on_Tree.test.cpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Jump_on_Tree.test.cpp
 layout: document

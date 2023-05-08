@@ -62,16 +62,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/ImplicitTreap.hpp
       title: data_structure/ImplicitTreap.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: data_structure/LazySegtree.hpp
       title: data_structure/LazySegtree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/LiChaoSegmentTree.hpp
       title: data_structure/LiChaoSegmentTree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/PersistentSegmentTree.hpp
       title: data_structure/PersistentSegmentTree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/SWAG.hpp
       title: SlidingWindowAggregation
     - icon: ':x:'
@@ -146,7 +146,7 @@ data:
     - icon: ':warning:'
       path: data_structure/slope_trick.hpp
       title: data_structure/slope_trick.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
     - icon: ':warning:'
@@ -186,7 +186,7 @@ data:
     - icon: ':x:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: graph/template.hpp
       title: graph/template.hpp
   - name: math
@@ -194,7 +194,7 @@ data:
     - icon: ':warning:'
       path: math/DirichletSeries.hpp
       title: math/DirichletSeries.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/FormalPowerSeries.hpp
       title: math/FormalPowerSeries.hpp
     - icon: ':warning:'
@@ -220,10 +220,10 @@ data:
     - icon: ':x:'
       path: tree/heavy_light_decomposition.hpp
       title: heavy light decomposition
-    - icon: ':x:'
+    - icon: ':question:'
       path: tree/level_ancestor.hpp
       title: tree/level_ancestor.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: tree/lowest_common_ancestor.hpp
       title: tree/lowest_common_ancestor.hpp
   - name: utility
@@ -264,28 +264,28 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/ImplicitTreap.test.cpp
       title: test/ImplicitTreap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Inv_of_Formal_Power_Series.test.cpp
       title: test/Inv_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Jump_on_Tree.test.cpp
       title: test/Jump_on_Tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/LazySegtree.test.cpp
       title: test/LazySegtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/LiChaoSegmentTree.test.cpp
       title: test/LiChaoSegmentTree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Log_of_Formal_Power_Series.test.cpp
       title: test/Log_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/PersistentSegmentTree.test.cpp
       title: test/PersistentSegmentTree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/SWAG.test.cpp
       title: test/SWAG.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/SegmentAddGetMin.test.cpp
       title: test/SegmentAddGetMin.test.cpp
     - icon: ':x:'

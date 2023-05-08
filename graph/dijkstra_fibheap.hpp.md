@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: data_structure/fibonacci_heap.hpp
     title: fibonacci_heap
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []

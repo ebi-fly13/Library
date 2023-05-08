@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: test/aoj/aoj_2450.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html
@@ -103,7 +103,7 @@ data:
   path: data_structure/LazySegtree.hpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_2450.test.cpp
   - test/LazySegtree.test.cpp
