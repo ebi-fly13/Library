@@ -50,7 +50,7 @@ data:
   isVerificationFile: false
   path: data_structure/partially_persistent_unionfind.hpp
   requiredBy: []
-  timestamp: '2021-03-21 17:57:17+09:00'
+  timestamp: '2023-05-08 14:32:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/partially_persistent_unionfind.hpp

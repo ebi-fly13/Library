@@ -1,33 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/level_ancestor.hpp
     title: tree/level_ancestor.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/lowest_common_ancestor.hpp
     title: tree/lowest_common_ancestor.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
     links:
     - https://judge.yosupo.jp/problem/jump_on_tree
   bundledCode: "#line 1 \"test/Jump_on_Tree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\
-    \r\n\r\n#line 2 \"tree/level_ancestor.hpp\"\n\r\n#include <vector>\r\n#include\
-    \ <algorithm>\r\n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\nstruct level_ancestor\
-    \ {\r\nprivate:\r\n    int n;\r\n    std::vector<int> in;\r\n    std::vector<int>\
-    \ inv_in;\r\n    std::vector<int> depths;\r\n    std::vector<std::vector<int>>\
+    \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"graph/template.hpp\"\n\r\n#include\
+    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n\
+    \    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to), cost(_cost)\
+    \ { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>>\
+    \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
+    \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
+    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
+    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
+    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
+    \ ebi\n#line 2 \"tree/level_ancestor.hpp\"\n\r\n#line 4 \"tree/level_ancestor.hpp\"\
+    \n#include <algorithm>\r\n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\nstruct\
+    \ level_ancestor {\r\nprivate:\r\n    int n;\r\n    std::vector<int> in;\r\n \
+    \   std::vector<int> inv_in;\r\n    std::vector<int> depths;\r\n    std::vector<std::vector<int>>\
     \ s;\r\npublic:\r\n    level_ancestor(const std::vector<std::vector<int>> &gh,\
     \ int root = 0) : n(gh.size()), in(n), inv_in(n), depths(n) {\r\n        int cnt\
     \ = 0;\r\n        int max = 0;\r\n        auto dfs = [&](auto &&self, int v, int\
@@ -75,53 +86,42 @@ data:
     \ int v) {\r\n        int w = lca(u, v);\r\n        return depth[u] + depth[v]\
     \ - 2 * depth[w];\r\n    }\r\n\r\nprivate:\r\n    int n;\r\n    std::vector<int>\
     \ id, depth;\r\n    std::vector<std::pair<int,int>> vs;\r\n    sparse_table<std::pair<int,int>,\
-    \ internal_lca::op> st;\r\n};\r\n\r\n}\n#line 2 \"graph/template.hpp\"\n\r\n#line\
-    \ 4 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct\
-    \ Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to),\
-    \ cost(_cost) { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>>\
-    \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
-    \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
-    \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
-    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
-    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
-    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
-    \ ebi\n#line 6 \"test/Jump_on_Tree.test.cpp\"\n\r\n#include <iostream>\r\n\r\n\
-    int main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::graph g(n);\r\
-    \n    for(int i = 0; i < n-1; i++) {\r\n        int a,b;\r\n        std::cin >>\
-    \ a >> b;\r\n        g.add_edge(a, b);\r\n    }\r\n    ebi::level_ancestor la(g);\r\
-    \n    ebi::lowest_common_ancestor lca(g);\r\n    while(q--) {\r\n        int s,t,i;\r\
-    \n        std::cin >> s >> t >> i;\r\n        int d = lca.distance(s, t);\r\n\
-    \        if(i > d) {\r\n            std::cout << \"-1\\n\";\r\n            continue;\r\
-    \n        }\r\n        int m = lca.lca(s, t);\r\n        int ans;\r\n        if(i\
-    \ <= lca.distance(m, s)) {\r\n            ans = la.query(s, i);\r\n        }\r\
-    \n        else {\r\n            i = d - i;\r\n            assert(i <= lca.distance(m,\
-    \ t));\r\n            ans = la.query(t, i);\r\n        }\r\n        std::cout\
-    \ << ans << std::endl;\r\n    }\r\n}\n"
+    \ internal_lca::op> st;\r\n};\r\n\r\n}\n#line 8 \"test/Jump_on_Tree.test.cpp\"\
+    \n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::graph\
+    \ g(n);\r\n    for (int i = 0; i < n - 1; i++) {\r\n        int a, b;\r\n    \
+    \    std::cin >> a >> b;\r\n        g.add_edge(a, b);\r\n    }\r\n    ebi::level_ancestor\
+    \ la(g);\r\n    ebi::lowest_common_ancestor lca(g);\r\n    while (q--) {\r\n \
+    \       int s, t, i;\r\n        std::cin >> s >> t >> i;\r\n        int d = lca.distance(s,\
+    \ t);\r\n        if (i > d) {\r\n            std::cout << \"-1\\n\";\r\n     \
+    \       continue;\r\n        }\r\n        int m = lca.lca(s, t);\r\n        int\
+    \ ans;\r\n        if (i <= lca.distance(m, s)) {\r\n            ans = la.query(s,\
+    \ i);\r\n        } else {\r\n            i = d - i;\r\n            assert(i <=\
+    \ lca.distance(m, t));\r\n            ans = la.query(t, i);\r\n        }\r\n \
+    \       std::cout << ans << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\r\n\r\n\
-    #include \"tree/level_ancestor.hpp\"\r\n#include \"tree/lowest_common_ancestor.hpp\"\
-    \r\n#include \"graph/template.hpp\"\r\n\r\n#include <iostream>\r\n\r\nint main()\
-    \ {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::graph g(n);\r\n   \
-    \ for(int i = 0; i < n-1; i++) {\r\n        int a,b;\r\n        std::cin >> a\
-    \ >> b;\r\n        g.add_edge(a, b);\r\n    }\r\n    ebi::level_ancestor la(g);\r\
-    \n    ebi::lowest_common_ancestor lca(g);\r\n    while(q--) {\r\n        int s,t,i;\r\
-    \n        std::cin >> s >> t >> i;\r\n        int d = lca.distance(s, t);\r\n\
-    \        if(i > d) {\r\n            std::cout << \"-1\\n\";\r\n            continue;\r\
-    \n        }\r\n        int m = lca.lca(s, t);\r\n        int ans;\r\n        if(i\
-    \ <= lca.distance(m, s)) {\r\n            ans = la.query(s, i);\r\n        }\r\
-    \n        else {\r\n            i = d - i;\r\n            assert(i <= lca.distance(m,\
-    \ t));\r\n            ans = la.query(t, i);\r\n        }\r\n        std::cout\
-    \ << ans << std::endl;\r\n    }\r\n}"
+    #include <iostream>\r\n\r\n#include \"graph/template.hpp\"\r\n#include \"tree/level_ancestor.hpp\"\
+    \r\n#include \"tree/lowest_common_ancestor.hpp\"\r\n\r\nint main() {\r\n    int\
+    \ n, q;\r\n    std::cin >> n >> q;\r\n    ebi::graph g(n);\r\n    for (int i =\
+    \ 0; i < n - 1; i++) {\r\n        int a, b;\r\n        std::cin >> a >> b;\r\n\
+    \        g.add_edge(a, b);\r\n    }\r\n    ebi::level_ancestor la(g);\r\n    ebi::lowest_common_ancestor\
+    \ lca(g);\r\n    while (q--) {\r\n        int s, t, i;\r\n        std::cin >>\
+    \ s >> t >> i;\r\n        int d = lca.distance(s, t);\r\n        if (i > d) {\r\
+    \n            std::cout << \"-1\\n\";\r\n            continue;\r\n        }\r\n\
+    \        int m = lca.lca(s, t);\r\n        int ans;\r\n        if (i <= lca.distance(m,\
+    \ s)) {\r\n            ans = la.query(s, i);\r\n        } else {\r\n         \
+    \   i = d - i;\r\n            assert(i <= lca.distance(m, t));\r\n           \
+    \ ans = la.query(t, i);\r\n        }\r\n        std::cout << ans << std::endl;\r\
+    \n    }\r\n}"
   dependsOn:
+  - graph/template.hpp
   - tree/level_ancestor.hpp
   - tree/lowest_common_ancestor.hpp
   - data_structure/sparse_table.hpp
-  - graph/template.hpp
   isVerificationFile: true
   path: test/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-04-17 16:41:35+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Jump_on_Tree.test.cpp
 layout: document

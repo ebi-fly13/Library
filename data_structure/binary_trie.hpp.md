@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/binary_trie.test.cpp
     title: test/binary_trie.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://kazuma8128.hatenablog.com/entry/2018/05/06/022654
@@ -98,8 +98,8 @@ data:
   isVerificationFile: false
   path: data_structure/binary_trie.hpp
   requiredBy: []
-  timestamp: '2022-05-19 19:15:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/binary_trie.test.cpp
 documentation_of: data_structure/binary_trie.hpp

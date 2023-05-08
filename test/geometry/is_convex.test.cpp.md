@@ -1,90 +1,92 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B
-  bundledCode: "#line 1 \"test/geometry/is_convex.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <iomanip>\n\
-    \n#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#include <cmath>\r\
-    \n#include <cassert>\r\n#line 9 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\
-    \r\nconstexpr long double EPS = 1e-10;\r\n\r\nconst long double PI = std::acos(-1);\r\
-    \n\r\nnamespace internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS)\
-    \ ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a, long double\
-    \ b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n\
-    \    return a+b;\r\n}\r\n\r\n} // namespace internal\r\n\r\nlong double arg_to_radian(long\
-    \ double arg) {\r\n    return PI * arg / (long double)(180);\r\n}\r\n\r\nstruct\
-    \ point {\r\n    long double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long\
-    \ double x, long double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const\
-    \ point rhs) noexcept {\r\n        x = internal::add(x, rhs.x);\r\n        y =\
-    \ internal::add(y, rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point\
-    \ &operator-=(const point rhs) noexcept {\r\n        x = internal::add(x, -rhs.x);\r\
-    \n        y = internal::add(y, -rhs.y);\r\n        return *this;\r\n    }\r\n\r\
-    \n    point &operator*=(const point rhs) noexcept {\r\n        long double _x\
-    \ = internal::add(x*rhs.x, -y*rhs.y);\r\n        long double _y = internal::add(x*rhs.y,\
-    \ y*rhs.x);\r\n        x = _x;\r\n        y = _y;\r\n        return *this;\r\n\
-    \    }\r\n\r\n    point &operator*=(const long double k) noexcept {\r\n      \
-    \  x *= k;\r\n        y *= k;\r\n        return *this;\r\n    }\r\n\r\n    point\
-    \ &operator/=(const long double k) {\r\n        assert(internal::sgn(k)!=0);\r\
-    \n        x /= k;\r\n        y /= k;\r\n        return *this;\r\n    }\r\n\r\n\
-    \    point operator+(const point &rhs) const noexcept {\r\n        return point(*this)\
-    \ += rhs;\r\n    }\r\n\r\n    point operator-(const point &rhs) const noexcept\
-    \ {\r\n        return point(*this) -= rhs;\r\n    }\r\n\r\n    point operator*(const\
-    \ point &rhs) const noexcept {\r\n        return point(*this) *= rhs;\r\n    }\r\
-    \n\r\n    point operator*(const long double rhs) const noexcept {\r\n        return\
-    \ point(*this) *= rhs;\r\n    }\r\n\r\n    point operator/(const long double rhs)\
-    \ const {\r\n        return point(*this) /= rhs;\r\n    }\r\n\r\n    point operator-()\
-    \ const noexcept {\r\n        return point(0, 0) - *this;\r\n    }\r\n\r\n   \
-    \ long double abs() const noexcept {\r\n        return std::sqrt(internal::add(x*x,\
-    \ y*y));\r\n    }\r\n\r\n    long double dot(const point rhs) const noexcept {\r\
-    \n        return internal::add(x*rhs.x, y*rhs.y);\r\n    }\r\n\r\n    long double\
-    \ det(const point rhs) const noexcept {\r\n        return internal::add(x*rhs.y,\
-    \ -y*rhs.x);\r\n    }\r\n\r\n    // arctan(y/x) (\u5358\u4F4D\u306F\u30E9\u30B8\
-    \u30A2\u30F3)\r\n    long double arg() const {\r\n        return std::atan2(y,\
-    \ x);\r\n    }\r\n\r\n    // x\u6607\u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n\
-    \    bool operator<(const point &rhs) const noexcept {\r\n        if(internal::sgn(x-rhs.x))\
-    \ return internal::sgn(x-rhs.x)<0;\r\n        return internal::sgn(y-rhs.y)<0;\r\
-    \n    }\r\n\r\n    bool operator==(const point &rhs) const noexcept {\r\n    \
-    \    if (internal::sgn(x - rhs.x) == 0 && internal::sgn(y - rhs.y) == 0)\r\n \
-    \           return true;\r\n        else\r\n            return false;\r\n    }\r\
-    \n\r\n    bool operator!=(const point &rhs) const noexcept {\r\n        return\
-    \ !((*this) == rhs);\r\n    }\r\n};\r\n\r\nstd::ostream& operator<<(std::ostream&\
-    \ os, const point &a) {\r\n    return os << a.x << \" \" << a.y;\r\n}\r\n\r\n\
-    std::istream& operator>>(std::istream& os, point &a) {\r\n    return os >> a.x\
-    \ >> a.y;\r\n}\r\n\r\npoint conj(const point &a) {\r\n    return point(a.x, -a.y);\r\
-    \n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\u30B8\u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\
-    \r\npoint rot(const point &a, long double ang) {\r\n    return point(std::cos(ang)\
-    \ * a.x - std::sin(ang) * a.y, std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n\
-    } \r\n\r\npoint rot90(const point &a) {\r\n    return point(-a.y, a.x);\r\n}\r\
-    \n\r\nlong double dot(const point &a, const point &b) {\r\n    return a.dot(b);\r\
-    \n}\r\n\r\nlong double det(const point &a, const point &b) {\r\n    return a.det(b);\r\
-    \n}\r\n\r\nlong double abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\
-    \nlong double norm(const point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\
-    \n}\r\n\r\nint isp(const point &a, const point &b, const point &c) {\r\n    int\
-    \ flag = internal::sgn(det(b-a,c-a));\r\n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a,\
-    \ c-a))<0) return -2;\r\n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\
-    \n    }\r\n    return flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\
-    \u8FD1\u70B9\u5BFE\u3092\u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point>\
-    \ p) {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
+  bundledCode: "#line 1 \"test/geometry/is_convex.test.cpp\"\n#define PROBLEM \\\n\
+    \    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B\"\n\n\
+    #include <algorithm>\n#include <iomanip>\n#include <iostream>\n#include <vector>\n\
+    \n#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n#line\
+    \ 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#line 9 \"geometry/point.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nconst long\
+    \ double PI = std::acos(-1);\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double\
+    \ a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double\
+    \ add(long double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a)\
+    \ + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\
+    \n\r\nlong double arg_to_radian(long double arg) {\r\n    return PI * arg / (long\
+    \ double)(180);\r\n}\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n   \
+    \ point() = default;\r\n\r\n    point(long double x, long double y) : x(x), y(y)\
+    \ { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\n        x =\
+    \ internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n       \
+    \ return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
+    \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs)\
+    \ noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n\
+    \        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
+    \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
+    \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
+    \    assert(internal::sgn(k)!=0);\r\n        x /= k;\r\n        y /= k;\r\n  \
+    \      return *this;\r\n    }\r\n\r\n    point operator+(const point &rhs) const\
+    \ noexcept {\r\n        return point(*this) += rhs;\r\n    }\r\n\r\n    point\
+    \ operator-(const point &rhs) const noexcept {\r\n        return point(*this)\
+    \ -= rhs;\r\n    }\r\n\r\n    point operator*(const point &rhs) const noexcept\
+    \ {\r\n        return point(*this) *= rhs;\r\n    }\r\n\r\n    point operator*(const\
+    \ long double rhs) const noexcept {\r\n        return point(*this) *= rhs;\r\n\
+    \    }\r\n\r\n    point operator/(const long double rhs) const {\r\n        return\
+    \ point(*this) /= rhs;\r\n    }\r\n\r\n    point operator-() const noexcept {\r\
+    \n        return point(0, 0) - *this;\r\n    }\r\n\r\n    long double abs() const\
+    \ noexcept {\r\n        return std::sqrt(internal::add(x*x, y*y));\r\n    }\r\n\
+    \r\n    long double dot(const point rhs) const noexcept {\r\n        return internal::add(x*rhs.x,\
+    \ y*rhs.y);\r\n    }\r\n\r\n    long double det(const point rhs) const noexcept\
+    \ {\r\n        return internal::add(x*rhs.y, -y*rhs.x);\r\n    }\r\n\r\n    //\
+    \ arctan(y/x) (\u5358\u4F4D\u306F\u30E9\u30B8\u30A2\u30F3)\r\n    long double\
+    \ arg() const {\r\n        return std::atan2(y, x);\r\n    }\r\n\r\n    // x\u6607\
+    \u9806, \u305D\u306E\u5F8Cy\u6607\u9806\r\n    bool operator<(const point &rhs)\
+    \ const noexcept {\r\n        if(internal::sgn(x-rhs.x)) return internal::sgn(x-rhs.x)<0;\r\
+    \n        return internal::sgn(y-rhs.y)<0;\r\n    }\r\n\r\n    bool operator==(const\
+    \ point &rhs) const noexcept {\r\n        if (internal::sgn(x - rhs.x) == 0 &&\
+    \ internal::sgn(y - rhs.y) == 0)\r\n            return true;\r\n        else\r\
+    \n            return false;\r\n    }\r\n\r\n    bool operator!=(const point &rhs)\
+    \ const noexcept {\r\n        return !((*this) == rhs);\r\n    }\r\n};\r\n\r\n\
+    std::ostream& operator<<(std::ostream& os, const point &a) {\r\n    return os\
+    \ << a.x << \" \" << a.y;\r\n}\r\n\r\nstd::istream& operator>>(std::istream& os,\
+    \ point &a) {\r\n    return os >> a.x >> a.y;\r\n}\r\n\r\npoint conj(const point\
+    \ &a) {\r\n    return point(a.x, -a.y);\r\n}\r\n\r\n// \u70B9a \u3092ang(\u30E9\
+    \u30B8\u30A2\u30F3)\u56DE\u8EE2\u3059\u308B\r\npoint rot(const point &a, long\
+    \ double ang) {\r\n    return point(std::cos(ang) * a.x - std::sin(ang) * a.y,\
+    \ std::sin(ang) * a.x + std::cos(ang) * a.y);\r\n} \r\n\r\npoint rot90(const point\
+    \ &a) {\r\n    return point(-a.y, a.x);\r\n}\r\n\r\nlong double dot(const point\
+    \ &a, const point &b) {\r\n    return a.dot(b);\r\n}\r\n\r\nlong double det(const\
+    \ point &a, const point &b) {\r\n    return a.det(b);\r\n}\r\n\r\nlong double\
+    \ abs(const point &a) {\r\n    return a.abs();\r\n}\r\n\r\nlong double norm(const\
+    \ point &a) {\r\n    return internal::add(a.x*a.x, a.y*a.y);\r\n}\r\n\r\nint isp(const\
+    \ point &a, const point &b, const point &c) {\r\n    int flag = internal::sgn(det(b-a,c-a));\r\
+    \n    if(flag == 0) {\r\n        if(internal::sgn(dot(b-a, c-a))<0) return -2;\r\
+    \n        if(internal::sgn(dot(a-b, c-b))<0) return +2;\r\n    }\r\n    return\
+    \ flag;\r\n}\r\n\r\n// \u5206\u5272\u7D71\u6CBB\u3067\u6700\u8FD1\u70B9\u5BFE\u3092\
+    \u6C42\u3081\u308B O(N log N)\r\nlong double closest_pair(std::vector<point> p)\
+    \ {\r\n    std::sort(p.begin(), p.end());\r\n    int n = p.size();\r\n    auto\
     \ f = [&](auto &&self, int l, int r) -> long double {\r\n        if(r-l == 1)\
     \ {\r\n            return 1e9;\r\n        }\r\n        int mid = (l+r)/2;\r\n\
     \        long double x = p[mid].x;\r\n        long double d = std::min(self(self,\
@@ -128,16 +130,15 @@ data:
     \ - p2.first * p1.second;\r\n                return flag == 0 ? (p1.first * p1.first\
     \ + p1.second * p1.second < p2.first * p2.first + p2.second * p2.second) : flag\
     \ > 0;\r\n            });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n\
-    \    }\r\n    return;\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 5\
-    \ \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\n\
-    struct line {\n    point a,b;\n\n    line(long double x1, long double y1, long\
-    \ double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const point\
-    \ &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const\
-    \ {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
-    \ point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\n    long\
-    \ double distance(const point &c) const {\n    return std::abs(det(c - a, b -\
-    \ a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line &b) {\n\
-    \    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
+    \    }\r\n    return;\r\n}\r\n\r\n}\n#line 7 \"geometry/line.hpp\"\n\nnamespace\
+    \ ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double\
+    \ y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const\
+    \ point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p)\
+    \ const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point\
+    \ relf(const point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\
+    \n    long double distance(const point &c) const {\n    return std::abs(det(c\
+    \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
+    \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
     \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
     \  return 0; // \u4EA4\u5DEE\n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a))\
     \ != 0) { // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\
@@ -211,33 +212,33 @@ data:
     \ double cs = det(l.a - nxt, l.b - nxt);\n        if(internal::sgn(cf) >= 0) {\n\
     \            ret.emplace_back(now);\n        }\n        if(internal::sgn(cf) *\
     \ internal::sgn(cs) < 0) {\n            ret.emplace_back(cross_point(line(now,\
-    \ nxt), l));\n        }\n    }\n    return ret;\n}\n\n}\n#line 12 \"test/geometry/is_convex.test.cpp\"\
+    \ nxt), l));\n        }\n    }\n    return ret;\n}\n\n}\n#line 13 \"test/geometry/is_convex.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
-    \ p(n);\n    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    if(is_convex(p))\
-    \ {\n        std::cout << \"1\\n\";\n    }\n    else {\n        std::cout << \"\
-    0\\n\";\n    }\n}\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
-    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
-    }\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <iomanip>\n\
-    \n#include \"geometry/point.hpp\"\n#include \"geometry/line.hpp\"\n#include \"\
-    geometry/line_segment.hpp\"\n#include \"geometry/polygon.hpp\"\n\nnamespace ebi\
-    \ {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point>\
-    \ p(n);\n    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    if(is_convex(p))\
-    \ {\n        std::cout << \"1\\n\";\n    }\n    else {\n        std::cout << \"\
-    0\\n\";\n    }\n}\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
-    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
-    }"
+    \ p(n);\n    for (auto &[x, y] : p) {\n        std::cin >> x >> y;\n    }\n  \
+    \  if (is_convex(p)) {\n        std::cout << \"1\\n\";\n    } else {\n       \
+    \ std::cout << \"0\\n\";\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n  \
+    \  std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
+  code: "#define PROBLEM \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_3_B\"\
+    \n\n#include <algorithm>\n#include <iomanip>\n#include <iostream>\n#include <vector>\n\
+    \n#include \"geometry/line.hpp\"\n#include \"geometry/line_segment.hpp\"\n#include\
+    \ \"geometry/point.hpp\"\n#include \"geometry/polygon.hpp\"\n\nnamespace ebi {\n\
+    \nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point> p(n);\n\
+    \    for (auto &[x, y] : p) {\n        std::cin >> x >> y;\n    }\n    if (is_convex(p))\
+    \ {\n        std::cout << \"1\\n\";\n    } else {\n        std::cout << \"0\\\
+    n\";\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    std::cout << std::fixed\
+    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    ebi::main_();\n}"
   dependsOn:
-  - geometry/point.hpp
   - geometry/line.hpp
+  - geometry/point.hpp
   - geometry/line_segment.hpp
   - geometry/polygon.hpp
   isVerificationFile: true
   path: test/geometry/is_convex.test.cpp
   requiredBy: []
-  timestamp: '2022-07-08 00:50:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/is_convex.test.cpp
 layout: document

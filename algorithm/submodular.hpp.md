@@ -75,7 +75,7 @@ data:
   isVerificationFile: false
   path: algorithm/submodular.hpp
   requiredBy: []
-  timestamp: '2021-11-01 15:33:43+09:00'
+  timestamp: '2023-05-08 14:32:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: algorithm/submodular.hpp

@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/range_tree.test.cpp
     title: test/range_tree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://www.slideshare.net/okuraofvegetable/ss-65377588
@@ -98,8 +98,8 @@ data:
   isVerificationFile: false
   path: data_structure/range_tree.hpp
   requiredBy: []
-  timestamp: '2022-03-29 17:23:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/range_tree.test.cpp
 documentation_of: data_structure/range_tree.hpp

@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Jump_on_Tree.test.cpp
     title: test/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/level_ancestor_lca.test.cpp
     title: test/level_ancestor_lca.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/level_ancestor.hpp\"\n\r\n#include <vector>\r\n#include\
@@ -52,8 +52,8 @@ data:
   isVerificationFile: false
   path: tree/level_ancestor.hpp
   requiredBy: []
-  timestamp: '2023-04-17 15:17:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/level_ancestor_lca.test.cpp
   - test/Jump_on_Tree.test.cpp

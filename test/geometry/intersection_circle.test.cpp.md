@@ -1,37 +1,37 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A
   bundledCode: "#line 1 \"test/geometry/intersection_circle.test.cpp\"\n#define PROBLEM\
-    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A\"\n\n#include\
-    \ <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n#include\
-    \ <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/circle.hpp\"\n\n#line 4\
-    \ \"geometry/circle.hpp\"\n#include <cmath>\n\n#line 2 \"geometry/point.hpp\"\n\
-    \r\n#line 9 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\nconstexpr long\
+    \ \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <cstdint>\n#include <iomanip>\n\
+    #include <iostream>\n#include <vector>\n\n#line 2 \"geometry/circle.hpp\"\n\n\
+    #line 4 \"geometry/circle.hpp\"\n#include <cmath>\n\n#line 2 \"geometry/point.hpp\"\
+    \n\r\n#line 9 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\nconstexpr long\
     \ double EPS = 1e-10;\r\n\r\nconst long double PI = std::acos(-1);\r\n\r\nnamespace\
     \ internal {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS)\
     \ ? 1 : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n   \
@@ -301,20 +301,22 @@ data:
     \ * std::sin(theta1*2)/2.0);\n        long double theta2 = std::acos(internal::add(internal::add(c2.r*c2.r,\
     \ d*d), -c1.r*c1.r)/(2.0*c2.r*d));\n        long double area2 = internal::add(c2.r\
     \ * c2.r * theta2, - c2.r * c2.r * std::sin(theta2*2)/2.0);\n        return internal::add(area1,\
-    \ area2);\n    }\n}\n\n}\n#line 11 \"test/geometry/intersection_circle.test.cpp\"\
+    \ area2);\n    }\n}\n\n}\n#line 12 \"test/geometry/intersection_circle.test.cpp\"\
     \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    circle\
     \ c1, c2;\n    std::cin >> c1.c.x >> c1.c.y >> c1.r;\n    std::cin >> c2.c.x >>\
-    \ c2.c.y >> c2.r;\n    std::cout << intersection(c1, c2) << '\\n';\n}\n\n}\n\n\
-    int main() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\
-    #include <iomanip>\n#include <cstdint>\n\n#include \"geometry/circle.hpp\"\n\n\
+    \ c2.c.y >> c2.r;\n    std::cout << intersection(c1, c2) << '\\n';\n}\n\n}  //\
+    \ namespace ebi\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }\n"
+  code: "#define PROBLEM \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_A\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <cstdint>\n#include <iomanip>\n\
+    #include <iostream>\n#include <vector>\n\n#include \"geometry/circle.hpp\"\n\n\
     namespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    circle c1,\
     \ c2;\n    std::cin >> c1.c.x >> c1.c.y >> c1.r;\n    std::cin >> c2.c.x >> c2.c.y\
-    \ >> c2.r;\n    std::cout << intersection(c1, c2) << '\\n';\n}\n\n}\n\nint main()\
-    \ {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}"
+    \ >> c2.r;\n    std::cout << intersection(c1, c2) << '\\n';\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }"
   dependsOn:
   - geometry/circle.hpp
   - geometry/point.hpp
@@ -324,8 +326,8 @@ data:
   isVerificationFile: true
   path: test/geometry/intersection_circle.test.cpp
   requiredBy: []
-  timestamp: '2022-07-08 00:50:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/intersection_circle.test.cpp
 layout: document

@@ -1,33 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/two_sat
     links:
     - https://judge.yosupo.jp/problem/two_sat
   bundledCode: "#line 1 \"test/two_sat.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/two_sat\"\
-    \n\n#include <iostream>\n\n#line 2 \"algorithm/two_sat.hpp\"\n\n#include <cassert>\n\
-    \n#line 2 \"graph/scc_graph.hpp\"\n\r\n#line 2 \"graph/template.hpp\"\n\r\n#include\
-    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n\
-    \    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to), cost(_cost)\
-    \ { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>>\
-    \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
-    \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \n\n#line 2 \"algorithm/two_sat.hpp\"\n\n#include <cassert>\n\n#line 2 \"graph/scc_graph.hpp\"\
+    \n\r\n#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace ebi\
+    \ {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n    T cost;\r\n\
+    \    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\n\r\ntemplate<class\
+    \ T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
@@ -71,26 +70,26 @@ data:
     \             return false;\n            }\n            _answer[i] = id[2*i] >\
     \ id[2*i + 1];\n        }\n        return true;\n    }\n\n    std::vector<bool>\
     \ answer() {\n        return _answer;\n    }\nprivate:\n    int n;\n    scc_graph\
-    \ scc;\n    std::vector<bool> _answer;\n};\n\n}\n#line 6 \"test/two_sat.test.cpp\"\
-    \n\nint main() {\n    char p;\n    std::string cnf;\n    std::cin >> p >> cnf;\n\
-    \    int n,m;\n    std::cin >> n >> m;\n    ebi::two_sat ts(n);\n    for(int i\
-    \ = 0; i < m; i++) {\n        int a,b,c;\n        std::cin >> a >> b >> c;\n \
-    \       ts.add_clause(std::abs(a)-1, a > 0, std::abs(b)-1, b > 0);\n    }\n  \
-    \  bool flag = ts.satisfiable();\n    std::cout << \"s \" << (flag ? \"SATISFIABLE\"\
-    \ : \"UNSATISFIABLE\") << std::endl;\n    if(flag) {\n        std::cout << \"\
-    v\";\n        auto ans = ts.answer();\n        for(int i = 0; i < n; i++) {\n\
-    \            std::cout << \" \" << (ans[i] ? i+1 : -(i+1));\n        }\n     \
-    \   std::cout << \" 0\\n\";\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/two_sat\"\n\n#include <iostream>\n\
-    \n#include \"../algorithm/two_sat.hpp\"\n\nint main() {\n    char p;\n    std::string\
-    \ cnf;\n    std::cin >> p >> cnf;\n    int n,m;\n    std::cin >> n >> m;\n   \
-    \ ebi::two_sat ts(n);\n    for(int i = 0; i < m; i++) {\n        int a,b,c;\n\
-    \        std::cin >> a >> b >> c;\n        ts.add_clause(std::abs(a)-1, a > 0,\
-    \ std::abs(b)-1, b > 0);\n    }\n    bool flag = ts.satisfiable();\n    std::cout\
-    \ << \"s \" << (flag ? \"SATISFIABLE\" : \"UNSATISFIABLE\") << std::endl;\n  \
-    \  if(flag) {\n        std::cout << \"v\";\n        auto ans = ts.answer();\n\
-    \        for(int i = 0; i < n; i++) {\n            std::cout << \" \" << (ans[i]\
-    \ ? i+1 : -(i+1));\n        }\n        std::cout << \" 0\\n\";\n    }\n}"
+    \ scc;\n    std::vector<bool> _answer;\n};\n\n}\n#line 4 \"test/two_sat.test.cpp\"\
+    \n\n#include <iostream>\n\nint main() {\n    char p;\n    std::string cnf;\n \
+    \   std::cin >> p >> cnf;\n    int n, m;\n    std::cin >> n >> m;\n    ebi::two_sat\
+    \ ts(n);\n    for (int i = 0; i < m; i++) {\n        int a, b, c;\n        std::cin\
+    \ >> a >> b >> c;\n        ts.add_clause(std::abs(a) - 1, a > 0, std::abs(b) -\
+    \ 1, b > 0);\n    }\n    bool flag = ts.satisfiable();\n    std::cout << \"s \"\
+    \ << (flag ? \"SATISFIABLE\" : \"UNSATISFIABLE\") << std::endl;\n    if (flag)\
+    \ {\n        std::cout << \"v\";\n        auto ans = ts.answer();\n        for\
+    \ (int i = 0; i < n; i++) {\n            std::cout << \" \" << (ans[i] ? i + 1\
+    \ : -(i + 1));\n        }\n        std::cout << \" 0\\n\";\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/two_sat\"\n\n#include \"\
+    ../algorithm/two_sat.hpp\"\n\n#include <iostream>\n\nint main() {\n    char p;\n\
+    \    std::string cnf;\n    std::cin >> p >> cnf;\n    int n, m;\n    std::cin\
+    \ >> n >> m;\n    ebi::two_sat ts(n);\n    for (int i = 0; i < m; i++) {\n   \
+    \     int a, b, c;\n        std::cin >> a >> b >> c;\n        ts.add_clause(std::abs(a)\
+    \ - 1, a > 0, std::abs(b) - 1, b > 0);\n    }\n    bool flag = ts.satisfiable();\n\
+    \    std::cout << \"s \" << (flag ? \"SATISFIABLE\" : \"UNSATISFIABLE\") << std::endl;\n\
+    \    if (flag) {\n        std::cout << \"v\";\n        auto ans = ts.answer();\n\
+    \        for (int i = 0; i < n; i++) {\n            std::cout << \" \" << (ans[i]\
+    \ ? i + 1 : -(i + 1));\n        }\n        std::cout << \" 0\\n\";\n    }\n}"
   dependsOn:
   - algorithm/two_sat.hpp
   - graph/scc_graph.hpp
@@ -98,8 +97,8 @@ data:
   isVerificationFile: true
   path: test/two_sat.test.cpp
   requiredBy: []
-  timestamp: '2021-10-31 15:43:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/two_sat.test.cpp
 layout: document

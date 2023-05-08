@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/SegmentTreeBeats.test.cpp
     title: test/SegmentTreeBeats.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/SegmentTreeBeats.hpp\"\n\r\n#include <algorithm>\r\
@@ -162,8 +162,8 @@ data:
   isVerificationFile: false
   path: data_structure/SegmentTreeBeats.hpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/SegmentTreeBeats.test.cpp
 documentation_of: data_structure/SegmentTreeBeats.hpp

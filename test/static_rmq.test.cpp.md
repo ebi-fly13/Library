@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/staticrmq
@@ -34,17 +34,17 @@ data:
     \ int r) {\r\n        int k = std::__lg(r-l);\r\n        return op(table[k][l],\
     \ table[k][r-(1<<k)]);\r\n    }\r\nprivate:\r\n    int n;\r\n    std::vector<std::vector<Band>>\
     \ table;\r\n};\r\n\r\n}\n#line 7 \"test/static_rmq.test.cpp\"\n\r\nint op(int\
-    \ a, int b) {\r\n    return a < b ? a : b;\r\n}\r\n\r\nint main() {\r\n    int\
-    \ n,q;\r\n    std::cin >> n >> q;\r\n    std::vector<int> a(n);\r\n    for(int\
-    \ i = 0; i < n; i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::sparse_table<int,\
-    \ op> st(a);\r\n    while(q--) {\r\n        int l,r;\r\n        std::cin >> l\
-    \ >> r;\r\n        std::cout << st.fold(l, r) << std::endl;\r\n    }\r\n}\n"
+    \ a, int b) { return a < b ? a : b; }\r\n\r\nint main() {\r\n    int n, q;\r\n\
+    \    std::cin >> n >> q;\r\n    std::vector<int> a(n);\r\n    for (int i = 0;\
+    \ i < n; i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::sparse_table<int,\
+    \ op> st(a);\r\n    while (q--) {\r\n        int l, r;\r\n        std::cin >>\
+    \ l >> r;\r\n        std::cout << st.fold(l, r) << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\r\n\r\n#include\
     \ <iostream>\r\n#include <vector>\r\n\r\n#include \"../data_structure/sparse_table.hpp\"\
-    \r\n\r\nint op(int a, int b) {\r\n    return a < b ? a : b;\r\n}\r\n\r\nint main()\
-    \ {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    std::vector<int> a(n);\r\
-    \n    for(int i = 0; i < n; i++) {\r\n        std::cin >> a[i];\r\n    }\r\n \
-    \   ebi::sparse_table<int, op> st(a);\r\n    while(q--) {\r\n        int l,r;\r\
+    \r\n\r\nint op(int a, int b) { return a < b ? a : b; }\r\n\r\nint main() {\r\n\
+    \    int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<int> a(n);\r\n  \
+    \  for (int i = 0; i < n; i++) {\r\n        std::cin >> a[i];\r\n    }\r\n   \
+    \ ebi::sparse_table<int, op> st(a);\r\n    while (q--) {\r\n        int l, r;\r\
     \n        std::cin >> l >> r;\r\n        std::cout << st.fold(l, r) << std::endl;\r\
     \n    }\r\n}"
   dependsOn:
@@ -52,8 +52,8 @@ data:
   isVerificationFile: true
   path: test/static_rmq.test.cpp
   requiredBy: []
-  timestamp: '2021-08-31 14:46:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/static_rmq.test.cpp
 layout: document

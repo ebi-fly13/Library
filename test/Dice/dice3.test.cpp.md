@@ -14,7 +14,7 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_11_C
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_11_C
-  bundledCode: "#line 1 \"test/Dice/dice3.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_11_C\"\
+  bundledCode: "#line 1 \"test/Dice/dice3.test.cpp\"\n#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_11_C\"\
     \n\n#include <iostream>\n\n#line 2 \"Dice/Dice.hpp\"\n\n#line 4 \"Dice/Dice.hpp\"\
     \n#include <vector>\n#include <cassert>\n\nnamespace ebi {\n\nconst std::vector<std::vector<int>>\
     \ alldice = { \n    { 0, 1, 2, 3, 4, 5 },\n    { 3, 1, 0, 5, 4, 2 },\n    { 5,\
@@ -73,19 +73,19 @@ data:
     \ true;\n        }\n        return false;\n    }\n\n    std::vector<int> val =\
     \ {0, 1, 2, 3, 4, 5};\n};\n\nstd::istream& operator>>(std::istream& os, Dice &d)\
     \ {\n    return os >> d.val[0] >> d.val[1] >> d.val[2] >> d.val[3] >> d.val[4]\
-    \ >> d.val[5];  \n}\n\n}\n#line 6 \"test/Dice/dice3.test.cpp\"\n\nint main() {\n\
-    \    ebi::Dice a, b;\n    std::cin >> a >> b;\n    if(a == b) std::cout << \"\
-    Yes\\n\";\n    else std::cout << \"No\\n\";\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_11_C\"\
+    \ >> d.val[5];  \n}\n\n}\n#line 7 \"test/Dice/dice3.test.cpp\"\n\nint main() {\n\
+    \    ebi::Dice a, b;\n    std::cin >> a >> b;\n    if (a == b)\n        std::cout\
+    \ << \"Yes\\n\";\n    else\n        std::cout << \"No\\n\";\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ITP1_11_C\"\
     \n\n#include <iostream>\n\n#include \"../../Dice/Dice.hpp\"\n\nint main() {\n\
-    \    ebi::Dice a, b;\n    std::cin >> a >> b;\n    if(a == b) std::cout << \"\
-    Yes\\n\";\n    else std::cout << \"No\\n\";\n}"
+    \    ebi::Dice a, b;\n    std::cin >> a >> b;\n    if (a == b)\n        std::cout\
+    \ << \"Yes\\n\";\n    else\n        std::cout << \"No\\n\";\n}"
   dependsOn:
   - Dice/Dice.hpp
   isVerificationFile: true
   path: test/Dice/dice3.test.cpp
   requiredBy: []
-  timestamp: '2021-10-31 15:43:33+09:00'
+  timestamp: '2023-05-08 05:33:08+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Dice/dice3.test.cpp

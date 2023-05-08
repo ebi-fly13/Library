@@ -1,31 +1,30 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/lowest_common_ancestor.hpp
     title: tree/lowest_common_ancestor.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
     - https://judge.yosupo.jp/problem/lca
   bundledCode: "#line 1 \"test/lowest_common_ancestor.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/lca\"\r\n\r\n#include <iostream>\r\n\r\n#line\
-    \ 2 \"tree/lowest_common_ancestor.hpp\"\n\r\n#include <vector>\r\n\r\n#line 2\
-    \ \"data_structure/sparse_table.hpp\"\n\r\n#line 4 \"data_structure/sparse_table.hpp\"\
-    \n\r\n/*\r\n    reference: https://scrapbox.io/data-structures/Sparse_Table\r\n\
-    */\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class Band, Band (*op)(Band, Band)>\r\
+    \ \"https://judge.yosupo.jp/problem/lca\"\r\n\r\n#line 2 \"tree/lowest_common_ancestor.hpp\"\
+    \n\r\n#include <vector>\r\n\r\n#line 2 \"data_structure/sparse_table.hpp\"\n\r\
+    \n#line 4 \"data_structure/sparse_table.hpp\"\n\r\n/*\r\n    reference: https://scrapbox.io/data-structures/Sparse_Table\r\
+    \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class Band, Band (*op)(Band, Band)>\r\
     \nstruct sparse_table {\r\npublic:\r\n    sparse_table() = default;\r\n\r\n  \
     \  sparse_table(const std::vector<Band> &a) : n(a.size()) {\r\n        table =\
     \ std::vector(std::__lg(n) + 1, std::vector<Band>(n));\r\n        for(int i =\
@@ -57,10 +56,11 @@ data:
     \ int v) {\r\n        int w = lca(u, v);\r\n        return depth[u] + depth[v]\
     \ - 2 * depth[w];\r\n    }\r\n\r\nprivate:\r\n    int n;\r\n    std::vector<int>\
     \ id, depth;\r\n    std::vector<std::pair<int,int>> vs;\r\n    sparse_table<std::pair<int,int>,\
-    \ internal_lca::op> st;\r\n};\r\n\r\n}\n#line 2 \"graph/template.hpp\"\n\r\n#line\
-    \ 4 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct\
-    \ Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to),\
-    \ cost(_cost) { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>>\
+    \ internal_lca::op> st;\r\n};\r\n\r\n}\n#line 4 \"test/lowest_common_ancestor.test.cpp\"\
+    \n\r\n#include <iostream>\r\n\r\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"\
+    graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge\
+    \ {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to), cost(_cost)\
+    \ { }\r\n};\r\n\r\ntemplate<class T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>>\
     \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
     \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
@@ -68,19 +68,20 @@ data:
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
     \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
-    \ ebi\n#line 7 \"test/lowest_common_ancestor.test.cpp\"\n\r\nint main() {\r\n\
-    \    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::graph g(n);\r\n    for(int\
+    \ ebi\n#line 8 \"test/lowest_common_ancestor.test.cpp\"\n\r\nint main() {\r\n\
+    \    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::graph g(n);\r\n    for (int\
     \ i = 1; i < n; i++) {\r\n        int p;\r\n        std::cin >> p;\r\n       \
     \ g.add_edge(p, i);\r\n    }\r\n    ebi::lowest_common_ancestor lca(g);\r\n  \
-    \  while(q--) {\r\n        int u,v;\r\n        std::cin >> u >> v;\r\n       \
-    \ std::cout << lca.lca(u, v) << '\\n';\r\n    }\r\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\r\n\r\n#include <iostream>\r\
-    \n\r\n#include \"../tree/lowest_common_ancestor.hpp\"\r\n#include \"graph/template.hpp\"\
-    \r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::graph\
-    \ g(n);\r\n    for(int i = 1; i < n; i++) {\r\n        int p;\r\n        std::cin\
-    \ >> p;\r\n        g.add_edge(p, i);\r\n    }\r\n    ebi::lowest_common_ancestor\
-    \ lca(g);\r\n    while(q--) {\r\n        int u,v;\r\n        std::cin >> u >>\
-    \ v;\r\n        std::cout << lca.lca(u, v) << '\\n';\r\n    }\r\n}"
+    \  while (q--) {\r\n        int u, v;\r\n        std::cin >> u >> v;\r\n     \
+    \   std::cout << lca.lca(u, v) << '\\n';\r\n    }\r\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\r\n\r\n#include \"\
+    ../tree/lowest_common_ancestor.hpp\"\r\n\r\n#include <iostream>\r\n\r\n#include\
+    \ \"graph/template.hpp\"\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin\
+    \ >> n >> q;\r\n    ebi::graph g(n);\r\n    for (int i = 1; i < n; i++) {\r\n\
+    \        int p;\r\n        std::cin >> p;\r\n        g.add_edge(p, i);\r\n   \
+    \ }\r\n    ebi::lowest_common_ancestor lca(g);\r\n    while (q--) {\r\n      \
+    \  int u, v;\r\n        std::cin >> u >> v;\r\n        std::cout << lca.lca(u,\
+    \ v) << '\\n';\r\n    }\r\n}"
   dependsOn:
   - tree/lowest_common_ancestor.hpp
   - data_structure/sparse_table.hpp
@@ -88,8 +89,8 @@ data:
   isVerificationFile: true
   path: test/lowest_common_ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-04-17 15:31:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/lowest_common_ancestor.test.cpp
 layout: document

@@ -1,40 +1,40 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A
-  bundledCode: "#line 1 \"test/geometry/closest_pair.test.cpp\"\n#define PROBLEM \"\
-    https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A\"\n#define\
-    \ ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\
-    #include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n#line 2 \"geometry/point.hpp\"\
-    \n\r\n#line 4 \"geometry/point.hpp\"\n#include <cmath>\r\n#line 9 \"geometry/point.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nconst long\
-    \ double PI = std::acos(-1);\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double\
-    \ a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double\
-    \ add(long double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a)\
-    \ + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\
-    \n\r\nlong double arg_to_radian(long double arg) {\r\n    return PI * arg / (long\
-    \ double)(180);\r\n}\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n   \
-    \ point() = default;\r\n\r\n    point(long double x, long double y) : x(x), y(y)\
-    \ { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\n        x =\
-    \ internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n       \
-    \ return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
-    \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
-    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs)\
-    \ noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n\
-    \        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
+  bundledCode: "#line 1 \"test/geometry/closest_pair.test.cpp\"\n#define PROBLEM \\\
+    \n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A\"\n\
+    #define ERROR 0.00000001\n\n#include <algorithm>\n#include <cassert>\n#include\
+    \ <cstdint>\n#include <iomanip>\n#include <iostream>\n#include <vector>\n\n#line\
+    \ 2 \"geometry/point.hpp\"\n\r\n#line 4 \"geometry/point.hpp\"\n#include <cmath>\r\
+    \n#line 9 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\nconstexpr long double\
+    \ EPS = 1e-10;\r\n\r\nconst long double PI = std::acos(-1);\r\n\r\nnamespace internal\
+    \ {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1\
+    \ : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
+    \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
+    } // namespace internal\r\n\r\nlong double arg_to_radian(long double arg) {\r\n\
+    \    return PI * arg / (long double)(180);\r\n}\r\n\r\nstruct point {\r\n    long\
+    \ double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double x, long\
+    \ double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept\
+    \ {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs)\
+    \ noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y,\
+    \ -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ point rhs) noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\
+    \n        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
     \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
     \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
     \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
@@ -122,29 +122,29 @@ data:
     \ - p2.first * p1.second;\r\n                return flag == 0 ? (p1.first * p1.first\
     \ + p1.second * p1.second < p2.first * p2.first + p2.second * p2.second) : flag\
     \ > 0;\r\n            });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n\
-    \    }\r\n    return;\r\n}\r\n\r\n}\n#line 12 \"test/geometry/closest_pair.test.cpp\"\
+    \    }\r\n    return;\r\n}\r\n\r\n}\n#line 13 \"test/geometry/closest_pair.test.cpp\"\
     \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n\
-    \    std::cin >> n;\n    std::vector<point> p(n);\n    for(auto &[x, y]: p) {\n\
-    \        std::cin >> x >> y;\n    }\n    std::cout << closest_pair(p) << '\\n';\n\
-    }\n\n}\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
-    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
-    }\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A\"\
-    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
-    \ <algorithm>\n#include <cassert>\n#include <iomanip>\n#include <cstdint>\n\n\
-    #include \"geometry/point.hpp\"\n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\
-    \nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point> p(n);\n\
-    \    for(auto &[x, y]: p) {\n        std::cin >> x >> y;\n    }\n    std::cout\
-    \ << closest_pair(p) << '\\n';\n}\n\n}\n\nint main() {\n    std::cout << std::fixed\
-    \ << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    \    ebi::main_();\n}"
+    \    std::cin >> n;\n    std::vector<point> p(n);\n    for (auto &[x, y] : p)\
+    \ {\n        std::cin >> x >> y;\n    }\n    std::cout << closest_pair(p) << '\\\
+    n';\n}\n\n}  // namespace ebi\n\nint main() {\n    std::cout << std::fixed <<\
+    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    ebi::main_();\n}\n"
+  code: "#define PROBLEM \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A\"\
+    \n#define ERROR 0.00000001\n\n#include <algorithm>\n#include <cassert>\n#include\
+    \ <cstdint>\n#include <iomanip>\n#include <iostream>\n#include <vector>\n\n#include\
+    \ \"geometry/point.hpp\"\n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid\
+    \ main_() {\n    int n;\n    std::cin >> n;\n    std::vector<point> p(n);\n  \
+    \  for (auto &[x, y] : p) {\n        std::cin >> x >> y;\n    }\n    std::cout\
+    \ << closest_pair(p) << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n   \
+    \ std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}"
   dependsOn:
   - geometry/point.hpp
   isVerificationFile: true
   path: test/geometry/closest_pair.test.cpp
   requiredBy: []
-  timestamp: '2022-07-08 00:50:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/closest_pair.test.cpp
 layout: document

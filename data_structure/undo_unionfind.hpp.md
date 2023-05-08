@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/aoj_1645.test.cpp
     title: test/aoj/aoj_1645.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/undo_unionfind.hpp\"\n\n#include <vector>\n\
@@ -46,8 +46,8 @@ data:
   isVerificationFile: false
   path: data_structure/undo_unionfind.hpp
   requiredBy: []
-  timestamp: '2021-10-16 12:06:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/aoj_1645.test.cpp
 documentation_of: data_structure/undo_unionfind.hpp

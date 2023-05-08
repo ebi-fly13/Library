@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "#line 1 \"test/dijkstra.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
+  bundledCode: "#line 1 \"test/dijkstra.test.cpp\"\n#define PROBLEM \\\r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
     \r\n\r\n#line 2 \"graph/dijkstra.hpp\"\n\r\n#line 2 \"graph/template.hpp\"\n\r\
     \n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nstruct\
     \ Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost=1) : to(_to),\
@@ -41,28 +41,28 @@ data:
     \       que.pop();\r\n        if(d[v]<ret) continue;\r\n        for(auto e: g[v]){\r\
     \n            if(d[e.to]>d[v]+e.cost){\r\n                d[e.to] = d[v]+e.cost;\r\
     \n                que.push(P(d[e.to], e.to));\r\n            }\r\n        }\r\n\
-    \    }\r\n    return d;\r\n}\r\n\r\n} // namespace ebi\n#line 2 \"utility/int_alias.hpp\"\
-    \n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\
-    \nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\
-    \nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n#line 6 \"test/dijkstra.test.cpp\"\
-    \n\r\n#include <iostream>\r\n#line 10 \"test/dijkstra.test.cpp\"\n\r\nint main()\
-    \ {\r\n    int v,e,r;\r\n    std::cin >> v >> e >> r;\r\n    ebi::Graph<i64> g(v);\r\
-    \n    while(e--){\r\n        int s,t;\r\n        i64 d;\r\n        std::cin >>\
-    \ s >> t >> d;\r\n        g[s].emplace_back(t, d);\r\n    }\r\n    std::vector<i64>\
-    \ dest = ebi::dijkstra(r, v, g);\r\n    for(auto di: dest){\r\n        if(di ==\
-    \ std::numeric_limits<i64>::max()){\r\n            std::cout << \"INF\" << std::endl;\r\
-    \n            continue;\r\n        }\r\n        std::cout << di << std::endl;\r\
-    \n    }\r\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \r\n\r\n#include \"../graph/dijkstra.hpp\"\r\n#include \"../graph/template.hpp\"\
-    \r\n#include \"../utility/int_alias.hpp\"\r\n\r\n#include <iostream>\r\n#include\
-    \ <vector>\r\n#include <limits>\r\n\r\nint main() {\r\n    int v,e,r;\r\n    std::cin\
-    \ >> v >> e >> r;\r\n    ebi::Graph<i64> g(v);\r\n    while(e--){\r\n        int\
-    \ s,t;\r\n        i64 d;\r\n        std::cin >> s >> t >> d;\r\n        g[s].emplace_back(t,\
-    \ d);\r\n    }\r\n    std::vector<i64> dest = ebi::dijkstra(r, v, g);\r\n    for(auto\
-    \ di: dest){\r\n        if(di == std::numeric_limits<i64>::max()){\r\n       \
-    \     std::cout << \"INF\" << std::endl;\r\n            continue;\r\n        }\r\
-    \n        std::cout << di << std::endl;\r\n    }\r\n}"
+    \    }\r\n    return d;\r\n}\r\n\r\n} // namespace ebi\n#line 5 \"test/dijkstra.test.cpp\"\
+    \n\r\n#include <iostream>\r\n#line 9 \"test/dijkstra.test.cpp\"\n\r\n#line 2 \"\
+    utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\n\
+    using i32 = std::int32_t;\r\nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\
+    \nusing u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n\
+    #line 12 \"test/dijkstra.test.cpp\"\n\r\nint main() {\r\n    int v, e, r;\r\n\
+    \    std::cin >> v >> e >> r;\r\n    ebi::Graph<i64> g(v);\r\n    while (e--)\
+    \ {\r\n        int s, t;\r\n        i64 d;\r\n        std::cin >> s >> t >> d;\r\
+    \n        g[s].emplace_back(t, d);\r\n    }\r\n    std::vector<i64> dest = ebi::dijkstra(r,\
+    \ v, g);\r\n    for (auto di : dest) {\r\n        if (di == std::numeric_limits<i64>::max())\
+    \ {\r\n            std::cout << \"INF\" << std::endl;\r\n            continue;\r\
+    \n        }\r\n        std::cout << di << std::endl;\r\n    }\r\n}\n"
+  code: "#define PROBLEM \\\r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
+    \r\n\r\n#include \"../graph/dijkstra.hpp\"\r\n\r\n#include <iostream>\r\n#include\
+    \ <limits>\r\n#include <vector>\r\n\r\n#include \"../graph/template.hpp\"\r\n\
+    #include \"../utility/int_alias.hpp\"\r\n\r\nint main() {\r\n    int v, e, r;\r\
+    \n    std::cin >> v >> e >> r;\r\n    ebi::Graph<i64> g(v);\r\n    while (e--)\
+    \ {\r\n        int s, t;\r\n        i64 d;\r\n        std::cin >> s >> t >> d;\r\
+    \n        g[s].emplace_back(t, d);\r\n    }\r\n    std::vector<i64> dest = ebi::dijkstra(r,\
+    \ v, g);\r\n    for (auto di : dest) {\r\n        if (di == std::numeric_limits<i64>::max())\
+    \ {\r\n            std::cout << \"INF\" << std::endl;\r\n            continue;\r\
+    \n        }\r\n        std::cout << di << std::endl;\r\n    }\r\n}"
   dependsOn:
   - graph/dijkstra.hpp
   - graph/template.hpp
@@ -70,8 +70,8 @@ data:
   isVerificationFile: true
   path: test/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2021-10-31 15:43:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/dijkstra.test.cpp
 layout: document

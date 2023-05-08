@@ -85,7 +85,7 @@ data:
   isVerificationFile: false
   path: data_structure/DynamicSegmentTree.hpp
   requiredBy: []
-  timestamp: '2021-04-03 00:32:52+09:00'
+  timestamp: '2023-05-08 14:32:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/DynamicSegmentTree.test.cpp

@@ -1,28 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.0000001'
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B
-  bundledCode: "#line 1 \"test/geometry/reflection.test.cpp\"\n#define PROBLEM \"\
-    https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\r\n#define\
-    \ ERROR 0.0000001\r\n\r\n#include <iostream>\r\n#include <iomanip>\r\n#include\
-    \ <limits>\r\n\r\n#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#include\
-    \ <cmath>\r\n#include <cassert>\r\n#include <vector>\r\n#line 8 \"geometry/point.hpp\"\
+  bundledCode: "#line 1 \"test/geometry/reflection.test.cpp\"\n#define PROBLEM \\\r\
+    \n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\r\n\
+    #define ERROR 0.0000001\r\n\r\n#include <iomanip>\r\n#include <iostream>\r\n#include\
+    \ <limits>\r\n\r\n#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n#include\
+    \ <cassert>\n\n#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\n#line\
+    \ 6 \"geometry/point.hpp\"\n#include <vector>\r\n#line 8 \"geometry/point.hpp\"\
     \n#include <algorithm>\r\n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS\
     \ = 1e-10;\r\n\r\nconst long double PI = std::acos(-1);\r\n\r\nnamespace internal\
     \ {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1\
@@ -125,16 +126,15 @@ data:
     \ - p2.first * p1.second;\r\n                return flag == 0 ? (p1.first * p1.first\
     \ + p1.second * p1.second < p2.first * p2.first + p2.second * p2.second) : flag\
     \ > 0;\r\n            });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n\
-    \    }\r\n    return;\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 5\
-    \ \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\n\
-    struct line {\n    point a,b;\n\n    line(long double x1, long double y1, long\
-    \ double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const point\
-    \ &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const\
-    \ {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
-    \ point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\n    long\
-    \ double distance(const point &c) const {\n    return std::abs(det(c - a, b -\
-    \ a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line &b) {\n\
-    \    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
+    \    }\r\n    return;\r\n}\r\n\r\n}\n#line 7 \"geometry/line.hpp\"\n\nnamespace\
+    \ ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double\
+    \ y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const\
+    \ point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p)\
+    \ const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point\
+    \ relf(const point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\
+    \n    long double distance(const point &c) const {\n    return std::abs(det(c\
+    \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
+    \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
     \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
     \  return 0; // \u4EA4\u5DEE\n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a))\
     \ != 0) { // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\
@@ -148,29 +148,30 @@ data:
     \   return std::abs(det(c-a.a, a.b - a.a)/abs(a.b-a.a));\n}\n\nlong double distance(const\
     \ line &a, const line &b) {\n    if(intersection(a, b) < 2) {\n        return\
     \ 0;\n    }\n    else {\n        return distance(a, b.a);\n    }\n}\n\n}\n#line\
-    \ 10 \"test/geometry/reflection.test.cpp\"\n\r\nint main() {\r\n    std::cout\
-    \ << std::fixed << std::setprecision(15);\r\n    double x1,y1,x2,y2;\r\n    std::cin\
-    \ >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line l(x1,y1,x2,y2);\r\n    int q;\r\n\
-    \    std::cin >> q;\r\n    while(q--) {\r\n        double x,y;\r\n        std::cin\
-    \ >> x >> y;\r\n        ebi::point p(x,y);\r\n        ebi::point ans = l.relf(p);\r\
-    \n        std::cout << ans.x << \" \" << ans.y << std::endl;\r\n    }\r\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\
-    \r\n#define ERROR 0.0000001\r\n\r\n#include <iostream>\r\n#include <iomanip>\r\
-    \n#include <limits>\r\n\r\n#include \"geometry/point.hpp\"\r\n#include \"geometry/line.hpp\"\
+    \ 11 \"test/geometry/reflection.test.cpp\"\n\r\nint main() {\r\n    std::cout\
+    \ << std::fixed << std::setprecision(15);\r\n    double x1, y1, x2, y2;\r\n  \
+    \  std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line l(x1, y1, x2, y2);\r\n \
+    \   int q;\r\n    std::cin >> q;\r\n    while (q--) {\r\n        double x, y;\r\
+    \n        std::cin >> x >> y;\r\n        ebi::point p(x, y);\r\n        ebi::point\
+    \ ans = l.relf(p);\r\n        std::cout << ans.x << \" \" << ans.y << std::endl;\r\
+    \n    }\r\n}\n"
+  code: "#define PROBLEM \\\r\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/1/CGL_1_B\"\
+    \r\n#define ERROR 0.0000001\r\n\r\n#include <iomanip>\r\n#include <iostream>\r\
+    \n#include <limits>\r\n\r\n#include \"geometry/line.hpp\"\r\n#include \"geometry/point.hpp\"\
     \r\n\r\nint main() {\r\n    std::cout << std::fixed << std::setprecision(15);\r\
-    \n    double x1,y1,x2,y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line\
-    \ l(x1,y1,x2,y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while(q--) {\r\n\
-    \        double x,y;\r\n        std::cin >> x >> y;\r\n        ebi::point p(x,y);\r\
-    \n        ebi::point ans = l.relf(p);\r\n        std::cout << ans.x << \" \" <<\
-    \ ans.y << std::endl;\r\n    }\r\n}"
+    \n    double x1, y1, x2, y2;\r\n    std::cin >> x1 >> y1 >> x2 >> y2;\r\n    ebi::line\
+    \ l(x1, y1, x2, y2);\r\n    int q;\r\n    std::cin >> q;\r\n    while (q--) {\r\
+    \n        double x, y;\r\n        std::cin >> x >> y;\r\n        ebi::point p(x,\
+    \ y);\r\n        ebi::point ans = l.relf(p);\r\n        std::cout << ans.x <<\
+    \ \" \" << ans.y << std::endl;\r\n    }\r\n}"
   dependsOn:
-  - geometry/point.hpp
   - geometry/line.hpp
+  - geometry/point.hpp
   isVerificationFile: true
   path: test/geometry/reflection.test.cpp
   requiredBy: []
-  timestamp: '2022-07-08 00:50:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/reflection.test.cpp
 layout: document

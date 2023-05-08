@@ -93,7 +93,7 @@ data:
   isVerificationFile: false
   path: data_structure/slope_trick.hpp
   requiredBy: []
-  timestamp: '2021-07-19 18:24:01+09:00'
+  timestamp: '2023-05-08 14:32:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/slope_trick.hpp

@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/PersistentSegmentTree.test.cpp
     title: test/PersistentSegmentTree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://37zigen.com/persistent-segment-tree/
@@ -121,8 +121,8 @@ data:
   isVerificationFile: false
   path: data_structure/PersistentSegmentTree.hpp
   requiredBy: []
-  timestamp: '2021-01-25 18:32:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/PersistentSegmentTree.test.cpp
 documentation_of: data_structure/PersistentSegmentTree.hpp

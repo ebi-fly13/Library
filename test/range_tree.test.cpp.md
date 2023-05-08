@@ -1,23 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
     links:
     - https://judge.yosupo.jp/problem/rectangle_sum
   bundledCode: "#line 1 \"test/range_tree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\
-    \n\n#include <iostream>\n#include <cstdint>\n#include <vector>\n#include <tuple>\n\
-    \n#line 2 \"data_structure/range_tree.hpp\"\n\n#include <algorithm>\n#line 6 \"\
-    data_structure/range_tree.hpp\"\n\n/*\n    reference: https://www.slideshare.net/okuraofvegetable/ss-65377588\n\
+    \n\n#line 2 \"data_structure/range_tree.hpp\"\n\n#include <algorithm>\n#include\
+    \ <vector>\n#include <tuple>\n\n/*\n    reference: https://www.slideshare.net/okuraofvegetable/ss-65377588\n\
     */\n\nnamespace ebi {\n\ntemplate <class T, class S>\nstruct range_tree {\n  \
     \ private:\n    void build(std::vector<std::tuple<T, T, S>> points) {\n      \
     \  std::sort(points.begin(), points.end());\n        for (const auto &[x, y, val]\
@@ -56,28 +55,29 @@ data:
     \ yl, yr);\n            if(r & 1) res += prod_y(--r, yl, yr);\n            l >>=\
     \ 1;\n            r >>= 1;\n        }\n        return res;\n    }\n\n   private:\n\
     \    int n;\n    std::vector<T> xs;\n    std::vector<std::vector<T>> seg;\n  \
-    \  std::vector<std::vector<S>> sum;\n};\n\n}  // namespace ebi\n#line 9 \"test/range_tree.test.cpp\"\
-    \n\nusing i64 = std::int64_t;\n\nint main() {\n    int n,q;\n    std::cin >> n\
-    \ >> q;\n    std::vector<std::tuple<int,int,i64>> points(n);\n    for(auto &[x,\
-    \ y, w]: points) {\n        std::cin >> x >> y >> w;\n    }\n    ebi::range_tree\
-    \ tree(points);\n    while(q--) {\n        int l,d,r,u;\n        std::cin >> l\
-    \ >> d >> r >> u;\n        std::cout << tree.prod(l, r, d, u) << '\\n';\n    }\n\
-    }\n"
+    \  std::vector<std::vector<S>> sum;\n};\n\n}  // namespace ebi\n#line 4 \"test/range_tree.test.cpp\"\
+    \n\n#include <cstdint>\n#include <iostream>\n#line 9 \"test/range_tree.test.cpp\"\
+    \n\nusing i64 = std::int64_t;\n\nint main() {\n    int n, q;\n    std::cin >>\
+    \ n >> q;\n    std::vector<std::tuple<int, int, i64>> points(n);\n    for (auto\
+    \ &[x, y, w] : points) {\n        std::cin >> x >> y >> w;\n    }\n    ebi::range_tree\
+    \ tree(points);\n    while (q--) {\n        int l, d, r, u;\n        std::cin\
+    \ >> l >> d >> r >> u;\n        std::cout << tree.prod(l, r, d, u) << '\\n';\n\
+    \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
-    \ <iostream>\n#include <cstdint>\n#include <vector>\n#include <tuple>\n\n#include\
-    \ \"data_structure/range_tree.hpp\"\n\nusing i64 = std::int64_t;\n\nint main()\
-    \ {\n    int n,q;\n    std::cin >> n >> q;\n    std::vector<std::tuple<int,int,i64>>\
-    \ points(n);\n    for(auto &[x, y, w]: points) {\n        std::cin >> x >> y >>\
-    \ w;\n    }\n    ebi::range_tree tree(points);\n    while(q--) {\n        int\
-    \ l,d,r,u;\n        std::cin >> l >> d >> r >> u;\n        std::cout << tree.prod(l,\
-    \ r, d, u) << '\\n';\n    }\n}"
+    \ \"data_structure/range_tree.hpp\"\n\n#include <cstdint>\n#include <iostream>\n\
+    #include <tuple>\n#include <vector>\n\nusing i64 = std::int64_t;\n\nint main()\
+    \ {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<std::tuple<int, int,\
+    \ i64>> points(n);\n    for (auto &[x, y, w] : points) {\n        std::cin >>\
+    \ x >> y >> w;\n    }\n    ebi::range_tree tree(points);\n    while (q--) {\n\
+    \        int l, d, r, u;\n        std::cin >> l >> d >> r >> u;\n        std::cout\
+    \ << tree.prod(l, r, d, u) << '\\n';\n    }\n}"
   dependsOn:
   - data_structure/range_tree.hpp
   isVerificationFile: true
   path: test/range_tree.test.cpp
   requiredBy: []
-  timestamp: '2022-03-29 17:23:35+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/range_tree.test.cpp
 layout: document

@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/Z_Algorithm.hpp
     title: String/Z_Algorithm.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
@@ -27,23 +27,23 @@ data:
     \ && k+prefix[k]<j) {\r\n            prefix[i+k] = prefix[k];\r\n            ++k;\r\
     \n        }\r\n        i += k;\r\n        j -= k;\r\n    }\r\n    return prefix;\r\
     \n}\r\n\r\n} // namespace ebi\n#line 4 \"test/Z_Algorithm.test.cpp\"\n\r\n#include\
-    \ <iostream>\r\n#line 7 \"test/Z_Algorithm.test.cpp\"\n\r\nint main(){\r\n   \
-    \ std::string s;\r\n    std::cin >> s;\r\n    auto A = ebi::Z_Algorithm(s);\r\n\
-    \    std::cout << A[0];\r\n    for(int i = 1; i<s.size(); i++){\r\n        std::cout\
-    \ << \" \" << A[i];\r\n    }\r\n    std::cout << std::endl;\r\n}\n"
+    \ <iostream>\r\n#line 7 \"test/Z_Algorithm.test.cpp\"\n\r\nint main() {\r\n  \
+    \  std::string s;\r\n    std::cin >> s;\r\n    auto A = ebi::Z_Algorithm(s);\r\
+    \n    std::cout << A[0];\r\n    for (int i = 1; i < s.size(); i++) {\r\n     \
+    \   std::cout << \" \" << A[i];\r\n    }\r\n    std::cout << std::endl;\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\r\n\r\n#include\
     \ \"../String/Z_Algorithm.hpp\"\r\n\r\n#include <iostream>\r\n#include <vector>\r\
-    \n\r\nint main(){\r\n    std::string s;\r\n    std::cin >> s;\r\n    auto A =\
-    \ ebi::Z_Algorithm(s);\r\n    std::cout << A[0];\r\n    for(int i = 1; i<s.size();\
-    \ i++){\r\n        std::cout << \" \" << A[i];\r\n    }\r\n    std::cout << std::endl;\r\
+    \n\r\nint main() {\r\n    std::string s;\r\n    std::cin >> s;\r\n    auto A =\
+    \ ebi::Z_Algorithm(s);\r\n    std::cout << A[0];\r\n    for (int i = 1; i < s.size();\
+    \ i++) {\r\n        std::cout << \" \" << A[i];\r\n    }\r\n    std::cout << std::endl;\r\
     \n}"
   dependsOn:
   - String/Z_Algorithm.hpp
   isVerificationFile: true
   path: test/Z_Algorithm.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Z_Algorithm.test.cpp
 layout: document

@@ -67,7 +67,7 @@ data:
   isVerificationFile: false
   path: tree/centroid_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-05-07 16:40:33+09:00'
+  timestamp: '2023-05-08 14:32:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: tree/centroid_decomposition.hpp

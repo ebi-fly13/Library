@@ -43,7 +43,7 @@ data:
   isVerificationFile: false
   path: math/boastan_mori_algorithm.hpp
   requiredBy: []
-  timestamp: '2023-03-31 02:18:29+09:00'
+  timestamp: '2023-05-08 14:32:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/boastan_mori_algorithm.hpp

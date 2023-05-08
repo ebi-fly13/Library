@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segtree.hpp
     title: segtree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
@@ -53,34 +53,36 @@ data:
     \   return r + 1 - sz;\r\n            }\r\n            sm = op(data[r], sm);\r\
     \n        } while ((r & -r) != r);\r\n        return 0;\r\n    }\r\n\r\n    S\
     \ operator [] (int p) const { return data[sz+p]; }\r\n};\r\n\r\n} // namespace\
-    \ ebi\r\n#line 4 \"test/Segtree.test.cpp\"\n\r\n#include <iostream>\r\n#include\
-    \ <cstdint>\r\n\r\nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b) { return\
-    \ a+b; }\r\ni64 e() { return (i64)0; }\r\n\r\nint main(){\r\n    int n,q; std::cin\
-    \ >> n >> q;\r\n    std::vector<i64> a(n);\r\n    for(int i = 0; i<n; i++){\r\n\
-    \        std::cin >> a[i];\r\n    }\r\n    ebi::segtree<i64, op, e> seg(a);\r\n\
-    \    while(q--){\r\n        int t;\r\n        std::cin >> t;\r\n        if(t==0){\r\
-    \n            int p; i64 x; std::cin >> p >> x;\r\n            seg.set(p,seg[p]+x);\r\
-    \n        }\r\n        else{\r\n            int l,r; std::cin >> l >> r;\r\n \
-    \           std::cout << seg.prod(l,r) << std::endl;\r\n        }\r\n    }\r\n\
-    \    return 0;\r\n}\n"
+    \ ebi\r\n#line 4 \"test/Segtree.test.cpp\"\n\r\n#include <cstdint>\r\n#include\
+    \ <iostream>\r\n\r\nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b) { return\
+    \ a + b; }\r\ni64 e() { return (i64)0; }\r\n\r\nint main() {\r\n    int n, q;\r\
+    \n    std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\n    for (int i = 0;\
+    \ i < n; i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::segtree<i64,\
+    \ op, e> seg(a);\r\n    while (q--) {\r\n        int t;\r\n        std::cin >>\
+    \ t;\r\n        if (t == 0) {\r\n            int p;\r\n            i64 x;\r\n\
+    \            std::cin >> p >> x;\r\n            seg.set(p, seg[p] + x);\r\n  \
+    \      } else {\r\n            int l, r;\r\n            std::cin >> l >> r;\r\n\
+    \            std::cout << seg.prod(l, r) << std::endl;\r\n        }\r\n    }\r\
+    \n    return 0;\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\r\
-    \n\r\n#include \"../data_structure/segtree.hpp\"\r\n\r\n#include <iostream>\r\n\
-    #include <cstdint>\r\n\r\nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b)\
-    \ { return a+b; }\r\ni64 e() { return (i64)0; }\r\n\r\nint main(){\r\n    int\
-    \ n,q; std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\n    for(int i = 0;\
-    \ i<n; i++){\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::segtree<i64, op,\
-    \ e> seg(a);\r\n    while(q--){\r\n        int t;\r\n        std::cin >> t;\r\n\
-    \        if(t==0){\r\n            int p; i64 x; std::cin >> p >> x;\r\n      \
-    \      seg.set(p,seg[p]+x);\r\n        }\r\n        else{\r\n            int l,r;\
-    \ std::cin >> l >> r;\r\n            std::cout << seg.prod(l,r) << std::endl;\r\
-    \n        }\r\n    }\r\n    return 0;\r\n}"
+    \n\r\n#include \"../data_structure/segtree.hpp\"\r\n\r\n#include <cstdint>\r\n\
+    #include <iostream>\r\n\r\nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64\
+    \ b) { return a + b; }\r\ni64 e() { return (i64)0; }\r\n\r\nint main() {\r\n \
+    \   int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\n   \
+    \ for (int i = 0; i < n; i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::segtree<i64,\
+    \ op, e> seg(a);\r\n    while (q--) {\r\n        int t;\r\n        std::cin >>\
+    \ t;\r\n        if (t == 0) {\r\n            int p;\r\n            i64 x;\r\n\
+    \            std::cin >> p >> x;\r\n            seg.set(p, seg[p] + x);\r\n  \
+    \      } else {\r\n            int l, r;\r\n            std::cin >> l >> r;\r\n\
+    \            std::cout << seg.prod(l, r) << std::endl;\r\n        }\r\n    }\r\
+    \n    return 0;\r\n}"
   dependsOn:
   - data_structure/segtree.hpp
   isVerificationFile: true
   path: test/Segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 15:36:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Segtree.test.cpp
 layout: document

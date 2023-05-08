@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Matrix/SquareMatrix.hpp
     title: Matrix/SquareMatrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -101,18 +101,18 @@ data:
     \n\r\ntemplate<std::uint_fast64_t Modulus>\r\nstd::ostream& operator<<(std::ostream&\
     \ os, modint<Modulus> a){\r\n    return os << a.val();\r\n}\r\n\r\n} // namespace\
     \ ebi\n#line 7 \"test/Determinant_of_Matrix.test.cpp\"\n\r\nusing Matrix = ebi::SquareMatrix<ebi::modint998244353>;\r\
-    \n\r\nint main(){\r\n    int n;\r\n    std::cin >> n;\r\n    Matrix::set_size(n);\r\
-    \n    Matrix a;\r\n    for(int i = 0; i < n; ++i) {\r\n        for(int j = 0;\
+    \n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    Matrix::set_size(n);\r\
+    \n    Matrix a;\r\n    for (int i = 0; i < n; ++i) {\r\n        for (int j = 0;\
     \ j < n; ++j) {\r\n            int val;\r\n            std::cin >> val;\r\n  \
     \          a[i][j] = val;\r\n        }\r\n    }\r\n    std::cout << a.det().val()\
     \ << std::endl;\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\r\n\r\n#include\
     \ <iostream>\r\n\r\n#include \"../Matrix/SquareMatrix.hpp\"\r\n#include \"../utility/modint.hpp\"\
-    \r\n\r\nusing Matrix = ebi::SquareMatrix<ebi::modint998244353>;\r\n\r\nint main(){\r\
-    \n    int n;\r\n    std::cin >> n;\r\n    Matrix::set_size(n);\r\n    Matrix a;\r\
-    \n    for(int i = 0; i < n; ++i) {\r\n        for(int j = 0; j < n; ++j) {\r\n\
-    \            int val;\r\n            std::cin >> val;\r\n            a[i][j] =\
-    \ val;\r\n        }\r\n    }\r\n    std::cout << a.det().val() << std::endl;\r\
+    \r\n\r\nusing Matrix = ebi::SquareMatrix<ebi::modint998244353>;\r\n\r\nint main()\
+    \ {\r\n    int n;\r\n    std::cin >> n;\r\n    Matrix::set_size(n);\r\n    Matrix\
+    \ a;\r\n    for (int i = 0; i < n; ++i) {\r\n        for (int j = 0; j < n; ++j)\
+    \ {\r\n            int val;\r\n            std::cin >> val;\r\n            a[i][j]\
+    \ = val;\r\n        }\r\n    }\r\n    std::cout << a.det().val() << std::endl;\r\
     \n}"
   dependsOn:
   - Matrix/SquareMatrix.hpp
@@ -120,7 +120,7 @@ data:
   isVerificationFile: true
   path: test/Determinant_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2021-04-25 12:46:18+09:00'
+  timestamp: '2023-05-08 05:33:08+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Determinant_of_Matrix.test.cpp

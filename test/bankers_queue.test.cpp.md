@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/Stream.hpp
     title: data_structure/Stream.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/Suspension.hpp
     title: data_structure/Suspension.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/bankers_queue.hpp
     title: data_structure/bankers_queue.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/persistent_queue
@@ -70,27 +70,27 @@ data:
     \ push(T x) {\r\n        return Self(f, fsize, r.push(x), rsize+1).normalize();\r\
     \n    }\r\n\r\n    Self pop() {\r\n        assert(!empty());\r\n        return\
     \ Self(f.pop(), fsize-1, r, rsize).normalize();\r\n    }\r\n};\r\n\r\n}\n#line\
-    \ 4 \"test/bankers_queue.test.cpp\"\n\r\n#include <iostream>\r\n#include <iomanip>\r\
+    \ 4 \"test/bankers_queue.test.cpp\"\n\r\n#include <iomanip>\r\n#include <iostream>\r\
     \n#include <limits>\r\n#include <vector>\r\n\r\nint main() {\r\n    std::cout\
     \ << std::fixed << std::setprecision(15);\r\n    int q;\r\n    std::cin >> q;\r\
-    \n    std::vector<ebi::bankers_queue<int>> que(1);\r\n    while(q--) {\r\n   \
-    \     int flag;\r\n        std::cin >> flag;\r\n        if(flag == 0) {\r\n  \
-    \          int t,x;\r\n            std::cin >> t >> x;\r\n            t++;\r\n\
-    \            que.emplace_back(que[t].push(x));\r\n        }\r\n        else {\r\
-    \n            int t;\r\n            std::cin >> t;\r\n            t++;\r\n   \
-    \         std::cout << que[t].top() << '\\n';\r\n            que.emplace_back(que[t].pop());\r\
+    \n    std::vector<ebi::bankers_queue<int>> que(1);\r\n    while (q--) {\r\n  \
+    \      int flag;\r\n        std::cin >> flag;\r\n        if (flag == 0) {\r\n\
+    \            int t, x;\r\n            std::cin >> t >> x;\r\n            t++;\r\
+    \n            que.emplace_back(que[t].push(x));\r\n        } else {\r\n      \
+    \      int t;\r\n            std::cin >> t;\r\n            t++;\r\n          \
+    \  std::cout << que[t].top() << '\\n';\r\n            que.emplace_back(que[t].pop());\r\
     \n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\r\n\r\
-    \n#include \"../data_structure/bankers_queue.hpp\"\r\n\r\n#include <iostream>\r\
-    \n#include <iomanip>\r\n#include <limits>\r\n#include <vector>\r\n\r\nint main()\
+    \n#include \"../data_structure/bankers_queue.hpp\"\r\n\r\n#include <iomanip>\r\
+    \n#include <iostream>\r\n#include <limits>\r\n#include <vector>\r\n\r\nint main()\
     \ {\r\n    std::cout << std::fixed << std::setprecision(15);\r\n    int q;\r\n\
     \    std::cin >> q;\r\n    std::vector<ebi::bankers_queue<int>> que(1);\r\n  \
-    \  while(q--) {\r\n        int flag;\r\n        std::cin >> flag;\r\n        if(flag\
-    \ == 0) {\r\n            int t,x;\r\n            std::cin >> t >> x;\r\n     \
-    \       t++;\r\n            que.emplace_back(que[t].push(x));\r\n        }\r\n\
-    \        else {\r\n            int t;\r\n            std::cin >> t;\r\n      \
-    \      t++;\r\n            std::cout << que[t].top() << '\\n';\r\n           \
-    \ que.emplace_back(que[t].pop());\r\n        }\r\n    }\r\n}"
+    \  while (q--) {\r\n        int flag;\r\n        std::cin >> flag;\r\n       \
+    \ if (flag == 0) {\r\n            int t, x;\r\n            std::cin >> t >> x;\r\
+    \n            t++;\r\n            que.emplace_back(que[t].push(x));\r\n      \
+    \  } else {\r\n            int t;\r\n            std::cin >> t;\r\n          \
+    \  t++;\r\n            std::cout << que[t].top() << '\\n';\r\n            que.emplace_back(que[t].pop());\r\
+    \n        }\r\n    }\r\n}"
   dependsOn:
   - data_structure/bankers_queue.hpp
   - data_structure/Stream.hpp
@@ -98,8 +98,8 @@ data:
   isVerificationFile: true
   path: test/bankers_queue.test.cpp
   requiredBy: []
-  timestamp: '2021-03-01 14:43:05+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/bankers_queue.test.cpp
 layout: document

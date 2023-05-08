@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/binary_trie.hpp
     title: data_structure/binary_trie.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/set_xor_min
@@ -56,7 +56,7 @@ data:
     \n    }\r\n\r\n    int size() const { return root->count; }\r\n\r\n   private:\r\
     \n    const size_t bit_size = sizeof(T) * CHAR_BIT;\r\n    node_ptr root = std::make_shared<Node>();\r\
     \n};\r\n\r\n}  // namespace ebi\n#line 4 \"test/binary_trie.test.cpp\"\n\r\n#include\
-    \ <iostream>\r\n\r\nint main(){\r\n    int q;\r\n    std::cin >> q;\r\n    ebi::binary_trie<int>\
+    \ <iostream>\r\n\r\nint main() {\r\n    int q;\r\n    std::cin >> q;\r\n    ebi::binary_trie<int>\
     \ trie;\r\n    while (q--) {\r\n        int t, x;\r\n        std::cin >> t >>\
     \ x;\r\n        if (t == 0) {\r\n            if (!trie.find(x)) trie.insert(x);\r\
     \n        } else if (t == 1) {\r\n            if (trie.find(x)) trie.erase(x);\r\
@@ -64,7 +64,7 @@ data:
     \n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\r\n\r\n#include\
     \ \"../data_structure/binary_trie.hpp\"\r\n\r\n#include <iostream>\r\n\r\nint\
-    \ main(){\r\n    int q;\r\n    std::cin >> q;\r\n    ebi::binary_trie<int> trie;\r\
+    \ main() {\r\n    int q;\r\n    std::cin >> q;\r\n    ebi::binary_trie<int> trie;\r\
     \n    while (q--) {\r\n        int t, x;\r\n        std::cin >> t >> x;\r\n  \
     \      if (t == 0) {\r\n            if (!trie.find(x)) trie.insert(x);\r\n   \
     \     } else if (t == 1) {\r\n            if (trie.find(x)) trie.erase(x);\r\n\
@@ -75,8 +75,8 @@ data:
   isVerificationFile: true
   path: test/binary_trie.test.cpp
   requiredBy: []
-  timestamp: '2022-05-19 19:15:45+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/binary_trie.test.cpp
 layout: document

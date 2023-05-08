@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/fibonacci_heap.hpp
     title: fibonacci_heap
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fibonacci_heap.test.cpp
     title: test/fibonacci_heap.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/dijkstra_fibheap.hpp\"\n\r\n#line 2 \"data_structure/fibonacci_heap.hpp\"\
@@ -124,8 +124,8 @@ data:
   isVerificationFile: false
   path: graph/dijkstra_fibheap.hpp
   requiredBy: []
-  timestamp: '2021-10-31 15:43:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/fibonacci_heap.test.cpp
 documentation_of: graph/dijkstra_fibheap.hpp

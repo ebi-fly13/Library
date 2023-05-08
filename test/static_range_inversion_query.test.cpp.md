@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algorithm/mo_algorithm.hpp
     title: algorithm/mo_algorithm.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/FenwickTree.hpp
     title: data_structure/FenwickTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
@@ -22,9 +22,9 @@ data:
     - https://judge.yosupo.jp/problem/static_range_inversions_query
   bundledCode: "#line 1 \"test/static_range_inversion_query.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\r\n\r\n#include\
-    \ <iostream>\r\n#include <vector>\r\n#include <algorithm>\r\n#include <numeric>\r\
-    \n#include <cstdint>\r\n\r\n#line 2 \"algorithm/mo_algorithm.hpp\"\n\r\n#line\
-    \ 5 \"algorithm/mo_algorithm.hpp\"\n#include <cmath>\r\n#line 7 \"algorithm/mo_algorithm.hpp\"\
+    \ <algorithm>\r\n#include <cstdint>\r\n#include <iostream>\r\n#include <numeric>\r\
+    \n#include <vector>\r\n\r\n#line 2 \"algorithm/mo_algorithm.hpp\"\n\r\n#line 5\
+    \ \"algorithm/mo_algorithm.hpp\"\n#include <cmath>\r\n#line 7 \"algorithm/mo_algorithm.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\ntemplate<class IL, class IR, class DL, class DR,\
     \ class O>\r\nvoid mo_algorithm(const int &n, const std::vector<int> &l, const\
     \ std::vector<int> &r, const IL &insert_left, const IR &insert_right, const DL\
@@ -65,44 +65,45 @@ data:
     \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
     \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
     \        return cp[idx];\n    }\n};\n\n}\n#line 12 \"test/static_range_inversion_query.test.cpp\"\
-    \n\r\nusing u64 = std::uint64_t;\r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin\
+    \n\r\nusing u64 = std::uint64_t;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin\
     \ >> n >> q;\r\n    std::vector<int> a(n);\r\n    std::vector<int> l(q), r(q);\r\
-    \n    ebi::compress<int> cp;\r\n    for(int i = 0; i < n; i++) {\r\n        std::cin\
-    \ >> a[i];\r\n        cp.add(a[i]);\r\n    }\r\n    cp.build();\r\n    for(int\
-    \ i = 0; i < n; i++) {\r\n        a[i] = cp.get(a[i]);\r\n    }\r\n    for(int\
+    \n    ebi::compress<int> cp;\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin\
+    \ >> a[i];\r\n        cp.add(a[i]);\r\n    }\r\n    cp.build();\r\n    for (int\
+    \ i = 0; i < n; i++) {\r\n        a[i] = cp.get(a[i]);\r\n    }\r\n    for (int\
     \ i = 0; i < q; i++) {\r\n        std::cin >> l[i] >> r[i];\r\n    }\r\n    ebi::FenwickTree<u64>\
     \ fw(cp.size());\r\n    std::vector<u64> ans(q);\r\n    u64 ret = 0;\r\n    const\
     \ auto insert_left = [&](int l) -> void {\r\n        ret += fw.prefix_sum(a[l]);\r\
     \n        fw.add(a[l], 1);\r\n    };\r\n    const auto insert_right = [&](int\
-    \ r) -> void {\r\n        ret += fw.sum(a[r]+1, cp.size());\r\n        fw.add(a[r],\
+    \ r) -> void {\r\n        ret += fw.sum(a[r] + 1, cp.size());\r\n        fw.add(a[r],\
     \ 1);\r\n    };\r\n    const auto delete_left = [&](int l) -> void {\r\n     \
     \   ret -= fw.prefix_sum(a[l]);\r\n        fw.add(a[l], -1);\r\n    };\r\n   \
-    \ const auto delete_right = [&](int r) -> void {\r\n        ret -= fw.sum(a[r]+1,\
-    \ cp.size());\r\n        fw.add(a[r], -1);\r\n    };\r\n    const auto out = [&](int\
-    \ i) -> void {\r\n        ans[i] = ret;\r\n    };\r\n    ebi::mo_algorithm(n,\
-    \ l, r, insert_left, insert_right, delete_left, delete_right, out);\r\n    for(auto\
-    \ val: ans) {\r\n        std::cout << val << '\\n';\r\n    }\r\n}\n"
+    \ const auto delete_right = [&](int r) -> void {\r\n        ret -= fw.sum(a[r]\
+    \ + 1, cp.size());\r\n        fw.add(a[r], -1);\r\n    };\r\n    const auto out\
+    \ = [&](int i) -> void { ans[i] = ret; };\r\n    ebi::mo_algorithm(n, l, r, insert_left,\
+    \ insert_right, delete_left,\r\n                      delete_right, out);\r\n\
+    \    for (auto val : ans) {\r\n        std::cout << val << '\\n';\r\n    }\r\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
-    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n#include <algorithm>\r\n#include\
-    \ <numeric>\r\n#include <cstdint>\r\n\r\n#include \"../algorithm/mo_algorithm.hpp\"\
+    \r\n\r\n#include <algorithm>\r\n#include <cstdint>\r\n#include <iostream>\r\n\
+    #include <numeric>\r\n#include <vector>\r\n\r\n#include \"../algorithm/mo_algorithm.hpp\"\
     \r\n#include \"../data_structure/FenwickTree.hpp\"\r\n#include \"../data_structure/compress.hpp\"\
-    \r\n\r\nusing u64 = std::uint64_t;\r\n\r\nint main() {\r\n    int n,q;\r\n   \
-    \ std::cin >> n >> q;\r\n    std::vector<int> a(n);\r\n    std::vector<int> l(q),\
-    \ r(q);\r\n    ebi::compress<int> cp;\r\n    for(int i = 0; i < n; i++) {\r\n\
+    \r\n\r\nusing u64 = std::uint64_t;\r\n\r\nint main() {\r\n    int n, q;\r\n  \
+    \  std::cin >> n >> q;\r\n    std::vector<int> a(n);\r\n    std::vector<int> l(q),\
+    \ r(q);\r\n    ebi::compress<int> cp;\r\n    for (int i = 0; i < n; i++) {\r\n\
     \        std::cin >> a[i];\r\n        cp.add(a[i]);\r\n    }\r\n    cp.build();\r\
-    \n    for(int i = 0; i < n; i++) {\r\n        a[i] = cp.get(a[i]);\r\n    }\r\n\
-    \    for(int i = 0; i < q; i++) {\r\n        std::cin >> l[i] >> r[i];\r\n   \
-    \ }\r\n    ebi::FenwickTree<u64> fw(cp.size());\r\n    std::vector<u64> ans(q);\r\
+    \n    for (int i = 0; i < n; i++) {\r\n        a[i] = cp.get(a[i]);\r\n    }\r\
+    \n    for (int i = 0; i < q; i++) {\r\n        std::cin >> l[i] >> r[i];\r\n \
+    \   }\r\n    ebi::FenwickTree<u64> fw(cp.size());\r\n    std::vector<u64> ans(q);\r\
     \n    u64 ret = 0;\r\n    const auto insert_left = [&](int l) -> void {\r\n  \
     \      ret += fw.prefix_sum(a[l]);\r\n        fw.add(a[l], 1);\r\n    };\r\n \
-    \   const auto insert_right = [&](int r) -> void {\r\n        ret += fw.sum(a[r]+1,\
-    \ cp.size());\r\n        fw.add(a[r], 1);\r\n    };\r\n    const auto delete_left\
+    \   const auto insert_right = [&](int r) -> void {\r\n        ret += fw.sum(a[r]\
+    \ + 1, cp.size());\r\n        fw.add(a[r], 1);\r\n    };\r\n    const auto delete_left\
     \ = [&](int l) -> void {\r\n        ret -= fw.prefix_sum(a[l]);\r\n        fw.add(a[l],\
     \ -1);\r\n    };\r\n    const auto delete_right = [&](int r) -> void {\r\n   \
-    \     ret -= fw.sum(a[r]+1, cp.size());\r\n        fw.add(a[r], -1);\r\n    };\r\
-    \n    const auto out = [&](int i) -> void {\r\n        ans[i] = ret;\r\n    };\r\
-    \n    ebi::mo_algorithm(n, l, r, insert_left, insert_right, delete_left, delete_right,\
-    \ out);\r\n    for(auto val: ans) {\r\n        std::cout << val << '\\n';\r\n\
+    \     ret -= fw.sum(a[r] + 1, cp.size());\r\n        fw.add(a[r], -1);\r\n   \
+    \ };\r\n    const auto out = [&](int i) -> void { ans[i] = ret; };\r\n    ebi::mo_algorithm(n,\
+    \ l, r, insert_left, insert_right, delete_left,\r\n                      delete_right,\
+    \ out);\r\n    for (auto val : ans) {\r\n        std::cout << val << '\\n';\r\n\
     \    }\r\n}"
   dependsOn:
   - algorithm/mo_algorithm.hpp
@@ -111,8 +112,8 @@ data:
   isVerificationFile: true
   path: test/static_range_inversion_query.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 15:56:10+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/static_range_inversion_query.test.cpp
 layout: document

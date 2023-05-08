@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/persistent_unionfind.hpp
     title: data_structure/persistent_unionfind.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/persistent_unionfind.test.cpp
     title: test/persistent_unionfind.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://37zigen.com/persistent-array/
@@ -115,8 +115,8 @@ data:
   path: data_structure/persistent_array.hpp
   requiredBy:
   - data_structure/persistent_unionfind.hpp
-  timestamp: '2021-04-02 19:30:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/persistent_unionfind.test.cpp
 documentation_of: data_structure/persistent_array.hpp

@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/WaveletMatrix.hpp
     title: WaveletMatrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_frequency
     links:
     - https://judge.yosupo.jp/problem/static_range_frequency
   bundledCode: "#line 1 \"test/Static_Range_Frequency.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\n\n#include <vector>\n\
-    #include <cstdint>\n#include <iostream>\n\n#line 2 \"data_structure/WaveletMatrix.hpp\"\
+    \ \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\n#include <cstdint>\n\
+    #include <iostream>\n#include <vector>\n\n#line 2 \"data_structure/WaveletMatrix.hpp\"\
     \n\r\n#line 2 \"data_structure/bitVector.hpp\"\n\r\n#line 2 \"utility/int_alias.hpp\"\
     \n\r\n#include <cstddef>\r\n#line 5 \"utility/int_alias.hpp\"\n\r\nusing i32 =\
     \ std::int32_t;\r\nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\n\
@@ -100,21 +100,22 @@ data:
     \            val |= (T)1 << bit;\r\n                l = border[bit] + rank_l;\r\
     \n                r = border[bit] + rank_r;\r\n                k -= zero;\r\n\
     \            }\r\n        }\r\n        return val;\r\n    }\r\n};\r\n\r\n} //\
-    \ namespace ebi\n#line 9 \"test/Static_Range_Frequency.test.cpp\"\n\nint main()\
-    \ {\n    int n,q;\n    std::cin >> n >> q;\n    std::vector<int> a(n);\n    for(auto\
-    \ &val: a) {\n        std::cin >> val;\n    }\n    ebi::WaveletMatrix<int> wm(a);\n\
-    \    while(q--) {\n        int l,r,x;\n        std::cin >> l >> r >> x;\n    \
-    \    if(l == r) {\n            std::cout << \"0\\n\";\n            continue;\n\
-    \        }\n        std::cout << wm.rank(r, x) - wm.rank(l, x) << '\\n';\n   \
-    \ }\n    return 0;\n}\n"
+    \ namespace ebi\n#line 8 \"test/Static_Range_Frequency.test.cpp\"\n\nint main()\
+    \ {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<int> a(n);\n    for\
+    \ (auto &val : a) {\n        std::cin >> val;\n    }\n    ebi::WaveletMatrix<int>\
+    \ wm(a);\n    while (q--) {\n        int l, r, x;\n        std::cin >> l >> r\
+    \ >> x;\n        if (l == r) {\n            std::cout << \"0\\n\";\n         \
+    \   continue;\n        }\n        std::cout << wm.rank(r, x) - wm.rank(l, x) <<\
+    \ '\\n';\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
-    \n\n\n#include <vector>\n#include <cstdint>\n#include <iostream>\n\n#include \"\
-    data_structure/WaveletMatrix.hpp\"\n\nint main() {\n    int n,q;\n    std::cin\
-    \ >> n >> q;\n    std::vector<int> a(n);\n    for(auto &val: a) {\n        std::cin\
-    \ >> val;\n    }\n    ebi::WaveletMatrix<int> wm(a);\n    while(q--) {\n     \
-    \   int l,r,x;\n        std::cin >> l >> r >> x;\n        if(l == r) {\n     \
-    \       std::cout << \"0\\n\";\n            continue;\n        }\n        std::cout\
-    \ << wm.rank(r, x) - wm.rank(l, x) << '\\n';\n    }\n    return 0;\n}"
+    \n\n#include <cstdint>\n#include <iostream>\n#include <vector>\n\n#include \"\
+    data_structure/WaveletMatrix.hpp\"\n\nint main() {\n    int n, q;\n    std::cin\
+    \ >> n >> q;\n    std::vector<int> a(n);\n    for (auto &val : a) {\n        std::cin\
+    \ >> val;\n    }\n    ebi::WaveletMatrix<int> wm(a);\n    while (q--) {\n    \
+    \    int l, r, x;\n        std::cin >> l >> r >> x;\n        if (l == r) {\n \
+    \           std::cout << \"0\\n\";\n            continue;\n        }\n       \
+    \ std::cout << wm.rank(r, x) - wm.rank(l, x) << '\\n';\n    }\n    return 0;\n\
+    }"
   dependsOn:
   - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
@@ -122,8 +123,8 @@ data:
   isVerificationFile: true
   path: test/Static_Range_Frequency.test.cpp
   requiredBy: []
-  timestamp: '2022-01-10 06:39:24+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Static_Range_Frequency.test.cpp
 layout: document

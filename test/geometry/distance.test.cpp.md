@@ -1,45 +1,46 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D
-  bundledCode: "#line 1 \"test/geometry/distance.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D\"\
-    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
-    \ <algorithm>\n#include <iomanip>\n\n#line 2 \"geometry/point.hpp\"\n\r\n#include\
-    \ <cstdint>\r\n#include <cmath>\r\n#include <cassert>\r\n#line 9 \"geometry/point.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nconstexpr long double EPS = 1e-10;\r\n\r\nconst long\
-    \ double PI = std::acos(-1);\r\n\r\nnamespace internal {\r\n\r\nint sgn(long double\
-    \ a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1 : 0;\r\n}\r\n\r\nlong double\
-    \ add(long double a, long double b) {\r\n    if(std::abs(a+b) < EPS*(std::abs(a)\
-    \ + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n} // namespace internal\r\
-    \n\r\nlong double arg_to_radian(long double arg) {\r\n    return PI * arg / (long\
-    \ double)(180);\r\n}\r\n\r\nstruct point {\r\n    long double x,y;\r\n\r\n   \
-    \ point() = default;\r\n\r\n    point(long double x, long double y) : x(x), y(y)\
-    \ { }\r\n\r\n    point &operator+=(const point rhs) noexcept {\r\n        x =\
-    \ internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\n       \
-    \ return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs) noexcept\
-    \ {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y, -rhs.y);\r\
-    \n        return *this;\r\n    }\r\n\r\n    point &operator*=(const point rhs)\
-    \ noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\n\
-    \        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
+  bundledCode: "#line 1 \"test/geometry/distance.test.cpp\"\n#define PROBLEM \\\n\
+    \    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D\"\n\
+    #define ERROR 0.00000001\n\n#include <algorithm>\n#include <iomanip>\n#include\
+    \ <iostream>\n#include <vector>\n\n#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n\
+    #include <cassert>\n\n#line 2 \"geometry/point.hpp\"\n\r\n#include <cstdint>\r\
+    \n#line 9 \"geometry/point.hpp\"\n\r\nnamespace ebi {\r\n\r\nconstexpr long double\
+    \ EPS = 1e-10;\r\n\r\nconst long double PI = std::acos(-1);\r\n\r\nnamespace internal\
+    \ {\r\n\r\nint sgn(long double a) {\r\n    return (a<-EPS) ? -1 : (a>EPS) ? 1\
+    \ : 0;\r\n}\r\n\r\nlong double add(long double a, long double b) {\r\n    if(std::abs(a+b)\
+    \ < EPS*(std::abs(a) + std::abs(b))) return 0;\r\n    return a+b;\r\n}\r\n\r\n\
+    } // namespace internal\r\n\r\nlong double arg_to_radian(long double arg) {\r\n\
+    \    return PI * arg / (long double)(180);\r\n}\r\n\r\nstruct point {\r\n    long\
+    \ double x,y;\r\n\r\n    point() = default;\r\n\r\n    point(long double x, long\
+    \ double y) : x(x), y(y) { }\r\n\r\n    point &operator+=(const point rhs) noexcept\
+    \ {\r\n        x = internal::add(x, rhs.x);\r\n        y = internal::add(y, rhs.y);\r\
+    \n        return *this;\r\n    }\r\n\r\n    point &operator-=(const point rhs)\
+    \ noexcept {\r\n        x = internal::add(x, -rhs.x);\r\n        y = internal::add(y,\
+    \ -rhs.y);\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
+    \ point rhs) noexcept {\r\n        long double _x = internal::add(x*rhs.x, -y*rhs.y);\r\
+    \n        long double _y = internal::add(x*rhs.y, y*rhs.x);\r\n        x = _x;\r\
     \n        y = _y;\r\n        return *this;\r\n    }\r\n\r\n    point &operator*=(const\
     \ long double k) noexcept {\r\n        x *= k;\r\n        y *= k;\r\n        return\
     \ *this;\r\n    }\r\n\r\n    point &operator/=(const long double k) {\r\n    \
@@ -127,16 +128,15 @@ data:
     \ - p2.first * p1.second;\r\n                return flag == 0 ? (p1.first * p1.first\
     \ + p1.second * p1.second < p2.first * p2.first + p2.second * p2.second) : flag\
     \ > 0;\r\n            });\r\n        for(auto &p: ps[i]) a.emplace_back(p);\r\n\
-    \    }\r\n    return;\r\n}\r\n\r\n}\n#line 2 \"geometry/line.hpp\"\n\n#line 5\
-    \ \"geometry/line.hpp\"\n\n#line 7 \"geometry/line.hpp\"\n\nnamespace ebi {\n\n\
-    struct line {\n    point a,b;\n\n    line(long double x1, long double y1, long\
-    \ double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const point\
-    \ &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p) const\
-    \ {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point relf(const\
-    \ point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\n    long\
-    \ double distance(const point &c) const {\n    return std::abs(det(c - a, b -\
-    \ a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line &b) {\n\
-    \    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
+    \    }\r\n    return;\r\n}\r\n\r\n}\n#line 7 \"geometry/line.hpp\"\n\nnamespace\
+    \ ebi {\n\nstruct line {\n    point a,b;\n\n    line(long double x1, long double\
+    \ y1, long double x2, long double y2) : a(x1, y1), b(x2, y2) { }\n\n    line(const\
+    \ point &a, const point &b) : a(a), b(b) { }\n\n    point proj(const point &p)\
+    \ const {\n        return a + (b-a)*(dot(b-a,p-a)/norm(b-a));\n    }\n\n    point\
+    \ relf(const point &p) const {\n        return proj(p)*double(2) - p;\n    }\n\
+    \n    long double distance(const point &c) const {\n    return std::abs(det(c\
+    \ - a, b - a)/abs(b-a));\n    }\n};\n\nint intersection(const line &a, const line\
+    \ &b) {\n    if(internal::sgn(det(a.b-a.a, b.a-b.b)) != 0) {\n        if(internal::sgn(dot(a.b-a.a,\
     \ b.b-b.a)) == 0) { // \u5782\u76F4\n            return 1;\n        }\n      \
     \  return 0; // \u4EA4\u5DEE\n    }\n    else if(internal::sgn(det(a.b-a.a, b.a-a.a))\
     \ != 0) { // \u5E73\u884C\n        return 2;\n    }\n    else { // \u540C\u4E00\
@@ -176,32 +176,34 @@ data:
     \ a.a), distance(b, a.b)));\n    }\n}\n\nlong double distance(const line &a, const\
     \ line_segment &b) {\n    if(intersection(a, b)) {\n        return 0;\n    }\n\
     \    else {\n        return std::min(distance(a, b.a), distance(a, b.b));\n  \
-    \  }\n}\n\n}\n#line 12 \"test/geometry/distance.test.cpp\"\n\nnamespace ebi {\n\
-    \nvoid main_() {\n    int q;\n    std::cin >> q;\n    while(q--) {\n        point\
+    \  }\n}\n\n}\n#line 13 \"test/geometry/distance.test.cpp\"\n\nnamespace ebi {\n\
+    \nvoid main_() {\n    int q;\n    std::cin >> q;\n    while (q--) {\n        point\
     \ p0, p1, p2, p3;\n        std::cin >> p0.x >> p0.y >> p1.x >> p1.y;\n       \
     \ std::cin >> p2.x >> p2.y >> p3.x >> p3.y;\n        std::cout << distance(line_segment(p0,\
-    \ p1), line_segment(p2, p3)) << '\\n';\n    }\n}\n\n}\n\nint main() {\n    std::cout\
-    \ << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    \    ebi::main_();\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D\"\
-    \n#define ERROR 0.00000001\n\n#include <iostream>\n#include <vector>\n#include\
-    \ <algorithm>\n#include <iomanip>\n\n#include \"geometry/point.hpp\"\n#include\
-    \ \"geometry/line.hpp\"\n#include \"geometry/line_segment.hpp\"\n\nnamespace ebi\
-    \ {\n\nvoid main_() {\n    int q;\n    std::cin >> q;\n    while(q--) {\n    \
-    \    point p0, p1, p2, p3;\n        std::cin >> p0.x >> p0.y >> p1.x >> p1.y;\n\
+    \ p1), line_segment(p2, p3))\n                  << '\\n';\n    }\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }\n"
+  code: "#define PROBLEM \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D\"\
+    \n#define ERROR 0.00000001\n\n#include <algorithm>\n#include <iomanip>\n#include\
+    \ <iostream>\n#include <vector>\n\n#include \"geometry/line.hpp\"\n#include \"\
+    geometry/line_segment.hpp\"\n#include \"geometry/point.hpp\"\n\nnamespace ebi\
+    \ {\n\nvoid main_() {\n    int q;\n    std::cin >> q;\n    while (q--) {\n   \
+    \     point p0, p1, p2, p3;\n        std::cin >> p0.x >> p0.y >> p1.x >> p1.y;\n\
     \        std::cin >> p2.x >> p2.y >> p3.x >> p3.y;\n        std::cout << distance(line_segment(p0,\
-    \ p1), line_segment(p2, p3)) << '\\n';\n    }\n}\n\n}\n\nint main() {\n    std::cout\
-    \ << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    \    ebi::main_();\n}"
+    \ p1), line_segment(p2, p3))\n                  << '\\n';\n    }\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    std::cout << std::fixed << std::setprecision(15);\n\
+    \    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    ebi::main_();\n\
+    }"
   dependsOn:
-  - geometry/point.hpp
   - geometry/line.hpp
+  - geometry/point.hpp
   - geometry/line_segment.hpp
   isVerificationFile: true
   path: test/geometry/distance.test.cpp
   requiredBy: []
-  timestamp: '2022-07-08 00:50:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/distance.test.cpp
 layout: document

@@ -1,80 +1,80 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/area.test.cpp
     title: test/geometry/area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/circumscribed_circle_of_triangle.test.cpp
     title: test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_area.test.cpp
     title: test/geometry/common_area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_area_circles.test.cpp
     title: test/geometry/common_area_circles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_tangent.test.cpp
     title: test/geometry/common_tangent.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/contains.test.cpp
     title: test/geometry/contains.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/convex_diameter.test.cpp
     title: test/geometry/convex_diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/convex_polygon_cut.test.cpp
     title: test/geometry/convex_polygon_cut.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_point.test.cpp
     title: test/geometry/cross_point.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/cross_points_of circles.test.cpp
-    title: test/geometry/cross_points_of circles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_points_of_circle_and_line.test.cpp
     title: test/geometry/cross_points_of_circle_and_line.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: test/geometry/cross_points_of_circles.test.cpp
+    title: test/geometry/cross_points_of_circles.test.cpp
+  - icon: ':x:'
     path: test/geometry/distance.test.cpp
     title: test/geometry/distance.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/incircle_of_triangle.test.cpp
     title: test/geometry/incircle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection.test.cpp
     title: test/geometry/intersection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection_circle.test.cpp
     title: test/geometry/intersection_circle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection_line_segment.test.cpp
     title: test/geometry/intersection_line_segment.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/is_convex.test.cpp
     title: test/geometry/is_convex.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/reflection.test.cpp
     title: test/geometry/reflection.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/tangent_to_circle.test.cpp
     title: test/geometry/tangent_to_circle.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/line.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
@@ -233,8 +233,8 @@ data:
   - geometry/polygon.hpp
   - geometry/line_segment.hpp
   - geometry/circle.hpp
-  timestamp: '2022-07-08 00:50:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/area.test.cpp
   - test/geometry/reflection.test.cpp
@@ -242,6 +242,7 @@ data:
   - test/geometry/cross_point.test.cpp
   - test/geometry/tangent_to_circle.test.cpp
   - test/geometry/contains.test.cpp
+  - test/geometry/cross_points_of_circles.test.cpp
   - test/geometry/convex_diameter.test.cpp
   - test/geometry/is_convex.test.cpp
   - test/geometry/cross_points_of_circle_and_line.test.cpp
@@ -253,7 +254,6 @@ data:
   - test/geometry/convex_polygon_cut.test.cpp
   - test/geometry/common_area.test.cpp
   - test/geometry/intersection_line_segment.test.cpp
-  - test/geometry/cross_points_of circles.test.cpp
   - test/geometry/distance.test.cpp
 documentation_of: geometry/line.hpp
 layout: document

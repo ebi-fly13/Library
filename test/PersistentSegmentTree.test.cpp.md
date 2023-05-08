@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/PersistentSegmentTree.hpp
     title: data_structure/PersistentSegmentTree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
@@ -68,42 +68,42 @@ data:
     \n        assert(ver<time);\r\n        assert(roots[ver]->par == nullptr);\r\n\
     \        return roots[ver]->val;\r\n    }\r\n\r\n    int latest() {\r\n      \
     \  return time-1;\r\n    }\r\n};\r\n\r\n} // namespace ebi\n#line 4 \"test/PersistentSegmentTree.test.cpp\"\
-    \n\r\n#include <iostream>\r\n#include <cstdint>\r\n#line 8 \"test/PersistentSegmentTree.test.cpp\"\
-    \n\r\nusing S = std::int64_t;\r\nS op(S a, S b) {\r\n    return a+b;\r\n}\r\n\
-    S e() {\r\n    return 0;\r\n}\r\n\r\nstruct query {\r\n    int ver;\r\n    int\
-    \ l,r;\r\n};\r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n\
-    \    std::vector<S> a(n);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin\
-    \ >> a[i];\r\n    }\r\n    ebi::PersistentSegmentTree<S, op, e> seg(a);\r\n  \
-    \  std::vector<query> Q;\r\n    while(q--) {\r\n        int flag;\r\n        std::cin\
-    \ >> flag;\r\n        if(flag == 0) {\r\n            int p;\r\n            S x;\r\
-    \n            std::cin >> p >> x;\r\n            seg.set(seg.latest(), p, seg.get(seg.latest(),\
-    \ p)+x);\r\n        }\r\n        else {\r\n            query p;\r\n          \
-    \  std::cin >> p.l >> p.r;\r\n            p.ver = seg.latest();\r\n          \
-    \  Q.emplace_back(p);\r\n        }\r\n    }\r\n    for(int i = 0; i<(int)Q.size();\
-    \ ++i) {\r\n        std::cout << seg.prod(Q[i].ver, Q[i].l, Q[i].r) << std::endl;\r\
-    \n    }\r\n}\n"
+    \n\r\n#include <cstdint>\r\n#include <iostream>\r\n#line 8 \"test/PersistentSegmentTree.test.cpp\"\
+    \n\r\nusing S = std::int64_t;\r\nS op(S a, S b) { return a + b; }\r\nS e() { return\
+    \ 0; }\r\n\r\nstruct query {\r\n    int ver;\r\n    int l, r;\r\n};\r\n\r\nint\
+    \ main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<S> a(n);\r\
+    \n    for (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n\
+    \    ebi::PersistentSegmentTree<S, op, e> seg(a);\r\n    std::vector<query> Q;\r\
+    \n    while (q--) {\r\n        int flag;\r\n        std::cin >> flag;\r\n    \
+    \    if (flag == 0) {\r\n            int p;\r\n            S x;\r\n          \
+    \  std::cin >> p >> x;\r\n            seg.set(seg.latest(), p, seg.get(seg.latest(),\
+    \ p) + x);\r\n        } else {\r\n            query p;\r\n            std::cin\
+    \ >> p.l >> p.r;\r\n            p.ver = seg.latest();\r\n            Q.emplace_back(p);\r\
+    \n        }\r\n    }\r\n    for (int i = 0; i < (int)Q.size(); ++i) {\r\n    \
+    \    std::cout << seg.prod(Q[i].ver, Q[i].l, Q[i].r) << std::endl;\r\n    }\r\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\r\
     \n\r\n#include \"../data_structure/PersistentSegmentTree.hpp\"\r\n\r\n#include\
-    \ <iostream>\r\n#include <cstdint>\r\n#include <vector>\r\n\r\nusing S = std::int64_t;\r\
-    \nS op(S a, S b) {\r\n    return a+b;\r\n}\r\nS e() {\r\n    return 0;\r\n}\r\n\
-    \r\nstruct query {\r\n    int ver;\r\n    int l,r;\r\n};\r\n\r\nint main() {\r\
-    \n    int n,q;\r\n    std::cin >> n >> q;\r\n    std::vector<S> a(n);\r\n    for(int\
-    \ i = 0; i<n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::PersistentSegmentTree<S,\
-    \ op, e> seg(a);\r\n    std::vector<query> Q;\r\n    while(q--) {\r\n        int\
-    \ flag;\r\n        std::cin >> flag;\r\n        if(flag == 0) {\r\n          \
-    \  int p;\r\n            S x;\r\n            std::cin >> p >> x;\r\n         \
-    \   seg.set(seg.latest(), p, seg.get(seg.latest(), p)+x);\r\n        }\r\n   \
-    \     else {\r\n            query p;\r\n            std::cin >> p.l >> p.r;\r\n\
-    \            p.ver = seg.latest();\r\n            Q.emplace_back(p);\r\n     \
-    \   }\r\n    }\r\n    for(int i = 0; i<(int)Q.size(); ++i) {\r\n        std::cout\
+    \ <cstdint>\r\n#include <iostream>\r\n#include <vector>\r\n\r\nusing S = std::int64_t;\r\
+    \nS op(S a, S b) { return a + b; }\r\nS e() { return 0; }\r\n\r\nstruct query\
+    \ {\r\n    int ver;\r\n    int l, r;\r\n};\r\n\r\nint main() {\r\n    int n, q;\r\
+    \n    std::cin >> n >> q;\r\n    std::vector<S> a(n);\r\n    for (int i = 0; i\
+    \ < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::PersistentSegmentTree<S,\
+    \ op, e> seg(a);\r\n    std::vector<query> Q;\r\n    while (q--) {\r\n       \
+    \ int flag;\r\n        std::cin >> flag;\r\n        if (flag == 0) {\r\n     \
+    \       int p;\r\n            S x;\r\n            std::cin >> p >> x;\r\n    \
+    \        seg.set(seg.latest(), p, seg.get(seg.latest(), p) + x);\r\n        }\
+    \ else {\r\n            query p;\r\n            std::cin >> p.l >> p.r;\r\n  \
+    \          p.ver = seg.latest();\r\n            Q.emplace_back(p);\r\n       \
+    \ }\r\n    }\r\n    for (int i = 0; i < (int)Q.size(); ++i) {\r\n        std::cout\
     \ << seg.prod(Q[i].ver, Q[i].l, Q[i].r) << std::endl;\r\n    }\r\n}"
   dependsOn:
   - data_structure/PersistentSegmentTree.hpp
   isVerificationFile: true
   path: test/PersistentSegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2021-01-25 18:32:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/PersistentSegmentTree.test.cpp
 layout: document

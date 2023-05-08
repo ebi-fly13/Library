@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/predecessor_set.test.cpp
     title: test/predecessor_set.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/predecessor_set.hpp\"\n\n#include <set>\n\
@@ -32,8 +32,8 @@ data:
   isVerificationFile: false
   path: data_structure/predecessor_set.hpp
   requiredBy: []
-  timestamp: '2022-01-10 07:11:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/predecessor_set.test.cpp
 documentation_of: data_structure/predecessor_set.hpp

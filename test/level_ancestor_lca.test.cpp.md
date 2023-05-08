@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/level_ancestor.hpp
     title: tree/level_ancestor.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -46,38 +46,38 @@ data:
     \ m = depths[u] - k;\r\n        assert(m >= 0);\r\n        return inv_in[*std::prev(std::upper_bound(s[m].begin(),\
     \ s[m].end(), in[u]))];\r\n    }\r\n\r\n    int depth(int u) const {\r\n     \
     \   return depths[u];\r\n    }\r\n};\r\n\r\n}\n#line 7 \"test/level_ancestor_lca.test.cpp\"\
-    \n\r\nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::graph\
-    \ g(n);\r\n    for(int i = 1; i < n; i++) {\r\n        int p;\r\n        std::cin\
+    \n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::graph\
+    \ g(n);\r\n    for (int i = 1; i < n; i++) {\r\n        int p;\r\n        std::cin\
     \ >> p;\r\n        g.add_edge(p, i);\r\n    }\r\n    ebi::level_ancestor la(g);\r\
-    \n    auto lca = [&](int u, int v) -> int {\r\n        if(la.depth(u) > la.depth(v))\
+    \n    auto lca = [&](int u, int v) -> int {\r\n        if (la.depth(u) > la.depth(v))\
     \ std::swap(u, v);\r\n        v = la.query(v, la.depth(v) - la.depth(u));\r\n\
-    \        int ng = -1, ok = la.depth(u);\r\n        while(std::abs(ok - ng) > 1)\
-    \ {\r\n            int mid = (ok + ng) / 2;\r\n            if(la.query(u,mid)\
-    \ == la.query(v,mid)) ok = mid;\r\n            else ng = mid;\r\n        }\r\n\
-    \        return la.query(u, ok);\r\n    };\r\n    while(q--) {\r\n        int\
-    \ u,v;\r\n        std::cin >> u >> v;\r\n        std::cout << lca(u, v) << '\\\
-    n';\r\n    }\r\n}\n"
+    \        int ng = -1, ok = la.depth(u);\r\n        while (std::abs(ok - ng) >\
+    \ 1) {\r\n            int mid = (ok + ng) / 2;\r\n            if (la.query(u,\
+    \ mid) == la.query(v, mid))\r\n                ok = mid;\r\n            else\r\
+    \n                ng = mid;\r\n        }\r\n        return la.query(u, ok);\r\n\
+    \    };\r\n    while (q--) {\r\n        int u, v;\r\n        std::cin >> u >>\
+    \ v;\r\n        std::cout << lca(u, v) << '\\n';\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\r\n\r\n#include <iostream>\r\
     \n\r\n#include \"graph/template.hpp\"\r\n#include \"tree/level_ancestor.hpp\"\r\
-    \n\r\nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::graph\
-    \ g(n);\r\n    for(int i = 1; i < n; i++) {\r\n        int p;\r\n        std::cin\
+    \n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::graph\
+    \ g(n);\r\n    for (int i = 1; i < n; i++) {\r\n        int p;\r\n        std::cin\
     \ >> p;\r\n        g.add_edge(p, i);\r\n    }\r\n    ebi::level_ancestor la(g);\r\
-    \n    auto lca = [&](int u, int v) -> int {\r\n        if(la.depth(u) > la.depth(v))\
+    \n    auto lca = [&](int u, int v) -> int {\r\n        if (la.depth(u) > la.depth(v))\
     \ std::swap(u, v);\r\n        v = la.query(v, la.depth(v) - la.depth(u));\r\n\
-    \        int ng = -1, ok = la.depth(u);\r\n        while(std::abs(ok - ng) > 1)\
-    \ {\r\n            int mid = (ok + ng) / 2;\r\n            if(la.query(u,mid)\
-    \ == la.query(v,mid)) ok = mid;\r\n            else ng = mid;\r\n        }\r\n\
-    \        return la.query(u, ok);\r\n    };\r\n    while(q--) {\r\n        int\
-    \ u,v;\r\n        std::cin >> u >> v;\r\n        std::cout << lca(u, v) << '\\\
-    n';\r\n    }\r\n}"
+    \        int ng = -1, ok = la.depth(u);\r\n        while (std::abs(ok - ng) >\
+    \ 1) {\r\n            int mid = (ok + ng) / 2;\r\n            if (la.query(u,\
+    \ mid) == la.query(v, mid))\r\n                ok = mid;\r\n            else\r\
+    \n                ng = mid;\r\n        }\r\n        return la.query(u, ok);\r\n\
+    \    };\r\n    while (q--) {\r\n        int u, v;\r\n        std::cin >> u >>\
+    \ v;\r\n        std::cout << lca(u, v) << '\\n';\r\n    }\r\n}"
   dependsOn:
   - graph/template.hpp
   - tree/level_ancestor.hpp
   isVerificationFile: true
   path: test/level_ancestor_lca.test.cpp
   requiredBy: []
-  timestamp: '2023-04-17 16:41:35+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/level_ancestor_lca.test.cpp
 layout: document

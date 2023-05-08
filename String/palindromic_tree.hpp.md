@@ -69,7 +69,7 @@ data:
   isVerificationFile: false
   path: String/palindromic_tree.hpp
   requiredBy: []
-  timestamp: '2023-04-30 13:39:37+09:00'
+  timestamp: '2023-05-08 14:32:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: String/palindromic_tree.hpp

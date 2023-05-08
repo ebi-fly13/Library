@@ -1,27 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segtree_2d.hpp
     title: data_structure/segtree_2d.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
     links:
     - https://judge.yosupo.jp/problem/rectangle_sum
   bundledCode: "#line 1 \"test/rectangle_sum.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\
-    \r\n\r\n#include <iostream>\r\n#include <cstdint>\r\n\r\n#line 2 \"data_structure/compress.hpp\"\
+    \r\n\r\n#include <cstdint>\r\n#include <iostream>\r\n\r\n#line 2 \"data_structure/compress.hpp\"\
     \n\n#include <vector>\n#include <algorithm>\n#include <cassert>\n\nnamespace ebi\
     \ {\n\ntemplate<class T>\nstruct compress {\nprivate:\n    std::vector<T> cp;\n\
     \    bool flag = false;\npublic:\n    compress() = default;\n\n    compress(std::vector<T>\
@@ -107,29 +107,29 @@ data:
     \ r, x, y, 0, n, 0);\r\n    }\r\nprivate:\r\n    std::vector< std::vector< Monoid\
     \ > > data;\r\n    std::vector< segtree< Monoid, op, e> > seg;\r\n    int n;\r\
     \n};\r\n\r\n}\n#line 8 \"test/rectangle_sum.test.cpp\"\n\r\nusing i64 = std::int64_t;\r\
-    \n\r\ni64 op(i64 a, i64 b) {\r\n    return a+b;\r\n}\r\n\r\ni64 e() {\r\n    return\
-    \ 0;\r\n}\r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n \
-    \   ebi::compress<i64> cp;\r\n    std::vector<i64> x(n), y(n), w(n);\r\n    for(int\
-    \ i = 0; i < n; i++) {\r\n        std::cin >> x[i] >> y[i] >> w[i];\r\n      \
-    \  cp.add(x[i]);\r\n    }\r\n    cp.build();\r\n    ebi::segtree_2d<i64, op, e>\
-    \ seg(cp.size());\r\n    for(int i = 0; i < n; i++) {\r\n        seg.pre_set(cp.get(x[i]),\
-    \ y[i]);\r\n    }\r\n    seg.build();\r\n    for(int i = 0; i < n; i++) {\r\n\
-    \        seg.set(cp.get(x[i]), y[i], w[i]);\r\n    }\r\n    while(q--) {\r\n \
-    \       i64 l,d,r,u;\r\n        std::cin >> l >> d >> r >> u;\r\n        std::cout\
-    \ << seg.prod(cp.get(l),cp.get(r),d,u) << std::endl;\r\n    }\r\n}\n"
+    \n\r\ni64 op(i64 a, i64 b) { return a + b; }\r\n\r\ni64 e() { return 0; }\r\n\r\
+    \nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::compress<i64>\
+    \ cp;\r\n    std::vector<i64> x(n), y(n), w(n);\r\n    for (int i = 0; i < n;\
+    \ i++) {\r\n        std::cin >> x[i] >> y[i] >> w[i];\r\n        cp.add(x[i]);\r\
+    \n    }\r\n    cp.build();\r\n    ebi::segtree_2d<i64, op, e> seg(cp.size());\r\
+    \n    for (int i = 0; i < n; i++) {\r\n        seg.pre_set(cp.get(x[i]), y[i]);\r\
+    \n    }\r\n    seg.build();\r\n    for (int i = 0; i < n; i++) {\r\n        seg.set(cp.get(x[i]),\
+    \ y[i], w[i]);\r\n    }\r\n    while (q--) {\r\n        i64 l, d, r, u;\r\n  \
+    \      std::cin >> l >> d >> r >> u;\r\n        std::cout << seg.prod(cp.get(l),\
+    \ cp.get(r), d, u) << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\r\n\r\n\
-    #include <iostream>\r\n#include <cstdint>\r\n\r\n#include \"../data_structure/compress.hpp\"\
+    #include <cstdint>\r\n#include <iostream>\r\n\r\n#include \"../data_structure/compress.hpp\"\
     \r\n#include \"../data_structure/segtree_2d.hpp\"\r\n\r\nusing i64 = std::int64_t;\r\
-    \n\r\ni64 op(i64 a, i64 b) {\r\n    return a+b;\r\n}\r\n\r\ni64 e() {\r\n    return\
-    \ 0;\r\n}\r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n \
-    \   ebi::compress<i64> cp;\r\n    std::vector<i64> x(n), y(n), w(n);\r\n    for(int\
-    \ i = 0; i < n; i++) {\r\n        std::cin >> x[i] >> y[i] >> w[i];\r\n      \
-    \  cp.add(x[i]);\r\n    }\r\n    cp.build();\r\n    ebi::segtree_2d<i64, op, e>\
-    \ seg(cp.size());\r\n    for(int i = 0; i < n; i++) {\r\n        seg.pre_set(cp.get(x[i]),\
-    \ y[i]);\r\n    }\r\n    seg.build();\r\n    for(int i = 0; i < n; i++) {\r\n\
-    \        seg.set(cp.get(x[i]), y[i], w[i]);\r\n    }\r\n    while(q--) {\r\n \
-    \       i64 l,d,r,u;\r\n        std::cin >> l >> d >> r >> u;\r\n        std::cout\
-    \ << seg.prod(cp.get(l),cp.get(r),d,u) << std::endl;\r\n    }\r\n}"
+    \n\r\ni64 op(i64 a, i64 b) { return a + b; }\r\n\r\ni64 e() { return 0; }\r\n\r\
+    \nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::compress<i64>\
+    \ cp;\r\n    std::vector<i64> x(n), y(n), w(n);\r\n    for (int i = 0; i < n;\
+    \ i++) {\r\n        std::cin >> x[i] >> y[i] >> w[i];\r\n        cp.add(x[i]);\r\
+    \n    }\r\n    cp.build();\r\n    ebi::segtree_2d<i64, op, e> seg(cp.size());\r\
+    \n    for (int i = 0; i < n; i++) {\r\n        seg.pre_set(cp.get(x[i]), y[i]);\r\
+    \n    }\r\n    seg.build();\r\n    for (int i = 0; i < n; i++) {\r\n        seg.set(cp.get(x[i]),\
+    \ y[i], w[i]);\r\n    }\r\n    while (q--) {\r\n        i64 l, d, r, u;\r\n  \
+    \      std::cin >> l >> d >> r >> u;\r\n        std::cout << seg.prod(cp.get(l),\
+    \ cp.get(r), d, u) << std::endl;\r\n    }\r\n}"
   dependsOn:
   - data_structure/compress.hpp
   - data_structure/segtree_2d.hpp
@@ -137,8 +137,8 @@ data:
   isVerificationFile: true
   path: test/rectangle_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 15:36:52+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/rectangle_sum.test.cpp
 layout: document

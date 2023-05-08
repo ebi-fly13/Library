@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/Stream.hpp
     title: data_structure/Stream.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/Suspension.hpp
     title: data_structure/Suspension.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/bankers_queue.test.cpp
     title: test/bankers_queue.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - http://www.kmonos.net/pub/Presen/PFDS.pdf
@@ -90,8 +90,8 @@ data:
   isVerificationFile: false
   path: data_structure/bankers_queue.hpp
   requiredBy: []
-  timestamp: '2021-03-01 14:43:05+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/bankers_queue.test.cpp
 documentation_of: data_structure/bankers_queue.hpp

@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_primes
@@ -38,25 +38,25 @@ data:
     \n        if(m < 0) m = n;\r\n        std::vector<int> prime;\r\n        for(int\
     \ i = 2; i<=m; i++) {\r\n            if(table[i]) prime.emplace_back(i);\r\n \
     \       }\r\n        return prime;\r\n    }\r\n};\r\n\r\n}\n#line 6 \"test/enumerate_primes.test.cpp\"\
-    \n\r\nint main() {\r\n    int n,a,b;\r\n    std::cin >> n >> a >> b;\r\n    ebi::eratosthenes_sieve\
-    \ sieve(n);\r\n    auto p = sieve.prime_table();\r\n    int sz = p.size();\r\n\
-    \    int x = (sz-b+a-1)/a;\r\n    std::cout << sz << \" \" << x << '\\n';\r\n\
-    \    for(int i = b; i<sz; i += a) {\r\n        std::cout << p[i] << \" \";\r\n\
-    \    }\r\n    std::cout << \"\\n\";\r\n}\n"
+    \n\r\nint main() {\r\n    int n, a, b;\r\n    std::cin >> n >> a >> b;\r\n   \
+    \ ebi::eratosthenes_sieve sieve(n);\r\n    auto p = sieve.prime_table();\r\n \
+    \   int sz = p.size();\r\n    int x = (sz - b + a - 1) / a;\r\n    std::cout <<\
+    \ sz << \" \" << x << '\\n';\r\n    for (int i = b; i < sz; i += a) {\r\n    \
+    \    std::cout << p[i] << \" \";\r\n    }\r\n    std::cout << \"\\n\";\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_primes\"\r\n\r\
     \n#include <iostream>\r\n\r\n#include \"../math/eratosthenes_sieve.hpp\"\r\n\r\
-    \nint main() {\r\n    int n,a,b;\r\n    std::cin >> n >> a >> b;\r\n    ebi::eratosthenes_sieve\
+    \nint main() {\r\n    int n, a, b;\r\n    std::cin >> n >> a >> b;\r\n    ebi::eratosthenes_sieve\
     \ sieve(n);\r\n    auto p = sieve.prime_table();\r\n    int sz = p.size();\r\n\
-    \    int x = (sz-b+a-1)/a;\r\n    std::cout << sz << \" \" << x << '\\n';\r\n\
-    \    for(int i = b; i<sz; i += a) {\r\n        std::cout << p[i] << \" \";\r\n\
-    \    }\r\n    std::cout << \"\\n\";\r\n}"
+    \    int x = (sz - b + a - 1) / a;\r\n    std::cout << sz << \" \" << x << '\\\
+    n';\r\n    for (int i = b; i < sz; i += a) {\r\n        std::cout << p[i] << \"\
+    \ \";\r\n    }\r\n    std::cout << \"\\n\";\r\n}"
   dependsOn:
   - math/eratosthenes_sieve.hpp
   isVerificationFile: true
   path: test/enumerate_primes.test.cpp
   requiredBy: []
-  timestamp: '2021-08-16 18:05:12+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/enumerate_primes.test.cpp
 layout: document

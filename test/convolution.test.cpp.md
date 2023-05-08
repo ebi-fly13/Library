@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
@@ -82,31 +82,32 @@ data:
     \  internal::dft(a);\r\n    internal::dft(b);\r\n    for(int i = 0; i<n; ++i)\
     \ {\r\n        fg[i] = a[i]*b[i];\r\n    }\r\n    internal::inv_dft(fg);\r\n \
     \   mint in = mint(n).inv();\r\n    for(int i = 0; i<n; ++i) {\r\n        fg[i]\
-    \ *= in;\r\n    }\r\n    return fg;\r\n}\r\n\r\n} // namespace ebi\n#line 5 \"\
-    test/convolution.test.cpp\"\n\r\n#line 7 \"test/convolution.test.cpp\"\n\r\nusing\
-    \ mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n,m;\r\n    std::cin\
-    \ >> n >> m;\r\n    std::vector<mint> a(n),b(m);\r\n    for(int i = 0; i<n; ++i)\
-    \ {\r\n        std::cin >> a[i].a;\r\n    }\r\n    for(int i = 0; i<m; ++i) {\r\
-    \n        std::cin >> b[i].a;\r\n    }\r\n    auto c = ebi::convolution(a, b);\r\
-    \n    for(int i = 0; i<n+m-1; ++i) {\r\n        std::cout << c[i].val() << \"\
-    \ \";\r\n    }\r\n    std::cout << '\\n';\r\n}\n"
+    \ *= in;\r\n    }\r\n    return fg;\r\n}\r\n\r\n} // namespace ebi\n#line 4 \"\
+    test/convolution.test.cpp\"\n\r\n#line 6 \"test/convolution.test.cpp\"\n\r\n#line\
+    \ 8 \"test/convolution.test.cpp\"\n\r\nusing mint = ebi::modint998244353;\r\n\r\
+    \nint main() {\r\n    int n, m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint>\
+    \ a(n), b(m);\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i].a;\r\
+    \n    }\r\n    for (int i = 0; i < m; ++i) {\r\n        std::cin >> b[i].a;\r\n\
+    \    }\r\n    auto c = ebi::convolution(a, b);\r\n    for (int i = 0; i < n +\
+    \ m - 1; ++i) {\r\n        std::cout << c[i].val() << \" \";\r\n    }\r\n    std::cout\
+    \ << '\\n';\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\r\n\r\
-    \n#include \"../algorithm/convolution.hpp\"\r\n#include \"../utility/modint.hpp\"\
-    \r\n\r\n#include <iostream>\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\n\
-    int main() {\r\n    int n,m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint>\
-    \ a(n),b(m);\r\n    for(int i = 0; i<n; ++i) {\r\n        std::cin >> a[i].a;\r\
-    \n    }\r\n    for(int i = 0; i<m; ++i) {\r\n        std::cin >> b[i].a;\r\n \
-    \   }\r\n    auto c = ebi::convolution(a, b);\r\n    for(int i = 0; i<n+m-1; ++i)\
-    \ {\r\n        std::cout << c[i].val() << \" \";\r\n    }\r\n    std::cout <<\
-    \ '\\n';\r\n}"
+    \n#include \"../algorithm/convolution.hpp\"\r\n\r\n#include <iostream>\r\n\r\n\
+    #include \"../utility/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\
+    \n\r\nint main() {\r\n    int n, m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint>\
+    \ a(n), b(m);\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i].a;\r\
+    \n    }\r\n    for (int i = 0; i < m; ++i) {\r\n        std::cin >> b[i].a;\r\n\
+    \    }\r\n    auto c = ebi::convolution(a, b);\r\n    for (int i = 0; i < n +\
+    \ m - 1; ++i) {\r\n        std::cout << c[i].val() << \" \";\r\n    }\r\n    std::cout\
+    \ << '\\n';\r\n}"
   dependsOn:
   - algorithm/convolution.hpp
   - utility/modint.hpp
   isVerificationFile: true
   path: test/convolution.test.cpp
   requiredBy: []
-  timestamp: '2021-04-04 17:12:45+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/convolution.test.cpp
 layout: document

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/WaveletMatrix.hpp
     title: WaveletMatrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -98,19 +98,21 @@ data:
     \            val |= (T)1 << bit;\r\n                l = border[bit] + rank_l;\r\
     \n                r = border[bit] + rank_r;\r\n                k -= zero;\r\n\
     \            }\r\n        }\r\n        return val;\r\n    }\r\n};\r\n\r\n} //\
-    \ namespace ebi\n#line 5 \"test/WaveletMatrix.test.cpp\"\n\r\n#include <iostream>\r\
-    \n#line 8 \"test/WaveletMatrix.test.cpp\"\n\r\nint main(){\r\n    int n,q;\r\n\
-    \    std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\n    for(int i = 0; i<n;\
-    \ i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::WaveletMatrix<i64>\
-    \ wm(a);\r\n    while(q--) {\r\n        int l,r,k; std::cin >> l >> r >> k;\r\n\
-    \        std::cout << wm.quantile(l,r,k+1) << std::endl;\r\n    }\r\n}\n"
+    \ namespace ebi\n#line 4 \"test/WaveletMatrix.test.cpp\"\n\r\n#include <iostream>\r\
+    \n#line 7 \"test/WaveletMatrix.test.cpp\"\n\r\n#line 9 \"test/WaveletMatrix.test.cpp\"\
+    \n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<i64>\
+    \ a(n);\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin >> a[i];\r\n\
+    \    }\r\n    ebi::WaveletMatrix<i64> wm(a);\r\n    while (q--) {\r\n        int\
+    \ l, r, k;\r\n        std::cin >> l >> r >> k;\r\n        std::cout << wm.quantile(l,\
+    \ r, k + 1) << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\r\n\
-    \r\n#include \"../data_structure/WaveletMatrix.hpp\"\r\n#include \"../utility/int_alias.hpp\"\
-    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n\r\nint main(){\r\n    int\
-    \ n,q;\r\n    std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\n    for(int\
-    \ i = 0; i<n; i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::WaveletMatrix<i64>\
-    \ wm(a);\r\n    while(q--) {\r\n        int l,r,k; std::cin >> l >> r >> k;\r\n\
-    \        std::cout << wm.quantile(l,r,k+1) << std::endl;\r\n    }\r\n}"
+    \r\n#include \"../data_structure/WaveletMatrix.hpp\"\r\n\r\n#include <iostream>\r\
+    \n#include <vector>\r\n\r\n#include \"../utility/int_alias.hpp\"\r\n\r\nint main()\
+    \ {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\
+    \n    for (int i = 0; i < n; i++) {\r\n        std::cin >> a[i];\r\n    }\r\n\
+    \    ebi::WaveletMatrix<i64> wm(a);\r\n    while (q--) {\r\n        int l, r,\
+    \ k;\r\n        std::cin >> l >> r >> k;\r\n        std::cout << wm.quantile(l,\
+    \ r, k + 1) << std::endl;\r\n    }\r\n}"
   dependsOn:
   - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
@@ -118,8 +120,8 @@ data:
   isVerificationFile: true
   path: test/WaveletMatrix.test.cpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/WaveletMatrix.test.cpp
 layout: document

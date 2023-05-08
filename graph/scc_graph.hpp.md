@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/scc_graph.test.cpp
     title: test/scc_graph.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/two_sat.test.cpp
     title: test/two_sat.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/scc_graph.hpp\"\n\r\n#line 2 \"graph/template.hpp\"\
@@ -93,8 +93,8 @@ data:
   path: graph/scc_graph.hpp
   requiredBy:
   - algorithm/two_sat.hpp
-  timestamp: '2021-10-31 15:43:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/two_sat.test.cpp
   - test/scc_graph.test.cpp

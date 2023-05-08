@@ -2,52 +2,52 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/WaveletMatrix.hpp
     title: WaveletMatrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
   - icon: ':warning:'
     path: math/linear_sieve.hpp
     title: math/linear_sieve.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/pow.hpp
     title: math/pow.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/FenwickTree.test.cpp
     title: test/FenwickTree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/LiChaoSegmentTree.test.cpp
     title: test/LiChaoSegmentTree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/SegmentAddGetMin.test.cpp
     title: test/SegmentAddGetMin.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/SegmentTreeBeats.test.cpp
     title: test/SegmentTreeBeats.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Static_Range_Frequency.test.cpp
     title: test/Static_Range_Frequency.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fibonacci_heap.test.cpp
     title: test/fibonacci_heap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/pow.test.cpp
     title: test/pow.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include\
@@ -65,8 +65,8 @@ data:
   - data_structure/WaveletMatrix.hpp
   - math/pow.hpp
   - math/linear_sieve.hpp
-  timestamp: '2021-01-12 22:18:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-08 14:32:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/ImplicitTreap.test.cpp
   - test/pow.test.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/persistent_array.hpp
     title: data_structure/persistent_array.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/persistent_unionfind.hpp
     title: data_structure/persistent_unionfind.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/persistent_unionfind
@@ -83,34 +83,33 @@ data:
     \    int size(int x, int time = -1) {\r\n        return -par.get(leader(x, time));\r\
     \n    }\r\n    \r\n};\r\n\r\n}\n#line 4 \"test/persistent_unionfind.test.cpp\"\
     \n\r\n#include <iostream>\r\n#line 7 \"test/persistent_unionfind.test.cpp\"\n\r\
-    \nint main() {\r\n    int n,q;\r\n    std::cin >> n >> q;\r\n    ebi::persistent_unionfind\
-    \ uf(n);\r\n    std::vector<int> query(q+1,0);\r\n    int time = 0;\r\n    for(int\
-    \ i = 1; i<=q; i++) {\r\n        int t,k,u,v;\r\n        std::cin >> t >> k >>\
-    \ u >> v;\r\n        k = query[k+1];\r\n        query[i] = k;\r\n        if(t\
-    \ == 0) {\r\n            uf.merge(u, v, k);\r\n            query[i] = ++time;\r\
-    \n        }\r\n        else {\r\n            if(uf.same(u, v, k)) {\r\n      \
-    \          std::cout << \"1\\n\";\r\n            }\r\n            else {\r\n \
-    \               std::cout << \"0\\n\";\r\n            }\r\n        }\r\n    }\r\
-    \n}\n"
+    \nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::persistent_unionfind\
+    \ uf(n);\r\n    std::vector<int> query(q + 1, 0);\r\n    int time = 0;\r\n   \
+    \ for (int i = 1; i <= q; i++) {\r\n        int t, k, u, v;\r\n        std::cin\
+    \ >> t >> k >> u >> v;\r\n        k = query[k + 1];\r\n        query[i] = k;\r\
+    \n        if (t == 0) {\r\n            uf.merge(u, v, k);\r\n            query[i]\
+    \ = ++time;\r\n        } else {\r\n            if (uf.same(u, v, k)) {\r\n   \
+    \             std::cout << \"1\\n\";\r\n            } else {\r\n             \
+    \   std::cout << \"0\\n\";\r\n            }\r\n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_unionfind\"\r\
     \n\r\n#include \"../data_structure/persistent_unionfind.hpp\"\r\n\r\n#include\
-    \ <iostream>\r\n#include <vector>\r\n\r\nint main() {\r\n    int n,q;\r\n    std::cin\
-    \ >> n >> q;\r\n    ebi::persistent_unionfind uf(n);\r\n    std::vector<int> query(q+1,0);\r\
-    \n    int time = 0;\r\n    for(int i = 1; i<=q; i++) {\r\n        int t,k,u,v;\r\
-    \n        std::cin >> t >> k >> u >> v;\r\n        k = query[k+1];\r\n       \
-    \ query[i] = k;\r\n        if(t == 0) {\r\n            uf.merge(u, v, k);\r\n\
-    \            query[i] = ++time;\r\n        }\r\n        else {\r\n           \
-    \ if(uf.same(u, v, k)) {\r\n                std::cout << \"1\\n\";\r\n       \
-    \     }\r\n            else {\r\n                std::cout << \"0\\n\";\r\n  \
-    \          }\r\n        }\r\n    }\r\n}"
+    \ <iostream>\r\n#include <vector>\r\n\r\nint main() {\r\n    int n, q;\r\n   \
+    \ std::cin >> n >> q;\r\n    ebi::persistent_unionfind uf(n);\r\n    std::vector<int>\
+    \ query(q + 1, 0);\r\n    int time = 0;\r\n    for (int i = 1; i <= q; i++) {\r\
+    \n        int t, k, u, v;\r\n        std::cin >> t >> k >> u >> v;\r\n       \
+    \ k = query[k + 1];\r\n        query[i] = k;\r\n        if (t == 0) {\r\n    \
+    \        uf.merge(u, v, k);\r\n            query[i] = ++time;\r\n        } else\
+    \ {\r\n            if (uf.same(u, v, k)) {\r\n                std::cout << \"\
+    1\\n\";\r\n            } else {\r\n                std::cout << \"0\\n\";\r\n\
+    \            }\r\n        }\r\n    }\r\n}"
   dependsOn:
   - data_structure/persistent_unionfind.hpp
   - data_structure/persistent_array.hpp
   isVerificationFile: true
   path: test/persistent_unionfind.test.cpp
   requiredBy: []
-  timestamp: '2021-04-02 19:30:59+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/persistent_unionfind.test.cpp
 layout: document

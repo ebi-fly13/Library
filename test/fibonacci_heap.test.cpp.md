@@ -1,63 +1,53 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/fibonacci_heap.hpp
     title: fibonacci_heap
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "#line 1 \"test/fibonacci_heap.test.cpp\"\n#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \r\n\r\n#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n    T cost;\r\
-    \n    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\n\r\ntemplate<class\
-    \ T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
-    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
-    \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
-    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
-    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
-    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
-    \ ebi\n#line 2 \"graph/dijkstra_fibheap.hpp\"\n\r\n#line 2 \"data_structure/fibonacci_heap.hpp\"\
-    \n\r\n/*\r\n    reference: http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf\r\
+  bundledCode: "#line 1 \"test/fibonacci_heap.test.cpp\"\n#define PROBLEM \\\r\n \
+    \   \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\r\n\r\
+    \n#include <iostream>\r\n\r\n#line 2 \"graph/dijkstra_fibheap.hpp\"\n\r\n#line\
+    \ 2 \"data_structure/fibonacci_heap.hpp\"\n\r\n/*\r\n    reference: http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf\r\
     \n               https://rsk0315.hatenablog.com/entry/2019/10/29/151823\r\n  \
     \             https://en.wikipedia.org/wiki/Fibonacci_heap\r\n*/\r\n\r\n#include\
-    \ <cassert>\r\n#line 11 \"data_structure/fibonacci_heap.hpp\"\n#include <queue>\r\
-    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\ntemplate<class K, class\
-    \ T>\r\nstruct fibheap_node {\r\n    fibheap_node *par, *prev, *next, *chr;\r\n\
-    \    int sz = 0;\r\n    bool damaged = 0;\r\n    K ord;\r\n    T val;\r\n    fibheap_node(K\
-    \ k, T val) : par(nullptr), prev(this), next(this), chr(nullptr), ord(k), val(val)\
-    \ { }\r\n\r\n    void emplace_back(fibheap_node *e) {\r\n        if(e == nullptr)\
-    \ return;\r\n        prev->next = e;\r\n        e->prev->next = this;\r\n    \
-    \    std::swap(e->prev, prev);\r\n    }\r\n\r\n    void cut_par() {\r\n      \
-    \  if(par == nullptr) return;\r\n        par->sz--;\r\n        if(par->sz == 0)\
-    \ {\r\n            par->chr = nullptr;\r\n        }\r\n        if(par->chr ==\
-    \ this) {\r\n            par->chr = next;\r\n        }\r\n        cut();\r\n \
-    \       par = nullptr;\r\n    }\r\n\r\n    void cut() {\r\n        next->prev\
-    \ = prev;\r\n        prev->next = next;\r\n        next = prev = this;\r\n   \
-    \ }\r\n\r\n    int size() const {\r\n        return sz;\r\n    }\r\n};\r\n\r\n\
-    }\r\n\r\ntemplate<class K, class T, bool (*op)(K, K)>\r\nstruct fibonacci_heap\
-    \ {\r\nprivate:\r\n    using Node = internal::fibheap_node<K, T>;\r\n    using\
-    \ node_ptr = Node*;\r\n\r\n    node_ptr min = nullptr;\r\n    node_ptr roots =\
-    \ nullptr;\r\n\r\n    int sz = 0;\r\n\r\n    void update(node_ptr a) {\r\n   \
-    \     assert(a != nullptr);\r\n        if(!min || op(a->ord, min->ord)) {\r\n\
-    \            min = a;\r\n        }\r\n    }\r\n\r\n    void merge(node_ptr a,\
+    \ <cassert>\r\n#include <vector>\r\n#include <queue>\r\n\r\nnamespace ebi {\r\n\
+    \r\nnamespace internal {\r\n\r\ntemplate<class K, class T>\r\nstruct fibheap_node\
+    \ {\r\n    fibheap_node *par, *prev, *next, *chr;\r\n    int sz = 0;\r\n    bool\
+    \ damaged = 0;\r\n    K ord;\r\n    T val;\r\n    fibheap_node(K k, T val) : par(nullptr),\
+    \ prev(this), next(this), chr(nullptr), ord(k), val(val) { }\r\n\r\n    void emplace_back(fibheap_node\
+    \ *e) {\r\n        if(e == nullptr) return;\r\n        prev->next = e;\r\n   \
+    \     e->prev->next = this;\r\n        std::swap(e->prev, prev);\r\n    }\r\n\r\
+    \n    void cut_par() {\r\n        if(par == nullptr) return;\r\n        par->sz--;\r\
+    \n        if(par->sz == 0) {\r\n            par->chr = nullptr;\r\n        }\r\
+    \n        if(par->chr == this) {\r\n            par->chr = next;\r\n        }\r\
+    \n        cut();\r\n        par = nullptr;\r\n    }\r\n\r\n    void cut() {\r\n\
+    \        next->prev = prev;\r\n        prev->next = next;\r\n        next = prev\
+    \ = this;\r\n    }\r\n\r\n    int size() const {\r\n        return sz;\r\n   \
+    \ }\r\n};\r\n\r\n}\r\n\r\ntemplate<class K, class T, bool (*op)(K, K)>\r\nstruct\
+    \ fibonacci_heap {\r\nprivate:\r\n    using Node = internal::fibheap_node<K, T>;\r\
+    \n    using node_ptr = Node*;\r\n\r\n    node_ptr min = nullptr;\r\n    node_ptr\
+    \ roots = nullptr;\r\n\r\n    int sz = 0;\r\n\r\n    void update(node_ptr a) {\r\
+    \n        assert(a != nullptr);\r\n        if(!min || op(a->ord, min->ord)) {\r\
+    \n            min = a;\r\n        }\r\n    }\r\n\r\n    void merge(node_ptr a,\
     \ node_ptr b) {\r\n        assert(a && b);\r\n        assert(op(a->ord, b->ord));\r\
     \n        a->sz++;\r\n        b->par = a;\r\n        if(a->chr == nullptr) a->chr\
     \ = b;\r\n        else a->chr->emplace_back(b);\r\n    }\r\n\r\n    int log2ceil(int\
@@ -99,7 +89,17 @@ data:
     \      for(node_ptr ptr = roots->next; ptr != roots; ptr = ptr->next) {\r\n  \
     \          if(op(ptr->ord, k)) {\r\n                k = ptr->ord;\r\n        \
     \    }\r\n        }\r\n        assert(k == min->ord);\r\n    }\r\n};\r\n\r\n}\r\
-    \n#line 5 \"graph/dijkstra_fibheap.hpp\"\n\r\n#line 7 \"graph/dijkstra_fibheap.hpp\"\
+    \n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate<class T>\r\nstruct Edge {\r\n    int to;\r\n    T cost;\r\
+    \n    Edge(int _to, T _cost=1) : to(_to), cost(_cost) { }\r\n};\r\n\r\ntemplate<class\
+    \ T>\r\nstruct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \ w);\r\n        if(directed) return; \r\n        (*this)[v].emplace_back(u, w);\r\
+    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
+    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
+    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if(directed)\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n} // namespace\
+    \ ebi\n#line 5 \"graph/dijkstra_fibheap.hpp\"\n\r\n#line 7 \"graph/dijkstra_fibheap.hpp\"\
     \n#include <limits>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class T>\r\nbool op(T\
     \ a, T b) {\r\n    return a<=b;\r\n}\r\n\r\ntemplate<class T>\r\nstd::vector<T>\
     \ dijkstra(int s, int n, const Graph<T> &g){\r\n    std::vector<T> d(n, std::numeric_limits<T>::max());\r\
@@ -114,34 +114,34 @@ data:
     \n} // namespace ebi\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\
     \n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\nusing i64 = std::int64_t;\r\
     \nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing usize = std::size_t;\n#line 6 \"test/fibonacci_heap.test.cpp\"\n\r\n#include\
-    \ <iostream>\r\n\r\nint main() {\r\n    int n,m,r;\r\n    std::cin >> n >> m >>\
-    \ r;\r\n    ebi::Graph<i64> g(n);\r\n    while(m--) {\r\n        int s,t; i64\
+    \nusing usize = std::size_t;\n#line 9 \"test/fibonacci_heap.test.cpp\"\n\r\nint\
+    \ main() {\r\n    int n, m, r;\r\n    std::cin >> n >> m >> r;\r\n    ebi::Graph<i64>\
+    \ g(n);\r\n    while (m--) {\r\n        int s, t;\r\n        i64 d;\r\n      \
+    \  std::cin >> s >> t >> d;\r\n        g[s].emplace_back(t, d);\r\n    }\r\n \
+    \   auto dist = ebi::dijkstra(r, n, g);\r\n    for (int i = 0; i < n; i++) {\r\
+    \n        if (dist[i] == std::numeric_limits<i64>::max()) {\r\n            std::cout\
+    \ << \"INF\" << std::endl;\r\n            continue;\r\n        }\r\n        std::cout\
+    \ << dist[i] << std::endl;\r\n    }\r\n}\n"
+  code: "#define PROBLEM \\\r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
+    \r\n\r\n#include <iostream>\r\n\r\n#include \"../graph/dijkstra_fibheap.hpp\"\r\
+    \n#include \"../graph/template.hpp\"\r\n#include \"../utility/int_alias.hpp\"\r\
+    \n\r\nint main() {\r\n    int n, m, r;\r\n    std::cin >> n >> m >> r;\r\n   \
+    \ ebi::Graph<i64> g(n);\r\n    while (m--) {\r\n        int s, t;\r\n        i64\
     \ d;\r\n        std::cin >> s >> t >> d;\r\n        g[s].emplace_back(t, d);\r\
-    \n    }\r\n    auto dist = ebi::dijkstra(r, n, g);\r\n    for(int i = 0; i<n;\
-    \ i++) {\r\n        if(dist[i] == std::numeric_limits<i64>::max()) {\r\n     \
-    \       std::cout << \"INF\" << std::endl;\r\n            continue;\r\n      \
-    \  }\r\n        std::cout << dist[i] << std::endl;\r\n    }\r\n}\n"
-  code: "#define PROBLEM \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \r\n\r\n#include \"../graph/template.hpp\"\r\n#include \"../graph/dijkstra_fibheap.hpp\"\
-    \r\n#include \"../utility/int_alias.hpp\"\r\n\r\n#include <iostream>\r\n\r\nint\
-    \ main() {\r\n    int n,m,r;\r\n    std::cin >> n >> m >> r;\r\n    ebi::Graph<i64>\
-    \ g(n);\r\n    while(m--) {\r\n        int s,t; i64 d;\r\n        std::cin >>\
-    \ s >> t >> d;\r\n        g[s].emplace_back(t, d);\r\n    }\r\n    auto dist =\
-    \ ebi::dijkstra(r, n, g);\r\n    for(int i = 0; i<n; i++) {\r\n        if(dist[i]\
-    \ == std::numeric_limits<i64>::max()) {\r\n            std::cout << \"INF\" <<\
-    \ std::endl;\r\n            continue;\r\n        }\r\n        std::cout << dist[i]\
-    \ << std::endl;\r\n    }\r\n}"
+    \n    }\r\n    auto dist = ebi::dijkstra(r, n, g);\r\n    for (int i = 0; i <\
+    \ n; i++) {\r\n        if (dist[i] == std::numeric_limits<i64>::max()) {\r\n \
+    \           std::cout << \"INF\" << std::endl;\r\n            continue;\r\n  \
+    \      }\r\n        std::cout << dist[i] << std::endl;\r\n    }\r\n}"
   dependsOn:
-  - graph/template.hpp
   - graph/dijkstra_fibheap.hpp
   - data_structure/fibonacci_heap.hpp
+  - graph/template.hpp
   - utility/int_alias.hpp
   isVerificationFile: true
   path: test/fibonacci_heap.test.cpp
   requiredBy: []
-  timestamp: '2021-10-31 15:43:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-08 05:33:08+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/fibonacci_heap.test.cpp
 layout: document
