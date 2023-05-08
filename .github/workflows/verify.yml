@@ -8,8 +8,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
 
     - name: Set up Python
       uses: actions/setup-python@v1
@@ -38,4 +36,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
       with:
+        ref: ${{ github.head_ref }}
         commit_message: Apply clang-format
