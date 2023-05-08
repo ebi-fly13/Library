@@ -1,9 +1,9 @@
 #pragma once
 
+#include <cassert>
+#include <cctype>
 #include <iostream>
 #include <string>
-#include <cctype>
-#include <cassert>
 
 /*
     reference: https://gist.github.com/draftcode/1357281
@@ -15,10 +15,9 @@ typedef std::string::const_iterator State;
 class ParseError {};
 
 bool expect(State &begin, char expected) {
-    if(*begin == expected) {
+    if (*begin == expected) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
@@ -44,4 +43,4 @@ bool isalpha(char c) {
     return 'a' <= c && c <= 'z';
 }
 
-}
+}  // namespace ebi

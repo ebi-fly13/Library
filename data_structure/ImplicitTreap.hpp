@@ -11,26 +11,28 @@
 
 namespace ebi {
 
-template<
-    class S,
-    S (*op)(S, S),
-    S (*e)(),
-    class F,
-    S (*mapping)(F, S),
-    F (*composition)(F, F),
-    F (*id)()>
+template <class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S),
+          F (*composition)(F, F), F (*id)()>
 struct ImplicitTreap {
-private:
+  private:
     struct Node {
         S val, acc;
         F lazy;
         int pri, cnt;
         bool rev;
         Node *lch, *rch;
-        Node(S val, int pri) : val(val), acc(e()), lazy(id()), pri(pri), cnt(0),rev(false), lch(nullptr), rch(nullptr) { }
+        Node(S val, int pri)
+            : val(val),
+              acc(e()),
+              lazy(id()),
+              pri(pri),
+              cnt(0),
+              rev(false),
+              lch(nullptr),
+              rch(nullptr) {}
     };
 
-    using node_ptr = Node*;
+    using node_ptr = Node *;
 
     node_ptr root;
 
@@ -43,7 +45,7 @@ private:
     }
 
     void update_cnt(node_ptr t) {
-        if(t) {
+        if (t) {
             t->cnt = 1 + cnt(t->lch) + cnt(t->rch);
         }
     }
@@ -53,19 +55,19 @@ private:
     }
 
     void update_acc(node_ptr t) {
-        if(t) {
+        if (t) {
             t->acc = op(acc(t->lch), t->val);
             t->acc = op(t->acc, acc(t->rch));
         }
     }
 
     void eval(node_ptr t) {
-        if(t) {
-            if(t->lch) {
+        if (t) {
+            if (t->lch) {
                 t->lch->lazy = composition(t->lazy, t->lch->lazy);
                 t->lch->acc = mapping(t->lazy, t->lch->acc);
             }
-            if(t->rch) {
+            if (t->rch) {
                 t->rch->lazy = composition(t->lazy, t->rch->lazy);
                 t->rch->acc = mapping(t->lazy, t->rch->acc);
             }
@@ -75,11 +77,11 @@ private:
     }
 
     void pushdown(node_ptr t) {
-        if(t && t->rev) {
+        if (t && t->rev) {
             t->rev = false;
             std::swap(t->lch, t->rch);
-            if(t->lch) t->lch->rev ^= 1;
-            if(t->rch) t->rch->rev ^= 1;
+            if (t->lch) t->lch->rev ^= 1;
+            if (t->rch) t->rch->rev ^= 1;
         }
         eval(t);
         update(t);
@@ -93,15 +95,14 @@ private:
     node_ptr merge(node_ptr l, node_ptr r) {
         pushdown(l);
         pushdown(r);
-        if(!l || !r) {
+        if (!l || !r) {
             return !l ? r : l;
         }
-        if(l->pri > r->pri) {
+        if (l->pri > r->pri) {
             l->rch = merge(l->rch, r);
             update(l);
             return l;
-        }
-        else {
+        } else {
             r->lch = merge(l, r->lch);
             update(r);
             return r;
@@ -109,23 +110,22 @@ private:
     }
 
     std::pair<node_ptr, node_ptr> split(node_ptr t, int key) {
-        if(!t) return std::pair<node_ptr, node_ptr>(nullptr, nullptr);
+        if (!t) return std::pair<node_ptr, node_ptr>(nullptr, nullptr);
         pushdown(t);
-        if(key < cnt(t->lch) + 1) {
+        if (key < cnt(t->lch) + 1) {
             auto [l, r] = split(t->lch, key);
             t->lch = r;
             update(t);
             return std::pair<node_ptr, node_ptr>(l, t);
-        }
-        else {
-            auto [l, r] = split(t->rch, key-cnt(t->lch)-1);
+        } else {
+            auto [l, r] = split(t->rch, key - cnt(t->lch) - 1);
             t->rch = l;
             update(t);
-            return  std::pair<node_ptr, node_ptr>(t, r);
+            return std::pair<node_ptr, node_ptr>(t, r);
         }
     }
-    
-public:
+
+  public:
     ImplicitTreap() : root(nullptr) {
         mt = std::mt19937(rnd());
         pri_rnd = std::uniform_int_distribution<>(0, 1e9);
@@ -138,14 +138,14 @@ public:
     }
 
     void erase(int k) {
-        auto [l, r] = split(root, k+1);
+        auto [l, r] = split(root, k + 1);
         auto [nl, nr] = split(l, k);
         root = merge(nl, r);
     }
 
     void reverse(int l, int r) {
         auto [t1, t2] = split(root, l);
-        auto [t3, t4] = split(t2, r-l);
+        auto [t3, t4] = split(t2, r - l);
         t3->rev ^= 1;
         t1 = merge(t1, t3);
         root = merge(t1, t4);
@@ -153,16 +153,16 @@ public:
 
     void apply(int l, int r, F x) {
         auto [t1, t2] = split(root, l);
-        auto [t3, t4] = split(t2, r-l);
+        auto [t3, t4] = split(t2, r - l);
         t3->lazy = composition(x, t3->lazy);
         t3->acc = mapping(x, t3->acc);
         t1 = merge(t1, t3);
-        root = merge(t1,t4);
+        root = merge(t1, t4);
     }
 
     S prod(int l, int r) {
         auto [t1, t2] = split(root, l);
-        auto [t3, t4] = split(t2, r-l);
+        auto [t3, t4] = split(t2, r - l);
         S ret = t3->acc;
         t1 = merge(t1, t3);
         root = merge(t1, t4);
@@ -170,4 +170,4 @@ public:
     }
 };
 
-} // namespace ebi
+}  // namespace ebi

@@ -11,9 +11,8 @@
 
 namespace ebi {
 
-template<class T>
-struct bankers_queue {
-private:
+template <class T> struct bankers_queue {
+  private:
     using size_t = std::size_t;
     using Self = bankers_queue<T>;
     stream<T> f;
@@ -21,16 +20,19 @@ private:
     stream<T> r;
     size_t rsize;
 
-    bankers_queue(stream<T> _f, size_t _fsize, stream<T> _r, size_t _rsize) : f(_f), fsize(_fsize), r(_r), rsize(_rsize) { }
+    bankers_queue(stream<T> _f, size_t _fsize, stream<T> _r, size_t _rsize)
+        : f(_f), fsize(_fsize), r(_r), rsize(_rsize) {}
 
     Self normalize() {
-        if(fsize>=rsize) return *this;
+        if (fsize >= rsize)
+            return *this;
         else {
-            return Self(f+r.reverse(), fsize+rsize, stream<T>(), 0);
+            return Self(f + r.reverse(), fsize + rsize, stream<T>(), 0);
         }
     }
-public:
-    bankers_queue() : f(), fsize(0), r(), rsize(0) { }
+
+  public:
+    bankers_queue() : f(), fsize(0), r(), rsize(0) {}
 
     bool empty() {
         return f.empty();
@@ -46,13 +48,13 @@ public:
     }
 
     Self push(T x) {
-        return Self(f, fsize, r.push(x), rsize+1).normalize();
+        return Self(f, fsize, r.push(x), rsize + 1).normalize();
     }
 
     Self pop() {
         assert(!empty());
-        return Self(f.pop(), fsize-1, r, rsize).normalize();
+        return Self(f.pop(), fsize - 1, r, rsize).normalize();
     }
 };
 
-}
+}  // namespace ebi

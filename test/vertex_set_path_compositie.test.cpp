@@ -15,9 +15,13 @@ struct S {
     mint c, d;
 };
 
-S op(S a, S b) { return {b.c * a.c, b.c * a.d + b.d}; }
+S op(S a, S b) {
+    return {b.c * a.c, b.c * a.d + b.d};
+}
 
-S e() { return {1, 0}; }
+S e() {
+    return {1, 0};
+}
 
 int main() {
     int n, q;

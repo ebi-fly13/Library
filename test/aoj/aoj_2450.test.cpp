@@ -32,9 +32,13 @@ S op(S a, S b) {
             std::max(std::max(a.ans, b.ans), a.rhs + b.lhs), a.sz + b.sz};
 }
 
-S op_rev(S a, S b) { return op(b, a); }
+S op_rev(S a, S b) {
+    return op(b, a);
+}
 
-S e() { return {0, -LNF, -LNF, -LNF, 0}; }
+S e() {
+    return {0, -LNF, -LNF, -LNF, 0};
+}
 
 S mapping(F f, S x) {
     if (f != ID) {
@@ -50,9 +54,13 @@ S mapping(F f, S x) {
     return x;
 }
 
-F composition(F f, F g) { return (f == ID) ? g : f; }
+F composition(F f, F g) {
+    return (f == ID) ? g : f;
+}
 
-F id() { return ID; }
+F id() {
+    return ID;
+}
 
 int main() {
     int n, q;

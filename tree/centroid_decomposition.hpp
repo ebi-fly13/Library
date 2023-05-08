@@ -10,7 +10,7 @@
 namespace ebi {
 
 struct centroid_decomposition {
-   private:
+  private:
     int find_centroid(int _root) {
         auto get_size = [&](auto &&self, int v, int p = -1) -> int {
             sz[v] = 1;
@@ -44,7 +44,7 @@ struct centroid_decomposition {
         return root = c;
     }
 
-   public:
+  public:
     centroid_decomposition(const std::vector<std::vector<int>> &_g)
         : n(int(_g.size())),
           g(_g),
@@ -60,9 +60,11 @@ struct centroid_decomposition {
         return {root, belong};
     }
 
-    int parent(int v) const { return par[v]; }
+    int parent(int v) const {
+        return par[v];
+    }
 
-   private:
+  private:
     int n;
     int root;
     std::vector<std::vector<int>> g;

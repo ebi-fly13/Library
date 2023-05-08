@@ -7,8 +7,12 @@
 #include <vector>
 
 using S = std::int64_t;
-S op(S a, S b) { return a + b; }
-S e() { return 0; }
+S op(S a, S b) {
+    return a + b;
+}
+S e() {
+    return 0;
+}
 
 struct query {
     int ver;

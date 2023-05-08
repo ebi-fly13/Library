@@ -1,8 +1,8 @@
 #pragma once
 
 #include <algorithm>
-#include <vector>
 #include <tuple>
+#include <vector>
 
 /*
     reference: https://www.slideshare.net/okuraofvegetable/ss-65377588
@@ -10,9 +10,8 @@
 
 namespace ebi {
 
-template <class T, class S>
-struct range_tree {
-   private:
+template <class T, class S> struct range_tree {
+  private:
     void build(std::vector<std::tuple<T, T, S>> points) {
         std::sort(points.begin(), points.end());
         for (const auto &[x, y, val] : points) {
@@ -58,18 +57,20 @@ struct range_tree {
             std::vector<S> s;
             s.reserve(sum[i].size() + 1);
             s.emplace_back(0);
-            for(auto val: sum[i]) s.emplace_back(s.back() + val);
+            for (auto val : sum[i]) s.emplace_back(s.back() + val);
             std::swap(sum[i], s);
         }
     }
 
     S prod_y(int idx, S yl, S yr) const {
-        int l = std::lower_bound(seg[idx].begin(), seg[idx].end(), yl) - seg[idx].begin();
-        int r = std::lower_bound(seg[idx].begin(), seg[idx].end(), yr) - seg[idx].begin();
+        int l = std::lower_bound(seg[idx].begin(), seg[idx].end(), yl) -
+                seg[idx].begin();
+        int r = std::lower_bound(seg[idx].begin(), seg[idx].end(), yr) -
+                seg[idx].begin();
         return sum[idx][r] - sum[idx][l];
     }
 
-   public:
+  public:
     range_tree(const std::vector<std::pair<T, T>> &_points) {
         std::vector<std::tuple<T, T, S>> points;
         points.reserve(_points.size());
@@ -86,15 +87,15 @@ struct range_tree {
         int r = std::lower_bound(xs.begin(), xs.end(), xr) - xs.begin() + n;
         S res = 0;
         while (l < r) {
-            if(l & 1) res += prod_y(l++, yl, yr);
-            if(r & 1) res += prod_y(--r, yl, yr);
+            if (l & 1) res += prod_y(l++, yl, yr);
+            if (r & 1) res += prod_y(--r, yl, yr);
             l >>= 1;
             r >>= 1;
         }
         return res;
     }
 
-   private:
+  private:
     int n;
     std::vector<T> xs;
     std::vector<std::vector<T>> seg;

@@ -1,17 +1,17 @@
 #pragma once
 
-#include <vector>
 #include <algorithm>
 #include <cassert>
+#include <vector>
 
 namespace ebi {
 
-template<class T>
-struct compress {
-private:
+template <class T> struct compress {
+  private:
     std::vector<T> cp;
     bool flag = false;
-public:
+
+  public:
     compress() = default;
 
     compress(std::vector<T> cp) : cp(cp) {
@@ -30,7 +30,7 @@ public:
     }
 
     int get(const T &val) {
-        if(flag == false) build();
+        if (flag == false) build();
         return std::lower_bound(cp.begin(), cp.end(), val) - cp.begin();
     }
 
@@ -44,4 +44,4 @@ public:
     }
 };
 
-}
+}  // namespace ebi

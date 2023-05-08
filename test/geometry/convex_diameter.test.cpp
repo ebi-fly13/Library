@@ -20,7 +20,7 @@ void main_() {
     int n;
     std::cin >> n;
     std::vector<point> poly(n);
-    for (auto &[x, y] : poly) {
+    for (auto& [x, y] : poly) {
         std::cin >> x >> y;
     }
     std::cout << convex_diameter(poly) << '\n';

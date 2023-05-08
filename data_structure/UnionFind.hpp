@@ -5,47 +5,50 @@
 namespace ebi {
 
 struct UnionFind {
-private:
+  private:
     std::vector<int> par;
 
-public:
-    UnionFind(int n=0): par(n,-1){ }
+  public:
+    UnionFind(int n = 0) : par(n, -1) {}
 
-    bool same(int x,int y){
-        return leader(x)==leader(y);
+    bool same(int x, int y) {
+        return leader(x) == leader(y);
     }
 
-    bool merge(int x, int y){
-        x = leader(x); y = leader(y);
-        if(x==y) return false;
-        if(par[x]>par[y]) std::swap(x,y);
-        par[x]+=par[y];
+    bool merge(int x, int y) {
+        x = leader(x);
+        y = leader(y);
+        if (x == y) return false;
+        if (par[x] > par[y]) std::swap(x, y);
+        par[x] += par[y];
         par[y] = x;
         return true;
     }
 
-    int leader(int x){
-        if(par[x]<0) return x;
-        else return par[x] = leader(par[x]);
+    int leader(int x) {
+        if (par[x] < 0)
+            return x;
+        else
+            return par[x] = leader(par[x]);
     }
 
-    int size(int x){
+    int size(int x) {
         return -par[leader(x)];
     }
 
-    int count_group(){
+    int count_group() {
         int c = 0;
-        for(int i = 0; i<int(par.size()); i++){
-            if(par[i]<0) c++; 
+        for (int i = 0; i < int(par.size()); i++) {
+            if (par[i] < 0) c++;
         }
         return c;
     }
 
     void clear() {
-        for(int i = 0; i < int(par.size()); i++) {
+        for (int i = 0; i < int(par.size()); i++) {
             par[i] = -1;
         }
     }
 };
 
-} // namespace ebi
+}  // namespace ebi

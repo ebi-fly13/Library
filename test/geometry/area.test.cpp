@@ -17,7 +17,7 @@ void main_() {
     int n;
     std::cin >> n;
     std::vector<point> p(n);
-    for (auto &[x, y] : p) {
+    for (auto& [x, y] : p) {
         std::cin >> x >> y;
     }
     std::cout << area(p) << '\n';

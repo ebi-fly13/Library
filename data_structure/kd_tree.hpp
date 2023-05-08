@@ -7,9 +7,8 @@
 
 namespace ebi {
 
-template <class T, int D>
-struct kd_tree {
-   private:
+template <class T, int D> struct kd_tree {
+  private:
     using node_ptr = std::shared_ptr<kd_tree<T, D>>;
 
     T dist(std::array<T, D> point) {
@@ -20,7 +19,7 @@ struct kd_tree {
         return res;
     }
 
-   public:
+  public:
     kd_tree(const std::vector<int> &_index,
             const std::vector<std::array<T, D>> &points)
         : index(_index) {
@@ -75,7 +74,7 @@ struct kd_tree {
         rch->circle_search(center, k, f);
     }
 
-   private:
+  private:
     std::vector<int> index;
     std::array<T, D> min, max;
     node_ptr lch = nullptr;

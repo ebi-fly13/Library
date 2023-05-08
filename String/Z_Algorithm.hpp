@@ -14,17 +14,17 @@ std::vector<int> Z_Algorithm(const std::string &s) {
     std::vector<int> prefix(n);
     prefix[0] = n;
     int i = 1;
-    int j = 0; // s[0,j], s[i,i+j] がすでに一致していることが保証されている.
-    while(i<n) {
-        while(i+j<n && s[j]==s[i+j]) ++j;
+    int j = 0;  // s[0,j], s[i,i+j] がすでに一致していることが保証されている.
+    while (i < n) {
+        while (i + j < n && s[j] == s[i + j]) ++j;
         prefix[i] = j;
-        if(j == 0){
+        if (j == 0) {
             ++i;
             continue;
         }
         int k = 1;
-        while(i+k<n && k+prefix[k]<j) {
-            prefix[i+k] = prefix[k];
+        while (i + k < n && k + prefix[k] < j) {
+            prefix[i + k] = prefix[k];
             ++k;
         }
         i += k;
@@ -33,4 +33,4 @@ std::vector<int> Z_Algorithm(const std::string &s) {
     return prefix;
 }
 
-} // namespace ebi
+}  // namespace ebi

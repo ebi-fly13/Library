@@ -6,9 +6,13 @@
 #include <iostream>
 #include <vector>
 
-int op(int a, int b) { return a + b; }
+int op(int a, int b) {
+    return a + b;
+}
 
-int e() { return 0; }
+int e() {
+    return 0;
+}
 
 int main() {
     int n, q;

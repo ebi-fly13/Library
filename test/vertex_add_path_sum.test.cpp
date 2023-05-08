@@ -8,8 +8,12 @@
 #include "../tree/heavy_light_decomposition.hpp"
 
 using i64 = std::int64_t;
-i64 op(i64 a, i64 b) { return a + b; }
-i64 e() { return 0; }
+i64 op(i64 a, i64 b) {
+    return a + b;
+}
+i64 e() {
+    return 0;
+}
 
 int main() {
     int n, q;

@@ -8,9 +8,13 @@
 
 using i64 = std::int64_t;
 
-i64 op(i64 a, i64 b) { return a + b; }
+i64 op(i64 a, i64 b) {
+    return a + b;
+}
 
-i64 e() { return 0; }
+i64 e() {
+    return 0;
+}
 
 struct Query {
     i64 x, y, w;

@@ -5,7 +5,9 @@
 
 #include "../data_structure/sparse_table.hpp"
 
-int op(int a, int b) { return a < b ? a : b; }
+int op(int a, int b) {
+    return a < b ? a : b;
+}
 
 int main() {
     int n, q;

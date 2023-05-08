@@ -7,23 +7,24 @@
                https://noshi91.github.io/Library/data_structure/stream.cpp
 */
 
-#include <optional>
 #include <cassert>
+#include <optional>
 
 namespace ebi {
 
-template<class T>
+template <class T>
 struct stream : suspension<std::optional<std::pair<T, stream<T>>>> {
-private:
+  private:
     using Self = stream<T>;
     using cell_type = std::optional<std::pair<T, Self>>;
     using base_type = suspension<cell_type>;
     using base_type::force;
 
-    stream(T x, Self s) : base_type(cell_type(std::in_place, x, s)) { }
-public:
-    stream() : base_type(cell_type(std::nullopt)) { }
-    stream(std::function<cell_type()> f) : base_type(f) { }
+    stream(T x, Self s) : base_type(cell_type(std::in_place, x, s)) {}
+
+  public:
+    stream() : base_type(cell_type(std::nullopt)) {}
+    stream(std::function<cell_type()> f) : base_type(f) {}
     bool empty() const {
         return !force().has_value();
     }
@@ -41,7 +42,7 @@ public:
     Self reverse() {
         return Self([x = *this]() mutable {
             Self ret;
-            while(!x.empty()) {
+            while (!x.empty()) {
                 ret = ret.push(x.top());
                 x = x.pop();
             }
@@ -51,15 +52,13 @@ public:
 
     friend Self operator+(Self lhs, Self rhs) {
         return Self([lhs, rhs]() {
-            if(lhs.empty()) {
+            if (lhs.empty()) {
                 return rhs.force();
-            }
-            else {
+            } else {
                 return cell_type(std::in_place, lhs.top(), lhs.pop() + rhs);
             }
         });
     }
-
 };
 
-}
+}  // namespace ebi

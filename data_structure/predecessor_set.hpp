@@ -5,7 +5,7 @@
 namespace ebi {
 
 struct predecessor_set {
-public:
+  public:
     predecessor_set() = default;
 
     void insert(int k) {
@@ -30,8 +30,8 @@ public:
         return itr == set.begin() ? -1 : *(--itr);
     }
 
-private:
+  private:
     std::set<int> set;
 };
 
-}
+}  // namespace ebi

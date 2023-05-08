@@ -13,7 +13,9 @@ struct F {
     F(mint a, mint b) : a(a), b(b) {}
 };
 
-F op(F f1, F f2) { return F(f2.a * f1.a, f2.a * f1.b + f2.b); }
+F op(F f1, F f2) {
+    return F(f2.a * f1.a, f2.a * f1.b + f2.b);
+}
 
 int main() {
     ebi::SWAG<F, op> swag;

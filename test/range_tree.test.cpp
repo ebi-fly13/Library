@@ -13,7 +13,7 @@ int main() {
     int n, q;
     std::cin >> n >> q;
     std::vector<std::tuple<int, int, i64>> points(n);
-    for (auto &[x, y, w] : points) {
+    for (auto& [x, y, w] : points) {
         std::cin >> x >> y >> w;
     }
     ebi::range_tree tree(points);

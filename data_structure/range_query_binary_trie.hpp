@@ -2,16 +2,15 @@
 
 #include <array>
 #include <cassert>
+#include <limits>
 #include <memory>
 #include <set>
 #include <vector>
-#include <limits>
 
 namespace ebi {
 
-template <class T, int BIT_SIZE>
-struct range_query_binary_trie {
-   private:
+template <class T, int BIT_SIZE> struct range_query_binary_trie {
+  private:
     struct Node;
     using node_ptr = std::shared_ptr<Node>;
     struct Node {
@@ -46,7 +45,7 @@ struct range_query_binary_trie {
         }
     }
 
-   public:
+  public:
     range_query_binary_trie(const std::vector<T> &a) : a(a) {
         for (int i = 0; i < (int)a.size(); i++) insert(i);
     }
@@ -57,7 +56,9 @@ struct range_query_binary_trie {
         insert(idx);
     }
 
-    T get(int idx) const { return a[idx]; }
+    T get(int idx) const {
+        return a[idx];
+    }
 
     T min_element(int l, int r, T x) {
         T val = 0;
@@ -78,7 +79,7 @@ struct range_query_binary_trie {
         return val;
     }
 
-   private:
+  private:
     std::vector<T> a;
     node_ptr root = std::make_shared<Node>();
 };

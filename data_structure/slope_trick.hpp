@@ -1,8 +1,8 @@
 #pragma once
 
-#include <vector>
-#include <queue>
 #include <cassert>
+#include <queue>
+#include <vector>
 
 /*
     reference: https://maspypy.com/slope-trick-1-%e8%a7%a3%e8%aa%ac%e7%b7%a8
@@ -10,40 +10,39 @@
 
 namespace ebi {
 
-template<class T>
-struct slope_trick {
-private:
+template <class T> struct slope_trick {
+  private:
     using Self = slope_trick<T>;
 
     void pop_L() {
-        if(L.empty()) return;
-        L.pop(); 
+        if (L.empty()) return;
+        L.pop();
         return;
     }
 
     T top_L() const {
-        if(L.empty()) return -INF;
+        if (L.empty()) return -INF;
         return L.top() + add_L;
     }
 
     void push_L(const T &a) {
-        L.push(a-add_L);
+        L.push(a - add_L);
         return;
     }
 
     void pop_R() {
-        if(R.empty()) return;
+        if (R.empty()) return;
         R.pop();
         return;
     }
 
     T top_R() const {
-        if(R.empty()) return INF;
+        if (R.empty()) return INF;
         return R.top() + add_R;
     }
 
     void push_R(const T &a) {
-        R.push(a-add_R);
+        R.push(a - add_R);
         return;
     }
 
@@ -59,8 +58,9 @@ private:
         std::swap(a.add_R, b.add_R);
         return;
     }
-public:
-    slope_trick() : min_f(0), add_L(0), add_R(0) { }
+
+  public:
+    slope_trick() : min_f(0), add_L(0), add_R(0) {}
 
     T min() const {
         return min_f;
@@ -78,10 +78,9 @@ public:
     // add (x-a)_+
     void add_x_minus_a(const T &a) {
         min_f += std::max(T(0), top_L() - a);
-        if(top_L() <= a) {
+        if (top_L() <= a) {
             push_R(a);
-        }
-        else {
+        } else {
             push_L(a);
             push_R(top_L());
             pop_L();
@@ -92,10 +91,9 @@ public:
     // add (a-x)_+
     void add_a_minus_x(const T &a) {
         min_f += std::max(T(0), a - top_R());
-        if(top_R() >= a) {
+        if (top_R() >= a) {
             push_L(a);
-        }
-        else {
+        } else {
             push_R(a);
             push_L(top_R());
             pop_R();
@@ -122,15 +120,15 @@ public:
     }
 
     void merge(Self &st) {
-        if(st.size() > size()) {
+        if (st.size() > size()) {
             swap((*this), st);
         }
         min_f += st.min_f;
-        while(!st.L.empty()) {
+        while (!st.L.empty()) {
             add_a_minus_x(st.top_L());
             st.pop_L();
         }
-        while(!st.R.empty()) {
+        while (!st.R.empty()) {
             add_x_minus_a(st.top_R());
             st.pop_R();
         }
@@ -147,12 +145,12 @@ public:
         R = std::priority_queue<T, std::vector<T>, std::greater<T>>();
     }
 
-private:
+  private:
     T min_f;
     std::priority_queue<T> L;
     std::priority_queue<T, std::vector<T>, std::greater<T>> R;
     T add_L, add_R;
-    const T INF = std::numeric_limits<T>::max()/4;
+    const T INF = std::numeric_limits<T>::max() / 4;
 };
 
-}
+}  // namespace ebi

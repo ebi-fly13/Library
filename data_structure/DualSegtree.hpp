@@ -1,13 +1,13 @@
 #pragma once
 
-#include <vector>
 #include <cassert>
+#include <vector>
 
 namespace ebi {
 
 template <class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
 struct DualSegtree {
-   public:
+  public:
     DualSegtree(int n) : n(n) {
         size = 1;
         while (size < n) size <<= 1;
@@ -51,10 +51,10 @@ struct DualSegtree {
         return;
     }
 
-   private:
+  private:
     std::vector<Monoid> data;
     int n;
     int size;
 };
 
-} // namespace ebi
+}  // namespace ebi

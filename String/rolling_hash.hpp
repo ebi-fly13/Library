@@ -13,14 +13,13 @@
 
 namespace ebi {
 
-template <int n>
-struct rolling_hash {
-   private:
+template <int n> struct rolling_hash {
+  private:
     using u64 = std::uint64_t;
     const u64 h = 100;
     const u64 buffer = mod * 4;
 
-   public:
+  public:
     rolling_hash(const std::string &s) : sz(s.size()) {
         assert(int(base.size()) == n && n > 0);
         base_pow.resize(n);
@@ -69,12 +68,12 @@ struct rolling_hash {
         }
     }
 
-   private:
+  private:
     size_t sz;
     std::vector<std::vector<u64>> base_pow;
     std::vector<std::vector<u64>> hash;
 
-   public:
+  public:
     static std::vector<u64> base;
 };
 

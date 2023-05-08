@@ -1,26 +1,29 @@
 #pragma once
 
-#include <vector>
 #include <cassert>
+#include <vector>
 
 namespace ebi {
 
-template <class S, S (*op)(S, S), S (*e)()>
-struct segtree {
-   private:
+template <class S, S (*op)(S, S), S (*e)()> struct segtree {
+  private:
     int n;
     int sz;
     std::vector<S> data;
 
-    void update(int i) { data[i] = op(data[2 * i], data[2 * i + 1]); }
+    void update(int i) {
+        data[i] = op(data[2 * i], data[2 * i + 1]);
+    }
 
-   public:
+  public:
     segtree(int n) : segtree(std::vector<S>(n, e())) {}
     segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {
         while (sz < n) sz *= 2;
         data = std::vector<S>(2 * sz, e());
-        for(int i = 0; i < n; i++) { data[sz + i] = v[i]; }
-        for(int i = sz-1; i >= 1; i--) update(i);
+        for (int i = 0; i < n; i++) {
+            data[sz + i] = v[i];
+        }
+        for (int i = sz - 1; i >= 1; i--) update(i);
     }
 
     void set(int p, S x) {
@@ -52,10 +55,11 @@ struct segtree {
         return op(sml, smr);
     }
 
-    S all_prod() { return data[1]; }
+    S all_prod() {
+        return data[1];
+    }
 
-    template <class F>
-    int max_right(int l, F f) {
+    template <class F> int max_right(int l, F f) {
         assert(0 <= l && l < n);
         assert(f(e()));
         if (l == n) return n;
@@ -79,8 +83,7 @@ struct segtree {
         return n;
     }
 
-    template <class F>
-    int min_left(int r, F f) {
+    template <class F> int min_left(int r, F f) {
         assert(0 <= r && r <= n);
         assert(f(e()));
         if (r == 0) return 0;
@@ -104,7 +107,9 @@ struct segtree {
         return 0;
     }
 
-    S operator [] (int p) const { return data[sz+p]; }
+    S operator[](int p) const {
+        return data[sz + p];
+    }
 };
 
-} // namespace ebi
+}  // namespace ebi

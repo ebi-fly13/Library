@@ -8,7 +8,7 @@ namespace ebi {
 template <class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S),
           F (*composition)(F, F), F (*id)()>
 struct link_cut_tree {
-   private:
+  private:
     struct Node;
     using node_ptr = std::shared_ptr<Node>;
 
@@ -215,7 +215,7 @@ struct link_cut_tree {
         return;
     }
 
-   public:
+  public:
     link_cut_tree(int n) : vertex(n) {}
 
     link_cut_tree(const std::vector<S> &a) {
@@ -292,7 +292,7 @@ struct link_cut_tree {
     }
     */
 
-   private:
+  private:
     std::vector<node_ptr> vertex;
 };
 

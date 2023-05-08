@@ -2,7 +2,7 @@
 
 /*
     reference: https://twitter.com/noshi91/status/1283759174791372809
-    
+
     Query
     add(int x) : amortized O(1)
     mex : amortized O(1)
@@ -13,7 +13,7 @@
 namespace ebi {
 
 struct online_mex {
-private:
+  private:
     int mex_ = 0;
     int q = 0;
     int k = 1;
@@ -21,26 +21,27 @@ private:
     std::vector<int> p;
 
     void update_mex() {
-        while(ret[mex_] > 0) {
+        while (ret[mex_] > 0) {
             mex_++;
         }
     }
 
     void increment() {
         q++;
-        if(q < k) return;
+        if (q < k) return;
         k *= 2;
         ret.assign(k, 0);
-        for(const auto &val: p) {
-            if(val < k) ret[val]++;
+        for (const auto &val : p) {
+            if (val < k) ret[val]++;
         }
     }
-public:
-    online_mex() : ret(1,0) { }
+
+  public:
+    online_mex() : ret(1, 0) {}
 
     void add(int x) {
         p.emplace_back(x);
-        if(x < k) {
+        if (x < k) {
             ret[x]++;
         }
         increment();
@@ -52,4 +53,4 @@ public:
     }
 };
 
-}
+}  // namespace ebi

@@ -24,9 +24,13 @@ using ld = long double;
 
 constexpr int sz = 100010;
 
-int op(int a, int b) { return a > b ? a : b; }
+int op(int a, int b) {
+    return a > b ? a : b;
+}
 
-int e() { return -1; }
+int e() {
+    return -1;
+}
 
 void main_() {
     int n, m;
@@ -88,11 +92,15 @@ void main_() {
             }
         }
         std::vector<int> ans;
-        rep(i, 0, n) if (ret[i] > 0) { ans.emplace_back(i + 1); }
+        rep(i, 0, n) if (ret[i] > 0) {
+            ans.emplace_back(i + 1);
+        }
         std::cout << ans << '\n';
     }
 }
 
 }  // namespace ebi
 
-int main() { ebi::main_(); }
+int main() {
+    ebi::main_();
+}

@@ -17,7 +17,7 @@ void main_() {
     int n;
     std::cin >> n;
     Polygon poly(n);
-    for (auto &[x, y] : poly) {
+    for (auto& [x, y] : poly) {
         std::cin >> x >> y;
     }
     int q;

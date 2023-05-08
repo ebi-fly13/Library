@@ -7,8 +7,12 @@
 
 using i64 = std::int64_t;
 
-i64 op(i64 a, i64 b) { return a + b; }
-i64 e() { return (i64)0; }
+i64 op(i64 a, i64 b) {
+    return a + b;
+}
+i64 e() {
+    return (i64)0;
+}
 
 int main() {
     int n, q;

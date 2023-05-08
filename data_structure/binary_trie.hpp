@@ -12,9 +12,8 @@
 
 namespace ebi {
 
-template <class T>
-struct binary_trie {
-   private:
+template <class T> struct binary_trie {
+  private:
     struct Node;
     using node_ptr = std::shared_ptr<Node>;
     struct Node {
@@ -23,7 +22,7 @@ struct binary_trie {
         Node() = default;
     };
 
-   public:
+  public:
     binary_trie() = default;
 
     void insert(const T x) {
@@ -103,9 +102,11 @@ struct binary_trie {
         }
     }
 
-    int size() const { return root->count; }
+    int size() const {
+        return root->count;
+    }
 
-   private:
+  private:
     const size_t bit_size = sizeof(T) * CHAR_BIT;
     node_ptr root = std::make_shared<Node>();
 };

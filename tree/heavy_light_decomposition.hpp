@@ -6,7 +6,7 @@
 namespace ebi {
 
 struct heavy_light_decomposition {
-   private:
+  private:
     void dfs_sz(int v) {
         for (auto &nv : g[v]) {
             if (nv == par[v]) continue;
@@ -50,7 +50,7 @@ struct heavy_light_decomposition {
         return res;
     }
 
-   public:
+  public:
     heavy_light_decomposition(const std::vector<std::vector<int>> &gh,
                               int root = 0)
         : n(gh.size()),
@@ -65,7 +65,9 @@ struct heavy_light_decomposition {
         dfs_hld(root);
     }
 
-    int idx(int u) const { return in[u]; }
+    int idx(int u) const {
+        return in[u];
+    }
 
     int lca(int u, int v) const {
         while (nxt[u] != nxt[v]) {
@@ -80,19 +82,19 @@ struct heavy_light_decomposition {
     }
 
     template <class F>
-    void path_noncommutative_query(int u, int v, bool vertex, const F &f) const {
+    void path_noncommutative_query(int u, int v, bool vertex,
+                                   const F &f) const {
         int l = lca(u, v);
         for (auto [a, b] : ascend(u, l)) f(a + 1, b);
-        if(vertex) f(in[l], in[l] + 1);
+        if (vertex) f(in[l], in[l] + 1);
         for (auto [a, b] : descend(l, v)) f(a, b + 1);
     }
 
-    template <class F>
-    void subtree_query(int u, bool vertex, const F &f) {
+    template <class F> void subtree_query(int u, bool vertex, const F &f) {
         f(in[u] + int(!vertex), out[u]);
     }
 
-   private:
+  private:
     int n;
     std::vector<std::vector<int>> g;
     std::vector<int> sz, in, out, nxt, par, depth;

@@ -6,9 +6,8 @@
 
 namespace ebi {
 
-template <class T>
-struct splay_tree {
-   private:
+template <class T> struct splay_tree {
+  private:
     struct Node;
     using node_ptr = std::shared_ptr<Node>;
     struct Node {
@@ -19,7 +18,9 @@ struct splay_tree {
         Node(T _val)
             : sz(1), val(_val), lch(nullptr), rch(nullptr), par(nullptr) {}
 
-        bool is_root() { return !par; }
+        bool is_root() {
+            return !par;
+        }
 
         void update() {
             sz = 1;
@@ -119,7 +120,7 @@ struct splay_tree {
         return;
     }
 
-   public:
+  public:
     splay_tree() = default;
 
     bool find(T x) {
@@ -174,32 +175,34 @@ struct splay_tree {
     }
 
     std::optional<T> lower_bound(T x) {
-        if(!root) return std::nullopt;
+        if (!root) return std::nullopt;
         search(x);
         if (x <= root->val) return root->val;
-        if(!root->rch) return std::nullopt;
+        if (!root->rch) return std::nullopt;
         auto node = root->rch;
-        while(node->lch) {
+        while (node->lch) {
             node = node->lch;
         }
         return std::make_optional<T>(node->val);
     }
 
     std::optional<T> upper_bound(T x) {
-        if(!root) return std::nullopt;
+        if (!root) return std::nullopt;
         search(x);
-        if(x < root->val) return std::make_shared<T>(root->val);
-        if(!root->rch) return std::nullopt;
+        if (x < root->val) return std::make_shared<T>(root->val);
+        if (!root->rch) return std::nullopt;
         auto node = root->rch;
-        while(node->lch) {
+        while (node->lch) {
             node = node->lch;
         }
         return std::make_optional<T>(node->val);
     }
 
-    int size() const { return root ? root->sz : 0; }
+    int size() const {
+        return root ? root->sz : 0;
+    }
 
-   private:
+  private:
     node_ptr root = nullptr;
 };
 
