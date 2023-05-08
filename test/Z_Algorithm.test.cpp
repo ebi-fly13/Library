@@ -13,5 +13,5 @@ int main() {
     for (int i = 1; i < s.size(); i++) {
         std::cout << " " << A[i];
     }
-    std::cout << std::endl;
+    std::cout << '\n';
 }
