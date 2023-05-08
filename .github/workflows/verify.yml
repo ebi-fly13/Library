@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
 
     - name: Set up Python
       uses: actions/setup-python@v1
@@ -21,20 +21,3 @@ jobs:
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
       run: oj-verify all
-
-    - name: install chalng-format
-      run: |
-        sudo apt update
-        sudo apt install clang-format
-      
-    - name: Apply clang-format
-      run: |
-        clang-format -i $(find . -name "*.hpp" -or -name "*.cpp")
-
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GH_PAT: ${{ secrets.GH_PAT }}
-      with:
-        ref: ${{ github.head_ref }}
-        commit_message: Apply clang-format
