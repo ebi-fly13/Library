@@ -1,11 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/vertex_set_path_composite"
 
-#include "../tree/heavy_light_decomposition.hpp"
-#include "../data_structure/segtree.hpp"
-#include "../utility/modint.hpp"
-
 #include <iostream>
 #include <vector>
+
+#include "../data_structure/segtree.hpp"
+#include "../tree/heavy_light_decomposition.hpp"
+#include "../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 
@@ -24,12 +24,12 @@ int main() {
     std::cin >> n >> q;
     std::vector g(n, std::vector<int>());
     std::vector<S> fx(n);
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         int a, b;
         std::cin >> a >> b;
         fx[i] = {a, b};
     }
-    for(int i = 0; i < n-1; i++) {
+    for (int i = 0; i < n - 1; i++) {
         int u, v;
         std::cin >> u >> v;
         g[u].emplace_back(v);
@@ -38,7 +38,7 @@ int main() {
     ebi::heavy_light_decomposition hld(g);
     ebi::segtree<S, op, e> seg1(n);
     ebi::segtree<S, op, e> seg2(n);
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         int idx = hld.idx(i);
         seg1.set(idx, fx[i]);
         seg2.set(n - 1 - idx, fx[i]);

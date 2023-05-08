@@ -1,16 +1,17 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_D"
+#define PROBLEM \
+    "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_D"
 #define ERROR 0.00000001
 
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <cassert>
-#include <iomanip>
 #include <cstdint>
+#include <iomanip>
+#include <iostream>
+#include <vector>
 
-#include "geometry/point.hpp"
-#include "geometry/line.hpp"
 #include "geometry/circle.hpp"
+#include "geometry/line.hpp"
+#include "geometry/point.hpp"
 
 namespace ebi {
 
@@ -21,22 +22,22 @@ void main_() {
     std::cin >> c.c.x >> c.c.y >> c.r;
     int q;
     std::cin >> q;
-    while(q--) {
+    while (q--) {
         long double x1, y1, x2, y2;
         std::cin >> x1 >> y1 >> x2 >> y2;
         auto ps = cross_point(c, line(point(x1, y1), point(x2, y2)));
-        if(int(ps.size()) == 1) {
+        if (int(ps.size()) == 1) {
             ps.emplace_back(ps.back());
         }
         std::sort(ps.begin(), ps.end());
-        for(auto p: ps) {
+        for (auto p : ps) {
             std::cout << p << " ";
         }
         std::cout << '\n';
     }
 }
 
-}
+}  // namespace ebi
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

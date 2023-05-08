@@ -1,12 +1,13 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_F"
+#define PROBLEM \
+    "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_F"
 #define ERROR 0.00000001
 
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <cassert>
-#include <iomanip>
 #include <cstdint>
+#include <iomanip>
+#include <iostream>
+#include <vector>
 
 #include "geometry/circle.hpp"
 
@@ -21,12 +22,12 @@ void main_() {
     std::cin >> c.c >> c.r;
     auto ps = tangent_to_circle(c, p);
     std::sort(ps.begin(), ps.end());
-    for(auto p: ps) {
+    for (auto p : ps) {
         std::cout << p << '\n';
     }
 }
 
-}
+}  // namespace ebi
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

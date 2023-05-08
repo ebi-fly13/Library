@@ -1,13 +1,13 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/2450"
 
-#include "../../tree/heavy_light_decomposition.hpp"
+#include <cstdint>
+#include <iostream>
+#include <limits>
+#include <vector>
+
 #include "../../data_structure/LazySegtree.hpp"
 #include "../../graph/template.hpp"
-
-#include <iostream>
-#include <vector>
-#include <cstdint>
-#include <limits>
+#include "../../tree/heavy_light_decomposition.hpp"
 
 using i64 = std::int64_t;
 
@@ -25,57 +25,51 @@ using F = i64;
 const F ID = LNF;
 
 S op(S a, S b) {
-    if(a.sz == 0) return b;
-    if(b.sz == 0) return a;
-    return {a.sum + b.sum, std::max(a.lhs, a.sum + b.lhs), std::max(a.rhs + b.sum, b.rhs), std::max(std::max(a.ans, b.ans), a.rhs + b.lhs) ,a.sz + b.sz};
+    if (a.sz == 0) return b;
+    if (b.sz == 0) return a;
+    return {a.sum + b.sum, std::max(a.lhs, a.sum + b.lhs),
+            std::max(a.rhs + b.sum, b.rhs),
+            std::max(std::max(a.ans, b.ans), a.rhs + b.lhs), a.sz + b.sz};
 }
 
-S op_rev(S a, S b) {
-    return op(b, a);
-}
+S op_rev(S a, S b) { return op(b, a); }
 
-S e() {
-    return {0,-LNF,-LNF,-LNF,0};
-}
+S e() { return {0, -LNF, -LNF, -LNF, 0}; }
 
-S mapping(F f, S x) { 
-    if(f != ID) {
+S mapping(F f, S x) {
+    if (f != ID) {
         x.sum = f * x.sz;
-        if(f < 0) {
+        if (f < 0) {
             x.lhs = f;
             x.rhs = f;
             x.ans = f;
-        }
-        else {
+        } else {
             x.lhs = x.rhs = x.ans = x.sum;
         }
     }
     return x;
 }
 
-F composition(F f, F g) {
-    return (f == ID) ? g : f;
-}
+F composition(F f, F g) { return (f == ID) ? g : f; }
 
-F id() {
-    return ID;
-}
+F id() { return ID; }
 
 int main() {
-    int n,q;
+    int n, q;
     std::cin >> n >> q;
     std::vector<i64> w(n);
-    for(int i = 0; i < n; i++) std::cin >> w[i];
+    for (int i = 0; i < n; i++) std::cin >> w[i];
     ebi::graph g(n);
-    for(int i = 0; i < n-1; i++) {
-        int u,v;
+    for (int i = 0; i < n - 1; i++) {
+        int u, v;
         std::cin >> u >> v;
-        u--; v--;
+        u--;
+        v--;
         g.add_edge(u, v);
     }
     ebi::heavy_light_decomposition hld(g);
     std::vector<S> vec(n);
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         vec[hld.idx(i)] = {w[i], w[i], w[i], w[i], 1};
     }
     ebi::LazySegtree<S, op, e, F, mapping, composition, id> seg1(vec);
@@ -83,22 +77,24 @@ int main() {
     F c = id();
     S ans = e();
     auto apply = [&](int u, int v) -> void {
-        if(u > v) std::swap(u, v);
+        if (u > v) std::swap(u, v);
         seg1.apply(u, v, c);
         seg2.apply(u, v, c);
     };
     auto prod = [&](int l, int r) -> void {
-        if(l <= r) ans = op(ans, seg1.prod(l, r));
-        else ans = op(ans, seg2.prod(r, l));
+        if (l <= r)
+            ans = op(ans, seg1.prod(l, r));
+        else
+            ans = op(ans, seg2.prod(r, l));
     };
-    while(q--) {
+    while (q--) {
         int t, a, b;
         std::cin >> t >> a >> b >> c;
-        a--; b--;
-        if(t == 1) {
+        a--;
+        b--;
+        if (t == 1) {
             hld.path_noncommutative_query(a, b, true, apply);
-        }
-        else {
+        } else {
             ans = e();
             hld.path_noncommutative_query(a, b, true, prod);
             std::cout << ans.ans << '\n';

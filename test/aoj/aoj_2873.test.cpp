@@ -11,7 +11,7 @@ int main() {
     int n;
     std::cin >> s >> n;
     ebi::aho_corasick<26, 'a'> ac;
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         std::string p;
         std::cin >> p;
         ac.add(p);
@@ -19,13 +19,12 @@ int main() {
     ac.build();
     int now = 0;
     int ans = 0;
-    for(auto c: s) {
+    for (auto c : s) {
         auto [x, y] = ac.move(c, now);
-        if(x > 0) {
+        if (x > 0) {
             ans++;
             now = 0;
-        }
-        else {
+        } else {
             now = y;
         }
     }

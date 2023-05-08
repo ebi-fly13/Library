@@ -2,8 +2,8 @@
 
 #include "../data_structure/bankers_queue.hpp"
 
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <limits>
 #include <vector>
 
@@ -12,16 +12,15 @@ int main() {
     int q;
     std::cin >> q;
     std::vector<ebi::bankers_queue<int>> que(1);
-    while(q--) {
+    while (q--) {
         int flag;
         std::cin >> flag;
-        if(flag == 0) {
-            int t,x;
+        if (flag == 0) {
+            int t, x;
             std::cin >> t >> x;
             t++;
             que.emplace_back(que[t].push(x));
-        }
-        else {
+        } else {
             int t;
             std::cin >> t;
             t++;

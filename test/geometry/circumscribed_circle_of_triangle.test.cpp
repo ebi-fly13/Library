@@ -1,12 +1,13 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C"
+#define PROBLEM \
+    "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_C"
 #define ERROR 0.00000001
 
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <cassert>
-#include <iomanip>
 #include <cstdint>
+#include <iomanip>
+#include <iostream>
+#include <vector>
 
 #include "geometry/circle.hpp"
 
@@ -23,7 +24,7 @@ void main_() {
     std::cout << in.c << " " << in.r << '\n';
 }
 
-}
+}  // namespace ebi
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

@@ -1,15 +1,16 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_G"
+#define PROBLEM \
+    "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_G"
 #define ERROR 0.00000001
 
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <cassert>
-#include <iomanip>
 #include <cstdint>
+#include <iomanip>
+#include <iostream>
+#include <vector>
 
-#include "geometry/point.hpp"
 #include "geometry/circle.hpp"
+#include "geometry/point.hpp"
 
 namespace ebi {
 
@@ -21,16 +22,16 @@ void main_() {
     std::cin >> c2.c >> c2.r;
     auto ls = tangent(c1, c2);
     std::vector<point> ans;
-    for(auto l: ls) {
+    for (auto l : ls) {
         ans.emplace_back(l.a);
     }
     std::sort(ans.begin(), ans.end());
-    for(auto p: ans) {
+    for (auto p : ans) {
         std::cout << p << '\n';
     }
 }
 
-}
+}  // namespace ebi
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

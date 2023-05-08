@@ -14,7 +14,7 @@ int main() {
     std::cin >> n;
     ebi::aho_corasick<26, 'a'> aho;
     std::vector<std::string> s(n);
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         std::cin >> s[i];
         aho.add(s[i]);
     }
@@ -22,8 +22,10 @@ int main() {
     std::string t;
     std::cin >> t;
     int m = t.size();
-    std::vector<mint> dp(m+1, 0);
+    std::vector<mint> dp(m + 1, 0);
     dp[0] = 1;
-    aho.query(t, [&](int i, int idx) -> void { dp[idx+1] += dp[idx+1-int(s[i].size())]; });
+    aho.query(t, [&](int i, int idx) -> void {
+        dp[idx + 1] += dp[idx + 1 - int(s[i].size())];
+    });
     std::cout << dp[m].val() << '\n';
 }

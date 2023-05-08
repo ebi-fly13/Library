@@ -1,15 +1,16 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_I"
+#define PROBLEM \
+    "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_I"
 #define ERROR 0.00000001
 
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <cassert>
-#include <iomanip>
 #include <cstdint>
+#include <iomanip>
+#include <iostream>
+#include <vector>
 
-#include "geometry/point.hpp"
 #include "geometry/circle.hpp"
+#include "geometry/point.hpp"
 
 namespace ebi {
 
@@ -22,7 +23,7 @@ void main_() {
     std::cout << common_area(c1, c2) << '\n';
 }
 
-}
+}  // namespace ebi
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

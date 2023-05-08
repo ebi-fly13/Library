@@ -1,15 +1,16 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_H"
+#define PROBLEM \
+    "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_H"
 #define ERROR 0.00000001
 
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <cassert>
-#include <iomanip>
 #include <cstdint>
+#include <iomanip>
+#include <iostream>
+#include <vector>
 
-#include "geometry/point.hpp"
 #include "geometry/circle.hpp"
+#include "geometry/point.hpp"
 
 namespace ebi {
 
@@ -21,13 +22,13 @@ void main_() {
     c.c = point(0.0, 0.0);
     std::cin >> n >> c.r;
     std::vector<point> poly(n);
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         std::cin >> poly[i];
     }
     std::cout << calc_common_area(c, poly) << '\n';
 }
 
-}
+}  // namespace ebi
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

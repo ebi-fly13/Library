@@ -1,12 +1,13 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_B"
+#define PROBLEM \
+    "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_B"
 #define ERROR 0.00000001
 
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <cassert>
-#include <iomanip>
 #include <cstdint>
+#include <iomanip>
+#include <iostream>
+#include <vector>
 
 #include "geometry/point.hpp"
 #include "geometry/polygon.hpp"
@@ -19,13 +20,13 @@ void main_() {
     int n;
     std::cin >> n;
     std::vector<point> poly(n);
-    for(auto &[x, y]: poly) {
+    for (auto &[x, y] : poly) {
         std::cin >> x >> y;
     }
     std::cout << convex_diameter(poly) << '\n';
 }
 
-}
+}  // namespace ebi
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

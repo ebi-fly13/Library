@@ -6,25 +6,23 @@
 #include <vector>
 
 int main() {
-    int n,q;
+    int n, q;
     std::cin >> n >> q;
     ebi::persistent_unionfind uf(n);
-    std::vector<int> query(q+1,0);
+    std::vector<int> query(q + 1, 0);
     int time = 0;
-    for(int i = 1; i<=q; i++) {
-        int t,k,u,v;
+    for (int i = 1; i <= q; i++) {
+        int t, k, u, v;
         std::cin >> t >> k >> u >> v;
-        k = query[k+1];
+        k = query[k + 1];
         query[i] = k;
-        if(t == 0) {
+        if (t == 0) {
             uf.merge(u, v, k);
             query[i] = ++time;
-        }
-        else {
-            if(uf.same(u, v, k)) {
+        } else {
+            if (uf.same(u, v, k)) {
                 std::cout << "1\n";
-            }
-            else {
+            } else {
                 std::cout << "0\n";
             }
         }

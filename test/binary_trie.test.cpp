@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-int main(){
+int main() {
     int q;
     std::cin >> q;
     ebi::binary_trie<int> trie;

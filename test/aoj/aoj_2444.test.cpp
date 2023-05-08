@@ -1,17 +1,18 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2444&lang=jp"
+#define PROBLEM \
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2444&lang=jp"
 
-#include <iostream>
-#include <vector>
-#include <map>
-#include <cstdint>
 #include <cassert>
+#include <cstdint>
+#include <iostream>
+#include <map>
+#include <vector>
 
 #include "String/rolling_hash.hpp"
 
 using u64 = std::uint64_t;
 
 int main() {
-    int n,m;
+    int n, m;
     std::cin >> n >> m;
     std::string s;
     std::cin >> s;
@@ -20,22 +21,18 @@ int main() {
     ebi::rolling_hash<2> rh(s);
     int l = 0;
     int r = 1;
-    while(m--) {
+    while (m--) {
         std::string q;
         std::cin >> q;
-        if(q == "L++") {
+        if (q == "L++") {
             l++;
-        }
-        else if(q == "L--") {
+        } else if (q == "L--") {
             l--;
-        }
-        else if(q == "R++") {
+        } else if (q == "R++") {
             r++;
-        }
-        else if(q == "R--") {
+        } else if (q == "R--") {
             r--;
-        }
-        else {
+        } else {
             assert(0);
         }
         map[rh.get_hash(l, r)] = 1;

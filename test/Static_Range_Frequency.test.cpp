@@ -1,24 +1,23 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_frequency"
 
-
-#include <vector>
 #include <cstdint>
 #include <iostream>
+#include <vector>
 
 #include "data_structure/WaveletMatrix.hpp"
 
 int main() {
-    int n,q;
+    int n, q;
     std::cin >> n >> q;
     std::vector<int> a(n);
-    for(auto &val: a) {
+    for (auto &val : a) {
         std::cin >> val;
     }
     ebi::WaveletMatrix<int> wm(a);
-    while(q--) {
-        int l,r,x;
+    while (q--) {
+        int l, r, x;
         std::cin >> l >> r >> x;
-        if(l == r) {
+        if (l == r) {
             std::cout << "0\n";
             continue;
         }

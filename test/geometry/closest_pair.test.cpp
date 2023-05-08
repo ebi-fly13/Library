@@ -1,12 +1,13 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A"
+#define PROBLEM \
+    "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_5_A"
 #define ERROR 0.00000001
 
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <cassert>
-#include <iomanip>
 #include <cstdint>
+#include <iomanip>
+#include <iostream>
+#include <vector>
 
 #include "geometry/point.hpp"
 
@@ -18,13 +19,13 @@ void main_() {
     int n;
     std::cin >> n;
     std::vector<point> p(n);
-    for(auto &[x, y]: p) {
+    for (auto &[x, y] : p) {
         std::cin >> x >> y;
     }
     std::cout << closest_pair(p) << '\n';
 }
 
-}
+}  // namespace ebi
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);
