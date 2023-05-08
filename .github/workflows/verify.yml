@@ -16,7 +16,6 @@ jobs:
       run: pip3 install -U online-judge-verify-helper
 
     - name: install chalng-format
-      uses: actions/checkout@v1
       run: |
         sudo apt update
         sudo apt install clang-format
