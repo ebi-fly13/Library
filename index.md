@@ -160,7 +160,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/circle.hpp
       title: geometry/circle.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
     - icon: ':heavy_check_mark:'
@@ -200,7 +200,7 @@ data:
     - icon: ':warning:'
       path: math/boastan_mori_algorithm.hpp
       title: math/boastan_mori_algorithm.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
     - icon: ':warning:'
@@ -209,7 +209,7 @@ data:
     - icon: ':warning:'
       path: math/linear_sieve.hpp
       title: math/linear_sieve.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/pow.hpp
       title: math/pow.hpp
   - name: tree
@@ -228,7 +228,7 @@ data:
       title: tree/lowest_common_ancestor.hpp
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
     - icon: ':heavy_check_mark:'
@@ -321,7 +321,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/enumerate_primes.test.cpp
       title: test/enumerate_primes.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/eratosthenes_sieve.test.cpp
       title: test/eratosthenes_sieve.test.cpp
     - icon: ':heavy_check_mark:'
@@ -339,7 +339,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/point_add_rectangle_sum.test.cpp
       title: test/point_add_rectangle_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/pow.test.cpp
       title: test/pow.test.cpp
     - icon: ':heavy_check_mark:'
@@ -435,7 +435,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/convex_diameter.test.cpp
       title: test/geometry/convex_diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/convex_hull.test.cpp
       title: test/geometry/convex_hull.test.cpp
     - icon: ':heavy_check_mark:'

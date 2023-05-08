@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy:
@@ -9,12 +9,12 @@ data:
     path: math/linear_sieve.hpp
     title: math/linear_sieve.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/pow.test.cpp
     title: test/pow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/pow.hpp\"\n\r\n#line 2 \"utility/int_alias.hpp\"\n\r\
@@ -45,7 +45,7 @@ data:
   requiredBy:
   - math/linear_sieve.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/pow.test.cpp
 documentation_of: math/pow.hpp

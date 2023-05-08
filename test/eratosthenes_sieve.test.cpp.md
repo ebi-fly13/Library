@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C
@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 1 \"test/eratosthenes_sieve.test.cpp\"\n#define PROBLEM \\\r\
     \n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C\"\r\
     \n\r\n#line 2 \"math/eratosthenes_sieve.hpp\"\n\r\n#include <cassert>\r\n#include\
-    \ <vector>\r\n\r\n/*\r\n    reference: https://37zigen.com/sieve-eratosthenes/\r\
+    \ <vector>\r\n#include <cstdint>\r\n\r\n/*\r\n    reference: https://37zigen.com/sieve-eratosthenes/\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\nstruct eratosthenes_sieve {\r\n  private:\r\
     \n    using i64 = std::int_fast64_t;\r\n    int n;\r\n    std::vector<bool> table;\r\
     \n\r\n  public:\r\n    eratosthenes_sieve(int n) : n(n), table(std::vector<bool>(n\
@@ -55,8 +55,8 @@ data:
   isVerificationFile: true
   path: test/eratosthenes_sieve.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-08 18:41:12+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/eratosthenes_sieve.test.cpp
 layout: document

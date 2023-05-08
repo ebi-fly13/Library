@@ -11,7 +11,7 @@ data:
   - icon: ':warning:'
     path: math/linear_sieve.hpp
     title: math/linear_sieve.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/pow.hpp
     title: math/pow.hpp
   _extendedVerifiedWith:
@@ -42,12 +42,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fibonacci_heap.test.cpp
     title: test/fibonacci_heap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/pow.test.cpp
     title: test/pow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include\
@@ -66,7 +66,7 @@ data:
   - math/pow.hpp
   - math/linear_sieve.hpp
   timestamp: '2021-01-12 22:18:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/ImplicitTreap.test.cpp
   - test/pow.test.cpp
