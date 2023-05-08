@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <algorithm>
 
 /*
     reference: プログラミングコンテストチャレンジブック 第2版 p234

@@ -1,6 +1,5 @@
-#define PROBLEM                               \
-    "https://judge.u-aizu.ac.jp/onlinejudge/" \
-    "description.jsp?id=NTL_1_B&lang=ja"
+#define PROBLEM \
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B"
 
 #include "../math/pow.hpp"
 

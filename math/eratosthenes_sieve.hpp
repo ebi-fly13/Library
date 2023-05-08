@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <vector>
+#include <cstdint>
 
 /*
     reference: https://37zigen.com/sieve-eratosthenes/
