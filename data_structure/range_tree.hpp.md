@@ -98,7 +98,7 @@ data:
   isVerificationFile: false
   path: data_structure/range_tree.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2022-03-29 17:23:35+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/range_tree.test.cpp

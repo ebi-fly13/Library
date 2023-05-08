@@ -153,7 +153,7 @@ data:
   isVerificationFile: false
   path: data_structure/splay_tree.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2022-01-11 01:58:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/splay_tree.hpp

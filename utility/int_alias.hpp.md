@@ -18,13 +18,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/FenwickTree.test.cpp
     title: test/FenwickTree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/LiChaoSegmentTree.test.cpp
     title: test/LiChaoSegmentTree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/SegmentAddGetMin.test.cpp
     title: test/SegmentAddGetMin.test.cpp
   - icon: ':x:'
@@ -65,7 +65,7 @@ data:
   - data_structure/WaveletMatrix.hpp
   - math/pow.hpp
   - math/linear_sieve.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-01-12 22:18:52+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/ImplicitTreap.test.cpp

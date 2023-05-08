@@ -154,7 +154,7 @@ data:
   isVerificationFile: true
   path: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2022-01-11 10:23:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp

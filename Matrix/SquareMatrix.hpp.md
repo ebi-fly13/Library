@@ -99,7 +99,7 @@ data:
   isVerificationFile: false
   path: Matrix/SquareMatrix.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-04-25 12:46:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Determinant_of_Matrix.test.cpp

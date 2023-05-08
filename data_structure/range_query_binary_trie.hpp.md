@@ -67,7 +67,7 @@ data:
   isVerificationFile: false
   path: data_structure/range_query_binary_trie.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2023-05-04 20:40:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/range_query_binary_trie.hpp

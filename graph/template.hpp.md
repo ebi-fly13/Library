@@ -15,7 +15,7 @@ data:
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Jump_on_Tree.test.cpp
     title: test/Jump_on_Tree.test.cpp
   - icon: ':x:'
@@ -47,7 +47,7 @@ data:
     title: test/vertex_add_subtree_sum.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
@@ -80,8 +80,8 @@ data:
   - graph/dijkstra_fibheap.hpp
   - graph/dijkstra.hpp
   - algorithm/two_sat.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-10-31 15:43:33+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/level_ancestor_lca.test.cpp
   - test/two_sat.test.cpp

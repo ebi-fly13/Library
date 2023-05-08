@@ -80,7 +80,7 @@ data:
   isVerificationFile: false
   path: data_structure/kd_tree.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2022-01-10 06:38:37+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/kd_tree.hpp

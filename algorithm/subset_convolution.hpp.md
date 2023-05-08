@@ -63,7 +63,7 @@ data:
   isVerificationFile: false
   path: algorithm/subset_convolution.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-03-25 14:59:24+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/subset_convolution.test.cpp

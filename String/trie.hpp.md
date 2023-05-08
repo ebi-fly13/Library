@@ -80,7 +80,7 @@ data:
   path: String/trie.hpp
   requiredBy:
   - String/aho_corasick.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-08-24 18:40:57+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/aoj_2863.test.cpp

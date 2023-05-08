@@ -47,7 +47,7 @@ data:
   isVerificationFile: false
   path: data_structure/compress.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2022-01-10 15:56:10+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/static_range_inversion_query.test.cpp

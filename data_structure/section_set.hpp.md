@@ -86,7 +86,7 @@ data:
   isVerificationFile: false
   path: data_structure/section_set.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-11-07 13:38:29+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/aoj_2152.test.cpp

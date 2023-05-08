@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   - icon: ':question:'

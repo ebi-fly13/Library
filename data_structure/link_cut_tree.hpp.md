@@ -211,7 +211,7 @@ data:
   isVerificationFile: false
   path: data_structure/link_cut_tree.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2022-01-11 10:23:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp

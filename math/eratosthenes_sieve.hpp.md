@@ -64,7 +64,7 @@ data:
   isVerificationFile: false
   path: math/eratosthenes_sieve.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-08-16 18:05:12+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/enumerate_primes.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []

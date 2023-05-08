@@ -5,7 +5,7 @@ data:
   - icon: ':question:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   - icon: ':warning:'
@@ -21,19 +21,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Exp_of_Formal_Power_Series.test.cpp
     title: test/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
   - icon: ':x:'
@@ -142,7 +142,7 @@ data:
   - math/FormalPowerSeries.hpp
   - math/lagrange_interpolation.hpp
   - algorithm/convolution.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-04-04 17:12:45+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Determinant_of_Matrix.test.cpp

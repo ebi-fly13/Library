@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://www.slideshare.net/iwiwi/2-12188757
@@ -138,8 +138,8 @@ data:
   isVerificationFile: false
   path: data_structure/ImplicitTreap.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-01-18 10:56:54+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/ImplicitTreap.test.cpp
 documentation_of: data_structure/ImplicitTreap.hpp

@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: algorithm/convolution.hpp
     title: algorithm/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   - icon: ':question:'

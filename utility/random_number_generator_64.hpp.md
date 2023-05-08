@@ -31,7 +31,7 @@ data:
   path: utility/random_number_generator_64.hpp
   requiredBy:
   - String/rolling_hash.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-08-30 17:19:08+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp

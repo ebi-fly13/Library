@@ -96,7 +96,7 @@ data:
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2023-04-24 21:46:33+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/vertex_add_subtree_sum.test.cpp

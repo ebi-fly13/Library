@@ -151,7 +151,7 @@ data:
   path: data_structure/fibonacci_heap.hpp
   requiredBy:
   - graph/dijkstra_fibheap.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-01-23 01:34:05+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/fibonacci_heap.test.cpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: tree/level_ancestor.hpp
     title: tree/level_ancestor.hpp
   _extendedRequiredBy: []

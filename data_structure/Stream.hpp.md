@@ -81,7 +81,7 @@ data:
   path: data_structure/Stream.hpp
   requiredBy:
   - data_structure/bankers_queue.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-03-01 14:43:05+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/bankers_queue.test.cpp

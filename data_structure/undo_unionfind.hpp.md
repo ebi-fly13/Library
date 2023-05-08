@@ -46,7 +46,7 @@ data:
   isVerificationFile: false
   path: data_structure/undo_unionfind.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-10-16 12:06:31+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/aoj_1645.test.cpp

@@ -100,7 +100,7 @@ data:
   path: data_structure/bitVector.hpp
   requiredBy:
   - data_structure/WaveletMatrix.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-01-18 10:56:54+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/Static_Range_Frequency.test.cpp

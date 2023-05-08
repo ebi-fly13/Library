@@ -115,7 +115,7 @@ data:
   path: data_structure/segtree.hpp
   requiredBy:
   - data_structure/segtree_2d.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2023-04-23 15:36:52+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/point_add_rectangle_sum.test.cpp

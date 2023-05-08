@@ -86,7 +86,7 @@ data:
   isVerificationFile: false
   path: math/lagrange_interpolation.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-07-07 23:00:38+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/lagrange_interpolation.hpp

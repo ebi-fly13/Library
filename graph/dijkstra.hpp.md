@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
@@ -51,7 +51,7 @@ data:
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/dijkstra.test.cpp

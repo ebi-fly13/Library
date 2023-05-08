@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Jump_on_Tree.test.cpp
     title: test/Jump_on_Tree.test.cpp
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
     title: test/lowest_common_ancestor.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/lowest_common_ancestor.hpp\"\n\r\n#include <vector>\r\
@@ -76,8 +76,8 @@ data:
   isVerificationFile: false
   path: tree/lowest_common_ancestor.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-17 15:31:58+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Jump_on_Tree.test.cpp
   - test/lowest_common_ancestor.test.cpp

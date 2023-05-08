@@ -416,7 +416,7 @@ data:
   isVerificationFile: false
   path: geometry/circle.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2022-07-08 00:50:54+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/common_area_circles.test.cpp

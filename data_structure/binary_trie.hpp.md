@@ -98,7 +98,7 @@ data:
   isVerificationFile: false
   path: data_structure/binary_trie.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2022-05-19 19:15:45+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/binary_trie.test.cpp

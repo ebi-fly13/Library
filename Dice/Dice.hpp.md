@@ -142,7 +142,7 @@ data:
   isVerificationFile: false
   path: Dice/Dice.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-10-31 15:43:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Dice/dice3.test.cpp

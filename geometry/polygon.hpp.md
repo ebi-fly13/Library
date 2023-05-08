@@ -263,7 +263,7 @@ data:
   path: geometry/polygon.hpp
   requiredBy:
   - geometry/circle.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2022-07-08 00:50:54+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/area.test.cpp

@@ -7,7 +7,7 @@ data:
   - icon: ':x:'
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   - icon: ':question:'

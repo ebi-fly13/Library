@@ -65,7 +65,7 @@ data:
   isVerificationFile: false
   path: geometry/convex_hull.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-09-15 13:37:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/convex_hull.test.cpp

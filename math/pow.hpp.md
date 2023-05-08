@@ -42,7 +42,7 @@ data:
   path: math/pow.hpp
   requiredBy:
   - math/linear_sieve.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-03-19 15:15:41+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/pow.test.cpp

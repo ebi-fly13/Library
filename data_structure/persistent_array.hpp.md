@@ -115,7 +115,7 @@ data:
   path: data_structure/persistent_array.hpp
   requiredBy:
   - data_structure/persistent_unionfind.hpp
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-04-02 19:30:59+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/persistent_unionfind.test.cpp

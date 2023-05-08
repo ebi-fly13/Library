@@ -54,7 +54,7 @@ data:
   isVerificationFile: false
   path: data_structure/FenwickTree.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-02-24 01:07:23+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/static_range_inversion_query.test.cpp

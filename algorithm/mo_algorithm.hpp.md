@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: algorithm/mo_algorithm.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-08-18 00:16:55+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/static_range_inversion_query.test.cpp

@@ -100,7 +100,7 @@ data:
   isVerificationFile: false
   path: String/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2023-04-19 18:25:00+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp

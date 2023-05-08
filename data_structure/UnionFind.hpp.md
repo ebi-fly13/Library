@@ -42,7 +42,7 @@ data:
   isVerificationFile: false
   path: data_structure/UnionFind.hpp
   requiredBy: []
-  timestamp: '2023-05-08 14:32:22+09:00'
+  timestamp: '2021-11-03 22:06:55+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/UnionFind.test.cpp
