@@ -3,17 +3,17 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/SegmentTreeBeats.test.cpp
     title: test/SegmentTreeBeats.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/SegmentTreeBeats.hpp\"\n\r\n#include <algorithm>\r\
-    \n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class S>\r\nstruct\
-    \ SegmentTreeBeats {\r\nprivate:\r\n    S INF = std::numeric_limits<S>::max()/4;\r\
+    \n#include <vector>\r\n#include <limits>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class\
+    \ S>\r\nstruct SegmentTreeBeats {\r\nprivate:\r\n    S INF = std::numeric_limits<S>::max()/4;\r\
     \n    std::vector<S> max_v, smax_v, max_c;\r\n    std::vector<S> min_v, smin_v,\
     \ min_c;\r\n    std::vector<S> data;\r\n    std::vector<S> lazy;\r\n    int n;\r\
     \n\r\n    void update(int k) {\r\n        data[k] = data[2*k+1] + data[2*k+2];\r\
@@ -84,14 +84,14 @@ data:
     \ {\r\n            return 0;\r\n        }\r\n        if(l<=nl && nr<=r) {\r\n\
     \            return data[index];\r\n        }\r\n        pushdown(index, nl, nr);\r\
     \n        return prod(l, r, nl, (nl+nr)/2, 2*index+1) + prod(l, r, (nl+nr)/2,\
-    \ nr, 2*index+2);\r\n    }\r\n};\r\n\r\n} // namespace ebi\n"
-  code: "#pragma once\r\n\r\n#include <algorithm>\r\n#include <vector>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate<class S>\r\nstruct SegmentTreeBeats {\r\nprivate:\r\n\
-    \    S INF = std::numeric_limits<S>::max()/4;\r\n    std::vector<S> max_v, smax_v,\
-    \ max_c;\r\n    std::vector<S> min_v, smin_v, min_c;\r\n    std::vector<S> data;\r\
-    \n    std::vector<S> lazy;\r\n    int n;\r\n\r\n    void update(int k) {\r\n \
-    \       data[k] = data[2*k+1] + data[2*k+2];\r\n\r\n        if(max_v[2*k+1] !=\
-    \ max_v[2*k+2]) {\r\n            int p = 2*k+1, q = 2*k+2;\r\n            if(max_v[p]<max_v[q])\
+    \ nr, 2*index+2);\r\n    }\r\n};\r\n\r\n} // namespace ebi\r\n"
+  code: "#pragma once\r\n\r\n#include <algorithm>\r\n#include <vector>\r\n#include\
+    \ <limits>\r\n\r\nnamespace ebi {\r\n\r\ntemplate<class S>\r\nstruct SegmentTreeBeats\
+    \ {\r\nprivate:\r\n    S INF = std::numeric_limits<S>::max()/4;\r\n    std::vector<S>\
+    \ max_v, smax_v, max_c;\r\n    std::vector<S> min_v, smin_v, min_c;\r\n    std::vector<S>\
+    \ data;\r\n    std::vector<S> lazy;\r\n    int n;\r\n\r\n    void update(int k)\
+    \ {\r\n        data[k] = data[2*k+1] + data[2*k+2];\r\n\r\n        if(max_v[2*k+1]\
+    \ != max_v[2*k+2]) {\r\n            int p = 2*k+1, q = 2*k+2;\r\n            if(max_v[p]<max_v[q])\
     \ std::swap(p,q);\r\n            max_v[k] = max_v[p];\r\n            max_c[k]\
     \ = max_c[p];\r\n            smax_v[k] = std::max(smax_v[p], max_v[q]);\r\n  \
     \      }\r\n        else {\r\n            max_v[k] = max_v[2*k+1];\r\n       \
@@ -157,13 +157,13 @@ data:
     \ {\r\n            return 0;\r\n        }\r\n        if(l<=nl && nr<=r) {\r\n\
     \            return data[index];\r\n        }\r\n        pushdown(index, nl, nr);\r\
     \n        return prod(l, r, nl, (nl+nr)/2, 2*index+1) + prod(l, r, (nl+nr)/2,\
-    \ nr, 2*index+2);\r\n    }\r\n};\r\n\r\n} // namespace ebi"
+    \ nr, 2*index+2);\r\n    }\r\n};\r\n\r\n} // namespace ebi\r\n"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/SegmentTreeBeats.hpp
   requiredBy: []
-  timestamp: '2021-01-18 10:56:54+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-05-08 16:35:50+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/SegmentTreeBeats.test.cpp
 documentation_of: data_structure/SegmentTreeBeats.hpp

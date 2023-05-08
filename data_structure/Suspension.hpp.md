@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/Stream.hpp
     title: data_structure/Stream.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/bankers_queue.hpp
     title: data_structure/bankers_queue.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/bankers_queue.test.cpp
     title: test/bankers_queue.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://noshi91.github.io/Library/other/suspension.cpp
@@ -48,7 +48,7 @@ data:
   - data_structure/bankers_queue.hpp
   - data_structure/Stream.hpp
   timestamp: '2021-03-01 14:43:05+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/bankers_queue.test.cpp
 documentation_of: data_structure/Suspension.hpp

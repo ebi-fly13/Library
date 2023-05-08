@@ -13,10 +13,10 @@ data:
       title: Matrix/SquareMatrix.hpp
   - name: String
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/Z_Algorithm.hpp
       title: String/Z_Algorithm.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/aho_corasick.hpp
       title: String/aho_corasick.hpp
     - icon: ':warning:'
@@ -25,15 +25,15 @@ data:
     - icon: ':warning:'
       path: String/parsing.hpp
       title: String/parsing.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/rolling_hash.hpp
       title: String/rolling_hash.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/trie.hpp
       title: String/trie.hpp
   - name: algorithm
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
     - icon: ':x:'
@@ -62,7 +62,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/ImplicitTreap.hpp
       title: data_structure/ImplicitTreap.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/LazySegtree.hpp
       title: data_structure/LazySegtree.hpp
     - icon: ':heavy_check_mark:'
@@ -74,28 +74,28 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/SWAG.hpp
       title: SlidingWindowAggregation
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/SegmentTreeBeats.hpp
       title: data_structure/SegmentTreeBeats.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/Stream.hpp
       title: data_structure/Stream.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/Suspension.hpp
       title: data_structure/Suspension.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/UnionFind.hpp
       title: data_structure/UnionFind.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/WaveletMatrix.hpp
       title: WaveletMatrix
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/bankers_queue.hpp
       title: data_structure/bankers_queue.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
     - icon: ':x:'
@@ -134,10 +134,10 @@ data:
     - icon: ':warning:'
       path: data_structure/removable_priority_queue.hpp
       title: data_structure/removable_priority_queue.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: data_structure/section_set.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: data_structure/segtree.hpp
       title: segtree
     - icon: ':x:'
@@ -152,7 +152,7 @@ data:
     - icon: ':warning:'
       path: data_structure/splay_tree.hpp
       title: data_structure/splay_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/undo_unionfind.hpp
       title: data_structure/undo_unionfind.hpp
   - name: geometry
@@ -177,7 +177,7 @@ data:
       title: geometry/polygon.hpp
   - name: graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
     - icon: ':x:'
@@ -217,7 +217,7 @@ data:
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: tree/heavy_light_decomposition.hpp
       title: heavy light decomposition
     - icon: ':question:'
@@ -234,10 +234,10 @@ data:
     - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: utility/random_number_generator_64.hpp
       title: utility/random_number_generator_64.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: utility/safe_mod.hpp
       title: utility/safe_mod.hpp
   verificationCategories:
@@ -288,34 +288,34 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/SegmentAddGetMin.test.cpp
       title: test/SegmentAddGetMin.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/SegmentTreeBeats.test.cpp
       title: test/SegmentTreeBeats.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Segtree.test.cpp
       title: test/Segtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Static_Range_Frequency.test.cpp
       title: test/Static_Range_Frequency.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/WaveletMatrix.test.cpp
       title: test/WaveletMatrix.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Z_Algorithm.test.cpp
       title: test/Z_Algorithm.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/bankers_queue.test.cpp
       title: test/bankers_queue.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/binary_trie.test.cpp
       title: test/binary_trie.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/convolution.test.cpp
       title: test/convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/dijkstra.test.cpp
       title: test/dijkstra.test.cpp
     - icon: ':x:'
@@ -391,22 +391,22 @@ data:
       title: test/Dice/dice4.test.cpp
   - name: test/aoj
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_1645.test.cpp
       title: test/aoj/aoj_1645.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2152.test.cpp
       title: test/aoj/aoj_2152.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2444.test.cpp
       title: test/aoj/aoj_2444.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2450.test.cpp
       title: test/aoj/aoj_2450.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2863.test.cpp
       title: test/aoj/aoj_2863.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2873.test.cpp
       title: test/aoj/aoj_2873.test.cpp
   - name: test/geometry

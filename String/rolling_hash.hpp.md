@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: utility/random_number_generator_64.hpp
     title: utility/random_number_generator_64.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: utility/safe_mod.hpp
     title: utility/safe_mod.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
@@ -101,7 +101,7 @@ data:
   path: String/rolling_hash.hpp
   requiredBy: []
   timestamp: '2023-04-19 18:25:00+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
 documentation_of: String/rolling_hash.hpp

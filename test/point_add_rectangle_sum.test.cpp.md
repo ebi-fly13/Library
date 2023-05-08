@@ -4,7 +4,7 @@ data:
   - icon: ':x:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
   - icon: ':x:'

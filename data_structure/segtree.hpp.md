@@ -6,10 +6,10 @@ data:
     path: data_structure/segtree_2d.hpp
     title: data_structure/segtree_2d.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Segtree.test.cpp
     title: test/Segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_1645.test.cpp
     title: test/aoj/aoj_1645.test.cpp
   - icon: ':x:'
@@ -29,7 +29,7 @@ data:
     title: test/vertex_set_path_compositie.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/segtree.hpp\"\n\r\n#include <vector>\r\n\
@@ -116,7 +116,7 @@ data:
   requiredBy:
   - data_structure/segtree_2d.hpp
   timestamp: '2023-04-23 15:36:52+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/point_add_rectangle_sum.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
