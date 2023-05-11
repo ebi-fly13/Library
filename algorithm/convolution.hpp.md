@@ -131,10 +131,10 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
+  - test/convolution.test.cpp
 documentation_of: algorithm/convolution.hpp
 layout: document
 redirect_from:

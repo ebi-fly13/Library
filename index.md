@@ -226,6 +226,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/lowest_common_ancestor.hpp
       title: tree/lowest_common_ancestor.hpp
+    - icon: ':heavy_check_mark:'
+      path: tree/rerooting.hpp
+      title: tree/rerooting.hpp
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
@@ -297,6 +300,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Static_Range_Frequency.test.cpp
       title: test/Static_Range_Frequency.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Tree_Path_Composite_Sum.test.cpp
+      title: test/Tree_Path_Composite_Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
