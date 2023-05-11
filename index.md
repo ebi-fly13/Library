@@ -228,7 +228,7 @@ data:
       title: tree/lowest_common_ancestor.hpp
     - icon: ':heavy_check_mark:'
       path: tree/rerooting.hpp
-      title: tree/rerooting.hpp
+      title: rerooting
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
