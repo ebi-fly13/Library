@@ -21,6 +21,7 @@
 "test/SegmentTreeBeats.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/Segtree.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/Static_Range_Frequency.test.cpp": "2023-05-08 16:51:58 +0900",
+"test/Tree_Path_Composite_Sum.test.cpp": "2023-05-11 19:12:09 +0900",
 "test/UnionFind.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/WaveletMatrix.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/Z_Algorithm.test.cpp": "2023-05-08 17:19:05 +0900",
