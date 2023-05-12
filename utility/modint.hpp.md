@@ -13,6 +13,9 @@ data:
     title: math/lagrange_interpolation.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/Bitwise_Xor_Convolution.test.cpp
+    title: test/Bitwise_Xor_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/Determinant_of_Matrix.test.cpp
     title: test/Determinant_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -163,6 +166,7 @@ data:
   - test/SWAG.test.cpp
   - test/subset_convolution.test.cpp
   - test/convolution.test.cpp
+  - test/Bitwise_Xor_Convolution.test.cpp
 documentation_of: utility/modint.hpp
 layout: document
 redirect_from:

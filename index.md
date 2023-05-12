@@ -37,6 +37,9 @@ data:
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
     - icon: ':heavy_check_mark:'
+      path: algorithm/hadamard_transform.hpp
+      title: algorithm/hadamard_transform.hpp
+    - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp
     - icon: ':warning:'
@@ -48,6 +51,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/two_sat.hpp
       title: algorithm/two_sat.hpp
+    - icon: ':heavy_check_mark:'
+      path: algorithm/xor_convolution.hpp
+      title: algorithm/xor_convolution.hpp
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -246,6 +252,9 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/Bitwise_Xor_Convolution.test.cpp
+      title: test/Bitwise_Xor_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/Determinant_of_Matrix.test.cpp
       title: test/Determinant_of_Matrix.test.cpp
