@@ -37,29 +37,14 @@ data:
       path: algorithm/convolution.hpp
       title: algorithm/convolution.hpp
     - icon: ':heavy_check_mark:'
-      path: algorithm/hadamard_transform.hpp
-      title: algorithm/hadamard_transform.hpp
-    - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp
-    - icon: ':heavy_check_mark:'
-      path: algorithm/ranked_zeta.hpp
-      title: algorithm/ranked_zeta.hpp
-    - icon: ':heavy_check_mark:'
-      path: algorithm/sps_exp.hpp
-      title: algorithm/sps_exp.hpp
     - icon: ':warning:'
       path: algorithm/submodular.hpp
       title: algorithm/submodular.hpp
     - icon: ':heavy_check_mark:'
-      path: algorithm/subset_convolution.hpp
-      title: algorithm/subset_convolution.hpp
-    - icon: ':heavy_check_mark:'
       path: algorithm/two_sat.hpp
       title: algorithm/two_sat.hpp
-    - icon: ':heavy_check_mark:'
-      path: algorithm/xor_convolution.hpp
-      title: algorithm/xor_convolution.hpp
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -224,6 +209,23 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/pow.hpp
       title: math/pow.hpp
+  - name: set_function
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: set_function/hadamard_transform.hpp
+      title: set_function/hadamard_transform.hpp
+    - icon: ':heavy_check_mark:'
+      path: set_function/ranked_zeta.hpp
+      title: set_function/ranked_zeta.hpp
+    - icon: ':heavy_check_mark:'
+      path: set_function/sps_exp.hpp
+      title: set_function/sps_exp.hpp
+    - icon: ':heavy_check_mark:'
+      path: set_function/subset_convolution.hpp
+      title: set_function/subset_convolution.hpp
+    - icon: ':heavy_check_mark:'
+      path: set_function/xor_convolution.hpp
+      title: set_function/xor_convolution.hpp
   - name: tree
     pages:
     - icon: ':warning:'

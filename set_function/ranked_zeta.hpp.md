@@ -6,11 +6,11 @@ data:
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: algorithm/sps_exp.hpp
-    title: algorithm/sps_exp.hpp
+    path: set_function/sps_exp.hpp
+    title: set_function/sps_exp.hpp
   - icon: ':heavy_check_mark:'
-    path: algorithm/subset_convolution.hpp
-    title: algorithm/subset_convolution.hpp
+    path: set_function/subset_convolution.hpp
+    title: set_function/subset_convolution.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Exp_of_Set_Power_Series.test.cpp
@@ -23,13 +23,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"algorithm/ranked_zeta.hpp\"\n\n#include <array>\n#include\
+  bundledCode: "#line 2 \"set_function/ranked_zeta.hpp\"\n\n#include <array>\n#include\
     \ <cassert>\n#include <vector>\n\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace\
     \ ebi {\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n}\n\nint topbit(int\
     \ x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\nint lowbit(int\
     \ x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace ebi\n\
-    #line 8 \"algorithm/ranked_zeta.hpp\"\n\nnamespace ebi {\n\ntemplate <class T,\
-    \ int LIM = 20>\nstd::vector<std::array<T, LIM + 1>> ranked_zeta(const std::vector<T>\
+    #line 8 \"set_function/ranked_zeta.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ T, int LIM = 20>\nstd::vector<std::array<T, LIM + 1>> ranked_zeta(const std::vector<T>\
     \ &f) {\n    int n = topbit(f.size());\n    assert(n <= LIM);\n    assert((int)f.size()\
     \ == (1 << n));\n    std::vector<std::array<T, LIM + 1>> rf(1 << n);\n    for\
     \ (int s = 0; s < (1 << n); s++) rf[s][popcnt(s)] = f[s];\n    for (int i = 0;\
@@ -68,19 +68,19 @@ data:
   dependsOn:
   - utility/bit_operator.hpp
   isVerificationFile: false
-  path: algorithm/ranked_zeta.hpp
+  path: set_function/ranked_zeta.hpp
   requiredBy:
-  - algorithm/subset_convolution.hpp
-  - algorithm/sps_exp.hpp
-  timestamp: '2023-05-15 17:34:24+09:00'
+  - set_function/subset_convolution.hpp
+  - set_function/sps_exp.hpp
+  timestamp: '2023-05-16 01:22:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Exp_of_Set_Power_Series.test.cpp
   - test/subset_convolution.test.cpp
-documentation_of: algorithm/ranked_zeta.hpp
+documentation_of: set_function/ranked_zeta.hpp
 layout: document
 redirect_from:
-- /library/algorithm/ranked_zeta.hpp
-- /library/algorithm/ranked_zeta.hpp.html
-title: algorithm/ranked_zeta.hpp
+- /library/set_function/ranked_zeta.hpp
+- /library/set_function/ranked_zeta.hpp.html
+title: set_function/ranked_zeta.hpp
 ---

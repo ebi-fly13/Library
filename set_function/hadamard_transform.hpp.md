@@ -3,8 +3,8 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: algorithm/xor_convolution.hpp
-    title: algorithm/xor_convolution.hpp
+    path: set_function/xor_convolution.hpp
+    title: set_function/xor_convolution.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_Xor_Convolution.test.cpp
@@ -14,7 +14,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"algorithm/hadamard_transform.hpp\"\n\n#include <vector>\n\
+  bundledCode: "#line 2 \"set_function/hadamard_transform.hpp\"\n\n#include <vector>\n\
     \nnamespace ebi {\n\ntemplate <class T>\nstd::vector<T> hadamard_transform(std::vector<T>\
     \ f, bool inverse = false) {\n    int n = f.size();\n    for (int i = 1; i < n;\
     \ i <<= 1) {\n        for (int j = 0; j < n; j++) {\n            if ((i & j) ==\
@@ -32,17 +32,17 @@ data:
     \ namespace ebi"
   dependsOn: []
   isVerificationFile: false
-  path: algorithm/hadamard_transform.hpp
+  path: set_function/hadamard_transform.hpp
   requiredBy:
-  - algorithm/xor_convolution.hpp
-  timestamp: '2023-05-12 15:09:04+09:00'
+  - set_function/xor_convolution.hpp
+  timestamp: '2023-05-16 01:22:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Bitwise_Xor_Convolution.test.cpp
-documentation_of: algorithm/hadamard_transform.hpp
+documentation_of: set_function/hadamard_transform.hpp
 layout: document
 redirect_from:
-- /library/algorithm/hadamard_transform.hpp
-- /library/algorithm/hadamard_transform.hpp.html
-title: algorithm/hadamard_transform.hpp
+- /library/set_function/hadamard_transform.hpp
+- /library/set_function/hadamard_transform.hpp.html
+title: set_function/hadamard_transform.hpp
 ---

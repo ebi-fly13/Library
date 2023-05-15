@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: algorithm/ranked_zeta.hpp
-    title: algorithm/ranked_zeta.hpp
+    path: set_function/ranked_zeta.hpp
+    title: set_function/ranked_zeta.hpp
   - icon: ':heavy_check_mark:'
-    path: algorithm/sps_exp.hpp
-    title: algorithm/sps_exp.hpp
+    path: set_function/sps_exp.hpp
+    title: set_function/sps_exp.hpp
   - icon: ':heavy_check_mark:'
-    path: algorithm/subset_convolution.hpp
-    title: algorithm/subset_convolution.hpp
+    path: set_function/subset_convolution.hpp
+    title: set_function/subset_convolution.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Exp_of_Set_Power_Series.test.cpp
@@ -35,9 +35,9 @@ data:
   isVerificationFile: false
   path: utility/bit_operator.hpp
   requiredBy:
-  - algorithm/subset_convolution.hpp
-  - algorithm/sps_exp.hpp
-  - algorithm/ranked_zeta.hpp
+  - set_function/subset_convolution.hpp
+  - set_function/sps_exp.hpp
+  - set_function/ranked_zeta.hpp
   timestamp: '2023-05-15 17:34:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
