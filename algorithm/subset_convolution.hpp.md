@@ -1,6 +1,12 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: algorithm/ranked_zeta.hpp
+    title: algorithm/ranked_zeta.hpp
+  - icon: ':heavy_check_mark:'
+    path: utility/bit_operator.hpp
+    title: utility/bit_operator.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -15,59 +21,58 @@ data:
     - https://www.slideshare.net/wata_orz/ss-12131479
   bundledCode: "#line 2 \"algorithm/subset_convolution.hpp\"\n\r\n/*\r\n    refernce:\
     \ https://www.slideshare.net/wata_orz/ss-12131479\r\n              https://37zigen.com/subset-convolution/\r\
-    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nnamespace internal\
-    \ {\r\n\r\ntemplate <class T>\r\nstd::vector<T> mul(const std::vector<T> &a, const\
-    \ std::vector<T> &b) {\r\n    int n = a.size();\r\n    std::vector<T> c(n, 0);\r\
-    \n    for (int i = 0; i < n; i++) {\r\n        for (int j = 0; j < n; j++) {\r\
-    \n            if (i + j >= n) break;\r\n            c[i + j] += a[i] * b[j];\r\
-    \n        }\r\n    }\r\n    return c;\r\n}\r\n\r\n}  // namespace internal\r\n\
-    \r\ntemplate <class T>\r\nstd::vector<T> subset_convolution(const std::vector<T>\
-    \ &a,\r\n                                  const std::vector<T> &b, int n) {\r\
-    \n    std::vector f(1 << n, std::vector<T>(n + 1, 0)),\r\n        g(1 << n, std::vector<T>(n\
-    \ + 1, 0));\r\n    for (int S = 0; S < (1 << n); ++S) {\r\n        f[S][0] = a[S];\r\
-    \n        g[S][0] = b[S];\r\n    }\r\n    for (int i = n - 1; i >= 0; --i) {\r\
-    \n        int V = 1 << i;\r\n        for (int S = V; S < (1 << n); ++S) {\r\n\
-    \            S |= V;\r\n            for (int j = n; j >= 0; --j) {\r\n       \
-    \         f[S][j] = f[S ^ V][j] + (j > 0 ? f[S][j - 1] : 0);\r\n             \
-    \   g[S][j] = g[S ^ V][j] + (j > 0 ? g[S][j - 1] : 0);\r\n            }\r\n  \
-    \      }\r\n    }\r\n    std::vector fg(1 << n, std::vector<T>());\r\n    for\
-    \ (int S = 0; S < (1 << n); ++S) {\r\n        fg[S] = internal::mul(f[S], g[S]);\r\
-    \n    }\r\n    for (int i = 0; i < n; ++i) {\r\n        int V = 1 << i;\r\n  \
-    \      for (int S = V; S < (1 << n); ++S) {\r\n            S |= V;\r\n       \
-    \     for (int j = n; j >= 0; --j) {\r\n                fg[S][j] -= fg[S ^ V][j];\r\
-    \n            }\r\n        }\r\n    }\r\n    std::vector<T> h(1 << n);\r\n   \
-    \ for (int S = 0; S < (1 << n); ++S) {\r\n        h[S] = fg[S][__builtin_popcount(S)];\r\
-    \n    }\r\n    return h;\r\n}\r\n\r\n}  // namespace ebi\n"
+    \n*/\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <vector>\r\n\r\n\
+    #line 2 \"algorithm/ranked_zeta.hpp\"\n\n#line 6 \"algorithm/ranked_zeta.hpp\"\
+    \n\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nint popcnt(int\
+    \ x) {\n    return __builtin_popcount(x);\n}\n\nint topbit(int x) {\n    return\
+    \ (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\nint lowbit(int x) {\n    return\
+    \ (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace ebi\n#line 8 \"algorithm/ranked_zeta.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T, int LIM = 20>\nstd::vector<std::array<T,\
+    \ LIM + 1>> ranked_zeta(const std::vector<T> &f) {\n    int n = topbit(f.size());\n\
+    \    assert(n <= LIM);\n    assert((int)f.size() == (1 << n));\n    std::vector<std::array<T,\
+    \ LIM + 1>> rf(1 << n);\n    for (int s = 0; s < (1 << n); s++) rf[s][popcnt(s)]\
+    \ = f[s];\n    for (int i = 0; i < n; i++) {\n        int w = 1 << i;\n      \
+    \  for (int p = 0; p < (1 << n); p += 2 * w) {\n            for (int s = p; s\
+    \ < p + w; s++) {\n                int t = s | (1 << i);\n                for\
+    \ (int d = 0; d <= n; d++) rf[t][d] += rf[s][d];\n            }\n        }\n \
+    \   }\n    return rf;\n}\n\ntemplate <class T, int LIM = 20>\nstd::vector<T> ranked_mobius(std::vector<std::array<T,\
+    \ LIM + 1>> rf) {\n    int n = topbit(rf.size());\n    assert((int)rf.size() ==\
+    \ (1 << n));\n    for (int i = 0; i < n; i++) {\n        int w = 1 << i;\n   \
+    \     for (int p = 0; p < (1 << n); p += 2 * w) {\n            for (int s = p;\
+    \ s < p + w; s++) {\n                int t = s | (1 << i);\n                for\
+    \ (int d = 0; d <= n; d++) rf[t][d] -= rf[s][d];\n            }\n        }\n \
+    \   }\n    std::vector<T> f(1 << n);\n    for (int s = 0; s < (1 << n); s++) {\n\
+    \        f[s] = rf[s][popcnt(s)];\n    }\n    return f;\n}\n\n}  // namespace\
+    \ ebi\n#line 14 \"algorithm/subset_convolution.hpp\"\n\r\nnamespace ebi {\r\n\r\
+    \ntemplate <class T, int LIM = 20>\r\nstd::vector<T> subset_convolution(const\
+    \ std::vector<T> &a,\r\n                                  const std::vector<T>\
+    \ &b) {\r\n    auto ra = ranked_zeta<T, LIM>(a);\r\n    auto rb = ranked_zeta<T,\
+    \ LIM>(b);\r\n    int n = topbit(ra.size());\r\n    for (int s = (1 << n) - 1;\
+    \ s >= 0; s--) {\r\n        auto &f = ra[s];\r\n        const auto &g = rb[s];\r\
+    \n        for (int d = n; d >= 0; d--) {\r\n            T x = 0;\r\n         \
+    \   for (int i = 0; i <= d; i++) {\r\n                x += f[i] * g[d - i];\r\n\
+    \            }\r\n            f[d] = x;\r\n        }\r\n    }\r\n    return ranked_mobius<T,\
+    \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n"
   code: "#pragma once\r\n\r\n/*\r\n    refernce: https://www.slideshare.net/wata_orz/ss-12131479\r\
     \n              https://37zigen.com/subset-convolution/\r\n*/\r\n\r\n#include\
-    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\ntemplate\
-    \ <class T>\r\nstd::vector<T> mul(const std::vector<T> &a, const std::vector<T>\
-    \ &b) {\r\n    int n = a.size();\r\n    std::vector<T> c(n, 0);\r\n    for (int\
-    \ i = 0; i < n; i++) {\r\n        for (int j = 0; j < n; j++) {\r\n          \
-    \  if (i + j >= n) break;\r\n            c[i + j] += a[i] * b[j];\r\n        }\r\
-    \n    }\r\n    return c;\r\n}\r\n\r\n}  // namespace internal\r\n\r\ntemplate\
-    \ <class T>\r\nstd::vector<T> subset_convolution(const std::vector<T> &a,\r\n\
-    \                                  const std::vector<T> &b, int n) {\r\n    std::vector\
-    \ f(1 << n, std::vector<T>(n + 1, 0)),\r\n        g(1 << n, std::vector<T>(n +\
-    \ 1, 0));\r\n    for (int S = 0; S < (1 << n); ++S) {\r\n        f[S][0] = a[S];\r\
-    \n        g[S][0] = b[S];\r\n    }\r\n    for (int i = n - 1; i >= 0; --i) {\r\
-    \n        int V = 1 << i;\r\n        for (int S = V; S < (1 << n); ++S) {\r\n\
-    \            S |= V;\r\n            for (int j = n; j >= 0; --j) {\r\n       \
-    \         f[S][j] = f[S ^ V][j] + (j > 0 ? f[S][j - 1] : 0);\r\n             \
-    \   g[S][j] = g[S ^ V][j] + (j > 0 ? g[S][j - 1] : 0);\r\n            }\r\n  \
-    \      }\r\n    }\r\n    std::vector fg(1 << n, std::vector<T>());\r\n    for\
-    \ (int S = 0; S < (1 << n); ++S) {\r\n        fg[S] = internal::mul(f[S], g[S]);\r\
-    \n    }\r\n    for (int i = 0; i < n; ++i) {\r\n        int V = 1 << i;\r\n  \
-    \      for (int S = V; S < (1 << n); ++S) {\r\n            S |= V;\r\n       \
-    \     for (int j = n; j >= 0; --j) {\r\n                fg[S][j] -= fg[S ^ V][j];\r\
-    \n            }\r\n        }\r\n    }\r\n    std::vector<T> h(1 << n);\r\n   \
-    \ for (int S = 0; S < (1 << n); ++S) {\r\n        h[S] = fg[S][__builtin_popcount(S)];\r\
-    \n    }\r\n    return h;\r\n}\r\n\r\n}  // namespace ebi"
-  dependsOn: []
+    \ <array>\r\n#include <cassert>\r\n#include <vector>\r\n\r\n#include \"../algorithm/ranked_zeta.hpp\"\
+    \r\n#include \"../utility/bit_operator.hpp\"\r\n\r\nnamespace ebi {\r\n\r\ntemplate\
+    \ <class T, int LIM = 20>\r\nstd::vector<T> subset_convolution(const std::vector<T>\
+    \ &a,\r\n                                  const std::vector<T> &b) {\r\n    auto\
+    \ ra = ranked_zeta<T, LIM>(a);\r\n    auto rb = ranked_zeta<T, LIM>(b);\r\n  \
+    \  int n = topbit(ra.size());\r\n    for (int s = (1 << n) - 1; s >= 0; s--) {\r\
+    \n        auto &f = ra[s];\r\n        const auto &g = rb[s];\r\n        for (int\
+    \ d = n; d >= 0; d--) {\r\n            T x = 0;\r\n            for (int i = 0;\
+    \ i <= d; i++) {\r\n                x += f[i] * g[d - i];\r\n            }\r\n\
+    \            f[d] = x;\r\n        }\r\n    }\r\n    return ranked_mobius<T, LIM>(ra);\r\
+    \n}\r\n\r\n}  // namespace ebi"
+  dependsOn:
+  - algorithm/ranked_zeta.hpp
+  - utility/bit_operator.hpp
   isVerificationFile: false
   path: algorithm/subset_convolution.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-05-15 17:34:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/subset_convolution.test.cpp

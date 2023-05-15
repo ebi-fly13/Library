@@ -42,6 +42,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp
+    - icon: ':heavy_check_mark:'
+      path: algorithm/ranked_zeta.hpp
+      title: algorithm/ranked_zeta.hpp
     - icon: ':warning:'
       path: algorithm/submodular.hpp
       title: algorithm/submodular.hpp
@@ -237,6 +240,9 @@ data:
       title: rerooting
   - name: utility
     pages:
+    - icon: ':heavy_check_mark:'
+      path: utility/bit_operator.hpp
+      title: utility/bit_operator.hpp
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
