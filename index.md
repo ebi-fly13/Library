@@ -45,6 +45,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/ranked_zeta.hpp
       title: algorithm/ranked_zeta.hpp
+    - icon: ':heavy_check_mark:'
+      path: algorithm/sps_exp.hpp
+      title: algorithm/sps_exp.hpp
     - icon: ':warning:'
       path: algorithm/submodular.hpp
       title: algorithm/submodular.hpp
@@ -276,6 +279,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Exp_of_Formal_Power_Series.test.cpp
       title: test/Exp_of_Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Exp_of_Set_Power_Series.test.cpp
+      title: test/Exp_of_Set_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/FenwickTree.test.cpp
       title: test/FenwickTree.test.cpp

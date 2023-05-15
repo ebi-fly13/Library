@@ -25,6 +25,9 @@ data:
     path: test/Exp_of_Formal_Power_Series.test.cpp
     title: test/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Exp_of_Set_Power_Series.test.cpp
+    title: test/Exp_of_Set_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
   - icon: ':heavy_check_mark:'
@@ -157,6 +160,7 @@ data:
   - test/vertex_set_path_compositie.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/Exp_of_Set_Power_Series.test.cpp
   - test/aoj/aoj_2863.test.cpp
   - test/Tree_Path_Composite_Sum.test.cpp
   - test/ImplicitTreap.test.cpp

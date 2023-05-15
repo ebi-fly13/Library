@@ -6,9 +6,15 @@ data:
     path: algorithm/ranked_zeta.hpp
     title: algorithm/ranked_zeta.hpp
   - icon: ':heavy_check_mark:'
+    path: algorithm/sps_exp.hpp
+    title: algorithm/sps_exp.hpp
+  - icon: ':heavy_check_mark:'
     path: algorithm/subset_convolution.hpp
     title: algorithm/subset_convolution.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Exp_of_Set_Power_Series.test.cpp
+    title: test/Exp_of_Set_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
@@ -30,10 +36,12 @@ data:
   path: utility/bit_operator.hpp
   requiredBy:
   - algorithm/subset_convolution.hpp
+  - algorithm/sps_exp.hpp
   - algorithm/ranked_zeta.hpp
   timestamp: '2023-05-15 17:34:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/Exp_of_Set_Power_Series.test.cpp
   - test/subset_convolution.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
