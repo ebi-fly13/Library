@@ -1,4 +1,5 @@
 # Library
+競技プログラミング用ライブラリ
 [![Actions Status](https://github.com/ebi-fly13/Library/workflows/verify/badge.svg)](https://github.com/ebi-fly13/Library/actions)
 [![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://ebi-fly13.github.io/Library/)
  [![](https://img.shields.io/badge/license-CC0_License-blue.svg)](https://github.com/ebi-fly13/Library/blob/main/LICENSE)
