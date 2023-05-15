@@ -23,7 +23,7 @@ int main() {
         std::cin >> val;
         b[i] = val;
     }
-    auto c = ebi::subset_convolution(a, b, n);
+    auto c = ebi::subset_convolution<mint, 20>(a, b);
     for (int i = 0; i < (1 << n); i++) {
         std::cout << c[i].val() << ((i == (1 << n) - 1) ? "\n" : " ");
     }
