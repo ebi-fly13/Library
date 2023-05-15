@@ -3,7 +3,7 @@
 #include <cassert>
 #include <vector>
 
-#include "../algorithm/subset_convolution.hpp"
+#include "../set_function/subset_convolution.hpp"
 #include "../utility/bit_operator.hpp"
 
 namespace ebi {

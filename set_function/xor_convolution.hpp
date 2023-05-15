@@ -3,7 +3,7 @@
 #include <cassert>
 #include <vector>
 
-#include "../algorithm/hadamard_transform.hpp"
+#include "../set_function/hadamard_transform.hpp"
 
 namespace ebi {
 

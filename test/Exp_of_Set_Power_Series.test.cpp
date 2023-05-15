@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../algorithm/sps_exp.hpp"
+#include "../set_function/sps_exp.hpp"
 #include "../utility/modint.hpp"
 
 using mint = ebi::modint998244353;

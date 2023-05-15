@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../algorithm/xor_convolution.hpp"
+#include "../set_function/xor_convolution.hpp"
 #include "../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
