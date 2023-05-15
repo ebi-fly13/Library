@@ -9,6 +9,7 @@
 "test/DynamicSegmentTree.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/Exp_of_Formal_Power_Series.test.cpp": "2023-05-08 16:51:58 +0900",
+"test/Exp_of_Set_Power_Series.test.cpp": "2023-05-16 01:15:11 +0900",
 "test/FenwickTree.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/ImplicitTreap.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/Inv_of_Formal_Power_Series.test.cpp": "2023-05-08 16:51:58 +0900",
