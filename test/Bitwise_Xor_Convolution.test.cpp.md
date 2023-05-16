@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: convolution/xor_convolution.hpp
+    title: convolution/xor_convolution.hpp
+  - icon: ':heavy_check_mark:'
     path: set_function/hadamard_transform.hpp
     title: set_function/hadamard_transform.hpp
-  - icon: ':heavy_check_mark:'
-    path: set_function/xor_convolution.hpp
-    title: set_function/xor_convolution.hpp
   - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
@@ -22,8 +22,8 @@ data:
     - https://judge.yosupo.jp/problem/bitwise_xor_convolution
   bundledCode: "#line 1 \"test/Bitwise_Xor_Convolution.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\n\n#include <iostream>\n\
-    #include <vector>\n\n#line 2 \"set_function/xor_convolution.hpp\"\n\n#include\
-    \ <cassert>\n#line 5 \"set_function/xor_convolution.hpp\"\n\n#line 2 \"set_function/hadamard_transform.hpp\"\
+    #include <vector>\n\n#line 2 \"convolution/xor_convolution.hpp\"\n\n#include <cassert>\n\
+    #line 5 \"convolution/xor_convolution.hpp\"\n\n#line 2 \"set_function/hadamard_transform.hpp\"\
     \n\n#line 4 \"set_function/hadamard_transform.hpp\"\n\nnamespace ebi {\n\ntemplate\
     \ <class T>\nstd::vector<T> hadamard_transform(std::vector<T> f, bool inverse\
     \ = false) {\n    int n = f.size();\n    for (int i = 1; i < n; i <<= 1) {\n \
@@ -31,7 +31,7 @@ data:
     \           T x = f[j], y = f[j | i];\n                f[j] = x + y;\n       \
     \         f[j | i] = x - y;\n            }\n        }\n    }\n    if (inverse)\
     \ {\n        for (auto& x : f) {\n            x /= T(n);\n        }\n    }\n \
-    \   return f;\n}\n\n}  // namespace ebi\n#line 7 \"set_function/xor_convolution.hpp\"\
+    \   return f;\n}\n\n}  // namespace ebi\n#line 7 \"convolution/xor_convolution.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T>\nstd::vector<T> xor_convolution(const\
     \ std::vector<T> &a,\n                               const std::vector<T> &b)\
     \ {\n    assert(a.size() == b.size());\n    auto ta = hadamard_transform(a);\n\
@@ -87,7 +87,7 @@ data:
     \    for (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val() <<\
     \ \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../set_function/xor_convolution.hpp\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"../convolution/xor_convolution.hpp\"\
     \n#include \"../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\n\
     int main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> a(1 << n),\
     \ b(1 << n);\n    for (int i = 0; i < (1 << n); i++) {\n        int val;\n   \
@@ -97,13 +97,13 @@ data:
     \ n); i++) {\n        std::cout << c[i].val() << \" \\n\"[i == (1 << n) - 1];\n\
     \    }\n}\n"
   dependsOn:
-  - set_function/xor_convolution.hpp
+  - convolution/xor_convolution.hpp
   - set_function/hadamard_transform.hpp
   - utility/modint.hpp
   isVerificationFile: true
   path: test/Bitwise_Xor_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-05-16 13:16:14+09:00'
+  timestamp: '2023-05-16 13:40:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Bitwise_Xor_Convolution.test.cpp

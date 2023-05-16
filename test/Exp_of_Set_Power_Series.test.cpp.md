@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: convolution/subset_convolution.hpp
+    title: convolution/subset_convolution.hpp
+  - icon: ':question:'
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
     title: set_function/sps_exp.hpp
-  - icon: ':heavy_check_mark:'
-    path: set_function/subset_convolution.hpp
-    title: set_function/subset_convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   - icon: ':question:'
@@ -29,10 +29,10 @@ data:
   bundledCode: "#line 1 \"test/Exp_of_Set_Power_Series.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/exp_of_set_power_series\"\n\n#include <iostream>\n\
     #include <vector>\n\n#line 2 \"set_function/sps_exp.hpp\"\n\n#include <cassert>\n\
-    #line 5 \"set_function/sps_exp.hpp\"\n\n#line 2 \"set_function/subset_convolution.hpp\"\
+    #line 5 \"set_function/sps_exp.hpp\"\n\n#line 2 \"convolution/subset_convolution.hpp\"\
     \n\r\n/*\r\n    refernce: https://www.slideshare.net/wata_orz/ss-12131479\r\n\
     \              https://37zigen.com/subset-convolution/\r\n*/\r\n\r\n#include <array>\r\
-    \n#line 11 \"set_function/subset_convolution.hpp\"\n\r\n#line 2 \"set_function/ranked_zeta.hpp\"\
+    \n#line 11 \"convolution/subset_convolution.hpp\"\n\r\n#line 2 \"set_function/ranked_zeta.hpp\"\
     \n\n#line 6 \"set_function/ranked_zeta.hpp\"\n\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
     }\n\nint topbit(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n\
@@ -54,8 +54,8 @@ data:
     \ (int d = 0; d <= n; d++) rf[t][d] -= rf[s][d];\n            }\n        }\n \
     \   }\n    std::vector<T> f(1 << n);\n    for (int s = 0; s < (1 << n); s++) {\n\
     \        f[s] = rf[s][popcnt(s)];\n    }\n    return f;\n}\n\n}  // namespace\
-    \ ebi\n#line 14 \"set_function/subset_convolution.hpp\"\n\r\nnamespace ebi {\r\
-    \n\r\ntemplate <class T, int LIM = 20>\r\nstd::vector<T> subset_convolution(const\
+    \ ebi\n#line 14 \"convolution/subset_convolution.hpp\"\n\r\nnamespace ebi {\r\n\
+    \r\ntemplate <class T, int LIM = 20>\r\nstd::vector<T> subset_convolution(const\
     \ std::vector<T> &a,\r\n                                  const std::vector<T>\
     \ &b) {\r\n    auto ra = ranked_zeta<T, LIM>(a);\r\n    auto rb = ranked_zeta<T,\
     \ LIM>(b);\r\n    int n = topbit(ra.size());\r\n    for (int s = (1 << n) - 1;\
@@ -128,14 +128,14 @@ data:
     \ (1<<n)-1];\n    }\n}"
   dependsOn:
   - set_function/sps_exp.hpp
-  - set_function/subset_convolution.hpp
+  - convolution/subset_convolution.hpp
   - set_function/ranked_zeta.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
   isVerificationFile: true
   path: test/Exp_of_Set_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-05-16 13:16:14+09:00'
+  timestamp: '2023-05-16 13:40:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Exp_of_Set_Power_Series.test.cpp

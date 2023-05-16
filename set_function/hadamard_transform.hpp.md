@@ -3,8 +3,8 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: set_function/xor_convolution.hpp
-    title: set_function/xor_convolution.hpp
+    path: convolution/xor_convolution.hpp
+    title: convolution/xor_convolution.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_Xor_Convolution.test.cpp
@@ -34,7 +34,7 @@ data:
   isVerificationFile: false
   path: set_function/hadamard_transform.hpp
   requiredBy:
-  - set_function/xor_convolution.hpp
+  - convolution/xor_convolution.hpp
   timestamp: '2023-05-16 01:22:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
-    path: algorithm/convolution.hpp
-    title: algorithm/convolution.hpp
-  - icon: ':x:'
+  - icon: ':question:'
+    path: convolution/convolution.hpp
+    title: convolution/convolution.hpp
+  - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series
@@ -22,7 +22,7 @@ data:
     - https://judge.yosupo.jp/problem/exp_of_formal_power_series
   bundledCode: "#line 1 \"test/Exp_of_Formal_Power_Series.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\r\n\r\n#include\
-    \ <iostream>\r\n\r\n#line 2 \"math/FormalPowerSeries.hpp\"\n\r\n#line 2 \"algorithm/convolution.hpp\"\
+    \ <iostream>\r\n\r\n#line 2 \"math/FormalPowerSeries.hpp\"\n\r\n#line 2 \"convolution/convolution.hpp\"\
     \n\r\n/*\r\n    reference: https://hcpc-hokudai.github.io/archive/math_fft_002.pdf\r\
     \n    mod 998244353 \u4E0A\u3067\u306E\u7573\u307F\u8FBC\u307F\u3092 O(N log N)\
     \ \u3067\u6C42\u3081\u308B.\r\n*/\r\n\r\n#line 2 \"utility/modint.hpp\"\n\r\n\
@@ -66,36 +66,35 @@ data:
     \ >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream\
     \ &operator<<(std::ostream &os, const modint<m> &a) {\r\n    return os << a.val();\r\
     \n}\r\n\r\nusing modint998244353 = modint<998244353>;\r\nusing modint1000000007\
-    \ = modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"algorithm/convolution.hpp\"\
+    \ = modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"convolution/convolution.hpp\"\
     \n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nusing mint = ebi::modint998244353;\r\
-    \n\r\nnamespace internal {\r\n\r\nconstexpr mint primitive_root = 3;\r\n\r\nvoid\
-    \ dft(std::vector<mint> &f) {\r\n    int n = f.size();\r\n    if (n == 1) return;\r\
-    \n    std::vector<mint> a(n / 2), b(n / 2);\r\n    for (int i = 0; i < n / 2;\
-    \ ++i) {\r\n        a[i] = f[2 * i];\r\n        b[i] = f[2 * i + 1];\r\n    }\r\
-    \n    dft(a);\r\n    dft(b);\r\n    const mint zeta = primitive_root.pow((mint::mod()\
-    \ - 1) / n);\r\n    mint x = 1;\r\n    for (int i = 0; i < n; ++i) {\r\n     \
-    \   f[i] = a[i % (n / 2)] + x * b[i % (n / 2)];\r\n        x *= zeta;\r\n    }\r\
-    \n}\r\n\r\nvoid inv_dft(std::vector<mint> &f) {\r\n    int n = f.size();\r\n \
-    \   if (n == 1) return;\r\n    std::vector<mint> a(n / 2), b(n / 2);\r\n    for\
-    \ (int i = 0; i < n / 2; ++i) {\r\n        a[i] = f[2 * i];\r\n        b[i] =\
-    \ f[2 * i + 1];\r\n    }\r\n    inv_dft(a);\r\n    inv_dft(b);\r\n    const mint\
-    \ inv_zeta = primitive_root.pow((mint::mod() - 1) / n).inv();\r\n    mint x =\
-    \ 1;\r\n    for (int i = 0; i < n; ++i) {\r\n        f[i] = a[i % (n / 2)] + x\
-    \ * b[i % (n / 2)];\r\n        x *= inv_zeta;\r\n    }\r\n}\r\n\r\n}  // namespace\
-    \ internal\r\n\r\nstd::vector<mint> convolution(const std::vector<mint> &f,\r\n\
-    \                              const std::vector<mint> &g) {\r\n    int n = 1;\r\
-    \n    while (n < (int)f.size() + (int)g.size() - 1) n <<= 1;\r\n    std::vector<mint>\
-    \ a(n, 0), b(n, 0), fg(n, 0);\r\n    std::copy(f.begin(), f.end(), a.begin());\r\
-    \n    std::copy(g.begin(), g.end(), b.begin());\r\n    internal::dft(a);\r\n \
-    \   internal::dft(b);\r\n    for (int i = 0; i < n; ++i) {\r\n        fg[i] =\
-    \ a[i] * b[i];\r\n    }\r\n    internal::inv_dft(fg);\r\n    mint in = mint(n).inv();\r\
-    \n    for (int i = 0; i < n; ++i) {\r\n        fg[i] *= in;\r\n    }\r\n    return\
-    \ fg;\r\n}\r\n\r\n}  // namespace ebi\n#line 5 \"math/FormalPowerSeries.hpp\"\n\
-    \r\n#include <algorithm>\r\n#line 9 \"math/FormalPowerSeries.hpp\"\n\r\n/*\r\n\
-    \    reference: https://opt-cp.com/fps-fast-algorithms/\r\n*/\r\n\r\nnamespace\
-    \ ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nstruct FormalPowerSeries :\
-    \ std::vector<mint> {\r\n  private:\r\n    using std::vector<mint>::vector;\r\n\
-    \    using std::vector<mint>::vector::operator=;\r\n    using FPS = FormalPowerSeries;\r\
+    \n\r\nnamespace internal {\r\n\r\nconst mint primitive_root = 3;\r\n\r\nvoid dft(std::vector<mint>\
+    \ &f) {\r\n    int n = f.size();\r\n    if (n == 1) return;\r\n    std::vector<mint>\
+    \ a(n / 2), b(n / 2);\r\n    for (int i = 0; i < n / 2; ++i) {\r\n        a[i]\
+    \ = f[2 * i];\r\n        b[i] = f[2 * i + 1];\r\n    }\r\n    dft(a);\r\n    dft(b);\r\
+    \n    const mint zeta = primitive_root.pow((mint::mod() - 1) / n);\r\n    mint\
+    \ x = 1;\r\n    for (int i = 0; i < n; ++i) {\r\n        f[i] = a[i % (n / 2)]\
+    \ + x * b[i % (n / 2)];\r\n        x *= zeta;\r\n    }\r\n}\r\n\r\nvoid inv_dft(std::vector<mint>\
+    \ &f) {\r\n    int n = f.size();\r\n    if (n == 1) return;\r\n    std::vector<mint>\
+    \ a(n / 2), b(n / 2);\r\n    for (int i = 0; i < n / 2; ++i) {\r\n        a[i]\
+    \ = f[2 * i];\r\n        b[i] = f[2 * i + 1];\r\n    }\r\n    inv_dft(a);\r\n\
+    \    inv_dft(b);\r\n    const mint inv_zeta = primitive_root.pow((mint::mod()\
+    \ - 1) / n).inv();\r\n    mint x = 1;\r\n    for (int i = 0; i < n; ++i) {\r\n\
+    \        f[i] = a[i % (n / 2)] + x * b[i % (n / 2)];\r\n        x *= inv_zeta;\r\
+    \n    }\r\n}\r\n\r\n}  // namespace internal\r\n\r\nstd::vector<mint> convolution(const\
+    \ std::vector<mint> &f,\r\n                              const std::vector<mint>\
+    \ &g) {\r\n    int n = 1;\r\n    while (n < (int)f.size() + (int)g.size() - 1)\
+    \ n <<= 1;\r\n    std::vector<mint> a(n, 0), b(n, 0), fg(n, 0);\r\n    std::copy(f.begin(),\
+    \ f.end(), a.begin());\r\n    std::copy(g.begin(), g.end(), b.begin());\r\n  \
+    \  internal::dft(a);\r\n    internal::dft(b);\r\n    for (int i = 0; i < n; ++i)\
+    \ {\r\n        fg[i] = a[i] * b[i];\r\n    }\r\n    internal::inv_dft(fg);\r\n\
+    \    mint in = mint(n).inv();\r\n    for (int i = 0; i < n; ++i) {\r\n       \
+    \ fg[i] *= in;\r\n    }\r\n    return fg;\r\n}\r\n\r\n}  // namespace ebi\n#line\
+    \ 5 \"math/FormalPowerSeries.hpp\"\n\r\n#include <algorithm>\r\n#line 9 \"math/FormalPowerSeries.hpp\"\
+    \n\r\n/*\r\n    reference: https://opt-cp.com/fps-fast-algorithms/\r\n*/\r\n\r\
+    \nnamespace ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nstruct FormalPowerSeries\
+    \ : std::vector<mint> {\r\n  private:\r\n    using std::vector<mint>::vector;\r\
+    \n    using std::vector<mint>::vector::operator=;\r\n    using FPS = FormalPowerSeries;\r\
     \n\r\n  public:\r\n    FPS operator+(const FPS &rhs) const noexcept {\r\n    \
     \    return FPS(*this) += rhs;\r\n    }\r\n    FPS operator-(const FPS &rhs) const\
     \ noexcept {\r\n        return FPS(*this) -= rhs;\r\n    }\r\n    FPS operator*(const\
@@ -150,13 +149,13 @@ data:
     \ \";\r\n    }\r\n    std::cout << '\\n';\r\n}"
   dependsOn:
   - math/FormalPowerSeries.hpp
-  - algorithm/convolution.hpp
+  - convolution/convolution.hpp
   - utility/modint.hpp
   isVerificationFile: true
   path: test/Exp_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-05-16 13:16:14+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-16 13:40:06+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Exp_of_Formal_Power_Series.test.cpp
 layout: document

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
@@ -15,17 +15,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Exp_of_Set_Power_Series.test.cpp
     title: test/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://37zigen.com/subset-convolution/
     - https://www.slideshare.net/wata_orz/ss-12131479
-  bundledCode: "#line 2 \"set_function/subset_convolution.hpp\"\n\r\n/*\r\n    refernce:\
+  bundledCode: "#line 2 \"convolution/subset_convolution.hpp\"\n\r\n/*\r\n    refernce:\
     \ https://www.slideshare.net/wata_orz/ss-12131479\r\n              https://37zigen.com/subset-convolution/\r\
     \n*/\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <vector>\r\n\r\n\
     #line 2 \"set_function/ranked_zeta.hpp\"\n\n#line 6 \"set_function/ranked_zeta.hpp\"\
@@ -49,8 +49,8 @@ data:
     \ (int d = 0; d <= n; d++) rf[t][d] -= rf[s][d];\n            }\n        }\n \
     \   }\n    std::vector<T> f(1 << n);\n    for (int s = 0; s < (1 << n); s++) {\n\
     \        f[s] = rf[s][popcnt(s)];\n    }\n    return f;\n}\n\n}  // namespace\
-    \ ebi\n#line 14 \"set_function/subset_convolution.hpp\"\n\r\nnamespace ebi {\r\
-    \n\r\ntemplate <class T, int LIM = 20>\r\nstd::vector<T> subset_convolution(const\
+    \ ebi\n#line 14 \"convolution/subset_convolution.hpp\"\n\r\nnamespace ebi {\r\n\
+    \r\ntemplate <class T, int LIM = 20>\r\nstd::vector<T> subset_convolution(const\
     \ std::vector<T> &a,\r\n                                  const std::vector<T>\
     \ &b) {\r\n    auto ra = ranked_zeta<T, LIM>(a);\r\n    auto rb = ranked_zeta<T,\
     \ LIM>(b);\r\n    int n = topbit(ra.size());\r\n    for (int s = (1 << n) - 1;\
@@ -76,18 +76,18 @@ data:
   - set_function/ranked_zeta.hpp
   - utility/bit_operator.hpp
   isVerificationFile: false
-  path: set_function/subset_convolution.hpp
+  path: convolution/subset_convolution.hpp
   requiredBy:
   - set_function/sps_exp.hpp
-  timestamp: '2023-05-16 01:22:44+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-16 13:40:06+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Exp_of_Set_Power_Series.test.cpp
   - test/subset_convolution.test.cpp
-documentation_of: set_function/subset_convolution.hpp
+documentation_of: convolution/subset_convolution.hpp
 layout: document
 redirect_from:
-- /library/set_function/subset_convolution.hpp
-- /library/set_function/subset_convolution.hpp.html
-title: set_function/subset_convolution.hpp
+- /library/convolution/subset_convolution.hpp
+- /library/convolution/subset_convolution.hpp.html
+title: convolution/subset_convolution.hpp
 ---

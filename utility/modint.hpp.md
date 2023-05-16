@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
-    path: algorithm/convolution.hpp
-    title: algorithm/convolution.hpp
-  - icon: ':x:'
+  - icon: ':question:'
+    path: convolution/convolution.hpp
+    title: convolution/convolution.hpp
+  - icon: ':heavy_check_mark:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   - icon: ':warning:'
@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/DynamicSegmentTree.test.cpp
     title: test/DynamicSegmentTree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Exp_of_Formal_Power_Series.test.cpp
     title: test/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,13 +30,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,7 +51,7 @@ data:
   - icon: ':x:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
   - icon: ':x:'
@@ -149,9 +149,9 @@ data:
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy:
+  - convolution/convolution.hpp
   - math/FormalPowerSeries.hpp
   - math/lagrange_interpolation.hpp
-  - algorithm/convolution.hpp
   timestamp: '2023-05-16 13:16:14+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:

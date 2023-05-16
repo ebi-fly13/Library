@@ -33,9 +33,6 @@ data:
       title: String/trie.hpp
   - name: algorithm
     pages:
-    - icon: ':x:'
-      path: algorithm/convolution.hpp
-      title: algorithm/convolution.hpp
     - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp
@@ -45,6 +42,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/two_sat.hpp
       title: algorithm/two_sat.hpp
+  - name: convolution
+    pages:
+    - icon: ':question:'
+      path: convolution/convolution.hpp
+      title: convolution/convolution.hpp
+    - icon: ':question:'
+      path: convolution/subset_convolution.hpp
+      title: convolution/subset_convolution.hpp
+    - icon: ':heavy_check_mark:'
+      path: convolution/xor_convolution.hpp
+      title: convolution/xor_convolution.hpp
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -191,7 +199,7 @@ data:
     - icon: ':warning:'
       path: math/DirichletSeries.hpp
       title: math/DirichletSeries.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/FormalPowerSeries.hpp
       title: math/FormalPowerSeries.hpp
     - icon: ':warning:'
@@ -214,18 +222,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: set_function/hadamard_transform.hpp
       title: set_function/hadamard_transform.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: set_function/ranked_zeta.hpp
       title: set_function/ranked_zeta.hpp
     - icon: ':heavy_check_mark:'
       path: set_function/sps_exp.hpp
       title: set_function/sps_exp.hpp
-    - icon: ':heavy_check_mark:'
-      path: set_function/subset_convolution.hpp
-      title: set_function/subset_convolution.hpp
-    - icon: ':heavy_check_mark:'
-      path: set_function/xor_convolution.hpp
-      title: set_function/xor_convolution.hpp
   - name: tree
     pages:
     - icon: ':warning:'
@@ -245,7 +247,7 @@ data:
       title: rerooting
   - name: utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
     - icon: ':heavy_check_mark:'
@@ -278,7 +280,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp
       title: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Exp_of_Formal_Power_Series.test.cpp
       title: test/Exp_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
@@ -290,7 +292,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/ImplicitTreap.test.cpp
       title: test/ImplicitTreap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Inv_of_Formal_Power_Series.test.cpp
       title: test/Inv_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
@@ -302,7 +304,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/LiChaoSegmentTree.test.cpp
       title: test/LiChaoSegmentTree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Log_of_Formal_Power_Series.test.cpp
       title: test/Log_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
@@ -389,7 +391,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/static_rmq.test.cpp
       title: test/static_rmq.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/subset_convolution.test.cpp
       title: test/subset_convolution.test.cpp
     - icon: ':heavy_check_mark:'
