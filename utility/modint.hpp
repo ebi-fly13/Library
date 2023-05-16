@@ -1,97 +1,79 @@
 #pragma once
 
-/*
-    author: noshi91
-    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006
-    noshi91のブログで公開されているmodintを元にinv(), pow()を追加したものです
-*/
-
-#include <cstdint>
+#include <cassert>
 #include <iostream>
 
 namespace ebi {
 
-template <std::uint_fast64_t Modulus> class modint {
-    using u64 = std::uint_fast64_t;
-
+template <int m> struct modint {
   public:
-    u64 a;
+    static constexpr int mod() {
+        return m;
+    }
 
-    constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}
-    constexpr u64 &value() noexcept {
-        return a;
+    static modint raw(int v) {
+        modint x;
+        x._v = v;
+        return x;
     }
-    constexpr u64 &val() noexcept {
-        return a;
+
+    modint() : _v(0) {}
+
+    modint(long long v) {
+        v %= (long long)umod();
+        if (v < 0) v += (long long)umod();
+        _v = (unsigned int)v;
     }
-    constexpr const u64 &value() const noexcept {
-        return a;
+
+    unsigned int val() const {
+        return _v;
     }
-    constexpr modint operator+(const modint rhs) const noexcept {
-        return modint(*this) += rhs;
+
+    unsigned int value() const {
+        return val();
     }
-    constexpr modint operator-(const modint rhs) const noexcept {
-        return modint(*this) -= rhs;
-    }
-    constexpr modint operator*(const modint rhs) const noexcept {
-        return modint(*this) *= rhs;
-    }
-    constexpr modint operator/(const modint rhs) const noexcept {
-        return modint(*this) /= rhs;
-    }
-    constexpr modint &operator+=(const modint rhs) noexcept {
-        a += rhs.a;
-        if (a >= Modulus) {
-            a -= Modulus;
-        }
+
+    modint &operator++() {
+        _v++;
+        if (_v == umod()) _v = 0;
         return *this;
     }
-    constexpr modint &operator-=(const modint rhs) noexcept {
-        if (a < rhs.a) {
-            a += Modulus;
-        }
-        a -= rhs.a;
+    modint &operator--() {
+        if (_v == 0) _v = umod();
+        _v--;
         return *this;
     }
-    constexpr modint &operator*=(const modint rhs) noexcept {
-        a = a * rhs.a % Modulus;
+    modint &operator+=(const modint &rhs) {
+        _v += rhs._v;
+        if (_v >= umod()) _v -= umod();
         return *this;
     }
-    constexpr modint &operator/=(modint rhs) noexcept {
-        u64 exp = Modulus - 2;
-        while (exp) {
-            if (exp % 2) {
-                *this *= rhs;
-            }
-            rhs *= rhs;
-            exp /= 2;
-        }
+    modint &operator-=(const modint &rhs) {
+        _v -= rhs._v;
+        if (_v >= umod()) _v += umod();
         return *this;
     }
-    constexpr modint operator-() const {
+    modint &operator*=(const modint &rhs) {
+        unsigned long long x = _v;
+        x *= rhs._v;
+        _v = (unsigned int)(x % (unsigned long long)umod());
+        return *this;
+    }
+    modint &operator/=(const modint &rhs) {
+        return *this = *this * rhs.inv();
+    }
+
+    modint operator+() const {
+        return *this;
+    }
+    modint operator-() const {
         return modint() - *this;
     }
-    bool operator==(const u64 rhs) {
-        return a == rhs;
-    }
-    bool operator!=(const u64 rhs) {
-        return a != rhs;
-    }
-    constexpr modint &operator++() {
-        a++;
-        if (a == mod()) a = 0;
-        return *this;
-    }
-    constexpr modint &operator--() {
-        if (a == 0) a = mod();
-        a--;
-        return *this;
-    }
 
-    modint pow(u64 n) const noexcept {
-        modint res = 1;
-        modint x = a;
-        while (n > 0) {
+    modint pow(long long n) const {
+        assert(0 <= n);
+        modint x = *this, res = 1;
+        while (n) {
             if (n & 1) res *= x;
             x *= x;
             n >>= 1;
@@ -99,20 +81,50 @@ template <std::uint_fast64_t Modulus> class modint {
         return res;
     }
     modint inv() const {
-        return pow(Modulus - 2);
+        assert(_v);
+        return pow(umod() - 2);
     }
 
-    static u64 mod() {
-        return Modulus;
+    friend modint operator+(const modint &lhs, const modint &rhs) {
+        return modint(lhs) += rhs;
+    }
+    friend modint operator-(const modint &lhs, const modint &rhs) {
+        return modint(lhs) -= rhs;
+    }
+    friend modint operator*(const modint &lhs, const modint &rhs) {
+        return modint(lhs) *= rhs;
+    }
+
+    friend modint operator/(const modint &lhs, const modint &rhs) {
+        return modint(lhs) /= rhs;
+    }
+    friend bool operator==(const modint &lhs, const modint &rhs) {
+        return lhs.val() == rhs.val();
+    }
+    friend bool operator!=(const modint &lhs, const modint &rhs) {
+        return !(lhs == rhs);
+    }
+
+  private:
+    unsigned int _v;
+
+    static constexpr unsigned int umod() {
+        return m;
     }
 };
 
-using modint998244353 = modint<998244353>;
-using modint1000000007 = modint<1000000007>;
-
-template <std::uint_fast64_t Modulus>
-std::ostream &operator<<(std::ostream &os, modint<Modulus> a) {
+template <int m> std::istream &operator>>(std::istream &os, modint<m> &a) {
+    long long x;
+    os >> x;
+    a = x;
+    return os;
+}
+template <int m>
+std::ostream &operator<<(std::ostream &os, const modint<m> &a) {
     return os << a.val();
 }
+
+using modint998244353 = modint<998244353>;
+using modint1000000007 = modint<1000000007>;
 
 }  // namespace ebi
