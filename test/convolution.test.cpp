@@ -20,7 +20,7 @@ int main() {
     }
     auto c = ebi::convolution(a, b);
     for (int i = 0; i < n + m - 1; ++i) {
-        std::cout << c[i].val() << " ";
+        std::cout << c[i] << " ";
     }
     std::cout << '\n';
 }

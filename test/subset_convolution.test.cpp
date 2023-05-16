@@ -14,17 +14,13 @@ int main() {
     std::cin >> n;
     std::vector<mint> a(1 << n), b(1 << n);
     for (int i = 0; i < (1 << n); i++) {
-        int val;
-        std::cin >> val;
-        a[i] = val;
+        std::cin >> a[i];
     }
     for (int i = 0; i < (1 << n); i++) {
-        int val;
-        std::cin >> val;
-        b[i] = val;
+        std::cin >> b[i];
     }
     auto c = ebi::subset_convolution<mint, 20>(a, b);
     for (int i = 0; i < (1 << n); i++) {
-        std::cout << c[i].val() << ((i == (1 << n) - 1) ? "\n" : " ");
+        std::cout << c[i] << ((i == (1 << n) - 1) ? "\n" : " ");
     }
 }
