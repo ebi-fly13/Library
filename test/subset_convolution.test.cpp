@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/subset_convolution"
 
-#include "../set_function/subset_convolution.hpp"
+#include "../convolution/subset_convolution.hpp"
 
 #include <iostream>
 #include <vector>

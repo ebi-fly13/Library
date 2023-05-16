@@ -9,11 +9,11 @@ int main() {
     std::cin >> n;
     ebi::FormalPowerSeries a(n);
     for (int i = 0; i < n; ++i) {
-        std::cin >> a[i].a;
+        std::cin >> a[i];
     }
     ebi::FormalPowerSeries b = a.inv();
     for (int i = 0; i < n; ++i) {
-        std::cout << b[i].value() << " ";
+        std::cout << b[i].val() << " ";
     }
     std::cout << std::endl;
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../algorithm/convolution.hpp"
+#include "../convolution/convolution.hpp"
 #include "../utility/modint.hpp"
 
 #include <algorithm>

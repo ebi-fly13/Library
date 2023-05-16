@@ -15,7 +15,7 @@ using mint = ebi::modint998244353;
 
 namespace internal {
 
-constexpr mint primitive_root = 3;
+const mint primitive_root = 3;
 
 void dft(std::vector<mint> &f) {
     int n = f.size();
