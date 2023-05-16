@@ -1,78 +1,78 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Exp_of_Formal_Power_Series.test.cpp
     title: test/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://hcpc-hokudai.github.io/archive/math_fft_002.pdf
   bundledCode: "#line 2 \"algorithm/convolution.hpp\"\n\r\n/*\r\n    reference: https://hcpc-hokudai.github.io/archive/math_fft_002.pdf\r\
     \n    mod 998244353 \u4E0A\u3067\u306E\u7573\u307F\u8FBC\u307F\u3092 O(N log N)\
     \ \u3067\u6C42\u3081\u308B.\r\n*/\r\n\r\n#line 2 \"utility/modint.hpp\"\n\r\n\
-    /*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
-    \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
-    \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
-    \u306E\u3067\u3059\r\n*/\r\n\r\n#include <cstdint>\r\n#include <iostream>\r\n\r\
-    \nnamespace ebi {\r\n\r\ntemplate <std::uint_fast64_t Modulus> class modint {\r\
-    \n    using u64 = std::uint_fast64_t;\r\n\r\n  public:\r\n    u64 a;\r\n\r\n \
-    \   constexpr modint(const u64 x = 0) noexcept : a(x % Modulus) {}\r\n    constexpr\
-    \ u64 &value() noexcept {\r\n        return a;\r\n    }\r\n    constexpr u64 &val()\
-    \ noexcept {\r\n        return a;\r\n    }\r\n    constexpr const u64 &value()\
-    \ const noexcept {\r\n        return a;\r\n    }\r\n    constexpr modint operator+(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) += rhs;\r\n   \
-    \ }\r\n    constexpr modint operator-(const modint rhs) const noexcept {\r\n \
-    \       return modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const\
-    \ modint rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n   \
-    \ }\r\n    constexpr modint operator/(const modint rhs) const noexcept {\r\n \
-    \       return modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const\
-    \ modint rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\
-    \n            a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
-    \ < rhs.a) {\r\n            a += Modulus;\r\n        }\r\n        a -= rhs.a;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
-    \ rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator/=(modint rhs) noexcept {\r\n       \
-    \ u64 exp = Modulus - 2;\r\n        while (exp) {\r\n            if (exp % 2)\
-    \ {\r\n                *this *= rhs;\r\n            }\r\n            rhs *= rhs;\r\
-    \n            exp /= 2;\r\n        }\r\n        return *this;\r\n    }\r\n   \
-    \ constexpr modint operator-() const {\r\n        return modint() - *this;\r\n\
-    \    }\r\n    bool operator==(const u64 rhs) {\r\n        return a == rhs;\r\n\
-    \    }\r\n    bool operator!=(const u64 rhs) {\r\n        return a != rhs;\r\n\
-    \    }\r\n    constexpr modint &operator++() {\r\n        a++;\r\n        if (a\
-    \ == mod()) a = 0;\r\n        return *this;\r\n    }\r\n    constexpr modint &operator--()\
-    \ {\r\n        if (a == 0) a = mod();\r\n        a--;\r\n        return *this;\r\
-    \n    }\r\n\r\n    modint pow(u64 n) const noexcept {\r\n        modint res =\
-    \ 1;\r\n        modint x = a;\r\n        while (n > 0) {\r\n            if (n\
-    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
-    \n        return res;\r\n    }\r\n    modint inv() const {\r\n        return pow(Modulus\
-    \ - 2);\r\n    }\r\n\r\n    static u64 mod() {\r\n        return Modulus;\r\n\
-    \    }\r\n};\r\n\r\nusing modint998244353 = modint<998244353>;\r\nusing modint1000000007\
-    \ = modint<1000000007>;\r\n\r\ntemplate <std::uint_fast64_t Modulus>\r\nstd::ostream\
-    \ &operator<<(std::ostream &os, modint<Modulus> a) {\r\n    return os << a.val();\r\
-    \n}\r\n\r\n}  // namespace ebi\n#line 9 \"algorithm/convolution.hpp\"\n\r\n#include\
-    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\nusing mint = ebi::modint998244353;\r\n\
-    \r\nnamespace internal {\r\n\r\nconstexpr mint primitive_root = 3;\r\n\r\nvoid\
+    #include <cassert>\r\n#include <iostream>\r\n\r\nnamespace ebi {\r\n\r\ntemplate\
+    \ <int m> struct modint {\r\n  public:\r\n    static constexpr int mod() {\r\n\
+    \        return m;\r\n    }\r\n\r\n    static modint raw(int v) {\r\n        modint\
+    \ x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    modint() :\
+    \ _v(0) {}\r\n\r\n    modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
+    \n    }\r\n\r\n    unsigned int val() const {\r\n        return _v;\r\n    }\r\
+    \n\r\n    unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\
+    \n    modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v\
+    \ = 0;\r\n        return *this;\r\n    }\r\n    modint &operator--() {\r\n   \
+    \     if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n    modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
+    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
+    \    modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n    \
+    \    if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n   \
+    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
+    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
+    \n        return *this;\r\n    }\r\n    modint &operator/=(const modint &rhs)\
+    \ {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    modint operator+()\
+    \ const {\r\n        return *this;\r\n    }\r\n    modint operator-() const {\r\
+    \n        return modint() - *this;\r\n    }\r\n\r\n    modint pow(long long n)\
+    \ const {\r\n        assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n\
+    \        while (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\
+    \n            n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
+    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
+    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
+    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
+    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
+    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
+    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
+    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
+    \n\r\n  private:\r\n    unsigned int _v;\r\n\r\n    static constexpr unsigned\
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m> std::istream\
+    \ &operator>>(std::istream &os, modint<m> &a) {\r\n    long long x;\r\n    os\
+    \ >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream\
+    \ &operator<<(std::ostream &os, const modint<m> &a) {\r\n    return os << a.val();\r\
+    \n}\r\n\r\nusing modint998244353 = modint<998244353>;\r\nusing modint1000000007\
+    \ = modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"algorithm/convolution.hpp\"\
+    \n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nusing mint = ebi::modint998244353;\r\
+    \n\r\nnamespace internal {\r\n\r\nconstexpr mint primitive_root = 3;\r\n\r\nvoid\
     \ dft(std::vector<mint> &f) {\r\n    int n = f.size();\r\n    if (n == 1) return;\r\
     \n    std::vector<mint> a(n / 2), b(n / 2);\r\n    for (int i = 0; i < n / 2;\
     \ ++i) {\r\n        a[i] = f[2 * i];\r\n        b[i] = f[2 * i + 1];\r\n    }\r\
@@ -128,8 +128,8 @@ data:
   path: algorithm/convolution.hpp
   requiredBy:
   - math/FormalPowerSeries.hpp
-  timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-16 13:16:14+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp

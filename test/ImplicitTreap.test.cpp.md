@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -89,62 +89,62 @@ data:
     \ <cstddef>\r\n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\nusing i64\
     \ = std::int64_t;\r\nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\
     \nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n#line 2 \"utility/modint.hpp\"\
-    \n\r\n/*\r\n    author: noshi91\r\n    reference: https://noshi91.hatenablog.com/entry/2019/03/31/174006\r\
-    \n    noshi91\u306E\u30D6\u30ED\u30B0\u3067\u516C\u958B\u3055\u308C\u3066\u3044\
-    \u308Bmodint\u3092\u5143\u306Binv(), pow()\u3092\u8FFD\u52A0\u3057\u305F\u3082\
-    \u306E\u3067\u3059\r\n*/\r\n\r\n#line 11 \"utility/modint.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <std::uint_fast64_t Modulus> class modint {\r\n    using\
-    \ u64 = std::uint_fast64_t;\r\n\r\n  public:\r\n    u64 a;\r\n\r\n    constexpr\
-    \ modint(const u64 x = 0) noexcept : a(x % Modulus) {}\r\n    constexpr u64 &value()\
-    \ noexcept {\r\n        return a;\r\n    }\r\n    constexpr u64 &val() noexcept\
-    \ {\r\n        return a;\r\n    }\r\n    constexpr const u64 &value() const noexcept\
-    \ {\r\n        return a;\r\n    }\r\n    constexpr modint operator+(const modint\
-    \ rhs) const noexcept {\r\n        return modint(*this) += rhs;\r\n    }\r\n \
-    \   constexpr modint operator-(const modint rhs) const noexcept {\r\n        return\
-    \ modint(*this) -= rhs;\r\n    }\r\n    constexpr modint operator*(const modint\
-    \ rhs) const noexcept {\r\n        return modint(*this) *= rhs;\r\n    }\r\n \
-    \   constexpr modint operator/(const modint rhs) const noexcept {\r\n        return\
-    \ modint(*this) /= rhs;\r\n    }\r\n    constexpr modint &operator+=(const modint\
-    \ rhs) noexcept {\r\n        a += rhs.a;\r\n        if (a >= Modulus) {\r\n  \
-    \          a -= Modulus;\r\n        }\r\n        return *this;\r\n    }\r\n  \
-    \  constexpr modint &operator-=(const modint rhs) noexcept {\r\n        if (a\
-    \ < rhs.a) {\r\n            a += Modulus;\r\n        }\r\n        a -= rhs.a;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
-    \ rhs) noexcept {\r\n        a = a * rhs.a % Modulus;\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator/=(modint rhs) noexcept {\r\n       \
-    \ u64 exp = Modulus - 2;\r\n        while (exp) {\r\n            if (exp % 2)\
-    \ {\r\n                *this *= rhs;\r\n            }\r\n            rhs *= rhs;\r\
-    \n            exp /= 2;\r\n        }\r\n        return *this;\r\n    }\r\n   \
-    \ constexpr modint operator-() const {\r\n        return modint() - *this;\r\n\
-    \    }\r\n    bool operator==(const u64 rhs) {\r\n        return a == rhs;\r\n\
-    \    }\r\n    bool operator!=(const u64 rhs) {\r\n        return a != rhs;\r\n\
-    \    }\r\n    constexpr modint &operator++() {\r\n        a++;\r\n        if (a\
-    \ == mod()) a = 0;\r\n        return *this;\r\n    }\r\n    constexpr modint &operator--()\
-    \ {\r\n        if (a == 0) a = mod();\r\n        a--;\r\n        return *this;\r\
-    \n    }\r\n\r\n    modint pow(u64 n) const noexcept {\r\n        modint res =\
-    \ 1;\r\n        modint x = a;\r\n        while (n > 0) {\r\n            if (n\
-    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
-    \n        return res;\r\n    }\r\n    modint inv() const {\r\n        return pow(Modulus\
-    \ - 2);\r\n    }\r\n\r\n    static u64 mod() {\r\n        return Modulus;\r\n\
-    \    }\r\n};\r\n\r\nusing modint998244353 = modint<998244353>;\r\nusing modint1000000007\
-    \ = modint<1000000007>;\r\n\r\ntemplate <std::uint_fast64_t Modulus>\r\nstd::ostream\
-    \ &operator<<(std::ostream &os, modint<Modulus> a) {\r\n    return os << a.val();\r\
-    \n}\r\n\r\n}  // namespace ebi\n#line 10 \"test/ImplicitTreap.test.cpp\"\n\r\n\
-    using mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n    int\
-    \ size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint b) : a(a),\
-    \ b(b) {}\r\n};\r\n\r\nS op(S l, S r) {\r\n    return S{l.a + r.a, l.size + r.size};\r\
-    \n}\r\n\r\nS e() {\r\n    return S{0, 0};\r\n}\r\n\r\nS mapping(F l, S r) {\r\n\
-    \    return S{r.a * l.a + (mint)r.size * l.b, r.size};\r\n}\r\n\r\nF composition(F\
-    \ l, F r) {\r\n    return F{r.a * l.a, r.b * l.a + l.b};\r\n}\r\n\r\nF id() {\r\
-    \n    return F{1, 0};\r\n}\r\n\r\nint main() {\r\n    ebi::ImplicitTreap<S, op,\
-    \ e, F, mapping, composition, id> treap;\r\n    int n, q;\r\n    std::cin >> n\
-    \ >> q;\r\n    for (int i = 0; i < n; i++) {\r\n        i64 a;\r\n        std::cin\
-    \ >> a;\r\n        treap.insert(i, {a, 1});\r\n    }\r\n    while (q--) {\r\n\
-    \        int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\n       \
-    \     int i;\r\n            i64 x;\r\n            std::cin >> i >> x;\r\n    \
-    \        treap.insert(i, {x, 1});\r\n        } else if (t == 1) {\r\n        \
-    \    int i;\r\n            std::cin >> i;\r\n            treap.erase(i);\r\n \
-    \       } else if (t == 2) {\r\n            int l, r;\r\n            std::cin\
+    \n\r\n#include <cassert>\r\n#line 5 \"utility/modint.hpp\"\n\r\nnamespace ebi\
+    \ {\r\n\r\ntemplate <int m> struct modint {\r\n  public:\r\n    static constexpr\
+    \ int mod() {\r\n        return m;\r\n    }\r\n\r\n    static modint raw(int v)\
+    \ {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\
+    \r\n    modint() : _v(0) {}\r\n\r\n    modint(long long v) {\r\n        v %= (long\
+    \ long)umod();\r\n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned\
+    \ int)v;\r\n    }\r\n\r\n    unsigned int val() const {\r\n        return _v;\r\
+    \n    }\r\n\r\n    unsigned int value() const {\r\n        return val();\r\n \
+    \   }\r\n\r\n    modint &operator++() {\r\n        _v++;\r\n        if (_v ==\
+    \ umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    modint &operator--()\
+    \ {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\
+    \n    }\r\n    modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
+    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
+    \    modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n    \
+    \    if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n   \
+    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
+    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
+    \n        return *this;\r\n    }\r\n    modint &operator/=(const modint &rhs)\
+    \ {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    modint operator+()\
+    \ const {\r\n        return *this;\r\n    }\r\n    modint operator-() const {\r\
+    \n        return modint() - *this;\r\n    }\r\n\r\n    modint pow(long long n)\
+    \ const {\r\n        assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n\
+    \        while (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\
+    \n            n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    modint\
+    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
+    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
+    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
+    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
+    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
+    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
+    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
+    \n\r\n  private:\r\n    unsigned int _v;\r\n\r\n    static constexpr unsigned\
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m> std::istream\
+    \ &operator>>(std::istream &os, modint<m> &a) {\r\n    long long x;\r\n    os\
+    \ >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream\
+    \ &operator<<(std::ostream &os, const modint<m> &a) {\r\n    return os << a.val();\r\
+    \n}\r\n\r\nusing modint998244353 = modint<998244353>;\r\nusing modint1000000007\
+    \ = modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 10 \"test/ImplicitTreap.test.cpp\"\
+    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n\
+    \    int size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint\
+    \ b) : a(a), b(b) {}\r\n};\r\n\r\nS op(S l, S r) {\r\n    return S{l.a + r.a,\
+    \ l.size + r.size};\r\n}\r\n\r\nS e() {\r\n    return S{0, 0};\r\n}\r\n\r\nS mapping(F\
+    \ l, S r) {\r\n    return S{r.a * l.a + (mint)r.size * l.b, r.size};\r\n}\r\n\r\
+    \nF composition(F l, F r) {\r\n    return F{r.a * l.a, r.b * l.a + l.b};\r\n}\r\
+    \n\r\nF id() {\r\n    return F{1, 0};\r\n}\r\n\r\nint main() {\r\n    ebi::ImplicitTreap<S,\
+    \ op, e, F, mapping, composition, id> treap;\r\n    int n, q;\r\n    std::cin\
+    \ >> n >> q;\r\n    for (int i = 0; i < n; i++) {\r\n        i64 a;\r\n      \
+    \  std::cin >> a;\r\n        treap.insert(i, {a, 1});\r\n    }\r\n    while (q--)\
+    \ {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\n \
+    \           int i;\r\n            i64 x;\r\n            std::cin >> i >> x;\r\n\
+    \            treap.insert(i, {x, 1});\r\n        } else if (t == 1) {\r\n    \
+    \        int i;\r\n            std::cin >> i;\r\n            treap.erase(i);\r\
+    \n        } else if (t == 2) {\r\n            int l, r;\r\n            std::cin\
     \ >> l >> r;\r\n            treap.reverse(l, r);\r\n        } else if (t == 3)\
     \ {\r\n            int l, r, b, c;\r\n            std::cin >> l >> r >> b >> c;\r\
     \n            treap.apply(l, r, F(b, c));\r\n        } else if (t == 4) {\r\n\
@@ -180,7 +180,7 @@ data:
   isVerificationFile: true
   path: test/ImplicitTreap.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-05-16 13:16:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/ImplicitTreap.test.cpp
