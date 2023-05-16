@@ -44,10 +44,10 @@ data:
       title: algorithm/two_sat.hpp
   - name: convolution
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/convolution.hpp
       title: convolution/convolution.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/subset_convolution.hpp
       title: convolution/subset_convolution.hpp
     - icon: ':heavy_check_mark:'
@@ -142,7 +142,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: data_structure/section_set.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
       title: segtree
     - icon: ':heavy_check_mark:'
@@ -222,7 +222,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: set_function/hadamard_transform.hpp
       title: set_function/hadamard_transform.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: set_function/ranked_zeta.hpp
       title: set_function/ranked_zeta.hpp
     - icon: ':heavy_check_mark:'
@@ -233,7 +233,7 @@ data:
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: heavy light decomposition
     - icon: ':heavy_check_mark:'
@@ -247,13 +247,13 @@ data:
       title: rerooting
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -343,7 +343,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/binary_trie.test.cpp
       title: test/binary_trie.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/convolution.test.cpp
       title: test/convolution.test.cpp
     - icon: ':heavy_check_mark:'
@@ -391,7 +391,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/static_rmq.test.cpp
       title: test/static_rmq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/subset_convolution.test.cpp
       title: test/subset_convolution.test.cpp
     - icon: ':heavy_check_mark:'
@@ -403,7 +403,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/vertex_add_subtree_sum.test.cpp
       title: test/vertex_add_subtree_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/vertex_set_path_compositie.test.cpp
       title: test/vertex_set_path_compositie.test.cpp
   - name: test/Dice

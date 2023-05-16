@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/rerooting.hpp
     title: rerooting
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []

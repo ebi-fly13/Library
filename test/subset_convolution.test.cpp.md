@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/subset_convolution.hpp
     title: convolution/subset_convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/subset_convolution
@@ -102,23 +102,20 @@ data:
     \ = modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/subset_convolution.test.cpp\"\
     \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n\
     \    std::cin >> n;\r\n    std::vector<mint> a(1 << n), b(1 << n);\r\n    for\
-    \ (int i = 0; i < (1 << n); i++) {\r\n        int val;\r\n        std::cin >>\
-    \ val;\r\n        a[i] = val;\r\n    }\r\n    for (int i = 0; i < (1 << n); i++)\
-    \ {\r\n        int val;\r\n        std::cin >> val;\r\n        b[i] = val;\r\n\
-    \    }\r\n    auto c = ebi::subset_convolution<mint, 20>(a, b);\r\n    for (int\
-    \ i = 0; i < (1 << n); i++) {\r\n        std::cout << c[i].val() << ((i == (1\
-    \ << n) - 1) ? \"\\n\" : \" \");\r\n    }\r\n}\n"
+    \ (int i = 0; i < (1 << n); i++) {\r\n        std::cin >> a[i];\r\n    }\r\n \
+    \   for (int i = 0; i < (1 << n); i++) {\r\n        std::cin >> b[i];\r\n    }\r\
+    \n    auto c = ebi::subset_convolution<mint, 20>(a, b);\r\n    for (int i = 0;\
+    \ i < (1 << n); i++) {\r\n        std::cout << c[i] << ((i == (1 << n) - 1) ?\
+    \ \"\\n\" : \" \");\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\r\n\
     \r\n#include \"../convolution/subset_convolution.hpp\"\r\n\r\n#include <iostream>\r\
     \n#include <vector>\r\n\r\n#include \"../utility/modint.hpp\"\r\n\r\nusing mint\
     \ = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >>\
     \ n;\r\n    std::vector<mint> a(1 << n), b(1 << n);\r\n    for (int i = 0; i <\
-    \ (1 << n); i++) {\r\n        int val;\r\n        std::cin >> val;\r\n       \
-    \ a[i] = val;\r\n    }\r\n    for (int i = 0; i < (1 << n); i++) {\r\n       \
-    \ int val;\r\n        std::cin >> val;\r\n        b[i] = val;\r\n    }\r\n   \
-    \ auto c = ebi::subset_convolution<mint, 20>(a, b);\r\n    for (int i = 0; i <\
-    \ (1 << n); i++) {\r\n        std::cout << c[i].val() << ((i == (1 << n) - 1)\
-    \ ? \"\\n\" : \" \");\r\n    }\r\n}"
+    \ (1 << n); i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    for (int i = 0;\
+    \ i < (1 << n); i++) {\r\n        std::cin >> b[i];\r\n    }\r\n    auto c = ebi::subset_convolution<mint,\
+    \ 20>(a, b);\r\n    for (int i = 0; i < (1 << n); i++) {\r\n        std::cout\
+    \ << c[i] << ((i == (1 << n) - 1) ? \"\\n\" : \" \");\r\n    }\r\n}"
   dependsOn:
   - convolution/subset_convolution.hpp
   - set_function/ranked_zeta.hpp
@@ -127,8 +124,8 @@ data:
   isVerificationFile: true
   path: test/subset_convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-05-16 13:40:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-16 13:56:44+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/subset_convolution.test.cpp
 layout: document
