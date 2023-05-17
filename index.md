@@ -214,9 +214,6 @@ data:
     - icon: ':warning:'
       path: math/linear_sieve.hpp
       title: math/linear_sieve.hpp
-    - icon: ':heavy_check_mark:'
-      path: math/pow.hpp
-      title: math/pow.hpp
   - name: set_function
     pages:
     - icon: ':heavy_check_mark:'
@@ -370,7 +367,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/point_add_rectangle_sum.test.cpp
       title: test/point_add_rectangle_sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/pow.test.cpp
       title: test/pow.test.cpp
     - icon: ':heavy_check_mark:'
