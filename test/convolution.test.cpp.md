@@ -130,14 +130,14 @@ data:
     \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
-    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    return a;\n}\n\n}  //\
-    \ namespace ebi\n#line 7 \"test/convolution.test.cpp\"\n\r\nusing mint = ebi::modint998244353;\r\
-    \n\r\nint main() {\r\n    int n, m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint>\
-    \ a(n), b(m);\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\
-    \n    }\r\n    for (int i = 0; i < m; ++i) {\r\n        std::cin >> b[i];\r\n\
-    \    }\r\n    auto c = ebi::convolution<mint>(a, b);\r\n    for (int i = 0; i\
-    \ < n + m - 1; ++i) {\r\n        std::cout << c[i] << \" \";\r\n    }\r\n    std::cout\
-    \ << '\\n';\r\n}\n"
+    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 7 \"test/convolution.test.cpp\"\
+    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n, m;\r\
+    \n    std::cin >> n >> m;\r\n    std::vector<mint> a(n), b(m);\r\n    for (int\
+    \ i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    for (int i\
+    \ = 0; i < m; ++i) {\r\n        std::cin >> b[i];\r\n    }\r\n    auto c = ebi::convolution<mint>(a,\
+    \ b);\r\n    for (int i = 0; i < n + m - 1; ++i) {\r\n        std::cout << c[i]\
+    \ << \" \";\r\n    }\r\n    std::cout << '\\n';\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\r\n\r\
     \n#include <iostream>\r\n\r\n#include \"../convolution/ntt.hpp\"\r\n#include \"\
     ../utility/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main()\
@@ -155,7 +155,7 @@ data:
   isVerificationFile: true
   path: test/convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-05-17 17:05:34+09:00'
+  timestamp: '2023-05-17 22:42:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution.test.cpp

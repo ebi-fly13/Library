@@ -135,26 +135,26 @@ data:
     \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
-    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    return a;\n}\n\n}  //\
-    \ namespace ebi\n#line 2 \"math/boastan_mori_algorithm.hpp\"\n\n#include <cstdint>\n\
-    #line 5 \"math/boastan_mori_algorithm.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ T, std::vector<T> (*convolution)(const std::vector<T> &,\n                 \
-    \                                const std::vector<T> &)>\nT bostan_mori_algorithm(std::int64_t\
-    \ n, std::vector<T> p, std::vector<T> q) {\n    while (n > 0) {\n        auto\
-    \ q_neg = q;\n        for (int i = 1; i < (int)q_neg.size(); i += 2) q_neg[i]\
-    \ = -q_neg[i];\n        p = convolution(p, q_neg);\n        q = convolution(q,\
-    \ q_neg);\n        for (int i = (n & 1LL); i < (int)p.size(); i += 2) p[i >> 1]\
-    \ = p[i];\n        p.resize(((int)p.size() + 1 - (n & 1LL)) / 2);\n        for\
-    \ (int i = 0; i < (int)q.size(); i += 2) q[i >> 1] = q[i];\n        q.resize(((int)q.size()\
-    \ + 1) / 2);\n        n >>= 1;\n    }\n    return p[0] / q[0];\n}\n\ntemplate\
-    \ <class T, std::vector<T> (*convolution)(const std::vector<T> &,\n          \
-    \                                       const std::vector<T> &)>\nT kitamasa(std::int64_t\
-    \ n, std::vector<T> a, std::vector<T> c) {\n    if (n < (int)a.size()) return\
-    \ a[n];\n    const int d = c.size();\n    for (auto &val : c) val = -val;\n  \
-    \  c.insert(c.begin(), 1);\n    auto p = convolution(a, c);\n    p.resize(d);\n\
-    \    return bostan_mori_algorithm<T, convolution>(n, p, c);\n}\n\n}  // namespace\
-    \ ebi\n#line 10 \"test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp\"\n\n\
-    using mint = ebi::modint998244353;\n\nint main() {\n    int d;\n    long long\
+    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"math/boastan_mori_algorithm.hpp\"\
+    \n\n#include <cstdint>\n#line 5 \"math/boastan_mori_algorithm.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T, std::vector<T> (*convolution)(const std::vector<T>\
+    \ &,\n                                                 const std::vector<T> &)>\n\
+    T bostan_mori_algorithm(std::int64_t n, std::vector<T> p, std::vector<T> q) {\n\
+    \    while (n > 0) {\n        auto q_neg = q;\n        for (int i = 1; i < (int)q_neg.size();\
+    \ i += 2) q_neg[i] = -q_neg[i];\n        p = convolution(p, q_neg);\n        q\
+    \ = convolution(q, q_neg);\n        for (int i = (n & 1LL); i < (int)p.size();\
+    \ i += 2) p[i >> 1] = p[i];\n        p.resize(((int)p.size() + 1 - (n & 1LL))\
+    \ / 2);\n        for (int i = 0; i < (int)q.size(); i += 2) q[i >> 1] = q[i];\n\
+    \        q.resize(((int)q.size() + 1) / 2);\n        n >>= 1;\n    }\n    return\
+    \ p[0] / q[0];\n}\n\ntemplate <class T, std::vector<T> (*convolution)(const std::vector<T>\
+    \ &,\n                                                 const std::vector<T> &)>\n\
+    T kitamasa(std::int64_t n, std::vector<T> a, std::vector<T> c) {\n    if (n <\
+    \ (int)a.size()) return a[n];\n    const int d = c.size();\n    for (auto &val\
+    \ : c) val = -val;\n    c.insert(c.begin(), 1);\n    auto p = convolution(a, c);\n\
+    \    p.resize(d);\n    return bostan_mori_algorithm<T, convolution>(n, p, c);\n\
+    }\n\n}  // namespace ebi\n#line 10 \"test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp\"\
+    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int d;\n    long long\
     \ k;\n    std::cin >> d >> k;\n    std::vector<mint> a(d), c(d);\n    for (int\
     \ i = 0; i < d; i++) {\n        int val;\n        std::cin >> val;\n        a[i]\
     \ = val;\n    }\n    for (int i = 0; i < d; i++) {\n        int val;\n       \
@@ -178,7 +178,7 @@ data:
   isVerificationFile: true
   path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   requiredBy: []
-  timestamp: '2023-05-17 18:28:16+09:00'
+  timestamp: '2023-05-17 22:42:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp

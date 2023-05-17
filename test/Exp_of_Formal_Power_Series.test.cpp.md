@@ -135,12 +135,13 @@ data:
     \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
-    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    return a;\n}\n\n}  //\
-    \ namespace ebi\n#line 5 \"math/FormalPowerSeries.hpp\"\n\r\n#include <algorithm>\r\
-    \n#line 9 \"math/FormalPowerSeries.hpp\"\n\r\n/*\r\n    reference: https://opt-cp.com/fps-fast-algorithms/\r\
-    \n*/\r\n\r\nnamespace ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nstruct\
-    \ FormalPowerSeries : std::vector<mint> {\r\n  private:\r\n    using std::vector<mint>::vector;\r\
-    \n    using std::vector<mint>::vector::operator=;\r\n    using FPS = FormalPowerSeries;\r\
+    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 5 \"math/FormalPowerSeries.hpp\"\
+    \n\r\n#include <algorithm>\r\n#line 9 \"math/FormalPowerSeries.hpp\"\n\r\n/*\r\
+    \n    reference: https://opt-cp.com/fps-fast-algorithms/\r\n*/\r\n\r\nnamespace\
+    \ ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nstruct FormalPowerSeries :\
+    \ std::vector<mint> {\r\n  private:\r\n    using std::vector<mint>::vector;\r\n\
+    \    using std::vector<mint>::vector::operator=;\r\n    using FPS = FormalPowerSeries;\r\
     \n\r\n  public:\r\n    FPS operator+(const FPS &rhs) const noexcept {\r\n    \
     \    return FPS(*this) += rhs;\r\n    }\r\n    FPS operator-(const FPS &rhs) const\
     \ noexcept {\r\n        return FPS(*this) -= rhs;\r\n    }\r\n    FPS operator*(const\
@@ -202,7 +203,7 @@ data:
   isVerificationFile: true
   path: test/Exp_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-05-17 17:24:13+09:00'
+  timestamp: '2023-05-17 22:42:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Exp_of_Formal_Power_Series.test.cpp

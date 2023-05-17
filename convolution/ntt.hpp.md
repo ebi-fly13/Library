@@ -141,8 +141,8 @@ data:
     \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
-    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    return a;\n}\n\n}  //\
-    \ namespace ebi\n"
+    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <array>\n#include <type_traits>\n#include <vector>\n\
     \n#include \"../math/internal_math.hpp\"\n#include \"../utility/bit_operator.hpp\"\
     \n#include \"../utility/modint.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
@@ -187,8 +187,8 @@ data:
     \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
-    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    return a;\n}\n\n}  //\
-    \ namespace ebi"
+    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi"
   dependsOn:
   - math/internal_math.hpp
   - utility/bit_operator.hpp
@@ -197,7 +197,7 @@ data:
   path: convolution/ntt.hpp
   requiredBy:
   - math/FormalPowerSeries.hpp
-  timestamp: '2023-05-17 17:05:34+09:00'
+  timestamp: '2023-05-17 22:42:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
