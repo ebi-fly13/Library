@@ -5,10 +5,12 @@
 
 #include <iostream>
 
-#include "../utility/int_alias.hpp"
+#include "../utility/modint.hpp"
+
+using mint = ebi::modint1000000007;
 
 int main() {
     u64 m, n;
     std::cin >> m >> n;
-    std::cout << ebi::pow(m, n, 1e9 + 7) << '\n';
+    std::cout << mint(m).pow(n) << '\n';
 }

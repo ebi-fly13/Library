@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../math/pow.hpp"
 #include "../utility/int_alias.hpp"
 
 /*
