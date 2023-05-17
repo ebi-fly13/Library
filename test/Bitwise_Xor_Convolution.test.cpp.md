@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: set_function/hadamard_transform.hpp
     title: set_function/hadamard_transform.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -38,11 +38,16 @@ data:
     \    auto tb = hadamard_transform(b);\n    for (int i = 0; i < (int)a.size();\
     \ i++) {\n        ta[i] *= tb[i];\n    }\n    return hadamard_transform(ta, true);\n\
     }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct modint {\r\n  public:\r\n\
-    \    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n        return\
-    \ x;\r\n    }\r\n\r\n    modint() : _v(0) {}\r\n\r\n    modint(long long v) {\r\
-    \n        v %= (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\
+    \n#include <type_traits>\r\n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\
+    \r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base {};\r\n\r\
+    \ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\r\ntemplate\
+    \ <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\n\r\n\
+    }\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
+    \ {\r\nprivate:\r\n    using modint = static_modint;\r\n  public:\r\n    static\
+    \ constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static modint\
+    \ raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\
+    \n    }\r\n\r\n    static_modint() : _v(0) {}\r\n\r\n    static_modint(long long\
+    \ v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\
     \n        _v = (unsigned int)v;\r\n    }\r\n\r\n    unsigned int val() const {\r\
     \n        return _v;\r\n    }\r\n\r\n    unsigned int value() const {\r\n    \
     \    return val();\r\n    }\r\n\r\n    modint &operator++() {\r\n        _v++;\r\
@@ -74,18 +79,21 @@ data:
     \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
     \ _v;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return m;\r\
     \n    }\r\n};\r\n\r\ntemplate <int m> std::istream &operator>>(std::istream &os,\
-    \ modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\n    return\
-    \ os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream &os, const\
-    \ modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353\
-    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
-    }  // namespace ebi\n#line 8 \"test/Bitwise_Xor_Convolution.test.cpp\"\n\nusing\
-    \ mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin >> n;\n\
-    \    std::vector<mint> a(1 << n), b(1 << n);\n    for (int i = 0; i < (1 << n);\
-    \ i++) {\n        int val;\n        std::cin >> val;\n        a[i] = val;\n  \
-    \  }\n    for (int i = 0; i < (1 << n); i++) {\n        int val;\n        std::cin\
-    \ >> val;\n        b[i] = val;\n    }\n    auto c = ebi::xor_convolution(a, b);\n\
-    \    for (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val() <<\
-    \ \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
+    \ static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\n\
+    \    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
+    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
+    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
+    \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
+    \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
+    \n\r\n}\r\n\r\n}  // namespace ebi\n#line 8 \"test/Bitwise_Xor_Convolution.test.cpp\"\
+    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
+    \ >> n;\n    std::vector<mint> a(1 << n), b(1 << n);\n    for (int i = 0; i <\
+    \ (1 << n); i++) {\n        int val;\n        std::cin >> val;\n        a[i] =\
+    \ val;\n    }\n    for (int i = 0; i < (1 << n); i++) {\n        int val;\n  \
+    \      std::cin >> val;\n        b[i] = val;\n    }\n    auto c = ebi::xor_convolution(a,\
+    \ b);\n    for (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val()\
+    \ << \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\
     \n\n#include <iostream>\n#include <vector>\n\n#include \"../convolution/xor_convolution.hpp\"\
     \n#include \"../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\n\
@@ -103,7 +111,7 @@ data:
   isVerificationFile: true
   path: test/Bitwise_Xor_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-05-16 13:40:06+09:00'
+  timestamp: '2023-05-17 13:07:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Bitwise_Xor_Convolution.test.cpp

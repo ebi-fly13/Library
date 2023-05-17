@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/rerooting.hpp
     title: rerooting
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
@@ -46,18 +46,23 @@ data:
     \n  private:\n    int n;\n    std::vector<std::vector<std::pair<int, int>>> g;\n\
     \    std::vector<V> sub;\n    std::vector<V> dp;\n    std::vector<std::vector<E>>\
     \ outs;\n};\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line\
-    \ 4 \"utility/modint.hpp\"\n#include <iostream>\r\n\r\nnamespace ebi {\r\n\r\n\
-    template <int m> struct modint {\r\n  public:\r\n    static constexpr int mod()\
-    \ {\r\n        return m;\r\n    }\r\n\r\n    static modint raw(int v) {\r\n  \
-    \      modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n  \
-    \  modint() : _v(0) {}\r\n\r\n    modint(long long v) {\r\n        v %= (long\
-    \ long)umod();\r\n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned\
-    \ int)v;\r\n    }\r\n\r\n    unsigned int val() const {\r\n        return _v;\r\
-    \n    }\r\n\r\n    unsigned int value() const {\r\n        return val();\r\n \
-    \   }\r\n\r\n    modint &operator++() {\r\n        _v++;\r\n        if (_v ==\
-    \ umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    modint &operator--()\
-    \ {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\
-    \n    }\r\n    modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
+    \ 4 \"utility/modint.hpp\"\n#include <iostream>\r\n#include <type_traits>\r\n\r\
+    \nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct modint_base {};\r\n\
+    struct static_modint_base : modint_base {};\r\n\r\ntemplate <class T> using is_modint\
+    \ = std::is_base_of<modint_base, T>;\r\ntemplate <class T> using is_modint_t =\
+    \ std::enable_if_t<is_modint<T>::value>;\r\n\r\n}\r\n\r\ntemplate <int m> struct\
+    \ static_modint : internal::static_modint_base {\r\nprivate:\r\n    using modint\
+    \ = static_modint;\r\n  public:\r\n    static constexpr int mod() {\r\n      \
+    \  return m;\r\n    }\r\n\r\n    static modint raw(int v) {\r\n        modint\
+    \ x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    static_modint()\
+    \ : _v(0) {}\r\n\r\n    static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
+    \n    }\r\n\r\n    unsigned int val() const {\r\n        return _v;\r\n    }\r\
+    \n\r\n    unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\
+    \n    modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v\
+    \ = 0;\r\n        return *this;\r\n    }\r\n    modint &operator--() {\r\n   \
+    \     if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n    modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
     \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
     \    modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n    \
     \    if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n   \
@@ -82,11 +87,14 @@ data:
     \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
     \n\r\n  private:\r\n    unsigned int _v;\r\n\r\n    static constexpr unsigned\
     \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m> std::istream\
-    \ &operator>>(std::istream &os, modint<m> &a) {\r\n    long long x;\r\n    os\
-    \ >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream\
-    \ &operator<<(std::ostream &os, const modint<m> &a) {\r\n    return os << a.val();\r\
-    \n}\r\n\r\nusing modint998244353 = modint<998244353>;\r\nusing modint1000000007\
-    \ = modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 5 \"test/Tree_Path_Composite_Sum.test.cpp\"\
+    \ &operator>>(std::istream &os, static_modint<m> &a) {\r\n    long long x;\r\n\
+    \    os >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream\
+    \ &operator<<(std::ostream &os, const static_modint<m> &a) {\r\n    return os\
+    \ << a.val();\r\n}\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\n\
+    using modint1000000007 = static_modint<1000000007>;\r\n\r\nnamespace internal\
+    \ {\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
+    \n\r\n}\r\n\r\n}  // namespace ebi\n#line 5 \"test/Tree_Path_Composite_Sum.test.cpp\"\
     \n\n#line 8 \"test/Tree_Path_Composite_Sum.test.cpp\"\n\nusing mint = ebi::modint998244353;\n\
     \nstd::vector<mint> a, b, c;\n\nstruct S {\n    mint sum;\n    mint sz;\n};\n\n\
     S e() {\n    return {0, 0};\n}\n\nS merge(S lhs, S rhs) {\n    return {lhs.sum\
@@ -123,8 +131,8 @@ data:
   isVerificationFile: true
   path: test/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-16 13:16:14+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-17 13:07:23+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Tree_Path_Composite_Sum.test.cpp
 layout: document

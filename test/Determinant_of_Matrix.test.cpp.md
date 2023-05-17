@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Matrix/SquareMatrix.hpp
     title: Matrix/SquareMatrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -63,11 +63,16 @@ data:
     \   std::vector<std::vector<Field>> mat;\r\n    static size_t N;\r\n};\r\n\r\n\
     template <class Field> size_t SquareMatrix<Field>::N = 0;\r\n\r\n}  // namespace\
     \ ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#line 5 \"utility/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct modint {\r\n  public:\r\n\
-    \    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n        return\
-    \ x;\r\n    }\r\n\r\n    modint() : _v(0) {}\r\n\r\n    modint(long long v) {\r\
-    \n        v %= (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\
+    \n#include <type_traits>\r\n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\
+    \r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base {};\r\n\r\
+    \ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\r\ntemplate\
+    \ <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\n\r\n\
+    }\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
+    \ {\r\nprivate:\r\n    using modint = static_modint;\r\n  public:\r\n    static\
+    \ constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static modint\
+    \ raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\
+    \n    }\r\n\r\n    static_modint() : _v(0) {}\r\n\r\n    static_modint(long long\
+    \ v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\
     \n        _v = (unsigned int)v;\r\n    }\r\n\r\n    unsigned int val() const {\r\
     \n        return _v;\r\n    }\r\n\r\n    unsigned int value() const {\r\n    \
     \    return val();\r\n    }\r\n\r\n    modint &operator++() {\r\n        _v++;\r\
@@ -99,15 +104,18 @@ data:
     \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
     \ _v;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return m;\r\
     \n    }\r\n};\r\n\r\ntemplate <int m> std::istream &operator>>(std::istream &os,\
-    \ modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\n    return\
-    \ os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream &os, const\
-    \ modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353\
-    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
-    }  // namespace ebi\n#line 7 \"test/Determinant_of_Matrix.test.cpp\"\n\r\nusing\
-    \ Matrix = ebi::SquareMatrix<ebi::modint998244353>;\r\n\r\nint main() {\r\n  \
-    \  int n;\r\n    std::cin >> n;\r\n    Matrix::set_size(n);\r\n    Matrix a;\r\
-    \n    for (int i = 0; i < n; ++i) {\r\n        for (int j = 0; j < n; ++j) {\r\
-    \n            int val;\r\n            std::cin >> val;\r\n            a[i][j]\
+    \ static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\n\
+    \    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
+    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
+    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
+    \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
+    \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
+    \n\r\n}\r\n\r\n}  // namespace ebi\n#line 7 \"test/Determinant_of_Matrix.test.cpp\"\
+    \n\r\nusing Matrix = ebi::SquareMatrix<ebi::modint998244353>;\r\n\r\nint main()\
+    \ {\r\n    int n;\r\n    std::cin >> n;\r\n    Matrix::set_size(n);\r\n    Matrix\
+    \ a;\r\n    for (int i = 0; i < n; ++i) {\r\n        for (int j = 0; j < n; ++j)\
+    \ {\r\n            int val;\r\n            std::cin >> val;\r\n            a[i][j]\
     \ = val;\r\n        }\r\n    }\r\n    std::cout << a.det().val() << std::endl;\r\
     \n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\r\n\r\n#include\
@@ -124,7 +132,7 @@ data:
   isVerificationFile: true
   path: test/Determinant_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2023-05-16 13:16:14+09:00'
+  timestamp: '2023-05-17 13:07:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Determinant_of_Matrix.test.cpp

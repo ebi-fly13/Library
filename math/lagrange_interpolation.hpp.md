@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -15,11 +15,16 @@ data:
     - https://atcoder.jp/contests/abc208/tasks/abc208_f
   bundledCode: "#line 2 \"math/lagrange_interpolation.hpp\"\n\n#include <vector>\n\
     \n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#include <iostream>\r\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct modint {\r\n  public:\r\n\
-    \    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n        return\
-    \ x;\r\n    }\r\n\r\n    modint() : _v(0) {}\r\n\r\n    modint(long long v) {\r\
-    \n        v %= (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\
+    \n#include <type_traits>\r\n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\
+    \r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base {};\r\n\r\
+    \ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\r\ntemplate\
+    \ <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\n\r\n\
+    }\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
+    \ {\r\nprivate:\r\n    using modint = static_modint;\r\n  public:\r\n    static\
+    \ constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static modint\
+    \ raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\
+    \n    }\r\n\r\n    static_modint() : _v(0) {}\r\n\r\n    static_modint(long long\
+    \ v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\
     \n        _v = (unsigned int)v;\r\n    }\r\n\r\n    unsigned int val() const {\r\
     \n        return _v;\r\n    }\r\n\r\n    unsigned int value() const {\r\n    \
     \    return val();\r\n    }\r\n\r\n    modint &operator++() {\r\n        _v++;\r\
@@ -51,24 +56,28 @@ data:
     \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
     \ _v;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return m;\r\
     \n    }\r\n};\r\n\r\ntemplate <int m> std::istream &operator>>(std::istream &os,\
-    \ modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\n    return\
-    \ os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream &os, const\
-    \ modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353\
-    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
-    }  // namespace ebi\n#line 6 \"math/lagrange_interpolation.hpp\"\n\n/*\n    reference:\
-    \ https://atcoder.jp/contests/abc208/editorial/2195\n    verify: https://atcoder.jp/contests/abc208/tasks/abc208_f\n\
-    */\n\nnamespace ebi {\n\nusing mint = modint1000000007;\nusing i64 = long long;\n\
-    \nmint lagrange_interpolation(const std::vector<mint> &f, i64 n) {\n    const\
-    \ int d = int(f.size()) - 1;  // N\u306Ed\u6B21\u4EE5\u4E0B\u306E\u591A\u9805\u5F0F\
-    \n    mint fact = 1;\n    std::vector<mint> inv_fact(d + 1);\n    for (int i =\
-    \ 1; i < d + 1; ++i) {\n        fact *= i;\n    }\n    inv_fact[d] = fact.inv();\n\
-    \    for (int i = d; i > 0; i--) {\n        inv_fact[i - 1] = inv_fact[i] * i;\n\
-    \    }\n    std::vector<mint> l(d + 1), r(d + 1);\n    l[0] = 1;\n    for (int\
-    \ i = 0; i < d; ++i) {\n        l[i + 1] = l[i] * (n - i);\n    }\n    r[d] =\
-    \ 1;\n    for (int i = d; i > 0; --i) {\n        r[i - 1] = r[i] * (n - i);\n\
-    \    }\n    mint res = 0;\n    for (int i = 0; i < d + 1; ++i) {\n        res\
-    \ += mint((d - i) % 2 == 1 ? -1 : 1) * f[i] * l[i] * r[i] *\n               inv_fact[i]\
-    \ * inv_fact[d - i];\n    }\n    return res;\n}\n\n}  // namespace ebi\n"
+    \ static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\n\
+    \    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
+    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
+    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
+    \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
+    \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
+    \n\r\n}\r\n\r\n}  // namespace ebi\n#line 6 \"math/lagrange_interpolation.hpp\"\
+    \n\n/*\n    reference: https://atcoder.jp/contests/abc208/editorial/2195\n   \
+    \ verify: https://atcoder.jp/contests/abc208/tasks/abc208_f\n*/\n\nnamespace ebi\
+    \ {\n\nusing mint = modint1000000007;\nusing i64 = long long;\n\nmint lagrange_interpolation(const\
+    \ std::vector<mint> &f, i64 n) {\n    const int d = int(f.size()) - 1;  // N\u306E\
+    d\u6B21\u4EE5\u4E0B\u306E\u591A\u9805\u5F0F\n    mint fact = 1;\n    std::vector<mint>\
+    \ inv_fact(d + 1);\n    for (int i = 1; i < d + 1; ++i) {\n        fact *= i;\n\
+    \    }\n    inv_fact[d] = fact.inv();\n    for (int i = d; i > 0; i--) {\n   \
+    \     inv_fact[i - 1] = inv_fact[i] * i;\n    }\n    std::vector<mint> l(d + 1),\
+    \ r(d + 1);\n    l[0] = 1;\n    for (int i = 0; i < d; ++i) {\n        l[i + 1]\
+    \ = l[i] * (n - i);\n    }\n    r[d] = 1;\n    for (int i = d; i > 0; --i) {\n\
+    \        r[i - 1] = r[i] * (n - i);\n    }\n    mint res = 0;\n    for (int i\
+    \ = 0; i < d + 1; ++i) {\n        res += mint((d - i) % 2 == 1 ? -1 : 1) * f[i]\
+    \ * l[i] * r[i] *\n               inv_fact[i] * inv_fact[d - i];\n    }\n    return\
+    \ res;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <vector>\n\n#include \"../utility/modint.hpp\"\n\
     \n/*\n    reference: https://atcoder.jp/contests/abc208/editorial/2195\n    verify:\
     \ https://atcoder.jp/contests/abc208/tasks/abc208_f\n*/\n\nnamespace ebi {\n\n\
@@ -89,7 +98,7 @@ data:
   isVerificationFile: false
   path: math/lagrange_interpolation.hpp
   requiredBy: []
-  timestamp: '2023-05-16 13:16:14+09:00'
+  timestamp: '2023-05-17 13:07:23+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/lagrange_interpolation.hpp

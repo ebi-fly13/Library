@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/LazySegtree.hpp
     title: data_structure/LazySegtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -60,13 +60,18 @@ data:
     \ 2;\r\n                l = mid;\r\n            }\r\n        }\r\n        eval(k,\
     \ l, r);\r\n        return data[k];\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
     #line 4 \"test/LazySegtree.test.cpp\"\n\r\n#include <iostream>\r\n#line 7 \"test/LazySegtree.test.cpp\"\
-    \n\r\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n\r\n\
-    namespace ebi {\r\n\r\ntemplate <int m> struct modint {\r\n  public:\r\n    static\
-    \ constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static modint\
-    \ raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\
-    \n    }\r\n\r\n    modint() : _v(0) {}\r\n\r\n    modint(long long v) {\r\n  \
-    \      v %= (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\
-    \n        _v = (unsigned int)v;\r\n    }\r\n\r\n    unsigned int val() const {\r\
+    \n\r\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include\
+    \ <type_traits>\r\n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct\
+    \ modint_base {};\r\nstruct static_modint_base : modint_base {};\r\n\r\ntemplate\
+    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\r\ntemplate <class\
+    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\n\r\n}\r\n\r\
+    \ntemplate <int m> struct static_modint : internal::static_modint_base {\r\nprivate:\r\
+    \n    using modint = static_modint;\r\n  public:\r\n    static constexpr int mod()\
+    \ {\r\n        return m;\r\n    }\r\n\r\n    static modint raw(int v) {\r\n  \
+    \      modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n  \
+    \  static_modint() : _v(0) {}\r\n\r\n    static_modint(long long v) {\r\n    \
+    \    v %= (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\n\
+    \        _v = (unsigned int)v;\r\n    }\r\n\r\n    unsigned int val() const {\r\
     \n        return _v;\r\n    }\r\n\r\n    unsigned int value() const {\r\n    \
     \    return val();\r\n    }\r\n\r\n    modint &operator++() {\r\n        _v++;\r\
     \n        if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    modint\
@@ -97,26 +102,29 @@ data:
     \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
     \ _v;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return m;\r\
     \n    }\r\n};\r\n\r\ntemplate <int m> std::istream &operator>>(std::istream &os,\
-    \ modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\n    return\
-    \ os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream &os, const\
-    \ modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353\
-    \ = modint<998244353>;\r\nusing modint1000000007 = modint<1000000007>;\r\n\r\n\
-    }  // namespace ebi\n#line 9 \"test/LazySegtree.test.cpp\"\n\r\nusing mint = ebi::modint998244353;\r\
-    \n\r\nstruct S {\r\n    mint a;\r\n    int size;\r\n};\r\n\r\nstruct F {\r\n \
-    \   mint a, b;\r\n    F(mint a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nS op(S l,\
-    \ S r) {\r\n    return S{l.a + r.a, l.size + r.size};\r\n}\r\n\r\nS e() {\r\n\
-    \    return S{0, 0};\r\n}\r\n\r\nS mapping(F l, S r) {\r\n    return S{r.a * l.a\
-    \ + (mint)r.size * l.b, r.size};\r\n}\r\n\r\nF merge(F l, F r) {\r\n    return\
-    \ F{r.a * l.a, r.b * l.a + l.b};\r\n}\r\n\r\nF id() {\r\n    return F{1, 0};\r\
-    \n}\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<S>\
-    \ v(n);\r\n    for (int i = 0; i < n; i++) {\r\n        int a;\r\n        std::cin\
-    \ >> a;\r\n        v[i] = {a, 1};\r\n    }\r\n    ebi::LazySegtree<S, op, e, F,\
-    \ mapping, merge, id> seg(v);\r\n    while (q--) {\r\n        int t;\r\n     \
-    \   std::cin >> t;\r\n        if (t == 0) {\r\n            int l, r, b, c;\r\n\
-    \            std::cin >> l >> r >> b >> c;\r\n            seg.apply(l, r, F(b,\
-    \ c));\r\n        } else {\r\n            int l, r;\r\n            std::cin >>\
-    \ l >> r;\r\n            std::cout << seg.prod(l, r).a.value() << std::endl;\r\
-    \n        }\r\n    }\r\n}\n"
+    \ static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\n\
+    \    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
+    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
+    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
+    \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
+    \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
+    \n\r\n}\r\n\r\n}  // namespace ebi\n#line 9 \"test/LazySegtree.test.cpp\"\n\r\n\
+    using mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n    int\
+    \ size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint b) : a(a),\
+    \ b(b) {}\r\n};\r\n\r\nS op(S l, S r) {\r\n    return S{l.a + r.a, l.size + r.size};\r\
+    \n}\r\n\r\nS e() {\r\n    return S{0, 0};\r\n}\r\n\r\nS mapping(F l, S r) {\r\n\
+    \    return S{r.a * l.a + (mint)r.size * l.b, r.size};\r\n}\r\n\r\nF merge(F l,\
+    \ F r) {\r\n    return F{r.a * l.a, r.b * l.a + l.b};\r\n}\r\n\r\nF id() {\r\n\
+    \    return F{1, 0};\r\n}\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin\
+    \ >> n >> q;\r\n    std::vector<S> v(n);\r\n    for (int i = 0; i < n; i++) {\r\
+    \n        int a;\r\n        std::cin >> a;\r\n        v[i] = {a, 1};\r\n    }\r\
+    \n    ebi::LazySegtree<S, op, e, F, mapping, merge, id> seg(v);\r\n    while (q--)\
+    \ {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\n \
+    \           int l, r, b, c;\r\n            std::cin >> l >> r >> b >> c;\r\n \
+    \           seg.apply(l, r, F(b, c));\r\n        } else {\r\n            int l,\
+    \ r;\r\n            std::cin >> l >> r;\r\n            std::cout << seg.prod(l,\
+    \ r).a.value() << std::endl;\r\n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
     \r\n\r\n#include \"../data_structure/LazySegtree.hpp\"\r\n\r\n#include <iostream>\r\
     \n#include <vector>\r\n\r\n#include \"../utility/modint.hpp\"\r\n\r\nusing mint\
@@ -141,8 +149,8 @@ data:
   isVerificationFile: true
   path: test/LazySegtree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-16 13:16:14+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-17 13:07:23+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/LazySegtree.test.cpp
 layout: document
