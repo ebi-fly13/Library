@@ -10,7 +10,7 @@ namespace ebi {
 
 template <class T, int LIM = 20>
 std::vector<std::array<T, LIM + 1>> ranked_zeta(const std::vector<T> &f) {
-    int n = topbit(f.size());
+    int n = msb(f.size());
     assert(n <= LIM);
     assert((int)f.size() == (1 << n));
     std::vector<std::array<T, LIM + 1>> rf(1 << n);
@@ -29,7 +29,7 @@ std::vector<std::array<T, LIM + 1>> ranked_zeta(const std::vector<T> &f) {
 
 template <class T, int LIM = 20>
 std::vector<T> ranked_mobius(std::vector<std::array<T, LIM + 1>> rf) {
-    int n = topbit(rf.size());
+    int n = msb(rf.size());
     assert((int)rf.size() == (1 << n));
     for (int i = 0; i < n; i++) {
         int w = 1 << i;

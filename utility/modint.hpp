@@ -2,10 +2,23 @@
 
 #include <cassert>
 #include <iostream>
+#include <type_traits>
 
 namespace ebi {
 
-template <int m> struct modint {
+namespace internal {
+
+struct modint_base {};
+struct static_modint_base : modint_base {};
+
+template <class T> using is_modint = std::is_base_of<modint_base, T>;
+template <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;
+
+}
+
+template <int m> struct static_modint : internal::static_modint_base {
+private:
+    using modint = static_modint;
   public:
     static constexpr int mod() {
         return m;
@@ -17,9 +30,9 @@ template <int m> struct modint {
         return x;
     }
 
-    modint() : _v(0) {}
+    static_modint() : _v(0) {}
 
-    modint(long long v) {
+    static_modint(long long v) {
         v %= (long long)umod();
         if (v < 0) v += (long long)umod();
         _v = (unsigned int)v;
@@ -113,18 +126,28 @@ template <int m> struct modint {
     }
 };
 
-template <int m> std::istream &operator>>(std::istream &os, modint<m> &a) {
+template <int m> std::istream &operator>>(std::istream &os, static_modint<m> &a) {
     long long x;
     os >> x;
     a = x;
     return os;
 }
 template <int m>
-std::ostream &operator<<(std::ostream &os, const modint<m> &a) {
+std::ostream &operator<<(std::ostream &os, const static_modint<m> &a) {
     return os << a.val();
 }
 
-using modint998244353 = modint<998244353>;
-using modint1000000007 = modint<1000000007>;
+using modint998244353 = static_modint<998244353>;
+using modint1000000007 = static_modint<1000000007>;
+
+namespace internal {
+
+template <class T>
+using is_static_modint = std::is_base_of<internal::static_modint_base, T>;
+
+template <class T>
+using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;
+
+}
 
 }  // namespace ebi

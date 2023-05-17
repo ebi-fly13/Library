@@ -9,7 +9,7 @@
 namespace ebi {
 
 template <class T, int LIM> std::vector<T> sps_exp(const std::vector<T> &s) {
-    int n = topbit(s.size());
+    int n = msb(s.size());
     assert(n <= LIM);
     assert((int)s.size() == (1 << n));
     std::vector<T> fs(1 << n);
