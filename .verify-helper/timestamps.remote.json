@@ -14,6 +14,7 @@
 "test/ImplicitTreap.test.cpp": "2023-05-17 13:24:36 +0900",
 "test/Inv_of_Formal_Power_Series.test.cpp": "2023-05-17 17:24:13 +0900",
 "test/Jump_on_Tree.test.cpp": "2023-05-08 16:51:58 +0900",
+"test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp": "2023-05-17 18:28:16 +0900",
 "test/LazySegtree.test.cpp": "2023-05-17 13:24:36 +0900",
 "test/LiChaoSegmentTree.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/Log_of_Formal_Power_Series.test.cpp": "2023-05-17 17:24:13 +0900",
