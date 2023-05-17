@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: convolution/ntt.hpp
+    title: convolution/ntt.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/convolution.test.cpp
+    title: test/convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace\
@@ -23,10 +29,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/internal_math.hpp
-  requiredBy: []
+  requiredBy:
+  - convolution/ntt.hpp
   timestamp: '2023-05-17 13:24:36+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/convolution.test.cpp
 documentation_of: math/internal_math.hpp
 layout: document
 redirect_from:
