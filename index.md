@@ -202,7 +202,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/FormalPowerSeries.hpp
       title: math/FormalPowerSeries.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/boastan_mori_algorithm.hpp
       title: math/boastan_mori_algorithm.hpp
     - icon: ':heavy_check_mark:'
@@ -298,6 +298,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Jump_on_Tree.test.cpp
       title: test/Jump_on_Tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+      title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/LazySegtree.test.cpp
       title: test/LazySegtree.test.cpp

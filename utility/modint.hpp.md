@@ -34,6 +34,9 @@ data:
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -177,6 +180,7 @@ data:
   verifiedWith:
   - test/Determinant_of_Matrix.test.cpp
   - test/vertex_set_path_compositie.test.cpp
+  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
   - test/pow.test.cpp

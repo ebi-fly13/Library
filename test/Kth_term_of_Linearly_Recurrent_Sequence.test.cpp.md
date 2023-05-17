@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: convolution/ntt.hpp
+    title: convolution/ntt.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/boastan_mori_algorithm.hpp
+    title: math/boastan_mori_algorithm.hpp
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
@@ -10,38 +16,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: math/FormalPowerSeries.hpp
-    title: math/FormalPowerSeries.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Exp_of_Formal_Power_Series.test.cpp
-    title: test/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Inv_of_Formal_Power_Series.test.cpp
-    title: test/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-    title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Log_of_Formal_Power_Series.test.cpp
-    title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution.test.cpp
-    title: test/convolution.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
-    #include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\n\
-    namespace internal {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if\
-    \ (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049)\
-    \ return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353) return\
-    \ 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence
+    links:
+    - https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence
+  bundledCode: "#line 1 \"test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp\"\n\
+    #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\
+    \n#include <array>\n#include <type_traits>\n#line 6 \"convolution/ntt.hpp\"\n\n\
+    #line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
+    \nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n\
+    \    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if\
+    \ (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n}\ntemplate\
+    \ <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  //\
+    \ namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
     \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
     \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
@@ -51,10 +45,10 @@ data:
     \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
     \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
     }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
-    \n#include <iostream>\r\n#line 6 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\
-    \n\r\nnamespace internal {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base\
-    \ : modint_base {};\r\n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\r\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
+    \n#line 6 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\nnamespace internal\
+    \ {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base {};\r\
+    \n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\r\n\
+    template <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
@@ -142,73 +136,55 @@ data:
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    return a;\n}\n\n}  //\
-    \ namespace ebi\n"
-  code: "#pragma once\n\n#include <array>\n#include <type_traits>\n#include <vector>\n\
-    \n#include \"../math/internal_math.hpp\"\n#include \"../utility/bit_operator.hpp\"\
-    \n#include \"../utility/modint.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\ntemplate <class mint, int g = internal::primitive_root<mint::mod()>,\n\
-    \          internal::is_static_modint_t<mint>* = nullptr>\nstruct ntt_info {\n\
-    \    static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);\n\n    std::array<mint,\
-    \ rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2] = mint(g).pow((mint::mod()\
-    \ - 1) >> rank2);\n        inv_root[rank2] = root[rank2].inv();\n        for (int\
-    \ i = rank2 - 1; i >= 0; i--) {\n            root[i] = root[i + 1] * root[i +\
-    \ 1];\n            inv_root[i] = inv_root[i + 1] * inv_root[i + 1];\n        }\n\
-    \    }\n};\n\ntemplate <class mint, internal::is_static_modint_t<mint>* = nullptr>\n\
-    void butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n\
-    \    int n = int(a.size());\n    int bit_size = bsf(n);\n    assert(n == 1 <<\
-    \ ceil_pow2(n));\n    // bit reverse\n    for (int i = 0; i < n; i++) {\n    \
-    \    int rev = bit_reverse(i, bit_size);\n        if (i < rev) {\n           \
-    \ std::swap(a[i], a[rev]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size;\
-    \ bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n       \
-    \     mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n            for\
-    \ (int j = 0; j < (1 << bit); j++) {\n                int idx = i * (1 << (bit\
-    \ + 1)) + j;\n                int jdx = idx + (1 << bit);\n                mint\
-    \ p1 = a[idx];\n                mint p2 = a[jdx];\n                a[idx] = p1\
-    \ + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n                zeta1\
-    \ *= info.root[bit + 1];\n                zeta2 *= info.root[bit + 1];\n     \
-    \       }\n        }\n    }\n}\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
-    \ = nullptr>\nvoid butterfly_inv(std::vector<mint>& a) {\n    static const ntt_info<mint>\
-    \ info;\n    int n = int(a.size());\n    int bit_size = bsf(n);\n    assert(n\
-    \ == 1 << ceil_pow2(n));\n    // bit reverse\n    for (int i = 0; i < n; i++)\
-    \ {\n        int rev = bit_reverse(i, bit_size);\n        if (i < rev) std::swap(a[i],\
-    \ a[rev]);\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n        for\
-    \ (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1 = 1;\n\
-    \            mint zeta2 = info.inv_root[1];\n            for (int j = 0; j < (1\
-    \ << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n     \
-    \           int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n \
-    \               mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
-    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.inv_root[bit\
-    \ + 1];\n                zeta2 *= info.inv_root[bit + 1];\n            }\n   \
-    \     }\n    }\n    mint inv_n = mint(n).inv();\n    for (int i = 0; i < n; i++)\
-    \ {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace internal\n\n#include\
-    \ <iostream>\n\ntemplate <class mint, internal::is_static_modint_t<mint>* = nullptr>\n\
-    std::vector<mint> convolution(const std::vector<mint>& f,\n                  \
-    \            const std::vector<mint>& g) {\n    int n = 1 << ceil_pow2(f.size()\
-    \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
-    \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
-    \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
-    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    return a;\n}\n\n}  //\
-    \ namespace ebi"
+    \ namespace ebi\n#line 2 \"math/boastan_mori_algorithm.hpp\"\n\n#include <cstdint>\n\
+    #line 5 \"math/boastan_mori_algorithm.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ T, std::vector<T> (*convolution)(const std::vector<T> &,\n                 \
+    \                                const std::vector<T> &)>\nT bostan_mori_algorithm(std::int64_t\
+    \ n, std::vector<T> p, std::vector<T> q) {\n    while (n > 0) {\n        auto\
+    \ q_neg = q;\n        for (int i = 1; i < (int)q_neg.size(); i += 2) q_neg[i]\
+    \ = -q_neg[i];\n        p = convolution(p, q_neg);\n        q = convolution(q,\
+    \ q_neg);\n        for (int i = (n & 1LL); i < (int)p.size(); i += 2) p[i >> 1]\
+    \ = p[i];\n        p.resize(((int)p.size() + 1 - (n & 1LL)) / 2);\n        for\
+    \ (int i = 0; i < (int)q.size(); i += 2) q[i >> 1] = q[i];\n        q.resize(((int)q.size()\
+    \ + 1) / 2);\n        n >>= 1;\n    }\n    return p[0] / q[0];\n}\n\ntemplate\
+    \ <class T, std::vector<T> (*convolution)(const std::vector<T> &,\n          \
+    \                                       const std::vector<T> &)>\nT kitamasa(std::int64_t\
+    \ n, std::vector<T> a, std::vector<T> c) {\n    if (n < (int)a.size()) return\
+    \ a[n];\n    const int d = c.size();\n    for (auto &val : c) val = -val;\n  \
+    \  c.insert(c.begin(), 1);\n    auto p = convolution(a, c);\n    p.resize(d);\n\
+    \    return bostan_mori_algorithm<T, convolution>(n, p, c);\n}\n\n}  // namespace\
+    \ ebi\n#line 10 \"test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp\"\n\n\
+    using mint = ebi::modint998244353;\n\nint main() {\n    int d;\n    long long\
+    \ k;\n    std::cin >> d >> k;\n    std::vector<mint> a(d), c(d);\n    for (int\
+    \ i = 0; i < d; i++) {\n        int val;\n        std::cin >> val;\n        a[i]\
+    \ = val;\n    }\n    for (int i = 0; i < d; i++) {\n        int val;\n       \
+    \ std::cin >> val;\n        c[i] = val;\n    }\n    std::cout << ebi::kitamasa<mint,\
+    \ ebi::convolution>(k, a, c).val() << '\\n';\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"convolution/ntt.hpp\"\
+    \n#include \"math/boastan_mori_algorithm.hpp\"\n#include \"utility/modint.hpp\"\
+    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int d;\n    long long\
+    \ k;\n    std::cin >> d >> k;\n    std::vector<mint> a(d), c(d);\n    for (int\
+    \ i = 0; i < d; i++) {\n        int val;\n        std::cin >> val;\n        a[i]\
+    \ = val;\n    }\n    for (int i = 0; i < d; i++) {\n        int val;\n       \
+    \ std::cin >> val;\n        c[i] = val;\n    }\n    std::cout << ebi::kitamasa<mint,\
+    \ ebi::convolution>(k, a, c).val() << '\\n';\n}"
   dependsOn:
+  - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
-  isVerificationFile: false
-  path: convolution/ntt.hpp
-  requiredBy:
-  - math/FormalPowerSeries.hpp
-  timestamp: '2023-05-17 17:05:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/Inv_of_Formal_Power_Series.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Log_of_Formal_Power_Series.test.cpp
-  - test/convolution.test.cpp
-documentation_of: convolution/ntt.hpp
+  - math/boastan_mori_algorithm.hpp
+  isVerificationFile: true
+  path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  requiredBy: []
+  timestamp: '2023-05-17 18:28:16+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
 layout: document
 redirect_from:
-- /library/convolution/ntt.hpp
-- /library/convolution/ntt.hpp.html
-title: convolution/ntt.hpp
+- /verify/test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+- /verify/test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp.html
+title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
 ---

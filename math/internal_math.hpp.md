@@ -16,6 +16,9 @@ data:
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -47,6 +50,7 @@ data:
   timestamp: '2023-05-17 13:24:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp

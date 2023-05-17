@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/boastan_mori_algorithm.hpp\"\n\n#include <cstdint>\n\
@@ -47,8 +50,9 @@ data:
   path: math/boastan_mori_algorithm.hpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
 documentation_of: math/boastan_mori_algorithm.hpp
 layout: document
 redirect_from:
