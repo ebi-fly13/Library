@@ -4,7 +4,7 @@ namespace ebi {
 
 constexpr int bsf_constexpr(unsigned int n) {
     int x = 0;
-    while(!(n & (1<<x))) x++;
+    while (!(n & (1 << x))) x++;
     return x;
 }
 
