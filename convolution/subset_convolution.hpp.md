@@ -30,9 +30,9 @@ data:
     \n*/\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <vector>\r\n\r\n\
     #line 2 \"set_function/ranked_zeta.hpp\"\n\n#line 6 \"set_function/ranked_zeta.hpp\"\
     \n\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned\
-    \ int n) {\n    int x = 0;\n    while(!(n & (1<<x))) x++;\n    return x;\n}\n\n\
-    int ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n))\
-    \ x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
+    \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
+    }\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned\
+    \ int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
     }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
     int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
     \ ebi\n#line 8 \"set_function/ranked_zeta.hpp\"\n\nnamespace ebi {\n\ntemplate\
@@ -82,7 +82,7 @@ data:
   path: convolution/subset_convolution.hpp
   requiredBy:
   - set_function/sps_exp.hpp
-  timestamp: '2023-05-17 13:07:23+09:00'
+  timestamp: '2023-05-17 13:24:36+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Exp_of_Set_Power_Series.test.cpp

@@ -24,15 +24,15 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr\
-    \ int bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while(!(n & (1<<x)))\
-    \ x++;\n    return x;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while\
+    \ int bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n & (1 <<\
+    \ x))) x++;\n    return x;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while\
     \ ((1U << x) < (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x)\
     \ {\n    return __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x ==\
     \ 0) ? -1 : 31 - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0)\
     \ ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int\
-    \ n) {\n    int x = 0;\n    while(!(n & (1<<x))) x++;\n    return x;\n}\n\nint\
-    \ ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n))\
+    \ n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\n\
+    int ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n))\
     \ x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
     }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
     int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
@@ -44,7 +44,7 @@ data:
   - convolution/subset_convolution.hpp
   - set_function/sps_exp.hpp
   - set_function/ranked_zeta.hpp
-  timestamp: '2023-05-17 13:07:23+09:00'
+  timestamp: '2023-05-17 13:24:36+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Exp_of_Set_Power_Series.test.cpp
