@@ -1,9 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod"
 
-#include "../convolution/convolution.hpp"
-
 #include <iostream>
 
+#include "../convolution/ntt.hpp"
 #include "../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
@@ -18,7 +17,7 @@ int main() {
     for (int i = 0; i < m; ++i) {
         std::cin >> b[i];
     }
-    auto c = ebi::convolution(a, b);
+    auto c = ebi::convolution<mint>(a, b);
     for (int i = 0; i < n + m - 1; ++i) {
         std::cout << c[i] << " ";
     }

@@ -8,6 +8,14 @@ constexpr int bsf_constexpr(unsigned int n) {
     return x;
 }
 
+int bit_reverse(int n, int bit_size) {
+    int rev_n = 0;
+    for (int i = 0; i < bit_size; i++) {
+        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);
+    }
+    return rev_n;
+}
+
 int ceil_pow2(int n) {
     int x = 0;
     while ((1U << x) < (unsigned int)(n)) x++;
