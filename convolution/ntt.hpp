@@ -112,6 +112,7 @@ std::vector<mint> convolution(const std::vector<mint>& f,
         a[i] *= b[i];
     }
     internal::butterfly_inv(a);
+    a.resize(f.size() + g.size() - 1);
     return a;
 }
 
