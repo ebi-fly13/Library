@@ -45,9 +45,6 @@ data:
   - name: convolution
     pages:
     - icon: ':heavy_check_mark:'
-      path: convolution/convolution.hpp
-      title: convolution/convolution.hpp
-    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: convolution/ntt.hpp
     - icon: ':heavy_check_mark:'
@@ -145,7 +142,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: data_structure/section_set.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
       title: segtree
     - icon: ':heavy_check_mark:'
@@ -236,7 +233,7 @@ data:
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: heavy light decomposition
     - icon: ':heavy_check_mark:'
@@ -256,7 +253,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -406,7 +403,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/vertex_add_subtree_sum.test.cpp
       title: test/vertex_add_subtree_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/vertex_set_path_compositie.test.cpp
       title: test/vertex_set_path_compositie.test.cpp
   - name: test/Dice

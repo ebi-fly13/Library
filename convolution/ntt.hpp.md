@@ -7,11 +7,23 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/FormalPowerSeries.hpp
+    title: math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Exp_of_Formal_Power_Series.test.cpp
+    title: test/Exp_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Inv_of_Formal_Power_Series.test.cpp
+    title: test/Inv_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Log_of_Formal_Power_Series.test.cpp
+    title: test/Log_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
@@ -180,10 +192,14 @@ data:
   - utility/modint.hpp
   isVerificationFile: false
   path: convolution/ntt.hpp
-  requiredBy: []
+  requiredBy:
+  - math/FormalPowerSeries.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp
 documentation_of: convolution/ntt.hpp
 layout: document

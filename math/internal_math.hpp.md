@@ -5,7 +5,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/FormalPowerSeries.hpp
+    title: math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Exp_of_Formal_Power_Series.test.cpp
+    title: test/Exp_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Inv_of_Formal_Power_Series.test.cpp
+    title: test/Inv_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Log_of_Formal_Power_Series.test.cpp
+    title: test/Log_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
@@ -31,9 +43,13 @@ data:
   path: math/internal_math.hpp
   requiredBy:
   - convolution/ntt.hpp
+  - math/FormalPowerSeries.hpp
   timestamp: '2023-05-17 13:24:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp
 documentation_of: math/internal_math.hpp
 layout: document

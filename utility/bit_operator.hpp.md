@@ -9,6 +9,9 @@ data:
     path: convolution/subset_convolution.hpp
     title: convolution/subset_convolution.hpp
   - icon: ':heavy_check_mark:'
+    path: math/FormalPowerSeries.hpp
+    title: math/FormalPowerSeries.hpp
+  - icon: ':heavy_check_mark:'
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp
   - icon: ':heavy_check_mark:'
@@ -16,8 +19,17 @@ data:
     title: set_function/sps_exp.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/Exp_of_Formal_Power_Series.test.cpp
+    title: test/Exp_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/Exp_of_Set_Power_Series.test.cpp
     title: test/Exp_of_Set_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Inv_of_Formal_Power_Series.test.cpp
+    title: test/Inv_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Log_of_Formal_Power_Series.test.cpp
+    title: test/Log_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
@@ -53,12 +65,16 @@ data:
   requiredBy:
   - convolution/subset_convolution.hpp
   - convolution/ntt.hpp
+  - math/FormalPowerSeries.hpp
   - set_function/sps_exp.hpp
   - set_function/ranked_zeta.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Set_Power_Series.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
   - test/subset_convolution.test.cpp
   - test/convolution.test.cpp
 documentation_of: utility/bit_operator.hpp

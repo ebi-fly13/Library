@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: convolution/convolution.hpp
-    title: convolution/convolution.hpp
-  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
   - icon: ':heavy_check_mark:'
@@ -60,12 +57,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#include\
@@ -173,11 +170,10 @@ data:
   path: utility/modint.hpp
   requiredBy:
   - convolution/ntt.hpp
-  - convolution/convolution.hpp
   - math/FormalPowerSeries.hpp
   - math/lagrange_interpolation.hpp
   timestamp: '2023-05-17 13:24:36+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Determinant_of_Matrix.test.cpp
   - test/vertex_set_path_compositie.test.cpp
