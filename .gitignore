@@ -3,10 +3,10 @@ main.cpp
 a.cpp
 atcoder
 *.txt
-combination.hpp
 combined.cpp
 submit.cpp
 expander.py
 ac-library
 *.code-workspace
 *.json
+a.py
