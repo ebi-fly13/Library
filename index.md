@@ -205,6 +205,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/boastan_mori_algorithm.hpp
       title: math/boastan_mori_algorithm.hpp
+    - icon: ':warning:'
+      path: math/combination.hpp
+      title: math/combination.hpp
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp

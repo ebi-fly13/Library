@@ -9,6 +9,9 @@ data:
     path: math/FormalPowerSeries.hpp
     title: math/FormalPowerSeries.hpp
   - icon: ':warning:'
+    path: math/combination.hpp
+    title: math/combination.hpp
+  - icon: ':warning:'
     path: math/lagrange_interpolation.hpp
     title: math/lagrange_interpolation.hpp
   _extendedVerifiedWith:
@@ -174,6 +177,7 @@ data:
   requiredBy:
   - convolution/ntt.hpp
   - math/FormalPowerSeries.hpp
+  - math/combination.hpp
   - math/lagrange_interpolation.hpp
   timestamp: '2023-05-17 13:24:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
