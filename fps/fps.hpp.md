@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Pow_of_Formal_Power_Series.test.cpp
+    title: test/Pow_of_Formal_Power_Series.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -95,28 +98,40 @@ data:
     \ noexcept {\n        if (this->empty()) this->resize(1);\n        (*this)[0]\
     \ -= rhs;\n        return *this;\n    }\n\n    FPS &operator*=(const mint &rhs)\
     \ noexcept {\n        for (int i = 0; i < deg(); ++i) {\n            (*this)[i]\
-    \ *= rhs;\n        }\n        return *this;\n    }\n\n    FPS operator-() const\
-    \ {\n        FPS g(this->size());\n        for (int i = 0; i < (int)this->size();\
-    \ i++) g[i] = -(*this)[i];\n        return g;\n    }\n\n    FPS pre(int sz) const\
-    \ {\n        return FPS(this->begin(), this->begin() + std::min(deg(), sz));\n\
-    \    }\n\n    FPS differential() const {\n        int n = deg();\n        FPS\
-    \ g(std::max(0, n - 1));\n        for (int i = 0; i < n - 1; i++) {\n        \
-    \    g[i] = (*this)[i + 1] * (i + 1);\n        }\n        return g;\n    }\n\n\
-    \    FPS integral() const {\n        int n = deg();\n        FPS g(n + 1);\n \
-    \       g[0] = 0;\n        if (n > 0) g[1] = 1;\n        auto mod = mint::mod();\n\
-    \        for (int i = 2; i <= n; i++) g[i] = (-g[mod % i]) * (mod / i);\n    \
-    \    for (int i = 0; i < n; i++) g[i + 1] *= (*this)[i];\n        return g;\n\
-    \    }\n\n    FPS inv(int d = -1) const {\n        int n = 1;\n        if (d <\
-    \ 0) d = deg();\n        FPS g(n);\n        g[0] = (*this)[0].inv();\n       \
-    \ while (n < d) {\n            n <<= 1;\n            g = (g * 2 - g * g * this->pre(n)).pre(n);\n\
-    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS log(int\
-    \ d = -1) const {\n        assert((*this)[0].val() == 1);\n        if (d < 0)\
-    \ d = deg();\n        return ((*this).differential() * (*this).inv(d)).pre(d -\
-    \ 1).integral();\n    }\n\n    FPS exp(int d = -1) const {\n        assert((*this)[0].val()\
-    \ == 0);\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n\
-    \        g[0] = 1;\n        while (n < d) {\n            n <<= 1;\n          \
-    \  g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n        }\n        g.resize(d);\n\
-    \        return g;\n    }\n\n    int deg() const {\n        return (*this).size();\n\
+    \ *= rhs;\n        }\n        return *this;\n    }\n\n    FPS operator>>(int d)\
+    \ const {\n        if (deg() <= d) return {};\n        FPS f = *this;\n      \
+    \  f.erase(f.begin(), f.begin() + d);\n        return f;\n    }\n\n    FPS operator<<(int\
+    \ d) const {\n        FPS f = *this;\n        f.insert(f.begin(), d, 0);\n   \
+    \     return f;\n    }\n\n    FPS operator-() const {\n        FPS g(this->size());\n\
+    \        for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n   \
+    \     return g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
+    \ this->begin() + std::min(deg(), sz));\n    }\n\n    FPS differential() const\
+    \ {\n        int n = deg();\n        FPS g(std::max(0, n - 1));\n        for (int\
+    \ i = 0; i < n - 1; i++) {\n            g[i] = (*this)[i + 1] * (i + 1);\n   \
+    \     }\n        return g;\n    }\n\n    FPS integral() const {\n        int n\
+    \ = deg();\n        FPS g(n + 1);\n        g[0] = 0;\n        if (n > 0) g[1]\
+    \ = 1;\n        auto mod = mint::mod();\n        for (int i = 2; i <= n; i++)\
+    \ g[i] = (-g[mod % i]) * (mod / i);\n        for (int i = 0; i < n; i++) g[i +\
+    \ 1] *= (*this)[i];\n        return g;\n    }\n\n    FPS inv(int d = -1) const\
+    \ {\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n  \
+    \      g[0] = (*this)[0].inv();\n        while (n < d) {\n            n <<= 1;\n\
+    \            g = (g * 2 - g * g * this->pre(n)).pre(n);\n        }\n        g.resize(d);\n\
+    \        return g;\n    }\n\n    FPS log(int d = -1) const {\n        assert((*this)[0].val()\
+    \ == 1);\n        if (d < 0) d = deg();\n        return ((*this).differential()\
+    \ * (*this).inv(d)).pre(d - 1).integral();\n    }\n\n    FPS exp(int d = -1) const\
+    \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
+    \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
+    \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(int64_t\
+    \ k, int d = -1) const {\n        const int n = deg();\n        if (d < 0) d =\
+    \ n;\n        if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0]\
+    \ = 1;\n            return f;\n        }\n        for (int i = 0; i < n; i++)\
+    \ {\n            if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
+    \                FPS f = (((*this * rev) >> i).log(d) * k).exp(d);\n         \
+    \       f *= (*this)[i].pow(k);\n                f = (f << (i * k)).pre(d);\n\
+    \                if (f.deg() < d) f.resize(d);\n                return f;\n  \
+    \          }\n            if (i + 1 >= (d + k - 1) / k) break;\n        }\n  \
+    \      return FPS(d);\n    }\n\n    int deg() const {\n        return (*this).size();\n\
     \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
     \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <vector>\n\
@@ -145,9 +160,13 @@ data:
     \ (this->empty()) this->resize(1);\n        (*this)[0] -= rhs;\n        return\
     \ *this;\n    }\n\n    FPS &operator*=(const mint &rhs) noexcept {\n        for\
     \ (int i = 0; i < deg(); ++i) {\n            (*this)[i] *= rhs;\n        }\n \
-    \       return *this;\n    }\n\n    FPS operator-() const {\n        FPS g(this->size());\n\
-    \        for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n   \
-    \     return g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
+    \       return *this;\n    }\n\n    FPS operator>>(int d) const {\n        if\
+    \ (deg() <= d) return {};\n        FPS f = *this;\n        f.erase(f.begin(),\
+    \ f.begin() + d);\n        return f;\n    }\n\n    FPS operator<<(int d) const\
+    \ {\n        FPS f = *this;\n        f.insert(f.begin(), d, 0);\n        return\
+    \ f;\n    }\n\n    FPS operator-() const {\n        FPS g(this->size());\n   \
+    \     for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n      \
+    \  return g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
     \ this->begin() + std::min(deg(), sz));\n    }\n\n    FPS differential() const\
     \ {\n        int n = deg();\n        FPS g(std::max(0, n - 1));\n        for (int\
     \ i = 0; i < n - 1; i++) {\n            g[i] = (*this)[i + 1] * (i + 1);\n   \
@@ -165,19 +184,28 @@ data:
     \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
     \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
     \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
-    \        }\n        g.resize(d);\n        return g;\n    }\n\n    int deg() const\
-    \ {\n        return (*this).size();\n    }\n\n    void shrink() {\n        while\
-    \ ((!this->empty()) && this->back() == 0) this->pop_back();\n    }\n};\n\n}  //\
-    \ namespace ebi"
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(int64_t\
+    \ k, int d = -1) const {\n        const int n = deg();\n        if (d < 0) d =\
+    \ n;\n        if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0]\
+    \ = 1;\n            return f;\n        }\n        for (int i = 0; i < n; i++)\
+    \ {\n            if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
+    \                FPS f = (((*this * rev) >> i).log(d) * k).exp(d);\n         \
+    \       f *= (*this)[i].pow(k);\n                f = (f << (i * k)).pre(d);\n\
+    \                if (f.deg() < d) f.resize(d);\n                return f;\n  \
+    \          }\n            if (i + 1 >= (d + k - 1) / k) break;\n        }\n  \
+    \      return FPS(d);\n    }\n\n    int deg() const {\n        return (*this).size();\n\
+    \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
+    \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi"
   dependsOn:
   - utility/modint.hpp
   isVerificationFile: false
   path: fps/fps.hpp
   requiredBy: []
-  timestamp: '2023-05-24 22:31:25+09:00'
+  timestamp: '2023-05-25 01:04:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Pow_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
 documentation_of: fps/fps.hpp

@@ -19,6 +19,9 @@ data:
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Pow_of_Formal_Power_Series.test.cpp
+    title: test/Pow_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
   _isVerificationFailed: false
@@ -48,6 +51,7 @@ data:
   verifiedWith:
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Pow_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp
