@@ -2,6 +2,15 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: convolution/ntt.hpp
+    title: convolution/ntt.hpp
+  - icon: ':heavy_check_mark:'
+    path: fps/fps.hpp
+    title: fps/fps.hpp
+  - icon: ':heavy_check_mark:'
+    path: fps/taylor_shift.hpp
+    title: fps/taylor_shift.hpp
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
@@ -11,34 +20,18 @@ data:
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Exp_of_Formal_Power_Series.test.cpp
-    title: test/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Inv_of_Formal_Power_Series.test.cpp
-    title: test/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-    title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Log_of_Formal_Power_Series.test.cpp
-    title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Polynomial_Taylor_Shift.test.cpp
-    title: test/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Pow_of_Formal_Power_Series.test.cpp
-    title: test/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution.test.cpp
-    title: test/convolution.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/polynomial_taylor_shift
+    links:
+    - https://judge.yosupo.jp/problem/polynomial_taylor_shift
+  bundledCode: "#line 1 \"test/Polynomial_Taylor_Shift.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\n\n#include <iostream>\n\
+    \n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
     #include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\n\
     namespace internal {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if\
     \ (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049)\
@@ -54,10 +47,10 @@ data:
     \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
     \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
     }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
-    \n#include <iostream>\r\n#line 6 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\
-    \n\r\nnamespace internal {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base\
-    \ : modint_base {};\r\n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\r\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
+    \n#line 6 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\nnamespace internal\
+    \ {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base {};\r\
+    \n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\r\n\
+    template <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
@@ -145,74 +138,110 @@ data:
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <array>\n#include <type_traits>\n#include <vector>\n\
-    \n#include \"../math/internal_math.hpp\"\n#include \"../utility/bit_operator.hpp\"\
-    \n#include \"../utility/modint.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\ntemplate <class mint, int g = internal::primitive_root<mint::mod()>,\n\
-    \          internal::is_static_modint_t<mint>* = nullptr>\nstruct ntt_info {\n\
-    \    static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);\n\n    std::array<mint,\
-    \ rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2] = mint(g).pow((mint::mod()\
-    \ - 1) >> rank2);\n        inv_root[rank2] = root[rank2].inv();\n        for (int\
-    \ i = rank2 - 1; i >= 0; i--) {\n            root[i] = root[i + 1] * root[i +\
-    \ 1];\n            inv_root[i] = inv_root[i + 1] * inv_root[i + 1];\n        }\n\
-    \    }\n};\n\ntemplate <class mint, internal::is_static_modint_t<mint>* = nullptr>\n\
-    void butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n\
-    \    int n = int(a.size());\n    int bit_size = bsf(n);\n    assert(n == 1 <<\
-    \ ceil_pow2(n));\n    // bit reverse\n    for (int i = 0; i < n; i++) {\n    \
-    \    int rev = bit_reverse(i, bit_size);\n        if (i < rev) {\n           \
-    \ std::swap(a[i], a[rev]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size;\
-    \ bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n       \
-    \     mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n            for\
-    \ (int j = 0; j < (1 << bit); j++) {\n                int idx = i * (1 << (bit\
-    \ + 1)) + j;\n                int jdx = idx + (1 << bit);\n                mint\
-    \ p1 = a[idx];\n                mint p2 = a[jdx];\n                a[idx] = p1\
-    \ + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n                zeta1\
-    \ *= info.root[bit + 1];\n                zeta2 *= info.root[bit + 1];\n     \
-    \       }\n        }\n    }\n}\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
-    \ = nullptr>\nvoid butterfly_inv(std::vector<mint>& a) {\n    static const ntt_info<mint>\
-    \ info;\n    int n = int(a.size());\n    int bit_size = bsf(n);\n    assert(n\
-    \ == 1 << ceil_pow2(n));\n    // bit reverse\n    for (int i = 0; i < n; i++)\
-    \ {\n        int rev = bit_reverse(i, bit_size);\n        if (i < rev) std::swap(a[i],\
-    \ a[rev]);\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n        for\
-    \ (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1 = 1;\n\
-    \            mint zeta2 = info.inv_root[1];\n            for (int j = 0; j < (1\
-    \ << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n     \
-    \           int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n \
-    \               mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
-    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.inv_root[bit\
-    \ + 1];\n                zeta2 *= info.inv_root[bit + 1];\n            }\n   \
-    \     }\n    }\n    mint inv_n = mint(n).inv();\n    for (int i = 0; i < n; i++)\
-    \ {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace internal\n\n#include\
-    \ <iostream>\n\ntemplate <class mint, internal::is_static_modint_t<mint>* = nullptr>\n\
-    std::vector<mint> convolution(const std::vector<mint>& f,\n                  \
-    \            const std::vector<mint>& g) {\n    int n = 1 << ceil_pow2(f.size()\
-    \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
-    \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
-    \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
-    \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi"
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"fps/fps.hpp\"\n\n\
+    #include <algorithm>\n#line 6 \"fps/fps.hpp\"\n\n#line 8 \"fps/fps.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
+    \                 const std::vector<mint> &, const std::vector<mint> &)>\nstruct\
+    \ FPS : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
+    \    using std::vector<mint>::vector::operator=;\n\n  public:\n    FPS operator+(const\
+    \ FPS &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS\
+    \ operator-(const FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n\
+    \    }\n    FPS operator*(const FPS &rhs) const noexcept {\n        return FPS(*this)\
+    \ *= rhs;\n    }\n\n    FPS operator+(const mint &rhs) const noexcept {\n    \
+    \    return FPS(*this) += rhs;\n    }\n\n    FPS operator-(const mint &rhs) const\
+    \ noexcept {\n        return FPS(*this) -= rhs;\n    }\n\n    FPS operator*(const\
+    \ mint &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n    }\n\n  \
+    \  FPS &operator+=(const FPS &rhs) noexcept {\n        if (this->size() < rhs.size())\
+    \ this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size(); ++i)\
+    \ {\n            (*this)[i] += rhs[i];\n        }\n        return *this;\n   \
+    \ }\n\n    FPS &operator-=(const FPS &rhs) noexcept {\n        if (this->size()\
+    \ < rhs.size()) this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
+    \ ++i) {\n            (*this)[i] -= rhs[i];\n        }\n        return *this;\n\
+    \    }\n\n    FPS &operator*=(const FPS &rhs) noexcept {\n        *this = convolution(*this,\
+    \ rhs);\n        return *this;\n    }\n\n    FPS &operator+=(const mint &rhs)\
+    \ noexcept {\n        if (this->empty()) this->resize(1);\n        (*this)[0]\
+    \ += rhs;\n        return *this;\n    }\n\n    FPS &operator-=(const mint &rhs)\
+    \ noexcept {\n        if (this->empty()) this->resize(1);\n        (*this)[0]\
+    \ -= rhs;\n        return *this;\n    }\n\n    FPS &operator*=(const mint &rhs)\
+    \ noexcept {\n        for (int i = 0; i < deg(); ++i) {\n            (*this)[i]\
+    \ *= rhs;\n        }\n        return *this;\n    }\n\n    FPS operator>>(int d)\
+    \ const {\n        if (deg() <= d) return {};\n        FPS f = *this;\n      \
+    \  f.erase(f.begin(), f.begin() + d);\n        return f;\n    }\n\n    FPS operator<<(int\
+    \ d) const {\n        FPS f = *this;\n        f.insert(f.begin(), d, 0);\n   \
+    \     return f;\n    }\n\n    FPS operator-() const {\n        FPS g(this->size());\n\
+    \        for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n   \
+    \     return g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
+    \ this->begin() + std::min(deg(), sz));\n    }\n\n    FPS differential() const\
+    \ {\n        int n = deg();\n        FPS g(std::max(0, n - 1));\n        for (int\
+    \ i = 0; i < n - 1; i++) {\n            g[i] = (*this)[i + 1] * (i + 1);\n   \
+    \     }\n        return g;\n    }\n\n    FPS integral() const {\n        int n\
+    \ = deg();\n        FPS g(n + 1);\n        g[0] = 0;\n        if (n > 0) g[1]\
+    \ = 1;\n        auto mod = mint::mod();\n        for (int i = 2; i <= n; i++)\
+    \ g[i] = (-g[mod % i]) * (mod / i);\n        for (int i = 0; i < n; i++) g[i +\
+    \ 1] *= (*this)[i];\n        return g;\n    }\n\n    FPS inv(int d = -1) const\
+    \ {\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n  \
+    \      g[0] = (*this)[0].inv();\n        while (n < d) {\n            n <<= 1;\n\
+    \            g = (g * 2 - g * g * this->pre(n)).pre(n);\n        }\n        g.resize(d);\n\
+    \        return g;\n    }\n\n    FPS log(int d = -1) const {\n        assert((*this)[0].val()\
+    \ == 1);\n        if (d < 0) d = deg();\n        return ((*this).differential()\
+    \ * (*this).inv(d)).pre(d - 1).integral();\n    }\n\n    FPS exp(int d = -1) const\
+    \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
+    \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
+    \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(int64_t\
+    \ k, int d = -1) const {\n        const int n = deg();\n        if (d < 0) d =\
+    \ n;\n        if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0]\
+    \ = 1;\n            return f;\n        }\n        for (int i = 0; i < n; i++)\
+    \ {\n            if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
+    \                FPS f = (((*this * rev) >> i).log(d) * k).exp(d);\n         \
+    \       f *= (*this)[i].pow(k);\n                f = (f << (i * k)).pre(d);\n\
+    \                if (f.deg() < d) f.resize(d);\n                return f;\n  \
+    \          }\n            if (i + 1 >= (d + k - 1) / k) break;\n        }\n  \
+    \      return FPS(d);\n    }\n\n    int deg() const {\n        return (*this).size();\n\
+    \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
+    \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\
+    \n\n#line 4 \"fps/taylor_shift.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint,\
+    \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
+    \ &, const std::vector<mint> &)>\nFPS<mint, convolution> taylor_shift(FPS<mint,\
+    \ convolution> f, mint a) {\n    int d = f.deg();\n    std::vector<mint> fact(d\
+    \ + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1; i <= d; i++) fact[i] = fact[i\
+    \ - 1] * i;\n    inv_fact[d] = fact[d].inv();\n    for (int i = d; i > 0; i--)\
+    \ inv_fact[i - 1] = inv_fact[i] * i;\n    for (int i = 0; i < d; i++) f[i] *=\
+    \ fact[i];\n    std::reverse(f.begin(), f.end());\n    FPS<mint, convolution>\
+    \ g(d, 1);\n    mint pow_a = a;\n    for (int i = 1; i < d; i++) {\n        g[i]\
+    \ = pow_a * inv_fact[i];\n        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n\
+    \    std::reverse(f.begin(), f.end());\n    for (int i = 0; i < d; i++) f[i] *=\
+    \ inv_fact[i];\n    return f;\n}\n\n}  // namespace ebi\n#line 9 \"test/Polynomial_Taylor_Shift.test.cpp\"\
+    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n, c;\n    std::cin\
+    \ >> n >> c;\n    ebi::FPS<mint, ebi::convolution<mint>> a(n);\n    for (int i\
+    \ = 0; i < n; i++) {\n        std::cin >> a[i];\n    }\n    auto b = ebi::taylor_shift<mint,\
+    \ ebi::convolution>(a, c);\n    for (int i = 0; i < n; i++) {\n        std::cout\
+    \ << b[i] << \" \\n\"[i == n - 1];\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\
+    \n\n#include <iostream>\n\n#include \"../convolution/ntt.hpp\"\n#include \"../fps/fps.hpp\"\
+    \n#include \"../fps/taylor_shift.hpp\"\n#include \"../utility/modint.hpp\"\n\n\
+    using mint = ebi::modint998244353;\n\nint main() {\n    int n, c;\n    std::cin\
+    \ >> n >> c;\n    ebi::FPS<mint, ebi::convolution<mint>> a(n);\n    for (int i\
+    \ = 0; i < n; i++) {\n        std::cin >> a[i];\n    }\n    auto b = ebi::taylor_shift<mint,\
+    \ ebi::convolution>(a, c);\n    for (int i = 0; i < n; i++) {\n        std::cout\
+    \ << b[i] << \" \\n\"[i == n - 1];\n    }\n}"
   dependsOn:
+  - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
-  isVerificationFile: false
-  path: convolution/ntt.hpp
+  - fps/fps.hpp
+  - fps/taylor_shift.hpp
+  isVerificationFile: true
+  path: test/Polynomial_Taylor_Shift.test.cpp
   requiredBy: []
-  timestamp: '2023-05-17 22:42:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/Inv_of_Formal_Power_Series.test.cpp
-  - test/Pow_of_Formal_Power_Series.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Polynomial_Taylor_Shift.test.cpp
-  - test/Log_of_Formal_Power_Series.test.cpp
-  - test/convolution.test.cpp
-documentation_of: convolution/ntt.hpp
+  timestamp: '2023-05-25 01:39:14+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/Polynomial_Taylor_Shift.test.cpp
 layout: document
 redirect_from:
-- /library/convolution/ntt.hpp
-- /library/convolution/ntt.hpp.html
-title: convolution/ntt.hpp
+- /verify/test/Polynomial_Taylor_Shift.test.cpp
+- /verify/test/Polynomial_Taylor_Shift.test.cpp.html
+title: test/Polynomial_Taylor_Shift.test.cpp
 ---

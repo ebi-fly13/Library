@@ -31,6 +31,9 @@ data:
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Polynomial_Taylor_Shift.test.cpp
+    title: test/Polynomial_Taylor_Shift.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/Pow_of_Formal_Power_Series.test.cpp
     title: test/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,6 +81,7 @@ data:
   - test/Pow_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Set_Power_Series.test.cpp
+  - test/Polynomial_Taylor_Shift.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/subset_convolution.test.cpp
   - test/convolution.test.cpp

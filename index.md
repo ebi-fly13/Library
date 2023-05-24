@@ -165,6 +165,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: fps/fps.hpp
+    - icon: ':heavy_check_mark:'
+      path: fps/taylor_shift.hpp
+      title: fps/taylor_shift.hpp
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'
@@ -318,6 +321,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/PersistentSegmentTree.test.cpp
       title: test/PersistentSegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Polynomial_Taylor_Shift.test.cpp
+      title: test/Polynomial_Taylor_Shift.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/Pow_of_Formal_Power_Series.test.cpp
       title: test/Pow_of_Formal_Power_Series.test.cpp

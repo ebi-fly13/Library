@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: fps/fps.hpp
+  - icon: ':heavy_check_mark:'
+    path: fps/taylor_shift.hpp
+    title: fps/taylor_shift.hpp
   - icon: ':warning:'
     path: math/combination.hpp
     title: math/combination.hpp
@@ -45,6 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Polynomial_Taylor_Shift.test.cpp
+    title: test/Polynomial_Taylor_Shift.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Pow_of_Formal_Power_Series.test.cpp
     title: test/Pow_of_Formal_Power_Series.test.cpp
@@ -179,6 +185,7 @@ data:
   path: utility/modint.hpp
   requiredBy:
   - convolution/ntt.hpp
+  - fps/taylor_shift.hpp
   - fps/fps.hpp
   - math/combination.hpp
   - math/lagrange_interpolation.hpp
@@ -195,6 +202,7 @@ data:
   - test/Exp_of_Set_Power_Series.test.cpp
   - test/aoj/aoj_2863.test.cpp
   - test/Tree_Path_Composite_Sum.test.cpp
+  - test/Polynomial_Taylor_Shift.test.cpp
   - test/ImplicitTreap.test.cpp
   - test/LazySegtree.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
