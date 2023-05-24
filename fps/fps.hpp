@@ -78,6 +78,19 @@ struct FPS : std::vector<mint> {
         return *this;
     }
 
+    FPS operator>>(int d) const {
+        if (deg() <= d) return {};
+        FPS f = *this;
+        f.erase(f.begin(), f.begin() + d);
+        return f;
+    }
+
+    FPS operator<<(int d) const {
+        FPS f = *this;
+        f.insert(f.begin(), d, 0);
+        return f;
+    }
+
     FPS operator-() const {
         FPS g(this->size());
         for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];
@@ -139,6 +152,28 @@ struct FPS : std::vector<mint> {
         }
         g.resize(d);
         return g;
+    }
+
+    FPS pow(int64_t k, int d = -1) const {
+        const int n = deg();
+        if (d < 0) d = n;
+        if (k == 0) {
+            FPS f(d);
+            if (d > 0) f[0] = 1;
+            return f;
+        }
+        for (int i = 0; i < n; i++) {
+            if ((*this)[i] != 0) {
+                mint rev = (*this)[i].inv();
+                FPS f = (((*this * rev) >> i).log(d) * k).exp(d);
+                f *= (*this)[i].pow(k);
+                f = (f << (i * k)).pre(d);
+                if (f.deg() < d) f.resize(d);
+                return f;
+            }
+            if (i + 1 >= (d + k - 1) / k) break;
+        }
+        return FPS(d);
     }
 
     int deg() const {
