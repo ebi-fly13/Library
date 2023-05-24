@@ -1,10 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/tree_path_composite_sum"
 
+#include <iostream>
+#include <vector>
+
 #include "../tree/rerooting.hpp"
 #include "../utility/modint.hpp"
-
-#include <vector>
-#include <iostream>
 
 using mint = ebi::modint998244353;
 

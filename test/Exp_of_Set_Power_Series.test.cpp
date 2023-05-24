@@ -11,14 +11,14 @@ using mint = ebi::modint998244353;
 int main() {
     int n;
     std::cin >> n;
-    std::vector<mint> b(1<<n);
-    for(int i = 0; i < (1<<n); i++) {
+    std::vector<mint> b(1 << n);
+    for (int i = 0; i < (1 << n); i++) {
         int x;
         std::cin >> x;
         b[i] = x;
     }
     auto c = ebi::sps_exp<mint, 20>(b);
-    for(int i = 0; i < (1<<n); i++) {
-        std::cout << c[i].val() << " \n"[i == (1<<n)-1];
+    for (int i = 0; i < (1 << n); i++) {
+        std::cout << c[i].val() << " \n"[i == (1 << n) - 1];
     }
 }

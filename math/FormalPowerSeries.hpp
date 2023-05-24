@@ -1,20 +1,15 @@
 #pragma once
 
-#include "../convolution/ntt.hpp"
-#include "../utility/modint.hpp"
-
 #include <algorithm>
 #include <cassert>
 #include <vector>
 
-/*
-    reference: https://opt-cp.com/fps-fast-algorithms/
-*/
+#include "../utility/modint.hpp"
 
 namespace ebi {
 
-using mint = modint998244353;
-
+template <class mint, std::vector<mint> (*convolution)(
+                          const std::vector<mint> &, const std::vector<mint> &)>
 struct FormalPowerSeries : std::vector<mint> {
   private:
     using std::vector<mint>::vector;
@@ -31,109 +26,128 @@ struct FormalPowerSeries : std::vector<mint> {
     FPS operator*(const FPS &rhs) const noexcept {
         return FPS(*this) *= rhs;
     }
-    FPS operator/(const FPS &rhs) const noexcept {
-        return FPS(*this) /= rhs;
+
+    FPS operator+(const mint &rhs) const noexcept {
+        return FPS(*this) += rhs;
+    }
+
+    FPS operator-(const mint &rhs) const noexcept {
+        return FPS(*this) -= rhs;
+    }
+
+    FPS operator*(const mint &rhs) const noexcept {
+        return FPS(*this) *= rhs;
     }
 
     FPS &operator+=(const FPS &rhs) noexcept {
-        int sz = std::min(deg(), rhs.deg());
-        for (int i = 0; i < sz; ++i) {
+        if (this->size() < rhs.size()) this->resize(rhs.size());
+        for (int i = 0; i < (int)rhs.size(); ++i) {
             (*this)[i] += rhs[i];
         }
         return *this;
     }
 
     FPS &operator-=(const FPS &rhs) noexcept {
-        int sz = std::min(deg(), rhs.deg());
-        for (int i = 0; i < sz; ++i) {
+        if (this->size() < rhs.size()) this->resize(rhs.size());
+        for (int i = 0; i < (int)rhs.size(); ++i) {
             (*this)[i] -= rhs[i];
         }
         return *this;
     }
 
     FPS &operator*=(const FPS &rhs) noexcept {
-        int n = deg();
         *this = convolution(*this, rhs);
-        (*this).resize(n);
         return *this;
     }
 
-    FPS &operator/=(const FPS &rhs) noexcept {
-        *this *= rhs.inv();
+    FPS &operator+=(const mint &rhs) noexcept {
+        if (this->empty()) this->resize(1);
+        (*this)[0] += rhs;
         return *this;
     }
 
-    FPS &operator*=(const mint rhs) noexcept {
+    FPS &operator-=(const mint &rhs) noexcept {
+        if (this->empty()) this->resize(1);
+        (*this)[0] -= rhs;
+        return *this;
+    }
+
+    FPS &operator*=(const mint &rhs) noexcept {
         for (int i = 0; i < deg(); ++i) {
             (*this)[i] *= rhs;
         }
         return *this;
     }
 
-    FPS inv() const {
-        int n = 1, sz = deg();
-        FPS g(n);
-        g[0] = (*this)[0].inv();
-        while (n < sz) {
-            n <<= 1;
-            FPS f((*this).begin(), (*this).begin() + std::min(sz, n));
-            f.resize(n);
-            g.resize(n);
-            FPS h = f * g;
-            h.erase(h.begin(), h.begin() + n / 2);
-            h.resize(n);
-            h = h * g;
-            for (int i = 0; i < n / 2; i++) {
-                g[i + n / 2] -= h[i];
-            }
-        }
-        g.resize(sz);
+    FPS operator-() const {
+        FPS g(this->size());
+        for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];
         return g;
     }
 
-    FPS exp() {
-        assert((*this)[0].val() == 0);
-        int n = 1, sz = deg();
-        FPS g(n);
-        g[0] = 1;
-        while (n < sz) {
-            n <<= 1;
-            FPS f((*this).begin(), (*this).begin() + std::min(sz, n));
-            f.resize(n);
-            g.resize(n);
-            g = g * (f - g.log()) + g;
-        }
-        return g;
+    FPS pre(int sz) const {
+        return FPS(this->begin(), this->begin() + std::min(deg(), sz));
     }
 
-    FPS differential() {
+    FPS differential() const {
         int n = deg();
-        FPS g(n);
+        FPS g(std::max(0, n - 1));
         for (int i = 0; i < n - 1; i++) {
             g[i] = (*this)[i + 1] * (i + 1);
         }
-        g[n - 1] = 0;
         return g;
     }
 
-    FPS integral() {
+    FPS integral() const {
         int n = deg();
         FPS g(n + 1);
         g[0] = 0;
-        for (int i = 0; i < n; i++) {
-            g[i + 1] = (*this)[i] / (mint(i + 1));
-        }
+        if (n > 0) g[1] = 1;
+        auto mod = mint::mod();
+        for (int i = 2; i <= n; i++) g[i] = (-g[mod % i]) * (mod / i);
+        for (int i = 0; i < n; i++) g[i + 1] *= (*this)[i];
         return g;
     }
 
-    FPS log() {
+    FPS inv(int d = -1) const {
+        int n = 1;
+        if (d < 0) d = deg();
+        FPS g(n);
+        g[0] = (*this)[0].inv();
+        while (n < d) {
+            n <<= 1;
+            g = (g * 2 - g * g * this->pre(n)).pre(n);
+        }
+        g.resize(d);
+        return g;
+    }
+
+    FPS log(int d = -1) const {
         assert((*this)[0].val() == 1);
-        FPS g = (*this).differential() / (*this);
-        return g.integral();
+        if (d < 0) d = deg();
+        return ((*this).differential() * (*this).inv(d)).pre(d - 1).integral();
+    }
+
+    FPS exp(int d = -1) const {
+        assert((*this)[0].val() == 0);
+        int n = 1;
+        if (d < 0) d = deg();
+        FPS g(n);
+        g[0] = 1;
+        while (n < d) {
+            n <<= 1;
+            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);
+        }
+        g.resize(d);
+        return g;
     }
 
     int deg() const {
         return (*this).size();
+    }
+
+    void shrink() {
+        while ((!this->empty()) && this->back() == 0) this->pop_back();
     }
 };
 
