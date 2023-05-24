@@ -127,18 +127,18 @@ data:
     \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\n}  // namespace ebi\n#line 8 \"test/Exp_of_Set_Power_Series.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
-    \ >> n;\n    std::vector<mint> b(1<<n);\n    for(int i = 0; i < (1<<n); i++) {\n\
-    \        int x;\n        std::cin >> x;\n        b[i] = x;\n    }\n    auto c\
-    \ = ebi::sps_exp<mint, 20>(b);\n    for(int i = 0; i < (1<<n); i++) {\n      \
-    \  std::cout << c[i].val() << \" \\n\"[i == (1<<n)-1];\n    }\n}\n"
+    \ >> n;\n    std::vector<mint> b(1 << n);\n    for (int i = 0; i < (1 << n); i++)\
+    \ {\n        int x;\n        std::cin >> x;\n        b[i] = x;\n    }\n    auto\
+    \ c = ebi::sps_exp<mint, 20>(b);\n    for (int i = 0; i < (1 << n); i++) {\n \
+    \       std::cout << c[i].val() << \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_set_power_series\"\
     \n\n#include <iostream>\n#include <vector>\n\n#include \"../set_function/sps_exp.hpp\"\
     \n#include \"../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\n\
-    int main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> b(1<<n);\n\
-    \    for(int i = 0; i < (1<<n); i++) {\n        int x;\n        std::cin >> x;\n\
-    \        b[i] = x;\n    }\n    auto c = ebi::sps_exp<mint, 20>(b);\n    for(int\
-    \ i = 0; i < (1<<n); i++) {\n        std::cout << c[i].val() << \" \\n\"[i ==\
-    \ (1<<n)-1];\n    }\n}"
+    int main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> b(1 << n);\n\
+    \    for (int i = 0; i < (1 << n); i++) {\n        int x;\n        std::cin >>\
+    \ x;\n        b[i] = x;\n    }\n    auto c = ebi::sps_exp<mint, 20>(b);\n    for\
+    \ (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val() << \" \\n\"\
+    [i == (1 << n) - 1];\n    }\n}"
   dependsOn:
   - set_function/sps_exp.hpp
   - convolution/subset_convolution.hpp
@@ -148,7 +148,7 @@ data:
   isVerificationFile: true
   path: test/Exp_of_Set_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-05-17 17:05:34+09:00'
+  timestamp: '2023-05-24 22:16:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Exp_of_Set_Power_Series.test.cpp

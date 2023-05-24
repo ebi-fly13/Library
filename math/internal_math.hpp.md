@@ -5,9 +5,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
-  - icon: ':heavy_check_mark:'
-    path: math/FormalPowerSeries.hpp
-    title: math/FormalPowerSeries.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Exp_of_Formal_Power_Series.test.cpp
@@ -46,7 +43,6 @@ data:
   path: math/internal_math.hpp
   requiredBy:
   - convolution/ntt.hpp
-  - math/FormalPowerSeries.hpp
   timestamp: '2023-05-17 13:24:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

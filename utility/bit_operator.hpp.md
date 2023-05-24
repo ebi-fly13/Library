@@ -9,9 +9,6 @@ data:
     path: convolution/subset_convolution.hpp
     title: convolution/subset_convolution.hpp
   - icon: ':heavy_check_mark:'
-    path: math/FormalPowerSeries.hpp
-    title: math/FormalPowerSeries.hpp
-  - icon: ':heavy_check_mark:'
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp
   - icon: ':heavy_check_mark:'
@@ -68,7 +65,6 @@ data:
   requiredBy:
   - convolution/subset_convolution.hpp
   - convolution/ntt.hpp
-  - math/FormalPowerSeries.hpp
   - set_function/sps_exp.hpp
   - set_function/ranked_zeta.hpp
   timestamp: '2023-05-17 17:05:34+09:00'

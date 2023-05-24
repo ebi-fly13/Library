@@ -15,7 +15,7 @@ data:
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B
   bundledCode: "#line 1 \"test/pow.test.cpp\"\n#define PROBLEM \\\r\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
-    \r\n\r\n\r\n#include <iostream>\r\n\r\n#line 2 \"utility/modint.hpp\"\n\r\n#include\
+    \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"utility/modint.hpp\"\n\r\n#include\
     \ <cassert>\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n\
     namespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct modint_base {};\r\n\
     struct static_modint_base : modint_base {};\r\n\r\ntemplate <class T> using is_modint\
@@ -65,21 +65,20 @@ data:
     \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
     \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
     \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
-    \n\r\n}  // namespace internal\r\n\r\n}  // namespace ebi\n#line 8 \"test/pow.test.cpp\"\
+    \n\r\n}  // namespace internal\r\n\r\n}  // namespace ebi\n#line 7 \"test/pow.test.cpp\"\
     \n\r\nusing mint = ebi::modint1000000007;\r\n\r\nint main() {\r\n    long long\
     \ m, n;\r\n    std::cin >> m >> n;\r\n    std::cout << mint(m).pow(n) << '\\n';\r\
     \n}\n"
   code: "#define PROBLEM \\\r\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
-    \r\n\r\n\r\n#include <iostream>\r\n\r\n#include \"../utility/modint.hpp\"\r\n\r\
-    \nusing mint = ebi::modint1000000007;\r\n\r\nint main() {\r\n    long long m,\
-    \ n;\r\n    std::cin >> m >> n;\r\n    std::cout << mint(m).pow(n) << '\\n';\r\
-    \n}"
+    \r\n\r\n#include <iostream>\r\n\r\n#include \"../utility/modint.hpp\"\r\n\r\n\
+    using mint = ebi::modint1000000007;\r\n\r\nint main() {\r\n    long long m, n;\r\
+    \n    std::cin >> m >> n;\r\n    std::cout << mint(m).pow(n) << '\\n';\r\n}"
   dependsOn:
   - utility/modint.hpp
   isVerificationFile: true
   path: test/pow.test.cpp
   requiredBy: []
-  timestamp: '2023-05-17 13:24:36+09:00'
+  timestamp: '2023-05-24 22:16:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/pow.test.cpp

@@ -10,10 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: math/FormalPowerSeries.hpp
-    title: math/FormalPowerSeries.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Exp_of_Formal_Power_Series.test.cpp
@@ -195,8 +192,7 @@ data:
   - utility/modint.hpp
   isVerificationFile: false
   path: convolution/ntt.hpp
-  requiredBy:
-  - math/FormalPowerSeries.hpp
+  requiredBy: []
   timestamp: '2023-05-17 22:42:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
