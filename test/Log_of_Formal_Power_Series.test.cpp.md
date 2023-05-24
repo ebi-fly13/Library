@@ -5,8 +5,8 @@ data:
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
   - icon: ':heavy_check_mark:'
-    path: math/FormalPowerSeries.hpp
-    title: math/FormalPowerSeries.hpp
+    path: fps/fps.hpp
+    title: fps/fps.hpp
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
@@ -135,85 +135,80 @@ data:
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"math/FormalPowerSeries.hpp\"\
-    \n\r\n#include <algorithm>\r\n#line 6 \"math/FormalPowerSeries.hpp\"\n\r\n#line\
-    \ 8 \"math/FormalPowerSeries.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <class\
-    \ mint, std::vector<mint> (*convolution)(\r\n                          const std::vector<mint>\
-    \ &, const std::vector<mint> &)>\r\nstruct FormalPowerSeries : std::vector<mint>\
-    \ {\r\n  private:\r\n    using std::vector<mint>::vector;\r\n    using std::vector<mint>::vector::operator=;\r\
-    \n    using FPS = FormalPowerSeries;\r\n\r\n  public:\r\n    FPS operator+(const\
-    \ FPS &rhs) const noexcept {\r\n        return FPS(*this) += rhs;\r\n    }\r\n\
-    \    FPS operator-(const FPS &rhs) const noexcept {\r\n        return FPS(*this)\
-    \ -= rhs;\r\n    }\r\n    FPS operator*(const FPS &rhs) const noexcept {\r\n \
-    \       return FPS(*this) *= rhs;\r\n    }\r\n\r\n    FPS operator+(const mint\
-    \ &rhs) const noexcept {\r\n        return FPS(*this) += rhs;\r\n    }\r\n\r\n\
-    \    FPS operator-(const mint &rhs) const noexcept {\r\n        return FPS(*this)\
-    \ -= rhs;\r\n    }\r\n\r\n    FPS operator*(const mint &rhs) const noexcept {\r\
-    \n        return FPS(*this) *= rhs;\r\n    }\r\n\r\n    FPS &operator+=(const\
-    \ FPS &rhs) noexcept {\r\n        if (this->size() < rhs.size()) this->resize(rhs.size());\r\
-    \n        for (int i = 0; i < (int)rhs.size(); ++i) {\r\n            (*this)[i]\
-    \ += rhs[i];\r\n        }\r\n        return *this;\r\n    }\r\n\r\n    FPS &operator-=(const\
-    \ FPS &rhs) noexcept {\r\n        if (this->size() < rhs.size()) this->resize(rhs.size());\r\
-    \n        for (int i = 0; i < (int)rhs.size(); ++i) {\r\n            (*this)[i]\
-    \ -= rhs[i];\r\n        }\r\n        return *this;\r\n    }\r\n\r\n    FPS &operator*=(const\
-    \ FPS &rhs) noexcept {\r\n        *this = convolution(*this, rhs);\r\n       \
-    \ return *this;\r\n    }\r\n\r\n    FPS &operator+=(const mint &rhs) noexcept\
-    \ {\r\n        if (this->empty()) this->resize(1);\r\n        (*this)[0] += rhs;\r\
-    \n        return *this;\r\n    }\r\n\r\n    FPS &operator-=(const mint &rhs) noexcept\
-    \ {\r\n        if (this->empty()) this->resize(1);\r\n        (*this)[0] -= rhs;\r\
-    \n        return *this;\r\n    }\r\n\r\n    FPS &operator*=(const mint &rhs) noexcept\
-    \ {\r\n        for (int i = 0; i < deg(); ++i) {\r\n            (*this)[i] *=\
-    \ rhs;\r\n        }\r\n        return *this;\r\n    }\r\n\r\n    FPS operator-()\
-    \ const {\r\n        FPS g(this->size());\r\n        for (int i = 0; i < (int)this->size();\
-    \ i++) g[i] = -(*this)[i];\r\n        return g;\r\n    }\r\n\r\n    FPS pre(int\
-    \ sz) const {\r\n        return FPS(this->begin(), this->begin() + std::min(deg(),\
-    \ sz));\r\n    }\r\n\r\n    FPS differential() const {\r\n        int n = deg();\r\
-    \n        FPS g(std::max(0, n - 1));\r\n        for (int i = 0; i < n - 1; i++)\
-    \ {\r\n            g[i] = (*this)[i + 1] * (i + 1);\r\n        }\r\n        return\
-    \ g;\r\n    }\r\n\r\n    FPS integral() const {\r\n        int n = deg();\r\n\
-    \        FPS g(n + 1);\r\n        g[0] = 0;\r\n        if (n > 0) g[1] = 1;\r\n\
-    \        auto mod = mint::mod();\r\n        for (int i = 2; i <= n; i++) g[i]\
-    \ = (-g[mod % i]) * (mod / i);\r\n        for (int i = 0; i < n; i++) g[i + 1]\
-    \ *= (*this)[i];\r\n        return g;\r\n    }\r\n\r\n    FPS inv(int d = -1)\
-    \ const {\r\n        int n = 1;\r\n        if (d < 0) d = deg();\r\n        FPS\
-    \ g(n);\r\n        g[0] = (*this)[0].inv();\r\n        while (n < d) {\r\n   \
-    \         n <<= 1;\r\n            g = (g * 2 - g * g * this->pre(n)).pre(n);\r\
-    \n        }\r\n        g.resize(d);\r\n        return g;\r\n    }\r\n\r\n    FPS\
-    \ log(int d = -1) const {\r\n        assert((*this)[0].val() == 1);\r\n      \
-    \  if (d < 0) d = deg();\r\n        return ((*this).differential() * (*this).inv(d)).pre(d\
-    \ - 1).integral();\r\n    }\r\n\r\n    FPS exp(int d = -1) const {\r\n       \
-    \ assert((*this)[0].val() == 0);\r\n        int n = 1;\r\n        if (d < 0) d\
-    \ = deg();\r\n        FPS g(n);\r\n        g[0] = 1;\r\n        while (n < d)\
-    \ {\r\n            n <<= 1;\r\n            g = (g * (this->pre(n) - g.log(n) +\
-    \ 1)).pre(n);\r\n        }\r\n        g.resize(d);\r\n        return g;\r\n  \
-    \  }\r\n\r\n    int deg() const {\r\n        return (*this).size();\r\n    }\r\
-    \n\r\n    void shrink() {\r\n        while ((!this->empty()) && this->back() ==\
-    \ 0) this->pop_back();\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n#line 8 \"test/Log_of_Formal_Power_Series.test.cpp\"\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"fps/fps.hpp\"\n\n\
+    #include <algorithm>\n#line 6 \"fps/fps.hpp\"\n\n#line 8 \"fps/fps.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
+    \                 const std::vector<mint> &, const std::vector<mint> &)>\nstruct\
+    \ FPS : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
+    \    using std::vector<mint>::vector::operator=;\n\n  public:\n    FPS operator+(const\
+    \ FPS &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS\
+    \ operator-(const FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n\
+    \    }\n    FPS operator*(const FPS &rhs) const noexcept {\n        return FPS(*this)\
+    \ *= rhs;\n    }\n\n    FPS operator+(const mint &rhs) const noexcept {\n    \
+    \    return FPS(*this) += rhs;\n    }\n\n    FPS operator-(const mint &rhs) const\
+    \ noexcept {\n        return FPS(*this) -= rhs;\n    }\n\n    FPS operator*(const\
+    \ mint &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n    }\n\n  \
+    \  FPS &operator+=(const FPS &rhs) noexcept {\n        if (this->size() < rhs.size())\
+    \ this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size(); ++i)\
+    \ {\n            (*this)[i] += rhs[i];\n        }\n        return *this;\n   \
+    \ }\n\n    FPS &operator-=(const FPS &rhs) noexcept {\n        if (this->size()\
+    \ < rhs.size()) this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
+    \ ++i) {\n            (*this)[i] -= rhs[i];\n        }\n        return *this;\n\
+    \    }\n\n    FPS &operator*=(const FPS &rhs) noexcept {\n        *this = convolution(*this,\
+    \ rhs);\n        return *this;\n    }\n\n    FPS &operator+=(const mint &rhs)\
+    \ noexcept {\n        if (this->empty()) this->resize(1);\n        (*this)[0]\
+    \ += rhs;\n        return *this;\n    }\n\n    FPS &operator-=(const mint &rhs)\
+    \ noexcept {\n        if (this->empty()) this->resize(1);\n        (*this)[0]\
+    \ -= rhs;\n        return *this;\n    }\n\n    FPS &operator*=(const mint &rhs)\
+    \ noexcept {\n        for (int i = 0; i < deg(); ++i) {\n            (*this)[i]\
+    \ *= rhs;\n        }\n        return *this;\n    }\n\n    FPS operator-() const\
+    \ {\n        FPS g(this->size());\n        for (int i = 0; i < (int)this->size();\
+    \ i++) g[i] = -(*this)[i];\n        return g;\n    }\n\n    FPS pre(int sz) const\
+    \ {\n        return FPS(this->begin(), this->begin() + std::min(deg(), sz));\n\
+    \    }\n\n    FPS differential() const {\n        int n = deg();\n        FPS\
+    \ g(std::max(0, n - 1));\n        for (int i = 0; i < n - 1; i++) {\n        \
+    \    g[i] = (*this)[i + 1] * (i + 1);\n        }\n        return g;\n    }\n\n\
+    \    FPS integral() const {\n        int n = deg();\n        FPS g(n + 1);\n \
+    \       g[0] = 0;\n        if (n > 0) g[1] = 1;\n        auto mod = mint::mod();\n\
+    \        for (int i = 2; i <= n; i++) g[i] = (-g[mod % i]) * (mod / i);\n    \
+    \    for (int i = 0; i < n; i++) g[i + 1] *= (*this)[i];\n        return g;\n\
+    \    }\n\n    FPS inv(int d = -1) const {\n        int n = 1;\n        if (d <\
+    \ 0) d = deg();\n        FPS g(n);\n        g[0] = (*this)[0].inv();\n       \
+    \ while (n < d) {\n            n <<= 1;\n            g = (g * 2 - g * g * this->pre(n)).pre(n);\n\
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS log(int\
+    \ d = -1) const {\n        assert((*this)[0].val() == 1);\n        if (d < 0)\
+    \ d = deg();\n        return ((*this).differential() * (*this).inv(d)).pre(d -\
+    \ 1).integral();\n    }\n\n    FPS exp(int d = -1) const {\n        assert((*this)[0].val()\
+    \ == 0);\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n\
+    \        g[0] = 1;\n        while (n < d) {\n            n <<= 1;\n          \
+    \  g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n        }\n        g.resize(d);\n\
+    \        return g;\n    }\n\n    int deg() const {\n        return (*this).size();\n\
+    \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
+    \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 8 \"test/Log_of_Formal_Power_Series.test.cpp\"\
     \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n\
-    \    std::cin >> n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\
-    \n    for (int i = 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >>\
-    \ val;\r\n        a[i] = val;\r\n    }\r\n    ebi::FormalPowerSeries<mint, ebi::convolution>\
-    \ b = a.log();\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cout << b[i].val()\
-    \ << \" \\n\"[i == n - 1];\r\n    }\r\n}\n"
+    \    std::cin >> n;\r\n    ebi::FPS<mint, ebi::convolution> a(n);\r\n    for (int\
+    \ i = 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\n   \
+    \     a[i] = val;\r\n    }\r\n    auto b = a.log();\r\n    for (int i = 0; i <\
+    \ n; ++i) {\r\n        std::cout << b[i].val() << \" \\n\"[i == n - 1];\r\n  \
+    \  }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../convolution/ntt.hpp\"\r\n#include\
-    \ \"../math/FormalPowerSeries.hpp\"\r\n#include \"../utility/modint.hpp\"\r\n\r\
-    \nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n   \
-    \ std::cin >> n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\
-    \n    for (int i = 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >>\
-    \ val;\r\n        a[i] = val;\r\n    }\r\n    ebi::FormalPowerSeries<mint, ebi::convolution>\
-    \ b = a.log();\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cout << b[i].val()\
-    \ << \" \\n\"[i == n - 1];\r\n    }\r\n}"
+    \ \"../fps/fps.hpp\"\r\n#include \"../utility/modint.hpp\"\r\n\r\nusing mint =\
+    \ ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\
+    \n    ebi::FPS<mint, ebi::convolution> a(n);\r\n    for (int i = 0; i < n; ++i)\
+    \ {\r\n        int val;\r\n        std::cin >> val;\r\n        a[i] = val;\r\n\
+    \    }\r\n    auto b = a.log();\r\n    for (int i = 0; i < n; ++i) {\r\n     \
+    \   std::cout << b[i].val() << \" \\n\"[i == n - 1];\r\n    }\r\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
-  - math/FormalPowerSeries.hpp
+  - fps/fps.hpp
   isVerificationFile: true
   path: test/Log_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-05-24 22:16:53+09:00'
+  timestamp: '2023-05-24 22:31:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Log_of_Formal_Power_Series.test.cpp

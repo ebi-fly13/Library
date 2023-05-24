@@ -6,8 +6,8 @@ data:
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
   - icon: ':heavy_check_mark:'
-    path: math/FormalPowerSeries.hpp
-    title: math/FormalPowerSeries.hpp
+    path: fps/fps.hpp
+    title: fps/fps.hpp
   - icon: ':warning:'
     path: math/combination.hpp
     title: math/combination.hpp
@@ -176,7 +176,7 @@ data:
   path: utility/modint.hpp
   requiredBy:
   - convolution/ntt.hpp
-  - math/FormalPowerSeries.hpp
+  - fps/fps.hpp
   - math/combination.hpp
   - math/lagrange_interpolation.hpp
   timestamp: '2023-05-17 13:24:36+09:00'

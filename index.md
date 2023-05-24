@@ -160,6 +160,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/undo_unionfind.hpp
       title: data_structure/undo_unionfind.hpp
+  - name: fps
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: fps/fps.hpp
+      title: fps/fps.hpp
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'
@@ -199,9 +204,6 @@ data:
     - icon: ':warning:'
       path: math/DirichletSeries.hpp
       title: math/DirichletSeries.hpp
-    - icon: ':heavy_check_mark:'
-      path: math/FormalPowerSeries.hpp
-      title: math/FormalPowerSeries.hpp
     - icon: ':heavy_check_mark:'
       path: math/boastan_mori_algorithm.hpp
       title: math/boastan_mori_algorithm.hpp
