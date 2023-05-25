@@ -25,66 +25,66 @@ template <int m> struct static_modint : internal::static_modint_base {
         return m;
     }
 
-    static modint raw(int v) {
+    static constexpr modint raw(int v) {
         modint x;
         x._v = v;
         return x;
     }
 
-    static_modint() : _v(0) {}
+    constexpr static_modint() : _v(0) {}
 
-    static_modint(long long v) {
+    constexpr static_modint(long long v) {
         v %= (long long)umod();
         if (v < 0) v += (long long)umod();
         _v = (unsigned int)v;
     }
 
-    unsigned int val() const {
+    constexpr unsigned int val() const {
         return _v;
     }
 
-    unsigned int value() const {
+    constexpr unsigned int value() const {
         return val();
     }
 
-    modint &operator++() {
+    constexpr modint &operator++() {
         _v++;
         if (_v == umod()) _v = 0;
         return *this;
     }
-    modint &operator--() {
+    constexpr modint &operator--() {
         if (_v == 0) _v = umod();
         _v--;
         return *this;
     }
-    modint &operator+=(const modint &rhs) {
+    constexpr modint &operator+=(const modint &rhs) {
         _v += rhs._v;
         if (_v >= umod()) _v -= umod();
         return *this;
     }
-    modint &operator-=(const modint &rhs) {
+    constexpr modint &operator-=(const modint &rhs) {
         _v -= rhs._v;
         if (_v >= umod()) _v += umod();
         return *this;
     }
-    modint &operator*=(const modint &rhs) {
+    constexpr modint &operator*=(const modint &rhs) {
         unsigned long long x = _v;
         x *= rhs._v;
         _v = (unsigned int)(x % (unsigned long long)umod());
         return *this;
     }
-    modint &operator/=(const modint &rhs) {
+    constexpr modint &operator/=(const modint &rhs) {
         return *this = *this * rhs.inv();
     }
 
-    modint operator+() const {
+    constexpr modint operator+() const {
         return *this;
     }
-    modint operator-() const {
+    constexpr modint operator-() const {
         return modint() - *this;
     }
 
-    modint pow(long long n) const {
+    constexpr modint pow(long long n) const {
         assert(0 <= n);
         modint x = *this, res = 1;
         while (n) {
@@ -94,7 +94,7 @@ template <int m> struct static_modint : internal::static_modint_base {
         }
         return res;
     }
-    modint inv() const {
+    constexpr modint inv() const {
         assert(_v);
         return pow(umod() - 2);
     }
@@ -120,7 +120,7 @@ template <int m> struct static_modint : internal::static_modint_base {
     }
 
   private:
-    unsigned int _v;
+    unsigned int _v = 0;
 
     static constexpr unsigned int umod() {
         return m;
