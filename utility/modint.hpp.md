@@ -2,7 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
+    path: convolution/arbitary_ntt.hpp
+    title: convolution/arbitary_ntt.hpp
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
   - icon: ':heavy_check_mark:'
@@ -21,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_Xor_Convolution.test.cpp
     title: test/Bitwise_Xor_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Convolution_Mod_1000000007.test.cpp
+    title: test/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Determinant_of_Matrix.test.cpp
     title: test/Determinant_of_Matrix.test.cpp
@@ -60,24 +66,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Tree_Path_Composite_Sum.test.cpp
     title: test/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2863.test.cpp
     title: test/aoj/aoj_2863.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/pow.test.cpp
     title: test/pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#include\
@@ -189,12 +195,13 @@ data:
   path: utility/modint.hpp
   requiredBy:
   - convolution/ntt.hpp
+  - convolution/arbitary_ntt.hpp
   - fps/taylor_shift.hpp
   - fps/fps.hpp
   - math/combination.hpp
   - math/lagrange_interpolation.hpp
   timestamp: '2023-05-25 18:42:12+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Determinant_of_Matrix.test.cpp
   - test/vertex_set_path_compositie.test.cpp
@@ -204,6 +211,7 @@ data:
   - test/Exp_of_Formal_Power_Series.test.cpp
   - test/pow.test.cpp
   - test/Exp_of_Set_Power_Series.test.cpp
+  - test/Convolution_Mod_1000000007.test.cpp
   - test/aoj/aoj_2863.test.cpp
   - test/Tree_Path_Composite_Sum.test.cpp
   - test/Polynomial_Taylor_Shift.test.cpp

@@ -2,14 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: convolution/arbitary_ntt.hpp
+    title: convolution/arbitary_ntt.hpp
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps/fps.hpp
-    title: fps/fps.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps/taylor_shift.hpp
-    title: fps/taylor_shift.hpp
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
@@ -26,18 +23,20 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/polynomial_taylor_shift
+    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
     links:
-    - https://judge.yosupo.jp/problem/polynomial_taylor_shift
-  bundledCode: "#line 1 \"test/Polynomial_Taylor_Shift.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\n\n#include <iostream>\n\
-    \n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
-    #include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\n\
-    namespace internal {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if\
-    \ (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049)\
-    \ return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353) return\
-    \ 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
+    - https://judge.yosupo.jp/problem/convolution_mod_1000000007
+  bundledCode: "#line 1 \"test/Convolution_Mod_1000000007.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\n\n#include <iostream>\n\
+    #include <vector>\n\n#line 2 \"convolution/arbitary_ntt.hpp\"\n\n#include <cstdint>\n\
+    #line 5 \"convolution/arbitary_ntt.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\n\n\
+    #include <array>\n#include <type_traits>\n#line 6 \"convolution/ntt.hpp\"\n\n\
+    #line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
+    \nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n\
+    \    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if\
+    \ (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n}\ntemplate\
+    \ <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  //\
+    \ namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
     \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
     \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
@@ -140,112 +139,61 @@ data:
     \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"fps/fps.hpp\"\n\n\
-    #include <algorithm>\n#line 6 \"fps/fps.hpp\"\n\n#line 8 \"fps/fps.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
-    \                 const std::vector<mint> &, const std::vector<mint> &)>\nstruct\
-    \ FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
-    \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
-    \n  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
-    \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
-    \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
-    \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n\n    FPS operator+(const\
-    \ mint &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n\n  \
-    \  FPS operator-(const mint &rhs) const noexcept {\n        return FPS(*this)\
-    \ -= rhs;\n    }\n\n    FPS operator*(const mint &rhs) const noexcept {\n    \
-    \    return FPS(*this) *= rhs;\n    }\n\n    FPS &operator+=(const FPS &rhs) noexcept\
-    \ {\n        if (this->size() < rhs.size()) this->resize(rhs.size());\n      \
-    \  for (int i = 0; i < (int)rhs.size(); ++i) {\n            (*this)[i] += rhs[i];\n\
-    \        }\n        return *this;\n    }\n\n    FPS &operator-=(const FPS &rhs)\
-    \ noexcept {\n        if (this->size() < rhs.size()) this->resize(rhs.size());\n\
-    \        for (int i = 0; i < (int)rhs.size(); ++i) {\n            (*this)[i] -=\
-    \ rhs[i];\n        }\n        return *this;\n    }\n\n    FPS &operator*=(const\
-    \ FPS &rhs) noexcept {\n        *this = convolution(*this, rhs);\n        return\
-    \ *this;\n    }\n\n    FPS &operator+=(const mint &rhs) noexcept {\n        if\
-    \ (this->empty()) this->resize(1);\n        (*this)[0] += rhs;\n        return\
-    \ *this;\n    }\n\n    FPS &operator-=(const mint &rhs) noexcept {\n        if\
-    \ (this->empty()) this->resize(1);\n        (*this)[0] -= rhs;\n        return\
-    \ *this;\n    }\n\n    FPS &operator*=(const mint &rhs) noexcept {\n        for\
-    \ (int i = 0; i < deg(); ++i) {\n            (*this)[i] *= rhs;\n        }\n \
-    \       return *this;\n    }\n\n    FPS operator>>(int d) const {\n        if\
-    \ (deg() <= d) return {};\n        FPS f = *this;\n        f.erase(f.begin(),\
-    \ f.begin() + d);\n        return f;\n    }\n\n    FPS operator<<(int d) const\
-    \ {\n        FPS f = *this;\n        f.insert(f.begin(), d, 0);\n        return\
-    \ f;\n    }\n\n    FPS operator-() const {\n        FPS g(this->size());\n   \
-    \     for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n      \
-    \  return g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
-    \ this->begin() + std::min(deg(), sz));\n    }\n\n    FPS differential() const\
-    \ {\n        int n = deg();\n        FPS g(std::max(0, n - 1));\n        for (int\
-    \ i = 0; i < n - 1; i++) {\n            g[i] = (*this)[i + 1] * (i + 1);\n   \
-    \     }\n        return g;\n    }\n\n    FPS integral() const {\n        int n\
-    \ = deg();\n        FPS g(n + 1);\n        g[0] = 0;\n        if (n > 0) g[1]\
-    \ = 1;\n        auto mod = mint::mod();\n        for (int i = 2; i <= n; i++)\
-    \ g[i] = (-g[mod % i]) * (mod / i);\n        for (int i = 0; i < n; i++) g[i +\
-    \ 1] *= (*this)[i];\n        return g;\n    }\n\n    FPS inv(int d = -1) const\
-    \ {\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n  \
-    \      g[0] = (*this)[0].inv();\n        while (n < d) {\n            n <<= 1;\n\
-    \            g = (g * 2 - g * g * this->pre(n)).pre(n);\n        }\n        g.resize(d);\n\
-    \        return g;\n    }\n\n    FPS log(int d = -1) const {\n        assert((*this)[0].val()\
-    \ == 1);\n        if (d < 0) d = deg();\n        return ((*this).differential()\
-    \ * (*this).inv(d)).pre(d - 1).integral();\n    }\n\n    FPS exp(int d = -1) const\
-    \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
-    \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
-    \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
-    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(int64_t\
-    \ k, int d = -1) const {\n        const int n = deg();\n        if (d < 0) d =\
-    \ n;\n        if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0]\
-    \ = 1;\n            return f;\n        }\n        for (int i = 0; i < n; i++)\
-    \ {\n            if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
-    \                FPS f = (((*this * rev) >> i).log(d) * k).exp(d);\n         \
-    \       f *= (*this)[i].pow(k);\n                f = (f << (i * k)).pre(d);\n\
-    \                if (f.deg() < d) f.resize(d);\n                return f;\n  \
-    \          }\n            if (i + 1 >= (d + k - 1) / k) break;\n        }\n  \
-    \      return FPS(d);\n    }\n\n    int deg() const {\n        return (*this).size();\n\
-    \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
-    \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\
-    \n\n#line 4 \"fps/taylor_shift.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint,\
-    \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
-    \ &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n\
-    \    FormalPowerSeries<mint, convolution> f, mint a) {\n    int d = f.deg();\n\
-    \    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1;\
-    \ i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d] = fact[d].inv();\n\
-    \    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i] * i;\n    for (int\
-    \ i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(), f.end());\n\
-    \    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a = a;\n    for\
-    \ (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n        pow_a\
-    \ *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n\
-    \    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n} \
-    \ // namespace ebi\n#line 9 \"test/Polynomial_Taylor_Shift.test.cpp\"\n\nusing\
-    \ mint = ebi::modint998244353;\n\nint main() {\n    int n, c;\n    std::cin >>\
-    \ n >> c;\n    ebi::FormalPowerSeries<mint, ebi::convolution<mint>> a(n);\n  \
-    \  for (int i = 0; i < n; i++) {\n        std::cin >> a[i];\n    }\n    auto b\
-    \ = ebi::taylor_shift<mint, ebi::convolution>(a, c);\n    for (int i = 0; i <\
-    \ n; i++) {\n        std::cout << b[i] << \" \\n\"[i == n - 1];\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\
-    \n\n#include <iostream>\n\n#include \"../convolution/ntt.hpp\"\n#include \"../fps/fps.hpp\"\
-    \n#include \"../fps/taylor_shift.hpp\"\n#include \"../utility/modint.hpp\"\n\n\
-    using mint = ebi::modint998244353;\n\nint main() {\n    int n, c;\n    std::cin\
-    \ >> n >> c;\n    ebi::FormalPowerSeries<mint, ebi::convolution<mint>> a(n);\n\
-    \    for (int i = 0; i < n; i++) {\n        std::cin >> a[i];\n    }\n    auto\
-    \ b = ebi::taylor_shift<mint, ebi::convolution>(a, c);\n    for (int i = 0; i\
-    \ < n; i++) {\n        std::cout << b[i] << \" \\n\"[i == n - 1];\n    }\n}"
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 8 \"convolution/arbitary_ntt.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class T, class mint,\
+    \ internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> multiply(const\
+    \ std::vector<T>& f, const std::vector<T>& g) {\n    std::vector<mint> a, b;\n\
+    \    a.reserve(f.size());\n    b.reserve(g.size());\n    for (auto x : f) a.emplace_back(x.val());\n\
+    \    for (auto x : g) b.emplace_back(x.val());\n    return convolution<mint>(a,\
+    \ b);\n}\n\n}  // namespace internal\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
+    \ = nullptr>\nstd::vector<mint> arbitary_convolution(const std::vector<mint>&\
+    \ f,\n                                       const std::vector<mint>& g) {\n \
+    \   using i32 = std::int64_t;\n    using i64 = std::int64_t;\n    static constexpr\
+    \ i32 m0 = 167772161;  // 2^25\n    static constexpr i32 m1 = 469762049;  // 2^26\n\
+    \    static constexpr i32 m2 = 754974721;  // 2^24\n    using mint0 = static_modint<m0>;\n\
+    \    using mint1 = static_modint<m1>;\n    using mint2 = static_modint<m2>;\n\
+    \    static constexpr i32 inv01 = mint1(m0).inv().val();\n    static constexpr\
+    \ i32 inv02 = mint2(m0).inv().val();\n    static constexpr i32 inv12 = mint2(m1).inv().val();\n\
+    \    static constexpr i32 inv02inv12 = i64(inv02) * inv12 % m2;\n    static constexpr\
+    \ i64 w1 = m0;\n    static constexpr i64 w2 = i64(m0) * m1;\n\n    const i32 mod\
+    \ = mint::mod();\n\n    auto d0 = internal::multiply<mint, mint0>(f, g);\n   \
+    \ auto d1 = internal::multiply<mint, mint1>(f, g);\n    auto d2 = internal::multiply<mint,\
+    \ mint2>(f, g);\n\n    int n = d0.size();\n    std::vector<mint> res(n);\n   \
+    \ const int W1 = w1 % mod;\n    const int W2 = w2 % mod;\n\n    for (int i = 0;\
+    \ i < n; i++) {\n        i32 n1 = d1[i].val(), n2 = d2[i].val(), a = d0[i].val();\n\
+    \        i32 b = i64(n1 + m1 - a) * inv01 % m1;\n        i32 c = (i64(n2 + m2\
+    \ - a) * inv02inv12 + i64(m2 - b) * inv12) % m2;\n        res[i] = (i64(a) + i64(b)\
+    \ * W1 + i64(c) * W2) % mod;\n    }\n    return res;\n}\n\n}  // namespace ebi\n\
+    #line 8 \"test/Convolution_Mod_1000000007.test.cpp\"\n\nusing mint = ebi::modint1000000007;\n\
+    \nint main() {\n    int n, m;\n    std::cin >> n >> m;\n    std::vector<mint>\
+    \ a(n), b(m);\n    for (int i = 0; i < n; i++) std::cin >> a[i];\n    for (int\
+    \ i = 0; i < m; i++) std::cin >> b[i];\n    auto c = ebi::arbitary_convolution<mint>(a,\
+    \ b);\n    for (int i = 0; i < n + m - 1; i++) {\n        std::cout << c[i].val()\
+    \ << \" \\n\"[i == n + m - 2];\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"../convolution/arbitary_ntt.hpp\"\
+    \n#include \"../utility/modint.hpp\"\n\nusing mint = ebi::modint1000000007;\n\n\
+    int main() {\n    int n, m;\n    std::cin >> n >> m;\n    std::vector<mint> a(n),\
+    \ b(m);\n    for (int i = 0; i < n; i++) std::cin >> a[i];\n    for (int i = 0;\
+    \ i < m; i++) std::cin >> b[i];\n    auto c = ebi::arbitary_convolution<mint>(a,\
+    \ b);\n    for (int i = 0; i < n + m - 1; i++) {\n        std::cout << c[i].val()\
+    \ << \" \\n\"[i == n + m - 2];\n    }\n}"
   dependsOn:
+  - convolution/arbitary_ntt.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
-  - fps/fps.hpp
-  - fps/taylor_shift.hpp
   isVerificationFile: true
-  path: test/Polynomial_Taylor_Shift.test.cpp
+  path: test/Convolution_Mod_1000000007.test.cpp
   requiredBy: []
-  timestamp: '2023-05-25 19:27:48+09:00'
+  timestamp: '2023-05-25 19:43:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Polynomial_Taylor_Shift.test.cpp
+documentation_of: test/Convolution_Mod_1000000007.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Polynomial_Taylor_Shift.test.cpp
-- /verify/test/Polynomial_Taylor_Shift.test.cpp.html
-title: test/Polynomial_Taylor_Shift.test.cpp
+- /verify/test/Convolution_Mod_1000000007.test.cpp
+- /verify/test/Convolution_Mod_1000000007.test.cpp.html
+title: test/Convolution_Mod_1000000007.test.cpp
 ---

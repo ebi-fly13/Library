@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/subset_convolution.hpp
     title: convolution/subset_convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy: []

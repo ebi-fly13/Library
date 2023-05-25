@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
+    path: convolution/arbitary_ntt.hpp
+    title: convolution/arbitary_ntt.hpp
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Convolution_Mod_1000000007.test.cpp
+    title: test/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Exp_of_Formal_Power_Series.test.cpp
     title: test/Exp_of_Formal_Power_Series.test.cpp
@@ -24,12 +30,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Pow_of_Formal_Power_Series.test.cpp
     title: test/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace\
@@ -49,13 +55,15 @@ data:
   path: math/internal_math.hpp
   requiredBy:
   - convolution/ntt.hpp
+  - convolution/arbitary_ntt.hpp
   timestamp: '2023-05-17 13:24:36+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Pow_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/Convolution_Mod_1000000007.test.cpp
   - test/Polynomial_Taylor_Shift.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp

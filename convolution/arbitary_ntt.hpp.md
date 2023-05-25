@@ -14,19 +14,19 @@ data:
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Convolution_Mod_1000000007.test.cpp
+    title: test/Convolution_Mod_1000000007.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
-    links:
-    - https://judge.yosupo.jp/problem/convolution_mod
-  bundledCode: "#line 1 \"test/convolution.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\
-    \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"convolution/ntt.hpp\"\n\n#include\
-    \ <array>\n#include <type_traits>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
+    links: []
+  bundledCode: "#line 2 \"convolution/arbitary_ntt.hpp\"\n\n#include <cstdint>\n#include\
+    \ <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
+    #line 6 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace\
+    \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
     \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
     \ return 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
@@ -40,10 +40,10 @@ data:
     \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
     \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
     }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
-    \n#line 6 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\nnamespace internal\
-    \ {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base {};\r\
-    \n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\r\n\
-    template <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
+    \n#include <iostream>\r\n#line 6 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\
+    \n\r\nnamespace internal {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base\
+    \ : modint_base {};\r\n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\r\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
@@ -133,37 +133,73 @@ data:
     \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 7 \"test/convolution.test.cpp\"\
-    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n, m;\r\
-    \n    std::cin >> n >> m;\r\n    std::vector<mint> a(n), b(m);\r\n    for (int\
-    \ i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    for (int i\
-    \ = 0; i < m; ++i) {\r\n        std::cin >> b[i];\r\n    }\r\n    auto c = ebi::convolution<mint>(a,\
-    \ b);\r\n    for (int i = 0; i < n + m - 1; ++i) {\r\n        std::cout << c[i]\
-    \ << \" \";\r\n    }\r\n    std::cout << '\\n';\r\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\r\n\r\
-    \n#include <iostream>\r\n\r\n#include \"../convolution/ntt.hpp\"\r\n#include \"\
-    ../utility/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main()\
-    \ {\r\n    int n, m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint> a(n),\
-    \ b(m);\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n\
-    \    }\r\n    for (int i = 0; i < m; ++i) {\r\n        std::cin >> b[i];\r\n \
-    \   }\r\n    auto c = ebi::convolution<mint>(a, b);\r\n    for (int i = 0; i <\
-    \ n + m - 1; ++i) {\r\n        std::cout << c[i] << \" \";\r\n    }\r\n    std::cout\
-    \ << '\\n';\r\n}"
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 8 \"convolution/arbitary_ntt.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class T, class mint,\
+    \ internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> multiply(const\
+    \ std::vector<T>& f, const std::vector<T>& g) {\n    std::vector<mint> a, b;\n\
+    \    a.reserve(f.size());\n    b.reserve(g.size());\n    for (auto x : f) a.emplace_back(x.val());\n\
+    \    for (auto x : g) b.emplace_back(x.val());\n    return convolution<mint>(a,\
+    \ b);\n}\n\n}  // namespace internal\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
+    \ = nullptr>\nstd::vector<mint> arbitary_convolution(const std::vector<mint>&\
+    \ f,\n                                       const std::vector<mint>& g) {\n \
+    \   using i32 = std::int64_t;\n    using i64 = std::int64_t;\n    static constexpr\
+    \ i32 m0 = 167772161;  // 2^25\n    static constexpr i32 m1 = 469762049;  // 2^26\n\
+    \    static constexpr i32 m2 = 754974721;  // 2^24\n    using mint0 = static_modint<m0>;\n\
+    \    using mint1 = static_modint<m1>;\n    using mint2 = static_modint<m2>;\n\
+    \    static constexpr i32 inv01 = mint1(m0).inv().val();\n    static constexpr\
+    \ i32 inv02 = mint2(m0).inv().val();\n    static constexpr i32 inv12 = mint2(m1).inv().val();\n\
+    \    static constexpr i32 inv02inv12 = i64(inv02) * inv12 % m2;\n    static constexpr\
+    \ i64 w1 = m0;\n    static constexpr i64 w2 = i64(m0) * m1;\n\n    const i32 mod\
+    \ = mint::mod();\n\n    auto d0 = internal::multiply<mint, mint0>(f, g);\n   \
+    \ auto d1 = internal::multiply<mint, mint1>(f, g);\n    auto d2 = internal::multiply<mint,\
+    \ mint2>(f, g);\n\n    int n = d0.size();\n    std::vector<mint> res(n);\n   \
+    \ const int W1 = w1 % mod;\n    const int W2 = w2 % mod;\n\n    for (int i = 0;\
+    \ i < n; i++) {\n        i32 n1 = d1[i].val(), n2 = d2[i].val(), a = d0[i].val();\n\
+    \        i32 b = i64(n1 + m1 - a) * inv01 % m1;\n        i32 c = (i64(n2 + m2\
+    \ - a) * inv02inv12 + i64(m2 - b) * inv12) % m2;\n        res[i] = (i64(a) + i64(b)\
+    \ * W1 + i64(c) * W2) % mod;\n    }\n    return res;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cstdint>\n#include <vector>\n\n#include \"../convolution/ntt.hpp\"\
+    \n#include \"../utility/modint.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\ntemplate <class T, class mint, internal::is_static_modint_t<mint>* = nullptr>\n\
+    std::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>& g) {\n\
+    \    std::vector<mint> a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n\
+    \    for (auto x : f) a.emplace_back(x.val());\n    for (auto x : g) b.emplace_back(x.val());\n\
+    \    return convolution<mint>(a, b);\n}\n\n}  // namespace internal\n\ntemplate\
+    \ <class mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint>\
+    \ arbitary_convolution(const std::vector<mint>& f,\n                         \
+    \              const std::vector<mint>& g) {\n    using i32 = std::int64_t;\n\
+    \    using i64 = std::int64_t;\n    static constexpr i32 m0 = 167772161;  // 2^25\n\
+    \    static constexpr i32 m1 = 469762049;  // 2^26\n    static constexpr i32 m2\
+    \ = 754974721;  // 2^24\n    using mint0 = static_modint<m0>;\n    using mint1\
+    \ = static_modint<m1>;\n    using mint2 = static_modint<m2>;\n    static constexpr\
+    \ i32 inv01 = mint1(m0).inv().val();\n    static constexpr i32 inv02 = mint2(m0).inv().val();\n\
+    \    static constexpr i32 inv12 = mint2(m1).inv().val();\n    static constexpr\
+    \ i32 inv02inv12 = i64(inv02) * inv12 % m2;\n    static constexpr i64 w1 = m0;\n\
+    \    static constexpr i64 w2 = i64(m0) * m1;\n\n    const i32 mod = mint::mod();\n\
+    \n    auto d0 = internal::multiply<mint, mint0>(f, g);\n    auto d1 = internal::multiply<mint,\
+    \ mint1>(f, g);\n    auto d2 = internal::multiply<mint, mint2>(f, g);\n\n    int\
+    \ n = d0.size();\n    std::vector<mint> res(n);\n    const int W1 = w1 % mod;\n\
+    \    const int W2 = w2 % mod;\n\n    for (int i = 0; i < n; i++) {\n        i32\
+    \ n1 = d1[i].val(), n2 = d2[i].val(), a = d0[i].val();\n        i32 b = i64(n1\
+    \ + m1 - a) * inv01 % m1;\n        i32 c = (i64(n2 + m2 - a) * inv02inv12 + i64(m2\
+    \ - b) * inv12) % m2;\n        res[i] = (i64(a) + i64(b) * W1 + i64(c) * W2) %\
+    \ mod;\n    }\n    return res;\n}\n\n}  // namespace ebi"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
-  isVerificationFile: true
-  path: test/convolution.test.cpp
+  isVerificationFile: false
+  path: convolution/arbitary_ntt.hpp
   requiredBy: []
-  timestamp: '2023-05-25 19:27:48+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: test/convolution.test.cpp
+  timestamp: '2023-05-25 19:43:11+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/Convolution_Mod_1000000007.test.cpp
+documentation_of: convolution/arbitary_ntt.hpp
 layout: document
 redirect_from:
-- /verify/test/convolution.test.cpp
-- /verify/test/convolution.test.cpp.html
-title: test/convolution.test.cpp
+- /library/convolution/arbitary_ntt.hpp
+- /library/convolution/arbitary_ntt.hpp.html
+title: convolution/arbitary_ntt.hpp
 ---

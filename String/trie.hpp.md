@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: String/aho_corasick.hpp
     title: String/aho_corasick.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2863.test.cpp
     title: test/aoj/aoj_2863.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2873.test.cpp
     title: test/aoj/aoj_2873.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"String/trie.hpp\"\n\r\n#include <cassert>\r\n#include <string>\r\
@@ -83,7 +83,7 @@ data:
   requiredBy:
   - String/aho_corasick.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2863.test.cpp
   - test/aoj/aoj_2873.test.cpp
