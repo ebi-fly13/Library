@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: fps/fps.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: fps/taylor_shift.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/polynomial_taylor_shift
@@ -203,29 +203,30 @@ data:
     \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\
     \n\n#line 4 \"fps/taylor_shift.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint,\
     \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
-    \ &, const std::vector<mint> &)>\nFPS<mint, convolution> taylor_shift(FPS<mint,\
-    \ convolution> f, mint a) {\n    int d = f.deg();\n    std::vector<mint> fact(d\
-    \ + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1; i <= d; i++) fact[i] = fact[i\
-    \ - 1] * i;\n    inv_fact[d] = fact[d].inv();\n    for (int i = d; i > 0; i--)\
-    \ inv_fact[i - 1] = inv_fact[i] * i;\n    for (int i = 0; i < d; i++) f[i] *=\
-    \ fact[i];\n    std::reverse(f.begin(), f.end());\n    FPS<mint, convolution>\
-    \ g(d, 1);\n    mint pow_a = a;\n    for (int i = 1; i < d; i++) {\n        g[i]\
-    \ = pow_a * inv_fact[i];\n        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n\
-    \    std::reverse(f.begin(), f.end());\n    for (int i = 0; i < d; i++) f[i] *=\
-    \ inv_fact[i];\n    return f;\n}\n\n}  // namespace ebi\n#line 9 \"test/Polynomial_Taylor_Shift.test.cpp\"\
-    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n, c;\n    std::cin\
-    \ >> n >> c;\n    ebi::FPS<mint, ebi::convolution<mint>> a(n);\n    for (int i\
-    \ = 0; i < n; i++) {\n        std::cin >> a[i];\n    }\n    auto b = ebi::taylor_shift<mint,\
-    \ ebi::convolution>(a, c);\n    for (int i = 0; i < n; i++) {\n        std::cout\
-    \ << b[i] << \" \\n\"[i == n - 1];\n    }\n}\n"
+    \ &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n\
+    \    FormalPowerSeries<mint, convolution> f, mint a) {\n    int d = f.deg();\n\
+    \    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1;\
+    \ i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d] = fact[d].inv();\n\
+    \    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i] * i;\n    for (int\
+    \ i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(), f.end());\n\
+    \    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a = a;\n    for\
+    \ (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n        pow_a\
+    \ *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n\
+    \    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n} \
+    \ // namespace ebi\n#line 9 \"test/Polynomial_Taylor_Shift.test.cpp\"\n\nusing\
+    \ mint = ebi::modint998244353;\n\nint main() {\n    int n, c;\n    std::cin >>\
+    \ n >> c;\n    ebi::FormalPowerSeries<mint, ebi::convolution<mint>> a(n);\n  \
+    \  for (int i = 0; i < n; i++) {\n        std::cin >> a[i];\n    }\n    auto b\
+    \ = ebi::taylor_shift<mint, ebi::convolution>(a, c);\n    for (int i = 0; i <\
+    \ n; i++) {\n        std::cout << b[i] << \" \\n\"[i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\
     \n\n#include <iostream>\n\n#include \"../convolution/ntt.hpp\"\n#include \"../fps/fps.hpp\"\
     \n#include \"../fps/taylor_shift.hpp\"\n#include \"../utility/modint.hpp\"\n\n\
     using mint = ebi::modint998244353;\n\nint main() {\n    int n, c;\n    std::cin\
-    \ >> n >> c;\n    ebi::FPS<mint, ebi::convolution<mint>> a(n);\n    for (int i\
-    \ = 0; i < n; i++) {\n        std::cin >> a[i];\n    }\n    auto b = ebi::taylor_shift<mint,\
-    \ ebi::convolution>(a, c);\n    for (int i = 0; i < n; i++) {\n        std::cout\
-    \ << b[i] << \" \\n\"[i == n - 1];\n    }\n}"
+    \ >> n >> c;\n    ebi::FormalPowerSeries<mint, ebi::convolution<mint>> a(n);\n\
+    \    for (int i = 0; i < n; i++) {\n        std::cin >> a[i];\n    }\n    auto\
+    \ b = ebi::taylor_shift<mint, ebi::convolution>(a, c);\n    for (int i = 0; i\
+    \ < n; i++) {\n        std::cout << b[i] << \" \\n\"[i == n - 1];\n    }\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
@@ -236,8 +237,8 @@ data:
   isVerificationFile: true
   path: test/Polynomial_Taylor_Shift.test.cpp
   requiredBy: []
-  timestamp: '2023-05-25 11:02:54+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-25 11:33:06+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Polynomial_Taylor_Shift.test.cpp
 layout: document

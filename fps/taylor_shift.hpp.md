@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: fps/fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Polynomial_Taylor_Shift.test.cpp
     title: test/Polynomial_Taylor_Shift.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"fps/taylor_shift.hpp\"\n#include <vector>\n\n#line 2 \"\
@@ -132,36 +132,37 @@ data:
     \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 4 \"fps/taylor_shift.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFPS<mint, convolution> taylor_shift(FPS<mint, convolution> f, mint a) {\n\
-    \    int d = f.deg();\n    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n\
-    \    for (int i = 1; i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d]\
-    \ = fact[d].inv();\n    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i]\
-    \ * i;\n    for (int i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(),\
-    \ f.end());\n    FPS<mint, convolution> g(d, 1);\n    mint pow_a = a;\n    for\
-    \ (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n        pow_a\
-    \ *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n\
-    \    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n} \
-    \ // namespace ebi\n"
-  code: "#include <vector>\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
-    \ std::vector<mint> &, const std::vector<mint> &)>\nFPS<mint, convolution> taylor_shift(FPS<mint,\
+    \ &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n    FormalPowerSeries<mint,\
     \ convolution> f, mint a) {\n    int d = f.deg();\n    std::vector<mint> fact(d\
     \ + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1; i <= d; i++) fact[i] = fact[i\
     \ - 1] * i;\n    inv_fact[d] = fact[d].inv();\n    for (int i = d; i > 0; i--)\
     \ inv_fact[i - 1] = inv_fact[i] * i;\n    for (int i = 0; i < d; i++) f[i] *=\
-    \ fact[i];\n    std::reverse(f.begin(), f.end());\n    FPS<mint, convolution>\
-    \ g(d, 1);\n    mint pow_a = a;\n    for (int i = 1; i < d; i++) {\n        g[i]\
-    \ = pow_a * inv_fact[i];\n        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n\
-    \    std::reverse(f.begin(), f.end());\n    for (int i = 0; i < d; i++) f[i] *=\
-    \ inv_fact[i];\n    return f;\n}\n\n}  // namespace ebi"
+    \ fact[i];\n    std::reverse(f.begin(), f.end());\n    FormalPowerSeries<mint,\
+    \ convolution> g(d, 1);\n    mint pow_a = a;\n    for (int i = 1; i < d; i++)\
+    \ {\n        g[i] = pow_a * inv_fact[i];\n        pow_a *= a;\n    }\n    f =\
+    \ (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n    for (int i = 0;\
+    \ i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n}  // namespace ebi\n"
+  code: "#include <vector>\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
+    \ std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution>\
+    \ taylor_shift(\n    FormalPowerSeries<mint, convolution> f, mint a) {\n    int\
+    \ d = f.deg();\n    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n  \
+    \  for (int i = 1; i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d] =\
+    \ fact[d].inv();\n    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i]\
+    \ * i;\n    for (int i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(),\
+    \ f.end());\n    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a\
+    \ = a;\n    for (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n\
+    \        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(),\
+    \ f.end());\n    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return\
+    \ f;\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
   - utility/modint.hpp
   isVerificationFile: false
   path: fps/taylor_shift.hpp
   requiredBy: []
-  timestamp: '2023-05-25 11:02:54+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-05-25 11:33:06+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Polynomial_Taylor_Shift.test.cpp
 documentation_of: fps/taylor_shift.hpp
