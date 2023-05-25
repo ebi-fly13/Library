@@ -1,11 +1,11 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/subset_convolution.hpp
     title: convolution/subset_convolution.hpp
   - icon: ':heavy_check_mark:'
@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Exp_of_Set_Power_Series.test.cpp
     title: test/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"set_function/ranked_zeta.hpp\"\n\n#include <array>\n#include\
@@ -78,7 +78,7 @@ data:
   - convolution/subset_convolution.hpp
   - set_function/sps_exp.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Exp_of_Set_Power_Series.test.cpp
   - test/subset_convolution.test.cpp
