@@ -12,7 +12,7 @@ using mint = ebi::modint998244353;
 int main() {
     int n, c;
     std::cin >> n >> c;
-    ebi::FPS<mint, ebi::convolution<mint>> a(n);
+    ebi::FormalPowerSeries<mint, ebi::convolution<mint>> a(n);
     for (int i = 0; i < n; i++) {
         std::cin >> a[i];
     }
