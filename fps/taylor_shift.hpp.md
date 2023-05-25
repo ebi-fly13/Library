@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: fps/fps.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Polynomial_Taylor_Shift.test.cpp
     title: test/Polynomial_Taylor_Shift.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"fps/taylor_shift.hpp\"\n#include <vector>\n\n#line 2 \"\
@@ -71,35 +71,36 @@ data:
     \n\r\n}  // namespace internal\r\n\r\n}  // namespace ebi\n#line 8 \"fps/fps.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nstruct FPS : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
-    \    using std::vector<mint>::vector::operator=;\n\n  public:\n    FPS operator+(const\
-    \ FPS &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS\
-    \ operator-(const FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n\
-    \    }\n    FPS operator*(const FPS &rhs) const noexcept {\n        return FPS(*this)\
-    \ *= rhs;\n    }\n\n    FPS operator+(const mint &rhs) const noexcept {\n    \
-    \    return FPS(*this) += rhs;\n    }\n\n    FPS operator-(const mint &rhs) const\
-    \ noexcept {\n        return FPS(*this) -= rhs;\n    }\n\n    FPS operator*(const\
-    \ mint &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n    }\n\n  \
-    \  FPS &operator+=(const FPS &rhs) noexcept {\n        if (this->size() < rhs.size())\
-    \ this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size(); ++i)\
-    \ {\n            (*this)[i] += rhs[i];\n        }\n        return *this;\n   \
-    \ }\n\n    FPS &operator-=(const FPS &rhs) noexcept {\n        if (this->size()\
-    \ < rhs.size()) this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
-    \ ++i) {\n            (*this)[i] -= rhs[i];\n        }\n        return *this;\n\
-    \    }\n\n    FPS &operator*=(const FPS &rhs) noexcept {\n        *this = convolution(*this,\
-    \ rhs);\n        return *this;\n    }\n\n    FPS &operator+=(const mint &rhs)\
-    \ noexcept {\n        if (this->empty()) this->resize(1);\n        (*this)[0]\
-    \ += rhs;\n        return *this;\n    }\n\n    FPS &operator-=(const mint &rhs)\
-    \ noexcept {\n        if (this->empty()) this->resize(1);\n        (*this)[0]\
-    \ -= rhs;\n        return *this;\n    }\n\n    FPS &operator*=(const mint &rhs)\
-    \ noexcept {\n        for (int i = 0; i < deg(); ++i) {\n            (*this)[i]\
-    \ *= rhs;\n        }\n        return *this;\n    }\n\n    FPS operator>>(int d)\
-    \ const {\n        if (deg() <= d) return {};\n        FPS f = *this;\n      \
-    \  f.erase(f.begin(), f.begin() + d);\n        return f;\n    }\n\n    FPS operator<<(int\
-    \ d) const {\n        FPS f = *this;\n        f.insert(f.begin(), d, 0);\n   \
-    \     return f;\n    }\n\n    FPS operator-() const {\n        FPS g(this->size());\n\
-    \        for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n   \
-    \     return g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
+    \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
+    \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
+    \n  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
+    \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
+    \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
+    \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n\n    FPS operator+(const\
+    \ mint &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n\n  \
+    \  FPS operator-(const mint &rhs) const noexcept {\n        return FPS(*this)\
+    \ -= rhs;\n    }\n\n    FPS operator*(const mint &rhs) const noexcept {\n    \
+    \    return FPS(*this) *= rhs;\n    }\n\n    FPS &operator+=(const FPS &rhs) noexcept\
+    \ {\n        if (this->size() < rhs.size()) this->resize(rhs.size());\n      \
+    \  for (int i = 0; i < (int)rhs.size(); ++i) {\n            (*this)[i] += rhs[i];\n\
+    \        }\n        return *this;\n    }\n\n    FPS &operator-=(const FPS &rhs)\
+    \ noexcept {\n        if (this->size() < rhs.size()) this->resize(rhs.size());\n\
+    \        for (int i = 0; i < (int)rhs.size(); ++i) {\n            (*this)[i] -=\
+    \ rhs[i];\n        }\n        return *this;\n    }\n\n    FPS &operator*=(const\
+    \ FPS &rhs) noexcept {\n        *this = convolution(*this, rhs);\n        return\
+    \ *this;\n    }\n\n    FPS &operator+=(const mint &rhs) noexcept {\n        if\
+    \ (this->empty()) this->resize(1);\n        (*this)[0] += rhs;\n        return\
+    \ *this;\n    }\n\n    FPS &operator-=(const mint &rhs) noexcept {\n        if\
+    \ (this->empty()) this->resize(1);\n        (*this)[0] -= rhs;\n        return\
+    \ *this;\n    }\n\n    FPS &operator*=(const mint &rhs) noexcept {\n        for\
+    \ (int i = 0; i < deg(); ++i) {\n            (*this)[i] *= rhs;\n        }\n \
+    \       return *this;\n    }\n\n    FPS operator>>(int d) const {\n        if\
+    \ (deg() <= d) return {};\n        FPS f = *this;\n        f.erase(f.begin(),\
+    \ f.begin() + d);\n        return f;\n    }\n\n    FPS operator<<(int d) const\
+    \ {\n        FPS f = *this;\n        f.insert(f.begin(), d, 0);\n        return\
+    \ f;\n    }\n\n    FPS operator-() const {\n        FPS g(this->size());\n   \
+    \     for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n      \
+    \  return g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
     \ this->begin() + std::min(deg(), sz));\n    }\n\n    FPS differential() const\
     \ {\n        int n = deg();\n        FPS g(std::max(0, n - 1));\n        for (int\
     \ i = 0; i < n - 1; i++) {\n            g[i] = (*this)[i + 1] * (i + 1);\n   \
@@ -159,8 +160,8 @@ data:
   isVerificationFile: false
   path: fps/taylor_shift.hpp
   requiredBy: []
-  timestamp: '2023-05-25 01:39:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-25 11:02:54+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/Polynomial_Taylor_Shift.test.cpp
 documentation_of: fps/taylor_shift.hpp

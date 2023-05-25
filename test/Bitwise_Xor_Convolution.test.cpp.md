@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: set_function/hadamard_transform.hpp
     title: set_function/hadamard_transform.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []

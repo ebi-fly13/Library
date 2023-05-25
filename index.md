@@ -44,7 +44,7 @@ data:
       title: algorithm/two_sat.hpp
   - name: convolution
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: convolution/ntt.hpp
       title: convolution/ntt.hpp
     - icon: ':heavy_check_mark:'
@@ -162,10 +162,10 @@ data:
       title: data_structure/undo_unionfind.hpp
   - name: fps
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: fps/fps.hpp
       title: fps/fps.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: fps/taylor_shift.hpp
       title: fps/taylor_shift.hpp
   - name: geometry
@@ -216,7 +216,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':warning:'
@@ -255,13 +255,13 @@ data:
       title: rerooting
   - name: utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -321,7 +321,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/PersistentSegmentTree.test.cpp
       title: test/PersistentSegmentTree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Polynomial_Taylor_Shift.test.cpp
       title: test/Polynomial_Taylor_Shift.test.cpp
     - icon: ':heavy_check_mark:'
