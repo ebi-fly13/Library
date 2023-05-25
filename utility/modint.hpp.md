@@ -5,10 +5,10 @@ data:
   - icon: ':question:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: fps/fps.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: fps/taylor_shift.hpp
   - icon: ':warning:'
@@ -48,16 +48,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Polynomial_Taylor_Shift.test.cpp
     title: test/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Pow_of_Formal_Power_Series.test.cpp
     title: test/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Tree_Path_Composite_Sum.test.cpp
     title: test/Tree_Path_Composite_Sum.test.cpp
   - icon: ':x:'

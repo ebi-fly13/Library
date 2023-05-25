@@ -76,7 +76,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/PersistentSegmentTree.hpp
       title: data_structure/PersistentSegmentTree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/SWAG.hpp
       title: SlidingWindowAggregation
     - icon: ':heavy_check_mark:'
@@ -162,10 +162,10 @@ data:
       title: data_structure/undo_unionfind.hpp
   - name: fps
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: fps/fps.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/taylor_shift.hpp
       title: fps/taylor_shift.hpp
   - name: geometry
@@ -250,7 +250,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/lowest_common_ancestor.hpp
       title: tree/lowest_common_ancestor.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/rerooting.hpp
       title: rerooting
   - name: utility
@@ -321,13 +321,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/PersistentSegmentTree.test.cpp
       title: test/PersistentSegmentTree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Polynomial_Taylor_Shift.test.cpp
       title: test/Polynomial_Taylor_Shift.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Pow_of_Formal_Power_Series.test.cpp
       title: test/Pow_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/SWAG.test.cpp
       title: test/SWAG.test.cpp
     - icon: ':heavy_check_mark:'
@@ -342,7 +342,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Static_Range_Frequency.test.cpp
       title: test/Static_Range_Frequency.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Tree_Path_Composite_Sum.test.cpp
       title: test/Tree_Path_Composite_Sum.test.cpp
     - icon: ':heavy_check_mark:'

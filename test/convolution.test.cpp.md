@@ -125,12 +125,12 @@ data:
     \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.inv_root[bit\
     \ + 1];\n                zeta2 *= info.inv_root[bit + 1];\n            }\n   \
     \     }\n    }\n    mint inv_n = mint(n).inv();\n    for (int i = 0; i < n; i++)\
-    \ {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace internal\n\n#line 101\
-    \ \"convolution/ntt.hpp\"\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
-    \ = nullptr>\nstd::vector<mint> convolution(const std::vector<mint>& f,\n    \
-    \                          const std::vector<mint>& g) {\n    int n = 1 << ceil_pow2(f.size()\
-    \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
-    \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
+    \ {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace internal\n\ntemplate\
+    \ <class mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint>\
+    \ convolution(const std::vector<mint>& f,\n                              const\
+    \ std::vector<mint>& g) {\n    int n = 1 << ceil_pow2(f.size() + g.size() - 1);\n\
+    \    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(), f.end(), a.begin());\n\
+    \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 7 \"test/convolution.test.cpp\"\
@@ -157,7 +157,7 @@ data:
   isVerificationFile: true
   path: test/convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-05-25 18:42:12+09:00'
+  timestamp: '2023-05-25 19:27:48+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/convolution.test.cpp
