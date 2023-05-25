@@ -97,8 +97,6 @@ void butterfly_inv(std::vector<mint>& a) {
 
 }  // namespace internal
 
-#include <iostream>
-
 template <class mint, internal::is_static_modint_t<mint>* = nullptr>
 std::vector<mint> convolution(const std::vector<mint>& f,
                               const std::vector<mint>& g) {
