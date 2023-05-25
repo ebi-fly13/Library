@@ -12,7 +12,7 @@ int main() {
     int n;
     long long m;
     std::cin >> n >> m;
-    ebi::FPS<mint, ebi::convolution<mint>> f(n);
+    ebi::FormalPowerSeries<mint, ebi::convolution<mint>> f(n);
     for (int i = 0; i < n; i++) {
         std::cin >> f[i];
     }

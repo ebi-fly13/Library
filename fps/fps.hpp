@@ -10,10 +10,11 @@ namespace ebi {
 
 template <class mint, std::vector<mint> (*convolution)(
                           const std::vector<mint> &, const std::vector<mint> &)>
-struct FPS : std::vector<mint> {
+struct FormalPowerSeries : std::vector<mint> {
   private:
     using std::vector<mint>::vector;
     using std::vector<mint>::vector::operator=;
+    using FPS = FormalPowerSeries;
 
   public:
     FPS operator+(const FPS &rhs) const noexcept {
