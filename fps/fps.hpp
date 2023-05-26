@@ -4,8 +4,6 @@
 #include <cassert>
 #include <vector>
 
-#include "../utility/modint.hpp"
-
 namespace ebi {
 
 template <class mint, std::vector<mint> (*convolution)(
