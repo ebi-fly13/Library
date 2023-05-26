@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: fps/product_of_one_minus_xn.hpp
+    title: fps/product_of_one_minus_xn.hpp
+  - icon: ':warning:'
     path: fps/product_of_one_plus_xn.hpp
     title: fps/product_of_one_plus_xn.hpp
   - icon: ':heavy_check_mark:'
@@ -159,6 +162,7 @@ data:
   requiredBy:
   - fps/taylor_shift.hpp
   - fps/product_of_one_plus_xn.hpp
+  - fps/product_of_one_minus_xn.hpp
   timestamp: '2023-05-26 12:54:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

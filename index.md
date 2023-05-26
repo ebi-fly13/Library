@@ -169,6 +169,9 @@ data:
       path: fps/fps.hpp
       title: fps/fps.hpp
     - icon: ':warning:'
+      path: fps/product_of_one_minus_xn.hpp
+      title: fps/product_of_one_minus_xn.hpp
+    - icon: ':warning:'
       path: fps/product_of_one_plus_xn.hpp
       title: fps/product_of_one_plus_xn.hpp
     - icon: ':heavy_check_mark:'
