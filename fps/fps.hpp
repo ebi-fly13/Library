@@ -24,15 +24,19 @@ struct FormalPowerSeries : std::vector<mint> {
     FPS operator*(const FPS &rhs) const noexcept {
         return FPS(*this) *= rhs;
     }
+    FPS operator/(const FPS &rhs) const noexcept {
+        return FPS(*this) /= rhs;
+    }
+    FPS operator%(const FPS &rhs) const noexcept {
+        return FPS(*this) %= rhs;
+    }
 
     FPS operator+(const mint &rhs) const noexcept {
         return FPS(*this) += rhs;
     }
-
     FPS operator-(const mint &rhs) const noexcept {
         return FPS(*this) -= rhs;
     }
-
     FPS operator*(const mint &rhs) const noexcept {
         return FPS(*this) *= rhs;
     }
@@ -55,6 +59,25 @@ struct FormalPowerSeries : std::vector<mint> {
 
     FPS &operator*=(const FPS &rhs) noexcept {
         *this = convolution(*this, rhs);
+        return *this;
+    }
+
+    FPS &operator/=(const FPS &rhs) noexcept {
+        int n = deg() - 1;
+        int m = rhs.deg() - 1;
+        if (n < m) {
+            *this = {};
+            return *this;
+        }
+        *this = (*this).rev() * rhs.rev().inv(n - m + 1);
+        (*this).resize(n - m + 1);
+        std::reverse((*this).begin(), (*this).end());
+        return *this;
+    }
+
+    FPS &operator%=(const FPS &rhs) noexcept {
+        *this -= *this / rhs * rhs;
+        shrink();
         return *this;
     }
 
@@ -98,6 +121,12 @@ struct FormalPowerSeries : std::vector<mint> {
 
     FPS pre(int sz) const {
         return FPS(this->begin(), this->begin() + std::min(deg(), sz));
+    }
+
+    FPS rev() const {
+        auto f = *this;
+        std::reverse(f.begin(), f.end());
+        return f;
     }
 
     FPS differential() const {
