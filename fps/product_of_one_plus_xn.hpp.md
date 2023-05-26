@@ -5,18 +5,15 @@ data:
     path: fps/fps.hpp
     title: fps/fps.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Polynomial_Taylor_Shift.test.cpp
-    title: test/Polynomial_Taylor_Shift.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"fps/taylor_shift.hpp\"\n#include <vector>\n\n#line 2 \"\
-    fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#line 6 \"fps/fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+  bundledCode: "#line 2 \"fps/product_of_one_plus_xn.hpp\"\n\n#include <vector>\n\n\
+    #line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#line 6 \"\
+    fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
     \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
     \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
@@ -76,45 +73,64 @@ data:
     \          }\n            if (i + 1 >= (d + k - 1) / k) break;\n        }\n  \
     \      return FPS(d);\n    }\n\n    int deg() const {\n        return (*this).size();\n\
     \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
-    \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 4 \"fps/taylor_shift.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n    FormalPowerSeries<mint,\
-    \ convolution> f, mint a) {\n    int d = f.deg();\n    std::vector<mint> fact(d\
-    \ + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1; i <= d; i++) fact[i] = fact[i\
-    \ - 1] * i;\n    inv_fact[d] = fact[d].inv();\n    for (int i = d; i > 0; i--)\
-    \ inv_fact[i - 1] = inv_fact[i] * i;\n    for (int i = 0; i < d; i++) f[i] *=\
-    \ fact[i];\n    std::reverse(f.begin(), f.end());\n    FormalPowerSeries<mint,\
-    \ convolution> g(d, 1);\n    mint pow_a = a;\n    for (int i = 1; i < d; i++)\
-    \ {\n        g[i] = pow_a * inv_fact[i];\n        pow_a *= a;\n    }\n    f =\
-    \ (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n    for (int i = 0;\
-    \ i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n}  // namespace ebi\n"
-  code: "#include <vector>\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
-    \ std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution>\
-    \ taylor_shift(\n    FormalPowerSeries<mint, convolution> f, mint a) {\n    int\
-    \ d = f.deg();\n    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n  \
-    \  for (int i = 1; i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d] =\
-    \ fact[d].inv();\n    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i]\
-    \ * i;\n    for (int i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(),\
-    \ f.end());\n    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a\
-    \ = a;\n    for (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n\
-    \        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(),\
-    \ f.end());\n    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return\
-    \ f;\n}\n\n}  // namespace ebi"
+    \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 6 \"fps/product_of_one_plus_xn.hpp\"\
+    \n\nnamespace ebi {\n\n// prod (1 + x^a_i) mod x^d\ntemplate <class mint, std::vector<mint>\
+    \ (*convolution)(\n                          const std::vector<mint> &, const\
+    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> product_of_one_plus_xn(std::vector<int>\
+    \ a,\n                                                            int d) {\n \
+    \   using FPS = FormalPowerSeries<mint, convolution>;\n    std::vector<int> cnt(d,\
+    \ 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    std::vector<mint>\
+    \ inv(d);\n    for (int i = 1; i < d; i++) inv[i] = mint(i).inv();\n    FPS log_f(d);\n\
+    \    for (int x = 1; x < d; x++) {\n        for (int i = 1; x * i < d; i++) {\n\
+    \            if (i & 1)\n                log_f[x * i] += mint(cnt[x]) * inv[i];\n\
+    \            else\n                log_f[x * i] -= mint(cnt[x]) * inv[i];\n  \
+    \      }\n    }\n    mint ret = mint(2).pow(cnt[0]);\n    auto f = log_f.exp(d);\n\
+    \    for (auto &x : f) x *= ret;\n    return f;\n}\n\n// prod (1 - x^a_i) mod\
+    \ x^d\ntemplate <class mint, std::vector<mint> (*convolution)(\n             \
+    \             const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
+    \ convolution> product_of_one_minus_xn(std::vector<int> a,\n                 \
+    \                                            int d) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    std::vector<int> cnt(d, 0);\n    for (auto x : a)\n     \
+    \   if (x < d) cnt[x]++;\n    if (cnt[0]) return FPS(d);\n    std::vector<mint>\
+    \ inv(d);\n    for (int i = 1; i < d; i++) inv[i] = mint(i).inv();\n    FPS log_f(d);\n\
+    \    for (int x = 1; x < d; x++) {\n        for (int i = 1; x * i < d; i++) {\n\
+    \            log_f[x * i] -= mint(cnt[x]) * inv[i];\n        }\n    }\n    return\
+    \ log_f.exp(d);\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <vector>\n\n#include \"../fps/fps.hpp\"\n\nnamespace\
+    \ ebi {\n\n// prod (1 + x^a_i) mod x^d\ntemplate <class mint, std::vector<mint>\
+    \ (*convolution)(\n                          const std::vector<mint> &, const\
+    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> product_of_one_plus_xn(std::vector<int>\
+    \ a,\n                                                            int d) {\n \
+    \   using FPS = FormalPowerSeries<mint, convolution>;\n    std::vector<int> cnt(d,\
+    \ 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    std::vector<mint>\
+    \ inv(d);\n    for (int i = 1; i < d; i++) inv[i] = mint(i).inv();\n    FPS log_f(d);\n\
+    \    for (int x = 1; x < d; x++) {\n        for (int i = 1; x * i < d; i++) {\n\
+    \            if (i & 1)\n                log_f[x * i] += mint(cnt[x]) * inv[i];\n\
+    \            else\n                log_f[x * i] -= mint(cnt[x]) * inv[i];\n  \
+    \      }\n    }\n    mint ret = mint(2).pow(cnt[0]);\n    auto f = log_f.exp(d);\n\
+    \    for (auto &x : f) x *= ret;\n    return f;\n}\n\n// prod (1 - x^a_i) mod\
+    \ x^d\ntemplate <class mint, std::vector<mint> (*convolution)(\n             \
+    \             const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
+    \ convolution> product_of_one_minus_xn(std::vector<int> a,\n                 \
+    \                                            int d) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    std::vector<int> cnt(d, 0);\n    for (auto x : a)\n     \
+    \   if (x < d) cnt[x]++;\n    if (cnt[0]) return FPS(d);\n    std::vector<mint>\
+    \ inv(d);\n    for (int i = 1; i < d; i++) inv[i] = mint(i).inv();\n    FPS log_f(d);\n\
+    \    for (int x = 1; x < d; x++) {\n        for (int i = 1; x * i < d; i++) {\n\
+    \            log_f[x * i] -= mint(cnt[x]) * inv[i];\n        }\n    }\n    return\
+    \ log_f.exp(d);\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
   isVerificationFile: false
-  path: fps/taylor_shift.hpp
+  path: fps/product_of_one_plus_xn.hpp
   requiredBy: []
   timestamp: '2023-05-26 12:54:48+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/Polynomial_Taylor_Shift.test.cpp
-documentation_of: fps/taylor_shift.hpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: fps/product_of_one_plus_xn.hpp
 layout: document
 redirect_from:
-- /library/fps/taylor_shift.hpp
-- /library/fps/taylor_shift.hpp.html
-title: fps/taylor_shift.hpp
+- /library/fps/product_of_one_plus_xn.hpp
+- /library/fps/product_of_one_plus_xn.hpp.html
+title: fps/product_of_one_plus_xn.hpp
 ---

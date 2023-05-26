@@ -8,12 +8,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps/fps.hpp
-    title: fps/fps.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps/taylor_shift.hpp
-    title: fps/taylor_shift.hpp
   - icon: ':warning:'
     path: math/combination.hpp
     title: math/combination.hpp
@@ -196,8 +190,6 @@ data:
   requiredBy:
   - convolution/ntt.hpp
   - convolution/arbitary_ntt.hpp
-  - fps/taylor_shift.hpp
-  - fps/fps.hpp
   - math/combination.hpp
   - math/lagrange_interpolation.hpp
   timestamp: '2023-05-25 18:42:12+09:00'

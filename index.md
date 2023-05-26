@@ -168,6 +168,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: fps/fps.hpp
+    - icon: ':warning:'
+      path: fps/product_of_one_plus_xn.hpp
+      title: fps/product_of_one_plus_xn.hpp
     - icon: ':heavy_check_mark:'
       path: fps/taylor_shift.hpp
       title: fps/taylor_shift.hpp
