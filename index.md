@@ -292,6 +292,9 @@ data:
       path: test/Determinant_of_Matrix.test.cpp
       title: test/Determinant_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/Division_of_Polynomials.test.cpp
+      title: test/Division_of_Polynomials.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/DualSegtree.test.cpp
       title: test/DualSegtree.test.cpp
     - icon: ':heavy_check_mark:'

@@ -23,27 +23,27 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/pow_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/division_of_polynomials
     links:
-    - https://judge.yosupo.jp/problem/pow_of_formal_power_series
-  bundledCode: "#line 1 \"test/Pow_of_Formal_Power_Series.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/pow_of_formal_power_series\"\n\n#include <iostream>\n\
-    \n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
-    #include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\n\
-    namespace internal {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if\
-    \ (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049)\
-    \ return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353) return\
-    \ 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
-    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
-    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
-    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
-    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
-    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
-    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
-    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
+    - https://judge.yosupo.jp/problem/division_of_polynomials
+  bundledCode: "#line 1 \"test/Division_of_Polynomials.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/division_of_polynomials\"\n\n#line 2 \"convolution/ntt.hpp\"\
+    \n\n#include <array>\n#include <type_traits>\n#include <vector>\n\n#line 2 \"\
+    math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\nconstexpr\
+    \ int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n    if (m\
+    \ == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if (m == 754974721)\
+    \ return 11;\n    if (m == 998244353) return 3;\n}\ntemplate <int m> constexpr\
+    \ int primitive_root = primitive_root_constexpr(m);\n\n}  // namespace internal\n\
+    \n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\
+    \nconstexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n\
+    \ & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int n, int bit_size)\
+    \ {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n\
+    \ |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint\
+    \ ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n))\
+    \ x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
+    }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
+    int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
+    \ ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#include <iostream>\r\
     \n#line 6 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\nnamespace internal\
     \ {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base {};\r\
     \n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\r\n\
@@ -208,19 +208,26 @@ data:
     \          }\n            if (i + 1 >= (d + k - 1) / k) break;\n        }\n  \
     \      return FPS(d);\n    }\n\n    int deg() const {\n        return (*this).size();\n\
     \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
-    \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 8 \"test/Pow_of_Formal_Power_Series.test.cpp\"\
-    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    long long\
-    \ m;\n    std::cin >> n >> m;\n    ebi::FormalPowerSeries<mint, ebi::convolution<mint>>\
-    \ f(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n\
-    \    auto b = f.pow(m);\n    for (int i = 0; i < n; i++) {\n        std::cout\
-    \ << b[i] << \" \\n\"[i == n - 1];\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_formal_power_series\"\
-    \n\n#include <iostream>\n\n#include \"../convolution/ntt.hpp\"\n#include \"../fps/fps.hpp\"\
-    \n#include \"../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\n\
-    int main() {\n    int n;\n    long long m;\n    std::cin >> n >> m;\n    ebi::FormalPowerSeries<mint,\
-    \ ebi::convolution<mint>> f(n);\n    for (int i = 0; i < n; i++) {\n        std::cin\
-    \ >> f[i];\n    }\n    auto b = f.pow(m);\n    for (int i = 0; i < n; i++) {\n\
-    \        std::cout << b[i] << \" \\n\"[i == n - 1];\n    }\n}"
+    \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 6 \"test/Division_of_Polynomials.test.cpp\"\
+    \n\nusing mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint,\
+    \ ebi::convolution>;\n\nint main() {\n    int n, m;\n    std::cin >> n >> m;\n\
+    \    FPS f(n), g(m);\n    for (int i = 0; i < n; i++) std::cin >> f[i];\n    for\
+    \ (int i = 0; i < m; i++) std::cin >> g[i];\n    auto q = f / g;\n    auto r =\
+    \ f % g;\n    std::cout << q.size() << \" \" << r.size() << '\\n';\n    for (int\
+    \ i = 0; i < (int)q.size(); i++) {\n        std::cout << q[i] << \" \";\n    }\n\
+    \    std::cout << '\\n';\n    for (int i = 0; i < (int)r.size(); i++) {\n    \
+    \    std::cout << r[i] << \" \";\n    }\n    std::cout << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/division_of_polynomials\"\
+    \n\n#include \"../convolution/ntt.hpp\"\n#include \"../fps/fps.hpp\"\n#include\
+    \ \"../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\nusing FPS =\
+    \ ebi::FormalPowerSeries<mint, ebi::convolution>;\n\nint main() {\n    int n,\
+    \ m;\n    std::cin >> n >> m;\n    FPS f(n), g(m);\n    for (int i = 0; i < n;\
+    \ i++) std::cin >> f[i];\n    for (int i = 0; i < m; i++) std::cin >> g[i];\n\
+    \    auto q = f / g;\n    auto r = f % g;\n    std::cout << q.size() << \" \"\
+    \ << r.size() << '\\n';\n    for (int i = 0; i < (int)q.size(); i++) {\n     \
+    \   std::cout << q[i] << \" \";\n    }\n    std::cout << '\\n';\n    for (int\
+    \ i = 0; i < (int)r.size(); i++) {\n        std::cout << r[i] << \" \";\n    }\n\
+    \    std::cout << '\\n';\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
@@ -228,15 +235,15 @@ data:
   - utility/modint.hpp
   - fps/fps.hpp
   isVerificationFile: true
-  path: test/Pow_of_Formal_Power_Series.test.cpp
+  path: test/Division_of_Polynomials.test.cpp
   requiredBy: []
   timestamp: '2023-05-26 15:37:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Pow_of_Formal_Power_Series.test.cpp
+documentation_of: test/Division_of_Polynomials.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Pow_of_Formal_Power_Series.test.cpp
-- /verify/test/Pow_of_Formal_Power_Series.test.cpp.html
-title: test/Pow_of_Formal_Power_Series.test.cpp
+- /verify/test/Division_of_Polynomials.test.cpp
+- /verify/test/Division_of_Polynomials.test.cpp.html
+title: test/Division_of_Polynomials.test.cpp
 ---

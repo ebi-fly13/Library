@@ -25,6 +25,9 @@ data:
     path: test/Determinant_of_Matrix.test.cpp
     title: test/Determinant_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Division_of_Polynomials.test.cpp
+    title: test/Division_of_Polynomials.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/DynamicSegmentTree.test.cpp
     title: test/DynamicSegmentTree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -213,6 +216,7 @@ data:
   - test/DynamicSegmentTree.test.cpp
   - test/SWAG.test.cpp
   - test/subset_convolution.test.cpp
+  - test/Division_of_Polynomials.test.cpp
   - test/convolution.test.cpp
   - test/Bitwise_Xor_Convolution.test.cpp
 documentation_of: utility/modint.hpp

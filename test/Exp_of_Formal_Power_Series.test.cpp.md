@@ -146,44 +146,54 @@ data:
     \ &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
     \ FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
     \ operator*(const FPS &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n\
-    \    }\n\n    FPS operator+(const mint &rhs) const noexcept {\n        return\
-    \ FPS(*this) += rhs;\n    }\n\n    FPS operator-(const mint &rhs) const noexcept\
-    \ {\n        return FPS(*this) -= rhs;\n    }\n\n    FPS operator*(const mint\
-    \ &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n    }\n\n    FPS\
-    \ &operator+=(const FPS &rhs) noexcept {\n        if (this->size() < rhs.size())\
-    \ this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size(); ++i)\
-    \ {\n            (*this)[i] += rhs[i];\n        }\n        return *this;\n   \
-    \ }\n\n    FPS &operator-=(const FPS &rhs) noexcept {\n        if (this->size()\
+    \    }\n    FPS operator/(const FPS &rhs) const noexcept {\n        return FPS(*this)\
+    \ /= rhs;\n    }\n    FPS operator%(const FPS &rhs) const noexcept {\n       \
+    \ return FPS(*this) %= rhs;\n    }\n\n    FPS operator+(const mint &rhs) const\
+    \ noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
+    \ mint &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
+    \ operator*(const mint &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n\
+    \    }\n\n    FPS &operator+=(const FPS &rhs) noexcept {\n        if (this->size()\
+    \ < rhs.size()) this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
+    \ ++i) {\n            (*this)[i] += rhs[i];\n        }\n        return *this;\n\
+    \    }\n\n    FPS &operator-=(const FPS &rhs) noexcept {\n        if (this->size()\
     \ < rhs.size()) this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
     \ ++i) {\n            (*this)[i] -= rhs[i];\n        }\n        return *this;\n\
     \    }\n\n    FPS &operator*=(const FPS &rhs) noexcept {\n        *this = convolution(*this,\
-    \ rhs);\n        return *this;\n    }\n\n    FPS &operator+=(const mint &rhs)\
-    \ noexcept {\n        if (this->empty()) this->resize(1);\n        (*this)[0]\
-    \ += rhs;\n        return *this;\n    }\n\n    FPS &operator-=(const mint &rhs)\
-    \ noexcept {\n        if (this->empty()) this->resize(1);\n        (*this)[0]\
-    \ -= rhs;\n        return *this;\n    }\n\n    FPS &operator*=(const mint &rhs)\
-    \ noexcept {\n        for (int i = 0; i < deg(); ++i) {\n            (*this)[i]\
-    \ *= rhs;\n        }\n        return *this;\n    }\n\n    FPS operator>>(int d)\
-    \ const {\n        if (deg() <= d) return {};\n        FPS f = *this;\n      \
-    \  f.erase(f.begin(), f.begin() + d);\n        return f;\n    }\n\n    FPS operator<<(int\
-    \ d) const {\n        FPS f = *this;\n        f.insert(f.begin(), d, 0);\n   \
-    \     return f;\n    }\n\n    FPS operator-() const {\n        FPS g(this->size());\n\
-    \        for (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n   \
-    \     return g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
-    \ this->begin() + std::min(deg(), sz));\n    }\n\n    FPS differential() const\
-    \ {\n        int n = deg();\n        FPS g(std::max(0, n - 1));\n        for (int\
-    \ i = 0; i < n - 1; i++) {\n            g[i] = (*this)[i + 1] * (i + 1);\n   \
-    \     }\n        return g;\n    }\n\n    FPS integral() const {\n        int n\
-    \ = deg();\n        FPS g(n + 1);\n        g[0] = 0;\n        if (n > 0) g[1]\
-    \ = 1;\n        auto mod = mint::mod();\n        for (int i = 2; i <= n; i++)\
-    \ g[i] = (-g[mod % i]) * (mod / i);\n        for (int i = 0; i < n; i++) g[i +\
-    \ 1] *= (*this)[i];\n        return g;\n    }\n\n    FPS inv(int d = -1) const\
-    \ {\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n  \
-    \      g[0] = (*this)[0].inv();\n        while (n < d) {\n            n <<= 1;\n\
-    \            g = (g * 2 - g * g * this->pre(n)).pre(n);\n        }\n        g.resize(d);\n\
-    \        return g;\n    }\n\n    FPS log(int d = -1) const {\n        assert((*this)[0].val()\
-    \ == 1);\n        if (d < 0) d = deg();\n        return ((*this).differential()\
-    \ * (*this).inv(d)).pre(d - 1).integral();\n    }\n\n    FPS exp(int d = -1) const\
+    \ rhs);\n        return *this;\n    }\n\n    FPS &operator/=(const FPS &rhs) noexcept\
+    \ {\n        int n = deg() - 1;\n        int m = rhs.deg() - 1;\n        if (n\
+    \ < m) {\n            *this = {};\n            return *this;\n        }\n    \
+    \    *this = (*this).rev() * rhs.rev().inv(n - m + 1);\n        (*this).resize(n\
+    \ - m + 1);\n        std::reverse((*this).begin(), (*this).end());\n        return\
+    \ *this;\n    }\n\n    FPS &operator%=(const FPS &rhs) noexcept {\n        *this\
+    \ -= *this / rhs * rhs;\n        shrink();\n        return *this;\n    }\n\n \
+    \   FPS &operator+=(const mint &rhs) noexcept {\n        if (this->empty()) this->resize(1);\n\
+    \        (*this)[0] += rhs;\n        return *this;\n    }\n\n    FPS &operator-=(const\
+    \ mint &rhs) noexcept {\n        if (this->empty()) this->resize(1);\n       \
+    \ (*this)[0] -= rhs;\n        return *this;\n    }\n\n    FPS &operator*=(const\
+    \ mint &rhs) noexcept {\n        for (int i = 0; i < deg(); ++i) {\n         \
+    \   (*this)[i] *= rhs;\n        }\n        return *this;\n    }\n\n    FPS operator>>(int\
+    \ d) const {\n        if (deg() <= d) return {};\n        FPS f = *this;\n   \
+    \     f.erase(f.begin(), f.begin() + d);\n        return f;\n    }\n\n    FPS\
+    \ operator<<(int d) const {\n        FPS f = *this;\n        f.insert(f.begin(),\
+    \ d, 0);\n        return f;\n    }\n\n    FPS operator-() const {\n        FPS\
+    \ g(this->size());\n        for (int i = 0; i < (int)this->size(); i++) g[i] =\
+    \ -(*this)[i];\n        return g;\n    }\n\n    FPS pre(int sz) const {\n    \
+    \    return FPS(this->begin(), this->begin() + std::min(deg(), sz));\n    }\n\n\
+    \    FPS rev() const {\n        auto f = *this;\n        std::reverse(f.begin(),\
+    \ f.end());\n        return f;\n    }\n\n    FPS differential() const {\n    \
+    \    int n = deg();\n        FPS g(std::max(0, n - 1));\n        for (int i =\
+    \ 0; i < n - 1; i++) {\n            g[i] = (*this)[i + 1] * (i + 1);\n       \
+    \ }\n        return g;\n    }\n\n    FPS integral() const {\n        int n = deg();\n\
+    \        FPS g(n + 1);\n        g[0] = 0;\n        if (n > 0) g[1] = 1;\n    \
+    \    auto mod = mint::mod();\n        for (int i = 2; i <= n; i++) g[i] = (-g[mod\
+    \ % i]) * (mod / i);\n        for (int i = 0; i < n; i++) g[i + 1] *= (*this)[i];\n\
+    \        return g;\n    }\n\n    FPS inv(int d = -1) const {\n        int n =\
+    \ 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n        g[0] = (*this)[0].inv();\n\
+    \        while (n < d) {\n            n <<= 1;\n            g = (g * 2 - g * g\
+    \ * this->pre(n)).pre(n);\n        }\n        g.resize(d);\n        return g;\n\
+    \    }\n\n    FPS log(int d = -1) const {\n        assert((*this)[0].val() ==\
+    \ 1);\n        if (d < 0) d = deg();\n        return ((*this).differential() *\
+    \ (*this).inv(d)).pre(d - 1).integral();\n    }\n\n    FPS exp(int d = -1) const\
     \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
     \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
     \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
@@ -223,7 +233,7 @@ data:
   isVerificationFile: true
   path: test/Exp_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-05-26 12:54:48+09:00'
+  timestamp: '2023-05-26 15:37:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Exp_of_Formal_Power_Series.test.cpp

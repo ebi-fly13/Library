@@ -22,6 +22,9 @@ data:
     path: test/Convolution_Mod_1000000007.test.cpp
     title: test/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Division_of_Polynomials.test.cpp
+    title: test/Division_of_Polynomials.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/Exp_of_Formal_Power_Series.test.cpp
     title: test/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -92,6 +95,7 @@ data:
   - test/Polynomial_Taylor_Shift.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/subset_convolution.test.cpp
+  - test/Division_of_Polynomials.test.cpp
   - test/convolution.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
