@@ -38,6 +38,11 @@ struct combination {
         return inv_fact[n];
     }
 
+    mint inv(int n) const {
+        assert(n <= m);
+        return inv_fact[n] * fact[n-1];
+    }
+
   private:
     int m;
     std::vector<mint> fact, inv_fact;
