@@ -74,8 +74,10 @@ data:
     \ * inv_fact[k] * inv_fact[n - k];\n    }\n\n    mint f(int n) const {\n     \
     \   assert(n <= m);\n        if (n < 0) return 0;\n        return fact[n];\n \
     \   }\n\n    mint inv_f(int n) const {\n        assert(n <= m);\n        if (n\
-    \ < 0) return 0;\n        return inv_fact[n];\n    }\n\n  private:\n    int m;\n\
-    \    std::vector<mint> fact, inv_fact;\n};\n\n}  // namespace ebi\n"
+    \ < 0) return 0;\n        return inv_fact[n];\n    }\n\n    mint inv(int n) const\
+    \ {\n        assert(n <= m);\n        return inv_fact[n] * fact[n-1];\n    }\n\
+    \n  private:\n    int m;\n    std::vector<mint> fact, inv_fact;\n};\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../utility/modint.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class mint, internal::is_modint_t<mint>* = nullptr>\n\
     struct combination {\n    combination(int n) : m(n), fact(n + 1), inv_fact(n +\
@@ -87,14 +89,16 @@ data:
     \ * inv_fact[k] * inv_fact[n - k];\n    }\n\n    mint f(int n) const {\n     \
     \   assert(n <= m);\n        if (n < 0) return 0;\n        return fact[n];\n \
     \   }\n\n    mint inv_f(int n) const {\n        assert(n <= m);\n        if (n\
-    \ < 0) return 0;\n        return inv_fact[n];\n    }\n\n  private:\n    int m;\n\
-    \    std::vector<mint> fact, inv_fact;\n};\n\n}  // namespace ebi"
+    \ < 0) return 0;\n        return inv_fact[n];\n    }\n\n    mint inv(int n) const\
+    \ {\n        assert(n <= m);\n        return inv_fact[n] * fact[n-1];\n    }\n\
+    \n  private:\n    int m;\n    std::vector<mint> fact, inv_fact;\n};\n\n}  // namespace\
+    \ ebi"
   dependsOn:
   - utility/modint.hpp
   isVerificationFile: false
   path: math/combination.hpp
   requiredBy: []
-  timestamp: '2023-05-25 18:42:12+09:00'
+  timestamp: '2023-05-29 15:31:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/combination.hpp
