@@ -8,7 +8,7 @@ data:
   - icon: ':warning:'
     path: fps/product_of_one_plus_xn.hpp
     title: fps/product_of_one_plus_xn.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/taylor_shift.hpp
     title: fps/taylor_shift.hpp
   _extendedVerifiedWith:
@@ -21,18 +21,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Inv_of_Formal_Power_Series.test.cpp
     title: test/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Polynomial_Taylor_Shift.test.cpp
     title: test/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Pow_of_Formal_Power_Series.test.cpp
     title: test/Pow_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -187,7 +187,7 @@ data:
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
   timestamp: '2023-05-26 15:37:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Pow_of_Formal_Power_Series.test.cpp

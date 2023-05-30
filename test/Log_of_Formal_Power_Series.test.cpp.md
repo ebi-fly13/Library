@@ -1,26 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: fps/fps.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
+  - icon: ':question:'
+    path: utility/modint_base.hpp
+    title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
@@ -44,10 +47,14 @@ data:
     \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
     \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
     }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
-    \n#line 6 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\nnamespace internal\
-    \ {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base {};\r\
-    \n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\r\n\
-    template <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
+    \n#line 6 \"utility/modint.hpp\"\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n\
+    #line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
+    \nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
+    \ : modint_base {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
@@ -91,10 +98,7 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
-    \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
-    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
-    \n\r\n}  // namespace internal\r\n\r\n}  // namespace ebi\n#line 10 \"convolution/ntt.hpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 10 \"convolution/ntt.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class mint, int g = internal::primitive_root<mint::mod()>,\n\
     \          internal::is_static_modint_t<mint>* = nullptr>\nstruct ntt_info {\n\
     \    static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);\n\n    std::array<mint,\
@@ -229,12 +233,13 @@ data:
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
+  - utility/modint_base.hpp
   - fps/fps.hpp
   isVerificationFile: true
   path: test/Log_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-05-26 15:37:50+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-31 02:50:45+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Log_of_Formal_Power_Series.test.cpp
 layout: document

@@ -1,20 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: heavy light decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
+  - icon: ':question:'
+    path: utility/modint_base.hpp
+    title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -98,10 +101,14 @@ data:
     \ F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n   \
     \ int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
     \ nxt, par, depth;\n};\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\
-    \r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\nnamespace ebi\
-    \ {\r\n\r\nnamespace internal {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base\
-    \ : modint_base {};\r\n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\r\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
+    \r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
+    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
+    \ : modint_base {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
@@ -145,10 +152,7 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
-    \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
-    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
-    \n\r\n}  // namespace internal\r\n\r\n}  // namespace ebi\n#line 9 \"test/vertex_set_path_compositie.test.cpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/vertex_set_path_compositie.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nusing i64 = std::int64_t;\n\nstruct\
     \ S {\n    mint c, d;\n};\n\nS op(S a, S b) {\n    return {b.c * a.c, b.c * a.d\
     \ + b.d};\n}\n\nS e() {\n    return {1, 0};\n}\n\nint main() {\n    int n, q;\n\
@@ -196,11 +200,12 @@ data:
   - data_structure/segtree.hpp
   - tree/heavy_light_decomposition.hpp
   - utility/modint.hpp
+  - utility/modint_base.hpp
   isVerificationFile: true
   path: test/vertex_set_path_compositie.test.cpp
   requiredBy: []
-  timestamp: '2023-05-25 18:42:12+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-31 02:50:45+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/vertex_set_path_compositie.test.cpp
 layout: document

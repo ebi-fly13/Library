@@ -1,9 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
+  - icon: ':question:'
+    path: utility/modint_base.hpp
+    title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -13,10 +16,14 @@ data:
     links: []
   bundledCode: "#line 2 \"math/combination.hpp\"\n\n#include <cassert>\n#include <vector>\n\
     \n#line 2 \"utility/modint.hpp\"\n\r\n#line 4 \"utility/modint.hpp\"\n#include\
-    \ <iostream>\r\n#include <type_traits>\r\n\r\nnamespace ebi {\r\n\r\nnamespace\
-    \ internal {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base\
-    \ {};\r\n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\r\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
+    \ <iostream>\r\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
+    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
+    \ : modint_base {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
@@ -60,10 +67,7 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
-    \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
-    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
-    \n\r\n}  // namespace internal\r\n\r\n}  // namespace ebi\n#line 7 \"math/combination.hpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 7 \"math/combination.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class mint, internal::is_modint_t<mint>* = nullptr>\n\
     struct combination {\n    combination(int n) : m(n), fact(n + 1), inv_fact(n +\
     \ 1) {\n        fact[0] = 1;\n        for (int i = 1; i <= n; i++) {\n       \
@@ -95,10 +99,11 @@ data:
     \ ebi"
   dependsOn:
   - utility/modint.hpp
+  - utility/modint_base.hpp
   isVerificationFile: false
   path: math/combination.hpp
   requiredBy: []
-  timestamp: '2023-05-29 15:31:20+09:00'
+  timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/combination.hpp

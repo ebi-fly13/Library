@@ -1,11 +1,14 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: utility/modint_base.hpp
+    title: utility/modint_base.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitary_ntt.hpp
     title: convolution/arbitary_ntt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
   - icon: ':warning:'
@@ -45,49 +48,53 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Log_of_Formal_Power_Series.test.cpp
     title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Polynomial_Taylor_Shift.test.cpp
     title: test/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Pow_of_Formal_Power_Series.test.cpp
     title: test/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Tree_Path_Composite_Sum.test.cpp
     title: test/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/aoj_2863.test.cpp
     title: test/aoj/aoj_2863.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/pow.test.cpp
     title: test/pow.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#include\
-    \ <iostream>\r\n#include <type_traits>\r\n\r\nnamespace ebi {\r\n\r\nnamespace\
-    \ internal {\r\n\r\nstruct modint_base {};\r\nstruct static_modint_base : modint_base\
-    \ {};\r\n\r\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\r\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\
+    \ <iostream>\r\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
+    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
+    \ : modint_base {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
@@ -131,29 +138,26 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
-    \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
-    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
-    \n\r\n}  // namespace internal\r\n\r\n}  // namespace ebi\n"
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <cassert>\r\n#include <iostream>\r\n#include\
-    \ <type_traits>\r\n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct\
-    \ modint_base {};\r\nstruct static_modint_base : modint_base {};\r\n\r\ntemplate\
-    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\r\ntemplate <class\
-    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\r\n\r\n}  // namespace\
-    \ internal\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
-    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const modint\
-    \ &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
+    \ <type_traits>\r\n\r\n#include \"../utility/modint_base.hpp\"\r\n\r\nnamespace\
+    \ ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base : modint_base\
+    \ {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
+    \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
+    \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
+    \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
+    \   }\r\n\r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n\
+    \        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint()\
+    \ : _v(0) {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %=\
+    \ (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\n       \
+    \ _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr unsigned int val() const\
+    \ {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
+    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
+    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
+    \n        _v--;\r\n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const\
+    \ modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
     \n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const modint\
     \ &rhs) {\r\n        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\
     \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
@@ -183,11 +187,9 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\nnamespace internal {\r\n\r\ntemplate <class\
-    \ T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
-    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
-    \n\r\n}  // namespace internal\r\n\r\n}  // namespace ebi"
-  dependsOn: []
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi"
+  dependsOn:
+  - utility/modint_base.hpp
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy:
@@ -195,8 +197,8 @@ data:
   - convolution/arbitary_ntt.hpp
   - math/combination.hpp
   - math/lagrange_interpolation.hpp
-  timestamp: '2023-05-25 18:42:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-31 02:50:45+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Determinant_of_Matrix.test.cpp
   - test/vertex_set_path_compositie.test.cpp
