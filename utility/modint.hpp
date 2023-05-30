@@ -4,15 +4,19 @@
 #include <iostream>
 #include <type_traits>
 
+#include "../utility/modint_base.hpp"
+
 namespace ebi {
 
 namespace internal {
 
-struct modint_base {};
 struct static_modint_base : modint_base {};
 
-template <class T> using is_modint = std::is_base_of<modint_base, T>;
-template <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;
+template <class T>
+using is_static_modint = std::is_base_of<internal::static_modint_base, T>;
+
+template <class T>
+using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;
 
 }  // namespace internal
 
@@ -141,15 +145,5 @@ std::ostream &operator<<(std::ostream &os, const static_modint<m> &a) {
 
 using modint998244353 = static_modint<998244353>;
 using modint1000000007 = static_modint<1000000007>;
-
-namespace internal {
-
-template <class T>
-using is_static_modint = std::is_base_of<internal::static_modint_base, T>;
-
-template <class T>
-using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;
-
-}  // namespace internal
 
 }  // namespace ebi
