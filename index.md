@@ -47,7 +47,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/and_convolution.hpp
       title: Bitwise AND Convolution
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
     - icon: ':heavy_check_mark:'
@@ -315,7 +315,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Bitwise_Xor_Convolution.test.cpp
       title: test/Bitwise_Xor_Convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Convolution_Mod_1000000007.test.cpp
       title: test/Convolution_Mod_1000000007.test.cpp
     - icon: ':heavy_check_mark:'

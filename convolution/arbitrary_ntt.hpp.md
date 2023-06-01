@@ -17,10 +17,13 @@ data:
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Convolution_Mod_1000000007.test.cpp
+    title: test/Convolution_Mod_1000000007.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/arbitrary_ntt.hpp\"\n\n#include <cstdint>\n\
@@ -195,8 +198,9 @@ data:
   path: convolution/arbitrary_ntt.hpp
   requiredBy: []
   timestamp: '2023-06-01 23:10:58+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/Convolution_Mod_1000000007.test.cpp
 documentation_of: convolution/arbitrary_ntt.hpp
 layout: document
 title: Arbitrary Convolution
