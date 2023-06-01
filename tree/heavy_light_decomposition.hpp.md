@@ -99,10 +99,10 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_2450.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
-  - test/vertex_add_subtree_sum.test.cpp
   - test/vertex_add_path_sum.test.cpp
+  - test/vertex_add_subtree_sum.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
+  - test/aoj/aoj_2450.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
 title: heavy light decomposition
