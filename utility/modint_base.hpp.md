@@ -10,7 +10,7 @@ data:
     title: convolution/ntt.hpp
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
-    title: fps/fps_sqrt.hpp
+    title: $\sqrt{f}$
   - icon: ':warning:'
     path: math/combination.hpp
     title: math/combination.hpp

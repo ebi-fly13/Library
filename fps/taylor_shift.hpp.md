@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
-    title: fps/fps.hpp
+    title: Formal Power Series
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -124,8 +124,10 @@ data:
   - test/Polynomial_Taylor_Shift.test.cpp
 documentation_of: fps/taylor_shift.hpp
 layout: document
-redirect_from:
-- /library/fps/taylor_shift.hpp
-- /library/fps/taylor_shift.hpp.html
-title: fps/taylor_shift.hpp
+title: $f(x + c)$
 ---
+
+## 説明
+
+形式的べき級数 $f(x)$ に対して、 $f(x + c)$ を求める。
+$O(N \log N)$

@@ -4,16 +4,16 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
-    title: fps/fps_sqrt.hpp
+    title: $\sqrt{f}$
   - icon: ':warning:'
     path: fps/product_of_one_minus_xn.hpp
-    title: fps/product_of_one_minus_xn.hpp
+    title: $\prod (1 - x^a_i) \mod x^d$
   - icon: ':warning:'
     path: fps/product_of_one_plus_xn.hpp
-    title: fps/product_of_one_plus_xn.hpp
+    title: $\prod (1 + x^a_i) \mod x^d$
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
-    title: fps/taylor_shift.hpp
+    title: $f(x + c)$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Division_of_Polynomials.test.cpp
@@ -207,8 +207,90 @@ data:
   - test/Division_of_Polynomials.test.cpp
 documentation_of: fps/fps.hpp
 layout: document
-redirect_from:
-- /library/fps/fps.hpp
-- /library/fps/fps.hpp.html
-title: fps/fps.hpp
+title: Formal Power Series
 ---
+
+## 説明
+
+形式的べき級数 $f$ を管理し、各種操作を行う構造体。`std::vector`を継承している。
+
+### テンプレート引数
+
+- `mint`
+形式的べき級数の係数の型。modintを想定している。
+
+- `std::vector<mint> convolution(const std::vector<mint> &, const std::vector<mint> &)`
+配列`std::vector<mint>`の畳み込み`covolution`。
+愚直 $O(N^2)$ 、NTTを用いると $O(N\log N)$ となる。
+以下畳み込みの計算量を $O(N\log N)$ として計算量を記述する。
+
+### コンストラクタ
+
+`std::vector` と同一。
+
+### 和・差
+
+$O(N)$
+
+### 積
+
+NTTを用いると $O(N\log N)$
+
+### 割り算・余り
+
+$f, g$ を多項式として、 $f = q * g + r$ となる多項式 $q$ を商、 $r$ を余りとする。
+$O(N\log N)$
+
+### deg()
+
+$f$ の最大次数 $+1$ を返す。
+
+### pre(int sz)
+
+多項式の前 $sz$ 項を所得する。
+
+### rev()
+
+多項式を反転させる。つまり $n = deg()$ として $f(x^{-1}) * x^{n-1}$ を計算する。
+$O(N)$
+
+### differantial()
+
+形式的べき級数 $f$ を微分したものを返す。
+$O(N)$
+
+### integral()
+
+形式的べき級数 $f$ を積分したものを返す。
+$O(N)$
+
+### inv(int d)
+
+形式的べき級数 $f$ の逆元を $\mod x^d$ で求める。
+$O(N \log N)$
+
+### log(int d)
+
+形式的べき級数 $f$ の $\log$ を $\mod x^d$ で求める。
+$O(N\log N)$
+
+### exp(int d)
+
+形式的べき級数 $f$ の $\exp$ を $\mod x^d$ で求める。
+$O(N\log N)$
+
+### pow(int64_t k, int d)
+
+形式的べき級数 $f$ について $f^k \mod x^d$ を求める。愚直だと $O(N\log N \log K)$ だが、$\log$ を取って $k$ を掛けて $\exp$ を取ることで求める。
+$O(N\log N)$
+
+### sqrt(int d)
+
+
+
+形式的べき級数 $f$ について $\sqrt{f}$ が存在するなら求める。存在しない場合は `std::nullopt`を返す。
+$O(N\log N)$
+
+### shrink()
+
+末尾の不要なゼロを削除する。

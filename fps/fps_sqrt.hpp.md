@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
-    title: fps/fps.hpp
+    title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
@@ -197,8 +197,10 @@ data:
   - test/Sqrt_of_Formal_Power_Series.test.cpp
 documentation_of: fps/fps_sqrt.hpp
 layout: document
-redirect_from:
-- /library/fps/fps_sqrt.hpp
-- /library/fps/fps_sqrt.hpp.html
-title: fps/fps_sqrt.hpp
+title: $\sqrt{f}$
 ---
+
+### sqrt(int d)
+
+形式的べき級数 $f$ について $\sqrt{f}$ が存在するなら求める。存在しない場合は `std::nullopt`を返す。
+$O(N\log N)$

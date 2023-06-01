@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
-    title: fps/fps_sqrt.hpp
+    title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp

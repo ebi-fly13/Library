@@ -6,10 +6,10 @@ data:
     title: convolution/ntt.hpp
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
-    title: fps/fps.hpp
+    title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
-    title: fps/taylor_shift.hpp
+    title: $f(x + c)$
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp

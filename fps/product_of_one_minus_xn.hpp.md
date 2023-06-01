@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
-    title: fps/fps.hpp
+    title: Formal Power Series
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -118,8 +118,9 @@ data:
   verifiedWith: []
 documentation_of: fps/product_of_one_minus_xn.hpp
 layout: document
-redirect_from:
-- /library/fps/product_of_one_minus_xn.hpp
-- /library/fps/product_of_one_minus_xn.hpp.html
-title: fps/product_of_one_minus_xn.hpp
+title: $\prod (1 - x^a_i) \mod x^d$
 ---
+
+## 説明
+
+$\prod (1 - x^a_i) \mod x^d$ を $O(D(\log D + \log \max a))$ で求める。 $D$ は求めたい最大の次数である。中身は、$\log$ を取って $\exp$ している。
