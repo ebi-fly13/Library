@@ -7,10 +7,10 @@ data:
     title: $\sqrt{f}$
   - icon: ':warning:'
     path: fps/product_of_one_minus_xn.hpp
-    title: $\prod (1 - x^a_i) \mod x^d$
+    title: $\prod (1 - x^{a_i}) \mod x^d$
   - icon: ':warning:'
     path: fps/product_of_one_plus_xn.hpp
-    title: $\prod (1 + x^a_i) \mod x^d$
+    title: $\prod (1 + x^{a_i}) \mod x^d$
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
