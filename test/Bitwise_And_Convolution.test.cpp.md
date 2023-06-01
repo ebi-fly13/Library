@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: convolution/and_convolution.hpp
     title: Bitwise AND Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/superset_zeta.hpp
     title: set_function/superset_zeta.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/bitwise_and_convolution
@@ -30,42 +30,42 @@ data:
     \ \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\n#include <iostream>\n\
     #include <vector>\n\n#line 2 \"convolution/and_convolution.hpp\"\n\n#line 4 \"\
     convolution/and_convolution.hpp\"\n\n#line 2 \"set_function/superset_zeta.hpp\"\
-    \n\n#line 4 \"set_function/superset_zeta.hpp\"\n\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
-    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
-    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
-    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
-    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
-    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
-    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
-    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
-    }\n\n}  // namespace ebi\n#line 6 \"set_function/superset_zeta.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class T> std::vector<T> superset_zeta(const std::vector<T>\
-    \ &a) {\n    int n = msb(a.size());\n    assert((1 << n) == (int)a.size());\n\
-    \    std::vector<T> ra = a;\n    for (int i = 0; i < n; i++) {\n        int w\
+    \n\n#include <cassert>\n#line 5 \"set_function/superset_zeta.hpp\"\n\n#line 2\
+    \ \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned\
+    \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
+    }\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
+    \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
+    \ i - 1);\n    }\n    return rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x =\
+    \ 0;\n    while ((1U << x) < (unsigned int)(n)) x++;\n    return x;\n}\n\nint\
+    \ popcnt(int x) {\n    return __builtin_popcount(x);\n}\n\nint msb(int x) {\n\
+    \    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\nint bsf(int x) {\n  \
+    \  return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace ebi\n#line 7\
+    \ \"set_function/superset_zeta.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\
+    \ std::vector<T> superset_zeta(const std::vector<T> &a) {\n    int n = msb(a.size());\n\
+    \    assert((1 << n) == (int)a.size());\n    std::vector<T> ra = a;\n    for (int\
+    \ i = 0; i < n; i++) {\n        int w = 1 << i;\n        for (int p = 0; p < (1\
+    \ << n); p += 2 * w) {\n            for (int s = p; s < p + w; s++) {\n      \
+    \          int t = s | w;\n                ra[s] += ra[t];\n            }\n  \
+    \      }\n    }\n    return ra;\n}\n\ntemplate <class T> std::vector<T> superset_mobius(const\
+    \ std::vector<T> &ra) {\n    int n = msb(ra.size());\n    assert((1 << n) == (int)ra.size());\n\
+    \    std::vector<T> a = ra;\n    for (int i = 0; i < n; i++) {\n        int w\
     \ = 1 << i;\n        for (int p = 0; p < (1 << n); p += 2 * w) {\n           \
     \ for (int s = p; s < p + w; s++) {\n                int t = s | w;\n        \
-    \        ra[s] += ra[t];\n            }\n        }\n    }\n    return ra;\n}\n\
-    \ntemplate <class T> std::vector<T> superset_mobius(const std::vector<T> &ra)\
-    \ {\n    int n = msb(ra.size());\n    assert((1 << n) == (int)ra.size());\n  \
-    \  std::vector<T> a = ra;\n    for (int i = 0; i < n; i++) {\n        int w =\
-    \ 1 << i;\n        for (int p = 0; p < (1 << n); p += 2 * w) {\n            for\
-    \ (int s = p; s < p + w; s++) {\n                int t = s | w;\n            \
-    \    a[s] -= a[t];\n            }\n        }\n    }\n    return a;\n}\n\n}  //\
-    \ namespace ebi\n#line 6 \"convolution/and_convolution.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class T>\nstd::vector<T> and_convolution(const std::vector<T>\
+    \        a[s] -= a[t];\n            }\n        }\n    }\n    return a;\n}\n\n\
+    }  // namespace ebi\n#line 6 \"convolution/and_convolution.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T>\nstd::vector<T> and_convolution(const std::vector<T>\
     \ &a,\n                               const std::vector<T> &b) {\n    int n =\
     \ a.size();\n    auto ra = superset_zeta(a);\n    auto rb = superset_zeta(b);\n\
     \    for (int i = 0; i < n; i++) {\n        ra[i] *= rb[i];\n    }\n    return\
     \ superset_mobius(ra);\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\
-    \n\r\n#include <cassert>\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\
-    \n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
-    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
-    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\n}  // namespace\
-    \ internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base : modint_base\
-    \ {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \n\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"\
+    utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace\
+    \ ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate <class T>\
+    \ using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class T> using\
+    \ is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\n}  // namespace internal\n\
+    \n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\
+    \r\nnamespace internal {\r\n\r\nstruct static_modint_base : modint_base {};\r\n\
+    \r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
     \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
@@ -136,8 +136,8 @@ data:
   isVerificationFile: true
   path: test/Bitwise_And_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-06-01 22:59:55+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-06-01 23:05:53+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Bitwise_And_Convolution.test.cpp
 layout: document

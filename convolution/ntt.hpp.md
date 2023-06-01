@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
@@ -222,16 +222,16 @@ data:
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Convolution_Mod_1000000007.test.cpp
-  - test/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/convolution.test.cpp
-  - test/Log_of_Formal_Power_Series.test.cpp
-  - test/Division_of_Polynomials.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/Inv_of_Formal_Power_Series.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Polynomial_Taylor_Shift.test.cpp
   - test/Pow_of_Formal_Power_Series.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/Convolution_Mod_1000000007.test.cpp
+  - test/Polynomial_Taylor_Shift.test.cpp
+  - test/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
+  - test/Division_of_Polynomials.test.cpp
+  - test/convolution.test.cpp
 documentation_of: convolution/ntt.hpp
 layout: document
 redirect_from:

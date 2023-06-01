@@ -44,7 +44,7 @@ data:
       title: algorithm/two_sat.hpp
   - name: convolution
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: convolution/and_convolution.hpp
       title: Bitwise AND Convolution
     - icon: ':heavy_check_mark:'
@@ -260,7 +260,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: set_function/subset_zeta.hpp
       title: set_function/subset_zeta.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: set_function/superset_zeta.hpp
       title: set_function/superset_zeta.hpp
   - name: tree
@@ -282,7 +282,7 @@ data:
       title: rerooting
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
     - icon: ':heavy_check_mark:'
@@ -291,10 +291,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
     - icon: ':heavy_check_mark:'
@@ -306,7 +306,7 @@ data:
   verificationCategories:
   - name: test
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Bitwise_And_Convolution.test.cpp
       title: test/Bitwise_And_Convolution.test.cpp
     - icon: ':heavy_check_mark:'

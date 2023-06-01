@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: set_function/subset_zeta.hpp
     title: set_function/subset_zeta.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy: []
