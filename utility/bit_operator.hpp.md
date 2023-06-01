@@ -25,10 +25,10 @@ data:
     title: set_function/sps_exp.hpp
   - icon: ':heavy_check_mark:'
     path: set_function/subset_zeta.hpp
-    title: set_function/subset_zeta.hpp
+    title: Subset Zeta Transform
   - icon: ':heavy_check_mark:'
     path: set_function/superset_zeta.hpp
-    title: set_function/superset_zeta.hpp
+    title: Superset Zeta Transform
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_And_Convolution.test.cpp
