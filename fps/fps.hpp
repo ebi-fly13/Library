@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cassert>
 #include <vector>
+#include <optional>
 
 namespace ebi {
 
@@ -211,6 +212,8 @@ struct FormalPowerSeries : std::vector<mint> {
     void shrink() {
         while ((!this->empty()) && this->back() == 0) this->pop_back();
     }
+
+    std::optional<FPS> sqrt(int d = -1) const;
 };
 
 }  // namespace ebi
