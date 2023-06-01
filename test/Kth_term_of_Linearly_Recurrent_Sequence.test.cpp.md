@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
-    title: convolution/ntt.hpp
+    title: NTT Convolution
   - icon: ':heavy_check_mark:'
     path: math/boastan_mori_algorithm.hpp
     title: math/boastan_mori_algorithm.hpp

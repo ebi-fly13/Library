@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: convolution/xor_convolution.hpp
-    title: convolution/xor_convolution.hpp
+    title: Bitwise XOR Convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_Xor_Convolution.test.cpp

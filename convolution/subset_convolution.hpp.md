@@ -92,8 +92,10 @@ data:
   - test/subset_convolution.test.cpp
 documentation_of: convolution/subset_convolution.hpp
 layout: document
-redirect_from:
-- /library/convolution/subset_convolution.hpp
-- /library/convolution/subset_convolution.hpp.html
-title: convolution/subset_convolution.hpp
+title: Subset Convolution
 ---
+
+## 説明
+
+長さ $2^N$ の整数列 $a$ と $b$ について、 $c_k = \sum_{i\& j=0, i|j=k} a_i b_j$ を求める。
+$O(N^2 2^N)$

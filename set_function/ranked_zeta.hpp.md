@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: convolution/subset_convolution.hpp
-    title: convolution/subset_convolution.hpp
+    title: Subset Convolution
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
     title: set_function/sps_exp.hpp

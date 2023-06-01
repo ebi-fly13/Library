@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: convolution/subset_convolution.hpp
-    title: convolution/subset_convolution.hpp
+    title: Subset Convolution
   - icon: ':heavy_check_mark:'
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp

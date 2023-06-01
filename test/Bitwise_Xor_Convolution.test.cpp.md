@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: convolution/xor_convolution.hpp
-    title: convolution/xor_convolution.hpp
+    title: Bitwise XOR Convolution
   - icon: ':heavy_check_mark:'
     path: set_function/hadamard_transform.hpp
     title: set_function/hadamard_transform.hpp

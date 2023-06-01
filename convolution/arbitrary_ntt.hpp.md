@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
-    title: convolution/ntt.hpp
+    title: NTT Convolution
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
@@ -17,19 +17,16 @@ data:
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Convolution_Mod_1000000007.test.cpp
-    title: test/Convolution_Mod_1000000007.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"convolution/arbitary_ntt.hpp\"\n\n#include <cstdint>\n#include\
-    \ <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
-    #line 6 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
+  bundledCode: "#line 2 \"convolution/arbitrary_ntt.hpp\"\n\n#include <cstdint>\n\
+    #include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include\
+    \ <type_traits>\n#line 6 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
     \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
     \ return 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
@@ -137,7 +134,7 @@ data:
     \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 8 \"convolution/arbitary_ntt.hpp\"\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 8 \"convolution/arbitrary_ntt.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class T, class mint,\
     \ internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> multiply(const\
     \ std::vector<T>& f, const std::vector<T>& g) {\n    std::vector<mint> a, b;\n\
@@ -195,16 +192,16 @@ data:
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: false
-  path: convolution/arbitary_ntt.hpp
+  path: convolution/arbitrary_ntt.hpp
   requiredBy: []
-  timestamp: '2023-05-31 02:50:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/Convolution_Mod_1000000007.test.cpp
-documentation_of: convolution/arbitary_ntt.hpp
+  timestamp: '2023-06-01 23:10:58+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: convolution/arbitrary_ntt.hpp
 layout: document
-redirect_from:
-- /library/convolution/arbitary_ntt.hpp
-- /library/convolution/arbitary_ntt.hpp.html
-title: convolution/arbitary_ntt.hpp
+title: Arbitrary Convolution
 ---
+
+## 説明
+
+任意の素数 $\mod$ における $O(N\log N)$ 時間での畳み込み。

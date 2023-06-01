@@ -47,21 +47,21 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/and_convolution.hpp
       title: Bitwise AND Convolution
-    - icon: ':heavy_check_mark:'
-      path: convolution/arbitary_ntt.hpp
-      title: convolution/arbitary_ntt.hpp
+    - icon: ':warning:'
+      path: convolution/arbitrary_ntt.hpp
+      title: Arbitrary Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
-      title: convolution/ntt.hpp
+      title: NTT Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/or_convolution.hpp
       title: Bitwise OR Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/subset_convolution.hpp
-      title: convolution/subset_convolution.hpp
+      title: Subset Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/xor_convolution.hpp
-      title: convolution/xor_convolution.hpp
+      title: Bitwise XOR Convolution
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -315,7 +315,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Bitwise_Xor_Convolution.test.cpp
       title: test/Bitwise_Xor_Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Convolution_Mod_1000000007.test.cpp
       title: test/Convolution_Mod_1000000007.test.cpp
     - icon: ':heavy_check_mark:'

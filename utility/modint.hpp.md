@@ -5,12 +5,12 @@ data:
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitary_ntt.hpp
-    title: convolution/arbitary_ntt.hpp
+  - icon: ':warning:'
+    path: convolution/arbitrary_ntt.hpp
+    title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
-    title: convolution/ntt.hpp
+    title: NTT Convolution
   - icon: ':warning:'
     path: math/combination.hpp
     title: math/combination.hpp
@@ -27,9 +27,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_Xor_Convolution.test.cpp
     title: test/Bitwise_Xor_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Convolution_Mod_1000000007.test.cpp
-    title: test/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Determinant_of_Matrix.test.cpp
     title: test/Determinant_of_Matrix.test.cpp
@@ -203,7 +200,7 @@ data:
   path: utility/modint.hpp
   requiredBy:
   - convolution/ntt.hpp
-  - convolution/arbitary_ntt.hpp
+  - convolution/arbitrary_ntt.hpp
   - math/combination.hpp
   - math/lagrange_interpolation.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
@@ -219,7 +216,6 @@ data:
   - test/pow.test.cpp
   - test/Exp_of_Set_Power_Series.test.cpp
   - test/Bitwise_And_Convolution.test.cpp
-  - test/Convolution_Mod_1000000007.test.cpp
   - test/aoj/aoj_2863.test.cpp
   - test/Tree_Path_Composite_Sum.test.cpp
   - test/Polynomial_Taylor_Shift.test.cpp

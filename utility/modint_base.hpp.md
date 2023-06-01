@@ -2,12 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitary_ntt.hpp
-    title: convolution/arbitary_ntt.hpp
+  - icon: ':warning:'
+    path: convolution/arbitrary_ntt.hpp
+    title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
-    title: convolution/ntt.hpp
+    title: NTT Convolution
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
@@ -36,9 +36,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_Xor_Convolution.test.cpp
     title: test/Bitwise_Xor_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Convolution_Mod_1000000007.test.cpp
-    title: test/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Determinant_of_Matrix.test.cpp
     title: test/Determinant_of_Matrix.test.cpp
@@ -162,7 +159,7 @@ data:
   path: utility/modint_base.hpp
   requiredBy:
   - convolution/ntt.hpp
-  - convolution/arbitary_ntt.hpp
+  - convolution/arbitrary_ntt.hpp
   - fps/fps_sqrt.hpp
   - math/combination.hpp
   - math/mod_sqrt.hpp
@@ -183,7 +180,6 @@ data:
   - test/pow.test.cpp
   - test/Exp_of_Set_Power_Series.test.cpp
   - test/Bitwise_And_Convolution.test.cpp
-  - test/Convolution_Mod_1000000007.test.cpp
   - test/aoj/aoj_2863.test.cpp
   - test/Tree_Path_Composite_Sum.test.cpp
   - test/Polynomial_Taylor_Shift.test.cpp

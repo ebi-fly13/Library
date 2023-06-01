@@ -47,8 +47,10 @@ data:
   - test/Bitwise_Xor_Convolution.test.cpp
 documentation_of: convolution/xor_convolution.hpp
 layout: document
-redirect_from:
-- /library/convolution/xor_convolution.hpp
-- /library/convolution/xor_convolution.hpp.html
-title: convolution/xor_convolution.hpp
+title: Bitwise XOR Convolution
 ---
+
+## 説明
+
+長さ $2^N$ の整数列 $a$ と $b$ について、 $c_k = \sum_{i\oplus j=k} a_i b_j$ を求める。
+$O(N 2^N)$

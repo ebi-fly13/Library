@@ -14,13 +14,10 @@ data:
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitary_ntt.hpp
-    title: convolution/arbitary_ntt.hpp
+  - icon: ':warning:'
+    path: convolution/arbitrary_ntt.hpp
+    title: Arbitrary Convolution
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Convolution_Mod_1000000007.test.cpp
-    title: test/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Division_of_Polynomials.test.cpp
     title: test/Division_of_Polynomials.test.cpp
@@ -218,7 +215,7 @@ data:
   isVerificationFile: false
   path: convolution/ntt.hpp
   requiredBy:
-  - convolution/arbitary_ntt.hpp
+  - convolution/arbitrary_ntt.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -226,7 +223,6 @@ data:
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Pow_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Convolution_Mod_1000000007.test.cpp
   - test/Polynomial_Taylor_Shift.test.cpp
   - test/Sqrt_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
@@ -234,8 +230,28 @@ data:
   - test/convolution.test.cpp
 documentation_of: convolution/ntt.hpp
 layout: document
-redirect_from:
-- /library/convolution/ntt.hpp
-- /library/convolution/ntt.hpp.html
-title: convolution/ntt.hpp
+title: NTT Convolution
 ---
+
+## 説明
+
+NTT friendlyな素数における $O(N\log N)$ 時間での畳み込み。
+
+## ntt_info
+
+NTTをするために必要なデータを格納している。
+
+## butterfly(std::vector<mint> &a)
+
+配列 $a$ をNTTする。
+$a$ の配列の大きさは $2$ 冪でのみ動作する。
+
+## butterfly_inv(std::vector<mint> &a)
+
+配列 $a$ をinverse NTTする。
+$a$ の配列の大きさは $2$ 冪でのみ動作する。
+inverse NTT後に割る $N$ を行う。
+
+## convolution(std::vector<mint> a, std::vector<mint> b)
+
+$a$ と $b$ を畳み込み、その配列を返す。 $O(N\log N)$

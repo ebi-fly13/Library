@@ -2,16 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitary_ntt.hpp
-    title: convolution/arbitary_ntt.hpp
+  - icon: ':warning:'
+    path: convolution/arbitrary_ntt.hpp
+    title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
-    title: convolution/ntt.hpp
+    title: NTT Convolution
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Convolution_Mod_1000000007.test.cpp
-    title: test/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Division_of_Polynomials.test.cpp
     title: test/Division_of_Polynomials.test.cpp
@@ -61,7 +58,7 @@ data:
   path: math/internal_math.hpp
   requiredBy:
   - convolution/ntt.hpp
-  - convolution/arbitary_ntt.hpp
+  - convolution/arbitrary_ntt.hpp
   timestamp: '2023-05-17 13:24:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -69,7 +66,6 @@ data:
   - test/Inv_of_Formal_Power_Series.test.cpp
   - test/Pow_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Convolution_Mod_1000000007.test.cpp
   - test/Polynomial_Taylor_Shift.test.cpp
   - test/Sqrt_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp

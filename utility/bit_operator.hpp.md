@@ -5,18 +5,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/and_convolution.hpp
     title: Bitwise AND Convolution
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitary_ntt.hpp
-    title: convolution/arbitary_ntt.hpp
+  - icon: ':warning:'
+    path: convolution/arbitrary_ntt.hpp
+    title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
-    title: convolution/ntt.hpp
+    title: NTT Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/or_convolution.hpp
     title: Bitwise OR Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/subset_convolution.hpp
-    title: convolution/subset_convolution.hpp
+    title: Subset Convolution
   - icon: ':heavy_check_mark:'
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp
@@ -36,9 +36,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_OR_Convolution.test.cpp
     title: test/Bitwise_OR_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Convolution_Mod_1000000007.test.cpp
-    title: test/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Division_of_Polynomials.test.cpp
     title: test/Division_of_Polynomials.test.cpp
@@ -101,8 +98,8 @@ data:
   requiredBy:
   - convolution/subset_convolution.hpp
   - convolution/ntt.hpp
-  - convolution/arbitary_ntt.hpp
   - convolution/and_convolution.hpp
+  - convolution/arbitrary_ntt.hpp
   - convolution/or_convolution.hpp
   - set_function/sps_exp.hpp
   - set_function/superset_zeta.hpp
@@ -118,7 +115,6 @@ data:
   - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Exp_of_Set_Power_Series.test.cpp
   - test/Bitwise_And_Convolution.test.cpp
-  - test/Convolution_Mod_1000000007.test.cpp
   - test/Polynomial_Taylor_Shift.test.cpp
   - test/Sqrt_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
