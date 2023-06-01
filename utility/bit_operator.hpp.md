@@ -2,12 +2,18 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':x:'
+    path: convolution/and_convolution.hpp
+    title: Bitwise AND Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/arbitary_ntt.hpp
     title: convolution/arbitary_ntt.hpp
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: convolution/ntt.hpp
+  - icon: ':heavy_check_mark:'
+    path: convolution/or_convolution.hpp
+    title: Bitwise OR Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/subset_convolution.hpp
     title: convolution/subset_convolution.hpp
@@ -17,7 +23,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
     title: set_function/sps_exp.hpp
+  - icon: ':heavy_check_mark:'
+    path: set_function/subset_zeta.hpp
+    title: set_function/subset_zeta.hpp
+  - icon: ':x:'
+    path: set_function/superset_zeta.hpp
+    title: set_function/superset_zeta.hpp
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/Bitwise_And_Convolution.test.cpp
+    title: test/Bitwise_And_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Bitwise_OR_Convolution.test.cpp
+    title: test/Bitwise_OR_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Convolution_Mod_1000000007.test.cpp
     title: test/Convolution_Mod_1000000007.test.cpp
@@ -54,9 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr\
@@ -81,26 +99,32 @@ data:
   isVerificationFile: false
   path: utility/bit_operator.hpp
   requiredBy:
-  - convolution/subset_convolution.hpp
+  - convolution/and_convolution.hpp
+  - convolution/or_convolution.hpp
   - convolution/ntt.hpp
   - convolution/arbitary_ntt.hpp
-  - set_function/sps_exp.hpp
+  - convolution/subset_convolution.hpp
+  - set_function/subset_zeta.hpp
+  - set_function/superset_zeta.hpp
   - set_function/ranked_zeta.hpp
+  - set_function/sps_exp.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/Inv_of_Formal_Power_Series.test.cpp
-  - test/Pow_of_Formal_Power_Series.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Exp_of_Set_Power_Series.test.cpp
   - test/Convolution_Mod_1000000007.test.cpp
-  - test/Polynomial_Taylor_Shift.test.cpp
   - test/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/Log_of_Formal_Power_Series.test.cpp
-  - test/subset_convolution.test.cpp
-  - test/Division_of_Polynomials.test.cpp
   - test/convolution.test.cpp
+  - test/Exp_of_Set_Power_Series.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
+  - test/Division_of_Polynomials.test.cpp
+  - test/subset_convolution.test.cpp
+  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/Bitwise_OR_Convolution.test.cpp
+  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Bitwise_And_Convolution.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/Polynomial_Taylor_Shift.test.cpp
+  - test/Pow_of_Formal_Power_Series.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
 redirect_from:

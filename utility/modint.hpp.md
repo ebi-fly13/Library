@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
@@ -18,6 +18,12 @@ data:
     path: math/lagrange_interpolation.hpp
     title: math/lagrange_interpolation.hpp
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/Bitwise_And_Convolution.test.cpp
+    title: test/Bitwise_And_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Bitwise_OR_Convolution.test.cpp
+    title: test/Bitwise_OR_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_Xor_Convolution.test.cpp
     title: test/Bitwise_Xor_Convolution.test.cpp
@@ -84,9 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#include\
@@ -201,30 +207,32 @@ data:
   - math/combination.hpp
   - math/lagrange_interpolation.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/Determinant_of_Matrix.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
-  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/Inv_of_Formal_Power_Series.test.cpp
-  - test/Pow_of_Formal_Power_Series.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/pow.test.cpp
-  - test/Exp_of_Set_Power_Series.test.cpp
-  - test/Convolution_Mod_1000000007.test.cpp
-  - test/aoj/aoj_2863.test.cpp
-  - test/Tree_Path_Composite_Sum.test.cpp
-  - test/Polynomial_Taylor_Shift.test.cpp
-  - test/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/ImplicitTreap.test.cpp
-  - test/LazySegtree.test.cpp
-  - test/Log_of_Formal_Power_Series.test.cpp
-  - test/DynamicSegmentTree.test.cpp
   - test/SWAG.test.cpp
-  - test/subset_convolution.test.cpp
-  - test/Division_of_Polynomials.test.cpp
+  - test/aoj/aoj_2863.test.cpp
+  - test/Convolution_Mod_1000000007.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
+  - test/Sqrt_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp
   - test/Bitwise_Xor_Convolution.test.cpp
+  - test/Exp_of_Set_Power_Series.test.cpp
+  - test/Determinant_of_Matrix.test.cpp
+  - test/Log_of_Formal_Power_Series.test.cpp
+  - test/Division_of_Polynomials.test.cpp
+  - test/subset_convolution.test.cpp
+  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/Bitwise_OR_Convolution.test.cpp
+  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Tree_Path_Composite_Sum.test.cpp
+  - test/Bitwise_And_Convolution.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/Polynomial_Taylor_Shift.test.cpp
+  - test/pow.test.cpp
+  - test/Pow_of_Formal_Power_Series.test.cpp
+  - test/DynamicSegmentTree.test.cpp
+  - test/LazySegtree.test.cpp
+  - test/ImplicitTreap.test.cpp
 documentation_of: utility/modint.hpp
 layout: document
 redirect_from:

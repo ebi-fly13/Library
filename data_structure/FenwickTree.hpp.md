@@ -58,9 +58,9 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/geometry/segment_intersection.test.cpp
   - test/static_range_inversion_query.test.cpp
   - test/FenwickTree.test.cpp
+  - test/geometry/segment_intersection.test.cpp
 documentation_of: data_structure/FenwickTree.hpp
 layout: document
 redirect_from:

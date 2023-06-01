@@ -149,8 +149,8 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Static_Range_Frequency.test.cpp
   - test/WaveletMatrix.test.cpp
+  - test/Static_Range_Frequency.test.cpp
 documentation_of: data_structure/WaveletMatrix.hpp
 layout: document
 title: WaveletMatrix

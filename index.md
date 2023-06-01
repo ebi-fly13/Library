@@ -44,12 +44,18 @@ data:
       title: algorithm/two_sat.hpp
   - name: convolution
     pages:
+    - icon: ':x:'
+      path: convolution/and_convolution.hpp
+      title: Bitwise AND Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/arbitary_ntt.hpp
       title: convolution/arbitary_ntt.hpp
     - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: convolution/ntt.hpp
+    - icon: ':heavy_check_mark:'
+      path: convolution/or_convolution.hpp
+      title: Bitwise OR Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/subset_convolution.hpp
       title: convolution/subset_convolution.hpp
@@ -251,6 +257,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: set_function/sps_exp.hpp
       title: set_function/sps_exp.hpp
+    - icon: ':heavy_check_mark:'
+      path: set_function/subset_zeta.hpp
+      title: set_function/subset_zeta.hpp
+    - icon: ':x:'
+      path: set_function/superset_zeta.hpp
+      title: set_function/superset_zeta.hpp
   - name: tree
     pages:
     - icon: ':warning:'
@@ -270,7 +282,7 @@ data:
       title: rerooting
   - name: utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
     - icon: ':heavy_check_mark:'
@@ -279,10 +291,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
     - icon: ':heavy_check_mark:'
@@ -294,6 +306,12 @@ data:
   verificationCategories:
   - name: test
     pages:
+    - icon: ':x:'
+      path: test/Bitwise_And_Convolution.test.cpp
+      title: test/Bitwise_And_Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Bitwise_OR_Convolution.test.cpp
+      title: test/Bitwise_OR_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/Bitwise_Xor_Convolution.test.cpp
       title: test/Bitwise_Xor_Convolution.test.cpp

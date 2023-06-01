@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
@@ -106,8 +106,8 @@ data:
   isVerificationFile: false
   path: utility/dynamic_modint.hpp
   requiredBy:
-  - fps/fps_sqrt.hpp
   - math/mod_sqrt.hpp
+  - fps/fps_sqrt.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
