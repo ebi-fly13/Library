@@ -64,6 +64,9 @@ data:
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/Sqrt_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/Tree_Path_Composite_Sum.test.cpp
     title: test/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -212,6 +215,7 @@ data:
   - test/aoj/aoj_2863.test.cpp
   - test/Tree_Path_Composite_Sum.test.cpp
   - test/Polynomial_Taylor_Shift.test.cpp
+  - test/Sqrt_of_Formal_Power_Series.test.cpp
   - test/ImplicitTreap.test.cpp
   - test/LazySegtree.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp

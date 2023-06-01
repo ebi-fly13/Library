@@ -34,6 +34,9 @@ data:
     path: test/Pow_of_Formal_Power_Series.test.cpp
     title: test/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/Sqrt_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
   _isVerificationFailed: false
@@ -68,6 +71,7 @@ data:
   - test/Exp_of_Formal_Power_Series.test.cpp
   - test/Convolution_Mod_1000000007.test.cpp
   - test/Polynomial_Taylor_Shift.test.cpp
+  - test/Sqrt_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/Division_of_Polynomials.test.cpp
   - test/convolution.test.cpp

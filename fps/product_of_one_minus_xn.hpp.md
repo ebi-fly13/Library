@@ -13,10 +13,10 @@ data:
     links: []
   bundledCode: "#line 2 \"fps/product_of_one_minus_xn.hpp\"\n\n#include <vector>\n\
     \n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#line 6\
-    \ \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
-    \ (*convolution)(\n                          const std::vector<mint> &, const\
-    \ std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n\
-    \    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
+    \ \"fps/fps.hpp\"\n#include <optional>\n\nnamespace ebi {\n\ntemplate <class mint,\
+    \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
+    \ &, const std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint>\
+    \ {\n  private:\n    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
     \    using FPS = FormalPowerSeries;\n\n  public:\n    FPS operator+(const FPS\
     \ &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
     \ FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
@@ -83,8 +83,9 @@ data:
     \          }\n            if (i + 1 >= (d + k - 1) / k) break;\n        }\n  \
     \      return FPS(d);\n    }\n\n    int deg() const {\n        return (*this).size();\n\
     \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
-    \ == 0) this->pop_back();\n    }\n};\n\n}  // namespace ebi\n#line 6 \"fps/product_of_one_minus_xn.hpp\"\
-    \n\nnamespace ebi {\n\n// prod (1 - x^a_i) mod x^d\ntemplate <class mint, std::vector<mint>\
+    \ == 0) this->pop_back();\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
+    };\n\n}  // namespace ebi\n#line 6 \"fps/product_of_one_minus_xn.hpp\"\n\nnamespace\
+    \ ebi {\n\n// prod (1 - x^a_i) mod x^d\ntemplate <class mint, std::vector<mint>\
     \ (*convolution)(\n                          const std::vector<mint> &, const\
     \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> product_of_one_minus_xn(std::vector<int>\
     \ a,\n                                                             int d) {\n\
@@ -112,7 +113,7 @@ data:
   isVerificationFile: false
   path: fps/product_of_one_minus_xn.hpp
   requiredBy: []
-  timestamp: '2023-05-26 15:37:50+09:00'
+  timestamp: '2023-06-01 16:43:01+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: fps/product_of_one_minus_xn.hpp

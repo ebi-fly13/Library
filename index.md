@@ -168,6 +168,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: fps/fps.hpp
+    - icon: ':heavy_check_mark:'
+      path: fps/fps_sqrt.hpp
+      title: fps/fps_sqrt.hpp
     - icon: ':warning:'
       path: fps/product_of_one_minus_xn.hpp
       title: fps/product_of_one_minus_xn.hpp
@@ -366,6 +369,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Sqrt_Mod.test.cpp
       title: test/Sqrt_Mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Sqrt_of_Formal_Power_Series.test.cpp
+      title: test/Sqrt_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/Static_Range_Frequency.test.cpp
       title: test/Static_Range_Frequency.test.cpp

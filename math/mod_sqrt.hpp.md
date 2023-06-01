@@ -7,11 +7,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: fps/fps_sqrt.hpp
+    title: fps/fps_sqrt.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Sqrt_Mod.test.cpp
     title: test/Sqrt_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/Sqrt_of_Formal_Power_Series.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -87,11 +93,13 @@ data:
   - utility/modint_base.hpp
   isVerificationFile: false
   path: math/mod_sqrt.hpp
-  requiredBy: []
+  requiredBy:
+  - fps/fps_sqrt.hpp
   timestamp: '2023-05-31 10:21:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Sqrt_Mod.test.cpp
+  - test/Sqrt_of_Formal_Power_Series.test.cpp
 documentation_of: math/mod_sqrt.hpp
 layout: document
 redirect_from:
