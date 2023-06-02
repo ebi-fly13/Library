@@ -191,20 +191,20 @@ data:
   isVerificationFile: false
   path: fps/fps.hpp
   requiredBy:
-  - fps/fps_sqrt.hpp
   - fps/taylor_shift.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
+  - fps/fps_sqrt.hpp
   timestamp: '2023-06-01 16:43:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Inv_of_Formal_Power_Series.test.cpp
-  - test/Pow_of_Formal_Power_Series.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Polynomial_Taylor_Shift.test.cpp
   - test/Sqrt_of_Formal_Power_Series.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/Division_of_Polynomials.test.cpp
+  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/Exp_of_Formal_Power_Series.test.cpp
+  - test/Polynomial_Taylor_Shift.test.cpp
+  - test/Pow_of_Formal_Power_Series.test.cpp
 documentation_of: fps/fps.hpp
 layout: document
 title: Formal Power Series

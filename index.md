@@ -352,6 +352,9 @@ data:
       path: test/Jump_on_Tree.test.cpp
       title: test/Jump_on_Tree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/Jump_on_Tree_HLD.test.cpp
+      title: test/Jump_on_Tree_HLD.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
       title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     - icon: ':heavy_check_mark:'
