@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: data_structure/WaveletMatrix.hpp
-    title: WaveletMatrix
+    title: Wavelet Matrix
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Static_Range_Frequency.test.cpp

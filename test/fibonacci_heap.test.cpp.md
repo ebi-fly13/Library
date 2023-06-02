@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data_structure/fibonacci_heap.hpp
-    title: fibonacci_heap
+    title: fibonacci heap
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp

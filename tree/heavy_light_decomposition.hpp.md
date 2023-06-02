@@ -133,7 +133,7 @@ data:
   - test/vertex_add_path_sum.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
-title: heavy light decomposition
+title: Heavy Light Decomposition
 ---
 
 ## 説明
@@ -148,23 +148,31 @@ title: heavy light decomposition
 
 ### idx(int u)
 
-頂点 u のDFS行きがけ順の番号を返す。このidxの位置にデータ構造のインデックスを対応させればパスクエリや部分木クエリを処理することができる。具体的には使い方を参照。
+頂点 $u$ のDFS行きがけ順の番号を返す。このidxの位置にデータ構造のインデックスを対応させればパスクエリや部分木クエリを処理することができる。具体的には使い方を参照。
+
+### la(int v, int k)
+
+頂点 $v$ から $k$ だけ親方向に上った頂点を返す。 $O(\log N)$ 
 
 ### lca(int u, int v)
 
-頂点 u, v のLCAを返す。
+頂点 $u$, $v$ のLCAを返す。 $O(\log N)$
+
+### jump(int s, int t, int k)
+
+頂点 $s$ から $t$ の方向に $k$ だけ移動した頂点を返す。 $O(\log N)$
 
 ### distance(int u, int v)
 
-頂点 u, v の距離を返す。
+頂点 $u$, $v$ の距離を返す。
 
 ### path_noncommutative_query(int u, int v, bool vertex, const F &f)
 
-パス u-v にクエリ`f`を適用する。非可換。vertexがtrueのとき、頂点に属性がある。vertexがfalseのとき、辺に属性がある。親-子間の辺属性は子のidxに持つ。
+パス $u-v$ にクエリ`f`を適用する。非可換。vertexがtrueのとき、頂点に属性がある。vertexがfalseのとき、辺に属性がある。親-子間の辺属性は子のidxに持つ。
 
 ### subtree_query(int u, bool vertex, const F &f)
 
-頂点 u の部分木にクエリ`f`を適用する。vertexがtrueのとき、根頂点である u にもクエリを適用する。
+頂点 $u$ の部分木にクエリ`f`を適用する。vertexがtrueのとき、根頂点である $u$ にもクエリを適用する。
 
 ## 使い方
 

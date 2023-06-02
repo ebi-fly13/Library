@@ -6,7 +6,7 @@ data:
     title: segtree
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
-    title: heavy light decomposition
+    title: Heavy Light Decomposition
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp

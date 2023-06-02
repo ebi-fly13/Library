@@ -87,7 +87,7 @@ data:
       title: data_structure/PersistentSegmentTree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/SWAG.hpp
-      title: SlidingWindowAggregation
+      title: Sliding Window Aggregation
     - icon: ':heavy_check_mark:'
       path: data_structure/SegmentTreeBeats.hpp
       title: data_structure/SegmentTreeBeats.hpp
@@ -102,7 +102,7 @@ data:
       title: data_structure/UnionFind.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/WaveletMatrix.hpp
-      title: WaveletMatrix
+      title: Wavelet Matrix
     - icon: ':heavy_check_mark:'
       path: data_structure/bankers_queue.hpp
       title: data_structure/bankers_queue.hpp
@@ -117,7 +117,7 @@ data:
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/fibonacci_heap.hpp
-      title: fibonacci_heap
+      title: fibonacci heap
     - icon: ':warning:'
       path: data_structure/kd_tree.hpp
       title: data_structure/kd_tree.hpp
@@ -270,7 +270,7 @@ data:
       title: tree/centroid_decomposition.hpp
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
-      title: heavy light decomposition
+      title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
       path: tree/level_ancestor.hpp
       title: tree/level_ancestor.hpp

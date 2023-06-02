@@ -6,7 +6,7 @@ data:
     title: graph/template.hpp
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
-    title: heavy light decomposition
+    title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

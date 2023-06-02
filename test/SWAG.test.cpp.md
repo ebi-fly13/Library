@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data_structure/SWAG.hpp
-    title: SlidingWindowAggregation
+    title: Sliding Window Aggregation
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp

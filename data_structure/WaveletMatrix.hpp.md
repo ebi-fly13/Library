@@ -153,7 +153,7 @@ data:
   - test/Static_Range_Frequency.test.cpp
 documentation_of: data_structure/WaveletMatrix.hpp
 layout: document
-title: WaveletMatrix
+title: Wavelet Matrix
 ---
 
 ## 説明

@@ -163,7 +163,7 @@ data:
   - test/fibonacci_heap.test.cpp
 documentation_of: data_structure/fibonacci_heap.hpp
 layout: document
-title: fibonacci_heap
+title: fibonacci heap
 ---
 
 ## 説明

@@ -68,7 +68,7 @@ data:
   - test/SWAG.test.cpp
 documentation_of: data_structure/SWAG.hpp
 layout: document
-title: SlidingWindowAggregation
+title: Sliding Window Aggregation
 ---
 
 ## 説明
