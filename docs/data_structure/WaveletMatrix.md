@@ -1,5 +1,5 @@
 ---
-title: WaveletMatrix
+title: Wavelet Matrix
 documentation_of: //data_structure/WaveletMatrix.hpp
 ---
 

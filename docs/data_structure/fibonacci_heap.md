@@ -1,5 +1,5 @@
 ---
-title: fibonacci_heap
+title: fibonacci heap
 documentation_of: //data_structure/fibonacci_heap.hpp
 ---
 

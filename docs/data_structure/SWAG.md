@@ -1,5 +1,5 @@
 ---
-title: SlidingWindowAggregation
+title: Sliding Window Aggregation
 documentation_of: //data_structure/SWAG.hpp
 ---
 
