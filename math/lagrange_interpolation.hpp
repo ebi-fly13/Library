@@ -2,8 +2,6 @@
 
 #include <vector>
 
-#include "../utility/modint.hpp"
-
 /*
     reference: https://atcoder.jp/contests/abc208/editorial/2195
     verify: https://atcoder.jp/contests/abc208/tasks/abc208_f
@@ -11,10 +9,9 @@
 
 namespace ebi {
 
-using mint = modint1000000007;
-using i64 = long long;
 
-mint lagrange_interpolation(const std::vector<mint> &f, i64 n) {
+template<class mint>
+mint lagrange_interpolation(const std::vector<mint> &f, long long n) {
     const int d = int(f.size()) - 1;  // Nのd次以下の多項式
     mint fact = 1;
     std::vector<mint> inv_fact(d + 1);
