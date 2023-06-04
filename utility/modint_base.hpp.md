@@ -14,9 +14,6 @@ data:
   - icon: ':warning:'
     path: math/combination.hpp
     title: math/combination.hpp
-  - icon: ':warning:'
-    path: math/lagrange_interpolation.hpp
-    title: math/lagrange_interpolation.hpp
   - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
@@ -164,7 +161,6 @@ data:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
   - math/combination.hpp
-  - math/lagrange_interpolation.hpp
   - math/mod_sqrt.hpp
   - utility/dynamic_modint.hpp
   - utility/modint.hpp

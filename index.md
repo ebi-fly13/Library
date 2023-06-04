@@ -239,7 +239,7 @@ data:
       title: math/internal_math.hpp
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
-      title: math/lagrange_interpolation.hpp
+      title: Lagrange Interpolation
     - icon: ':warning:'
       path: math/linear_sieve.hpp
       title: math/linear_sieve.hpp

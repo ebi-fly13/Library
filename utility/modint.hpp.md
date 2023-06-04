@@ -11,12 +11,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':warning:'
-    path: math/combination.hpp
-    title: math/combination.hpp
-  - icon: ':warning:'
-    path: math/lagrange_interpolation.hpp
-    title: math/lagrange_interpolation.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_And_Convolution.test.cpp
@@ -204,8 +198,6 @@ data:
   requiredBy:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
-  - math/combination.hpp
-  - math/lagrange_interpolation.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
