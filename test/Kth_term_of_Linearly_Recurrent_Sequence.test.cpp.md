@@ -5,8 +5,8 @@ data:
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
-    path: math/boastan_mori_algorithm.hpp
-    title: math/boastan_mori_algorithm.hpp
+    path: math/bostan_mori_algorithm.hpp
+    title: Bostan-Mori Algorithm
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
@@ -142,8 +142,8 @@ data:
     \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"math/boastan_mori_algorithm.hpp\"\
-    \n\n#include <cstdint>\n#line 5 \"math/boastan_mori_algorithm.hpp\"\n\nnamespace\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"math/bostan_mori_algorithm.hpp\"\
+    \n\n#include <cstdint>\n#line 5 \"math/bostan_mori_algorithm.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <class T, std::vector<T> (*convolution)(const std::vector<T>\
     \ &,\n                                                 const std::vector<T> &)>\n\
     T bostan_mori_algorithm(std::int64_t n, std::vector<T> p, std::vector<T> q) {\n\
@@ -167,8 +167,8 @@ data:
     \ std::cin >> val;\n        c[i] = val;\n    }\n    std::cout << ebi::kitamasa<mint,\
     \ ebi::convolution>(k, a, c).val() << '\\n';\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"convolution/ntt.hpp\"\
-    \n#include \"math/boastan_mori_algorithm.hpp\"\n#include \"utility/modint.hpp\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"../convolution/ntt.hpp\"\
+    \n#include \"../math/bostan_mori_algorithm.hpp\"\n#include \"../utility/modint.hpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int d;\n    long long\
     \ k;\n    std::cin >> d >> k;\n    std::vector<mint> a(d), c(d);\n    for (int\
     \ i = 0; i < d; i++) {\n        int val;\n        std::cin >> val;\n        a[i]\
@@ -181,11 +181,11 @@ data:
   - utility/bit_operator.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
-  - math/boastan_mori_algorithm.hpp
+  - math/bostan_mori_algorithm.hpp
   isVerificationFile: true
   path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   requiredBy: []
-  timestamp: '2023-05-31 02:50:45+09:00'
+  timestamp: '2023-06-04 13:46:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp

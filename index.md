@@ -226,8 +226,8 @@ data:
       path: math/DirichletSeries.hpp
       title: math/DirichletSeries.hpp
     - icon: ':heavy_check_mark:'
-      path: math/boastan_mori_algorithm.hpp
-      title: math/boastan_mori_algorithm.hpp
+      path: math/bostan_mori_algorithm.hpp
+      title: Bostan-Mori Algorithm
     - icon: ':warning:'
       path: math/combination.hpp
       title: math/combination.hpp
