@@ -4,9 +4,9 @@
 #include <iostream>
 #include <vector>
 
-#include "convolution/ntt.hpp"
-#include "math/boastan_mori_algorithm.hpp"
-#include "utility/modint.hpp"
+#include "../convolution/ntt.hpp"
+#include "../math/bostan_mori_algorithm.hpp"
+#include "../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 
