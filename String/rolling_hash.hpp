@@ -44,7 +44,7 @@ template <int n> struct rolling_hash {
     }
 
     std::array<mint, n> get_hash(const std::string &str, int l = 0,
-                              int r = -1) const {
+                                 int r = -1) const {
         if (r < 0) r = int(str.size());
         std::array<mint, n> res(n, 0);
         for (int i = 0; i < n; ++i) {
@@ -55,9 +55,10 @@ template <int n> struct rolling_hash {
         return res;
     }
 
-    std::array<mint, n> concat(const std::array<mint, n> &hash1, const std::array<mint, n> &hash2, int len2) {
+    std::array<mint, n> concat(const std::array<mint, n> &hash1,
+                               const std::array<mint, n> &hash2, int len2) {
         std::array<mint, n> hash;
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             hash[i] = hash1[i] * base[i].pow(len2) + hash2[i];
         }
         return hash;
@@ -66,7 +67,7 @@ template <int n> struct rolling_hash {
     static void set_base() {
         static random_number_generator_64 rnd;
         for (int i = 0; i < n; ++i) {
-            base[i] = (1ull << 31) |  rnd.get(1, (1ull << 31)) ;
+            base[i] = (1ull << 31) | rnd.get(1, (1ull << 31));
         }
     }
 
@@ -79,7 +80,6 @@ template <int n> struct rolling_hash {
     static std::array<mint, n> base;
 };
 
-template<int n>
-std::array<modint61, n> rolling_hash<n>::base = {};
+template <int n> std::array<modint61, n> rolling_hash<n>::base = {};
 
 }  // namespace ebi
