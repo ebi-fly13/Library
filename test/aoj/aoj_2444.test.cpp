@@ -7,7 +7,7 @@
 #include <set>
 #include <vector>
 
-#include "../../String/rolling_hash.hpp"
+#include "../../string/rolling_hash.hpp"
 #include "../../utility/hash.hpp"
 
 using u64 = std::uint64_t;
