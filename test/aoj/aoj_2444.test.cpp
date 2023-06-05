@@ -7,7 +7,8 @@
 #include <map>
 #include <vector>
 
-#include "String/rolling_hash.hpp"
+#include "../../String/rolling_hash.hpp"
+#include "../../utility/modint61.hpp"
 
 using u64 = std::uint64_t;
 
@@ -16,7 +17,7 @@ int main() {
     std::cin >> n >> m;
     std::string s;
     std::cin >> s;
-    std::map<std::vector<u64>, int> map;
+    std::map<std::array<ebi::modint61, 2>, int> map;
     ebi::rolling_hash<2>::set_base();
     ebi::rolling_hash<2> rh(s);
     int l = 0;
