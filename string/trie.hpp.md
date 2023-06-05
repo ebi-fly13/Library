@@ -3,8 +3,8 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: String/aho_corasick.hpp
-    title: String/aho_corasick.hpp
+    path: string/aho_corasick.hpp
+    title: string/aho_corasick.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2863.test.cpp
@@ -17,7 +17,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"String/trie.hpp\"\n\r\n#include <cassert>\r\n#include <string>\r\
+  bundledCode: "#line 2 \"string/trie.hpp\"\n\r\n#include <cassert>\r\n#include <string>\r\
     \n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\n\
     template <int char_size> struct trie_node {\r\n    int common;\r\n    int nxt[char_size];\r\
     \n    std::vector<int> accept;\r\n    trie_node() : common(0) {\r\n        memset(nxt,\
@@ -79,18 +79,18 @@ data:
     \ ebi"
   dependsOn: []
   isVerificationFile: false
-  path: String/trie.hpp
+  path: string/trie.hpp
   requiredBy:
-  - String/aho_corasick.hpp
-  timestamp: '2023-05-08 16:51:58+09:00'
+  - string/aho_corasick.hpp
+  timestamp: '2023-06-06 01:19:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2873.test.cpp
   - test/aoj/aoj_2863.test.cpp
-documentation_of: String/trie.hpp
+documentation_of: string/trie.hpp
 layout: document
 redirect_from:
-- /library/String/trie.hpp
-- /library/String/trie.hpp.html
-title: String/trie.hpp
+- /library/string/trie.hpp
+- /library/string/trie.hpp.html
+title: string/trie.hpp
 ---

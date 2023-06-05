@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
-    title: utility/hash.hpp
+    title: Hash structure
   - icon: ':heavy_check_mark:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
@@ -24,7 +24,7 @@ data:
   attributes:
     links:
     - https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
-  bundledCode: "#line 2 \"String/rolling_hash.hpp\"\n\r\n#include <array>\r\n#include\
+  bundledCode: "#line 2 \"string/rolling_hash.hpp\"\n\r\n#include <array>\r\n#include\
     \ <cassert>\r\n#include <cstdint>\r\n#include <vector>\r\n\r\n#line 2 \"utility/hash.hpp\"\
     \n\n#line 4 \"utility/hash.hpp\"\n\n#line 2 \"utility/modint61.hpp\"\n\n#line\
     \ 5 \"utility/modint61.hpp\"\n#include <iostream>\n\n#line 2 \"utility/modint_base.hpp\"\
@@ -114,7 +114,7 @@ data:
     \ bool is_primitive(long long x) {\n        for (long long d : {2, 3, 5, 7, 11,\
     \ 13, 31, 41, 61, 151, 331, 1321}) {\n            if (modint61(x).pow((modint61::mod()\
     \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
-    \ true;\n    }\n};\n\n}  // namespace ebi\n#line 10 \"String/rolling_hash.hpp\"\
+    \ true;\n    }\n};\n\n}  // namespace ebi\n#line 10 \"string/rolling_hash.hpp\"\
     \n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n> struct rolling_hash {\r\n\
     \  private:\r\n    using mint = modint61;\r\n    static constexpr mint h = 100;\r\
@@ -165,16 +165,29 @@ data:
   - utility/modint_base.hpp
   - utility/random_number_generator_64.hpp
   isVerificationFile: false
-  path: String/rolling_hash.hpp
+  path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-06-06 01:05:42+09:00'
+  timestamp: '2023-06-06 01:19:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
-documentation_of: String/rolling_hash.hpp
+documentation_of: string/rolling_hash.hpp
 layout: document
-redirect_from:
-- /library/String/rolling_hash.hpp
-- /library/String/rolling_hash.hpp.html
-title: String/rolling_hash.hpp
+title: Rolling Hash
 ---
+
+## 説明
+
+文字列のハッシュを計算する。
+
+### get_hash(int l, int r)
+
+文字列の $[l, r)$ のハッシュを計算する。 $O(1)$
+
+### get_hash(std::string str, int l, int r)
+
+文字列 $str$ の $[l, r)$ のハッシュを計算する。デフォルトでは文字列全体となる。
+
+### concat(Hash hash1, Hash hash2, int len2)
+
+文字列 s1 のハッシュを hash1、文字列 s2 のハッシュを hash2として s1 + s2 のハッシュを計算する。len2 には s2 の長さを渡す。 $O(\log p)$

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: String/trie.hpp
-    title: String/trie.hpp
+    path: string/trie.hpp
+    title: string/trie.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -17,10 +17,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"String/aho_corasick.hpp\"\n\r\n#include <string.h>\r\n#include\
+  bundledCode: "#line 2 \"string/aho_corasick.hpp\"\n\r\n#include <string.h>\r\n#include\
     \ <algorithm>\r\n#include <cassert>\r\n#include <map>\r\n#include <queue>\r\n\
-    #include <vector>\r\n\r\n#line 2 \"String/trie.hpp\"\n\r\n#line 4 \"String/trie.hpp\"\
-    \n#include <string>\r\n#line 6 \"String/trie.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
+    #include <vector>\r\n\r\n#line 2 \"string/trie.hpp\"\n\r\n#line 4 \"string/trie.hpp\"\
+    \n#include <string>\r\n#line 6 \"string/trie.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
     namespace internal {\r\n\r\ntemplate <int char_size> struct trie_node {\r\n  \
     \  int common;\r\n    int nxt[char_size];\r\n    std::vector<int> accept;\r\n\
     \    trie_node() : common(0) {\r\n        memset(nxt, -1, sizeof(nxt));\r\n  \
@@ -49,7 +49,7 @@ data:
     \ > 0);\r\n    }\r\n\r\n    int size() const {\r\n        return int(nodes.size());\r\
     \n    }\r\n\r\n  private:\r\n    using Node = internal::trie_node<char_size>;\r\
     \n\r\n  protected:\r\n    std::vector<Node> nodes;\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 11 \"String/aho_corasick.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate\
+    \ ebi\n#line 11 \"string/aho_corasick.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate\
     \ <int char_size, int margin>\r\nstruct aho_corasick : trie<char_size + 1, margin>\
     \ {\r\n  private:\r\n    void move_nxt(int &now, int val) {\r\n        assert(0\
     \ <= val && val < char_size);\r\n        while (this->nodes[now].nxt[val] == -1)\r\
@@ -130,19 +130,19 @@ data:
     \ = char_size;\r\n    std::vector<int> correct;\r\n};\r\n\r\n}  // namespace ebi\r\
     \n"
   dependsOn:
-  - String/trie.hpp
+  - string/trie.hpp
   isVerificationFile: false
-  path: String/aho_corasick.hpp
+  path: string/aho_corasick.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-06-06 01:19:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2873.test.cpp
   - test/aoj/aoj_2863.test.cpp
-documentation_of: String/aho_corasick.hpp
+documentation_of: string/aho_corasick.hpp
 layout: document
 redirect_from:
-- /library/String/aho_corasick.hpp
-- /library/String/aho_corasick.hpp.html
-title: String/aho_corasick.hpp
+- /library/string/aho_corasick.hpp
+- /library/string/aho_corasick.hpp.html
+title: string/aho_corasick.hpp
 ---

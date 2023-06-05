@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: String/rolling_hash.hpp
-    title: String/rolling_hash.hpp
+    path: string/rolling_hash.hpp
+    title: Rolling Hash
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
-    title: utility/hash.hpp
+    title: Hash structure
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
@@ -35,7 +35,7 @@ data:
   path: utility/random_number_generator_64.hpp
   requiredBy:
   - utility/hash.hpp
-  - String/rolling_hash.hpp
+  - string/rolling_hash.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -12,8 +12,8 @@ data:
     title: utility/random_number_generator_64.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: String/rolling_hash.hpp
-    title: String/rolling_hash.hpp
+    path: string/rolling_hash.hpp
+    title: Rolling Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
@@ -157,15 +157,24 @@ data:
   isVerificationFile: false
   path: utility/hash.hpp
   requiredBy:
-  - String/rolling_hash.hpp
+  - string/rolling_hash.hpp
   timestamp: '2023-06-06 01:05:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
 documentation_of: utility/hash.hpp
 layout: document
-redirect_from:
-- /library/utility/hash.hpp
-- /library/utility/hash.hpp.html
-title: utility/hash.hpp
+title: Hash structure
 ---
+
+## 説明
+
+ハッシュを簡単に計算するための構造体。内部では $\mod 2^{61} - 1$ で計算している。
+
+## pow(long long n)
+
+ハッシュを $n$ 乗する
+
+## get_basis
+
+ランダムなハッシュを生成。各要素は $\mod 2^{61} - 1$ で原始根となる。

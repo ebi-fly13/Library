@@ -9,7 +9,7 @@ data:
   attributes:
     links:
     - https://gist.github.com/draftcode/1357281
-  bundledCode: "#line 2 \"String/parsing.hpp\"\n\n#include <cassert>\n#include <cctype>\n\
+  bundledCode: "#line 2 \"string/parsing.hpp\"\n\n#include <cassert>\n#include <cctype>\n\
     #include <iostream>\n#include <string>\n\n/*\n    reference: https://gist.github.com/draftcode/1357281\n\
     */\n\nnamespace ebi {\n\ntypedef std::string::const_iterator State;\nclass ParseError\
     \ {};\n\nbool expect(State &begin, char expected) {\n    if (*begin == expected)\
@@ -33,15 +33,15 @@ data:
     \ c) {\n    return 'a' <= c && c <= 'z';\n}\n\n}  // namespace ebi\n"
   dependsOn: []
   isVerificationFile: false
-  path: String/parsing.hpp
+  path: string/parsing.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-06-06 01:19:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: String/parsing.hpp
+documentation_of: string/parsing.hpp
 layout: document
 redirect_from:
-- /library/String/parsing.hpp
-- /library/String/parsing.hpp.html
-title: String/parsing.hpp
+- /library/string/parsing.hpp
+- /library/string/parsing.hpp.html
+title: string/parsing.hpp
 ---

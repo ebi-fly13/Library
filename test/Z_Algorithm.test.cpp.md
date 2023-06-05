@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: String/Z_Algorithm.hpp
-    title: String/Z_Algorithm.hpp
+    path: string/Z_Algorithm.hpp
+    title: string/Z_Algorithm.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -15,7 +15,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/zalgorithm
   bundledCode: "#line 1 \"test/Z_Algorithm.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\
-    \r\n\r\n#line 2 \"String/Z_Algorithm.hpp\"\n\r\n#include <string>\r\n#include\
+    \r\n\r\n#line 2 \"string/Z_Algorithm.hpp\"\n\r\n#include <string>\r\n#include\
     \ <vector>\r\n\r\n/*\r\n    reference: https://snuke.hatenablog.com/entry/2014/12/03/214243\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\nstd::vector<int> Z_Algorithm(const std::string\
     \ &s) {\r\n    int n = s.size();\r\n    std::vector<int> prefix(n);\r\n    prefix[0]\
@@ -33,17 +33,17 @@ data:
     \ i++) {\r\n        std::cout << \" \" << A[i];\r\n    }\r\n    std::cout << '\\\
     n';\r\n}\r\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\r\n\r\n#include\
-    \ \"../String/Z_Algorithm.hpp\"\r\n\r\n#include <iostream>\r\n#include <vector>\r\
+    \ \"../string/Z_Algorithm.hpp\"\r\n\r\n#include <iostream>\r\n#include <vector>\r\
     \n\r\nint main() {\r\n    std::string s;\r\n    std::cin >> s;\r\n    auto A =\
     \ ebi::Z_Algorithm(s);\r\n    std::cout << A[0];\r\n    for (int i = 1; i < s.size();\
     \ i++) {\r\n        std::cout << \" \" << A[i];\r\n    }\r\n    std::cout << '\\\
     n';\r\n}\r\n"
   dependsOn:
-  - String/Z_Algorithm.hpp
+  - string/Z_Algorithm.hpp
   isVerificationFile: true
   path: test/Z_Algorithm.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 17:19:05+09:00'
+  timestamp: '2023-06-06 01:19:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Z_Algorithm.test.cpp

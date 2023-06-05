@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: String/rolling_hash.hpp
-    title: String/rolling_hash.hpp
-  - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
@@ -21,11 +18,14 @@ data:
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
   - icon: ':heavy_check_mark:'
+    path: string/rolling_hash.hpp
+    title: Rolling Hash
+  - icon: ':heavy_check_mark:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
-    title: utility/hash.hpp
+    title: Hash structure
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
@@ -179,7 +179,7 @@ data:
   - utility/hash.hpp
   - utility/modint.hpp
   - fps/fps_sqrt.hpp
-  - String/rolling_hash.hpp
+  - string/rolling_hash.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

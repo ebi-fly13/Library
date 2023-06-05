@@ -8,7 +8,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"String/palindromic_tree.hpp\"\n#include <cstdint>\n#include\
+  bundledCode: "#line 1 \"string/palindromic_tree.hpp\"\n#include <cstdint>\n#include\
     \ <map>\n#include <string>\n#include <vector>\n\nnamespace ebi {\n\nstruct palindromic_tree\
     \ {\n  private:\n    using i64 = std::int64_t;\n    struct Node {\n        std::map<char,\
     \ int> edges;\n        int len;  // \u56DE\u6587\u306E\u9577\u3055\n        i64\
@@ -68,15 +68,15 @@ data:
     \ sum = 0;\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
-  path: String/palindromic_tree.hpp
+  path: string/palindromic_tree.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-06-06 01:19:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: String/palindromic_tree.hpp
+documentation_of: string/palindromic_tree.hpp
 layout: document
 redirect_from:
-- /library/String/palindromic_tree.hpp
-- /library/String/palindromic_tree.hpp.html
-title: String/palindromic_tree.hpp
+- /library/string/palindromic_tree.hpp
+- /library/string/palindromic_tree.hpp.html
+title: string/palindromic_tree.hpp
 ---

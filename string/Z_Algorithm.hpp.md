@@ -12,7 +12,7 @@ data:
   attributes:
     links:
     - https://snuke.hatenablog.com/entry/2014/12/03/214243
-  bundledCode: "#line 2 \"String/Z_Algorithm.hpp\"\n\r\n#include <string>\r\n#include\
+  bundledCode: "#line 2 \"string/Z_Algorithm.hpp\"\n\r\n#include <string>\r\n#include\
     \ <vector>\r\n\r\n/*\r\n    reference: https://snuke.hatenablog.com/entry/2014/12/03/214243\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\nstd::vector<int> Z_Algorithm(const std::string\
     \ &s) {\r\n    int n = s.size();\r\n    std::vector<int> prefix(n);\r\n    prefix[0]\
@@ -38,16 +38,16 @@ data:
     \ j -= k;\r\n    }\r\n    return prefix;\r\n}\r\n\r\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
-  path: String/Z_Algorithm.hpp
+  path: string/Z_Algorithm.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-06-06 01:19:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Z_Algorithm.test.cpp
-documentation_of: String/Z_Algorithm.hpp
+documentation_of: string/Z_Algorithm.hpp
 layout: document
 redirect_from:
-- /library/String/Z_Algorithm.hpp
-- /library/String/Z_Algorithm.hpp.html
-title: String/Z_Algorithm.hpp
+- /library/string/Z_Algorithm.hpp
+- /library/string/Z_Algorithm.hpp.html
+title: string/Z_Algorithm.hpp
 ---

@@ -11,26 +11,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Matrix/SquareMatrix.hpp
       title: Matrix/SquareMatrix.hpp
-  - name: String
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: String/Z_Algorithm.hpp
-      title: String/Z_Algorithm.hpp
-    - icon: ':heavy_check_mark:'
-      path: String/aho_corasick.hpp
-      title: String/aho_corasick.hpp
-    - icon: ':warning:'
-      path: String/palindromic_tree.hpp
-      title: String/palindromic_tree.hpp
-    - icon: ':warning:'
-      path: String/parsing.hpp
-      title: String/parsing.hpp
-    - icon: ':heavy_check_mark:'
-      path: String/rolling_hash.hpp
-      title: String/rolling_hash.hpp
-    - icon: ':heavy_check_mark:'
-      path: String/trie.hpp
-      title: String/trie.hpp
   - name: algorithm
     pages:
     - icon: ':heavy_check_mark:'
@@ -263,6 +243,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: set_function/superset_zeta.hpp
       title: Superset Zeta Transform
+  - name: string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: string/Z_Algorithm.hpp
+      title: string/Z_Algorithm.hpp
+    - icon: ':heavy_check_mark:'
+      path: string/aho_corasick.hpp
+      title: string/aho_corasick.hpp
+    - icon: ':warning:'
+      path: string/palindromic_tree.hpp
+      title: string/palindromic_tree.hpp
+    - icon: ':warning:'
+      path: string/parsing.hpp
+      title: string/parsing.hpp
+    - icon: ':heavy_check_mark:'
+      path: string/rolling_hash.hpp
+      title: Rolling Hash
+    - icon: ':heavy_check_mark:'
+      path: string/trie.hpp
+      title: string/trie.hpp
   - name: tree
     pages:
     - icon: ':warning:'
@@ -290,7 +290,7 @@ data:
       title: utility/dynamic_modint.hpp
     - icon: ':heavy_check_mark:'
       path: utility/hash.hpp
-      title: utility/hash.hpp
+      title: Hash structure
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
