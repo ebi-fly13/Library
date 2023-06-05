@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: String/rolling_hash.hpp
+    title: String/rolling_hash.hpp
+  - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
@@ -23,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
+  - icon: ':heavy_check_mark:'
+    path: utility/modint61.hpp
+    title: utility/modint61.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Bitwise_And_Convolution.test.cpp
@@ -84,6 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Tree_Path_Composite_Sum.test.cpp
     title: test/Tree_Path_Composite_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2444.test.cpp
+    title: test/aoj/aoj_2444.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2863.test.cpp
     title: test/aoj/aoj_2863.test.cpp
@@ -163,13 +172,16 @@ data:
   - math/combination.hpp
   - math/mod_sqrt.hpp
   - utility/dynamic_modint.hpp
+  - utility/modint61.hpp
   - utility/modint.hpp
   - fps/fps_sqrt.hpp
+  - String/rolling_hash.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/SWAG.test.cpp
   - test/aoj/aoj_2863.test.cpp
+  - test/aoj/aoj_2444.test.cpp
   - test/Convolution_Mod_1000000007.test.cpp
   - test/vertex_set_path_compositie.test.cpp
   - test/Sqrt_Mod.test.cpp

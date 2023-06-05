@@ -1,17 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: String/rolling_hash.hpp
-    title: String/rolling_hash.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_2444.test.cpp
-    title: test/aoj/aoj_2444.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"utility/safe_mod.hpp\"\n\n#include <cstdint>\n\nnamespace\
@@ -35,12 +29,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: utility/safe_mod.hpp
-  requiredBy:
-  - String/rolling_hash.hpp
+  requiredBy: []
   timestamp: '2023-04-19 18:25:00+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/aoj/aoj_2444.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: utility/safe_mod.hpp
 layout: document
 redirect_from:

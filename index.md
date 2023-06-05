@@ -295,12 +295,15 @@ data:
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
+      path: utility/modint61.hpp
+      title: utility/modint61.hpp
+    - icon: ':heavy_check_mark:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
     - icon: ':heavy_check_mark:'
       path: utility/random_number_generator_64.hpp
       title: utility/random_number_generator_64.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: utility/safe_mod.hpp
       title: utility/safe_mod.hpp
   verificationCategories:
