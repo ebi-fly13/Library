@@ -4,11 +4,11 @@
 #include <cassert>
 #include <cstdint>
 #include <iostream>
-#include <map>
+#include <set>
 #include <vector>
 
 #include "../../String/rolling_hash.hpp"
-#include "../../utility/modint61.hpp"
+#include "../../utility/hash.hpp"
 
 using u64 = std::uint64_t;
 
@@ -17,7 +17,7 @@ int main() {
     std::cin >> n >> m;
     std::string s;
     std::cin >> s;
-    std::map<std::array<ebi::modint61, 2>, int> map;
+    std::set<ebi::Hash<2>> set;
     ebi::rolling_hash<2>::set_base();
     ebi::rolling_hash<2> rh(s);
     int l = 0;
@@ -36,7 +36,7 @@ int main() {
         } else {
             assert(0);
         }
-        map[rh.get_hash(l, r)] = 1;
+        set.insert(rh.get_hash(l, r));
     }
-    std::cout << int(map.size()) << '\n';
+    std::cout << int(set.size()) << '\n';
 }
