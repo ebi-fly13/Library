@@ -289,6 +289,9 @@ data:
       path: utility/dynamic_modint.hpp
       title: utility/dynamic_modint.hpp
     - icon: ':heavy_check_mark:'
+      path: utility/hash.hpp
+      title: utility/hash.hpp
+    - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
     - icon: ':heavy_check_mark:'

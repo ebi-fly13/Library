@@ -2,12 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: String/rolling_hash.hpp
-    title: String/rolling_hash.hpp
-  - icon: ':heavy_check_mark:'
-    path: utility/hash.hpp
-    title: utility/hash.hpp
-  - icon: ':heavy_check_mark:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
   - icon: ':heavy_check_mark:'
@@ -16,26 +10,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/random_number_generator_64.hpp
     title: utility/random_number_generator_64.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: String/rolling_hash.hpp
+    title: String/rolling_hash.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2444.test.cpp
+    title: test/aoj/aoj_2444.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2444&lang=jp
-    links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2444&lang=jp
-  bundledCode: "#line 1 \"test/aoj/aoj_2444.test.cpp\"\n#define PROBLEM \\\r\n   \
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2444&lang=jp\"\r\
-    \n\r\n#include <cassert>\r\n#include <cstdint>\r\n#include <iostream>\r\n#include\
-    \ <set>\r\n#include <vector>\r\n\r\n#line 2 \"String/rolling_hash.hpp\"\n\r\n\
-    #include <array>\r\n#line 7 \"String/rolling_hash.hpp\"\n\r\n#line 2 \"utility/hash.hpp\"\
-    \n\n#line 4 \"utility/hash.hpp\"\n\n#line 2 \"utility/modint61.hpp\"\n\n#line\
-    \ 6 \"utility/modint61.hpp\"\n\n#line 2 \"utility/modint_base.hpp\"\n\n#include\
-    \ <type_traits>\n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base\
-    \ {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base, T>;\n\
-    template <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    links: []
+  bundledCode: "#line 2 \"utility/hash.hpp\"\n\n#include <array>\n\n#line 2 \"utility/modint61.hpp\"\
+    \n\n#include <cassert>\n#include <cstdint>\n#include <iostream>\n\n#line 2 \"\
+    utility/modint_base.hpp\"\n\n#include <type_traits>\n\nnamespace ebi {\n\nnamespace\
+    \ internal {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint =\
+    \ std::is_base_of<modint_base, T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint61.hpp\"\
     \n\nnamespace ebi {\n\nstruct modint61 : internal::modint_base {\n  private:\n\
     \    using mint = modint61;\n    using u64 = std::uint64_t;\n    constexpr static\
@@ -119,66 +111,61 @@ data:
     \ bool is_primitive(long long x) {\n        for (long long d : {2, 3, 5, 7, 11,\
     \ 13, 31, 41, 61, 151, 331, 1321}) {\n            if (modint61(x).pow((modint61::mod()\
     \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
-    \ true;\n    }\n};\n\n}  // namespace ebi\n#line 10 \"String/rolling_hash.hpp\"\
-    \n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
-    \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n> struct rolling_hash {\r\n\
-    \  private:\r\n    using mint = modint61;\r\n    static constexpr mint h = 100;\r\
-    \n\r\n  public:\r\n    rolling_hash(const std::string &s) : sz(s.size()) {\r\n\
-    \        assert(n >= 0);\r\n        base_pow.reserve(sz + 1);\r\n        base_pow.emplace_back(Hash<n>::set(1));\r\
-    \n        hash.reserve(sz + 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\
-    \n        for (const auto &c : s) {\r\n            hash.emplace_back(hash.back()\
-    \ * base + c + h);\r\n            base_pow.emplace_back(base_pow.back() * base);\r\
-    \n        }\r\n    }\r\n\r\n    // [l, r)\r\n    Hash<n> get_hash(int l, int r)\
-    \ const {\r\n        assert(0 <= l && l <= r && r <= sz);\r\n        return hash[r]\
-    \ - hash[l] * base_pow[r - l];\r\n    }\r\n\r\n    static Hash<n> get_hash(const\
-    \ std::string &str, int l = 0, int r = -1) {\r\n        if (r < 0) r = int(str.size());\r\
-    \n        Hash<n> res = Hash<n>::set(0);\r\n        for (int i = l; i < r; i++)\
-    \ {\r\n            res = res * base + str[i] + h;\r\n        }\r\n        return\
-    \ res;\r\n    }\r\n\r\n    Hash<n> concat(const Hash<n> &hash1, const Hash<n>\
-    \ &hash2, int len2) {\r\n        return hash1 * base.pow(len2) + hash2;\r\n  \
-    \  }\r\n\r\n    static void set_base() {\r\n        base = Hash<n>::get_basis();\r\
-    \n    }\r\n\r\n  private:\r\n    int sz;\r\n    std::vector<Hash<n>> base_pow;\r\
-    \n    std::vector<Hash<n>> hash;\r\n\r\n  public:\r\n    static Hash<n> base;\r\
-    \n};\r\n\r\ntemplate <int n> Hash<n> rolling_hash<n>::base = {};\r\n\r\n}  //\
-    \ namespace ebi\r\n#line 12 \"test/aoj/aoj_2444.test.cpp\"\n\r\nusing u64 = std::uint64_t;\r\
-    \n\r\nint main() {\r\n    int n, m;\r\n    std::cin >> n >> m;\r\n    std::string\
-    \ s;\r\n    std::cin >> s;\r\n    std::set<ebi::Hash<2>> set;\r\n    ebi::rolling_hash<2>::set_base();\r\
-    \n    ebi::rolling_hash<2> rh(s);\r\n    int l = 0;\r\n    int r = 1;\r\n    while\
-    \ (m--) {\r\n        std::string q;\r\n        std::cin >> q;\r\n        if (q\
-    \ == \"L++\") {\r\n            l++;\r\n        } else if (q == \"L--\") {\r\n\
-    \            l--;\r\n        } else if (q == \"R++\") {\r\n            r++;\r\n\
-    \        } else if (q == \"R--\") {\r\n            r--;\r\n        } else {\r\n\
-    \            assert(0);\r\n        }\r\n        set.insert(rh.get_hash(l, r));\r\
-    \n    }\r\n    std::cout << int(set.size()) << '\\n';\r\n}\n"
-  code: "#define PROBLEM \\\r\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2444&lang=jp\"\
-    \r\n\r\n#include <cassert>\r\n#include <cstdint>\r\n#include <iostream>\r\n#include\
-    \ <set>\r\n#include <vector>\r\n\r\n#include \"../../String/rolling_hash.hpp\"\
-    \r\n#include \"../../utility/hash.hpp\"\r\n\r\nusing u64 = std::uint64_t;\r\n\r\
-    \nint main() {\r\n    int n, m;\r\n    std::cin >> n >> m;\r\n    std::string\
-    \ s;\r\n    std::cin >> s;\r\n    std::set<ebi::Hash<2>> set;\r\n    ebi::rolling_hash<2>::set_base();\r\
-    \n    ebi::rolling_hash<2> rh(s);\r\n    int l = 0;\r\n    int r = 1;\r\n    while\
-    \ (m--) {\r\n        std::string q;\r\n        std::cin >> q;\r\n        if (q\
-    \ == \"L++\") {\r\n            l++;\r\n        } else if (q == \"L--\") {\r\n\
-    \            l--;\r\n        } else if (q == \"R++\") {\r\n            r++;\r\n\
-    \        } else if (q == \"R--\") {\r\n            r--;\r\n        } else {\r\n\
-    \            assert(0);\r\n        }\r\n        set.insert(rh.get_hash(l, r));\r\
-    \n    }\r\n    std::cout << int(set.size()) << '\\n';\r\n}"
+    \ true;\n    }\n};\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <array>\n\n#include \"../utility/modint61.hpp\"\n\
+    #include \"../utility/random_number_generator_64.hpp\"\n\nnamespace ebi {\n\n\
+    template <int BASE_NUM> struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n\
+    \    using std::array<modint61, BASE_NUM>::array;\n    using std::array<modint61,\
+    \ BASE_NUM>::operator=;\n\n  public:\n    Hash() : std::array<modint61, BASE_NUM>()\
+    \ {}\n\n    constexpr static Hash set(const modint61 &a) {\n        Hash res;\n\
+    \        std::fill(res.begin(), res.end(), a);\n        return res;\n    }\n\n\
+    \    constexpr Hash &operator+=(const Hash &rhs) {\n        for (int i = 0; i\
+    \ < BASE_NUM; i++) {\n            (*this)[i] += rhs[i];\n        }\n        return\
+    \ *this;\n    }\n    constexpr Hash &operator-=(const Hash &rhs) {\n        for\
+    \ (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i] -= rhs[i];\n      \
+    \  }\n        return *this;\n    }\n    constexpr Hash &operator*=(const Hash\
+    \ &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
+    \ *= rhs[i];\n        }\n        return *this;\n    }\n\n    constexpr Hash &operator+=(const\
+    \ modint61 &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n           \
+    \ (*this)[i] += rhs;\n        }\n        return *this;\n    }\n    constexpr Hash\
+    \ &operator-=(const modint61 &rhs) {\n        for (int i = 0; i < BASE_NUM; i++)\
+    \ {\n            (*this)[i] -= rhs;\n        }\n        return *this;\n    }\n\
+    \    constexpr Hash &operator*=(const modint61 &rhs) {\n        for (int i = 0;\
+    \ i < BASE_NUM; i++) {\n            (*this)[i] *= rhs;\n        }\n        return\
+    \ *this;\n    }\n\n    Hash operator+(const Hash &rhs) const {\n        return\
+    \ Hash(*this) += rhs;\n    }\n    Hash operator-(const Hash &rhs) const {\n  \
+    \      return Hash(*this) -= rhs;\n    }\n    Hash operator*(const Hash &rhs)\
+    \ const {\n        return Hash(*this) *= rhs;\n    }\n\n    Hash operator+(const\
+    \ modint61 &rhs) const {\n        return Hash(*this) += rhs;\n    }\n    Hash\
+    \ operator-(const modint61 &rhs) const {\n        return Hash(*this) -= rhs;\n\
+    \    }\n    Hash operator*(const modint61 &rhs) const {\n        return Hash(*this)\
+    \ *= rhs;\n    }\n\n    Hash pow(long long n) const {\n        Hash a = *this,\
+    \ res = set(1);\n        while (n) {\n            if (n & 1) res *= a;\n     \
+    \       a *= a;\n            n >>= 1;\n        }\n        return res;\n    }\n\
+    \n    static Hash get_basis() {\n        static random_number_generator_64 rng;\n\
+    \        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n            while\
+    \ (!is_primitive(\n                (h[i] = rng.get(0, modint61::mod() - 1) + 1).val()))\n\
+    \                ;\n        }\n        return h;\n    }\n\n  private:\n    static\
+    \ bool is_primitive(long long x) {\n        for (long long d : {2, 3, 5, 7, 11,\
+    \ 13, 31, 41, 61, 151, 331, 1321}) {\n            if (modint61(x).pow((modint61::mod()\
+    \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
+    \ true;\n    }\n};\n\n}  // namespace ebi"
   dependsOn:
-  - String/rolling_hash.hpp
-  - utility/hash.hpp
   - utility/modint61.hpp
   - utility/modint_base.hpp
   - utility/random_number_generator_64.hpp
-  isVerificationFile: true
-  path: test/aoj/aoj_2444.test.cpp
-  requiredBy: []
+  isVerificationFile: false
+  path: utility/hash.hpp
+  requiredBy:
+  - String/rolling_hash.hpp
   timestamp: '2023-06-06 01:05:42+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: test/aoj/aoj_2444.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/aoj/aoj_2444.test.cpp
+documentation_of: utility/hash.hpp
 layout: document
 redirect_from:
-- /verify/test/aoj/aoj_2444.test.cpp
-- /verify/test/aoj/aoj_2444.test.cpp.html
-title: test/aoj/aoj_2444.test.cpp
+- /library/utility/hash.hpp
+- /library/utility/hash.hpp.html
+title: utility/hash.hpp
 ---

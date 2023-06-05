@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: utility/hash.hpp
+    title: utility/hash.hpp
+  - icon: ':heavy_check_mark:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
   - icon: ':heavy_check_mark:'
@@ -22,8 +25,9 @@ data:
     links:
     - https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
   bundledCode: "#line 2 \"String/rolling_hash.hpp\"\n\r\n#include <array>\r\n#include\
-    \ <cassert>\r\n#include <cstdint>\r\n#include <vector>\r\n\r\n#line 2 \"utility/modint61.hpp\"\
-    \n\n#line 5 \"utility/modint61.hpp\"\n#include <iostream>\n\n#line 2 \"utility/modint_base.hpp\"\
+    \ <cassert>\r\n#include <cstdint>\r\n#include <vector>\r\n\r\n#line 2 \"utility/hash.hpp\"\
+    \n\n#line 4 \"utility/hash.hpp\"\n\n#line 2 \"utility/modint61.hpp\"\n\n#line\
+    \ 5 \"utility/modint61.hpp\"\n#include <iostream>\n\n#line 2 \"utility/modint_base.hpp\"\
     \n\n#include <type_traits>\n\nnamespace ebi {\n\nnamespace internal {\n\nstruct\
     \ modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
@@ -75,74 +79,95 @@ data:
     \ rnd;\r\n    std::mt19937_64 mt;\r\n\r\n  public:\r\n    random_number_generator_64()\
     \ : mt(rnd()) {}\r\n\r\n    u64 get(u64 a, u64 b) {\r\n        std::uniform_int_distribution<u64>\
     \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 10 \"String/rolling_hash.hpp\"\n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
+    \ ebi\n#line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM>\
+    \ struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
+    \ BASE_NUM>::array;\n    using std::array<modint61, BASE_NUM>::operator=;\n\n\
+    \  public:\n    Hash() : std::array<modint61, BASE_NUM>() {}\n\n    constexpr\
+    \ static Hash set(const modint61 &a) {\n        Hash res;\n        std::fill(res.begin(),\
+    \ res.end(), a);\n        return res;\n    }\n\n    constexpr Hash &operator+=(const\
+    \ Hash &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
+    \ += rhs[i];\n        }\n        return *this;\n    }\n    constexpr Hash &operator-=(const\
+    \ Hash &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
+    \ -= rhs[i];\n        }\n        return *this;\n    }\n    constexpr Hash &operator*=(const\
+    \ Hash &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
+    \ *= rhs[i];\n        }\n        return *this;\n    }\n\n    constexpr Hash &operator+=(const\
+    \ modint61 &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n           \
+    \ (*this)[i] += rhs;\n        }\n        return *this;\n    }\n    constexpr Hash\
+    \ &operator-=(const modint61 &rhs) {\n        for (int i = 0; i < BASE_NUM; i++)\
+    \ {\n            (*this)[i] -= rhs;\n        }\n        return *this;\n    }\n\
+    \    constexpr Hash &operator*=(const modint61 &rhs) {\n        for (int i = 0;\
+    \ i < BASE_NUM; i++) {\n            (*this)[i] *= rhs;\n        }\n        return\
+    \ *this;\n    }\n\n    Hash operator+(const Hash &rhs) const {\n        return\
+    \ Hash(*this) += rhs;\n    }\n    Hash operator-(const Hash &rhs) const {\n  \
+    \      return Hash(*this) -= rhs;\n    }\n    Hash operator*(const Hash &rhs)\
+    \ const {\n        return Hash(*this) *= rhs;\n    }\n\n    Hash operator+(const\
+    \ modint61 &rhs) const {\n        return Hash(*this) += rhs;\n    }\n    Hash\
+    \ operator-(const modint61 &rhs) const {\n        return Hash(*this) -= rhs;\n\
+    \    }\n    Hash operator*(const modint61 &rhs) const {\n        return Hash(*this)\
+    \ *= rhs;\n    }\n\n    Hash pow(long long n) const {\n        Hash a = *this,\
+    \ res = set(1);\n        while (n) {\n            if (n & 1) res *= a;\n     \
+    \       a *= a;\n            n >>= 1;\n        }\n        return res;\n    }\n\
+    \n    static Hash get_basis() {\n        static random_number_generator_64 rng;\n\
+    \        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n            while\
+    \ (!is_primitive(\n                (h[i] = rng.get(0, modint61::mod() - 1) + 1).val()))\n\
+    \                ;\n        }\n        return h;\n    }\n\n  private:\n    static\
+    \ bool is_primitive(long long x) {\n        for (long long d : {2, 3, 5, 7, 11,\
+    \ 13, 31, 41, 61, 151, 331, 1321}) {\n            if (modint61(x).pow((modint61::mod()\
+    \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
+    \ true;\n    }\n};\n\n}  // namespace ebi\n#line 10 \"String/rolling_hash.hpp\"\
+    \n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n> struct rolling_hash {\r\n\
-    \  private:\r\n    using mint = modint61;\r\n    const mint h = 100;\r\n\r\n \
-    \ public:\r\n    rolling_hash(const std::string &s) : sz(s.size()) {\r\n     \
-    \   assert(n >= 0);\r\n        for (int i = 0; i < n; ++i) {\r\n            base_pow[i].reserve(sz\
-    \ + 1);\r\n            base_pow[i].emplace_back(1);\r\n            hash[i].reserve(sz\
-    \ + 1);\r\n            hash[i].emplace_back(0);\r\n            for (const auto\
-    \ &c : s) {\r\n                hash[i].emplace_back(hash[i].back() * base[i] +\
-    \ c + h);\r\n                base_pow[i].emplace_back(base_pow[i].back() * base[i]);\r\
-    \n            }\r\n        }\r\n    }\r\n\r\n    // [l, r)\r\n    std::array<mint,\
-    \ n> get_hash(int l, int r) const {\r\n        std::array<mint, n> ret;\r\n  \
-    \      for (int i = 0; i < n; ++i) {\r\n            ret[i] = hash[i][r] - hash[i][l]\
-    \ * base_pow[i][r - l];\r\n        }\r\n        return ret;\r\n    }\r\n\r\n \
-    \   std::array<mint, n> get_hash(const std::string &str, int l = 0,\r\n      \
-    \                           int r = -1) const {\r\n        if (r < 0) r = int(str.size());\r\
-    \n        std::array<mint, n> res(n, 0);\r\n        for (int i = 0; i < n; ++i)\
-    \ {\r\n            for (int j = l; j < r; ++j) {\r\n                res[i] = res[i]\
-    \ * base[i] + str[i] + h;\r\n            }\r\n        }\r\n        return res;\r\
-    \n    }\r\n\r\n    std::array<mint, n> concat(const std::array<mint, n> &hash1,\r\
-    \n                               const std::array<mint, n> &hash2, int len2) {\r\
-    \n        std::array<mint, n> hash;\r\n        for (int i = 0; i < n; i++) {\r\
-    \n            hash[i] = hash1[i] * base[i].pow(len2) + hash2[i];\r\n        }\r\
-    \n        return hash;\r\n    }\r\n\r\n    static void set_base() {\r\n      \
-    \  static random_number_generator_64 rnd;\r\n        for (int i = 0; i < n; ++i)\
-    \ {\r\n            base[i] = (1ull << 31) | rnd.get(1, (1ull << 31));\r\n    \
-    \    }\r\n    }\r\n\r\n  private:\r\n    size_t sz;\r\n    std::array<std::vector<mint>,\
-    \ n> base_pow;\r\n    std::array<std::vector<mint>, n> hash;\r\n\r\n  public:\r\
-    \n    static std::array<mint, n> base;\r\n};\r\n\r\ntemplate <int n> std::array<modint61,\
-    \ n> rolling_hash<n>::base = {};\r\n\r\n}  // namespace ebi\r\n"
+    \  private:\r\n    using mint = modint61;\r\n    static constexpr mint h = 100;\r\
+    \n\r\n  public:\r\n    rolling_hash(const std::string &s) : sz(s.size()) {\r\n\
+    \        assert(n >= 0);\r\n        base_pow.reserve(sz + 1);\r\n        base_pow.emplace_back(Hash<n>::set(1));\r\
+    \n        hash.reserve(sz + 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\
+    \n        for (const auto &c : s) {\r\n            hash.emplace_back(hash.back()\
+    \ * base + c + h);\r\n            base_pow.emplace_back(base_pow.back() * base);\r\
+    \n        }\r\n    }\r\n\r\n    // [l, r)\r\n    Hash<n> get_hash(int l, int r)\
+    \ const {\r\n        assert(0 <= l && l <= r && r <= sz);\r\n        return hash[r]\
+    \ - hash[l] * base_pow[r - l];\r\n    }\r\n\r\n    static Hash<n> get_hash(const\
+    \ std::string &str, int l = 0, int r = -1) {\r\n        if (r < 0) r = int(str.size());\r\
+    \n        Hash<n> res = Hash<n>::set(0);\r\n        for (int i = l; i < r; i++)\
+    \ {\r\n            res = res * base + str[i] + h;\r\n        }\r\n        return\
+    \ res;\r\n    }\r\n\r\n    Hash<n> concat(const Hash<n> &hash1, const Hash<n>\
+    \ &hash2, int len2) {\r\n        return hash1 * base.pow(len2) + hash2;\r\n  \
+    \  }\r\n\r\n    static void set_base() {\r\n        base = Hash<n>::get_basis();\r\
+    \n    }\r\n\r\n  private:\r\n    int sz;\r\n    std::vector<Hash<n>> base_pow;\r\
+    \n    std::vector<Hash<n>> hash;\r\n\r\n  public:\r\n    static Hash<n> base;\r\
+    \n};\r\n\r\ntemplate <int n> Hash<n> rolling_hash<n>::base = {};\r\n\r\n}  //\
+    \ namespace ebi\r\n"
   code: "#pragma once\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <cstdint>\r\
-    \n#include <vector>\r\n\r\n#include \"../utility/modint61.hpp\"\r\n#include \"\
-    ../utility/random_number_generator_64.hpp\"\r\n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
+    \n#include <vector>\r\n\r\n#include \"../utility/hash.hpp\"\r\n#include \"../utility/modint61.hpp\"\
+    \r\n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n> struct rolling_hash {\r\n\
-    \  private:\r\n    using mint = modint61;\r\n    const mint h = 100;\r\n\r\n \
-    \ public:\r\n    rolling_hash(const std::string &s) : sz(s.size()) {\r\n     \
-    \   assert(n >= 0);\r\n        for (int i = 0; i < n; ++i) {\r\n            base_pow[i].reserve(sz\
-    \ + 1);\r\n            base_pow[i].emplace_back(1);\r\n            hash[i].reserve(sz\
-    \ + 1);\r\n            hash[i].emplace_back(0);\r\n            for (const auto\
-    \ &c : s) {\r\n                hash[i].emplace_back(hash[i].back() * base[i] +\
-    \ c + h);\r\n                base_pow[i].emplace_back(base_pow[i].back() * base[i]);\r\
-    \n            }\r\n        }\r\n    }\r\n\r\n    // [l, r)\r\n    std::array<mint,\
-    \ n> get_hash(int l, int r) const {\r\n        std::array<mint, n> ret;\r\n  \
-    \      for (int i = 0; i < n; ++i) {\r\n            ret[i] = hash[i][r] - hash[i][l]\
-    \ * base_pow[i][r - l];\r\n        }\r\n        return ret;\r\n    }\r\n\r\n \
-    \   std::array<mint, n> get_hash(const std::string &str, int l = 0,\r\n      \
-    \                           int r = -1) const {\r\n        if (r < 0) r = int(str.size());\r\
-    \n        std::array<mint, n> res(n, 0);\r\n        for (int i = 0; i < n; ++i)\
-    \ {\r\n            for (int j = l; j < r; ++j) {\r\n                res[i] = res[i]\
-    \ * base[i] + str[i] + h;\r\n            }\r\n        }\r\n        return res;\r\
-    \n    }\r\n\r\n    std::array<mint, n> concat(const std::array<mint, n> &hash1,\r\
-    \n                               const std::array<mint, n> &hash2, int len2) {\r\
-    \n        std::array<mint, n> hash;\r\n        for (int i = 0; i < n; i++) {\r\
-    \n            hash[i] = hash1[i] * base[i].pow(len2) + hash2[i];\r\n        }\r\
-    \n        return hash;\r\n    }\r\n\r\n    static void set_base() {\r\n      \
-    \  static random_number_generator_64 rnd;\r\n        for (int i = 0; i < n; ++i)\
-    \ {\r\n            base[i] = (1ull << 31) | rnd.get(1, (1ull << 31));\r\n    \
-    \    }\r\n    }\r\n\r\n  private:\r\n    size_t sz;\r\n    std::array<std::vector<mint>,\
-    \ n> base_pow;\r\n    std::array<std::vector<mint>, n> hash;\r\n\r\n  public:\r\
-    \n    static std::array<mint, n> base;\r\n};\r\n\r\ntemplate <int n> std::array<modint61,\
-    \ n> rolling_hash<n>::base = {};\r\n\r\n}  // namespace ebi\r\n"
+    \  private:\r\n    using mint = modint61;\r\n    static constexpr mint h = 100;\r\
+    \n\r\n  public:\r\n    rolling_hash(const std::string &s) : sz(s.size()) {\r\n\
+    \        assert(n >= 0);\r\n        base_pow.reserve(sz + 1);\r\n        base_pow.emplace_back(Hash<n>::set(1));\r\
+    \n        hash.reserve(sz + 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\
+    \n        for (const auto &c : s) {\r\n            hash.emplace_back(hash.back()\
+    \ * base + c + h);\r\n            base_pow.emplace_back(base_pow.back() * base);\r\
+    \n        }\r\n    }\r\n\r\n    // [l, r)\r\n    Hash<n> get_hash(int l, int r)\
+    \ const {\r\n        assert(0 <= l && l <= r && r <= sz);\r\n        return hash[r]\
+    \ - hash[l] * base_pow[r - l];\r\n    }\r\n\r\n    static Hash<n> get_hash(const\
+    \ std::string &str, int l = 0, int r = -1) {\r\n        if (r < 0) r = int(str.size());\r\
+    \n        Hash<n> res = Hash<n>::set(0);\r\n        for (int i = l; i < r; i++)\
+    \ {\r\n            res = res * base + str[i] + h;\r\n        }\r\n        return\
+    \ res;\r\n    }\r\n\r\n    Hash<n> concat(const Hash<n> &hash1, const Hash<n>\
+    \ &hash2, int len2) {\r\n        return hash1 * base.pow(len2) + hash2;\r\n  \
+    \  }\r\n\r\n    static void set_base() {\r\n        base = Hash<n>::get_basis();\r\
+    \n    }\r\n\r\n  private:\r\n    int sz;\r\n    std::vector<Hash<n>> base_pow;\r\
+    \n    std::vector<Hash<n>> hash;\r\n\r\n  public:\r\n    static Hash<n> base;\r\
+    \n};\r\n\r\ntemplate <int n> Hash<n> rolling_hash<n>::base = {};\r\n\r\n}  //\
+    \ namespace ebi\r\n"
   dependsOn:
+  - utility/hash.hpp
   - utility/modint61.hpp
   - utility/modint_base.hpp
   - utility/random_number_generator_64.hpp
   isVerificationFile: false
   path: String/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-06-05 14:23:53+09:00'
+  timestamp: '2023-06-06 01:05:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
