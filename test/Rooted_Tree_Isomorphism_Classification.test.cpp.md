@@ -132,20 +132,20 @@ data:
     \ 0);\n        auto dfs = [&](auto &&self, int v, int par = -1) -> void {\n  \
     \          for (auto nv : g[v]) {\n                if (nv == par) continue;\n\
     \                self(self, nv, v);\n                depth[v] = std::max(depth[v],\
-    \ depth[nv] + 1);\n            }\n            H x = get_basis(depth[v]);\n   \
-    \         for (auto nv : g[v]) {\n                if (nv == par) continue;\n \
-    \               hash[v] *= hash[nv] + x;\n            }\n            return;\n\
-    \        };\n        dfs(dfs, root);\n        return hash;\n    }\n\n    static\
-    \ std::vector<H> basis() {\n        return _basis;\n    }\n\n  private:\n    static\
-    \ std::vector<H> _basis;\n};\n\ntemplate <int BASE_NUM>\nstd::vector<Hash<BASE_NUM>>\
-    \ rooted_tree_hash<BASE_NUM>::_basis = {};\n\n}  // namespace ebi\n#line 10 \"\
-    test/Rooted_Tree_Isomorphism_Classification.test.cpp\"\n\nint main() {\n    int\
-    \ n;\n    std::cin >> n;\n    std::vector<std::vector<int>> g(n);\n    for (int\
-    \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        g[p].emplace_back(i);\n\
-    \    }\n    auto hash = ebi::rooted_tree_hash<2>::subtree_hash(g, 0);\n    int\
-    \ k = 0;\n    std::map<ebi::Hash<2>, int> map;\n    for (auto h : hash) {\n  \
-    \      if (map.find(h) == map.end()) map[h] = k++;\n    }\n    std::cout << k\
-    \ << '\\n';\n    for (int i = 0; i < n; i++) {\n        std::cout << map[hash[i]]\
+    \ depth[nv] + 1);\n            }\n            for (auto nv : g[v]) {\n       \
+    \         if (nv == par) continue;\n                hash[v] *= hash[nv];\n   \
+    \         }\n            if (hash[v] == H::set(1)) hash[v] = H::set(0);\n    \
+    \        hash[v] += get_basis(depth[v]);\n            return;\n        };\n  \
+    \      dfs(dfs, root);\n        return hash;\n    }\n\n    static std::vector<H>\
+    \ basis() {\n        return _basis;\n    }\n\n  private:\n    static std::vector<H>\
+    \ _basis;\n};\n\ntemplate <int BASE_NUM>\nstd::vector<Hash<BASE_NUM>> rooted_tree_hash<BASE_NUM>::_basis\
+    \ = {};\n\n}  // namespace ebi\n#line 10 \"test/Rooted_Tree_Isomorphism_Classification.test.cpp\"\
+    \n\nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<std::vector<int>>\
+    \ g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n        std::cin >>\
+    \ p;\n        g[p].emplace_back(i);\n    }\n    auto hash = ebi::rooted_tree_hash<2>::subtree_hash(g,\
+    \ 0);\n    int k = 0;\n    std::map<ebi::Hash<2>, int> map;\n    for (auto h :\
+    \ hash) {\n        if (map.find(h) == map.end()) map[h] = k++;\n    }\n    std::cout\
+    \ << k << '\\n';\n    for (int i = 0; i < n; i++) {\n        std::cout << map[hash[i]]\
     \ << \" \\n\"[i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
     \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#include \"../tree/rooted_tree_hash.hpp\"\
@@ -166,7 +166,7 @@ data:
   isVerificationFile: true
   path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
   requiredBy: []
-  timestamp: '2023-06-06 14:12:15+09:00'
+  timestamp: '2023-06-06 21:54:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Rooted_Tree_Isomorphism_Classification.test.cpp

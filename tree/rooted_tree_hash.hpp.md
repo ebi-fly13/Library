@@ -126,13 +126,14 @@ data:
     \ 0);\n        auto dfs = [&](auto &&self, int v, int par = -1) -> void {\n  \
     \          for (auto nv : g[v]) {\n                if (nv == par) continue;\n\
     \                self(self, nv, v);\n                depth[v] = std::max(depth[v],\
-    \ depth[nv] + 1);\n            }\n            H x = get_basis(depth[v]);\n   \
-    \         for (auto nv : g[v]) {\n                if (nv == par) continue;\n \
-    \               hash[v] *= hash[nv] + x;\n            }\n            return;\n\
-    \        };\n        dfs(dfs, root);\n        return hash;\n    }\n\n    static\
-    \ std::vector<H> basis() {\n        return _basis;\n    }\n\n  private:\n    static\
-    \ std::vector<H> _basis;\n};\n\ntemplate <int BASE_NUM>\nstd::vector<Hash<BASE_NUM>>\
-    \ rooted_tree_hash<BASE_NUM>::_basis = {};\n\n}  // namespace ebi\n"
+    \ depth[nv] + 1);\n            }\n            for (auto nv : g[v]) {\n       \
+    \         if (nv == par) continue;\n                hash[v] *= hash[nv];\n   \
+    \         }\n            if (hash[v] == H::set(1)) hash[v] = H::set(0);\n    \
+    \        hash[v] += get_basis(depth[v]);\n            return;\n        };\n  \
+    \      dfs(dfs, root);\n        return hash;\n    }\n\n    static std::vector<H>\
+    \ basis() {\n        return _basis;\n    }\n\n  private:\n    static std::vector<H>\
+    \ _basis;\n};\n\ntemplate <int BASE_NUM>\nstd::vector<Hash<BASE_NUM>> rooted_tree_hash<BASE_NUM>::_basis\
+    \ = {};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <vector>\n\n#include \"../utility/hash.hpp\"\n\n\
     namespace ebi {\n\ntemplate <int BASE_NUM> struct rooted_tree_hash {\n  private:\n\
     \    using H = Hash<BASE_NUM>;\n\n    static H get_basis(int d) {\n        if\
@@ -144,13 +145,14 @@ data:
     \ 0);\n        auto dfs = [&](auto &&self, int v, int par = -1) -> void {\n  \
     \          for (auto nv : g[v]) {\n                if (nv == par) continue;\n\
     \                self(self, nv, v);\n                depth[v] = std::max(depth[v],\
-    \ depth[nv] + 1);\n            }\n            H x = get_basis(depth[v]);\n   \
-    \         for (auto nv : g[v]) {\n                if (nv == par) continue;\n \
-    \               hash[v] *= hash[nv] + x;\n            }\n            return;\n\
-    \        };\n        dfs(dfs, root);\n        return hash;\n    }\n\n    static\
-    \ std::vector<H> basis() {\n        return _basis;\n    }\n\n  private:\n    static\
-    \ std::vector<H> _basis;\n};\n\ntemplate <int BASE_NUM>\nstd::vector<Hash<BASE_NUM>>\
-    \ rooted_tree_hash<BASE_NUM>::_basis = {};\n\n}  // namespace ebi"
+    \ depth[nv] + 1);\n            }\n            for (auto nv : g[v]) {\n       \
+    \         if (nv == par) continue;\n                hash[v] *= hash[nv];\n   \
+    \         }\n            if (hash[v] == H::set(1)) hash[v] = H::set(0);\n    \
+    \        hash[v] += get_basis(depth[v]);\n            return;\n        };\n  \
+    \      dfs(dfs, root);\n        return hash;\n    }\n\n    static std::vector<H>\
+    \ basis() {\n        return _basis;\n    }\n\n  private:\n    static std::vector<H>\
+    \ _basis;\n};\n\ntemplate <int BASE_NUM>\nstd::vector<Hash<BASE_NUM>> rooted_tree_hash<BASE_NUM>::_basis\
+    \ = {};\n\n}  // namespace ebi"
   dependsOn:
   - utility/hash.hpp
   - utility/modint61.hpp
@@ -159,7 +161,7 @@ data:
   isVerificationFile: false
   path: tree/rooted_tree_hash.hpp
   requiredBy: []
-  timestamp: '2023-06-06 14:12:15+09:00'
+  timestamp: '2023-06-06 21:54:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Rooted_Tree_Isomorphism_Classification.test.cpp
