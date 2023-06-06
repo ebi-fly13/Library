@@ -13,4 +13,8 @@ documentation_of: //utility/hash.hpp
 
 ## get_basis
 
+ランダムなハッシュを生成。
+
+## get_basis_primitive
+
 ランダムなハッシュを生成。各要素は $\mod 2^{61} - 1$ で原始根となる。

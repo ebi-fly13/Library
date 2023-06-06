@@ -52,7 +52,7 @@ template <int n> struct rolling_hash {
     }
 
     static void set_base() {
-        base = Hash<n>::get_basis();
+        base = Hash<n>::get_basis_primitive();
     }
 
   private:

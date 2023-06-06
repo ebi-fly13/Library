@@ -93,6 +93,15 @@ template <int BASE_NUM> struct Hash : std::array<modint61, BASE_NUM> {
         static random_number_generator_64 rng;
         Hash h;
         for (int i = 0; i < BASE_NUM; i++) {
+            h[i] = rng.get(0, modint61::mod() - 1) + 1;
+        }
+        return h;
+    }
+
+    static Hash get_basis_primitive() {
+        static random_number_generator_64 rng;
+        Hash h;
+        for (int i = 0; i < BASE_NUM; i++) {
             while (!is_primitive(
                 (h[i] = rng.get(0, modint61::mod() - 1) + 1).val()))
                 ;
