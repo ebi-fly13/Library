@@ -29,11 +29,12 @@ template <int BASE_NUM> struct rooted_tree_hash {
                 self(self, nv, v);
                 depth[v] = std::max(depth[v], depth[nv] + 1);
             }
-            H x = get_basis(depth[v]);
             for (auto nv : g[v]) {
                 if (nv == par) continue;
-                hash[v] *= hash[nv] + x;
+                hash[v] *= hash[nv];
             }
+            if (hash[v] == H::set(1)) hash[v] = H::set(0);
+            hash[v] += get_basis(depth[v]);
             return;
         };
         dfs(dfs, root);
