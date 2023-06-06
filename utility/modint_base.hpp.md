@@ -21,6 +21,9 @@ data:
     path: string/rolling_hash.hpp
     title: Rolling Hash
   - icon: ':heavy_check_mark:'
+    path: tree/rooted_tree_hash.hpp
+    title: Rooted Tree Hash
+  - icon: ':heavy_check_mark:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
   - icon: ':heavy_check_mark:'
@@ -81,6 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Pow_of_Formal_Power_Series.test.cpp
     title: test/Pow_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
+    title: test/Rooted_Tree_Isomorphism_Classification.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
@@ -179,6 +185,7 @@ data:
   - utility/hash.hpp
   - utility/modint.hpp
   - fps/fps_sqrt.hpp
+  - tree/rooted_tree_hash.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -196,6 +203,7 @@ data:
   - test/Determinant_of_Matrix.test.cpp
   - test/Log_of_Formal_Power_Series.test.cpp
   - test/Division_of_Polynomials.test.cpp
+  - test/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/subset_convolution.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/Bitwise_OR_Convolution.test.cpp

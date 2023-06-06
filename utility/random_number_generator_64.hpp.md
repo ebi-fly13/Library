@@ -6,9 +6,15 @@ data:
     path: string/rolling_hash.hpp
     title: Rolling Hash
   - icon: ':heavy_check_mark:'
+    path: tree/rooted_tree_hash.hpp
+    title: Rooted Tree Hash
+  - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
+    title: test/Rooted_Tree_Isomorphism_Classification.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
@@ -35,11 +41,13 @@ data:
   path: utility/random_number_generator_64.hpp
   requiredBy:
   - utility/hash.hpp
+  - tree/rooted_tree_hash.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
+  - test/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: utility/random_number_generator_64.hpp
 layout: document
 redirect_from:

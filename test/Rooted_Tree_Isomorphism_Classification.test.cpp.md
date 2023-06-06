@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: tree/rooted_tree_hash.hpp
+    title: Rooted Tree Hash
+  - icon: ':heavy_check_mark:'
+    path: utility/hash.hpp
+    title: Hash structure
+  - icon: ':heavy_check_mark:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
   - icon: ':heavy_check_mark:'
@@ -10,30 +16,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/random_number_generator_64.hpp
     title: utility/random_number_generator_64.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: string/rolling_hash.hpp
-    title: Rolling Hash
-  - icon: ':heavy_check_mark:'
-    path: tree/rooted_tree_hash.hpp
-    title: Rooted Tree Hash
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
-    title: test/Rooted_Tree_Isomorphism_Classification.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_2444.test.cpp
-    title: test/aoj/aoj_2444.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"utility/hash.hpp\"\n\n#include <array>\n\n#line 2 \"utility/modint61.hpp\"\
-    \n\n#include <cassert>\n#include <cstdint>\n#include <iostream>\n\n#line 2 \"\
-    utility/modint_base.hpp\"\n\n#include <type_traits>\n\nnamespace ebi {\n\nnamespace\
-    \ internal {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint =\
-    \ std::is_base_of<modint_base, T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
+    links:
+    - https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
+  bundledCode: "#line 1 \"test/Rooted_Tree_Isomorphism_Classification.test.cpp\"\n\
+    #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
+    \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#line 2 \"tree/rooted_tree_hash.hpp\"\
+    \n\n#line 4 \"tree/rooted_tree_hash.hpp\"\n\n#line 2 \"utility/hash.hpp\"\n\n\
+    #include <array>\n\n#line 2 \"utility/modint61.hpp\"\n\n#include <cassert>\n#include\
+    \ <cstdint>\n#line 6 \"utility/modint61.hpp\"\n\n#line 2 \"utility/modint_base.hpp\"\
+    \n\n#include <type_traits>\n\nnamespace ebi {\n\nnamespace internal {\n\nstruct\
+    \ modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint61.hpp\"\
     \n\nnamespace ebi {\n\nstruct modint61 : internal::modint_base {\n  private:\n\
     \    using mint = modint61;\n    using u64 = std::uint64_t;\n    constexpr static\
@@ -120,79 +121,58 @@ data:
     \  private:\n    static bool is_primitive(long long x) {\n        for (long long\
     \ d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151, 331, 1321}) {\n            if (modint61(x).pow((modint61::mod()\
     \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
-    \ true;\n    }\n};\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <array>\n\n#include \"../utility/modint61.hpp\"\n\
-    #include \"../utility/random_number_generator_64.hpp\"\n\nnamespace ebi {\n\n\
-    template <int BASE_NUM> struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n\
-    \    using std::array<modint61, BASE_NUM>::array;\n    using std::array<modint61,\
-    \ BASE_NUM>::operator=;\n\n  public:\n    Hash() : std::array<modint61, BASE_NUM>()\
-    \ {}\n\n    constexpr static Hash set(const modint61 &a) {\n        Hash res;\n\
-    \        std::fill(res.begin(), res.end(), a);\n        return res;\n    }\n\n\
-    \    constexpr Hash &operator+=(const Hash &rhs) {\n        for (int i = 0; i\
-    \ < BASE_NUM; i++) {\n            (*this)[i] += rhs[i];\n        }\n        return\
-    \ *this;\n    }\n    constexpr Hash &operator-=(const Hash &rhs) {\n        for\
-    \ (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i] -= rhs[i];\n      \
-    \  }\n        return *this;\n    }\n    constexpr Hash &operator*=(const Hash\
-    \ &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
-    \ *= rhs[i];\n        }\n        return *this;\n    }\n\n    constexpr Hash &operator+=(const\
-    \ modint61 &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n           \
-    \ (*this)[i] += rhs;\n        }\n        return *this;\n    }\n    constexpr Hash\
-    \ &operator-=(const modint61 &rhs) {\n        for (int i = 0; i < BASE_NUM; i++)\
-    \ {\n            (*this)[i] -= rhs;\n        }\n        return *this;\n    }\n\
-    \    constexpr Hash &operator*=(const modint61 &rhs) {\n        for (int i = 0;\
-    \ i < BASE_NUM; i++) {\n            (*this)[i] *= rhs;\n        }\n        return\
-    \ *this;\n    }\n\n    Hash operator+(const Hash &rhs) const {\n        return\
-    \ Hash(*this) += rhs;\n    }\n    Hash operator-(const Hash &rhs) const {\n  \
-    \      return Hash(*this) -= rhs;\n    }\n    Hash operator*(const Hash &rhs)\
-    \ const {\n        return Hash(*this) *= rhs;\n    }\n\n    Hash operator+(const\
-    \ modint61 &rhs) const {\n        return Hash(*this) += rhs;\n    }\n    Hash\
-    \ operator-(const modint61 &rhs) const {\n        return Hash(*this) -= rhs;\n\
-    \    }\n    Hash operator*(const modint61 &rhs) const {\n        return Hash(*this)\
-    \ *= rhs;\n    }\n\n    Hash pow(long long n) const {\n        Hash a = *this,\
-    \ res = set(1);\n        while (n) {\n            if (n & 1) res *= a;\n     \
-    \       a *= a;\n            n >>= 1;\n        }\n        return res;\n    }\n\
-    \n    static Hash get_basis() {\n        static random_number_generator_64 rng;\n\
-    \        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n            h[i]\
-    \ = rng.get(0, modint61::mod() - 1) + 1;\n        }\n        return h;\n    }\n\
-    \n    static Hash get_basis_primitive() {\n        static random_number_generator_64\
-    \ rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n      \
-    \      while (!is_primitive(\n                (h[i] = rng.get(0, modint61::mod()\
-    \ - 1) + 1).val()))\n                ;\n        }\n        return h;\n    }\n\n\
-    \  private:\n    static bool is_primitive(long long x) {\n        for (long long\
-    \ d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151, 331, 1321}) {\n            if (modint61(x).pow((modint61::mod()\
-    \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
-    \ true;\n    }\n};\n\n}  // namespace ebi"
+    \ true;\n    }\n};\n\n}  // namespace ebi\n#line 6 \"tree/rooted_tree_hash.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <int BASE_NUM> struct rooted_tree_hash {\n  private:\n\
+    \    using H = Hash<BASE_NUM>;\n\n    static H get_basis(int d) {\n        if\
+    \ (int(_basis.size()) <= d) _basis.emplace_back(H::get_basis());\n        return\
+    \ _basis[d];\n    }\n\n  public:\n    rooted_tree_hash() = default;\n\n    static\
+    \ std::vector<H> subtree_hash(const std::vector<std::vector<int>> &g,\n      \
+    \                                 int root = 0) {\n        int n = g.size();\n\
+    \        std::vector<H> hash(n, H::set(1));\n        std::vector<int> depth(n,\
+    \ 0);\n        auto dfs = [&](auto &&self, int v, int par = -1) -> void {\n  \
+    \          for (auto nv : g[v]) {\n                if (nv == par) continue;\n\
+    \                self(self, nv, v);\n                depth[v] = std::max(depth[v],\
+    \ depth[nv] + 1);\n            }\n            H x = get_basis(depth[v]);\n   \
+    \         for (auto nv : g[v]) {\n                if (nv == par) continue;\n \
+    \               hash[v] *= hash[nv] + x;\n            }\n            return;\n\
+    \        };\n        dfs(dfs, root);\n        return hash;\n    }\n\n    static\
+    \ std::vector<H> basis() {\n        return _basis;\n    }\n\n  private:\n    static\
+    \ std::vector<H> _basis;\n};\n\ntemplate <int BASE_NUM>\nstd::vector<Hash<BASE_NUM>>\
+    \ rooted_tree_hash<BASE_NUM>::_basis = {};\n\n}  // namespace ebi\n#line 10 \"\
+    test/Rooted_Tree_Isomorphism_Classification.test.cpp\"\n\nint main() {\n    int\
+    \ n;\n    std::cin >> n;\n    std::vector<std::vector<int>> g(n);\n    for (int\
+    \ i = 1; i < n; i++) {\n        int p;\n        std::cin >> p;\n        g[p].emplace_back(i);\n\
+    \    }\n    auto hash = ebi::rooted_tree_hash<2>::subtree_hash(g, 0);\n    int\
+    \ k = 0;\n    std::map<ebi::Hash<2>, int> map;\n    for (auto h : hash) {\n  \
+    \      if (map.find(h) == map.end()) map[h] = k++;\n    }\n    std::cout << k\
+    \ << '\\n';\n    for (int i = 0; i < n; i++) {\n        std::cout << map[hash[i]]\
+    \ << \" \\n\"[i == n - 1];\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
+    \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#include \"../tree/rooted_tree_hash.hpp\"\
+    \n#include \"../utility/hash.hpp\"\n\nint main() {\n    int n;\n    std::cin >>\
+    \ n;\n    std::vector<std::vector<int>> g(n);\n    for (int i = 1; i < n; i++)\
+    \ {\n        int p;\n        std::cin >> p;\n        g[p].emplace_back(i);\n \
+    \   }\n    auto hash = ebi::rooted_tree_hash<2>::subtree_hash(g, 0);\n    int\
+    \ k = 0;\n    std::map<ebi::Hash<2>, int> map;\n    for (auto h : hash) {\n  \
+    \      if (map.find(h) == map.end()) map[h] = k++;\n    }\n    std::cout << k\
+    \ << '\\n';\n    for (int i = 0; i < n; i++) {\n        std::cout << map[hash[i]]\
+    \ << \" \\n\"[i == n - 1];\n    }\n}"
   dependsOn:
+  - tree/rooted_tree_hash.hpp
+  - utility/hash.hpp
   - utility/modint61.hpp
   - utility/modint_base.hpp
   - utility/random_number_generator_64.hpp
-  isVerificationFile: false
-  path: utility/hash.hpp
-  requiredBy:
-  - tree/rooted_tree_hash.hpp
-  - string/rolling_hash.hpp
+  isVerificationFile: true
+  path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
+  requiredBy: []
   timestamp: '2023-06-06 14:12:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/aoj/aoj_2444.test.cpp
-  - test/Rooted_Tree_Isomorphism_Classification.test.cpp
-documentation_of: utility/hash.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/Rooted_Tree_Isomorphism_Classification.test.cpp
 layout: document
-title: Hash structure
+redirect_from:
+- /verify/test/Rooted_Tree_Isomorphism_Classification.test.cpp
+- /verify/test/Rooted_Tree_Isomorphism_Classification.test.cpp.html
+title: test/Rooted_Tree_Isomorphism_Classification.test.cpp
 ---
-
-## 説明
-
-ハッシュを簡単に計算するための構造体。内部では $\mod 2^{61} - 1$ で計算している。
-
-## pow(long long n)
-
-ハッシュを $n$ 乗する
-
-## get_basis
-
-ランダムなハッシュを生成。
-
-## get_basis_primitive
-
-ランダムなハッシュを生成。各要素は $\mod 2^{61} - 1$ で原始根となる。

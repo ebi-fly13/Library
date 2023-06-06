@@ -280,6 +280,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/rerooting.hpp
       title: rerooting
+    - icon: ':heavy_check_mark:'
+      path: tree/rooted_tree_hash.hpp
+      title: Rooted Tree Hash
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
@@ -381,6 +384,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Pow_of_Formal_Power_Series.test.cpp
       title: test/Pow_of_Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
+      title: test/Rooted_Tree_Isomorphism_Classification.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/SWAG.test.cpp
       title: test/SWAG.test.cpp
