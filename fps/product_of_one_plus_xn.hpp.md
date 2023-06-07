@@ -6,7 +6,7 @@ data:
     title: Formal Power Series
   - icon: ':warning:'
     path: utility/modint_func.hpp
-    title: modint function
+    title: utility/modint_func.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

@@ -311,7 +311,7 @@ data:
       title: utility/modint_base.hpp
     - icon: ':warning:'
       path: utility/modint_func.hpp
-      title: modint function
+      title: utility/modint_func.hpp
     - icon: ':heavy_check_mark:'
       path: utility/random_number_generator_64.hpp
       title: utility/random_number_generator_64.hpp

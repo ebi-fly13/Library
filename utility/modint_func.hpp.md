@@ -42,9 +42,8 @@ data:
   verifiedWith: []
 documentation_of: utility/modint_func.hpp
 layout: document
-title: modint function
+redirect_from:
+- /library/utility/modint_func.hpp
+- /library/utility/modint_func.hpp.html
+title: utility/modint_func.hpp
 ---
-
-## 説明
-
-`modint`の便利関数寄せ集め。
