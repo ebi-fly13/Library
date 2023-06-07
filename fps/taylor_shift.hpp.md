@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Polynomial_Taylor_Shift.test.cpp
-    title: test/Polynomial_Taylor_Shift.test.cpp
+    path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+    title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -121,7 +121,7 @@ data:
   timestamp: '2023-06-01 16:43:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
 documentation_of: fps/taylor_shift.hpp
 layout: document
 title: $f(x + c)$

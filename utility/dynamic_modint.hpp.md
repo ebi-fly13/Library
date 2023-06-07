@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Sqrt_Mod.test.cpp
     title: test/Sqrt_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Sqrt_of_Formal_Power_Series.test.cpp
-    title: test/Sqrt_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/dynamic_modint.hpp\"\n\n#include <cassert>\n\n#line\
@@ -109,10 +109,10 @@ data:
   - math/mod_sqrt.hpp
   - fps/fps_sqrt.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Sqrt_Mod.test.cpp
-  - test/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 documentation_of: utility/dynamic_modint.hpp
 layout: document
 redirect_from:

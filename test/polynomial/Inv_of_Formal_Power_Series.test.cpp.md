@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -26,14 +26,14 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/exp_of_formal_power_series
-  bundledCode: "#line 1 \"test/Exp_of_Formal_Power_Series.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\r\n\r\n#include\
-    \ <iostream>\r\n\r\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include\
-    \ <type_traits>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
+    - https://judge.yosupo.jp/problem/inv_of_formal_power_series
+  bundledCode: "#line 1 \"test/polynomial/Inv_of_Formal_Power_Series.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+    \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"convolution/ntt.hpp\"\n\n#include\
+    \ <array>\n#include <type_traits>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
     \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
     \ return 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
@@ -214,22 +214,20 @@ data:
     \   int deg() const {\n        return (*this).size();\n    }\n\n    void shrink()\
     \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n};\n\n}  // namespace\
-    \ ebi\n#line 8 \"test/Exp_of_Formal_Power_Series.test.cpp\"\n\r\nusing mint =\
-    \ ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\
-    \n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for (int i =\
-    \ 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\n       \
-    \ a[i] = val;\r\n    }\r\n    auto b = a.exp();\r\n    for (int i = 0; i < n;\
-    \ ++i) {\r\n        std::cout << b[i].val() << \" \\n\"[i == n - 1];\r\n    }\r\
-    \n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
-    \r\n\r\n#include <iostream>\r\n\r\n#include \"../convolution/ntt.hpp\"\r\n#include\
-    \ \"../fps/fps.hpp\"\r\n#include \"../utility/modint.hpp\"\r\n\r\nusing mint =\
-    \ ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\
-    \n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for (int i =\
-    \ 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\n       \
-    \ a[i] = val;\r\n    }\r\n    auto b = a.exp();\r\n    for (int i = 0; i < n;\
-    \ ++i) {\r\n        std::cout << b[i].val() << \" \\n\"[i == n - 1];\r\n    }\r\
-    \n}"
+    \ ebi\n#line 8 \"test/polynomial/Inv_of_Formal_Power_Series.test.cpp\"\n\r\nusing\
+    \ mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin\
+    \ >> n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for\
+    \ (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    auto\
+    \ b = a.inv();\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cout << b[i].val()\
+    \ << \" \";\r\n    }\r\n    std::cout << std::endl;\r\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+    \r\n\r\n#include <iostream>\r\n\r\n#include \"../../convolution/ntt.hpp\"\r\n\
+    #include \"../../fps/fps.hpp\"\r\n#include \"../../utility/modint.hpp\"\r\n\r\n\
+    using mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin\
+    \ >> n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for\
+    \ (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    auto\
+    \ b = a.inv();\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cout << b[i].val()\
+    \ << \" \";\r\n    }\r\n    std::cout << std::endl;\r\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
@@ -238,15 +236,15 @@ data:
   - utility/modint_base.hpp
   - fps/fps.hpp
   isVerificationFile: true
-  path: test/Exp_of_Formal_Power_Series.test.cpp
+  path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-06-01 16:43:01+09:00'
+  timestamp: '2023-06-07 20:56:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Exp_of_Formal_Power_Series.test.cpp
+documentation_of: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Exp_of_Formal_Power_Series.test.cpp
-- /verify/test/Exp_of_Formal_Power_Series.test.cpp.html
-title: test/Exp_of_Formal_Power_Series.test.cpp
+- /verify/test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+- /verify/test/polynomial/Inv_of_Formal_Power_Series.test.cpp.html
+title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
 ---

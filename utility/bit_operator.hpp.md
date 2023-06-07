@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -40,41 +40,41 @@ data:
     path: test/Convolution_Mod_1000000007.test.cpp
     title: test/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Division_of_Polynomials.test.cpp
-    title: test/Division_of_Polynomials.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Exp_of_Formal_Power_Series.test.cpp
-    title: test/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/Exp_of_Set_Power_Series.test.cpp
     title: test/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Inv_of_Formal_Power_Series.test.cpp
-    title: test/Inv_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Log_of_Formal_Power_Series.test.cpp
-    title: test/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Polynomial_Taylor_Shift.test.cpp
-    title: test/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Pow_of_Formal_Power_Series.test.cpp
-    title: test/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Sqrt_of_Formal_Power_Series.test.cpp
-    title: test/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/convolution.test.cpp
     title: test/convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Division_of_Polynomials.test.cpp
+    title: test/polynomial/Division_of_Polynomials.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+    title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/subset_convolution.test.cpp
     title: test/subset_convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr\
@@ -109,22 +109,22 @@ data:
   - set_function/ranked_zeta.hpp
   - set_function/sps_exp.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Convolution_Mod_1000000007.test.cpp
-  - test/Sqrt_of_Formal_Power_Series.test.cpp
   - test/convolution.test.cpp
   - test/Exp_of_Set_Power_Series.test.cpp
-  - test/Log_of_Formal_Power_Series.test.cpp
-  - test/Division_of_Polynomials.test.cpp
   - test/subset_convolution.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/Bitwise_OR_Convolution.test.cpp
-  - test/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/Bitwise_And_Convolution.test.cpp
-  - test/Exp_of_Formal_Power_Series.test.cpp
-  - test/Polynomial_Taylor_Shift.test.cpp
-  - test/Pow_of_Formal_Power_Series.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
 redirect_from:

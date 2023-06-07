@@ -1,42 +1,51 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: fps/fps_sqrt.hpp
+    title: $\sqrt{f}$
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: math/mod_sqrt.hpp
+    title: math/mod_sqrt.hpp
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: utility/dynamic_modint.hpp
+    title: utility/dynamic_modint.hpp
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/log_of_formal_power_series
-  bundledCode: "#line 1 \"test/Log_of_Formal_Power_Series.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\r\n\r\n#include\
-    \ <iostream>\r\n\r\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include\
-    \ <type_traits>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
-    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
-    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    - https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
+  bundledCode: "#line 1 \"test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_of_formal_power_series\"\
+    \n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
+    #include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\n\
+    namespace internal {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if\
+    \ (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049)\
+    \ return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353) return\
+    \ 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
     \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
@@ -47,9 +56,9 @@ data:
     \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
     \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
     }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
-    \n#line 6 \"utility/modint.hpp\"\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n\
-    #line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
-    \nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \n#include <iostream>\r\n#line 6 \"utility/modint.hpp\"\n\r\n#line 2 \"utility/modint_base.hpp\"\
+    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
@@ -214,22 +223,89 @@ data:
     \   int deg() const {\n        return (*this).size();\n    }\n\n    void shrink()\
     \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n};\n\n}  // namespace\
-    \ ebi\n#line 8 \"test/Log_of_Formal_Power_Series.test.cpp\"\n\r\nusing mint =\
-    \ ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\
-    \n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for (int i =\
-    \ 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\n       \
-    \ a[i] = val;\r\n    }\r\n    auto b = a.log();\r\n    for (int i = 0; i < n;\
-    \ ++i) {\r\n        std::cout << b[i].val() << \" \\n\"[i == n - 1];\r\n    }\r\
-    \n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
-    \r\n\r\n#include <iostream>\r\n\r\n#include \"../convolution/ntt.hpp\"\r\n#include\
-    \ \"../fps/fps.hpp\"\r\n#include \"../utility/modint.hpp\"\r\n\r\nusing mint =\
-    \ ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\
-    \n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for (int i =\
-    \ 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\n       \
-    \ a[i] = val;\r\n    }\r\n    auto b = a.log();\r\n    for (int i = 0; i < n;\
-    \ ++i) {\r\n        std::cout << b[i].val() << \" \\n\"[i == n - 1];\r\n    }\r\
-    \n}"
+    \ ebi\n#line 2 \"fps/fps_sqrt.hpp\"\n\n#line 2 \"math/mod_sqrt.hpp\"\n\n#include\
+    \ <cstdint>\n#line 5 \"math/mod_sqrt.hpp\"\n\n#line 2 \"utility/dynamic_modint.hpp\"\
+    \n\n#line 4 \"utility/dynamic_modint.hpp\"\n\n#line 6 \"utility/dynamic_modint.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint : internal::modint_base\
+    \ {\n  private:\n    using modint = dynamic_modint;\n\n  public:\n    static void\
+    \ set_mod(int p) {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static\
+    \ int mod() {\n        return m;\n    }\n\n    modint raw(int v) {\n        modint\
+    \ x;\n        x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0)\
+    \ {}\n\n    dynamic_modint(long long v) {\n        v %= (long long)umod();\n \
+    \       if (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n  \
+    \  }\n\n    unsigned int val() const {\n        return _v;\n    }\n\n    unsigned\
+    \ int value() const {\n        return val();\n    }\n\n    modint &operator++()\
+    \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
+    \    }\n    modint &operator--() {\n        if (_v == 0) _v = umod();\n      \
+    \  _v--;\n        return *this;\n    }\n    modint &operator+=(const modint &rhs)\
+    \ {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
+    \ *this;\n    }\n    modint &operator-=(const modint &rhs) {\n        _v -= rhs._v;\n\
+    \        if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    modint\
+    \ &operator*=(const modint &rhs) {\n        unsigned long long x = _v;\n     \
+    \   x *= rhs._v;\n        _v = (unsigned int)(x % (unsigned long long)umod());\n\
+    \        return *this;\n    }\n    modint &operator/=(const modint &rhs) {\n \
+    \       return *this = *this * rhs.inv();\n    }\n\n    modint operator+() const\
+    \ {\n        return *this;\n    }\n    modint operator-() const {\n        return\
+    \ modint() - *this;\n    }\n\n    modint pow(long long n) const {\n        assert(0\
+    \ <= n);\n        modint x = *this, res = 1;\n        while (n) {\n          \
+    \  if (n & 1) res *= x;\n            x *= x;\n            n >>= 1;\n        }\n\
+    \        return res;\n    }\n    modint inv() const {\n        assert(_v);\n \
+    \       return pow(umod() - 2);\n    }\n\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\n        return modint(lhs) += rhs;\n    }\n    friend\
+    \ modint operator-(const modint &lhs, const modint &rhs) {\n        return modint(lhs)\
+    \ -= rhs;\n    }\n    friend modint operator*(const modint &lhs, const modint\
+    \ &rhs) {\n        return modint(lhs) *= rhs;\n    }\n\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\n        return modint(lhs) /= rhs;\n    }\n\
+    \    friend bool operator==(const modint &lhs, const modint &rhs) {\n        return\
+    \ lhs.val() == rhs.val();\n    }\n    friend bool operator!=(const modint &lhs,\
+    \ const modint &rhs) {\n        return !(lhs == rhs);\n    }\n\n  private:\n \
+    \   unsigned int _v = 0;\n    static int m;\n\n    static unsigned int umod()\
+    \ {\n        return m;\n    }\n};\n\ntemplate <int id> int dynamic_modint<id>::m\
+    \ = 998244353;\n\n}  // namespace ebi\n#line 7 \"math/mod_sqrt.hpp\"\n\nnamespace\
+    \ ebi {\n\nstd::optional<std::int64_t> mod_sqrt(const std::int64_t &a,\n     \
+    \                                const std::int64_t &p) {\n    if (a == 0 || a\
+    \ == 1) return a;\n    using mint = dynamic_modint<100>;\n    mint::set_mod(p);\n\
+    \    if (mint(a).pow((p - 1) >> 1) != 1) return std::nullopt;\n    mint b = 1;\n\
+    \    while (b.pow((p - 1) >> 1) == 1) b += 1;\n    std::int64_t m = p - 1, e =\
+    \ 0;\n    while (m % 2 == 0) m >>= 1, e++;\n    mint x = mint(a).pow((m - 1) >>\
+    \ 1);\n    mint y = mint(a) * x * x;\n    x *= a;\n    mint z = b.pow(m);\n  \
+    \  while (y != 1) {\n        std::int64_t j = 0;\n        mint t = y;\n      \
+    \  while (t != 1) {\n            j++;\n            t *= t;\n        }\n      \
+    \  z = z.pow(1ll << (e - j - 1));\n        x *= z;\n        z *= z;\n        y\
+    \ *= z;\n        e = j;\n    }\n    return x.val();\n}\n\n}  // namespace ebi\n\
+    #line 5 \"fps/fps_sqrt.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
+    \ (*convolution)(\n                          const std::vector<mint> &, const\
+    \ std::vector<mint> &)>\nstd::optional<FormalPowerSeries<mint, convolution>>\n\
+    FormalPowerSeries<mint, convolution>::sqrt(int d) const {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    if (d < 0) d = deg();\n    if ((*this)[0] == 0) {\n     \
+    \   for (int i = 1; i < this->deg(); i++) {\n            if ((*this)[i] != 0)\
+    \ {\n                if (i & 1) return std::nullopt;\n                if (d -\
+    \ i / 2 <= 0) break;\n                auto opt = ((*this) >> i).sqrt(d - i / 2);\n\
+    \                if (!opt) return std::nullopt;\n                auto ret = opt.value()\
+    \ << (i / 2);\n                if ((int)ret.deg() < d) ret.resize(d);\n      \
+    \          return ret;\n            }\n        }\n        return FPS(d, 0);\n\
+    \    }\n    auto s = mod_sqrt((*this)[0].val(), mint::mod());\n    if (!s) {\n\
+    \        return std::nullopt;\n    }\n    int n = 1;\n    FPS g(n);\n    g[0]\
+    \ = s.value();\n    mint inv_two = mint(2).inv();\n    while (n < d) {\n     \
+    \   n <<= 1;\n        g = (g + this->pre(n) * g.inv(n)).pre(n) * inv_two;\n  \
+    \  }\n    g.resize(d);\n    return g;\n}\n\n}  // namespace ebi\n#line 7 \"test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp\"\
+    \n\nusing namespace ebi;\n\n\nusing mint = modint998244353;\nusing FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n\nint main() {\n    int n;\n    std::cin >> n;\n    FPS f(n);\n\
+    \    for(int i = 0; i < n; i++) {\n        int a;\n        std::cin >> a;\n  \
+    \      f[i] = a;\n    }\n    auto opt = f.sqrt(n);\n    if(!opt) {\n        std::cout\
+    \ << \"-1\\n\";\n        return 0;\n    }\n    auto g = opt.value();\n    for(int\
+    \ i = 0; i < n; i++) {\n        std::cout << g[i].val() << \" \\n\"[i == n-1];\n\
+    \    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_of_formal_power_series\"\
+    \n\n#include \"../../convolution/ntt.hpp\"\n#include \"../../fps/fps.hpp\"\n#include\
+    \ \"../../fps/fps_sqrt.hpp\"\n#include \"../../utility/modint.hpp\"\n\nusing namespace\
+    \ ebi;\n\n\nusing mint = modint998244353;\nusing FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n\nint main() {\n    int n;\n    std::cin >> n;\n    FPS f(n);\n\
+    \    for(int i = 0; i < n; i++) {\n        int a;\n        std::cin >> a;\n  \
+    \      f[i] = a;\n    }\n    auto opt = f.sqrt(n);\n    if(!opt) {\n        std::cout\
+    \ << \"-1\\n\";\n        return 0;\n    }\n    auto g = opt.value();\n    for(int\
+    \ i = 0; i < n; i++) {\n        std::cout << g[i].val() << \" \\n\"[i == n-1];\n\
+    \    }\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
@@ -237,16 +313,19 @@ data:
   - utility/modint.hpp
   - utility/modint_base.hpp
   - fps/fps.hpp
+  - fps/fps_sqrt.hpp
+  - math/mod_sqrt.hpp
+  - utility/dynamic_modint.hpp
   isVerificationFile: true
-  path: test/Log_of_Formal_Power_Series.test.cpp
+  path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-06-01 16:43:01+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-06-07 20:56:47+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/Log_of_Formal_Power_Series.test.cpp
+documentation_of: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Log_of_Formal_Power_Series.test.cpp
-- /verify/test/Log_of_Formal_Power_Series.test.cpp.html
-title: test/Log_of_Formal_Power_Series.test.cpp
+- /verify/test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+- /verify/test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp.html
+title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 ---

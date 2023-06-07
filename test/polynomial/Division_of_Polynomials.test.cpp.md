@@ -1,25 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
-    path: fps/taylor_shift.hpp
-    title: $f(x + c)$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -29,17 +26,17 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/polynomial_taylor_shift
+    PROBLEM: https://judge.yosupo.jp/problem/division_of_polynomials
     links:
-    - https://judge.yosupo.jp/problem/polynomial_taylor_shift
-  bundledCode: "#line 1 \"test/Polynomial_Taylor_Shift.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\n\n#include <iostream>\n\
-    \n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
-    #include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\n\
-    namespace internal {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if\
-    \ (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049)\
-    \ return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353) return\
-    \ 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    - https://judge.yosupo.jp/problem/division_of_polynomials
+  bundledCode: "#line 1 \"test/polynomial/Division_of_Polynomials.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/division_of_polynomials\"\n\n#line\
+    \ 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n#include\
+    \ <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace\
+    \ internal {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m ==\
+    \ 2) return 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return\
+    \ 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n\
+    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
     \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
@@ -50,9 +47,9 @@ data:
     \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
     \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
     }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
-    \n#line 6 \"utility/modint.hpp\"\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n\
-    #line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
-    \nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \n#include <iostream>\r\n#line 6 \"utility/modint.hpp\"\n\r\n#line 2 \"utility/modint_base.hpp\"\
+    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
@@ -217,33 +214,26 @@ data:
     \   int deg() const {\n        return (*this).size();\n    }\n\n    void shrink()\
     \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n};\n\n}  // namespace\
-    \ ebi\n#line 2 \"fps/taylor_shift.hpp\"\n\n#line 4 \"fps/taylor_shift.hpp\"\n\n\
-    namespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n \
-    \                         const std::vector<mint> &, const std::vector<mint> &)>\n\
-    FormalPowerSeries<mint, convolution> taylor_shift(\n    FormalPowerSeries<mint,\
-    \ convolution> f, mint a) {\n    int d = f.deg();\n    std::vector<mint> fact(d\
-    \ + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1; i <= d; i++) fact[i] = fact[i\
-    \ - 1] * i;\n    inv_fact[d] = fact[d].inv();\n    for (int i = d; i > 0; i--)\
-    \ inv_fact[i - 1] = inv_fact[i] * i;\n    for (int i = 0; i < d; i++) f[i] *=\
-    \ fact[i];\n    std::reverse(f.begin(), f.end());\n    FormalPowerSeries<mint,\
-    \ convolution> g(d, 1);\n    mint pow_a = a;\n    for (int i = 1; i < d; i++)\
-    \ {\n        g[i] = pow_a * inv_fact[i];\n        pow_a *= a;\n    }\n    f =\
-    \ (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n    for (int i = 0;\
-    \ i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n}  // namespace ebi\n\
-    #line 9 \"test/Polynomial_Taylor_Shift.test.cpp\"\n\nusing mint = ebi::modint998244353;\n\
-    \nint main() {\n    int n, c;\n    std::cin >> n >> c;\n    ebi::FormalPowerSeries<mint,\
-    \ ebi::convolution<mint>> a(n);\n    for (int i = 0; i < n; i++) {\n        std::cin\
-    \ >> a[i];\n    }\n    auto b = ebi::taylor_shift<mint, ebi::convolution>(a, c);\n\
-    \    for (int i = 0; i < n; i++) {\n        std::cout << b[i] << \" \\n\"[i ==\
-    \ n - 1];\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\
-    \n\n#include <iostream>\n\n#include \"../convolution/ntt.hpp\"\n#include \"../fps/fps.hpp\"\
-    \n#include \"../fps/taylor_shift.hpp\"\n#include \"../utility/modint.hpp\"\n\n\
-    using mint = ebi::modint998244353;\n\nint main() {\n    int n, c;\n    std::cin\
-    \ >> n >> c;\n    ebi::FormalPowerSeries<mint, ebi::convolution<mint>> a(n);\n\
-    \    for (int i = 0; i < n; i++) {\n        std::cin >> a[i];\n    }\n    auto\
-    \ b = ebi::taylor_shift<mint, ebi::convolution>(a, c);\n    for (int i = 0; i\
-    \ < n; i++) {\n        std::cout << b[i] << \" \\n\"[i == n - 1];\n    }\n}"
+    \ ebi\n#line 6 \"test/polynomial/Division_of_Polynomials.test.cpp\"\n\nusing mint\
+    \ = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;\n\
+    \nint main() {\n    int n, m;\n    std::cin >> n >> m;\n    FPS f(n), g(m);\n\
+    \    for (int i = 0; i < n; i++) std::cin >> f[i];\n    for (int i = 0; i < m;\
+    \ i++) std::cin >> g[i];\n    auto q = f / g;\n    auto r = f % g;\n    std::cout\
+    \ << q.size() << \" \" << r.size() << '\\n';\n    for (int i = 0; i < (int)q.size();\
+    \ i++) {\n        std::cout << q[i] << \" \";\n    }\n    std::cout << '\\n';\n\
+    \    for (int i = 0; i < (int)r.size(); i++) {\n        std::cout << r[i] << \"\
+    \ \";\n    }\n    std::cout << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/division_of_polynomials\"\
+    \n\n#include \"../../convolution/ntt.hpp\"\n#include \"../../fps/fps.hpp\"\n#include\
+    \ \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\nusing FPS\
+    \ = ebi::FormalPowerSeries<mint, ebi::convolution>;\n\nint main() {\n    int n,\
+    \ m;\n    std::cin >> n >> m;\n    FPS f(n), g(m);\n    for (int i = 0; i < n;\
+    \ i++) std::cin >> f[i];\n    for (int i = 0; i < m; i++) std::cin >> g[i];\n\
+    \    auto q = f / g;\n    auto r = f % g;\n    std::cout << q.size() << \" \"\
+    \ << r.size() << '\\n';\n    for (int i = 0; i < (int)q.size(); i++) {\n     \
+    \   std::cout << q[i] << \" \";\n    }\n    std::cout << '\\n';\n    for (int\
+    \ i = 0; i < (int)r.size(); i++) {\n        std::cout << r[i] << \" \";\n    }\n\
+    \    std::cout << '\\n';\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
@@ -251,17 +241,16 @@ data:
   - utility/modint.hpp
   - utility/modint_base.hpp
   - fps/fps.hpp
-  - fps/taylor_shift.hpp
   isVerificationFile: true
-  path: test/Polynomial_Taylor_Shift.test.cpp
+  path: test/polynomial/Division_of_Polynomials.test.cpp
   requiredBy: []
-  timestamp: '2023-06-01 16:43:01+09:00'
+  timestamp: '2023-06-07 20:56:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Polynomial_Taylor_Shift.test.cpp
+documentation_of: test/polynomial/Division_of_Polynomials.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Polynomial_Taylor_Shift.test.cpp
-- /verify/test/Polynomial_Taylor_Shift.test.cpp.html
-title: test/Polynomial_Taylor_Shift.test.cpp
+- /verify/test/polynomial/Division_of_Polynomials.test.cpp
+- /verify/test/polynomial/Division_of_Polynomials.test.cpp.html
+title: test/polynomial/Division_of_Polynomials.test.cpp
 ---
