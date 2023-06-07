@@ -309,12 +309,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
+    - icon: ':warning:'
+      path: utility/modint_func.hpp
+      title: modint function
     - icon: ':heavy_check_mark:'
       path: utility/random_number_generator_64.hpp
       title: utility/random_number_generator_64.hpp
-    - icon: ':warning:'
-      path: utility/safe_mod.hpp
-      title: utility/safe_mod.hpp
   verificationCategories:
   - name: test
     pages:

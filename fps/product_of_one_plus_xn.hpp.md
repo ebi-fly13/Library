@@ -4,6 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
+  - icon: ':warning:'
+    path: utility/modint_func.hpp
+    title: modint function
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -84,38 +87,44 @@ data:
     \      return FPS(d);\n    }\n\n    int deg() const {\n        return (*this).size();\n\
     \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
     \ == 0) this->pop_back();\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
-    };\n\n}  // namespace ebi\n#line 6 \"fps/product_of_one_plus_xn.hpp\"\n\nnamespace\
+    };\n\n}  // namespace ebi\n#line 2 \"utility/modint_func.hpp\"\n\n#line 5 \"utility/modint_func.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint> mint inv(int n) {\n    static const\
+    \ int mod = mint::mod();\n    static std::vector<mint> dat = {0, 1};\n    assert(0\
+    \ <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size()) <= n) {\n  \
+    \      int num = dat.size();\n        int q = (mod + num - 1) / num;\n       \
+    \ dat.emplace_back(dat[num * q - mod] * mint(q));\n    }\n    return dat[n];\n\
+    }\n\n}  // namespace ebi\n#line 7 \"fps/product_of_one_plus_xn.hpp\"\n\nnamespace\
     \ ebi {\n\n// prod (1 + x^a_i) mod x^d\ntemplate <class mint, std::vector<mint>\
     \ (*convolution)(\n                          const std::vector<mint> &, const\
     \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> product_of_one_plus_xn(std::vector<int>\
     \ a,\n                                                            int d) {\n \
     \   using FPS = FormalPowerSeries<mint, convolution>;\n    std::vector<int> cnt(d,\
-    \ 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    std::vector<mint>\
-    \ inv(d);\n    for (int i = 1; i < d; i++) inv[i] = mint(i).inv();\n    FPS log_f(d);\n\
+    \ 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    FPS log_f(d);\n\
     \    for (int x = 1; x < d; x++) {\n        for (int i = 1; x * i < d; i++) {\n\
-    \            if (i & 1)\n                log_f[x * i] += mint(cnt[x]) * inv[i];\n\
-    \            else\n                log_f[x * i] -= mint(cnt[x]) * inv[i];\n  \
-    \      }\n    }\n    mint ret = mint(2).pow(cnt[0]);\n    auto f = log_f.exp(d);\n\
+    \            if (i & 1)\n                log_f[x * i] += mint(cnt[x]) * inv<mint>(i);\n\
+    \            else\n                log_f[x * i] -= mint(cnt[x]) * inv<mint>(i);\n\
+    \        }\n    }\n    mint ret = mint(2).pow(cnt[0]);\n    auto f = log_f.exp(d);\n\
     \    for (auto &x : f) x *= ret;\n    return f;\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <vector>\n\n#include \"../fps/fps.hpp\"\n\nnamespace\
-    \ ebi {\n\n// prod (1 + x^a_i) mod x^d\ntemplate <class mint, std::vector<mint>\
-    \ (*convolution)(\n                          const std::vector<mint> &, const\
-    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> product_of_one_plus_xn(std::vector<int>\
-    \ a,\n                                                            int d) {\n \
-    \   using FPS = FormalPowerSeries<mint, convolution>;\n    std::vector<int> cnt(d,\
-    \ 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    std::vector<mint>\
-    \ inv(d);\n    for (int i = 1; i < d; i++) inv[i] = mint(i).inv();\n    FPS log_f(d);\n\
-    \    for (int x = 1; x < d; x++) {\n        for (int i = 1; x * i < d; i++) {\n\
-    \            if (i & 1)\n                log_f[x * i] += mint(cnt[x]) * inv[i];\n\
-    \            else\n                log_f[x * i] -= mint(cnt[x]) * inv[i];\n  \
-    \      }\n    }\n    mint ret = mint(2).pow(cnt[0]);\n    auto f = log_f.exp(d);\n\
-    \    for (auto &x : f) x *= ret;\n    return f;\n}\n\n}  // namespace ebi"
+  code: "#pragma once\n\n#include <vector>\n\n#include \"../fps/fps.hpp\"\n#include\
+    \ \"../utility/modint_func.hpp\"\n\nnamespace ebi {\n\n// prod (1 + x^a_i) mod\
+    \ x^d\ntemplate <class mint, std::vector<mint> (*convolution)(\n             \
+    \             const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
+    \ convolution> product_of_one_plus_xn(std::vector<int> a,\n                  \
+    \                                          int d) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    std::vector<int> cnt(d, 0);\n    for (auto x : a)\n     \
+    \   if (x < d) cnt[x]++;\n    FPS log_f(d);\n    for (int x = 1; x < d; x++) {\n\
+    \        for (int i = 1; x * i < d; i++) {\n            if (i & 1)\n         \
+    \       log_f[x * i] += mint(cnt[x]) * inv<mint>(i);\n            else\n     \
+    \           log_f[x * i] -= mint(cnt[x]) * inv<mint>(i);\n        }\n    }\n \
+    \   mint ret = mint(2).pow(cnt[0]);\n    auto f = log_f.exp(d);\n    for (auto\
+    \ &x : f) x *= ret;\n    return f;\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
+  - utility/modint_func.hpp
   isVerificationFile: false
   path: fps/product_of_one_plus_xn.hpp
   requiredBy: []
-  timestamp: '2023-06-01 16:43:01+09:00'
+  timestamp: '2023-06-08 01:58:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: fps/product_of_one_plus_xn.hpp
