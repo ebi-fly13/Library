@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/division_of_polynomials"
 
-#include "../convolution/ntt.hpp"
-#include "../fps/fps.hpp"
-#include "../utility/modint.hpp"
+#include "../../convolution/ntt.hpp"
+#include "../../fps/fps.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;

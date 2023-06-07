@@ -1,9 +1,9 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/sqrt_of_formal_power_series"
 
-#include "../convolution/ntt.hpp"
-#include "../fps/fps.hpp"
-#include "../fps/fps_sqrt.hpp"
-#include "../utility/modint.hpp"
+#include "../../convolution/ntt.hpp"
+#include "../../fps/fps.hpp"
+#include "../../fps/fps_sqrt.hpp"
+#include "../../utility/modint.hpp"
 
 using namespace ebi;
 

@@ -2,10 +2,10 @@
 
 #include <iostream>
 
-#include "../convolution/ntt.hpp"
-#include "../fps/fps.hpp"
-#include "../fps/taylor_shift.hpp"
-#include "../utility/modint.hpp"
+#include "../../convolution/ntt.hpp"
+#include "../../fps/fps.hpp"
+#include "../../fps/taylor_shift.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 
