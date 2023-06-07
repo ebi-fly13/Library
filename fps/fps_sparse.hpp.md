@@ -40,8 +40,9 @@ data:
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: fps/fps_sparse.hpp
 layout: document
-redirect_from:
-- /library/fps/fps_sparse.hpp
-- /library/fps/fps_sparse.hpp.html
-title: fps/fps_sparse.hpp
+title: $Formal Power Series (Sparse)$
 ---
+
+## inv(std::vector<mint> f, int d)
+
+$f^{-1} \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
