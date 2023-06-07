@@ -10,6 +10,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
+  - icon: ':heavy_check_mark:'
+    path: utility/modint_func.hpp
+    title: utility/modint_func.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -128,12 +131,13 @@ data:
     \ << g[i].val() << \" \\n\"[i == n - 1];\n    }\n}"
   dependsOn:
   - fps/fps_sparse.hpp
+  - utility/modint_func.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
   path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   requiredBy: []
-  timestamp: '2023-06-07 22:36:37+09:00'
+  timestamp: '2023-06-08 01:58:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp

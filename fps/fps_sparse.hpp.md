@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy: []
@@ -93,8 +93,8 @@ data:
   timestamp: '2023-06-08 01:58:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: fps/fps_sparse.hpp
 layout: document
 title: Formal Power Series (Sparse)

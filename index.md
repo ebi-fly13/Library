@@ -309,7 +309,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_func.hpp
       title: utility/modint_func.hpp
     - icon: ':heavy_check_mark:'

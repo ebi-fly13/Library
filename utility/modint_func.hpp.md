@@ -11,10 +11,16 @@ data:
   - icon: ':warning:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint_func.hpp\"\n\n#include <vector>\n#include\
@@ -34,12 +40,14 @@ data:
   isVerificationFile: false
   path: utility/modint_func.hpp
   requiredBy:
-  - fps/product_of_one_plus_xn.hpp
-  - fps/fps_sparse.hpp
   - fps/product_of_one_minus_xn.hpp
+  - fps/fps_sparse.hpp
+  - fps/product_of_one_plus_xn.hpp
   timestamp: '2023-06-08 01:58:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: utility/modint_func.hpp
 layout: document
 redirect_from:

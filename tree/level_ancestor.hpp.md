@@ -58,8 +58,8 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/level_ancestor_lca.test.cpp
   - test/Jump_on_Tree.test.cpp
+  - test/level_ancestor_lca.test.cpp
 documentation_of: tree/level_ancestor.hpp
 layout: document
 redirect_from:
