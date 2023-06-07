@@ -7,7 +7,7 @@
 
 namespace ebi {
 
-template <class mint, internal::is_modint_t<mint>* = nullptr>
+template <class mint>
 struct combination {
     combination(int n) : m(n), fact(n + 1), inv_fact(n + 1) {
         fact[0] = 1;

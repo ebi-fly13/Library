@@ -3,6 +3,8 @@
 #include <cassert>
 #include <vector>
 
+#include "../utility/modint_func.hpp"
+
 namespace ebi {
 
 template <class mint>
@@ -41,12 +43,12 @@ std::vector<mint> pow_sparse_1(const std::vector<mint> &f, long long k,
     std::vector<mint> g(d);
     g[0] = 1;
     for (int i = 0; i < d - 1; i++) {
-        for (auto [j, cf] : ret) {
+        for (const auto &[j, cf] : ret) {
             if (i + 1 - j < 0) break;
             g[i + 1] +=
                 (mint(k) * mint(j) - mint(i - j + 1)) * cf * g[i + 1 - j];
         }
-        g[i + 1] /= i + 1;
+        g[i + 1] *= inv<mint>(i + 1);
     }
     return g;
 }

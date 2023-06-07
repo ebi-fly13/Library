@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "../fps/fps.hpp"
+#include "../utility/modint_func.hpp"
 
 namespace ebi {
 
@@ -16,12 +17,10 @@ FormalPowerSeries<mint, convolution> product_of_one_minus_xn(std::vector<int> a,
     for (auto x : a)
         if (x < d) cnt[x]++;
     if (cnt[0]) return FPS(d);
-    std::vector<mint> inv(d);
-    for (int i = 1; i < d; i++) inv[i] = mint(i).inv();
     FPS log_f(d);
     for (int x = 1; x < d; x++) {
         for (int i = 1; x * i < d; i++) {
-            log_f[x * i] -= mint(cnt[x]) * inv[i];
+            log_f[x * i] -= mint(cnt[x]) * inv<mint>(i);
         }
     }
     return log_f.exp(d);
