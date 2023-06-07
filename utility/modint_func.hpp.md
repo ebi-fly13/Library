@@ -40,14 +40,14 @@ data:
   isVerificationFile: false
   path: utility/modint_func.hpp
   requiredBy:
-  - fps/product_of_one_plus_xn.hpp
-  - fps/fps_sparse.hpp
   - fps/product_of_one_minus_xn.hpp
+  - fps/fps_sparse.hpp
+  - fps/product_of_one_plus_xn.hpp
   timestamp: '2023-06-08 01:58:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: utility/modint_func.hpp
 layout: document
 redirect_from:
