@@ -41,10 +41,10 @@ std::vector<mint> pow_sparse_1(const std::vector<mint> &f, long long k,
     std::vector<mint> g(d);
     g[0] = 1;
     for (int i = 0; i < d - 1; i++) {
-        for (auto [d, cf] : ret) {
-            if (i + 1 - d < 0) break;
+        for (auto [j, cf] : ret) {
+            if (i + 1 - j < 0) break;
             g[i + 1] +=
-                (mint(k) * mint(d) - mint(i - d + 1)) * cf * g[i + 1 - d];
+                (mint(k) * mint(j) - mint(i - j + 1)) * cf * g[i + 1 - j];
         }
         g[i + 1] /= i + 1;
     }
@@ -56,6 +56,7 @@ std::vector<mint> pow_sparse(const std::vector<mint> &f, long long k,
                              int d = -1) {
     int n = f.size();
     if (d < 0) d = n;
+    assert(k >= 0);
     if (k == 0) {
         std::vector<mint> g(d);
         if (d > 0) g[0] = 1;
