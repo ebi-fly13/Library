@@ -156,7 +156,7 @@ data:
       title: Formal Power Series
     - icon: ':heavy_check_mark:'
       path: fps/fps_sparse.hpp
-      title: $Formal Power Series (Sparse)$
+      title: Formal Power Series (Sparse)
     - icon: ':heavy_check_mark:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
@@ -599,6 +599,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
+      title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
