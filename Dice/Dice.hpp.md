@@ -146,8 +146,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Dice/dice2.test.cpp
-  - test/Dice/dice1.test.cpp
   - test/Dice/dice4.test.cpp
+  - test/Dice/dice1.test.cpp
   - test/Dice/dice3.test.cpp
 documentation_of: Dice/Dice.hpp
 layout: document
