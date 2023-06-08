@@ -10,8 +10,8 @@ data:
     title: Bitwise AND Convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Bitwise_And_Convolution.test.cpp
-    title: test/Bitwise_And_Convolution.test.cpp
+    path: test/convolution/Bitwise_And_Convolution.test.cpp
+    title: test/convolution/Bitwise_And_Convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -63,7 +63,7 @@ data:
   timestamp: '2023-06-01 23:05:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Bitwise_And_Convolution.test.cpp
+  - test/convolution/Bitwise_And_Convolution.test.cpp
 documentation_of: set_function/superset_zeta.hpp
 layout: document
 title: Superset Zeta Transform

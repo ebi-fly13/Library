@@ -319,18 +319,6 @@ data:
   - name: test
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/Bitwise_And_Convolution.test.cpp
-      title: test/Bitwise_And_Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Bitwise_OR_Convolution.test.cpp
-      title: test/Bitwise_OR_Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Bitwise_Xor_Convolution.test.cpp
-      title: test/Bitwise_Xor_Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Convolution_Mod_1000000007.test.cpp
-      title: test/Convolution_Mod_1000000007.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/Determinant_of_Matrix.test.cpp
       title: test/Determinant_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
@@ -409,9 +397,6 @@ data:
       path: test/binary_trie.test.cpp
       title: test/binary_trie.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/convolution.test.cpp
-      title: test/convolution.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/dijkstra.test.cpp
       title: test/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
@@ -456,9 +441,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/static_rmq.test.cpp
       title: test/static_rmq.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/subset_convolution.test.cpp
-      title: test/subset_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/two_sat.test.cpp
       title: test/two_sat.test.cpp
@@ -505,6 +487,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2873.test.cpp
       title: test/aoj/aoj_2873.test.cpp
+  - name: test/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/Bitwise_And_Convolution.test.cpp
+      title: test/convolution/Bitwise_And_Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/Bitwise_OR_Convolution.test.cpp
+      title: test/convolution/Bitwise_OR_Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/Bitwise_Xor_Convolution.test.cpp
+      title: test/convolution/Bitwise_Xor_Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/Convolution_Mod_1000000007.test.cpp
+      title: test/convolution/Convolution_Mod_1000000007.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/convolution.test.cpp
+      title: test/convolution/convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/subset_convolution.test.cpp
+      title: test/convolution/subset_convolution.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'

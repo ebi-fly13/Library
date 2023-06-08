@@ -2,11 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: convolution/xor_convolution.hpp
-    title: Bitwise XOR Convolution
+    path: convolution/or_convolution.hpp
+    title: Bitwise OR Convolution
   - icon: ':heavy_check_mark:'
-    path: set_function/hadamard_transform.hpp
-    title: set_function/hadamard_transform.hpp
+    path: set_function/subset_zeta.hpp
+    title: Subset Zeta Transform
+  - icon: ':heavy_check_mark:'
+    path: utility/bit_operator.hpp
+    title: utility/bit_operator.hpp
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
@@ -20,26 +23,39 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/bitwise_xor_convolution
+    PROBLEM: https://judge.yosupo.jp/problem/bitwise_and_convolution
     links:
-    - https://judge.yosupo.jp/problem/bitwise_xor_convolution
-  bundledCode: "#line 1 \"test/Bitwise_Xor_Convolution.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\n\n#include <iostream>\n\
-    #include <vector>\n\n#line 2 \"convolution/xor_convolution.hpp\"\n\n#include <cassert>\n\
-    #line 5 \"convolution/xor_convolution.hpp\"\n\n#line 2 \"set_function/hadamard_transform.hpp\"\
-    \n\n#line 4 \"set_function/hadamard_transform.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class T>\nstd::vector<T> hadamard_transform(std::vector<T> f, bool inverse\
-    \ = false) {\n    int n = f.size();\n    for (int i = 1; i < n; i <<= 1) {\n \
-    \       for (int j = 0; j < n; j++) {\n            if ((i & j) == 0) {\n     \
-    \           T x = f[j], y = f[j | i];\n                f[j] = x + y;\n       \
-    \         f[j | i] = x - y;\n            }\n        }\n    }\n    if (inverse)\
-    \ {\n        for (auto& x : f) {\n            x /= T(n);\n        }\n    }\n \
-    \   return f;\n}\n\n}  // namespace ebi\n#line 7 \"convolution/xor_convolution.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T>\nstd::vector<T> xor_convolution(const\
-    \ std::vector<T> &a,\n                               const std::vector<T> &b)\
-    \ {\n    assert(a.size() == b.size());\n    auto ta = hadamard_transform(a);\n\
-    \    auto tb = hadamard_transform(b);\n    for (int i = 0; i < (int)a.size();\
-    \ i++) {\n        ta[i] *= tb[i];\n    }\n    return hadamard_transform(ta, true);\n\
+    - https://judge.yosupo.jp/problem/bitwise_and_convolution
+  bundledCode: "#line 1 \"test/convolution/Bitwise_OR_Convolution.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\n#include\
+    \ <iostream>\n#include <vector>\n\n#line 2 \"convolution/or_convolution.hpp\"\n\
+    \n#line 2 \"set_function/subset_zeta.hpp\"\n\n#include <cassert>\n#line 5 \"set_function/subset_zeta.hpp\"\
+    \n\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned\
+    \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
+    }\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
+    \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
+    \ i - 1);\n    }\n    return rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x =\
+    \ 0;\n    while ((1U << x) < (unsigned int)(n)) x++;\n    return x;\n}\n\nint\
+    \ popcnt(int x) {\n    return __builtin_popcount(x);\n}\n\nint msb(int x) {\n\
+    \    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\nint bsf(int x) {\n  \
+    \  return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace ebi\n#line 7\
+    \ \"set_function/subset_zeta.hpp\"\n\nnamespace ebi {\n\ntemplate <class T> std::vector<T>\
+    \ subset_zeta(const std::vector<T> &a) {\n    int n = msb(a.size());\n    assert((1\
+    \ << n) == (int)a.size());\n    std::vector<T> ra = a;\n    for (int i = 0; i\
+    \ < n; i++) {\n        int w = 1 << i;\n        for (int p = 0; p < (1 << n);\
+    \ p += 2 * w) {\n            for (int s = p; s < p + w; s++) {\n             \
+    \   int t = s | w;\n                ra[t] += ra[s];\n            }\n        }\n\
+    \    }\n    return ra;\n}\n\ntemplate <class T> std::vector<T> subset_mobius(const\
+    \ std::vector<T> &ra) {\n    int n = msb(ra.size());\n    assert((1 << n) == (int)ra.size());\n\
+    \    std::vector<T> a = ra;\n    for (int i = 0; i < n; i++) {\n        int w\
+    \ = 1 << i;\n        for (int p = 0; p < (1 << n); p += 2 * w) {\n           \
+    \ for (int s = p; s < p + w; s++) {\n                int t = s | w;\n        \
+    \        a[t] -= a[s];\n            }\n        }\n    }\n    return a;\n}\n\n\
+    }  // namespace ebi\n#line 4 \"convolution/or_convolution.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <class T>\nstd::vector<T> or_convolution(const std::vector<T>\
+    \ &a,\n                              const std::vector<T> &b) {\n    int n = a.size();\n\
+    \    auto ra = subset_zeta(a);\n    auto rb = subset_zeta(b);\n    for (int i\
+    \ = 0; i < n; i++) {\n        ra[i] *= rb[i];\n    }\n    return subset_mobius(ra);\n\
     }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\
     \n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4\
     \ \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\nstruct\
@@ -92,39 +108,41 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/Bitwise_Xor_Convolution.test.cpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/convolution/Bitwise_OR_Convolution.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
-    \ >> n;\n    std::vector<mint> a(1 << n), b(1 << n);\n    for (int i = 0; i <\
-    \ (1 << n); i++) {\n        int val;\n        std::cin >> val;\n        a[i] =\
-    \ val;\n    }\n    for (int i = 0; i < (1 << n); i++) {\n        int val;\n  \
-    \      std::cin >> val;\n        b[i] = val;\n    }\n    auto c = ebi::xor_convolution(a,\
-    \ b);\n    for (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val()\
-    \ << \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../convolution/xor_convolution.hpp\"\
-    \n#include \"../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\n\
-    int main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> a(1 << n),\
-    \ b(1 << n);\n    for (int i = 0; i < (1 << n); i++) {\n        int val;\n   \
-    \     std::cin >> val;\n        a[i] = val;\n    }\n    for (int i = 0; i < (1\
-    \ << n); i++) {\n        int val;\n        std::cin >> val;\n        b[i] = val;\n\
-    \    }\n    auto c = ebi::xor_convolution(a, b);\n    for (int i = 0; i < (1 <<\
-    \ n); i++) {\n        std::cout << c[i].val() << \" \\n\"[i == (1 << n) - 1];\n\
-    \    }\n}\n"
+    \ >> n;\n    std::vector<mint> a(1 << n), b(1 << n);\n    const int mask = (1\
+    \ << n) - 1;\n    for (int i = 0; i < (1 << n); i++) {\n        int x;\n     \
+    \   std::cin >> x;\n        a[mask ^ i] = x;\n    }\n    for (int i = 0; i < (1\
+    \ << n); i++) {\n        int x;\n        std::cin >> x;\n        b[mask ^ i] =\
+    \ x;\n    }\n    auto c = ebi::or_convolution(a, b);\n    for (int i = 0; i <\
+    \ (1 << n); i++) {\n        std::cout << c[mask ^ i].val() << \" \\n\"[i == (1\
+    \ << n) - 1];\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"../../convolution/or_convolution.hpp\"\
+    \n#include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
+    \nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> a(1 << n),\
+    \ b(1 << n);\n    const int mask = (1 << n) - 1;\n    for (int i = 0; i < (1 <<\
+    \ n); i++) {\n        int x;\n        std::cin >> x;\n        a[mask ^ i] = x;\n\
+    \    }\n    for (int i = 0; i < (1 << n); i++) {\n        int x;\n        std::cin\
+    \ >> x;\n        b[mask ^ i] = x;\n    }\n    auto c = ebi::or_convolution(a,\
+    \ b);\n    for (int i = 0; i < (1 << n); i++) {\n        std::cout << c[mask ^\
+    \ i].val() << \" \\n\"[i == (1 << n) - 1];\n    }\n}"
   dependsOn:
-  - convolution/xor_convolution.hpp
-  - set_function/hadamard_transform.hpp
+  - convolution/or_convolution.hpp
+  - set_function/subset_zeta.hpp
+  - utility/bit_operator.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
-  path: test/Bitwise_Xor_Convolution.test.cpp
+  path: test/convolution/Bitwise_OR_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-05-31 02:50:45+09:00'
+  timestamp: '2023-06-08 10:34:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Bitwise_Xor_Convolution.test.cpp
+documentation_of: test/convolution/Bitwise_OR_Convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Bitwise_Xor_Convolution.test.cpp
-- /verify/test/Bitwise_Xor_Convolution.test.cpp.html
-title: test/Bitwise_Xor_Convolution.test.cpp
+- /verify/test/convolution/Bitwise_OR_Convolution.test.cpp
+- /verify/test/convolution/Bitwise_OR_Convolution.test.cpp.html
+title: test/convolution/Bitwise_OR_Convolution.test.cpp
 ---

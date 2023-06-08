@@ -16,8 +16,8 @@ data:
     path: test/Exp_of_Set_Power_Series.test.cpp
     title: test/Exp_of_Set_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/subset_convolution.test.cpp
-    title: test/subset_convolution.test.cpp
+    path: test/convolution/subset_convolution.test.cpp
+    title: test/convolution/subset_convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -75,13 +75,13 @@ data:
   isVerificationFile: false
   path: set_function/ranked_zeta.hpp
   requiredBy:
-  - set_function/sps_exp.hpp
   - convolution/subset_convolution.hpp
+  - set_function/sps_exp.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Exp_of_Set_Power_Series.test.cpp
-  - test/subset_convolution.test.cpp
+  - test/convolution/subset_convolution.test.cpp
 documentation_of: set_function/ranked_zeta.hpp
 layout: document
 redirect_from:

@@ -16,8 +16,8 @@ data:
     path: test/Exp_of_Set_Power_Series.test.cpp
     title: test/Exp_of_Set_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/subset_convolution.test.cpp
-    title: test/subset_convolution.test.cpp
+    path: test/convolution/subset_convolution.test.cpp
+    title: test/convolution/subset_convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -89,7 +89,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Exp_of_Set_Power_Series.test.cpp
-  - test/subset_convolution.test.cpp
+  - test/convolution/subset_convolution.test.cpp
 documentation_of: convolution/subset_convolution.hpp
 layout: document
 title: Subset Convolution

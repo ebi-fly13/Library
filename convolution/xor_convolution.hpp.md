@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Bitwise_Xor_Convolution.test.cpp
-    title: test/Bitwise_Xor_Convolution.test.cpp
+    path: test/convolution/Bitwise_Xor_Convolution.test.cpp
+    title: test/convolution/Bitwise_Xor_Convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -44,7 +44,7 @@ data:
   timestamp: '2023-05-16 13:40:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Bitwise_Xor_Convolution.test.cpp
+  - test/convolution/Bitwise_Xor_Convolution.test.cpp
 documentation_of: convolution/xor_convolution.hpp
 layout: document
 title: Bitwise XOR Convolution

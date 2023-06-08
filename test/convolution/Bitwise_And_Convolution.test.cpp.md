@@ -26,10 +26,10 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/bitwise_and_convolution
     links:
     - https://judge.yosupo.jp/problem/bitwise_and_convolution
-  bundledCode: "#line 1 \"test/Bitwise_And_Convolution.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\n#include <iostream>\n\
-    #include <vector>\n\n#line 2 \"convolution/and_convolution.hpp\"\n\n#line 4 \"\
-    convolution/and_convolution.hpp\"\n\n#line 2 \"set_function/superset_zeta.hpp\"\
+  bundledCode: "#line 1 \"test/convolution/Bitwise_And_Convolution.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\n#include\
+    \ <iostream>\n#include <vector>\n\n#line 2 \"convolution/and_convolution.hpp\"\
+    \n\n#line 4 \"convolution/and_convolution.hpp\"\n\n#line 2 \"set_function/superset_zeta.hpp\"\
     \n\n#include <cassert>\n#line 5 \"set_function/superset_zeta.hpp\"\n\n#line 2\
     \ \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned\
     \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
@@ -110,7 +110,7 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/Bitwise_And_Convolution.test.cpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/convolution/Bitwise_And_Convolution.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
     \ >> n;\n    std::vector<mint> a(1 << n), b(1 << n);\n    for (int i = 0; i <\
     \ (1 << n); i++) {\n        int x;\n        std::cin >> x;\n        a[i] = x;\n\
@@ -119,9 +119,9 @@ data:
     \    for (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val() <<\
     \ \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../convolution/and_convolution.hpp\"\
-    \n#include \"../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\n\
-    int main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> a(1 << n),\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"../../convolution/and_convolution.hpp\"\
+    \n#include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
+    \nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> a(1 << n),\
     \ b(1 << n);\n    for (int i = 0; i < (1 << n); i++) {\n        int x;\n     \
     \   std::cin >> x;\n        a[i] = x;\n    }\n    for (int i = 0; i < (1 << n);\
     \ i++) {\n        int x;\n        std::cin >> x;\n        b[i] = x;\n    }\n \
@@ -134,15 +134,15 @@ data:
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
-  path: test/Bitwise_And_Convolution.test.cpp
+  path: test/convolution/Bitwise_And_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-06-01 23:05:53+09:00'
+  timestamp: '2023-06-08 10:34:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Bitwise_And_Convolution.test.cpp
+documentation_of: test/convolution/Bitwise_And_Convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Bitwise_And_Convolution.test.cpp
-- /verify/test/Bitwise_And_Convolution.test.cpp.html
-title: test/Bitwise_And_Convolution.test.cpp
+- /verify/test/convolution/Bitwise_And_Convolution.test.cpp
+- /verify/test/convolution/Bitwise_And_Convolution.test.cpp.html
+title: test/convolution/Bitwise_And_Convolution.test.cpp
 ---

@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: convolution/arbitrary_ntt.hpp
-    title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -26,20 +23,18 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
+    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
     links:
-    - https://judge.yosupo.jp/problem/convolution_mod_1000000007
-  bundledCode: "#line 1 \"test/Convolution_Mod_1000000007.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\n\n#include <iostream>\n\
-    #include <vector>\n\n#line 2 \"convolution/arbitrary_ntt.hpp\"\n\n#include <cstdint>\n\
-    #line 5 \"convolution/arbitrary_ntt.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\n\
-    \n#include <array>\n#include <type_traits>\n#line 6 \"convolution/ntt.hpp\"\n\n\
-    #line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
-    \nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n\
-    \    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if\
-    \ (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n}\ntemplate\
-    \ <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  //\
-    \ namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
+    - https://judge.yosupo.jp/problem/convolution_mod
+  bundledCode: "#line 1 \"test/convolution/convolution.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/convolution_mod\"\r\n\r\n#include <iostream>\r\
+    \n\r\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
+    #include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\n\
+    namespace internal {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if\
+    \ (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049)\
+    \ return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353) return\
+    \ 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
     \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
     \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
@@ -143,62 +138,38 @@ data:
     \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 8 \"convolution/arbitrary_ntt.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class T, class mint,\
-    \ internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> multiply(const\
-    \ std::vector<T>& f, const std::vector<T>& g) {\n    std::vector<mint> a, b;\n\
-    \    a.reserve(f.size());\n    b.reserve(g.size());\n    for (auto x : f) a.emplace_back(x.val());\n\
-    \    for (auto x : g) b.emplace_back(x.val());\n    return convolution<mint>(a,\
-    \ b);\n}\n\n}  // namespace internal\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
-    \ = nullptr>\nstd::vector<mint> arbitary_convolution(const std::vector<mint>&\
-    \ f,\n                                       const std::vector<mint>& g) {\n \
-    \   using i32 = std::int64_t;\n    using i64 = std::int64_t;\n    static constexpr\
-    \ i32 m0 = 167772161;  // 2^25\n    static constexpr i32 m1 = 469762049;  // 2^26\n\
-    \    static constexpr i32 m2 = 754974721;  // 2^24\n    using mint0 = static_modint<m0>;\n\
-    \    using mint1 = static_modint<m1>;\n    using mint2 = static_modint<m2>;\n\
-    \    static constexpr i32 inv01 = mint1(m0).inv().val();\n    static constexpr\
-    \ i32 inv02 = mint2(m0).inv().val();\n    static constexpr i32 inv12 = mint2(m1).inv().val();\n\
-    \    static constexpr i32 inv02inv12 = i64(inv02) * inv12 % m2;\n    static constexpr\
-    \ i64 w1 = m0;\n    static constexpr i64 w2 = i64(m0) * m1;\n\n    const i32 mod\
-    \ = mint::mod();\n\n    auto d0 = internal::multiply<mint, mint0>(f, g);\n   \
-    \ auto d1 = internal::multiply<mint, mint1>(f, g);\n    auto d2 = internal::multiply<mint,\
-    \ mint2>(f, g);\n\n    int n = d0.size();\n    std::vector<mint> res(n);\n   \
-    \ const int W1 = w1 % mod;\n    const int W2 = w2 % mod;\n\n    for (int i = 0;\
-    \ i < n; i++) {\n        i32 n1 = d1[i].val(), n2 = d2[i].val(), a = d0[i].val();\n\
-    \        i32 b = i64(n1 + m1 - a) * inv01 % m1;\n        i32 c = (i64(n2 + m2\
-    \ - a) * inv02inv12 + i64(m2 - b) * inv12) % m2;\n        res[i] = (i64(a) + i64(b)\
-    \ * W1 + i64(c) * W2) % mod;\n    }\n    return res;\n}\n\n}  // namespace ebi\n\
-    #line 8 \"test/Convolution_Mod_1000000007.test.cpp\"\n\nusing mint = ebi::modint1000000007;\n\
-    \nint main() {\n    int n, m;\n    std::cin >> n >> m;\n    std::vector<mint>\
-    \ a(n), b(m);\n    for (int i = 0; i < n; i++) std::cin >> a[i];\n    for (int\
-    \ i = 0; i < m; i++) std::cin >> b[i];\n    auto c = ebi::arbitary_convolution<mint>(a,\
-    \ b);\n    for (int i = 0; i < n + m - 1; i++) {\n        std::cout << c[i].val()\
-    \ << \" \\n\"[i == n + m - 2];\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../convolution/arbitrary_ntt.hpp\"\
-    \n#include \"../utility/modint.hpp\"\n\nusing mint = ebi::modint1000000007;\n\n\
-    int main() {\n    int n, m;\n    std::cin >> n >> m;\n    std::vector<mint> a(n),\
-    \ b(m);\n    for (int i = 0; i < n; i++) std::cin >> a[i];\n    for (int i = 0;\
-    \ i < m; i++) std::cin >> b[i];\n    auto c = ebi::arbitary_convolution<mint>(a,\
-    \ b);\n    for (int i = 0; i < n + m - 1; i++) {\n        std::cout << c[i].val()\
-    \ << \" \\n\"[i == n + m - 2];\n    }\n}"
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 7 \"test/convolution/convolution.test.cpp\"\
+    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n, m;\r\
+    \n    std::cin >> n >> m;\r\n    std::vector<mint> a(n), b(m);\r\n    for (int\
+    \ i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    for (int i\
+    \ = 0; i < m; ++i) {\r\n        std::cin >> b[i];\r\n    }\r\n    auto c = ebi::convolution<mint>(a,\
+    \ b);\r\n    for (int i = 0; i < n + m - 1; ++i) {\r\n        std::cout << c[i]\
+    \ << \" \";\r\n    }\r\n    std::cout << '\\n';\r\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\r\n\r\
+    \n#include <iostream>\r\n\r\n#include \"../../convolution/ntt.hpp\"\r\n#include\
+    \ \"../../utility/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\n\r\
+    \nint main() {\r\n    int n, m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint>\
+    \ a(n), b(m);\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\
+    \n    }\r\n    for (int i = 0; i < m; ++i) {\r\n        std::cin >> b[i];\r\n\
+    \    }\r\n    auto c = ebi::convolution<mint>(a, b);\r\n    for (int i = 0; i\
+    \ < n + m - 1; ++i) {\r\n        std::cout << c[i] << \" \";\r\n    }\r\n    std::cout\
+    \ << '\\n';\r\n}"
   dependsOn:
-  - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
-  path: test/Convolution_Mod_1000000007.test.cpp
+  path: test/convolution/convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-06-01 23:30:06+09:00'
+  timestamp: '2023-06-08 10:34:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Convolution_Mod_1000000007.test.cpp
+documentation_of: test/convolution/convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Convolution_Mod_1000000007.test.cpp
-- /verify/test/Convolution_Mod_1000000007.test.cpp.html
-title: test/Convolution_Mod_1000000007.test.cpp
+- /verify/test/convolution/convolution.test.cpp
+- /verify/test/convolution/convolution.test.cpp.html
+title: test/convolution/convolution.test.cpp
 ---

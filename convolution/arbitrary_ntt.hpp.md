@@ -19,8 +19,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Convolution_Mod_1000000007.test.cpp
-    title: test/Convolution_Mod_1000000007.test.cpp
+    path: test/convolution/Convolution_Mod_1000000007.test.cpp
+    title: test/convolution/Convolution_Mod_1000000007.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -200,7 +200,7 @@ data:
   timestamp: '2023-06-01 23:10:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Convolution_Mod_1000000007.test.cpp
+  - test/convolution/Convolution_Mod_1000000007.test.cpp
 documentation_of: convolution/arbitrary_ntt.hpp
 layout: document
 title: Arbitrary Convolution

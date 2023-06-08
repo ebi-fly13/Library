@@ -26,30 +26,30 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/subset_convolution
     links:
     - https://judge.yosupo.jp/problem/subset_convolution
-  bundledCode: "#line 1 \"test/subset_convolution.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\
-    \r\n\r\n#line 2 \"convolution/subset_convolution.hpp\"\n\r\n/*\r\n    refernce:\
-    \ https://www.slideshare.net/wata_orz/ss-12131479\r\n              https://37zigen.com/subset-convolution/\r\
-    \n*/\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <vector>\r\n\r\n\
-    #line 2 \"set_function/ranked_zeta.hpp\"\n\n#line 6 \"set_function/ranked_zeta.hpp\"\
-    \n\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned\
-    \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
-    }\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
-    \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
-    \ i - 1);\n    }\n    return rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x =\
-    \ 0;\n    while ((1U << x) < (unsigned int)(n)) x++;\n    return x;\n}\n\nint\
-    \ popcnt(int x) {\n    return __builtin_popcount(x);\n}\n\nint msb(int x) {\n\
-    \    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\nint bsf(int x) {\n  \
-    \  return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace ebi\n#line 8\
-    \ \"set_function/ranked_zeta.hpp\"\n\nnamespace ebi {\n\ntemplate <class T, int\
-    \ LIM = 20>\nstd::vector<std::array<T, LIM + 1>> ranked_zeta(const std::vector<T>\
-    \ &f) {\n    int n = msb(f.size());\n    assert(n <= LIM);\n    assert((int)f.size()\
-    \ == (1 << n));\n    std::vector<std::array<T, LIM + 1>> rf(1 << n);\n    for\
-    \ (int s = 0; s < (1 << n); s++) rf[s][popcnt(s)] = f[s];\n    for (int i = 0;\
-    \ i < n; i++) {\n        int w = 1 << i;\n        for (int p = 0; p < (1 << n);\
-    \ p += 2 * w) {\n            for (int s = p; s < p + w; s++) {\n             \
-    \   int t = s | (1 << i);\n                for (int d = 0; d <= n; d++) rf[t][d]\
-    \ += rf[s][d];\n            }\n        }\n    }\n    return rf;\n}\n\ntemplate\
-    \ <class T, int LIM = 20>\nstd::vector<T> ranked_mobius(std::vector<std::array<T,\
+  bundledCode: "#line 1 \"test/convolution/subset_convolution.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\r\n\r\n#line\
+    \ 2 \"convolution/subset_convolution.hpp\"\n\r\n/*\r\n    refernce: https://www.slideshare.net/wata_orz/ss-12131479\r\
+    \n              https://37zigen.com/subset-convolution/\r\n*/\r\n\r\n#include\
+    \ <array>\r\n#include <cassert>\r\n#include <vector>\r\n\r\n#line 2 \"set_function/ranked_zeta.hpp\"\
+    \n\n#line 6 \"set_function/ranked_zeta.hpp\"\n\n#line 2 \"utility/bit_operator.hpp\"\
+    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
+    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
+    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
+    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
+    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
+    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
+    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
+    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
+    }\n\n}  // namespace ebi\n#line 8 \"set_function/ranked_zeta.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T, int LIM = 20>\nstd::vector<std::array<T, LIM + 1>>\
+    \ ranked_zeta(const std::vector<T> &f) {\n    int n = msb(f.size());\n    assert(n\
+    \ <= LIM);\n    assert((int)f.size() == (1 << n));\n    std::vector<std::array<T,\
+    \ LIM + 1>> rf(1 << n);\n    for (int s = 0; s < (1 << n); s++) rf[s][popcnt(s)]\
+    \ = f[s];\n    for (int i = 0; i < n; i++) {\n        int w = 1 << i;\n      \
+    \  for (int p = 0; p < (1 << n); p += 2 * w) {\n            for (int s = p; s\
+    \ < p + w; s++) {\n                int t = s | (1 << i);\n                for\
+    \ (int d = 0; d <= n; d++) rf[t][d] += rf[s][d];\n            }\n        }\n \
+    \   }\n    return rf;\n}\n\ntemplate <class T, int LIM = 20>\nstd::vector<T> ranked_mobius(std::vector<std::array<T,\
     \ LIM + 1>> rf) {\n    int n = msb(rf.size());\n    assert((int)rf.size() == (1\
     \ << n));\n    for (int i = 0; i < n; i++) {\n        int w = 1 << i;\n      \
     \  for (int p = 0; p < (1 << n); p += 2 * w) {\n            for (int s = p; s\
@@ -66,10 +66,10 @@ data:
     \n        for (int d = n; d >= 0; d--) {\r\n            T x = 0;\r\n         \
     \   for (int i = 0; i <= d; i++) {\r\n                x += f[i] * g[d - i];\r\n\
     \            }\r\n            f[d] = x;\r\n        }\r\n    }\r\n    return ranked_mobius<T,\
-    \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 4 \"test/subset_convolution.test.cpp\"\
-    \n\r\n#include <iostream>\r\n#line 7 \"test/subset_convolution.test.cpp\"\n\r\n\
-    #line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\
-    \n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
+    \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 4 \"test/convolution/subset_convolution.test.cpp\"\
+    \n\r\n#include <iostream>\r\n#line 7 \"test/convolution/subset_convolution.test.cpp\"\
+    \n\r\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include\
+    \ <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
     \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
     \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\n}  // namespace\
@@ -120,7 +120,7 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/subset_convolution.test.cpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/convolution/subset_convolution.test.cpp\"\
     \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n\
     \    std::cin >> n;\r\n    std::vector<mint> a(1 << n), b(1 << n);\r\n    for\
     \ (int i = 0; i < (1 << n); i++) {\r\n        std::cin >> a[i];\r\n    }\r\n \
@@ -129,14 +129,15 @@ data:
     \ i < (1 << n); i++) {\r\n        std::cout << c[i] << ((i == (1 << n) - 1) ?\
     \ \"\\n\" : \" \");\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\r\n\
-    \r\n#include \"../convolution/subset_convolution.hpp\"\r\n\r\n#include <iostream>\r\
-    \n#include <vector>\r\n\r\n#include \"../utility/modint.hpp\"\r\n\r\nusing mint\
-    \ = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >>\
-    \ n;\r\n    std::vector<mint> a(1 << n), b(1 << n);\r\n    for (int i = 0; i <\
-    \ (1 << n); i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    for (int i = 0;\
-    \ i < (1 << n); i++) {\r\n        std::cin >> b[i];\r\n    }\r\n    auto c = ebi::subset_convolution<mint,\
-    \ 20>(a, b);\r\n    for (int i = 0; i < (1 << n); i++) {\r\n        std::cout\
-    \ << c[i] << ((i == (1 << n) - 1) ? \"\\n\" : \" \");\r\n    }\r\n}"
+    \r\n#include \"../../convolution/subset_convolution.hpp\"\r\n\r\n#include <iostream>\r\
+    \n#include <vector>\r\n\r\n#include \"../../utility/modint.hpp\"\r\n\r\nusing\
+    \ mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin\
+    \ >> n;\r\n    std::vector<mint> a(1 << n), b(1 << n);\r\n    for (int i = 0;\
+    \ i < (1 << n); i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    for (int i\
+    \ = 0; i < (1 << n); i++) {\r\n        std::cin >> b[i];\r\n    }\r\n    auto\
+    \ c = ebi::subset_convolution<mint, 20>(a, b);\r\n    for (int i = 0; i < (1 <<\
+    \ n); i++) {\r\n        std::cout << c[i] << ((i == (1 << n) - 1) ? \"\\n\" :\
+    \ \" \");\r\n    }\r\n}"
   dependsOn:
   - convolution/subset_convolution.hpp
   - set_function/ranked_zeta.hpp
@@ -144,15 +145,15 @@ data:
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
-  path: test/subset_convolution.test.cpp
+  path: test/convolution/subset_convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-05-31 02:50:45+09:00'
+  timestamp: '2023-06-08 10:34:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/subset_convolution.test.cpp
+documentation_of: test/convolution/subset_convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/test/subset_convolution.test.cpp
-- /verify/test/subset_convolution.test.cpp.html
-title: test/subset_convolution.test.cpp
+- /verify/test/convolution/subset_convolution.test.cpp
+- /verify/test/convolution/subset_convolution.test.cpp.html
+title: test/convolution/subset_convolution.test.cpp
 ---

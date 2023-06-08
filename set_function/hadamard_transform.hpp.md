@@ -7,8 +7,8 @@ data:
     title: Bitwise XOR Convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Bitwise_Xor_Convolution.test.cpp
-    title: test/Bitwise_Xor_Convolution.test.cpp
+    path: test/convolution/Bitwise_Xor_Convolution.test.cpp
+    title: test/convolution/Bitwise_Xor_Convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -38,7 +38,7 @@ data:
   timestamp: '2023-05-16 01:22:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Bitwise_Xor_Convolution.test.cpp
+  - test/convolution/Bitwise_Xor_Convolution.test.cpp
 documentation_of: set_function/hadamard_transform.hpp
 layout: document
 redirect_from:

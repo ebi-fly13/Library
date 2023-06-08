@@ -10,8 +10,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Bitwise_OR_Convolution.test.cpp
-    title: test/Bitwise_OR_Convolution.test.cpp
+    path: test/convolution/Bitwise_OR_Convolution.test.cpp
+    title: test/convolution/Bitwise_OR_Convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,7 +60,7 @@ data:
   timestamp: '2023-06-01 22:59:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Bitwise_OR_Convolution.test.cpp
+  - test/convolution/Bitwise_OR_Convolution.test.cpp
 documentation_of: convolution/or_convolution.hpp
 layout: document
 title: Bitwise OR Convolution
