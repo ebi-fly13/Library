@@ -3,8 +3,8 @@
 #include <iostream>
 #include <vector>
 
-#include "../convolution/arbitrary_ntt.hpp"
-#include "../utility/modint.hpp"
+#include "../../convolution/arbitrary_ntt.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint1000000007;
 

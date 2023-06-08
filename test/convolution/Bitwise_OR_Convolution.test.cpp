@@ -3,8 +3,8 @@
 #include <iostream>
 #include <vector>
 
-#include "../convolution/or_convolution.hpp"
-#include "../utility/modint.hpp"
+#include "../../convolution/or_convolution.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 

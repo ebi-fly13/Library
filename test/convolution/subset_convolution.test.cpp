@@ -1,11 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/subset_convolution"
 
-#include "../convolution/subset_convolution.hpp"
+#include "../../convolution/subset_convolution.hpp"
 
 #include <iostream>
 #include <vector>
 
-#include "../utility/modint.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 
