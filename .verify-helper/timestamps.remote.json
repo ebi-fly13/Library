@@ -39,6 +39,7 @@
 "test/convolution/Bitwise_OR_Convolution.test.cpp": "2023-06-08 10:34:37 +0900",
 "test/convolution/Bitwise_Xor_Convolution.test.cpp": "2023-06-08 10:34:37 +0900",
 "test/convolution/Convolution_Mod_1000000007.test.cpp": "2023-06-08 10:34:37 +0900",
+"test/convolution/Gcd_Convolution.test.cpp": "2023-06-09 21:12:54 +0900",
 "test/convolution/Lcm_Convolution.test.cpp": "2023-06-09 15:36:58 +0900",
 "test/convolution/convolution.test.cpp": "2023-06-08 10:34:37 +0900",
 "test/convolution/subset_convolution.test.cpp": "2023-06-08 10:34:37 +0900",
