@@ -85,6 +85,9 @@ data:
     path: test/convolution/Convolution_Mod_1000000007.test.cpp
     title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/convolution/Lcm_Convolution.test.cpp
+    title: test/convolution/Lcm_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/convolution/convolution.test.cpp
     title: test/convolution/convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -208,6 +211,7 @@ data:
   - test/convolution/subset_convolution.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/convolution/Bitwise_And_Convolution.test.cpp
+  - test/convolution/Lcm_Convolution.test.cpp
   - test/Determinant_of_Matrix.test.cpp
   - test/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp

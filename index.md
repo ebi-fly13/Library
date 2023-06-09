@@ -31,6 +31,9 @@ data:
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
     - icon: ':heavy_check_mark:'
+      path: convolution/lcm_convolution.hpp
+      title: LCM Convolution
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':heavy_check_mark:'
@@ -214,6 +217,9 @@ data:
     - icon: ':warning:'
       path: math/combination.hpp
       title: math/combination.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/divisor_transform.hpp
+      title: Divisor Transform (Zeta / Mobius)
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
@@ -501,6 +507,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/convolution/Convolution_Mod_1000000007.test.cpp
       title: test/convolution/Convolution_Mod_1000000007.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/Lcm_Convolution.test.cpp
+      title: test/convolution/Lcm_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/convolution/convolution.test.cpp
       title: test/convolution/convolution.test.cpp
