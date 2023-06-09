@@ -240,7 +240,7 @@ data:
       title: math/mod_sqrt.hpp
     - icon: ':heavy_check_mark:'
       path: math/multiple_transform.hpp
-      title: math/multiple_transform.hpp
+      title: Multiple Transform (Zeta / Mobius)
   - name: set_function
     pages:
     - icon: ':heavy_check_mark:'

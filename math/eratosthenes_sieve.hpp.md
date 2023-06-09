@@ -13,7 +13,7 @@ data:
     title: Divisor Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
     path: math/multiple_transform.hpp
-    title: math/multiple_transform.hpp
+    title: Multiple Transform (Zeta / Mobius)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Gcd_Convolution.test.cpp

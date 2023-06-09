@@ -9,7 +9,7 @@ data:
     title: math/eratosthenes_sieve.hpp
   - icon: ':heavy_check_mark:'
     path: math/multiple_transform.hpp
-    title: math/multiple_transform.hpp
+    title: Multiple Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp

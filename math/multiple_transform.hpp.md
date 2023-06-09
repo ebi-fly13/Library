@@ -75,8 +75,9 @@ data:
   - test/convolution/Gcd_Convolution.test.cpp
 documentation_of: math/multiple_transform.hpp
 layout: document
-redirect_from:
-- /library/math/multiple_transform.hpp
-- /library/math/multiple_transform.hpp.html
-title: math/multiple_transform.hpp
+title: Multiple Transform (Zeta / Mobius)
 ---
+
+## 説明
+
+倍数に対してゼータ変換とメビウス変換を行う。 $O(N\log \log N)$
