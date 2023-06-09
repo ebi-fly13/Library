@@ -73,8 +73,9 @@ data:
   - test/convolution/Gcd_Convolution.test.cpp
 documentation_of: convolution/gcd_convolution.hpp
 layout: document
-redirect_from:
-- /library/convolution/gcd_convolution.hpp
-- /library/convolution/gcd_convolution.hpp.html
-title: convolution/gcd_convolution.hpp
+title: GCD Convolution
 ---
+
+## 説明
+
+長さ$N+1$ の整数列 $a$, $b$ について、 $c_k = \sum_{gcd(i, j) = k} a_i b_j$ を $O(N\log \log N)$ で計算する。
