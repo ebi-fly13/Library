@@ -1,6 +1,6 @@
 ---
 title: GCD Convolution
-documentation_of: //convolution/GCD_convolution.hpp
+documentation_of: //convolution/gcd_convolution.hpp
 ---
 
 ## 説明
