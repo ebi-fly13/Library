@@ -31,6 +31,9 @@ data:
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
     - icon: ':heavy_check_mark:'
+      path: convolution/gcd_convolution.hpp
+      title: convolution/gcd_convolution.hpp
+    - icon: ':heavy_check_mark:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
     - icon: ':heavy_check_mark:'
@@ -235,6 +238,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/mod_sqrt.hpp
       title: math/mod_sqrt.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/multiple_transform.hpp
+      title: math/multiple_transform.hpp
   - name: set_function
     pages:
     - icon: ':heavy_check_mark:'
@@ -507,6 +513,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/convolution/Convolution_Mod_1000000007.test.cpp
       title: test/convolution/Convolution_Mod_1000000007.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/Gcd_Convolution.test.cpp
+      title: test/convolution/Gcd_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/convolution/Lcm_Convolution.test.cpp
       title: test/convolution/Lcm_Convolution.test.cpp

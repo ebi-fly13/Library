@@ -52,6 +52,9 @@ data:
     path: test/convolution/Convolution_Mod_1000000007.test.cpp
     title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/convolution/Gcd_Convolution.test.cpp
+    title: test/convolution/Gcd_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/convolution/Lcm_Convolution.test.cpp
     title: test/convolution/Lcm_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -221,6 +224,7 @@ data:
   - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/convolution/Bitwise_And_Convolution.test.cpp
   - test/convolution/Lcm_Convolution.test.cpp
+  - test/convolution/Gcd_Convolution.test.cpp
   - test/Determinant_of_Matrix.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/Tree_Path_Composite_Sum.test.cpp
