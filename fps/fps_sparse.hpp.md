@@ -13,6 +13,9 @@ data:
     path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   _isVerificationFailed: false
@@ -28,25 +31,38 @@ data:
     \      int num = dat.size();\n        int q = (mod + num - 1) / num;\n       \
     \ dat.emplace_back(dat[num * q - mod] * mint(q));\n    }\n    return dat[n];\n\
     }\n\n}  // namespace ebi\n#line 7 \"fps/fps_sparse.hpp\"\n\nnamespace ebi {\n\n\
-    template <class mint>\nstd::vector<mint> inv_sparse(const std::vector<mint> &f,\
-    \ int d = -1) {\n    assert(f[0] != 0);\n    if (d < 0) {\n        d = f.size();\n\
-    \    }\n    std::vector<std::pair<int, mint>> ret;\n    for (int i = 1; i < int(f.size());\
-    \ i++) {\n        if (f[i] != 0) {\n            ret.emplace_back(i, f[i]);\n \
-    \       }\n    }\n    std::vector<mint> g(d);\n    g[0] = f[0].inv();\n    for\
-    \ (int i = 1; i < d; i++) {\n        for (auto [k, p] : ret) {\n            if\
-    \ (i - k < 0) break;\n            g[i] -= g[i - k] * p;\n        }\n        g[i]\
-    \ *= g[0];\n    }\n    return g;\n}\n\ntemplate <class mint>\nstd::vector<mint>\
-    \ exp_sparse(const std::vector<mint> &f, int d = -1) {\n    int n = f.size();\n\
-    \    if (d < 0) d = n;\n    std::vector<std::pair<int, mint>> ret;\n    for (int\
-    \ i = 1; i < n; i++) {\n        if (f[i] != 0) {\n            ret.emplace_back(i\
-    \ - 1, f[i] * i);\n        }\n    }\n    std::vector<mint> g(d);\n    g[0] = 1;\n\
-    \    for (int i = 0; i < d - 1; i++) {\n        for (auto [k, p] : ret) {\n  \
-    \          if (i - k < 0) break;\n            g[i + 1] += g[i - k] * p;\n    \
-    \    }\n        g[i + 1] *= inv<mint>(i + 1);\n    }\n    return g;\n}\n\ntemplate\
-    \ <class mint>\nstd::vector<mint> pow_sparse_1(const std::vector<mint> &f, long\
-    \ long k,\n                               int d = -1) {\n    int n = f.size();\n\
-    \    assert(n == 0 || f[0] == 1);\n    std::vector<std::pair<int, mint>> ret;\n\
-    \    for (int i = 1; i < n; i++) {\n        if (f[i] != 0) ret.emplace_back(i,\
+    template <class mint>\nstd::vector<mint> mul_sparse(const std::vector<mint> &f,\n\
+    \                             const std::vector<mint> &g) {\n    int n = f.size();\n\
+    \    int m = g.size();\n    std::vector<std::pair<int, mint>> cf, cg;\n    for\
+    \ (int i = 0; i < n; i++) {\n        if (f[i] != 0) cf.emplace_back(i, f[i]);\n\
+    \    }\n    for (int i = 0; i < m; i++) {\n        if (g[i] != 0) cg.emplace_back(i,\
+    \ g[i]);\n    }\n    std::vector<mint> h(n + m - 1);\n    for (auto [i, p] : cf)\
+    \ {\n        for (auto [j, q] : cg) {\n            h[i + j] += p * q;\n      \
+    \  }\n    }\n    return h;\n}\n\ntemplate <class mint>\nstd::vector<mint> inv_sparse(const\
+    \ std::vector<mint> &f, int d = -1) {\n    assert(f[0] != 0);\n    if (d < 0)\
+    \ {\n        d = f.size();\n    }\n    std::vector<std::pair<int, mint>> ret;\n\
+    \    for (int i = 1; i < int(f.size()); i++) {\n        if (f[i] != 0) {\n   \
+    \         ret.emplace_back(i, f[i]);\n        }\n    }\n    std::vector<mint>\
+    \ g(d);\n    g[0] = f[0].inv();\n    for (int i = 1; i < d; i++) {\n        for\
+    \ (auto [k, p] : ret) {\n            if (i - k < 0) break;\n            g[i] -=\
+    \ g[i - k] * p;\n        }\n        g[i] *= g[0];\n    }\n    return g;\n}\n\n\
+    template <class mint>\nstd::vector<mint> exp_sparse(const std::vector<mint> &f,\
+    \ int d = -1) {\n    int n = f.size();\n    if (d < 0) d = n;\n    std::vector<std::pair<int,\
+    \ mint>> ret;\n    for (int i = 1; i < n; i++) {\n        if (f[i] != 0) {\n \
+    \           ret.emplace_back(i - 1, f[i] * i);\n        }\n    }\n    std::vector<mint>\
+    \ g(d);\n    g[0] = 1;\n    for (int i = 0; i < d - 1; i++) {\n        for (auto\
+    \ [k, p] : ret) {\n            if (i - k < 0) break;\n            g[i + 1] +=\
+    \ g[i - k] * p;\n        }\n        g[i + 1] *= inv<mint>(i + 1);\n    }\n   \
+    \ return g;\n}\n\ntemplate <class mint>\nstd::vector<mint> log_sparse(const std::vector<mint>\
+    \ &f, int d = -1) {\n    int n = f.size();\n    if (d < 0) d = n;\n    std::vector<mint>\
+    \ df(d);\n    for (int i = 0; i < std::min(d, n - 1); i++) {\n        df[i] =\
+    \ f[i + 1] * (i + 1);\n    }\n    auto dg = mul_sparse(df, inv_sparse(f));\n \
+    \   dg.resize(d);\n    std::vector<mint> g(d);\n    for (int i = 0; i < d - 1;\
+    \ i++) {\n        g[i + 1] = dg[i] * inv<mint>(i + 1);\n    }\n    return g;\n\
+    }\n\ntemplate <class mint>\nstd::vector<mint> pow_sparse_1(const std::vector<mint>\
+    \ &f, long long k,\n                               int d = -1) {\n    int n =\
+    \ f.size();\n    assert(n == 0 || f[0] == 1);\n    std::vector<std::pair<int,\
+    \ mint>> ret;\n    for (int i = 1; i < n; i++) {\n        if (f[i] != 0) ret.emplace_back(i,\
     \ f[i]);\n    }\n    std::vector<mint> g(d);\n    g[0] = 1;\n    for (int i =\
     \ 0; i < d - 1; i++) {\n        for (const auto &[j, cf] : ret) {\n          \
     \  if (i + 1 - j < 0) break;\n            g[i + 1] +=\n                (mint(k)\
@@ -66,7 +82,14 @@ data:
     \ >= (d + k - 1) / k) break;\n    }\n    return std::vector<mint>(d);\n}\n\n}\
     \  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../utility/modint_func.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint>\nstd::vector<mint> inv_sparse(const\
+    \n\nnamespace ebi {\n\ntemplate <class mint>\nstd::vector<mint> mul_sparse(const\
+    \ std::vector<mint> &f,\n                             const std::vector<mint>\
+    \ &g) {\n    int n = f.size();\n    int m = g.size();\n    std::vector<std::pair<int,\
+    \ mint>> cf, cg;\n    for (int i = 0; i < n; i++) {\n        if (f[i] != 0) cf.emplace_back(i,\
+    \ f[i]);\n    }\n    for (int i = 0; i < m; i++) {\n        if (g[i] != 0) cg.emplace_back(i,\
+    \ g[i]);\n    }\n    std::vector<mint> h(n + m - 1);\n    for (auto [i, p] : cf)\
+    \ {\n        for (auto [j, q] : cg) {\n            h[i + j] += p * q;\n      \
+    \  }\n    }\n    return h;\n}\n\ntemplate <class mint>\nstd::vector<mint> inv_sparse(const\
     \ std::vector<mint> &f, int d = -1) {\n    assert(f[0] != 0);\n    if (d < 0)\
     \ {\n        d = f.size();\n    }\n    std::vector<std::pair<int, mint>> ret;\n\
     \    for (int i = 1; i < int(f.size()); i++) {\n        if (f[i] != 0) {\n   \
@@ -81,9 +104,15 @@ data:
     \ g(d);\n    g[0] = 1;\n    for (int i = 0; i < d - 1; i++) {\n        for (auto\
     \ [k, p] : ret) {\n            if (i - k < 0) break;\n            g[i + 1] +=\
     \ g[i - k] * p;\n        }\n        g[i + 1] *= inv<mint>(i + 1);\n    }\n   \
-    \ return g;\n}\n\ntemplate <class mint>\nstd::vector<mint> pow_sparse_1(const\
-    \ std::vector<mint> &f, long long k,\n                               int d = -1)\
-    \ {\n    int n = f.size();\n    assert(n == 0 || f[0] == 1);\n    std::vector<std::pair<int,\
+    \ return g;\n}\n\ntemplate <class mint>\nstd::vector<mint> log_sparse(const std::vector<mint>\
+    \ &f, int d = -1) {\n    int n = f.size();\n    if (d < 0) d = n;\n    std::vector<mint>\
+    \ df(d);\n    for (int i = 0; i < std::min(d, n - 1); i++) {\n        df[i] =\
+    \ f[i + 1] * (i + 1);\n    }\n    auto dg = mul_sparse(df, inv_sparse(f));\n \
+    \   dg.resize(d);\n    std::vector<mint> g(d);\n    for (int i = 0; i < d - 1;\
+    \ i++) {\n        g[i + 1] = dg[i] * inv<mint>(i + 1);\n    }\n    return g;\n\
+    }\n\ntemplate <class mint>\nstd::vector<mint> pow_sparse_1(const std::vector<mint>\
+    \ &f, long long k,\n                               int d = -1) {\n    int n =\
+    \ f.size();\n    assert(n == 0 || f[0] == 1);\n    std::vector<std::pair<int,\
     \ mint>> ret;\n    for (int i = 1; i < n; i++) {\n        if (f[i] != 0) ret.emplace_back(i,\
     \ f[i]);\n    }\n    std::vector<mint> g(d);\n    g[0] = 1;\n    for (int i =\
     \ 0; i < d - 1; i++) {\n        for (const auto &[j, cf] : ret) {\n          \
@@ -108,16 +137,21 @@ data:
   isVerificationFile: false
   path: fps/fps_sparse.hpp
   requiredBy: []
-  timestamp: '2023-06-12 00:22:49+09:00'
+  timestamp: '2023-06-12 01:02:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: fps/fps_sparse.hpp
 layout: document
 title: Formal Power Series (Sparse)
 ---
+
+## mul_sparse(std::vector<mint> f, std::vector<mint> g)
+
+ナイーブな多項式積。$f$ の非ゼロの項を $N$ 個、$g$ の非ゼロの項を $M$ 個として $O(NM)$。
 
 ## inv_sparse(std::vector<mint> f, int d)
 
@@ -126,6 +160,10 @@ $f^{-1} \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(N
 ## exp_sparse(std::vector<mint> f, int d)
 
 $\exp(f) \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
+
+## log_sparse(std::vector<mint> f, int d)
+
+$\log{f} \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
 
 ## pow_sparse(std::vector<mint> f, long long k, int d)
 

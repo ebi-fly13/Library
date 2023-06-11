@@ -82,6 +82,9 @@ data:
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - icon: ':heavy_check_mark:'
@@ -241,6 +244,7 @@ data:
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - test/pow.test.cpp
   - test/DynamicSegmentTree.test.cpp
   - test/LazySegtree.test.cpp

@@ -19,6 +19,9 @@ data:
     path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   _isVerificationFailed: false
@@ -52,6 +55,7 @@ data:
   - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: utility/modint_func.hpp
 layout: document
 redirect_from:

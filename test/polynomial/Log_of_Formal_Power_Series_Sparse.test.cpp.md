@@ -20,11 +20,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series_sparse
+    PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series_sparse
     links:
-    - https://judge.yosupo.jp/problem/exp_of_formal_power_series_sparse
-  bundledCode: "#line 1 \"test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp\"\
-    \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/exp_of_formal_power_series_sparse\"\
+    - https://judge.yosupo.jp/problem/log_of_formal_power_series_sparse
+  bundledCode: "#line 1 \"test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp\"\
+    \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/log_of_formal_power_series_sparse\"\
     \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"fps/fps_sparse.hpp\"\n\
     \n#include <cassert>\n#line 5 \"fps/fps_sparse.hpp\"\n\n#line 2 \"utility/modint_func.hpp\"\
     \n\n#line 5 \"utility/modint_func.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
@@ -134,18 +134,18 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n, k;\n    std::cin\
     \ >> n >> k;\n    std::vector<mint> f(n);\n    for (int i = 0; i < k; i++) {\n\
     \        int idx, a;\n        std::cin >> idx >> a;\n        f[idx] = a;\n   \
-    \ }\n    auto g = ebi::exp_sparse(f, n);\n    for (int i = 0; i < n; i++) {\n\
+    \ }\n    auto g = ebi::log_sparse(f, n);\n    for (int i = 0; i < n; i++) {\n\
     \        std::cout << g[i].val() << \" \\n\"[i == n - 1];\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/exp_of_formal_power_series_sparse\"\
+  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/log_of_formal_power_series_sparse\"\
     \n\n#include <iostream>\n#include <vector>\n\n#include \"../../fps/fps_sparse.hpp\"\
     \n#include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
     \nint main() {\n    int n, k;\n    std::cin >> n >> k;\n    std::vector<mint>\
     \ f(n);\n    for (int i = 0; i < k; i++) {\n        int idx, a;\n        std::cin\
-    \ >> idx >> a;\n        f[idx] = a;\n    }\n    auto g = ebi::exp_sparse(f, n);\n\
+    \ >> idx >> a;\n        f[idx] = a;\n    }\n    auto g = ebi::log_sparse(f, n);\n\
     \    for (int i = 0; i < n; i++) {\n        std::cout << g[i].val() << \" \\n\"\
     [i == n - 1];\n    }\n}"
   dependsOn:
@@ -154,15 +154,15 @@ data:
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
-  path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+  path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   requiredBy: []
   timestamp: '2023-06-12 01:02:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+documentation_of: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
 layout: document
 redirect_from:
-- /verify/test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-- /verify/test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp.html
-title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+- /verify/test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+- /verify/test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp.html
+title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
 ---
