@@ -8,6 +8,27 @@
 namespace ebi {
 
 template <class mint>
+std::vector<mint> mul_sparse(const std::vector<mint> &f,
+                             const std::vector<mint> &g) {
+    int n = f.size();
+    int m = g.size();
+    std::vector<std::pair<int, mint>> cf, cg;
+    for (int i = 0; i < n; i++) {
+        if (f[i] != 0) cf.emplace_back(i, f[i]);
+    }
+    for (int i = 0; i < m; i++) {
+        if (g[i] != 0) cg.emplace_back(i, g[i]);
+    }
+    std::vector<mint> h(n + m - 1);
+    for (auto [i, p] : cf) {
+        for (auto [j, q] : cg) {
+            h[i + j] += p * q;
+        }
+    }
+    return h;
+}
+
+template <class mint>
 std::vector<mint> inv_sparse(const std::vector<mint> &f, int d = -1) {
     assert(f[0] != 0);
     if (d < 0) {
@@ -49,6 +70,23 @@ std::vector<mint> exp_sparse(const std::vector<mint> &f, int d = -1) {
             g[i + 1] += g[i - k] * p;
         }
         g[i + 1] *= inv<mint>(i + 1);
+    }
+    return g;
+}
+
+template <class mint>
+std::vector<mint> log_sparse(const std::vector<mint> &f, int d = -1) {
+    int n = f.size();
+    if (d < 0) d = n;
+    std::vector<mint> df(d);
+    for (int i = 0; i < std::min(d, n - 1); i++) {
+        df[i] = f[i + 1] * (i + 1);
+    }
+    auto dg = mul_sparse(df, inv_sparse(f));
+    dg.resize(d);
+    std::vector<mint> g(d);
+    for (int i = 0; i < d - 1; i++) {
+        g[i + 1] = dg[i] * inv<mint>(i + 1);
     }
     return g;
 }

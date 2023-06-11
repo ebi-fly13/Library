@@ -3,6 +3,10 @@ title: Formal Power Series (Sparse)
 documentation_of: //fps/fps_sparse.hpp
 ---
 
+## mul_sparse(std::vector<mint> f, std::vector<mint> g)
+
+ナイーブな多項式積。$f$ の非ゼロの項を $N$ 個、$g$ の非ゼロの項を $M$ 個として $O(NM)$。
+
 ## inv_sparse(std::vector<mint> f, int d)
 
 $f^{-1} \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
@@ -10,6 +14,10 @@ $f^{-1} \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(N
 ## exp_sparse(std::vector<mint> f, int d)
 
 $\exp(f) \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
+
+## log_sparse(std::vector<mint> f, int d)
+
+$\log{f} \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
 
 ## pow_sparse(std::vector<mint> f, long long k, int d)
 
