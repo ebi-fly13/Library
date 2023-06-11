@@ -32,6 +32,28 @@ std::vector<mint> inv_sparse(const std::vector<mint> &f, int d = -1) {
 }
 
 template <class mint>
+std::vector<mint> exp_sparse(const std::vector<mint> &f, int d = -1) {
+    int n = f.size();
+    if (d < 0) d = n;
+    std::vector<std::pair<int, mint>> ret;
+    for (int i = 1; i < n; i++) {
+        if (f[i] != 0) {
+            ret.emplace_back(i - 1, f[i] * i);
+        }
+    }
+    std::vector<mint> g(d);
+    g[0] = 1;
+    for (int i = 0; i < d - 1; i++) {
+        for (auto [k, p] : ret) {
+            if (i - k < 0) break;
+            g[i + 1] += g[i - k] * p;
+        }
+        g[i + 1] *= inv<mint>(i + 1);
+    }
+    return g;
+}
+
+template <class mint>
 std::vector<mint> pow_sparse_1(const std::vector<mint> &f, long long k,
                                int d = -1) {
     int n = f.size();
