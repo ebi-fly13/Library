@@ -1,10 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':question:'
+    path: fps/fps_sqrt.hpp
+    title: $\sqrt{f}$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
@@ -18,9 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps_sparse.hpp\"\n\n#include <cassert>\n#include <vector>\n\
@@ -136,13 +145,16 @@ data:
   - utility/modint_func.hpp
   isVerificationFile: false
   path: fps/fps_sparse.hpp
-  requiredBy: []
+  requiredBy:
+  - fps/fps_sqrt.hpp
   timestamp: '2023-06-12 01:02:00+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: fps/fps_sparse.hpp
 layout: document
@@ -167,8 +179,8 @@ $\log{f} \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(
 
 ## pow_sparse(std::vector<mint> f, long long k, int d)
 
-$f^k \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
+$f^k \mod x^d$ を求める。$k$ は非負整数のみ正常に動作する。$f$ の非ゼロの項を $M$ 個として $O(NM)$
 
 ## pow_sparse_1(std::vector<mint> f, long long k, int d)
 
-$[x^0]f = 1$ であるような $f$ に対して $f^k \mod x^d$ を求める。 $k$ が負でも動作する。 $f$ の非ゼロの項を $M$ 個として $O(NM)$
+$[x^0]f = 1$ であるような $f$ に対して $f^k \mod x^d$ を求める。 $k$ が負でも有理数でも動作する。 $f$ の非ゼロの項を $M$ 個として $O(NM)$

@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   _extendedVerifiedWith:
@@ -39,9 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace\
@@ -63,7 +66,7 @@ data:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
   timestamp: '2023-05-17 13:24:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/convolution.test.cpp
@@ -75,6 +78,7 @@ data:
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: math/internal_math.hpp
 layout: document
 redirect_from:

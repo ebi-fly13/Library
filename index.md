@@ -36,7 +36,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':heavy_check_mark:'
@@ -157,13 +157,13 @@ data:
       title: data_structure/undo_unionfind.hpp
   - name: fps
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: fps/fps.hpp
       title: Formal Power Series
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: fps/fps_sparse.hpp
       title: Formal Power Series (Sparse)
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
     - icon: ':warning:'
@@ -226,7 +226,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':warning:'
@@ -235,7 +235,7 @@ data:
     - icon: ':warning:'
       path: math/linear_sieve.hpp
       title: math/linear_sieve.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/mod_sqrt.hpp
       title: math/mod_sqrt.hpp
     - icon: ':heavy_check_mark:'
@@ -300,10 +300,10 @@ data:
       title: Rooted Tree Hash
   - name: utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/dynamic_modint.hpp
       title: utility/dynamic_modint.hpp
     - icon: ':heavy_check_mark:'
@@ -312,16 +312,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint_func.hpp
       title: utility/modint_func.hpp
     - icon: ':heavy_check_mark:'
@@ -631,5 +631,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    - icon: ':x:'
+      path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+      title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
 layout: toppage
 ---
