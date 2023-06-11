@@ -605,6 +605,9 @@ data:
       path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+      title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'

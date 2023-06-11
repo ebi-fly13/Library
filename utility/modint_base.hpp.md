@@ -103,6 +103,9 @@ data:
     path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -223,6 +226,7 @@ data:
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
