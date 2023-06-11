@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../fps/fps.hpp"
+#include "../fps/fps_sparse.hpp"
 #include "../math/mod_sqrt.hpp"
 
 namespace ebi {
@@ -28,6 +29,14 @@ FormalPowerSeries<mint, convolution>::sqrt(int d) const {
     auto s = mod_sqrt((*this)[0].val(), mint::mod());
     if (!s) {
         return std::nullopt;
+    }
+    if (this->count_terms() <= 200) {
+        mint y = s.value();
+        std::vector<mint> sqrt_f =
+            pow_sparse_1(*this / (*this)[0], mint(2).inv().val(), d);
+        FPS g(d);
+        for (int i = 0; i < d; i++) g[i] = sqrt_f[i] * y;
+        return g;
     }
     int n = 1;
     FPS g(n);

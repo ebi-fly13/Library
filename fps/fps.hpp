@@ -2,8 +2,8 @@
 
 #include <algorithm>
 #include <cassert>
-#include <vector>
 #include <optional>
+#include <vector>
 
 namespace ebi {
 
@@ -40,6 +40,9 @@ struct FormalPowerSeries : std::vector<mint> {
     }
     FPS operator*(const mint &rhs) const noexcept {
         return FPS(*this) *= rhs;
+    }
+    FPS operator/(const mint &rhs) const noexcept {
+        return FPS(*this) /= rhs;
     }
 
     FPS &operator+=(const FPS &rhs) noexcept {
@@ -97,6 +100,13 @@ struct FormalPowerSeries : std::vector<mint> {
     FPS &operator*=(const mint &rhs) noexcept {
         for (int i = 0; i < deg(); ++i) {
             (*this)[i] *= rhs;
+        }
+        return *this;
+    }
+    FPS &operator/=(const mint &rhs) noexcept {
+        mint inv_rhs = rhs.inv();
+        for (int i = 0; i < deg(); ++i) {
+            (*this)[i] *= inv_rhs;
         }
         return *this;
     }
@@ -211,6 +221,14 @@ struct FormalPowerSeries : std::vector<mint> {
 
     void shrink() {
         while ((!this->empty()) && this->back() == 0) this->pop_back();
+    }
+
+    int count_terms() const {
+        int c = 0;
+        for (int i = 0; i < deg(); i++) {
+            if ((*this)[i] != 0) c++;
+        }
+        return c;
     }
 
     std::optional<FPS> sqrt(int d = -1) const;
