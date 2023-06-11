@@ -8,15 +8,12 @@ data:
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp
   - icon: ':heavy_check_mark:'
-    path: set_function/sps_exp.hpp
-    title: set_function/sps_exp.hpp
-  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -26,16 +23,14 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/exp_of_set_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/subset_convolution
     links:
-    - https://judge.yosupo.jp/problem/exp_of_set_power_series
-  bundledCode: "#line 1 \"test/Exp_of_Set_Power_Series.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/exp_of_set_power_series\"\n\n#include <iostream>\n\
-    #include <vector>\n\n#line 2 \"set_function/sps_exp.hpp\"\n\n#include <cassert>\n\
-    #line 5 \"set_function/sps_exp.hpp\"\n\n#line 2 \"convolution/subset_convolution.hpp\"\
-    \n\r\n/*\r\n    refernce: https://www.slideshare.net/wata_orz/ss-12131479\r\n\
-    \              https://37zigen.com/subset-convolution/\r\n*/\r\n\r\n#include <array>\r\
-    \n#line 11 \"convolution/subset_convolution.hpp\"\n\r\n#line 2 \"set_function/ranked_zeta.hpp\"\
+    - https://judge.yosupo.jp/problem/subset_convolution
+  bundledCode: "#line 1 \"test/convolution/Subset_Convolution.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\r\n\r\n#line\
+    \ 2 \"convolution/subset_convolution.hpp\"\n\r\n/*\r\n    refernce: https://www.slideshare.net/wata_orz/ss-12131479\r\
+    \n              https://37zigen.com/subset-convolution/\r\n*/\r\n\r\n#include\
+    \ <array>\r\n#include <cassert>\r\n#include <vector>\r\n\r\n#line 2 \"set_function/ranked_zeta.hpp\"\
     \n\n#line 6 \"set_function/ranked_zeta.hpp\"\n\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
     \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
@@ -71,22 +66,16 @@ data:
     \n        for (int d = n; d >= 0; d--) {\r\n            T x = 0;\r\n         \
     \   for (int i = 0; i <= d; i++) {\r\n                x += f[i] * g[d - i];\r\n\
     \            }\r\n            f[d] = x;\r\n        }\r\n    }\r\n    return ranked_mobius<T,\
-    \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 8 \"set_function/sps_exp.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T, int LIM> std::vector<T> sps_exp(const\
-    \ std::vector<T> &s) {\n    int n = msb(s.size());\n    assert(n <= LIM);\n  \
-    \  assert((int)s.size() == (1 << n));\n    std::vector<T> fs(1 << n);\n    fs[0]\
-    \ = T(1);\n    for (int i = 0; i < n; i++) {\n        std::vector<T> a = {s.begin()\
-    \ + (1 << i), s.begin() + (2 << i)};\n        std::vector<T> b = {fs.begin(),\
-    \ fs.begin() + (1 << i)};\n        a = subset_convolution<T, LIM>(a, b);\n   \
-    \     std::copy(a.begin(), a.end(), fs.begin() + (1 << i));\n    }\n    return\
-    \ fs;\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"\
-    utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
-    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
-    \ : modint_base {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 4 \"test/convolution/Subset_Convolution.test.cpp\"\
+    \n\r\n#include <iostream>\r\n#line 7 \"test/convolution/Subset_Convolution.test.cpp\"\
+    \n\r\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include\
+    \ <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
+    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
+    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\n}  // namespace\
+    \ internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base : modint_base\
+    \ {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
     \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
@@ -131,37 +120,40 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/Exp_of_Set_Power_Series.test.cpp\"\
-    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
-    \ >> n;\n    std::vector<mint> b(1 << n);\n    for (int i = 0; i < (1 << n); i++)\
-    \ {\n        int x;\n        std::cin >> x;\n        b[i] = x;\n    }\n    auto\
-    \ c = ebi::sps_exp<mint, 20>(b);\n    for (int i = 0; i < (1 << n); i++) {\n \
-    \       std::cout << c[i].val() << \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_set_power_series\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../set_function/sps_exp.hpp\"\
-    \n#include \"../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\n\
-    int main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> b(1 << n);\n\
-    \    for (int i = 0; i < (1 << n); i++) {\n        int x;\n        std::cin >>\
-    \ x;\n        b[i] = x;\n    }\n    auto c = ebi::sps_exp<mint, 20>(b);\n    for\
-    \ (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val() << \" \\n\"\
-    [i == (1 << n) - 1];\n    }\n}"
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/convolution/Subset_Convolution.test.cpp\"\
+    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n\
+    \    std::cin >> n;\r\n    std::vector<mint> a(1 << n), b(1 << n);\r\n    for\
+    \ (int i = 0; i < (1 << n); i++) {\r\n        std::cin >> a[i];\r\n    }\r\n \
+    \   for (int i = 0; i < (1 << n); i++) {\r\n        std::cin >> b[i];\r\n    }\r\
+    \n    auto c = ebi::subset_convolution<mint, 20>(a, b);\r\n    for (int i = 0;\
+    \ i < (1 << n); i++) {\r\n        std::cout << c[i] << ((i == (1 << n) - 1) ?\
+    \ \"\\n\" : \" \");\r\n    }\r\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\r\n\
+    \r\n#include \"../../convolution/subset_convolution.hpp\"\r\n\r\n#include <iostream>\r\
+    \n#include <vector>\r\n\r\n#include \"../../utility/modint.hpp\"\r\n\r\nusing\
+    \ mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin\
+    \ >> n;\r\n    std::vector<mint> a(1 << n), b(1 << n);\r\n    for (int i = 0;\
+    \ i < (1 << n); i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    for (int i\
+    \ = 0; i < (1 << n); i++) {\r\n        std::cin >> b[i];\r\n    }\r\n    auto\
+    \ c = ebi::subset_convolution<mint, 20>(a, b);\r\n    for (int i = 0; i < (1 <<\
+    \ n); i++) {\r\n        std::cout << c[i] << ((i == (1 << n) - 1) ? \"\\n\" :\
+    \ \" \");\r\n    }\r\n}"
   dependsOn:
-  - set_function/sps_exp.hpp
   - convolution/subset_convolution.hpp
   - set_function/ranked_zeta.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
-  path: test/Exp_of_Set_Power_Series.test.cpp
+  path: test/convolution/Subset_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-05-31 02:50:45+09:00'
+  timestamp: '2023-06-12 02:36:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Exp_of_Set_Power_Series.test.cpp
+documentation_of: test/convolution/Subset_Convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Exp_of_Set_Power_Series.test.cpp
-- /verify/test/Exp_of_Set_Power_Series.test.cpp.html
-title: test/Exp_of_Set_Power_Series.test.cpp
+- /verify/test/convolution/Subset_Convolution.test.cpp
+- /verify/test/convolution/Subset_Convolution.test.cpp.html
+title: test/convolution/Subset_Convolution.test.cpp
 ---

@@ -36,7 +36,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':heavy_check_mark:'
@@ -157,13 +157,13 @@ data:
       title: data_structure/undo_unionfind.hpp
   - name: fps
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sparse.hpp
       title: Formal Power Series (Sparse)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
     - icon: ':warning:'
@@ -226,7 +226,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':warning:'
@@ -235,7 +235,7 @@ data:
     - icon: ':warning:'
       path: math/linear_sieve.hpp
       title: math/linear_sieve.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_sqrt.hpp
       title: math/mod_sqrt.hpp
     - icon: ':heavy_check_mark:'
@@ -300,10 +300,10 @@ data:
       title: Rooted Tree Hash
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/dynamic_modint.hpp
       title: utility/dynamic_modint.hpp
     - icon: ':heavy_check_mark:'
@@ -312,16 +312,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_func.hpp
       title: utility/modint_func.hpp
     - icon: ':heavy_check_mark:'
@@ -342,9 +342,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp
       title: test/Dynamic_Tree_Vertex_Add_Path_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Exp_of_Set_Power_Series.test.cpp
-      title: test/Exp_of_Set_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/FenwickTree.test.cpp
       title: test/FenwickTree.test.cpp
@@ -511,6 +508,9 @@ data:
       path: test/convolution/Bitwise_Xor_Convolution.test.cpp
       title: test/convolution/Bitwise_Xor_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/convolution/Convolution.test.cpp
+      title: test/convolution/Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/convolution/Convolution_Mod_1000000007.test.cpp
       title: test/convolution/Convolution_Mod_1000000007.test.cpp
     - icon: ':heavy_check_mark:'
@@ -520,11 +520,8 @@ data:
       path: test/convolution/Lcm_Convolution.test.cpp
       title: test/convolution/Lcm_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/convolution/convolution.test.cpp
-      title: test/convolution/convolution.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/convolution/subset_convolution.test.cpp
-      title: test/convolution/subset_convolution.test.cpp
+      path: test/convolution/Subset_Convolution.test.cpp
+      title: test/convolution/Subset_Convolution.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'
@@ -631,8 +628,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - name: test/set_function
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/set_function/Exp_of_Set_Power_Series.test.cpp
+      title: test/set_function/Exp_of_Set_Power_Series.test.cpp
 layout: toppage
 ---

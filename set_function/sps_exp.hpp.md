@@ -7,14 +7,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: set_function/ranked_zeta.hpp
     title: set_function/ranked_zeta.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Exp_of_Set_Power_Series.test.cpp
-    title: test/Exp_of_Set_Power_Series.test.cpp
+    path: test/set_function/Exp_of_Set_Power_Series.test.cpp
+    title: test/set_function/Exp_of_Set_Power_Series.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -88,7 +88,7 @@ data:
   timestamp: '2023-05-17 17:05:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Exp_of_Set_Power_Series.test.cpp
+  - test/set_function/Exp_of_Set_Power_Series.test.cpp
 documentation_of: set_function/sps_exp.hpp
 layout: document
 redirect_from:

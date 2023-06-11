@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -26,7 +26,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
     links:
     - https://judge.yosupo.jp/problem/convolution_mod
-  bundledCode: "#line 1 \"test/convolution/convolution.test.cpp\"\n#define PROBLEM\
+  bundledCode: "#line 1 \"test/convolution/Convolution.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/convolution_mod\"\r\n\r\n#include <iostream>\r\
     \n\r\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <type_traits>\n\
     #include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\n\
@@ -138,7 +138,7 @@ data:
     \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 7 \"test/convolution/convolution.test.cpp\"\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 7 \"test/convolution/Convolution.test.cpp\"\
     \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n, m;\r\
     \n    std::cin >> n >> m;\r\n    std::vector<mint> a(n), b(m);\r\n    for (int\
     \ i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    for (int i\
@@ -161,15 +161,15 @@ data:
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
-  path: test/convolution/convolution.test.cpp
+  path: test/convolution/Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-06-08 10:34:37+09:00'
+  timestamp: '2023-06-12 02:36:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/convolution/convolution.test.cpp
+documentation_of: test/convolution/Convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/test/convolution/convolution.test.cpp
-- /verify/test/convolution/convolution.test.cpp.html
-title: test/convolution/convolution.test.cpp
+- /verify/test/convolution/Convolution.test.cpp
+- /verify/test/convolution/Convolution.test.cpp.html
+title: test/convolution/Convolution.test.cpp
 ---

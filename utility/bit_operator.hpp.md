@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -31,9 +31,6 @@ data:
     title: Superset Zeta Transform
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Exp_of_Set_Power_Series.test.cpp
-    title: test/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -43,14 +40,14 @@ data:
     path: test/convolution/Bitwise_OR_Convolution.test.cpp
     title: test/convolution/Bitwise_OR_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution.test.cpp
+    title: test/convolution/Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_1000000007.test.cpp
     title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/convolution/convolution.test.cpp
-    title: test/convolution/convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/subset_convolution.test.cpp
-    title: test/convolution/subset_convolution.test.cpp
+    path: test/convolution/Subset_Convolution.test.cpp
+    title: test/convolution/Subset_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
@@ -72,12 +69,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: test/set_function/Exp_of_Set_Power_Series.test.cpp
+    title: test/set_function/Exp_of_Set_Power_Series.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr\
@@ -112,12 +112,11 @@ data:
   - set_function/ranked_zeta.hpp
   - set_function/sps_exp.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Exp_of_Set_Power_Series.test.cpp
   - test/convolution/Convolution_Mod_1000000007.test.cpp
-  - test/convolution/convolution.test.cpp
-  - test/convolution/subset_convolution.test.cpp
+  - test/convolution/Subset_Convolution.test.cpp
+  - test/convolution/Convolution.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/convolution/Bitwise_And_Convolution.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
@@ -129,6 +128,7 @@ data:
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/set_function/Exp_of_Set_Power_Series.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
 redirect_from:

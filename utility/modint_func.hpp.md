@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':warning:'
@@ -30,12 +30,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint_func.hpp\"\n\n#include <vector>\n#include\
@@ -60,7 +60,7 @@ data:
   - fps/product_of_one_minus_xn.hpp
   - fps/fps_sqrt.hpp
   timestamp: '2023-06-08 01:58:28+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
