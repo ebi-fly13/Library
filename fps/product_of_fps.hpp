@@ -3,8 +3,6 @@
 #include <deque>
 #include <vector>
 
-#include "../fps/fps.hpp"
-
 namespace ebi {
 
 template <class mint, std::vector<mint> (*convolution)(
