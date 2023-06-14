@@ -5,9 +5,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
-    path: fps/product_of_fps.hpp
-    title: $\prod f_i$
   - icon: ':warning:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
@@ -36,9 +33,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-    title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
@@ -212,7 +206,6 @@ data:
   isVerificationFile: false
   path: fps/fps.hpp
   requiredBy:
-  - fps/product_of_fps.hpp
   - fps/taylor_shift.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
@@ -223,7 +216,6 @@ data:
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp

@@ -168,7 +168,7 @@ data:
       title: $\sqrt{f}$
     - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
-      title: $\prod f_i$
+      title: $\prod_{i=0}^n f_i$
     - icon: ':warning:'
       path: fps/product_of_one_minus_xn.hpp
       title: $\prod (1 - x^{a_i}) \mod x^d$
