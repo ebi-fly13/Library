@@ -3,8 +3,6 @@
 #include <cassert>
 #include <vector>
 
-#include "../utility/modint_base.hpp"
-
 namespace ebi {
 
 template <class mint>
