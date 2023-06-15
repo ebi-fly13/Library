@@ -15,6 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/static_rmq.test.cpp
     title: test/static_rmq.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree.test.cpp
+    title: test/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/lowest_common_ancestor.test.cpp
+    title: test/tree/lowest_common_ancestor.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -71,6 +77,8 @@ data:
   - test/static_rmq.test.cpp
   - test/Jump_on_Tree.test.cpp
   - test/lowest_common_ancestor.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/lowest_common_ancestor.test.cpp
 documentation_of: data_structure/sparse_table.hpp
 layout: document
 redirect_from:

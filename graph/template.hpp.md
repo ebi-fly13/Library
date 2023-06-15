@@ -40,6 +40,18 @@ data:
     path: test/scc_graph.test.cpp
     title: test/scc_graph.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree.test.cpp
+    title: test/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree_HLD.test.cpp
+    title: test/tree/Jump_on_Tree_HLD.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/level_ancestor_lca.test.cpp
+    title: test/tree/level_ancestor_lca.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/lowest_common_ancestor.test.cpp
+    title: test/tree/lowest_common_ancestor.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/two_sat.test.cpp
     title: test/two_sat.test.cpp
   - icon: ':heavy_check_mark:'
@@ -96,6 +108,10 @@ data:
   - test/scc_graph.test.cpp
   - test/lowest_common_ancestor.test.cpp
   - test/fibonacci_heap.test.cpp
+  - test/tree/Jump_on_Tree_HLD.test.cpp
+  - test/tree/level_ancestor_lca.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/lowest_common_ancestor.test.cpp
   - test/two_sat.test.cpp
 documentation_of: graph/template.hpp
 layout: document

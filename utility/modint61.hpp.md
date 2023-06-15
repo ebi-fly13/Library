@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+    title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -129,6 +132,7 @@ data:
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
   - test/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: utility/modint61.hpp
 layout: document
 redirect_from:

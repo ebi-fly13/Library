@@ -12,6 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/lowest_common_ancestor.test.cpp
     title: test/lowest_common_ancestor.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree.test.cpp
+    title: test/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/lowest_common_ancestor.test.cpp
+    title: test/tree/lowest_common_ancestor.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -85,6 +91,8 @@ data:
   verifiedWith:
   - test/Jump_on_Tree.test.cpp
   - test/lowest_common_ancestor.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/lowest_common_ancestor.test.cpp
 documentation_of: tree/lowest_common_ancestor.hpp
 layout: document
 redirect_from:

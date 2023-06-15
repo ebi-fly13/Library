@@ -9,6 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/level_ancestor_lca.test.cpp
     title: test/level_ancestor_lca.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree.test.cpp
+    title: test/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/level_ancestor_lca.test.cpp
+    title: test/tree/level_ancestor_lca.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,6 +66,8 @@ data:
   verifiedWith:
   - test/level_ancestor_lca.test.cpp
   - test/Jump_on_Tree.test.cpp
+  - test/tree/level_ancestor_lca.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
 documentation_of: tree/level_ancestor.hpp
 layout: document
 redirect_from:

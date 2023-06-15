@@ -642,5 +642,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/set_function/Exp_of_Set_Power_Series.test.cpp
       title: test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - name: test/tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Jump_on_Tree.test.cpp
+      title: test/tree/Jump_on_Tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Jump_on_Tree_HLD.test.cpp
+      title: test/tree/Jump_on_Tree_HLD.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+      title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Tree_Path_Composite_Sum.test.cpp
+      title: test/tree/Tree_Path_Composite_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/level_ancestor_lca.test.cpp
+      title: test/tree/level_ancestor_lca.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/lowest_common_ancestor.test.cpp
+      title: test/tree/lowest_common_ancestor.test.cpp
 layout: toppage
 ---

@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Tree_Path_Composite_Sum.test.cpp
     title: test/Tree_Path_Composite_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Tree_Path_Composite_Sum.test.cpp
+    title: test/tree/Tree_Path_Composite_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -73,6 +76,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Tree_Path_Composite_Sum.test.cpp
+  - test/tree/Tree_Path_Composite_Sum.test.cpp
 documentation_of: tree/rerooting.hpp
 layout: document
 title: rerooting

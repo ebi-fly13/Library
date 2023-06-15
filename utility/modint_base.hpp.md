@@ -136,6 +136,12 @@ data:
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+    title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Tree_Path_Composite_Sum.test.cpp
+    title: test/tree/Tree_Path_Composite_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
   _isVerificationFailed: false
@@ -242,6 +248,8 @@ data:
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - test/pow.test.cpp
   - test/DynamicSegmentTree.test.cpp
+  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/tree/Tree_Path_Composite_Sum.test.cpp
   - test/LazySegtree.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/ImplicitTreap.test.cpp
