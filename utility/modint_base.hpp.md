@@ -11,9 +11,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':warning:'
-    path: math/combination.hpp
-    title: math/combination.hpp
   - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
@@ -202,7 +199,6 @@ data:
   requiredBy:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
-  - math/combination.hpp
   - math/mod_sqrt.hpp
   - utility/dynamic_modint.hpp
   - utility/modint61.hpp
