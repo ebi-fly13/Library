@@ -16,9 +16,6 @@ data:
     title: Hash structure
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
-    title: test/Rooted_Tree_Isomorphism_Classification.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
   - icon: ':heavy_check_mark:'
@@ -130,7 +127,6 @@ data:
   timestamp: '2023-06-05 14:17:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/aoj/aoj_2444.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: utility/modint61.hpp

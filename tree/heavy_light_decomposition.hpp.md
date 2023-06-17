@@ -4,9 +4,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Jump_on_Tree_HLD.test.cpp
-    title: test/Jump_on_Tree_HLD.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
   - icon: ':heavy_check_mark:'
@@ -130,7 +127,6 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_set_path_compositie.test.cpp
-  - test/Jump_on_Tree_HLD.test.cpp
   - test/aoj/aoj_2450.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
   - test/vertex_add_path_sum.test.cpp

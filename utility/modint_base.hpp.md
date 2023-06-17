@@ -46,17 +46,11 @@ data:
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
-    title: test/Rooted_Tree_Isomorphism_Classification.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Sqrt_Mod.test.cpp
     title: test/Sqrt_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Tree_Path_Composite_Sum.test.cpp
-    title: test/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
@@ -219,8 +213,6 @@ data:
   - test/Sqrt_Mod.test.cpp
   - test/vertex_set_path_compositie.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - test/Rooted_Tree_Isomorphism_Classification.test.cpp
-  - test/Tree_Path_Composite_Sum.test.cpp
   - test/ImplicitTreap.test.cpp
   - test/pow.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp

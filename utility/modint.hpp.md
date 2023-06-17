@@ -28,9 +28,6 @@ data:
     path: test/SWAG.test.cpp
     title: test/SWAG.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Tree_Path_Composite_Sum.test.cpp
-    title: test/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2863.test.cpp
     title: test/aoj/aoj_2863.test.cpp
   - icon: ':heavy_check_mark:'
@@ -230,7 +227,6 @@ data:
   verifiedWith:
   - test/vertex_set_path_compositie.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - test/Tree_Path_Composite_Sum.test.cpp
   - test/ImplicitTreap.test.cpp
   - test/pow.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp

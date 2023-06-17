@@ -16,9 +16,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
-    title: test/Rooted_Tree_Isomorphism_Classification.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   _isVerificationFailed: false
@@ -167,7 +164,6 @@ data:
   timestamp: '2023-06-06 21:54:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: tree/rooted_tree_hash.hpp
 layout: document

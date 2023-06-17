@@ -4,12 +4,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Jump_on_Tree.test.cpp
-    title: test/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/level_ancestor_lca.test.cpp
-    title: test/level_ancestor_lca.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -64,8 +58,6 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Jump_on_Tree.test.cpp
-  - test/level_ancestor_lca.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/level_ancestor_lca.test.cpp
 documentation_of: tree/level_ancestor.hpp

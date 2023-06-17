@@ -7,12 +7,6 @@ data:
     title: tree/lowest_common_ancestor.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Jump_on_Tree.test.cpp
-    title: test/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/lowest_common_ancestor.test.cpp
-    title: test/lowest_common_ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/static_rmq.test.cpp
     title: test/static_rmq.test.cpp
   - icon: ':heavy_check_mark:'
@@ -74,8 +68,6 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Jump_on_Tree.test.cpp
-  - test/lowest_common_ancestor.test.cpp
   - test/static_rmq.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/lowest_common_ancestor.test.cpp

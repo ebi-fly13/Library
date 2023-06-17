@@ -4,9 +4,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Tree_Path_Composite_Sum.test.cpp
-    title: test/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
   _isVerificationFailed: false
@@ -75,7 +72,6 @@ data:
   timestamp: '2023-05-11 19:12:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Tree_Path_Composite_Sum.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
 documentation_of: tree/rerooting.hpp
 layout: document

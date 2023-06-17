@@ -331,11 +331,22 @@ data:
       path: utility/random_number_generator_64.hpp
       title: utility/random_number_generator_64.hpp
   verificationCategories:
+  - name: test/Dice
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/Dice/dice1.test.cpp
+      title: test/Dice/dice1.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Dice/dice2.test.cpp
+      title: test/Dice/dice2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Dice/dice3.test.cpp
+      title: test/Dice/dice3.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/Dice/dice4.test.cpp
+      title: test/Dice/dice4.test.cpp
   - name: test
     pages:
-    - icon: ':x:'
-      path: test/Determinant_of_Matrix.test.cpp
-      title: test/Determinant_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/DualSegtree.test.cpp
       title: test/DualSegtree.test.cpp
@@ -352,12 +363,6 @@ data:
       path: test/ImplicitTreap.test.cpp
       title: test/ImplicitTreap.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/Jump_on_Tree.test.cpp
-      title: test/Jump_on_Tree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Jump_on_Tree_HLD.test.cpp
-      title: test/Jump_on_Tree_HLD.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
       title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     - icon: ':heavy_check_mark:'
@@ -369,9 +374,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/PersistentSegmentTree.test.cpp
       title: test/PersistentSegmentTree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Rooted_Tree_Isomorphism_Classification.test.cpp
-      title: test/Rooted_Tree_Isomorphism_Classification.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/SWAG.test.cpp
       title: test/SWAG.test.cpp
@@ -390,9 +392,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Static_Range_Frequency.test.cpp
       title: test/Static_Range_Frequency.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Tree_Path_Composite_Sum.test.cpp
-      title: test/Tree_Path_Composite_Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
@@ -420,12 +419,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fibonacci_heap.test.cpp
       title: test/fibonacci_heap.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/level_ancestor_lca.test.cpp
-      title: test/level_ancestor_lca.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/lowest_common_ancestor.test.cpp
-      title: test/lowest_common_ancestor.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/persistent_unionfind.test.cpp
       title: test/persistent_unionfind.test.cpp
@@ -465,20 +458,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/vertex_set_path_compositie.test.cpp
       title: test/vertex_set_path_compositie.test.cpp
-  - name: test/Dice
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/Dice/dice1.test.cpp
-      title: test/Dice/dice1.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Dice/dice2.test.cpp
-      title: test/Dice/dice2.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Dice/dice3.test.cpp
-      title: test/Dice/dice3.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/Dice/dice4.test.cpp
-      title: test/Dice/dice4.test.cpp
   - name: test/aoj
     pages:
     - icon: ':heavy_check_mark:'
