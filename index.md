@@ -6,11 +6,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Dice/Dice.hpp
       title: Dice/Dice.hpp
-  - name: Matrix
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: Matrix/SquareMatrix.hpp
-      title: Matrix/SquareMatrix.hpp
   - name: algorithm
     pages:
     - icon: ':heavy_check_mark:'
@@ -244,6 +239,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/multiple_transform.hpp
       title: Multiple Transform (Zeta / Mobius)
+  - name: matrix
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: matrix/square_matrix.hpp
+      title: matrix/square_matrix.hpp
   - name: set_function
     pages:
     - icon: ':heavy_check_mark:'
@@ -333,7 +333,7 @@ data:
   verificationCategories:
   - name: test
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Determinant_of_Matrix.test.cpp
       title: test/Determinant_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
@@ -596,6 +596,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/tangent_to_circle.test.cpp
       title: test/geometry/tangent_to_circle.test.cpp
+  - name: test/matrix
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/matrix/Determinant_of_Matrix.test.cpp
+      title: test/matrix/Determinant_of_Matrix.test.cpp
   - name: test/polynomial
     pages:
     - icon: ':heavy_check_mark:'

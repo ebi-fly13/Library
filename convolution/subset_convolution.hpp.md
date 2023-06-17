@@ -88,8 +88,8 @@ data:
   timestamp: '2023-05-17 17:05:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Subset_Convolution.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/convolution/Subset_Convolution.test.cpp
 documentation_of: convolution/subset_convolution.hpp
 layout: document
 title: Subset Convolution

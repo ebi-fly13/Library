@@ -105,34 +105,34 @@ data:
   isVerificationFile: false
   path: utility/bit_operator.hpp
   requiredBy:
+  - set_function/ranked_zeta.hpp
+  - set_function/superset_zeta.hpp
+  - set_function/subset_zeta.hpp
+  - set_function/sps_exp.hpp
   - convolution/and_convolution.hpp
   - convolution/or_convolution.hpp
-  - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
+  - convolution/arbitrary_ntt.hpp
   - convolution/subset_convolution.hpp
-  - set_function/subset_zeta.hpp
-  - set_function/superset_zeta.hpp
-  - set_function/ranked_zeta.hpp
-  - set_function/sps_exp.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/convolution/Convolution.test.cpp
+  - test/convolution/Bitwise_And_Convolution.test.cpp
+  - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Subset_Convolution.test.cpp
-  - test/convolution/Convolution.test.cpp
-  - test/convolution/Bitwise_OR_Convolution.test.cpp
-  - test/convolution/Bitwise_And_Convolution.test.cpp
-  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
 redirect_from:
