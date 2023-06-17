@@ -1,5 +1,4 @@
 {
-"test/Determinant_of_Matrix.test.cpp": "2023-05-31 02:50:45 +0900",
 "test/Dice/dice1.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/Dice/dice2.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/Dice/dice3.test.cpp": "2023-05-08 16:51:58 +0900",
@@ -71,6 +70,7 @@
 "test/geometry/tangent_to_circle.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/level_ancestor_lca.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/lowest_common_ancestor.test.cpp": "2023-05-08 16:51:58 +0900",
+"test/matrix/Determinant_of_Matrix.test.cpp": "2023-06-17 18:04:37 +0900",
 "test/persistent_unionfind.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/point_add_rectangle_sum.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/polynomial/Division_of_Polynomials.test.cpp": "2023-06-12 02:16:01 +0900",
