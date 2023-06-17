@@ -4,14 +4,12 @@
 
 namespace ebi {
 
-template <class Field> struct SquareMatrix {
+template <class Field, int id> struct square_matrix {
   private:
-    using Self = SquareMatrix<Field>;
-    using size_t = std::size_t;
-    using u64 = std::uint_fast64_t;
+    using Self = square_matrix<Field, id>;
 
   public:
-    SquareMatrix(Field val = 0)
+    square_matrix(Field val = 0)
         : mat(std::vector(N, std::vector<Field>(N, val))) {}
 
     Self operator+(Self &rhs) const noexcept {
@@ -27,8 +25,8 @@ template <class Field> struct SquareMatrix {
     }
 
     Self &operator+=(Self &rhs) noexcept {
-        for (size_t i = 0; i < N; ++i) {
-            for (size_t j = 0; j < N; ++j) {
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
                 mat[i][j] += rhs[i][j];
             }
         }
@@ -36,8 +34,8 @@ template <class Field> struct SquareMatrix {
     }
 
     Self &operator-=(Self &rhs) noexcept {
-        for (size_t i = 0; i < N; ++i) {
-            for (size_t j = 0; j < N; ++j) {
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
                 mat[i][j] -= rhs[i][j];
             }
         }
@@ -46,9 +44,9 @@ template <class Field> struct SquareMatrix {
 
     Self &operator*=(Self &rhs) noexcept {
         Self ret;
-        for (size_t i = 0; i < N; ++i) {
-            for (size_t j = 0; j < N; ++j) {
-                for (size_t k = 0; k < N; ++k) {
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                for (int k = 0; k < N; ++k) {
                     ret[i][j] += mat[i][k] * rhs[k][j];
                 }
             }
@@ -56,9 +54,9 @@ template <class Field> struct SquareMatrix {
         return *this = ret;
     }
 
-    Self pow(u64 n) const {
+    Self pow(long long n) const {
         Self res;
-        for (size_t i = 0; i < N; ++i) {
+        for (int i = 0; i < N; ++i) {
             res[i][i] = 1;
         }
         Self x = *this;
@@ -73,10 +71,10 @@ template <class Field> struct SquareMatrix {
     Field det() const {
         Self res = *this;
         Field d = 1;
-        for (size_t i = 0; i < N; ++i) {
+        for (int i = 0; i < N; ++i) {
             if (res[i][i] == 0) {
                 int flag = -1;
-                for (size_t j = i + 1; j < N; ++j) {
+                for (int j = i + 1; j < N; ++j) {
                     if (res[j][i] != 0) {
                         flag = j;
                         break;
@@ -89,9 +87,9 @@ template <class Field> struct SquareMatrix {
                 d = -d;
             }
             Field inv = res[i][i].inv();
-            for (size_t j = i + 1; j < N; ++j) {
+            for (int j = i + 1; j < N; ++j) {
                 Field fac = res[j][i] * inv;
-                for (size_t k = i; k < N; ++k) {
+                for (int k = i; k < N; ++k) {
                     res[j][k] -= fac * res[i][k];
                 }
             }
@@ -102,25 +100,25 @@ template <class Field> struct SquareMatrix {
 
     static Self identity() {
         Self res;
-        for (size_t i = 0; i < N; ++i) {
+        for (int i = 0; i < N; ++i) {
             res[i][i] = 1;
         }
         return res;
     }
 
-    std::vector<Field> &operator[](size_t i) {
+    std::vector<Field> &operator[](int i) {
         return mat[i];
     }
 
-    static void set_size(size_t n) {
+    static void set_size(int n) {
         N = n;
     }
 
   private:
     std::vector<std::vector<Field>> mat;
-    static size_t N;
+    static int N;
 };
 
-template <class Field> size_t SquareMatrix<Field>::N = 0;
+template <class Field, int id> int square_matrix<Field, id>::N = 0;
 
 }  // namespace ebi
