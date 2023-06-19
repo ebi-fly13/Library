@@ -18,17 +18,17 @@ data:
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
   - icon: ':heavy_check_mark:'
-    path: set_function/ranked_zeta.hpp
-    title: set_function/ranked_zeta.hpp
+    path: set_function/ranked_subset_transform.hpp
+    title: Ranked Subset Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
     title: set_function/sps_exp.hpp
   - icon: ':heavy_check_mark:'
-    path: set_function/subset_zeta.hpp
-    title: Subset Zeta Transform
+    path: set_function/subset_transform.hpp
+    title: Subset Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
-    path: set_function/superset_zeta.hpp
-    title: Superset Zeta Transform
+    path: set_function/superset_transform.hpp
+    title: Superset Transform (Zeta / Mobius)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
@@ -105,10 +105,10 @@ data:
   isVerificationFile: false
   path: utility/bit_operator.hpp
   requiredBy:
-  - set_function/ranked_zeta.hpp
-  - set_function/superset_zeta.hpp
-  - set_function/subset_zeta.hpp
+  - set_function/subset_transform.hpp
   - set_function/sps_exp.hpp
+  - set_function/superset_transform.hpp
+  - set_function/ranked_subset_transform.hpp
   - convolution/and_convolution.hpp
   - convolution/or_convolution.hpp
   - convolution/ntt.hpp

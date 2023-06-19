@@ -5,8 +5,8 @@ data:
     path: convolution/or_convolution.hpp
     title: Bitwise OR Convolution
   - icon: ':heavy_check_mark:'
-    path: set_function/subset_zeta.hpp
-    title: Subset Zeta Transform
+    path: set_function/subset_transform.hpp
+    title: Subset Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
@@ -29,41 +29,42 @@ data:
   bundledCode: "#line 1 \"test/convolution/Bitwise_OR_Convolution.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\n#include\
     \ <iostream>\n#include <vector>\n\n#line 2 \"convolution/or_convolution.hpp\"\n\
-    \n#line 2 \"set_function/subset_zeta.hpp\"\n\n#include <cassert>\n#line 5 \"set_function/subset_zeta.hpp\"\
-    \n\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned\
-    \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
-    }\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
-    \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
-    \ i - 1);\n    }\n    return rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x =\
-    \ 0;\n    while ((1U << x) < (unsigned int)(n)) x++;\n    return x;\n}\n\nint\
-    \ popcnt(int x) {\n    return __builtin_popcount(x);\n}\n\nint msb(int x) {\n\
-    \    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\nint bsf(int x) {\n  \
-    \  return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace ebi\n#line 7\
-    \ \"set_function/subset_zeta.hpp\"\n\nnamespace ebi {\n\ntemplate <class T> std::vector<T>\
-    \ subset_zeta(const std::vector<T> &a) {\n    int n = msb(a.size());\n    assert((1\
-    \ << n) == (int)a.size());\n    std::vector<T> ra = a;\n    for (int i = 0; i\
-    \ < n; i++) {\n        int w = 1 << i;\n        for (int p = 0; p < (1 << n);\
-    \ p += 2 * w) {\n            for (int s = p; s < p + w; s++) {\n             \
-    \   int t = s | w;\n                ra[t] += ra[s];\n            }\n        }\n\
-    \    }\n    return ra;\n}\n\ntemplate <class T> std::vector<T> subset_mobius(const\
-    \ std::vector<T> &ra) {\n    int n = msb(ra.size());\n    assert((1 << n) == (int)ra.size());\n\
-    \    std::vector<T> a = ra;\n    for (int i = 0; i < n; i++) {\n        int w\
+    \n#line 2 \"set_function/subset_transform.hpp\"\n\n#include <cassert>\n#line 5\
+    \ \"set_function/subset_transform.hpp\"\n\n#line 2 \"utility/bit_operator.hpp\"\
+    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
+    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
+    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
+    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
+    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
+    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
+    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
+    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
+    }\n\n}  // namespace ebi\n#line 7 \"set_function/subset_transform.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T> std::vector<T> subset_zeta(const std::vector<T>\
+    \ &a) {\n    int n = msb(a.size());\n    assert((1 << n) == (int)a.size());\n\
+    \    std::vector<T> ra = a;\n    for (int i = 0; i < n; i++) {\n        int w\
     \ = 1 << i;\n        for (int p = 0; p < (1 << n); p += 2 * w) {\n           \
     \ for (int s = p; s < p + w; s++) {\n                int t = s | w;\n        \
-    \        a[t] -= a[s];\n            }\n        }\n    }\n    return a;\n}\n\n\
-    }  // namespace ebi\n#line 4 \"convolution/or_convolution.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class T>\nstd::vector<T> or_convolution(const std::vector<T>\
-    \ &a,\n                              const std::vector<T> &b) {\n    int n = a.size();\n\
-    \    auto ra = subset_zeta(a);\n    auto rb = subset_zeta(b);\n    for (int i\
-    \ = 0; i < n; i++) {\n        ra[i] *= rb[i];\n    }\n    return subset_mobius(ra);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\
-    \n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4\
-    \ \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\nstruct\
-    \ modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
-    \ : modint_base {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \        ra[t] += ra[s];\n            }\n        }\n    }\n    return ra;\n}\n\
+    \ntemplate <class T> std::vector<T> subset_mobius(const std::vector<T> &ra) {\n\
+    \    int n = msb(ra.size());\n    assert((1 << n) == (int)ra.size());\n    std::vector<T>\
+    \ a = ra;\n    for (int i = 0; i < n; i++) {\n        int w = 1 << i;\n      \
+    \  for (int p = 0; p < (1 << n); p += 2 * w) {\n            for (int s = p; s\
+    \ < p + w; s++) {\n                int t = s | w;\n                a[t] -= a[s];\n\
+    \            }\n        }\n    }\n    return a;\n}\n\n}  // namespace ebi\n#line\
+    \ 4 \"convolution/or_convolution.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\n\
+    std::vector<T> or_convolution(const std::vector<T> &a,\n                     \
+    \         const std::vector<T> &b) {\n    int n = a.size();\n    auto ra = subset_zeta(a);\n\
+    \    auto rb = subset_zeta(b);\n    for (int i = 0; i < n; i++) {\n        ra[i]\
+    \ *= rb[i];\n    }\n    return subset_mobius(ra);\n}\n\n}  // namespace ebi\n\
+    #line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\
+    \n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
+    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
+    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\n}  // namespace\
+    \ internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base : modint_base\
+    \ {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
     \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
@@ -129,14 +130,14 @@ data:
     \ i].val() << \" \\n\"[i == (1 << n) - 1];\n    }\n}"
   dependsOn:
   - convolution/or_convolution.hpp
-  - set_function/subset_zeta.hpp
+  - set_function/subset_transform.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
   path: test/convolution/Bitwise_OR_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-06-08 10:34:37+09:00'
+  timestamp: '2023-06-19 14:38:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Bitwise_OR_Convolution.test.cpp

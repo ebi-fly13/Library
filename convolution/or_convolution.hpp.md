@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: set_function/subset_zeta.hpp
-    title: Subset Zeta Transform
+    path: set_function/subset_transform.hpp
+    title: Subset Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
@@ -17,7 +17,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"convolution/or_convolution.hpp\"\n\n#line 2 \"set_function/subset_zeta.hpp\"\
+  bundledCode: "#line 2 \"convolution/or_convolution.hpp\"\n\n#line 2 \"set_function/subset_transform.hpp\"\
     \n\n#include <cassert>\n#include <vector>\n\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
     \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
@@ -27,7 +27,7 @@ data:
     \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
     \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
     \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
-    }\n\n}  // namespace ebi\n#line 7 \"set_function/subset_zeta.hpp\"\n\nnamespace\
+    }\n\n}  // namespace ebi\n#line 7 \"set_function/subset_transform.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <class T> std::vector<T> subset_zeta(const std::vector<T>\
     \ &a) {\n    int n = msb(a.size());\n    assert((1 << n) == (int)a.size());\n\
     \    std::vector<T> ra = a;\n    for (int i = 0; i < n; i++) {\n        int w\
@@ -45,19 +45,19 @@ data:
     \         const std::vector<T> &b) {\n    int n = a.size();\n    auto ra = subset_zeta(a);\n\
     \    auto rb = subset_zeta(b);\n    for (int i = 0; i < n; i++) {\n        ra[i]\
     \ *= rb[i];\n    }\n    return subset_mobius(ra);\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include \"../set_function/subset_zeta.hpp\"\n\nnamespace\
+  code: "#pragma once\n\n#include \"../set_function/subset_transform.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <class T>\nstd::vector<T> or_convolution(const std::vector<T>\
     \ &a,\n                              const std::vector<T> &b) {\n    int n = a.size();\n\
     \    auto ra = subset_zeta(a);\n    auto rb = subset_zeta(b);\n    for (int i\
     \ = 0; i < n; i++) {\n        ra[i] *= rb[i];\n    }\n    return subset_mobius(ra);\n\
     }\n\n}  // namespace ebi"
   dependsOn:
-  - set_function/subset_zeta.hpp
+  - set_function/subset_transform.hpp
   - utility/bit_operator.hpp
   isVerificationFile: false
   path: convolution/or_convolution.hpp
   requiredBy: []
-  timestamp: '2023-06-01 22:59:55+09:00'
+  timestamp: '2023-06-19 14:38:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Bitwise_OR_Convolution.test.cpp

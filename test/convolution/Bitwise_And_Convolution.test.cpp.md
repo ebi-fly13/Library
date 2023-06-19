@@ -5,8 +5,8 @@ data:
     path: convolution/and_convolution.hpp
     title: Bitwise AND Convolution
   - icon: ':heavy_check_mark:'
-    path: set_function/superset_zeta.hpp
-    title: Superset Zeta Transform
+    path: set_function/superset_transform.hpp
+    title: Superset Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
@@ -29,9 +29,9 @@ data:
   bundledCode: "#line 1 \"test/convolution/Bitwise_And_Convolution.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\n#include\
     \ <iostream>\n#include <vector>\n\n#line 2 \"convolution/and_convolution.hpp\"\
-    \n\n#line 4 \"convolution/and_convolution.hpp\"\n\n#line 2 \"set_function/superset_zeta.hpp\"\
-    \n\n#include <cassert>\n#line 5 \"set_function/superset_zeta.hpp\"\n\n#line 2\
-    \ \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned\
+    \n\n#line 4 \"convolution/and_convolution.hpp\"\n\n#line 2 \"set_function/superset_transform.hpp\"\
+    \n\n#include <cassert>\n#line 5 \"set_function/superset_transform.hpp\"\n\n#line\
+    \ 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned\
     \ int n) {\n    int x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n\
     }\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
     \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
@@ -40,8 +40,8 @@ data:
     \ popcnt(int x) {\n    return __builtin_popcount(x);\n}\n\nint msb(int x) {\n\
     \    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\nint bsf(int x) {\n  \
     \  return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace ebi\n#line 7\
-    \ \"set_function/superset_zeta.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\
-    \ std::vector<T> superset_zeta(const std::vector<T> &a) {\n    int n = msb(a.size());\n\
+    \ \"set_function/superset_transform.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ T> std::vector<T> superset_zeta(const std::vector<T> &a) {\n    int n = msb(a.size());\n\
     \    assert((1 << n) == (int)a.size());\n    std::vector<T> ra = a;\n    for (int\
     \ i = 0; i < n; i++) {\n        int w = 1 << i;\n        for (int p = 0; p < (1\
     \ << n); p += 2 * w) {\n            for (int s = p; s < p + w; s++) {\n      \
@@ -129,14 +129,14 @@ data:
     \ {\n        std::cout << c[i].val() << \" \\n\"[i == (1 << n) - 1];\n    }\n}"
   dependsOn:
   - convolution/and_convolution.hpp
-  - set_function/superset_zeta.hpp
+  - set_function/superset_transform.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
   path: test/convolution/Bitwise_And_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-06-08 10:34:37+09:00'
+  timestamp: '2023-06-19 14:38:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Bitwise_And_Convolution.test.cpp

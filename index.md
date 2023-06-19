@@ -253,17 +253,17 @@ data:
       path: set_function/hadamard_transform.hpp
       title: set_function/hadamard_transform.hpp
     - icon: ':heavy_check_mark:'
-      path: set_function/ranked_zeta.hpp
-      title: set_function/ranked_zeta.hpp
+      path: set_function/ranked_subset_transform.hpp
+      title: Ranked Subset Transform (Zeta / Mobius)
     - icon: ':heavy_check_mark:'
       path: set_function/sps_exp.hpp
       title: set_function/sps_exp.hpp
     - icon: ':heavy_check_mark:'
-      path: set_function/subset_zeta.hpp
-      title: Subset Zeta Transform
+      path: set_function/subset_transform.hpp
+      title: Subset Transform (Zeta / Mobius)
     - icon: ':heavy_check_mark:'
-      path: set_function/superset_zeta.hpp
-      title: Superset Zeta Transform
+      path: set_function/superset_transform.hpp
+      title: Superset Transform (Zeta / Mobius)
   - name: string
     pages:
     - icon: ':heavy_check_mark:'
