@@ -10,7 +10,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
-    title: set_function/sps_exp.hpp
+    title: $\exp {a}$ (Set Power Series)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp

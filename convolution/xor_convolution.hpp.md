@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: set_function/hadamard_transform.hpp
-    title: set_function/hadamard_transform.hpp
+    title: Hadamard Transform
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'

@@ -41,8 +41,9 @@ data:
   - test/convolution/Bitwise_Xor_Convolution.test.cpp
 documentation_of: set_function/hadamard_transform.hpp
 layout: document
-redirect_from:
-- /library/set_function/hadamard_transform.hpp
-- /library/set_function/hadamard_transform.hpp.html
-title: set_function/hadamard_transform.hpp
+title: Hadamard Transform
 ---
+
+## 説明
+
+アダマール変換を行う。 $O(N\log N)$

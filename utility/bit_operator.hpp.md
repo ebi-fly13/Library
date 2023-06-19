@@ -22,7 +22,7 @@ data:
     title: Ranked Subset Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
-    title: set_function/sps_exp.hpp
+    title: $\exp {a}$ (Set Power Series)
   - icon: ':heavy_check_mark:'
     path: set_function/subset_transform.hpp
     title: Subset Transform (Zeta / Mobius)

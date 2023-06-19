@@ -6,7 +6,7 @@ data:
     title: Bitwise XOR Convolution
   - icon: ':heavy_check_mark:'
     path: set_function/hadamard_transform.hpp
-    title: set_function/hadamard_transform.hpp
+    title: Hadamard Transform
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
