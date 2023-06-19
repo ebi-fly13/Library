@@ -14,6 +14,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
+  - icon: ':heavy_check_mark:'
+    path: tree/tree_diameter.hpp
+    title: Tree Diameter
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
@@ -33,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree_HLD.test.cpp
     title: test/tree/Jump_on_Tree_HLD.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Tree_Diameter.test.cpp
+    title: test/tree/Tree_Diameter.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/level_ancestor_lca.test.cpp
     title: test/tree/level_ancestor_lca.test.cpp
@@ -83,6 +89,7 @@ data:
   - graph/dijkstra_fibheap.hpp
   - graph/dijkstra.hpp
   - graph/scc_graph.hpp
+  - tree/tree_diameter.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -94,6 +101,7 @@ data:
   - test/vertex_add_subtree_sum.test.cpp
   - test/vertex_add_path_sum.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Tree_Diameter.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
   - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/level_ancestor_lca.test.cpp

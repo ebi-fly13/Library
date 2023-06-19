@@ -45,6 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/inversion_number.test.cpp
     title: test/math/inversion_number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Tree_Diameter.test.cpp
+    title: test/tree/Tree_Diameter.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -81,6 +84,7 @@ data:
   - test/fibonacci_heap.test.cpp
   - test/FenwickTree.test.cpp
   - test/SegmentAddGetMin.test.cpp
+  - test/tree/Tree_Diameter.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:

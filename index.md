@@ -304,6 +304,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/rooted_tree_hash.hpp
       title: Rooted Tree Hash
+    - icon: ':heavy_check_mark:'
+      path: tree/tree_diameter.hpp
+      title: Tree Diameter
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
@@ -645,6 +648,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
       title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Tree_Diameter.test.cpp
+      title: test/tree/Tree_Diameter.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Path_Composite_Sum.test.cpp
       title: test/tree/Tree_Path_Composite_Sum.test.cpp
