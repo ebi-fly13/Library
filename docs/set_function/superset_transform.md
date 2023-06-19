@@ -1,6 +1,6 @@
 ---
-title: Subset Zeta Transform
-documentation_of: //set_function/subset_zeta.hpp
+title: Superset Transform (Zeta / Mobius)
+documentation_of: //set_function/superset_transform.hpp
 ---
 
 ## 説明
@@ -9,7 +9,7 @@ $N$ 要素の集合の冪集合に値が定義されている配列 $a$ につ�
 つまり以下の式を満たす $\zeta a$ を求めることを $\zeta$ 変換という。逆変換をメビウス変換という。
 
 $$
-\zeta a_S = \sum_{T \subset S} a_T
+\zeta a_{S} = \sum_{S \subset T} a_T
 $$
 
 いずれも、 $O(N2^N)$ で変換することができる。

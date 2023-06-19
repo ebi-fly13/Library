@@ -9,7 +9,7 @@
 #include <cassert>
 #include <vector>
 
-#include "../set_function/ranked_zeta.hpp"
+#include "../set_function/ranked_subset_transform.hpp"
 #include "../utility/bit_operator.hpp"
 
 namespace ebi {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../set_function/subset_zeta.hpp"
+#include "../set_function/subset_transform.hpp"
 
 namespace ebi {
 

@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "../set_function/superset_zeta.hpp"
+#include "../set_function/superset_transform.hpp"
 
 namespace ebi {
 
