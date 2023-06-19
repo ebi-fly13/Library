@@ -16,26 +16,41 @@ namespace ebi {
 
 template <int n> struct rolling_hash {
   private:
-    using mint = modint61;
-    static constexpr mint h = 100;
+    static constexpr int h = 100;
+
+    using Self = rolling_hash<n>;
+
+    static void expand(int m) {
+        int now = base_pow.size();
+        while (now <= m) {
+            now <<= 1;
+        }
+        if (int(base_pow.size()) == now) return;
+        base_pow.reserve(now);
+        while (int(base_pow.size()) < now) {
+            base_pow.emplace_back(base_pow.back() * base);
+        }
+    }
 
   public:
     rolling_hash(const std::string &s) : sz(s.size()) {
         assert(n >= 0);
-        base_pow.reserve(sz + 1);
-        base_pow.emplace_back(Hash<n>::set(1));
         hash.reserve(sz + 1);
         hash.emplace_back(Hash<n>::set(0));
+        expand(sz);
         for (const auto &c : s) {
             hash.emplace_back(hash.back() * base + c + h);
-            base_pow.emplace_back(base_pow.back() * base);
         }
+    }
+
+    inline Hash<n> prefix_hash(int r) const {
+        return hash[r];
     }
 
     // [l, r)
     Hash<n> get_hash(int l, int r) const {
         assert(0 <= l && l <= r && r <= sz);
-        return hash[r] - hash[l] * base_pow[r - l];
+        return prefix_hash(r) - prefix_hash(l) * base_pow[r - l];
     }
 
     static Hash<n> get_hash(const std::string &str, int l = 0, int r = -1) {
@@ -47,23 +62,42 @@ template <int n> struct rolling_hash {
         return res;
     }
 
-    Hash<n> concat(const Hash<n> &hash1, const Hash<n> &hash2, int len2) {
-        return hash1 * base.pow(len2) + hash2;
+    static Hash<n> concat(Self lhs, Self rhs) {
+        return lhs.hash.back() * base_pow[rhs.size()] + rhs.hash.back();
+    }
+
+    int size() const {
+        return sz;
+    }
+
+    Self operator+(const Self &rhs) noexcept {
+        return Self(*this) += rhs;
+    }
+
+    Self &operator+=(const Self &rhs) noexcept {
+        Hash<n> a = hash.back();
+        for (int i = 1; i <= rhs.size(); i++) {
+            a *= base;
+            hash.emplace_back(a + rhs.hash[i]);
+        }
+        sz += rhs.size();
+        expand(sz);
+        return *this;
     }
 
     static void set_base() {
         base = Hash<n>::get_basis_primitive();
+        base_pow = std::vector<Hash<n>>(1, Hash<n>::set(1));
     }
 
   private:
     int sz;
-    std::vector<Hash<n>> base_pow;
     std::vector<Hash<n>> hash;
-
-  public:
     static Hash<n> base;
+    static std::vector<Hash<n>> base_pow;
 };
 
 template <int n> Hash<n> rolling_hash<n>::base = {};
+template <int n> std::vector<Hash<n>> rolling_hash<n>::base_pow = {};
 
 }  // namespace ebi

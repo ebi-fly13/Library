@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <iostream>
 #include <set>
+#include <string>
 #include <vector>
 
 #include "../../string/rolling_hash.hpp"
