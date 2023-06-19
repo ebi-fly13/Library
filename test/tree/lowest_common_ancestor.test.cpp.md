@@ -9,7 +9,7 @@ data:
     title: graph/template.hpp
   - icon: ':heavy_check_mark:'
     path: tree/lowest_common_ancestor.hpp
-    title: tree/lowest_common_ancestor.hpp
+    title: Lowest Common Ancestor
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

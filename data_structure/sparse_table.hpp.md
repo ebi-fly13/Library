@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: tree/lowest_common_ancestor.hpp
-    title: tree/lowest_common_ancestor.hpp
+    title: Lowest Common Ancestor
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/static_rmq.test.cpp

@@ -75,7 +75,7 @@ data:
   - test/tree/Tree_Path_Composite_Sum.test.cpp
 documentation_of: tree/rerooting.hpp
 layout: document
-title: rerooting
+title: Rerooting DP
 ---
 
 ## 説明

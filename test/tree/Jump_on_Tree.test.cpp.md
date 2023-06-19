@@ -9,10 +9,10 @@ data:
     title: graph/template.hpp
   - icon: ':heavy_check_mark:'
     path: tree/level_ancestor.hpp
-    title: tree/level_ancestor.hpp
+    title: Level Ancestor
   - icon: ':heavy_check_mark:'
     path: tree/lowest_common_ancestor.hpp
-    title: tree/lowest_common_ancestor.hpp
+    title: Lowest Common Ancestor
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

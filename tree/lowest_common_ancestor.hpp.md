@@ -87,8 +87,17 @@ data:
   - test/tree/lowest_common_ancestor.test.cpp
 documentation_of: tree/lowest_common_ancestor.hpp
 layout: document
-redirect_from:
-- /library/tree/lowest_common_ancestor.hpp
-- /library/tree/lowest_common_ancestor.hpp.html
-title: tree/lowest_common_ancestor.hpp
+title: Lowest Common Ancestor
 ---
+
+## 説明
+
+根付き木の最小共通祖先を、構築 $O(N\log N)$ / クエリ $O(1)$ で求める。
+
+### lca(u, v)
+
+`u`と`v`の最小共通祖先を返す。 $O(1)$
+
+### distance(u, v)
+
+`u`と`v`の距離を返す。

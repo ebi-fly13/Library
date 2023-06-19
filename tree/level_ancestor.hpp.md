@@ -62,8 +62,13 @@ data:
   - test/tree/level_ancestor_lca.test.cpp
 documentation_of: tree/level_ancestor.hpp
 layout: document
-redirect_from:
-- /library/tree/level_ancestor.hpp
-- /library/tree/level_ancestor.hpp.html
-title: tree/level_ancestor.hpp
+title: Level Ancestor
 ---
+
+## 説明
+
+根付き木のLevel Ancestorを構築 $O(N)$ / クエリ $O(\log N)$
+
+### query(u, k)
+
+頂点`u`の根方向に $k$ だけ上った頂点を返す。 $O(\log N)$

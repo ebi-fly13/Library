@@ -288,19 +288,19 @@ data:
     pages:
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
-      title: tree/centroid_decomposition.hpp
+      title: Centroid Decomposition
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
       path: tree/level_ancestor.hpp
-      title: tree/level_ancestor.hpp
+      title: Level Ancestor
     - icon: ':heavy_check_mark:'
       path: tree/lowest_common_ancestor.hpp
-      title: tree/lowest_common_ancestor.hpp
+      title: Lowest Common Ancestor
     - icon: ':heavy_check_mark:'
       path: tree/rerooting.hpp
-      title: rerooting
+      title: Rerooting DP
     - icon: ':heavy_check_mark:'
       path: tree/rooted_tree_hash.hpp
       title: Rooted Tree Hash

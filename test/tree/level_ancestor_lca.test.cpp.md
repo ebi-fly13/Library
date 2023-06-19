@@ -6,7 +6,7 @@ data:
     title: graph/template.hpp
   - icon: ':heavy_check_mark:'
     path: tree/level_ancestor.hpp
-    title: tree/level_ancestor.hpp
+    title: Level Ancestor
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
