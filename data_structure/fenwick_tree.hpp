@@ -5,13 +5,13 @@
 
 namespace ebi {
 
-template <class T> struct FenwickTree {
+template <class T> struct fenwick_tree {
   private:
     int n;
     std::vector<T> data;
 
   public:
-    FenwickTree(int _n) : n(_n), data(std::vector<T>(_n + 1, T(0))) {}
+    fenwick_tree(int _n) : n(_n), data(std::vector<T>(_n + 1, T(0))) {}
 
     void add(int i, T val) {
         i++;

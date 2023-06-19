@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "../algorithm/mo_algorithm.hpp"
-#include "../data_structure/FenwickTree.hpp"
+#include "../data_structure/fenwick_tree.hpp"
 #include "../data_structure/compress.hpp"
 
 using u64 = std::uint64_t;
@@ -29,7 +29,7 @@ int main() {
     for (int i = 0; i < q; i++) {
         std::cin >> l[i] >> r[i];
     }
-    ebi::FenwickTree<u64> fw(cp.size());
+    ebi::fenwick_tree<u64> fw(cp.size());
     std::vector<u64> ans(q);
     u64 ret = 0;
     const auto insert_left = [&](int l) -> void {

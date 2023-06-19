@@ -9,7 +9,7 @@
 #include <map>
 #include <vector>
 
-#include "data_structure/FenwickTree.hpp"
+#include "data_structure/fenwick_tree.hpp"
 #include "data_structure/compress.hpp"
 
 namespace ebi {
@@ -42,7 +42,7 @@ void main_() {
     cp.build();
     std::sort(ret.begin(), ret.end());
     ret.erase(std::unique(ret.begin(), ret.end()), ret.end());
-    FenwickTree<i64> fw(cp.size());
+    fenwick_tree<i64> fw(cp.size());
     i64 ans = 0;
     for (auto x : ret) {
         for (auto [y, val] : ymap[x]) {

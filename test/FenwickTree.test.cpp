@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
-#include "../data_structure/FenwickTree.hpp"
+#include "../data_structure/fenwick_tree.hpp"
 
 #include <iostream>
 
@@ -9,7 +9,7 @@
 int main() {
     int n, q;
     std::cin >> n >> q;
-    ebi::FenwickTree<i64> fw(n);
+    ebi::fenwick_tree<i64> fw(n);
     for (int i = 0; i < n; i++) {
         i64 a;
         std::cin >> a;
