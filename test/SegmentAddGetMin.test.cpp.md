@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/LiChaoSegmentTree.hpp
     title: data_structure/LiChaoSegmentTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
@@ -53,10 +53,10 @@ data:
     \ (k > 0) {\r\n            k = (k - 1) / 2;\r\n            val = std::min(val,\
     \ f(data[k], i));\r\n        }\r\n        return val;\r\n    }\r\n};\r\n\r\n}\
     \  // namespace ebi\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\
-    \n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\nusing i64 = std::int64_t;\r\
-    \nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing usize = std::size_t;\n#line 9 \"test/SegmentAddGetMin.test.cpp\"\n\r\n\
-    int main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<std::pair<i64,\
+    \n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing i32 = std::int32_t;\r\n\
+    using u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
+    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 9 \"test/SegmentAddGetMin.test.cpp\"\
+    \n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<std::pair<i64,\
     \ i64>> lr(n);\r\n    std::vector<ebi::line<i64>> y(n);\r\n    std::vector<i64>\
     \ x;\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin >> lr[i].first >>\
     \ lr[i].second;\r\n        std::cin >> y[i].a >> y[i].b;\r\n    }\r\n    std::vector<std::vector<i64>>\
@@ -119,7 +119,7 @@ data:
   isVerificationFile: true
   path: test/SegmentAddGetMin.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-06-19 11:39:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/SegmentAddGetMin.test.cpp

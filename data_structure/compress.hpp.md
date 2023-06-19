@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/inversion_number.hpp
+    title: math/inversion_number.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/geometry/segment_intersection.test.cpp
     title: test/geometry/segment_intersection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/inversion_number.test.cpp
+    title: test/math/inversion_number.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/point_add_rectangle_sum.test.cpp
     title: test/point_add_rectangle_sum.test.cpp
@@ -46,12 +52,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data_structure/compress.hpp
-  requiredBy: []
+  requiredBy:
+  - math/inversion_number.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/point_add_rectangle_sum.test.cpp
   - test/static_range_inversion_query.test.cpp
+  - test/math/inversion_number.test.cpp
   - test/geometry/segment_intersection.test.cpp
   - test/rectangle_sum.test.cpp
 documentation_of: data_structure/compress.hpp

@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/inversion_number.hpp
+    title: math/inversion_number.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/FenwickTree.test.cpp
@@ -10,6 +13,9 @@ data:
     path: test/geometry/segment_intersection.test.cpp
     title: test/geometry/segment_intersection.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/inversion_number.test.cpp
+    title: test/math/inversion_number.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/static_range_inversion_query.test.cpp
     title: test/static_range_inversion_query.test.cpp
   _isVerificationFailed: false
@@ -17,10 +23,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/FenwickTree.hpp\"\n\r\n#include <cassert>\r\
-    \n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct FenwickTree\
+  bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\r\n#include <cassert>\r\
+    \n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct fenwick_tree\
     \ {\r\n  private:\r\n    int n;\r\n    std::vector<T> data;\r\n\r\n  public:\r\
-    \n    FenwickTree(int _n) : n(_n), data(std::vector<T>(_n + 1, T(0))) {}\r\n\r\
+    \n    fenwick_tree(int _n) : n(_n), data(std::vector<T>(_n + 1, T(0))) {}\r\n\r\
     \n    void add(int i, T val) {\r\n        i++;\r\n        for (int x = i; x <=\
     \ n; x += x & -x) {\r\n            data[x] += val;\r\n        }\r\n    }\r\n\r\
     \n    T prefix_sum(int i) {\r\n        assert(0 <= i && i <= n);\r\n        T\
@@ -35,12 +41,12 @@ data:
     \n                key -= data[x];\r\n            }\r\n        }\r\n        return\
     \ x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <cassert>\r\n#include <vector>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <class T> struct FenwickTree {\r\n  private:\r\n    int\
-    \ n;\r\n    std::vector<T> data;\r\n\r\n  public:\r\n    FenwickTree(int _n) :\
-    \ n(_n), data(std::vector<T>(_n + 1, T(0))) {}\r\n\r\n    void add(int i, T val)\
-    \ {\r\n        i++;\r\n        for (int x = i; x <= n; x += x & -x) {\r\n    \
-    \        data[x] += val;\r\n        }\r\n    }\r\n\r\n    T prefix_sum(int i)\
-    \ {\r\n        assert(0 <= i && i <= n);\r\n        T ret = 0;\r\n        for\
+    \ ebi {\r\n\r\ntemplate <class T> struct fenwick_tree {\r\n  private:\r\n    int\
+    \ n;\r\n    std::vector<T> data;\r\n\r\n  public:\r\n    fenwick_tree(int _n)\
+    \ : n(_n), data(std::vector<T>(_n + 1, T(0))) {}\r\n\r\n    void add(int i, T\
+    \ val) {\r\n        i++;\r\n        for (int x = i; x <= n; x += x & -x) {\r\n\
+    \            data[x] += val;\r\n        }\r\n    }\r\n\r\n    T prefix_sum(int\
+    \ i) {\r\n        assert(0 <= i && i <= n);\r\n        T ret = 0;\r\n        for\
     \ (int x = i; x > 0; x -= x & -x) {\r\n            ret += data[x];\r\n       \
     \ }\r\n        return ret;\r\n    }\r\n\r\n    T sum(int l, int r) {\r\n     \
     \   return prefix_sum(r) - prefix_sum(l);\r\n    }\r\n\r\n    // prefix_sum(x)\
@@ -53,18 +59,20 @@ data:
     \    }\r\n};\r\n\r\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
-  path: data_structure/FenwickTree.hpp
-  requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  path: data_structure/fenwick_tree.hpp
+  requiredBy:
+  - math/inversion_number.hpp
+  timestamp: '2023-06-19 11:39:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/static_range_inversion_query.test.cpp
+  - test/math/inversion_number.test.cpp
   - test/geometry/segment_intersection.test.cpp
   - test/FenwickTree.test.cpp
-documentation_of: data_structure/FenwickTree.hpp
+documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 redirect_from:
-- /library/data_structure/FenwickTree.hpp
-- /library/data_structure/FenwickTree.hpp.html
-title: data_structure/FenwickTree.hpp
+- /library/data_structure/fenwick_tree.hpp
+- /library/data_structure/fenwick_tree.hpp.html
+title: data_structure/fenwick_tree.hpp
 ---

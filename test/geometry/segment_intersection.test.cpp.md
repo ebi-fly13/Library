@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/FenwickTree.hpp
-    title: data_structure/FenwickTree.hpp
-  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
+  - icon: ':heavy_check_mark:'
+    path: data_structure/fenwick_tree.hpp
+    title: data_structure/fenwick_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -20,10 +20,10 @@ data:
   bundledCode: "#line 1 \"test/geometry/segment_intersection.test.cpp\"\n#define PROBLEM\
     \ \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_6_A\"\
     \n\n#include <algorithm>\n#include <cassert>\n#include <cstdint>\n#include <iomanip>\n\
-    #include <iostream>\n#include <map>\n#include <vector>\n\n#line 2 \"data_structure/FenwickTree.hpp\"\
-    \n\r\n#line 5 \"data_structure/FenwickTree.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
-    template <class T> struct FenwickTree {\r\n  private:\r\n    int n;\r\n    std::vector<T>\
-    \ data;\r\n\r\n  public:\r\n    FenwickTree(int _n) : n(_n), data(std::vector<T>(_n\
+    #include <iostream>\n#include <map>\n#include <vector>\n\n#line 2 \"data_structure/fenwick_tree.hpp\"\
+    \n\r\n#line 5 \"data_structure/fenwick_tree.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
+    template <class T> struct fenwick_tree {\r\n  private:\r\n    int n;\r\n    std::vector<T>\
+    \ data;\r\n\r\n  public:\r\n    fenwick_tree(int _n) : n(_n), data(std::vector<T>(_n\
     \ + 1, T(0))) {}\r\n\r\n    void add(int i, T val) {\r\n        i++;\r\n     \
     \   for (int x = i; x <= n; x += x & -x) {\r\n            data[x] += val;\r\n\
     \        }\r\n    }\r\n\r\n    T prefix_sum(int i) {\r\n        assert(0 <= i\
@@ -58,7 +58,7 @@ data:
     \        } else {\n            assert(y1 == y2);\n            if (x1 > x2) std::swap(x1,\
     \ x2);\n            ymap[x1].emplace_back(y1, 1);\n            ymap[x2 + 1].emplace_back(y1,\
     \ -1);\n        }\n    }\n    cp.build();\n    std::sort(ret.begin(), ret.end());\n\
-    \    ret.erase(std::unique(ret.begin(), ret.end()), ret.end());\n    FenwickTree<i64>\
+    \    ret.erase(std::unique(ret.begin(), ret.end()), ret.end());\n    fenwick_tree<i64>\
     \ fw(cp.size());\n    i64 ans = 0;\n    for (auto x : ret) {\n        for (auto\
     \ [y, val] : ymap[x]) {\n            fw.add(cp.get(y), val);\n        }\n    \
     \    for (auto [low, high] : xmap[x]) {\n            ans += fw.sum(cp.get(low),\
@@ -68,7 +68,7 @@ data:
     }\n"
   code: "#define PROBLEM \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_6_A\"\
     \n\n#include <algorithm>\n#include <cassert>\n#include <cstdint>\n#include <iomanip>\n\
-    #include <iostream>\n#include <map>\n#include <vector>\n\n#include \"data_structure/FenwickTree.hpp\"\
+    #include <iostream>\n#include <map>\n#include <vector>\n\n#include \"data_structure/fenwick_tree.hpp\"\
     \n#include \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\
     \nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::map<i64, std::vector<std::pair<i64,\
     \ i64>>> xmap, ymap;\n    compress<i64> cp;\n    std::vector<i64> ret;\n    for\
@@ -80,7 +80,7 @@ data:
     \ x2) std::swap(x1, x2);\n            ymap[x1].emplace_back(y1, 1);\n        \
     \    ymap[x2 + 1].emplace_back(y1, -1);\n        }\n    }\n    cp.build();\n \
     \   std::sort(ret.begin(), ret.end());\n    ret.erase(std::unique(ret.begin(),\
-    \ ret.end()), ret.end());\n    FenwickTree<i64> fw(cp.size());\n    i64 ans =\
+    \ ret.end()), ret.end());\n    fenwick_tree<i64> fw(cp.size());\n    i64 ans =\
     \ 0;\n    for (auto x : ret) {\n        for (auto [y, val] : ymap[x]) {\n    \
     \        fw.add(cp.get(y), val);\n        }\n        for (auto [low, high] : xmap[x])\
     \ {\n            ans += fw.sum(cp.get(low), cp.get(high + 1));\n        }\n  \
@@ -88,12 +88,12 @@ data:
     \    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
     \    std::ios::sync_with_stdio(false);\n    ebi::main_();\n}"
   dependsOn:
-  - data_structure/FenwickTree.hpp
+  - data_structure/fenwick_tree.hpp
   - data_structure/compress.hpp
   isVerificationFile: true
   path: test/geometry/segment_intersection.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-06-19 11:39:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/segment_intersection.test.cpp

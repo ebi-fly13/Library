@@ -5,11 +5,11 @@ data:
     path: algorithm/mo_algorithm.hpp
     title: algorithm/mo_algorithm.hpp
   - icon: ':heavy_check_mark:'
-    path: data_structure/FenwickTree.hpp
-    title: data_structure/FenwickTree.hpp
-  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
+  - icon: ':heavy_check_mark:'
+    path: data_structure/fenwick_tree.hpp
+    title: data_structure/fenwick_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -38,14 +38,14 @@ data:
     \ i : order) {\r\n        while (l[i] < nl) insert_left(--nl);\r\n        while\
     \ (nr < r[i]) insert_right(nr++);\r\n        while (nl < l[i]) delete_left(nl++);\r\
     \n        while (r[i] < nr) delete_right(--nr);\r\n        out(i);\r\n    }\r\n\
-    \    return;\r\n}\r\n\r\n}  // namespace ebi\n#line 2 \"data_structure/FenwickTree.hpp\"\
-    \n\r\n#include <cassert>\r\n#line 5 \"data_structure/FenwickTree.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <class T> struct FenwickTree {\r\n  private:\r\n    int\
-    \ n;\r\n    std::vector<T> data;\r\n\r\n  public:\r\n    FenwickTree(int _n) :\
-    \ n(_n), data(std::vector<T>(_n + 1, T(0))) {}\r\n\r\n    void add(int i, T val)\
-    \ {\r\n        i++;\r\n        for (int x = i; x <= n; x += x & -x) {\r\n    \
-    \        data[x] += val;\r\n        }\r\n    }\r\n\r\n    T prefix_sum(int i)\
-    \ {\r\n        assert(0 <= i && i <= n);\r\n        T ret = 0;\r\n        for\
+    \    return;\r\n}\r\n\r\n}  // namespace ebi\n#line 2 \"data_structure/fenwick_tree.hpp\"\
+    \n\r\n#include <cassert>\r\n#line 5 \"data_structure/fenwick_tree.hpp\"\n\r\n\
+    namespace ebi {\r\n\r\ntemplate <class T> struct fenwick_tree {\r\n  private:\r\
+    \n    int n;\r\n    std::vector<T> data;\r\n\r\n  public:\r\n    fenwick_tree(int\
+    \ _n) : n(_n), data(std::vector<T>(_n + 1, T(0))) {}\r\n\r\n    void add(int i,\
+    \ T val) {\r\n        i++;\r\n        for (int x = i; x <= n; x += x & -x) {\r\
+    \n            data[x] += val;\r\n        }\r\n    }\r\n\r\n    T prefix_sum(int\
+    \ i) {\r\n        assert(0 <= i && i <= n);\r\n        T ret = 0;\r\n        for\
     \ (int x = i; x > 0; x -= x & -x) {\r\n            ret += data[x];\r\n       \
     \ }\r\n        return ret;\r\n    }\r\n\r\n    T sum(int l, int r) {\r\n     \
     \   return prefix_sum(r) - prefix_sum(l);\r\n    }\r\n\r\n    // prefix_sum(x)\
@@ -72,7 +72,7 @@ data:
     \n    ebi::compress<int> cp;\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin\
     \ >> a[i];\r\n        cp.add(a[i]);\r\n    }\r\n    cp.build();\r\n    for (int\
     \ i = 0; i < n; i++) {\r\n        a[i] = cp.get(a[i]);\r\n    }\r\n    for (int\
-    \ i = 0; i < q; i++) {\r\n        std::cin >> l[i] >> r[i];\r\n    }\r\n    ebi::FenwickTree<u64>\
+    \ i = 0; i < q; i++) {\r\n        std::cin >> l[i] >> r[i];\r\n    }\r\n    ebi::fenwick_tree<u64>\
     \ fw(cp.size());\r\n    std::vector<u64> ans(q);\r\n    u64 ret = 0;\r\n    const\
     \ auto insert_left = [&](int l) -> void {\r\n        ret += fw.prefix_sum(a[l]);\r\
     \n        fw.add(a[l], 1);\r\n    };\r\n    const auto insert_right = [&](int\
@@ -88,14 +88,14 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_inversions_query\"\
     \r\n\r\n#include <algorithm>\r\n#include <cstdint>\r\n#include <iostream>\r\n\
     #include <numeric>\r\n#include <vector>\r\n\r\n#include \"../algorithm/mo_algorithm.hpp\"\
-    \r\n#include \"../data_structure/FenwickTree.hpp\"\r\n#include \"../data_structure/compress.hpp\"\
+    \r\n#include \"../data_structure/fenwick_tree.hpp\"\r\n#include \"../data_structure/compress.hpp\"\
     \r\n\r\nusing u64 = std::uint64_t;\r\n\r\nint main() {\r\n    int n, q;\r\n  \
     \  std::cin >> n >> q;\r\n    std::vector<int> a(n);\r\n    std::vector<int> l(q),\
     \ r(q);\r\n    ebi::compress<int> cp;\r\n    for (int i = 0; i < n; i++) {\r\n\
     \        std::cin >> a[i];\r\n        cp.add(a[i]);\r\n    }\r\n    cp.build();\r\
     \n    for (int i = 0; i < n; i++) {\r\n        a[i] = cp.get(a[i]);\r\n    }\r\
     \n    for (int i = 0; i < q; i++) {\r\n        std::cin >> l[i] >> r[i];\r\n \
-    \   }\r\n    ebi::FenwickTree<u64> fw(cp.size());\r\n    std::vector<u64> ans(q);\r\
+    \   }\r\n    ebi::fenwick_tree<u64> fw(cp.size());\r\n    std::vector<u64> ans(q);\r\
     \n    u64 ret = 0;\r\n    const auto insert_left = [&](int l) -> void {\r\n  \
     \      ret += fw.prefix_sum(a[l]);\r\n        fw.add(a[l], 1);\r\n    };\r\n \
     \   const auto insert_right = [&](int r) -> void {\r\n        ret += fw.sum(a[r]\
@@ -109,12 +109,12 @@ data:
     \    }\r\n}"
   dependsOn:
   - algorithm/mo_algorithm.hpp
-  - data_structure/FenwickTree.hpp
+  - data_structure/fenwick_tree.hpp
   - data_structure/compress.hpp
   isVerificationFile: true
   path: test/static_range_inversion_query.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-06-19 11:39:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/static_range_inversion_query.test.cpp

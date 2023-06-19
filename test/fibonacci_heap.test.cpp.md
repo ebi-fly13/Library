@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
@@ -117,16 +117,16 @@ data:
     \        continue;\r\n                }\r\n                que.prioritize(p[e.to],\
     \ d[e.to]);\r\n            }\r\n        }\r\n    }\r\n    return d;\r\n}\r\n\r\
     \n}  // namespace ebi\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\
-    \n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\nusing i64 = std::int64_t;\r\
-    \nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing usize = std::size_t;\n#line 9 \"test/fibonacci_heap.test.cpp\"\n\r\nint\
-    \ main() {\r\n    int n, m, r;\r\n    std::cin >> n >> m >> r;\r\n    ebi::Graph<i64>\
-    \ g(n);\r\n    while (m--) {\r\n        int s, t;\r\n        i64 d;\r\n      \
-    \  std::cin >> s >> t >> d;\r\n        g[s].emplace_back(t, d);\r\n    }\r\n \
-    \   auto dist = ebi::dijkstra(r, n, g);\r\n    for (int i = 0; i < n; i++) {\r\
-    \n        if (dist[i] == std::numeric_limits<i64>::max()) {\r\n            std::cout\
-    \ << \"INF\" << std::endl;\r\n            continue;\r\n        }\r\n        std::cout\
-    \ << dist[i] << std::endl;\r\n    }\r\n}\n"
+    \n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing i32 = std::int32_t;\r\n\
+    using u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
+    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 9 \"test/fibonacci_heap.test.cpp\"\
+    \n\r\nint main() {\r\n    int n, m, r;\r\n    std::cin >> n >> m >> r;\r\n   \
+    \ ebi::Graph<i64> g(n);\r\n    while (m--) {\r\n        int s, t;\r\n        i64\
+    \ d;\r\n        std::cin >> s >> t >> d;\r\n        g[s].emplace_back(t, d);\r\
+    \n    }\r\n    auto dist = ebi::dijkstra(r, n, g);\r\n    for (int i = 0; i <\
+    \ n; i++) {\r\n        if (dist[i] == std::numeric_limits<i64>::max()) {\r\n \
+    \           std::cout << \"INF\" << std::endl;\r\n            continue;\r\n  \
+    \      }\r\n        std::cout << dist[i] << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \\\r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../graph/dijkstra_fibheap.hpp\"\r\
     \n#include \"../graph/template.hpp\"\r\n#include \"../utility/int_alias.hpp\"\r\
@@ -145,7 +145,7 @@ data:
   isVerificationFile: true
   path: test/fibonacci_heap.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-06-19 11:39:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fibonacci_heap.test.cpp

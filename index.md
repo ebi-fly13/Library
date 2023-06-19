@@ -52,9 +52,6 @@ data:
       path: data_structure/DynamicSegmentTree.hpp
       title: data_structure/DynamicSegmentTree.hpp
     - icon: ':heavy_check_mark:'
-      path: data_structure/FenwickTree.hpp
-      title: data_structure/FenwickTree.hpp
-    - icon: ':heavy_check_mark:'
       path: data_structure/ImplicitTreap.hpp
       title: data_structure/ImplicitTreap.hpp
     - icon: ':heavy_check_mark:'
@@ -81,7 +78,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/UnionFind.hpp
       title: data_structure/UnionFind.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/WaveletMatrix.hpp
       title: Wavelet Matrix
     - icon: ':heavy_check_mark:'
@@ -90,12 +87,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/fenwick_tree.hpp
+      title: data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/fibonacci_heap.hpp
       title: fibonacci heap
@@ -227,6 +227,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/inversion_number.hpp
+      title: math/inversion_number.hpp
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
       title: Lagrange Interpolation
@@ -312,7 +315,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/hash.hpp
       title: Hash structure
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
     - icon: ':heavy_check_mark:'
@@ -389,13 +392,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Sqrt_Mod.test.cpp
       title: test/Sqrt_Mod.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/Static_Range_Frequency.test.cpp
       title: test/Static_Range_Frequency.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/WaveletMatrix.test.cpp
       title: test/WaveletMatrix.test.cpp
     - icon: ':heavy_check_mark:'
@@ -575,6 +578,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/tangent_to_circle.test.cpp
       title: test/geometry/tangent_to_circle.test.cpp
+  - name: test/math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/math/inversion_number.test.cpp
+      title: test/math/inversion_number.test.cpp
   - name: test/matrix
     pages:
     - icon: ':heavy_check_mark:'

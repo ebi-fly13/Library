@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/WaveletMatrix.hpp
     title: Wavelet Matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_frequency
@@ -24,9 +24,9 @@ data:
     \ \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\n#include <cstdint>\n\
     #include <iostream>\n#include <vector>\n\n#line 2 \"data_structure/WaveletMatrix.hpp\"\
     \n\r\n#line 2 \"data_structure/bitVector.hpp\"\n\r\n#line 2 \"utility/int_alias.hpp\"\
-    \n\r\n#include <cstddef>\r\n#line 5 \"utility/int_alias.hpp\"\n\r\nusing i32 =\
-    \ std::int32_t;\r\nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\n\
-    using u32 = std::uint32_t;\r\nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n\
+    \n\r\n#include <cstddef>\r\n#line 5 \"utility/int_alias.hpp\"\n\r\nusing std::size_t;\r\
+    \nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\
+    \nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n\
     #line 4 \"data_structure/bitVector.hpp\"\n\r\n/*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\
     \n*/\r\n\r\n#line 10 \"data_structure/bitVector.hpp\"\n\r\nnamespace ebi {\r\n\
     \r\nstruct bitVector {\r\n    u32 length, cn, bn;\r\n    static u32 cw,\r\n  \
@@ -125,8 +125,8 @@ data:
   isVerificationFile: true
   path: test/Static_Range_Frequency.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-06-19 11:39:03+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Static_Range_Frequency.test.cpp
 layout: document

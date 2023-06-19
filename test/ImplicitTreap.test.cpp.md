@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/ImplicitTreap.hpp
     title: data_structure/ImplicitTreap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   - icon: ':heavy_check_mark:'
@@ -89,9 +89,9 @@ data:
     \n        t1 = merge(t1, t3);\r\n        root = merge(t1, t4);\r\n        return\
     \ ret;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n#line 5 \"test/ImplicitTreap.test.cpp\"\
     \n\r\n#include <iostream>\r\n\r\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include\
-    \ <cstddef>\r\n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\nusing i64\
-    \ = std::int64_t;\r\nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\
-    \nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n#line 2 \"utility/modint.hpp\"\
+    \ <cstddef>\r\n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing i32 = std::int32_t;\r\
+    \nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
+    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 2 \"utility/modint.hpp\"\
     \n\r\n#include <cassert>\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\
     \n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
@@ -196,7 +196,7 @@ data:
   isVerificationFile: true
   path: test/ImplicitTreap.test.cpp
   requiredBy: []
-  timestamp: '2023-05-31 02:50:45+09:00'
+  timestamp: '2023-06-19 11:39:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/ImplicitTreap.test.cpp

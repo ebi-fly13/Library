@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/WaveletMatrix.hpp
     title: Wavelet Matrix
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Static_Range_Frequency.test.cpp
     title: test/Static_Range_Frequency.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://misteer.hatenablog.com/entry/bit-vector
   bundledCode: "#line 2 \"data_structure/bitVector.hpp\"\n\r\n#line 2 \"utility/int_alias.hpp\"\
-    \n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\nusing i32 = std::int32_t;\r\
-    \nusing i64 = std::int64_t;\r\nusing u16 = std::uint16_t;\r\nusing u32 = std::uint32_t;\r\
-    \nusing u64 = std::uint64_t;\r\nusing usize = std::size_t;\n#line 4 \"data_structure/bitVector.hpp\"\
-    \n\r\n/*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\n\
-    */\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct bitVector {\r\
+    \n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing\
+    \ i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\
+    \nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n\
+    #line 4 \"data_structure/bitVector.hpp\"\n\r\n/*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\
+    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct bitVector {\r\
     \n    u32 length, cn, bn;\r\n    static u32 cw,\r\n        bw;  // chunk, block\
     \ \u306E\u9577\u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16>\
     \ bit;\r\n    std::vector<u32> chunk;\r\n    std::vector<std::vector<u16>> blocks;\r\
@@ -104,8 +104,8 @@ data:
   path: data_structure/bitVector.hpp
   requiredBy:
   - data_structure/WaveletMatrix.hpp
-  timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-06-19 11:39:03+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/WaveletMatrix.test.cpp
   - test/Static_Range_Frequency.test.cpp
