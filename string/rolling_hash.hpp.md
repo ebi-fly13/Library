@@ -120,48 +120,72 @@ data:
     \ true;\n    }\n};\n\n}  // namespace ebi\n#line 10 \"string/rolling_hash.hpp\"\
     \n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n> struct rolling_hash {\r\n\
-    \  private:\r\n    using mint = modint61;\r\n    static constexpr mint h = 100;\r\
-    \n\r\n  public:\r\n    rolling_hash(const std::string &s) : sz(s.size()) {\r\n\
-    \        assert(n >= 0);\r\n        base_pow.reserve(sz + 1);\r\n        base_pow.emplace_back(Hash<n>::set(1));\r\
-    \n        hash.reserve(sz + 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\
-    \n        for (const auto &c : s) {\r\n            hash.emplace_back(hash.back()\
-    \ * base + c + h);\r\n            base_pow.emplace_back(base_pow.back() * base);\r\
-    \n        }\r\n    }\r\n\r\n    // [l, r)\r\n    Hash<n> get_hash(int l, int r)\
-    \ const {\r\n        assert(0 <= l && l <= r && r <= sz);\r\n        return hash[r]\
-    \ - hash[l] * base_pow[r - l];\r\n    }\r\n\r\n    static Hash<n> get_hash(const\
-    \ std::string &str, int l = 0, int r = -1) {\r\n        if (r < 0) r = int(str.size());\r\
-    \n        Hash<n> res = Hash<n>::set(0);\r\n        for (int i = l; i < r; i++)\
-    \ {\r\n            res = res * base + str[i] + h;\r\n        }\r\n        return\
-    \ res;\r\n    }\r\n\r\n    Hash<n> concat(const Hash<n> &hash1, const Hash<n>\
-    \ &hash2, int len2) {\r\n        return hash1 * base.pow(len2) + hash2;\r\n  \
-    \  }\r\n\r\n    static void set_base() {\r\n        base = Hash<n>::get_basis_primitive();\r\
-    \n    }\r\n\r\n  private:\r\n    int sz;\r\n    std::vector<Hash<n>> base_pow;\r\
-    \n    std::vector<Hash<n>> hash;\r\n\r\n  public:\r\n    static Hash<n> base;\r\
-    \n};\r\n\r\ntemplate <int n> Hash<n> rolling_hash<n>::base = {};\r\n\r\n}  //\
-    \ namespace ebi\r\n"
+    \  private:\r\n    static constexpr int h = 100;\r\n\r\n    using Self = rolling_hash<n>;\r\
+    \n\r\n    static void expand(int m) {\r\n        int now = base_pow.size();\r\n\
+    \        while (now <= m) {\r\n            now <<= 1;\r\n        }\r\n       \
+    \ if (int(base_pow.size()) == now) return;\r\n        base_pow.reserve(now);\r\
+    \n        while (int(base_pow.size()) < now) {\r\n            base_pow.emplace_back(base_pow.back()\
+    \ * base);\r\n        }\r\n    }\r\n\r\n  public:\r\n    rolling_hash(const std::string\
+    \ &s) : sz(s.size()) {\r\n        assert(n >= 0);\r\n        hash.reserve(sz +\
+    \ 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\n        expand(sz);\r\n\
+    \        for (const auto &c : s) {\r\n            hash.emplace_back(hash.back()\
+    \ * base + c + h);\r\n        }\r\n    }\r\n\r\n    inline Hash<n> prefix_hash(int\
+    \ r) const {\r\n        return hash[r];\r\n    }\r\n\r\n    // [l, r)\r\n    Hash<n>\
+    \ get_hash(int l, int r) const {\r\n        assert(0 <= l && l <= r && r <= sz);\r\
+    \n        return prefix_hash(r) - prefix_hash(l) * base_pow[r - l];\r\n    }\r\
+    \n\r\n    static Hash<n> get_hash(const std::string &str, int l = 0, int r = -1)\
+    \ {\r\n        if (r < 0) r = int(str.size());\r\n        Hash<n> res = Hash<n>::set(0);\r\
+    \n        for (int i = l; i < r; i++) {\r\n            res = res * base + str[i]\
+    \ + h;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    static Hash<n>\
+    \ concat(Self lhs, Self rhs) {\r\n        return lhs.hash.back() * base_pow[rhs.size()]\
+    \ + rhs.hash.back();\r\n    }\r\n\r\n    int size() const {\r\n        return\
+    \ sz;\r\n    }\r\n\r\n    Self operator+(const Self &rhs) noexcept {\r\n     \
+    \   return Self(*this) += rhs;\r\n    }\r\n\r\n    Self &operator+=(const Self\
+    \ &rhs) noexcept {\r\n        Hash<n> a = hash.back();\r\n        for (int i =\
+    \ 1; i <= rhs.size(); i++) {\r\n            a *= base;\r\n            hash.emplace_back(a\
+    \ + rhs.hash[i]);\r\n        }\r\n        sz += rhs.size();\r\n        expand(sz);\r\
+    \n        return *this;\r\n    }\r\n\r\n    static void set_base() {\r\n     \
+    \   base = Hash<n>::get_basis_primitive();\r\n        base_pow = std::vector<Hash<n>>(1,\
+    \ Hash<n>::set(1));\r\n    }\r\n\r\n  private:\r\n    int sz;\r\n    std::vector<Hash<n>>\
+    \ hash;\r\n    static Hash<n> base;\r\n    static std::vector<Hash<n>> base_pow;\r\
+    \n};\r\n\r\ntemplate <int n> Hash<n> rolling_hash<n>::base = {};\r\ntemplate <int\
+    \ n> std::vector<Hash<n>> rolling_hash<n>::base_pow = {};\r\n\r\n}  // namespace\
+    \ ebi\r\n"
   code: "#pragma once\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <cstdint>\r\
     \n#include <vector>\r\n\r\n#include \"../utility/hash.hpp\"\r\n#include \"../utility/modint61.hpp\"\
     \r\n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n> struct rolling_hash {\r\n\
-    \  private:\r\n    using mint = modint61;\r\n    static constexpr mint h = 100;\r\
-    \n\r\n  public:\r\n    rolling_hash(const std::string &s) : sz(s.size()) {\r\n\
-    \        assert(n >= 0);\r\n        base_pow.reserve(sz + 1);\r\n        base_pow.emplace_back(Hash<n>::set(1));\r\
-    \n        hash.reserve(sz + 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\
-    \n        for (const auto &c : s) {\r\n            hash.emplace_back(hash.back()\
-    \ * base + c + h);\r\n            base_pow.emplace_back(base_pow.back() * base);\r\
-    \n        }\r\n    }\r\n\r\n    // [l, r)\r\n    Hash<n> get_hash(int l, int r)\
-    \ const {\r\n        assert(0 <= l && l <= r && r <= sz);\r\n        return hash[r]\
-    \ - hash[l] * base_pow[r - l];\r\n    }\r\n\r\n    static Hash<n> get_hash(const\
-    \ std::string &str, int l = 0, int r = -1) {\r\n        if (r < 0) r = int(str.size());\r\
-    \n        Hash<n> res = Hash<n>::set(0);\r\n        for (int i = l; i < r; i++)\
-    \ {\r\n            res = res * base + str[i] + h;\r\n        }\r\n        return\
-    \ res;\r\n    }\r\n\r\n    Hash<n> concat(const Hash<n> &hash1, const Hash<n>\
-    \ &hash2, int len2) {\r\n        return hash1 * base.pow(len2) + hash2;\r\n  \
-    \  }\r\n\r\n    static void set_base() {\r\n        base = Hash<n>::get_basis_primitive();\r\
-    \n    }\r\n\r\n  private:\r\n    int sz;\r\n    std::vector<Hash<n>> base_pow;\r\
-    \n    std::vector<Hash<n>> hash;\r\n\r\n  public:\r\n    static Hash<n> base;\r\
-    \n};\r\n\r\ntemplate <int n> Hash<n> rolling_hash<n>::base = {};\r\n\r\n}  //\
-    \ namespace ebi\r\n"
+    \  private:\r\n    static constexpr int h = 100;\r\n\r\n    using Self = rolling_hash<n>;\r\
+    \n\r\n    static void expand(int m) {\r\n        int now = base_pow.size();\r\n\
+    \        while (now <= m) {\r\n            now <<= 1;\r\n        }\r\n       \
+    \ if (int(base_pow.size()) == now) return;\r\n        base_pow.reserve(now);\r\
+    \n        while (int(base_pow.size()) < now) {\r\n            base_pow.emplace_back(base_pow.back()\
+    \ * base);\r\n        }\r\n    }\r\n\r\n  public:\r\n    rolling_hash(const std::string\
+    \ &s) : sz(s.size()) {\r\n        assert(n >= 0);\r\n        hash.reserve(sz +\
+    \ 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\n        expand(sz);\r\n\
+    \        for (const auto &c : s) {\r\n            hash.emplace_back(hash.back()\
+    \ * base + c + h);\r\n        }\r\n    }\r\n\r\n    inline Hash<n> prefix_hash(int\
+    \ r) const {\r\n        return hash[r];\r\n    }\r\n\r\n    // [l, r)\r\n    Hash<n>\
+    \ get_hash(int l, int r) const {\r\n        assert(0 <= l && l <= r && r <= sz);\r\
+    \n        return prefix_hash(r) - prefix_hash(l) * base_pow[r - l];\r\n    }\r\
+    \n\r\n    static Hash<n> get_hash(const std::string &str, int l = 0, int r = -1)\
+    \ {\r\n        if (r < 0) r = int(str.size());\r\n        Hash<n> res = Hash<n>::set(0);\r\
+    \n        for (int i = l; i < r; i++) {\r\n            res = res * base + str[i]\
+    \ + h;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    static Hash<n>\
+    \ concat(Self lhs, Self rhs) {\r\n        return lhs.hash.back() * base_pow[rhs.size()]\
+    \ + rhs.hash.back();\r\n    }\r\n\r\n    int size() const {\r\n        return\
+    \ sz;\r\n    }\r\n\r\n    Self operator+(const Self &rhs) noexcept {\r\n     \
+    \   return Self(*this) += rhs;\r\n    }\r\n\r\n    Self &operator+=(const Self\
+    \ &rhs) noexcept {\r\n        Hash<n> a = hash.back();\r\n        for (int i =\
+    \ 1; i <= rhs.size(); i++) {\r\n            a *= base;\r\n            hash.emplace_back(a\
+    \ + rhs.hash[i]);\r\n        }\r\n        sz += rhs.size();\r\n        expand(sz);\r\
+    \n        return *this;\r\n    }\r\n\r\n    static void set_base() {\r\n     \
+    \   base = Hash<n>::get_basis_primitive();\r\n        base_pow = std::vector<Hash<n>>(1,\
+    \ Hash<n>::set(1));\r\n    }\r\n\r\n  private:\r\n    int sz;\r\n    std::vector<Hash<n>>\
+    \ hash;\r\n    static Hash<n> base;\r\n    static std::vector<Hash<n>> base_pow;\r\
+    \n};\r\n\r\ntemplate <int n> Hash<n> rolling_hash<n>::base = {};\r\ntemplate <int\
+    \ n> std::vector<Hash<n>> rolling_hash<n>::base_pow = {};\r\n\r\n}  // namespace\
+    \ ebi\r\n"
   dependsOn:
   - utility/hash.hpp
   - utility/modint61.hpp
@@ -170,7 +194,7 @@ data:
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-06-06 14:12:15+09:00'
+  timestamp: '2023-06-19 15:44:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
@@ -181,7 +205,11 @@ title: Rolling Hash
 
 ## 説明
 
-文字列のハッシュを計算する。
+文字列のハッシュを計算する。`rolling_hash<2>::set_base()`を事前に行い、baseをセットする必要あり。
+
+### prefix_hash(r)
+
+$[0, r)$ のハッシュを計算する。 $O(1)$
 
 ### get_hash(int l, int r)
 
@@ -191,6 +219,14 @@ title: Rolling Hash
 
 文字列 $str$ の $[l, r)$ のハッシュを計算する。デフォルトでは文字列全体となる。
 
-### concat(Hash hash1, Hash hash2, int len2)
+### size()
 
-文字列 s1 のハッシュを hash1、文字列 s2 のハッシュを hash2として s1 + s2 のハッシュを計算する。len2 には s2 の長さを渡す。 $O(\log p)$
+文字列のサイズを返す。
+
+### concat(Self lhs, Self rhs)
+
+lhs + rhs の文字列に対してハッシュを計算する。 $O(1)$
+
+### operator+(Self S, Self T)
+
+S + T の文字列に対するローリングハッシュ構造体を計算する。計算量 $O(|T|)$
