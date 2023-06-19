@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: math/inversion_number.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
@@ -54,13 +54,14 @@ data:
     \            x += k;\r\n                key -= data[x];\r\n            }\r\n \
     \       }\r\n        return x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
     #line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include <cstdint>\r\
-    \n\r\nusing std::size_t;\r\nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\
-    \nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\
-    \nusing u128 = __uint128_t;\n#line 10 \"math/inversion_number.hpp\"\n\nnamespace\
-    \ ebi {\n\ni64 inversion_number_max_n(const std::vector<int> &a, int n = 200000)\
-    \ {\n    fenwick_tree<i64> fw(n);\n    i64 res = 0;\n    for (auto x : a) {\n\
-    \        assert(0 <= x && x < n);\n        res += fw.sum(x + 1, n);\n        fw.add(x,\
-    \ 1);\n    }\n    return res;\n}\n\ntemplate <class T> i64 inversion_number(const\
+    \n\r\nusing std::size_t;\r\nusing i8 = std::int8_t;\r\nusing u8 = std::uint8_t;\r\
+    \nusing i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\nusing i32 = std::int32_t;\r\
+    \nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
+    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 10 \"math/inversion_number.hpp\"\
+    \n\nnamespace ebi {\n\ni64 inversion_number_max_n(const std::vector<int> &a, int\
+    \ n = 200000) {\n    fenwick_tree<i64> fw(n);\n    i64 res = 0;\n    for (auto\
+    \ x : a) {\n        assert(0 <= x && x < n);\n        res += fw.sum(x + 1, n);\n\
+    \        fw.add(x, 1);\n    }\n    return res;\n}\n\ntemplate <class T> i64 inversion_number(const\
     \ std::vector<T> &a) {\n    compress<T> cp;\n    for (const auto &x : a) {\n \
     \       cp.add(x);\n    }\n    cp.build();\n    std::vector<int> ca;\n    ca.reserve(a.size());\n\
     \    for (const auto &x : a) {\n        ca.emplace_back(cp.get(x));\n    }\n \
@@ -82,7 +83,7 @@ data:
   isVerificationFile: true
   path: test/math/inversion_number.test.cpp
   requiredBy: []
-  timestamp: '2023-06-19 11:39:03+09:00'
+  timestamp: '2023-06-19 12:46:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/inversion_number.test.cpp

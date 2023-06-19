@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/WaveletMatrix.hpp
     title: Wavelet Matrix
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -23,13 +23,14 @@ data:
   bundledCode: "#line 1 \"test/WaveletMatrix.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\
     \r\n\r\n#line 2 \"data_structure/WaveletMatrix.hpp\"\n\r\n#line 2 \"data_structure/bitVector.hpp\"\
     \n\r\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include <cstdint>\r\
-    \n\r\nusing std::size_t;\r\nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\
-    \nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\
-    \nusing u128 = __uint128_t;\n#line 4 \"data_structure/bitVector.hpp\"\n\r\n/*\r\
-    \n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\n*/\r\n\r\n\
-    #include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct bitVector {\r\n    u32\
-    \ length, cn, bn;\r\n    static u32 cw,\r\n        bw;  // chunk, block \u306E\
-    \u9577\u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16>\
+    \n\r\nusing std::size_t;\r\nusing i8 = std::int8_t;\r\nusing u8 = std::uint8_t;\r\
+    \nusing i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\nusing i32 = std::int32_t;\r\
+    \nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
+    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 4 \"data_structure/bitVector.hpp\"\
+    \n\r\n/*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\n\
+    */\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct bitVector {\r\
+    \n    u32 length, cn, bn;\r\n    static u32 cw,\r\n        bw;  // chunk, block\
+    \ \u306E\u9577\u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16>\
     \ bit;\r\n    std::vector<u32> chunk;\r\n    std::vector<std::vector<u16>> blocks;\r\
     \n\r\n    bitVector(int n) : length(n) {\r\n        cn = (length + cw - 1) / cw;\r\
     \n        bn = cw / bw;\r\n        bit.assign(cn * bn, 0);\r\n        chunk.assign(cn\
@@ -122,8 +123,8 @@ data:
   isVerificationFile: true
   path: test/WaveletMatrix.test.cpp
   requiredBy: []
-  timestamp: '2023-06-19 11:39:03+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-06-19 12:46:11+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/WaveletMatrix.test.cpp
 layout: document

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/ImplicitTreap.hpp
     title: data_structure/ImplicitTreap.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   - icon: ':heavy_check_mark:'
@@ -89,17 +89,18 @@ data:
     \n        t1 = merge(t1, t3);\r\n        root = merge(t1, t4);\r\n        return\
     \ ret;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n#line 5 \"test/ImplicitTreap.test.cpp\"\
     \n\r\n#include <iostream>\r\n\r\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include\
-    \ <cstddef>\r\n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing i32 = std::int32_t;\r\
-    \nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 2 \"utility/modint.hpp\"\
-    \n\r\n#include <cassert>\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\
-    \n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
-    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
-    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\n}  // namespace\
-    \ internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base : modint_base\
-    \ {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ <cstddef>\r\n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing i8 = std::int8_t;\r\
+    \nusing u8 = std::uint8_t;\r\nusing i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\
+    \nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\
+    \nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n\
+    #line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#line 5 \"utility/modint.hpp\"\
+    \n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4\
+    \ \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\nstruct\
+    \ modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
+    \ : modint_base {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
     \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
     \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
     \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
@@ -196,7 +197,7 @@ data:
   isVerificationFile: true
   path: test/ImplicitTreap.test.cpp
   requiredBy: []
-  timestamp: '2023-06-19 11:39:03+09:00'
+  timestamp: '2023-06-19 12:46:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/ImplicitTreap.test.cpp

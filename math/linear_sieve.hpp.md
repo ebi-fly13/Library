@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
@@ -15,12 +15,13 @@ data:
     - https://atcoder.jp/contests/abc162/submissions/25095562
   bundledCode: "#line 2 \"math/linear_sieve.hpp\"\n\r\n#line 2 \"utility/int_alias.hpp\"\
     \n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing\
-    \ i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\
-    \nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n\
-    #line 4 \"math/linear_sieve.hpp\"\n\r\n/*\r\n    reference: https://37zigen.com/linear-sieve/\r\
-    \n    verify:    https://atcoder.jp/contests/abc162/submissions/25095562\r\n*/\r\
-    \n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve {\r\n\
-    \  private:\r\n    using u64 = std::uint64_t;\r\n    int n;\r\n    std::vector<int>\
+    \ i8 = std::int8_t;\r\nusing u8 = std::uint8_t;\r\nusing i16 = std::int16_t;\r\
+    \nusing u16 = std::uint16_t;\r\nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\
+    \nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\
+    \nusing u128 = __uint128_t;\n#line 4 \"math/linear_sieve.hpp\"\n\r\n/*\r\n   \
+    \ reference: https://37zigen.com/linear-sieve/\r\n    verify:    https://atcoder.jp/contests/abc162/submissions/25095562\r\
+    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve\
+    \ {\r\n  private:\r\n    using u64 = std::uint64_t;\r\n    int n;\r\n    std::vector<int>\
     \ sieve;\r\n    std::vector<int> prime;\r\n\r\n  public:\r\n    linear_sieve(int\
     \ _n) : n(_n), sieve(std::vector<int>(_n + 1, -1)) {\r\n        for (int i = 2;\
     \ i <= n; i++) {\r\n            if (sieve[i] < 0) {\r\n                sieve[i]\
@@ -106,7 +107,7 @@ data:
   isVerificationFile: false
   path: math/linear_sieve.hpp
   requiredBy: []
-  timestamp: '2023-06-19 11:39:03+09:00'
+  timestamp: '2023-06-19 12:46:11+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/linear_sieve.hpp

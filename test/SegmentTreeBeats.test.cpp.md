@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/SegmentTreeBeats.hpp
     title: data_structure/SegmentTreeBeats.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
@@ -99,18 +99,19 @@ data:
     \ nr, 2 * index + 2);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\r\n#line 5 \"\
     test/SegmentTreeBeats.test.cpp\"\n\r\n#include <iostream>\r\n#line 8 \"test/SegmentTreeBeats.test.cpp\"\
     \n\r\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include <cstdint>\r\
-    \n\r\nusing std::size_t;\r\nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\
-    \nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\
-    \nusing u128 = __uint128_t;\n#line 10 \"test/SegmentTreeBeats.test.cpp\"\n\r\n\
-    using S = i64;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\
-    \n    std::vector<i64> a(n);\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin\
-    \ >> a[i];\r\n    }\r\n    ebi::SegmentTreeBeats<S> seg(a);\r\n    while (q--)\
-    \ {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\n \
-    \           int l, r;\r\n            i64 b;\r\n            std::cin >> l >> r\
-    \ >> b;\r\n            seg.apply_chmin(l, r, b);\r\n        } else if (t == 1)\
-    \ {\r\n            int l, r;\r\n            i64 b;\r\n            std::cin >>\
-    \ l >> r >> b;\r\n            seg.apply_chmax(l, r, b);\r\n        } else if (t\
-    \ == 2) {\r\n            int l, r;\r\n            i64 b;\r\n            std::cin\
+    \n\r\nusing std::size_t;\r\nusing i8 = std::int8_t;\r\nusing u8 = std::uint8_t;\r\
+    \nusing i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\nusing i32 = std::int32_t;\r\
+    \nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
+    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 10 \"test/SegmentTreeBeats.test.cpp\"\
+    \n\r\nusing S = i64;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n\
+    \ >> q;\r\n    std::vector<i64> a(n);\r\n    for (int i = 0; i < n; i++) {\r\n\
+    \        std::cin >> a[i];\r\n    }\r\n    ebi::SegmentTreeBeats<S> seg(a);\r\n\
+    \    while (q--) {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t\
+    \ == 0) {\r\n            int l, r;\r\n            i64 b;\r\n            std::cin\
+    \ >> l >> r >> b;\r\n            seg.apply_chmin(l, r, b);\r\n        } else if\
+    \ (t == 1) {\r\n            int l, r;\r\n            i64 b;\r\n            std::cin\
+    \ >> l >> r >> b;\r\n            seg.apply_chmax(l, r, b);\r\n        } else if\
+    \ (t == 2) {\r\n            int l, r;\r\n            i64 b;\r\n            std::cin\
     \ >> l >> r >> b;\r\n            seg.apply(l, r, b);\r\n        } else {\r\n \
     \           int l, r;\r\n            std::cin >> l >> r;\r\n            std::cout\
     \ << seg.prod(l, r) << std::endl;\r\n        }\r\n    }\r\n}\n"
@@ -135,7 +136,7 @@ data:
   isVerificationFile: true
   path: test/SegmentTreeBeats.test.cpp
   requiredBy: []
-  timestamp: '2023-06-19 11:39:03+09:00'
+  timestamp: '2023-06-19 12:46:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/SegmentTreeBeats.test.cpp

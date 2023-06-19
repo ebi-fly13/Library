@@ -78,7 +78,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/UnionFind.hpp
       title: data_structure/UnionFind.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/WaveletMatrix.hpp
       title: Wavelet Matrix
     - icon: ':heavy_check_mark:'
@@ -87,7 +87,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
     - icon: ':heavy_check_mark:'
@@ -315,7 +315,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/hash.hpp
       title: Hash structure
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
     - icon: ':heavy_check_mark:'
@@ -392,13 +392,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Sqrt_Mod.test.cpp
       title: test/Sqrt_Mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Static_Range_Frequency.test.cpp
       title: test/Static_Range_Frequency.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/UnionFind.test.cpp
       title: test/UnionFind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/WaveletMatrix.test.cpp
       title: test/WaveletMatrix.test.cpp
     - icon: ':heavy_check_mark:'

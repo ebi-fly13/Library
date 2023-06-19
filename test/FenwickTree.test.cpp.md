@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
@@ -36,17 +36,19 @@ data:
     \n                key -= data[x];\r\n            }\r\n        }\r\n        return\
     \ x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n#line 4 \"test/FenwickTree.test.cpp\"\
     \n\r\n#include <iostream>\r\n\r\n#line 2 \"utility/int_alias.hpp\"\n\r\n#include\
-    \ <cstddef>\r\n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing i32 = std::int32_t;\r\
-    \nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 8 \"test/FenwickTree.test.cpp\"\
-    \n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::fenwick_tree<i64>\
-    \ fw(n);\r\n    for (int i = 0; i < n; i++) {\r\n        i64 a;\r\n        std::cin\
-    \ >> a;\r\n        fw.add(i, a);\r\n    }\r\n    for (int i = 0; i < q; i++) {\r\
-    \n        int flag;\r\n        std::cin >> flag;\r\n        if (flag == 0) {\r\
-    \n            int p;\r\n            i64 x;\r\n            std::cin >> p >> x;\r\
-    \n            fw.add(p, x);\r\n        } else {\r\n            int l, r;\r\n \
-    \           std::cin >> l >> r;\r\n            std::cout << fw.sum(l, r) << std::endl;\r\
-    \n        }\r\n    }\r\n}\n"
+    \ <cstddef>\r\n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing i8 = std::int8_t;\r\
+    \nusing u8 = std::uint8_t;\r\nusing i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\
+    \nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\
+    \nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n\
+    #line 8 \"test/FenwickTree.test.cpp\"\n\r\nint main() {\r\n    int n, q;\r\n \
+    \   std::cin >> n >> q;\r\n    ebi::fenwick_tree<i64> fw(n);\r\n    for (int i\
+    \ = 0; i < n; i++) {\r\n        i64 a;\r\n        std::cin >> a;\r\n        fw.add(i,\
+    \ a);\r\n    }\r\n    for (int i = 0; i < q; i++) {\r\n        int flag;\r\n \
+    \       std::cin >> flag;\r\n        if (flag == 0) {\r\n            int p;\r\n\
+    \            i64 x;\r\n            std::cin >> p >> x;\r\n            fw.add(p,\
+    \ x);\r\n        } else {\r\n            int l, r;\r\n            std::cin >>\
+    \ l >> r;\r\n            std::cout << fw.sum(l, r) << std::endl;\r\n        }\r\
+    \n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\r\
     \n\r\n#include \"../data_structure/fenwick_tree.hpp\"\r\n\r\n#include <iostream>\r\
     \n\r\n#include \"../utility/int_alias.hpp\"\r\n\r\nint main() {\r\n    int n,\
@@ -64,7 +66,7 @@ data:
   isVerificationFile: true
   path: test/FenwickTree.test.cpp
   requiredBy: []
-  timestamp: '2023-06-19 11:39:03+09:00'
+  timestamp: '2023-06-19 12:46:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/FenwickTree.test.cpp
