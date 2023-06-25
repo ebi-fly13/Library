@@ -34,39 +34,40 @@ data:
     \  for (int i = sz - 1; i >= 1; i--) update(i);\r\n    }\r\n\r\n    void set(int\
     \ p, S x) {\r\n        assert(0 <= p && p < n);\r\n        p += sz;\r\n      \
     \  data[p] = x;\r\n        while (p > 1) {\r\n            p >>= 1;\r\n       \
-    \     update(p);\r\n        }\r\n    }\r\n\r\n    S get(int p) {\r\n        assert(0\
-    \ <= p && p < n);\r\n        return data[p + sz];\r\n    }\r\n\r\n    S prod(int\
-    \ l, int r) {\r\n        assert(0 <= l && l <= r && r <= n);\r\n        S sml\
-    \ = e(), smr = e();\r\n        l += sz;\r\n        r += sz;\r\n        while (l\
-    \ < r) {\r\n            if (l & 1) sml = op(sml, data[l++]);\r\n            if\
-    \ (r & 1) smr = op(data[--r], smr);\r\n            l >>= 1;\r\n            r >>=\
-    \ 1;\r\n        }\r\n        return op(sml, smr);\r\n    }\r\n\r\n    S all_prod()\
-    \ {\r\n        return data[1];\r\n    }\r\n\r\n    template <class F> int max_right(int\
-    \ l, F f) {\r\n        assert(0 <= l && l < n);\r\n        assert(f(e()));\r\n\
-    \        if (l == n) return n;\r\n        l += sz;\r\n        S sm = e();\r\n\
-    \        do {\r\n            while (l % 2 == 0) l >>= 1;\r\n            if (!f(op(sm,\
-    \ data[l]))) {\r\n                while (l < sz) {\r\n                    l =\
-    \ 2 * l;\r\n                    if (f(op(sm, data[l]))) {\r\n                \
-    \        sm = op(sm, data[l]);\r\n                        l++;\r\n           \
-    \         }\r\n                }\r\n                return l - sz;\r\n       \
-    \     }\r\n            sm = op(sm, data[l]);\r\n            l++;\r\n        }\
-    \ while ((l & -l) != l);\r\n        return n;\r\n    }\r\n\r\n    template <class\
-    \ F> int min_left(int r, F f) {\r\n        assert(0 <= r && r <= n);\r\n     \
-    \   assert(f(e()));\r\n        if (r == 0) return 0;\r\n        r += sz;\r\n \
-    \       S sm = e();\r\n        do {\r\n            r--;\r\n            while (r\
-    \ > 1 && (r % 2)) r >>= 1;\r\n            if (!f(op(data[r], sm))) {\r\n     \
-    \           while (r < sz) {\r\n                    r = 2 * r + 1;\r\n       \
-    \             if (f(op(data[r], sm))) {\r\n                        sm = op(data[r],\
-    \ sm);\r\n                        r--;\r\n                    }\r\n          \
-    \      }\r\n                return r + 1 - sz;\r\n            }\r\n          \
-    \  sm = op(data[r], sm);\r\n        } while ((r & -r) != r);\r\n        return\
-    \ 0;\r\n    }\r\n\r\n    S operator[](int p) const {\r\n        return data[sz\
-    \ + p];\r\n    }\r\n};\r\n\r\n}  // namespace ebi\r\n#line 2 \"graph/template.hpp\"\
-    \n\r\n#line 4 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <class\
-    \ T> struct Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost\
-    \ = 1) : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate <class T> struct Graph\
-    \ : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
-    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \     update(p);\r\n        }\r\n    }\r\n\r\n    S get(int p) const {\r\n   \
+    \     assert(0 <= p && p < n);\r\n        return data[p + sz];\r\n    }\r\n\r\n\
+    \    S prod(int l, int r) const {\r\n        assert(0 <= l && l <= r && r <= n);\r\
+    \n        S sml = e(), smr = e();\r\n        l += sz;\r\n        r += sz;\r\n\
+    \        while (l < r) {\r\n            if (l & 1) sml = op(sml, data[l++]);\r\
+    \n            if (r & 1) smr = op(data[--r], smr);\r\n            l >>= 1;\r\n\
+    \            r >>= 1;\r\n        }\r\n        return op(sml, smr);\r\n    }\r\n\
+    \r\n    S all_prod() const {\r\n        return data[1];\r\n    }\r\n\r\n    template\
+    \ <class F> int max_right(int l, F f) const {\r\n        assert(0 <= l && l <\
+    \ n);\r\n        assert(f(e()));\r\n        if (l == n) return n;\r\n        l\
+    \ += sz;\r\n        S sm = e();\r\n        do {\r\n            while (l % 2 ==\
+    \ 0) l >>= 1;\r\n            if (!f(op(sm, data[l]))) {\r\n                while\
+    \ (l < sz) {\r\n                    l = 2 * l;\r\n                    if (f(op(sm,\
+    \ data[l]))) {\r\n                        sm = op(sm, data[l]);\r\n          \
+    \              l++;\r\n                    }\r\n                }\r\n        \
+    \        return l - sz;\r\n            }\r\n            sm = op(sm, data[l]);\r\
+    \n            l++;\r\n        } while ((l & -l) != l);\r\n        return n;\r\n\
+    \    }\r\n\r\n    template <class F> int min_left(int r, F f) const {\r\n    \
+    \    assert(0 <= r && r <= n);\r\n        assert(f(e()));\r\n        if (r ==\
+    \ 0) return 0;\r\n        r += sz;\r\n        S sm = e();\r\n        do {\r\n\
+    \            r--;\r\n            while (r > 1 && (r % 2)) r >>= 1;\r\n       \
+    \     if (!f(op(data[r], sm))) {\r\n                while (r < sz) {\r\n     \
+    \               r = 2 * r + 1;\r\n                    if (f(op(data[r], sm)))\
+    \ {\r\n                        sm = op(data[r], sm);\r\n                     \
+    \   r--;\r\n                    }\r\n                }\r\n                return\
+    \ r + 1 - sz;\r\n            }\r\n            sm = op(data[r], sm);\r\n      \
+    \  } while ((r & -r) != r);\r\n        return 0;\r\n    }\r\n\r\n    S operator[](int\
+    \ p) const {\r\n        return data[sz + p];\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ ebi\r\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\
+    \nnamespace ebi {\r\n\r\ntemplate <class T> struct Edge {\r\n    int to;\r\n \
+    \   T cost;\r\n    Edge(int _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n};\r\
+    \n\r\ntemplate <class T> struct Graph : std::vector<std::vector<Edge<T>>> {\r\n\
+    \    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
+    \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if (directed) return;\r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
@@ -162,7 +163,7 @@ data:
   isVerificationFile: true
   path: test/vertex_add_path_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-03 02:01:06+09:00'
+  timestamp: '2023-06-26 02:49:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/vertex_add_path_sum.test.cpp

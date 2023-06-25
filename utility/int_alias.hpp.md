@@ -67,23 +67,23 @@ data:
   isVerificationFile: false
   path: utility/int_alias.hpp
   requiredBy:
-  - math/linear_sieve.hpp
   - math/inversion_number.hpp
+  - math/linear_sieve.hpp
   - data_structure/bitVector.hpp
   - data_structure/WaveletMatrix.hpp
   timestamp: '2023-06-19 12:46:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/SegmentTreeBeats.test.cpp
   - test/WaveletMatrix.test.cpp
-  - test/ImplicitTreap.test.cpp
-  - test/math/inversion_number.test.cpp
-  - test/dijkstra.test.cpp
-  - test/LiChaoSegmentTree.test.cpp
-  - test/Static_Range_Frequency.test.cpp
-  - test/fibonacci_heap.test.cpp
-  - test/FenwickTree.test.cpp
   - test/SegmentAddGetMin.test.cpp
+  - test/math/inversion_number.test.cpp
+  - test/ImplicitTreap.test.cpp
+  - test/dijkstra.test.cpp
+  - test/Static_Range_Frequency.test.cpp
+  - test/FenwickTree.test.cpp
+  - test/SegmentTreeBeats.test.cpp
+  - test/fibonacci_heap.test.cpp
+  - test/LiChaoSegmentTree.test.cpp
   - test/tree/Tree_Diameter.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document

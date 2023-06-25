@@ -105,6 +105,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/link_cut_tree.hpp
       title: data_structure/link_cut_tree.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/offline_segtree_2d.hpp
+      title: data_structure/offline_segtree_2d.hpp
     - icon: ':warning:'
       path: data_structure/online_mex.hpp
       title: data_structure/online_mex.hpp
@@ -137,7 +140,7 @@ data:
       title: segtree
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
-      title: data_structure/segtree_2d.hpp
+      title: 2D segtree
     - icon: ':warning:'
       path: data_structure/slope_trick.hpp
       title: data_structure/slope_trick.hpp
@@ -429,9 +432,6 @@ data:
       path: test/persistent_unionfind.test.cpp
       title: test/persistent_unionfind.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/point_add_rectangle_sum.test.cpp
-      title: test/point_add_rectangle_sum.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/pow.test.cpp
       title: test/pow.test.cpp
     - icon: ':heavy_check_mark:'
@@ -440,9 +440,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/range_tree.test.cpp
       title: test/range_tree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/rectangle_sum.test.cpp
-      title: test/rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/scc_graph.test.cpp
       title: test/scc_graph.test.cpp
@@ -510,6 +507,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/convolution/Subset_Convolution.test.cpp
       title: test/convolution/Subset_Convolution.test.cpp
+  - name: test/data_structure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+      title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Rectangle_Sum.test.cpp
+      title: test/data_structure/Rectangle_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/aoj_1068.test.cpp
+      title: test/data_structure/aoj_1068.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'

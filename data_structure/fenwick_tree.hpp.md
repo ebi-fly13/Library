@@ -65,10 +65,10 @@ data:
   timestamp: '2023-06-19 11:39:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/static_range_inversion_query.test.cpp
-  - test/math/inversion_number.test.cpp
   - test/geometry/segment_intersection.test.cpp
+  - test/math/inversion_number.test.cpp
   - test/FenwickTree.test.cpp
+  - test/static_range_inversion_query.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 redirect_from:

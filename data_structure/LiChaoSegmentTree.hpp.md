@@ -88,8 +88,8 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/LiChaoSegmentTree.test.cpp
   - test/SegmentAddGetMin.test.cpp
+  - test/LiChaoSegmentTree.test.cpp
 documentation_of: data_structure/LiChaoSegmentTree.hpp
 layout: document
 redirect_from:

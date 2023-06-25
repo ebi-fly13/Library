@@ -127,8 +127,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_set_path_compositie.test.cpp
-  - test/aoj/aoj_2450.test.cpp
   - test/vertex_add_subtree_sum.test.cpp
+  - test/aoj/aoj_2450.test.cpp
   - test/vertex_add_path_sum.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp

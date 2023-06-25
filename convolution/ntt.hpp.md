@@ -229,17 +229,17 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/convolution/Convolution.test.cpp
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/convolution/Convolution.test.cpp
+  - test/convolution/Convolution_Mod_1000000007.test.cpp
 documentation_of: convolution/ntt.hpp
 layout: document
 title: NTT Convolution
