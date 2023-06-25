@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <iostream>
 
-#include "../data_structure/compress.hpp"
-#include "../data_structure/segtree_2d.hpp"
+#include "../../data_structure/compress.hpp"
+#include "../../data_structure/offline_segtree_2d.hpp"
 
 using i64 = std::int64_t;
 
@@ -42,7 +42,7 @@ int main() {
         }
     }
     cp.build();
-    ebi::segtree_2d<i64, op, e> seg(cp.size());
+    ebi::offline_segtree_2d<i64, op, e> seg(cp.size());
     for (int i = 0; i < n; i++) {
         seg.pre_set(cp.get(x[i]), y[i]);
     }
@@ -53,11 +53,11 @@ int main() {
     }
     seg.build();
     for (int i = 0; i < n; i++) {
-        seg.set(cp.get(x[i]), y[i], w[i]);
+        seg.add(cp.get(x[i]), y[i], w[i]);
     }
     for (int i = 0; i < q; i++) {
         if (query[i].flag == 0) {
-            seg.set(cp.get(query[i].x), query[i].y, query[i].w);
+            seg.add(cp.get(query[i].x), query[i].y, query[i].w);
         } else {
             std::cout << seg.prod(cp.get(query[i].l), cp.get(query[i].r),
                                   query[i].d, query[i].u)

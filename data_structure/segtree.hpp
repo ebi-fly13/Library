@@ -36,12 +36,12 @@ template <class S, S (*op)(S, S), S (*e)()> struct segtree {
         }
     }
 
-    S get(int p) {
+    S get(int p) const {
         assert(0 <= p && p < n);
         return data[p + sz];
     }
 
-    S prod(int l, int r) {
+    S prod(int l, int r) const {
         assert(0 <= l && l <= r && r <= n);
         S sml = e(), smr = e();
         l += sz;
@@ -55,11 +55,11 @@ template <class S, S (*op)(S, S), S (*e)()> struct segtree {
         return op(sml, smr);
     }
 
-    S all_prod() {
+    S all_prod() const {
         return data[1];
     }
 
-    template <class F> int max_right(int l, F f) {
+    template <class F> int max_right(int l, F f) const {
         assert(0 <= l && l < n);
         assert(f(e()));
         if (l == n) return n;
@@ -83,7 +83,7 @@ template <class S, S (*op)(S, S), S (*e)()> struct segtree {
         return n;
     }
 
-    template <class F> int min_left(int r, F f) {
+    template <class F> int min_left(int r, F f) const {
         assert(0 <= r && r <= n);
         assert(f(e()));
         if (r == 0) return 0;
