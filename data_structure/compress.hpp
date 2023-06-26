@@ -9,7 +9,6 @@ namespace ebi {
 template <class T> struct compress {
   private:
     std::vector<T> cp;
-    bool flag = false;
 
   public:
     compress() = default;
@@ -21,21 +20,24 @@ template <class T> struct compress {
     void build() {
         std::sort(cp.begin(), cp.end());
         cp.erase(std::unique(cp.begin(), cp.end()), cp.end());
-        flag = true;
     }
 
     void add(const T &val) {
         cp.emplace_back(val);
-        flag = false;
     }
 
-    int get(const T &val) {
-        if (flag == false) build();
+    int get(const T &val) const {
         return std::lower_bound(cp.begin(), cp.end(), val) - cp.begin();
     }
 
     int size() const {
         return cp.size();
+    }
+
+    bool find(const T& val) const {
+        auto itr = std::lower_bound(cp.begin(), cp.end(), val);
+        if(itr == cp.end()) return false;
+        else return *itr == val;
     }
 
     T val(int idx) const {

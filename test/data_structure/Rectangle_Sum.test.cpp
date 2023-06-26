@@ -5,6 +5,7 @@
 
 #include "../../data_structure/compress.hpp"
 #include "../../data_structure/offline_segtree_2d.hpp"
+#include "../../data_structure/segtree.hpp"
 
 using i64 = std::int64_t;
 
@@ -19,24 +20,19 @@ i64 e() {
 int main() {
     int n, q;
     std::cin >> n >> q;
-    ebi::compress<i64> cp;
-    std::vector<i64> x(n), y(n), w(n);
-    for (int i = 0; i < n; i++) {
-        std::cin >> x[i] >> y[i] >> w[i];
-        cp.add(x[i]);
+    ebi::offline_segtree_2d<i64, op, e, ebi::segtree<i64, op, e>> seg2d;
+    std::vector<std::tuple<int, int, i64>> ps(n);
+    for (auto &[x, y, w] : ps) {
+        std::cin >> x >> y >> w;
+        seg2d.pre_set({x, y});
     }
-    cp.build();
-    ebi::offline_segtree_2d<i64, op, e> seg(cp.size());
-    for (int i = 0; i < n; i++) {
-        seg.pre_set(cp.get(x[i]), y[i]);
-    }
-    seg.build();
-    for (int i = 0; i < n; i++) {
-        seg.add(cp.get(x[i]), y[i], w[i]);
+    seg2d.build();
+    for (auto &[x, y, w] : ps) {
+        seg2d.set(x, y, seg2d.get(x, y) + w);
     }
     while (q--) {
-        i64 l, d, r, u;
+        int l, d, r, u;
         std::cin >> l >> d >> r >> u;
-        std::cout << seg.prod(cp.get(l), cp.get(r), d, u) << std::endl;
+        std::cout << seg2d.prod(l, d, r, u) << '\n';
     }
 }

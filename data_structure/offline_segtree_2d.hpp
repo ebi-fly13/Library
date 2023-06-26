@@ -1,3 +1,5 @@
+#pragma once
+
 #include <algorithm>
 #include <vector>
 
@@ -6,92 +8,86 @@
     verify   : http://codeforces.com/contest/893/submission/125531718
 */
 
-#include "../data_structure/segtree.hpp"
+#include "../data_structure/compress.hpp"
 
 namespace ebi {
 
-template <class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>
+template <class S, S (*op)(S, S), S (*e)(), class data_structure>
 struct offline_segtree_2d {
-  private:
-    Monoid prod(int l, int r, int x, int y, int nl, int nr, int k) {
-        if (r <= nl || nr <= l) {
-            return e();
-        }
-        if (l <= nl && nr <= r) {
-            int tx = std::lower_bound(data[k].begin(), data[k].end(), x) -
-                     data[k].begin();
-            int ty = std::lower_bound(data[k].begin(), data[k].end(), y) -
-                     data[k].begin();
-            return seg[k].prod(tx, ty);
-        }
-        return op(prod(l, r, x, y, nl, (nl + nr) / 2, 2 * k + 1),
-                  prod(l, r, x, y, (nl + nr) / 2, nr, 2 * k + 2));
-    }
+    offline_segtree_2d() = default;
 
-    void pre_prod(int l, int r, int x, int y, int nl, int nr, int k) {
-        if (r <= nl || nr <= l) {
-            return;
-        }
-        if (l <= nl && nr <= r) {
-            data[k].emplace_back(x);
-            data[k].emplace_back(y);
-            return;
-        }
-        pre_prod(l, r, x, y, nl, (nl + nr) / 2, 2 * k + 1);
-        pre_prod(l, r, x, y, (nl + nr) / 2, nr, 2 * k + 2);
-    }
-
-  public:
-    offline_segtree_2d(int _n) : n(1) {
-        while (n < _n) {
-            n <<= 1;
-        }
-        data.resize(2 * n - 1);
-    }
-
-    void add(int x, int y, Monoid val) {
-        int k = n + x - 1;
-        int ty = std::lower_bound(data[k].begin(), data[k].end(), y) -
-                 data[k].begin();
-        seg[k].set(ty, op(seg[k].get(ty), val));
-        while (k > 0) {
-            k = (k - 1) / 2;
-            ty = std::lower_bound(data[k].begin(), data[k].end(), y) -
-                 data[k].begin();
-            seg[k].set(ty, op(seg[k].get(ty), val));
-        }
-    }
-
-    Monoid prod(int l, int r, int x, int y) {
-        return prod(l, r, x, y, 0, n, 0);
+    void pre_set(std::pair<int, int> p) {
+        ps.emplace_back(p);
     }
 
     void build() {
-        for (int i = 0; i < 2 * n - 1; ++i) {
-            std::sort(data[i].begin(), data[i].end());
-            data[i].erase(std::unique(data[i].begin(), data[i].end()),
-                          data[i].end());
-            seg.emplace_back(segtree<Monoid, op, e>(int(data[i].size())));
+        for (auto [x, y] : ps) {
+            xs.add(x);
+        }
+        xs.build();
+        while (sz < xs.size()) sz <<= 1;
+        ys.resize(2 * sz);
+        for (auto [x, y] : ps) {
+            int i = xs.get(x) + sz;
+            ys[i].add(y);
+            while (i > 1) {
+                i >>= 1;
+                ys[i].add(y);
+            }
+        }
+        for (int i = 0; i < 2 * sz; i++) {
+            ys[i].build();
+            data.emplace_back(data_structure(ys[i].size()));
         }
     }
 
-    void pre_set(int x, int y) {
-        int k = n + x - 1;
-        data[k].emplace_back(y);
-        while (k > 0) {
-            k = (k - 1) / 2;
-            data[k].emplace_back(y);
+    void set(int i, int j, S val) {
+        i = xs.get(i);
+        i += sz;
+        data[i].set(ys[i].get(j), val);
+        while (i > 1) {
+            i >>= 1;
+            S res = e();
+            if (ys[2 * i].find(j)) {
+                res = op(res, data[2 * i].get(ys[2 * i].get(j)));
+            }
+            if (ys[2 * i + 1].find(j)) {
+                res = op(res, data[2 * i + 1].get(ys[2 * i + 1].get(j)));
+            }
+            data[i].set(ys[i].get(j), res);
         }
     }
 
-    void pre_prod(int l, int r, int x, int y) {
-        pre_prod(l, r, x, y, 0, n, 0);
+    S get(int i, int j) const {
+        i = xs.get(i) + sz;
+        return data[i].get(ys[i].get(j));
+    }
+
+    S prod(int l, int d, int r, int u) const {
+        l = xs.get(l) + sz;
+        r = xs.get(r) + sz;
+        S res = e();
+        while (l < r) {
+            if (l & 1) {
+                res = op(res, data[l].prod(ys[l].get(d), ys[l].get(u)));
+                l++;
+            }
+            if (r & 1) {
+                r--;
+                res = op(data[r].prod(ys[r].get(d), ys[r].get(u)), res);
+            }
+            l >>= 1;
+            r >>= 1;
+        }
+        return res;
     }
 
   private:
-    std::vector<std::vector<Monoid> > data;
-    std::vector<segtree<Monoid, op, e> > seg;
-    int n;
+    int sz = 1;
+    std::vector<std::pair<int, int>> ps;
+    compress<int> xs;
+    std::vector<compress<int>> ys;
+    std::vector<data_structure> data;
 };
 
 }  // namespace ebi
