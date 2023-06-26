@@ -17,11 +17,15 @@ i64 e() {
     return 0;
 }
 
+struct Query {
+    int x,y,w;
+};
+
 int main() {
     int n, q;
     std::cin >> n >> q;
     ebi::offline_segtree_2d<i64, op, e, ebi::segtree<i64, op, e>> seg2d;
-    std::vector<std::tuple<int, int, int>> ps(n);
+    std::vector<Query> ps(n);
     for (auto &[x, y, w] : ps) {
         std::cin >> x >> y >> w;
         seg2d.pre_set({x, y});
