@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/offline_segtree_2d.hpp
     title: offline 2D segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: segtree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
@@ -106,27 +106,28 @@ data:
     \ p) const {\r\n        return data[sz + p];\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\r\n#line 9 \"test/data_structure/Rectangle_Sum.test.cpp\"\n\r\nusing i64\
     \ = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b) {\r\n    return a + b;\r\n}\r\n\r\
-    \ni64 e() {\r\n    return 0;\r\n}\r\n\r\nint main() {\r\n    int n, q;\r\n   \
-    \ std::cin >> n >> q;\r\n    ebi::offline_segtree_2d<i64, op, e, ebi::segtree<i64,\
-    \ op, e>> seg2d;\r\n    std::vector<std::tuple<int, int, int>> ps(n);\r\n    for\
-    \ (auto &[x, y, w] : ps) {\r\n        std::cin >> x >> y >> w;\r\n        seg2d.pre_set({x,\
-    \ y});\r\n    }\r\n    seg2d.build();\r\n    for (auto &[x, y, w] : ps) {\r\n\
-    \        seg2d.set(x, y, seg2d.get(x, y) + w);\r\n    }\r\n    while (q--) {\r\
-    \n        int l, d, r, u;\r\n        std::cin >> l >> d >> r >> u;\r\n       \
-    \ std::cout << seg2d.prod(l, d, r, u) << '\\n';\r\n    }\r\n}\n"
+    \ni64 e() {\r\n    return 0;\r\n}\r\n\r\nstruct Query {\r\n    int x,y,w;\r\n\
+    };\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::offline_segtree_2d<i64,\
+    \ op, e, ebi::segtree<i64, op, e>> seg2d;\r\n    std::vector<Query> ps(n);\r\n\
+    \    for (auto &[x, y, w] : ps) {\r\n        std::cin >> x >> y >> w;\r\n    \
+    \    seg2d.pre_set({x, y});\r\n    }\r\n    seg2d.build();\r\n    for (auto &[x,\
+    \ y, w] : ps) {\r\n        seg2d.set(x, y, seg2d.get(x, y) + w);\r\n    }\r\n\
+    \    while (q--) {\r\n        int l, d, r, u;\r\n        std::cin >> l >> d >>\
+    \ r >> u;\r\n        std::cout << seg2d.prod(l, d, r, u) << '\\n';\r\n    }\r\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\r\n\r\n\
     #include <cstdint>\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/compress.hpp\"\
     \r\n#include \"../../data_structure/offline_segtree_2d.hpp\"\r\n#include \"../../data_structure/segtree.hpp\"\
     \r\n\r\nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b) {\r\n    return\
-    \ a + b;\r\n}\r\n\r\ni64 e() {\r\n    return 0;\r\n}\r\n\r\nint main() {\r\n \
-    \   int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::offline_segtree_2d<i64, op,\
-    \ e, ebi::segtree<i64, op, e>> seg2d;\r\n    std::vector<std::tuple<int, int,\
-    \ int>> ps(n);\r\n    for (auto &[x, y, w] : ps) {\r\n        std::cin >> x >>\
-    \ y >> w;\r\n        seg2d.pre_set({x, y});\r\n    }\r\n    seg2d.build();\r\n\
-    \    for (auto &[x, y, w] : ps) {\r\n        seg2d.set(x, y, seg2d.get(x, y) +\
-    \ w);\r\n    }\r\n    while (q--) {\r\n        int l, d, r, u;\r\n        std::cin\
-    \ >> l >> d >> r >> u;\r\n        std::cout << seg2d.prod(l, d, r, u) << '\\n';\r\
-    \n    }\r\n}"
+    \ a + b;\r\n}\r\n\r\ni64 e() {\r\n    return 0;\r\n}\r\n\r\nstruct Query {\r\n\
+    \    int x,y,w;\r\n};\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >>\
+    \ n >> q;\r\n    ebi::offline_segtree_2d<i64, op, e, ebi::segtree<i64, op, e>>\
+    \ seg2d;\r\n    std::vector<Query> ps(n);\r\n    for (auto &[x, y, w] : ps) {\r\
+    \n        std::cin >> x >> y >> w;\r\n        seg2d.pre_set({x, y});\r\n    }\r\
+    \n    seg2d.build();\r\n    for (auto &[x, y, w] : ps) {\r\n        seg2d.set(x,\
+    \ y, seg2d.get(x, y) + w);\r\n    }\r\n    while (q--) {\r\n        int l, d,\
+    \ r, u;\r\n        std::cin >> l >> d >> r >> u;\r\n        std::cout << seg2d.prod(l,\
+    \ d, r, u) << '\\n';\r\n    }\r\n}"
   dependsOn:
   - data_structure/compress.hpp
   - data_structure/offline_segtree_2d.hpp
@@ -134,8 +135,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-26 12:31:59+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-06-26 12:36:11+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum.test.cpp
 layout: document
