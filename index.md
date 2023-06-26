@@ -147,6 +147,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/sparse_table_2d.hpp
+      title: 2D sparse table
     - icon: ':warning:'
       path: data_structure/splay_tree.hpp
       title: data_structure/splay_tree.hpp
@@ -518,6 +521,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/aoj_1068.test.cpp
       title: test/data_structure/aoj_1068.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/sparse_table_2d.test.cpp
+      title: test/data_structure/sparse_table_2d.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'
