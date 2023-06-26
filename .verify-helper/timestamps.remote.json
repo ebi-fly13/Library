@@ -38,6 +38,7 @@
 "test/convolution/Lcm_Convolution.test.cpp": "2023-06-09 15:36:58 +0900",
 "test/convolution/Subset_Convolution.test.cpp": "2023-06-19 14:38:20 +0900",
 "test/data_structure/Point_Add_Rectangle_Sum.test.cpp": "2023-06-26 12:08:21 +0900",
+"test/data_structure/Rectangle_Sum.test.cpp": "2023-06-26 12:36:11 +0900",
 "test/data_structure/aoj_1068.test.cpp": "2023-06-26 02:49:17 +0900",
 "test/dijkstra.test.cpp": "2023-06-19 12:46:11 +0900",
 "test/enumerate_primes.test.cpp": "2023-06-09 15:36:58 +0900",
