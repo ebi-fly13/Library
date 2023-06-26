@@ -108,7 +108,7 @@ data:
     \ = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b) {\r\n    return a + b;\r\n}\r\n\r\
     \ni64 e() {\r\n    return 0;\r\n}\r\n\r\nint main() {\r\n    int n, q;\r\n   \
     \ std::cin >> n >> q;\r\n    ebi::offline_segtree_2d<i64, op, e, ebi::segtree<i64,\
-    \ op, e>> seg2d;\r\n    std::vector<std::tuple<int, int, i64>> ps(n);\r\n    for\
+    \ op, e>> seg2d;\r\n    std::vector<std::tuple<int, int, int>> ps(n);\r\n    for\
     \ (auto &[x, y, w] : ps) {\r\n        std::cin >> x >> y >> w;\r\n        seg2d.pre_set({x,\
     \ y});\r\n    }\r\n    seg2d.build();\r\n    for (auto &[x, y, w] : ps) {\r\n\
     \        seg2d.set(x, y, seg2d.get(x, y) + w);\r\n    }\r\n    while (q--) {\r\
@@ -121,7 +121,7 @@ data:
     \ a + b;\r\n}\r\n\r\ni64 e() {\r\n    return 0;\r\n}\r\n\r\nint main() {\r\n \
     \   int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::offline_segtree_2d<i64, op,\
     \ e, ebi::segtree<i64, op, e>> seg2d;\r\n    std::vector<std::tuple<int, int,\
-    \ i64>> ps(n);\r\n    for (auto &[x, y, w] : ps) {\r\n        std::cin >> x >>\
+    \ int>> ps(n);\r\n    for (auto &[x, y, w] : ps) {\r\n        std::cin >> x >>\
     \ y >> w;\r\n        seg2d.pre_set({x, y});\r\n    }\r\n    seg2d.build();\r\n\
     \    for (auto &[x, y, w] : ps) {\r\n        seg2d.set(x, y, seg2d.get(x, y) +\
     \ w);\r\n    }\r\n    while (q--) {\r\n        int l, d, r, u;\r\n        std::cin\
@@ -134,7 +134,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-26 12:08:21+09:00'
+  timestamp: '2023-06-26 12:31:59+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum.test.cpp
