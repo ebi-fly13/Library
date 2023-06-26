@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   - icon: ':heavy_check_mark:'
@@ -28,15 +28,17 @@ data:
     \n\n#include <cassert>\n#include <limits>\n#include <vector>\n\n#line 2 \"data_structure/compress.hpp\"\
     \n\n#include <algorithm>\n#line 6 \"data_structure/compress.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <class T> struct compress {\n  private:\n    std::vector<T>\
-    \ cp;\n    bool flag = false;\n\n  public:\n    compress() = default;\n\n    compress(std::vector<T>\
-    \ cp) : cp(cp) {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
+    \ cp;\n\n  public:\n    compress() = default;\n\n    compress(std::vector<T> cp)\
+    \ : cp(cp) {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
     \ cp.end());\n        cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n\
-    \        flag = true;\n    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n\
-    \        flag = false;\n    }\n\n    int get(const T &val) {\n        if (flag\
-    \ == false) build();\n        return std::lower_bound(cp.begin(), cp.end(), val)\
-    \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
-    \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
-    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 2 \"data_structure/fenwick_tree.hpp\"\
+    \    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n    }\n\
+    \n    int get(const T &val) const {\n        return std::lower_bound(cp.begin(),\
+    \ cp.end(), val) - cp.begin();\n    }\n\n    int size() const {\n        return\
+    \ cp.size();\n    }\n\n    bool find(const T& val) const {\n        auto itr =\
+    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if(itr == cp.end()) return\
+    \ false;\n        else return *itr == val;\n    }\n\n    T val(int idx) const\
+    \ {\n        assert(0 <= idx && idx < (int)cp.size());\n        return cp[idx];\n\
+    \    }\n};\n\n}  // namespace ebi\n#line 2 \"data_structure/fenwick_tree.hpp\"\
     \n\r\n#line 5 \"data_structure/fenwick_tree.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
     template <class T> struct fenwick_tree {\r\n  private:\r\n    int n;\r\n    std::vector<T>\
     \ data;\r\n\r\n  public:\r\n    fenwick_tree(int _n) : n(_n), data(std::vector<T>(_n\
@@ -83,7 +85,7 @@ data:
   isVerificationFile: true
   path: test/math/inversion_number.test.cpp
   requiredBy: []
-  timestamp: '2023-06-19 12:46:11+09:00'
+  timestamp: '2023-06-26 12:08:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/inversion_number.test.cpp

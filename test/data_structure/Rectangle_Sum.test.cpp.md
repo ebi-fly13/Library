@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/offline_segtree_2d.hpp
-    title: data_structure/offline_segtree_2d.hpp
-  - icon: ':heavy_check_mark:'
+    title: offline 2D segtree
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
@@ -24,19 +24,48 @@ data:
     \ \"https://judge.yosupo.jp/problem/rectangle_sum\"\r\n\r\n#include <cstdint>\r\
     \n#include <iostream>\r\n\r\n#line 2 \"data_structure/compress.hpp\"\n\n#include\
     \ <algorithm>\n#include <cassert>\n#include <vector>\n\nnamespace ebi {\n\ntemplate\
-    \ <class T> struct compress {\n  private:\n    std::vector<T> cp;\n    bool flag\
-    \ = false;\n\n  public:\n    compress() = default;\n\n    compress(std::vector<T>\
-    \ cp) : cp(cp) {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
-    \ cp.end());\n        cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n\
-    \        flag = true;\n    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n\
-    \        flag = false;\n    }\n\n    int get(const T &val) {\n        if (flag\
-    \ == false) build();\n        return std::lower_bound(cp.begin(), cp.end(), val)\
+    \ <class T> struct compress {\n  private:\n    std::vector<T> cp;\n\n  public:\n\
+    \    compress() = default;\n\n    compress(std::vector<T> cp) : cp(cp) {\n   \
+    \     build();\n    }\n\n    void build() {\n        std::sort(cp.begin(), cp.end());\n\
+    \        cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n    }\n\n   \
+    \ void add(const T &val) {\n        cp.emplace_back(val);\n    }\n\n    int get(const\
+    \ T &val) const {\n        return std::lower_bound(cp.begin(), cp.end(), val)\
     \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
-    \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
-    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 3 \"data_structure/offline_segtree_2d.hpp\"\
+    \    }\n\n    bool find(const T& val) const {\n        auto itr = std::lower_bound(cp.begin(),\
+    \ cp.end(), val);\n        if(itr == cp.end()) return false;\n        else return\
+    \ *itr == val;\n    }\n\n    T val(int idx) const {\n        assert(0 <= idx &&\
+    \ idx < (int)cp.size());\n        return cp[idx];\n    }\n};\n\n}  // namespace\
+    \ ebi\n#line 2 \"data_structure/offline_segtree_2d.hpp\"\n\n#line 5 \"data_structure/offline_segtree_2d.hpp\"\
     \n\n/*\n    reference: https://blog.hamayanhamayan.com/entry/2017/12/09/015937\n\
     \    verify   : http://codeforces.com/contest/893/submission/125531718\n*/\n\n\
-    #line 2 \"data_structure/segtree.hpp\"\n\r\n#line 5 \"data_structure/segtree.hpp\"\
+    #line 12 \"data_structure/offline_segtree_2d.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class S, S (*op)(S, S), S (*e)(), class data_structure>\nstruct offline_segtree_2d\
+    \ {\n    offline_segtree_2d() = default;\n\n    void pre_set(std::pair<int, int>\
+    \ p) {\n        ps.emplace_back(p);\n    }\n\n    void build() {\n        for\
+    \ (auto [x, y] : ps) {\n            xs.add(x);\n        }\n        xs.build();\n\
+    \        while (sz < xs.size()) sz <<= 1;\n        ys.resize(2 * sz);\n      \
+    \  for (auto [x, y] : ps) {\n            int i = xs.get(x) + sz;\n           \
+    \ ys[i].add(y);\n            while (i > 1) {\n                i >>= 1;\n     \
+    \           ys[i].add(y);\n            }\n        }\n        for (int i = 0; i\
+    \ < 2 * sz; i++) {\n            ys[i].build();\n            data.emplace_back(data_structure(ys[i].size()));\n\
+    \        }\n    }\n\n    void set(int i, int j, S val) {\n        i = xs.get(i);\n\
+    \        i += sz;\n        data[i].set(ys[i].get(j), val);\n        while (i >\
+    \ 1) {\n            i >>= 1;\n            S res = e();\n            if (ys[2 *\
+    \ i].find(j)) {\n                res = op(res, data[2 * i].get(ys[2 * i].get(j)));\n\
+    \            }\n            if (ys[2 * i + 1].find(j)) {\n                res\
+    \ = op(res, data[2 * i + 1].get(ys[2 * i + 1].get(j)));\n            }\n     \
+    \       data[i].set(ys[i].get(j), res);\n        }\n    }\n\n    S get(int i,\
+    \ int j) const {\n        i = xs.get(i) + sz;\n        return data[i].get(ys[i].get(j));\n\
+    \    }\n\n    S prod(int l, int d, int r, int u) const {\n        l = xs.get(l)\
+    \ + sz;\n        r = xs.get(r) + sz;\n        S res = e();\n        while (l <\
+    \ r) {\n            if (l & 1) {\n                res = op(res, data[l].prod(ys[l].get(d),\
+    \ ys[l].get(u)));\n                l++;\n            }\n            if (r & 1)\
+    \ {\n                r--;\n                res = op(data[r].prod(ys[r].get(d),\
+    \ ys[r].get(u)), res);\n            }\n            l >>= 1;\n            r >>=\
+    \ 1;\n        }\n        return res;\n    }\n\n  private:\n    int sz = 1;\n \
+    \   std::vector<std::pair<int, int>> ps;\n    compress<int> xs;\n    std::vector<compress<int>>\
+    \ ys;\n    std::vector<data_structure> data;\n};\n\n}  // namespace ebi\n#line\
+    \ 2 \"data_structure/segtree.hpp\"\n\r\n#line 5 \"data_structure/segtree.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)()> struct\
     \ segtree {\r\n  private:\r\n    int n;\r\n    int sz;\r\n    std::vector<S> data;\r\
     \n\r\n    void update(int i) {\r\n        data[i] = op(data[2 * i], data[2 * i\
@@ -75,65 +104,29 @@ data:
     \ r + 1 - sz;\r\n            }\r\n            sm = op(data[r], sm);\r\n      \
     \  } while ((r & -r) != r);\r\n        return 0;\r\n    }\r\n\r\n    S operator[](int\
     \ p) const {\r\n        return data[sz + p];\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\r\n#line 10 \"data_structure/offline_segtree_2d.hpp\"\n\nnamespace ebi {\n\
-    \ntemplate <class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\nstruct\
-    \ offline_segtree_2d {\n  private:\n    Monoid prod(int l, int r, int x, int y,\
-    \ int nl, int nr, int k) {\n        if (r <= nl || nr <= l) {\n            return\
-    \ e();\n        }\n        if (l <= nl && nr <= r) {\n            int tx = std::lower_bound(data[k].begin(),\
-    \ data[k].end(), x) -\n                     data[k].begin();\n            int\
-    \ ty = std::lower_bound(data[k].begin(), data[k].end(), y) -\n               \
-    \      data[k].begin();\n            return seg[k].prod(tx, ty);\n        }\n\
-    \        return op(prod(l, r, x, y, nl, (nl + nr) / 2, 2 * k + 1),\n         \
-    \         prod(l, r, x, y, (nl + nr) / 2, nr, 2 * k + 2));\n    }\n\n    void\
-    \ pre_prod(int l, int r, int x, int y, int nl, int nr, int k) {\n        if (r\
-    \ <= nl || nr <= l) {\n            return;\n        }\n        if (l <= nl &&\
-    \ nr <= r) {\n            data[k].emplace_back(x);\n            data[k].emplace_back(y);\n\
-    \            return;\n        }\n        pre_prod(l, r, x, y, nl, (nl + nr) /\
-    \ 2, 2 * k + 1);\n        pre_prod(l, r, x, y, (nl + nr) / 2, nr, 2 * k + 2);\n\
-    \    }\n\n  public:\n    offline_segtree_2d(int _n) : n(1) {\n        while (n\
-    \ < _n) {\n            n <<= 1;\n        }\n        data.resize(2 * n - 1);\n\
-    \    }\n\n    void add(int x, int y, Monoid val) {\n        int k = n + x - 1;\n\
-    \        int ty = std::lower_bound(data[k].begin(), data[k].end(), y) -\n    \
-    \             data[k].begin();\n        seg[k].set(ty, op(seg[k].get(ty), val));\n\
-    \        while (k > 0) {\n            k = (k - 1) / 2;\n            ty = std::lower_bound(data[k].begin(),\
-    \ data[k].end(), y) -\n                 data[k].begin();\n            seg[k].set(ty,\
-    \ op(seg[k].get(ty), val));\n        }\n    }\n\n    Monoid prod(int l, int r,\
-    \ int x, int y) {\n        return prod(l, r, x, y, 0, n, 0);\n    }\n\n    void\
-    \ build() {\n        for (int i = 0; i < 2 * n - 1; ++i) {\n            std::sort(data[i].begin(),\
-    \ data[i].end());\n            data[i].erase(std::unique(data[i].begin(), data[i].end()),\n\
-    \                          data[i].end());\n            seg.emplace_back(segtree<Monoid,\
-    \ op, e>(int(data[i].size())));\n        }\n    }\n\n    void pre_set(int x, int\
-    \ y) {\n        int k = n + x - 1;\n        data[k].emplace_back(y);\n       \
-    \ while (k > 0) {\n            k = (k - 1) / 2;\n            data[k].emplace_back(y);\n\
-    \        }\n    }\n\n    void pre_prod(int l, int r, int x, int y) {\n       \
-    \ pre_prod(l, r, x, y, 0, n, 0);\n    }\n\n  private:\n    std::vector<std::vector<Monoid>\
-    \ > data;\n    std::vector<segtree<Monoid, op, e> > seg;\n    int n;\n};\n\n}\
-    \  // namespace ebi\n#line 8 \"test/data_structure/Rectangle_Sum.test.cpp\"\n\r\
-    \nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b) {\r\n    return a + b;\r\
-    \n}\r\n\r\ni64 e() {\r\n    return 0;\r\n}\r\n\r\nint main() {\r\n    int n, q;\r\
-    \n    std::cin >> n >> q;\r\n    ebi::compress<i64> cp;\r\n    std::vector<i64>\
-    \ x(n), y(n), w(n);\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin >>\
-    \ x[i] >> y[i] >> w[i];\r\n        cp.add(x[i]);\r\n    }\r\n    cp.build();\r\
-    \n    ebi::offline_segtree_2d<i64, op, e> seg(cp.size());\r\n    for (int i =\
-    \ 0; i < n; i++) {\r\n        seg.pre_set(cp.get(x[i]), y[i]);\r\n    }\r\n  \
-    \  seg.build();\r\n    for (int i = 0; i < n; i++) {\r\n        seg.add(cp.get(x[i]),\
-    \ y[i], w[i]);\r\n    }\r\n    while (q--) {\r\n        i64 l, d, r, u;\r\n  \
-    \      std::cin >> l >> d >> r >> u;\r\n        std::cout << seg.prod(cp.get(l),\
-    \ cp.get(r), d, u) << std::endl;\r\n    }\r\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\r\n\r\n\
-    #include <cstdint>\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/compress.hpp\"\
-    \r\n#include \"../../data_structure/offline_segtree_2d.hpp\"\r\n\r\nusing i64\
+    \ ebi\r\n#line 9 \"test/data_structure/Rectangle_Sum.test.cpp\"\n\r\nusing i64\
     \ = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b) {\r\n    return a + b;\r\n}\r\n\r\
     \ni64 e() {\r\n    return 0;\r\n}\r\n\r\nint main() {\r\n    int n, q;\r\n   \
-    \ std::cin >> n >> q;\r\n    ebi::compress<i64> cp;\r\n    std::vector<i64> x(n),\
-    \ y(n), w(n);\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin >> x[i]\
-    \ >> y[i] >> w[i];\r\n        cp.add(x[i]);\r\n    }\r\n    cp.build();\r\n  \
-    \  ebi::offline_segtree_2d<i64, op, e> seg(cp.size());\r\n    for (int i = 0;\
-    \ i < n; i++) {\r\n        seg.pre_set(cp.get(x[i]), y[i]);\r\n    }\r\n    seg.build();\r\
-    \n    for (int i = 0; i < n; i++) {\r\n        seg.add(cp.get(x[i]), y[i], w[i]);\r\
-    \n    }\r\n    while (q--) {\r\n        i64 l, d, r, u;\r\n        std::cin >>\
-    \ l >> d >> r >> u;\r\n        std::cout << seg.prod(cp.get(l), cp.get(r), d,\
-    \ u) << std::endl;\r\n    }\r\n}"
+    \ std::cin >> n >> q;\r\n    ebi::offline_segtree_2d<i64, op, e, ebi::segtree<i64,\
+    \ op, e>> seg2d;\r\n    std::vector<std::tuple<int, int, i64>> ps(n);\r\n    for\
+    \ (auto &[x, y, w] : ps) {\r\n        std::cin >> x >> y >> w;\r\n        seg2d.pre_set({x,\
+    \ y});\r\n    }\r\n    seg2d.build();\r\n    for (auto &[x, y, w] : ps) {\r\n\
+    \        seg2d.set(x, y, seg2d.get(x, y) + w);\r\n    }\r\n    while (q--) {\r\
+    \n        int l, d, r, u;\r\n        std::cin >> l >> d >> r >> u;\r\n       \
+    \ std::cout << seg2d.prod(l, d, r, u) << '\\n';\r\n    }\r\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\r\n\r\n\
+    #include <cstdint>\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/compress.hpp\"\
+    \r\n#include \"../../data_structure/offline_segtree_2d.hpp\"\r\n#include \"../../data_structure/segtree.hpp\"\
+    \r\n\r\nusing i64 = std::int64_t;\r\n\r\ni64 op(i64 a, i64 b) {\r\n    return\
+    \ a + b;\r\n}\r\n\r\ni64 e() {\r\n    return 0;\r\n}\r\n\r\nint main() {\r\n \
+    \   int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::offline_segtree_2d<i64, op,\
+    \ e, ebi::segtree<i64, op, e>> seg2d;\r\n    std::vector<std::tuple<int, int,\
+    \ i64>> ps(n);\r\n    for (auto &[x, y, w] : ps) {\r\n        std::cin >> x >>\
+    \ y >> w;\r\n        seg2d.pre_set({x, y});\r\n    }\r\n    seg2d.build();\r\n\
+    \    for (auto &[x, y, w] : ps) {\r\n        seg2d.set(x, y, seg2d.get(x, y) +\
+    \ w);\r\n    }\r\n    while (q--) {\r\n        int l, d, r, u;\r\n        std::cin\
+    \ >> l >> d >> r >> u;\r\n        std::cout << seg2d.prod(l, d, r, u) << '\\n';\r\
+    \n    }\r\n}"
   dependsOn:
   - data_structure/compress.hpp
   - data_structure/offline_segtree_2d.hpp
@@ -141,8 +134,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-26 02:49:17+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-06-26 12:08:21+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum.test.cpp
 layout: document

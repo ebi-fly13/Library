@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/mo_algorithm.hpp
     title: algorithm/mo_algorithm.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   - icon: ':heavy_check_mark:'
@@ -57,19 +57,21 @@ data:
     \  key -= data[x];\r\n            }\r\n        }\r\n        return x + 1;\r\n\
     \    }\r\n};\r\n\r\n}  // namespace ebi\n#line 2 \"data_structure/compress.hpp\"\
     \n\n#line 6 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ T> struct compress {\n  private:\n    std::vector<T> cp;\n    bool flag = false;\n\
-    \n  public:\n    compress() = default;\n\n    compress(std::vector<T> cp) : cp(cp)\
-    \ {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
-    \ cp.end());\n        cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n\
-    \        flag = true;\n    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n\
-    \        flag = false;\n    }\n\n    int get(const T &val) {\n        if (flag\
-    \ == false) build();\n        return std::lower_bound(cp.begin(), cp.end(), val)\
+    \ T> struct compress {\n  private:\n    std::vector<T> cp;\n\n  public:\n    compress()\
+    \ = default;\n\n    compress(std::vector<T> cp) : cp(cp) {\n        build();\n\
+    \    }\n\n    void build() {\n        std::sort(cp.begin(), cp.end());\n     \
+    \   cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n    }\n\n    void\
+    \ add(const T &val) {\n        cp.emplace_back(val);\n    }\n\n    int get(const\
+    \ T &val) const {\n        return std::lower_bound(cp.begin(), cp.end(), val)\
     \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
-    \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
-    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 12 \"test/static_range_inversion_query.test.cpp\"\
-    \n\r\nusing u64 = std::uint64_t;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin\
-    \ >> n >> q;\r\n    std::vector<int> a(n);\r\n    std::vector<int> l(q), r(q);\r\
-    \n    ebi::compress<int> cp;\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin\
+    \    }\n\n    bool find(const T& val) const {\n        auto itr = std::lower_bound(cp.begin(),\
+    \ cp.end(), val);\n        if(itr == cp.end()) return false;\n        else return\
+    \ *itr == val;\n    }\n\n    T val(int idx) const {\n        assert(0 <= idx &&\
+    \ idx < (int)cp.size());\n        return cp[idx];\n    }\n};\n\n}  // namespace\
+    \ ebi\n#line 12 \"test/static_range_inversion_query.test.cpp\"\n\r\nusing u64\
+    \ = std::uint64_t;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >>\
+    \ q;\r\n    std::vector<int> a(n);\r\n    std::vector<int> l(q), r(q);\r\n   \
+    \ ebi::compress<int> cp;\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin\
     \ >> a[i];\r\n        cp.add(a[i]);\r\n    }\r\n    cp.build();\r\n    for (int\
     \ i = 0; i < n; i++) {\r\n        a[i] = cp.get(a[i]);\r\n    }\r\n    for (int\
     \ i = 0; i < q; i++) {\r\n        std::cin >> l[i] >> r[i];\r\n    }\r\n    ebi::fenwick_tree<u64>\
@@ -114,7 +116,7 @@ data:
   isVerificationFile: true
   path: test/static_range_inversion_query.test.cpp
   requiredBy: []
-  timestamp: '2023-06-19 11:39:03+09:00'
+  timestamp: '2023-06-26 12:08:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/static_range_inversion_query.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   - icon: ':heavy_check_mark:'
@@ -39,15 +39,17 @@ data:
     \       }\r\n        return x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
     #line 2 \"data_structure/compress.hpp\"\n\n#line 6 \"data_structure/compress.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T> struct compress {\n  private:\n    std::vector<T>\
-    \ cp;\n    bool flag = false;\n\n  public:\n    compress() = default;\n\n    compress(std::vector<T>\
-    \ cp) : cp(cp) {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
+    \ cp;\n\n  public:\n    compress() = default;\n\n    compress(std::vector<T> cp)\
+    \ : cp(cp) {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
     \ cp.end());\n        cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n\
-    \        flag = true;\n    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n\
-    \        flag = false;\n    }\n\n    int get(const T &val) {\n        if (flag\
-    \ == false) build();\n        return std::lower_bound(cp.begin(), cp.end(), val)\
-    \ - cp.begin();\n    }\n\n    int size() const {\n        return cp.size();\n\
-    \    }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
-    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 14 \"test/geometry/segment_intersection.test.cpp\"\
+    \    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n    }\n\
+    \n    int get(const T &val) const {\n        return std::lower_bound(cp.begin(),\
+    \ cp.end(), val) - cp.begin();\n    }\n\n    int size() const {\n        return\
+    \ cp.size();\n    }\n\n    bool find(const T& val) const {\n        auto itr =\
+    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if(itr == cp.end()) return\
+    \ false;\n        else return *itr == val;\n    }\n\n    T val(int idx) const\
+    \ {\n        assert(0 <= idx && idx < (int)cp.size());\n        return cp[idx];\n\
+    \    }\n};\n\n}  // namespace ebi\n#line 14 \"test/geometry/segment_intersection.test.cpp\"\
     \n\nnamespace ebi {\n\nusing i64 = std::int64_t;\n\nvoid main_() {\n    int n;\n\
     \    std::cin >> n;\n    std::map<i64, std::vector<std::pair<i64, i64>>> xmap,\
     \ ymap;\n    compress<i64> cp;\n    std::vector<i64> ret;\n    for (int i = 0;\
@@ -93,7 +95,7 @@ data:
   isVerificationFile: true
   path: test/geometry/segment_intersection.test.cpp
   requiredBy: []
-  timestamp: '2023-06-19 11:39:03+09:00'
+  timestamp: '2023-06-26 12:08:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/segment_intersection.test.cpp
