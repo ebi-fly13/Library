@@ -1,28 +1,26 @@
 #pragma once
 
+#include <array>
 #include <cassert>
 #include <string>
 #include <vector>
 
 namespace ebi {
 
-namespace internal {
-
-template <int char_size> struct trie_node {
-    int common;
-    int nxt[char_size];
-    std::vector<int> accept;
-    trie_node() : common(0) {
-        memset(nxt, -1, sizeof(nxt));
-    }
-};
-
-}  // namespace internal
-
 template <int char_size, int margin> struct trie {
+  private:
+    struct trie_node {
+        int common;
+        std::array<int, char_size> nxt;
+        std::vector<int> accept;
+        trie_node() : common(0) {
+            nxt.fill(-1);
+        }
+    };
+
   public:
     trie() {
-        nodes.emplace_back(Node());
+        nodes.emplace_back(trie_node());
     }
 
     void add(const std::string &str) {
@@ -32,7 +30,7 @@ template <int char_size, int margin> struct trie {
             assert(0 <= val && val < char_size);
             if (nodes[idx].nxt[val] < 0) {
                 nodes[idx].nxt[val] = int(nodes.size());
-                nodes.emplace_back(Node());
+                nodes.emplace_back(trie_node());
             }
             idx = nodes[idx].nxt[val];
             nodes[idx].common++;
@@ -76,11 +74,8 @@ template <int char_size, int margin> struct trie {
         return int(nodes.size());
     }
 
-  private:
-    using Node = internal::trie_node<char_size>;
-
   protected:
-    std::vector<Node> nodes;
+    std::vector<trie_node> nodes;
 };
 
 }  // namespace ebi
