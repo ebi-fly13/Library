@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/aoj_3361.test.cpp
+    title: test/polynomial/aoj_3361.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/combination.hpp\"\n\n#include <cassert>\n#include <vector>\n\
@@ -41,8 +44,9 @@ data:
   path: math/combination.hpp
   requiredBy: []
   timestamp: '2023-06-15 15:11:09+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/polynomial/aoj_3361.test.cpp
 documentation_of: math/combination.hpp
 layout: document
 redirect_from:

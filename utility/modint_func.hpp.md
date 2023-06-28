@@ -33,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/aoj_3361.test.cpp
+    title: test/polynomial/aoj_3361.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -55,19 +58,20 @@ data:
   isVerificationFile: false
   path: utility/modint_func.hpp
   requiredBy:
-  - fps/fps_sparse.hpp
   - fps/product_of_one_plus_xn.hpp
-  - fps/product_of_one_minus_xn.hpp
   - fps/fps_sqrt.hpp
+  - fps/product_of_one_minus_xn.hpp
+  - fps/fps_sparse.hpp
   timestamp: '2023-06-08 01:58:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/aoj_3361.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: utility/modint_func.hpp
 layout: document
 redirect_from:

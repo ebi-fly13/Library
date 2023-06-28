@@ -221,7 +221,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bostan_mori_algorithm.hpp
       title: Bostan-Mori Algorithm
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/combination.hpp
       title: math/combination.hpp
     - icon: ':heavy_check_mark:'
@@ -646,6 +646,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/polynomial/aoj_3361.test.cpp
+      title: test/polynomial/aoj_3361.test.cpp
   - name: test/set_function
     pages:
     - icon: ':heavy_check_mark:'

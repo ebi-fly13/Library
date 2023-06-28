@@ -67,9 +67,9 @@ data:
   verifiedWith:
   - test/geometry/segment_intersection.test.cpp
   - test/math/inversion_number.test.cpp
-  - test/data_structure/Rectangle_Sum.test.cpp
-  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/static_range_inversion_query.test.cpp
+  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+  - test/data_structure/Rectangle_Sum.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 redirect_from:
