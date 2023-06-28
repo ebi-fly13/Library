@@ -84,6 +84,7 @@
 "test/polynomial/Product_of_Polynomial_Sequence.test.cpp": "2023-06-15 03:20:07 +0900",
 "test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp": "2023-06-12 02:16:01 +0900",
 "test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp": "2023-06-12 02:16:01 +0900",
+"test/polynomial/aoj_3361.test.cpp": "2023-06-28 14:55:41 +0900",
 "test/pow.test.cpp": "2023-05-31 02:50:45 +0900",
 "test/predecessor_set.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/range_tree.test.cpp": "2023-05-08 16:51:58 +0900",
