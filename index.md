@@ -123,7 +123,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/predecessor_set.hpp
       title: data_structure/predecessor_set.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/queue_aggregation.hpp
       title: Sliding Window Aggregation (Queue)
     - icon: ':warning:'
@@ -293,11 +293,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/trie.hpp
       title: string/trie.hpp
-  - name: test/data_structure
-    pages:
-    - icon: ':warning:'
-      path: test/data_structure/Queue_Operate_All_Composite.cpp
-      title: test/data_structure/Queue_Operate_All_Composite.cpp
   - name: tree
     pages:
     - icon: ':warning:'
@@ -523,6 +518,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
       title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Queue_Operate_All_Composite.test.cpp
+      title: test/data_structure/Queue_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Rectangle_Sum.test.cpp
       title: test/data_structure/Rectangle_Sum.test.cpp

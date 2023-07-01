@@ -11,9 +11,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':warning:'
-    path: test/data_structure/Queue_Operate_All_Composite.cpp
-    title: test/data_structure/Queue_Operate_All_Composite.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/DynamicSegmentTree.test.cpp
@@ -57,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Deque_Operate_All_Composite.test.cpp
     title: test/data_structure/Deque_Operate_All_Composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Queue_Operate_All_Composite.test.cpp
+    title: test/data_structure/Queue_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
@@ -228,7 +228,6 @@ data:
   requiredBy:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
-  - test/data_structure/Queue_Operate_All_Composite.cpp
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -263,6 +262,7 @@ data:
   - test/ImplicitTreap.test.cpp
   - test/vertex_set_path_compositie.test.cpp
   - test/aoj/aoj_2863.test.cpp
+  - test/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/data_structure/Deque_Operate_All_Composite.test.cpp
   - test/pow.test.cpp
 documentation_of: utility/modint.hpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/queue_aggregation.hpp
     title: Sliding Window Aggregation (Queue)
   - icon: ':heavy_check_mark:'
@@ -14,12 +14,14 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
     links:
     - https://judge.yosupo.jp/problem/queue_operate_all_composite
-  bundledCode: "#line 1 \"test/data_structure/Queue_Operate_All_Composite.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
+  bundledCode: "#line 1 \"test/data_structure/Queue_Operate_All_Composite.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"data_structure/queue_aggregation.hpp\"\
     \n\r\n/*\r\n    reference: https://scrapbox.io/data-structures/Sliding_Window_Aggregation\r\
     \n*/\r\n\r\n#include <cassert>\r\n#include <stack>\r\n\r\nnamespace ebi {\r\n\r\
@@ -94,7 +96,7 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 7 \"test/data_structure/Queue_Operate_All_Composite.cpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 7 \"test/data_structure/Queue_Operate_All_Composite.test.cpp\"\
     \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\
     \n    F(mint a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n  \
     \  return F(f2.a * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nint main() {\r\n   \
@@ -125,16 +127,16 @@ data:
   - data_structure/queue_aggregation.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
-  isVerificationFile: false
-  path: test/data_structure/Queue_Operate_All_Composite.cpp
+  isVerificationFile: true
+  path: test/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-07-01 16:57:08+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2023-07-01 17:06:31+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/data_structure/Queue_Operate_All_Composite.cpp
+documentation_of: test/data_structure/Queue_Operate_All_Composite.test.cpp
 layout: document
 redirect_from:
-- /library/test/data_structure/Queue_Operate_All_Composite.cpp
-- /library/test/data_structure/Queue_Operate_All_Composite.cpp.html
-title: test/data_structure/Queue_Operate_All_Composite.cpp
+- /verify/test/data_structure/Queue_Operate_All_Composite.test.cpp
+- /verify/test/data_structure/Queue_Operate_All_Composite.test.cpp.html
+title: test/data_structure/Queue_Operate_All_Composite.test.cpp
 ---
