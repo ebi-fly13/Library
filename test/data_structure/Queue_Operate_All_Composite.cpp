@@ -1,10 +1,9 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/queue_operate_all_composite"
 
-#include "../data_structure/SWAG.hpp"
-
 #include <iostream>
 
-#include "../utility/modint.hpp"
+#include "../../data_structure/queue_aggregation.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 
@@ -18,7 +17,7 @@ F op(F f1, F f2) {
 }
 
 int main() {
-    ebi::SWAG<F, op> swag;
+    ebi::queue_aggregation<F, op> swag;
     int q;
     std::cin >> q;
     while (q--) {

@@ -9,46 +9,41 @@
 
 namespace ebi {
 
-template <class Semigroup, Semigroup (*op)(Semigroup, Semigroup)> struct SWAG {
+template <class Semigroup, Semigroup (*op)(Semigroup, Semigroup)>
+struct queue_aggregation {
   private:
     struct Node {
-        Semigroup value;
+        Semigroup val;
         Semigroup fold;
-        Node(Semigroup value, Semigroup fold) : value(value), fold(fold) {}
     };
 
     void move() {
         assert(!back.empty());
         Node p = back.top();
         back.pop();
-        front.push(Node(p.value, p.value));
+        front.push({p.val, p.val});
         while (!back.empty()) {
-            Node p = back.top();
+            Semigroup x = back.top().val;
             back.pop();
-            p.fold = op(p.value, front.top().fold);
-            front.push(p);
+            front.push({x, op(x, front.top().fold)});
         }
     }
 
-    std::stack<Node> front, back;
-
   public:
-    SWAG() {}
+    queue_aggregation() {}
 
     int size() {
         return front.size() + back.size();
     }
 
     bool empty() {
-        if (size() == 0) return true;
-        return false;
+        return size() == 0;
     }
 
     void push(Semigroup x) {
-        Node node(x, x);
-        if (back.size() != 0) {
-            Node p = back.top();
-            node.fold = op(p.fold, node.fold);
+        Node node = {x, x};
+        if (!back.empty()) {
+            node.fold = op(back.top().fold, x);
         }
         back.push(node);
     }
@@ -71,6 +66,9 @@ template <class Semigroup, Semigroup (*op)(Semigroup, Semigroup)> struct SWAG {
             return op(front.top().fold, back.top().fold);
         }
     }
+
+  private:
+    std::stack<Node> front, back;
 };
 
 }  // namespace ebi
