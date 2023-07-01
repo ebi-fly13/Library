@@ -17,6 +17,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
+  - icon: ':warning:'
+    path: test/data_structure/Queue_Operate_All_Composite.cpp
+    title: test/data_structure/Queue_Operate_All_Composite.cpp
   - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
@@ -45,9 +48,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/SWAG.test.cpp
-    title: test/SWAG.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Sqrt_Mod.test.cpp
     title: test/Sqrt_Mod.test.cpp
@@ -81,6 +81,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp
     title: test/convolution/Subset_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Deque_Operate_All_Composite.test.cpp
+    title: test/data_structure/Deque_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
@@ -208,13 +211,13 @@ data:
   - utility/modint.hpp
   - tree/rooted_tree_hash.hpp
   - math/mod_sqrt.hpp
+  - test/data_structure/Queue_Operate_All_Composite.cpp
   - string/rolling_hash.hpp
   - fps/fps_sqrt.hpp
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/Determinant_of_Matrix.test.cpp
-  - test/SWAG.test.cpp
   - test/Sqrt_Mod.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/convolution/Bitwise_And_Convolution.test.cpp
@@ -248,6 +251,7 @@ data:
   - test/vertex_set_path_compositie.test.cpp
   - test/aoj/aoj_2444.test.cpp
   - test/aoj/aoj_2863.test.cpp
+  - test/data_structure/Deque_Operate_All_Composite.test.cpp
   - test/pow.test.cpp
 documentation_of: utility/modint_base.hpp
 layout: document

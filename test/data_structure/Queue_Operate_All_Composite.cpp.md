@@ -1,9 +1,9 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: data_structure/SWAG.hpp
-    title: Sliding Window Aggregation
+  - icon: ':warning:'
+    path: data_structure/queue_aggregation.hpp
+    title: Sliding Window Aggregation (Queue)
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
@@ -14,38 +14,36 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
     links:
     - https://judge.yosupo.jp/problem/queue_operate_all_composite
-  bundledCode: "#line 1 \"test/SWAG.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
-    \r\n\r\n#line 2 \"data_structure/SWAG.hpp\"\n\r\n/*\r\n    reference: https://scrapbox.io/data-structures/Sliding_Window_Aggregation\r\
+  bundledCode: "#line 1 \"test/data_structure/Queue_Operate_All_Composite.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
+    \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"data_structure/queue_aggregation.hpp\"\
+    \n\r\n/*\r\n    reference: https://scrapbox.io/data-structures/Sliding_Window_Aggregation\r\
     \n*/\r\n\r\n#include <cassert>\r\n#include <stack>\r\n\r\nnamespace ebi {\r\n\r\
-    \ntemplate <class Semigroup, Semigroup (*op)(Semigroup, Semigroup)> struct SWAG\
-    \ {\r\n  private:\r\n    struct Node {\r\n        Semigroup value;\r\n       \
-    \ Semigroup fold;\r\n        Node(Semigroup value, Semigroup fold) : value(value),\
-    \ fold(fold) {}\r\n    };\r\n\r\n    void move() {\r\n        assert(!back.empty());\r\
-    \n        Node p = back.top();\r\n        back.pop();\r\n        front.push(Node(p.value,\
-    \ p.value));\r\n        while (!back.empty()) {\r\n            Node p = back.top();\r\
-    \n            back.pop();\r\n            p.fold = op(p.value, front.top().fold);\r\
-    \n            front.push(p);\r\n        }\r\n    }\r\n\r\n    std::stack<Node>\
-    \ front, back;\r\n\r\n  public:\r\n    SWAG() {}\r\n\r\n    int size() {\r\n \
-    \       return front.size() + back.size();\r\n    }\r\n\r\n    bool empty() {\r\
-    \n        if (size() == 0) return true;\r\n        return false;\r\n    }\r\n\r\
-    \n    void push(Semigroup x) {\r\n        Node node(x, x);\r\n        if (back.size()\
-    \ != 0) {\r\n            Node p = back.top();\r\n            node.fold = op(p.fold,\
-    \ node.fold);\r\n        }\r\n        back.push(node);\r\n    }\r\n\r\n    void\
-    \ pop() {\r\n        assert(!empty());\r\n        if (front.empty()) {\r\n   \
-    \         move();\r\n        }\r\n        front.pop();\r\n    }\r\n\r\n    Semigroup\
+    \ntemplate <class Semigroup, Semigroup (*op)(Semigroup, Semigroup)>\r\nstruct\
+    \ queue_aggregation {\r\n  private:\r\n    struct Node {\r\n        Semigroup\
+    \ val;\r\n        Semigroup fold;\r\n    };\r\n\r\n    void move() {\r\n     \
+    \   assert(!back.empty());\r\n        Node p = back.top();\r\n        back.pop();\r\
+    \n        front.push({p.val, p.val});\r\n        while (!back.empty()) {\r\n \
+    \           Semigroup x = back.top().val;\r\n            back.pop();\r\n     \
+    \       front.push({x, op(x, front.top().fold)});\r\n        }\r\n    }\r\n\r\n\
+    \  public:\r\n    queue_aggregation() {}\r\n\r\n    int size() {\r\n        return\
+    \ front.size() + back.size();\r\n    }\r\n\r\n    bool empty() {\r\n        return\
+    \ size() == 0;\r\n    }\r\n\r\n    void push(Semigroup x) {\r\n        Node node\
+    \ = {x, x};\r\n        if (!back.empty()) {\r\n            node.fold = op(back.top().fold,\
+    \ x);\r\n        }\r\n        back.push(node);\r\n    }\r\n\r\n    void pop()\
+    \ {\r\n        assert(!empty());\r\n        if (front.empty()) {\r\n         \
+    \   move();\r\n        }\r\n        front.pop();\r\n    }\r\n\r\n    Semigroup\
     \ fold_all() {\r\n        assert(!empty());\r\n        if (front.empty()) {\r\n\
     \            return back.top().fold;\r\n        } else if (back.empty()) {\r\n\
     \            return front.top().fold;\r\n        } else {\r\n            return\
-    \ op(front.top().fold, back.top().fold);\r\n        }\r\n    }\r\n};\r\n\r\n}\
-    \  // namespace ebi\n#line 4 \"test/SWAG.test.cpp\"\n\r\n#include <iostream>\r\
-    \n\r\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include\
-    \ <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
+    \ op(front.top().fold, back.top().fold);\r\n        }\r\n    }\r\n\r\n  private:\r\
+    \n    std::stack<Node> front, back;\r\n};\r\n\r\n}  // namespace ebi\n#line 2\
+    \ \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\
+    \n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
     \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
     \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\n}  // namespace\
@@ -96,47 +94,47 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/SWAG.test.cpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 7 \"test/data_structure/Queue_Operate_All_Composite.cpp\"\
     \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\
     \n    F(mint a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n  \
     \  return F(f2.a * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nint main() {\r\n   \
-    \ ebi::SWAG<F, op> swag;\r\n    int q;\r\n    std::cin >> q;\r\n    while (q--)\
-    \ {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\n \
-    \           int a, b;\r\n            std::cin >> a >> b;\r\n            swag.push(F(a,\
-    \ b));\r\n        } else if (t == 1) {\r\n            swag.pop();\r\n        }\
-    \ else {\r\n            int x;\r\n            std::cin >> x;\r\n            if\
-    \ (swag.empty()) {\r\n                std::cout << x << std::endl;\r\n       \
-    \         continue;\r\n            }\r\n            auto f = swag.fold_all();\r\
+    \ ebi::queue_aggregation<F, op> swag;\r\n    int q;\r\n    std::cin >> q;\r\n\
+    \    while (q--) {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t\
+    \ == 0) {\r\n            int a, b;\r\n            std::cin >> a >> b;\r\n    \
+    \        swag.push(F(a, b));\r\n        } else if (t == 1) {\r\n            swag.pop();\r\
+    \n        } else {\r\n            int x;\r\n            std::cin >> x;\r\n   \
+    \         if (swag.empty()) {\r\n                std::cout << x << std::endl;\r\
+    \n                continue;\r\n            }\r\n            auto f = swag.fold_all();\r\
     \n            std::cout << (f.a * (mint)x + f.b).val() << std::endl;\r\n     \
     \   }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
-    \r\n\r\n#include \"../data_structure/SWAG.hpp\"\r\n\r\n#include <iostream>\r\n\
-    \r\n#include \"../utility/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\
+    \r\n\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/queue_aggregation.hpp\"\
+    \r\n#include \"../../utility/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\
     \n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint b) : a(a), b(b) {}\r\n\
     };\r\n\r\nF op(F f1, F f2) {\r\n    return F(f2.a * f1.a, f2.a * f1.b + f2.b);\r\
-    \n}\r\n\r\nint main() {\r\n    ebi::SWAG<F, op> swag;\r\n    int q;\r\n    std::cin\
-    \ >> q;\r\n    while (q--) {\r\n        int t;\r\n        std::cin >> t;\r\n \
-    \       if (t == 0) {\r\n            int a, b;\r\n            std::cin >> a >>\
-    \ b;\r\n            swag.push(F(a, b));\r\n        } else if (t == 1) {\r\n  \
-    \          swag.pop();\r\n        } else {\r\n            int x;\r\n         \
-    \   std::cin >> x;\r\n            if (swag.empty()) {\r\n                std::cout\
-    \ << x << std::endl;\r\n                continue;\r\n            }\r\n       \
-    \     auto f = swag.fold_all();\r\n            std::cout << (f.a * (mint)x + f.b).val()\
-    \ << std::endl;\r\n        }\r\n    }\r\n}"
+    \n}\r\n\r\nint main() {\r\n    ebi::queue_aggregation<F, op> swag;\r\n    int\
+    \ q;\r\n    std::cin >> q;\r\n    while (q--) {\r\n        int t;\r\n        std::cin\
+    \ >> t;\r\n        if (t == 0) {\r\n            int a, b;\r\n            std::cin\
+    \ >> a >> b;\r\n            swag.push(F(a, b));\r\n        } else if (t == 1)\
+    \ {\r\n            swag.pop();\r\n        } else {\r\n            int x;\r\n \
+    \           std::cin >> x;\r\n            if (swag.empty()) {\r\n            \
+    \    std::cout << x << std::endl;\r\n                continue;\r\n           \
+    \ }\r\n            auto f = swag.fold_all();\r\n            std::cout << (f.a\
+    \ * (mint)x + f.b).val() << std::endl;\r\n        }\r\n    }\r\n}"
   dependsOn:
-  - data_structure/SWAG.hpp
+  - data_structure/queue_aggregation.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
-  isVerificationFile: true
-  path: test/SWAG.test.cpp
+  isVerificationFile: false
+  path: test/data_structure/Queue_Operate_All_Composite.cpp
   requiredBy: []
-  timestamp: '2023-05-31 02:50:45+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-01 16:57:08+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: test/SWAG.test.cpp
+documentation_of: test/data_structure/Queue_Operate_All_Composite.cpp
 layout: document
 redirect_from:
-- /verify/test/SWAG.test.cpp
-- /verify/test/SWAG.test.cpp.html
-title: test/SWAG.test.cpp
+- /library/test/data_structure/Queue_Operate_All_Composite.cpp
+- /library/test/data_structure/Queue_Operate_All_Composite.cpp.html
+title: test/data_structure/Queue_Operate_All_Composite.cpp
 ---

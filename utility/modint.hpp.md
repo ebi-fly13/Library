@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
+  - icon: ':warning:'
+    path: test/data_structure/Queue_Operate_All_Composite.cpp
+    title: test/data_structure/Queue_Operate_All_Composite.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/DynamicSegmentTree.test.cpp
@@ -24,9 +27,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/LazySegtree.test.cpp
     title: test/LazySegtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/SWAG.test.cpp
-    title: test/SWAG.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2863.test.cpp
     title: test/aoj/aoj_2863.test.cpp
@@ -54,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp
     title: test/convolution/Subset_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Deque_Operate_All_Composite.test.cpp
+    title: test/data_structure/Deque_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
@@ -225,11 +228,11 @@ data:
   requiredBy:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
+  - test/data_structure/Queue_Operate_All_Composite.cpp
   timestamp: '2023-05-31 02:50:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/Determinant_of_Matrix.test.cpp
-  - test/SWAG.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/convolution/Bitwise_And_Convolution.test.cpp
   - test/convolution/Subset_Convolution.test.cpp
@@ -260,6 +263,7 @@ data:
   - test/ImplicitTreap.test.cpp
   - test/vertex_set_path_compositie.test.cpp
   - test/aoj/aoj_2863.test.cpp
+  - test/data_structure/Deque_Operate_All_Composite.test.cpp
   - test/pow.test.cpp
 documentation_of: utility/modint.hpp
 layout: document
