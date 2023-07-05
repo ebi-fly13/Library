@@ -10,7 +10,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: algorithm/convex_hull_trick.hpp
-      title: algorithm/convex_hull_trick.hpp
+      title: Convex Hull Trick
     - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp

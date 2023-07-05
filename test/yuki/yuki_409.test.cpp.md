@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: algorithm/convex_hull_trick.hpp
-    title: algorithm/convex_hull_trick.hpp
+    title: Convex Hull Trick
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
