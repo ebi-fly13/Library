@@ -8,6 +8,9 @@ data:
       title: Dice/Dice.hpp
   - name: algorithm
     pages:
+    - icon: ':warning:'
+      path: algorithm/convex_hull_trick.hpp
+      title: algorithm/convex_hull_trick.hpp
     - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp
