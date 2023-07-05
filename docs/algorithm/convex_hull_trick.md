@@ -1,6 +1,6 @@
 ---
 title: Convex Hull Trick
-documentation_of: //convex_hull_trick.md
+documentation_of: //convex_hull_trick.hpp
 ---
 
 ## 説明
