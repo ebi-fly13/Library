@@ -28,6 +28,9 @@ data:
     path: test/aoj/aoj_2863.test.cpp
     title: test/aoj/aoj_2863.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_3361.test.cpp
+    title: test/aoj/aoj_3361.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/convolution/Bitwise_And_Convolution.test.cpp
     title: test/convolution/Bitwise_And_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -99,9 +102,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/aoj_3361.test.cpp
-    title: test/polynomial/aoj_3361.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/pow.test.cpp
     title: test/pow.test.cpp
@@ -250,7 +250,6 @@ data:
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/aoj_3361.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
@@ -261,6 +260,7 @@ data:
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/ImplicitTreap.test.cpp
   - test/vertex_set_path_compositie.test.cpp
+  - test/aoj/aoj_3361.test.cpp
   - test/aoj/aoj_2863.test.cpp
   - test/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/data_structure/Deque_Operate_All_Composite.test.cpp

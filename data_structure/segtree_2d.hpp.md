@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/data_structure/aoj_1068.test.cpp
-    title: test/data_structure/aoj_1068.test.cpp
+    path: test/aoj/aoj_1068.test.cpp
+    title: test/aoj/aoj_1068.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -56,7 +56,7 @@ data:
   timestamp: '2023-06-26 02:49:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/aoj_1068.test.cpp
+  - test/aoj/aoj_1068.test.cpp
 documentation_of: data_structure/segtree_2d.hpp
 layout: document
 title: 2D segtree

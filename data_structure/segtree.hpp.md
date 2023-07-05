@@ -7,6 +7,9 @@ data:
     path: test/Segtree.test.cpp
     title: test/Segtree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_1068.test.cpp
+    title: test/aoj/aoj_1068.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_1645.test.cpp
     title: test/aoj/aoj_1645.test.cpp
   - icon: ':heavy_check_mark:'
@@ -15,9 +18,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Sum.test.cpp
     title: test/data_structure/Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/aoj_1068.test.cpp
-    title: test/data_structure/aoj_1068.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/vertex_add_path_sum.test.cpp
     title: test/vertex_add_path_sum.test.cpp
@@ -123,8 +123,8 @@ data:
   - test/vertex_add_path_sum.test.cpp
   - test/vertex_set_path_compositie.test.cpp
   - test/Segtree.test.cpp
+  - test/aoj/aoj_1068.test.cpp
   - test/aoj/aoj_1645.test.cpp
-  - test/data_structure/aoj_1068.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Rectangle_Sum.test.cpp
 documentation_of: data_structure/segtree.hpp

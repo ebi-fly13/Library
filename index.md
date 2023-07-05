@@ -8,7 +8,7 @@ data:
       title: Dice/Dice.hpp
   - name: algorithm
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: algorithm/convex_hull_trick.hpp
       title: algorithm/convex_hull_trick.hpp
     - icon: ':heavy_check_mark:'
@@ -470,6 +470,9 @@ data:
   - name: test/aoj
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj_1068.test.cpp
+      title: test/aoj/aoj_1068.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_1645.test.cpp
       title: test/aoj/aoj_1645.test.cpp
     - icon: ':heavy_check_mark:'
@@ -487,6 +490,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2873.test.cpp
       title: test/aoj/aoj_2873.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj_3361.test.cpp
+      title: test/aoj/aoj_3361.test.cpp
   - name: test/convolution
     pages:
     - icon: ':heavy_check_mark:'
@@ -527,9 +533,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Rectangle_Sum.test.cpp
       title: test/data_structure/Rectangle_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/data_structure/aoj_1068.test.cpp
-      title: test/data_structure/aoj_1068.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/sparse_table_2d.test.cpp
       title: test/data_structure/sparse_table_2d.test.cpp
@@ -655,9 +658,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/polynomial/aoj_3361.test.cpp
-      title: test/polynomial/aoj_3361.test.cpp
   - name: test/set_function
     pages:
     - icon: ':heavy_check_mark:'
@@ -686,5 +686,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/lowest_common_ancestor.test.cpp
       title: test/tree/lowest_common_ancestor.test.cpp
+  - name: test/yuki
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_409.test.cpp
+      title: test/yuki/yuki_409.test.cpp
 layout: toppage
 ---

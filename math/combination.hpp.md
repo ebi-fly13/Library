@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/polynomial/aoj_3361.test.cpp
-    title: test/polynomial/aoj_3361.test.cpp
+    path: test/aoj/aoj_3361.test.cpp
+    title: test/aoj/aoj_3361.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -46,7 +46,7 @@ data:
   timestamp: '2023-06-15 15:11:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/aoj_3361.test.cpp
+  - test/aoj/aoj_3361.test.cpp
 documentation_of: math/combination.hpp
 layout: document
 redirect_from:
