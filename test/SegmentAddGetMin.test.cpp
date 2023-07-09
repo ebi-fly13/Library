@@ -11,11 +11,11 @@ int main() {
     int n, q;
     std::cin >> n >> q;
     std::vector<std::pair<i64, i64>> lr(n);
-    std::vector<ebi::line<i64>> y(n);
+    std::vector<std::pair<i64,i64>> y(n);
     std::vector<i64> x;
     for (int i = 0; i < n; i++) {
         std::cin >> lr[i].first >> lr[i].second;
-        std::cin >> y[i].a >> y[i].b;
+        std::cin >> y[i].first >> y[i].second;
     }
     std::vector<std::vector<i64>> query(q);
     for (int i = 0; i < q; i++) {
@@ -52,7 +52,7 @@ int main() {
                 std::lower_bound(x.begin(), x.end(), query[i][1]) - x.begin();
             int r =
                 std::lower_bound(x.begin(), x.end(), query[i][2]) - x.begin();
-            ebi::line<i64> ya(query[i][3], query[i][4]);
+            std::pair<i64,i64> ya = {query[i][3], query[i][4]};
             seg.add_segment(ya, l, r);
         } else {
             int index =

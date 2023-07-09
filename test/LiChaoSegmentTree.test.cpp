@@ -9,9 +9,9 @@
 int main() {
     int n, q;
     std::cin >> n >> q;
-    std::vector<ebi::line<i64>> p(n);
+    std::vector<std::pair<i64, i64>> p(n);
     for (int i = 0; i < n; i++) {
-        std::cin >> p[i].a >> p[i].b;
+        std::cin >> p[i].first >> p[i].second;
     }
     std::vector<i64> x;
     std::vector<std::vector<i64>> query(q);
@@ -39,8 +39,7 @@ int main() {
     }
     for (int i = 0; i < q; i++) {
         if (query[i][0] == 0) {
-            ebi::line<i64> y(query[i][1], query[i][2]);
-            seg.add_line(y);
+            seg.add_line({query[i][1], query[i][2]});
         } else {
             int index =
                 std::lower_bound(x.begin(), x.end(), query[i][1]) - x.begin();
