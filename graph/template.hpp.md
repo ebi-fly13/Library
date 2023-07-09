@@ -85,26 +85,26 @@ data:
   isVerificationFile: false
   path: graph/template.hpp
   requiredBy:
-  - graph/dijkstra.hpp
-  - graph/dijkstra_fibheap.hpp
-  - graph/scc_graph.hpp
-  - tree/tree_diameter.hpp
   - algorithm/two_sat.hpp
+  - tree/tree_diameter.hpp
+  - graph/dijkstra.hpp
+  - graph/scc_graph.hpp
+  - graph/dijkstra_fibheap.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_subtree_sum.test.cpp
   - test/dijkstra.test.cpp
-  - test/vertex_add_path_sum.test.cpp
-  - test/fibonacci_heap.test.cpp
+  - test/aoj/aoj_2450.test.cpp
+  - test/two_sat.test.cpp
   - test/tree/level_ancestor_lca.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
+  - test/vertex_add_path_sum.test.cpp
   - test/scc_graph.test.cpp
-  - test/aoj/aoj_2450.test.cpp
-  - test/two_sat.test.cpp
+  - test/fibonacci_heap.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:

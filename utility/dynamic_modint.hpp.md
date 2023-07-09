@@ -115,8 +115,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Sqrt_Mod.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 documentation_of: utility/dynamic_modint.hpp
 layout: document
 redirect_from:

@@ -74,17 +74,17 @@ data:
   timestamp: '2023-06-19 12:46:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/WaveletMatrix.test.cpp
-  - test/SegmentTreeBeats.test.cpp
   - test/dijkstra.test.cpp
-  - test/fibonacci_heap.test.cpp
-  - test/FenwickTree.test.cpp
-  - test/tree/Tree_Diameter.test.cpp
-  - test/math/inversion_number.test.cpp
-  - test/LiChaoSegmentTree.test.cpp
   - test/ImplicitTreap.test.cpp
-  - test/SegmentAddGetMin.test.cpp
+  - test/SegmentTreeBeats.test.cpp
+  - test/math/inversion_number.test.cpp
+  - test/WaveletMatrix.test.cpp
   - test/Static_Range_Frequency.test.cpp
+  - test/tree/Tree_Diameter.test.cpp
+  - test/FenwickTree.test.cpp
+  - test/SegmentAddGetMin.test.cpp
+  - test/fibonacci_heap.test.cpp
+  - test/LiChaoSegmentTree.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:

@@ -75,13 +75,13 @@ data:
   isVerificationFile: false
   path: set_function/ranked_subset_transform.hpp
   requiredBy:
-  - convolution/subset_convolution.hpp
   - set_function/sps_exp.hpp
+  - convolution/subset_convolution.hpp
   timestamp: '2023-06-19 14:38:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Subset_Convolution.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/convolution/Subset_Convolution.test.cpp
 documentation_of: set_function/ranked_subset_transform.hpp
 layout: document
 title: Ranked Subset Transform (Zeta / Mobius)

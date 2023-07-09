@@ -120,11 +120,11 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_subtree_sum.test.cpp
-  - test/vertex_add_path_sum.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
-  - test/Segtree.test.cpp
   - test/aoj/aoj_1068.test.cpp
   - test/aoj/aoj_1645.test.cpp
+  - test/Segtree.test.cpp
+  - test/vertex_add_path_sum.test.cpp
+  - test/vertex_set_path_compositie.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Rectangle_Sum.test.cpp
 documentation_of: data_structure/segtree.hpp
