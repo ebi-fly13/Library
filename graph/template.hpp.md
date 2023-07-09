@@ -22,14 +22,14 @@ data:
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/dijkstra.test.cpp
-    title: test/dijkstra.test.cpp
+    path: test/graph/dijkstra.test.cpp
+    title: test/graph/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/fibonacci_heap.test.cpp
-    title: test/fibonacci_heap.test.cpp
+    path: test/graph/fibonacci_heap.test.cpp
+    title: test/graph/fibonacci_heap.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/scc_graph.test.cpp
-    title: test/scc_graph.test.cpp
+    path: test/graph/scc_graph.test.cpp
+    title: test/graph/scc_graph.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
@@ -94,7 +94,6 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/vertex_add_subtree_sum.test.cpp
-  - test/dijkstra.test.cpp
   - test/aoj/aoj_2450.test.cpp
   - test/two_sat.test.cpp
   - test/tree/level_ancestor_lca.test.cpp
@@ -103,8 +102,9 @@ data:
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
   - test/vertex_add_path_sum.test.cpp
-  - test/scc_graph.test.cpp
-  - test/fibonacci_heap.test.cpp
+  - test/graph/dijkstra.test.cpp
+  - test/graph/scc_graph.test.cpp
+  - test/graph/fibonacci_heap.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:

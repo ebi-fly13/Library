@@ -10,8 +10,8 @@ data:
     title: algorithm/two_sat.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/scc_graph.test.cpp
-    title: test/scc_graph.test.cpp
+    path: test/graph/scc_graph.test.cpp
+    title: test/graph/scc_graph.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/two_sat.test.cpp
     title: test/two_sat.test.cpp
@@ -97,7 +97,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/two_sat.test.cpp
-  - test/scc_graph.test.cpp
+  - test/graph/scc_graph.test.cpp
 documentation_of: graph/scc_graph.hpp
 layout: document
 redirect_from:

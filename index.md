@@ -420,17 +420,11 @@ data:
       path: test/binary_trie.test.cpp
       title: test/binary_trie.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/dijkstra.test.cpp
-      title: test/dijkstra.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/enumerate_primes.test.cpp
       title: test/enumerate_primes.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/eratosthenes_sieve.test.cpp
       title: test/eratosthenes_sieve.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/fibonacci_heap.test.cpp
-      title: test/fibonacci_heap.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/persistent_unionfind.test.cpp
       title: test/persistent_unionfind.test.cpp
@@ -443,9 +437,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/range_tree.test.cpp
       title: test/range_tree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/scc_graph.test.cpp
-      title: test/scc_graph.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/static_range_inversion_query.test.cpp
       title: test/static_range_inversion_query.test.cpp
@@ -615,6 +606,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Articulation_Points.test.cpp
       title: test/graph/Articulation_Points.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/dijkstra.test.cpp
+      title: test/graph/dijkstra.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/fibonacci_heap.test.cpp
+      title: test/graph/fibonacci_heap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/scc_graph.test.cpp
+      title: test/graph/scc_graph.test.cpp
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'

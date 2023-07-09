@@ -23,10 +23,11 @@ data:
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
     links:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "#line 1 \"test/fibonacci_heap.test.cpp\"\n#define PROBLEM \\\r\n \
-    \   \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\r\n\r\
-    \n#include <iostream>\r\n\r\n#line 2 \"graph/dijkstra_fibheap.hpp\"\n\r\n#line\
-    \ 2 \"data_structure/fibonacci_heap.hpp\"\n\r\n/*\r\n    reference:\r\n   http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf\r\
+  bundledCode: "#line 1 \"test/graph/fibonacci_heap.test.cpp\"\n#define PROBLEM \\\
+    \r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\r\
+    \n\r\n#include <iostream>\r\n\r\n#line 2 \"graph/dijkstra_fibheap.hpp\"\n\r\n\
+    #line 2 \"data_structure/fibonacci_heap.hpp\"\n\r\n/*\r\n    reference:\r\n  \
+    \ http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf\r\
     \n               https://rsk0315.hatenablog.com/entry/2019/10/29/151823\r\n  \
     \             https://en.wikipedia.org/wiki/Fibonacci_heap\r\n*/\r\n\r\n#include\
     \ <cassert>\r\n#include <queue>\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\
@@ -121,38 +122,38 @@ data:
     using u8 = std::uint8_t;\r\nusing i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\
     \nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\
     \nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n\
-    #line 9 \"test/fibonacci_heap.test.cpp\"\n\r\nint main() {\r\n    int n, m, r;\r\
-    \n    std::cin >> n >> m >> r;\r\n    ebi::Graph<i64> g(n);\r\n    while (m--)\
-    \ {\r\n        int s, t;\r\n        i64 d;\r\n        std::cin >> s >> t >> d;\r\
-    \n        g[s].emplace_back(t, d);\r\n    }\r\n    auto dist = ebi::dijkstra(r,\
+    #line 9 \"test/graph/fibonacci_heap.test.cpp\"\n\r\nint main() {\r\n    int n,\
+    \ m, r;\r\n    std::cin >> n >> m >> r;\r\n    ebi::Graph<i64> g(n);\r\n    while\
+    \ (m--) {\r\n        int s, t;\r\n        i64 d;\r\n        std::cin >> s >> t\
+    \ >> d;\r\n        g[s].emplace_back(t, d);\r\n    }\r\n    auto dist = ebi::dijkstra(r,\
     \ n, g);\r\n    for (int i = 0; i < n; i++) {\r\n        if (dist[i] == std::numeric_limits<i64>::max())\
     \ {\r\n            std::cout << \"INF\" << std::endl;\r\n            continue;\r\
     \n        }\r\n        std::cout << dist[i] << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \\\r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \r\n\r\n#include <iostream>\r\n\r\n#include \"../graph/dijkstra_fibheap.hpp\"\r\
-    \n#include \"../graph/template.hpp\"\r\n#include \"../utility/int_alias.hpp\"\r\
-    \n\r\nint main() {\r\n    int n, m, r;\r\n    std::cin >> n >> m >> r;\r\n   \
-    \ ebi::Graph<i64> g(n);\r\n    while (m--) {\r\n        int s, t;\r\n        i64\
-    \ d;\r\n        std::cin >> s >> t >> d;\r\n        g[s].emplace_back(t, d);\r\
-    \n    }\r\n    auto dist = ebi::dijkstra(r, n, g);\r\n    for (int i = 0; i <\
-    \ n; i++) {\r\n        if (dist[i] == std::numeric_limits<i64>::max()) {\r\n \
-    \           std::cout << \"INF\" << std::endl;\r\n            continue;\r\n  \
-    \      }\r\n        std::cout << dist[i] << std::endl;\r\n    }\r\n}"
+    \r\n\r\n#include <iostream>\r\n\r\n#include \"../../graph/dijkstra_fibheap.hpp\"\
+    \r\n#include \"../../graph/template.hpp\"\r\n#include \"../../utility/int_alias.hpp\"\
+    \r\n\r\nint main() {\r\n    int n, m, r;\r\n    std::cin >> n >> m >> r;\r\n \
+    \   ebi::Graph<i64> g(n);\r\n    while (m--) {\r\n        int s, t;\r\n      \
+    \  i64 d;\r\n        std::cin >> s >> t >> d;\r\n        g[s].emplace_back(t,\
+    \ d);\r\n    }\r\n    auto dist = ebi::dijkstra(r, n, g);\r\n    for (int i =\
+    \ 0; i < n; i++) {\r\n        if (dist[i] == std::numeric_limits<i64>::max())\
+    \ {\r\n            std::cout << \"INF\" << std::endl;\r\n            continue;\r\
+    \n        }\r\n        std::cout << dist[i] << std::endl;\r\n    }\r\n}"
   dependsOn:
   - graph/dijkstra_fibheap.hpp
   - data_structure/fibonacci_heap.hpp
   - graph/template.hpp
   - utility/int_alias.hpp
   isVerificationFile: true
-  path: test/fibonacci_heap.test.cpp
+  path: test/graph/fibonacci_heap.test.cpp
   requiredBy: []
-  timestamp: '2023-06-19 12:46:11+09:00'
+  timestamp: '2023-07-10 01:20:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/fibonacci_heap.test.cpp
+documentation_of: test/graph/fibonacci_heap.test.cpp
 layout: document
 redirect_from:
-- /verify/test/fibonacci_heap.test.cpp
-- /verify/test/fibonacci_heap.test.cpp.html
-title: test/fibonacci_heap.test.cpp
+- /verify/test/graph/fibonacci_heap.test.cpp
+- /verify/test/graph/fibonacci_heap.test.cpp.html
+title: test/graph/fibonacci_heap.test.cpp
 ---

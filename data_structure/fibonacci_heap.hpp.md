@@ -7,8 +7,8 @@ data:
     title: graph/dijkstra_fibheap.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/fibonacci_heap.test.cpp
-    title: test/fibonacci_heap.test.cpp
+    path: test/graph/fibonacci_heap.test.cpp
+    title: test/graph/fibonacci_heap.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -160,7 +160,7 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/fibonacci_heap.test.cpp
+  - test/graph/fibonacci_heap.test.cpp
 documentation_of: data_structure/fibonacci_heap.hpp
 layout: document
 title: fibonacci heap

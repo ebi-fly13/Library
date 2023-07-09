@@ -37,11 +37,11 @@ data:
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/dijkstra.test.cpp
-    title: test/dijkstra.test.cpp
+    path: test/graph/dijkstra.test.cpp
+    title: test/graph/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/fibonacci_heap.test.cpp
-    title: test/fibonacci_heap.test.cpp
+    path: test/graph/fibonacci_heap.test.cpp
+    title: test/graph/fibonacci_heap.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/inversion_number.test.cpp
     title: test/math/inversion_number.test.cpp
@@ -74,7 +74,6 @@ data:
   timestamp: '2023-06-19 12:46:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/dijkstra.test.cpp
   - test/ImplicitTreap.test.cpp
   - test/SegmentTreeBeats.test.cpp
   - test/math/inversion_number.test.cpp
@@ -82,7 +81,8 @@ data:
   - test/Static_Range_Frequency.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/FenwickTree.test.cpp
-  - test/fibonacci_heap.test.cpp
+  - test/graph/dijkstra.test.cpp
+  - test/graph/fibonacci_heap.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
 documentation_of: utility/int_alias.hpp
