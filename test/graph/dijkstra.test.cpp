@@ -1,14 +1,14 @@
 #define PROBLEM \
     "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A"
 
-#include "../graph/dijkstra.hpp"
+#include "../../graph/dijkstra.hpp"
 
 #include <iostream>
 #include <limits>
 #include <vector>
 
-#include "../graph/template.hpp"
-#include "../utility/int_alias.hpp"
+#include "../../graph/template.hpp"
+#include "../../utility/int_alias.hpp"
 
 int main() {
     int v, e, r;

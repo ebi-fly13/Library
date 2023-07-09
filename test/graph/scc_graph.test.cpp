@@ -1,10 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/scc"
 
-#include "../graph/scc_graph.hpp"
+#include "../../graph/scc_graph.hpp"
 
 #include <iostream>
 
-#include "../graph/template.hpp"
+#include "../../graph/template.hpp"
 
 int main() {
     int n, m;

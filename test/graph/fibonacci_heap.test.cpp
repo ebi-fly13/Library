@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#include "../graph/dijkstra_fibheap.hpp"
-#include "../graph/template.hpp"
-#include "../utility/int_alias.hpp"
+#include "../../graph/dijkstra_fibheap.hpp"
+#include "../../graph/template.hpp"
+#include "../../utility/int_alias.hpp"
 
 int main() {
     int n, m, r;
