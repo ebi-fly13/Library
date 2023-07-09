@@ -22,12 +22,6 @@ data:
     path: test/ImplicitTreap.test.cpp
     title: test/ImplicitTreap.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/LiChaoSegmentTree.test.cpp
-    title: test/LiChaoSegmentTree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/SegmentAddGetMin.test.cpp
-    title: test/SegmentAddGetMin.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/SegmentTreeBeats.test.cpp
     title: test/SegmentTreeBeats.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,6 +30,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/WaveletMatrix.test.cpp
     title: test/WaveletMatrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Line_Add_Get_Min.test.cpp
+    title: test/data_structure/Line_Add_Get_Min.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Segment_Add_Get_Min.test.cpp
+    title: test/data_structure/Segment_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/dijkstra.test.cpp
     title: test/dijkstra.test.cpp
@@ -82,9 +82,9 @@ data:
   - test/Static_Range_Frequency.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/FenwickTree.test.cpp
-  - test/SegmentAddGetMin.test.cpp
   - test/fibonacci_heap.test.cpp
-  - test/LiChaoSegmentTree.test.cpp
+  - test/data_structure/Line_Add_Get_Min.test.cpp
+  - test/data_structure/Segment_Add_Get_Min.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:

@@ -61,9 +61,6 @@ data:
       path: data_structure/LazySegtree.hpp
       title: data_structure/LazySegtree.hpp
     - icon: ':heavy_check_mark:'
-      path: data_structure/LiChaoSegmentTree.hpp
-      title: data_structure/LiChaoSegmentTree.hpp
-    - icon: ':heavy_check_mark:'
       path: data_structure/PersistentSegmentTree.hpp
       title: data_structure/PersistentSegmentTree.hpp
     - icon: ':heavy_check_mark:'
@@ -105,6 +102,9 @@ data:
     - icon: ':warning:'
       path: data_structure/kd_tree.hpp
       title: data_structure/kd_tree.hpp
+    - icon: ':heavy_check_mark:'
+      path: data_structure/li_chao_tree.hpp
+      title: Li Chao Tree
     - icon: ':heavy_check_mark:'
       path: data_structure/link_cut_tree.hpp
       title: data_structure/link_cut_tree.hpp
@@ -387,14 +387,8 @@ data:
       path: test/LazySegtree.test.cpp
       title: test/LazySegtree.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/LiChaoSegmentTree.test.cpp
-      title: test/LiChaoSegmentTree.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/PersistentSegmentTree.test.cpp
       title: test/PersistentSegmentTree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/SegmentAddGetMin.test.cpp
-      title: test/SegmentAddGetMin.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/SegmentTreeBeats.test.cpp
       title: test/SegmentTreeBeats.test.cpp
@@ -525,6 +519,9 @@ data:
       path: test/data_structure/Deque_Operate_All_Composite.test.cpp
       title: test/data_structure/Deque_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/data_structure/Line_Add_Get_Min.test.cpp
+      title: test/data_structure/Line_Add_Get_Min.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
       title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -533,6 +530,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Rectangle_Sum.test.cpp
       title: test/data_structure/Rectangle_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Segment_Add_Get_Min.test.cpp
+      title: test/data_structure/Segment_Add_Get_Min.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/sparse_table_2d.test.cpp
       title: test/data_structure/sparse_table_2d.test.cpp
