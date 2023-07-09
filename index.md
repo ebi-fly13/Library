@@ -214,6 +214,9 @@ data:
       path: graph/dijkstra_fibheap.hpp
       title: graph/dijkstra_fibheap.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/low_link.hpp
+      title: Low Link
+    - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
     - icon: ':heavy_check_mark:'
@@ -607,6 +610,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/tangent_to_circle.test.cpp
       title: test/geometry/tangent_to_circle.test.cpp
+  - name: test/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Articulation_Points.test.cpp
+      title: test/graph/Articulation_Points.test.cpp
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'
