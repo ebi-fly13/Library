@@ -48,7 +48,7 @@ struct low_link {
         return _bridge;
     }
 
-  private:
+  protected:
     int n;
     std::vector<std::vector<int>> g;
     std::vector<int> ord, low, _articulation;
