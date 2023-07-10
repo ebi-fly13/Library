@@ -306,7 +306,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: tree/block_cut_tree.hpp
-      title: tree/block_cut_tree.hpp
+      title: Block Cut Tree
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition

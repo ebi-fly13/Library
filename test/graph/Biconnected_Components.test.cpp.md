@@ -12,7 +12,7 @@ data:
     title: graph/template.hpp
   - icon: ':heavy_check_mark:'
     path: tree/block_cut_tree.hpp
-    title: tree/block_cut_tree.hpp
+    title: Block Cut Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

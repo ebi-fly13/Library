@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: tree/block_cut_tree.hpp
-    title: tree/block_cut_tree.hpp
+    title: Block Cut Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/graph/Biconnected_Components.test.cpp
