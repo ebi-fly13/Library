@@ -15,31 +15,34 @@ template <class T> struct li_chao_tree {
     }
 
     void add(std::pair<T, T> y, int l, int r, int index) {
-        bool left = f(y, xs[l]) < f(data[index], xs[l]);
-        bool mid = f(y, xs[(l + r) / 2]) < f(data[index], xs[(l + r) / 2]);
-        bool right = f(y, xs[r - 1]) < f(data[index], xs[r - 1]);
-        if (left && right) {
-            data[index] = y;
-            return;
-        }
-        if (!(left || right)) {
-            return;
-        }
-        if (mid) {
-            std::swap(y, data[index]);
-            left = !left;
-            right = !right;
-        }
-        if (left) {
-            add(y, l, (l + r) / 2, 2 * index);
-        } else {
-            add(y, (l + r) / 2, r, 2 * index + 1);
+        while (l < r) {
+            bool left = f(y, xs[l]) < f(data[index], xs[l]);
+            bool mid = f(y, xs[(l + r) / 2]) < f(data[index], xs[(l + r) / 2]);
+            bool right = f(y, xs[r - 1]) < f(data[index], xs[r - 1]);
+            if (left && right) {
+                data[index] = y;
+                return;
+            }
+            if (!(left || right)) {
+                return;
+            }
+            if (mid) {
+                std::swap(y, data[index]);
+                left = !left;
+                right = !right;
+            }
+            if (left) {
+                r = (l + r) / 2;
+                index *= 2;
+            } else {
+                l = (l + r) / 2;
+                index = 2 * index + 1;
+            }
         }
     }
 
     int get_index(T x) const {
         auto itr = std::lower_bound(xs.begin(), xs.end(), x);
-        // assert(*itr == x);
         return itr - xs.begin();
     }
 
