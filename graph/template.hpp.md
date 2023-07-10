@@ -22,6 +22,9 @@ data:
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/Biconnected_Components.test.cpp
+    title: test/graph/Biconnected_Components.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/dijkstra.test.cpp
     title: test/graph/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
@@ -102,6 +105,7 @@ data:
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
   - test/vertex_add_path_sum.test.cpp
+  - test/graph/Biconnected_Components.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/scc_graph.test.cpp
   - test/graph/fibonacci_heap.test.cpp

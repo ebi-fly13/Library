@@ -33,15 +33,16 @@ data:
     \      : n(g.size()), g(g), ord(n, -1), low(n) {\n        for (int i = 0; i <\
     \ n; i++) {\n            if (ord[i] == -1) dfs(i);\n        }\n    }\n\n    std::vector<int>\
     \ articulation() const {\n        return _articulation;\n    }\n\n    std::vector<std::pair<int,\
-    \ int>> bridge() const {\n        return _bridge;\n    }\n\n  private:\n    int\
-    \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> ord, low, _articulation;\n\
-    \    std::vector<std::pair<int, int>> _bridge;\n};\n\n}  // namespace ebi\n#line\
-    \ 9 \"test/graph/Articulation_Points.test.cpp\"\n\nint main() {\n    int n, m;\n\
-    \    std::cin >> n >> m;\n    std::vector<std::vector<int>> g(n);\n    for (int\
-    \ i = 0; i < m; i++) {\n        int a, b;\n        std::cin >> a >> b;\n     \
-    \   g[a].emplace_back(b);\n        g[b].emplace_back(a);\n    }\n    ebi::low_link\
-    \ low(g);\n    auto arti = low.articulation();\n    std::sort(arti.begin(), arti.end());\n\
-    \    for (auto v : arti) {\n        std::cout << v << '\\n';\n    }\n}\n"
+    \ int>> bridge() const {\n        return _bridge;\n    }\n\n  protected:\n   \
+    \ int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> ord, low,\
+    \ _articulation;\n    std::vector<std::pair<int, int>> _bridge;\n};\n\n}  // namespace\
+    \ ebi\n#line 9 \"test/graph/Articulation_Points.test.cpp\"\n\nint main() {\n \
+    \   int n, m;\n    std::cin >> n >> m;\n    std::vector<std::vector<int>> g(n);\n\
+    \    for (int i = 0; i < m; i++) {\n        int a, b;\n        std::cin >> a >>\
+    \ b;\n        g[a].emplace_back(b);\n        g[b].emplace_back(a);\n    }\n  \
+    \  ebi::low_link low(g);\n    auto arti = low.articulation();\n    std::sort(arti.begin(),\
+    \ arti.end());\n    for (auto v : arti) {\n        std::cout << v << '\\n';\n\
+    \    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A\"\
     \n\n#include <algorithm>\n#include <iostream>\n#include <vector>\n\n#include \"\
     ../../graph/low_link.hpp\"\n\nint main() {\n    int n, m;\n    std::cin >> n >>\
@@ -55,7 +56,7 @@ data:
   isVerificationFile: true
   path: test/graph/Articulation_Points.test.cpp
   requiredBy: []
-  timestamp: '2023-07-10 01:17:09+09:00'
+  timestamp: '2023-07-10 11:25:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Articulation_Points.test.cpp

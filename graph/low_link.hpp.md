@@ -1,11 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: graph/biconnected_components.hpp
+    title: graph/biconnected_components.hpp
+  - icon: ':heavy_check_mark:'
+    path: tree/block_cut_tree.hpp
+    title: tree/block_cut_tree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/graph/Articulation_Points.test.cpp
     title: test/graph/Articulation_Points.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Biconnected_Components.test.cpp
+    title: test/graph/Biconnected_Components.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -27,9 +36,10 @@ data:
     \      : n(g.size()), g(g), ord(n, -1), low(n) {\n        for (int i = 0; i <\
     \ n; i++) {\n            if (ord[i] == -1) dfs(i);\n        }\n    }\n\n    std::vector<int>\
     \ articulation() const {\n        return _articulation;\n    }\n\n    std::vector<std::pair<int,\
-    \ int>> bridge() const {\n        return _bridge;\n    }\n\n  private:\n    int\
-    \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> ord, low, _articulation;\n\
-    \    std::vector<std::pair<int, int>> _bridge;\n};\n\n}  // namespace ebi\n"
+    \ int>> bridge() const {\n        return _bridge;\n    }\n\n  protected:\n   \
+    \ int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> ord, low,\
+    \ _articulation;\n    std::vector<std::pair<int, int>> _bridge;\n};\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <utility>\n#include <vector>\n\
     \nnamespace ebi {\n\nstruct low_link {\n  private:\n    void dfs(int v, int par\
     \ = -1) {\n        static int k = 0;\n        low[v] = ord[v] = k++;\n       \
@@ -46,16 +56,20 @@ data:
     \      : n(g.size()), g(g), ord(n, -1), low(n) {\n        for (int i = 0; i <\
     \ n; i++) {\n            if (ord[i] == -1) dfs(i);\n        }\n    }\n\n    std::vector<int>\
     \ articulation() const {\n        return _articulation;\n    }\n\n    std::vector<std::pair<int,\
-    \ int>> bridge() const {\n        return _bridge;\n    }\n\n  private:\n    int\
-    \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> ord, low, _articulation;\n\
-    \    std::vector<std::pair<int, int>> _bridge;\n};\n\n}  // namespace ebi"
+    \ int>> bridge() const {\n        return _bridge;\n    }\n\n  protected:\n   \
+    \ int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> ord, low,\
+    \ _articulation;\n    std::vector<std::pair<int, int>> _bridge;\n};\n\n}  // namespace\
+    \ ebi"
   dependsOn: []
   isVerificationFile: false
   path: graph/low_link.hpp
-  requiredBy: []
-  timestamp: '2023-07-10 01:17:09+09:00'
+  requiredBy:
+  - tree/block_cut_tree.hpp
+  - graph/biconnected_components.hpp
+  timestamp: '2023-07-10 11:25:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/graph/Biconnected_Components.test.cpp
   - test/graph/Articulation_Points.test.cpp
 documentation_of: graph/low_link.hpp
 layout: document

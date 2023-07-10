@@ -208,6 +208,9 @@ data:
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: graph/biconnected_components.hpp
+      title: graph/biconnected_components.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
     - icon: ':heavy_check_mark:'
@@ -301,6 +304,9 @@ data:
       title: string/trie.hpp
   - name: tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: tree/block_cut_tree.hpp
+      title: tree/block_cut_tree.hpp
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
@@ -606,6 +612,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Articulation_Points.test.cpp
       title: test/graph/Articulation_Points.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Biconnected_Components.test.cpp
+      title: test/graph/Biconnected_Components.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/dijkstra.test.cpp
       title: test/graph/dijkstra.test.cpp
