@@ -24,18 +24,19 @@ data:
     \n\nnamespace ebi {\n\ntemplate <class T> struct li_chao_tree {\n  private:\n\
     \    T f(std::pair<T, T> y, T x) const {\n        return y.first * x + y.second;\n\
     \    }\n\n    void add(std::pair<T, T> y, int l, int r, int index) {\n       \
-    \ bool left = f(y, xs[l]) < f(data[index], xs[l]);\n        bool mid = f(y, xs[(l\
-    \ + r) / 2]) < f(data[index], xs[(l + r) / 2]);\n        bool right = f(y, xs[r\
-    \ - 1]) < f(data[index], xs[r - 1]);\n        if (left && right) {\n         \
-    \   data[index] = y;\n            return;\n        }\n        if (!(left || right))\
-    \ {\n            return;\n        }\n        if (mid) {\n            std::swap(y,\
-    \ data[index]);\n            left = !left;\n            right = !right;\n    \
-    \    }\n        if (left) {\n            add(y, l, (l + r) / 2, 2 * index);\n\
-    \        } else {\n            add(y, (l + r) / 2, r, 2 * index + 1);\n      \
-    \  }\n    }\n\n    int get_index(T x) const {\n        auto itr = std::lower_bound(xs.begin(),\
-    \ xs.end(), x);\n        // assert(*itr == x);\n        return itr - xs.begin();\n\
-    \    }\n\n  public:\n    li_chao_tree(std::vector<T> &_x) : xs(_x), sz(1) {\n\
-    \        std::sort(xs.begin(), xs.end());\n        xs.erase(std::unique(xs.begin(),\
+    \ while (l < r) {\n            bool left = f(y, xs[l]) < f(data[index], xs[l]);\n\
+    \            bool mid = f(y, xs[(l + r) / 2]) < f(data[index], xs[(l + r) / 2]);\n\
+    \            bool right = f(y, xs[r - 1]) < f(data[index], xs[r - 1]);\n     \
+    \       if (left && right) {\n                data[index] = y;\n             \
+    \   return;\n            }\n            if (!(left || right)) {\n            \
+    \    return;\n            }\n            if (mid) {\n                std::swap(y,\
+    \ data[index]);\n                left = !left;\n                right = !right;\n\
+    \            }\n            if (left) {\n                r = (l + r) / 2;\n  \
+    \              index *= 2;\n            } else {\n                l = (l + r)\
+    \ / 2;\n                index = 2 * index + 1;\n            }\n        }\n   \
+    \ }\n\n    int get_index(T x) const {\n        auto itr = std::lower_bound(xs.begin(),\
+    \ xs.end(), x);\n        return itr - xs.begin();\n    }\n\n  public:\n    li_chao_tree(std::vector<T>\
+    \ &_x) : xs(_x), sz(1) {\n        std::sort(xs.begin(), xs.end());\n        xs.erase(std::unique(xs.begin(),\
     \ xs.end()), xs.end());\n        while (sz < int(xs.size())) sz <<= 1;\n     \
     \   while (int(xs.size()) < sz) xs.emplace_back(xs.back() + 1);\n        data.assign(2\
     \ * sz, {0, std::numeric_limits<T>::max()});\n    }\n\n    void add_line(T a,\
@@ -91,7 +92,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-07-09 19:11:14+09:00'
+  timestamp: '2023-07-10 17:44:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Line_Add_Get_Min.test.cpp
