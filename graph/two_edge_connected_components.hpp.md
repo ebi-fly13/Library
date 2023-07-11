@@ -37,41 +37,43 @@ data:
     \ ebi\n#line 4 \"graph/two_edge_connected_components.hpp\"\n\nnamespace ebi {\n\
     \nstruct two_edge_connected_components : low_link {\n  private:\n    void dfs(int\
     \ v, int par = -1) {\n        if (par != -1 && this->ord[par] >= this->low[v])\n\
-    \            id[v] = id[par];\n        else\n            id[v] = k++;\n      \
-    \  for (auto nv : this->g[v]) {\n            if (id[nv] == -1) dfs(nv, v);\n \
-    \       }\n    }\n\n  public:\n    two_edge_connected_components(const std::vector<std::vector<int>>\
-    \ &_g)\n        : low_link(_g), id(this->n, -1) {\n        for (int i = 0; i <\
-    \ this->n; i++) {\n            if (id[i] == -1) dfs(i);\n        }\n        t.resize(k);\n\
-    \        for (auto [u, v] : this->_bridge) {\n            u = id[u];\n       \
-    \     v = id[v];\n            t[u].emplace_back(v);\n            t[v].emplace_back(u);\n\
-    \        }\n    }\n\n    std::vector<std::vector<int>> tecc() const {\n      \
-    \  return t;\n    }\n\n    std::vector<std::vector<int>> groups() const {\n  \
-    \      std::vector _groups(k, std::vector<int>());\n        for (int i = 0; i\
-    \ < n; i++) {\n            _groups[id[i]].emplace_back(i);\n        }\n      \
-    \  return _groups;\n    }\n\n  private:\n    int k = 0;\n    std::vector<int>\
-    \ id;\n    std::vector<std::vector<int>> t;\n};\n\n}  // namespace ebi\n"
+    \            _id[v] = _id[par];\n        else\n            _id[v] = k++;\n   \
+    \     for (auto nv : this->g[v]) {\n            if (_id[nv] == -1) dfs(nv, v);\n\
+    \        }\n    }\n\n  public:\n    two_edge_connected_components(const std::vector<std::vector<int>>\
+    \ &_g)\n        : low_link(_g), _id(this->n, -1) {\n        for (int i = 0; i\
+    \ < this->n; i++) {\n            if (_id[i] == -1) dfs(i);\n        }\n      \
+    \  t.resize(k);\n        for (auto [u, v] : this->_bridge) {\n            u =\
+    \ _id[u];\n            v = _id[v];\n            t[u].emplace_back(v);\n      \
+    \      t[v].emplace_back(u);\n        }\n    }\n\n    std::vector<std::vector<int>>\
+    \ tecc() const {\n        return t;\n    }\n\n    std::vector<std::vector<int>>\
+    \ groups() const {\n        std::vector _groups(k, std::vector<int>());\n    \
+    \    for (int i = 0; i < n; i++) {\n            _groups[_id[i]].emplace_back(i);\n\
+    \        }\n        return _groups;\n    }\n\n    int id(int v) const {\n    \
+    \    return _id[v];\n    }\n\n  private:\n    int k = 0;\n    std::vector<int>\
+    \ _id;\n    std::vector<std::vector<int>> t;\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include \"../graph/low_link.hpp\"\n\nnamespace ebi {\n\n\
     struct two_edge_connected_components : low_link {\n  private:\n    void dfs(int\
     \ v, int par = -1) {\n        if (par != -1 && this->ord[par] >= this->low[v])\n\
-    \            id[v] = id[par];\n        else\n            id[v] = k++;\n      \
-    \  for (auto nv : this->g[v]) {\n            if (id[nv] == -1) dfs(nv, v);\n \
-    \       }\n    }\n\n  public:\n    two_edge_connected_components(const std::vector<std::vector<int>>\
-    \ &_g)\n        : low_link(_g), id(this->n, -1) {\n        for (int i = 0; i <\
-    \ this->n; i++) {\n            if (id[i] == -1) dfs(i);\n        }\n        t.resize(k);\n\
-    \        for (auto [u, v] : this->_bridge) {\n            u = id[u];\n       \
-    \     v = id[v];\n            t[u].emplace_back(v);\n            t[v].emplace_back(u);\n\
-    \        }\n    }\n\n    std::vector<std::vector<int>> tecc() const {\n      \
-    \  return t;\n    }\n\n    std::vector<std::vector<int>> groups() const {\n  \
-    \      std::vector _groups(k, std::vector<int>());\n        for (int i = 0; i\
-    \ < n; i++) {\n            _groups[id[i]].emplace_back(i);\n        }\n      \
-    \  return _groups;\n    }\n\n  private:\n    int k = 0;\n    std::vector<int>\
-    \ id;\n    std::vector<std::vector<int>> t;\n};\n\n}  // namespace ebi"
+    \            _id[v] = _id[par];\n        else\n            _id[v] = k++;\n   \
+    \     for (auto nv : this->g[v]) {\n            if (_id[nv] == -1) dfs(nv, v);\n\
+    \        }\n    }\n\n  public:\n    two_edge_connected_components(const std::vector<std::vector<int>>\
+    \ &_g)\n        : low_link(_g), _id(this->n, -1) {\n        for (int i = 0; i\
+    \ < this->n; i++) {\n            if (_id[i] == -1) dfs(i);\n        }\n      \
+    \  t.resize(k);\n        for (auto [u, v] : this->_bridge) {\n            u =\
+    \ _id[u];\n            v = _id[v];\n            t[u].emplace_back(v);\n      \
+    \      t[v].emplace_back(u);\n        }\n    }\n\n    std::vector<std::vector<int>>\
+    \ tecc() const {\n        return t;\n    }\n\n    std::vector<std::vector<int>>\
+    \ groups() const {\n        std::vector _groups(k, std::vector<int>());\n    \
+    \    for (int i = 0; i < n; i++) {\n            _groups[_id[i]].emplace_back(i);\n\
+    \        }\n        return _groups;\n    }\n\n    int id(int v) const {\n    \
+    \    return _id[v];\n    }\n\n  private:\n    int k = 0;\n    std::vector<int>\
+    \ _id;\n    std::vector<std::vector<int>> t;\n};\n\n}  // namespace ebi"
   dependsOn:
   - graph/low_link.hpp
   isVerificationFile: false
   path: graph/two_edge_connected_components.hpp
   requiredBy: []
-  timestamp: '2023-07-11 11:01:21+09:00'
+  timestamp: '2023-07-11 14:52:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Two_Edge_Connected_Components.test.cpp
