@@ -225,6 +225,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
+    - icon: ':heavy_check_mark:'
+      path: graph/two_edge_connected_components.hpp
+      title: Two Edge Connected Components
   - name: math
     pages:
     - icon: ':warning:'
@@ -615,6 +618,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Biconnected_Components.test.cpp
       title: test/graph/Biconnected_Components.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Two_Edge_Connected_Components.test.cpp
+      title: test/graph/Two_Edge_Connected_Components.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/dijkstra.test.cpp
       title: test/graph/dijkstra.test.cpp

@@ -6,6 +6,9 @@ data:
     path: graph/biconnected_components.hpp
     title: graph/biconnected_components.hpp
   - icon: ':heavy_check_mark:'
+    path: graph/two_edge_connected_components.hpp
+    title: Two Edge Connected Components
+  - icon: ':heavy_check_mark:'
     path: tree/block_cut_tree.hpp
     title: Block Cut Tree
   _extendedVerifiedWith:
@@ -15,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Biconnected_Components.test.cpp
     title: test/graph/Biconnected_Components.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Two_Edge_Connected_Components.test.cpp
+    title: test/graph/Two_Edge_Connected_Components.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -66,10 +72,12 @@ data:
   requiredBy:
   - tree/block_cut_tree.hpp
   - graph/biconnected_components.hpp
+  - graph/two_edge_connected_components.hpp
   timestamp: '2023-07-10 11:25:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Biconnected_Components.test.cpp
+  - test/graph/Two_Edge_Connected_Components.test.cpp
   - test/graph/Articulation_Points.test.cpp
 documentation_of: graph/low_link.hpp
 layout: document
