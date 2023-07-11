@@ -113,14 +113,16 @@ data:
     \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
     \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
     \ distance(int u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
-    \ v)];\n    }\n\n    template <class F>\n    void path_noncommutative_query(int\
-    \ u, int v, bool vertex,\n                                   const F &f) const\
-    \ {\n        int l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) f(a\
-    \ + 1, b);\n        if (vertex) f(in[l], in[l] + 1);\n        for (auto [a, b]\
-    \ : descend(l, v)) f(a, b + 1);\n    }\n\n    template <class F> void subtree_query(int\
-    \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
-    \  }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n};\n\n}  // namespace ebi\n#line 9 \"test/vertex_add_path_sum.test.cpp\"\
+    \ v)];\n    }\n\n    bool at_path(int u, int v, int s) const {\n        return\
+    \ distance(u, v) == distance(u, s) + distance(s, v);\n    }\n\n    template <class\
+    \ F>\n    void path_noncommutative_query(int u, int v, bool vertex,\n        \
+    \                           const F &f) const {\n        int l = lca(u, v);\n\
+    \        for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if (vertex) f(in[l],\
+    \ in[l] + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
+    \n    template <class F> void subtree_query(int u, bool vertex, const F &f) {\n\
+    \        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n    int n;\n \
+    \   std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out, nxt, par,\
+    \ depth, rev;\n};\n\n}  // namespace ebi\n#line 9 \"test/vertex_add_path_sum.test.cpp\"\
     \n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
     i64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n\
     \ >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n     \
@@ -163,7 +165,7 @@ data:
   isVerificationFile: true
   path: test/vertex_add_path_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-26 02:49:17+09:00'
+  timestamp: '2023-07-11 13:12:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/vertex_add_path_sum.test.cpp
