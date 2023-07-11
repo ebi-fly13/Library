@@ -49,16 +49,18 @@ data:
     \ this->n; i++) {\n            if (id[i] == -1) dfs(i);\n        }\n        t.resize(k);\n\
     \        for (auto [u, v] : this->_bridge) {\n            u = id[u];\n       \
     \     v = id[v];\n            t[u].emplace_back(v);\n            t[v].emplace_back(u);\n\
-    \        }\n    }\n\n    std::vector<std::vector<int>> groups() const {\n    \
-    \    std::vector _groups(k, std::vector<int>());\n        for (int i = 0; i <\
-    \ n; i++) {\n            _groups[id[i]].emplace_back(i);\n        }\n        return\
-    \ _groups;\n    }\n\n  private:\n    int k = 0;\n    std::vector<int> id;\n  \
-    \  std::vector<std::vector<int>> t;\n};\n\n}  // namespace ebi\n#line 4 \"test/graph/Two_Edge_Connected_Components.test.cpp\"\
-    \n\n#include <iostream>\n#line 7 \"test/graph/Two_Edge_Connected_Components.test.cpp\"\
-    \n\nint main() {\n    int n, m;\n    std::cin >> n >> m;\n    std::vector g(n,\
-    \ std::vector<int>());\n    for (int i = 0; i < m; i++) {\n        int a, b;\n\
-    \        std::cin >> a >> b;\n        g[a].emplace_back(b);\n        g[b].emplace_back(a);\n\
-    \    }\n    ebi::two_edge_connected_components tecc(g);\n    auto groups = tecc.groups();\n\
+    \        }\n    }\n\n    std::vector<std::vector<int>> tecc() const {\n      \
+    \  return t;\n    }\n\n    std::vector<std::vector<int>> groups() const {\n  \
+    \      std::vector _groups(k, std::vector<int>());\n        for (int i = 0; i\
+    \ < n; i++) {\n            _groups[id[i]].emplace_back(i);\n        }\n      \
+    \  return _groups;\n    }\n\n  private:\n    int k = 0;\n    std::vector<int>\
+    \ id;\n    std::vector<std::vector<int>> t;\n};\n\n}  // namespace ebi\n#line\
+    \ 4 \"test/graph/Two_Edge_Connected_Components.test.cpp\"\n\n#include <iostream>\n\
+    #line 7 \"test/graph/Two_Edge_Connected_Components.test.cpp\"\n\nint main() {\n\
+    \    int n, m;\n    std::cin >> n >> m;\n    std::vector g(n, std::vector<int>());\n\
+    \    for (int i = 0; i < m; i++) {\n        int a, b;\n        std::cin >> a >>\
+    \ b;\n        g[a].emplace_back(b);\n        g[b].emplace_back(a);\n    }\n  \
+    \  ebi::two_edge_connected_components tecc(g);\n    auto groups = tecc.groups();\n\
     \    std::cout << groups.size() << '\\n';\n    for (auto group : groups) {\n \
     \       std::cout << group.size();\n        for (auto v : group) {\n         \
     \   std::cout << \" \" << v;\n        }\n        std::cout << '\\n';\n    }\n\
@@ -79,7 +81,7 @@ data:
   isVerificationFile: true
   path: test/graph/Two_Edge_Connected_Components.test.cpp
   requiredBy: []
-  timestamp: '2023-07-11 10:55:21+09:00'
+  timestamp: '2023-07-11 11:01:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Two_Edge_Connected_Components.test.cpp
