@@ -114,6 +114,10 @@ struct heavy_light_decomposition {
         return depth[u] + depth[v] - 2 * depth[lca(u, v)];
     }
 
+    bool at_path(int u, int v, int s) const {
+        return distance(u, v) == distance(u, s) + distance(s, v);
+    }
+
     template <class F>
     void path_noncommutative_query(int u, int v, bool vertex,
                                    const F &f) const {

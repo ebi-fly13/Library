@@ -31,7 +31,11 @@ documentation_of: //tree/heavy_light_decomposition.hpp
 
 ### distance(int u, int v)
 
-頂点 $u$, $v$ の距離を返す。
+頂点 $u$, $v$ の距離を返す。 $O(\log N)$
+
+### at_path(int u, int v, int s)
+
+$u-v$ パスに $s$ が含まれるか判定。 $O(\log N)$
 
 ### path_noncommutative_query(int u, int v, bool vertex, const F &f)
 
