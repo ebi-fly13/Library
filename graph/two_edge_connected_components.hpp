@@ -31,6 +31,10 @@ struct two_edge_connected_components : low_link {
         }
     }
 
+    std::vector<std::vector<int>> tecc() const {
+        return t;
+    }
+
     std::vector<std::vector<int>> groups() const {
         std::vector _groups(k, std::vector<int>());
         for (int i = 0; i < n; i++) {
