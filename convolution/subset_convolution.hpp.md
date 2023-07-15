@@ -8,12 +8,15 @@ data:
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: set_function/sps_composite_egf.hpp
+  - icon: ':heavy_check_mark:'
+    path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
   - icon: ':heavy_check_mark:'
-    path: set_function/sps_exp.hpp
+    path: set_function/exp_of_sps.hpp
     title: $\exp {a}$ (Set Power Series)
+  - icon: ':heavy_check_mark:'
+    path: set_function/poly_composite_sps.hpp
+    title: $f(a)$ (Set Power Series, f is FPS)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp
@@ -21,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+    title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -87,11 +93,13 @@ data:
   isVerificationFile: false
   path: convolution/subset_convolution.hpp
   requiredBy:
-  - set_function/sps_composite_egf.hpp
-  - set_function/sps_exp.hpp
+  - set_function/poly_composite_sps.hpp
+  - set_function/egf_composite_sps.hpp
+  - set_function/exp_of_sps.hpp
   timestamp: '2023-06-19 14:38:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/convolution/Subset_Convolution.test.cpp
 documentation_of: convolution/subset_convolution.hpp

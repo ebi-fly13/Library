@@ -274,17 +274,20 @@ data:
   - name: set_function
     pages:
     - icon: ':heavy_check_mark:'
+      path: set_function/egf_composite_sps.hpp
+      title: $f(a)$ (Set Power Series, f is EGF)
+    - icon: ':heavy_check_mark:'
+      path: set_function/exp_of_sps.hpp
+      title: $\exp {a}$ (Set Power Series)
+    - icon: ':heavy_check_mark:'
       path: set_function/hadamard_transform.hpp
       title: Hadamard Transform
     - icon: ':heavy_check_mark:'
+      path: set_function/poly_composite_sps.hpp
+      title: $f(a)$ (Set Power Series, f is FPS)
+    - icon: ':heavy_check_mark:'
       path: set_function/ranked_subset_transform.hpp
       title: Ranked Subset Transform (Zeta / Mobius)
-    - icon: ':warning:'
-      path: set_function/sps_composite_egf.hpp
-      title: $f(a)$ (Set Power Series, f is EGF)
-    - icon: ':heavy_check_mark:'
-      path: set_function/sps_exp.hpp
-      title: $\exp {a}$ (Set Power Series)
     - icon: ':heavy_check_mark:'
       path: set_function/subset_transform.hpp
       title: Subset Transform (Zeta / Mobius)
@@ -695,6 +698,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/set_function/Exp_of_Set_Power_Series.test.cpp
       title: test/set_function/Exp_of_Set_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+      title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - name: test/tree
     pages:
     - icon: ':heavy_check_mark:'

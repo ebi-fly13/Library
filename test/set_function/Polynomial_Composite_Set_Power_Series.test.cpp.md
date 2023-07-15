@@ -5,8 +5,11 @@ data:
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
   - icon: ':heavy_check_mark:'
-    path: set_function/exp_of_sps.hpp
-    title: $\exp {a}$ (Set Power Series)
+    path: set_function/egf_composite_sps.hpp
+    title: $f(a)$ (Set Power Series, f is EGF)
+  - icon: ':heavy_check_mark:'
+    path: set_function/poly_composite_sps.hpp
+    title: $f(a)$ (Set Power Series, f is FPS)
   - icon: ':heavy_check_mark:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
@@ -26,16 +29,17 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/exp_of_set_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/polynomial_composite_set_power_series
     links:
-    - https://judge.yosupo.jp/problem/exp_of_set_power_series
-  bundledCode: "#line 1 \"test/set_function/Exp_of_Set_Power_Series.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/exp_of_set_power_series\"\n\n#include\
-    \ <iostream>\n#include <vector>\n\n#line 2 \"set_function/exp_of_sps.hpp\"\n\n\
-    #include <cassert>\n#line 5 \"set_function/exp_of_sps.hpp\"\n\n#line 2 \"convolution/subset_convolution.hpp\"\
-    \n\r\n/*\r\n    refernce: https://www.slideshare.net/wata_orz/ss-12131479\r\n\
-    \              https://37zigen.com/subset-convolution/\r\n*/\r\n\r\n#include <array>\r\
-    \n#line 11 \"convolution/subset_convolution.hpp\"\n\r\n#line 2 \"set_function/ranked_subset_transform.hpp\"\
+    - https://judge.yosupo.jp/problem/polynomial_composite_set_power_series
+  bundledCode: "#line 1 \"test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp\"\
+    \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/polynomial_composite_set_power_series\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"set_function/poly_composite_sps.hpp\"\
+    \n\n#include <cassert>\n#line 5 \"set_function/poly_composite_sps.hpp\"\n\n#line\
+    \ 2 \"set_function/egf_composite_sps.hpp\"\n\n#line 5 \"set_function/egf_composite_sps.hpp\"\
+    \n\n#line 2 \"convolution/subset_convolution.hpp\"\n\r\n/*\r\n    refernce: https://www.slideshare.net/wata_orz/ss-12131479\r\
+    \n              https://37zigen.com/subset-convolution/\r\n*/\r\n\r\n#include\
+    \ <array>\r\n#line 11 \"convolution/subset_convolution.hpp\"\n\r\n#line 2 \"set_function/ranked_subset_transform.hpp\"\
     \n\n#line 6 \"set_function/ranked_subset_transform.hpp\"\n\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
     \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
@@ -71,16 +75,29 @@ data:
     \n        for (int d = n; d >= 0; d--) {\r\n            T x = 0;\r\n         \
     \   for (int i = 0; i <= d; i++) {\r\n                x += f[i] * g[d - i];\r\n\
     \            }\r\n            f[d] = x;\r\n        }\r\n    }\r\n    return ranked_mobius<T,\
-    \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 8 \"set_function/exp_of_sps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T, int LIM> std::vector<T> sps_exp(const\
-    \ std::vector<T> &a) {\n    int n = msb(a.size());\n    assert(n <= LIM);\n  \
-    \  assert((int)a.size() == (1 << n));\n    std::vector<T> fa(1 << n);\n    fa[0]\
-    \ = T(1);\n    for (int i = 0; i < n; i++) {\n        std::vector<T> s = {a.begin()\
-    \ + (1 << i), a.begin() + (2 << i)};\n        std::vector<T> t = {fa.begin(),\
-    \ fa.begin() + (1 << i)};\n        auto c = subset_convolution<T, LIM>(s, t);\n\
-    \        std::copy(c.begin(), c.end(), fa.begin() + (1 << i));\n    }\n    return\
-    \ fa;\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"\
-    utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
+    \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 8 \"set_function/egf_composite_sps.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T, int LIM>\nstd::vector<T> egf_composite_sps(const\
+    \ std::vector<T> &a, std::vector<T> egf) {\n    int n = msb(a.size());\n    assert(n\
+    \ <= LIM);\n    assert((int)a.size() == (1 << n) && a[0] == T(0));\n    if ((int)egf.size()\
+    \ > n) egf.resize(n + 1);\n    int d = egf.size() - 1;\n    std::vector<T> f(1\
+    \ << n);\n    f[0] = egf[d];\n    for (int k = d - 1; k >= 0; k--) {\n       \
+    \ std::vector<T> fk(1 << n);\n        fk[0] = egf[k];\n        for (int i = 0;\
+    \ i < n - k; i++) {\n            std::vector<T> s = {a.begin() + (1 << i), a.begin()\
+    \ + (2 << i)};\n            std::vector<T> t = {f.begin(), f.begin() + (1 << i)};\n\
+    \            auto c = subset_convolution<T, LIM>(s, t);\n            std::copy(c.begin(),\
+    \ c.end(), fk.begin() + (1 << i));\n        }\n        f = fk;\n    }\n    return\
+    \ f;\n}\n\n}  // namespace ebi\n#line 8 \"set_function/poly_composite_sps.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T, int LIM>\nstd::vector<T> poly_composite_sps(std::vector<T>\
+    \ a, const std::vector<T> &f) {\n    int n = msb(a.size());\n    assert(n <= LIM);\n\
+    \    if (f.empty()) return std::vector<T>(1 << n, 0);\n    int d = std::min((int)f.size()\
+    \ - 1, n);\n    std::vector<T> g(d + 1);\n    T c = a[0];\n    a[0] = 0;\n   \
+    \ std::vector<T> pow(d + 1);\n    pow[0] = 1;\n    for (int i = 0; i < (int)f.size();\
+    \ i++) {\n        for (int j = 0; j < d + 1; j++) g[j] += f[i] * pow[j];\n   \
+    \     for (int j = d; j >= 0; j--)\n            pow[j] = pow[j] * c + (j == 0\
+    \ ? 0 : pow[j - 1]);\n    }\n    T fact = 1;\n    for (int i = 0; i < d + 1; i++)\
+    \ {\n        g[i] *= fact;\n        fact *= (i + 1);\n    }\n    return egf_composite_sps<T,\
+    \ LIM>(a, g);\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n\
+    #line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
     \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
     \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
@@ -131,37 +148,40 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/set_function/Exp_of_Set_Power_Series.test.cpp\"\
-    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
-    \ >> n;\n    std::vector<mint> b(1 << n);\n    for (int i = 0; i < (1 << n); i++)\
-    \ {\n        int x;\n        std::cin >> x;\n        b[i] = x;\n    }\n    auto\
-    \ c = ebi::sps_exp<mint, 20>(b);\n    for (int i = 0; i < (1 << n); i++) {\n \
-    \       std::cout << c[i].val() << \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_set_power_series\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../../set_function/exp_of_sps.hpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp\"\
+    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int m, n;\n    std::cin\
+    \ >> m >> n;\n    std::vector<mint> f(m);\n    for (int i = 0; i < m; i++) std::cin\
+    \ >> f[i];\n    std::vector<mint> b(1 << n);\n    for (int i = 0; i < (1 << n);\
+    \ i++) std::cin >> b[i];\n    auto c = ebi::poly_composite_sps<mint, 20>(b, f);\n\
+    \    for (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i] << \" \\\
+    n\"[i == (1 << n) - 1];\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/polynomial_composite_set_power_series\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"../../set_function/poly_composite_sps.hpp\"\
     \n#include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
-    \nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> b(1 << n);\n\
-    \    for (int i = 0; i < (1 << n); i++) {\n        int x;\n        std::cin >>\
-    \ x;\n        b[i] = x;\n    }\n    auto c = ebi::sps_exp<mint, 20>(b);\n    for\
-    \ (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val() << \" \\n\"\
-    [i == (1 << n) - 1];\n    }\n}"
+    \nint main() {\n    int m, n;\n    std::cin >> m >> n;\n    std::vector<mint>\
+    \ f(m);\n    for (int i = 0; i < m; i++) std::cin >> f[i];\n    std::vector<mint>\
+    \ b(1 << n);\n    for (int i = 0; i < (1 << n); i++) std::cin >> b[i];\n    auto\
+    \ c = ebi::poly_composite_sps<mint, 20>(b, f);\n    for (int i = 0; i < (1 <<\
+    \ n); i++) {\n        std::cout << c[i] << \" \\n\"[i == (1 << n) - 1];\n    }\n\
+    }"
   dependsOn:
-  - set_function/exp_of_sps.hpp
+  - set_function/poly_composite_sps.hpp
+  - set_function/egf_composite_sps.hpp
   - convolution/subset_convolution.hpp
   - set_function/ranked_subset_transform.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
-  path: test/set_function/Exp_of_Set_Power_Series.test.cpp
+  path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   requiredBy: []
   timestamp: '2023-07-15 15:32:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/set_function/Exp_of_Set_Power_Series.test.cpp
+documentation_of: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
 layout: document
 redirect_from:
-- /verify/test/set_function/Exp_of_Set_Power_Series.test.cpp
-- /verify/test/set_function/Exp_of_Set_Power_Series.test.cpp.html
-title: test/set_function/Exp_of_Set_Power_Series.test.cpp
+- /verify/test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+- /verify/test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp.html
+title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
 ---

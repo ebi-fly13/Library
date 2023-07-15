@@ -109,6 +109,9 @@ data:
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+    title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -234,6 +237,7 @@ data:
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/aoj/aoj_3361.test.cpp
   - test/aoj/aoj_2863.test.cpp
+  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/ImplicitTreap.test.cpp
   - test/matrix/Determinant_of_Matrix.test.cpp

@@ -20,7 +20,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"set_function/sps_exp.hpp\"\n\n#include <cassert>\n#include\
+  bundledCode: "#line 2 \"set_function/exp_of_sps.hpp\"\n\n#include <cassert>\n#include\
     \ <vector>\n\n#line 2 \"convolution/subset_convolution.hpp\"\n\r\n/*\r\n    refernce:\
     \ https://www.slideshare.net/wata_orz/ss-12131479\r\n              https://37zigen.com/subset-convolution/\r\
     \n*/\r\n\r\n#include <array>\r\n#line 11 \"convolution/subset_convolution.hpp\"\
@@ -60,7 +60,7 @@ data:
     \n        for (int d = n; d >= 0; d--) {\r\n            T x = 0;\r\n         \
     \   for (int i = 0; i <= d; i++) {\r\n                x += f[i] * g[d - i];\r\n\
     \            }\r\n            f[d] = x;\r\n        }\r\n    }\r\n    return ranked_mobius<T,\
-    \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 8 \"set_function/sps_exp.hpp\"\
+    \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 8 \"set_function/exp_of_sps.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T, int LIM> std::vector<T> sps_exp(const\
     \ std::vector<T> &a) {\n    int n = msb(a.size());\n    assert(n <= LIM);\n  \
     \  assert((int)a.size() == (1 << n));\n    std::vector<T> fa(1 << n);\n    fa[0]\
@@ -83,13 +83,13 @@ data:
   - set_function/ranked_subset_transform.hpp
   - utility/bit_operator.hpp
   isVerificationFile: false
-  path: set_function/sps_exp.hpp
+  path: set_function/exp_of_sps.hpp
   requiredBy: []
-  timestamp: '2023-07-15 15:04:18+09:00'
+  timestamp: '2023-07-15 15:32:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
-documentation_of: set_function/sps_exp.hpp
+documentation_of: set_function/exp_of_sps.hpp
 layout: document
 title: $\exp {a}$ (Set Power Series)
 ---

@@ -136,6 +136,9 @@ data:
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+    title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - icon: ':heavy_check_mark:'
@@ -220,6 +223,7 @@ data:
   - test/aoj/aoj_2444.test.cpp
   - test/aoj/aoj_3361.test.cpp
   - test/aoj/aoj_2863.test.cpp
+  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/Sqrt_Mod.test.cpp
   - test/ImplicitTreap.test.cpp
