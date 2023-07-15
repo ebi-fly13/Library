@@ -25,10 +25,10 @@ data:
     title: Ranked Subset Transform (Zeta / Mobius)
   - icon: ':warning:'
     path: set_function/sps_composite_egf.hpp
-    title: set_function/sps_composite_egf.hpp
+    title: $f(a)$ (Set Power Series, f is EGF)
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
-    title: $f(a)$ (Set Power Series, f is EGF)
+    title: $\exp {a}$ (Set Power Series)
   - icon: ':heavy_check_mark:'
     path: set_function/subset_transform.hpp
     title: Subset Transform (Zeta / Mobius)

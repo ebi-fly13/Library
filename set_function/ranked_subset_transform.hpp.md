@@ -10,10 +10,10 @@ data:
     title: Subset Convolution
   - icon: ':warning:'
     path: set_function/sps_composite_egf.hpp
-    title: set_function/sps_composite_egf.hpp
+    title: $f(a)$ (Set Power Series, f is EGF)
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
-    title: $f(a)$ (Set Power Series, f is EGF)
+    title: $\exp {a}$ (Set Power Series)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp
