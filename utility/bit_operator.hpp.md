@@ -23,9 +23,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
+  - icon: ':warning:'
+    path: set_function/sps_composite_egf.hpp
+    title: set_function/sps_composite_egf.hpp
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
-    title: $\exp {a}$ (Set Power Series)
+    title: $f(a)$ (Set Power Series, f is EGF)
   - icon: ':heavy_check_mark:'
     path: set_function/subset_transform.hpp
     title: Subset Transform (Zeta / Mobius)
@@ -112,6 +115,7 @@ data:
   path: utility/bit_operator.hpp
   requiredBy:
   - set_function/subset_transform.hpp
+  - set_function/sps_composite_egf.hpp
   - set_function/ranked_subset_transform.hpp
   - set_function/superset_transform.hpp
   - set_function/sps_exp.hpp

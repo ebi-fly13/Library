@@ -8,9 +8,12 @@ data:
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: set_function/sps_composite_egf.hpp
+    title: set_function/sps_composite_egf.hpp
   - icon: ':heavy_check_mark:'
     path: set_function/sps_exp.hpp
-    title: $\exp {a}$ (Set Power Series)
+    title: $f(a)$ (Set Power Series, f is EGF)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp
@@ -84,6 +87,7 @@ data:
   isVerificationFile: false
   path: convolution/subset_convolution.hpp
   requiredBy:
+  - set_function/sps_composite_egf.hpp
   - set_function/sps_exp.hpp
   timestamp: '2023-06-19 14:38:20+09:00'
   verificationStatus: LIBRARY_ALL_AC

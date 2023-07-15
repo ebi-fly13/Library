@@ -62,22 +62,22 @@ data:
     \            }\r\n            f[d] = x;\r\n        }\r\n    }\r\n    return ranked_mobius<T,\
     \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 8 \"set_function/sps_exp.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T, int LIM> std::vector<T> sps_exp(const\
-    \ std::vector<T> &s) {\n    int n = msb(s.size());\n    assert(n <= LIM);\n  \
-    \  assert((int)s.size() == (1 << n));\n    std::vector<T> fs(1 << n);\n    fs[0]\
-    \ = T(1);\n    for (int i = 0; i < n; i++) {\n        std::vector<T> a = {s.begin()\
-    \ + (1 << i), s.begin() + (2 << i)};\n        std::vector<T> b = {fs.begin(),\
-    \ fs.begin() + (1 << i)};\n        a = subset_convolution<T, LIM>(a, b);\n   \
-    \     std::copy(a.begin(), a.end(), fs.begin() + (1 << i));\n    }\n    return\
-    \ fs;\n}\n\n}  // namespace ebi\n"
+    \ std::vector<T> &a) {\n    int n = msb(a.size());\n    assert(n <= LIM);\n  \
+    \  assert((int)a.size() == (1 << n));\n    std::vector<T> fa(1 << n);\n    fa[0]\
+    \ = T(1);\n    for (int i = 0; i < n; i++) {\n        std::vector<T> s = {a.begin()\
+    \ + (1 << i), a.begin() + (2 << i)};\n        std::vector<T> t = {fa.begin(),\
+    \ fa.begin() + (1 << i)};\n        auto c = subset_convolution<T, LIM>(s, t);\n\
+    \        std::copy(c.begin(), c.end(), fa.begin() + (1 << i));\n    }\n    return\
+    \ fa;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../convolution/subset_convolution.hpp\"\
     \n#include \"../utility/bit_operator.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ T, int LIM> std::vector<T> sps_exp(const std::vector<T> &s) {\n    int n = msb(s.size());\n\
-    \    assert(n <= LIM);\n    assert((int)s.size() == (1 << n));\n    std::vector<T>\
-    \ fs(1 << n);\n    fs[0] = T(1);\n    for (int i = 0; i < n; i++) {\n        std::vector<T>\
-    \ a = {s.begin() + (1 << i), s.begin() + (2 << i)};\n        std::vector<T> b\
-    \ = {fs.begin(), fs.begin() + (1 << i)};\n        a = subset_convolution<T, LIM>(a,\
-    \ b);\n        std::copy(a.begin(), a.end(), fs.begin() + (1 << i));\n    }\n\
-    \    return fs;\n}\n\n}  // namespace ebi"
+    \ T, int LIM> std::vector<T> sps_exp(const std::vector<T> &a) {\n    int n = msb(a.size());\n\
+    \    assert(n <= LIM);\n    assert((int)a.size() == (1 << n));\n    std::vector<T>\
+    \ fa(1 << n);\n    fa[0] = T(1);\n    for (int i = 0; i < n; i++) {\n        std::vector<T>\
+    \ s = {a.begin() + (1 << i), a.begin() + (2 << i)};\n        std::vector<T> t\
+    \ = {fa.begin(), fa.begin() + (1 << i)};\n        auto c = subset_convolution<T,\
+    \ LIM>(s, t);\n        std::copy(c.begin(), c.end(), fa.begin() + (1 << i));\n\
+    \    }\n    return fa;\n}\n\n}  // namespace ebi"
   dependsOn:
   - convolution/subset_convolution.hpp
   - set_function/ranked_subset_transform.hpp
@@ -85,15 +85,15 @@ data:
   isVerificationFile: false
   path: set_function/sps_exp.hpp
   requiredBy: []
-  timestamp: '2023-06-19 14:38:20+09:00'
+  timestamp: '2023-07-15 15:04:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
 documentation_of: set_function/sps_exp.hpp
 layout: document
-title: $\exp {a}$ (Set Power Series)
+title: $f(a)$ (Set Power Series, f is EGF)
 ---
 
 ## 説明
 
-$f(x) = \exp{x}$ として、 集合べき級数 $a$ を $f(x)$ に代入する。つまり、$f(a)$ を求める。 $O(N^2 \log N)$
+$f$ を指数型母関数 (EGF)として、 集合べき級数 $a$ を $f(x)$ に代入する。つまり、$f(a)$ を求める。 $O(N^2 \log N)$
