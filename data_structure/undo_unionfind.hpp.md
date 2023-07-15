@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/offline_dynamic_connectivity.hpp
+    title: Offline Dynamic Connectivity
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_1645.test.cpp
     title: test/aoj/aoj_1645.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2235.test.cpp
+    title: test/aoj/aoj_2235.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -48,10 +54,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data_structure/undo_unionfind.hpp
-  requiredBy: []
+  requiredBy:
+  - data_structure/offline_dynamic_connectivity.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_1645.test.cpp
 documentation_of: data_structure/undo_unionfind.hpp
 layout: document

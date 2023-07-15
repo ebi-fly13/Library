@@ -18,6 +18,9 @@ data:
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
   - icon: ':heavy_check_mark:'
+    path: data_structure/offline_dynamic_connectivity.hpp
+    title: Offline Dynamic Connectivity
+  - icon: ':heavy_check_mark:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
@@ -33,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2235.test.cpp
+    title: test/aoj/aoj_2235.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Bitwise_And_Convolution.test.cpp
     title: test/convolution/Bitwise_And_Convolution.test.cpp
@@ -114,10 +120,12 @@ data:
   - convolution/ntt.hpp
   - convolution/and_convolution.hpp
   - convolution/or_convolution.hpp
+  - data_structure/offline_dynamic_connectivity.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/aoj/aoj_2235.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp

@@ -109,6 +109,9 @@ data:
       path: data_structure/link_cut_tree.hpp
       title: data_structure/link_cut_tree.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structure/offline_dynamic_connectivity.hpp
+      title: Offline Dynamic Connectivity
+    - icon: ':heavy_check_mark:'
       path: data_structure/offline_segtree_2d.hpp
       title: offline 2D segtree
     - icon: ':warning:'
@@ -475,6 +478,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2152.test.cpp
       title: test/aoj/aoj_2152.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj_2235.test.cpp
+      title: test/aoj/aoj_2235.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2444.test.cpp
       title: test/aoj/aoj_2444.test.cpp
