@@ -1,6 +1,6 @@
 ---
 title: $f(a)$ (Set Power Series, f is EGF)
-documentation_of: //set_function/sps_composite_egf.hpp
+documentation_of: //set_function/egf_composite_sps.hpp
 ---
 
 ## 説明

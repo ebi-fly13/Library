@@ -9,7 +9,7 @@
 namespace ebi {
 
 template <class T, int LIM>
-std::vector<T> sps_composite_egf(const std::vector<T> &a, std::vector<T> egf) {
+std::vector<T> egf_composite_sps(const std::vector<T> &a, std::vector<T> egf) {
     int n = msb(a.size());
     assert(n <= LIM);
     assert((int)a.size() == (1 << n) && a[0] == T(0));

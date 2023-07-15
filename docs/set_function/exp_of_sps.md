@@ -1,6 +1,6 @@
 ---
 title: $\exp {a}$ (Set Power Series)
-documentation_of: //set_function/sps_exp.hpp
+documentation_of: //set_function/exp_of_sps.hpp
 ---
 
 ## 説明
