@@ -8,7 +8,7 @@
 
 namespace ebi {
 
-template <class T, int LIM> std::vector<T> sps_exp(const std::vector<T> &a) {
+template <class T, int LIM> std::vector<T> exp_of_sps(const std::vector<T> &a) {
     int n = msb(a.size());
     assert(n <= LIM);
     assert((int)a.size() == (1 << n));

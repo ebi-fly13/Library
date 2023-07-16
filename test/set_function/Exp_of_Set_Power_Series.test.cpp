@@ -17,7 +17,7 @@ int main() {
         std::cin >> x;
         b[i] = x;
     }
-    auto c = ebi::sps_exp<mint, 20>(b);
+    auto c = ebi::exp_of_sps<mint, 20>(b);
     for (int i = 0; i < (1 << n); i++) {
         std::cout << c[i].val() << " \n"[i == (1 << n) - 1];
     }
