@@ -72,7 +72,7 @@ data:
     \   for (int i = 0; i <= d; i++) {\r\n                x += f[i] * g[d - i];\r\n\
     \            }\r\n            f[d] = x;\r\n        }\r\n    }\r\n    return ranked_mobius<T,\
     \ LIM>(ra);\r\n}\r\n\r\n}  // namespace ebi\n#line 8 \"set_function/exp_of_sps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T, int LIM> std::vector<T> sps_exp(const\
+    \n\nnamespace ebi {\n\ntemplate <class T, int LIM> std::vector<T> exp_of_sps(const\
     \ std::vector<T> &a) {\n    int n = msb(a.size());\n    assert(n <= LIM);\n  \
     \  assert((int)a.size() == (1 << n));\n    std::vector<T> fa(1 << n);\n    fa[0]\
     \ = T(1);\n    for (int i = 0; i < n; i++) {\n        std::vector<T> s = {a.begin()\
@@ -135,16 +135,16 @@ data:
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
     \ >> n;\n    std::vector<mint> b(1 << n);\n    for (int i = 0; i < (1 << n); i++)\
     \ {\n        int x;\n        std::cin >> x;\n        b[i] = x;\n    }\n    auto\
-    \ c = ebi::sps_exp<mint, 20>(b);\n    for (int i = 0; i < (1 << n); i++) {\n \
-    \       std::cout << c[i].val() << \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
+    \ c = ebi::exp_of_sps<mint, 20>(b);\n    for (int i = 0; i < (1 << n); i++) {\n\
+    \        std::cout << c[i].val() << \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_set_power_series\"\
     \n\n#include <iostream>\n#include <vector>\n\n#include \"../../set_function/exp_of_sps.hpp\"\
     \n#include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
     \nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> b(1 << n);\n\
     \    for (int i = 0; i < (1 << n); i++) {\n        int x;\n        std::cin >>\
-    \ x;\n        b[i] = x;\n    }\n    auto c = ebi::sps_exp<mint, 20>(b);\n    for\
-    \ (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val() << \" \\n\"\
-    [i == (1 << n) - 1];\n    }\n}"
+    \ x;\n        b[i] = x;\n    }\n    auto c = ebi::exp_of_sps<mint, 20>(b);\n \
+    \   for (int i = 0; i < (1 << n); i++) {\n        std::cout << c[i].val() << \"\
+    \ \\n\"[i == (1 << n) - 1];\n    }\n}"
   dependsOn:
   - set_function/exp_of_sps.hpp
   - convolution/subset_convolution.hpp
@@ -155,7 +155,7 @@ data:
   isVerificationFile: true
   path: test/set_function/Exp_of_Set_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-07-15 15:32:41+09:00'
+  timestamp: '2023-07-16 18:25:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/set_function/Exp_of_Set_Power_Series.test.cpp
