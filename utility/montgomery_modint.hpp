@@ -32,6 +32,8 @@ template <int m> struct montgomery_modint : internal::static_modint_base {
         return u32(b >> 32) + umod() - u32((u64(u32(b) * r) * umod()) >> 32);
     }
 
+    static constexpr u32 one = reduce(i64(1 + umod()) * n2);
+
     static_assert(r * umod() == 1, "invalid, r * mod != 1");
     static_assert(umod() < (1 << 30), "invalid, mod >= 2 ^ 30");
     static_assert((umod() & 1) == 1, "invalid, mod % 2 == 0");
@@ -67,12 +69,12 @@ template <int m> struct montgomery_modint : internal::static_modint_base {
     }
 
     constexpr modint &operator++() {
-        *this += one;
+        if (i32(_v += one - 2 * umod()) < 0) _v += 2 * umod();
         return *this;
     }
 
     constexpr modint &operator--() {
-        *this -= one;
+        if (i32(_v -= one) < 0) _v += 2 * umod();
         return *this;
     }
 
@@ -137,7 +139,6 @@ template <int m> struct montgomery_modint : internal::static_modint_base {
 
   private:
     u32 _v = 0;
-    static constexpr modint one = 1;
 };
 
 template <int m>
