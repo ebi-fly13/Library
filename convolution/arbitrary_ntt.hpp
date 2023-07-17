@@ -5,7 +5,7 @@
 
 #include "../convolution/ntt.hpp"
 #include "../utility/modint_base.hpp"
-#include "../utility/montgomery_modint.hpp"
+#include "../utility/modint.hpp"
 
 namespace ebi {
 
@@ -31,9 +31,9 @@ std::vector<mint> arbitary_convolution(const std::vector<mint>& f,
     static constexpr i32 m0 = 167772161;  // 2^25
     static constexpr i32 m1 = 469762049;  // 2^26
     static constexpr i32 m2 = 754974721;  // 2^24
-    using mint0 = montgomery_modint<m0>;
-    using mint1 = montgomery_modint<m1>;
-    using mint2 = montgomery_modint<m2>;
+    using mint0 = static_modint<m0>;
+    using mint1 = static_modint<m1>;
+    using mint2 = static_modint<m2>;
     static constexpr i32 inv01 = mint1(m0).inv().val();
     static constexpr i32 inv02 = mint2(m0).inv().val();
     static constexpr i32 inv12 = mint2(m1).inv().val();

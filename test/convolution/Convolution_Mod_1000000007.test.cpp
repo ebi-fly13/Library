@@ -4,9 +4,9 @@
 #include <vector>
 
 #include "../../convolution/arbitrary_ntt.hpp"
-#include "../../utility/montgomery_modint.hpp"
+#include "../../utility/modint.hpp"
 
-using mint = ebi::montgomery_modint1000000007;
+using mint = ebi::modint1000000007;
 
 int main() {
     int n, m;
