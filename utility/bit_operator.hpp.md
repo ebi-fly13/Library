@@ -120,39 +120,39 @@ data:
   isVerificationFile: false
   path: utility/bit_operator.hpp
   requiredBy:
+  - set_function/poly_composite_sps.hpp
+  - set_function/egf_composite_sps.hpp
+  - set_function/subset_transform.hpp
+  - set_function/ranked_subset_transform.hpp
+  - set_function/exp_of_sps.hpp
+  - set_function/superset_transform.hpp
+  - convolution/arbitrary_ntt.hpp
+  - convolution/subset_convolution.hpp
+  - convolution/ntt.hpp
   - convolution/and_convolution.hpp
   - convolution/or_convolution.hpp
-  - convolution/arbitrary_ntt.hpp
-  - convolution/ntt.hpp
-  - convolution/subset_convolution.hpp
-  - set_function/poly_composite_sps.hpp
-  - set_function/ranked_subset_transform.hpp
-  - set_function/egf_composite_sps.hpp
-  - set_function/superset_transform.hpp
-  - set_function/subset_transform.hpp
-  - set_function/exp_of_sps.hpp
   - data_structure/offline_dynamic_connectivity.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2235.test.cpp
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+  - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/convolution/Bitwise_And_Convolution.test.cpp
   - test/convolution/Subset_Convolution.test.cpp
   - test/convolution/Convolution.test.cpp
+  - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
-  - test/convolution/Bitwise_And_Convolution.test.cpp
-  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
 redirect_from:

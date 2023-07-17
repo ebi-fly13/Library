@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
+    title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -116,13 +119,14 @@ data:
   timestamp: '2023-06-26 02:49:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_1645.test.cpp
   - test/aoj/aoj_1068_1.test.cpp
+  - test/aoj/aoj_1645.test.cpp
+  - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - test/data_structure/Rectangle_Sum_Segtree.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
   - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+  - test/data_structure/Rectangle_Sum_Segtree.test.cpp
 documentation_of: data_structure/segtree.hpp
 layout: document
 title: segtree

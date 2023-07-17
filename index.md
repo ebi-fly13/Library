@@ -535,7 +535,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
       title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
       title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - name: test/geometry
@@ -631,7 +631,7 @@ data:
       title: test/graph/scc_graph.test.cpp
   - name: test/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Enumerate_Primes.test.cpp
       title: test/math/Enumerate_Primes.test.cpp
     - icon: ':heavy_check_mark:'

@@ -67,8 +67,8 @@ data:
   verifiedWith:
   - test/math/Inversion_Number.test.cpp
   - test/geometry/segment_intersection.test.cpp
-  - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/data_structure/Static_Range_Inversion_Query.test.cpp
+  - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 redirect_from:

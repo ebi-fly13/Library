@@ -22,6 +22,9 @@ data:
     path: test/convolution/Lcm_Convolution.test.cpp
     title: test/convolution/Lcm_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Enumerate_Primes.test.cpp
+    title: test/math/Enumerate_Primes.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/eratosthenes_sieve.test.cpp
     title: test/math/eratosthenes_sieve.test.cpp
   _isVerificationFailed: false
@@ -60,16 +63,17 @@ data:
   isVerificationFile: false
   path: math/eratosthenes_sieve.hpp
   requiredBy:
-  - convolution/gcd_convolution.hpp
-  - convolution/lcm_convolution.hpp
   - math/multiple_transform.hpp
   - math/divisor_transform.hpp
+  - convolution/lcm_convolution.hpp
+  - convolution/gcd_convolution.hpp
   timestamp: '2023-06-09 15:36:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/math/eratosthenes_sieve.test.cpp
+  - test/math/Enumerate_Primes.test.cpp
   - test/convolution/Lcm_Convolution.test.cpp
   - test/convolution/Gcd_Convolution.test.cpp
-  - test/math/eratosthenes_sieve.test.cpp
 documentation_of: math/eratosthenes_sieve.hpp
 layout: document
 redirect_from:
