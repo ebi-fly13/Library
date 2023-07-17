@@ -11,7 +11,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/convex_hull_trick.hpp
       title: Convex Hull Trick
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp
     - icon: ':warning:'
@@ -57,7 +57,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/ImplicitTreap.hpp
       title: data_structure/ImplicitTreap.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/LazySegtree.hpp
       title: data_structure/LazySegtree.hpp
     - icon: ':heavy_check_mark:'
@@ -72,19 +72,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/Suspension.hpp
       title: data_structure/Suspension.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/UnionFind.hpp
       title: data_structure/UnionFind.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/WaveletMatrix.hpp
       title: Wavelet Matrix
     - icon: ':heavy_check_mark:'
       path: data_structure/bankers_queue.hpp
       title: data_structure/bankers_queue.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
     - icon: ':question:'
@@ -111,7 +111,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/offline_dynamic_connectivity.hpp
       title: Offline Dynamic Connectivity
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/offline_segtree_2d.hpp
       title: offline 2D segtree
     - icon: ':warning:'
@@ -135,7 +135,7 @@ data:
     - icon: ':warning:'
       path: data_structure/range_query_binary_trie.hpp
       title: data_structure/range_query_binary_trie.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/range_tree.hpp
       title: data_structure/range_tree.hpp
     - icon: ':warning:'
@@ -144,7 +144,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: data_structure/section_set.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
       title: segtree
     - icon: ':heavy_check_mark:'
@@ -153,7 +153,7 @@ data:
     - icon: ':warning:'
       path: data_structure/slope_trick.hpp
       title: data_structure/slope_trick.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
     - icon: ':warning:'
@@ -225,7 +225,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
     - icon: ':heavy_check_mark:'
@@ -327,7 +327,7 @@ data:
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
@@ -478,7 +478,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Point_Add_Range_Sum_Persistent_Segtree.test.cpp
       title: test/data_structure/Point_Add_Range_Sum_Persistent_Segtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
       title: test/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
     - icon: ':heavy_check_mark:'
@@ -496,7 +496,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Add_Query.test.cpp
       title: test/data_structure/Range_Add_Query.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Range_Affine_Range_Sum.test.cpp
     - icon: ':x:'
@@ -505,34 +505,34 @@ data:
     - icon: ':x:'
       path: test/data_structure/Range_Kth_Smallest.test.cpp
       title: test/data_structure/Range_Kth_Smallest.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Rectangle_Sum_Range_Tree.test.cpp
       title: test/data_structure/Rectangle_Sum_Range_Tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
       title: test/data_structure/Rectangle_Sum_Segtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Segment_Add_Get_Min.test.cpp
       title: test/data_structure/Segment_Add_Get_Min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Set_Xor_Min.test.cpp
       title: test/data_structure/Set_Xor_Min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_Range_Frequency.test.cpp
       title: test/data_structure/Static_Range_Frequency.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_Range_Inversion_Query.test.cpp
       title: test/data_structure/Static_Range_Inversion_Query.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_Rmq.test.cpp
       title: test/data_structure/Static_Rmq.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Union_Find.test.cpp
       title: test/data_structure/Union_Find.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
       title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     - icon: ':x:'

@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/WaveletMatrix.hpp
     title: Wavelet Matrix
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
   - icon: ':x:'
@@ -27,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Frequency.test.cpp
     title: test/data_structure/Static_Range_Frequency.test.cpp
   - icon: ':heavy_check_mark:'

@@ -9,7 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversion_Query.test.cpp
     title: test/data_structure/Static_Range_Inversion_Query.test.cpp
   - icon: ':x:'

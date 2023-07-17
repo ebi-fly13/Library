@@ -5,16 +5,16 @@ data:
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/WaveletMatrix.hpp
     title: Wavelet Matrix
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Frequency.test.cpp
     title: test/data_structure/Static_Range_Frequency.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://misteer.hatenablog.com/entry/bit-vector
@@ -104,7 +104,7 @@ data:
   requiredBy:
   - data_structure/WaveletMatrix.hpp
   timestamp: '2023-06-19 12:46:11+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Static_Range_Frequency.test.cpp
 documentation_of: data_structure/bitVector.hpp

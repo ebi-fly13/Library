@@ -81,7 +81,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':x:'

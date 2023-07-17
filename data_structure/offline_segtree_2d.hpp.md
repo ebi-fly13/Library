@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
     title: test/data_structure/Rectangle_Sum_Segtree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - http://codeforces.com/contest/893/submission/125531718
@@ -97,7 +97,7 @@ data:
   path: data_structure/offline_segtree_2d.hpp
   requiredBy: []
   timestamp: '2023-06-26 12:08:21+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Rectangle_Sum_Segtree.test.cpp

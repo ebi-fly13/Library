@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/offline_segtree_2d.hpp
     title: offline 2D segtree
   - icon: ':x:'
@@ -12,10 +12,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
     title: test/data_structure/Rectangle_Sum_Segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversion_Query.test.cpp
     title: test/data_structure/Static_Range_Inversion_Query.test.cpp
   - icon: ':x:'
