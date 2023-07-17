@@ -28,8 +28,6 @@ template <int m> struct montgomery_modint : internal::static_modint_base {
     static constexpr u32 r = get_r();
     static constexpr u32 n2 = -u64(umod()) % umod();
 
-    static constexpr modint one = 1;
-
     static constexpr u32 reduce(const u64 &b) {
         return u32(b >> 32) + umod() - u32((u64(u32(b) * r) * umod()) >> 32);
     }
@@ -139,6 +137,7 @@ template <int m> struct montgomery_modint : internal::static_modint_base {
 
   private:
     u32 _v = 0;
+    static constexpr modint one = 1;
 };
 
 template <int m>
