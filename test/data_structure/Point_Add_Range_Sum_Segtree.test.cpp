@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <iostream>
 
-#include "../data_structure/segtree.hpp"
+#include "../../data_structure/segtree.hpp"
 
 using i64 = std::int64_t;
 
