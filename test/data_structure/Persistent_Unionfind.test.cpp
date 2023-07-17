@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/persistent_unionfind"
 
-#include "../data_structure/persistent_unionfind.hpp"
+#include "../../data_structure/persistent_unionfind.hpp"
 
 #include <iostream>
 #include <vector>

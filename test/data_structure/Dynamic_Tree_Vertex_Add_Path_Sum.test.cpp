@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-#include "data_structure/link_cut_tree.hpp"
+#include "../../data_structure/link_cut_tree.hpp"
 
 using i64 = std::int64_t;
 

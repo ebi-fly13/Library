@@ -1,10 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
-#include "../data_structure/PersistentSegmentTree.hpp"
-
 #include <cstdint>
 #include <iostream>
 #include <vector>
+
+#include "../../data_structure/PersistentSegmentTree.hpp"
 
 using S = std::int64_t;
 S op(S a, S b) {

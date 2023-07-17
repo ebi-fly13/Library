@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#include "../utility/modint.hpp"
+#include "../../utility/montgomery_modint.hpp"
 
-using mint = ebi::modint1000000007;
+using mint = ebi::montgomery_modint1000000007;
 
 int main() {
     long long m, n;

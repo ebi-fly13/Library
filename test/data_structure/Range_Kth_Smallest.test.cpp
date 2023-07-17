@@ -1,10 +1,9 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_kth_smallest"
 
-#include "../data_structure/WaveletMatrix.hpp"
-
 #include <iostream>
 #include <vector>
 
+#include "../../data_structure/WaveletMatrix.hpp"
 #include "../utility/int_alias.hpp"
 
 int main() {

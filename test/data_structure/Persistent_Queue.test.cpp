@@ -1,11 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/persistent_queue"
 
-#include "../data_structure/bankers_queue.hpp"
-
 #include <iomanip>
 #include <iostream>
 #include <limits>
 #include <vector>
+
+#include "../../data_structure/bankers_queue.hpp"
 
 int main() {
     std::cout << std::fixed << std::setprecision(15);

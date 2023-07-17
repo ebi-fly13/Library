@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/set_xor_min"
 
-#include "../data_structure/binary_trie.hpp"
-
 #include <iostream>
+
+#include "../../data_structure/binary_trie.hpp"
 
 int main() {
     int q;

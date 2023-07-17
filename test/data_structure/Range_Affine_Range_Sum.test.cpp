@@ -1,11 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
 
-#include "../data_structure/LazySegtree.hpp"
-
 #include <iostream>
 #include <vector>
 
-#include "../utility/modint.hpp"
+#include "../../data_structure/LazySegtree.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 

@@ -9,8 +9,8 @@
 #include <map>
 #include <vector>
 
-#include "data_structure/fenwick_tree.hpp"
 #include "data_structure/compress.hpp"
+#include "data_structure/fenwick_tree.hpp"
 
 namespace ebi {
 

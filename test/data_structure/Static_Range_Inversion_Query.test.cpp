@@ -6,9 +6,9 @@
 #include <numeric>
 #include <vector>
 
-#include "../algorithm/mo_algorithm.hpp"
-#include "../data_structure/fenwick_tree.hpp"
-#include "../data_structure/compress.hpp"
+#include "../../algorithm/mo_algorithm.hpp"
+#include "../../data_structure/compress.hpp"
+#include "../../data_structure/fenwick_tree.hpp"
 
 using u64 = std::uint64_t;
 

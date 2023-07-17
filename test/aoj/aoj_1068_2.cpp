@@ -1,9 +1,9 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1068"
 
-#include "../../data_structure/sparse_table_2d.hpp"
-
 #include <iostream>
 #include <vector>
+
+#include "../../data_structure/sparse_table_2d.hpp"
 
 int op(int a, int b) {
     return a < b ? a : b;

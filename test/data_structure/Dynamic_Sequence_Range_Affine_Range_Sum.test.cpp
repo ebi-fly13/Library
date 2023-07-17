@@ -1,12 +1,11 @@
 #define PROBLEM \
     "https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum"
 
-#include "../data_structure/ImplicitTreap.hpp"
-
 #include <iostream>
 
-#include "../utility/int_alias.hpp"
-#include "../utility/modint.hpp"
+#include "../../data_structure/ImplicitTreap.hpp"
+#include "../../utility/int_alias.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 

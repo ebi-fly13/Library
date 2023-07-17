@@ -1,10 +1,9 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
-#include "../data_structure/fenwick_tree.hpp"
-
 #include <iostream>
 
-#include "../utility/int_alias.hpp"
+#include "../../data_structure/fenwick_tree.hpp"
+#include "../../utility/int_alias.hpp"
 
 int main() {
     int n, q;

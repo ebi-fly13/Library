@@ -7,7 +7,6 @@
 
 using namespace ebi;
 
-
 using mint = modint998244353;
 using FPS = FormalPowerSeries<mint, convolution>;
 
@@ -15,18 +14,18 @@ int main() {
     int n;
     std::cin >> n;
     FPS f(n);
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         int a;
         std::cin >> a;
         f[i] = a;
     }
     auto opt = f.sqrt(n);
-    if(!opt) {
+    if (!opt) {
         std::cout << "-1\n";
         return 0;
     }
     auto g = opt.value();
-    for(int i = 0; i < n; i++) {
-        std::cout << g[i].val() << " \n"[i == n-1];
+    for (int i = 0; i < n; i++) {
+        std::cout << g[i].val() << " \n"[i == n - 1];
     }
 }

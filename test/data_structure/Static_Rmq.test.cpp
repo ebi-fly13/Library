@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../data_structure/sparse_table.hpp"
+#include "../../data_structure/sparse_table.hpp"
 
 int op(int a, int b) {
     return a < b ? a : b;

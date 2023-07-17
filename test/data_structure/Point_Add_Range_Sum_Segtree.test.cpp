@@ -1,9 +1,9 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 
-#include "../data_structure/segtree.hpp"
-
 #include <cstdint>
 #include <iostream>
+
+#include "../data_structure/segtree.hpp"
 
 using i64 = std::int64_t;
 

@@ -2,19 +2,18 @@
 
 #include <iostream>
 
-#include "../math/mod_sqrt.hpp"
+#include "../../math/mod_sqrt.hpp"
 
 int main() {
     int t;
     std::cin >> t;
-    while(t--) {
-        int y,p;
+    while (t--) {
+        int y, p;
         std::cin >> y >> p;
         auto x = ebi::mod_sqrt(y, p);
-        if(x) {
+        if (x) {
             std::cout << x.value() << '\n';
-        }
-        else {
+        } else {
             std::cout << "-1\n";
         }
     }

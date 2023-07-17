@@ -1,9 +1,9 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/predecessor_problem"
 
-#include "data_structure/predecessor_set.hpp"
-
 #include <iostream>
 #include <string>
+
+#include "../../data_structure/predecessor_set.hpp"
 
 int main() {
     int n, q;

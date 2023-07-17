@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "data_structure/WaveletMatrix.hpp"
+#include "../../data_structure/WaveletMatrix.hpp"
 
 int main() {
     int n, q;

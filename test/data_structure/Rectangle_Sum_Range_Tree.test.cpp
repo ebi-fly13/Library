@@ -1,11 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
 
-#include "data_structure/range_tree.hpp"
-
 #include <cstdint>
 #include <iostream>
 #include <tuple>
 #include <vector>
+
+#include "../../data_structure/range_tree.hpp"
 
 using i64 = std::int64_t;
 

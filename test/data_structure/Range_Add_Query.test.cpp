@@ -1,10 +1,10 @@
 #define PROBLEM \
     "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E"
 
-#include "../data_structure/DualSegtree.hpp"
-
 #include <iostream>
 #include <vector>
+
+#include "../../data_structure/DualSegtree.hpp"
 
 int op(int a, int b) {
     return a + b;

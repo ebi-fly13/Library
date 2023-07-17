@@ -18,7 +18,7 @@ i64 e() {
 }
 
 struct Query {
-    int x,y,w;
+    int x, y, w;
 };
 
 int main() {

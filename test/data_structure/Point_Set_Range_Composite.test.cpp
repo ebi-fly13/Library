@@ -1,10 +1,9 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
 
-#include "../data_structure/DynamicSegmentTree.hpp"
-
 #include <iostream>
 
-#include "../utility/modint.hpp"
+#include "../../data_structure/DynamicSegmentTree.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 

@@ -1,7 +1,7 @@
 #define PROBLEM \
     "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_1_C"
 
-#include "../math/eratosthenes_sieve.hpp"
+#include "../../math/eratosthenes_sieve.hpp"
 
 #include <iostream>
 
