@@ -137,13 +137,13 @@ data:
     \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 8 \"convolution/arbitrary_ntt.hpp\"\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 9 \"convolution/arbitrary_ntt.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class T, class mint,\
     \ internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> multiply(const\
     \ std::vector<T>& f, const std::vector<T>& g) {\n    std::vector<mint> a, b;\n\
     \    a.reserve(f.size());\n    b.reserve(g.size());\n    for (auto x : f) a.emplace_back(x.val());\n\
     \    for (auto x : g) b.emplace_back(x.val());\n    return convolution<mint>(a,\
-    \ b);\n}\n\n}  // namespace internal\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
+    \ b);\n}\n\n}  // namespace internal\n\ntemplate <class mint, internal::is_modint_t<mint>*\
     \ = nullptr>\nstd::vector<mint> arbitary_convolution(const std::vector<mint>&\
     \ f,\n                                       const std::vector<mint>& g) {\n \
     \   using i32 = std::int64_t;\n    using i64 = std::int64_t;\n    static constexpr\
@@ -163,31 +163,31 @@ data:
     \ - a) * inv02inv12 + i64(m2 - b) * inv12) % m2;\n        res[i] = (i64(a) + i64(b)\
     \ * W1 + i64(c) * W2) % mod;\n    }\n    return res;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cstdint>\n#include <vector>\n\n#include \"../convolution/ntt.hpp\"\
-    \n#include \"../utility/modint.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\ntemplate <class T, class mint, internal::is_static_modint_t<mint>* = nullptr>\n\
-    std::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>& g) {\n\
-    \    std::vector<mint> a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n\
+    \n#include \"../utility/modint.hpp\"\n#include \"../utility/modint_base.hpp\"\n\
+    \nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class T, class mint, internal::is_static_modint_t<mint>*\
+    \ = nullptr>\nstd::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>&\
+    \ g) {\n    std::vector<mint> a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n\
     \    for (auto x : f) a.emplace_back(x.val());\n    for (auto x : g) b.emplace_back(x.val());\n\
     \    return convolution<mint>(a, b);\n}\n\n}  // namespace internal\n\ntemplate\
-    \ <class mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint>\
-    \ arbitary_convolution(const std::vector<mint>& f,\n                         \
-    \              const std::vector<mint>& g) {\n    using i32 = std::int64_t;\n\
-    \    using i64 = std::int64_t;\n    static constexpr i32 m0 = 167772161;  // 2^25\n\
-    \    static constexpr i32 m1 = 469762049;  // 2^26\n    static constexpr i32 m2\
-    \ = 754974721;  // 2^24\n    using mint0 = static_modint<m0>;\n    using mint1\
-    \ = static_modint<m1>;\n    using mint2 = static_modint<m2>;\n    static constexpr\
-    \ i32 inv01 = mint1(m0).inv().val();\n    static constexpr i32 inv02 = mint2(m0).inv().val();\n\
-    \    static constexpr i32 inv12 = mint2(m1).inv().val();\n    static constexpr\
-    \ i32 inv02inv12 = i64(inv02) * inv12 % m2;\n    static constexpr i64 w1 = m0;\n\
-    \    static constexpr i64 w2 = i64(m0) * m1;\n\n    const i32 mod = mint::mod();\n\
-    \n    auto d0 = internal::multiply<mint, mint0>(f, g);\n    auto d1 = internal::multiply<mint,\
-    \ mint1>(f, g);\n    auto d2 = internal::multiply<mint, mint2>(f, g);\n\n    int\
-    \ n = d0.size();\n    std::vector<mint> res(n);\n    const int W1 = w1 % mod;\n\
-    \    const int W2 = w2 % mod;\n\n    for (int i = 0; i < n; i++) {\n        i32\
-    \ n1 = d1[i].val(), n2 = d2[i].val(), a = d0[i].val();\n        i32 b = i64(n1\
-    \ + m1 - a) * inv01 % m1;\n        i32 c = (i64(n2 + m2 - a) * inv02inv12 + i64(m2\
-    \ - b) * inv12) % m2;\n        res[i] = (i64(a) + i64(b) * W1 + i64(c) * W2) %\
-    \ mod;\n    }\n    return res;\n}\n\n}  // namespace ebi"
+    \ <class mint, internal::is_modint_t<mint>* = nullptr>\nstd::vector<mint> arbitary_convolution(const\
+    \ std::vector<mint>& f,\n                                       const std::vector<mint>&\
+    \ g) {\n    using i32 = std::int64_t;\n    using i64 = std::int64_t;\n    static\
+    \ constexpr i32 m0 = 167772161;  // 2^25\n    static constexpr i32 m1 = 469762049;\
+    \  // 2^26\n    static constexpr i32 m2 = 754974721;  // 2^24\n    using mint0\
+    \ = static_modint<m0>;\n    using mint1 = static_modint<m1>;\n    using mint2\
+    \ = static_modint<m2>;\n    static constexpr i32 inv01 = mint1(m0).inv().val();\n\
+    \    static constexpr i32 inv02 = mint2(m0).inv().val();\n    static constexpr\
+    \ i32 inv12 = mint2(m1).inv().val();\n    static constexpr i32 inv02inv12 = i64(inv02)\
+    \ * inv12 % m2;\n    static constexpr i64 w1 = m0;\n    static constexpr i64 w2\
+    \ = i64(m0) * m1;\n\n    const i32 mod = mint::mod();\n\n    auto d0 = internal::multiply<mint,\
+    \ mint0>(f, g);\n    auto d1 = internal::multiply<mint, mint1>(f, g);\n    auto\
+    \ d2 = internal::multiply<mint, mint2>(f, g);\n\n    int n = d0.size();\n    std::vector<mint>\
+    \ res(n);\n    const int W1 = w1 % mod;\n    const int W2 = w2 % mod;\n\n    for\
+    \ (int i = 0; i < n; i++) {\n        i32 n1 = d1[i].val(), n2 = d2[i].val(), a\
+    \ = d0[i].val();\n        i32 b = i64(n1 + m1 - a) * inv01 % m1;\n        i32\
+    \ c = (i64(n2 + m2 - a) * inv02inv12 + i64(m2 - b) * inv12) % m2;\n        res[i]\
+    \ = (i64(a) + i64(b) * W1 + i64(c) * W2) % mod;\n    }\n    return res;\n}\n\n\
+    }  // namespace ebi"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
@@ -197,7 +197,7 @@ data:
   isVerificationFile: false
   path: convolution/arbitrary_ntt.hpp
   requiredBy: []
-  timestamp: '2023-06-01 23:10:58+09:00'
+  timestamp: '2023-07-17 11:04:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Convolution_Mod_1000000007.test.cpp

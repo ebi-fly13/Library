@@ -143,13 +143,13 @@ data:
     \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 8 \"convolution/arbitrary_ntt.hpp\"\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 9 \"convolution/arbitrary_ntt.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class T, class mint,\
     \ internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> multiply(const\
     \ std::vector<T>& f, const std::vector<T>& g) {\n    std::vector<mint> a, b;\n\
     \    a.reserve(f.size());\n    b.reserve(g.size());\n    for (auto x : f) a.emplace_back(x.val());\n\
     \    for (auto x : g) b.emplace_back(x.val());\n    return convolution<mint>(a,\
-    \ b);\n}\n\n}  // namespace internal\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
+    \ b);\n}\n\n}  // namespace internal\n\ntemplate <class mint, internal::is_modint_t<mint>*\
     \ = nullptr>\nstd::vector<mint> arbitary_convolution(const std::vector<mint>&\
     \ f,\n                                       const std::vector<mint>& g) {\n \
     \   using i32 = std::int64_t;\n    using i64 = std::int64_t;\n    static constexpr\
@@ -192,7 +192,7 @@ data:
   isVerificationFile: true
   path: test/convolution/Convolution_Mod_1000000007.test.cpp
   requiredBy: []
-  timestamp: '2023-06-08 10:34:37+09:00'
+  timestamp: '2023-07-17 11:04:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Convolution_Mod_1000000007.test.cpp
