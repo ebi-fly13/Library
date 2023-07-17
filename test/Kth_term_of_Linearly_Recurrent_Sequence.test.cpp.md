@@ -33,21 +33,22 @@ data:
     #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence\"\
     \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\
     \n#include <array>\n#include <cassert>\n#include <type_traits>\n#line 7 \"convolution/ntt.hpp\"\
-    \n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
-    \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
-    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n}\ntemplate\
-    \ <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  //\
-    \ namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
-    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
-    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
-    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
-    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
-    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
-    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
-    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
+    \n\n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\
+    \nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
+    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
+    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
+    \ return 3;\n    assert(0);\n    return -1;\n}\ntemplate <int m> constexpr int\
+    \ primitive_root = primitive_root_constexpr(m);\n\n}  // namespace internal\n\n\
+    }  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\
+    \nconstexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n\
+    \ & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int n, int bit_size)\
+    \ {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n\
+    \ |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint\
+    \ ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n))\
+    \ x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
+    }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
+    int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
+    \ ebi\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
     \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
     \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
@@ -184,7 +185,7 @@ data:
   isVerificationFile: true
   path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 12:57:52+09:00'
+  timestamp: '2023-07-17 13:16:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp

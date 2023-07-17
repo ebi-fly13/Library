@@ -185,7 +185,7 @@ data:
     - icon: ':warning:'
       path: fps/product_of_one_plus_xn.hpp
       title: $\prod (1 + x^{a_i}) \mod x^d$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/taylor_shift.hpp
       title: $f(x + c)$
   - name: geometry
@@ -666,22 +666,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
       title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     - icon: ':x:'

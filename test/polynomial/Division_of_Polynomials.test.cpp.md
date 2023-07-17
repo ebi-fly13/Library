@@ -32,11 +32,12 @@ data:
   bundledCode: "#line 1 \"test/polynomial/Division_of_Polynomials.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/division_of_polynomials\"\n\n#line\
     \ 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <cassert>\n#include\
-    \ <type_traits>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
-    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
-    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    \ <type_traits>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\n#line\
+    \ 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\n\
+    constexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n \
+    \   if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if (m\
+    \ == 754974721) return 11;\n    if (m == 998244353) return 3;\n    assert(0);\n\
+    \    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
     \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
@@ -249,7 +250,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Division_of_Polynomials.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 12:57:52+09:00'
+  timestamp: '2023-07-17 13:16:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Division_of_Polynomials.test.cpp
