@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../math/eratosthenes_sieve.hpp"
+#include "../../math/eratosthenes_sieve.hpp"
 
 int main() {
     int n, a, b;

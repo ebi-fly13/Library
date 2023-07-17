@@ -3,9 +3,9 @@
 #include <iostream>
 #include <vector>
 
-#include "../data_structure/segtree.hpp"
-#include "../tree/heavy_light_decomposition.hpp"
-#include "../utility/modint.hpp"
+#include "../../data_structure/segtree.hpp"
+#include "../../tree/heavy_light_decomposition.hpp"
+#include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 
