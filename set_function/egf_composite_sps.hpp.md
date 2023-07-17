@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
   - icon: ':question:'

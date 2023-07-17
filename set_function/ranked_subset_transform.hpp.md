@@ -5,7 +5,7 @@ data:
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
   - icon: ':x:'
@@ -18,7 +18,7 @@ data:
     path: set_function/poly_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is FPS)
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp
     title: test/convolution/Subset_Convolution.test.cpp
   - icon: ':x:'
@@ -29,7 +29,7 @@ data:
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"set_function/ranked_subset_transform.hpp\"\n\n#include <array>\n\
@@ -84,16 +84,16 @@ data:
   isVerificationFile: false
   path: set_function/ranked_subset_transform.hpp
   requiredBy:
-  - convolution/subset_convolution.hpp
   - set_function/poly_composite_sps.hpp
   - set_function/egf_composite_sps.hpp
   - set_function/exp_of_sps.hpp
+  - convolution/subset_convolution.hpp
   timestamp: '2023-06-19 14:38:20+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/convolution/Subset_Convolution.test.cpp
-  - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+  - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/convolution/Subset_Convolution.test.cpp
 documentation_of: set_function/ranked_subset_transform.hpp
 layout: document
 title: Ranked Subset Transform (Zeta / Mobius)

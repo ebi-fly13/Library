@@ -12,7 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
@@ -154,12 +154,12 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_3361.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 documentation_of: fps/fps_sparse.hpp
 layout: document
 title: Formal Power Series (Sparse)

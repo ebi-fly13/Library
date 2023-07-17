@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
@@ -279,8 +279,8 @@ data:
   timestamp: '2023-07-17 11:19:29+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 documentation_of: fps/fps_sqrt.hpp
 layout: document
 title: $\sqrt{f}$

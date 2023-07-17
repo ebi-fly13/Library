@@ -18,10 +18,10 @@ data:
   - icon: ':x:'
     path: test/convolution/Convolution_Mod_1000000007.test.cpp
     title: test/convolution/Convolution_Mod_1000000007.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':x:'
@@ -71,18 +71,18 @@ data:
   timestamp: '2023-05-17 13:24:36+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
-  - test/convolution/Convolution.test.cpp
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/convolution/Convolution.test.cpp
+  - test/convolution/Convolution_Mod_1000000007.test.cpp
 documentation_of: math/internal_math.hpp
 layout: document
 redirect_from:

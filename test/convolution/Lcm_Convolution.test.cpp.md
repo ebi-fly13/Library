@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: convolution/lcm_convolution.hpp
     title: LCM Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/divisor_transform.hpp
     title: Divisor Transform (Zeta / Mobius)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp
   - icon: ':question:'
@@ -18,9 +18,9 @@ data:
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lcm_convolution
@@ -142,7 +142,7 @@ data:
   path: test/convolution/Lcm_Convolution.test.cpp
   requiredBy: []
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Lcm_Convolution.test.cpp
 layout: document

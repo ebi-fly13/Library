@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: convolution/lcm_convolution.hpp
     title: LCM Convolution
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/Lcm_Convolution.test.cpp
     title: test/convolution/Lcm_Convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/divisor_transform.hpp\"\n\n#include <vector>\n\n#line\
@@ -70,7 +70,7 @@ data:
   requiredBy:
   - convolution/lcm_convolution.hpp
   timestamp: '2023-06-09 15:36:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Lcm_Convolution.test.cpp
 documentation_of: math/divisor_transform.hpp

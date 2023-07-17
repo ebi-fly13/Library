@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/divisor_transform.hpp
     title: Divisor Transform (Zeta / Mobius)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/Lcm_Convolution.test.cpp
     title: test/convolution/Lcm_Convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/lcm_convolution.hpp\"\n\n#line 2 \"math/divisor_transform.hpp\"\
@@ -68,7 +68,7 @@ data:
   path: convolution/lcm_convolution.hpp
   requiredBy: []
   timestamp: '2023-06-09 15:36:58+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Lcm_Convolution.test.cpp
 documentation_of: convolution/lcm_convolution.hpp

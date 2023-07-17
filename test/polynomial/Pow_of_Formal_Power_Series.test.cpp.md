@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
@@ -32,7 +32,7 @@ data:
   bundledCode: "#line 1 \"test/polynomial/Pow_of_Formal_Power_Series.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_formal_power_series\"\
     \n\n#include <iostream>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n\
-    #include <type_traits>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\
+    #include <cassert>\n#include <type_traits>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
     \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
@@ -46,59 +46,13 @@ data:
     \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
     \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
     \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
-    \n#line 6 \"utility/modint.hpp\"\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n\
-    #line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
-    \nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \nstruct static_modint_base : modint_base {};\n\ntemplate <class T>\nusing is_static_modint\
-    \ = std::is_base_of<internal::static_modint_base, T>;\n\ntemplate <class T>\n\
-    using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\n}\
-    \  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
-    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const modint\
-    \ &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const modint\
-    \ &rhs) {\r\n        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
-    \ &rhs) {\r\n        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n  \
-    \      _v = (unsigned int)(x % (unsigned long long)umod());\r\n        return\
-    \ *this;\r\n    }\r\n    constexpr modint &operator/=(const modint &rhs) {\r\n\
-    \        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint\
-    \ operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\n   \
-    \ constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n   \
-    \     modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n &\
-    \ 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\n\
-    \        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n      \
-    \  assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint\
-    \ operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
-    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
-    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
-    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
-    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
-    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
-    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
-    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
-    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
-    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 10 \"convolution/ntt.hpp\"\
+    }\n\n}  // namespace ebi\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
+    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
+    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
+    \ : modint_base {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 11 \"convolution/ntt.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class mint, int g = internal::primitive_root<mint::mod()>,\n\
     \          internal::is_static_modint_t<mint>* = nullptr>\nstruct ntt_info {\n\
     \    static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);\n\n    std::array<mint,\
@@ -220,12 +174,57 @@ data:
     \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
     \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
     \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
-    };\n\n}  // namespace ebi\n#line 8 \"test/polynomial/Pow_of_Formal_Power_Series.test.cpp\"\
-    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    long long\
-    \ m;\n    std::cin >> n >> m;\n    ebi::FormalPowerSeries<mint, ebi::convolution<mint>>\
-    \ f(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n\
-    \    auto b = f.pow(m);\n    for (int i = 0; i < n; i++) {\n        std::cout\
-    \ << b[i] << \" \\n\"[i == n - 1];\n    }\n}\n"
+    };\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 6 \"utility/modint.hpp\"\
+    \n\r\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
+    \ m> struct static_modint : internal::static_modint_base {\r\n  private:\r\n \
+    \   using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
+    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
+    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
+    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
+    \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
+    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
+    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
+    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v\
+    \ += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n        _v\
+    \ -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned\
+    \ long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x %\
+    \ (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
+    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
+    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
+    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
+    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
+    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
+    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
+    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
+    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
+    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
+    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
+    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
+    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
+    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\n\
+    std::istream &operator>>(std::istream &os, static_modint<m> &a) {\r\n    long\
+    \ long x;\r\n    os >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int\
+    \ m>\r\nstd::ostream &operator<<(std::ostream &os, const static_modint<m> &a)\
+    \ {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 8 \"test/polynomial/Pow_of_Formal_Power_Series.test.cpp\"\n\nusing mint\
+    \ = ebi::modint998244353;\n\nint main() {\n    int n;\n    long long m;\n    std::cin\
+    \ >> n >> m;\n    ebi::FormalPowerSeries<mint, ebi::convolution<mint>> f(n);\n\
+    \    for (int i = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n    auto\
+    \ b = f.pow(m);\n    for (int i = 0; i < n; i++) {\n        std::cout << b[i]\
+    \ << \" \\n\"[i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_formal_power_series\"\
     \n\n#include <iostream>\n\n#include \"../../convolution/ntt.hpp\"\n#include \"\
     ../../fps/fps.hpp\"\n#include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
@@ -237,13 +236,13 @@ data:
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
-  - utility/modint.hpp
   - utility/modint_base.hpp
   - fps/fps.hpp
+  - utility/modint.hpp
   isVerificationFile: true
   path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 11:19:29+09:00'
+  timestamp: '2023-07-17 12:57:52+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/polynomial/Pow_of_Formal_Power_Series.test.cpp

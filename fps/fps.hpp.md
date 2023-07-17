@@ -15,10 +15,10 @@ data:
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':x:'
@@ -41,7 +41,7 @@ data:
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -207,20 +207,20 @@ data:
   path: fps/fps.hpp
   requiredBy:
   - fps/taylor_shift.hpp
-  - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
+  - fps/product_of_one_plus_xn.hpp
   - fps/fps_sqrt.hpp
   timestamp: '2023-06-12 02:16:01+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 documentation_of: fps/fps.hpp
 layout: document
 title: Formal Power Series

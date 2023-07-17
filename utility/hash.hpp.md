@@ -172,8 +172,8 @@ data:
   isVerificationFile: false
   path: utility/hash.hpp
   requiredBy:
-  - tree/rooted_tree_hash.hpp
   - string/rolling_hash.hpp
+  - tree/rooted_tree_hash.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
