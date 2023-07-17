@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include <vector>
+#include <cstdint>
 
 #include "../../data_structure/SegmentTreeBeats.hpp"
-#include "../utility/int_alias.hpp"
 
+using i64 = std::int64_t;
 using S = i64;
 
 int main() {
