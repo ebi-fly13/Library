@@ -8,18 +8,6 @@
 
 namespace ebi {
 
-namespace internal {
-
-struct static_modint_base : modint_base {};
-
-template <class T>
-using is_static_modint = std::is_base_of<internal::static_modint_base, T>;
-
-template <class T>
-using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;
-
-}  // namespace internal
-
 template <int m> struct static_modint : internal::static_modint_base {
   private:
     using modint = static_modint;

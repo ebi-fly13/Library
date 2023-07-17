@@ -8,7 +8,7 @@
 
 namespace ebi {
 
-struct modint61 : internal::modint_base {
+struct modint61 : internal::static_modint_base {
   private:
     using mint = modint61;
     using u64 = std::uint64_t;
