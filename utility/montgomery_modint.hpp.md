@@ -1,20 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
-  _extendedRequiredBy:
-  - icon: ':x:'
-    path: convolution/arbitrary_ntt.hpp
-    title: Arbitrary Convolution
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/convolution/Convolution_Mod_1000000007.test.cpp
-    title: test/convolution/Convolution_Mod_1000000007.test.cpp
-  _isVerificationFailed: true
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/montgomery_modint.hpp\"\n\n#include <cstdint>\n\
@@ -130,12 +124,10 @@ data:
   - utility/modint_base.hpp
   isVerificationFile: false
   path: utility/montgomery_modint.hpp
-  requiredBy:
-  - convolution/arbitrary_ntt.hpp
+  requiredBy: []
   timestamp: '2023-07-17 12:57:52+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: utility/montgomery_modint.hpp
 layout: document
 redirect_from:

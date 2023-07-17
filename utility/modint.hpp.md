@@ -1,10 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: convolution/arbitrary_ntt.hpp
+    title: Arbitrary Convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/DynamicSegmentTree.test.cpp
@@ -36,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution.test.cpp
     title: test/convolution/Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_Mod_1000000007.test.cpp
+    title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Gcd_Convolution.test.cpp
     title: test/convolution/Gcd_Convolution.test.cpp
@@ -81,36 +87,36 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/pow.test.cpp
     title: test/pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/vertex_set_path_compositie.test.cpp
     title: test/vertex_set_path_compositie.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#include\
@@ -216,9 +222,10 @@ data:
   - utility/modint_base.hpp
   isVerificationFile: false
   path: utility/modint.hpp
-  requiredBy: []
+  requiredBy:
+  - convolution/arbitrary_ntt.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/aoj/aoj_3361.test.cpp
@@ -249,6 +256,7 @@ data:
   - test/convolution/Convolution.test.cpp
   - test/convolution/Lcm_Convolution.test.cpp
   - test/convolution/Gcd_Convolution.test.cpp
+  - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Bitwise_Xor_Convolution.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/pow.test.cpp

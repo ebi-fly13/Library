@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/exp_of_sps.hpp
     title: $\exp {a}$ (Set Power Series)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/poly_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is FPS)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp
     title: test/convolution/Subset_Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"set_function/ranked_subset_transform.hpp\"\n\n#include <array>\n\
@@ -89,7 +89,7 @@ data:
   - set_function/exp_of_sps.hpp
   - convolution/subset_convolution.hpp
   timestamp: '2023-06-19 14:38:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp

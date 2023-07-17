@@ -5,31 +5,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/and_convolution.hpp
     title: Bitwise AND Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/or_convolution.hpp
     title: Bitwise OR Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_dynamic_connectivity.hpp
     title: Offline Dynamic Connectivity
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/exp_of_sps.hpp
     title: $\exp {a}$ (Set Power Series)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/poly_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is FPS)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
@@ -54,7 +54,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution.test.cpp
     title: test/convolution/Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_1000000007.test.cpp
     title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,24 +78,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr\
@@ -133,7 +133,7 @@ data:
   - convolution/or_convolution.hpp
   - data_structure/offline_dynamic_connectivity.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/aoj/aoj_2235.test.cpp

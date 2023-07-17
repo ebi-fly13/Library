@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/random_number_generator_64.hpp
     title: utility/random_number_generator_64.hpp
   _extendedRequiredBy: []
