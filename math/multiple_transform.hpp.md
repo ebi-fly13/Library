@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: convolution/gcd_convolution.hpp
     title: GCD Convolution
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/convolution/Gcd_Convolution.test.cpp
     title: test/convolution/Gcd_Convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/multiple_transform.hpp\"\n\n#include <vector>\n\n#line\
@@ -70,7 +70,7 @@ data:
   requiredBy:
   - convolution/gcd_convolution.hpp
   timestamp: '2023-06-09 21:12:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/convolution/Gcd_Convolution.test.cpp
 documentation_of: math/multiple_transform.hpp

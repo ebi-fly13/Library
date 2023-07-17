@@ -59,8 +59,8 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_1645.test.cpp
+  - test/aoj/aoj_2235.test.cpp
 documentation_of: data_structure/undo_unionfind.hpp
 layout: document
 redirect_from:

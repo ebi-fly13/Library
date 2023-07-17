@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -26,21 +26,23 @@ data:
     \n#line 2 \"utility/modint_base.hpp\"\n\n#include <type_traits>\n\nnamespace ebi\
     \ {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate <class T> using\
     \ is_modint = std::is_base_of<modint_base, T>;\ntemplate <class T> using is_modint_t\
-    \ = std::enable_if_t<is_modint<T>::value>;\n\n}  // namespace internal\n\n}  //\
-    \ namespace ebi\n#line 6 \"utility/dynamic_modint.hpp\"\n\nnamespace ebi {\n\n\
-    template <int id> struct dynamic_modint : internal::modint_base {\n  private:\n\
-    \    using modint = dynamic_modint;\n\n  public:\n    static void set_mod(int\
-    \ p) {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static int mod()\
-    \ {\n        return m;\n    }\n\n    modint raw(int v) {\n        modint x;\n\
-    \        x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n\
-    \n    dynamic_modint(long long v) {\n        v %= (long long)umod();\n       \
-    \ if (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n    }\n\n\
-    \    unsigned int val() const {\n        return _v;\n    }\n\n    unsigned int\
-    \ value() const {\n        return val();\n    }\n\n    modint &operator++() {\n\
-    \        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n   \
-    \ }\n    modint &operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n\
-    \        return *this;\n    }\n    modint &operator+=(const modint &rhs) {\n \
-    \       _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
+    \ = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base : modint_base\
+    \ {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 6 \"utility/dynamic_modint.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint : internal::modint_base\
+    \ {\n  private:\n    using modint = dynamic_modint;\n\n  public:\n    static void\
+    \ set_mod(int p) {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static\
+    \ int mod() {\n        return m;\n    }\n\n    modint raw(int v) {\n        modint\
+    \ x;\n        x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0)\
+    \ {}\n\n    dynamic_modint(long long v) {\n        v %= (long long)umod();\n \
+    \       if (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n  \
+    \  }\n\n    unsigned int val() const {\n        return _v;\n    }\n\n    unsigned\
+    \ int value() const {\n        return val();\n    }\n\n    modint &operator++()\
+    \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
+    \    }\n    modint &operator--() {\n        if (_v == 0) _v = umod();\n      \
+    \  _v--;\n        return *this;\n    }\n    modint &operator+=(const modint &rhs)\
+    \ {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
     \ *this;\n    }\n    modint &operator-=(const modint &rhs) {\n        _v -= rhs._v;\n\
     \        if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    modint\
     \ &operator*=(const modint &rhs) {\n        unsigned long long x = _v;\n     \
@@ -93,7 +95,7 @@ data:
   isVerificationFile: true
   path: test/Sqrt_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-05-31 10:21:15+09:00'
+  timestamp: '2023-07-17 11:19:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Sqrt_Mod.test.cpp

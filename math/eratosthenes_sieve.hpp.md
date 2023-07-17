@@ -2,23 +2,23 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: convolution/gcd_convolution.hpp
     title: GCD Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: convolution/lcm_convolution.hpp
     title: LCM Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/divisor_transform.hpp
     title: Divisor Transform (Zeta / Mobius)
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/multiple_transform.hpp
     title: Multiple Transform (Zeta / Mobius)
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/convolution/Gcd_Convolution.test.cpp
     title: test/convolution/Gcd_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/convolution/Lcm_Convolution.test.cpp
     title: test/convolution/Lcm_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -27,9 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/eratosthenes_sieve.test.cpp
     title: test/eratosthenes_sieve.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://37zigen.com/sieve-eratosthenes/
@@ -63,17 +63,17 @@ data:
   isVerificationFile: false
   path: math/eratosthenes_sieve.hpp
   requiredBy:
+  - convolution/gcd_convolution.hpp
+  - convolution/lcm_convolution.hpp
   - math/multiple_transform.hpp
   - math/divisor_transform.hpp
-  - convolution/lcm_convolution.hpp
-  - convolution/gcd_convolution.hpp
   timestamp: '2023-06-09 15:36:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/eratosthenes_sieve.test.cpp
-  - test/enumerate_primes.test.cpp
   - test/convolution/Lcm_Convolution.test.cpp
   - test/convolution/Gcd_Convolution.test.cpp
+  - test/enumerate_primes.test.cpp
+  - test/eratosthenes_sieve.test.cpp
 documentation_of: math/eratosthenes_sieve.hpp
 layout: document
 redirect_from:

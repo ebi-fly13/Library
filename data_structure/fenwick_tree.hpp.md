@@ -66,9 +66,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/inversion_number.test.cpp
-  - test/geometry/segment_intersection.test.cpp
   - test/static_range_inversion_query.test.cpp
   - test/FenwickTree.test.cpp
+  - test/geometry/segment_intersection.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 redirect_from:

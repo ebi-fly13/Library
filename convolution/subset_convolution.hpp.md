@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: set_function/exp_of_sps.hpp
     title: $\exp {a}$ (Set Power Series)
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: set_function/poly_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is FPS)
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/convolution/Subset_Convolution.test.cpp
     title: test/convolution/Subset_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://37zigen.com/subset-convolution/
@@ -97,11 +97,11 @@ data:
   - set_function/egf_composite_sps.hpp
   - set_function/exp_of_sps.hpp
   timestamp: '2023-06-19 14:38:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/convolution/Subset_Convolution.test.cpp
+  - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
 documentation_of: convolution/subset_convolution.hpp
 layout: document
 title: Subset Convolution

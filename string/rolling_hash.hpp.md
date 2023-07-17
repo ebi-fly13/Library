@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/random_number_generator_64.hpp
     title: utility/random_number_generator_64.hpp
   _extendedRequiredBy: []
@@ -31,8 +31,11 @@ data:
     \n\n#include <type_traits>\n\nnamespace ebi {\n\nnamespace internal {\n\nstruct\
     \ modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint61.hpp\"\
-    \n\nnamespace ebi {\n\nstruct modint61 : internal::modint_base {\n  private:\n\
+    \nstruct static_modint_base : modint_base {};\n\ntemplate <class T>\nusing is_static_modint\
+    \ = std::is_base_of<internal::static_modint_base, T>;\n\ntemplate <class T>\n\
+    using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\n}\
+    \  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint61.hpp\"\
+    \n\nnamespace ebi {\n\nstruct modint61 : internal::static_modint_base {\n  private:\n\
     \    using mint = modint61;\n    using u64 = std::uint64_t;\n    constexpr static\
     \ u64 m = (1ull << 61) - 1;\n    constexpr static u64 MASK31 = (1ull << 31) -\
     \ 1;\n    constexpr static u64 MASK30 = (1ull << 30) - 1;\n\n  public:\n    constexpr\
@@ -194,7 +197,7 @@ data:
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-06-19 15:44:08+09:00'
+  timestamp: '2023-07-17 11:19:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp

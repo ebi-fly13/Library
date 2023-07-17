@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -119,24 +119,24 @@ data:
     \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
     \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\nstruct static_modint_base\
-    \ : modint_base {};\r\n\r\ntemplate <class T>\r\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
-    \ T>;\r\n\r\ntemplate <class T>\r\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\r\
-    \n\r\n}  // namespace internal\r\n\r\ntemplate <int m> struct static_modint :\
-    \ internal::static_modint_base {\r\n  private:\r\n    using modint = static_modint;\r\
-    \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
-    \   }\r\n\r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n\
-    \        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint()\
-    \ : _v(0) {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %=\
-    \ (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\n       \
-    \ _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr unsigned int val() const\
-    \ {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
-    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
-    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
-    \n        _v--;\r\n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const\
-    \ modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
+    \nstruct static_modint_base : modint_base {};\n\ntemplate <class T>\nusing is_static_modint\
+    \ = std::is_base_of<internal::static_modint_base, T>;\n\ntemplate <class T>\n\
+    using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\n}\
+    \  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
+    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
+    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
+    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
+    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
+    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
+    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
+    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
+    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
+    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const modint\
+    \ &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
     \n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const modint\
     \ &rhs) {\r\n        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\
     \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
@@ -218,8 +218,8 @@ data:
   isVerificationFile: true
   path: test/vertex_set_path_compositie.test.cpp
   requiredBy: []
-  timestamp: '2023-07-11 13:12:25+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-17 11:19:29+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/vertex_set_path_compositie.test.cpp
 layout: document

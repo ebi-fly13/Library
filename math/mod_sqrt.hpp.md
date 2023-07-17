@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Sqrt_Mod.test.cpp
     title: test/Sqrt_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/mod_sqrt.hpp\"\n\n#include <cstdint>\n#include <optional>\n\
@@ -31,7 +31,10 @@ data:
     \n\n#include <type_traits>\n\nnamespace ebi {\n\nnamespace internal {\n\nstruct\
     \ modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 6 \"utility/dynamic_modint.hpp\"\
+    \nstruct static_modint_base : modint_base {};\n\ntemplate <class T>\nusing is_static_modint\
+    \ = std::is_base_of<internal::static_modint_base, T>;\n\ntemplate <class T>\n\
+    using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\n}\
+    \  // namespace internal\n\n}  // namespace ebi\n#line 6 \"utility/dynamic_modint.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint : internal::modint_base\
     \ {\n  private:\n    using modint = dynamic_modint;\n\n  public:\n    static void\
     \ set_mod(int p) {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static\
@@ -98,12 +101,12 @@ data:
   path: math/mod_sqrt.hpp
   requiredBy:
   - fps/fps_sqrt.hpp
-  timestamp: '2023-05-31 10:21:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-07-17 11:19:29+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Sqrt_Mod.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: math/mod_sqrt.hpp
 layout: document
 redirect_from:

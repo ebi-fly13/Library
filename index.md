@@ -25,22 +25,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/and_convolution.hpp
       title: Bitwise AND Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: convolution/gcd_convolution.hpp
       title: GCD Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/or_convolution.hpp
       title: Bitwise OR Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: convolution/subset_convolution.hpp
       title: Subset Convolution
     - icon: ':heavy_check_mark:'
@@ -90,7 +90,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/deque_aggregation.hpp
       title: Sliding Window Aggregation (Deque)
     - icon: ':heavy_check_mark:'
@@ -129,7 +129,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/predecessor_set.hpp
       title: data_structure/predecessor_set.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/queue_aggregation.hpp
       title: Sliding Window Aggregation (Queue)
     - icon: ':warning:'
@@ -144,7 +144,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: data_structure/section_set.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/segtree.hpp
       title: segtree
     - icon: ':heavy_check_mark:'
@@ -167,16 +167,16 @@ data:
       title: data_structure/undo_unionfind.hpp
   - name: fps
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: fps/fps.hpp
       title: Formal Power Series
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: fps/fps_sparse.hpp
       title: Formal Power Series (Sparse)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$
     - icon: ':warning:'
@@ -185,7 +185,7 @@ data:
     - icon: ':warning:'
       path: fps/product_of_one_plus_xn.hpp
       title: $\prod (1 + x^{a_i}) \mod x^d$
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: fps/taylor_shift.hpp
       title: $f(x + c)$
   - name: geometry
@@ -242,13 +242,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/combination.hpp
       title: math/combination.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/divisor_transform.hpp
       title: Divisor Transform (Zeta / Mobius)
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
@@ -260,32 +260,32 @@ data:
     - icon: ':warning:'
       path: math/linear_sieve.hpp
       title: math/linear_sieve.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/mod_sqrt.hpp
       title: math/mod_sqrt.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/multiple_transform.hpp
       title: Multiple Transform (Zeta / Mobius)
   - name: matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: matrix/square_matrix.hpp
       title: matrix/square_matrix.hpp
   - name: set_function
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: set_function/egf_composite_sps.hpp
       title: $f(a)$ (Set Power Series, f is EGF)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: set_function/exp_of_sps.hpp
       title: $\exp {a}$ (Set Power Series)
     - icon: ':heavy_check_mark:'
       path: set_function/hadamard_transform.hpp
       title: Hadamard Transform
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: set_function/poly_composite_sps.hpp
       title: $f(a)$ (Set Power Series, f is FPS)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: set_function/ranked_subset_transform.hpp
       title: Ranked Subset Transform (Zeta / Mobius)
     - icon: ':heavy_check_mark:'
@@ -322,7 +322,7 @@ data:
     - icon: ':warning:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
@@ -331,10 +331,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/lowest_common_ancestor.hpp
       title: Lowest Common Ancestor
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/rerooting.hpp
       title: Rerooting DP
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/rooted_tree_hash.hpp
       title: Rooted Tree Hash
     - icon: ':heavy_check_mark:'
@@ -342,31 +342,31 @@ data:
       title: Tree Diameter
   - name: utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/dynamic_modint.hpp
       title: utility/dynamic_modint.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/hash.hpp
       title: Hash structure
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint_func.hpp
       title: utility/modint_func.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/random_number_generator_64.hpp
       title: utility/random_number_generator_64.hpp
   verificationCategories:
@@ -446,7 +446,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/persistent_unionfind.test.cpp
       title: test/persistent_unionfind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/pow.test.cpp
       title: test/pow.test.cpp
     - icon: ':heavy_check_mark:'
@@ -470,7 +470,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/vertex_add_subtree_sum.test.cpp
       title: test/vertex_add_subtree_sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/vertex_set_path_compositie.test.cpp
       title: test/vertex_set_path_compositie.test.cpp
   - name: test/aoj
@@ -516,21 +516,21 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/convolution/Convolution.test.cpp
       title: test/convolution/Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/convolution/Convolution_Mod_1000000007.test.cpp
       title: test/convolution/Convolution_Mod_1000000007.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/convolution/Gcd_Convolution.test.cpp
       title: test/convolution/Gcd_Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/convolution/Lcm_Convolution.test.cpp
       title: test/convolution/Lcm_Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/convolution/Subset_Convolution.test.cpp
       title: test/convolution/Subset_Convolution.test.cpp
   - name: test/data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Deque_Operate_All_Composite.test.cpp
       title: test/data_structure/Deque_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -539,7 +539,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
       title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Queue_Operate_All_Composite.test.cpp
       title: test/data_structure/Queue_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -649,56 +649,56 @@ data:
       title: test/math/inversion_number.test.cpp
   - name: test/matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/matrix/Determinant_of_Matrix.test.cpp
       title: test/matrix/Determinant_of_Matrix.test.cpp
   - name: test/polynomial
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Division_of_Polynomials.test.cpp
       title: test/polynomial/Division_of_Polynomials.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
       title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
       title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - name: test/set_function
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/set_function/Exp_of_Set_Power_Series.test.cpp
       title: test/set_function/Exp_of_Set_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
       title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - name: test/tree
@@ -709,13 +709,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree_HLD.test.cpp
       title: test/tree/Jump_on_Tree_HLD.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
       title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Tree_Path_Composite_Sum.test.cpp
       title: test/tree/Tree_Path_Composite_Sum.test.cpp
     - icon: ':heavy_check_mark:'
