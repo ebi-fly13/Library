@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/ImplicitTreap.test.cpp
-    title: test/ImplicitTreap.test.cpp
+    path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+    title: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -145,7 +145,7 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/ImplicitTreap.test.cpp
+  - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
 documentation_of: data_structure/ImplicitTreap.hpp
 layout: document
 redirect_from:

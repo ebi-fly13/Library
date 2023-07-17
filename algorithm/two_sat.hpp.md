@@ -4,14 +4,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/two_sat.test.cpp
-    title: test/two_sat.test.cpp
+    path: test/algorithm/Two_Sat.test.cpp
+    title: test/algorithm/Two_Sat.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -90,7 +90,7 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/two_sat.test.cpp
+  - test/algorithm/Two_Sat.test.cpp
 documentation_of: algorithm/two_sat.hpp
 layout: document
 redirect_from:

@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/math/inversion_number.test.cpp
-    title: test/math/inversion_number.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/math/Inversion_Number.test.cpp
+    title: test/math/Inversion_Number.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/inversion_number.hpp\"\n\n#include <cassert>\n#include\
@@ -83,9 +83,9 @@ data:
   path: math/inversion_number.hpp
   requiredBy: []
   timestamp: '2023-06-26 12:08:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/math/inversion_number.test.cpp
+  - test/math/Inversion_Number.test.cpp
 documentation_of: math/inversion_number.hpp
 layout: document
 redirect_from:

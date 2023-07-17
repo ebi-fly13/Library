@@ -4,32 +4,26 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Segtree.test.cpp
-    title: test/Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_1068.test.cpp
-    title: test/aoj/aoj_1068.test.cpp
+    path: test/aoj/aoj_1068_1.test.cpp
+    title: test/aoj/aoj_1068_1.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_1645.test.cpp
     title: test/aoj/aoj_1645.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Rectangle_Sum.test.cpp
-    title: test/data_structure/Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/vertex_add_path_sum.test.cpp
-    title: test/vertex_add_path_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/vertex_add_subtree_sum.test.cpp
-    title: test/vertex_add_subtree_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/vertex_set_path_compositie.test.cpp
-    title: test/vertex_set_path_compositie.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
+    title: test/data_structure/Rectangle_Sum_Segtree.test.cpp
+  - icon: ':x:'
+    path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
+    title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - icon: ':x:'
+    path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+    title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/segtree.hpp\"\n\r\n#include <cassert>\r\n\
@@ -117,16 +111,14 @@ data:
   path: data_structure/segtree.hpp
   requiredBy: []
   timestamp: '2023-06-26 02:49:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/vertex_add_subtree_sum.test.cpp
-  - test/aoj/aoj_1068.test.cpp
+  - test/aoj/aoj_1068_1.test.cpp
   - test/aoj/aoj_1645.test.cpp
-  - test/Segtree.test.cpp
-  - test/vertex_add_path_sum.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
+  - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+  - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - test/data_structure/Rectangle_Sum.test.cpp
+  - test/data_structure/Rectangle_Sum_Segtree.test.cpp
 documentation_of: data_structure/segtree.hpp
 layout: document
 title: segtree

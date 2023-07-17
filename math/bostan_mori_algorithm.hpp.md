@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-    title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/bostan_mori_algorithm.hpp\"\n\n#include <cstdint>\n\
@@ -50,9 +50,9 @@ data:
   path: math/bostan_mori_algorithm.hpp
   requiredBy: []
   timestamp: '2023-06-04 13:46:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
 documentation_of: math/bostan_mori_algorithm.hpp
 layout: document
 title: Bostan-Mori Algorithm

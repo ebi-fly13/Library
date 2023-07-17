@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/PersistentSegmentTree.test.cpp
-    title: test/PersistentSegmentTree.test.cpp
+    path: test/data_structure/Point_Add_Range_Sum_Persistent_Segtree.test.cpp
+    title: test/data_structure/Point_Add_Range_Sum_Persistent_Segtree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -127,7 +127,7 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/PersistentSegmentTree.test.cpp
+  - test/data_structure/Point_Add_Range_Sum_Persistent_Segtree.test.cpp
 documentation_of: data_structure/PersistentSegmentTree.hpp
 layout: document
 redirect_from:

@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/math/Pow.test.cpp
+    title: test/math/Pow.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/montgomery_modint.hpp\"\n\n#include <cstdint>\n\
@@ -126,8 +129,9 @@ data:
   path: utility/montgomery_modint.hpp
   requiredBy: []
   timestamp: '2023-07-17 12:57:52+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/math/Pow.test.cpp
 documentation_of: utility/montgomery_modint.hpp
 layout: document
 redirect_from:

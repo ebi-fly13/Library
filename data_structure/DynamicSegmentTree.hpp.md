@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/DynamicSegmentTree.test.cpp
-    title: test/DynamicSegmentTree.test.cpp
+    path: test/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/data_structure/Point_Set_Range_Composite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -91,7 +91,7 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/DynamicSegmentTree.test.cpp
+  - test/data_structure/Point_Set_Range_Composite.test.cpp
 documentation_of: data_structure/DynamicSegmentTree.hpp
 layout: document
 redirect_from:

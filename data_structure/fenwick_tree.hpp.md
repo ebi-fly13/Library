@@ -2,25 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/inversion_number.hpp
     title: math/inversion_number.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/FenwickTree.test.cpp
-    title: test/FenwickTree.test.cpp
-  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+    title: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - icon: ':x:'
+    path: test/data_structure/Static_Range_Inversion_Query.test.cpp
+    title: test/data_structure/Static_Range_Inversion_Query.test.cpp
+  - icon: ':x:'
     path: test/geometry/segment_intersection.test.cpp
     title: test/geometry/segment_intersection.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/inversion_number.test.cpp
-    title: test/math/inversion_number.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/static_range_inversion_query.test.cpp
-    title: test/static_range_inversion_query.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/math/Inversion_Number.test.cpp
+    title: test/math/Inversion_Number.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\r\n#include <cassert>\r\
@@ -63,12 +63,12 @@ data:
   requiredBy:
   - math/inversion_number.hpp
   timestamp: '2023-06-19 11:39:03+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/math/inversion_number.test.cpp
+  - test/math/Inversion_Number.test.cpp
   - test/geometry/segment_intersection.test.cpp
-  - test/static_range_inversion_query.test.cpp
-  - test/FenwickTree.test.cpp
+  - test/data_structure/Static_Range_Inversion_Query.test.cpp
+  - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 redirect_from:

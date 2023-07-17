@@ -5,13 +5,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
   - icon: ':heavy_check_mark:'
@@ -20,37 +20,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':heavy_check_mark:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: utility/montgomery_modint.hpp
     title: utility/montgomery_modint.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/DynamicSegmentTree.test.cpp
-    title: test/DynamicSegmentTree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/ImplicitTreap.test.cpp
-    title: test/ImplicitTreap.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-    title: test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/LazySegtree.test.cpp
-    title: test/LazySegtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Sqrt_Mod.test.cpp
-    title: test/Sqrt_Mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
@@ -88,8 +73,26 @@ data:
     path: test/data_structure/Deque_Operate_All_Composite.test.cpp
     title: test/data_structure/Deque_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+    title: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/data_structure/Point_Set_Range_Composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/data_structure/Queue_Operate_All_Composite.test.cpp
+  - icon: ':x:'
+    path: test/data_structure/Range_Affine_Range_Sum.test.cpp
+    title: test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - icon: ':x:'
+    path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':x:'
+    path: test/math/Pow.test.cpp
+    title: test/math/Pow.test.cpp
+  - icon: ':x:'
+    path: test/math/Sqrt_Mod.test.cpp
+    title: test/math/Sqrt_Mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
@@ -126,15 +129,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/pow.test.cpp
-    title: test/pow.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
@@ -147,12 +147,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/vertex_set_path_compositie.test.cpp
-    title: test/vertex_set_path_compositie.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "utility/modint_base.hpp"
@@ -247,19 +244,17 @@ data:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/aoj/aoj_2444.test.cpp
   - test/aoj/aoj_3361.test.cpp
   - test/aoj/aoj_2863.test.cpp
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - test/Sqrt_Mod.test.cpp
-  - test/ImplicitTreap.test.cpp
   - test/matrix/Determinant_of_Matrix.test.cpp
-  - test/LazySegtree.test.cpp
-  - test/DynamicSegmentTree.test.cpp
+  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/math/Sqrt_Mod.test.cpp
+  - test/math/Pow.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
@@ -275,7 +270,6 @@ data:
   - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/vertex_set_path_compositie.test.cpp
   - test/convolution/Bitwise_And_Convolution.test.cpp
   - test/convolution/Subset_Convolution.test.cpp
   - test/convolution/Convolution.test.cpp
@@ -284,9 +278,11 @@ data:
   - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Bitwise_Xor_Convolution.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
-  - test/pow.test.cpp
   - test/data_structure/Queue_Operate_All_Composite.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Deque_Operate_All_Composite.test.cpp
+  - test/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
 documentation_of: utility/modint_base.hpp
 layout: document
 redirect_from:

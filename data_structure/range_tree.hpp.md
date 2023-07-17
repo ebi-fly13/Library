@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/range_tree.test.cpp
-    title: test/range_tree.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/data_structure/Rectangle_Sum_Range_Tree.test.cpp
+    title: test/data_structure/Rectangle_Sum_Range_Tree.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://www.slideshare.net/okuraofvegetable/ss-65377588
@@ -99,9 +99,9 @@ data:
   path: data_structure/range_tree.hpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/range_tree.test.cpp
+  - test/data_structure/Rectangle_Sum_Range_Tree.test.cpp
 documentation_of: data_structure/range_tree.hpp
 layout: document
 redirect_from:

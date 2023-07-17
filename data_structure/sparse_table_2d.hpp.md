@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/sparse_table_2d.test.cpp
-    title: test/data_structure/sparse_table_2d.test.cpp
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: test/aoj/aoj_1068_2.cpp
+    title: test/aoj/aoj_1068_2.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/sparse_table_2d.hpp\"\n\n#include <cassert>\n\
@@ -69,11 +69,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data_structure/sparse_table_2d.hpp
-  requiredBy: []
+  requiredBy:
+  - test/aoj/aoj_1068_2.cpp
   timestamp: '2023-06-27 01:22:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/data_structure/sparse_table_2d.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: data_structure/sparse_table_2d.hpp
 layout: document
 title: 2D sparse table

@@ -21,15 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Lcm_Convolution.test.cpp
     title: test/convolution/Lcm_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/enumerate_primes.test.cpp
-    title: test/enumerate_primes.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/eratosthenes_sieve.test.cpp
-    title: test/eratosthenes_sieve.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/math/eratosthenes_sieve.test.cpp
+    title: test/math/eratosthenes_sieve.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://37zigen.com/sieve-eratosthenes/
@@ -68,10 +65,9 @@ data:
   - convolution/lcm_convolution.hpp
   - convolution/gcd_convolution.hpp
   timestamp: '2023-06-09 15:36:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/eratosthenes_sieve.test.cpp
-  - test/enumerate_primes.test.cpp
+  - test/math/eratosthenes_sieve.test.cpp
   - test/convolution/Lcm_Convolution.test.cpp
   - test/convolution/Gcd_Convolution.test.cpp
 documentation_of: math/eratosthenes_sieve.hpp

@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
@@ -362,23 +362,23 @@ data:
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
     \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 7 \"test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp\"\
-    \n\nusing namespace ebi;\n\n\nusing mint = modint998244353;\nusing FPS = FormalPowerSeries<mint,\
+    \n\nusing namespace ebi;\n\nusing mint = modint998244353;\nusing FPS = FormalPowerSeries<mint,\
     \ convolution>;\n\nint main() {\n    int n;\n    std::cin >> n;\n    FPS f(n);\n\
-    \    for(int i = 0; i < n; i++) {\n        int a;\n        std::cin >> a;\n  \
-    \      f[i] = a;\n    }\n    auto opt = f.sqrt(n);\n    if(!opt) {\n        std::cout\
-    \ << \"-1\\n\";\n        return 0;\n    }\n    auto g = opt.value();\n    for(int\
-    \ i = 0; i < n; i++) {\n        std::cout << g[i].val() << \" \\n\"[i == n-1];\n\
-    \    }\n}\n"
+    \    for (int i = 0; i < n; i++) {\n        int a;\n        std::cin >> a;\n \
+    \       f[i] = a;\n    }\n    auto opt = f.sqrt(n);\n    if (!opt) {\n       \
+    \ std::cout << \"-1\\n\";\n        return 0;\n    }\n    auto g = opt.value();\n\
+    \    for (int i = 0; i < n; i++) {\n        std::cout << g[i].val() << \" \\n\"\
+    [i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_of_formal_power_series\"\
     \n\n#include \"../../convolution/ntt.hpp\"\n#include \"../../fps/fps.hpp\"\n#include\
     \ \"../../fps/fps_sqrt.hpp\"\n#include \"../../utility/modint.hpp\"\n\nusing namespace\
-    \ ebi;\n\n\nusing mint = modint998244353;\nusing FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n\nint main() {\n    int n;\n    std::cin >> n;\n    FPS f(n);\n\
-    \    for(int i = 0; i < n; i++) {\n        int a;\n        std::cin >> a;\n  \
-    \      f[i] = a;\n    }\n    auto opt = f.sqrt(n);\n    if(!opt) {\n        std::cout\
-    \ << \"-1\\n\";\n        return 0;\n    }\n    auto g = opt.value();\n    for(int\
-    \ i = 0; i < n; i++) {\n        std::cout << g[i].val() << \" \\n\"[i == n-1];\n\
-    \    }\n}"
+    \ ebi;\n\nusing mint = modint998244353;\nusing FPS = FormalPowerSeries<mint, convolution>;\n\
+    \nint main() {\n    int n;\n    std::cin >> n;\n    FPS f(n);\n    for (int i\
+    \ = 0; i < n; i++) {\n        int a;\n        std::cin >> a;\n        f[i] = a;\n\
+    \    }\n    auto opt = f.sqrt(n);\n    if (!opt) {\n        std::cout << \"-1\\\
+    n\";\n        return 0;\n    }\n    auto g = opt.value();\n    for (int i = 0;\
+    \ i < n; i++) {\n        std::cout << g[i].val() << \" \\n\"[i == n - 1];\n  \
+    \  }\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
@@ -394,8 +394,8 @@ data:
   isVerificationFile: true
   path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 13:16:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-17 14:12:40+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 layout: document

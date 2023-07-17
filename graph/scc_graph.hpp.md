@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy:
@@ -10,11 +10,11 @@ data:
     title: algorithm/two_sat.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/algorithm/Two_Sat.test.cpp
+    title: test/algorithm/Two_Sat.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/scc_graph.test.cpp
     title: test/graph/scc_graph.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/two_sat.test.cpp
-    title: test/two_sat.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -96,7 +96,7 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/two_sat.test.cpp
+  - test/algorithm/Two_Sat.test.cpp
   - test/graph/scc_graph.test.cpp
 documentation_of: graph/scc_graph.hpp
 layout: document

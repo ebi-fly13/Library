@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/WaveletMatrix.hpp
     title: Wavelet Matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/inversion_number.hpp
     title: math/inversion_number.hpp
   - icon: ':warning:'
@@ -16,41 +16,35 @@ data:
     title: math/linear_sieve.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/FenwickTree.test.cpp
-    title: test/FenwickTree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/ImplicitTreap.test.cpp
-    title: test/ImplicitTreap.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/SegmentTreeBeats.test.cpp
-    title: test/SegmentTreeBeats.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/Static_Range_Frequency.test.cpp
-    title: test/Static_Range_Frequency.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/WaveletMatrix.test.cpp
-    title: test/WaveletMatrix.test.cpp
+    path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+    title: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Line_Add_Get_Min.test.cpp
     title: test/data_structure/Line_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+    title: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
+  - icon: ':x:'
+    path: test/data_structure/Static_Range_Frequency.test.cpp
+    title: test/data_structure/Static_Range_Frequency.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/dijkstra.test.cpp
     title: test/graph/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/fibonacci_heap.test.cpp
     title: test/graph/fibonacci_heap.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/inversion_number.test.cpp
-    title: test/math/inversion_number.test.cpp
+  - icon: ':x:'
+    path: test/math/Inversion_Number.test.cpp
+    title: test/math/Inversion_Number.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include\
@@ -72,19 +66,17 @@ data:
   - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
   timestamp: '2023-06-19 12:46:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/ImplicitTreap.test.cpp
-  - test/SegmentTreeBeats.test.cpp
-  - test/math/inversion_number.test.cpp
-  - test/WaveletMatrix.test.cpp
-  - test/Static_Range_Frequency.test.cpp
+  - test/math/Inversion_Number.test.cpp
   - test/tree/Tree_Diameter.test.cpp
-  - test/FenwickTree.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
+  - test/data_structure/Static_Range_Frequency.test.cpp
+  - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:

@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/static_range_inversion_query.test.cpp
-    title: test/static_range_inversion_query.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/data_structure/Static_Range_Inversion_Query.test.cpp
+    title: test/data_structure/Static_Range_Inversion_Query.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"algorithm/mo_algorithm.hpp\"\n\r\n#include <algorithm>\r\
@@ -46,9 +46,9 @@ data:
   path: algorithm/mo_algorithm.hpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/static_range_inversion_query.test.cpp
+  - test/data_structure/Static_Range_Inversion_Query.test.cpp
 documentation_of: algorithm/mo_algorithm.hpp
 layout: document
 redirect_from:

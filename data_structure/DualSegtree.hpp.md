@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/DualSegtree.test.cpp
-    title: test/DualSegtree.test.cpp
+    path: test/data_structure/Range_Add_Query.test.cpp
+    title: test/data_structure/Range_Add_Query.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -57,7 +57,7 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/DualSegtree.test.cpp
+  - test/data_structure/Range_Add_Query.test.cpp
 documentation_of: data_structure/DualSegtree.hpp
 layout: document
 redirect_from:
