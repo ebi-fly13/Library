@@ -21,12 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Lcm_Convolution.test.cpp
     title: test/convolution/Lcm_Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/eratosthenes_sieve.test.cpp
     title: test/math/eratosthenes_sieve.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://37zigen.com/sieve-eratosthenes/
@@ -60,16 +60,16 @@ data:
   isVerificationFile: false
   path: math/eratosthenes_sieve.hpp
   requiredBy:
+  - convolution/gcd_convolution.hpp
+  - convolution/lcm_convolution.hpp
   - math/multiple_transform.hpp
   - math/divisor_transform.hpp
-  - convolution/lcm_convolution.hpp
-  - convolution/gcd_convolution.hpp
   timestamp: '2023-06-09 15:36:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/eratosthenes_sieve.test.cpp
   - test/convolution/Lcm_Convolution.test.cpp
   - test/convolution/Gcd_Convolution.test.cpp
+  - test/math/eratosthenes_sieve.test.cpp
 documentation_of: math/eratosthenes_sieve.hpp
 layout: document
 redirect_from:

@@ -123,9 +123,9 @@ data:
   isVerificationFile: false
   path: utility/modint61.hpp
   requiredBy:
-  - string/rolling_hash.hpp
   - utility/hash.hpp
   - tree/rooted_tree_hash.hpp
+  - string/rolling_hash.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

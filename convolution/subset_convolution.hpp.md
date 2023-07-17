@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
@@ -99,9 +99,9 @@ data:
   timestamp: '2023-06-19 14:38:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/convolution/Subset_Convolution.test.cpp
+  - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
 documentation_of: convolution/subset_convolution.hpp
 layout: document
 title: Subset Convolution

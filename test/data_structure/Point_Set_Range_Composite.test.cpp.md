@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/DynamicSegmentTree.hpp
     title: data_structure/DynamicSegmentTree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':question:'

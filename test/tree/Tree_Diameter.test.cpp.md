@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/tree_diameter.hpp
     title: Tree Diameter
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []

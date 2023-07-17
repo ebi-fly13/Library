@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   _extendedVerifiedWith:
@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_1000000007.test.cpp
     title: test/convolution/Convolution_Mod_1000000007.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -39,15 +39,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/internal_math.hpp\"\n\n#include <cassert>\n\nnamespace\
@@ -70,20 +70,20 @@ data:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
   timestamp: '2023-07-17 13:16:33+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/convolution/Convolution.test.cpp
   - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/convolution/Convolution.test.cpp
+  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: math/internal_math.hpp
 layout: document
 redirect_from:

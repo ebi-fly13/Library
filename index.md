@@ -34,7 +34,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':heavy_check_mark:'
@@ -63,7 +63,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/PersistentSegmentTree.hpp
       title: data_structure/PersistentSegmentTree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/SegmentTreeBeats.hpp
       title: data_structure/SegmentTreeBeats.hpp
     - icon: ':heavy_check_mark:'
@@ -87,13 +87,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/deque_aggregation.hpp
       title: Sliding Window Aggregation (Deque)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -167,13 +167,13 @@ data:
       title: data_structure/undo_unionfind.hpp
   - name: fps
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sparse.hpp
       title: Formal Power Series (Sparse)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
     - icon: ':heavy_check_mark:'
@@ -236,7 +236,7 @@ data:
     - icon: ':warning:'
       path: math/DirichletSeries.hpp
       title: math/DirichletSeries.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/bostan_mori_algorithm.hpp
       title: Bostan-Mori Algorithm
     - icon: ':heavy_check_mark:'
@@ -245,13 +245,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/divisor_transform.hpp
       title: Divisor Transform (Zeta / Mobius)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/inversion_number.hpp
       title: math/inversion_number.hpp
     - icon: ':warning:'
@@ -260,7 +260,7 @@ data:
     - icon: ':warning:'
       path: math/linear_sieve.hpp
       title: math/linear_sieve.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_sqrt.hpp
       title: math/mod_sqrt.hpp
     - icon: ':heavy_check_mark:'
@@ -296,7 +296,7 @@ data:
       title: Superset Transform (Zeta / Mobius)
   - name: string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/Z_Algorithm.hpp
       title: string/Z_Algorithm.hpp
     - icon: ':heavy_check_mark:'
@@ -347,19 +347,19 @@ data:
       title: Tree Diameter
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/dynamic_modint.hpp
       title: utility/dynamic_modint.hpp
     - icon: ':heavy_check_mark:'
       path: utility/hash.hpp
       title: Hash structure
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -368,7 +368,7 @@ data:
     - icon: ':question:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_func.hpp
       title: utility/modint_func.hpp
     - icon: ':x:'
@@ -499,10 +499,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Chmin_Chmax_Add_Range_Sum.test.cpp
       title: test/data_structure/Range_Chmin_Chmax_Add_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Kth_Smallest.test.cpp
       title: test/data_structure/Range_Kth_Smallest.test.cpp
     - icon: ':heavy_check_mark:'
@@ -603,7 +603,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/reflection.test.cpp
       title: test/geometry/reflection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/segment_intersection.test.cpp
       title: test/geometry/segment_intersection.test.cpp
     - icon: ':heavy_check_mark:'
@@ -634,19 +634,19 @@ data:
     - icon: ':x:'
       path: test/math/Enumerate_Primes.test.cpp
       title: test/math/Enumerate_Primes.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Inversion_Number.test.cpp
       title: test/math/Inversion_Number.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
       title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     - icon: ':x:'
       path: test/math/Pow.test.cpp
       title: test/math/Pow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Sqrt_Mod.test.cpp
       title: test/math/Sqrt_Mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/eratosthenes_sieve.test.cpp
       title: test/math/eratosthenes_sieve.test.cpp
   - name: test/matrix
@@ -689,7 +689,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
       title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
@@ -705,7 +705,7 @@ data:
       title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - name: test/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/string/Z_Algorithm.test.cpp
       title: test/string/Z_Algorithm.test.cpp
   - name: test/tree

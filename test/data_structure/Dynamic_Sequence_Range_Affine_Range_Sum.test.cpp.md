@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/ImplicitTreap.hpp
     title: data_structure/ImplicitTreap.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':question:'

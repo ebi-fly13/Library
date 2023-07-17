@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/rerooting.hpp
     title: Rerooting DP
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':question:'

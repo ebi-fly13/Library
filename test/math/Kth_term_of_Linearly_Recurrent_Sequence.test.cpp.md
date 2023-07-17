@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/bostan_mori_algorithm.hpp
     title: Bostan-Mori Algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence
@@ -186,7 +186,7 @@ data:
   path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   requiredBy: []
   timestamp: '2023-07-17 14:12:40+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
 layout: document

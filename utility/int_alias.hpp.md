@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: math/inversion_number.hpp
   - icon: ':warning:'
@@ -25,6 +25,9 @@ data:
     path: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Kth_Smallest.test.cpp
+    title: test/data_structure/Range_Kth_Smallest.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,15 +39,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/fibonacci_heap.test.cpp
     title: test/graph/fibonacci_heap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include\
@@ -63,20 +66,21 @@ data:
   requiredBy:
   - math/linear_sieve.hpp
   - math/inversion_number.hpp
-  - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
+  - data_structure/WaveletMatrix.hpp
   timestamp: '2023-06-19 12:46:11+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Inversion_Number.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp
-  - test/data_structure/Line_Add_Get_Min.test.cpp
-  - test/data_structure/Segment_Add_Get_Min.test.cpp
-  - test/data_structure/Static_Range_Frequency.test.cpp
+  - test/data_structure/Range_Kth_Smallest.test.cpp
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Line_Add_Get_Min.test.cpp
+  - test/data_structure/Static_Range_Frequency.test.cpp
+  - test/data_structure/Segment_Add_Get_Min.test.cpp
 documentation_of: utility/int_alias.hpp
 layout: document
 redirect_from:

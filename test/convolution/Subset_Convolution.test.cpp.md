@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':question:'

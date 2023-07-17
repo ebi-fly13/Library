@@ -4,11 +4,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Kth_Smallest.test.cpp
+    title: test/data_structure/Range_Kth_Smallest.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Frequency.test.cpp
     title: test/data_structure/Static_Range_Frequency.test.cpp
@@ -148,6 +151,7 @@ data:
   timestamp: '2023-06-19 12:46:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data_structure/Range_Kth_Smallest.test.cpp
   - test/data_structure/Static_Range_Frequency.test.cpp
 documentation_of: data_structure/WaveletMatrix.hpp
 layout: document

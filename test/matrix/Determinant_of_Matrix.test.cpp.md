@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: matrix/square_matrix.hpp
     title: matrix/square_matrix.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':question:'

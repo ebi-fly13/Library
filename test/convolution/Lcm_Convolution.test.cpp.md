@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/divisor_transform.hpp
     title: Divisor Transform (Zeta / Mobius)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':question:'

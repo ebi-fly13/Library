@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_mod
@@ -96,7 +96,7 @@ data:
   path: test/math/Sqrt_Mod.test.cpp
   requiredBy: []
   timestamp: '2023-07-17 14:12:40+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sqrt_Mod.test.cpp
 layout: document

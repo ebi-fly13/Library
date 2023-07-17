@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: math/inversion_number.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/int_alias.hpp
     title: utility/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_5_D
@@ -86,7 +86,7 @@ data:
   path: test/math/Inversion_Number.test.cpp
   requiredBy: []
   timestamp: '2023-07-17 14:12:40+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Inversion_Number.test.cpp
 layout: document
