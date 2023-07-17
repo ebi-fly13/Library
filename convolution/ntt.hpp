@@ -1,12 +1,13 @@
 #pragma once
 
 #include <array>
+#include <cassert>
 #include <type_traits>
 #include <vector>
 
 #include "../math/internal_math.hpp"
 #include "../utility/bit_operator.hpp"
-#include "../utility/modint.hpp"
+#include "../utility/modint_base.hpp"
 
 namespace ebi {
 
