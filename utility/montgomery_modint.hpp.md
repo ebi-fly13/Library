@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Pow.test.cpp
     title: test/math/Pow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/montgomery_modint.hpp\"\n\n#include <cstdint>\n\
@@ -31,11 +31,12 @@ data:
     \    }\n\n    static constexpr u32 r = get_r();\n    static constexpr u32 n2 =\
     \ -u64(umod()) % umod();\n\n    static constexpr u32 reduce(const u64 &b) {\n\
     \        return u32(b >> 32) + umod() - u32((u64(u32(b) * r) * umod()) >> 32);\n\
-    \    }\n\n    static_assert(r * umod() == 1, \"invalid, r * mod != 1\");\n   \
-    \ static_assert(umod() < (1 << 30), \"invalid, mod >= 2 ^ 30\");\n    static_assert((umod()\
-    \ & 1) == 1, \"invalid, mod % 2 == 0\");\n\n  public:\n    static constexpr int\
-    \ mod() {\n        return m;\n    }\n\n    constexpr montgomery_modint() : _v(0)\
-    \ {}\n\n    constexpr montgomery_modint(i64 v)\n        : _v(reduce((v % i64(umod())\
+    \    }\n\n    static constexpr u32 one = reduce(i64(1 + umod()) * n2);\n\n   \
+    \ static_assert(r * umod() == 1, \"invalid, r * mod != 1\");\n    static_assert(umod()\
+    \ < (1 << 30), \"invalid, mod >= 2 ^ 30\");\n    static_assert((umod() & 1) ==\
+    \ 1, \"invalid, mod % 2 == 0\");\n\n  public:\n    static constexpr int mod()\
+    \ {\n        return m;\n    }\n\n    constexpr montgomery_modint() : _v(0) {}\n\
+    \n    constexpr montgomery_modint(i64 v)\n        : _v(reduce((v % i64(umod())\
     \ + i64(umod())) * n2)) {}\n\n    constexpr modint &operator+=(const modint &rhs)\
     \ {\n        if (i32(_v += rhs._v - 2 * umod()) < 0) _v += 2 * umod();\n     \
     \   return *this;\n    }\n\n    constexpr modint &operator-=(const modint &rhs)\
@@ -43,9 +44,10 @@ data:
     \    }\n\n    constexpr modint &operator*=(const modint &rhs) {\n        _v =\
     \ reduce(u64(_v) * rhs._v);\n        return *this;\n    }\n\n    constexpr modint\
     \ &operator/=(const modint &rhs) {\n        *this *= rhs.inv();\n        return\
-    \ *this;\n    }\n\n    constexpr modint &operator++() {\n        *this += one;\n\
-    \        return *this;\n    }\n\n    constexpr modint &operator--() {\n      \
-    \  *this -= one;\n        return *this;\n    }\n\n    constexpr modint operator++(int)\
+    \ *this;\n    }\n\n    constexpr modint &operator++() {\n        if (i32(_v +=\
+    \ one - 2 * umod()) < 0) _v += 2 * umod();\n        return *this;\n    }\n\n \
+    \   constexpr modint &operator--() {\n        if (i32(_v -= one) < 0) _v += 2\
+    \ * umod();\n        return *this;\n    }\n\n    constexpr modint operator++(int)\
     \ {\n        modint res = *this;\n        ++*this;\n        return res;\n    }\n\
     \n    constexpr modint operator--(int) {\n        modint res = *this;\n      \
     \  --*this;\n        return res;\n    }\n\n    constexpr modint operator+() const\
@@ -66,12 +68,12 @@ data:
     \n    constexpr modint inv() const {\n        return pow(umod() - 2);\n    }\n\
     \n    constexpr u32 val() const {\n        u32 ret = reduce(i64(_v));\n      \
     \  return ret >= umod() ? ret - umod() : ret;\n    }\n\n  private:\n    u32 _v\
-    \ = 0;\n    static constexpr modint one = 1;\n};\n\ntemplate <int m>\nstd::istream\
-    \ &operator>>(std::istream &os, montgomery_modint<m> &a) {\n    long long x;\n\
-    \    os >> x;\n    a = x;\n    return os;\n}\ntemplate <int m>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const montgomery_modint<m> &a) {\n    return os << a.val();\n}\n\nusing\
-    \ montgomery_modint998244353 = montgomery_modint<998244353>;\nusing montgomery_modint1000000007\
-    \ = montgomery_modint<1'000'000'007>;\n\n}  // namespace ebi\n"
+    \ = 0;\n};\n\ntemplate <int m>\nstd::istream &operator>>(std::istream &os, montgomery_modint<m>\
+    \ &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\ntemplate\
+    \ <int m>\nstd::ostream &operator<<(std::ostream &os, const montgomery_modint<m>\
+    \ &a) {\n    return os << a.val();\n}\n\nusing montgomery_modint998244353 = montgomery_modint<998244353>;\n\
+    using montgomery_modint1000000007 = montgomery_modint<1'000'000'007>;\n\n}  //\
+    \ namespace ebi\n"
   code: "#pragma once\n\n#include <cstdint>\n#include <iostream>\n\n#include \"../utility/modint_base.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <int m> struct montgomery_modint : internal::static_modint_base\
     \ {\n  private:\n    using modint = montgomery_modint;\n    using i32 = std::int32_t;\n\
@@ -82,11 +84,12 @@ data:
     \    }\n\n    static constexpr u32 r = get_r();\n    static constexpr u32 n2 =\
     \ -u64(umod()) % umod();\n\n    static constexpr u32 reduce(const u64 &b) {\n\
     \        return u32(b >> 32) + umod() - u32((u64(u32(b) * r) * umod()) >> 32);\n\
-    \    }\n\n    static_assert(r * umod() == 1, \"invalid, r * mod != 1\");\n   \
-    \ static_assert(umod() < (1 << 30), \"invalid, mod >= 2 ^ 30\");\n    static_assert((umod()\
-    \ & 1) == 1, \"invalid, mod % 2 == 0\");\n\n  public:\n    static constexpr int\
-    \ mod() {\n        return m;\n    }\n\n    constexpr montgomery_modint() : _v(0)\
-    \ {}\n\n    constexpr montgomery_modint(i64 v)\n        : _v(reduce((v % i64(umod())\
+    \    }\n\n    static constexpr u32 one = reduce(i64(1 + umod()) * n2);\n\n   \
+    \ static_assert(r * umod() == 1, \"invalid, r * mod != 1\");\n    static_assert(umod()\
+    \ < (1 << 30), \"invalid, mod >= 2 ^ 30\");\n    static_assert((umod() & 1) ==\
+    \ 1, \"invalid, mod % 2 == 0\");\n\n  public:\n    static constexpr int mod()\
+    \ {\n        return m;\n    }\n\n    constexpr montgomery_modint() : _v(0) {}\n\
+    \n    constexpr montgomery_modint(i64 v)\n        : _v(reduce((v % i64(umod())\
     \ + i64(umod())) * n2)) {}\n\n    constexpr modint &operator+=(const modint &rhs)\
     \ {\n        if (i32(_v += rhs._v - 2 * umod()) < 0) _v += 2 * umod();\n     \
     \   return *this;\n    }\n\n    constexpr modint &operator-=(const modint &rhs)\
@@ -94,9 +97,10 @@ data:
     \    }\n\n    constexpr modint &operator*=(const modint &rhs) {\n        _v =\
     \ reduce(u64(_v) * rhs._v);\n        return *this;\n    }\n\n    constexpr modint\
     \ &operator/=(const modint &rhs) {\n        *this *= rhs.inv();\n        return\
-    \ *this;\n    }\n\n    constexpr modint &operator++() {\n        *this += one;\n\
-    \        return *this;\n    }\n\n    constexpr modint &operator--() {\n      \
-    \  *this -= one;\n        return *this;\n    }\n\n    constexpr modint operator++(int)\
+    \ *this;\n    }\n\n    constexpr modint &operator++() {\n        if (i32(_v +=\
+    \ one - 2 * umod()) < 0) _v += 2 * umod();\n        return *this;\n    }\n\n \
+    \   constexpr modint &operator--() {\n        if (i32(_v -= one) < 0) _v += 2\
+    \ * umod();\n        return *this;\n    }\n\n    constexpr modint operator++(int)\
     \ {\n        modint res = *this;\n        ++*this;\n        return res;\n    }\n\
     \n    constexpr modint operator--(int) {\n        modint res = *this;\n      \
     \  --*this;\n        return res;\n    }\n\n    constexpr modint operator+() const\
@@ -117,19 +121,19 @@ data:
     \n    constexpr modint inv() const {\n        return pow(umod() - 2);\n    }\n\
     \n    constexpr u32 val() const {\n        u32 ret = reduce(i64(_v));\n      \
     \  return ret >= umod() ? ret - umod() : ret;\n    }\n\n  private:\n    u32 _v\
-    \ = 0;\n    static constexpr modint one = 1;\n};\n\ntemplate <int m>\nstd::istream\
-    \ &operator>>(std::istream &os, montgomery_modint<m> &a) {\n    long long x;\n\
-    \    os >> x;\n    a = x;\n    return os;\n}\ntemplate <int m>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const montgomery_modint<m> &a) {\n    return os << a.val();\n}\n\nusing\
-    \ montgomery_modint998244353 = montgomery_modint<998244353>;\nusing montgomery_modint1000000007\
-    \ = montgomery_modint<1'000'000'007>;\n\n}  // namespace ebi"
+    \ = 0;\n};\n\ntemplate <int m>\nstd::istream &operator>>(std::istream &os, montgomery_modint<m>\
+    \ &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\ntemplate\
+    \ <int m>\nstd::ostream &operator<<(std::ostream &os, const montgomery_modint<m>\
+    \ &a) {\n    return os << a.val();\n}\n\nusing montgomery_modint998244353 = montgomery_modint<998244353>;\n\
+    using montgomery_modint1000000007 = montgomery_modint<1'000'000'007>;\n\n}  //\
+    \ namespace ebi"
   dependsOn:
   - utility/modint_base.hpp
   isVerificationFile: false
   path: utility/montgomery_modint.hpp
   requiredBy: []
-  timestamp: '2023-07-17 15:24:52+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-07-17 15:31:21+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Pow.test.cpp
 documentation_of: utility/montgomery_modint.hpp

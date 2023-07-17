@@ -32,7 +32,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: utility/montgomery_modint.hpp
     title: utility/montgomery_modint.hpp
   _extendedVerifiedWith:
@@ -90,7 +90,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Pow.test.cpp
     title: test/math/Pow.test.cpp
   - icon: ':heavy_check_mark:'
@@ -150,9 +150,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "utility/modint_base.hpp"
@@ -247,7 +247,7 @@ data:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
   - test/aoj/aoj_3361.test.cpp

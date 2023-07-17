@@ -365,13 +365,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
     - icon: ':heavy_check_mark:'
       path: utility/modint_func.hpp
       title: utility/modint_func.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: utility/montgomery_modint.hpp
       title: utility/montgomery_modint.hpp
     - icon: ':heavy_check_mark:'
@@ -640,7 +640,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
       title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Pow.test.cpp
       title: test/math/Pow.test.cpp
     - icon: ':heavy_check_mark:'
