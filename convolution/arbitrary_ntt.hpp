@@ -5,6 +5,7 @@
 
 #include "../convolution/ntt.hpp"
 #include "../utility/modint.hpp"
+#include "../utility/modint_base.hpp"
 
 namespace ebi {
 
@@ -22,7 +23,7 @@ std::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>& g) {
 
 }  // namespace internal
 
-template <class mint, internal::is_static_modint_t<mint>* = nullptr>
+template <class mint, internal::is_modint_t<mint>* = nullptr>
 std::vector<mint> arbitary_convolution(const std::vector<mint>& f,
                                        const std::vector<mint>& g) {
     using i32 = std::int64_t;
