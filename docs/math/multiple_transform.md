@@ -1,5 +1,5 @@
 ---
-title: Multiple Transform (Zeta / Mobius)
+title: Multiple Transform (Zeta / Möbius)
 documentation_of: //math/multiple_transform.hpp
 ---
 

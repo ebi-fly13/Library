@@ -1,5 +1,5 @@
 ---
-title: Superset Transform (Zeta / Mobius)
+title: Superset Transform (Zeta / Möbius)
 documentation_of: //set_function/superset_transform.hpp
 ---
 

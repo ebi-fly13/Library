@@ -1,5 +1,5 @@
 ---
-title: Divisor Transform (Zeta / Mobius)
+title: Divisor Transform (Zeta / Möbius)
 documentation_of: //math/divisor_transform.hpp
 ---
 

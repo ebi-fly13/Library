@@ -1,5 +1,5 @@
 ---
-title: Subset Transform (Zeta / Mobius)
+title: Subset Transform (Zeta / Möbius)
 documentation_of: //set_function/subset_transform.hpp
 ---
 
