@@ -75,7 +75,7 @@ data:
   - test/convolution/Lcm_Convolution.test.cpp
 documentation_of: math/divisor_transform.hpp
 layout: document
-title: Divisor Transform (Zeta / Mobius)
+title: "Divisor Transform (Zeta / M\xF6bius)"
 ---
 
 ## 説明

@@ -6,7 +6,7 @@ data:
     title: LCM Convolution
   - icon: ':heavy_check_mark:'
     path: math/divisor_transform.hpp
-    title: Divisor Transform (Zeta / Mobius)
+    title: "Divisor Transform (Zeta / M\xF6bius)"
   - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: math/eratosthenes_sieve.hpp

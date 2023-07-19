@@ -244,7 +244,7 @@ data:
       title: math/combination.hpp
     - icon: ':heavy_check_mark:'
       path: math/divisor_transform.hpp
-      title: Divisor Transform (Zeta / Mobius)
+      title: "Divisor Transform (Zeta / M\xF6bius)"
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: math/eratosthenes_sieve.hpp
@@ -265,7 +265,7 @@ data:
       title: math/mod_sqrt.hpp
     - icon: ':heavy_check_mark:'
       path: math/multiple_transform.hpp
-      title: Multiple Transform (Zeta / Mobius)
+      title: "Multiple Transform (Zeta / M\xF6bius)"
   - name: matrix
     pages:
     - icon: ':heavy_check_mark:'
@@ -290,10 +290,10 @@ data:
       title: Ranked Subset Transform (Zeta / Mobius)
     - icon: ':heavy_check_mark:'
       path: set_function/subset_transform.hpp
-      title: Subset Transform (Zeta / Mobius)
+      title: "Subset Transform (Zeta / M\xF6bius)"
     - icon: ':heavy_check_mark:'
       path: set_function/superset_transform.hpp
-      title: Superset Transform (Zeta / Mobius)
+      title: "Superset Transform (Zeta / M\xF6bius)"
   - name: string
     pages:
     - icon: ':heavy_check_mark:'

@@ -66,7 +66,7 @@ data:
   - test/convolution/Bitwise_And_Convolution.test.cpp
 documentation_of: set_function/superset_transform.hpp
 layout: document
-title: Superset Transform (Zeta / Mobius)
+title: "Superset Transform (Zeta / M\xF6bius)"
 ---
 
 ## 説明

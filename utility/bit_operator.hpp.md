@@ -34,10 +34,10 @@ data:
     title: Ranked Subset Transform (Zeta / Mobius)
   - icon: ':heavy_check_mark:'
     path: set_function/subset_transform.hpp
-    title: Subset Transform (Zeta / Mobius)
+    title: "Subset Transform (Zeta / M\xF6bius)"
   - icon: ':heavy_check_mark:'
     path: set_function/superset_transform.hpp
-    title: Superset Transform (Zeta / Mobius)
+    title: "Superset Transform (Zeta / M\xF6bius)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2235.test.cpp

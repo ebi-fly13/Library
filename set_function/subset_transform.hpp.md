@@ -65,7 +65,7 @@ data:
   - test/convolution/Bitwise_OR_Convolution.test.cpp
 documentation_of: set_function/subset_transform.hpp
 layout: document
-title: Subset Transform (Zeta / Mobius)
+title: "Subset Transform (Zeta / M\xF6bius)"
 ---
 
 ## 説明

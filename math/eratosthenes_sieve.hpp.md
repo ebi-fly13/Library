@@ -10,10 +10,10 @@ data:
     title: LCM Convolution
   - icon: ':heavy_check_mark:'
     path: math/divisor_transform.hpp
-    title: Divisor Transform (Zeta / Mobius)
+    title: "Divisor Transform (Zeta / M\xF6bius)"
   - icon: ':heavy_check_mark:'
     path: math/multiple_transform.hpp
-    title: Multiple Transform (Zeta / Mobius)
+    title: "Multiple Transform (Zeta / M\xF6bius)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Gcd_Convolution.test.cpp

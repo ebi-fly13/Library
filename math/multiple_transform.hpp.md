@@ -75,7 +75,7 @@ data:
   - test/convolution/Gcd_Convolution.test.cpp
 documentation_of: math/multiple_transform.hpp
 layout: document
-title: Multiple Transform (Zeta / Mobius)
+title: "Multiple Transform (Zeta / M\xF6bius)"
 ---
 
 ## 説明
