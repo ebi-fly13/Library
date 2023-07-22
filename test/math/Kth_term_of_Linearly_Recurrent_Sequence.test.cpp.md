@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
     path: math/bostan_mori_algorithm.hpp
     title: Bostan-Mori Algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []

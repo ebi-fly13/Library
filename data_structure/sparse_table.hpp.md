@@ -73,8 +73,9 @@ data:
   - test/data_structure/Static_Rmq.test.cpp
 documentation_of: data_structure/sparse_table.hpp
 layout: document
-redirect_from:
-- /library/data_structure/sparse_table.hpp
-- /library/data_structure/sparse_table.hpp.html
-title: data_structure/sparse_table.hpp
+title: Sparse Table
 ---
+
+## 説明
+
+静的配列のmin, max, gcdなどの区間クエリを処理することができる。構築 $O(N\log N)$、クエリ $O(1)$

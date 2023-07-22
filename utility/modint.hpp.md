@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
   _extendedVerifiedWith:
@@ -90,22 +90,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':heavy_check_mark:'
@@ -114,15 +114,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#include\
@@ -232,7 +232,7 @@ data:
   - convolution/arbitrary_ntt.hpp
   - convolution/convolution_mod_2_64.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_3361.test.cpp
   - test/aoj/aoj_2863.test.cpp

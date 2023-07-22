@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
-    title: data_structure/sparse_table.hpp
+    title: Sparse Table
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'

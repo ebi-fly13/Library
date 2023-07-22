@@ -3,8 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
-    title: data_structure/sparse_table.hpp
-  - icon: ':question:'
+    title: Sparse Table
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
   - icon: ':heavy_check_mark:'
