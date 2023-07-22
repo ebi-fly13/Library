@@ -6,6 +6,9 @@ data:
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
+    path: convolution/convolution_mod_2_64.hpp
+    title: Convolution ($\mod 2^{64}$)
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   _extendedVerifiedWith:
@@ -15,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_1000000007.test.cpp
     title: test/convolution/Convolution_Mod_1000000007.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_Mod_2_64.test.cpp
+    title: test/convolution/Convolution_Mod_2_64.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
@@ -30,47 +36,49 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/internal_math.hpp\"\n\n#include <cassert>\n\nnamespace\
     \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
     \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n    assert(0);\n    return -1;\n}\ntemplate <int m> constexpr int\
-    \ primitive_root = primitive_root_constexpr(m);\n\n}  // namespace internal\n\n\
-    }  // namespace ebi\n"
+    \ return 3;\n    if (m == 880803841) return 26;\n    assert(0);\n    return -1;\n\
+    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n\nnamespace ebi {\n\nnamespace internal\
     \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
     \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
-    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    assert(0);\n\
-    \    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi"
+    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
+    \ (m == 880803841) return 26;\n    assert(0);\n    return -1;\n}\ntemplate <int\
+    \ m> constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  // namespace\
+    \ internal\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: math/internal_math.hpp
   requiredBy:
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
-  timestamp: '2023-07-17 13:16:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - convolution/convolution_mod_2_64.hpp
+  timestamp: '2023-07-22 16:27:16+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
@@ -84,6 +92,7 @@ data:
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/convolution/Convolution.test.cpp
   - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/convolution/Convolution_Mod_2_64.test.cpp
 documentation_of: math/internal_math.hpp
 layout: document
 redirect_from:

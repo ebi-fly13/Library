@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   - icon: ':heavy_check_mark:'

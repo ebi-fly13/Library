@@ -5,9 +5,6 @@ data:
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':question:'
-    path: fps/fps.hpp
-    title: Formal Power Series
-  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':question:'
@@ -20,19 +17,18 @@ data:
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_Mod_2_64.test.cpp
+    title: test/convolution/Convolution_Mod_2_64.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
-    links:
-    - https://judge.yosupo.jp/problem/log_of_formal_power_series
-  bundledCode: "#line 1 \"test/polynomial/Log_of_Formal_Power_Series.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
-    \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"convolution/ntt.hpp\"\n\n#include\
-    \ <array>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\n#line\
+    links: []
+  bundledCode: "#line 2 \"convolution/convolution_mod_2_64.hpp\"\n\n#include <cstdint>\n\
+    #include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include\
+    \ <cassert>\n#include <type_traits>\n#line 7 \"convolution/ntt.hpp\"\n\n#line\
     \ 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace\
     \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
     \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
@@ -97,86 +93,8 @@ data:
     \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"fps/fps.hpp\"\n\n\
-    #include <algorithm>\n#line 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"\
-    fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
-    \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
-    \n  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
-    \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
-    \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
-    \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n    FPS operator/(const\
-    \ FPS &rhs) const noexcept {\n        return FPS(*this) /= rhs;\n    }\n    FPS\
-    \ operator%(const FPS &rhs) const noexcept {\n        return FPS(*this) %= rhs;\n\
-    \    }\n\n    FPS operator+(const mint &rhs) const noexcept {\n        return\
-    \ FPS(*this) += rhs;\n    }\n    FPS operator-(const mint &rhs) const noexcept\
-    \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const mint &rhs)\
-    \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n    FPS operator/(const\
-    \ mint &rhs) const noexcept {\n        return FPS(*this) /= rhs;\n    }\n\n  \
-    \  FPS &operator+=(const FPS &rhs) noexcept {\n        if (this->size() < rhs.size())\
-    \ this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size(); ++i)\
-    \ {\n            (*this)[i] += rhs[i];\n        }\n        return *this;\n   \
-    \ }\n\n    FPS &operator-=(const FPS &rhs) noexcept {\n        if (this->size()\
-    \ < rhs.size()) this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
-    \ ++i) {\n            (*this)[i] -= rhs[i];\n        }\n        return *this;\n\
-    \    }\n\n    FPS &operator*=(const FPS &rhs) noexcept {\n        *this = convolution(*this,\
-    \ rhs);\n        return *this;\n    }\n\n    FPS &operator/=(const FPS &rhs) noexcept\
-    \ {\n        int n = deg() - 1;\n        int m = rhs.deg() - 1;\n        if (n\
-    \ < m) {\n            *this = {};\n            return *this;\n        }\n    \
-    \    *this = (*this).rev() * rhs.rev().inv(n - m + 1);\n        (*this).resize(n\
-    \ - m + 1);\n        std::reverse((*this).begin(), (*this).end());\n        return\
-    \ *this;\n    }\n\n    FPS &operator%=(const FPS &rhs) noexcept {\n        *this\
-    \ -= *this / rhs * rhs;\n        shrink();\n        return *this;\n    }\n\n \
-    \   FPS &operator+=(const mint &rhs) noexcept {\n        if (this->empty()) this->resize(1);\n\
-    \        (*this)[0] += rhs;\n        return *this;\n    }\n\n    FPS &operator-=(const\
-    \ mint &rhs) noexcept {\n        if (this->empty()) this->resize(1);\n       \
-    \ (*this)[0] -= rhs;\n        return *this;\n    }\n\n    FPS &operator*=(const\
-    \ mint &rhs) noexcept {\n        for (int i = 0; i < deg(); ++i) {\n         \
-    \   (*this)[i] *= rhs;\n        }\n        return *this;\n    }\n    FPS &operator/=(const\
-    \ mint &rhs) noexcept {\n        mint inv_rhs = rhs.inv();\n        for (int i\
-    \ = 0; i < deg(); ++i) {\n            (*this)[i] *= inv_rhs;\n        }\n    \
-    \    return *this;\n    }\n\n    FPS operator>>(int d) const {\n        if (deg()\
-    \ <= d) return {};\n        FPS f = *this;\n        f.erase(f.begin(), f.begin()\
-    \ + d);\n        return f;\n    }\n\n    FPS operator<<(int d) const {\n     \
-    \   FPS f = *this;\n        f.insert(f.begin(), d, 0);\n        return f;\n  \
-    \  }\n\n    FPS operator-() const {\n        FPS g(this->size());\n        for\
-    \ (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n        return\
-    \ g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
-    \ this->begin() + std::min(deg(), sz));\n    }\n\n    FPS rev() const {\n    \
-    \    auto f = *this;\n        std::reverse(f.begin(), f.end());\n        return\
-    \ f;\n    }\n\n    FPS differential() const {\n        int n = deg();\n      \
-    \  FPS g(std::max(0, n - 1));\n        for (int i = 0; i < n - 1; i++) {\n   \
-    \         g[i] = (*this)[i + 1] * (i + 1);\n        }\n        return g;\n   \
-    \ }\n\n    FPS integral() const {\n        int n = deg();\n        FPS g(n + 1);\n\
-    \        g[0] = 0;\n        if (n > 0) g[1] = 1;\n        auto mod = mint::mod();\n\
-    \        for (int i = 2; i <= n; i++) g[i] = (-g[mod % i]) * (mod / i);\n    \
-    \    for (int i = 0; i < n; i++) g[i + 1] *= (*this)[i];\n        return g;\n\
-    \    }\n\n    FPS inv(int d = -1) const {\n        int n = 1;\n        if (d <\
-    \ 0) d = deg();\n        FPS g(n);\n        g[0] = (*this)[0].inv();\n       \
-    \ while (n < d) {\n            n <<= 1;\n            g = (g * 2 - g * g * this->pre(n)).pre(n);\n\
-    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS log(int\
-    \ d = -1) const {\n        assert((*this)[0].val() == 1);\n        if (d < 0)\
-    \ d = deg();\n        return ((*this).differential() * (*this).inv(d)).pre(d -\
-    \ 1).integral();\n    }\n\n    FPS exp(int d = -1) const {\n        assert((*this)[0].val()\
-    \ == 0);\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n\
-    \        g[0] = 1;\n        while (n < d) {\n            n <<= 1;\n          \
-    \  g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n        }\n        g.resize(d);\n\
-    \        return g;\n    }\n\n    FPS pow(int64_t k, int d = -1) const {\n    \
-    \    const int n = deg();\n        if (d < 0) d = n;\n        if (k == 0) {\n\
-    \            FPS f(d);\n            if (d > 0) f[0] = 1;\n            return f;\n\
-    \        }\n        for (int i = 0; i < n; i++) {\n            if ((*this)[i]\
-    \ != 0) {\n                mint rev = (*this)[i].inv();\n                FPS f\
-    \ = (((*this * rev) >> i).log(d) * k).exp(d);\n                f *= (*this)[i].pow(k);\n\
-    \                f = (f << (i * k)).pre(d);\n                if (f.deg() < d)\
-    \ f.resize(d);\n                return f;\n            }\n            if (i +\
-    \ 1 >= (d + k - 1) / k) break;\n        }\n        return FPS(d);\n    }\n\n \
-    \   int deg() const {\n        return (*this).size();\n    }\n\n    void shrink()\
-    \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
-    \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
-    \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
-    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
-    };\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 6 \"utility/modint.hpp\"\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\
+    \n\r\n#line 4 \"utility/modint.hpp\"\n#include <iostream>\r\n#line 6 \"utility/modint.hpp\"\
     \n\r\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
     \ m> struct static_modint : internal::static_modint_base {\r\n  private:\r\n \
     \   using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
@@ -221,39 +139,89 @@ data:
     \ m>\r\nstd::ostream &operator<<(std::ostream &os, const static_modint<m> &a)\
     \ {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
     \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 8 \"test/polynomial/Log_of_Formal_Power_Series.test.cpp\"\n\r\nusing mint\
-    \ = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >>\
-    \ n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for (int\
-    \ i = 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\n   \
-    \     a[i] = val;\r\n    }\r\n    auto b = a.log();\r\n    for (int i = 0; i <\
-    \ n; ++i) {\r\n        std::cout << b[i].val() << \" \\n\"[i == n - 1];\r\n  \
-    \  }\r\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
-    \r\n\r\n#include <iostream>\r\n\r\n#include \"../../convolution/ntt.hpp\"\r\n\
-    #include \"../../fps/fps.hpp\"\r\n#include \"../../utility/modint.hpp\"\r\n\r\n\
-    using mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin\
-    \ >> n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for\
-    \ (int i = 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\n\
-    \        a[i] = val;\r\n    }\r\n    auto b = a.log();\r\n    for (int i = 0;\
-    \ i < n; ++i) {\r\n        std::cout << b[i].val() << \" \\n\"[i == n - 1];\r\n\
-    \    }\r\n}"
+    #line 9 \"convolution/convolution_mod_2_64.hpp\"\n\nnamespace ebi {\n\nnamespace\
+    \ internal {\n\ntemplate <class mint, internal::is_static_modint_t<mint>* = nullptr>\n\
+    std::vector<mint> multiply_uint64_t(const std::vector<std::uint64_t>& f,\n   \
+    \                                 const std::vector<std::uint64_t>& g) {\n   \
+    \ std::vector<mint> a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n\
+    \    for (auto x : f) a.emplace_back(x % mint::mod());\n    for (auto x : g) b.emplace_back(x\
+    \ % mint::mod());\n    return convolution<mint>(a, b);\n}\n\n}  // namespace internal\n\
+    \nstd::vector<std::uint64_t> convolution_mod_2_64(\n    const std::vector<std::uint64_t>&\
+    \ f, const std::vector<std::uint64_t>& g) {\n    if (f.empty() || g.empty()) return\
+    \ {};\n    using i32 = std::int32_t;\n    using i64 = std::int64_t;\n    using\
+    \ u64 = std::uint64_t;\n    static constexpr i32 m0 = 998244353;\n    static constexpr\
+    \ i32 m1 = 754974721;\n    static constexpr i32 m2 = 167772161;\n    static constexpr\
+    \ i32 m3 = 469762049;\n    static constexpr i32 m4 = 880803841;\n    using mint0\
+    \ = static_modint<m0>;\n    using mint1 = static_modint<m1>;\n    using mint2\
+    \ = static_modint<m2>;\n    using mint3 = static_modint<m3>;\n    using mint4\
+    \ = static_modint<m4>;\n\n    auto d0 = internal::multiply_uint64_t<mint0>(f,\
+    \ g);\n    auto d1 = internal::multiply_uint64_t<mint1>(f, g);\n    auto d2 =\
+    \ internal::multiply_uint64_t<mint2>(f, g);\n    auto d3 = internal::multiply_uint64_t<mint3>(f,\
+    \ g);\n    auto d4 = internal::multiply_uint64_t<mint4>(f, g);\n\n    static const\
+    \ mint1 inv10 = mint1(m0).inv();\n    static const mint2 inv21 = mint2(m1).inv(),\
+    \ inv20 = inv21 / mint2(m0);\n    static const mint3 inv32 = mint3(m2).inv(),\
+    \ inv31 = inv32 / mint3(m1),\n                       inv30 = inv31 / mint3(m0);\n\
+    \    static const mint4 inv43 = mint4(m3).inv(), inv42 = inv43 / mint4(m2),\n\
+    \                       inv41 = inv42 / mint4(m1), inv40 = inv41 / mint4(m0);\n\
+    \    int n = d0.size();\n    std::vector<u64> res(n);\n    for (int i = 0; i <\
+    \ n; i++) {\n        i64 x0 = d0[i].val();\n        i64 x1 = ((d1[i] - x0) * inv10).val();\n\
+    \        i64 x2 = (((d2[i] - x0)) * inv20 - mint2(x1) * inv21).val();\n      \
+    \  i64 x3 = ((d3[i] - x0) * inv30 - mint3(x1) * inv31 - mint3(x2) * inv32)\n \
+    \                    .val();\n        i64 x4 = ((d4[i] - x0) * inv40 - mint4(x1)\
+    \ * inv41 - mint4(x2) * inv42 -\n                  mint4(x3) * inv43)\n      \
+    \               .val();\n        res[i] = x0 + m0 * (x1 + m1 * (x2 + m2 * (x3\
+    \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cstdint>\n#include <vector>\n\n#include \"../convolution/ntt.hpp\"\
+    \n#include \"../utility/modint.hpp\"\n#include \"../utility/modint_base.hpp\"\n\
+    \nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
+    \ = nullptr>\nstd::vector<mint> multiply_uint64_t(const std::vector<std::uint64_t>&\
+    \ f,\n                                    const std::vector<std::uint64_t>& g)\
+    \ {\n    std::vector<mint> a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n\
+    \    for (auto x : f) a.emplace_back(x % mint::mod());\n    for (auto x : g) b.emplace_back(x\
+    \ % mint::mod());\n    return convolution<mint>(a, b);\n}\n\n}  // namespace internal\n\
+    \nstd::vector<std::uint64_t> convolution_mod_2_64(\n    const std::vector<std::uint64_t>&\
+    \ f, const std::vector<std::uint64_t>& g) {\n    if (f.empty() || g.empty()) return\
+    \ {};\n    using i32 = std::int32_t;\n    using i64 = std::int64_t;\n    using\
+    \ u64 = std::uint64_t;\n    static constexpr i32 m0 = 998244353;\n    static constexpr\
+    \ i32 m1 = 754974721;\n    static constexpr i32 m2 = 167772161;\n    static constexpr\
+    \ i32 m3 = 469762049;\n    static constexpr i32 m4 = 880803841;\n    using mint0\
+    \ = static_modint<m0>;\n    using mint1 = static_modint<m1>;\n    using mint2\
+    \ = static_modint<m2>;\n    using mint3 = static_modint<m3>;\n    using mint4\
+    \ = static_modint<m4>;\n\n    auto d0 = internal::multiply_uint64_t<mint0>(f,\
+    \ g);\n    auto d1 = internal::multiply_uint64_t<mint1>(f, g);\n    auto d2 =\
+    \ internal::multiply_uint64_t<mint2>(f, g);\n    auto d3 = internal::multiply_uint64_t<mint3>(f,\
+    \ g);\n    auto d4 = internal::multiply_uint64_t<mint4>(f, g);\n\n    static const\
+    \ mint1 inv10 = mint1(m0).inv();\n    static const mint2 inv21 = mint2(m1).inv(),\
+    \ inv20 = inv21 / mint2(m0);\n    static const mint3 inv32 = mint3(m2).inv(),\
+    \ inv31 = inv32 / mint3(m1),\n                       inv30 = inv31 / mint3(m0);\n\
+    \    static const mint4 inv43 = mint4(m3).inv(), inv42 = inv43 / mint4(m2),\n\
+    \                       inv41 = inv42 / mint4(m1), inv40 = inv41 / mint4(m0);\n\
+    \    int n = d0.size();\n    std::vector<u64> res(n);\n    for (int i = 0; i <\
+    \ n; i++) {\n        i64 x0 = d0[i].val();\n        i64 x1 = ((d1[i] - x0) * inv10).val();\n\
+    \        i64 x2 = (((d2[i] - x0)) * inv20 - mint2(x1) * inv21).val();\n      \
+    \  i64 x3 = ((d3[i] - x0) * inv30 - mint3(x1) * inv31 - mint3(x2) * inv32)\n \
+    \                    .val();\n        i64 x4 = ((d4[i] - x0) * inv40 - mint4(x1)\
+    \ * inv41 - mint4(x2) * inv42 -\n                  mint4(x3) * inv43)\n      \
+    \               .val();\n        res[i] = x0 + m0 * (x1 + m1 * (x2 + m2 * (x3\
+    \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   - utility/modint_base.hpp
-  - fps/fps.hpp
   - utility/modint.hpp
-  isVerificationFile: true
-  path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  isVerificationFile: false
+  path: convolution/convolution_mod_2_64.hpp
   requiredBy: []
   timestamp: '2023-07-22 16:27:16+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/convolution/Convolution_Mod_2_64.test.cpp
+documentation_of: convolution/convolution_mod_2_64.hpp
 layout: document
-redirect_from:
-- /verify/test/polynomial/Log_of_Formal_Power_Series.test.cpp
-- /verify/test/polynomial/Log_of_Formal_Power_Series.test.cpp.html
-title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+title: Convolution ($\mod 2^{64}$)
 ---
+
+## 説明
+
+$\mod 2^{64}$ における $O(N\log N)$ 時間での畳み込み。

@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':warning:'
@@ -11,7 +11,7 @@ data:
   - icon: ':warning:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   _extendedVerifiedWith:
@@ -27,21 +27,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -211,7 +211,7 @@ data:
   - fps/product_of_one_plus_xn.hpp
   - fps/fps_sqrt.hpp
   timestamp: '2023-06-12 02:16:01+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp

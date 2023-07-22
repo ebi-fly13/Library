@@ -6,12 +6,15 @@ data:
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
+    path: convolution/convolution_mod_2_64.hpp
+    title: Convolution ($\mod 2^{64}$)
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
   - icon: ':heavy_check_mark:'
@@ -20,13 +23,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -60,6 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_1000000007.test.cpp
     title: test/convolution/Convolution_Mod_1000000007.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_Mod_2_64.test.cpp
+    title: test/convolution/Convolution_Mod_2_64.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Gcd_Convolution.test.cpp
     title: test/convolution/Gcd_Convolution.test.cpp
@@ -120,22 +126,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':heavy_check_mark:'
@@ -150,9 +156,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "utility/modint_base.hpp"
@@ -246,8 +252,9 @@ data:
   - tree/rooted_tree_hash.hpp
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
+  - convolution/convolution_mod_2_64.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
   - test/aoj/aoj_3361.test.cpp
@@ -281,6 +288,7 @@ data:
   - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Bitwise_Xor_Convolution.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
+  - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
