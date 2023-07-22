@@ -4,8 +4,8 @@
 #include <vector>
 
 #include "../convolution/ntt.hpp"
-#include "../utility/modint_base.hpp"
 #include "../utility/modint.hpp"
+#include "../utility/modint_base.hpp"
 
 namespace ebi {
 
@@ -26,7 +26,8 @@ std::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>& g) {
 template <class mint, internal::is_modint_t<mint>* = nullptr>
 std::vector<mint> arbitary_convolution(const std::vector<mint>& f,
                                        const std::vector<mint>& g) {
-    using i32 = std::int64_t;
+    if (f.empty() || g.empty()) return {};
+    using i32 = std::int32_t;
     using i64 = std::int64_t;
     static constexpr i32 m0 = 167772161;  // 2^25
     static constexpr i32 m1 = 469762049;  // 2^26
