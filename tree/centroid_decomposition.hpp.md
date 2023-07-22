@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://ferin-tech.hatenablog.com/entry/2020/03/06/162311
@@ -70,8 +73,9 @@ data:
   path: tree/centroid_decomposition.hpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
 documentation_of: tree/centroid_decomposition.hpp
 layout: document
 title: Centroid Decomposition

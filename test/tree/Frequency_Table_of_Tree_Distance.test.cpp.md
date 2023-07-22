@@ -8,8 +8,14 @@ data:
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':question:'
+    path: graph/template.hpp
+    title: graph/template.hpp
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
+  - icon: ':x:'
+    path: tree/centroid_decomposition.hpp
+    title: Centroid Decomposition
   - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
@@ -21,36 +27,36 @@ data:
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_2_64
+    PROBLEM: https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
     links:
-    - https://judge.yosupo.jp/problem/convolution_mod_2_64
-  bundledCode: "#line 1 \"test/convolution/Convolution_Mod_2_64.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_2_64\"\n\n#include\
-    \ <cstdint>\n#include <iostream>\n#include <vector>\n\n#line 2 \"convolution/convolution_mod_2_64.hpp\"\
-    \n\n#line 5 \"convolution/convolution_mod_2_64.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\
-    \n\n#include <algorithm>\n#include <array>\n#include <cassert>\n#include <type_traits>\n\
-    #line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\n\n#line\
-    \ 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\n\
-    constexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n \
-    \   if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if (m\
-    \ == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if (m == 880803841)\
-    \ return 26;\n    assert(0);\n    return -1;\n}\ntemplate <int m> constexpr int\
-    \ primitive_root = primitive_root_constexpr(m);\n\n}  // namespace internal\n\n\
-    }  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\
-    \nconstexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n\
-    \ & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int n, int bit_size)\
-    \ {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n\
-    \ |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint\
-    \ ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n))\
-    \ x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
-    }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
-    int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
-    \ ebi\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
+    - https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
+  bundledCode: "#line 1 \"test/tree/Frequency_Table_of_Tree_Distance.test.cpp\"\n\
+    #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
+    \n\n#include <cstdint>\n#include <iostream>\n#include <queue>\n#include <vector>\n\
+    \n#line 2 \"convolution/convolution_mod_2_64.hpp\"\n\n#line 5 \"convolution/convolution_mod_2_64.hpp\"\
+    \n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include <array>\n\
+    #include <cassert>\n#include <type_traits>\n#line 8 \"convolution/ntt.hpp\"\n\n\
+    #line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace\
+    \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
+    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
+    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
+    \ return 3;\n    if (m == 880803841) return 26;\n    assert(0);\n    return -1;\n\
+    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
+    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
+    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
+    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
+    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
+    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
+    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
+    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
+    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
+    }\n\n}  // namespace ebi\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
     \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
     \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
@@ -186,19 +192,92 @@ data:
     \ * inv41 - mint4(x2) * inv42 -\n                  mint4(x3) * inv43)\n      \
     \               .val();\n        res[i] = x0 + m0 * (x1 + m1 * (x2 + m2 * (x3\
     \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi\n#line\
-    \ 8 \"test/convolution/Convolution_Mod_2_64.test.cpp\"\n\nusing u64 = std::uint64_t;\n\
-    \nint main() {\n    int n, m;\n    std::cin >> n >> m;\n    std::vector<u64> a(n),\
-    \ b(m);\n    for (int i = 0; i < n; i++) std::cin >> a[i];\n    for (int i = 0;\
-    \ i < m; i++) std::cin >> b[i];\n    auto c = ebi::convolution_mod_2_64(a, b);\n\
-    \    for (int i = 0; i < n + m - 1; i++)\n        std::cout << c[i] << \" \\n\"\
-    [i == n + m - 2];\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_2_64\"\n\
-    \n#include <cstdint>\n#include <iostream>\n#include <vector>\n\n#include \"../../convolution/convolution_mod_2_64.hpp\"\
-    \n\nusing u64 = std::uint64_t;\n\nint main() {\n    int n, m;\n    std::cin >>\
-    \ n >> m;\n    std::vector<u64> a(n), b(m);\n    for (int i = 0; i < n; i++) std::cin\
-    \ >> a[i];\n    for (int i = 0; i < m; i++) std::cin >> b[i];\n    auto c = ebi::convolution_mod_2_64(a,\
-    \ b);\n    for (int i = 0; i < n + m - 1; i++)\n        std::cout << c[i] << \"\
-    \ \\n\"[i == n + m - 2];\n}"
+    \ 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <class T> struct Edge {\r\n    int to;\r\n    T cost;\r\
+    \n    Edge(int _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate\
+    \ <class T> struct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \ w);\r\n        if (directed) return;\r\n        (*this)[v].emplace_back(u, w);\r\
+    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
+    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
+    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ ebi\n#line 2 \"tree/centroid_decomposition.hpp\"\n\r\n#line 4 \"tree/centroid_decomposition.hpp\"\
+    \n\r\n/*\r\n    reference: https://qiita.com/drken/items/4b4c3f1824339b090202\r\
+    \n               https://ferin-tech.hatenablog.com/entry/2020/03/06/162311\r\n\
+    */\r\n\r\nnamespace ebi {\r\n\r\nstruct centroid_decomposition {\r\n  private:\r\
+    \n    int find_centroid(int _root) {\r\n        auto get_size = [&](auto &&self,\
+    \ int v, int p = -1) -> int {\r\n            sz[v] = 1;\r\n            for (auto\
+    \ nv : g[v])\r\n                if (nv != p && !dead[nv]) {\r\n              \
+    \      sz[v] += self(self, nv, v);\r\n                }\r\n            return\
+    \ sz[v];\r\n        };\r\n        get_size(get_size, _root);\r\n        auto dfs_centroid\
+    \ = [&](auto &&self, int v, int p = -1) -> int {\r\n            for (auto nv :\
+    \ g[v])\r\n                if (nv != p && !dead[nv]) {\r\n                   \
+    \ if (sz[nv] > sz[_root] / 2) return self(self, nv, v);\r\n                }\r\
+    \n            return v;\r\n        };\r\n        return dfs_centroid(dfs_centroid,\
+    \ _root);\r\n    }\r\n\r\n    int build(int v = 0, int depth = 0) {\r\n      \
+    \  int c = find_centroid(v);\r\n        dead[c] = true;\r\n        for (auto nv\
+    \ : g[c])\r\n            if (!dead[nv]) {\r\n                int ch = build(nv,\
+    \ depth + 1);\r\n                belong[c].emplace_back(ch);\r\n             \
+    \   par[ch] = c;\r\n            }\r\n        dead[c] = false;\r\n        return\
+    \ root = c;\r\n    }\r\n\r\n  public:\r\n    centroid_decomposition(const std::vector<std::vector<int>>\
+    \ &_g)\r\n        : n(int(_g.size())),\r\n          g(_g),\r\n          dead(n,\
+    \ false),\r\n          sz(n, -1),\r\n          par(n, -1),\r\n          belong(n)\
+    \ {\r\n        build();\r\n    }\r\n\r\n    std::pair<int, std::vector<std::vector<int>>>\r\
+    \n    get_centroid_decomposition_tree() const {\r\n        return {root, belong};\r\
+    \n    }\r\n\r\n    int parent(int v) const {\r\n        return par[v];\r\n   \
+    \ }\r\n\r\n  private:\r\n    int n;\r\n    int root;\r\n    std::vector<std::vector<int>>\
+    \ g;\r\n    std::vector<bool> dead;\r\n    std::vector<int> sz;\r\n    std::vector<int>\
+    \ par;\r\n    std::vector<std::vector<int>> belong;\r\n};\r\n\r\n}  // namespace\
+    \ ebi\n#line 12 \"test/tree/Frequency_Table_of_Tree_Distance.test.cpp\"\n\nusing\
+    \ u64 = uint64_t;\n\nint main() {\n    int n;\n    std::cin >> n;\n    ebi::graph\
+    \ g(n);\n    for (int i = 0; i < n - 1; i++) {\n        int a, b;\n        std::cin\
+    \ >> a >> b;\n        g.add_edge(a, b);\n    }\n    ebi::centroid_decomposition\
+    \ cdtree(g);\n    auto [root, tree] = cdtree.get_centroid_decomposition_tree();\n\
+    \    std::vector<bool> dead(n, false);\n    std::vector<u64> ans(n, 0);\n    std::vector<u64>\
+    \ cnts;\n    std::vector<u64> depths;\n    auto dfs_depth = [&](auto &&self, int\
+    \ v, int par = -1,\n                         int depth = 0) -> void {\n      \
+    \  while ((int)cnts.size() <= depth) cnts.emplace_back(0);\n        while ((int)depths.size()\
+    \ <= depth) depths.emplace_back(0);\n        cnts[depth]++;\n        depths[depth]++;\n\
+    \        for (auto nv : g[v])\n            if (nv != par && !dead[nv]) {\n   \
+    \             self(self, nv, v, depth + 1);\n            }\n    };\n    std::queue<int>\
+    \ que;\n    que.push(root);\n    while (!que.empty()) {\n        auto v = que.front();\n\
+    \        que.pop();\n        cnts.clear();\n        dead[v] = true;\n        for\
+    \ (auto nv : tree[v]) que.push(nv);\n        for (auto nv : g[v]) {\n        \
+    \    if (dead[nv]) continue;\n            depths.clear();\n            dfs_depth(dfs_depth,\
+    \ nv, v, 1);\n            auto self2 = ebi::convolution_mod_2_64(depths, depths);\n\
+    \            for (int i = 0; i < (int)self2.size(); i++) ans[i] -= self2[i];\n\
+    \        }\n        if (cnts.empty()) continue;\n        cnts[0]++;\n        auto\
+    \ cnts2 = ebi::convolution_mod_2_64(cnts, cnts);\n        for (int i = 0; i <\
+    \ (int)cnts2.size(); i++) ans[i] += cnts2[i];\n    }\n    for (int i = 1; i <\
+    \ n; i++) {\n        ans[i] >>= 1;\n        std::cout << ans[i] << \" \\n\"[i\
+    \ == n - 1];\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
+    \n\n#include <cstdint>\n#include <iostream>\n#include <queue>\n#include <vector>\n\
+    \n#include \"../../convolution/convolution_mod_2_64.hpp\"\n#include \"../../graph/template.hpp\"\
+    \n#include \"../../tree/centroid_decomposition.hpp\"\n\nusing u64 = uint64_t;\n\
+    \nint main() {\n    int n;\n    std::cin >> n;\n    ebi::graph g(n);\n    for\
+    \ (int i = 0; i < n - 1; i++) {\n        int a, b;\n        std::cin >> a >> b;\n\
+    \        g.add_edge(a, b);\n    }\n    ebi::centroid_decomposition cdtree(g);\n\
+    \    auto [root, tree] = cdtree.get_centroid_decomposition_tree();\n    std::vector<bool>\
+    \ dead(n, false);\n    std::vector<u64> ans(n, 0);\n    std::vector<u64> cnts;\n\
+    \    std::vector<u64> depths;\n    auto dfs_depth = [&](auto &&self, int v, int\
+    \ par = -1,\n                         int depth = 0) -> void {\n        while\
+    \ ((int)cnts.size() <= depth) cnts.emplace_back(0);\n        while ((int)depths.size()\
+    \ <= depth) depths.emplace_back(0);\n        cnts[depth]++;\n        depths[depth]++;\n\
+    \        for (auto nv : g[v])\n            if (nv != par && !dead[nv]) {\n   \
+    \             self(self, nv, v, depth + 1);\n            }\n    };\n    std::queue<int>\
+    \ que;\n    que.push(root);\n    while (!que.empty()) {\n        auto v = que.front();\n\
+    \        que.pop();\n        cnts.clear();\n        dead[v] = true;\n        for\
+    \ (auto nv : tree[v]) que.push(nv);\n        for (auto nv : g[v]) {\n        \
+    \    if (dead[nv]) continue;\n            depths.clear();\n            dfs_depth(dfs_depth,\
+    \ nv, v, 1);\n            auto self2 = ebi::convolution_mod_2_64(depths, depths);\n\
+    \            for (int i = 0; i < (int)self2.size(); i++) ans[i] -= self2[i];\n\
+    \        }\n        if (cnts.empty()) continue;\n        cnts[0]++;\n        auto\
+    \ cnts2 = ebi::convolution_mod_2_64(cnts, cnts);\n        for (int i = 0; i <\
+    \ (int)cnts2.size(); i++) ans[i] += cnts2[i];\n    }\n    for (int i = 1; i <\
+    \ n; i++) {\n        ans[i] >>= 1;\n        std::cout << ans[i] << \" \\n\"[i\
+    \ == n - 1];\n    }\n}"
   dependsOn:
   - convolution/convolution_mod_2_64.hpp
   - convolution/ntt.hpp
@@ -206,16 +285,18 @@ data:
   - utility/bit_operator.hpp
   - utility/modint_base.hpp
   - utility/modint.hpp
+  - graph/template.hpp
+  - tree/centroid_decomposition.hpp
   isVerificationFile: true
-  path: test/convolution/Convolution_Mod_2_64.test.cpp
+  path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   requiredBy: []
   timestamp: '2023-07-22 16:48:58+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/convolution/Convolution_Mod_2_64.test.cpp
+documentation_of: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
 layout: document
 redirect_from:
-- /verify/test/convolution/Convolution_Mod_2_64.test.cpp
-- /verify/test/convolution/Convolution_Mod_2_64.test.cpp.html
-title: test/convolution/Convolution_Mod_2_64.test.cpp
+- /verify/test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+- /verify/test/tree/Frequency_Table_of_Tree_Distance.test.cpp.html
+title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
 ---

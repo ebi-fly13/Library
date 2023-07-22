@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
   - icon: ':question:'
@@ -51,6 +51,9 @@ data:
   - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':x:'
+    path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':question:'
@@ -81,6 +84,7 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp

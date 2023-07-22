@@ -28,7 +28,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: convolution/convolution_mod_2_64.hpp
       title: Convolution ($\mod 2^{64}$)
     - icon: ':heavy_check_mark:'
@@ -228,7 +228,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/template.hpp
       title: graph/template.hpp
     - icon: ':heavy_check_mark:'
@@ -327,7 +327,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/block_cut_tree.hpp
       title: Block Cut Tree
-    - icon: ':warning:'
+    - icon: ':x:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
     - icon: ':heavy_check_mark:'
@@ -716,6 +716,9 @@ data:
       title: test/string/Z_Algorithm.test.cpp
   - name: test/tree
     pages:
+    - icon: ':x:'
+      path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+      title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp

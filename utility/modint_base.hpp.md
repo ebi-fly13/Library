@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
   - icon: ':question:'
@@ -150,6 +150,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
@@ -265,6 +268,7 @@ data:
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/math/Sqrt_Mod.test.cpp
   - test/math/Pow.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp

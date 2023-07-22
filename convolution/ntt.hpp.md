@@ -14,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
   _extendedVerifiedWith:
@@ -57,35 +57,38 @@ data:
   - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':x:'
+    path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"convolution/ntt.hpp\"\n\n#include <array>\n#include <cassert>\n\
-    #include <type_traits>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\
-    \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
-    \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
-    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
-    \ (m == 880803841) return 26;\n    assert(0);\n    return -1;\n}\ntemplate <int\
-    \ m> constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  // namespace\
-    \ internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace\
-    \ ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n   \
-    \ while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int n, int\
-    \ bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n\
-    \        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n\
-    }\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned\
-    \ int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
-    }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
-    int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
-    \ ebi\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
+  bundledCode: "#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include\
+    \ <array>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\n#line\
+    \ 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace\
+    \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
+    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
+    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
+    \ return 3;\n    if (m == 880803841) return 26;\n    assert(0);\n    return -1;\n\
+    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
+    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
+    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
+    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
+    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
+    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
+    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
+    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
+    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
+    }\n\n}  // namespace ebi\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
     \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
     \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
     \ : modint_base {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
     \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 11 \"convolution/ntt.hpp\"\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 12 \"convolution/ntt.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class mint, int g = internal::primitive_root<mint::mod()>,\n\
     \          internal::is_static_modint_t<mint>* = nullptr>\nstruct ntt_info {\n\
     \    static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);\n\n    std::array<mint,\
@@ -122,17 +125,27 @@ data:
     \     }\n    }\n    mint inv_n = mint(n).inv();\n    for (int i = 0; i < n; i++)\
     \ {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace internal\n\ntemplate\
     \ <class mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint>\
-    \ convolution(const std::vector<mint>& f,\n                              const\
-    \ std::vector<mint>& g) {\n    int n = 1 << ceil_pow2(f.size() + g.size() - 1);\n\
-    \    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(), f.end(), a.begin());\n\
-    \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
+    \ convolution_naive(const std::vector<mint>& f,\n                            \
+    \        const std::vector<mint>& g) {\n    if (f.empty() || g.empty()) return\
+    \ {};\n    int n = int(f.size()), m = int(g.size());\n    std::vector<mint> c(n\
+    \ + m - 1);\n    if (n < m) {\n        for (int j = 0; j < m; j++) {\n       \
+    \     for (int i = 0; i < n; i++) {\n                c[i + j] += f[i] * g[j];\n\
+    \            }\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n\
+    \            for (int j = 0; j < m; j++) {\n                c[i + j] += f[i] *\
+    \ g[j];\n            }\n        }\n    }\n    return c;\n}\n\ntemplate <class\
+    \ mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> convolution(const\
+    \ std::vector<mint>& f,\n                              const std::vector<mint>&\
+    \ g) {\n    if (f.empty() || g.empty()) return {};\n    if (std::min(f.size(),\
+    \ g.size()) < 60) return convolution_naive(f, g);\n    int n = 1 << ceil_pow2(f.size()\
+    \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
+    \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <array>\n#include <cassert>\n#include <type_traits>\n\
-    #include <vector>\n\n#include \"../math/internal_math.hpp\"\n#include \"../utility/bit_operator.hpp\"\
-    \n#include \"../utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\ntemplate <class mint, int g = internal::primitive_root<mint::mod()>,\n\
+  code: "#pragma once\n\n#include <algorithm>\n#include <array>\n#include <cassert>\n\
+    #include <type_traits>\n#include <vector>\n\n#include \"../math/internal_math.hpp\"\
+    \n#include \"../utility/bit_operator.hpp\"\n#include \"../utility/modint_base.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class mint, int g = internal::primitive_root<mint::mod()>,\n\
     \          internal::is_static_modint_t<mint>* = nullptr>\nstruct ntt_info {\n\
     \    static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);\n\n    std::array<mint,\
     \ rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2] = mint(g).pow((mint::mod()\
@@ -168,10 +181,20 @@ data:
     \     }\n    }\n    mint inv_n = mint(n).inv();\n    for (int i = 0; i < n; i++)\
     \ {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace internal\n\ntemplate\
     \ <class mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint>\
-    \ convolution(const std::vector<mint>& f,\n                              const\
-    \ std::vector<mint>& g) {\n    int n = 1 << ceil_pow2(f.size() + g.size() - 1);\n\
-    \    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(), f.end(), a.begin());\n\
-    \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
+    \ convolution_naive(const std::vector<mint>& f,\n                            \
+    \        const std::vector<mint>& g) {\n    if (f.empty() || g.empty()) return\
+    \ {};\n    int n = int(f.size()), m = int(g.size());\n    std::vector<mint> c(n\
+    \ + m - 1);\n    if (n < m) {\n        for (int j = 0; j < m; j++) {\n       \
+    \     for (int i = 0; i < n; i++) {\n                c[i + j] += f[i] * g[j];\n\
+    \            }\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n\
+    \            for (int j = 0; j < m; j++) {\n                c[i + j] += f[i] *\
+    \ g[j];\n            }\n        }\n    }\n    return c;\n}\n\ntemplate <class\
+    \ mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> convolution(const\
+    \ std::vector<mint>& f,\n                              const std::vector<mint>&\
+    \ g) {\n    if (f.empty() || g.empty()) return {};\n    if (std::min(f.size(),\
+    \ g.size()) < 60) return convolution_naive(f, g);\n    int n = 1 << ceil_pow2(f.size()\
+    \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
+    \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi"
@@ -184,10 +207,11 @@ data:
   requiredBy:
   - convolution/arbitrary_ntt.hpp
   - convolution/convolution_mod_2_64.hpp
-  timestamp: '2023-07-22 16:27:16+09:00'
+  timestamp: '2023-07-22 16:48:58+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp

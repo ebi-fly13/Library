@@ -32,9 +32,9 @@ data:
   bundledCode: "#line 1 \"test/polynomial/Inv_of_Formal_Power_Series.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
     \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"convolution/ntt.hpp\"\n\n#include\
-    \ <array>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\n#line\
-    \ 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
+    \ <algorithm>\n#include <array>\n#include <cassert>\n#include <type_traits>\n\
+    #include <vector>\n\n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
     \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
     \ return 3;\n    if (m == 880803841) return 26;\n    assert(0);\n    return -1;\n\
@@ -54,7 +54,7 @@ data:
     \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
     \ : modint_base {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
     \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 11 \"convolution/ntt.hpp\"\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 12 \"convolution/ntt.hpp\"\
     \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class mint, int g = internal::primitive_root<mint::mod()>,\n\
     \          internal::is_static_modint_t<mint>* = nullptr>\nstruct ntt_info {\n\
     \    static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);\n\n    std::array<mint,\
@@ -91,17 +91,27 @@ data:
     \     }\n    }\n    mint inv_n = mint(n).inv();\n    for (int i = 0; i < n; i++)\
     \ {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace internal\n\ntemplate\
     \ <class mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint>\
-    \ convolution(const std::vector<mint>& f,\n                              const\
-    \ std::vector<mint>& g) {\n    int n = 1 << ceil_pow2(f.size() + g.size() - 1);\n\
-    \    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(), f.end(), a.begin());\n\
-    \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
+    \ convolution_naive(const std::vector<mint>& f,\n                            \
+    \        const std::vector<mint>& g) {\n    if (f.empty() || g.empty()) return\
+    \ {};\n    int n = int(f.size()), m = int(g.size());\n    std::vector<mint> c(n\
+    \ + m - 1);\n    if (n < m) {\n        for (int j = 0; j < m; j++) {\n       \
+    \     for (int i = 0; i < n; i++) {\n                c[i + j] += f[i] * g[j];\n\
+    \            }\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n\
+    \            for (int j = 0; j < m; j++) {\n                c[i + j] += f[i] *\
+    \ g[j];\n            }\n        }\n    }\n    return c;\n}\n\ntemplate <class\
+    \ mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> convolution(const\
+    \ std::vector<mint>& f,\n                              const std::vector<mint>&\
+    \ g) {\n    if (f.empty() || g.empty()) return {};\n    if (std::min(f.size(),\
+    \ g.size()) < 60) return convolution_naive(f, g);\n    int n = 1 << ceil_pow2(f.size()\
+    \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
+    \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"fps/fps.hpp\"\n\n\
-    #include <algorithm>\n#line 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"\
-    fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
+    #line 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
+    \                 const std::vector<mint> &, const std::vector<mint> &)>\nstruct\
+    \ FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
     \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
     \n  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
     \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
@@ -245,7 +255,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-07-22 16:27:16+09:00'
+  timestamp: '2023-07-22 16:48:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
