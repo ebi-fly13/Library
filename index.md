@@ -159,7 +159,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table.hpp
       title: Sparse Table
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table_2d.hpp
       title: 2D sparse table
     - icon: ':warning:'
@@ -317,11 +317,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/trie.hpp
       title: string/trie.hpp
-  - name: test/aoj
-    pages:
-    - icon: ':warning:'
-      path: test/aoj/aoj_1068_2.cpp
-      title: test/aoj/aoj_1068_2.cpp
   - name: tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -405,6 +400,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_1068_1.test.cpp
       title: test/aoj/aoj_1068_1.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj_1068_2.test.cpp
+      title: test/aoj/aoj_1068_2.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_1645.test.cpp
       title: test/aoj/aoj_1645.test.cpp
