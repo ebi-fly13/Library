@@ -18,14 +18,14 @@ struct queue_aggregation {
     };
 
     void move() {
-        assert(!back.empty());
-        Node p = back.top();
-        back.pop();
-        front.push({p.val, p.val});
-        while (!back.empty()) {
-            Semigroup x = back.top().val;
-            back.pop();
-            front.push({x, op(x, front.top().fold)});
+        assert(!_back.empty());
+        Node p = _back.top();
+        _back.pop();
+        _front.push({p.val, p.val});
+        while (!_back.empty()) {
+            Semigroup x = _back.top().val;
+            _back.pop();
+            _front.push({x, op(x, _front.top().fold)});
         }
     }
 
@@ -33,7 +33,7 @@ struct queue_aggregation {
     queue_aggregation() {}
 
     int size() {
-        return front.size() + back.size();
+        return _front.size() + _back.size();
     }
 
     bool empty() {
@@ -42,33 +42,41 @@ struct queue_aggregation {
 
     void push(Semigroup x) {
         Node node = {x, x};
-        if (!back.empty()) {
-            node.fold = op(back.top().fold, x);
+        if (!_back.empty()) {
+            node.fold = op(_back.top().fold, x);
         }
-        back.push(node);
+        _back.push(node);
+    }
+
+    Semigroup front() {
+        assert(!empty());
+        if (_front.empty()) {
+            move();
+        }
+        return _front.top().val;
     }
 
     void pop() {
         assert(!empty());
-        if (front.empty()) {
+        if (_front.empty()) {
             move();
         }
-        front.pop();
+        _front.pop();
     }
 
     Semigroup fold_all() {
         assert(!empty());
-        if (front.empty()) {
-            return back.top().fold;
-        } else if (back.empty()) {
-            return front.top().fold;
+        if (_front.empty()) {
+            return _back.top().fold;
+        } else if (_back.empty()) {
+            return _front.top().fold;
         } else {
-            return op(front.top().fold, back.top().fold);
+            return op(_front.top().fold, _back.top().fold);
         }
     }
 
   private:
-    std::stack<Node> front, back;
+    std::stack<Node> _front, _back;
 };
 
 }  // namespace ebi

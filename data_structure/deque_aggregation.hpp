@@ -14,16 +14,16 @@ struct deque_aggregation {
     };
 
     void move_front() {
-        assert(front.empty());
-        int sz = back.size();
+        assert(_front.empty());
+        int sz = _back.size();
         std::stack<Semigroup> buff;
         for (int i = 0; i < sz / 2; i++) {
-            buff.push(back.top().val);
-            back.pop();
+            buff.push(_back.top().val);
+            _back.pop();
         }
-        while (!back.empty()) {
-            Semigroup x = back.top().val;
-            back.pop();
+        while (!_back.empty()) {
+            Semigroup x = _back.top().val;
+            _back.pop();
             push_front(x);
         }
         while (!buff.empty()) {
@@ -34,16 +34,16 @@ struct deque_aggregation {
     }
 
     void move_back() {
-        assert(back.empty());
-        int sz = front.size();
+        assert(_back.empty());
+        int sz = _front.size();
         std::stack<Semigroup> buff;
         for (int i = 0; i < sz / 2; i++) {
-            buff.push(front.top().val);
-            front.pop();
+            buff.push(_front.top().val);
+            _front.pop();
         }
-        while (!front.empty()) {
-            Semigroup x = front.top().val;
-            front.pop();
+        while (!_front.empty()) {
+            Semigroup x = _front.top().val;
+            _front.pop();
             push_back(x);
         }
         while (!buff.empty()) {
@@ -57,54 +57,66 @@ struct deque_aggregation {
     deque_aggregation() = default;
 
     int size() const {
-        return front.size() + back.size();
+        return _front.size() + _back.size();
     }
 
     bool empty() const {
         return size() == 0;
     }
 
+    Semigroup front() {
+        assert(!empty());
+        if (_front.empty()) move_front();
+        return _front.top().val;
+    }
+
+    Semigroup back() {
+        assert(!empty());
+        if (_back.empty()) move_back();
+        return _back.top().val;
+    }
+
     void push_front(Semigroup x) {
         Node node = {x, x};
-        if (!front.empty()) {
-            node.fold = op(x, front.top().fold);
+        if (!_front.empty()) {
+            node.fold = op(x, _front.top().fold);
         }
-        front.push(node);
+        _front.push(node);
     }
 
     void push_back(Semigroup x) {
         Node node = {x, x};
-        if (!back.empty()) {
-            node.fold = op(back.top().fold, x);
+        if (!_back.empty()) {
+            node.fold = op(_back.top().fold, x);
         }
-        back.push(node);
+        _back.push(node);
     }
 
     void pop_back() {
         assert(!empty());
-        if (back.empty()) move_back();
-        back.pop();
+        if (_back.empty()) move_back();
+        _back.pop();
     }
 
     void pop_front() {
         assert(!empty());
-        if (front.empty()) move_front();
-        front.pop();
+        if (_front.empty()) move_front();
+        _front.pop();
     }
 
     Semigroup fold_all() {
         assert(!empty());
-        if (front.empty()) {
-            return back.top().fold;
-        } else if (back.empty()) {
-            return front.top().fold;
+        if (_front.empty()) {
+            return _back.top().fold;
+        } else if (_back.empty()) {
+            return _front.top().fold;
         } else {
-            return op(front.top().fold, back.top().fold);
+            return op(_front.top().fold, _back.top().fold);
         }
     }
 
   private:
-    std::stack<Node> front, back;
+    std::stack<Node> _front, _back;
 };
 
 }  // namespace ebi
