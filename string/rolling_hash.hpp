@@ -66,6 +66,10 @@ template <int n> struct rolling_hash {
         return lhs.hash.back() * base_pow[rhs.size()] + rhs.hash.back();
     }
 
+    static Hash<n> concat(Hash<n> lhs, Hash<n> rhs, int len) {
+        return lhs * base_pow[len] + rhs;
+    }
+
     int size() const {
         return sz;
     }
