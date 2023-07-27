@@ -141,19 +141,20 @@ data:
     \n        for (int i = l; i < r; i++) {\r\n            res = res * base + str[i]\
     \ + h;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    static Hash<n>\
     \ concat(Self lhs, Self rhs) {\r\n        return lhs.hash.back() * base_pow[rhs.size()]\
-    \ + rhs.hash.back();\r\n    }\r\n\r\n    int size() const {\r\n        return\
-    \ sz;\r\n    }\r\n\r\n    Self operator+(const Self &rhs) noexcept {\r\n     \
-    \   return Self(*this) += rhs;\r\n    }\r\n\r\n    Self &operator+=(const Self\
-    \ &rhs) noexcept {\r\n        Hash<n> a = hash.back();\r\n        for (int i =\
-    \ 1; i <= rhs.size(); i++) {\r\n            a *= base;\r\n            hash.emplace_back(a\
-    \ + rhs.hash[i]);\r\n        }\r\n        sz += rhs.size();\r\n        expand(sz);\r\
-    \n        return *this;\r\n    }\r\n\r\n    static void set_base() {\r\n     \
-    \   base = Hash<n>::get_basis_primitive();\r\n        base_pow = std::vector<Hash<n>>(1,\
-    \ Hash<n>::set(1));\r\n    }\r\n\r\n  private:\r\n    int sz;\r\n    std::vector<Hash<n>>\
-    \ hash;\r\n    static Hash<n> base;\r\n    static std::vector<Hash<n>> base_pow;\r\
-    \n};\r\n\r\ntemplate <int n> Hash<n> rolling_hash<n>::base = {};\r\ntemplate <int\
-    \ n> std::vector<Hash<n>> rolling_hash<n>::base_pow = {};\r\n\r\n}  // namespace\
-    \ ebi\r\n"
+    \ + rhs.hash.back();\r\n    }\r\n\r\n    static Hash<n> concat(Hash<n> lhs, Hash<n>\
+    \ rhs, int len) {\r\n        return lhs * base_pow[len] + rhs;\r\n    }\r\n\r\n\
+    \    int size() const {\r\n        return sz;\r\n    }\r\n\r\n    Self operator+(const\
+    \ Self &rhs) noexcept {\r\n        return Self(*this) += rhs;\r\n    }\r\n\r\n\
+    \    Self &operator+=(const Self &rhs) noexcept {\r\n        Hash<n> a = hash.back();\r\
+    \n        for (int i = 1; i <= rhs.size(); i++) {\r\n            a *= base;\r\n\
+    \            hash.emplace_back(a + rhs.hash[i]);\r\n        }\r\n        sz +=\
+    \ rhs.size();\r\n        expand(sz);\r\n        return *this;\r\n    }\r\n\r\n\
+    \    static void set_base() {\r\n        base = Hash<n>::get_basis_primitive();\r\
+    \n        base_pow = std::vector<Hash<n>>(1, Hash<n>::set(1));\r\n    }\r\n\r\n\
+    \  private:\r\n    int sz;\r\n    std::vector<Hash<n>> hash;\r\n    static Hash<n>\
+    \ base;\r\n    static std::vector<Hash<n>> base_pow;\r\n};\r\n\r\ntemplate <int\
+    \ n> Hash<n> rolling_hash<n>::base = {};\r\ntemplate <int n> std::vector<Hash<n>>\
+    \ rolling_hash<n>::base_pow = {};\r\n\r\n}  // namespace ebi\r\n"
   code: "#pragma once\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <cstdint>\r\
     \n#include <vector>\r\n\r\n#include \"../utility/hash.hpp\"\r\n#include \"../utility/modint61.hpp\"\
     \r\n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
@@ -176,19 +177,20 @@ data:
     \n        for (int i = l; i < r; i++) {\r\n            res = res * base + str[i]\
     \ + h;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    static Hash<n>\
     \ concat(Self lhs, Self rhs) {\r\n        return lhs.hash.back() * base_pow[rhs.size()]\
-    \ + rhs.hash.back();\r\n    }\r\n\r\n    int size() const {\r\n        return\
-    \ sz;\r\n    }\r\n\r\n    Self operator+(const Self &rhs) noexcept {\r\n     \
-    \   return Self(*this) += rhs;\r\n    }\r\n\r\n    Self &operator+=(const Self\
-    \ &rhs) noexcept {\r\n        Hash<n> a = hash.back();\r\n        for (int i =\
-    \ 1; i <= rhs.size(); i++) {\r\n            a *= base;\r\n            hash.emplace_back(a\
-    \ + rhs.hash[i]);\r\n        }\r\n        sz += rhs.size();\r\n        expand(sz);\r\
-    \n        return *this;\r\n    }\r\n\r\n    static void set_base() {\r\n     \
-    \   base = Hash<n>::get_basis_primitive();\r\n        base_pow = std::vector<Hash<n>>(1,\
-    \ Hash<n>::set(1));\r\n    }\r\n\r\n  private:\r\n    int sz;\r\n    std::vector<Hash<n>>\
-    \ hash;\r\n    static Hash<n> base;\r\n    static std::vector<Hash<n>> base_pow;\r\
-    \n};\r\n\r\ntemplate <int n> Hash<n> rolling_hash<n>::base = {};\r\ntemplate <int\
-    \ n> std::vector<Hash<n>> rolling_hash<n>::base_pow = {};\r\n\r\n}  // namespace\
-    \ ebi\r\n"
+    \ + rhs.hash.back();\r\n    }\r\n\r\n    static Hash<n> concat(Hash<n> lhs, Hash<n>\
+    \ rhs, int len) {\r\n        return lhs * base_pow[len] + rhs;\r\n    }\r\n\r\n\
+    \    int size() const {\r\n        return sz;\r\n    }\r\n\r\n    Self operator+(const\
+    \ Self &rhs) noexcept {\r\n        return Self(*this) += rhs;\r\n    }\r\n\r\n\
+    \    Self &operator+=(const Self &rhs) noexcept {\r\n        Hash<n> a = hash.back();\r\
+    \n        for (int i = 1; i <= rhs.size(); i++) {\r\n            a *= base;\r\n\
+    \            hash.emplace_back(a + rhs.hash[i]);\r\n        }\r\n        sz +=\
+    \ rhs.size();\r\n        expand(sz);\r\n        return *this;\r\n    }\r\n\r\n\
+    \    static void set_base() {\r\n        base = Hash<n>::get_basis_primitive();\r\
+    \n        base_pow = std::vector<Hash<n>>(1, Hash<n>::set(1));\r\n    }\r\n\r\n\
+    \  private:\r\n    int sz;\r\n    std::vector<Hash<n>> hash;\r\n    static Hash<n>\
+    \ base;\r\n    static std::vector<Hash<n>> base_pow;\r\n};\r\n\r\ntemplate <int\
+    \ n> Hash<n> rolling_hash<n>::base = {};\r\ntemplate <int n> std::vector<Hash<n>>\
+    \ rolling_hash<n>::base_pow = {};\r\n\r\n}  // namespace ebi\r\n"
   dependsOn:
   - utility/hash.hpp
   - utility/modint61.hpp
@@ -197,7 +199,7 @@ data:
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-07-17 11:19:29+09:00'
+  timestamp: '2023-07-28 02:27:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
