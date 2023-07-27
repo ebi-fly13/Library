@@ -30,6 +30,9 @@ queue_aggregation<int, op> swag;
 -   ```fold_all()```
     -   $op(a_0, a_1, \dots, a_{n-1})$ を計算する
     -   時間計算量$O(1)$
+-   ```front()```
+    - 　先頭要素を返す
+    -   時間計算量 $O(1)$ amortized
 -   ```push(Semigroup x)```
     -   $x$ を末尾に追加する
     -   時間計算量 $O(1)$

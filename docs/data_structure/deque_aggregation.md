@@ -36,9 +36,15 @@ deque_aggregation<int, op> swag;
 -   ```push_back(Semigroup x)```
     -   $x$ を末尾に追加する
     -   時間計算量 $O(1)$
+-   ```front()```
+    -   先頭要素を返す
+    -   時間計算量 $O(1)$ amortized
+-   ```back()```
+    -   末尾要素を返す
+    -   時間計算量 $O(1)$ amortized
 -   ```pop_front()```
     -   先頭を削除する
-    -   時間計算 $O(1)$ amortized
+    -   時間計算量 $O(1)$ amortized
 -   ```pop_back()```
     -   末尾を削除する
     -   時間計算量 $O(1)$ amortized
