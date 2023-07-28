@@ -267,6 +267,9 @@ data:
       path: math/linear_sieve.hpp
       title: math/linear_sieve.hpp
     - icon: ':heavy_check_mark:'
+      path: math/longest_increasing_subsequence.hpp
+      title: LIS
+    - icon: ':heavy_check_mark:'
       path: math/mod_sqrt.hpp
       title: math/mod_sqrt.hpp
     - icon: ':heavy_check_mark:'
@@ -650,6 +653,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
       title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Longest_Increasing_Subsequence.test.cpp
+      title: test/math/Longest_Increasing_Subsequence.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Pow.test.cpp
       title: test/math/Pow.test.cpp
