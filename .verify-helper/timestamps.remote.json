@@ -84,6 +84,7 @@
 "test/math/Enumerate_Primes.test.cpp": "2023-07-17 15:16:58 +0900",
 "test/math/Inversion_Number.test.cpp": "2023-07-17 14:12:40 +0900",
 "test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp": "2023-07-22 16:48:58 +0900",
+"test/math/Longest_Increasing_Subsequence.test.cpp": "2023-07-29 00:51:20 +0900",
 "test/math/Pow.test.cpp": "2023-07-17 15:31:21 +0900",
 "test/math/Sqrt_Mod.test.cpp": "2023-07-17 14:12:40 +0900",
 "test/math/eratosthenes_sieve.test.cpp": "2023-07-17 14:12:40 +0900",
