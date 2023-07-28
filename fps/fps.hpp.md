@@ -45,6 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1302.test.cpp
+    title: test/yuki/yuki_1302.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -220,6 +223,7 @@ data:
   timestamp: '2023-06-12 02:16:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yuki/yuki_1302.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp

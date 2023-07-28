@@ -57,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1302.test.cpp
+    title: test/yuki/yuki_1302.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -86,6 +89,7 @@ data:
   timestamp: '2023-07-22 16:27:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yuki/yuki_1302.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp

@@ -105,6 +105,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1302.test.cpp
+    title: test/yuki/yuki_1302.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -151,6 +154,7 @@ data:
   - test/aoj/aoj_2235.test.cpp
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/yuki/yuki_1302.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp

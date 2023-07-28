@@ -123,6 +123,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1302.test.cpp
+    title: test/yuki/yuki_1302.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -242,6 +245,7 @@ data:
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/matrix/Determinant_of_Matrix.test.cpp
+  - test/yuki/yuki_1302.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp

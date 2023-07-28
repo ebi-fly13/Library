@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1302.test.cpp
+    title: test/yuki/yuki_1302.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,6 +50,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_3361.test.cpp
+  - test/yuki/yuki_1302.test.cpp
 documentation_of: math/combination.hpp
 layout: document
 redirect_from:
