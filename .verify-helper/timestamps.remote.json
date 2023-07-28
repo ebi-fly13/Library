@@ -112,5 +112,6 @@
 "test/tree/Tree_Path_Composite_Sum.test.cpp": "2023-07-17 11:19:29 +0900",
 "test/tree/level_ancestor_lca.test.cpp": "2023-06-15 15:16:22 +0900",
 "test/tree/lowest_common_ancestor.test.cpp": "2023-06-15 15:16:22 +0900",
+"test/yuki/yuki_1302.test.cpp": "2023-07-28 23:36:54 +0900",
 "test/yuki/yuki_409.test.cpp": "2023-07-05 22:32:04 +0900"
 }
