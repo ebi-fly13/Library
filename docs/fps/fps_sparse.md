@@ -5,7 +5,7 @@ documentation_of: //fps/fps_sparse.hpp
 
 ## 説明
 
-
+疎な形式的べき級数に対する処理を集めたもの。
 
 ### mul_sparse(std::vector<mint> f, std::vector<mint> g)
 
