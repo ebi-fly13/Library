@@ -25,6 +25,9 @@ data:
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
   - icon: ':heavy_check_mark:'
@@ -89,6 +92,7 @@ data:
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
