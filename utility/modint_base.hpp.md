@@ -94,9 +94,6 @@ data:
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/math/#_p_subset_sum.test.cpp
-    title: test/math/#_p_subset_sum.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -105,6 +102,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sqrt_Mod.test.cpp
     title: test/math/Sqrt_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/sharp_p_subset_sum.test.cpp
+    title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
@@ -277,8 +277,8 @@ data:
   - test/yuki/yuki_1302.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/math/Sqrt_Mod.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Pow.test.cpp
-  - test/math/#_p_subset_sum.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp

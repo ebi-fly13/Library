@@ -19,8 +19,8 @@ data:
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/math/#_p_subset_sum.test.cpp
-    title: test/math/#_p_subset_sum.test.cpp
+    path: test/math/sharp_p_subset_sum.test.cpp
+    title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
@@ -69,7 +69,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_3361.test.cpp
-  - test/math/#_p_subset_sum.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp

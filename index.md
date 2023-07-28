@@ -642,9 +642,6 @@ data:
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/math/#_p_subset_sum.test.cpp
-      title: test/math/#_p_subset_sum.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/math/Enumerate_Primes.test.cpp
       title: test/math/Enumerate_Primes.test.cpp
     - icon: ':heavy_check_mark:'
@@ -665,6 +662,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/eratosthenes_sieve.test.cpp
       title: test/math/eratosthenes_sieve.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/sharp_p_subset_sum.test.cpp
+      title: test/math/sharp_p_subset_sum.test.cpp
   - name: test/matrix
     pages:
     - icon: ':heavy_check_mark:'

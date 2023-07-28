@@ -10,8 +10,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/math/#_p_subset_sum.test.cpp
-    title: test/math/#_p_subset_sum.test.cpp
+    path: test/math/sharp_p_subset_sum.test.cpp
+    title: test/math/sharp_p_subset_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -137,7 +137,7 @@ data:
   timestamp: '2023-06-12 02:16:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/#_p_subset_sum.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
 documentation_of: fps/product_of_one_plus_xn.hpp
 layout: document
 title: $\prod (1 + x^{a_i}) \mod x^d$

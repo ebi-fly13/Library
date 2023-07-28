@@ -35,8 +35,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/sharp_p_subset_sum
     links:
     - https://judge.yosupo.jp/problem/sharp_p_subset_sum
-  bundledCode: "#line 1 \"test/math/#_p_subset_sum.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/sharp_p_subset_sum\"\n\n#include <iostream>\n\
+  bundledCode: "#line 1 \"test/math/sharp_p_subset_sum.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/sharp_p_subset_sum\"\n\n#include <iostream>\n\
     #include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n\
     #include <array>\n#include <cassert>\n#include <type_traits>\n#line 8 \"convolution/ntt.hpp\"\
     \n\n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\
@@ -255,7 +255,7 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/math/#_p_subset_sum.test.cpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/math/sharp_p_subset_sum.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n, t;\n    std::cin\
     \ >> n >> t;\n    std::vector<int> s(n);\n    for (int i = 0; i < n; i++) {\n\
     \        std::cin >> s[i];\n    }\n    auto p = ebi::product_of_one_plus_xn<mint,\
@@ -279,15 +279,15 @@ data:
   - utility/modint_func.hpp
   - utility/modint.hpp
   isVerificationFile: true
-  path: test/math/#_p_subset_sum.test.cpp
+  path: test/math/sharp_p_subset_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 00:20:07+09:00'
+  timestamp: '2023-07-29 01:57:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/math/#_p_subset_sum.test.cpp
+documentation_of: test/math/sharp_p_subset_sum.test.cpp
 layout: document
 redirect_from:
-- /verify/test/math/#_p_subset_sum.test.cpp
-- /verify/test/math/#_p_subset_sum.test.cpp.html
-title: test/math/#_p_subset_sum.test.cpp
+- /verify/test/math/sharp_p_subset_sum.test.cpp
+- /verify/test/math/sharp_p_subset_sum.test.cpp.html
+title: test/math/sharp_p_subset_sum.test.cpp
 ---
