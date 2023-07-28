@@ -11,13 +11,16 @@ data:
   - icon: ':warning:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/#_p_subset_sum.test.cpp
+    title: test/math/#_p_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
@@ -224,6 +227,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1302.test.cpp
+  - test/math/#_p_subset_sum.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp

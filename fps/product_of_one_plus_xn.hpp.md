@@ -8,10 +8,13 @@ data:
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/#_p_subset_sum.test.cpp
+    title: test/math/#_p_subset_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/product_of_one_plus_xn.hpp\"\n\n#include <vector>\n\n\
@@ -132,8 +135,9 @@ data:
   path: fps/product_of_one_plus_xn.hpp
   requiredBy: []
   timestamp: '2023-06-12 02:16:01+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/#_p_subset_sum.test.cpp
 documentation_of: fps/product_of_one_plus_xn.hpp
 layout: document
 title: $\prod (1 + x^{a_i}) \mod x^d$

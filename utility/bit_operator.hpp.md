@@ -64,6 +64,9 @@ data:
     path: test/convolution/Subset_Convolution.test.cpp
     title: test/convolution/Subset_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/#_p_subset_sum.test.cpp
+    title: test/math/#_p_subset_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -156,6 +159,7 @@ data:
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/math/#_p_subset_sum.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
