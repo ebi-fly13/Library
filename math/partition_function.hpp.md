@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   _extendedRequiredBy: []
@@ -122,8 +122,15 @@ data:
   - test/math/Partition_Function_Pentagonal.test.cpp
 documentation_of: math/partition_function.hpp
 layout: document
-redirect_from:
-- /library/math/partition_function.hpp
-- /library/math/partition_function.hpp.html
-title: math/partition_function.hpp
+title: Partition Function
 ---
+
+## 説明
+
+分割数の母関数を求める。五角数定理を用いると求める母関数は以下のようなる。
+
+$$
+f = \frac{1}{1 + \sum_k (-1)^k (x^{k(3k + 1) / 2} + x^{k(3k-1)/2})}
+$$
+
+この母関数の先頭 $N+1$ 項は $O(N\log N)$ で計算できる。

@@ -6,22 +6,21 @@ data:
     title: Formal Power Series
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/math/Berunoulli_Number.test.cpp
+    title: test/math/Berunoulli_Number.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps/composition_of_fps.hpp\"\n\n#include <cassert>\n#include\
-    \ <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line 5 \"fps/fps.hpp\"\
-    \n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
-    \ std::vector<mint> &, const std::vector<mint> &)>\nstruct FormalPowerSeries :\
-    \ std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n    using\
-    \ std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\n\
-    \  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
+  bundledCode: "#line 2 \"math/bernoulli_number.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\
+    \n#include <algorithm>\n#include <cassert>\n#include <optional>\n#include <vector>\n\
+    \nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
+    \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
+    \n  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
     \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
     \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
     \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n    FPS operator/(const\
@@ -94,52 +93,42 @@ data:
     \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
     \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
     \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
-    };\n\n}  // namespace ebi\n#line 7 \"fps/composition_of_fps.hpp\"\n\nnamespace\
+    };\n\n}  // namespace ebi\n#line 4 \"math/bernoulli_number.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
     \                 const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
-    \ convolution> composition(\n    const FormalPowerSeries<mint, convolution> &f,\n\
-    \    const FormalPowerSeries<mint, convolution> &g) {\n    using FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n    assert(f.deg() == g.deg());\n    int n = f.deg();\n    int\
-    \ k = 1;\n    while (k * k < n) k++;\n    std::vector<FPS> baby(k + 1);\n    baby[0]\
-    \ = FPS{1};\n    baby[1] = g;\n    for (int i = 2; i < k + 1; i++) {\n       \
-    \ baby[i] = (baby[i - 1] * g).pre(n);\n    }\n    std::vector<FPS> giant(k + 1);\n\
-    \    giant[0] = FPS{1};\n    giant[1] = baby[k];\n    for (int i = 2; i < k +\
-    \ 1; i++) {\n        giant[i] = (giant[i - 1] * giant[1]).pre(n);\n    }\n   \
-    \ FPS h(n);\n    for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n      \
-    \  for (int j = 0; j < k; j++) {\n            if (k * i + j < n) {\n         \
-    \       mint coef = f[k * i + j];\n                a += baby[j] * coef;\n    \
-    \        } else\n                break;\n        }\n        h += (giant[i] * a).pre(n);\n\
-    \    }\n    return h;\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../fps/fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> composition(\n    const FormalPowerSeries<mint,\
-    \ convolution> &f,\n    const FormalPowerSeries<mint, convolution> &g) {\n   \
-    \ using FPS = FormalPowerSeries<mint, convolution>;\n    assert(f.deg() == g.deg());\n\
-    \    int n = f.deg();\n    int k = 1;\n    while (k * k < n) k++;\n    std::vector<FPS>\
-    \ baby(k + 1);\n    baby[0] = FPS{1};\n    baby[1] = g;\n    for (int i = 2; i\
-    \ < k + 1; i++) {\n        baby[i] = (baby[i - 1] * g).pre(n);\n    }\n    std::vector<FPS>\
-    \ giant(k + 1);\n    giant[0] = FPS{1};\n    giant[1] = baby[k];\n    for (int\
-    \ i = 2; i < k + 1; i++) {\n        giant[i] = (giant[i - 1] * giant[1]).pre(n);\n\
-    \    }\n    FPS h(n);\n    for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n\
-    \        for (int j = 0; j < k; j++) {\n            if (k * i + j < n) {\n   \
-    \             mint coef = f[k * i + j];\n                a += baby[j] * coef;\n\
-    \            } else\n                break;\n        }\n        h += (giant[i]\
-    \ * a).pre(n);\n    }\n    return h;\n}\n\n}  // namespace ebi"
+    \ convolution> bernoulli_number_egf(int n) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    FPS f(n+1);\n    mint fact = 1;\n    for(int i = 2; i <=\
+    \ n+1; i++) fact *= i;\n    mint inv_fact = fact.inv();\n    for(int i = n; i\
+    \ >= 0; i--) {\n        f[i] = inv_fact;\n        inv_fact *= i + 1;\n    }\n\
+    \    return f.inv();\n}\n\n\n}\n"
+  code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
+    \ std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution>\
+    \ bernoulli_number_egf(int n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n\
+    \    FPS f(n+1);\n    mint fact = 1;\n    for(int i = 2; i <= n+1; i++) fact *=\
+    \ i;\n    mint inv_fact = fact.inv();\n    for(int i = n; i >= 0; i--) {\n   \
+    \     f[i] = inv_fact;\n        inv_fact *= i + 1;\n    }\n    return f.inv();\n\
+    }\n\n\n}"
   dependsOn:
   - fps/fps.hpp
   isVerificationFile: false
-  path: fps/composition_of_fps.hpp
+  path: math/bernoulli_number.hpp
   requiredBy: []
-  timestamp: '2023-07-28 17:24:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-07-29 16:06:36+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-documentation_of: fps/composition_of_fps.hpp
+  - test/math/Berunoulli_Number.test.cpp
+documentation_of: math/bernoulli_number.hpp
 layout: document
-title: $f(g(x))$
+title: Bernoulli Number
 ---
 
 ## 説明
 
-形式的べき級数 $f$, $g$ について、その合成 $f(g(x))$ の先頭 $N$ 項を求める。Baby-step Giant-stepを用いることで $O(N^2)$ で計算する。
+ベルヌーイ数の指数型母関数 (EGF)を求める。求めるEGFは以下の式で表される。
+
+$$
+f = \frac{x}{e^x - 1}
+$$
+
+時間計算量は $O(N\log N)$ である。

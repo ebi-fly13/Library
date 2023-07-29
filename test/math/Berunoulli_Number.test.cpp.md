@@ -7,12 +7,12 @@ data:
   - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
+  - icon: ':x:'
+    path: math/bernoulli_number.hpp
+    title: Bernoulli Number
   - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
-    path: math/partition_function.hpp
-    title: Partition Function
   - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
@@ -24,17 +24,17 @@ data:
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/partition_function
     links:
     - https://judge.yosupo.jp/problem/partition_function
-  bundledCode: "#line 1 \"test/math/Partition_Function_Pentagonal.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/partition_function\"\n\n#include <iostream>\n\
-    #include <numeric>\n#include <vector>\n\n#line 2 \"math/partition_function.hpp\"\
+  bundledCode: "#line 1 \"test/math/Berunoulli_Number.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/partition_function\"\n\n#include <iostream>\n\
+    #include <numeric>\n#include <vector>\n\n#line 2 \"math/bernoulli_number.hpp\"\
     \n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#include\
     \ <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint,\
     \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
@@ -113,23 +113,22 @@ data:
     \ == 0) this->pop_back();\n    }\n\n    int count_terms() const {\n        int\
     \ c = 0;\n        for (int i = 0; i < deg(); i++) {\n            if ((*this)[i]\
     \ != 0) c++;\n        }\n        return c;\n    }\n\n    std::optional<FPS> sqrt(int\
-    \ d = -1) const;\n};\n\n}  // namespace ebi\n#line 4 \"math/partition_function.hpp\"\
+    \ d = -1) const;\n};\n\n}  // namespace ebi\n#line 4 \"math/bernoulli_number.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nstd::vector<mint> partition_function(int n) {\n    using FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n    FPS f(n+1);\n    f[0] = 1;\n    for(int k = 1; k <= n; k++)\
-    \ {\n        long long k1 = 1LL * k * (3 * k + 1) / 2;\n        long long k2 =\
-    \ 1LL * k *(3 * k - 1) / 2;\n        if(k2 > n) break;\n        if(k1 <= n) f[k1]\
-    \ = ((k & 1) ? -1 : 1);\n        if(k2 <= n) f[k2] = ((k & 1) ? -1 : 1); \n  \
-    \  }\n    return f.inv();\n}\n\n}\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5\
-    \ \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
-    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \nstruct static_modint_base : modint_base {};\n\ntemplate <class T>\nusing is_static_modint\
-    \ = std::is_base_of<internal::static_modint_base, T>;\n\ntemplate <class T>\n\
-    using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\n}\
-    \  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
+    \ &)>\nFormalPowerSeries<mint, convolution> bernoulli_number_egf(int n) {\n  \
+    \  using FPS = FormalPowerSeries<mint, convolution>;\n    FPS f(n+1);\n    mint\
+    \ fact = 1;\n    for(int i = 2; i <= n+1; i++) fact *= i;\n    mint inv_fact =\
+    \ fact.inv();\n    for(int i = n; i >= 0; i--) {\n        f[i] = inv_fact;\n \
+    \       inv_fact *= i + 1;\n    }\n    return f.inv();\n}\n\n\n}\n#line 2 \"utility/modint.hpp\"\
+    \n\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"\
+    utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace\
+    \ ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate <class T>\
+    \ using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class T> using\
+    \ is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
+    \ : modint_base {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
+    \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
     \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
     \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
@@ -243,20 +242,20 @@ data:
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 10 \"test/math/Partition_Function_Pentagonal.test.cpp\"\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 10 \"test/math/Berunoulli_Number.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
-    \ >> n;\n    auto ans = ebi::partition_function<mint, ebi::convolution>(n);\n\
-    \    for(int i = 0; i <= n; i++) {\n        std::cout << ans[i] << \" \\n\"[i\
-    \ == n];\n    }\n}\n"
+    \ >> n;\n    auto ans = ebi::bernoulli_number_egf<mint, ebi::convolution>(n);\n\
+    \    mint fact = 1;\n    for(int i = 0; i <= n; i++) {\n        std::cout << ans[i]\
+    \ * fact << \" \\n\"[i == n];\n        fact *= i + 1;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/partition_function\"\n\n\
-    #include <iostream>\n#include <numeric>\n#include <vector>\n\n#include \"../../math/partition_function.hpp\"\
+    #include <iostream>\n#include <numeric>\n#include <vector>\n\n#include \"../../math/bernoulli_number.hpp\"\
     \n#include \"../../utility/modint.hpp\"\n#include \"../../convolution/ntt.hpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
-    \ >> n;\n    auto ans = ebi::partition_function<mint, ebi::convolution>(n);\n\
-    \    for(int i = 0; i <= n; i++) {\n        std::cout << ans[i] << \" \\n\"[i\
-    \ == n];\n    }\n}"
+    \ >> n;\n    auto ans = ebi::bernoulli_number_egf<mint, ebi::convolution>(n);\n\
+    \    mint fact = 1;\n    for(int i = 0; i <= n; i++) {\n        std::cout << ans[i]\
+    \ * fact << \" \\n\"[i == n];\n        fact *= i + 1;\n    }\n}"
   dependsOn:
-  - math/partition_function.hpp
+  - math/bernoulli_number.hpp
   - fps/fps.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
@@ -264,15 +263,15 @@ data:
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   isVerificationFile: true
-  path: test/math/Partition_Function_Pentagonal.test.cpp
+  path: test/math/Berunoulli_Number.test.cpp
   requiredBy: []
   timestamp: '2023-07-29 16:06:36+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/math/Partition_Function_Pentagonal.test.cpp
+documentation_of: test/math/Berunoulli_Number.test.cpp
 layout: document
 redirect_from:
-- /verify/test/math/Partition_Function_Pentagonal.test.cpp
-- /verify/test/math/Partition_Function_Pentagonal.test.cpp.html
-title: test/math/Partition_Function_Pentagonal.test.cpp
+- /verify/test/math/Berunoulli_Number.test.cpp
+- /verify/test/math/Berunoulli_Number.test.cpp.html
+title: test/math/Berunoulli_Number.test.cpp
 ---
