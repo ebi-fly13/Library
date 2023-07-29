@@ -98,6 +98,14 @@ template <int BASE_NUM> struct Hash : std::array<modint61, BASE_NUM> {
         return h;
     }
 
+    Hash inv() const {
+        Hash h;
+        for(int i = 0; i < BASE_NUM; i++) {
+            h[i] = (*this)[i].inv();
+        }
+        return h;
+    }
+
     static Hash get_basis_primitive() {
         static random_number_generator_64 rng;
         Hash h;
