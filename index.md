@@ -281,6 +281,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/partition_function.hpp
       title: Partition Function
+    - icon: ':heavy_check_mark:'
+      path: math/stirling_number_1st.hpp
+      title: Stirling Numbers of the First Kind
   - name: matrix
     pages:
     - icon: ':heavy_check_mark:'
@@ -674,6 +677,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Sqrt_Mod.test.cpp
       title: test/math/Sqrt_Mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+      title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/eratosthenes_sieve.test.cpp
       title: test/math/eratosthenes_sieve.test.cpp

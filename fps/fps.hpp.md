@@ -23,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/partition_function.hpp
     title: Partition Function
+  - icon: ':heavy_check_mark:'
+    path: math/stirling_number_1st.hpp
+    title: Stirling Numbers of the First Kind
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Berunoulli_Number.test.cpp
@@ -33,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
@@ -239,6 +245,7 @@ data:
   isVerificationFile: false
   path: fps/fps.hpp
   requiredBy:
+  - math/stirling_number_1st.hpp
   - math/partition_function.hpp
   - math/bernoulli_number.hpp
   - fps/taylor_shift.hpp
@@ -250,6 +257,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1302.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Berunoulli_Number.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp

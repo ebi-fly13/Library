@@ -24,6 +24,9 @@ data:
     path: data_structure/offline_dynamic_connectivity.hpp
     title: Offline Dynamic Connectivity
   - icon: ':heavy_check_mark:'
+    path: math/stirling_number_1st.hpp
+    title: Stirling Numbers of the First Kind
+  - icon: ':heavy_check_mark:'
     path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
   - icon: ':heavy_check_mark:'
@@ -75,6 +78,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
@@ -153,6 +159,7 @@ data:
   - set_function/ranked_subset_transform.hpp
   - set_function/exp_of_sps.hpp
   - set_function/superset_transform.hpp
+  - math/stirling_number_1st.hpp
   - convolution/arbitrary_ntt.hpp
   - convolution/subset_convolution.hpp
   - convolution/ntt.hpp
@@ -167,6 +174,7 @@ data:
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/yuki/yuki_1302.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Berunoulli_Number.test.cpp

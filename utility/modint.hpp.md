@@ -76,6 +76,9 @@ data:
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -258,6 +261,7 @@ data:
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/matrix/Determinant_of_Matrix.test.cpp
   - test/yuki/yuki_1302.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Berunoulli_Number.test.cpp

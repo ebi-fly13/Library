@@ -4,25 +4,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: math/stirling_number_1st.hpp
-    title: Stirling Numbers of the First Kind
+    path: fps/taylor_shift.hpp
+    title: $f(x + c)$
+  - icon: ':heavy_check_mark:'
+    path: utility/bit_operator.hpp
+    title: utility/bit_operator.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-    title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"fps/taylor_shift.hpp\"\n#include <vector>\n\n#line 2 \"\
-    fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#include <optional>\n\
-    #line 7 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
+  bundledCode: "#line 2 \"math/stirling_number_1st.hpp\"\n\n#include <cassert>\n\n\
+    #line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line 5 \"fps/fps.hpp\"\n#include\
+    \ <optional>\n#include <vector>\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
     \ (*convolution)(\n                          const std::vector<mint> &, const\
     \ std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n\
     \    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
@@ -102,49 +102,65 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 4 \"fps/taylor_shift.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n    FormalPowerSeries<mint,\
-    \ convolution> f, mint a) {\n    int d = f.deg();\n    std::vector<mint> fact(d\
-    \ + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1; i <= d; i++) fact[i] = fact[i\
-    \ - 1] * i;\n    inv_fact[d] = fact[d].inv();\n    for (int i = d; i > 0; i--)\
-    \ inv_fact[i - 1] = inv_fact[i] * i;\n    for (int i = 0; i < d; i++) f[i] *=\
-    \ fact[i];\n    std::reverse(f.begin(), f.end());\n    FormalPowerSeries<mint,\
-    \ convolution> g(d, 1);\n    mint pow_a = a;\n    for (int i = 1; i < d; i++)\
-    \ {\n        g[i] = pow_a * inv_fact[i];\n        pow_a *= a;\n    }\n    f =\
-    \ (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n    for (int i = 0;\
-    \ i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n}  // namespace ebi\n"
-  code: "#include <vector>\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\
+    \n\n#line 4 \"fps/taylor_shift.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint,\
+    \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
+    \ &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n\
+    \    FormalPowerSeries<mint, convolution> f, mint a) {\n    int d = f.deg();\n\
+    \    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1;\
+    \ i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d] = fact[d].inv();\n\
+    \    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i] * i;\n    for (int\
+    \ i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(), f.end());\n\
+    \    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a = a;\n    for\
+    \ (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n        pow_a\
+    \ *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n\
+    \    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n} \
+    \ // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\n\
+    constexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n\
+    \ & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int n, int bit_size)\
+    \ {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n\
+    \ |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint\
+    \ ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n))\
+    \ x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
+    }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
+    int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
+    \ ebi\n#line 8 \"math/stirling_number_1st.hpp\"\n\nnamespace ebi {\n\ntemplate\
     \ <class mint, std::vector<mint> (*convolution)(\n                          const\
     \ std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution>\
-    \ taylor_shift(\n    FormalPowerSeries<mint, convolution> f, mint a) {\n    int\
-    \ d = f.deg();\n    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n  \
-    \  for (int i = 1; i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d] =\
-    \ fact[d].inv();\n    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i]\
-    \ * i;\n    for (int i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(),\
-    \ f.end());\n    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a\
-    \ = a;\n    for (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n\
-    \        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(),\
-    \ f.end());\n    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return\
+    \ stirling_number_1st(int n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n\
+    \    assert(n >= 0);\n    if (n == 0) return {1};\n    int lg = msb(n);\n    FPS\
+    \ f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >>\
+    \ i;\n        f *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid\
+    \ & 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
+    \ ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n\n#include \"../fps/fps.hpp\"\n#include\
+    \ \"../fps/taylor_shift.hpp\"\n#include \"../utility/bit_operator.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
+    \                 const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
+    \ convolution> stirling_number_1st(int n) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    assert(n >= 0);\n    if (n == 0) return {1};\n    int lg\
+    \ = msb(n);\n    FPS f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n  \
+    \      int mid = n >> i;\n        f *= taylor_shift<mint, convolution>(f, mid\
+    \ >> 1);\n        if (mid & 1) f = (f << 1) + f * (mid - 1);\n    }\n    return\
     \ f;\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
+  - fps/taylor_shift.hpp
+  - utility/bit_operator.hpp
   isVerificationFile: false
-  path: fps/taylor_shift.hpp
-  requiredBy:
-  - math/stirling_number_1st.hpp
-  timestamp: '2023-07-29 20:09:34+09:00'
+  path: math/stirling_number_1st.hpp
+  requiredBy: []
+  timestamp: '2023-07-30 00:29:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-documentation_of: fps/taylor_shift.hpp
+documentation_of: math/stirling_number_1st.hpp
 layout: document
-title: $f(x + c)$
+title: Stirling Numbers of the First Kind
 ---
 
 ## 説明
 
-形式的べき級数 $f(x)$ に対して、 $f(x + c)$ を求める。
-$O(N \log N)$
+第 $1$ 種スターリング数 $S(N, K)$ を $k = 0, \dots, N$ に対して求める。分割統治とTaylor Shiftを用いて $O(N\log N)$ で求める。
+
+$S(N, K)$ は、 $N$ 個の区別できる要素を $K$ 個のサイクルに並べる場合の数である。
