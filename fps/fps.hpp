@@ -232,6 +232,15 @@ struct FormalPowerSeries : std::vector<mint> {
     }
 
     std::optional<FPS> sqrt(int d = -1) const;
+
+    static FPS exp_x(int n) {
+        FPS f(n);
+        mint fact = 1;
+        for (int i = 1; i < n; i++) fact *= i;
+        f[n - 1] = fact.inv();
+        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;
+        return f;
+    }
 };
 
 }  // namespace ebi
