@@ -6,14 +6,14 @@ data:
     title: GCD Convolution
   - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
-    title: math/eratosthenes_sieve.hpp
+    title: Eratosthenes Sieve
   - icon: ':heavy_check_mark:'
     path: math/multiple_transform.hpp
     title: "Multiple Transform (Zeta / M\xF6bius)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []

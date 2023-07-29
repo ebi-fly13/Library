@@ -76,8 +76,9 @@ data:
   - test/convolution/Gcd_Convolution.test.cpp
 documentation_of: math/eratosthenes_sieve.hpp
 layout: document
-redirect_from:
-- /library/math/eratosthenes_sieve.hpp
-- /library/math/eratosthenes_sieve.hpp.html
-title: math/eratosthenes_sieve.hpp
+title: Eratosthenes Sieve
 ---
+
+## 説明
+
+$N$ 以下の素数を列挙する。 $O(N\log \log N)$

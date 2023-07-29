@@ -28,7 +28,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/convolution_mod_2_64.hpp
       title: Convolution ($\mod 2^{64}$)
     - icon: ':heavy_check_mark:'
@@ -37,7 +37,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':heavy_check_mark:'
@@ -173,13 +173,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/composition_of_fps.hpp
       title: $f(g(x))$
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sparse.hpp
       title: Formal Power Series (Sparse)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
     - icon: ':heavy_check_mark:'
@@ -231,7 +231,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
     - icon: ':heavy_check_mark:'
@@ -248,7 +248,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bostan_mori_algorithm.hpp
       title: Bostan-Mori Algorithm
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/combination.hpp
       title: math/combination.hpp
     - icon: ':heavy_check_mark:'
@@ -256,8 +256,8 @@ data:
       title: "Divisor Transform (Zeta / M\xF6bius)"
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
-      title: math/eratosthenes_sieve.hpp
-    - icon: ':question:'
+      title: Eratosthenes Sieve
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
@@ -272,7 +272,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/longest_increasing_subsequence.hpp
       title: LIS
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_sqrt.hpp
       title: math/mod_sqrt.hpp
     - icon: ':heavy_check_mark:'
@@ -334,7 +334,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/block_cut_tree.hpp
       title: Block Cut Tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
     - icon: ':heavy_check_mark:'
@@ -357,10 +357,10 @@ data:
       title: Tree Diameter
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/dynamic_modint.hpp
       title: utility/dynamic_modint.hpp
     - icon: ':heavy_check_mark:'
@@ -369,16 +369,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_func.hpp
       title: utility/modint_func.hpp
     - icon: ':heavy_check_mark:'
@@ -723,10 +723,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
       title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - name: test/set_function
@@ -744,7 +744,7 @@ data:
       title: test/string/Z_Algorithm.test.cpp
   - name: test/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
       title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     - icon: ':heavy_check_mark:'
@@ -770,7 +770,7 @@ data:
       title: test/tree/lowest_common_ancestor.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1302.test.cpp
       title: test/yuki/yuki_1302.test.cpp
     - icon: ':heavy_check_mark:'

@@ -9,11 +9,11 @@ data:
     title: "Divisor Transform (Zeta / M\xF6bius)"
   - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
-    title: math/eratosthenes_sieve.hpp
-  - icon: ':question:'
+    title: Eratosthenes Sieve
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
