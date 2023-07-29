@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   _extendedVerifiedWith:
@@ -36,7 +36,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,9 +78,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/internal_math.hpp\"\n\n#include <cassert>\n\nnamespace\
@@ -105,7 +105,7 @@ data:
   - convolution/ntt.hpp
   - convolution/convolution_mod_2_64.hpp
   timestamp: '2023-07-29 16:06:36+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1302.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp

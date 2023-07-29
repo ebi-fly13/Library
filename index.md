@@ -37,7 +37,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':heavy_check_mark:'
@@ -173,7 +173,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/composition_of_fps.hpp
       title: $f(g(x))$
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
     - icon: ':heavy_check_mark:'
@@ -257,7 +257,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: Eratosthenes Sieve
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
@@ -284,7 +284,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/stirling_number_1st.hpp
       title: Stirling Numbers of the First Kind
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/stirling_number_2nd.hpp
       title: Stirling Numbers of the Second Kind
   - name: matrix
@@ -363,7 +363,7 @@ data:
       title: Tree Diameter
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
     - icon: ':heavy_check_mark:'
@@ -375,13 +375,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/int_alias.hpp
       title: utility/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
     - icon: ':heavy_check_mark:'
@@ -683,7 +683,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
       title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
       title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     - icon: ':heavy_check_mark:'

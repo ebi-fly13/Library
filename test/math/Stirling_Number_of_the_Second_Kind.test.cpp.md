@@ -1,39 +1,39 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
+    PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind
     links:
-    - https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
+    - https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind
   bundledCode: "#line 1 \"test/math/Stirling_Number_of_the_Second_Kind.test.cpp\"\n\
-    #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
+    #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind\"\
     \n\n#include <iostream>\n#include <numeric>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\
     \n\n#include <algorithm>\n#include <array>\n#include <cassert>\n#include <type_traits>\n\
     #line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\n\n#line\
@@ -255,7 +255,7 @@ data:
     \  auto ans = ebi::stirling_number_2nd<mint, ebi::convolution>(n);\n    for (int\
     \ i = 0; i <= n; i++) {\n        std::cout << ans[i] << \" \\n\"[i == n];\n  \
     \  }\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
+  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/stirling_number_of_the_second_kind\"\
     \n\n#include <iostream>\n#include <numeric>\n#include <vector>\n\n#include \"\
     ../../convolution/ntt.hpp\"\n#include \"../../math/stirling_number_2nd.hpp\"\n\
     #include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\n\
@@ -273,8 +273,8 @@ data:
   isVerificationFile: true
   path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 01:00:02+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-07-30 01:03:43+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
 layout: document
