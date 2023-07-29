@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
@@ -14,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':heavy_check_mark:'
@@ -51,24 +51,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -149,7 +149,10 @@ data:
     \ == 0) this->pop_back();\n    }\n\n    int count_terms() const {\n        int\
     \ c = 0;\n        for (int i = 0; i < deg(); i++) {\n            if ((*this)[i]\
     \ != 0) c++;\n        }\n        return c;\n    }\n\n    std::optional<FPS> sqrt(int\
-    \ d = -1) const;\n};\n\n}  // namespace ebi\n"
+    \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
+    \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
+    \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <optional>\n\
     #include <vector>\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
     \ (*convolution)(\n                          const std::vector<mint> &, const\
@@ -228,7 +231,10 @@ data:
     \ == 0) this->pop_back();\n    }\n\n    int count_terms() const {\n        int\
     \ c = 0;\n        for (int i = 0; i < deg(); i++) {\n            if ((*this)[i]\
     \ != 0) c++;\n        }\n        return c;\n    }\n\n    std::optional<FPS> sqrt(int\
-    \ d = -1) const;\n};\n\n}  // namespace ebi"
+    \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
+    \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
+    \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: fps/fps.hpp
@@ -240,8 +246,8 @@ data:
   - fps/product_of_one_plus_xn.hpp
   - fps/fps_sqrt.hpp
   - fps/composition_of_fps.hpp
-  timestamp: '2023-06-12 02:16:01+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-07-29 20:09:34+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1302.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp

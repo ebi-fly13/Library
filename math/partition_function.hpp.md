@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   _extendedRequiredBy: []
@@ -92,16 +92,19 @@ data:
     \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
     \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
     \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
-    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
-    };\n\n}  // namespace ebi\n#line 4 \"math/partition_function.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
-    \                 const std::vector<mint> &, const std::vector<mint> &)>\nstd::vector<mint>\
-    \ partition_function(int n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n\
-    \    FPS f(n+1);\n    f[0] = 1;\n    for(int k = 1; k <= n; k++) {\n        long\
-    \ long k1 = 1LL * k * (3 * k + 1) / 2;\n        long long k2 = 1LL * k *(3 * k\
-    \ - 1) / 2;\n        if(k2 > n) break;\n        if(k1 <= n) f[k1] = ((k & 1) ?\
-    \ -1 : 1);\n        if(k2 <= n) f[k2] = ((k & 1) ? -1 : 1); \n    }\n    return\
-    \ f.inv();\n}\n\n}\n"
+    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n\
+    \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
+    \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
+    \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 4 \"math/partition_function.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nstd::vector<mint> partition_function(int n) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    FPS f(n+1);\n    f[0] = 1;\n    for(int k = 1; k <= n; k++)\
+    \ {\n        long long k1 = 1LL * k * (3 * k + 1) / 2;\n        long long k2 =\
+    \ 1LL * k *(3 * k - 1) / 2;\n        if(k2 > n) break;\n        if(k1 <= n) f[k1]\
+    \ = ((k & 1) ? -1 : 1);\n        if(k2 <= n) f[k2] = ((k & 1) ? -1 : 1); \n  \
+    \  }\n    return f.inv();\n}\n\n}\n"
   code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
     \ <class mint, std::vector<mint> (*convolution)(\n                          const\
     \ std::vector<mint> &, const std::vector<mint> &)>\nstd::vector<mint> partition_function(int\
@@ -116,7 +119,7 @@ data:
   isVerificationFile: false
   path: math/partition_function.hpp
   requiredBy: []
-  timestamp: '2023-07-29 13:18:16+09:00'
+  timestamp: '2023-07-29 20:09:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Partition_Function_Pentagonal.test.cpp

@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -189,23 +189,26 @@ data:
     \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
     \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
     \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
-    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
-    };\n\n}  // namespace ebi\n#line 7 \"fps/composition_of_fps.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
-    \                 const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
-    \ convolution> composition(\n    const FormalPowerSeries<mint, convolution> &f,\n\
-    \    const FormalPowerSeries<mint, convolution> &g) {\n    using FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n    assert(f.deg() == g.deg());\n    int n = f.deg();\n    int\
-    \ k = 1;\n    while (k * k < n) k++;\n    std::vector<FPS> baby(k + 1);\n    baby[0]\
-    \ = FPS{1};\n    baby[1] = g;\n    for (int i = 2; i < k + 1; i++) {\n       \
-    \ baby[i] = (baby[i - 1] * g).pre(n);\n    }\n    std::vector<FPS> giant(k + 1);\n\
-    \    giant[0] = FPS{1};\n    giant[1] = baby[k];\n    for (int i = 2; i < k +\
-    \ 1; i++) {\n        giant[i] = (giant[i - 1] * giant[1]).pre(n);\n    }\n   \
-    \ FPS h(n);\n    for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n      \
-    \  for (int j = 0; j < k; j++) {\n            if (k * i + j < n) {\n         \
-    \       mint coef = f[k * i + j];\n                a += baby[j] * coef;\n    \
-    \        } else\n                break;\n        }\n        h += (giant[i] * a).pre(n);\n\
-    \    }\n    return h;\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\
+    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n\
+    \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
+    \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
+    \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 7 \"fps/composition_of_fps.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> composition(\n    const FormalPowerSeries<mint,\
+    \ convolution> &f,\n    const FormalPowerSeries<mint, convolution> &g) {\n   \
+    \ using FPS = FormalPowerSeries<mint, convolution>;\n    assert(f.deg() == g.deg());\n\
+    \    int n = f.deg();\n    int k = 1;\n    while (k * k < n) k++;\n    std::vector<FPS>\
+    \ baby(k + 1);\n    baby[0] = FPS{1};\n    baby[1] = g;\n    for (int i = 2; i\
+    \ < k + 1; i++) {\n        baby[i] = (baby[i - 1] * g).pre(n);\n    }\n    std::vector<FPS>\
+    \ giant(k + 1);\n    giant[0] = FPS{1};\n    giant[1] = baby[k];\n    for (int\
+    \ i = 2; i < k + 1; i++) {\n        giant[i] = (giant[i - 1] * giant[1]).pre(n);\n\
+    \    }\n    FPS h(n);\n    for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n\
+    \        for (int j = 0; j < k; j++) {\n            if (k * i + j < n) {\n   \
+    \             mint coef = f[k * i + j];\n                a += baby[j] * coef;\n\
+    \            } else\n                break;\n        }\n        h += (giant[i]\
+    \ * a).pre(n);\n    }\n    return h;\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\
     \n\r\n#line 6 \"utility/modint.hpp\"\n\r\n#line 8 \"utility/modint.hpp\"\n\r\n\
     namespace ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
     \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
@@ -277,7 +280,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 16:06:36+09:00'
+  timestamp: '2023-07-29 20:09:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Composition_of_Formal_Power_Series.test.cpp

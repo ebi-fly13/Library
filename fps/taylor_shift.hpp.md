@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"fps/taylor_shift.hpp\"\n#include <vector>\n\n#line 2 \"\
@@ -93,8 +93,11 @@ data:
     \ == 0) this->pop_back();\n    }\n\n    int count_terms() const {\n        int\
     \ c = 0;\n        for (int i = 0; i < deg(); i++) {\n            if ((*this)[i]\
     \ != 0) c++;\n        }\n        return c;\n    }\n\n    std::optional<FPS> sqrt(int\
-    \ d = -1) const;\n};\n\n}  // namespace ebi\n#line 4 \"fps/taylor_shift.hpp\"\n\
-    \nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
+    \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
+    \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 4 \"fps/taylor_shift.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
     \ &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n    FormalPowerSeries<mint,\
     \ convolution> f, mint a) {\n    int d = f.deg();\n    std::vector<mint> fact(d\
@@ -124,8 +127,8 @@ data:
   isVerificationFile: false
   path: fps/taylor_shift.hpp
   requiredBy: []
-  timestamp: '2023-06-12 02:16:01+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-07-29 20:09:34+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
 documentation_of: fps/taylor_shift.hpp

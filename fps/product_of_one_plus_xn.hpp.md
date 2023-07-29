@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy: []
@@ -96,7 +96,10 @@ data:
     \ == 0) this->pop_back();\n    }\n\n    int count_terms() const {\n        int\
     \ c = 0;\n        for (int i = 0; i < deg(); i++) {\n            if ((*this)[i]\
     \ != 0) c++;\n        }\n        return c;\n    }\n\n    std::optional<FPS> sqrt(int\
-    \ d = -1) const;\n};\n\n}  // namespace ebi\n#line 2 \"utility/modint_func.hpp\"\
+    \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
+    \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
+    \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"utility/modint_func.hpp\"\
     \n\n#line 5 \"utility/modint_func.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
     \ mint> mint inv(int n) {\n    static const int mod = mint::mod();\n    static\
     \ std::vector<mint> dat = {0, 1};\n    assert(0 <= n);\n    if (n >= mod) n -=\
@@ -134,7 +137,7 @@ data:
   isVerificationFile: false
   path: fps/product_of_one_plus_xn.hpp
   requiredBy: []
-  timestamp: '2023-06-12 02:16:01+09:00'
+  timestamp: '2023-07-29 20:09:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/sharp_p_subset_sum.test.cpp

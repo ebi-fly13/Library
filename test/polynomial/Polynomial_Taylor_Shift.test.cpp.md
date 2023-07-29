@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/polynomial_taylor_shift
@@ -188,27 +188,30 @@ data:
     \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
     \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
     \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
-    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
-    };\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\n\n#line 4 \"fps/taylor_shift.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n    FormalPowerSeries<mint,\
-    \ convolution> f, mint a) {\n    int d = f.deg();\n    std::vector<mint> fact(d\
-    \ + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1; i <= d; i++) fact[i] = fact[i\
-    \ - 1] * i;\n    inv_fact[d] = fact[d].inv();\n    for (int i = d; i > 0; i--)\
-    \ inv_fact[i - 1] = inv_fact[i] * i;\n    for (int i = 0; i < d; i++) f[i] *=\
-    \ fact[i];\n    std::reverse(f.begin(), f.end());\n    FormalPowerSeries<mint,\
-    \ convolution> g(d, 1);\n    mint pow_a = a;\n    for (int i = 1; i < d; i++)\
-    \ {\n        g[i] = pow_a * inv_fact[i];\n        pow_a *= a;\n    }\n    f =\
-    \ (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n    for (int i = 0;\
-    \ i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n}  // namespace ebi\n\
-    #line 2 \"utility/modint.hpp\"\n\r\n#line 6 \"utility/modint.hpp\"\n\r\n#line\
-    \ 8 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct\
-    \ static_modint : internal::static_modint_base {\r\n  private:\r\n    using modint\
-    \ = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\n  \
-    \      return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\n\
-    \        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
-    \    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
+    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n\
+    \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
+    \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
+    \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\n\n#line\
+    \ 4 \"fps/taylor_shift.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
+    \ (*convolution)(\n                          const std::vector<mint> &, const\
+    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n\
+    \    FormalPowerSeries<mint, convolution> f, mint a) {\n    int d = f.deg();\n\
+    \    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1;\
+    \ i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d] = fact[d].inv();\n\
+    \    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i] * i;\n    for (int\
+    \ i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(), f.end());\n\
+    \    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a = a;\n    for\
+    \ (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n        pow_a\
+    \ *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n\
+    \    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n} \
+    \ // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 6 \"utility/modint.hpp\"\
+    \n\r\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
+    \ m> struct static_modint : internal::static_modint_base {\r\n  private:\r\n \
+    \   using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
+    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
+    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
+    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
     \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
     \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
     \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
@@ -272,8 +275,8 @@ data:
   isVerificationFile: true
   path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 16:06:36+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-29 20:09:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/polynomial/Polynomial_Taylor_Shift.test.cpp
 layout: document

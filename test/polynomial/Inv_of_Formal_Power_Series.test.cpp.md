@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -185,58 +185,61 @@ data:
     \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
     \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
     \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
-    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
-    };\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 6 \"utility/modint.hpp\"\
-    \n\r\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
-    \ m> struct static_modint : internal::static_modint_base {\r\n  private:\r\n \
-    \   using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
-    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
-    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
-    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
-    \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
-    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
-    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
-    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
-    \    }\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v\
-    \ += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n        _v\
-    \ -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned\
-    \ long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x %\
-    \ (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
-    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
-    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
-    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
-    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
-    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
-    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
-    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
-    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
-    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
-    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
-    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
-    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
-    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
-    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\n\
-    std::istream &operator>>(std::istream &os, static_modint<m> &a) {\r\n    long\
-    \ long x;\r\n    os >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int\
-    \ m>\r\nstd::ostream &operator<<(std::ostream &os, const static_modint<m> &a)\
-    \ {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
-    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 8 \"test/polynomial/Inv_of_Formal_Power_Series.test.cpp\"\n\r\nusing mint\
-    \ = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >>\
-    \ n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for (int\
-    \ i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    auto b = a.inv();\r\
-    \n    for (int i = 0; i < n; ++i) {\r\n        std::cout << b[i].val() << \" \"\
-    ;\r\n    }\r\n    std::cout << std::endl;\r\n}\n"
+    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n\
+    \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
+    \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
+    \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line\
+    \ 6 \"utility/modint.hpp\"\n\r\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
+    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
+    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
+    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
+    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
+    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
+    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
+    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
+    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
+    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const modint\
+    \ &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const modint\
+    \ &rhs) {\r\n        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
+    \ &rhs) {\r\n        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n  \
+    \      _v = (unsigned int)(x % (unsigned long long)umod());\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator/=(const modint &rhs) {\r\n\
+    \        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint\
+    \ operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\n   \
+    \ constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n   \
+    \     modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n &\
+    \ 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\n\
+    \        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n      \
+    \  assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint\
+    \ operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
+    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
+    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
+    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
+    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
+    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
+    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
+    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
+    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
+    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
+    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
+    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
+    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
+    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
+    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/polynomial/Inv_of_Formal_Power_Series.test.cpp\"\
+    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n\
+    \    std::cin >> n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\
+    \n    for (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n\
+    \    auto b = a.inv();\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cout\
+    \ << b[i].val() << \" \";\r\n    }\r\n    std::cout << std::endl;\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../../convolution/ntt.hpp\"\r\n\
     #include \"../../fps/fps.hpp\"\r\n#include \"../../utility/modint.hpp\"\r\n\r\n\
@@ -255,7 +258,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 16:06:36+09:00'
+  timestamp: '2023-07-29 20:09:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Inv_of_Formal_Power_Series.test.cpp

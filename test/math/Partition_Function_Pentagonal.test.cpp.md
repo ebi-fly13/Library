@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
     path: math/partition_function.hpp
     title: Partition Function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -113,7 +113,10 @@ data:
     \ == 0) this->pop_back();\n    }\n\n    int count_terms() const {\n        int\
     \ c = 0;\n        for (int i = 0; i < deg(); i++) {\n            if ((*this)[i]\
     \ != 0) c++;\n        }\n        return c;\n    }\n\n    std::optional<FPS> sqrt(int\
-    \ d = -1) const;\n};\n\n}  // namespace ebi\n#line 4 \"math/partition_function.hpp\"\
+    \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
+    \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
+    \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 4 \"math/partition_function.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
     \ &)>\nstd::vector<mint> partition_function(int n) {\n    using FPS = FormalPowerSeries<mint,\
@@ -266,7 +269,7 @@ data:
   isVerificationFile: true
   path: test/math/Partition_Function_Pentagonal.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 16:06:36+09:00'
+  timestamp: '2023-07-29 20:09:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Partition_Function_Pentagonal.test.cpp

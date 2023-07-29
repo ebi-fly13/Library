@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: math/mod_sqrt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps_sqrt.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n#include\
@@ -110,14 +110,17 @@ data:
     \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
     \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
     \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
-    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\
-    };\n\n}  // namespace ebi\n#line 2 \"fps/fps_sparse.hpp\"\n\n#line 5 \"fps/fps_sparse.hpp\"\
-    \n\n#line 2 \"utility/modint_func.hpp\"\n\n#line 5 \"utility/modint_func.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint> mint inv(int n) {\n    static const\
-    \ int mod = mint::mod();\n    static std::vector<mint> dat = {0, 1};\n    assert(0\
-    \ <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size()) <= n) {\n  \
-    \      int num = dat.size();\n        int q = (mod + num - 1) / num;\n       \
-    \ dat.emplace_back(dat[num * q - mod] * mint(q));\n    }\n    return dat[n];\n\
+    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n\
+    \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
+    \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
+    \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/fps_sparse.hpp\"\n\n#line\
+    \ 5 \"fps/fps_sparse.hpp\"\n\n#line 2 \"utility/modint_func.hpp\"\n\n#line 5 \"\
+    utility/modint_func.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint> mint inv(int\
+    \ n) {\n    static const int mod = mint::mod();\n    static std::vector<mint>\
+    \ dat = {0, 1};\n    assert(0 <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size())\
+    \ <= n) {\n        int num = dat.size();\n        int q = (mod + num - 1) / num;\n\
+    \        dat.emplace_back(dat[num * q - mod] * mint(q));\n    }\n    return dat[n];\n\
     }\n\n}  // namespace ebi\n#line 7 \"fps/fps_sparse.hpp\"\n\nnamespace ebi {\n\n\
     template <class mint>\nstd::vector<mint> mul_sparse(const std::vector<mint> &f,\n\
     \                             const std::vector<mint> &g) {\n    int n = f.size();\n\
@@ -276,8 +279,8 @@ data:
   isVerificationFile: false
   path: fps/fps_sqrt.hpp
   requiredBy: []
-  timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-07-29 20:09:34+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
