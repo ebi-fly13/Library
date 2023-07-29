@@ -10,6 +10,9 @@ data:
   - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
+  - icon: ':x:'
+    path: math/stirling_number_2nd.hpp
+    title: Stirling Numbers of the Second Kind
   - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
@@ -21,35 +24,36 @@ data:
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/pow_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
     links:
-    - https://judge.yosupo.jp/problem/pow_of_formal_power_series
-  bundledCode: "#line 1 \"test/polynomial/Pow_of_Formal_Power_Series.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_formal_power_series\"\
-    \n\n#include <iostream>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n\
-    #include <array>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\
-    \n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\n\
-    namespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
-    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
-    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n    if (m == 880803841) return 26;\n    return -1;\n}\ntemplate <int\
-    \ m> constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  // namespace\
-    \ internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace\
-    \ ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n   \
-    \ while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int n, int\
-    \ bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n\
-    \        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n\
-    }\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned\
-    \ int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
-    }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
-    int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
-    \ ebi\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
+    - https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
+  bundledCode: "#line 1 \"test/math/Stirling_Number_of_the_Second_Kind.test.cpp\"\n\
+    #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
+    \n\n#include <iostream>\n#include <numeric>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\
+    \n\n#include <algorithm>\n#include <array>\n#include <cassert>\n#include <type_traits>\n\
+    #line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\n\n#line\
+    \ 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\n\
+    constexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n \
+    \   if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if (m\
+    \ == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if (m == 880803841)\
+    \ return 26;\n    return -1;\n}\ntemplate <int m> constexpr int primitive_root\
+    \ = primitive_root_constexpr(m);\n\n}  // namespace internal\n\n}  // namespace\
+    \ ebi\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr int\
+    \ bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n & (1 << x)))\
+    \ x++;\n    return x;\n}\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n\
+    \ = 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) &\
+    \ 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint ceil_pow2(int\
+    \ n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n)) x++;\n    return\
+    \ x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n}\n\nint msb(int\
+    \ x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\nint bsf(int x)\
+    \ {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace ebi\n\
+    #line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\n\n\
+    namespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
     \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
     \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
     \ : modint_base {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
@@ -107,8 +111,9 @@ data:
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"fps/fps.hpp\"\n\n\
-    #line 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"math/stirling_number_2nd.hpp\"\
+    \n\n#line 5 \"math/stirling_number_2nd.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n#line\
+    \ 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
     \                 const std::vector<mint> &, const std::vector<mint> &)>\nstruct\
     \ FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
@@ -189,81 +194,92 @@ data:
     \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
-    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line\
-    \ 6 \"utility/modint.hpp\"\n\r\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
-    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const modint\
-    \ &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const modint\
-    \ &rhs) {\r\n        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
-    \ &rhs) {\r\n        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n  \
-    \      _v = (unsigned int)(x % (unsigned long long)umod());\r\n        return\
-    \ *this;\r\n    }\r\n    constexpr modint &operator/=(const modint &rhs) {\r\n\
-    \        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint\
-    \ operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\n   \
-    \ constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n   \
-    \     modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n &\
-    \ 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\n\
-    \        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n      \
-    \  assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint\
-    \ operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
-    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
-    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
-    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
-    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
-    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
-    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
-    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
-    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
-    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/polynomial/Pow_of_Formal_Power_Series.test.cpp\"\
-    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    long long\
-    \ m;\n    std::cin >> n >> m;\n    ebi::FormalPowerSeries<mint, ebi::convolution<mint>>\
-    \ f(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n\
-    \    auto b = f.pow(m);\n    for (int i = 0; i < n; i++) {\n        std::cout\
-    \ << b[i] << \" \\n\"[i == n - 1];\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_formal_power_series\"\
-    \n\n#include <iostream>\n\n#include \"../../convolution/ntt.hpp\"\n#include \"\
-    ../../fps/fps.hpp\"\n#include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
-    \nint main() {\n    int n;\n    long long m;\n    std::cin >> n >> m;\n    ebi::FormalPowerSeries<mint,\
-    \ ebi::convolution<mint>> f(n);\n    for (int i = 0; i < n; i++) {\n        std::cin\
-    \ >> f[i];\n    }\n    auto b = f.pow(m);\n    for (int i = 0; i < n; i++) {\n\
-    \        std::cout << b[i] << \" \\n\"[i == n - 1];\n    }\n}"
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 8 \"math/stirling_number_2nd.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> stirling_number_2nd(int n) {\n   \
+    \ using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >= 0);\n   \
+    \ FPS f(n + 1), g(n + 1);\n    std::vector<mint> fact(n + 1, 1);\n    for (int\
+    \ i = 1; i <= n; i++) fact[i] = fact[i - 1] * i;\n    std::vector<mint> inv_fact(n\
+    \ + 1);\n    inv_fact[n] = fact[n].inv();\n    for (int i = n; i > 0; i--) {\n\
+    \        inv_fact[i - 1] = inv_fact[i] * i;\n    }\n    for (int i = 0; i <= n;\
+    \ i++) {\n        f[i] = mint(i).pow(n) * inv_fact[i];\n        g[i] = (i & 1)\
+    \ ? -inv_fact[i] : inv_fact[i];\n    }\n    return (f * g).pre(n + 1);\n}\n\n\
+    }  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 6 \"utility/modint.hpp\"\
+    \n\r\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
+    \ m> struct static_modint : internal::static_modint_base {\r\n  private:\r\n \
+    \   using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
+    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
+    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
+    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
+    \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
+    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
+    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
+    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v\
+    \ += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n        _v\
+    \ -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned\
+    \ long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x %\
+    \ (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
+    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
+    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
+    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
+    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
+    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
+    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
+    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
+    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
+    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
+    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
+    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
+    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
+    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\n\
+    std::istream &operator>>(std::istream &os, static_modint<m> &a) {\r\n    long\
+    \ long x;\r\n    os >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int\
+    \ m>\r\nstd::ostream &operator<<(std::ostream &os, const static_modint<m> &a)\
+    \ {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 11 \"test/math/Stirling_Number_of_the_Second_Kind.test.cpp\"\n\nusing mint\
+    \ = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin >> n;\n  \
+    \  auto ans = ebi::stirling_number_2nd<mint, ebi::convolution>(n);\n    for (int\
+    \ i = 0; i <= n; i++) {\n        std::cout << ans[i] << \" \\n\"[i == n];\n  \
+    \  }\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
+    \n\n#include <iostream>\n#include <numeric>\n#include <vector>\n\n#include \"\
+    ../../convolution/ntt.hpp\"\n#include \"../../math/stirling_number_2nd.hpp\"\n\
+    #include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\n\
+    int main() {\n    int n;\n    std::cin >> n;\n    auto ans = ebi::stirling_number_2nd<mint,\
+    \ ebi::convolution>(n);\n    for (int i = 0; i <= n; i++) {\n        std::cout\
+    \ << ans[i] << \" \\n\"[i == n];\n    }\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   - utility/modint_base.hpp
+  - math/stirling_number_2nd.hpp
   - fps/fps.hpp
   - utility/modint.hpp
   isVerificationFile: true
-  path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 20:09:34+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-30 01:00:02+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+documentation_of: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
 layout: document
 redirect_from:
-- /verify/test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-- /verify/test/polynomial/Pow_of_Formal_Power_Series.test.cpp.html
-title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+- /verify/test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+- /verify/test/math/Stirling_Number_of_the_Second_Kind.test.cpp.html
+title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
 ---

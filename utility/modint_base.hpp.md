@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -29,7 +29,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -114,6 +114,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - icon: ':x:'
+    path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
@@ -180,9 +183,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "utility/modint_base.hpp"
@@ -278,7 +281,7 @@ data:
   - convolution/ntt.hpp
   - convolution/convolution_mod_2_64.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
   - test/aoj/aoj_3361.test.cpp
@@ -293,6 +296,7 @@ data:
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Pow.test.cpp
   - test/math/Berunoulli_Number.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp

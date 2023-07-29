@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -26,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
+  - icon: ':x:'
+    path: math/stirling_number_2nd.hpp
+    title: Stirling Numbers of the Second Kind
   - icon: ':heavy_check_mark:'
     path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
@@ -81,6 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - icon: ':x:'
+    path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
@@ -126,9 +132,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nconstexpr\
@@ -160,6 +166,7 @@ data:
   - set_function/exp_of_sps.hpp
   - set_function/superset_transform.hpp
   - math/stirling_number_1st.hpp
+  - math/stirling_number_2nd.hpp
   - convolution/arbitrary_ntt.hpp
   - convolution/subset_convolution.hpp
   - convolution/ntt.hpp
@@ -168,7 +175,7 @@ data:
   - convolution/or_convolution.hpp
   - data_structure/offline_dynamic_connectivity.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_2235.test.cpp
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
@@ -178,6 +185,7 @@ data:
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Berunoulli_Number.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp

@@ -26,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
+  - icon: ':x:'
+    path: math/stirling_number_2nd.hpp
+    title: Stirling Numbers of the Second Kind
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Berunoulli_Number.test.cpp
@@ -39,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - icon: ':x:'
+    path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
@@ -72,9 +78,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -246,6 +252,7 @@ data:
   path: fps/fps.hpp
   requiredBy:
   - math/stirling_number_1st.hpp
+  - math/stirling_number_2nd.hpp
   - math/partition_function.hpp
   - math/bernoulli_number.hpp
   - fps/taylor_shift.hpp
@@ -254,12 +261,13 @@ data:
   - fps/fps_sqrt.hpp
   - fps/composition_of_fps.hpp
   timestamp: '2023-07-29 20:09:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1302.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Berunoulli_Number.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp

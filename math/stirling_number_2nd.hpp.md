@@ -4,23 +4,27 @@ data:
   - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
+  - icon: ':question:'
+    path: utility/bit_operator.hpp
+    title: utility/bit_operator.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/math/Berunoulli_Number.test.cpp
-    title: test/math/Berunoulli_Number.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/bernoulli_number.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\
-    \n#include <algorithm>\n#include <cassert>\n#include <optional>\n#include <vector>\n\
-    \nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
-    \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
-    \n  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
+  bundledCode: "#line 2 \"math/stirling_number_2nd.hpp\"\n\n#include <cassert>\n#include\
+    \ <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line 5 \"fps/fps.hpp\"\
+    \n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
+    \ std::vector<mint> &, const std::vector<mint> &)>\nstruct FormalPowerSeries :\
+    \ std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n    using\
+    \ std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\n\
+    \  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
     \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
     \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
     \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n    FPS operator/(const\
@@ -96,42 +100,60 @@ data:
     \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
-    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 4 \"math/bernoulli_number.hpp\"\n\
-    \nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> bernoulli_number_egf(int n) {\n  \
-    \  using FPS = FormalPowerSeries<mint, convolution>;\n    FPS f(n+1);\n    mint\
-    \ fact = 1;\n    for(int i = 2; i <= n+1; i++) fact *= i;\n    mint inv_fact =\
-    \ fact.inv();\n    for(int i = n; i >= 0; i--) {\n        f[i] = inv_fact;\n \
-    \       inv_fact *= i + 1;\n    }\n    return f.inv();\n}\n\n\n}\n"
-  code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
-    \ std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution>\
-    \ bernoulli_number_egf(int n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n\
-    \    FPS f(n+1);\n    mint fact = 1;\n    for(int i = 2; i <= n+1; i++) fact *=\
-    \ i;\n    mint inv_fact = fact.inv();\n    for(int i = n; i >= 0; i--) {\n   \
-    \     f[i] = inv_fact;\n        inv_fact *= i + 1;\n    }\n    return f.inv();\n\
-    }\n\n\n}"
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\
+    \nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int x\
+    \ = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
+    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
+    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
+    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
+    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
+    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
+    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
+    }\n\n}  // namespace ebi\n#line 8 \"math/stirling_number_2nd.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
+    \                 const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
+    \ convolution> stirling_number_2nd(int n) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    assert(n >= 0);\n    FPS f(n + 1), g(n + 1);\n    std::vector<mint>\
+    \ fact(n + 1, 1);\n    for (int i = 1; i <= n; i++) fact[i] = fact[i - 1] * i;\n\
+    \    std::vector<mint> inv_fact(n + 1);\n    inv_fact[n] = fact[n].inv();\n  \
+    \  for (int i = n; i > 0; i--) {\n        inv_fact[i - 1] = inv_fact[i] * i;\n\
+    \    }\n    for (int i = 0; i <= n; i++) {\n        f[i] = mint(i).pow(n) * inv_fact[i];\n\
+    \        g[i] = (i & 1) ? -inv_fact[i] : inv_fact[i];\n    }\n    return (f *\
+    \ g).pre(n + 1);\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../fps/fps.hpp\"\
+    \n#include \"../utility/bit_operator.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ mint, std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
+    \ &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> stirling_number_2nd(int\
+    \ n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >=\
+    \ 0);\n    FPS f(n + 1), g(n + 1);\n    std::vector<mint> fact(n + 1, 1);\n  \
+    \  for (int i = 1; i <= n; i++) fact[i] = fact[i - 1] * i;\n    std::vector<mint>\
+    \ inv_fact(n + 1);\n    inv_fact[n] = fact[n].inv();\n    for (int i = n; i >\
+    \ 0; i--) {\n        inv_fact[i - 1] = inv_fact[i] * i;\n    }\n    for (int i\
+    \ = 0; i <= n; i++) {\n        f[i] = mint(i).pow(n) * inv_fact[i];\n        g[i]\
+    \ = (i & 1) ? -inv_fact[i] : inv_fact[i];\n    }\n    return (f * g).pre(n + 1);\n\
+    }\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
+  - utility/bit_operator.hpp
   isVerificationFile: false
-  path: math/bernoulli_number.hpp
+  path: math/stirling_number_2nd.hpp
   requiredBy: []
-  timestamp: '2023-07-29 20:09:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-07-30 01:00:02+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/math/Berunoulli_Number.test.cpp
-documentation_of: math/bernoulli_number.hpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+documentation_of: math/stirling_number_2nd.hpp
 layout: document
-title: Bernoulli Number
+title: Stirling Numbers of the Second Kind
 ---
 
 ## 説明
 
-ベルヌーイ数の指数型母関数 (EGF)を求める。求めるEGFは以下の式で表される。
+第 $2$ 種スターリング数 $S(N, K)$ を $k = 0, \dots, N$ に対して求める。 $S(N, K)$ は以下のように表すことができるため、畳み込みを用いて $O(N\log N)$ で求められる。
 
 $$
-f = \frac{x}{e^x - 1}
+S(N, K) = \frac{1}{K!} \sum_{i = 0}^K (-1)^{K-i} \binom{k} i i^N \\
+S(N, K) = \sum_{i = 0}^K \frac{(-1)^{K-i}}{(K-i)!} \frac{i^n}{i!}
 $$
 
-時間計算量は $O(N\log N)$ である。
+$S(N, K)$ は、 $N$ 個の区別できる要素を $K$ 個の空でない部分集合に分ける場合の数である。
