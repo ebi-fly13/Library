@@ -185,7 +185,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps/product_of_one_minus_xn.hpp
       title: $\prod (1 - x^{a_i}) \mod x^d$
     - icon: ':heavy_check_mark:'
@@ -275,6 +275,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/multiple_transform.hpp
       title: "Multiple Transform (Zeta / M\xF6bius)"
+    - icon: ':heavy_check_mark:'
+      path: math/partition_function.hpp
+      title: math/partition_function.hpp
   - name: matrix
     pages:
     - icon: ':heavy_check_mark:'
@@ -653,6 +656,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Longest_Increasing_Subsequence.test.cpp
       title: test/math/Longest_Increasing_Subsequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Partition_Function_FPS.test.cpp
+      title: test/math/Partition_Function_FPS.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Partition_Function_Pentagonal.test.cpp
+      title: test/math/Partition_Function_Pentagonal.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Pow.test.cpp
       title: test/math/Pow.test.cpp

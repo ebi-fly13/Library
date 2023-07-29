@@ -8,10 +8,13 @@ data:
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_FPS.test.cpp
+    title: test/math/Partition_Function_FPS.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/product_of_one_minus_xn.hpp\"\n\n#include <vector>\n\
@@ -128,8 +131,9 @@ data:
   path: fps/product_of_one_minus_xn.hpp
   requiredBy: []
   timestamp: '2023-06-12 02:16:01+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/Partition_Function_FPS.test.cpp
 documentation_of: fps/product_of_one_minus_xn.hpp
 layout: document
 title: $\prod (1 - x^{a_i}) \mod x^d$

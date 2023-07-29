@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
   - icon: ':heavy_check_mark:'
@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_FPS.test.cpp
+    title: test/math/Partition_Function_FPS.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
@@ -70,6 +73,7 @@ data:
   verifiedWith:
   - test/aoj/aoj_3361.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp

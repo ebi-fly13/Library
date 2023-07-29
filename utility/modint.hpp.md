@@ -67,6 +67,12 @@ data:
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_FPS.test.cpp
+    title: test/math/Partition_Function_FPS.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_Pentagonal.test.cpp
+    title: test/math/Partition_Function_Pentagonal.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -251,6 +257,8 @@ data:
   - test/yuki/yuki_1302.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp

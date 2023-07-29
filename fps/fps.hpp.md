@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
   - icon: ':heavy_check_mark:'
@@ -17,7 +17,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
+  - icon: ':heavy_check_mark:'
+    path: math/partition_function.hpp
+    title: math/partition_function.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_FPS.test.cpp
+    title: test/math/Partition_Function_FPS.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_Pentagonal.test.cpp
+    title: test/math/Partition_Function_Pentagonal.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
@@ -218,6 +227,7 @@ data:
   isVerificationFile: false
   path: fps/fps.hpp
   requiredBy:
+  - math/partition_function.hpp
   - fps/taylor_shift.hpp
   - fps/product_of_one_minus_xn.hpp
   - fps/product_of_one_plus_xn.hpp
@@ -228,6 +238,8 @@ data:
   verifiedWith:
   - test/yuki/yuki_1302.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp

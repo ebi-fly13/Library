@@ -97,6 +97,12 @@ data:
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_FPS.test.cpp
+    title: test/math/Partition_Function_FPS.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_Pentagonal.test.cpp
+    title: test/math/Partition_Function_Pentagonal.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Pow.test.cpp
     title: test/math/Pow.test.cpp
   - icon: ':heavy_check_mark:'
@@ -279,6 +285,8 @@ data:
   - test/math/Sqrt_Mod.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Pow.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
