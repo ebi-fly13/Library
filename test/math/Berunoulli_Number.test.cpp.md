@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/bernoulli_number.hpp
     title: Bernoulli Number
   - icon: ':question:'
@@ -24,16 +24,16 @@ data:
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/partition_function
+    PROBLEM: https://judge.yosupo.jp/problem/bernoulli_number
     links:
-    - https://judge.yosupo.jp/problem/partition_function
+    - https://judge.yosupo.jp/problem/bernoulli_number
   bundledCode: "#line 1 \"test/math/Berunoulli_Number.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/partition_function\"\n\n#include <iostream>\n\
+    \ \"https://judge.yosupo.jp/problem/bernoulli_number\"\n\n#include <iostream>\n\
     #include <numeric>\n#include <vector>\n\n#line 2 \"math/bernoulli_number.hpp\"\
     \n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#include\
     \ <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint,\
@@ -247,7 +247,7 @@ data:
     \ >> n;\n    auto ans = ebi::bernoulli_number_egf<mint, ebi::convolution>(n);\n\
     \    mint fact = 1;\n    for(int i = 0; i <= n; i++) {\n        std::cout << ans[i]\
     \ * fact << \" \\n\"[i == n];\n        fact *= i + 1;\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/partition_function\"\n\n\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bernoulli_number\"\n\n\
     #include <iostream>\n#include <numeric>\n#include <vector>\n\n#include \"../../math/bernoulli_number.hpp\"\
     \n#include \"../../utility/modint.hpp\"\n#include \"../../convolution/ntt.hpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
@@ -265,8 +265,8 @@ data:
   isVerificationFile: true
   path: test/math/Berunoulli_Number.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 16:06:36+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-07-29 16:27:53+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Berunoulli_Number.test.cpp
 layout: document
