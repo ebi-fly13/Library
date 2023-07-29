@@ -113,7 +113,9 @@ data:
     \n    static Hash get_basis() {\n        static random_number_generator_64 rng;\n\
     \        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n            h[i]\
     \ = rng.get(0, modint61::mod() - 1) + 1;\n        }\n        return h;\n    }\n\
-    \n    static Hash get_basis_primitive() {\n        static random_number_generator_64\
+    \n    Hash inv() const {\n        Hash h;\n        for(int i = 0; i < BASE_NUM;\
+    \ i++) {\n            h[i] = (*this)[i].inv();\n        }\n        return h;\n\
+    \    }\n\n    static Hash get_basis_primitive() {\n        static random_number_generator_64\
     \ rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n      \
     \      while (!is_primitive(\n                (h[i] = rng.get(0, modint61::mod()\
     \ - 1) + 1).val()))\n                ;\n        }\n        return h;\n    }\n\n\
@@ -199,7 +201,7 @@ data:
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-07-28 02:27:30+09:00'
+  timestamp: '2023-07-29 23:37:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
