@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/partition_function"
+#define PROBLEM "https://judge.yosupo.jp/problem/bernoulli_number"
 
 #include <iostream>
 #include <numeric>
