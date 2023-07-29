@@ -87,3 +87,7 @@ $O(N\log N)$
 ### shrink()
 
 末尾の不要なゼロを削除する。
+
+### exp_x(int n)
+
+$\exp{x} \mod x^n$ を返す。 $O(N)$
