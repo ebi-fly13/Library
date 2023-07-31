@@ -2,16 +2,13 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: fps/composition_of_fps.hpp
+    title: $f(g(x))$
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: fps/compositional_inverse_of_fps.hpp
-    title: "$f(x)$ \u306E\u9006\u95A2\u6570"
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
@@ -20,14 +17,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps/composition_of_fps.hpp\"\n\n#include <cassert>\n#include\
-    \ <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line 5 \"fps/fps.hpp\"\
-    \n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
-    \ std::vector<mint> &, const std::vector<mint> &)>\nstruct FormalPowerSeries :\
-    \ std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n    using\
-    \ std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\n\
-    \  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
+  bundledCode: "#line 2 \"fps/compositional_inverse_of_fps.hpp\"\n\n#include <cassert>\n\
+    \n#line 2 \"fps/composition_of_fps.hpp\"\n\n#line 4 \"fps/composition_of_fps.hpp\"\
+    \n#include <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line\
+    \ 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
+    \                 const std::vector<mint> &, const std::vector<mint> &)>\nstruct\
+    \ FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
+    \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
+    \n  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
     \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
     \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
     \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n    FPS operator/(const\
@@ -119,40 +117,49 @@ data:
     \      if (k * i + j < n) {\n                mint coef = f[k * i + j];\n     \
     \           a += baby[j] * coef;\n            } else\n                break;\n\
     \        }\n        h += (giant[i] * a).pre(n);\n    }\n    return h;\n}\n\n}\
-    \  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../fps/fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> composition_of_fps(\n    const FormalPowerSeries<mint,\
-    \ convolution> &f,\n    const FormalPowerSeries<mint, convolution> &g) {\n   \
-    \ using FPS = FormalPowerSeries<mint, convolution>;\n    // assert(f.deg() ==\
-    \ g.deg());\n    int n = f.deg();\n    int k = 1;\n    while (k * k < n) k++;\n\
-    \    std::vector<FPS> baby(k + 1);\n    baby[0] = FPS{1};\n    baby[1] = g;\n\
-    \    for (int i = 2; i < k + 1; i++) {\n        baby[i] = (baby[i - 1] * g).pre(n);\n\
-    \    }\n    std::vector<FPS> giant(k + 1);\n    giant[0] = FPS{1};\n    giant[1]\
-    \ = baby[k];\n    for (int i = 2; i < k + 1; i++) {\n        giant[i] = (giant[i\
-    \ - 1] * giant[1]).pre(n);\n    }\n    FPS h(n);\n    for (int i = 0; i < k +\
-    \ 1; i++) {\n        FPS a(n);\n        for (int j = 0; j < k; j++) {\n      \
-    \      if (k * i + j < n) {\n                mint coef = f[k * i + j];\n     \
-    \           a += baby[j] * coef;\n            } else\n                break;\n\
-    \        }\n        h += (giant[i] * a).pre(n);\n    }\n    return h;\n}\n\n}\
-    \  // namespace ebi"
+    \  // namespace ebi\n#line 7 \"fps/compositional_inverse_of_fps.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
+    \                 const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
+    \ convolution> compositional_inverse_of_fps(\n    FormalPowerSeries<mint, convolution>\
+    \ f, int d = -1) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n  \
+    \  if (d < 0) d = f.deg();\n    assert((int)f.size() >= 2 && f[0] == 0 && f[1]\
+    \ != 0);\n    FPS df = f.differential();\n    FPS g = {0, f[1].inv()};\n    for\
+    \ (int n = 2; n < d; n <<= 1) {\n        g.resize(2 * n);\n        if (f.deg()\
+    \ < 2 * n) f.resize(2 * n);\n        if (df.deg() < 2 * n) df.resize(2 * n);\n\
+    \        FPS fg = composition_of_fps(f.pre(2 * n), g);\n        FPS fdg = composition_of_fps(df.pre(2\
+    \ * n), g);\n        g -= ((fg - FPS{0, 1}) * fdg.inv(2 * n)).pre(2 * n);\n  \
+    \  }\n    g.resize(d);\n    return g;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n\n#include \"../fps/composition_of_fps.hpp\"\
+    \n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
+    \ (*convolution)(\n                          const std::vector<mint> &, const\
+    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> compositional_inverse_of_fps(\n\
+    \    FormalPowerSeries<mint, convolution> f, int d = -1) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    if (d < 0) d = f.deg();\n    assert((int)f.size() >= 2 &&\
+    \ f[0] == 0 && f[1] != 0);\n    FPS df = f.differential();\n    FPS g = {0, f[1].inv()};\n\
+    \    for (int n = 2; n < d; n <<= 1) {\n        g.resize(2 * n);\n        if (f.deg()\
+    \ < 2 * n) f.resize(2 * n);\n        if (df.deg() < 2 * n) df.resize(2 * n);\n\
+    \        FPS fg = composition_of_fps(f.pre(2 * n), g);\n        FPS fdg = composition_of_fps(df.pre(2\
+    \ * n), g);\n        g -= ((fg - FPS{0, 1}) * fdg.inv(2 * n)).pre(2 * n);\n  \
+    \  }\n    g.resize(d);\n    return g;\n}\n\n}  // namespace ebi"
   dependsOn:
+  - fps/composition_of_fps.hpp
   - fps/fps.hpp
   isVerificationFile: false
-  path: fps/composition_of_fps.hpp
-  requiredBy:
-  - fps/compositional_inverse_of_fps.hpp
+  path: fps/compositional_inverse_of_fps.hpp
+  requiredBy: []
   timestamp: '2023-07-31 10:30:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-documentation_of: fps/composition_of_fps.hpp
+documentation_of: fps/compositional_inverse_of_fps.hpp
 layout: document
-title: $f(g(x))$
+title: "$f(x)$ \u306E\u9006\u95A2\u6570"
 ---
 
 ## 説明
 
-形式的べき級数 $f$, $g$ について、その合成 $f(g(x))$ の先頭 $N$ 項を求める。Baby-step Giant-stepを用いることで $O(N^2)$ で計算する。
+形式的べき級数 $f$ について、その逆関数を求める。ニュートン法を用いると、形式的べき級数の合成がボトルネックとなり $O(N^2)$ となる。
+
+$$
+g_{2n} = g_{n} - \frac{f(g_{n}) - x}{f^{\prime}(g_{n})} \mod x^{2n}
+$$

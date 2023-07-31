@@ -91,6 +91,9 @@ data:
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
   - icon: ':heavy_check_mark:'
@@ -274,6 +277,7 @@ data:
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp

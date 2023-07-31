@@ -6,6 +6,9 @@ data:
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
   - icon: ':heavy_check_mark:'
+    path: fps/compositional_inverse_of_fps.hpp
+    title: "$f(x)$ \u306E\u9006\u95A2\u6570"
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
@@ -51,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
@@ -258,6 +264,7 @@ data:
   - fps/taylor_shift.hpp
   - fps/product_of_one_minus_xn.hpp
   - fps/product_of_one_plus_xn.hpp
+  - fps/compositional_inverse_of_fps.hpp
   - fps/fps_sqrt.hpp
   - fps/composition_of_fps.hpp
   timestamp: '2023-07-29 20:09:34+09:00'
@@ -271,6 +278,7 @@ data:
   - test/math/Partition_Function_Pentagonal.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
