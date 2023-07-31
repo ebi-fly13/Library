@@ -1,10 +1,10 @@
-#define PROBLEM \
-    "https://judge.yosupo.jp/problem/composition_of_formal_power_series"
+#define PROBLEM                        \
+    "https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series"
 
 #include <iostream>
 
 #include "../../convolution/ntt.hpp"
-#include "../../fps/composition_of_fps.hpp"
+#include "../../fps/compositional_inverse_of_fps.hpp"
 #include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
@@ -13,15 +13,12 @@ using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;
 int main() {
     int n;
     std::cin >> n;
-    FPS f(n), g(n);
+    FPS f(n);
     for (int i = 0; i < n; i++) {
         std::cin >> f[i];
     }
+    FPS g = ebi::compositional_inverse_of_fps(f);
     for (int i = 0; i < n; i++) {
-        std::cin >> g[i];
-    }
-    FPS h = ebi::composition_of_fps(f, g);
-    for (int i = 0; i < n; i++) {
-        std::cout << h[i].val() << " \n"[i == n - 1];
+        std::cout << g[i] << " \n"[i == n - 1];
     }
 }
