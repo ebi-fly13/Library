@@ -43,6 +43,16 @@ template <int n> struct rolling_hash {
         }
     }
 
+    template <class T> rolling_hash(const std::vector<T> &a) : sz(a.size()) {
+        assert(n >= 0);
+        hash.reserve(sz + 1);
+        hash.emplace_back(Hash<n>::set(0));
+        expand(sz);
+        for (const auto &c : a) {
+            hash.emplace_back(hash.back() * base + c + h);
+        }
+    }
+
     inline Hash<n> prefix_hash(int r) const {
         return hash[r];
     }
@@ -58,6 +68,16 @@ template <int n> struct rolling_hash {
         Hash<n> res = Hash<n>::set(0);
         for (int i = l; i < r; i++) {
             res = res * base + str[i] + h;
+        }
+        return res;
+    }
+
+    template <class T>
+    static Hash<n> get_hash(const std::vector<T> &a, int l = 0, int r = -1) {
+        if (r < 0) r = int(a.size());
+        Hash<n> res = Hash<n>::set(0);
+        for (int i = l; i < r; i++) {
+            res = res * base + a[i] + h;
         }
         return res;
     }
@@ -92,6 +112,10 @@ template <int n> struct rolling_hash {
     static void set_base() {
         base = Hash<n>::get_basis_primitive();
         base_pow = std::vector<Hash<n>>(1, Hash<n>::set(1));
+    }
+
+    static Hash<n> get_base() {
+        return base;
     }
 
   private:
