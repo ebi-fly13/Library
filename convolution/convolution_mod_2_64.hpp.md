@@ -229,8 +229,8 @@ data:
   timestamp: '2023-07-29 16:06:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/convolution/Convolution_Mod_2_64.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
 documentation_of: convolution/convolution_mod_2_64.hpp
 layout: document
 title: Convolution ($\mod 2^{64}$)

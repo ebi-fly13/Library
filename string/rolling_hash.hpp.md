@@ -134,6 +134,10 @@ data:
     \ &s) : sz(s.size()) {\r\n        assert(n >= 0);\r\n        hash.reserve(sz +\
     \ 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\n        expand(sz);\r\n\
     \        for (const auto &c : s) {\r\n            hash.emplace_back(hash.back()\
+    \ * base + c + h);\r\n        }\r\n    }\r\n\r\n    template <class T> rolling_hash(const\
+    \ std::vector<T> &a) : sz(a.size()) {\r\n        assert(n >= 0);\r\n        hash.reserve(sz\
+    \ + 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\n        expand(sz);\r\
+    \n        for (const auto &c : a) {\r\n            hash.emplace_back(hash.back()\
     \ * base + c + h);\r\n        }\r\n    }\r\n\r\n    inline Hash<n> prefix_hash(int\
     \ r) const {\r\n        return hash[r];\r\n    }\r\n\r\n    // [l, r)\r\n    Hash<n>\
     \ get_hash(int l, int r) const {\r\n        assert(0 <= l && l <= r && r <= sz);\r\
@@ -141,6 +145,10 @@ data:
     \n\r\n    static Hash<n> get_hash(const std::string &str, int l = 0, int r = -1)\
     \ {\r\n        if (r < 0) r = int(str.size());\r\n        Hash<n> res = Hash<n>::set(0);\r\
     \n        for (int i = l; i < r; i++) {\r\n            res = res * base + str[i]\
+    \ + h;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    template <class\
+    \ T>\r\n    static Hash<n> get_hash(const std::vector<T> &a, int l = 0, int r\
+    \ = -1) {\r\n        if (r < 0) r = int(a.size());\r\n        Hash<n> res = Hash<n>::set(0);\r\
+    \n        for (int i = l; i < r; i++) {\r\n            res = res * base + a[i]\
     \ + h;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    static Hash<n>\
     \ concat(Self lhs, Self rhs) {\r\n        return lhs.hash.back() * base_pow[rhs.size()]\
     \ + rhs.hash.back();\r\n    }\r\n\r\n    static Hash<n> concat(Hash<n> lhs, Hash<n>\
@@ -153,10 +161,11 @@ data:
     \ rhs.size();\r\n        expand(sz);\r\n        return *this;\r\n    }\r\n\r\n\
     \    static void set_base() {\r\n        base = Hash<n>::get_basis_primitive();\r\
     \n        base_pow = std::vector<Hash<n>>(1, Hash<n>::set(1));\r\n    }\r\n\r\n\
-    \  private:\r\n    int sz;\r\n    std::vector<Hash<n>> hash;\r\n    static Hash<n>\
-    \ base;\r\n    static std::vector<Hash<n>> base_pow;\r\n};\r\n\r\ntemplate <int\
-    \ n> Hash<n> rolling_hash<n>::base = {};\r\ntemplate <int n> std::vector<Hash<n>>\
-    \ rolling_hash<n>::base_pow = {};\r\n\r\n}  // namespace ebi\r\n"
+    \    static Hash<n> get_base() {\r\n        return base;\r\n    }\r\n\r\n  private:\r\
+    \n    int sz;\r\n    std::vector<Hash<n>> hash;\r\n    static Hash<n> base;\r\n\
+    \    static std::vector<Hash<n>> base_pow;\r\n};\r\n\r\ntemplate <int n> Hash<n>\
+    \ rolling_hash<n>::base = {};\r\ntemplate <int n> std::vector<Hash<n>> rolling_hash<n>::base_pow\
+    \ = {};\r\n\r\n}  // namespace ebi\r\n"
   code: "#pragma once\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <cstdint>\r\
     \n#include <vector>\r\n\r\n#include \"../utility/hash.hpp\"\r\n#include \"../utility/modint61.hpp\"\
     \r\n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
@@ -170,6 +179,10 @@ data:
     \ &s) : sz(s.size()) {\r\n        assert(n >= 0);\r\n        hash.reserve(sz +\
     \ 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\n        expand(sz);\r\n\
     \        for (const auto &c : s) {\r\n            hash.emplace_back(hash.back()\
+    \ * base + c + h);\r\n        }\r\n    }\r\n\r\n    template <class T> rolling_hash(const\
+    \ std::vector<T> &a) : sz(a.size()) {\r\n        assert(n >= 0);\r\n        hash.reserve(sz\
+    \ + 1);\r\n        hash.emplace_back(Hash<n>::set(0));\r\n        expand(sz);\r\
+    \n        for (const auto &c : a) {\r\n            hash.emplace_back(hash.back()\
     \ * base + c + h);\r\n        }\r\n    }\r\n\r\n    inline Hash<n> prefix_hash(int\
     \ r) const {\r\n        return hash[r];\r\n    }\r\n\r\n    // [l, r)\r\n    Hash<n>\
     \ get_hash(int l, int r) const {\r\n        assert(0 <= l && l <= r && r <= sz);\r\
@@ -177,6 +190,10 @@ data:
     \n\r\n    static Hash<n> get_hash(const std::string &str, int l = 0, int r = -1)\
     \ {\r\n        if (r < 0) r = int(str.size());\r\n        Hash<n> res = Hash<n>::set(0);\r\
     \n        for (int i = l; i < r; i++) {\r\n            res = res * base + str[i]\
+    \ + h;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    template <class\
+    \ T>\r\n    static Hash<n> get_hash(const std::vector<T> &a, int l = 0, int r\
+    \ = -1) {\r\n        if (r < 0) r = int(a.size());\r\n        Hash<n> res = Hash<n>::set(0);\r\
+    \n        for (int i = l; i < r; i++) {\r\n            res = res * base + a[i]\
     \ + h;\r\n        }\r\n        return res;\r\n    }\r\n\r\n    static Hash<n>\
     \ concat(Self lhs, Self rhs) {\r\n        return lhs.hash.back() * base_pow[rhs.size()]\
     \ + rhs.hash.back();\r\n    }\r\n\r\n    static Hash<n> concat(Hash<n> lhs, Hash<n>\
@@ -189,10 +206,11 @@ data:
     \ rhs.size();\r\n        expand(sz);\r\n        return *this;\r\n    }\r\n\r\n\
     \    static void set_base() {\r\n        base = Hash<n>::get_basis_primitive();\r\
     \n        base_pow = std::vector<Hash<n>>(1, Hash<n>::set(1));\r\n    }\r\n\r\n\
-    \  private:\r\n    int sz;\r\n    std::vector<Hash<n>> hash;\r\n    static Hash<n>\
-    \ base;\r\n    static std::vector<Hash<n>> base_pow;\r\n};\r\n\r\ntemplate <int\
-    \ n> Hash<n> rolling_hash<n>::base = {};\r\ntemplate <int n> std::vector<Hash<n>>\
-    \ rolling_hash<n>::base_pow = {};\r\n\r\n}  // namespace ebi\r\n"
+    \    static Hash<n> get_base() {\r\n        return base;\r\n    }\r\n\r\n  private:\r\
+    \n    int sz;\r\n    std::vector<Hash<n>> hash;\r\n    static Hash<n> base;\r\n\
+    \    static std::vector<Hash<n>> base_pow;\r\n};\r\n\r\ntemplate <int n> Hash<n>\
+    \ rolling_hash<n>::base = {};\r\ntemplate <int n> std::vector<Hash<n>> rolling_hash<n>::base_pow\
+    \ = {};\r\n\r\n}  // namespace ebi\r\n"
   dependsOn:
   - utility/hash.hpp
   - utility/modint61.hpp
@@ -201,7 +219,7 @@ data:
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-07-29 23:37:53+09:00'
+  timestamp: '2023-08-07 15:17:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp

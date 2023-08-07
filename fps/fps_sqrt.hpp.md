@@ -282,8 +282,8 @@ data:
   timestamp: '2023-07-29 20:09:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: fps/fps_sqrt.hpp
 layout: document
 title: $\sqrt{f}$

@@ -135,8 +135,8 @@ data:
   timestamp: '2023-06-27 16:41:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_2873.test.cpp
   - test/aoj/aoj_2863.test.cpp
+  - test/aoj/aoj_2873.test.cpp
 documentation_of: string/aho_corasick.hpp
 layout: document
 redirect_from:
