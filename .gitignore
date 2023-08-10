@@ -1,12 +1,11 @@
-*.out
-main.cpp
-a.cpp
-atcoder
-*.txt
-combined.cpp
-submit.cpp
-expander.py
-ac-library
-*.code-workspace
-*.json
-a.py
+# ignore files and folders
+*
+
+# exclude folders
+!*/
+
+!.gitignore
+!*.sh
+!*.md
+!LICENSE
+!.clang-format
