@@ -36,10 +36,10 @@ data:
     \ 0; k >>= 1) {\r\n            if (x + k <= n && data[x + k] < key) {\r\n    \
     \            x += k;\r\n                key -= data[x];\r\n            }\r\n \
     \       }\r\n        return x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
-    #line 2 \"template/int_alias.hpp\"\n\n#include <cstddef>\n#include <cstdint>\n\
-    \nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
-    using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
-    using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    #line 2 \"template/int_alias.hpp\"\n\n#include <cstdint>\n\nnamespace ebi {\n\n\
+    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
+    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
     using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}\n#line 7 \"test/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
     \n\r\nusing ebi::i64;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >>\
     \ n >> q;\r\n    ebi::fenwick_tree<i64> fw(n);\r\n    for (int i = 0; i < n; i++)\
@@ -67,7 +67,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-08-10 23:52:27+09:00'
+  timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp

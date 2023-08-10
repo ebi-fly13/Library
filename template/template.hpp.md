@@ -40,7 +40,7 @@ data:
     \ {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename... Tail>\
     \ void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t)\
     \ > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#line 5 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing std::size_t;\n\
+    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing std::size_t;\n\
     using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
     using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
     using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
@@ -156,7 +156,7 @@ data:
   isVerificationFile: false
   path: template/template.hpp
   requiredBy: []
-  timestamp: '2023-08-10 23:52:27+09:00'
+  timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: template/template.hpp

@@ -15,9 +15,9 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"template/utility.hpp\"\n\n#include <limits>\n#include <vector>\n\
-    \n#line 2 \"template/int_alias.hpp\"\n\n#include <cstddef>\n#include <cstdint>\n\
-    \nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
-    using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
+    \n#line 2 \"template/int_alias.hpp\"\n\n#include <cstdint>\n\nnamespace ebi {\n\
+    \nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing\
+    \ i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
     using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
     using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}\n#line 7 \"template/utility.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T> inline bool chmin(T &a, T b) {\n   \
@@ -41,7 +41,7 @@ data:
   path: template/utility.hpp
   requiredBy:
   - template/template.hpp
-  timestamp: '2023-08-10 23:52:27+09:00'
+  timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: template/utility.hpp

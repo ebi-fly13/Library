@@ -54,17 +54,17 @@ data:
     \ path;\n    while (u != v) {\n        path.emplace_back(v);\n        v = par[v];\n\
     \    }\n    path.emplace_back(u);\n    return {dp[*path.begin()], path};\n}\n\n\
     }  // namespace ebi\n#line 4 \"test/tree/Tree_Diameter.test.cpp\"\n\n#include\
-    \ <iostream>\n\n#line 2 \"template/int_alias.hpp\"\n\n#include <cstddef>\n#include\
-    \ <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\n\
-    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
-    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
-    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}\n#line 9 \"test/tree/Tree_Diameter.test.cpp\"\n\nusing ebi::i64;\n\nint main()\
-    \ {\n    int n;\n    std::cin >> n;\n    ebi::Graph<i64> g(n);\n    for (int i\
-    \ = 0; i < n - 1; i++) {\n        int a, b;\n        i64 c;\n        std::cin\
-    \ >> a >> b >> c;\n        g.add_edge(a, b, c);\n    }\n    auto [x, path] = ebi::tree_diameter(g);\n\
-    \    std::cout << x << \" \" << path.size() << '\\n';\n    for (auto v : path)\
-    \ {\n        std::cout << v << \" \";\n    }\n    std::cout << '\\n';\n}\n"
+    \ <iostream>\n\n#line 2 \"template/int_alias.hpp\"\n\n#include <cstdint>\n\nnamespace\
+    \ ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
+    using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
+    using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}\n#line 9 \"test/tree/Tree_Diameter.test.cpp\"\
+    \n\nusing ebi::i64;\n\nint main() {\n    int n;\n    std::cin >> n;\n    ebi::Graph<i64>\
+    \ g(n);\n    for (int i = 0; i < n - 1; i++) {\n        int a, b;\n        i64\
+    \ c;\n        std::cin >> a >> b >> c;\n        g.add_edge(a, b, c);\n    }\n\
+    \    auto [x, path] = ebi::tree_diameter(g);\n    std::cout << x << \" \" << path.size()\
+    \ << '\\n';\n    for (auto v : path) {\n        std::cout << v << \" \";\n   \
+    \ }\n    std::cout << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\
     \ \"../../tree/tree_diameter.hpp\"\n\n#include <iostream>\n\n#include \"../../graph/template.hpp\"\
     \n#include \"../../template/int_alias.hpp\"\n\nusing ebi::i64;\n\nint main() {\n\
@@ -80,7 +80,7 @@ data:
   isVerificationFile: true
   path: test/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-08-10 23:52:27+09:00'
+  timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Tree_Diameter.test.cpp

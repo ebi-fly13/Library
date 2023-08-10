@@ -45,18 +45,18 @@ data:
     \            }\r\n        }\r\n    }\r\n    return d;\r\n}\r\n\r\n}  // namespace\
     \ ebi\n#line 5 \"test/graph/dijkstra.test.cpp\"\n\r\n#include <iostream>\r\n#line\
     \ 9 \"test/graph/dijkstra.test.cpp\"\n\r\n#line 2 \"template/int_alias.hpp\"\n\
-    \n#include <cstddef>\n#include <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\n\
-    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
-    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
-    using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
-    using u128 = __uint128_t;\n\n}\n#line 12 \"test/graph/dijkstra.test.cpp\"\n\r\n\
-    using ebi::i64;\r\n\r\nint main() {\r\n    int v, e, r;\r\n    std::cin >> v >>\
-    \ e >> r;\r\n    ebi::Graph<i64> g(v);\r\n    while (e--) {\r\n        int s,\
-    \ t;\r\n        i64 d;\r\n        std::cin >> s >> t >> d;\r\n        g[s].emplace_back(t,\
-    \ d);\r\n    }\r\n    std::vector<i64> dest = ebi::dijkstra(r, v, g);\r\n    for\
-    \ (auto di : dest) {\r\n        if (di == std::numeric_limits<i64>::max()) {\r\
-    \n            std::cout << \"INF\" << std::endl;\r\n            continue;\r\n\
-    \        }\r\n        std::cout << di << std::endl;\r\n    }\r\n}\n"
+    \n#include <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\n\
+    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
+    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
+    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    \n}\n#line 12 \"test/graph/dijkstra.test.cpp\"\n\r\nusing ebi::i64;\r\n\r\nint\
+    \ main() {\r\n    int v, e, r;\r\n    std::cin >> v >> e >> r;\r\n    ebi::Graph<i64>\
+    \ g(v);\r\n    while (e--) {\r\n        int s, t;\r\n        i64 d;\r\n      \
+    \  std::cin >> s >> t >> d;\r\n        g[s].emplace_back(t, d);\r\n    }\r\n \
+    \   std::vector<i64> dest = ebi::dijkstra(r, v, g);\r\n    for (auto di : dest)\
+    \ {\r\n        if (di == std::numeric_limits<i64>::max()) {\r\n            std::cout\
+    \ << \"INF\" << std::endl;\r\n            continue;\r\n        }\r\n        std::cout\
+    \ << di << std::endl;\r\n    }\r\n}\n"
   code: "#define PROBLEM \\\r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
     \r\n\r\n#include \"../../graph/dijkstra.hpp\"\r\n\r\n#include <iostream>\r\n#include\
     \ <limits>\r\n#include <vector>\r\n\r\n#include \"../../graph/template.hpp\"\r\
@@ -75,7 +75,7 @@ data:
   isVerificationFile: true
   path: test/graph/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2023-08-11 00:20:41+09:00'
+  timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/dijkstra.test.cpp

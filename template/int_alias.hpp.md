@@ -59,8 +59,6 @@ data:
   bundledCode: '#line 2 "template/int_alias.hpp"
 
 
-    #include <cstddef>
-
     #include <cstdint>
 
 
@@ -95,8 +93,6 @@ data:
     '
   code: '#pragma once
 
-
-    #include <cstddef>
 
     #include <cstdint>
 
@@ -138,7 +134,7 @@ data:
   - math/inversion_number.hpp
   - template/template.hpp
   - template/utility.hpp
-  timestamp: '2023-08-10 23:52:27+09:00'
+  timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

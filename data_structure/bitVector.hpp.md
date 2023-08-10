@@ -22,15 +22,14 @@ data:
     links:
     - https://misteer.hatenablog.com/entry/bit-vector
   bundledCode: "#line 2 \"data_structure/bitVector.hpp\"\n\r\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#include <cstddef>\n#include <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\n\
-    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
-    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
-    using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
-    using u128 = __uint128_t;\n\n}\n#line 4 \"data_structure/bitVector.hpp\"\n\r\n\
-    /*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\n*/\r\n\
-    \r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct bitVector {\r\n   \
-    \ u32 length, cn, bn;\r\n    static u32 cw,\r\n        bw;  // chunk, block \u306E\
-    \u9577\u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16>\
+    \n\n#include <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\n\
+    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
+    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
+    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    \n}\n#line 4 \"data_structure/bitVector.hpp\"\n\r\n/*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\
+    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct bitVector {\r\
+    \n    u32 length, cn, bn;\r\n    static u32 cw,\r\n        bw;  // chunk, block\
+    \ \u306E\u9577\u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16>\
     \ bit;\r\n    std::vector<u32> chunk;\r\n    std::vector<std::vector<u16>> blocks;\r\
     \n\r\n    bitVector(int n) : length(n) {\r\n        cn = (length + cw - 1) / cw;\r\
     \n        bn = cw / bw;\r\n        bit.assign(cn * bn, 0);\r\n        chunk.assign(cn\
@@ -106,7 +105,7 @@ data:
   path: data_structure/bitVector.hpp
   requiredBy:
   - data_structure/WaveletMatrix.hpp
-  timestamp: '2023-08-10 23:52:27+09:00'
+  timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Static_Range_Frequency.test.cpp
