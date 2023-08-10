@@ -5,8 +5,8 @@ data:
     path: data_structure/ImplicitTreap.hpp
     title: data_structure/ImplicitTreap.hpp
   - icon: ':heavy_check_mark:'
-    path: utility/int_alias.hpp
-    title: utility/int_alias.hpp
+    path: template/int_alias.hpp
+    title: template/int_alias.hpp
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
@@ -87,12 +87,12 @@ data:
     \    }\r\n\r\n    S prod(int l, int r) {\r\n        auto [t1, t2] = split(root,\
     \ l);\r\n        auto [t3, t4] = split(t2, r - l);\r\n        S ret = t3->acc;\r\
     \n        t1 = merge(t1, t3);\r\n        root = merge(t1, t4);\r\n        return\
-    \ ret;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n#line 2 \"utility/int_alias.hpp\"\
-    \n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing\
-    \ i8 = std::int8_t;\r\nusing u8 = std::uint8_t;\r\nusing i16 = std::int16_t;\r\
-    \nusing u16 = std::uint16_t;\r\nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\
-    \nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\
-    \nusing u128 = __uint128_t;\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
+    \ ret;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#include <cstddef>\n#include <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\n\
+    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
+    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
+    using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
+    using u128 = __uint128_t;\n\n}\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
     \n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
     \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
     \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
@@ -151,52 +151,54 @@ data:
     \ l.size + r.size};\r\n}\r\n\r\nS e() {\r\n    return S{0, 0};\r\n}\r\n\r\nS mapping(F\
     \ l, S r) {\r\n    return S{r.a * l.a + (mint)r.size * l.b, r.size};\r\n}\r\n\r\
     \nF composition(F l, F r) {\r\n    return F{r.a * l.a, r.b * l.a + l.b};\r\n}\r\
-    \n\r\nF id() {\r\n    return F{1, 0};\r\n}\r\n\r\nint main() {\r\n    ebi::ImplicitTreap<S,\
-    \ op, e, F, mapping, composition, id> treap;\r\n    int n, q;\r\n    std::cin\
-    \ >> n >> q;\r\n    for (int i = 0; i < n; i++) {\r\n        i64 a;\r\n      \
-    \  std::cin >> a;\r\n        treap.insert(i, {a, 1});\r\n    }\r\n    while (q--)\
-    \ {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\n \
-    \           int i;\r\n            i64 x;\r\n            std::cin >> i >> x;\r\n\
-    \            treap.insert(i, {x, 1});\r\n        } else if (t == 1) {\r\n    \
-    \        int i;\r\n            std::cin >> i;\r\n            treap.erase(i);\r\
-    \n        } else if (t == 2) {\r\n            int l, r;\r\n            std::cin\
-    \ >> l >> r;\r\n            treap.reverse(l, r);\r\n        } else if (t == 3)\
-    \ {\r\n            int l, r, b, c;\r\n            std::cin >> l >> r >> b >> c;\r\
-    \n            treap.apply(l, r, F(b, c));\r\n        } else if (t == 4) {\r\n\
-    \            int l, r;\r\n            std::cin >> l >> r;\r\n            std::cout\
-    \ << treap.prod(l, r).a.value() << std::endl;\r\n        }\r\n    }\r\n}\n"
+    \n\r\nF id() {\r\n    return F{1, 0};\r\n}\r\n\r\nusing ebi::i64;\r\n\r\nint main()\
+    \ {\r\n    ebi::ImplicitTreap<S, op, e, F, mapping, composition, id> treap;\r\n\
+    \    int n, q;\r\n    std::cin >> n >> q;\r\n    for (int i = 0; i < n; i++) {\r\
+    \n        i64 a;\r\n        std::cin >> a;\r\n        treap.insert(i, {a, 1});\r\
+    \n    }\r\n    while (q--) {\r\n        int t;\r\n        std::cin >> t;\r\n \
+    \       if (t == 0) {\r\n            int i;\r\n            i64 x;\r\n        \
+    \    std::cin >> i >> x;\r\n            treap.insert(i, {x, 1});\r\n        }\
+    \ else if (t == 1) {\r\n            int i;\r\n            std::cin >> i;\r\n \
+    \           treap.erase(i);\r\n        } else if (t == 2) {\r\n            int\
+    \ l, r;\r\n            std::cin >> l >> r;\r\n            treap.reverse(l, r);\r\
+    \n        } else if (t == 3) {\r\n            int l, r, b, c;\r\n            std::cin\
+    \ >> l >> r >> b >> c;\r\n            treap.apply(l, r, F(b, c));\r\n        }\
+    \ else if (t == 4) {\r\n            int l, r;\r\n            std::cin >> l >>\
+    \ r;\r\n            std::cout << treap.prod(l, r).a.value() << std::endl;\r\n\
+    \        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \\\r\n    \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/ImplicitTreap.hpp\"\
-    \r\n#include \"../../utility/int_alias.hpp\"\r\n#include \"../../utility/modint.hpp\"\
+    \r\n#include \"../../template/int_alias.hpp\"\r\n#include \"../../utility/modint.hpp\"\
     \r\n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n\
     \    int size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint\
     \ b) : a(a), b(b) {}\r\n};\r\n\r\nS op(S l, S r) {\r\n    return S{l.a + r.a,\
     \ l.size + r.size};\r\n}\r\n\r\nS e() {\r\n    return S{0, 0};\r\n}\r\n\r\nS mapping(F\
     \ l, S r) {\r\n    return S{r.a * l.a + (mint)r.size * l.b, r.size};\r\n}\r\n\r\
     \nF composition(F l, F r) {\r\n    return F{r.a * l.a, r.b * l.a + l.b};\r\n}\r\
-    \n\r\nF id() {\r\n    return F{1, 0};\r\n}\r\n\r\nint main() {\r\n    ebi::ImplicitTreap<S,\
-    \ op, e, F, mapping, composition, id> treap;\r\n    int n, q;\r\n    std::cin\
-    \ >> n >> q;\r\n    for (int i = 0; i < n; i++) {\r\n        i64 a;\r\n      \
-    \  std::cin >> a;\r\n        treap.insert(i, {a, 1});\r\n    }\r\n    while (q--)\
-    \ {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\n \
-    \           int i;\r\n            i64 x;\r\n            std::cin >> i >> x;\r\n\
-    \            treap.insert(i, {x, 1});\r\n        } else if (t == 1) {\r\n    \
-    \        int i;\r\n            std::cin >> i;\r\n            treap.erase(i);\r\
-    \n        } else if (t == 2) {\r\n            int l, r;\r\n            std::cin\
-    \ >> l >> r;\r\n            treap.reverse(l, r);\r\n        } else if (t == 3)\
-    \ {\r\n            int l, r, b, c;\r\n            std::cin >> l >> r >> b >> c;\r\
-    \n            treap.apply(l, r, F(b, c));\r\n        } else if (t == 4) {\r\n\
-    \            int l, r;\r\n            std::cin >> l >> r;\r\n            std::cout\
-    \ << treap.prod(l, r).a.value() << std::endl;\r\n        }\r\n    }\r\n}"
+    \n\r\nF id() {\r\n    return F{1, 0};\r\n}\r\n\r\nusing ebi::i64;\r\n\r\nint main()\
+    \ {\r\n    ebi::ImplicitTreap<S, op, e, F, mapping, composition, id> treap;\r\n\
+    \    int n, q;\r\n    std::cin >> n >> q;\r\n    for (int i = 0; i < n; i++) {\r\
+    \n        i64 a;\r\n        std::cin >> a;\r\n        treap.insert(i, {a, 1});\r\
+    \n    }\r\n    while (q--) {\r\n        int t;\r\n        std::cin >> t;\r\n \
+    \       if (t == 0) {\r\n            int i;\r\n            i64 x;\r\n        \
+    \    std::cin >> i >> x;\r\n            treap.insert(i, {x, 1});\r\n        }\
+    \ else if (t == 1) {\r\n            int i;\r\n            std::cin >> i;\r\n \
+    \           treap.erase(i);\r\n        } else if (t == 2) {\r\n            int\
+    \ l, r;\r\n            std::cin >> l >> r;\r\n            treap.reverse(l, r);\r\
+    \n        } else if (t == 3) {\r\n            int l, r, b, c;\r\n            std::cin\
+    \ >> l >> r >> b >> c;\r\n            treap.apply(l, r, F(b, c));\r\n        }\
+    \ else if (t == 4) {\r\n            int l, r;\r\n            std::cin >> l >>\
+    \ r;\r\n            std::cout << treap.prod(l, r).a.value() << std::endl;\r\n\
+    \        }\r\n    }\r\n}"
   dependsOn:
   - data_structure/ImplicitTreap.hpp
-  - utility/int_alias.hpp
+  - template/int_alias.hpp
   - utility/modint.hpp
   - utility/modint_base.hpp
   isVerificationFile: true
   path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 14:12:40+09:00'
+  timestamp: '2023-08-10 23:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

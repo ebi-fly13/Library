@@ -8,8 +8,8 @@ data:
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
   - icon: ':heavy_check_mark:'
-    path: utility/int_alias.hpp
-    title: utility/int_alias.hpp
+    path: template/int_alias.hpp
+    title: template/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -23,17 +23,17 @@ data:
   bundledCode: "#line 1 \"test/data_structure/Range_Kth_Smallest.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\r\n\r\n#include\
     \ <iostream>\r\n#include <vector>\r\n\r\n#line 2 \"data_structure/WaveletMatrix.hpp\"\
-    \n\r\n#line 2 \"data_structure/bitVector.hpp\"\n\r\n#line 2 \"utility/int_alias.hpp\"\
-    \n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\nusing std::size_t;\r\nusing\
-    \ i8 = std::int8_t;\r\nusing u8 = std::uint8_t;\r\nusing i16 = std::int16_t;\r\
-    \nusing u16 = std::uint16_t;\r\nusing i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\
-    \nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\
-    \nusing u128 = __uint128_t;\n#line 4 \"data_structure/bitVector.hpp\"\n\r\n/*\r\
-    \n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\n*/\r\n\r\n\
-    #line 10 \"data_structure/bitVector.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct bitVector\
-    \ {\r\n    u32 length, cn, bn;\r\n    static u32 cw,\r\n        bw;  // chunk,\
-    \ block \u306E\u9577\u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B.\r\n\
-    \    std::vector<u16> bit;\r\n    std::vector<u32> chunk;\r\n    std::vector<std::vector<u16>>\
+    \n\r\n#line 2 \"data_structure/bitVector.hpp\"\n\r\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#include <cstddef>\n#include <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\n\
+    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
+    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
+    using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
+    using u128 = __uint128_t;\n\n}\n#line 4 \"data_structure/bitVector.hpp\"\n\r\n\
+    /*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\n*/\r\n\
+    \r\n#line 10 \"data_structure/bitVector.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct\
+    \ bitVector {\r\n    u32 length, cn, bn;\r\n    static u32 cw,\r\n        bw;\
+    \  // chunk, block \u306E\u9577\u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\
+    \u308B.\r\n    std::vector<u16> bit;\r\n    std::vector<u32> chunk;\r\n    std::vector<std::vector<u16>>\
     \ blocks;\r\n\r\n    bitVector(int n) : length(n) {\r\n        cn = (length +\
     \ cw - 1) / cw;\r\n        bn = cw / bw;\r\n        bit.assign(cn * bn, 0);\r\n\
     \        chunk.assign(cn + 1, 0);\r\n        blocks.assign(cn, std::vector<u16>(bn,\
@@ -104,27 +104,27 @@ data:
     \ + rank_l;\r\n                r = border[bit] + rank_r;\r\n                k\
     \ -= zero;\r\n            }\r\n        }\r\n        return val;\r\n    }\r\n};\r\
     \n\r\n}  // namespace ebi\n#line 8 \"test/data_structure/Range_Kth_Smallest.test.cpp\"\
-    \n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<i64>\
+    \n\r\nusing ebi::i64;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >>\
+    \ n >> q;\r\n    std::vector<i64> a(n);\r\n    for (int i = 0; i < n; i++) {\r\
+    \n        std::cin >> a[i];\r\n    }\r\n    ebi::WaveletMatrix<i64> wm(a);\r\n\
+    \    while (q--) {\r\n        int l, r, k;\r\n        std::cin >> l >> r >> k;\r\
+    \n        std::cout << wm.quantile(l, r, k + 1) << std::endl;\r\n    }\r\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\r\n\
+    \r\n#include <iostream>\r\n#include <vector>\r\n\r\n#include \"../../data_structure/WaveletMatrix.hpp\"\
+    \r\n#include \"../../template/int_alias.hpp\"\r\n\r\nusing ebi::i64;\r\n\r\nint\
+    \ main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    std::vector<i64>\
     \ a(n);\r\n    for (int i = 0; i < n; i++) {\r\n        std::cin >> a[i];\r\n\
     \    }\r\n    ebi::WaveletMatrix<i64> wm(a);\r\n    while (q--) {\r\n        int\
     \ l, r, k;\r\n        std::cin >> l >> r >> k;\r\n        std::cout << wm.quantile(l,\
-    \ r, k + 1) << std::endl;\r\n    }\r\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\r\n\
-    \r\n#include <iostream>\r\n#include <vector>\r\n\r\n#include \"../../data_structure/WaveletMatrix.hpp\"\
-    \r\n#include \"../../utility/int_alias.hpp\"\r\n\r\nint main() {\r\n    int n,\
-    \ q;\r\n    std::cin >> n >> q;\r\n    std::vector<i64> a(n);\r\n    for (int\
-    \ i = 0; i < n; i++) {\r\n        std::cin >> a[i];\r\n    }\r\n    ebi::WaveletMatrix<i64>\
-    \ wm(a);\r\n    while (q--) {\r\n        int l, r, k;\r\n        std::cin >> l\
-    \ >> r >> k;\r\n        std::cout << wm.quantile(l, r, k + 1) << std::endl;\r\n\
-    \    }\r\n}"
+    \ r, k + 1) << std::endl;\r\n    }\r\n}"
   dependsOn:
   - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
-  - utility/int_alias.hpp
+  - template/int_alias.hpp
   isVerificationFile: true
   path: test/data_structure/Range_Kth_Smallest.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 14:52:04+09:00'
+  timestamp: '2023-08-10 23:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Kth_Smallest.test.cpp

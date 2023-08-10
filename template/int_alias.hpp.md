@@ -14,6 +14,12 @@ data:
   - icon: ':warning:'
     path: math/linear_sieve.hpp
     title: math/linear_sieve.hpp
+  - icon: ':warning:'
+    path: template/template.hpp
+    title: template/template.hpp
+  - icon: ':warning:'
+    path: template/utility.hpp
+    title: template/utility.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
@@ -34,9 +40,6 @@ data:
     path: test/data_structure/Static_Range_Frequency.test.cpp
     title: test/data_structure/Static_Range_Frequency.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/graph/dijkstra.test.cpp
-    title: test/graph/dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/graph/fibonacci_heap.test.cpp
     title: test/graph/fibonacci_heap.test.cpp
   - icon: ':heavy_check_mark:'
@@ -50,25 +53,89 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include\
-    \ <cstdint>\r\n\r\nusing std::size_t;\r\nusing i8 = std::int8_t;\r\nusing u8 =\
-    \ std::uint8_t;\r\nusing i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\n\
-    using i32 = std::int32_t;\r\nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\
-    \nusing u64 = std::uint64_t;\r\nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n"
-  code: "#pragma once\r\n\r\n#include <cstddef>\r\n#include <cstdint>\r\n\r\nusing\
-    \ std::size_t;\r\nusing i8 = std::int8_t;\r\nusing u8 = std::uint8_t;\r\nusing\
-    \ i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\nusing i32 = std::int32_t;\r\
-    \nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;"
+  bundledCode: '#line 2 "template/int_alias.hpp"
+
+
+    #include <cstddef>
+
+    #include <cstdint>
+
+
+    namespace ebi {
+
+
+    using std::size_t;
+
+    using i8 = std::int8_t;
+
+    using u8 = std::uint8_t;
+
+    using i16 = std::int16_t;
+
+    using u16 = std::uint16_t;
+
+    using i32 = std::int32_t;
+
+    using u32 = std::uint32_t;
+
+    using i64 = std::int64_t;
+
+    using u64 = std::uint64_t;
+
+    using i128 = __int128_t;
+
+    using u128 = __uint128_t;
+
+
+    }
+
+    '
+  code: '#pragma once
+
+
+    #include <cstddef>
+
+    #include <cstdint>
+
+
+    namespace ebi {
+
+
+    using std::size_t;
+
+    using i8 = std::int8_t;
+
+    using u8 = std::uint8_t;
+
+    using i16 = std::int16_t;
+
+    using u16 = std::uint16_t;
+
+    using i32 = std::int32_t;
+
+    using u32 = std::uint32_t;
+
+    using i64 = std::int64_t;
+
+    using u64 = std::uint64_t;
+
+    using i128 = __int128_t;
+
+    using u128 = __uint128_t;
+
+
+    }'
   dependsOn: []
   isVerificationFile: false
-  path: utility/int_alias.hpp
+  path: template/int_alias.hpp
   requiredBy:
   - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
   - math/linear_sieve.hpp
   - math/inversion_number.hpp
-  timestamp: '2023-06-19 12:46:11+09:00'
+  - template/template.hpp
+  - template/utility.hpp
+  timestamp: '2023-08-10 23:52:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
@@ -79,12 +146,11 @@ data:
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/math/Inversion_Number.test.cpp
   - test/tree/Tree_Diameter.test.cpp
-  - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp
-documentation_of: utility/int_alias.hpp
+documentation_of: template/int_alias.hpp
 layout: document
 redirect_from:
-- /library/utility/int_alias.hpp
-- /library/utility/int_alias.hpp.html
-title: utility/int_alias.hpp
+- /library/template/int_alias.hpp
+- /library/template/int_alias.hpp.html
+title: template/int_alias.hpp
 ---

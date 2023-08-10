@@ -11,8 +11,8 @@ data:
     path: math/inversion_number.hpp
     title: math/inversion_number.hpp
   - icon: ':heavy_check_mark:'
-    path: utility/int_alias.hpp
-    title: utility/int_alias.hpp
+    path: template/int_alias.hpp
+    title: template/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -55,11 +55,11 @@ data:
     \ 0; k >>= 1) {\r\n            if (x + k <= n && data[x + k] < key) {\r\n    \
     \            x += k;\r\n                key -= data[x];\r\n            }\r\n \
     \       }\r\n        return x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
-    #line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include <cstdint>\r\
-    \n\r\nusing std::size_t;\r\nusing i8 = std::int8_t;\r\nusing u8 = std::uint8_t;\r\
-    \nusing i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\nusing i32 = std::int32_t;\r\
-    \nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 10 \"math/inversion_number.hpp\"\
+    #line 2 \"template/int_alias.hpp\"\n\n#include <cstddef>\n#include <cstdint>\n\
+    \nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
+    using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
+    using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}\n#line 10 \"math/inversion_number.hpp\"\
     \n\nnamespace ebi {\n\ni64 inversion_number_max_n(const std::vector<int> &a, int\
     \ n = 200000) {\n    fenwick_tree<i64> fw(n);\n    i64 res = 0;\n    for (auto\
     \ x : a) {\n        assert(0 <= x && x < n);\n        res += fw.sum(x + 1, n);\n\
@@ -81,11 +81,11 @@ data:
   - math/inversion_number.hpp
   - data_structure/compress.hpp
   - data_structure/fenwick_tree.hpp
-  - utility/int_alias.hpp
+  - template/int_alias.hpp
   isVerificationFile: true
   path: test/math/Inversion_Number.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 14:12:40+09:00'
+  timestamp: '2023-08-10 23:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Inversion_Number.test.cpp

@@ -5,8 +5,8 @@ data:
     path: data_structure/li_chao_tree.hpp
     title: Li Chao Tree
   - icon: ':heavy_check_mark:'
-    path: utility/int_alias.hpp
-    title: utility/int_alias.hpp
+    path: template/int_alias.hpp
+    title: template/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -53,31 +53,31 @@ data:
     \ {\n            val = std::min(val, f(data[k], x));\n            k >>= 1;\n \
     \       }\n        return val;\n    }\n\n  private:\n    std::vector<std::pair<T,\
     \ T>> data;\n    std::vector<T> xs;\n    int sz;\n};\n\n}  // namespace ebi\n\
-    #line 2 \"utility/int_alias.hpp\"\n\r\n#include <cstddef>\r\n#include <cstdint>\r\
-    \n\r\nusing std::size_t;\r\nusing i8 = std::int8_t;\r\nusing u8 = std::uint8_t;\r\
-    \nusing i16 = std::int16_t;\r\nusing u16 = std::uint16_t;\r\nusing i32 = std::int32_t;\r\
-    \nusing u32 = std::uint32_t;\r\nusing i64 = std::int64_t;\r\nusing u64 = std::uint64_t;\r\
-    \nusing i128 = __int128_t;\r\nusing u128 = __uint128_t;\n#line 9 \"test/data_structure/Line_Add_Get_Min.test.cpp\"\
-    \n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<std::pair<i64,\
-    \ i64>> p(n);\n    for (auto &[a, b] : p) {\n        std::cin >> a >> b;\n   \
-    \ }\n    std::vector<i64> x;\n    std::vector<std::vector<i64>> query(q);\n  \
-    \  for (int i = 0; i < q; i++) {\n        int t;\n        std::cin >> t;\n   \
-    \     query[i].emplace_back(t);\n        if (t == 0) {\n            i64 a, b;\n\
-    \            std::cin >> a >> b;\n            query[i].emplace_back(a);\n    \
-    \        query[i].emplace_back(b);\n        } else {\n            i64 p;\n   \
-    \         std::cin >> p;\n            query[i].emplace_back(p);\n            x.emplace_back(p);\n\
-    \        }\n    }\n    ebi::li_chao_tree<i64> seg(x);\n    for (auto [a, b] :\
-    \ p) {\n        seg.add_line(a, b);\n    }\n    for (int i = 0; i < q; i++) {\n\
-    \        if (query[i][0] == 0) {\n            seg.add_line(query[i][1], query[i][2]);\n\
-    \        } else {\n            std::cout << seg.min(query[i][1]) << '\\n';\n \
-    \       }\n    }\n}\n"
+    #line 2 \"template/int_alias.hpp\"\n\n#include <cstddef>\n#include <cstdint>\n\
+    \nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
+    using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
+    using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}\n#line 9 \"test/data_structure/Line_Add_Get_Min.test.cpp\"\
+    \n\nusing ebi::i64;\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n\
+    \    std::vector<std::pair<i64, i64>> p(n);\n    for (auto &[a, b] : p) {\n  \
+    \      std::cin >> a >> b;\n    }\n    std::vector<i64> x;\n    std::vector<std::vector<i64>>\
+    \ query(q);\n    for (int i = 0; i < q; i++) {\n        int t;\n        std::cin\
+    \ >> t;\n        query[i].emplace_back(t);\n        if (t == 0) {\n          \
+    \  i64 a, b;\n            std::cin >> a >> b;\n            query[i].emplace_back(a);\n\
+    \            query[i].emplace_back(b);\n        } else {\n            i64 p;\n\
+    \            std::cin >> p;\n            query[i].emplace_back(p);\n         \
+    \   x.emplace_back(p);\n        }\n    }\n    ebi::li_chao_tree<i64> seg(x);\n\
+    \    for (auto [a, b] : p) {\n        seg.add_line(a, b);\n    }\n    for (int\
+    \ i = 0; i < q; i++) {\n        if (query[i][0] == 0) {\n            seg.add_line(query[i][1],\
+    \ query[i][2]);\n        } else {\n            std::cout << seg.min(query[i][1])\
+    \ << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
     #include <iostream>\n#include <utility>\n#include <vector>\n\n#include \"../../data_structure/li_chao_tree.hpp\"\
-    \n#include \"../../utility/int_alias.hpp\"\n\nint main() {\n    int n, q;\n  \
-    \  std::cin >> n >> q;\n    std::vector<std::pair<i64, i64>> p(n);\n    for (auto\
-    \ &[a, b] : p) {\n        std::cin >> a >> b;\n    }\n    std::vector<i64> x;\n\
-    \    std::vector<std::vector<i64>> query(q);\n    for (int i = 0; i < q; i++)\
-    \ {\n        int t;\n        std::cin >> t;\n        query[i].emplace_back(t);\n\
+    \n#include \"../../template/int_alias.hpp\"\n\nusing ebi::i64;\n\nint main() {\n\
+    \    int n, q;\n    std::cin >> n >> q;\n    std::vector<std::pair<i64, i64>>\
+    \ p(n);\n    for (auto &[a, b] : p) {\n        std::cin >> a >> b;\n    }\n  \
+    \  std::vector<i64> x;\n    std::vector<std::vector<i64>> query(q);\n    for (int\
+    \ i = 0; i < q; i++) {\n        int t;\n        std::cin >> t;\n        query[i].emplace_back(t);\n\
     \        if (t == 0) {\n            i64 a, b;\n            std::cin >> a >> b;\n\
     \            query[i].emplace_back(a);\n            query[i].emplace_back(b);\n\
     \        } else {\n            i64 p;\n            std::cin >> p;\n          \
@@ -88,11 +88,11 @@ data:
     \           std::cout << seg.min(query[i][1]) << '\\n';\n        }\n    }\n}"
   dependsOn:
   - data_structure/li_chao_tree.hpp
-  - utility/int_alias.hpp
+  - template/int_alias.hpp
   isVerificationFile: true
   path: test/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-07-10 17:44:39+09:00'
+  timestamp: '2023-08-10 23:52:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Line_Add_Get_Min.test.cpp

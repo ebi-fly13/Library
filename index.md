@@ -222,7 +222,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/biconnected_components.hpp
       title: graph/biconnected_components.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
     - icon: ':heavy_check_mark:'
@@ -338,6 +338,23 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/trie.hpp
       title: string/trie.hpp
+  - name: template
+    pages:
+    - icon: ':warning:'
+      path: template/debug_template.hpp
+      title: template/debug_template.hpp
+    - icon: ':heavy_check_mark:'
+      path: template/int_alias.hpp
+      title: template/int_alias.hpp
+    - icon: ':warning:'
+      path: template/io.hpp
+      title: template/io.hpp
+    - icon: ':warning:'
+      path: template/template.hpp
+      title: template/template.hpp
+    - icon: ':warning:'
+      path: template/utility.hpp
+      title: template/utility.hpp
   - name: tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -375,9 +392,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/hash.hpp
       title: Hash structure
-    - icon: ':heavy_check_mark:'
-      path: utility/int_alias.hpp
-      title: utility/int_alias.hpp
     - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
@@ -645,7 +659,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Two_Edge_Connected_Components.test.cpp
       title: test/graph/Two_Edge_Connected_Components.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/dijkstra.test.cpp
       title: test/graph/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
