@@ -77,6 +77,7 @@
 "test/graph/Articulation_Points.test.cpp": "2023-07-10 11:25:51 +0900",
 "test/graph/Biconnected_Components.test.cpp": "2023-07-10 11:25:51 +0900",
 "test/graph/Two_Edge_Connected_Components.test.cpp": "2023-07-11 14:52:21 +0900",
+"test/graph/dijkstra.test.cpp": "2023-08-11 00:20:41 +0900",
 "test/graph/fibonacci_heap.test.cpp": "2023-08-10 23:52:27 +0900",
 "test/graph/scc_graph.test.cpp": "2023-07-10 01:20:44 +0900",
 "test/math/Berunoulli_Number.test.cpp": "2023-07-29 20:09:34 +0900",
