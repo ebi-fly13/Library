@@ -7,7 +7,7 @@
 #include <limits>
 #include <vector>
 
-#include "../../template/graph_template.hpp"
+#include "../../graph/template.hpp"
 #include "../../template/int_alias.hpp"
 
 using ebi::i64;
