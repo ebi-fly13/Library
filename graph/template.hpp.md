@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
   - icon: ':heavy_check_mark:'
@@ -33,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Biconnected_Components.test.cpp
     title: test/graph/Biconnected_Components.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/dijkstra.test.cpp
+    title: test/graph/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/fibonacci_heap.test.cpp
     title: test/graph/fibonacci_heap.test.cpp
@@ -107,6 +110,7 @@ data:
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
   - test/graph/Biconnected_Components.test.cpp
+  - test/graph/dijkstra.test.cpp
   - test/graph/scc_graph.test.cpp
   - test/graph/fibonacci_heap.test.cpp
 documentation_of: graph/template.hpp

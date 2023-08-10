@@ -222,7 +222,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/biconnected_components.hpp
       title: graph/biconnected_components.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
     - icon: ':heavy_check_mark:'
@@ -659,7 +659,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Two_Edge_Connected_Components.test.cpp
       title: test/graph/Two_Edge_Connected_Components.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/dijkstra.test.cpp
       title: test/graph/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'

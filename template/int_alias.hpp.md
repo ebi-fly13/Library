@@ -40,6 +40,9 @@ data:
     path: test/data_structure/Static_Range_Frequency.test.cpp
     title: test/data_structure/Static_Range_Frequency.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/dijkstra.test.cpp
+    title: test/graph/dijkstra.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/fibonacci_heap.test.cpp
     title: test/graph/fibonacci_heap.test.cpp
   - icon: ':heavy_check_mark:'
@@ -146,6 +149,7 @@ data:
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/math/Inversion_Number.test.cpp
   - test/tree/Tree_Diameter.test.cpp
+  - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp
 documentation_of: template/int_alias.hpp
 layout: document
