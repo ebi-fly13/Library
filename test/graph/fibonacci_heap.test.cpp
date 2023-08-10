@@ -5,7 +5,9 @@
 
 #include "../../graph/dijkstra_fibheap.hpp"
 #include "../../graph/template.hpp"
-#include "../../utility/int_alias.hpp"
+#include "../../template/int_alias.hpp"
+
+using ebi::i64;
 
 int main() {
     int n, m, r;

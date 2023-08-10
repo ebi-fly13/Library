@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include "../../data_structure/ImplicitTreap.hpp"
-#include "../../utility/int_alias.hpp"
+#include "../../template/int_alias.hpp"
 #include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
@@ -38,6 +38,8 @@ F composition(F l, F r) {
 F id() {
     return F{1, 0};
 }
+
+using ebi::i64;
 
 int main() {
     ebi::ImplicitTreap<S, op, e, F, mapping, composition, id> treap;

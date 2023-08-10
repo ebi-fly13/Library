@@ -7,8 +7,10 @@
 #include <limits>
 #include <vector>
 
-#include "../../graph/template.hpp"
-#include "../../utility/int_alias.hpp"
+#include "../../template/graph_template.hpp"
+#include "../../template/int_alias.hpp"
+
+using ebi::i64;
 
 int main() {
     int v, e, r;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../utility/int_alias.hpp"
+#include "../template/int_alias.hpp"
 
 /*
     reference: https://37zigen.com/linear-sieve/

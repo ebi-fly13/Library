@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../utility/int_alias.hpp"
+#include "../template/int_alias.hpp"
 
 /*
     reference: https://misteer.hatenablog.com/entry/bit-vector

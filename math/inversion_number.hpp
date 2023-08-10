@@ -6,7 +6,7 @@
 
 #include "../data_structure/compress.hpp"
 #include "../data_structure/fenwick_tree.hpp"
-#include "../utility/int_alias.hpp"
+#include "../template/int_alias.hpp"
 
 namespace ebi {
 

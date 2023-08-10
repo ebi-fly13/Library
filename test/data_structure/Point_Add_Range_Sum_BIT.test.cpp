@@ -3,7 +3,9 @@
 #include <iostream>
 
 #include "../../data_structure/fenwick_tree.hpp"
-#include "../../utility/int_alias.hpp"
+#include "../../template/int_alias.hpp"
+
+using ebi::i64;
 
 int main() {
     int n, q;
