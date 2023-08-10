@@ -69,11 +69,12 @@ data:
     \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
     \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
     \ distance(int u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
-    \ v)];\n    }\n\n    bool at_path(int u, int v, int s) const {\n        return\
-    \ distance(u, v) == distance(u, s) + distance(s, v);\n    }\n\n    template <class\
-    \ F>\n    void path_noncommutative_query(int u, int v, bool vertex,\n        \
-    \                           const F &f) const {\n        int l = lca(u, v);\n\
-    \        for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if (vertex) f(in[l],\
+    \ v)];\n    }\n\n    int distance_from_root(int v) const {\n        return depth[v];\n\
+    \    }\n\n    bool at_path(int u, int v, int s) const {\n        return distance(u,\
+    \ v) == distance(u, s) + distance(s, v);\n    }\n\n    template <class F>\n  \
+    \  void path_noncommutative_query(int u, int v, bool vertex,\n               \
+    \                    const F &f) const {\n        int l = lca(u, v);\n       \
+    \ for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if (vertex) f(in[l],\
     \ in[l] + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
     \n    template <class F> void subtree_query(int u, bool vertex, const F &f) {\n\
     \        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n    int n;\n \
@@ -97,7 +98,7 @@ data:
   isVerificationFile: true
   path: test/tree/Jump_on_Tree_HLD.test.cpp
   requiredBy: []
-  timestamp: '2023-07-11 13:12:25+09:00'
+  timestamp: '2023-08-10 12:11:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Jump_on_Tree_HLD.test.cpp
