@@ -5,6 +5,8 @@
 #include <optional>
 #include <vector>
 
+#include "fps_sparse.hpp"
+
 namespace ebi {
 
 template <class mint, std::vector<mint> (*convolution)(
@@ -163,6 +165,11 @@ struct FormalPowerSeries : std::vector<mint> {
     FPS inv(int d = -1) const {
         int n = 1;
         if (d < 0) d = deg();
+        if (count_terms() < 300) {
+            FPS res;
+            res = inv_sparse(*this, d);
+            return res;
+        }
         FPS g(n);
         g[0] = (*this)[0].inv();
         while (n < d) {
@@ -176,6 +183,11 @@ struct FormalPowerSeries : std::vector<mint> {
     FPS log(int d = -1) const {
         assert((*this)[0].val() == 1);
         if (d < 0) d = deg();
+        if (count_terms() < 300) {
+            FPS res;
+            res = log_sparse(*this, d);
+            return res;
+        }
         return ((*this).differential() * (*this).inv(d)).pre(d - 1).integral();
     }
 
@@ -183,6 +195,11 @@ struct FormalPowerSeries : std::vector<mint> {
         assert((*this)[0].val() == 0);
         int n = 1;
         if (d < 0) d = deg();
+        if (count_terms() < 300) {
+            FPS res;
+            res = exp_sparse(*this, d);
+            return res;
+        }
         FPS g(n);
         g[0] = 1;
         while (n < d) {
@@ -200,6 +217,11 @@ struct FormalPowerSeries : std::vector<mint> {
             FPS f(d);
             if (d > 0) f[0] = 1;
             return f;
+        }
+        if (count_terms() < 300) {
+            FPS res;
+            res = pow_sparse(*this, d);
+            return res;
         }
         for (int i = 0; i < n; i++) {
             if ((*this)[i] != 0) {
