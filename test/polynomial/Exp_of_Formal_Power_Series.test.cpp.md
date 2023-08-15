@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series
@@ -237,19 +237,17 @@ data:
     \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 8 \"test/polynomial/Exp_of_Formal_Power_Series.test.cpp\"\
     \n\r\nusing mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n\
     \    std::cin >> n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\
-    \n    for (int i = 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >>\
-    \ val;\r\n        a[i] = val;\r\n    }\r\n    auto b = a.exp();\r\n    for (int\
-    \ i = 0; i < n; ++i) {\r\n        std::cout << b[i].val() << \" \\n\"[i == n -\
-    \ 1];\r\n    }\r\n}\n"
+    \n    for (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n\
+    \    auto b = a.exp();\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cout\
+    \ << b[i].val() << \" \\n\"[i == n - 1];\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../../convolution/ntt.hpp\"\r\n\
     #include \"../../fps/fps.hpp\"\r\n#include \"../../utility/modint.hpp\"\r\n\r\n\
     using mint = ebi::modint998244353;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin\
     \ >> n;\r\n    ebi::FormalPowerSeries<mint, ebi::convolution> a(n);\r\n    for\
-    \ (int i = 0; i < n; ++i) {\r\n        int val;\r\n        std::cin >> val;\r\n\
-    \        a[i] = val;\r\n    }\r\n    auto b = a.exp();\r\n    for (int i = 0;\
-    \ i < n; ++i) {\r\n        std::cout << b[i].val() << \" \\n\"[i == n - 1];\r\n\
-    \    }\r\n}"
+    \ (int i = 0; i < n; ++i) {\r\n        std::cin >> a[i];\r\n    }\r\n    auto\
+    \ b = a.exp();\r\n    for (int i = 0; i < n; ++i) {\r\n        std::cout << b[i].val()\
+    \ << \" \\n\"[i == n - 1];\r\n    }\r\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
@@ -260,8 +258,8 @@ data:
   isVerificationFile: true
   path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-08-15 21:57:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-15 22:12:40+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
 layout: document
