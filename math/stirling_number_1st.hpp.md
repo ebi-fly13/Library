@@ -5,17 +5,11 @@ data:
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
-    path: fps/fps_sparse.hpp
-    title: Formal Power Series (Sparse)
-  - icon: ':question:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
-    path: utility/modint_func.hpp
-    title: utility/modint_func.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -28,67 +22,10 @@ data:
     links: []
   bundledCode: "#line 2 \"math/stirling_number_1st.hpp\"\n\n#include <cassert>\n\n\
     #line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line 5 \"fps/fps.hpp\"\n#include\
-    \ <optional>\n#include <vector>\n\n#line 2 \"fps/fps_sparse.hpp\"\n\n#line 5 \"\
-    fps/fps_sparse.hpp\"\n\n#line 2 \"utility/modint_func.hpp\"\n\n#line 5 \"utility/modint_func.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint> mint inv(int n) {\n    static const\
-    \ int mod = mint::mod();\n    static std::vector<mint> dat = {0, 1};\n    assert(0\
-    \ <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size()) <= n) {\n  \
-    \      int num = dat.size();\n        int q = (mod + num - 1) / num;\n       \
-    \ dat.emplace_back(dat[num * q - mod] * mint(q));\n    }\n    return dat[n];\n\
-    }\n\n}  // namespace ebi\n#line 7 \"fps/fps_sparse.hpp\"\n\nnamespace ebi {\n\n\
-    template <class mint>\nstd::vector<mint> mul_sparse(const std::vector<mint> &f,\n\
-    \                             const std::vector<mint> &g) {\n    int n = f.size();\n\
-    \    int m = g.size();\n    std::vector<std::pair<int, mint>> cf, cg;\n    for\
-    \ (int i = 0; i < n; i++) {\n        if (f[i] != 0) cf.emplace_back(i, f[i]);\n\
-    \    }\n    for (int i = 0; i < m; i++) {\n        if (g[i] != 0) cg.emplace_back(i,\
-    \ g[i]);\n    }\n    std::vector<mint> h(n + m - 1);\n    for (auto [i, p] : cf)\
-    \ {\n        for (auto [j, q] : cg) {\n            h[i + j] += p * q;\n      \
-    \  }\n    }\n    return h;\n}\n\ntemplate <class mint>\nstd::vector<mint> inv_sparse(const\
-    \ std::vector<mint> &f, int d = -1) {\n    assert(f[0] != 0);\n    if (d < 0)\
-    \ {\n        d = f.size();\n    }\n    std::vector<std::pair<int, mint>> ret;\n\
-    \    for (int i = 1; i < int(f.size()); i++) {\n        if (f[i] != 0) {\n   \
-    \         ret.emplace_back(i, f[i]);\n        }\n    }\n    std::vector<mint>\
-    \ g(d);\n    g[0] = f[0].inv();\n    for (int i = 1; i < d; i++) {\n        for\
-    \ (auto [k, p] : ret) {\n            if (i - k < 0) break;\n            g[i] -=\
-    \ g[i - k] * p;\n        }\n        g[i] *= g[0];\n    }\n    return g;\n}\n\n\
-    template <class mint>\nstd::vector<mint> exp_sparse(const std::vector<mint> &f,\
-    \ int d = -1) {\n    int n = f.size();\n    if (d < 0) d = n;\n    std::vector<std::pair<int,\
-    \ mint>> ret;\n    for (int i = 1; i < n; i++) {\n        if (f[i] != 0) {\n \
-    \           ret.emplace_back(i - 1, f[i] * i);\n        }\n    }\n    std::vector<mint>\
-    \ g(d);\n    g[0] = 1;\n    for (int i = 0; i < d - 1; i++) {\n        for (auto\
-    \ [k, p] : ret) {\n            if (i - k < 0) break;\n            g[i + 1] +=\
-    \ g[i - k] * p;\n        }\n        g[i + 1] *= inv<mint>(i + 1);\n    }\n   \
-    \ return g;\n}\n\ntemplate <class mint>\nstd::vector<mint> log_sparse(const std::vector<mint>\
-    \ &f, int d = -1) {\n    int n = f.size();\n    if (d < 0) d = n;\n    std::vector<mint>\
-    \ df(d);\n    for (int i = 0; i < std::min(d, n - 1); i++) {\n        df[i] =\
-    \ f[i + 1] * (i + 1);\n    }\n    auto dg = mul_sparse(df, inv_sparse(f));\n \
-    \   dg.resize(d);\n    std::vector<mint> g(d);\n    for (int i = 0; i < d - 1;\
-    \ i++) {\n        g[i + 1] = dg[i] * inv<mint>(i + 1);\n    }\n    return g;\n\
-    }\n\ntemplate <class mint>\nstd::vector<mint> pow_sparse_1(const std::vector<mint>\
-    \ &f, long long k,\n                               int d = -1) {\n    int n =\
-    \ f.size();\n    assert(n == 0 || f[0] == 1);\n    std::vector<std::pair<int,\
-    \ mint>> ret;\n    for (int i = 1; i < n; i++) {\n        if (f[i] != 0) ret.emplace_back(i,\
-    \ f[i]);\n    }\n    std::vector<mint> g(d);\n    g[0] = 1;\n    for (int i =\
-    \ 0; i < d - 1; i++) {\n        for (const auto &[j, cf] : ret) {\n          \
-    \  if (i + 1 - j < 0) break;\n            g[i + 1] +=\n                (mint(k)\
-    \ * mint(j) - mint(i - j + 1)) * cf * g[i + 1 - j];\n        }\n        g[i +\
-    \ 1] *= inv<mint>(i + 1);\n    }\n    return g;\n}\n\ntemplate <class mint>\n\
-    std::vector<mint> pow_sparse(const std::vector<mint> &f, long long k,\n      \
-    \                       int d = -1) {\n    int n = f.size();\n    if (d < 0) d\
-    \ = n;\n    assert(k >= 0);\n    if (k == 0) {\n        std::vector<mint> g(d);\n\
-    \        if (d > 0) g[0] = 1;\n        return g;\n    }\n    for (int i = 0; i\
-    \ < n; i++) {\n        if (f[i] != 0) {\n            mint rev = f[i].inv();\n\
-    \            std::vector<mint> f2(n - i);\n            for (int j = i; j < n;\
-    \ j++) {\n                f2[j - i] = f[j] * rev;\n            }\n           \
-    \ f2 = pow_sparse_1(f2, k, d);\n            mint fk = f[i].pow(k);\n         \
-    \   std::vector<mint> g(d);\n            for (int j = 0; j < int(f2.size()); j++)\
-    \ {\n                if (j + i * k >= d) break;\n                g[j + i * k]\
-    \ = f2[j] * fk;\n            }\n            return g;\n        }\n        if (i\
-    \ >= (d + k - 1) / k) break;\n    }\n    return std::vector<mint>(d);\n}\n\n}\
-    \  // namespace ebi\n#line 9 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ mint, std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
-    \ &, const std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint>\
-    \ {\n  private:\n    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
+    \ <optional>\n#include <vector>\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
+    \ (*convolution)(\n                          const std::vector<mint> &, const\
+    \ std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n\
+    \    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
     \    using FPS = FormalPowerSeries;\n\n  public:\n    FPS operator+(const FPS\
     \ &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
     \ FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
@@ -139,27 +76,20 @@ data:
     \    auto mod = mint::mod();\n        for (int i = 2; i <= n; i++) g[i] = (-g[mod\
     \ % i]) * (mod / i);\n        for (int i = 0; i < n; i++) g[i + 1] *= (*this)[i];\n\
     \        return g;\n    }\n\n    FPS inv(int d = -1) const {\n        int n =\
-    \ 1;\n        if (d < 0) d = deg();\n        if (count_terms() < 300) {\n    \
-    \        FPS res;\n            res = inv_sparse(*this, d);\n            return\
-    \ res;\n        }\n        FPS g(n);\n        g[0] = (*this)[0].inv();\n     \
-    \   while (n < d) {\n            n <<= 1;\n            g = (g * 2 - g * g * this->pre(n)).pre(n);\n\
-    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS log(int\
-    \ d = -1) const {\n        assert((*this)[0].val() == 1);\n        if (d < 0)\
-    \ d = deg();\n        if (count_terms() < 300) {\n            FPS res;\n     \
-    \       res = log_sparse(*this, d);\n            return res;\n        }\n    \
-    \    return ((*this).differential() * (*this).inv(d)).pre(d - 1).integral();\n\
-    \    }\n\n    FPS exp(int d = -1) const {\n        assert((*this)[0].val() ==\
-    \ 0);\n        int n = 1;\n        if (d < 0) d = deg();\n        if (count_terms()\
-    \ < 300) {\n            FPS res;\n            res = exp_sparse(*this, d);\n  \
-    \          return res;\n        }\n        FPS g(n);\n        g[0] = 1;\n    \
-    \    while (n < d) {\n            n <<= 1;\n            g = (g * (this->pre(n)\
-    \ - g.log(n) + 1)).pre(n);\n        }\n        g.resize(d);\n        return g;\n\
-    \    }\n\n    FPS pow(int64_t k, int d = -1) const {\n        const int n = deg();\n\
-    \        if (d < 0) d = n;\n        if (k == 0) {\n            FPS f(d);\n   \
-    \         if (d > 0) f[0] = 1;\n            return f;\n        }\n        if (count_terms()\
-    \ < 300) {\n            FPS res;\n            res = pow_sparse(*this, d);\n  \
-    \          return res;\n        }\n        for (int i = 0; i < n; i++) {\n   \
-    \         if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
+    \ 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n        g[0] = (*this)[0].inv();\n\
+    \        while (n < d) {\n            n <<= 1;\n            g = (g * 2 - g * g\
+    \ * this->pre(n)).pre(n);\n        }\n        g.resize(d);\n        return g;\n\
+    \    }\n\n    FPS log(int d = -1) const {\n        assert((*this)[0].val() ==\
+    \ 1);\n        if (d < 0) d = deg();\n        return ((*this).differential() *\
+    \ (*this).inv(d)).pre(d - 1).integral();\n    }\n\n    FPS exp(int d = -1) const\
+    \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
+    \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
+    \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(int64_t\
+    \ k, int d = -1) const {\n        const int n = deg();\n        if (d < 0) d =\
+    \ n;\n        if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0]\
+    \ = 1;\n            return f;\n        }\n        for (int i = 0; i < n; i++)\
+    \ {\n            if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
     \                FPS f = (((*this * rev) >> i).log(d) * k).exp(d);\n         \
     \       f *= (*this)[i].pow(k);\n                f = (f << (i * k)).pre(d);\n\
     \                if (f.deg() < d) f.resize(d);\n                return f;\n  \
@@ -215,14 +145,12 @@ data:
     \ f;\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
-  - fps/fps_sparse.hpp
-  - utility/modint_func.hpp
   - fps/taylor_shift.hpp
   - utility/bit_operator.hpp
   isVerificationFile: false
   path: math/stirling_number_1st.hpp
   requiredBy: []
-  timestamp: '2023-08-15 20:19:37+09:00'
+  timestamp: '2023-08-15 21:57:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
