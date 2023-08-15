@@ -13,9 +13,7 @@ int main() {
     std::cin >> n;
     ebi::FormalPowerSeries<mint, ebi::convolution> a(n);
     for (int i = 0; i < n; ++i) {
-        int val;
-        std::cin >> val;
-        a[i] = val;
+        std::cin >> a[i];
     }
     auto b = a.exp();
     for (int i = 0; i < n; ++i) {
