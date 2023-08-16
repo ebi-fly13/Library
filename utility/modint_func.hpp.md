@@ -8,20 +8,20 @@ data:
   - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':x:'

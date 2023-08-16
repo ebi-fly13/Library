@@ -21,25 +21,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':x:'

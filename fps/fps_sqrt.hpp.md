@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'

@@ -23,10 +23,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_dynamic_connectivity.hpp
     title: Offline Dynamic Connectivity
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
   - icon: ':x:'
@@ -69,25 +69,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp
     title: test/convolution/Subset_Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':x:'

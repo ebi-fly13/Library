@@ -10,7 +10,7 @@ data:
   - icon: ':x:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'

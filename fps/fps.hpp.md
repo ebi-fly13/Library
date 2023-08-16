@@ -11,44 +11,44 @@ data:
   - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/bernoulli_number.hpp
     title: Bernoulli Number
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/partition_function.hpp
     title: Partition Function
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':x:'
@@ -86,7 +86,7 @@ data:
     title: test/yuki/yuki_1302.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -268,7 +268,7 @@ data:
   - fps/compositional_inverse_of_fps.hpp
   - fps/taylor_shift.hpp
   timestamp: '2023-08-15 21:57:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1302.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp

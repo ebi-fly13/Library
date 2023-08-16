@@ -81,28 +81,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
   - icon: ':heavy_check_mark:'
@@ -111,13 +111,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sqrt_Mod.test.cpp
     title: test/math/Sqrt_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':x:'
