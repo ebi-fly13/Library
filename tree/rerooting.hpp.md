@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/rerooting.hpp\"\n\n#include <vector>\n#include <utility>\n\
@@ -70,7 +70,7 @@ data:
   path: tree/rerooting.hpp
   requiredBy: []
   timestamp: '2023-05-11 19:12:09+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Tree_Path_Composite_Sum.test.cpp
 documentation_of: tree/rerooting.hpp

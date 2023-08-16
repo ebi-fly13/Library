@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
-    title: data_structure/fenwick_tree.hpp
+    title: fenwick tree
   - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp

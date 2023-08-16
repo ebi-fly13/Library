@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: Eratosthenes Sieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []

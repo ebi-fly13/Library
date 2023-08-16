@@ -5,10 +5,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -29,7 +29,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -174,21 +174,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "utility/modint_base.hpp"
@@ -284,7 +284,7 @@ data:
   - utility/dynamic_modint.hpp
   - tree/rooted_tree_hash.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

@@ -6,7 +6,7 @@ data:
     title: Compress
   - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
-    title: data_structure/fenwick_tree.hpp
+    title: fenwick tree
   - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: math/inversion_number.hpp
