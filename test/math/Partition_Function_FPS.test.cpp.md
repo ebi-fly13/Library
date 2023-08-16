@@ -22,7 +22,7 @@ data:
   - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy: []

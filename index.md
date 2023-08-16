@@ -43,7 +43,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/or_convolution.hpp
       title: Bitwise OR Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/subset_convolution.hpp
       title: Subset Convolution
     - icon: ':heavy_check_mark:'
@@ -92,7 +92,7 @@ data:
       title: data_structure/bitVector.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
-      title: data_structure/compress.hpp
+      title: Compress
     - icon: ':heavy_check_mark:'
       path: data_structure/deque_aggregation.hpp
       title: Sliding Window Aggregation (Deque)
@@ -179,13 +179,13 @@ data:
     - icon: ':question:'
       path: fps/fps.hpp
       title: Formal Power Series
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sparse.hpp
       title: Formal Power Series (Sparse)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$
     - icon: ':heavy_check_mark:'
@@ -275,7 +275,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/longest_increasing_subsequence.hpp
       title: LIS
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_sqrt.hpp
       title: math/mod_sqrt.hpp
     - icon: ':heavy_check_mark:'
@@ -297,19 +297,19 @@ data:
       title: matrix/square_matrix.hpp
   - name: set_function
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: set_function/egf_composite_sps.hpp
       title: $f(a)$ (Set Power Series, f is EGF)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: set_function/exp_of_sps.hpp
       title: $\exp {a}$ (Set Power Series)
     - icon: ':heavy_check_mark:'
       path: set_function/hadamard_transform.hpp
       title: Hadamard Transform
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: set_function/poly_composite_sps.hpp
       title: $f(a)$ (Set Power Series, f is FPS)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: set_function/ranked_subset_transform.hpp
       title: Ranked Subset Transform (Zeta / Mobius)
     - icon: ':heavy_check_mark:'
@@ -386,7 +386,7 @@ data:
     - icon: ':question:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/dynamic_modint.hpp
       title: utility/dynamic_modint.hpp
     - icon: ':heavy_check_mark:'
@@ -401,7 +401,7 @@ data:
     - icon: ':question:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_func.hpp
       title: utility/modint_func.hpp
     - icon: ':heavy_check_mark:'
@@ -746,27 +746,27 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
       title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
       title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - name: test/set_function
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/set_function/Exp_of_Set_Power_Series.test.cpp
       title: test/set_function/Exp_of_Set_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
       title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - name: test/string
