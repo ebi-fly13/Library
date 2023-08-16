@@ -49,6 +49,18 @@ template <int m> struct static_modint : internal::static_modint_base {
         _v--;
         return *this;
     }
+
+    constexpr modint operator++(int) {
+        modint res = *this;
+        ++*this;
+        return res;
+    }
+    constexpr modint operator--(int) {
+        modint res = *this;
+        --*this;
+        return res;
+    }
+
     constexpr modint &operator+=(const modint &rhs) {
         _v += rhs._v;
         if (_v >= umod()) _v -= umod();
