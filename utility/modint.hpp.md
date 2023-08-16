@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
   _extendedVerifiedWith:
@@ -51,105 +51,105 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\n#include\
@@ -173,23 +173,26 @@ data:
     \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
     \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
     \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const modint\
-    \ &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const modint\
-    \ &rhs) {\r\n        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
-    \ &rhs) {\r\n        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n  \
-    \      _v = (unsigned int)(x % (unsigned long long)umod());\r\n        return\
-    \ *this;\r\n    }\r\n    constexpr modint &operator/=(const modint &rhs) {\r\n\
-    \        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint\
-    \ operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\n   \
-    \ constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n   \
-    \     modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n &\
-    \ 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\n\
-    \        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n      \
-    \  assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint\
-    \ operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
+    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
+    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
+    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
+    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
+    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
+    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
+    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
+    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
+    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
+    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
+    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
+    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
+    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
+    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
+    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
     \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
     \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
     \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
@@ -219,23 +222,26 @@ data:
     \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
     \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
     \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const modint\
-    \ &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const modint\
-    \ &rhs) {\r\n        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
-    \ &rhs) {\r\n        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n  \
-    \      _v = (unsigned int)(x % (unsigned long long)umod());\r\n        return\
-    \ *this;\r\n    }\r\n    constexpr modint &operator/=(const modint &rhs) {\r\n\
-    \        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint\
-    \ operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\n   \
-    \ constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n   \
-    \     modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n &\
-    \ 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\n\
-    \        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n      \
-    \  assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint\
-    \ operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
+    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
+    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
+    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
+    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
+    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
+    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
+    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
+    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
+    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
+    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
+    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
+    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
+    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
+    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
+    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
     \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
     \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
     \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
@@ -258,8 +264,8 @@ data:
   requiredBy:
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
-  timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-08-16 10:56:05+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

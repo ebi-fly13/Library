@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/data_structure/Queue_Operate_All_Composite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://scrapbox.io/data-structures/Sliding_Window_Aggregation
@@ -65,7 +65,7 @@ data:
   path: data_structure/queue_aggregation.hpp
   requiredBy: []
   timestamp: '2023-07-27 13:02:25+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/data_structure/Queue_Operate_All_Composite.test.cpp
 documentation_of: data_structure/queue_aggregation.hpp

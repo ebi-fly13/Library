@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -118,47 +118,51 @@ data:
     \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
     \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
     \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
-    \    }\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v\
-    \ += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n        _v\
-    \ -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned\
-    \ long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x %\
-    \ (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
-    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
-    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
-    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
-    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
-    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
-    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
-    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
-    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
-    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
-    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
-    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
-    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
-    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
-    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\n\
-    std::istream &operator>>(std::istream &os, static_modint<m> &a) {\r\n    long\
-    \ long x;\r\n    os >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int\
-    \ m>\r\nstd::ostream &operator<<(std::ostream &os, const static_modint<m> &a)\
-    \ {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
-    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 9 \"convolution/arbitrary_ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\ntemplate <class T, class mint, internal::is_static_modint_t<mint>* = nullptr>\n\
-    std::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>& g) {\n\
-    \    std::vector<mint> a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n\
-    \    for (auto x : f) a.emplace_back(x.val());\n    for (auto x : g) b.emplace_back(x.val());\n\
-    \    return convolution<mint>(a, b);\n}\n\n}  // namespace internal\n\ntemplate\
-    \ <class mint, internal::is_modint_t<mint>* = nullptr>\nstd::vector<mint> arbitary_convolution(const\
-    \ std::vector<mint>& f,\n                                       const std::vector<mint>&\
-    \ g) {\n    if (f.empty() || g.empty()) return {};\n    using i32 = std::int32_t;\n\
-    \    using i64 = std::int64_t;\n    static constexpr i32 m0 = 167772161;  // 2^25\n\
+    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
+    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
+    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
+    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
+    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
+    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
+    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
+    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
+    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
+    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
+    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
+    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
+    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
+    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
+    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
+    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
+    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
+    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
+    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
+    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
+    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
+    \ m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
+    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
+    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
+    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
+    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"convolution/arbitrary_ntt.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <class T, class mint,\
+    \ internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> multiply(const\
+    \ std::vector<T>& f, const std::vector<T>& g) {\n    std::vector<mint> a, b;\n\
+    \    a.reserve(f.size());\n    b.reserve(g.size());\n    for (auto x : f) a.emplace_back(x.val());\n\
+    \    for (auto x : g) b.emplace_back(x.val());\n    return convolution<mint>(a,\
+    \ b);\n}\n\n}  // namespace internal\n\ntemplate <class mint, internal::is_modint_t<mint>*\
+    \ = nullptr>\nstd::vector<mint> arbitary_convolution(const std::vector<mint>&\
+    \ f,\n                                       const std::vector<mint>& g) {\n \
+    \   if (f.empty() || g.empty()) return {};\n    using i32 = std::int32_t;\n  \
+    \  using i64 = std::int64_t;\n    static constexpr i32 m0 = 167772161;  // 2^25\n\
     \    static constexpr i32 m1 = 469762049;  // 2^26\n    static constexpr i32 m2\
     \ = 754974721;  // 2^24\n    using mint0 = static_modint<m0>;\n    using mint1\
     \ = static_modint<m1>;\n    using mint2 = static_modint<m2>;\n    static constexpr\
@@ -209,7 +213,7 @@ data:
   isVerificationFile: false
   path: convolution/arbitrary_ntt.hpp
   requiredBy: []
-  timestamp: '2023-07-29 16:06:36+09:00'
+  timestamp: '2023-08-16 10:56:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Convolution_Mod_1000000007.test.cpp

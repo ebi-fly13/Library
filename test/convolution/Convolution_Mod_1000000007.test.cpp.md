@@ -4,19 +4,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -123,23 +123,26 @@ data:
     \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
     \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
     \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator+=(const modint\
-    \ &rhs) {\r\n        _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator-=(const modint\
-    \ &rhs) {\r\n        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator*=(const modint\
-    \ &rhs) {\r\n        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n  \
-    \      _v = (unsigned int)(x % (unsigned long long)umod());\r\n        return\
-    \ *this;\r\n    }\r\n    constexpr modint &operator/=(const modint &rhs) {\r\n\
-    \        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint\
-    \ operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\n   \
-    \ constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n   \
-    \     modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n &\
-    \ 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\n\
-    \        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n      \
-    \  assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint\
-    \ operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
+    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
+    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
+    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
+    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
+    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
+    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
+    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
+    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
+    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
+    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
+    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
+    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
+    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
+    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
+    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
     \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
     \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
     \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
@@ -204,7 +207,7 @@ data:
   isVerificationFile: true
   path: test/convolution/Convolution_Mod_1000000007.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 16:06:36+09:00'
+  timestamp: '2023-08-16 10:56:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Convolution_Mod_1000000007.test.cpp
