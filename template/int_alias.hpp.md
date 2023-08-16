@@ -13,7 +13,7 @@ data:
     title: math/inversion_number.hpp
   - icon: ':warning:'
     path: math/linear_sieve.hpp
-    title: math/linear_sieve.hpp
+    title: Linear Sieve
   - icon: ':warning:'
     path: template/template.hpp
     title: template/template.hpp
