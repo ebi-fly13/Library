@@ -63,10 +63,15 @@ data:
     \ inline bool chmin(T &a, T b) {\n    if (a > b) {\n        a = b;\n        return\
     \ true;\n    }\n    return false;\n}\n\ntemplate <class T> inline bool chmax(T\
     \ &a, T b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n\
-    \    return false;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max() /\
-    \ 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
-    \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 43 \"template/template.hpp\"\n"
+    \    return false;\n}\n\ntemplate <class T> T safe_ceil(T a, T b) {\n    if (a\
+    \ % b == 0)\n        return a / b;\n    else if (a >= 0)\n        return (a /\
+    \ b) + 1;\n    else\n        return -((-a) / b);\n}\n\ntemplate <class T> T safe_floor(T\
+    \ a, T b) {\n    if (a % b == 0)\n        return a / b;\n    else if (a >= 0)\n\
+    \        return a / b;\n    else\n        return -((-a) / b) - 1;\n}\n\nconstexpr\
+    \ i64 LNF = std::numeric_limits<i64>::max() / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max()\
+    \ / 2;\n\nconst std::vector<int> dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int>\
+    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 43 \"template/template.hpp\"\
+    \n"
   code: '#include <algorithm>
 
     #include <bitset>
@@ -156,7 +161,7 @@ data:
   isVerificationFile: false
   path: template/template.hpp
   requiredBy: []
-  timestamp: '2023-08-11 00:25:56+09:00'
+  timestamp: '2023-08-19 23:22:23+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: template/template.hpp
