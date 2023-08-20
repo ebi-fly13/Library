@@ -52,6 +52,11 @@ struct online_convolution {
         return c[p++];
     }
 
+    mint operator[](int i) const {
+      assert(0 <= i && i < p);
+      return c[i];
+    }
+
   private:
     int p = 0;
     std::vector<mint> a, b, c;
