@@ -37,8 +37,10 @@ data:
     \ * fb[z][i] + fa[z][i] * b0[i];\n            }\n            atcoder::internal::butterfly_inv(a0);\n\
     \            mint inv_len = mint(2 * w).inv();\n            for (int i = 0; i\
     \ < w; i++) c[p + i] += a0[w - 1 + i] * inv_len;\n        }\n        return c[p++];\n\
-    \    }\n\n  private:\n    int p = 0;\n    std::vector<mint> a, b, c;\n    std::vector<std::vector<mint>>\
-    \ fa, fb;\n};\n\n}  // namespace ebi\n"
+    \    }\n\n    mint operator[](int i) const {\n      assert(0 <= i && i < p);\n\
+    \      return c[i];\n    }\n\n  private:\n    int p = 0;\n    std::vector<mint>\
+    \ a, b, c;\n    std::vector<std::vector<mint>> fa, fb;\n};\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include <atcoder/convolution>\n#include <atcoder/modint>\n\
     #include <bit>\n#include <vector>\n\n#include \"../template/int_alias.hpp\"\n\n\
     namespace ebi {\n\nstruct online_convolution {\n  private:\n    using mint = atcoder::modint998244353;\n\
@@ -60,14 +62,16 @@ data:
     \ * fb[z][i] + fa[z][i] * b0[i];\n            }\n            atcoder::internal::butterfly_inv(a0);\n\
     \            mint inv_len = mint(2 * w).inv();\n            for (int i = 0; i\
     \ < w; i++) c[p + i] += a0[w - 1 + i] * inv_len;\n        }\n        return c[p++];\n\
-    \    }\n\n  private:\n    int p = 0;\n    std::vector<mint> a, b, c;\n    std::vector<std::vector<mint>>\
-    \ fa, fb;\n};\n\n}  // namespace ebi"
+    \    }\n\n    mint operator[](int i) const {\n      assert(0 <= i && i < p);\n\
+    \      return c[i];\n    }\n\n  private:\n    int p = 0;\n    std::vector<mint>\
+    \ a, b, c;\n    std::vector<std::vector<mint>> fa, fb;\n};\n\n}  // namespace\
+    \ ebi"
   dependsOn:
   - template/int_alias.hpp
   isVerificationFile: false
   path: convolution/online_convolution.hpp
   requiredBy: []
-  timestamp: '2023-08-20 17:47:58+09:00'
+  timestamp: '2023-08-20 20:34:24+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: convolution/online_convolution.hpp
