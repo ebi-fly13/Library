@@ -49,8 +49,8 @@ data:
   timestamp: '2023-06-15 15:11:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_1302.test.cpp
   - test/aoj/aoj_3361.test.cpp
+  - test/yuki/yuki_1302.test.cpp
 documentation_of: math/combination.hpp
 layout: document
 redirect_from:

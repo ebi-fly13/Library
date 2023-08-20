@@ -96,8 +96,8 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/algorithm/Two_Sat.test.cpp
   - test/graph/scc_graph.test.cpp
+  - test/algorithm/Two_Sat.test.cpp
 documentation_of: graph/scc_graph.hpp
 layout: document
 redirect_from:

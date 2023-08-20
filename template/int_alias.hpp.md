@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: convolution/online_convolution.hpp
+    title: Online Convolution
   - icon: ':heavy_check_mark:'
     path: data_structure/WaveletMatrix.hpp
     title: Wavelet Matrix
@@ -130,23 +133,24 @@ data:
   requiredBy:
   - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
-  - math/linear_sieve.hpp
-  - math/inversion_number.hpp
-  - template/template.hpp
   - template/utility.hpp
+  - template/template.hpp
+  - math/inversion_number.hpp
+  - math/linear_sieve.hpp
+  - convolution/online_convolution.hpp
   timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - test/data_structure/Static_Range_Frequency.test.cpp
-  - test/data_structure/Range_Kth_Smallest.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - test/math/Inversion_Number.test.cpp
+  - test/data_structure/Range_Kth_Smallest.test.cpp
+  - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Static_Range_Frequency.test.cpp
   - test/tree/Tree_Diameter.test.cpp
-  - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp
+  - test/graph/dijkstra.test.cpp
+  - test/math/Inversion_Number.test.cpp
 documentation_of: template/int_alias.hpp
 layout: document
 redirect_from:
