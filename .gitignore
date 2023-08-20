@@ -3,6 +3,7 @@
 
 # exclude folders
 !*/
+!*/*
 
 !.gitignore
 !*.sh
