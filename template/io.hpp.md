@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+    title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/io.hpp\"\n\n#include <iostream>\n#include <optional>\n\
@@ -47,8 +50,9 @@ data:
   requiredBy:
   - template/template.hpp
   timestamp: '2023-08-10 23:52:27+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 documentation_of: template/io.hpp
 layout: document
 redirect_from:

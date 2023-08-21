@@ -17,10 +17,10 @@ data:
   - icon: ':warning:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -48,6 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/fibonacci_heap.test.cpp
     title: test/graph/fibonacci_heap.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+    title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
@@ -147,6 +150,7 @@ data:
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Inversion_Number.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/graph/dijkstra.test.cpp

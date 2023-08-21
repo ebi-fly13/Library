@@ -7,6 +7,9 @@ data:
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+    title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
   _isVerificationFailed: false
@@ -50,6 +53,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1302.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/aoj/aoj_3361.test.cpp
 documentation_of: math/combination.hpp
 layout: document

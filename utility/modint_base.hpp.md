@@ -97,6 +97,9 @@ data:
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+    title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -299,6 +302,7 @@ data:
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp
   - test/math/Pow.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/math/Sqrt_Mod.test.cpp

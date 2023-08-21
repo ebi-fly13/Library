@@ -343,19 +343,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
     - icon: ':heavy_check_mark:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -676,6 +676,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Berunoulli_Number.test.cpp
       title: test/math/Berunoulli_Number.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+      title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Enumerate_Primes.test.cpp
       title: test/math/Enumerate_Primes.test.cpp
