@@ -4,6 +4,7 @@
 # exclude folders
 !*/
 !*/*
+!*/*/*
 
 !.gitignore
 !*.sh
