@@ -42,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/scc_graph.test.cpp
     title: test/graph/scc_graph.test.cpp
+  - icon: ':x:'
+    path: test/math/Sum_of_Totient_Function.test.cpp
+    title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
@@ -60,9 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/lowest_common_ancestor.test.cpp
     title: test/tree/lowest_common_ancestor.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
@@ -91,28 +94,29 @@ data:
   isVerificationFile: false
   path: graph/template.hpp
   requiredBy:
-  - algorithm/two_sat.hpp
   - tree/tree_diameter.hpp
   - graph/scc_graph.hpp
-  - graph/dijkstra_fibheap.hpp
   - graph/dijkstra.hpp
+  - graph/dijkstra_fibheap.hpp
+  - algorithm/two_sat.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - test/algorithm/Two_Sat.test.cpp
-  - test/aoj/aoj_2450.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
-  - test/tree/level_ancestor_lca.test.cpp
-  - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Tree_Diameter.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+  - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
-  - test/graph/Biconnected_Components.test.cpp
-  - test/graph/dijkstra.test.cpp
+  - test/tree/level_ancestor_lca.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
+  - test/aoj/aoj_2450.test.cpp
   - test/graph/scc_graph.test.cpp
   - test/graph/fibonacci_heap.test.cpp
+  - test/graph/dijkstra.test.cpp
+  - test/graph/Biconnected_Components.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
+  - test/algorithm/Two_Sat.test.cpp
 documentation_of: graph/template.hpp
 layout: document
 redirect_from:

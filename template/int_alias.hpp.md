@@ -11,16 +11,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
+  - icon: ':x:'
+    path: math/DirichletSeries.hpp
+    title: Dirichlet Series
   - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: math/inversion_number.hpp
   - icon: ':warning:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -54,12 +57,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
+  - icon: ':x:'
+    path: test/math/Sum_of_Totient_Function.test.cpp
+    title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -136,25 +142,27 @@ data:
   requiredBy:
   - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
-  - math/linear_sieve.hpp
-  - math/inversion_number.hpp
-  - convolution/online_convolution.hpp
-  - template/template.hpp
   - template/utility.hpp
+  - template/template.hpp
+  - math/inversion_number.hpp
+  - math/linear_sieve.hpp
+  - math/DirichletSeries.hpp
+  - convolution/online_convolution.hpp
   timestamp: '2023-08-11 00:25:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - test/data_structure/Static_Range_Frequency.test.cpp
-  - test/data_structure/Range_Kth_Smallest.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Inversion_Number.test.cpp
+  - test/data_structure/Range_Kth_Smallest.test.cpp
+  - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Static_Range_Frequency.test.cpp
   - test/tree/Tree_Diameter.test.cpp
-  - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp
+  - test/graph/dijkstra.test.cpp
+  - test/math/Inversion_Number.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: template/int_alias.hpp
 layout: document
 redirect_from:

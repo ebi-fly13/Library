@@ -2,16 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/math/Sum_of_Totient_Function.test.cpp
+    title: test/math/Sum_of_Totient_Function.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/debug_template.hpp\"\n\n#include <iostream>\n\n\
@@ -35,9 +38,10 @@ data:
   requiredBy:
   - template/template.hpp
   timestamp: '2023-08-10 23:52:27+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: template/debug_template.hpp
 layout: document
 redirect_from:

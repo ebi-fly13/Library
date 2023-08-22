@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []
@@ -151,8 +151,8 @@ data:
   timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Static_Range_Frequency.test.cpp
   - test/data_structure/Range_Kth_Smallest.test.cpp
+  - test/data_structure/Static_Range_Frequency.test.cpp
 documentation_of: data_structure/WaveletMatrix.hpp
 layout: document
 title: Wavelet Matrix

@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -232,8 +232,8 @@ data:
   timestamp: '2023-08-16 10:56:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+  - test/convolution/Convolution_Mod_2_64.test.cpp
 documentation_of: convolution/convolution_mod_2_64.hpp
 layout: document
 title: Convolution ($\mod 2^{64}$)
