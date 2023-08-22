@@ -1,63 +1,97 @@
 #pragma once
 
-/*
-    verify: https://atcoder.jp/contests/arc116/submissions/21477123
-    refernce:
-   https://maspypy.com/dirichlet-%e7%a9%8d%e3%81%a8%e3%80%81%e6%95%b0%e8%ab%96%e9%96%a2%e6%95%b0%e3%81%ae%e7%b4%af%e7%a9%8d%e5%92%8c#toc4
-*/
-
-#include <cmath>
-#include <cstdint>
+#include <functional>
 #include <vector>
+
+#include "../template/int_alias.hpp"
 
 namespace ebi {
 
-template <class T> struct DirichletSeries {
+template <class T, int id> struct DirichletSeries {
   private:
-    using Self = DirichletSeries<T>;
-    using size_t = std::size_t;
-    using u64 = std::uint_fast64_t;
+    using Self = DirichletSeries<T, id>;
 
-    static size_t N, K, L;
-    std::vector<T> a, A;
+    void set(std::function<T(i64)> f, std::function<T(i64)> F) {
+        for (int i = 1; i <= K; i++) {
+            a[i] = f(i);
+        }
+        for (int i = 1; i <= L; i++) {
+            A[i] = F(N / i);
+        }
+    }
 
   public:
     DirichletSeries() : a(K + 1), A(L + 1) {}
 
+    DirichletSeries(std::function<T(i64)> f, std::function<T(i64)> F)
+        : a(K + 1), A(L + 1) {
+        set(f, F);
+    }
+
+    Self operator+(const Self &rhs) const noexcept {
+        return Self(*this) += rhs;
+    }
+    Self operator-(const Self &rhs) const noexcept {
+        return Self(*this) -= rhs;
+    }
     Self operator*(const Self &rhs) const noexcept {
         return Self(*this) *= rhs;
+    }
+    Self operator/(const Self &rhs) const noexcept {
+        return Self(*this) /= rhs;
+    }
+
+    Self operator+=(const Self &rhs) noexcept {
+        for (int i = 1; i <= K; i++) {
+            a[i] += rhs.a[i];
+        }
+        for (int i = 1; i <= L; i++) {
+            A[i] += rhs.A[i];
+        }
+        return *this;
+    }
+
+    Self operator-=(const Self &rhs) noexcept {
+        for (int i = 1; i <= K; i++) {
+            a[i] -= rhs.a[i];
+        }
+        for (int i = 1; i <= L; i++) {
+            A[i] -= rhs.A[i];
+        }
+        return *this;
     }
 
     Self operator*=(const Self &rhs) noexcept {
         Self ret;
-        for (size_t i = 1; i < K + 1; ++i) {
-            for (size_t j = 1; j < K / i + 1; ++j) {
+        for (int i = 1; i <= K; ++i) {
+            for (int j = 1; i * j <= K; ++j) {
                 ret.a[i * j] += a[i] * rhs.a[j];
             }
         }
         std::vector<T> sum_a = a, sum_b = rhs.a;
-        for (size_t i = 1; i < K; ++i) {
+        for (int i = 1; i < K; ++i) {
             sum_a[i + 1] += sum_a[i];
             sum_b[i + 1] += sum_b[i];
         }
-        auto get_A = [&](size_t x) -> T {
+        auto get_A = [&](i64 x) -> T {
             if (x <= K) {
                 return sum_a[x];
             } else {
                 return A[N / x];
             }
         };
-        auto get_B = [&](size_t x) -> T {
+        auto get_B = [&](i64 x) -> T {
             if (x <= K) {
                 return sum_b[x];
             } else {
                 return rhs.A[N / x];
             }
         };
-        for (size_t l = 1; l < L + 1; ++l) {
-            size_t n = N / l;
-            size_t m = std::floor(std::sqrt(n));
-            for (size_t i = 1; i < m + 1; ++i) {
+        for (i64 l = L, m = 1; l <= L; ++l) {
+            i64 n = N / l;
+            while (m * m <= n) m++;
+            m--;
+            for (int i = 1; i <= m; ++i) {
                 ret.A[l] +=
                     a[i] * get_B(n / i) + rhs.a[i] * (get_A(n / i) - get_A(m));
             }
@@ -65,10 +99,55 @@ template <class T> struct DirichletSeries {
         return *this = ret;
     }
 
+    // c = a / b
+    Self operator/=(const Self &b) noexcept {
+        Self c = *this;
+        T inv_a = b.a[1].inv();
+        for (int i = 1; i <= K; i++) {
+            c.a[i] *= inv_a;
+            for (int j = 2; i * j <= K; j++) {
+                c.a[i * j] -= c.a[i] * b.a[j];
+            }
+        }
+        std::vector<T> sum_b = b.a, sum_c = c.a;
+        for (int i = 1; i < K; ++i) {
+            sum_b[i + 1] += sum_b[i];
+            sum_c[i + 1] += sum_c[i];
+        }
+        auto get_B = [&](i64 x) -> T {
+            if (x <= K) {
+                return sum_b[x];
+            } else {
+                return b.A[N / x];
+            }
+        };
+        auto get_C = [&](i64 x) -> T {
+            if (x <= K) {
+                return sum_c[x];
+            } else {
+                return c.A[N / x];
+            }
+        };
+        for (i64 l = L, m = 1; l >= 1; l--) {
+            i64 n = N / l;
+            while (m * m <= n) m++;
+            m--;
+            for (int i = 2; i <= m; i++) {
+                c.A[l] -= b.a[i] * get_C(n / i);
+            }
+
+            for (int i = 1; i <= m; i++) {
+                c.A[l] -= c.a[i] * (get_B(n / i) - get_B(m));
+            }
+            c.A[l] *= inv_a;
+        }
+        return *this = c;
+    }
+
     Self pow(u64 n) const {
         Self res;
         res.a[1] = 1;
-        res.A.assign(L + 1, 1);
+        std::fill(res.A.begin(), res.A.end(), 1);
         Self x = *this;
         while (n > 0) {
             if (n & 1) res = res * x;
@@ -84,22 +163,47 @@ template <class T> struct DirichletSeries {
 
     static Self zeta() {
         Self ret;
-        ret.a.assign(K + 1, 1);
-        for (size_t i = 1; i < L + 1; ++i) {
+        std::fill(ret.a.begin(), ret.a.end(), 1);
+        for (int i = 1; i <= L; i++) {
             ret.A[i] = N / i;
         }
         return ret;
     }
 
-    static void set_size(size_t n) {
-        N = n;
-        K = std::ceil(std::cbrt(n * n));
-        L = std::ceil(std::cbrt(n));
+    static Self zeta1() {
+        Self ret;
+        std::iota(ret.a.begin(), ret.a.end(), 0);
+        T inv2 = T(2).inv();
+        for (int i = 1; i <= L; i++) {
+            i64 n = N / i;
+            ret.A[i] = T(n) * T(n + 1) * inv2;
+        }
+        return ret;
     }
+
+    static void set_size(i64 n) {
+        N = n;
+        if (N <= 10) {
+            K = N;
+            L = 1;
+        } else if (N <= 1000) {
+            K = 1;
+            while (K * K < N) K++;
+            L = (N + K - 1) / K;
+        } else {
+            L = 1;
+            while (L * L * L / 50 < N) L++;
+            K = (N + L - 1) / L;
+        }
+    }
+
+  private:
+    static i64 N, K, L;
+    std::vector<T> a, A;
 };
 
-template <class T> size_t DirichletSeries<T>::N = 1000000;
-template <class T> size_t DirichletSeries<T>::K = 10000;
-template <class T> size_t DirichletSeries<T>::L = 100;
+template <class T, int id> i64 DirichletSeries<T, id>::N = 1000000;
+template <class T, int id> i64 DirichletSeries<T, id>::K = 10000;
+template <class T, int id> i64 DirichletSeries<T, id>::L = 100;
 
 }  // namespace ebi
