@@ -17,7 +17,7 @@ struct eratosthenes_sieve {
     std::vector<bool> table;
 
   public:
-    eratosthenes_sieve(int n) : n(n), table(std::vector<bool>(n + 1, true)) {
+    eratosthenes_sieve(int _n) : n(_n), table(std::vector<bool>(n + 1, true)) {
         table[1] = false;
         for (i64 i = 2; i * i <= n; i++) {
             if (!table[i]) continue;

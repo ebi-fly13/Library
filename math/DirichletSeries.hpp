@@ -25,8 +25,8 @@ template <class T, int id> struct DirichletSeries {
   public:
     DirichletSeries() : a(K + 1), A(L + 1) {}
 
-    DirichletSeries(std::function<T(i64)> f, std::function<T(i64)> F, bool is_multiplicative = false)
-        : a(K + 1), A(L + 1), is_multiplicative(is_multiplicative)  {
+    DirichletSeries(std::function<T(i64)> f, std::function<T(i64)> F, bool _is_multiplicative = false)
+        : a(K + 1), A(L + 1), is_multiplicative(_is_multiplicative)  {
         set(f, F);
     }
 
@@ -184,6 +184,7 @@ template <class T, int id> struct DirichletSeries {
 
     static Self zeta1() {
         Self ret;
+        ret.is_multiplicative = true;
         std::iota(ret.a.begin(), ret.a.end(), 0);
         T inv2 = T(2).inv();
         for (int i = 1; i <= L; i++) {
@@ -191,6 +192,19 @@ template <class T, int id> struct DirichletSeries {
             ret.A[i] = T(n) * T(n + 1) * inv2;
         }
         return ret;
+    }
+
+    static Self zeta2() {
+        Self ret;
+        ret.is_multiplicative = true;
+        for(int i = 1; i <= K; i++) {
+            ret.a[i] = i * i;
+        }
+        T inv6 = T(6).inv();
+        for(int i = 1; i <= L; i++) {
+            i64 n = N / i;
+            ret.A[i] = T(n) * T(n + 1) * T(2 * n + 1) * inv6;
+        }
     }
 
     static void set_size(i64 n) {

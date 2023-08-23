@@ -37,10 +37,10 @@ std::vector<T> dirichlet_convolution_left_is_multiplicative_function(
     for (auto p : primes) {
         if (p > n) break;
         for (int i = n / p; i >= 1; i--) {
-            int m = p * i;
+            int s = p * i;
             int pk = p, j = i;
             while (1) {
-                c[m] += a[pk] * c[j];
+                c[s] += a[pk] * c[j];
                 if (j % p != 0) break;
                 pk *= p;
                 j /= p;

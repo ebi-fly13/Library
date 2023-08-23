@@ -76,7 +76,7 @@ struct linear_sieve {
         res.emplace_back(1);
         auto pf = factorize(x);
         for (auto p : pf) {
-            int sz = res.size();
+            int sz = (int)res.size();
             for (int i = 0; i < sz; i++) {
                 int ret = 1;
                 for (int j = 0; j < p.second; j++) {
