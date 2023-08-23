@@ -237,7 +237,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
     - icon: ':heavy_check_mark:'
@@ -245,7 +245,7 @@ data:
       title: Two Edge Connected Components
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/DirichletSeries.hpp
       title: Dirichlet Series
     - icon: ':heavy_check_mark:'
@@ -343,19 +343,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -395,13 +395,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/hash.hpp
       title: Hash structure
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
     - icon: ':heavy_check_mark:'
@@ -709,7 +709,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
       title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Totient_Function.test.cpp
       title: test/math/Sum_of_Totient_Function.test.cpp
     - icon: ':heavy_check_mark:'

@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_totient_function
@@ -50,13 +50,13 @@ data:
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
     \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 2 \"math/DirichletSeries.hpp\"\n\r\n#include <functional>\r\n#line\
-    \ 5 \"math/DirichletSeries.hpp\"\n\r\n#line 2 \"template/int_alias.hpp\"\n\n#include\
-    \ <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\n\
+    \ ebi\n#line 2 \"math/DirichletSeries.hpp\"\n\r\n#include <functional>\r\n#include\
+    \ <numeric>\r\n#line 6 \"math/DirichletSeries.hpp\"\n\r\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#include <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\n\
     using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
     using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
     using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}\n#line 7 \"math/DirichletSeries.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate\
+    \n}\n#line 8 \"math/DirichletSeries.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate\
     \ <class T, int id> struct DirichletSeries {\r\n  private:\r\n    using Self =\
     \ DirichletSeries<T, id>;\r\n\r\n    void set(std::function<T(i64)> f, std::function<T(i64)>\
     \ F) {\r\n        for (int i = 1; i <= K; i++) {\r\n            a[i] = f(i);\r\
@@ -77,20 +77,20 @@ data:
     \    a[i] -= rhs.a[i];\r\n        }\r\n        for (int i = 1; i <= L; i++) {\r\
     \n            A[i] -= rhs.A[i];\r\n        }\r\n        return *this;\r\n    }\r\
     \n\r\n    Self operator*=(const Self &rhs) noexcept {\r\n        Self ret;\r\n\
-    \        for (int i = 1; i <= K; ++i) {\r\n            for (int j = 1; i * j <=\
-    \ K; ++j) {\r\n                ret.a[i * j] += a[i] * rhs.a[j];\r\n          \
+    \        for (int i = 1; i <= K; i++) {\r\n            for (int j = 1; i * j <=\
+    \ K; j++) {\r\n                ret.a[i * j] += a[i] * rhs.a[j];\r\n          \
     \  }\r\n        }\r\n        std::vector<T> sum_a = a, sum_b = rhs.a;\r\n    \
-    \    for (int i = 1; i < K; ++i) {\r\n            sum_a[i + 1] += sum_a[i];\r\n\
+    \    for (int i = 1; i < K; i++) {\r\n            sum_a[i + 1] += sum_a[i];\r\n\
     \            sum_b[i + 1] += sum_b[i];\r\n        }\r\n        auto get_A = [&](i64\
     \ x) -> T {\r\n            if (x <= K) {\r\n                return sum_a[x];\r\
     \n            } else {\r\n                return A[N / x];\r\n            }\r\n\
     \        };\r\n        auto get_B = [&](i64 x) -> T {\r\n            if (x <=\
     \ K) {\r\n                return sum_b[x];\r\n            } else {\r\n       \
     \         return rhs.A[N / x];\r\n            }\r\n        };\r\n        for (i64\
-    \ l = L, m = 1; l <= L; ++l) {\r\n            i64 n = N / l;\r\n            while\
+    \ l = L, m = 1; l >= 1; l--) {\r\n            i64 n = N / l;\r\n            while\
     \ (m * m <= n) m++;\r\n            m--;\r\n            for (int i = 1; i <= m;\
-    \ ++i) {\r\n                ret.A[l] +=\r\n                    a[i] * get_B(n\
-    \ / i) + rhs.a[i] * (get_A(n / i) - get_A(m));\r\n            }\r\n        }\r\
+    \ i++) {\r\n                ret.A[l] +=\r\n                    a[i] * get_B(n\
+    \ / i) + (get_A(n / i) - get_A(m)) * rhs.a[i];\r\n            }\r\n        }\r\
     \n        return *this = ret;\r\n    }\r\n\r\n    // c = a / b\r\n    Self operator/=(const\
     \ Self &b) noexcept {\r\n        Self c = *this;\r\n        T inv_a = b.a[1].inv();\r\
     \n        for (int i = 1; i <= K; i++) {\r\n            c.a[i] *= inv_a;\r\n \
@@ -122,7 +122,7 @@ data:
     \ i <= L; i++) {\r\n            i64 n = N / i;\r\n            ret.A[i] = T(n)\
     \ * T(n + 1) * inv2;\r\n        }\r\n        return ret;\r\n    }\r\n\r\n    static\
     \ void set_size(i64 n) {\r\n        N = n;\r\n        if (N <= 10) {\r\n     \
-    \       K = N;\r\n            L = 1;\r\n        } else if (N <= 1000) {\r\n  \
+    \       K = N;\r\n            L = 1;\r\n        } else if (N <= 5000) {\r\n  \
     \          K = 1;\r\n            while (K * K < N) K++;\r\n            L = (N\
     \ + K - 1) / K;\r\n        } else {\r\n            L = 1;\r\n            while\
     \ (L * L * L / 50 < N) L++;\r\n            K = (N + L - 1) / L;\r\n        }\r\
@@ -135,15 +135,15 @@ data:
     #include <complex>\n#include <cstddef>\n#line 10 \"template/template.hpp\"\n#include\
     \ <cstdlib>\n#include <cstring>\n#line 13 \"template/template.hpp\"\n#include\
     \ <iomanip>\n#include <iostream>\n#include <limits>\n#include <map>\n#include\
-    \ <memory>\n#include <numeric>\n#include <optional>\n#include <queue>\n#include\
-    \ <random>\n#include <set>\n#include <stack>\n#include <string>\n#include <tuple>\n\
-    #include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n#include\
-    \ <utility>\n#line 31 \"template/template.hpp\"\n\n#define rep(i, a, n) for (int\
-    \ i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1);\
-    \ i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n);\
-    \ i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n\
-    #define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\
-    \n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \ <memory>\n#line 19 \"template/template.hpp\"\n#include <optional>\n#include\
+    \ <queue>\n#include <random>\n#include <set>\n#include <stack>\n#include <string>\n\
+    #include <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
+    #include <utility>\n#line 31 \"template/template.hpp\"\n\n#define rep(i, a, n)\
+    \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
+    \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
     \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
     \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
@@ -263,8 +263,8 @@ data:
   isVerificationFile: true
   path: test/math/Sum_of_Totient_Function.test.cpp
   requiredBy: []
-  timestamp: '2023-08-23 03:27:38+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-23 13:42:55+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sum_of_Totient_Function.test.cpp
 layout: document

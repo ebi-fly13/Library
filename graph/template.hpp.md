@@ -42,7 +42,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/scc_graph.test.cpp
     title: test/graph/scc_graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
@@ -63,9 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/lowest_common_ancestor.test.cpp
     title: test/tree/lowest_common_ancestor.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
@@ -100,7 +100,7 @@ data:
   - graph/dijkstra_fibheap.hpp
   - algorithm/two_sat.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp

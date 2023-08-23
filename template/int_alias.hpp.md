@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
   - icon: ':heavy_check_mark:'
@@ -20,10 +20,10 @@ data:
   - icon: ':warning:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -57,15 +57,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -149,7 +149,7 @@ data:
   - math/DirichletSeries.hpp
   - convolution/online_convolution.hpp
   timestamp: '2023-08-11 00:25:56+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
