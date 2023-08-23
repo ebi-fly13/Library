@@ -22,7 +22,7 @@ data:
     \n#line 6 \"math/eratosthenes_sieve.hpp\"\n\r\n/*\r\n    reference: https://37zigen.com/sieve-eratosthenes/\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\nstruct eratosthenes_sieve {\r\n  private:\r\
     \n    using i64 = std::int_fast64_t;\r\n    int n;\r\n    std::vector<bool> table;\r\
-    \n\r\n  public:\r\n    eratosthenes_sieve(int n) : n(n), table(std::vector<bool>(n\
+    \n\r\n  public:\r\n    eratosthenes_sieve(int _n) : n(_n), table(std::vector<bool>(n\
     \ + 1, true)) {\r\n        table[1] = false;\r\n        for (i64 i = 2; i * i\
     \ <= n; i++) {\r\n            if (!table[i]) continue;\r\n            for (i64\
     \ j = i; i * j <= n; j++) {\r\n                table[i * j] = false;\r\n     \
@@ -69,7 +69,7 @@ data:
   path: math/multiple_transform.hpp
   requiredBy:
   - convolution/gcd_convolution.hpp
-  timestamp: '2023-06-09 21:12:54+09:00'
+  timestamp: '2023-08-23 17:33:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Gcd_Convolution.test.cpp

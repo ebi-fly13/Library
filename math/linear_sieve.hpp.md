@@ -53,7 +53,7 @@ data:
     \            res.emplace_back(p, exp);\r\n        }\r\n        return res;\r\n\
     \    }\r\n\r\n    std::vector<int> divisors(int x) {\r\n        assert(x <= n);\r\
     \n        std::vector<int> res;\r\n        res.emplace_back(1);\r\n        auto\
-    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = res.size();\r\
+    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = (int)res.size();\r\
     \n            for (int i = 0; i < sz; i++) {\r\n                int ret = 1;\r\
     \n                for (int j = 0; j < p.second; j++) {\r\n                   \
     \ ret *= p.first;\r\n                    res.emplace_back(res[i] * ret);\r\n \
@@ -102,7 +102,7 @@ data:
     \            res.emplace_back(p, exp);\r\n        }\r\n        return res;\r\n\
     \    }\r\n\r\n    std::vector<int> divisors(int x) {\r\n        assert(x <= n);\r\
     \n        std::vector<int> res;\r\n        res.emplace_back(1);\r\n        auto\
-    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = res.size();\r\
+    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = (int)res.size();\r\
     \n            for (int i = 0; i < sz; i++) {\r\n                int ret = 1;\r\
     \n                for (int j = 0; j < p.second; j++) {\r\n                   \
     \ ret *= p.first;\r\n                    res.emplace_back(res[i] * ret);\r\n \
@@ -132,7 +132,7 @@ data:
   requiredBy:
   - math/DirichletSeries.hpp
   - convolution/dirichlet_convolution.hpp
-  timestamp: '2023-08-23 15:28:07+09:00'
+  timestamp: '2023-08-23 17:33:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Totient_Function.test.cpp

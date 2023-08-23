@@ -70,7 +70,7 @@ data:
     \ \"math/eratosthenes_sieve.hpp\"\n\r\n/*\r\n    reference: https://37zigen.com/sieve-eratosthenes/\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\nstruct eratosthenes_sieve {\r\n  private:\r\
     \n    using i64 = std::int_fast64_t;\r\n    int n;\r\n    std::vector<bool> table;\r\
-    \n\r\n  public:\r\n    eratosthenes_sieve(int n) : n(n), table(std::vector<bool>(n\
+    \n\r\n  public:\r\n    eratosthenes_sieve(int _n) : n(_n), table(std::vector<bool>(n\
     \ + 1, true)) {\r\n        table[1] = false;\r\n        for (i64 i = 2; i * i\
     \ <= n; i++) {\r\n            if (!table[i]) continue;\r\n            for (i64\
     \ j = i; i * j <= n; j++) {\r\n                table[i * j] = false;\r\n     \
@@ -105,7 +105,7 @@ data:
     \            res.emplace_back(p, exp);\r\n        }\r\n        return res;\r\n\
     \    }\r\n\r\n    std::vector<int> divisors(int x) {\r\n        assert(x <= n);\r\
     \n        std::vector<int> res;\r\n        res.emplace_back(1);\r\n        auto\
-    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = res.size();\r\
+    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = (int)res.size();\r\
     \n            for (int i = 0; i < sz; i++) {\r\n                int ret = 1;\r\
     \n                for (int j = 0; j < p.second; j++) {\r\n                   \
     \ ret *= p.first;\r\n                    res.emplace_back(res[i] * ret);\r\n \
@@ -140,9 +140,9 @@ data:
     \ std::vector<int> primes;\n    if (m < n) {\n        while (m < n) m <<= 1;\n\
     \        eratosthenes_sieve sieve(m);\n        primes = sieve.prime_table();\n\
     \    }\n    std::vector<T> c = b;\n    for (auto p : primes) {\n        if (p\
-    \ > n) break;\n        for (int i = n / p; i >= 1; i--) {\n            int m =\
+    \ > n) break;\n        for (int i = n / p; i >= 1; i--) {\n            int s =\
     \ p * i;\n            int pk = p, j = i;\n            while (1) {\n          \
-    \      c[m] += a[pk] * c[j];\n                if (j % p != 0) break;\n       \
+    \      c[s] += a[pk] * c[j];\n                if (j % p != 0) break;\n       \
     \         pk *= p;\n                j /= p;\n            }\n        }\n    }\n\
     \    return c;\n}\n\ntemplate <class T>\nstd::vector<T> dirichlet_convolution_multiplicative_function(\n\
     \    const std::vector<T> &a, const std::vector<T> &b) {\n    assert(a.size()\
@@ -161,8 +161,8 @@ data:
     \         a[i] = f(i);\r\n        }\r\n        for (int i = 1; i <= L; i++) {\r\
     \n            A[i] = F(N / i);\r\n        }\r\n    }\r\n\r\n  public:\r\n    DirichletSeries()\
     \ : a(K + 1), A(L + 1) {}\r\n\r\n    DirichletSeries(std::function<T(i64)> f,\
-    \ std::function<T(i64)> F, bool is_multiplicative = false)\r\n        : a(K +\
-    \ 1), A(L + 1), is_multiplicative(is_multiplicative)  {\r\n        set(f, F);\r\
+    \ std::function<T(i64)> F, bool _is_multiplicative = false)\r\n        : a(K +\
+    \ 1), A(L + 1), is_multiplicative(_is_multiplicative)  {\r\n        set(f, F);\r\
     \n    }\r\n\r\n    Self operator+(const Self &rhs) const noexcept {\r\n      \
     \  return Self(*this) += rhs;\r\n    }\r\n    Self operator-(const Self &rhs)\
     \ const noexcept {\r\n        return Self(*this) -= rhs;\r\n    }\r\n    Self\
@@ -222,38 +222,43 @@ data:
     \ Self zeta() {\r\n        Self ret;\r\n        std::fill(ret.a.begin(), ret.a.end(),\
     \ 1);\r\n        for (int i = 1; i <= L; i++) {\r\n            ret.A[i] = N /\
     \ i;\r\n        }\r\n        ret.is_multiplicative = true;\r\n        return ret;\r\
-    \n    }\r\n\r\n    static Self zeta1() {\r\n        Self ret;\r\n        std::iota(ret.a.begin(),\
-    \ ret.a.end(), 0);\r\n        T inv2 = T(2).inv();\r\n        for (int i = 1;\
-    \ i <= L; i++) {\r\n            i64 n = N / i;\r\n            ret.A[i] = T(n)\
-    \ * T(n + 1) * inv2;\r\n        }\r\n        return ret;\r\n    }\r\n\r\n    static\
-    \ void set_size(i64 n) {\r\n        N = n;\r\n        if (N <= 10) {\r\n     \
-    \       K = N;\r\n            L = 1;\r\n        } else if (N <= 5000) {\r\n  \
-    \          K = 1;\r\n            while (K * K < N) K++;\r\n            L = (N\
-    \ + K - 1) / K;\r\n        } else {\r\n            L = 1;\r\n            while\
-    \ (L * L * L / 50 < N) L++;\r\n            K = (N + L - 1) / L;\r\n        }\r\
-    \n    }\r\n\r\n    static void set_size_multiplicative(i64 n) {\r\n        N =\
-    \ n;\r\n        L = 1;\r\n        while(L * L * L < N) L++;\r\n        K = L *\
-    \ L;\r\n    }\r\n\r\n  private:\r\n    static i64 N, K, L;\r\n    static std::vector<std::pair<int,int>>\
-    \ prime_pow_table;\r\n    std::vector<T> a, A;\r\n    bool is_multiplicative=\
-    \ false;\r\n};\r\n\r\ntemplate <class T, int id> i64 DirichletSeries<T, id>::N\
-    \ = 1000000;\r\ntemplate <class T, int id> i64 DirichletSeries<T, id>::K = 10000;\r\
-    \ntemplate <class T, int id> i64 DirichletSeries<T, id>::L = 100;\r\ntemplate\
-    \ <class T, int id> std::vector<std::pair<int,int>> DirichletSeries<T, id>::prime_pow_table\
-    \ = {};\r\n\r\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\n#include\
-    \ <algorithm>\n#include <bitset>\n#line 4 \"template/template.hpp\"\n#include\
-    \ <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n#include\
-    \ <cstddef>\n#line 10 \"template/template.hpp\"\n#include <cstdlib>\n#include\
-    \ <cstring>\n#line 13 \"template/template.hpp\"\n#include <iomanip>\n#include\
-    \ <iostream>\n#include <limits>\n#include <map>\n#include <memory>\n#line 19 \"\
-    template/template.hpp\"\n#include <optional>\n#include <queue>\n#include <random>\n\
-    #include <set>\n#include <stack>\n#include <string>\n#include <tuple>\n#include\
-    \ <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n#include\
-    \ <utility>\n#line 31 \"template/template.hpp\"\n\n#define rep(i, a, n) for (int\
-    \ i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1);\
-    \ i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n);\
-    \ i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n\
-    #define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\
-    \n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n    }\r\n\r\n    static Self zeta1() {\r\n        Self ret;\r\n        ret.is_multiplicative\
+    \ = true;\r\n        std::iota(ret.a.begin(), ret.a.end(), 0);\r\n        T inv2\
+    \ = T(2).inv();\r\n        for (int i = 1; i <= L; i++) {\r\n            i64 n\
+    \ = N / i;\r\n            ret.A[i] = T(n) * T(n + 1) * inv2;\r\n        }\r\n\
+    \        return ret;\r\n    }\r\n\r\n    static Self zeta2() {\r\n        Self\
+    \ ret;\r\n        ret.is_multiplicative = true;\r\n        for(int i = 1; i <=\
+    \ K; i++) {\r\n            ret.a[i] = i * i;\r\n        }\r\n        T inv6 =\
+    \ T(6).inv();\r\n        for(int i = 1; i <= L; i++) {\r\n            i64 n =\
+    \ N / i;\r\n            ret.A[i] = T(n) * T(n + 1) * T(2 * n + 1) * inv6;\r\n\
+    \        }\r\n    }\r\n\r\n    static void set_size(i64 n) {\r\n        N = n;\r\
+    \n        if (N <= 10) {\r\n            K = N;\r\n            L = 1;\r\n     \
+    \   } else if (N <= 5000) {\r\n            K = 1;\r\n            while (K * K\
+    \ < N) K++;\r\n            L = (N + K - 1) / K;\r\n        } else {\r\n      \
+    \      L = 1;\r\n            while (L * L * L / 50 < N) L++;\r\n            K\
+    \ = (N + L - 1) / L;\r\n        }\r\n    }\r\n\r\n    static void set_size_multiplicative(i64\
+    \ n) {\r\n        N = n;\r\n        L = 1;\r\n        while(L * L * L < N) L++;\r\
+    \n        K = L * L;\r\n    }\r\n\r\n  private:\r\n    static i64 N, K, L;\r\n\
+    \    static std::vector<std::pair<int,int>> prime_pow_table;\r\n    std::vector<T>\
+    \ a, A;\r\n    bool is_multiplicative= false;\r\n};\r\n\r\ntemplate <class T,\
+    \ int id> i64 DirichletSeries<T, id>::N = 1000000;\r\ntemplate <class T, int id>\
+    \ i64 DirichletSeries<T, id>::K = 10000;\r\ntemplate <class T, int id> i64 DirichletSeries<T,\
+    \ id>::L = 100;\r\ntemplate <class T, int id> std::vector<std::pair<int,int>>\
+    \ DirichletSeries<T, id>::prime_pow_table = {};\r\n\r\n}  // namespace ebi\n#line\
+    \ 1 \"template/template.hpp\"\n#include <algorithm>\n#include <bitset>\n#line\
+    \ 4 \"template/template.hpp\"\n#include <chrono>\n#include <climits>\n#include\
+    \ <cmath>\n#include <complex>\n#include <cstddef>\n#line 10 \"template/template.hpp\"\
+    \n#include <cstdlib>\n#include <cstring>\n#line 13 \"template/template.hpp\"\n\
+    #include <iomanip>\n#include <iostream>\n#include <limits>\n#include <map>\n#include\
+    \ <memory>\n#line 19 \"template/template.hpp\"\n#include <optional>\n#include\
+    \ <queue>\n#include <random>\n#include <set>\n#include <stack>\n#include <string>\n\
+    #include <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
+    #include <utility>\n#line 31 \"template/template.hpp\"\n\n#define rep(i, a, n)\
+    \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
+    \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
     \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
     \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
@@ -376,7 +381,7 @@ data:
   isVerificationFile: true
   path: test/math/Sum_of_Totient_Function.test.cpp
   requiredBy: []
-  timestamp: '2023-08-23 15:29:31+09:00'
+  timestamp: '2023-08-23 17:33:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sum_of_Totient_Function.test.cpp

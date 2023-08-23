@@ -20,7 +20,7 @@ data:
     \ <cstdint>\r\n#include <vector>\r\n\r\n/*\r\n    reference: https://37zigen.com/sieve-eratosthenes/\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\nstruct eratosthenes_sieve {\r\n  private:\r\
     \n    using i64 = std::int_fast64_t;\r\n    int n;\r\n    std::vector<bool> table;\r\
-    \n\r\n  public:\r\n    eratosthenes_sieve(int n) : n(n), table(std::vector<bool>(n\
+    \n\r\n  public:\r\n    eratosthenes_sieve(int _n) : n(_n), table(std::vector<bool>(n\
     \ + 1, true)) {\r\n        table[1] = false;\r\n        for (i64 i = 2; i * i\
     \ <= n; i++) {\r\n            if (!table[i]) continue;\r\n            for (i64\
     \ j = i; i * j <= n; j++) {\r\n                table[i * j] = false;\r\n     \
@@ -47,7 +47,7 @@ data:
   isVerificationFile: true
   path: test/math/Enumerate_Primes.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 15:16:58+09:00'
+  timestamp: '2023-08-23 17:33:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Enumerate_Primes.test.cpp

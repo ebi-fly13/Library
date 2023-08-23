@@ -29,7 +29,7 @@ data:
     \ https://37zigen.com/sieve-eratosthenes/\r\n*/\r\n\r\nnamespace ebi {\r\n\r\n\
     struct eratosthenes_sieve {\r\n  private:\r\n    using i64 = std::int_fast64_t;\r\
     \n    int n;\r\n    std::vector<bool> table;\r\n\r\n  public:\r\n    eratosthenes_sieve(int\
-    \ n) : n(n), table(std::vector<bool>(n + 1, true)) {\r\n        table[1] = false;\r\
+    \ _n) : n(_n), table(std::vector<bool>(n + 1, true)) {\r\n        table[1] = false;\r\
     \n        for (i64 i = 2; i * i <= n; i++) {\r\n            if (!table[i]) continue;\r\
     \n            for (i64 j = i; i * j <= n; j++) {\r\n                table[i *\
     \ j] = false;\r\n            }\r\n        }\r\n    }\r\n\r\n    bool is_prime(int\
@@ -68,7 +68,7 @@ data:
     \            res.emplace_back(p, exp);\r\n        }\r\n        return res;\r\n\
     \    }\r\n\r\n    std::vector<int> divisors(int x) {\r\n        assert(x <= n);\r\
     \n        std::vector<int> res;\r\n        res.emplace_back(1);\r\n        auto\
-    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = res.size();\r\
+    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = (int)res.size();\r\
     \n            for (int i = 0; i < sz; i++) {\r\n                int ret = 1;\r\
     \n                for (int j = 0; j < p.second; j++) {\r\n                   \
     \ ret *= p.first;\r\n                    res.emplace_back(res[i] * ret);\r\n \
@@ -103,9 +103,9 @@ data:
     \ std::vector<int> primes;\n    if (m < n) {\n        while (m < n) m <<= 1;\n\
     \        eratosthenes_sieve sieve(m);\n        primes = sieve.prime_table();\n\
     \    }\n    std::vector<T> c = b;\n    for (auto p : primes) {\n        if (p\
-    \ > n) break;\n        for (int i = n / p; i >= 1; i--) {\n            int m =\
+    \ > n) break;\n        for (int i = n / p; i >= 1; i--) {\n            int s =\
     \ p * i;\n            int pk = p, j = i;\n            while (1) {\n          \
-    \      c[m] += a[pk] * c[j];\n                if (j % p != 0) break;\n       \
+    \      c[s] += a[pk] * c[j];\n                if (j % p != 0) break;\n       \
     \         pk *= p;\n                j /= p;\n            }\n        }\n    }\n\
     \    return c;\n}\n\ntemplate <class T>\nstd::vector<T> dirichlet_convolution_multiplicative_function(\n\
     \    const std::vector<T> &a, const std::vector<T> &b) {\n    assert(a.size()\
@@ -131,9 +131,9 @@ data:
     \ std::vector<int> primes;\n    if (m < n) {\n        while (m < n) m <<= 1;\n\
     \        eratosthenes_sieve sieve(m);\n        primes = sieve.prime_table();\n\
     \    }\n    std::vector<T> c = b;\n    for (auto p : primes) {\n        if (p\
-    \ > n) break;\n        for (int i = n / p; i >= 1; i--) {\n            int m =\
+    \ > n) break;\n        for (int i = n / p; i >= 1; i--) {\n            int s =\
     \ p * i;\n            int pk = p, j = i;\n            while (1) {\n          \
-    \      c[m] += a[pk] * c[j];\n                if (j % p != 0) break;\n       \
+    \      c[s] += a[pk] * c[j];\n                if (j % p != 0) break;\n       \
     \         pk *= p;\n                j /= p;\n            }\n        }\n    }\n\
     \    return c;\n}\n\ntemplate <class T>\nstd::vector<T> dirichlet_convolution_multiplicative_function(\n\
     \    const std::vector<T> &a, const std::vector<T> &b) {\n    assert(a.size()\
@@ -154,7 +154,7 @@ data:
   path: convolution/dirichlet_convolution.hpp
   requiredBy:
   - math/DirichletSeries.hpp
-  timestamp: '2023-08-23 15:28:07+09:00'
+  timestamp: '2023-08-23 17:33:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Totient_Function.test.cpp
