@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../template/int_alias.hpp"
+#include "../convolution/dirichlet_convolution.hpp"
 
 namespace ebi {
 
@@ -24,8 +25,8 @@ template <class T, int id> struct DirichletSeries {
   public:
     DirichletSeries() : a(K + 1), A(L + 1) {}
 
-    DirichletSeries(std::function<T(i64)> f, std::function<T(i64)> F)
-        : a(K + 1), A(L + 1) {
+    DirichletSeries(std::function<T(i64)> f, std::function<T(i64)> F, bool is_multiplicative = false)
+        : a(K + 1), A(L + 1), is_multiplicative(is_multiplicative)  {
         set(f, F);
     }
 
@@ -64,10 +65,18 @@ template <class T, int id> struct DirichletSeries {
 
     Self operator*=(const Self &rhs) noexcept {
         Self ret;
-        for (int i = 1; i <= K; i++) {
-            for (int j = 1; i * j <= K; j++) {
-                ret.a[i * j] += a[i] * rhs.a[j];
-            }
+        if(is_multiplicative && rhs.is_multiplicative) {
+            ret.a = dirichlet_convolution_multiplicative_function(a, rhs.a);
+            ret.is_multiplicative = true;
+        }
+        else if(is_multiplicative) {
+            ret.a = dirichlet_convolution_left_is_multiplicative_function(a, rhs.a);
+        }
+        else if(rhs.is_multiplicative) {
+            ret.a = dirichlet_convolution_left_is_multiplicative_function(rhs.a, a);
+        }
+        else {
+            ret.a = dirichlet_convolution(a, rhs.a);
         }
         std::vector<T> sum_a = a, sum_b = rhs.a;
         for (int i = 1; i < K; i++) {
@@ -97,7 +106,7 @@ template <class T, int id> struct DirichletSeries {
                     a[i] * get_B(n / i) + (get_A(n / i) - get_A(m)) * rhs.a[i];
             }
         }
-        return *this = ret;
+        return ret;
     }
 
     // c = a / b
@@ -148,6 +157,7 @@ template <class T, int id> struct DirichletSeries {
     Self pow(u64 n) const {
         Self res;
         res.a[1] = 1;
+        res.is_multiplicative = is_multiplicative;
         std::fill(res.A.begin(), res.A.end(), 1);
         Self x = *this;
         while (n > 0) {
@@ -168,6 +178,7 @@ template <class T, int id> struct DirichletSeries {
         for (int i = 1; i <= L; i++) {
             ret.A[i] = N / i;
         }
+        ret.is_multiplicative = true;
         return ret;
     }
 
@@ -198,13 +209,23 @@ template <class T, int id> struct DirichletSeries {
         }
     }
 
+    static void set_size_multiplicative(i64 n) {
+        N = n;
+        L = 1;
+        while(L * L * L < N) L++;
+        K = L * L;
+    }
+
   private:
     static i64 N, K, L;
+    static std::vector<std::pair<int,int>> prime_pow_table;
     std::vector<T> a, A;
+    bool is_multiplicative= false;
 };
 
 template <class T, int id> i64 DirichletSeries<T, id>::N = 1000000;
 template <class T, int id> i64 DirichletSeries<T, id>::K = 10000;
 template <class T, int id> i64 DirichletSeries<T, id>::L = 100;
+template <class T, int id> std::vector<std::pair<int,int>> DirichletSeries<T, id>::prime_pow_table = {};
 
 }  // namespace ebi

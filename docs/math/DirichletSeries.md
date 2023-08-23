@@ -51,3 +51,7 @@ $\zeta(s-1) = \sum_{n = 1}^{\infty} n \times s^{-n}$ のDirichlet級数を返す
 ### set_size(i64 n)
 
 長さを $n$ にする。
+
+### set_size_multiplicative(i64 n)
+
+長さを $n$ として、 $a$ が乗法的関数のとき、計算量が良くなるような分割になるようにする。
