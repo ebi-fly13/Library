@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <numeric>
 #include <vector>
 
 #include "../template/int_alias.hpp"
@@ -63,13 +64,13 @@ template <class T, int id> struct DirichletSeries {
 
     Self operator*=(const Self &rhs) noexcept {
         Self ret;
-        for (int i = 1; i <= K; ++i) {
-            for (int j = 1; i * j <= K; ++j) {
+        for (int i = 1; i <= K; i++) {
+            for (int j = 1; i * j <= K; j++) {
                 ret.a[i * j] += a[i] * rhs.a[j];
             }
         }
         std::vector<T> sum_a = a, sum_b = rhs.a;
-        for (int i = 1; i < K; ++i) {
+        for (int i = 1; i < K; i++) {
             sum_a[i + 1] += sum_a[i];
             sum_b[i + 1] += sum_b[i];
         }
@@ -87,13 +88,13 @@ template <class T, int id> struct DirichletSeries {
                 return rhs.A[N / x];
             }
         };
-        for (i64 l = L, m = 1; l <= L; ++l) {
+        for (i64 l = L, m = 1; l >= 1; l--) {
             i64 n = N / l;
             while (m * m <= n) m++;
             m--;
-            for (int i = 1; i <= m; ++i) {
+            for (int i = 1; i <= m; i++) {
                 ret.A[l] +=
-                    a[i] * get_B(n / i) + rhs.a[i] * (get_A(n / i) - get_A(m));
+                    a[i] * get_B(n / i) + (get_A(n / i) - get_A(m)) * rhs.a[i];
             }
         }
         return *this = ret;
@@ -186,7 +187,7 @@ template <class T, int id> struct DirichletSeries {
         if (N <= 10) {
             K = N;
             L = 1;
-        } else if (N <= 1000) {
+        } else if (N <= 5000) {
             K = 1;
             while (K * K < N) K++;
             L = (N + K - 1) / K;
