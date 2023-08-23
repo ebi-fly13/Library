@@ -4,11 +4,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: convolution/dirichlet_convolution.hpp
+    title: Dirichlet Convolution
+  - icon: ':heavy_check_mark:'
+    path: math/DirichletSeries.hpp
+    title: Dirichlet Series
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Totient_Function.test.cpp
+    title: test/math/Sum_of_Totient_Function.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://37zigen.com/linear-sieve/
@@ -20,29 +29,36 @@ data:
     using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
     \n}\n#line 4 \"math/linear_sieve.hpp\"\n\r\n/*\r\n    reference: https://37zigen.com/linear-sieve/\r\
     \n    verify:    https://atcoder.jp/contests/abc162/submissions/25095562\r\n*/\r\
-    \n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve {\r\n\
-    \  private:\r\n    using u64 = std::uint64_t;\r\n    int n;\r\n    std::vector<int>\
-    \ sieve;\r\n    std::vector<int> prime;\r\n\r\n  public:\r\n    linear_sieve(int\
-    \ _n) : n(_n), sieve(std::vector<int>(_n + 1, -1)) {\r\n        for (int i = 2;\
-    \ i <= n; i++) {\r\n            if (sieve[i] < 0) {\r\n                sieve[i]\
-    \ = i;\r\n                prime.emplace_back(i);\r\n            }\r\n        \
-    \    for (auto p : prime) {\r\n                if (u64(p) * u64(i) > u64(n) ||\
-    \ p > sieve[i]) break;\r\n                sieve[p * i] = p;\r\n            }\r\
-    \n        }\r\n    }\r\n\r\n    std::vector<int> prime_table() {\r\n        return\
-    \ prime;\r\n    }\r\n\r\n    std::vector<std::pair<int, int>> factorize(int n)\
-    \ {\r\n        std::vector<std::pair<int, int>> res;\r\n        while (n > 1)\
-    \ {\r\n            int p = sieve[n];\r\n            int exp = 0;\r\n         \
-    \   if (p < 0) {\r\n                res.emplace_back(n, 1);\r\n              \
-    \  break;\r\n            }\r\n            while (sieve[n] == p) {\r\n        \
-    \        n /= p;\r\n                exp++;\r\n            }\r\n            res.emplace_back(p,\
-    \ exp);\r\n        }\r\n        return res;\r\n    }\r\n\r\n    std::vector<int>\
-    \ divisors(int n) {\r\n        std::vector<int> res;\r\n        res.emplace_back(1);\r\
-    \n        auto pf = factorize(n);\r\n        for (auto p : pf) {\r\n         \
-    \   int sz = res.size();\r\n            for (int i = 0; i < sz; i++) {\r\n   \
-    \             int ret = 1;\r\n                for (int j = 0; j < p.second; j++)\
-    \ {\r\n                    ret *= p.first;\r\n                    res.emplace_back(res[i]\
-    \ * ret);\r\n                }\r\n            }\r\n        }\r\n        return\
-    \ res;\r\n    }\r\n\r\n    template <class T> std::vector<T> fast_zeta(const std::vector<T>\
+    \n\r\n#include <vector>\r\n#include <cassert>\r\n\r\nnamespace ebi {\r\n\r\nstruct\
+    \ linear_sieve {\r\n  private:\r\n    using u64 = std::uint64_t;\r\n    int n;\r\
+    \n    std::vector<int> sieve;\r\n    std::vector<int> prime;\r\n\r\n  public:\r\
+    \n    linear_sieve(int _n) : n(_n), sieve(std::vector<int>(_n + 1, -1)) {\r\n\
+    \        for (int i = 2; i <= n; i++) {\r\n            if (sieve[i] < 0) {\r\n\
+    \                sieve[i] = i;\r\n                prime.emplace_back(i);\r\n \
+    \           }\r\n            for (auto p : prime) {\r\n                if (u64(p)\
+    \ * u64(i) > u64(n) || p > sieve[i]) break;\r\n                sieve[p * i] =\
+    \ p;\r\n            }\r\n        }\r\n    }\r\n\r\n    std::vector<int> prime_table()\
+    \ const {\r\n        return prime;\r\n    }\r\n\r\n    std::vector<std::pair<int,int>>\
+    \ prime_power_table(int m) const {\r\n        assert(m <= n);\r\n        std::vector<std::pair<int,int>>\
+    \ table(m+1, {1, 1});\r\n        for(int i = 2; i <= m; i++) {\r\n           \
+    \ int p = sieve[i];\r\n            table[i] = {p, p};\r\n            if(sieve[i\
+    \ / p] == p) {\r\n                table[i] = table[i / p];\r\n               \
+    \ table[i].second *= p;\r\n            }\r\n        }\r\n        return table;\r\
+    \n    }\r\n\r\n    std::vector<std::pair<int, int>> factorize(int x) {\r\n   \
+    \     assert(x <= n);\r\n        std::vector<std::pair<int, int>> res;\r\n   \
+    \     while (x > 1) {\r\n            int p = sieve[x];\r\n            int exp\
+    \ = 0;\r\n            if (p < 0) {\r\n                res.emplace_back(x, 1);\r\
+    \n                break;\r\n            }\r\n            while (sieve[x] == p)\
+    \ {\r\n                x /= p;\r\n                exp++;\r\n            }\r\n\
+    \            res.emplace_back(p, exp);\r\n        }\r\n        return res;\r\n\
+    \    }\r\n\r\n    std::vector<int> divisors(int x) {\r\n        assert(x <= n);\r\
+    \n        std::vector<int> res;\r\n        res.emplace_back(1);\r\n        auto\
+    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = res.size();\r\
+    \n            for (int i = 0; i < sz; i++) {\r\n                int ret = 1;\r\
+    \n                for (int j = 0; j < p.second; j++) {\r\n                   \
+    \ ret *= p.first;\r\n                    res.emplace_back(res[i] * ret);\r\n \
+    \               }\r\n            }\r\n        }\r\n        return res;\r\n   \
+    \ }\r\n\r\n    template <class T> std::vector<T> fast_zeta(const std::vector<T>\
     \ &f) {\r\n        std::vector<T> F = f;\r\n        int sz = f.size();\r\n   \
     \     assert(sz <= n + 1);\r\n        for (int i = 2; i < sz; i++) {\r\n     \
     \       if (sieve[i] != i) continue;\r\n            for (int j = (sz - 1) / i;\
@@ -62,29 +78,36 @@ data:
     \ pow_table(modint::mod() - 2);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\r\n"
   code: "#pragma once\r\n\r\n#include \"../template/int_alias.hpp\"\r\n\r\n/*\r\n\
     \    reference: https://37zigen.com/linear-sieve/\r\n    verify:    https://atcoder.jp/contests/abc162/submissions/25095562\r\
-    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve\
-    \ {\r\n  private:\r\n    using u64 = std::uint64_t;\r\n    int n;\r\n    std::vector<int>\
-    \ sieve;\r\n    std::vector<int> prime;\r\n\r\n  public:\r\n    linear_sieve(int\
-    \ _n) : n(_n), sieve(std::vector<int>(_n + 1, -1)) {\r\n        for (int i = 2;\
-    \ i <= n; i++) {\r\n            if (sieve[i] < 0) {\r\n                sieve[i]\
-    \ = i;\r\n                prime.emplace_back(i);\r\n            }\r\n        \
-    \    for (auto p : prime) {\r\n                if (u64(p) * u64(i) > u64(n) ||\
-    \ p > sieve[i]) break;\r\n                sieve[p * i] = p;\r\n            }\r\
-    \n        }\r\n    }\r\n\r\n    std::vector<int> prime_table() {\r\n        return\
-    \ prime;\r\n    }\r\n\r\n    std::vector<std::pair<int, int>> factorize(int n)\
-    \ {\r\n        std::vector<std::pair<int, int>> res;\r\n        while (n > 1)\
-    \ {\r\n            int p = sieve[n];\r\n            int exp = 0;\r\n         \
-    \   if (p < 0) {\r\n                res.emplace_back(n, 1);\r\n              \
-    \  break;\r\n            }\r\n            while (sieve[n] == p) {\r\n        \
-    \        n /= p;\r\n                exp++;\r\n            }\r\n            res.emplace_back(p,\
-    \ exp);\r\n        }\r\n        return res;\r\n    }\r\n\r\n    std::vector<int>\
-    \ divisors(int n) {\r\n        std::vector<int> res;\r\n        res.emplace_back(1);\r\
-    \n        auto pf = factorize(n);\r\n        for (auto p : pf) {\r\n         \
-    \   int sz = res.size();\r\n            for (int i = 0; i < sz; i++) {\r\n   \
-    \             int ret = 1;\r\n                for (int j = 0; j < p.second; j++)\
-    \ {\r\n                    ret *= p.first;\r\n                    res.emplace_back(res[i]\
-    \ * ret);\r\n                }\r\n            }\r\n        }\r\n        return\
-    \ res;\r\n    }\r\n\r\n    template <class T> std::vector<T> fast_zeta(const std::vector<T>\
+    \n*/\r\n\r\n#include <vector>\r\n#include <cassert>\r\n\r\nnamespace ebi {\r\n\
+    \r\nstruct linear_sieve {\r\n  private:\r\n    using u64 = std::uint64_t;\r\n\
+    \    int n;\r\n    std::vector<int> sieve;\r\n    std::vector<int> prime;\r\n\r\
+    \n  public:\r\n    linear_sieve(int _n) : n(_n), sieve(std::vector<int>(_n + 1,\
+    \ -1)) {\r\n        for (int i = 2; i <= n; i++) {\r\n            if (sieve[i]\
+    \ < 0) {\r\n                sieve[i] = i;\r\n                prime.emplace_back(i);\r\
+    \n            }\r\n            for (auto p : prime) {\r\n                if (u64(p)\
+    \ * u64(i) > u64(n) || p > sieve[i]) break;\r\n                sieve[p * i] =\
+    \ p;\r\n            }\r\n        }\r\n    }\r\n\r\n    std::vector<int> prime_table()\
+    \ const {\r\n        return prime;\r\n    }\r\n\r\n    std::vector<std::pair<int,int>>\
+    \ prime_power_table(int m) const {\r\n        assert(m <= n);\r\n        std::vector<std::pair<int,int>>\
+    \ table(m+1, {1, 1});\r\n        for(int i = 2; i <= m; i++) {\r\n           \
+    \ int p = sieve[i];\r\n            table[i] = {p, p};\r\n            if(sieve[i\
+    \ / p] == p) {\r\n                table[i] = table[i / p];\r\n               \
+    \ table[i].second *= p;\r\n            }\r\n        }\r\n        return table;\r\
+    \n    }\r\n\r\n    std::vector<std::pair<int, int>> factorize(int x) {\r\n   \
+    \     assert(x <= n);\r\n        std::vector<std::pair<int, int>> res;\r\n   \
+    \     while (x > 1) {\r\n            int p = sieve[x];\r\n            int exp\
+    \ = 0;\r\n            if (p < 0) {\r\n                res.emplace_back(x, 1);\r\
+    \n                break;\r\n            }\r\n            while (sieve[x] == p)\
+    \ {\r\n                x /= p;\r\n                exp++;\r\n            }\r\n\
+    \            res.emplace_back(p, exp);\r\n        }\r\n        return res;\r\n\
+    \    }\r\n\r\n    std::vector<int> divisors(int x) {\r\n        assert(x <= n);\r\
+    \n        std::vector<int> res;\r\n        res.emplace_back(1);\r\n        auto\
+    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = res.size();\r\
+    \n            for (int i = 0; i < sz; i++) {\r\n                int ret = 1;\r\
+    \n                for (int j = 0; j < p.second; j++) {\r\n                   \
+    \ ret *= p.first;\r\n                    res.emplace_back(res[i] * ret);\r\n \
+    \               }\r\n            }\r\n        }\r\n        return res;\r\n   \
+    \ }\r\n\r\n    template <class T> std::vector<T> fast_zeta(const std::vector<T>\
     \ &f) {\r\n        std::vector<T> F = f;\r\n        int sz = f.size();\r\n   \
     \     assert(sz <= n + 1);\r\n        for (int i = 2; i < sz; i++) {\r\n     \
     \       if (sieve[i] != i) continue;\r\n            for (int j = (sz - 1) / i;\
@@ -106,10 +129,13 @@ data:
   - template/int_alias.hpp
   isVerificationFile: false
   path: math/linear_sieve.hpp
-  requiredBy: []
-  timestamp: '2023-08-11 00:25:56+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  requiredBy:
+  - math/DirichletSeries.hpp
+  - convolution/dirichlet_convolution.hpp
+  timestamp: '2023-08-23 15:28:07+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: math/linear_sieve.hpp
 layout: document
 title: Linear Sieve

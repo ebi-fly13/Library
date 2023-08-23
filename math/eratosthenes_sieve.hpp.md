@@ -3,11 +3,17 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: convolution/dirichlet_convolution.hpp
+    title: Dirichlet Convolution
+  - icon: ':heavy_check_mark:'
     path: convolution/gcd_convolution.hpp
     title: GCD Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/lcm_convolution.hpp
     title: LCM Convolution
+  - icon: ':heavy_check_mark:'
+    path: math/DirichletSeries.hpp
+    title: Dirichlet Series
   - icon: ':heavy_check_mark:'
     path: math/divisor_transform.hpp
     title: "Divisor Transform (Zeta / M\xF6bius)"
@@ -24,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Enumerate_Primes.test.cpp
     title: test/math/Enumerate_Primes.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Totient_Function.test.cpp
+    title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/eratosthenes_sieve.test.cpp
     title: test/math/eratosthenes_sieve.test.cpp
@@ -65,6 +74,8 @@ data:
   requiredBy:
   - math/multiple_transform.hpp
   - math/divisor_transform.hpp
+  - math/DirichletSeries.hpp
+  - convolution/dirichlet_convolution.hpp
   - convolution/lcm_convolution.hpp
   - convolution/gcd_convolution.hpp
   timestamp: '2023-06-09 15:36:58+09:00'
@@ -72,6 +83,7 @@ data:
   verifiedWith:
   - test/math/eratosthenes_sieve.test.cpp
   - test/math/Enumerate_Primes.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
   - test/convolution/Lcm_Convolution.test.cpp
   - test/convolution/Gcd_Convolution.test.cpp
 documentation_of: math/eratosthenes_sieve.hpp

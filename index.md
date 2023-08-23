@@ -32,6 +32,9 @@ data:
       path: convolution/convolution_mod_2_64.hpp
       title: Convolution ($\mod 2^{64}$)
     - icon: ':heavy_check_mark:'
+      path: convolution/dirichlet_convolution.hpp
+      title: Dirichlet Convolution
+    - icon: ':heavy_check_mark:'
       path: convolution/gcd_convolution.hpp
       title: GCD Convolution
     - icon: ':heavy_check_mark:'
@@ -272,7 +275,7 @@ data:
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
       title: Lagrange Interpolation
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/linear_sieve.hpp
       title: Linear Sieve
     - icon: ':heavy_check_mark:'

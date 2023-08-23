@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: convolution/dirichlet_convolution.hpp
+    title: Dirichlet Convolution
   - icon: ':warning:'
     path: convolution/online_convolution.hpp
     title: Online Convolution
@@ -17,7 +20,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: math/inversion_number.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
   - icon: ':heavy_check_mark:'
@@ -148,6 +151,7 @@ data:
   - math/linear_sieve.hpp
   - math/DirichletSeries.hpp
   - convolution/online_convolution.hpp
+  - convolution/dirichlet_convolution.hpp
   timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
