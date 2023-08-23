@@ -8,6 +8,7 @@
 */
 
 #include <vector>
+#include <cassert>
 
 namespace ebi {
 
@@ -32,21 +33,36 @@ struct linear_sieve {
         }
     }
 
-    std::vector<int> prime_table() {
+    std::vector<int> prime_table() const {
         return prime;
     }
 
-    std::vector<std::pair<int, int>> factorize(int n) {
+    std::vector<std::pair<int,int>> prime_power_table(int m) const {
+        assert(m <= n);
+        std::vector<std::pair<int,int>> table(m+1, {1, 1});
+        for(int i = 2; i <= m; i++) {
+            int p = sieve[i];
+            table[i] = {p, p};
+            if(sieve[i / p] == p) {
+                table[i] = table[i / p];
+                table[i].second *= p;
+            }
+        }
+        return table;
+    }
+
+    std::vector<std::pair<int, int>> factorize(int x) {
+        assert(x <= n);
         std::vector<std::pair<int, int>> res;
-        while (n > 1) {
-            int p = sieve[n];
+        while (x > 1) {
+            int p = sieve[x];
             int exp = 0;
             if (p < 0) {
-                res.emplace_back(n, 1);
+                res.emplace_back(x, 1);
                 break;
             }
-            while (sieve[n] == p) {
-                n /= p;
+            while (sieve[x] == p) {
+                x /= p;
                 exp++;
             }
             res.emplace_back(p, exp);
@@ -54,10 +70,11 @@ struct linear_sieve {
         return res;
     }
 
-    std::vector<int> divisors(int n) {
+    std::vector<int> divisors(int x) {
+        assert(x <= n);
         std::vector<int> res;
         res.emplace_back(1);
-        auto pf = factorize(n);
+        auto pf = factorize(x);
         for (auto p : pf) {
             int sz = res.size();
             for (int i = 0; i < sz; i++) {
