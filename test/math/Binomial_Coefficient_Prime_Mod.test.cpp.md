@@ -75,7 +75,7 @@ data:
     \ i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing\
     \ u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
     using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
-    using u128 = __uint128_t;\n\n}\n#line 2 \"template/io.hpp\"\n\n#line 6 \"template/io.hpp\"\
+    using u128 = __uint128_t;\n\n}\n#line 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
     \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
@@ -174,7 +174,7 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-08-21 12:06:05+09:00'
+  timestamp: '2023-08-27 22:59:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp

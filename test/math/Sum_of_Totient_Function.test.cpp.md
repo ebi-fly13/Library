@@ -265,7 +265,7 @@ data:
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
     \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
-    \ :\";\n    debug_out(t...);\n}\n\n}\n#line 2 \"template/io.hpp\"\n\n#line 6 \"\
+    \ :\";\n    debug_out(t...);\n}\n\n}\n#line 2 \"template/io.hpp\"\n\n#line 7 \"\
     template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\n\
     std::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa) {\n  \
     \  return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename T1, typename\
@@ -381,7 +381,7 @@ data:
   isVerificationFile: true
   path: test/math/Sum_of_Totient_Function.test.cpp
   requiredBy: []
-  timestamp: '2023-08-23 17:33:30+09:00'
+  timestamp: '2023-08-27 22:59:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sum_of_Totient_Function.test.cpp

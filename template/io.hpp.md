@@ -17,7 +17,23 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"template/io.hpp\"\n\n#include <iostream>\n#include <optional>\n\
+  bundledCode: "#line 2 \"template/io.hpp\"\n\n#include <iomanip>\n#include <iostream>\n\
+    #include <optional>\n#include <vector>\n\nnamespace ebi {\n\ntemplate <typename\
+    \ T1, typename T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1,\
+    \ T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate\
+    \ <typename T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1,\
+    \ T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename\
+    \ T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n\
+    \    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i\
+    \ + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
+    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
+    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
+    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
+    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
+    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    }\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <iomanip>\n#include <iostream>\n#include <optional>\n\
     #include <vector>\n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\n\
     std::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa) {\n  \
     \  return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename T1, typename\
@@ -31,28 +47,13 @@ data:
     \ const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
     \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
     void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <iostream>\n#include <optional>\n#include <vector>\n\
-    \nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
-    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
-    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
-    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
-    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
-    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
-    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
-    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
-    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
-    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
-    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    }\n\n}  // namespace ebi"
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: template/io.hpp
   requiredBy:
   - template/template.hpp
-  timestamp: '2023-08-10 23:52:27+09:00'
+  timestamp: '2023-08-27 22:59:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
