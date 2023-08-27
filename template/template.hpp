@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <bit>
 #include <bitset>
 #include <cassert>
 #include <chrono>
