@@ -245,15 +245,15 @@ data:
     \ i64 DirichletSeries<T, id>::K = 10000;\r\ntemplate <class T, int id> i64 DirichletSeries<T,\
     \ id>::L = 100;\r\ntemplate <class T, int id> std::vector<std::pair<int,int>>\
     \ DirichletSeries<T, id>::prime_pow_table = {};\r\n\r\n}  // namespace ebi\n#line\
-    \ 1 \"template/template.hpp\"\n#include <algorithm>\n#include <bitset>\n#line\
-    \ 4 \"template/template.hpp\"\n#include <chrono>\n#include <climits>\n#include\
-    \ <cmath>\n#include <complex>\n#include <cstddef>\n#line 10 \"template/template.hpp\"\
-    \n#include <cstdlib>\n#include <cstring>\n#line 13 \"template/template.hpp\"\n\
+    \ 1 \"template/template.hpp\"\n#include <algorithm>\n#include <bit>\n#include\
+    \ <bitset>\n#line 5 \"template/template.hpp\"\n#include <chrono>\n#include <climits>\n\
+    #include <cmath>\n#include <complex>\n#include <cstddef>\n#line 11 \"template/template.hpp\"\
+    \n#include <cstdlib>\n#include <cstring>\n#line 14 \"template/template.hpp\"\n\
     #include <iomanip>\n#include <iostream>\n#include <limits>\n#include <map>\n#include\
-    \ <memory>\n#line 19 \"template/template.hpp\"\n#include <optional>\n#include\
+    \ <memory>\n#line 20 \"template/template.hpp\"\n#include <optional>\n#include\
     \ <queue>\n#include <random>\n#include <set>\n#include <stack>\n#include <string>\n\
     #include <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
-    #include <utility>\n#line 31 \"template/template.hpp\"\n\n#define rep(i, a, n)\
+    #include <utility>\n#line 32 \"template/template.hpp\"\n\n#define rep(i, a, n)\
     \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
     \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
     \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
@@ -381,7 +381,7 @@ data:
   isVerificationFile: true
   path: test/math/Sum_of_Totient_Function.test.cpp
   requiredBy: []
-  timestamp: '2023-08-27 22:59:16+09:00'
+  timestamp: '2023-08-27 23:07:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sum_of_Totient_Function.test.cpp

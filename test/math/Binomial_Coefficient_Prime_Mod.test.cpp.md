@@ -51,14 +51,14 @@ data:
     \    }\n\n    mint inv(int n) const {\n        assert(n <= m);\n        return\
     \ inv_fact[n] * fact[n-1];\n    }\n\n  private:\n    int m;\n    std::vector<mint>\
     \ fact, inv_fact;\n};\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
-    \n#include <algorithm>\n#include <bitset>\n#line 4 \"template/template.hpp\"\n\
-    #include <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n\
+    \n#include <algorithm>\n#include <bit>\n#include <bitset>\n#line 5 \"template/template.hpp\"\
+    \n#include <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n\
     #include <cstddef>\n#include <cstdint>\n#include <cstdlib>\n#include <cstring>\n\
     #include <functional>\n#include <iomanip>\n#include <iostream>\n#include <limits>\n\
     #include <map>\n#include <memory>\n#include <numeric>\n#include <optional>\n#include\
     \ <queue>\n#include <random>\n#include <set>\n#include <stack>\n#include <string>\n\
     #include <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
-    #include <utility>\n#line 31 \"template/template.hpp\"\n\n#define rep(i, a, n)\
+    #include <utility>\n#line 32 \"template/template.hpp\"\n\n#define rep(i, a, n)\
     \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
     \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
     \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
@@ -174,7 +174,7 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-08-27 22:59:16+09:00'
+  timestamp: '2023-08-27 23:07:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
