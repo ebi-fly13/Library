@@ -16,7 +16,7 @@ data:
     title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
-    title: math/mod_sqrt.hpp
+    title: Mod Sqrt
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash

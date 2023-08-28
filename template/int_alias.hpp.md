@@ -19,7 +19,7 @@ data:
     title: Dirichlet Series
   - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
-    title: math/inversion_number.hpp
+    title: Inversion Number
   - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve

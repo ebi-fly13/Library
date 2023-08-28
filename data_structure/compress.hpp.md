@@ -7,7 +7,7 @@ data:
     title: offline 2D segtree
   - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
-    title: math/inversion_number.hpp
+    title: Inversion Number
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp

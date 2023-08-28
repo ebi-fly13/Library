@@ -271,7 +271,7 @@ data:
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
       path: math/inversion_number.hpp
-      title: math/inversion_number.hpp
+      title: Inversion Number
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
       title: Lagrange Interpolation
@@ -283,7 +283,7 @@ data:
       title: LIS
     - icon: ':heavy_check_mark:'
       path: math/mod_sqrt.hpp
-      title: math/mod_sqrt.hpp
+      title: Mod Sqrt
     - icon: ':heavy_check_mark:'
       path: math/multiple_transform.hpp
       title: "Multiple Transform (Zeta / M\xF6bius)"

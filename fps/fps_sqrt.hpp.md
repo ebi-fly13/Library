@@ -9,7 +9,7 @@ data:
     title: Formal Power Series (Sparse)
   - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
-    title: math/mod_sqrt.hpp
+    title: Mod Sqrt
   - icon: ':heavy_check_mark:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp

@@ -10,7 +10,7 @@ data:
     title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
-    title: math/mod_sqrt.hpp
+    title: Mod Sqrt
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp

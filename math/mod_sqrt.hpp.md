@@ -109,8 +109,9 @@ data:
   - test/math/Sqrt_Mod.test.cpp
 documentation_of: math/mod_sqrt.hpp
 layout: document
-redirect_from:
-- /library/math/mod_sqrt.hpp
-- /library/math/mod_sqrt.hpp.html
-title: math/mod_sqrt.hpp
+title: Mod Sqrt
 ---
+
+## 説明
+
+素数 $p$ に対して、 $x^2 \equiv y \pmod p$ となるような $x$ を返す。 $O(\log p)$
