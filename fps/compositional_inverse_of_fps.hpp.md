@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   _extendedRequiredBy: []
@@ -25,7 +25,8 @@ data:
     \                 const std::vector<mint> &, const std::vector<mint> &)>\nstruct\
     \ FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
     \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
-    \n  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
+    \n  public:\n    FormalPowerSeries(const std::vector<mint> &a) {\n        *this\
+    \ = a;\n    }\n\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
     \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
     \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
     \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n    FPS operator/(const\
@@ -147,7 +148,7 @@ data:
   isVerificationFile: false
   path: fps/compositional_inverse_of_fps.hpp
   requiredBy: []
-  timestamp: '2023-08-15 21:57:06+09:00'
+  timestamp: '2023-08-28 17:31:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp

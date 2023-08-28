@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/combination.hpp
     title: Combination
   - icon: ':heavy_check_mark:'
@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []

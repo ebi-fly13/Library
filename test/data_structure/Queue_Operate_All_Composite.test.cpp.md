@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/queue_aggregation.hpp
     title: Sliding Window Aggregation (Queue)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []

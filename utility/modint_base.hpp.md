@@ -8,13 +8,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution ($\mod 2^{64}$)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
   - icon: ':heavy_check_mark:'
@@ -23,13 +23,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -168,10 +168,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':heavy_check_mark:'
@@ -189,12 +189,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "utility/modint_base.hpp"
@@ -290,7 +290,7 @@ data:
   - convolution/ntt.hpp
   - fps/fps_sqrt.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp

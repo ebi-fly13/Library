@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy: []
@@ -43,7 +43,8 @@ data:
     \                 const std::vector<mint> &, const std::vector<mint> &)>\nstruct\
     \ FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
     \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
-    \n  public:\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
+    \n  public:\n    FormalPowerSeries(const std::vector<mint> &a) {\n        *this\
+    \ = a;\n    }\n\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
     \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
     \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
     \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n    FPS operator/(const\
@@ -288,7 +289,7 @@ data:
   isVerificationFile: true
   path: test/math/Partition_Function_FPS.test.cpp
   requiredBy: []
-  timestamp: '2023-08-16 10:56:05+09:00'
+  timestamp: '2023-08-28 17:31:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Partition_Function_FPS.test.cpp

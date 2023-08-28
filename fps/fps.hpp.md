@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
@@ -75,18 +75,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -94,14 +94,15 @@ data:
     \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
     \ &, const std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint>\
     \ {\n  private:\n    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
-    \    using FPS = FormalPowerSeries;\n\n  public:\n    FPS operator+(const FPS\
+    \    using FPS = FormalPowerSeries;\n\n  public:\n    FormalPowerSeries(const\
+    \ std::vector<mint> &a) {\n        *this = a;\n    }\n\n    FPS operator+(const\
+    \ FPS &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS\
+    \ operator-(const FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n\
+    \    }\n    FPS operator*(const FPS &rhs) const noexcept {\n        return FPS(*this)\
+    \ *= rhs;\n    }\n    FPS operator/(const FPS &rhs) const noexcept {\n       \
+    \ return FPS(*this) /= rhs;\n    }\n    FPS operator%(const FPS &rhs) const noexcept\
+    \ {\n        return FPS(*this) %= rhs;\n    }\n\n    FPS operator+(const mint\
     \ &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
-    \ FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
-    \ operator*(const FPS &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n\
-    \    }\n    FPS operator/(const FPS &rhs) const noexcept {\n        return FPS(*this)\
-    \ /= rhs;\n    }\n    FPS operator%(const FPS &rhs) const noexcept {\n       \
-    \ return FPS(*this) %= rhs;\n    }\n\n    FPS operator+(const mint &rhs) const\
-    \ noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
     \ mint &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
     \ operator*(const mint &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n\
     \    }\n    FPS operator/(const mint &rhs) const noexcept {\n        return FPS(*this)\
@@ -176,14 +177,15 @@ data:
     \ (*convolution)(\n                          const std::vector<mint> &, const\
     \ std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n\
     \    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
-    \    using FPS = FormalPowerSeries;\n\n  public:\n    FPS operator+(const FPS\
+    \    using FPS = FormalPowerSeries;\n\n  public:\n    FormalPowerSeries(const\
+    \ std::vector<mint> &a) {\n        *this = a;\n    }\n\n    FPS operator+(const\
+    \ FPS &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS\
+    \ operator-(const FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n\
+    \    }\n    FPS operator*(const FPS &rhs) const noexcept {\n        return FPS(*this)\
+    \ *= rhs;\n    }\n    FPS operator/(const FPS &rhs) const noexcept {\n       \
+    \ return FPS(*this) /= rhs;\n    }\n    FPS operator%(const FPS &rhs) const noexcept\
+    \ {\n        return FPS(*this) %= rhs;\n    }\n\n    FPS operator+(const mint\
     \ &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
-    \ FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
-    \ operator*(const FPS &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n\
-    \    }\n    FPS operator/(const FPS &rhs) const noexcept {\n        return FPS(*this)\
-    \ /= rhs;\n    }\n    FPS operator%(const FPS &rhs) const noexcept {\n       \
-    \ return FPS(*this) %= rhs;\n    }\n\n    FPS operator+(const mint &rhs) const\
-    \ noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
     \ mint &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
     \ operator*(const mint &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n\
     \    }\n    FPS operator/(const mint &rhs) const noexcept {\n        return FPS(*this)\
@@ -267,8 +269,8 @@ data:
   - fps/taylor_shift.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
-  timestamp: '2023-08-15 21:57:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-08-28 17:31:00+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series.test.cpp

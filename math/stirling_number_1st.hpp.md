@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy: []
@@ -26,14 +26,15 @@ data:
     \ (*convolution)(\n                          const std::vector<mint> &, const\
     \ std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n\
     \    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
-    \    using FPS = FormalPowerSeries;\n\n  public:\n    FPS operator+(const FPS\
+    \    using FPS = FormalPowerSeries;\n\n  public:\n    FormalPowerSeries(const\
+    \ std::vector<mint> &a) {\n        *this = a;\n    }\n\n    FPS operator+(const\
+    \ FPS &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS\
+    \ operator-(const FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n\
+    \    }\n    FPS operator*(const FPS &rhs) const noexcept {\n        return FPS(*this)\
+    \ *= rhs;\n    }\n    FPS operator/(const FPS &rhs) const noexcept {\n       \
+    \ return FPS(*this) /= rhs;\n    }\n    FPS operator%(const FPS &rhs) const noexcept\
+    \ {\n        return FPS(*this) %= rhs;\n    }\n\n    FPS operator+(const mint\
     \ &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
-    \ FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
-    \ operator*(const FPS &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n\
-    \    }\n    FPS operator/(const FPS &rhs) const noexcept {\n        return FPS(*this)\
-    \ /= rhs;\n    }\n    FPS operator%(const FPS &rhs) const noexcept {\n       \
-    \ return FPS(*this) %= rhs;\n    }\n\n    FPS operator+(const mint &rhs) const\
-    \ noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
     \ mint &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
     \ operator*(const mint &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n\
     \    }\n    FPS operator/(const mint &rhs) const noexcept {\n        return FPS(*this)\
@@ -150,7 +151,7 @@ data:
   isVerificationFile: false
   path: math/stirling_number_1st.hpp
   requiredBy: []
-  timestamp: '2023-08-15 21:57:06+09:00'
+  timestamp: '2023-08-28 17:31:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
