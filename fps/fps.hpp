@@ -16,6 +16,10 @@ struct FormalPowerSeries : std::vector<mint> {
     using FPS = FormalPowerSeries;
 
   public:
+    FormalPowerSeries(const std::vector<mint> &a) {
+        *this = a;
+    }
+
     FPS operator+(const FPS &rhs) const noexcept {
         return FPS(*this) += rhs;
     }
