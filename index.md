@@ -259,7 +259,7 @@ data:
       title: Bostan-Mori Algorithm
     - icon: ':heavy_check_mark:'
       path: math/combination.hpp
-      title: math/combination.hpp
+      title: Combination
     - icon: ':heavy_check_mark:'
       path: math/divisor_transform.hpp
       title: "Divisor Transform (Zeta / M\xF6bius)"
