@@ -63,6 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/lowest_common_ancestor.test.cpp
     title: test/tree/lowest_common_ancestor.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1145.test.cpp
+    title: test/yuki/yuki_1145.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -115,6 +118,7 @@ data:
   - test/graph/fibonacci_heap.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/Biconnected_Components.test.cpp
+  - test/yuki/yuki_1145.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/algorithm/Two_Sat.test.cpp
 documentation_of: graph/template.hpp

@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1145.test.cpp
+    title: test/yuki/yuki_1145.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,6 +63,7 @@ data:
   timestamp: '2023-08-19 23:22:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yuki/yuki_1145.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: template/utility.hpp

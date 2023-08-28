@@ -4,30 +4,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: fps/compositional_inverse_of_fps.hpp
-    title: "$f(x)$ \u306E\u9006\u95A2\u6570"
+    path: fps/product_of_fps.hpp
+    title: $\prod_{i=0}^n f_i$
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+    path: test/yuki/yuki_1145.test.cpp
+    title: test/yuki/yuki_1145.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps/composition_of_fps.hpp\"\n\n#include <cassert>\n#include\
-    \ <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line 5 \"fps/fps.hpp\"\
-    \n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
-    \ std::vector<mint> &, const std::vector<mint> &)>\nstruct FormalPowerSeries :\
-    \ std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n    using\
-    \ std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\n\
-    \  public:\n    FormalPowerSeries(const std::vector<mint> &a) {\n        *this\
+  bundledCode: "#line 2 \"fps/sums_of_powers.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n\
+    #include <algorithm>\n#include <cassert>\n#include <optional>\n#include <vector>\n\
+    \nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
+    \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
+    \n  public:\n    FormalPowerSeries(const std::vector<mint> &a) {\n        *this\
     \ = a;\n    }\n\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
     \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
     \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
@@ -104,56 +100,69 @@ data:
     \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
-    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 7 \"fps/composition_of_fps.hpp\"\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/product_of_fps.hpp\"\n\n\
+    #include <deque>\n#line 5 \"fps/product_of_fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
+    \ std::vector<mint> &, const std::vector<mint> &)>\nstd::vector<mint> product_of_fps(const\
+    \ std::vector<std::vector<mint>> &fs) {\n    if (fs.empty()) return {1};\n   \
+    \ std::deque<std::vector<mint>> deque;\n    for (auto &f : fs) deque.push_back(f);\n\
+    \    while (deque.size() > 1) {\n        auto f = deque.front();\n        deque.pop_front();\n\
+    \        auto g = deque.front();\n        deque.pop_front();\n        deque.push_back(convolution(f,\
+    \ g));\n    }\n    return deque.front();\n}\n\n}  // namespace ebi\n#line 5 \"\
+    fps/sums_of_powers.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
+    \ (*convolution)(\n                          const std::vector<mint> &, const\
+    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> sums_of_powers(const\
+    \ std::vector<int> &a,\n                                                    int\
+    \ d) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n    int n = a.size();\n\
+    \    std::vector fs(n, std::vector<mint>(2, 1));\n    for (int i = 0; i < n; i++)\
+    \ {\n        fs[i][1] = -a[i];\n    }\n    FPS g = product_of_fps<mint, convolution>(fs);\n\
+    \    return (-g.log(d + 1).differential() << 1) + n;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n#include \"../fps/product_of_fps.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> composition_of_fps(\n    const FormalPowerSeries<mint,\
-    \ convolution> &f,\n    const FormalPowerSeries<mint, convolution> &g) {\n   \
-    \ using FPS = FormalPowerSeries<mint, convolution>;\n    // assert(f.deg() ==\
-    \ g.deg());\n    int n = f.deg();\n    int k = 1;\n    while (k * k < n) k++;\n\
-    \    std::vector<FPS> baby(k + 1);\n    baby[0] = FPS{1};\n    baby[1] = g;\n\
-    \    for (int i = 2; i < k + 1; i++) {\n        baby[i] = (baby[i - 1] * g).pre(n);\n\
-    \    }\n    std::vector<FPS> giant(k + 1);\n    giant[0] = FPS{1};\n    giant[1]\
-    \ = baby[k];\n    for (int i = 2; i < k + 1; i++) {\n        giant[i] = (giant[i\
-    \ - 1] * giant[1]).pre(n);\n    }\n    FPS h(n);\n    for (int i = 0; i < k +\
-    \ 1; i++) {\n        FPS a(n);\n        for (int j = 0; j < k; j++) {\n      \
-    \      if (k * i + j < n) {\n                mint coef = f[k * i + j];\n     \
-    \           a += baby[j] * coef;\n            } else\n                break;\n\
-    \        }\n        h += (giant[i] * a).pre(n);\n    }\n    return h;\n}\n\n}\
-    \  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../fps/fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> composition_of_fps(\n    const FormalPowerSeries<mint,\
-    \ convolution> &f,\n    const FormalPowerSeries<mint, convolution> &g) {\n   \
-    \ using FPS = FormalPowerSeries<mint, convolution>;\n    // assert(f.deg() ==\
-    \ g.deg());\n    int n = f.deg();\n    int k = 1;\n    while (k * k < n) k++;\n\
-    \    std::vector<FPS> baby(k + 1);\n    baby[0] = FPS{1};\n    baby[1] = g;\n\
-    \    for (int i = 2; i < k + 1; i++) {\n        baby[i] = (baby[i - 1] * g).pre(n);\n\
-    \    }\n    std::vector<FPS> giant(k + 1);\n    giant[0] = FPS{1};\n    giant[1]\
-    \ = baby[k];\n    for (int i = 2; i < k + 1; i++) {\n        giant[i] = (giant[i\
-    \ - 1] * giant[1]).pre(n);\n    }\n    FPS h(n);\n    for (int i = 0; i < k +\
-    \ 1; i++) {\n        FPS a(n);\n        for (int j = 0; j < k; j++) {\n      \
-    \      if (k * i + j < n) {\n                mint coef = f[k * i + j];\n     \
-    \           a += baby[j] * coef;\n            } else\n                break;\n\
-    \        }\n        h += (giant[i] * a).pre(n);\n    }\n    return h;\n}\n\n}\
-    \  // namespace ebi"
+    \ &)>\nFormalPowerSeries<mint, convolution> sums_of_powers(const std::vector<int>\
+    \ &a,\n                                                    int d) {\n    using\
+    \ FPS = FormalPowerSeries<mint, convolution>;\n    int n = a.size();\n    std::vector\
+    \ fs(n, std::vector<mint>(2, 1));\n    for (int i = 0; i < n; i++) {\n       \
+    \ fs[i][1] = -a[i];\n    }\n    FPS g = product_of_fps<mint, convolution>(fs);\n\
+    \    return (-g.log(d + 1).differential() << 1) + n;\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
+  - fps/product_of_fps.hpp
   isVerificationFile: false
-  path: fps/composition_of_fps.hpp
-  requiredBy:
-  - fps/compositional_inverse_of_fps.hpp
-  timestamp: '2023-08-28 17:31:00+09:00'
+  path: fps/sums_of_powers.hpp
+  requiredBy: []
+  timestamp: '2023-08-28 18:05:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-documentation_of: fps/composition_of_fps.hpp
+  - test/yuki/yuki_1145.test.cpp
+documentation_of: fps/sums_of_powers.hpp
 layout: document
-title: $f(g(x))$
+title: $\sum_i (\sum_n A_n^i) x^i$
 ---
 
 ## 説明
 
-形式的べき級数 $f$, $g$ について、その合成 $f(g(x))$ の先頭 $N$ 項を求める。Baby-step Giant-stepを用いることで $O(N^2)$ で計算する。
+$A_1, \dots, A_N$ が与えられたとき、 $\sum_i (\sum_n A_n^i) x^i$ を $i = d$ まで列挙する。 $O(N(\log N)^2 + D\log D)$
+
+求める形式的べき級数は
+
+$$\sum_i (\sum_n A_n^i) x^i = \sum_n \frac{1}{1-A_nx}$$
+
+である。定数項は $len(A)$ であるので、非定数項を求められればよい。
+
+$$\sum_{i = 1}^{\infty} (\sum_n A_n^i) x^i = \sum_n A_nx \frac{1}{1-A_nx}$$
+
+であるので、 $x$ で割った後に積分すると
+
+$$\int \sum_n A_n \frac{1}{1-A_nx} dx = - \sum_n \log(1 - A_nx)$$
+
+となる。ここで
+
+$$- \sum_n \log(1 - A_nx) = - \log \prod_n (1-A_nx)$$
+
+であるので
+
+$$\sum_i (\sum_n A_n^i) x^i = len(A) + x(-\log \prod_n (1-A_nx))^{\prime}$$
+
+となる。計算量は多項式の総積が $O(N(\log N)^2)$ 、 形式的べき級数の $\log$ が $O(D\log D)$ 、形式的べき級数の微分が $O(D)$ より $O(N(\log N)^2 + D\log D)$ となる。

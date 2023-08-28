@@ -66,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1145.test.cpp
+    title: test/yuki/yuki_1145.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -164,6 +167,7 @@ data:
   - test/tree/Tree_Diameter.test.cpp
   - test/graph/fibonacci_heap.test.cpp
   - test/graph/dijkstra.test.cpp
+  - test/yuki/yuki_1145.test.cpp
   - test/math/Inversion_Number.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp

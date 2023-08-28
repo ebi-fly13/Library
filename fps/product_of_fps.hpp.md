@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: fps/sums_of_powers.hpp
+    title: $\sum_i (\sum_n A_n^i) x^i$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1145.test.cpp
+    title: test/yuki/yuki_1145.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -32,11 +38,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: fps/product_of_fps.hpp
-  requiredBy: []
+  requiredBy:
+  - fps/sums_of_powers.hpp
   timestamp: '2023-06-15 03:20:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/yuki/yuki_1145.test.cpp
 documentation_of: fps/product_of_fps.hpp
 layout: document
 title: $\prod_{i=0}^n f_i$
