@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Dice/Dice.hpp
-    title: Dice/Dice.hpp
+    title: Dice
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
