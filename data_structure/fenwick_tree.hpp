@@ -20,7 +20,7 @@ template <class T> struct fenwick_tree {
         }
     }
 
-    T prefix_sum(int i) {
+    T prefix_sum(int i) const {
         assert(0 <= i && i <= n);
         T ret = 0;
         for (int x = i; x > 0; x -= x & -x) {
@@ -29,8 +29,12 @@ template <class T> struct fenwick_tree {
         return ret;
     }
 
-    T sum(int l, int r) {
+    T sum(int l, int r) const {
         return prefix_sum(r) - prefix_sum(l);
+    }
+
+    T all_sum() const {
+        return prefix_sum(n);
     }
 
     // prefix_sum(x) >= key となる最小のxを返す関数 O(log N)

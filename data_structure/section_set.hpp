@@ -18,6 +18,10 @@ template <class T> struct section_set {
             {std::numeric_limits<T>::max(), std::numeric_limits<T>::max()});
     }
 
+    std::set<std::pair<T, T>> sections() const {
+        return set;
+    }
+
     // [l, r)を追加
     void insert(T l, T r) {
         auto itr =

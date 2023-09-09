@@ -64,6 +64,11 @@ struct queue_aggregation {
         _front.pop();
     }
 
+    void clear() {
+        _front = std::stack<Node>();
+        _back = std::stack<Node>();
+    }
+
     Semigroup fold_all() {
         assert(!empty());
         if (_front.empty()) {
