@@ -16,8 +16,9 @@ data:
     \ section_set {\n  private:\n    std::set<std::pair<T, T>> set;\n\n  public:\n\
     \    section_set() {\n        set.insert(\n            {std::numeric_limits<T>::min(),\
     \ std::numeric_limits<T>::min()});\n        set.insert(\n            {std::numeric_limits<T>::max(),\
-    \ std::numeric_limits<T>::max()});\n    }\n\n    // [l, r)\u3092\u8FFD\u52A0\n\
-    \    void insert(T l, T r) {\n        auto itr =\n            std::prev(set.lower_bound({l,\
+    \ std::numeric_limits<T>::max()});\n    }\n\n    std::set<std::pair<T, T>> sections()\
+    \ const {\n        return set;\n    }\n\n    // [l, r)\u3092\u8FFD\u52A0\n   \
+    \ void insert(T l, T r) {\n        auto itr =\n            std::prev(set.lower_bound({l,\
     \ std::numeric_limits<T>::min()}));\n        if (l <= itr->second) {\n       \
     \     assert(itr->first <= l);\n            l = itr->first;\n            r = std::max(r,\
     \ itr->second);\n            set.erase(itr);\n        }\n        itr = set.lower_bound({l,\
@@ -52,6 +53,7 @@ data:
     \ T>> set;\n\n  public:\n    section_set() {\n        set.insert(\n          \
     \  {std::numeric_limits<T>::min(), std::numeric_limits<T>::min()});\n        set.insert(\n\
     \            {std::numeric_limits<T>::max(), std::numeric_limits<T>::max()});\n\
+    \    }\n\n    std::set<std::pair<T, T>> sections() const {\n        return set;\n\
     \    }\n\n    // [l, r)\u3092\u8FFD\u52A0\n    void insert(T l, T r) {\n     \
     \   auto itr =\n            std::prev(set.lower_bound({l, std::numeric_limits<T>::min()}));\n\
     \        if (l <= itr->second) {\n            assert(itr->first <= l);\n     \
@@ -87,7 +89,7 @@ data:
   isVerificationFile: false
   path: data_structure/section_set.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-09-10 00:45:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2152.test.cpp

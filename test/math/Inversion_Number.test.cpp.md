@@ -44,10 +44,11 @@ data:
     \ data;\r\n\r\n  public:\r\n    fenwick_tree(int _n) : n(_n), data(std::vector<T>(_n\
     \ + 1, T(0))) {}\r\n\r\n    void add(int i, T val) {\r\n        i++;\r\n     \
     \   for (int x = i; x <= n; x += x & -x) {\r\n            data[x] += val;\r\n\
-    \        }\r\n    }\r\n\r\n    T prefix_sum(int i) {\r\n        assert(0 <= i\
-    \ && i <= n);\r\n        T ret = 0;\r\n        for (int x = i; x > 0; x -= x &\
-    \ -x) {\r\n            ret += data[x];\r\n        }\r\n        return ret;\r\n\
-    \    }\r\n\r\n    T sum(int l, int r) {\r\n        return prefix_sum(r) - prefix_sum(l);\r\
+    \        }\r\n    }\r\n\r\n    T prefix_sum(int i) const {\r\n        assert(0\
+    \ <= i && i <= n);\r\n        T ret = 0;\r\n        for (int x = i; x > 0; x -=\
+    \ x & -x) {\r\n            ret += data[x];\r\n        }\r\n        return ret;\r\
+    \n    }\r\n\r\n    T sum(int l, int r) const {\r\n        return prefix_sum(r)\
+    \ - prefix_sum(l);\r\n    }\r\n\r\n    T all_sum() const {\r\n        return prefix_sum(n);\r\
     \n    }\r\n\r\n    // prefix_sum(x) >= key \u3068\u306A\u308B\u6700\u5C0F\u306E\
     x\u3092\u8FD4\u3059\u95A2\u6570 O(log N)\r\n    int lower_bound(T key) {\r\n \
     \       if (key <= 0) return 0;\r\n        int x = 0;\r\n        int max = 1;\r\
@@ -85,7 +86,7 @@ data:
   isVerificationFile: true
   path: test/math/Inversion_Number.test.cpp
   requiredBy: []
-  timestamp: '2023-08-11 00:25:56+09:00'
+  timestamp: '2023-09-10 00:45:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Inversion_Number.test.cpp

@@ -41,19 +41,21 @@ data:
     \ (_front.empty()) {\r\n            move();\r\n        }\r\n        return _front.top().val;\r\
     \n    }\r\n\r\n    void pop() {\r\n        assert(!empty());\r\n        if (_front.empty())\
     \ {\r\n            move();\r\n        }\r\n        _front.pop();\r\n    }\r\n\r\
-    \n    Semigroup fold_all() {\r\n        assert(!empty());\r\n        if (_front.empty())\
-    \ {\r\n            return _back.top().fold;\r\n        } else if (_back.empty())\
-    \ {\r\n            return _front.top().fold;\r\n        } else {\r\n         \
-    \   return op(_front.top().fold, _back.top().fold);\r\n        }\r\n    }\r\n\r\
-    \n  private:\r\n    std::stack<Node> _front, _back;\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include\
-    \ <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
-    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
-    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
-    \ : modint_base {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
-    \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
+    \n    void clear() {\r\n        _front = std::stack<Node>();\r\n        _back\
+    \ = std::stack<Node>();\r\n    }\r\n\r\n    Semigroup fold_all() {\r\n       \
+    \ assert(!empty());\r\n        if (_front.empty()) {\r\n            return _back.top().fold;\r\
+    \n        } else if (_back.empty()) {\r\n            return _front.top().fold;\r\
+    \n        } else {\r\n            return op(_front.top().fold, _back.top().fold);\r\
+    \n        }\r\n    }\r\n\r\n  private:\r\n    std::stack<Node> _front, _back;\r\
+    \n};\r\n\r\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"\
+    utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
+    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \nstruct static_modint_base : modint_base {};\n\ntemplate <class T>\nusing is_static_modint\
+    \ = std::is_base_of<internal::static_modint_base, T>;\n\ntemplate <class T>\n\
+    using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\n}\
+    \  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
     \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
     \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
@@ -134,7 +136,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-08-16 10:56:05+09:00'
+  timestamp: '2023-09-10 00:45:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Queue_Operate_All_Composite.test.cpp

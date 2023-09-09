@@ -30,12 +30,13 @@ data:
     \  if (_front.empty()) {\r\n            move();\r\n        }\r\n        return\
     \ _front.top().val;\r\n    }\r\n\r\n    void pop() {\r\n        assert(!empty());\r\
     \n        if (_front.empty()) {\r\n            move();\r\n        }\r\n      \
-    \  _front.pop();\r\n    }\r\n\r\n    Semigroup fold_all() {\r\n        assert(!empty());\r\
-    \n        if (_front.empty()) {\r\n            return _back.top().fold;\r\n  \
-    \      } else if (_back.empty()) {\r\n            return _front.top().fold;\r\n\
-    \        } else {\r\n            return op(_front.top().fold, _back.top().fold);\r\
-    \n        }\r\n    }\r\n\r\n  private:\r\n    std::stack<Node> _front, _back;\r\
-    \n};\r\n\r\n}  // namespace ebi\n"
+    \  _front.pop();\r\n    }\r\n\r\n    void clear() {\r\n        _front = std::stack<Node>();\r\
+    \n        _back = std::stack<Node>();\r\n    }\r\n\r\n    Semigroup fold_all()\
+    \ {\r\n        assert(!empty());\r\n        if (_front.empty()) {\r\n        \
+    \    return _back.top().fold;\r\n        } else if (_back.empty()) {\r\n     \
+    \       return _front.top().fold;\r\n        } else {\r\n            return op(_front.top().fold,\
+    \ _back.top().fold);\r\n        }\r\n    }\r\n\r\n  private:\r\n    std::stack<Node>\
+    \ _front, _back;\r\n};\r\n\r\n}  // namespace ebi\n"
   code: "#pragma once\r\n\r\n/*\r\n    reference: https://scrapbox.io/data-structures/Sliding_Window_Aggregation\r\
     \n*/\r\n\r\n#include <cassert>\r\n#include <stack>\r\n\r\nnamespace ebi {\r\n\r\
     \ntemplate <class Semigroup, Semigroup (*op)(Semigroup, Semigroup)>\r\nstruct\
@@ -54,17 +55,18 @@ data:
     \ (_front.empty()) {\r\n            move();\r\n        }\r\n        return _front.top().val;\r\
     \n    }\r\n\r\n    void pop() {\r\n        assert(!empty());\r\n        if (_front.empty())\
     \ {\r\n            move();\r\n        }\r\n        _front.pop();\r\n    }\r\n\r\
-    \n    Semigroup fold_all() {\r\n        assert(!empty());\r\n        if (_front.empty())\
-    \ {\r\n            return _back.top().fold;\r\n        } else if (_back.empty())\
-    \ {\r\n            return _front.top().fold;\r\n        } else {\r\n         \
-    \   return op(_front.top().fold, _back.top().fold);\r\n        }\r\n    }\r\n\r\
-    \n  private:\r\n    std::stack<Node> _front, _back;\r\n};\r\n\r\n}  // namespace\
-    \ ebi"
+    \n    void clear() {\r\n        _front = std::stack<Node>();\r\n        _back\
+    \ = std::stack<Node>();\r\n    }\r\n\r\n    Semigroup fold_all() {\r\n       \
+    \ assert(!empty());\r\n        if (_front.empty()) {\r\n            return _back.top().fold;\r\
+    \n        } else if (_back.empty()) {\r\n            return _front.top().fold;\r\
+    \n        } else {\r\n            return op(_front.top().fold, _back.top().fold);\r\
+    \n        }\r\n    }\r\n\r\n  private:\r\n    std::stack<Node> _front, _back;\r\
+    \n};\r\n\r\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/queue_aggregation.hpp
   requiredBy: []
-  timestamp: '2023-07-27 13:02:25+09:00'
+  timestamp: '2023-09-10 00:45:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Queue_Operate_All_Composite.test.cpp
