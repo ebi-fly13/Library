@@ -231,6 +231,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/biconnected_components.hpp
       title: graph/biconnected_components.hpp
+    - icon: ':warning:'
+      path: graph/complement_graph_bfs.hpp
+      title: Complement Graph BFS
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
