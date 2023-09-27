@@ -21,7 +21,6 @@ struct heavy_light_decomposition {
     }
 
     void dfs_hld(int v) {
-        static int t = 0;
         in[v] = t++;
         rev[in[v]] = v;
         for (auto nv : g[v]) {
@@ -150,7 +149,7 @@ struct heavy_light_decomposition {
         if (!f(ds.get(in[u]))) return -1;
         int l = lca(u, v);
         S now = e;
-        auto check = [&](i64 x) -> bool { return f(op(now, x)); };
+        auto check = [&](S x) -> bool { return f(op(now, x)); };
         for (auto [a, b] : ascend(u, l)) {
             a++;
             S ret = ds.prod(b, a);
@@ -193,6 +192,8 @@ struct heavy_light_decomposition {
     int n;
     std::vector<std::vector<int>> g;
     std::vector<int> sz, in, out, nxt, par, depth, rev;
+
+    int t = 0;
 };
 
 }  // namespace ebi
