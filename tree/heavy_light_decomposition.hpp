@@ -72,6 +72,10 @@ struct heavy_light_decomposition {
         return in[u];
     }
 
+    int rev_idx(int i) const {
+        return rev[i];
+    }
+
     int la(int v, int k) const {
         while (1) {
             int u = nxt[v];
@@ -129,6 +133,56 @@ struct heavy_light_decomposition {
         for (auto [a, b] : ascend(u, l)) f(a + 1, b);
         if (vertex) f(in[l], in[l] + 1);
         for (auto [a, b] : descend(l, v)) f(a, b + 1);
+    }
+
+    std::vector<std::pair<int, int>> path_sections(int u, int v,
+                                                   bool vertex) const {
+        int l = lca(u, v);
+        std::vector<std::pair<int, int>> sections;
+        for (auto [a, b] : ascend(u, l)) sections.emplace_back(a + 1, b);
+        if (vertex) sections.emplace_back(in[l], in[l] + 1);
+        for (auto [a, b] : descend(l, v)) sections.emplace_back(a, b + 1);
+        return sections;
+    }
+
+    template <class S, class F, class Op, class DS>
+    int max_path(int u, int v, bool vertex, S e, F f, Op op, DS &ds) const {
+        if (!f(ds.get(in[u]))) return -1;
+        int l = lca(u, v);
+        S now = e;
+        auto check = [&](i64 x) -> bool { return f(op(now, x)); };
+        for (auto [a, b] : ascend(u, l)) {
+            a++;
+            S ret = ds.prod(b, a);
+            if (check(ret)) {
+                u = rev[b];
+                now = op(now, ret);
+            } else {
+                int m = ds.min_left(a, check);
+                return (m == a ? u : rev[m]);
+            }
+        }
+        if (vertex) {
+            S ret = ds.get(in[l]);
+            if (check(ret)) {
+                u = l;
+                now = op(now, ret);
+            } else {
+                return u;
+            }
+        }
+        for (auto [a, b] : descend(l, v)) {
+            b++;
+            S ret = ds.prod(a, b);
+            if (check(ret)) {
+                u = rev[b - 1];
+                now = op(now, ret);
+            } else {
+                int m = ds.max_right(a, check);
+                return a == m ? u : rev[m - 1];
+            }
+        }
+        return v;
     }
 
     template <class F> void subtree_query(int u, bool vertex, const F &f) {
