@@ -93,9 +93,9 @@ data:
   isVerificationFile: false
   path: convolution/subset_convolution.hpp
   requiredBy:
-  - set_function/exp_of_sps.hpp
-  - set_function/egf_composite_sps.hpp
   - set_function/poly_composite_sps.hpp
+  - set_function/egf_composite_sps.hpp
+  - set_function/exp_of_sps.hpp
   timestamp: '2023-06-19 14:38:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -303,34 +303,34 @@ data:
   isVerificationFile: false
   path: geometry/point.hpp
   requiredBy:
-  - geometry/circle.hpp
-  - geometry/polygon.hpp
-  - geometry/line.hpp
   - geometry/line_segment.hpp
+  - geometry/polygon.hpp
+  - geometry/circle.hpp
+  - geometry/line.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/geometry/convex_polygon_cut.test.cpp
-  - test/geometry/contains.test.cpp
-  - test/geometry/is_convex.test.cpp
-  - test/geometry/common_area_circles.test.cpp
-  - test/geometry/closest_pair.test.cpp
-  - test/geometry/incircle_of_triangle.test.cpp
-  - test/geometry/isp.test.cpp
-  - test/geometry/cross_points_of_circles.test.cpp
-  - test/geometry/common_area.test.cpp
-  - test/geometry/intersection.test.cpp
-  - test/geometry/cross_points_of_circle_and_line.test.cpp
   - test/geometry/intersection_circle.test.cpp
-  - test/geometry/intersection_line_segment.test.cpp
-  - test/geometry/convex_diameter.test.cpp
-  - test/geometry/distance.test.cpp
-  - test/geometry/reflection.test.cpp
-  - test/geometry/tangent_to_circle.test.cpp
+  - test/geometry/contains.test.cpp
   - test/geometry/circumscribed_circle_of_triangle.test.cpp
   - test/geometry/area.test.cpp
+  - test/geometry/tangent_to_circle.test.cpp
+  - test/geometry/closest_pair.test.cpp
+  - test/geometry/is_convex.test.cpp
+  - test/geometry/convex_diameter.test.cpp
+  - test/geometry/intersection_line_segment.test.cpp
   - test/geometry/cross_point.test.cpp
+  - test/geometry/isp.test.cpp
+  - test/geometry/common_area_circles.test.cpp
+  - test/geometry/common_area.test.cpp
+  - test/geometry/convex_polygon_cut.test.cpp
+  - test/geometry/intersection.test.cpp
+  - test/geometry/cross_points_of_circles.test.cpp
+  - test/geometry/cross_points_of_circle_and_line.test.cpp
+  - test/geometry/reflection.test.cpp
   - test/geometry/common_tangent.test.cpp
+  - test/geometry/incircle_of_triangle.test.cpp
+  - test/geometry/distance.test.cpp
 documentation_of: geometry/point.hpp
 layout: document
 title: point

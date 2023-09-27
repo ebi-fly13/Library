@@ -72,9 +72,9 @@ data:
   isVerificationFile: false
   path: math/eratosthenes_sieve.hpp
   requiredBy:
-  - math/multiple_transform.hpp
   - math/divisor_transform.hpp
   - math/DirichletSeries.hpp
+  - math/multiple_transform.hpp
   - convolution/dirichlet_convolution.hpp
   - convolution/lcm_convolution.hpp
   - convolution/gcd_convolution.hpp

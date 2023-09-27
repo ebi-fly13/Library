@@ -3,24 +3,24 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree_HLD.test.cpp
     title: test/tree/Jump_on_Tree_HLD.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <algorithm>\n\
@@ -48,18 +48,19 @@ data:
     \   in(n),\n          out(n),\n          nxt(n),\n          par(n, -1),\n    \
     \      depth(n, 0),\n          rev(n) {\n        dfs_sz(root);\n        dfs_hld(root);\n\
     \    }\n\n    int idx(int u) const {\n        return in[u];\n    }\n\n    int\
-    \ la(int v, int k) const {\n        while (1) {\n            int u = nxt[v];\n\
-    \            if (in[u] <= in[v] - k) return rev[in[v] - k];\n            k -=\
-    \ in[v] - in[u] + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int\
-    \ u, int v) const {\n        while (nxt[u] != nxt[v]) {\n            if (in[u]\
-    \ < in[v]) std::swap(u, v);\n            u = par[nxt[u]];\n        }\n       \
-    \ return depth[u] < depth[v] ? u : v;\n    }\n\n    int jump(int s, int t, int\
-    \ i) const {\n        if (i == 0) return s;\n        int l = lca(s, t);\n    \
-    \    int d = depth[s] + depth[t] - depth[l] * 2;\n        if (d < i) return -1;\n\
-    \        if (depth[s] - depth[l] >= i) return la(s, i);\n        i = d - i;\n\
-    \        return la(t, i);\n    }\n\n    std::vector<int> path(int s, int t) const\
-    \ {\n        int l = lca(s, t);\n        std::vector<int> a, b;\n        for (;\
-    \ s != l; s = par[s]) a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
+    \ rev_idx(int i) const {\n        return rev[i];\n    }\n\n    int la(int v, int\
+    \ k) const {\n        while (1) {\n            int u = nxt[v];\n            if\
+    \ (in[u] <= in[v] - k) return rev[in[v] - k];\n            k -= in[v] - in[u]\
+    \ + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u, int v)\
+    \ const {\n        while (nxt[u] != nxt[v]) {\n            if (in[u] < in[v])\
+    \ std::swap(u, v);\n            u = par[nxt[u]];\n        }\n        return depth[u]\
+    \ < depth[v] ? u : v;\n    }\n\n    int jump(int s, int t, int i) const {\n  \
+    \      if (i == 0) return s;\n        int l = lca(s, t);\n        int d = depth[s]\
+    \ + depth[t] - depth[l] * 2;\n        if (d < i) return -1;\n        if (depth[s]\
+    \ - depth[l] >= i) return la(s, i);\n        i = d - i;\n        return la(t,\
+    \ i);\n    }\n\n    std::vector<int> path(int s, int t) const {\n        int l\
+    \ = lca(s, t);\n        std::vector<int> a, b;\n        for (; s != l; s = par[s])\
+    \ a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
     \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
     \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
     \ distance(int u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
@@ -70,10 +71,32 @@ data:
     \                    const F &f) const {\n        int l = lca(u, v);\n       \
     \ for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if (vertex) f(in[l],\
     \ in[l] + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
-    \n    template <class F> void subtree_query(int u, bool vertex, const F &f) {\n\
-    \        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n    int n;\n \
-    \   std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out, nxt, par,\
-    \ depth, rev;\n};\n\n}  // namespace ebi\n"
+    \n    std::vector<std::pair<int, int>> path_sections(int u, int v,\n         \
+    \                                          bool vertex) const {\n        int l\
+    \ = lca(u, v);\n        std::vector<std::pair<int, int>> sections;\n        for\
+    \ (auto [a, b] : ascend(u, l)) sections.emplace_back(a + 1, b);\n        if (vertex)\
+    \ sections.emplace_back(in[l], in[l] + 1);\n        for (auto [a, b] : descend(l,\
+    \ v)) sections.emplace_back(a, b + 1);\n        return sections;\n    }\n\n  \
+    \  template <class S, class F, class Op, class DS>\n    int max_path(int u, int\
+    \ v, bool vertex, S e, F f, Op op, DS &ds) const {\n        if (!f(ds.get(in[u])))\
+    \ return -1;\n        int l = lca(u, v);\n        S now = e;\n        auto check\
+    \ = [&](i64 x) -> bool { return f(op(now, x)); };\n        for (auto [a, b] :\
+    \ ascend(u, l)) {\n            a++;\n            S ret = ds.prod(b, a);\n    \
+    \        if (check(ret)) {\n                u = rev[b];\n                now =\
+    \ op(now, ret);\n            } else {\n                int m = ds.min_left(a,\
+    \ check);\n                return (m == a ? u : rev[m]);\n            }\n    \
+    \    }\n        if (vertex) {\n            S ret = ds.get(in[l]);\n          \
+    \  if (check(ret)) {\n                u = l;\n                now = op(now, ret);\n\
+    \            } else {\n                return u;\n            }\n        }\n \
+    \       for (auto [a, b] : descend(l, v)) {\n            b++;\n            S ret\
+    \ = ds.prod(a, b);\n            if (check(ret)) {\n                u = rev[b -\
+    \ 1];\n                now = op(now, ret);\n            } else {\n           \
+    \     int m = ds.max_right(a, check);\n                return a == m ? u : rev[m\
+    \ - 1];\n            }\n        }\n        return v;\n    }\n\n    template <class\
+    \ F> void subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
+    \ out[u]);\n    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>>\
+    \ g;\n    std::vector<int> sz, in, out, nxt, par, depth, rev;\n};\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <iostream>\n#include <vector>\n\
     \nnamespace ebi {\n\nstruct heavy_light_decomposition {\n  private:\n    void\
     \ dfs_sz(int v) {\n        for (auto &nv : g[v]) {\n            if (nv == par[v])\
@@ -99,18 +122,19 @@ data:
     \   in(n),\n          out(n),\n          nxt(n),\n          par(n, -1),\n    \
     \      depth(n, 0),\n          rev(n) {\n        dfs_sz(root);\n        dfs_hld(root);\n\
     \    }\n\n    int idx(int u) const {\n        return in[u];\n    }\n\n    int\
-    \ la(int v, int k) const {\n        while (1) {\n            int u = nxt[v];\n\
-    \            if (in[u] <= in[v] - k) return rev[in[v] - k];\n            k -=\
-    \ in[v] - in[u] + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int\
-    \ u, int v) const {\n        while (nxt[u] != nxt[v]) {\n            if (in[u]\
-    \ < in[v]) std::swap(u, v);\n            u = par[nxt[u]];\n        }\n       \
-    \ return depth[u] < depth[v] ? u : v;\n    }\n\n    int jump(int s, int t, int\
-    \ i) const {\n        if (i == 0) return s;\n        int l = lca(s, t);\n    \
-    \    int d = depth[s] + depth[t] - depth[l] * 2;\n        if (d < i) return -1;\n\
-    \        if (depth[s] - depth[l] >= i) return la(s, i);\n        i = d - i;\n\
-    \        return la(t, i);\n    }\n\n    std::vector<int> path(int s, int t) const\
-    \ {\n        int l = lca(s, t);\n        std::vector<int> a, b;\n        for (;\
-    \ s != l; s = par[s]) a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
+    \ rev_idx(int i) const {\n        return rev[i];\n    }\n\n    int la(int v, int\
+    \ k) const {\n        while (1) {\n            int u = nxt[v];\n            if\
+    \ (in[u] <= in[v] - k) return rev[in[v] - k];\n            k -= in[v] - in[u]\
+    \ + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u, int v)\
+    \ const {\n        while (nxt[u] != nxt[v]) {\n            if (in[u] < in[v])\
+    \ std::swap(u, v);\n            u = par[nxt[u]];\n        }\n        return depth[u]\
+    \ < depth[v] ? u : v;\n    }\n\n    int jump(int s, int t, int i) const {\n  \
+    \      if (i == 0) return s;\n        int l = lca(s, t);\n        int d = depth[s]\
+    \ + depth[t] - depth[l] * 2;\n        if (d < i) return -1;\n        if (depth[s]\
+    \ - depth[l] >= i) return la(s, i);\n        i = d - i;\n        return la(t,\
+    \ i);\n    }\n\n    std::vector<int> path(int s, int t) const {\n        int l\
+    \ = lca(s, t);\n        std::vector<int> a, b;\n        for (; s != l; s = par[s])\
+    \ a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
     \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
     \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
     \ distance(int u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
@@ -121,22 +145,44 @@ data:
     \                    const F &f) const {\n        int l = lca(u, v);\n       \
     \ for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if (vertex) f(in[l],\
     \ in[l] + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
-    \n    template <class F> void subtree_query(int u, bool vertex, const F &f) {\n\
-    \        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n    int n;\n \
-    \   std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out, nxt, par,\
-    \ depth, rev;\n};\n\n}  // namespace ebi"
+    \n    std::vector<std::pair<int, int>> path_sections(int u, int v,\n         \
+    \                                          bool vertex) const {\n        int l\
+    \ = lca(u, v);\n        std::vector<std::pair<int, int>> sections;\n        for\
+    \ (auto [a, b] : ascend(u, l)) sections.emplace_back(a + 1, b);\n        if (vertex)\
+    \ sections.emplace_back(in[l], in[l] + 1);\n        for (auto [a, b] : descend(l,\
+    \ v)) sections.emplace_back(a, b + 1);\n        return sections;\n    }\n\n  \
+    \  template <class S, class F, class Op, class DS>\n    int max_path(int u, int\
+    \ v, bool vertex, S e, F f, Op op, DS &ds) const {\n        if (!f(ds.get(in[u])))\
+    \ return -1;\n        int l = lca(u, v);\n        S now = e;\n        auto check\
+    \ = [&](i64 x) -> bool { return f(op(now, x)); };\n        for (auto [a, b] :\
+    \ ascend(u, l)) {\n            a++;\n            S ret = ds.prod(b, a);\n    \
+    \        if (check(ret)) {\n                u = rev[b];\n                now =\
+    \ op(now, ret);\n            } else {\n                int m = ds.min_left(a,\
+    \ check);\n                return (m == a ? u : rev[m]);\n            }\n    \
+    \    }\n        if (vertex) {\n            S ret = ds.get(in[l]);\n          \
+    \  if (check(ret)) {\n                u = l;\n                now = op(now, ret);\n\
+    \            } else {\n                return u;\n            }\n        }\n \
+    \       for (auto [a, b] : descend(l, v)) {\n            b++;\n            S ret\
+    \ = ds.prod(a, b);\n            if (check(ret)) {\n                u = rev[b -\
+    \ 1];\n                now = op(now, ret);\n            } else {\n           \
+    \     int m = ds.max_right(a, check);\n                return a == m ? u : rev[m\
+    \ - 1];\n            }\n        }\n        return v;\n    }\n\n    template <class\
+    \ F> void subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
+    \ out[u]);\n    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>>\
+    \ g;\n    std::vector<int> sz, in, out, nxt, par, depth, rev;\n};\n\n}  // namespace\
+    \ ebi"
   dependsOn: []
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-08-10 12:11:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-09-27 14:04:16+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - test/tree/Jump_on_Tree_HLD.test.cpp
   - test/aoj/aoj_2450.test.cpp
+  - test/tree/Jump_on_Tree_HLD.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
 title: Heavy Light Decomposition
