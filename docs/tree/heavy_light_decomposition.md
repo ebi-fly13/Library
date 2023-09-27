@@ -41,6 +41,12 @@ $u-v$ パスに $s$ が含まれるか判定。 $O(\log N)$
 
 パス $u-v$ にクエリ`f`を適用する。非可換。vertexがtrueのとき、頂点に属性がある。vertexがfalseのとき、辺に属性がある。親-子間の辺属性は子のidxに持つ。
 
+### max_path(int u, int v, bool vertex, S e, F f, Op op, DS ds)
+
+パス $u-v$ に含まれる頂点でで、 $u-m$ での値が $f$ に対してtrueを返す最大のパスとなる $m$ を二分探索で求める。
+$e$ は値の初期値、 $f$ は二分探索の判定関数、 $op$ はデータ構造の演算、 $ds$ はデータ構造である。
+計算量はデータ構造に対する二分探索の計算量を $O(\log N)$ とすると $O((\log N)^2)$
+
 ### subtree_query(int u, bool vertex, const F &f)
 
 頂点 $u$ の部分木にクエリ`f`を適用する。vertexがtrueのとき、根頂点である $u$ にもクエリを適用する。
