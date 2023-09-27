@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
@@ -79,90 +79,90 @@ data:
     \           if (nv == par[v]) continue;\n            par[nv] = v;\n          \
     \  depth[nv] = depth[v] + 1;\n            dfs_sz(nv);\n            sz[v] += sz[nv];\n\
     \            if (sz[nv] > sz[g[v][0]] || g[v][0] == par[v])\n                std::swap(nv,\
-    \ g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v) {\n        static int\
-    \ t = 0;\n        in[v] = t++;\n        rev[in[v]] = v;\n        for (auto nv\
-    \ : g[v]) {\n            if (nv == par[v]) continue;\n            nxt[nv] = (nv\
-    \ == g[v][0] ? nxt[v] : nv);\n            dfs_hld(nv);\n        }\n        out[v]\
-    \ = t;\n    }\n\n    // [u, v) \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\
-    \u7956\u5148)\n    std::vector<std::pair<int, int>> ascend(int u, int v) const\
-    \ {\n        std::vector<std::pair<int, int>> res;\n        while (nxt[u] != nxt[v])\
-    \ {\n            res.emplace_back(in[u], in[nxt[u]]);\n            u = par[nxt[u]];\n\
-    \        }\n        if (u != v) res.emplace_back(in[u], in[v] + 1);\n        return\
-    \ res;\n    }\n\n    // (u, v] \u30D1\u30B9\u306E\u53D6\u5F97 (u \u306F v \u306E\
-    \u7956\u5148)\n    std::vector<std::pair<int, int>> descend(int u, int v) const\
-    \ {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v]) return {{in[u]\
-    \ + 1, in[v]}};\n        auto res = descend(u, par[nxt[v]]);\n        res.emplace_back(in[nxt[v]],\
-    \ in[v]);\n        return res;\n    }\n\n  public:\n    heavy_light_decomposition(const\
-    \ std::vector<std::vector<int>> &gh,\n                              int root =\
-    \ 0)\n        : n(gh.size()),\n          g(gh),\n          sz(n, 1),\n       \
-    \   in(n),\n          out(n),\n          nxt(n),\n          par(n, -1),\n    \
-    \      depth(n, 0),\n          rev(n) {\n        dfs_sz(root);\n        dfs_hld(root);\n\
-    \    }\n\n    int idx(int u) const {\n        return in[u];\n    }\n\n    int\
-    \ rev_idx(int i) const {\n        return rev[i];\n    }\n\n    int la(int v, int\
-    \ k) const {\n        while (1) {\n            int u = nxt[v];\n            if\
-    \ (in[u] <= in[v] - k) return rev[in[v] - k];\n            k -= in[v] - in[u]\
-    \ + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u, int v)\
-    \ const {\n        while (nxt[u] != nxt[v]) {\n            if (in[u] < in[v])\
-    \ std::swap(u, v);\n            u = par[nxt[u]];\n        }\n        return depth[u]\
-    \ < depth[v] ? u : v;\n    }\n\n    int jump(int s, int t, int i) const {\n  \
-    \      if (i == 0) return s;\n        int l = lca(s, t);\n        int d = depth[s]\
-    \ + depth[t] - depth[l] * 2;\n        if (d < i) return -1;\n        if (depth[s]\
-    \ - depth[l] >= i) return la(s, i);\n        i = d - i;\n        return la(t,\
-    \ i);\n    }\n\n    std::vector<int> path(int s, int t) const {\n        int l\
-    \ = lca(s, t);\n        std::vector<int> a, b;\n        for (; s != l; s = par[s])\
-    \ a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
-    \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
-    \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
-    \ distance(int u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
-    \ v)];\n    }\n\n    int distance_from_root(int v) const {\n        return depth[v];\n\
-    \    }\n\n    bool at_path(int u, int v, int s) const {\n        return distance(u,\
-    \ v) == distance(u, s) + distance(s, v);\n    }\n\n    template <class F>\n  \
-    \  void path_noncommutative_query(int u, int v, bool vertex,\n               \
-    \                    const F &f) const {\n        int l = lca(u, v);\n       \
-    \ for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if (vertex) f(in[l],\
-    \ in[l] + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
-    \n    std::vector<std::pair<int, int>> path_sections(int u, int v,\n         \
-    \                                          bool vertex) const {\n        int l\
-    \ = lca(u, v);\n        std::vector<std::pair<int, int>> sections;\n        for\
-    \ (auto [a, b] : ascend(u, l)) sections.emplace_back(a + 1, b);\n        if (vertex)\
-    \ sections.emplace_back(in[l], in[l] + 1);\n        for (auto [a, b] : descend(l,\
-    \ v)) sections.emplace_back(a, b + 1);\n        return sections;\n    }\n\n  \
-    \  template <class S, class F, class Op, class DS>\n    int max_path(int u, int\
-    \ v, bool vertex, S e, F f, Op op, DS &ds) const {\n        if (!f(ds.get(in[u])))\
-    \ return -1;\n        int l = lca(u, v);\n        S now = e;\n        auto check\
-    \ = [&](i64 x) -> bool { return f(op(now, x)); };\n        for (auto [a, b] :\
-    \ ascend(u, l)) {\n            a++;\n            S ret = ds.prod(b, a);\n    \
-    \        if (check(ret)) {\n                u = rev[b];\n                now =\
-    \ op(now, ret);\n            } else {\n                int m = ds.min_left(a,\
-    \ check);\n                return (m == a ? u : rev[m]);\n            }\n    \
-    \    }\n        if (vertex) {\n            S ret = ds.get(in[l]);\n          \
-    \  if (check(ret)) {\n                u = l;\n                now = op(now, ret);\n\
-    \            } else {\n                return u;\n            }\n        }\n \
-    \       for (auto [a, b] : descend(l, v)) {\n            b++;\n            S ret\
-    \ = ds.prod(a, b);\n            if (check(ret)) {\n                u = rev[b -\
-    \ 1];\n                now = op(now, ret);\n            } else {\n           \
-    \     int m = ds.max_right(a, check);\n                return a == m ? u : rev[m\
-    \ - 1];\n            }\n        }\n        return v;\n    }\n\n    template <class\
-    \ F> void subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
-    \ out[u]);\n    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>>\
-    \ g;\n    std::vector<int> sz, in, out, nxt, par, depth, rev;\n};\n\n}  // namespace\
-    \ ebi\n#line 9 \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\n\nusing i64\
-    \ = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\ni64 e() {\n \
-    \   return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n   \
-    \ std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin\
-    \ >> a[i];\n    }\n    ebi::graph g(n);\n    for (int i = 0; i < n - 1; ++i) {\n\
-    \        int u, v;\n        std::cin >> u >> v;\n        g.add_edge(u, v);\n \
-    \   }\n    ebi::heavy_light_decomposition hld(g);\n    ebi::segtree<i64, op, e>\
-    \ seg(n);\n    i64 ans = e();\n    auto set = [&](int u, i64 x) {\n        int\
-    \ idx = hld.idx(u);\n        seg.set(idx, seg.get(idx) + x);\n    };\n    auto\
-    \ f = [&](int l, int r) {\n        if (l <= r)\n            ans = op(ans, seg.prod(l,\
-    \ r));\n        else\n            ans = op(ans, seg.prod(r, l));\n    };\n   \
-    \ for (int i = 0; i < n; i++) {\n        set(i, a[i]);\n    }\n    while (q--)\
-    \ {\n        int flag;\n        std::cin >> flag;\n        if (flag == 0) {\n\
-    \            int p;\n            i64 x;\n            std::cin >> p >> x;\n   \
-    \         set(p, x);\n        } else {\n            int u, v;\n            std::cin\
-    \ >> u >> v;\n            ans = e();\n            hld.path_noncommutative_query(u,\
-    \ v, true, f);\n            std::cout << ans << '\\n';\n        }\n    }\n}\n"
+    \ g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = t++;\n\
+    \        rev[in[v]] = v;\n        for (auto nv : g[v]) {\n            if (nv ==\
+    \ par[v]) continue;\n            nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);\n  \
+    \          dfs_hld(nv);\n        }\n        out[v] = t;\n    }\n\n    // [u, v)\
+    \ \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
+    \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
+    \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
+    \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
+    \ in[v] + 1);\n        return res;\n    }\n\n    // (u, v] \u30D1\u30B9\u306E\u53D6\
+    \u5F97 (u \u306F v \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> descend(int\
+    \ u, int v) const {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v])\
+    \ return {{in[u] + 1, in[v]}};\n        auto res = descend(u, par[nxt[v]]);\n\
+    \        res.emplace_back(in[nxt[v]], in[v]);\n        return res;\n    }\n\n\
+    \  public:\n    heavy_light_decomposition(const std::vector<std::vector<int>>\
+    \ &gh,\n                              int root = 0)\n        : n(gh.size()),\n\
+    \          g(gh),\n          sz(n, 1),\n          in(n),\n          out(n),\n\
+    \          nxt(n),\n          par(n, -1),\n          depth(n, 0),\n          rev(n)\
+    \ {\n        dfs_sz(root);\n        dfs_hld(root);\n    }\n\n    int idx(int u)\
+    \ const {\n        return in[u];\n    }\n\n    int rev_idx(int i) const {\n  \
+    \      return rev[i];\n    }\n\n    int la(int v, int k) const {\n        while\
+    \ (1) {\n            int u = nxt[v];\n            if (in[u] <= in[v] - k) return\
+    \ rev[in[v] - k];\n            k -= in[v] - in[u] + 1;\n            v = par[u];\n\
+    \        }\n    }\n\n    int lca(int u, int v) const {\n        while (nxt[u]\
+    \ != nxt[v]) {\n            if (in[u] < in[v]) std::swap(u, v);\n            u\
+    \ = par[nxt[u]];\n        }\n        return depth[u] < depth[v] ? u : v;\n   \
+    \ }\n\n    int jump(int s, int t, int i) const {\n        if (i == 0) return s;\n\
+    \        int l = lca(s, t);\n        int d = depth[s] + depth[t] - depth[l] *\
+    \ 2;\n        if (d < i) return -1;\n        if (depth[s] - depth[l] >= i) return\
+    \ la(s, i);\n        i = d - i;\n        return la(t, i);\n    }\n\n    std::vector<int>\
+    \ path(int s, int t) const {\n        int l = lca(s, t);\n        std::vector<int>\
+    \ a, b;\n        for (; s != l; s = par[s]) a.emplace_back(s);\n        for (;\
+    \ t != l; t = par[t]) b.emplace_back(t);\n        a.emplace_back(l);\n       \
+    \ std::reverse(b.begin(), b.end());\n        a.insert(a.end(), b.begin(), b.end());\n\
+    \        return a;\n    }\n\n    int distance(int u, int v) const {\n        return\
+    \ depth[u] + depth[v] - 2 * depth[lca(u, v)];\n    }\n\n    int distance_from_root(int\
+    \ v) const {\n        return depth[v];\n    }\n\n    bool at_path(int u, int v,\
+    \ int s) const {\n        return distance(u, v) == distance(u, s) + distance(s,\
+    \ v);\n    }\n\n    template <class F>\n    void path_noncommutative_query(int\
+    \ u, int v, bool vertex,\n                                   const F &f) const\
+    \ {\n        int l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) f(a\
+    \ + 1, b);\n        if (vertex) f(in[l], in[l] + 1);\n        for (auto [a, b]\
+    \ : descend(l, v)) f(a, b + 1);\n    }\n\n    std::vector<std::pair<int, int>>\
+    \ path_sections(int u, int v,\n                                              \
+    \     bool vertex) const {\n        int l = lca(u, v);\n        std::vector<std::pair<int,\
+    \ int>> sections;\n        for (auto [a, b] : ascend(u, l)) sections.emplace_back(a\
+    \ + 1, b);\n        if (vertex) sections.emplace_back(in[l], in[l] + 1);\n   \
+    \     for (auto [a, b] : descend(l, v)) sections.emplace_back(a, b + 1);\n   \
+    \     return sections;\n    }\n\n    template <class S, class F, class Op, class\
+    \ DS>\n    int max_path(int u, int v, bool vertex, S e, F f, Op op, DS &ds) const\
+    \ {\n        if (!f(ds.get(in[u]))) return -1;\n        int l = lca(u, v);\n \
+    \       S now = e;\n        auto check = [&](S x) -> bool { return f(op(now, x));\
+    \ };\n        for (auto [a, b] : ascend(u, l)) {\n            a++;\n         \
+    \   S ret = ds.prod(b, a);\n            if (check(ret)) {\n                u =\
+    \ rev[b];\n                now = op(now, ret);\n            } else {\n       \
+    \         int m = ds.min_left(a, check);\n                return (m == a ? u :\
+    \ rev[m]);\n            }\n        }\n        if (vertex) {\n            S ret\
+    \ = ds.get(in[l]);\n            if (check(ret)) {\n                u = l;\n  \
+    \              now = op(now, ret);\n            } else {\n                return\
+    \ u;\n            }\n        }\n        for (auto [a, b] : descend(l, v)) {\n\
+    \            b++;\n            S ret = ds.prod(a, b);\n            if (check(ret))\
+    \ {\n                u = rev[b - 1];\n                now = op(now, ret);\n  \
+    \          } else {\n                int m = ds.max_right(a, check);\n       \
+    \         return a == m ? u : rev[m - 1];\n            }\n        }\n        return\
+    \ v;\n    }\n\n    template <class F> void subtree_query(int u, bool vertex, const\
+    \ F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n   \
+    \ int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
+    \ nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace ebi\n#line 9\
+    \ \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\n\nusing i64 = std::int64_t;\n\
+    i64 op(i64 a, i64 b) {\n    return a + b;\n}\ni64 e() {\n    return 0;\n}\n\n\
+    int main() {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<i64> a(n);\n\
+    \    for (int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n    ebi::graph\
+    \ g(n);\n    for (int i = 0; i < n - 1; ++i) {\n        int u, v;\n        std::cin\
+    \ >> u >> v;\n        g.add_edge(u, v);\n    }\n    ebi::heavy_light_decomposition\
+    \ hld(g);\n    ebi::segtree<i64, op, e> seg(n);\n    i64 ans = e();\n    auto\
+    \ set = [&](int u, i64 x) {\n        int idx = hld.idx(u);\n        seg.set(idx,\
+    \ seg.get(idx) + x);\n    };\n    auto f = [&](int l, int r) {\n        if (l\
+    \ <= r)\n            ans = op(ans, seg.prod(l, r));\n        else\n          \
+    \  ans = op(ans, seg.prod(r, l));\n    };\n    for (int i = 0; i < n; i++) {\n\
+    \        set(i, a[i]);\n    }\n    while (q--) {\n        int flag;\n        std::cin\
+    \ >> flag;\n        if (flag == 0) {\n            int p;\n            i64 x;\n\
+    \            std::cin >> p >> x;\n            set(p, x);\n        } else {\n \
+    \           int u, v;\n            std::cin >> u >> v;\n            ans = e();\n\
+    \            hld.path_noncommutative_query(u, v, true, f);\n            std::cout\
+    \ << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
     \n#include <iostream>\n#include <vector>\n\n#include \"../../data_structure/segtree.hpp\"\
     \n#include \"../../graph/template.hpp\"\n#include \"../../tree/heavy_light_decomposition.hpp\"\
@@ -189,8 +189,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-09-27 14:04:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-09-27 17:08:39+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Path_Sum.test.cpp
 layout: document

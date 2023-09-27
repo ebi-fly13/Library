@@ -21,13 +21,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/algorithm/Two_Sat.test.cpp
     title: test/algorithm/Two_Sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,7 +51,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree_HLD.test.cpp
     title: test/tree/Jump_on_Tree_HLD.test.cpp
   - icon: ':heavy_check_mark:'
@@ -66,9 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
@@ -103,7 +103,7 @@ data:
   - algorithm/two_sat.hpp
   - tree/tree_diameter.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
