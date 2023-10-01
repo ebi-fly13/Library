@@ -144,41 +144,34 @@ struct heavy_light_decomposition {
         return sections;
     }
 
-    template <class S, class F, class Op, class DS>
-    int max_path(int u, int v, bool vertex, S e, F f, Op op, DS &ds) const {
-        if (!f(ds.get(in[u]))) return -1;
+    template <class F>
+    int max_path(int u, int v, bool vertex, F binary_search) const {
+        int prev = -1;
         int l = lca(u, v);
-        S now = e;
-        auto check = [&](S x) -> bool { return f(op(now, x)); };
         for (auto [a, b] : ascend(u, l)) {
             a++;
-            S ret = ds.prod(b, a);
-            if (check(ret)) {
-                u = rev[b];
-                now = op(now, ret);
+            int m = binary_search(a, b);
+            if (m == b) {
+                prev = rev[b];
             } else {
-                int m = ds.min_left(a, check);
-                return (m == a ? u : rev[m]);
+                return (m == a ? prev : rev[m]);
             }
         }
         if (vertex) {
-            S ret = ds.get(in[l]);
-            if (check(ret)) {
-                u = l;
-                now = op(now, ret);
+            int m = binary_search(in[l], in[l] + 1);
+            if (m == in[l]) {
+                return prev;
             } else {
-                return u;
+                prev = l;
             }
         }
         for (auto [a, b] : descend(l, v)) {
             b++;
-            S ret = ds.prod(a, b);
-            if (check(ret)) {
-                u = rev[b - 1];
-                now = op(now, ret);
+            int m = binary_search(a, b);
+            if (m == b) {
+                prev = rev[b - 1];
             } else {
-                int m = ds.max_right(a, check);
-                return a == m ? u : rev[m - 1];
+                return m == a ? prev : rev[m - 1];
             }
         }
         return v;
