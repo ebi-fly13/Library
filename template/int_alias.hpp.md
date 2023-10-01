@@ -146,31 +146,31 @@ data:
   isVerificationFile: false
   path: template/int_alias.hpp
   requiredBy:
-  - data_structure/WaveletMatrix.hpp
-  - data_structure/bitVector.hpp
+  - template/utility.hpp
+  - template/template.hpp
   - math/inversion_number.hpp
   - math/DirichletSeries.hpp
   - math/linear_sieve.hpp
-  - template/utility.hpp
-  - template/template.hpp
+  - data_structure/bitVector.hpp
+  - data_structure/WaveletMatrix.hpp
   - convolution/online_convolution.hpp
   - convolution/dirichlet_convolution.hpp
   timestamp: '2023-08-11 00:25:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Line_Add_Get_Min.test.cpp
+  - test/yuki/yuki_1145.test.cpp
+  - test/graph/fibonacci_heap.test.cpp
+  - test/graph/dijkstra.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/Inversion_Number.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/tree/Tree_Diameter.test.cpp
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/Static_Range_Frequency.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Range_Kth_Smallest.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
-  - test/math/Inversion_Number.test.cpp
-  - test/yuki/yuki_1145.test.cpp
-  - test/graph/dijkstra.test.cpp
-  - test/graph/fibonacci_heap.test.cpp
-  - test/tree/Tree_Diameter.test.cpp
 documentation_of: template/int_alias.hpp
 layout: document
 redirect_from:

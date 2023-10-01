@@ -105,8 +105,8 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/aoj/aoj_2450.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
 documentation_of: data_structure/LazySegtree.hpp
 layout: document
 redirect_from:

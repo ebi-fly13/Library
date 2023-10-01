@@ -173,9 +173,9 @@ data:
   timestamp: '2023-08-27 23:14:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
   - test/yuki/yuki_1145.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 documentation_of: template/template.hpp
 layout: document
 redirect_from:

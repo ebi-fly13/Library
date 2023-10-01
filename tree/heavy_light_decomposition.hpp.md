@@ -76,26 +76,22 @@ data:
     \ int>> sections;\n        for (auto [a, b] : ascend(u, l)) sections.emplace_back(a\
     \ + 1, b);\n        if (vertex) sections.emplace_back(in[l], in[l] + 1);\n   \
     \     for (auto [a, b] : descend(l, v)) sections.emplace_back(a, b + 1);\n   \
-    \     return sections;\n    }\n\n    template <class S, class F, class Op, class\
-    \ DS>\n    int max_path(int u, int v, bool vertex, S e, F f, Op op, DS &ds) const\
-    \ {\n        if (!f(ds.get(in[u]))) return -1;\n        int l = lca(u, v);\n \
-    \       S now = e;\n        auto check = [&](S x) -> bool { return f(op(now, x));\
-    \ };\n        for (auto [a, b] : ascend(u, l)) {\n            a++;\n         \
-    \   S ret = ds.prod(b, a);\n            if (check(ret)) {\n                u =\
-    \ rev[b];\n                now = op(now, ret);\n            } else {\n       \
-    \         int m = ds.min_left(a, check);\n                return (m == a ? u :\
-    \ rev[m]);\n            }\n        }\n        if (vertex) {\n            S ret\
-    \ = ds.get(in[l]);\n            if (check(ret)) {\n                u = l;\n  \
-    \              now = op(now, ret);\n            } else {\n                return\
-    \ u;\n            }\n        }\n        for (auto [a, b] : descend(l, v)) {\n\
-    \            b++;\n            S ret = ds.prod(a, b);\n            if (check(ret))\
-    \ {\n                u = rev[b - 1];\n                now = op(now, ret);\n  \
-    \          } else {\n                int m = ds.max_right(a, check);\n       \
-    \         return a == m ? u : rev[m - 1];\n            }\n        }\n        return\
-    \ v;\n    }\n\n    template <class F> void subtree_query(int u, bool vertex, const\
-    \ F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n   \
-    \ int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
-    \ nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace ebi\n"
+    \     return sections;\n    }\n\n    template <class F>\n    int max_path(int\
+    \ u, int v, bool vertex, F binary_search) const {\n        int prev = -1;\n  \
+    \      int l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) {\n      \
+    \      a++;\n            int m = binary_search(a, b);\n            if (m == b)\
+    \ {\n                prev = rev[b];\n            } else {\n                return\
+    \ (m == a ? prev : rev[m]);\n            }\n        }\n        if (vertex) {\n\
+    \            int m = binary_search(in[l], in[l] + 1);\n            if (m == in[l])\
+    \ {\n                return prev;\n            } else {\n                prev\
+    \ = l;\n            }\n        }\n        for (auto [a, b] : descend(l, v)) {\n\
+    \            b++;\n            int m = binary_search(a, b);\n            if (m\
+    \ == b) {\n                prev = rev[b - 1];\n            } else {\n        \
+    \        return m == a ? prev : rev[m - 1];\n            }\n        }\n      \
+    \  return v;\n    }\n\n    template <class F> void subtree_query(int u, bool vertex,\
+    \ const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n\
+    \    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in,\
+    \ out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <iostream>\n#include <vector>\n\
     \nnamespace ebi {\n\nstruct heavy_light_decomposition {\n  private:\n    void\
     \ dfs_sz(int v) {\n        for (auto &nv : g[v]) {\n            if (nv == par[v])\
@@ -149,38 +145,34 @@ data:
     \ int>> sections;\n        for (auto [a, b] : ascend(u, l)) sections.emplace_back(a\
     \ + 1, b);\n        if (vertex) sections.emplace_back(in[l], in[l] + 1);\n   \
     \     for (auto [a, b] : descend(l, v)) sections.emplace_back(a, b + 1);\n   \
-    \     return sections;\n    }\n\n    template <class S, class F, class Op, class\
-    \ DS>\n    int max_path(int u, int v, bool vertex, S e, F f, Op op, DS &ds) const\
-    \ {\n        if (!f(ds.get(in[u]))) return -1;\n        int l = lca(u, v);\n \
-    \       S now = e;\n        auto check = [&](S x) -> bool { return f(op(now, x));\
-    \ };\n        for (auto [a, b] : ascend(u, l)) {\n            a++;\n         \
-    \   S ret = ds.prod(b, a);\n            if (check(ret)) {\n                u =\
-    \ rev[b];\n                now = op(now, ret);\n            } else {\n       \
-    \         int m = ds.min_left(a, check);\n                return (m == a ? u :\
-    \ rev[m]);\n            }\n        }\n        if (vertex) {\n            S ret\
-    \ = ds.get(in[l]);\n            if (check(ret)) {\n                u = l;\n  \
-    \              now = op(now, ret);\n            } else {\n                return\
-    \ u;\n            }\n        }\n        for (auto [a, b] : descend(l, v)) {\n\
-    \            b++;\n            S ret = ds.prod(a, b);\n            if (check(ret))\
-    \ {\n                u = rev[b - 1];\n                now = op(now, ret);\n  \
-    \          } else {\n                int m = ds.max_right(a, check);\n       \
-    \         return a == m ? u : rev[m - 1];\n            }\n        }\n        return\
-    \ v;\n    }\n\n    template <class F> void subtree_query(int u, bool vertex, const\
-    \ F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n   \
-    \ int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
-    \ nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace ebi"
+    \     return sections;\n    }\n\n    template <class F>\n    int max_path(int\
+    \ u, int v, bool vertex, F binary_search) const {\n        int prev = -1;\n  \
+    \      int l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) {\n      \
+    \      a++;\n            int m = binary_search(a, b);\n            if (m == b)\
+    \ {\n                prev = rev[b];\n            } else {\n                return\
+    \ (m == a ? prev : rev[m]);\n            }\n        }\n        if (vertex) {\n\
+    \            int m = binary_search(in[l], in[l] + 1);\n            if (m == in[l])\
+    \ {\n                return prev;\n            } else {\n                prev\
+    \ = l;\n            }\n        }\n        for (auto [a, b] : descend(l, v)) {\n\
+    \            b++;\n            int m = binary_search(a, b);\n            if (m\
+    \ == b) {\n                prev = rev[b - 1];\n            } else {\n        \
+    \        return m == a ? prev : rev[m - 1];\n            }\n        }\n      \
+    \  return v;\n    }\n\n    template <class F> void subtree_query(int u, bool vertex,\
+    \ const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n\
+    \    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in,\
+    \ out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-09-27 17:08:39+09:00'
+  timestamp: '2023-10-02 02:10:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
   - test/aoj/aoj_2450.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
+  - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+  - test/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
 title: Heavy Light Decomposition
@@ -224,10 +216,10 @@ $u-v$ パスに $s$ が含まれるか判定。 $O(\log N)$
 
 パス $u-v$ にクエリ`f`を適用する。非可換。vertexがtrueのとき、頂点に属性がある。vertexがfalseのとき、辺に属性がある。親-子間の辺属性は子のidxに持つ。
 
-### max_path(int u, int v, bool vertex, S e, F f, Op op, DS ds)
+### max_path(int u, int v, bool vertex, F binary_search)
 
-パス $u-v$ に含まれる頂点でで、 $u-m$ での値が $f$ に対してtrueを返す最大のパスとなる $m$ を二分探索で求める。
-$e$ は値の初期値、 $f$ は二分探索の判定関数、 $op$ はデータ構造の演算、 $ds$ はデータ構造である。
+パス $u-v$ に含まれる頂点で、 $u-m$ での値が `true` を返す最大のパスとなる $m$ を二分探索で求める。
+`binary_search` という関数を引数に渡すが、これは `path_noncommutative_query` で渡す `f` と同じ引数を取り、返り値をデータ構造の二分探索した後の `id` とする。
 計算量はデータ構造に対する二分探索の計算量を $O(\log N)$ とすると $O((\log N)^2)$
 
 ### subtree_query(int u, bool vertex, const F &f)

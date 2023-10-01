@@ -82,32 +82,28 @@ data:
     \ int>> sections;\n        for (auto [a, b] : ascend(u, l)) sections.emplace_back(a\
     \ + 1, b);\n        if (vertex) sections.emplace_back(in[l], in[l] + 1);\n   \
     \     for (auto [a, b] : descend(l, v)) sections.emplace_back(a, b + 1);\n   \
-    \     return sections;\n    }\n\n    template <class S, class F, class Op, class\
-    \ DS>\n    int max_path(int u, int v, bool vertex, S e, F f, Op op, DS &ds) const\
-    \ {\n        if (!f(ds.get(in[u]))) return -1;\n        int l = lca(u, v);\n \
-    \       S now = e;\n        auto check = [&](S x) -> bool { return f(op(now, x));\
-    \ };\n        for (auto [a, b] : ascend(u, l)) {\n            a++;\n         \
-    \   S ret = ds.prod(b, a);\n            if (check(ret)) {\n                u =\
-    \ rev[b];\n                now = op(now, ret);\n            } else {\n       \
-    \         int m = ds.min_left(a, check);\n                return (m == a ? u :\
-    \ rev[m]);\n            }\n        }\n        if (vertex) {\n            S ret\
-    \ = ds.get(in[l]);\n            if (check(ret)) {\n                u = l;\n  \
-    \              now = op(now, ret);\n            } else {\n                return\
-    \ u;\n            }\n        }\n        for (auto [a, b] : descend(l, v)) {\n\
-    \            b++;\n            S ret = ds.prod(a, b);\n            if (check(ret))\
-    \ {\n                u = rev[b - 1];\n                now = op(now, ret);\n  \
-    \          } else {\n                int m = ds.max_right(a, check);\n       \
-    \         return a == m ? u : rev[m - 1];\n            }\n        }\n        return\
-    \ v;\n    }\n\n    template <class F> void subtree_query(int u, bool vertex, const\
-    \ F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n   \
-    \ int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
-    \ nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace ebi\n#line 7\
-    \ \"test/tree/Jump_on_Tree_HLD.test.cpp\"\n\nint main() {\n    int n, q;\n   \
-    \ std::cin >> n >> q;\n    ebi::graph g(n);\n    for (int i = 0; i < n - 1; i++)\
-    \ {\n        int a, b;\n        std::cin >> a >> b;\n        g.add_edge(a, b);\n\
-    \    }\n    ebi::heavy_light_decomposition hld(g);\n    while (q--) {\n      \
-    \  int s, t, i;\n        std::cin >> s >> t >> i;\n        std::cout << hld.jump(s,\
-    \ t, i) << '\\n';\n    }\n}\n"
+    \     return sections;\n    }\n\n    template <class F>\n    int max_path(int\
+    \ u, int v, bool vertex, F binary_search) const {\n        int prev = -1;\n  \
+    \      int l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) {\n      \
+    \      a++;\n            int m = binary_search(a, b);\n            if (m == b)\
+    \ {\n                prev = rev[b];\n            } else {\n                return\
+    \ (m == a ? prev : rev[m]);\n            }\n        }\n        if (vertex) {\n\
+    \            int m = binary_search(in[l], in[l] + 1);\n            if (m == in[l])\
+    \ {\n                return prev;\n            } else {\n                prev\
+    \ = l;\n            }\n        }\n        for (auto [a, b] : descend(l, v)) {\n\
+    \            b++;\n            int m = binary_search(a, b);\n            if (m\
+    \ == b) {\n                prev = rev[b - 1];\n            } else {\n        \
+    \        return m == a ? prev : rev[m - 1];\n            }\n        }\n      \
+    \  return v;\n    }\n\n    template <class F> void subtree_query(int u, bool vertex,\
+    \ const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n\
+    \    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in,\
+    \ out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace ebi\n#line\
+    \ 7 \"test/tree/Jump_on_Tree_HLD.test.cpp\"\n\nint main() {\n    int n, q;\n \
+    \   std::cin >> n >> q;\n    ebi::graph g(n);\n    for (int i = 0; i < n - 1;\
+    \ i++) {\n        int a, b;\n        std::cin >> a >> b;\n        g.add_edge(a,\
+    \ b);\n    }\n    ebi::heavy_light_decomposition hld(g);\n    while (q--) {\n\
+    \        int s, t, i;\n        std::cin >> s >> t >> i;\n        std::cout <<\
+    \ hld.jump(s, t, i) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n\n#include\
     \ <iostream>\n\n#include \"../../graph/template.hpp\"\n#include \"../../tree/heavy_light_decomposition.hpp\"\
     \n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n    ebi::graph g(n);\n\
@@ -121,7 +117,7 @@ data:
   isVerificationFile: true
   path: test/tree/Jump_on_Tree_HLD.test.cpp
   requiredBy: []
-  timestamp: '2023-09-27 17:08:39+09:00'
+  timestamp: '2023-10-02 02:10:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Jump_on_Tree_HLD.test.cpp
