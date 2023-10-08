@@ -12,6 +12,9 @@ data:
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
+    path: fps/multipoint_evaluation.hpp
+    title: Multipoint Evaluation
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
   - icon: ':heavy_check_mark:'
@@ -72,6 +75,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Multipoint_Evaluation.test.cpp
+    title: test/polynomial/Multipoint_Evaluation.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
@@ -272,6 +278,7 @@ data:
   - fps/composition_of_fps.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
+  - fps/multipoint_evaluation.hpp
   - math/bernoulli_number.hpp
   - math/stirling_number_2nd.hpp
   - math/stirling_number_1st.hpp
@@ -293,6 +300,7 @@ data:
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp

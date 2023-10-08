@@ -192,6 +192,9 @@ data:
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
     - icon: ':heavy_check_mark:'
+      path: fps/multipoint_evaluation.hpp
+      title: Multipoint Evaluation
+    - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$
     - icon: ':heavy_check_mark:'
@@ -761,6 +764,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/polynomial/Multipoint_Evaluation.test.cpp
+      title: test/polynomial/Multipoint_Evaluation.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
       title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
