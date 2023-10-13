@@ -15,6 +15,9 @@ data:
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
+    path: fps/polynomial_interpolation.hpp
+    title: fps/polynomial_interpolation.hpp
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
   - icon: ':heavy_check_mark:'
@@ -78,6 +81,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Polynomial_Interpolation.test.cpp
+    title: test/polynomial/Polynomial_Interpolation.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
@@ -272,6 +278,7 @@ data:
   path: fps/fps.hpp
   requiredBy:
   - fps/taylor_shift.hpp
+  - fps/polynomial_interpolation.hpp
   - fps/sums_of_powers.hpp
   - fps/compositional_inverse_of_fps.hpp
   - fps/fps_sqrt.hpp
@@ -299,6 +306,7 @@ data:
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp

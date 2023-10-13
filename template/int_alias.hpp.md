@@ -67,6 +67,9 @@ data:
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Polynomial_Interpolation.test.cpp
+    title: test/polynomial/Polynomial_Interpolation.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
   - icon: ':heavy_check_mark:'
@@ -168,6 +171,7 @@ data:
   - test/math/Inversion_Number.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/tree/Tree_Diameter.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp

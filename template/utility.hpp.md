@@ -19,6 +19,9 @@ data:
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Polynomial_Interpolation.test.cpp
+    title: test/polynomial/Polynomial_Interpolation.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   _isVerificationFailed: false
@@ -69,6 +72,7 @@ data:
   - test/yuki/yuki_1145.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
 documentation_of: template/utility.hpp
 layout: document

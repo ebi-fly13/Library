@@ -4,14 +4,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: fps/polynomial_interpolation.hpp
-    title: fps/polynomial_interpolation.hpp
+    path: fps/multipoint_evaluation.hpp
+    title: Multipoint Evaluation
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Multipoint_Evaluation.test.cpp
-    title: test/polynomial/Multipoint_Evaluation.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
@@ -20,7 +17,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps/multipoint_evaluation.hpp\"\n\n#line 2 \"fps/fps.hpp\"\
+  bundledCode: "#line 2 \"fps/polynomial_interpolation.hpp\"\n\n#line 2 \"fps/fps.hpp\"\
     \n\n#include <algorithm>\n#include <cassert>\n#include <optional>\n#include <vector>\n\
     \nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
@@ -103,27 +100,11 @@ data:
     \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
-    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 4 \"fps/multipoint_evaluation.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nstd::vector<mint> multipoint_evaluation(\n    const FormalPowerSeries<mint,\
-    \ convolution> &f, const std::vector<mint> &p) {\n    using FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n    int m = 1;\n    while (m < (int)p.size()) m <<= 1;\n    std::vector<FPS>\
-    \ subproduct_tree(2 * m, {1});\n    for (int i = 0; i < (int)p.size(); i++) {\n\
-    \        subproduct_tree[i + m] = FPS{-p[i], 1};\n    }\n    for (int i = m -\
-    \ 1; i >= 1; i--) {\n        subproduct_tree[i] =\n            subproduct_tree[2\
-    \ * i] * subproduct_tree[2 * i + 1];\n    }\n    std::vector<FPS> subremainder_tree(2\
-    \ * m);\n    subremainder_tree[1] = f % subproduct_tree[1];\n    for (int i =\
-    \ 2; i < m + (int)p.size(); i++) {\n        if (subremainder_tree[i / 2].empty())\
-    \ continue;\n        subremainder_tree[i] = subremainder_tree[i / 2] % subproduct_tree[i];\n\
-    \    }\n    std::vector<mint> fp(p.size());\n    for (int i = 0; i < (int)p.size();\
-    \ i++) {\n        if (subremainder_tree[i + m].empty())\n            fp[i] = 0;\n\
-    \        else\n            fp[i] = subremainder_tree[i + m][0];\n    }\n    return\
-    \ fp;\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
-    \ std::vector<mint> &, const std::vector<mint> &)>\nstd::vector<mint> multipoint_evaluation(\n\
-    \    const FormalPowerSeries<mint, convolution> &f, const std::vector<mint> &p)\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/multipoint_evaluation.hpp\"\
+    \n\n#line 4 \"fps/multipoint_evaluation.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ mint, std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
+    \ &, const std::vector<mint> &)>\nstd::vector<mint> multipoint_evaluation(\n \
+    \   const FormalPowerSeries<mint, convolution> &f, const std::vector<mint> &p)\
     \ {\n    using FPS = FormalPowerSeries<mint, convolution>;\n    int m = 1;\n \
     \   while (m < (int)p.size()) m <<= 1;\n    std::vector<FPS> subproduct_tree(2\
     \ * m, {1});\n    for (int i = 0; i < (int)p.size(); i++) {\n        subproduct_tree[i\
@@ -135,25 +116,52 @@ data:
     \ = subremainder_tree[i / 2] % subproduct_tree[i];\n    }\n    std::vector<mint>\
     \ fp(p.size());\n    for (int i = 0; i < (int)p.size(); i++) {\n        if (subremainder_tree[i\
     \ + m].empty())\n            fp[i] = 0;\n        else\n            fp[i] = subremainder_tree[i\
-    \ + m][0];\n    }\n    return fp;\n}\n\n}  // namespace ebi"
+    \ + m][0];\n    }\n    return fp;\n}\n\n}  // namespace ebi\n#line 5 \"fps/polynomial_interpolation.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> polynomial_interpolation(\n    const\
+    \ std::vector<mint> &xs, const std::vector<mint> &ys) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    assert(xs.size() == ys.size());\n    int m = 1;\n    int\
+    \ n = xs.size();\n    while (m < n) m <<= 1;\n    std::vector<FPS> subproduct_tree(2\
+    \ * m, {1});\n    for (int i = 0; i < (int)xs.size(); i++) {\n        subproduct_tree[i\
+    \ + m] = FPS{-xs[i], 1};\n    }\n    for (int i = m - 1; i >= 1; i--) {\n    \
+    \    subproduct_tree[i] =\n            subproduct_tree[2 * i] * subproduct_tree[2\
+    \ * i + 1];\n    }\n    std::vector<mint> fp =\n        multipoint_evaluation(subproduct_tree[1].differential(),\
+    \ xs);\n    std::vector<FPS> f(2 * m);\n    for (int i = 0; i < n; i++) {\n  \
+    \      f[i + m] = FPS{ys[i] / fp[i]};\n    }\n    for (int i = m - 1; i >= 1;\
+    \ i--) {\n        f[i] = f[2 * i] * subproduct_tree[2 * i + 1] +\n           \
+    \    subproduct_tree[2 * i] * f[2 * i + 1];\n    }\n    f[1].resize(n);\n    return\
+    \ f[1];\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n#include \"../fps/multipoint_evaluation.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> polynomial_interpolation(\n    const\
+    \ std::vector<mint> &xs, const std::vector<mint> &ys) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    assert(xs.size() == ys.size());\n    int m = 1;\n    int\
+    \ n = xs.size();\n    while (m < n) m <<= 1;\n    std::vector<FPS> subproduct_tree(2\
+    \ * m, {1});\n    for (int i = 0; i < (int)xs.size(); i++) {\n        subproduct_tree[i\
+    \ + m] = FPS{-xs[i], 1};\n    }\n    for (int i = m - 1; i >= 1; i--) {\n    \
+    \    subproduct_tree[i] =\n            subproduct_tree[2 * i] * subproduct_tree[2\
+    \ * i + 1];\n    }\n    std::vector<mint> fp =\n        multipoint_evaluation(subproduct_tree[1].differential(),\
+    \ xs);\n    std::vector<FPS> f(2 * m);\n    for (int i = 0; i < n; i++) {\n  \
+    \      f[i + m] = FPS{ys[i] / fp[i]};\n    }\n    for (int i = m - 1; i >= 1;\
+    \ i--) {\n        f[i] = f[2 * i] * subproduct_tree[2 * i + 1] +\n           \
+    \    subproduct_tree[2 * i] * f[2 * i + 1];\n    }\n    f[1].resize(n);\n    return\
+    \ f[1];\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
+  - fps/multipoint_evaluation.hpp
   isVerificationFile: false
-  path: fps/multipoint_evaluation.hpp
-  requiredBy:
-  - fps/polynomial_interpolation.hpp
-  timestamp: '2023-10-08 16:46:18+09:00'
+  path: fps/polynomial_interpolation.hpp
+  requiredBy: []
+  timestamp: '2023-10-13 14:18:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-documentation_of: fps/multipoint_evaluation.hpp
+documentation_of: fps/polynomial_interpolation.hpp
 layout: document
-title: Multipoint Evaluation
+redirect_from:
+- /library/fps/polynomial_interpolation.hpp
+- /library/fps/polynomial_interpolation.hpp.html
+title: fps/polynomial_interpolation.hpp
 ---
-
-## 説明
-
-多項式 $f(x)$ と整数列 $p_0, p_1, \dots, p_{M-1}$ を与えて、 $f(p_i) \pmod{998244353}$ を全ての $p_i$ について求める。 $O(M (\log{M})^2 + N\log{N})$
-
-$f(p_i) = f(x) \pmod{(x - p_i)}$ が成り立つことを用いて分割統治をしている。
