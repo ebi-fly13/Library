@@ -196,7 +196,7 @@ data:
       title: Multipoint Evaluation
     - icon: ':heavy_check_mark:'
       path: fps/polynomial_interpolation.hpp
-      title: fps/polynomial_interpolation.hpp
+      title: Polynomial Interpolation
     - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$

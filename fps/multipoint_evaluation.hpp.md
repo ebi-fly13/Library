@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: fps/polynomial_interpolation.hpp
-    title: fps/polynomial_interpolation.hpp
+    title: Polynomial Interpolation
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp

@@ -16,7 +16,7 @@ data:
     title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
     path: fps/polynomial_interpolation.hpp
-    title: fps/polynomial_interpolation.hpp
+    title: Polynomial Interpolation
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$

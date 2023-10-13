@@ -12,7 +12,7 @@ data:
     title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
     path: fps/polynomial_interpolation.hpp
-    title: fps/polynomial_interpolation.hpp
+    title: Polynomial Interpolation
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
