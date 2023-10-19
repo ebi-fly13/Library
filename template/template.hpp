@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <bit>
 #include <bitset>
 #include <cassert>
 #include <chrono>
@@ -15,10 +16,12 @@
 #include <limits>
 #include <map>
 #include <memory>
+#include <numbers>
 #include <numeric>
 #include <optional>
 #include <queue>
 #include <random>
+#include <ranges>
 #include <set>
 #include <stack>
 #include <string>

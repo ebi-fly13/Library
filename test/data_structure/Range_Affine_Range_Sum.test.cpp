@@ -1,9 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
 
-#include <iostream>
-#include <vector>
+#include "../../template/template.hpp"
 
-#include "../../data_structure/LazySegtree.hpp"
+#include "../../data_structure/lazy_segtree.hpp"
 #include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
@@ -47,7 +46,7 @@ int main() {
         std::cin >> a;
         v[i] = {a, 1};
     }
-    ebi::LazySegtree<S, op, e, F, mapping, merge, id> seg(v);
+    ebi::lazy_segtree<S, op, e, F, mapping, merge, id> seg(v);
     while (q--) {
         int t;
         std::cin >> t;

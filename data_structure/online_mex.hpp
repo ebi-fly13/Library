@@ -51,6 +51,10 @@ struct online_mex {
         update_mex();
         return mex_;
     }
+
+    int size() const {
+        return p.size();
+    }
 };
 
 }  // namespace ebi

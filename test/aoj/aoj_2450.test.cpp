@@ -1,15 +1,13 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/2450"
 
-#include <cstdint>
-#include <iostream>
-#include <limits>
-#include <vector>
+#include "../../template/template.hpp"
 
-#include "../../data_structure/LazySegtree.hpp"
+#include "../../data_structure/lazy_segtree.hpp"
 #include "../../graph/template.hpp"
 #include "../../tree/heavy_light_decomposition.hpp"
 
-using i64 = std::int64_t;
+using ebi::i64;
+using ebi::LNF;
 
 struct S {
     i64 sum;
@@ -18,8 +16,6 @@ struct S {
     i64 ans;
     i64 sz;
 };
-
-i64 LNF = std::numeric_limits<i64>::max() / 4;
 
 using F = i64;
 const F ID = LNF;
@@ -80,8 +76,8 @@ int main() {
     for (int i = 0; i < n; i++) {
         vec[hld.idx(i)] = {w[i], w[i], w[i], w[i], 1};
     }
-    ebi::LazySegtree<S, op, e, F, mapping, composition, id> seg1(vec);
-    ebi::LazySegtree<S, op_rev, e, F, mapping, composition, id> seg2(vec);
+    ebi::lazy_segtree<S, op, e, F, mapping, composition, id> seg1(vec);
+    ebi::lazy_segtree<S, op_rev, e, F, mapping, composition, id> seg2(vec);
     F c = id();
     S ans = e();
     auto apply = [&](int u, int v) -> void {
