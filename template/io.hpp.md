@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/aoj/aoj_2450.test.cpp
+    title: test/aoj/aoj_2450.test.cpp
+  - icon: ':x:'
+    path: test/data_structure/Range_Affine_Range_Sum.test.cpp
+    title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
@@ -21,9 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/io.hpp\"\n\n#include <iomanip>\n#include <iostream>\n\
@@ -63,13 +69,15 @@ data:
   requiredBy:
   - template/template.hpp
   timestamp: '2023-08-27 22:59:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/yuki_1145.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/yuki/yuki_1145.test.cpp
+  - test/aoj/aoj_2450.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
 documentation_of: template/io.hpp
 layout: document
 redirect_from:

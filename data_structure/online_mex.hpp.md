@@ -20,7 +20,8 @@ data:
     \  public:\n    online_mex() : ret(1, 0) {}\n\n    void add(int x) {\n       \
     \ p.emplace_back(x);\n        if (x < k) {\n            ret[x]++;\n        }\n\
     \        increment();\n    }\n\n    int mex() {\n        update_mex();\n     \
-    \   return mex_;\n    }\n};\n\n}  // namespace ebi\n"
+    \   return mex_;\n    }\n\n    int size() const {\n        return p.size();\n\
+    \    }\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n/*\n    reference: https://twitter.com/noshi91/status/1283759174791372809\n\
     \n    Query\n    add(int x) : amortized O(1)\n    mex : amortized O(1)\n*/\n\n\
     #include <vector>\n\nnamespace ebi {\n\nstruct online_mex {\n  private:\n    int\
@@ -32,12 +33,13 @@ data:
     \  public:\n    online_mex() : ret(1, 0) {}\n\n    void add(int x) {\n       \
     \ p.emplace_back(x);\n        if (x < k) {\n            ret[x]++;\n        }\n\
     \        increment();\n    }\n\n    int mex() {\n        update_mex();\n     \
-    \   return mex_;\n    }\n};\n\n}  // namespace ebi"
+    \   return mex_;\n    }\n\n    int size() const {\n        return p.size();\n\
+    \    }\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/online_mex.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-10-19 17:23:00+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/online_mex.hpp

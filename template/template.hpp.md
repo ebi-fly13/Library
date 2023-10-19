@@ -1,20 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/aoj/aoj_2450.test.cpp
+    title: test/aoj/aoj_2450.test.cpp
+  - icon: ':x:'
+    path: test/data_structure/Range_Affine_Range_Sum.test.cpp
+    title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
@@ -30,34 +36,35 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.hpp\"\n#include <algorithm>\n#include\
-    \ <bitset>\n#include <cassert>\n#include <chrono>\n#include <climits>\n#include\
-    \ <cmath>\n#include <complex>\n#include <cstddef>\n#include <cstdint>\n#include\
-    \ <cstdlib>\n#include <cstring>\n#include <functional>\n#include <iomanip>\n#include\
-    \ <iostream>\n#include <limits>\n#include <map>\n#include <memory>\n#include <numeric>\n\
-    #include <optional>\n#include <queue>\n#include <random>\n#include <set>\n#include\
-    \ <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n#include\
-    \ <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\n\
-    \n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
-    \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
-    \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
-    \ i >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v)\
-    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line\
-    \ 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n#define\
-    \ debug(...)                                                      \\\n    std::cerr\
-    \ << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\", \\\n       \
-    \ debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid debug_out()\
-    \ {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename... Tail>\
-    \ void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t)\
-    \ > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing std::size_t;\n\
-    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
-    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
+    \ <bit>\n#include <bitset>\n#include <cassert>\n#include <chrono>\n#include <climits>\n\
+    #include <cmath>\n#include <complex>\n#include <cstddef>\n#include <cstdint>\n\
+    #include <cstdlib>\n#include <cstring>\n#include <functional>\n#include <iomanip>\n\
+    #include <iostream>\n#include <limits>\n#include <map>\n#include <memory>\n#include\
+    \ <numbers>\n#include <numeric>\n#include <optional>\n#include <queue>\n#include\
+    \ <random>\n#include <ranges>\n#include <set>\n#include <stack>\n#include <string>\n\
+    #include <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
+    #include <utility>\n#include <vector>\n\n#define rep(i, a, n) for (int i = (int)(a);\
+    \ i < (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
+    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
+    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
+    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
+    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
+    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
+    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
+    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
+    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
+    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
+    \ :\";\n    debug_out(t...);\n}\n\n}\n#line 2 \"template/int_alias.hpp\"\n\n#line\
+    \ 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing std::size_t;\nusing\
+    \ i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing\
+    \ u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
     using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
     using u128 = __uint128_t;\n\n}\n#line 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
@@ -85,9 +92,11 @@ data:
     \        return a / b;\n    else\n        return -((-a) / b) - 1;\n}\n\nconstexpr\
     \ i64 LNF = std::numeric_limits<i64>::max() / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max()\
     \ / 2;\n\nconst std::vector<int> dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int>\
-    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 43 \"template/template.hpp\"\
+    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 46 \"template/template.hpp\"\
     \n"
   code: '#include <algorithm>
+
+    #include <bit>
 
     #include <bitset>
 
@@ -121,6 +130,8 @@ data:
 
     #include <memory>
 
+    #include <numbers>
+
     #include <numeric>
 
     #include <optional>
@@ -128,6 +139,8 @@ data:
     #include <queue>
 
     #include <random>
+
+    #include <ranges>
 
     #include <set>
 
@@ -176,14 +189,16 @@ data:
   isVerificationFile: false
   path: template/template.hpp
   requiredBy: []
-  timestamp: '2023-08-27 23:14:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-19 17:23:00+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/yuki_1145.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/yuki/yuki_1145.test.cpp
+  - test/aoj/aoj_2450.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
 documentation_of: template/template.hpp
 layout: document
 redirect_from:

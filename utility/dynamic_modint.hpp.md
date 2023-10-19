@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:
@@ -120,10 +120,10 @@ data:
   timestamp: '2023-07-17 11:19:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/math/Sqrt_Mod.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
 documentation_of: utility/dynamic_modint.hpp
 layout: document
 redirect_from:

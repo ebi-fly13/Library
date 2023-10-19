@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy:
@@ -130,8 +130,8 @@ data:
   isVerificationFile: false
   path: math/linear_sieve.hpp
   requiredBy:
-  - math/DirichletSeries.hpp
   - convolution/dirichlet_convolution.hpp
+  - math/DirichletSeries.hpp
   timestamp: '2023-08-23 17:33:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
