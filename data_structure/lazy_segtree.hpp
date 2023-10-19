@@ -123,6 +123,58 @@ struct lazy_segtree {
         }
     }
 
+    template <class G> int max_right(int l, G g) {
+        assert(0 <= l && l <= n);
+        assert(g(e()));
+        if (l == n) return n;
+        l += sz;
+        for (int i = log; i >= 1; i--) push(l >> i);
+        S sm = e();
+        do {
+            while (l % 2 == 0) l >>= 1;
+            if (!g(op(sm, data[l]))) {
+                while (l < sz) {
+                    push(l);
+                    l = l << 1;
+                    if (g(op(sm, data[l]))) {
+                        sm = op(sm, data[l]);
+                        l++;
+                    }
+                }
+                return l - sz;
+            }
+            sm = op(sm, data[l]);
+            l++;
+        } while ((l & -l) != l);
+        return n;
+    }
+
+    template <class G> int min_left(int r, G g) {
+        assert(0 <= r && r <= n);
+        assert(g(e()));
+        if (r == 0) return 0;
+        r += sz;
+        for (int i = log; i >= 1; i--) push((r - 1) >> i);
+        S sm = e();
+        do {
+            r--;
+            while (r > 1 && r % 2) r >>= 1;
+            if (!g(op(data[r], sm))) {
+                while (r < sz) {
+                    push(r);
+                    r = (r << 1) + 1;
+                    if (g(op(data[r], sm))) {
+                        sm = op(data[r], sm);
+                        r--;
+                    }
+                }
+                return r + 1 - sz;
+            }
+            sm = op(data[r], sm);
+        } while ((r & -r) != r);
+        return 0;
+    }
+
   private:
     int n, sz, log;
     std::vector<S> data;
