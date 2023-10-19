@@ -30,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_2439.test.cpp
+    title: test/yuki/yuki_2439.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -77,6 +80,7 @@ data:
   verifiedWith:
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/yuki/yuki_2439.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/aoj/aoj_2450.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp

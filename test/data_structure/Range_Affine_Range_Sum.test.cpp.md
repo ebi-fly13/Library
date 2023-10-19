@@ -134,11 +134,32 @@ data:
     \        r = memo_r;\r\n        }\r\n\r\n        for (int i = 1; i <= log; i++)\
     \ {\r\n            if (((l >> i) << i) != l) update(l >> i);\r\n            if\
     \ (((r >> i) << i) != r) update((r - 1) >> i);\r\n        }\r\n    }\r\n\r\n \
-    \ private:\r\n    int n, sz, log;\r\n    std::vector<S> data;\r\n    std::vector<F>\
-    \ lazy;\r\n};\r\n\r\n}  // namespace ebi\r\n#line 2 \"utility/modint.hpp\"\n\r\
-    \n#line 6 \"utility/modint.hpp\"\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n\
-    #line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
-    \nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
+    \   template <class G> int max_right(int l, G g) {\r\n        assert(0 <= l &&\
+    \ l <= n);\r\n        assert(g(e()));\r\n        if (l == n) return n;\r\n   \
+    \     l += sz;\r\n        for (int i = log; i >= 1; i--) push(l >> i);\r\n   \
+    \     S sm = e();\r\n        do {\r\n            while (l % 2 == 0) l >>= 1;\r\
+    \n            if (!g(op(sm, data[l]))) {\r\n                while (l < sz) {\r\
+    \n                    push(l);\r\n                    l = l << 1;\r\n        \
+    \            if (g(op(sm, data[l]))) {\r\n                        sm = op(sm,\
+    \ data[l]);\r\n                        l++;\r\n                    }\r\n     \
+    \           }\r\n                return l - sz;\r\n            }\r\n         \
+    \   sm = op(sm, data[l]);\r\n            l++;\r\n        } while ((l & -l) !=\
+    \ l);\r\n        return n;\r\n    }\r\n\r\n    template <class G> int min_left(int\
+    \ r, G g) {\r\n        assert(0 <= r && r <= n);\r\n        assert(g(e()));\r\n\
+    \        if (r == 0) return 0;\r\n        r += sz;\r\n        for (int i = log;\
+    \ i >= 1; i--) push((r - 1) >> i);\r\n        S sm = e();\r\n        do {\r\n\
+    \            r--;\r\n            while (r > 1 && r % 2) r >>= 1;\r\n         \
+    \   if (!g(op(data[r], sm))) {\r\n                while (r < sz) {\r\n       \
+    \             push(r);\r\n                    r = (r << 1) + 1;\r\n          \
+    \          if (g(op(data[r], sm))) {\r\n                        sm = op(data[r],\
+    \ sm);\r\n                        r--;\r\n                    }\r\n          \
+    \      }\r\n                return r + 1 - sz;\r\n            }\r\n          \
+    \  sm = op(data[r], sm);\r\n        } while ((r & -r) != r);\r\n        return\
+    \ 0;\r\n    }\r\n\r\n  private:\r\n    int n, sz, log;\r\n    std::vector<S> data;\r\
+    \n    std::vector<F> lazy;\r\n};\r\n\r\n}  // namespace ebi\r\n#line 2 \"utility/modint.hpp\"\
+    \n\r\n#line 6 \"utility/modint.hpp\"\n\r\n#line 2 \"utility/modint_base.hpp\"\n\
+    \n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \nstruct static_modint_base : modint_base {};\n\ntemplate <class T>\nusing is_static_modint\
     \ = std::is_base_of<internal::static_modint_base, T>;\n\ntemplate <class T>\n\
@@ -236,7 +257,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-19 17:23:00+09:00'
+  timestamp: '2023-10-19 18:05:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Range_Sum.test.cpp
