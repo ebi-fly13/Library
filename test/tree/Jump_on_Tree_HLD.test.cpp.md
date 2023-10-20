@@ -52,55 +52,55 @@ data:
     \ &gh,\n                              int root = 0)\n        : n(gh.size()),\n\
     \          g(gh),\n          sz(n, 1),\n          in(n),\n          out(n),\n\
     \          nxt(n),\n          par(n, -1),\n          depth(n, 0),\n          rev(n)\
-    \ {\n        dfs_sz(root);\n        dfs_hld(root);\n    }\n\n    int idx(int u)\
-    \ const {\n        return in[u];\n    }\n\n    int rev_idx(int i) const {\n  \
-    \      return rev[i];\n    }\n\n    int la(int v, int k) const {\n        while\
-    \ (1) {\n            int u = nxt[v];\n            if (in[u] <= in[v] - k) return\
-    \ rev[in[v] - k];\n            k -= in[v] - in[u] + 1;\n            v = par[u];\n\
-    \        }\n    }\n\n    int lca(int u, int v) const {\n        while (nxt[u]\
-    \ != nxt[v]) {\n            if (in[u] < in[v]) std::swap(u, v);\n            u\
-    \ = par[nxt[u]];\n        }\n        return depth[u] < depth[v] ? u : v;\n   \
-    \ }\n\n    int jump(int s, int t, int i) const {\n        if (i == 0) return s;\n\
-    \        int l = lca(s, t);\n        int d = depth[s] + depth[t] - depth[l] *\
-    \ 2;\n        if (d < i) return -1;\n        if (depth[s] - depth[l] >= i) return\
-    \ la(s, i);\n        i = d - i;\n        return la(t, i);\n    }\n\n    std::vector<int>\
-    \ path(int s, int t) const {\n        int l = lca(s, t);\n        std::vector<int>\
-    \ a, b;\n        for (; s != l; s = par[s]) a.emplace_back(s);\n        for (;\
-    \ t != l; t = par[t]) b.emplace_back(t);\n        a.emplace_back(l);\n       \
-    \ std::reverse(b.begin(), b.end());\n        a.insert(a.end(), b.begin(), b.end());\n\
-    \        return a;\n    }\n\n    int distance(int u, int v) const {\n        return\
-    \ depth[u] + depth[v] - 2 * depth[lca(u, v)];\n    }\n\n    int distance_from_root(int\
-    \ v) const {\n        return depth[v];\n    }\n\n    bool at_path(int u, int v,\
-    \ int s) const {\n        return distance(u, v) == distance(u, s) + distance(s,\
-    \ v);\n    }\n\n    template <class F>\n    void path_noncommutative_query(int\
-    \ u, int v, bool vertex,\n                                   const F &f) const\
-    \ {\n        int l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) f(a\
-    \ + 1, b);\n        if (vertex) f(in[l], in[l] + 1);\n        for (auto [a, b]\
-    \ : descend(l, v)) f(a, b + 1);\n    }\n\n    std::vector<std::pair<int, int>>\
-    \ path_sections(int u, int v,\n                                              \
-    \     bool vertex) const {\n        int l = lca(u, v);\n        std::vector<std::pair<int,\
-    \ int>> sections;\n        for (auto [a, b] : ascend(u, l)) sections.emplace_back(a\
-    \ + 1, b);\n        if (vertex) sections.emplace_back(in[l], in[l] + 1);\n   \
-    \     for (auto [a, b] : descend(l, v)) sections.emplace_back(a, b + 1);\n   \
-    \     return sections;\n    }\n\n    template <class F>\n    int max_path(int\
-    \ u, int v, bool vertex, F binary_search) const {\n        int prev = -1;\n  \
-    \      int l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) {\n      \
-    \      a++;\n            int m = binary_search(a, b);\n            if (m == b)\
-    \ {\n                prev = rev[b];\n            } else {\n                return\
-    \ (m == a ? prev : rev[m]);\n            }\n        }\n        if (vertex) {\n\
-    \            int m = binary_search(in[l], in[l] + 1);\n            if (m == in[l])\
-    \ {\n                return prev;\n            } else {\n                prev\
-    \ = l;\n            }\n        }\n        for (auto [a, b] : descend(l, v)) {\n\
-    \            b++;\n            int m = binary_search(a, b);\n            if (m\
-    \ == b) {\n                prev = rev[b - 1];\n            } else {\n        \
-    \        return m == a ? prev : rev[m - 1];\n            }\n        }\n      \
-    \  return v;\n    }\n\n    template <class F> void subtree_query(int u, bool vertex,\
-    \ const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n  private:\n\
-    \    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in,\
-    \ out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace ebi\n#line\
-    \ 7 \"test/tree/Jump_on_Tree_HLD.test.cpp\"\n\nint main() {\n    int n, q;\n \
-    \   std::cin >> n >> q;\n    ebi::graph g(n);\n    for (int i = 0; i < n - 1;\
-    \ i++) {\n        int a, b;\n        std::cin >> a >> b;\n        g.add_edge(a,\
+    \ {\n        nxt[root] = root;\n        dfs_sz(root);\n        dfs_hld(root);\n\
+    \    }\n\n    int idx(int u) const {\n        return in[u];\n    }\n\n    int\
+    \ rev_idx(int i) const {\n        return rev[i];\n    }\n\n    int la(int v, int\
+    \ k) const {\n        while (1) {\n            int u = nxt[v];\n            if\
+    \ (in[u] <= in[v] - k) return rev[in[v] - k];\n            k -= in[v] - in[u]\
+    \ + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u, int v)\
+    \ const {\n        while (nxt[u] != nxt[v]) {\n            if (in[u] < in[v])\
+    \ std::swap(u, v);\n            u = par[nxt[u]];\n        }\n        return depth[u]\
+    \ < depth[v] ? u : v;\n    }\n\n    int jump(int s, int t, int i) const {\n  \
+    \      if (i == 0) return s;\n        int l = lca(s, t);\n        int d = depth[s]\
+    \ + depth[t] - depth[l] * 2;\n        if (d < i) return -1;\n        if (depth[s]\
+    \ - depth[l] >= i) return la(s, i);\n        i = d - i;\n        return la(t,\
+    \ i);\n    }\n\n    std::vector<int> path(int s, int t) const {\n        int l\
+    \ = lca(s, t);\n        std::vector<int> a, b;\n        for (; s != l; s = par[s])\
+    \ a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
+    \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
+    \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
+    \ distance(int u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
+    \ v)];\n    }\n\n    int distance_from_root(int v) const {\n        return depth[v];\n\
+    \    }\n\n    bool at_path(int u, int v, int s) const {\n        return distance(u,\
+    \ v) == distance(u, s) + distance(s, v);\n    }\n\n    template <class F>\n  \
+    \  void path_noncommutative_query(int u, int v, bool vertex,\n               \
+    \                    const F &f) const {\n        int l = lca(u, v);\n       \
+    \ for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        if (vertex) f(in[l],\
+    \ in[l] + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
+    \n    std::vector<std::pair<int, int>> path_sections(int u, int v,\n         \
+    \                                          bool vertex) const {\n        int l\
+    \ = lca(u, v);\n        std::vector<std::pair<int, int>> sections;\n        for\
+    \ (auto [a, b] : ascend(u, l)) sections.emplace_back(a + 1, b);\n        if (vertex)\
+    \ sections.emplace_back(in[l], in[l] + 1);\n        for (auto [a, b] : descend(l,\
+    \ v)) sections.emplace_back(a, b + 1);\n        return sections;\n    }\n\n  \
+    \  template <class F>\n    int max_path(int u, int v, bool vertex, F binary_search)\
+    \ const {\n        int prev = -1;\n        int l = lca(u, v);\n        for (auto\
+    \ [a, b] : ascend(u, l)) {\n            a++;\n            int m = binary_search(a,\
+    \ b);\n            if (m == b) {\n                prev = rev[b];\n           \
+    \ } else {\n                return (m == a ? prev : rev[m]);\n            }\n\
+    \        }\n        if (vertex) {\n            int m = binary_search(in[l], in[l]\
+    \ + 1);\n            if (m == in[l]) {\n                return prev;\n       \
+    \     } else {\n                prev = l;\n            }\n        }\n        for\
+    \ (auto [a, b] : descend(l, v)) {\n            b++;\n            int m = binary_search(a,\
+    \ b);\n            if (m == b) {\n                prev = rev[b - 1];\n       \
+    \     } else {\n                return m == a ? prev : rev[m - 1];\n         \
+    \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
+    \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
+    \  }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
+    \ sz, in, out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace\
+    \ ebi\n#line 7 \"test/tree/Jump_on_Tree_HLD.test.cpp\"\n\nint main() {\n    int\
+    \ n, q;\n    std::cin >> n >> q;\n    ebi::graph g(n);\n    for (int i = 0; i\
+    \ < n - 1; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        g.add_edge(a,\
     \ b);\n    }\n    ebi::heavy_light_decomposition hld(g);\n    while (q--) {\n\
     \        int s, t, i;\n        std::cin >> s >> t >> i;\n        std::cout <<\
     \ hld.jump(s, t, i) << '\\n';\n    }\n}\n"
@@ -117,7 +117,7 @@ data:
   isVerificationFile: true
   path: test/tree/Jump_on_Tree_HLD.test.cpp
   requiredBy: []
-  timestamp: '2023-10-02 02:10:02+09:00'
+  timestamp: '2023-10-20 13:14:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Jump_on_Tree_HLD.test.cpp
