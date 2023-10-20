@@ -66,8 +66,9 @@ data:
     \ a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
     \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
     \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
-    \ distance(int u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
-    \ v)];\n    }\n\n    int distance_from_root(int v) const {\n        return depth[v];\n\
+    \ parent(int u) const {\n        return par[u];\n    }\n\n    int distance(int\
+    \ u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u, v)];\n\
+    \    }\n\n    int distance_from_root(int v) const {\n        return depth[v];\n\
     \    }\n\n    bool at_path(int u, int v, int s) const {\n        return distance(u,\
     \ v) == distance(u, s) + distance(s, v);\n    }\n\n    template <class F>\n  \
     \  void path_noncommutative_query(int u, int v, bool vertex,\n               \
@@ -136,8 +137,9 @@ data:
     \ a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
     \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
     \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
-    \ distance(int u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
-    \ v)];\n    }\n\n    int distance_from_root(int v) const {\n        return depth[v];\n\
+    \ parent(int u) const {\n        return par[u];\n    }\n\n    int distance(int\
+    \ u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u, v)];\n\
+    \    }\n\n    int distance_from_root(int v) const {\n        return depth[v];\n\
     \    }\n\n    bool at_path(int u, int v, int s) const {\n        return distance(u,\
     \ v) == distance(u, s) + distance(s, v);\n    }\n\n    template <class F>\n  \
     \  void path_noncommutative_query(int u, int v, bool vertex,\n               \
@@ -170,7 +172,7 @@ data:
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-10-20 13:14:58+09:00'
+  timestamp: '2023-10-20 17:50:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Jump_on_Tree_HLD.test.cpp
@@ -209,6 +211,14 @@ title: Heavy Light Decomposition
 ### jump(int s, int t, int k)
 
 頂点 $s$ から $t$ の方向に $k$ だけ移動した頂点を返す。 $O(\log N)$
+
+### path(int s, int t)
+
+頂点 $s$, $t$ の単純パスを返す。
+
+### parent(int u)
+
+頂点 $u$ の親を返す。 $u$ が根である場合は、 $-1$ を返す。
 
 ### distance(int u, int v)
 

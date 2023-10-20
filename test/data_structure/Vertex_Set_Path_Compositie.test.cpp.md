@@ -105,8 +105,9 @@ data:
     \ a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
     \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
     \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
-    \ distance(int u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u,\
-    \ v)];\n    }\n\n    int distance_from_root(int v) const {\n        return depth[v];\n\
+    \ parent(int u) const {\n        return par[u];\n    }\n\n    int distance(int\
+    \ u, int v) const {\n        return depth[u] + depth[v] - 2 * depth[lca(u, v)];\n\
+    \    }\n\n    int distance_from_root(int v) const {\n        return depth[v];\n\
     \    }\n\n    bool at_path(int u, int v, int s) const {\n        return distance(u,\
     \ v) == distance(u, s) + distance(s, v);\n    }\n\n    template <class F>\n  \
     \  void path_noncommutative_query(int u, int v, bool vertex,\n               \
@@ -240,7 +241,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   requiredBy: []
-  timestamp: '2023-10-20 13:14:58+09:00'
+  timestamp: '2023-10-20 17:50:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
