@@ -29,6 +29,14 @@ documentation_of: //tree/heavy_light_decomposition.hpp
 
 頂点 $s$ から $t$ の方向に $k$ だけ移動した頂点を返す。 $O(\log N)$
 
+### path(int s, int t)
+
+頂点 $s$, $t$ の単純パスを返す。
+
+### parent(int u)
+
+頂点 $u$ の親を返す。 $u$ が根である場合は、 $-1$ を返す。
+
 ### distance(int u, int v)
 
 頂点 $u$, $v$ の距離を返す。 $O(\log N)$

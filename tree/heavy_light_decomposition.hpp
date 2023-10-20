@@ -114,6 +114,10 @@ struct heavy_light_decomposition {
         return a;
     }
 
+    int parent(int u) const {
+        return par[u];
+    }
+
     int distance(int u, int v) const {
         return depth[u] + depth[v] - 2 * depth[lca(u, v)];
     }
