@@ -1,5 +1,5 @@
 ---
-title: Convolution ($\mod 2^{64}$)
+title: Convolution $\pmod{2^{64}}$
 documentation_of: //convolution/convolution_mod_2_64.hpp
 ---
 
