@@ -48,29 +48,29 @@ data:
     \ n = f.size() - 1;\n        auto F = f;\n        if (m < n) {\n            while\
     \ (m < n) m <<= 1;\n            eratosthenes_sieve sieve(m);\n            primes\
     \ = sieve.prime_table();\n        }\n        for (const auto &p : primes) {\n\
-    \            for (int i = 1; i * p <= n; i++) F[p * i] += F[i];\n        }\n \
-    \       return F;\n    }\n\n    template <class mint>\n    static std::vector<mint>\
-    \ mobius_transform(const std::vector<mint> &F) {\n        int n = F.size() - 1;\n\
-    \        auto f = F;\n        if (m < n) {\n            while (m < n) m <<= 1;\n\
-    \            eratosthenes_sieve sieve(m);\n            primes = sieve.prime_table();\n\
-    \        }\n        for (const auto &p : primes) {\n            for (int i = n\
-    \ / p; i > 0; i--) f[p * i] -= f[i];\n        }\n        return f;\n    }\n\n\
-    \  private:\n    static int m;\n    static std::vector<int> primes;\n};\n\nint\
-    \ divisor_transform::m = 4;\nstd::vector<int> divisor_transform::primes = {2,\
-    \ 3};\n\n}  // namespace ebi\n#line 4 \"convolution/lcm_convolution.hpp\"\n\n\
-    namespace ebi {\n\ntemplate <class mint>\nstd::vector<mint> lcm_convolution(const\
-    \ std::vector<mint> &a,\n                                  const std::vector<mint>\
-    \ &b) {\n    int n = a.size();\n    assert(a.size() == b.size());\n    auto ra\
-    \ = divisor_transform::zeta_transform(a);\n    auto rb = divisor_transform::zeta_transform(b);\n\
-    \    for (int i = 0; i < n; i++) {\n        ra[i] *= rb[i];\n    }\n    return\
-    \ divisor_transform::mobius_transform(ra);\n}\n\n}  // namespace ebi\n#line 4\
-    \ \"test/convolution/Lcm_Convolution.test.cpp\"\n\n#include <iostream>\n#line\
-    \ 7 \"test/convolution/Lcm_Convolution.test.cpp\"\n\n#line 2 \"utility/modint.hpp\"\
-    \n\r\n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"\
-    utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate <class T>\
-    \ using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class T> using\
-    \ is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
+    \            if (n < p) break;\n            for (int i = 1; i * p <= n; i++) F[p\
+    \ * i] += F[i];\n        }\n        return F;\n    }\n\n    template <class mint>\n\
+    \    static std::vector<mint> mobius_transform(const std::vector<mint> &F) {\n\
+    \        int n = F.size() - 1;\n        auto f = F;\n        if (m < n) {\n  \
+    \          while (m < n) m <<= 1;\n            eratosthenes_sieve sieve(m);\n\
+    \            primes = sieve.prime_table();\n        }\n        for (const auto\
+    \ &p : primes) {\n            if (n < p) break;\n            for (int i = n /\
+    \ p; i > 0; i--) f[p * i] -= f[i];\n        }\n        return f;\n    }\n\n  private:\n\
+    \    static int m;\n    static std::vector<int> primes;\n};\n\nint divisor_transform::m\
+    \ = 4;\nstd::vector<int> divisor_transform::primes = {2, 3};\n\n}  // namespace\
+    \ ebi\n#line 4 \"convolution/lcm_convolution.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class mint>\nstd::vector<mint> lcm_convolution(const std::vector<mint> &a,\n\
+    \                                  const std::vector<mint> &b) {\n    int n =\
+    \ a.size();\n    assert(a.size() == b.size());\n    auto ra = divisor_transform::zeta_transform(a);\n\
+    \    auto rb = divisor_transform::zeta_transform(b);\n    for (int i = 0; i <\
+    \ n; i++) {\n        ra[i] *= rb[i];\n    }\n    return divisor_transform::mobius_transform(ra);\n\
+    }\n\n}  // namespace ebi\n#line 4 \"test/convolution/Lcm_Convolution.test.cpp\"\
+    \n\n#include <iostream>\n#line 7 \"test/convolution/Lcm_Convolution.test.cpp\"\
+    \n\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include\
+    \ <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
+    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
+    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
     \ : modint_base {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
     \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
@@ -144,7 +144,7 @@ data:
   isVerificationFile: true
   path: test/convolution/Lcm_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-08-23 17:33:30+09:00'
+  timestamp: '2023-10-22 18:44:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Lcm_Convolution.test.cpp

@@ -37,39 +37,41 @@ data:
     \ n = f.size() - 1;\n        auto F = f;\n        if (m < n) {\n            while\
     \ (m < n) m <<= 1;\n            eratosthenes_sieve sieve(m);\n            primes\
     \ = sieve.prime_table();\n        }\n        for (const auto &p : primes) {\n\
-    \            for (int i = 1; i * p <= n; i++) F[p * i] += F[i];\n        }\n \
-    \       return F;\n    }\n\n    template <class mint>\n    static std::vector<mint>\
-    \ mobius_transform(const std::vector<mint> &F) {\n        int n = F.size() - 1;\n\
-    \        auto f = F;\n        if (m < n) {\n            while (m < n) m <<= 1;\n\
-    \            eratosthenes_sieve sieve(m);\n            primes = sieve.prime_table();\n\
-    \        }\n        for (const auto &p : primes) {\n            for (int i = n\
-    \ / p; i > 0; i--) f[p * i] -= f[i];\n        }\n        return f;\n    }\n\n\
-    \  private:\n    static int m;\n    static std::vector<int> primes;\n};\n\nint\
-    \ divisor_transform::m = 4;\nstd::vector<int> divisor_transform::primes = {2,\
-    \ 3};\n\n}  // namespace ebi\n"
+    \            if (n < p) break;\n            for (int i = 1; i * p <= n; i++) F[p\
+    \ * i] += F[i];\n        }\n        return F;\n    }\n\n    template <class mint>\n\
+    \    static std::vector<mint> mobius_transform(const std::vector<mint> &F) {\n\
+    \        int n = F.size() - 1;\n        auto f = F;\n        if (m < n) {\n  \
+    \          while (m < n) m <<= 1;\n            eratosthenes_sieve sieve(m);\n\
+    \            primes = sieve.prime_table();\n        }\n        for (const auto\
+    \ &p : primes) {\n            if (n < p) break;\n            for (int i = n /\
+    \ p; i > 0; i--) f[p * i] -= f[i];\n        }\n        return f;\n    }\n\n  private:\n\
+    \    static int m;\n    static std::vector<int> primes;\n};\n\nint divisor_transform::m\
+    \ = 4;\nstd::vector<int> divisor_transform::primes = {2, 3};\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include <vector>\n\n#include \"../math/eratosthenes_sieve.hpp\"\
     \n\nnamespace ebi {\n\nstruct divisor_transform {\n    divisor_transform() = default;\n\
     \n    template <class mint>\n    static std::vector<mint> zeta_transform(const\
     \ std::vector<mint> &f) {\n        int n = f.size() - 1;\n        auto F = f;\n\
     \        if (m < n) {\n            while (m < n) m <<= 1;\n            eratosthenes_sieve\
     \ sieve(m);\n            primes = sieve.prime_table();\n        }\n        for\
-    \ (const auto &p : primes) {\n            for (int i = 1; i * p <= n; i++) F[p\
-    \ * i] += F[i];\n        }\n        return F;\n    }\n\n    template <class mint>\n\
-    \    static std::vector<mint> mobius_transform(const std::vector<mint> &F) {\n\
-    \        int n = F.size() - 1;\n        auto f = F;\n        if (m < n) {\n  \
-    \          while (m < n) m <<= 1;\n            eratosthenes_sieve sieve(m);\n\
-    \            primes = sieve.prime_table();\n        }\n        for (const auto\
-    \ &p : primes) {\n            for (int i = n / p; i > 0; i--) f[p * i] -= f[i];\n\
-    \        }\n        return f;\n    }\n\n  private:\n    static int m;\n    static\
-    \ std::vector<int> primes;\n};\n\nint divisor_transform::m = 4;\nstd::vector<int>\
-    \ divisor_transform::primes = {2, 3};\n\n}  // namespace ebi"
+    \ (const auto &p : primes) {\n            if (n < p) break;\n            for (int\
+    \ i = 1; i * p <= n; i++) F[p * i] += F[i];\n        }\n        return F;\n  \
+    \  }\n\n    template <class mint>\n    static std::vector<mint> mobius_transform(const\
+    \ std::vector<mint> &F) {\n        int n = F.size() - 1;\n        auto f = F;\n\
+    \        if (m < n) {\n            while (m < n) m <<= 1;\n            eratosthenes_sieve\
+    \ sieve(m);\n            primes = sieve.prime_table();\n        }\n        for\
+    \ (const auto &p : primes) {\n            if (n < p) break;\n            for (int\
+    \ i = n / p; i > 0; i--) f[p * i] -= f[i];\n        }\n        return f;\n   \
+    \ }\n\n  private:\n    static int m;\n    static std::vector<int> primes;\n};\n\
+    \nint divisor_transform::m = 4;\nstd::vector<int> divisor_transform::primes =\
+    \ {2, 3};\n\n}  // namespace ebi"
   dependsOn:
   - math/eratosthenes_sieve.hpp
   isVerificationFile: false
   path: math/divisor_transform.hpp
   requiredBy:
   - convolution/lcm_convolution.hpp
-  timestamp: '2023-08-23 17:33:30+09:00'
+  timestamp: '2023-10-22 18:44:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Lcm_Convolution.test.cpp

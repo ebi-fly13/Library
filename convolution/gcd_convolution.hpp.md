@@ -38,22 +38,23 @@ data:
     \ n = f.size() - 1;\n        auto F = f;\n        if (m < n) {\n            while\
     \ (m < n) m <<= 1;\n            eratosthenes_sieve sieve(m);\n            primes\
     \ = sieve.prime_table();\n        }\n        for (const auto &p : primes) {\n\
-    \            for (int i = n / p; i > 0; i--) F[i] += F[i * p];\n        }\n  \
-    \      return F;\n    }\n\n    template <class mint>\n    static std::vector<mint>\
-    \ mobius_transform(const std::vector<mint> &F) {\n        int n = F.size() - 1;\n\
-    \        auto f = F;\n        if (m < n) {\n            while (m < n) m <<= 1;\n\
-    \            eratosthenes_sieve sieve(m);\n            primes = sieve.prime_table();\n\
-    \        }\n        for (const auto &p : primes) {\n            for (int i = 1;\
-    \ i * p <= n; i++) f[i] -= f[i * p];\n        }\n        return f;\n    }\n\n\
-    \  private:\n    static int m;\n    static std::vector<int> primes;\n};\n\nint\
-    \ multiple_transform::m = 4;\nstd::vector<int> multiple_transform::primes = {2,\
-    \ 3};\n\n}  // namespace ebi\n#line 4 \"convolution/gcd_convolution.hpp\"\n\n\
-    namespace ebi {\n\ntemplate <class mint>\nstd::vector<mint> gcd_convolution(const\
-    \ std::vector<mint> &a,\n                                  const std::vector<mint>\
-    \ &b) {\n    int n = a.size();\n    assert(a.size() == b.size());\n    auto ra\
-    \ = multiple_transform::zeta_transform(a);\n    auto rb = multiple_transform::zeta_transform(b);\n\
-    \    for (int i = 0; i < n; i++) {\n        ra[i] *= rb[i];\n    }\n    return\
-    \ multiple_transform::mobius_transform(ra);\n}\n\n}  // namespace ebi\n"
+    \            if (n < p) break;\n            for (int i = n / p; i > 0; i--) F[i]\
+    \ += F[i * p];\n        }\n        return F;\n    }\n\n    template <class mint>\n\
+    \    static std::vector<mint> mobius_transform(const std::vector<mint> &F) {\n\
+    \        int n = F.size() - 1;\n        auto f = F;\n        if (m < n) {\n  \
+    \          while (m < n) m <<= 1;\n            eratosthenes_sieve sieve(m);\n\
+    \            primes = sieve.prime_table();\n        }\n        for (const auto\
+    \ &p : primes) {\n            if (n < p) break;\n            for (int i = 1; i\
+    \ * p <= n; i++) f[i] -= f[i * p];\n        }\n        return f;\n    }\n\n  private:\n\
+    \    static int m;\n    static std::vector<int> primes;\n};\n\nint multiple_transform::m\
+    \ = 4;\nstd::vector<int> multiple_transform::primes = {2, 3};\n\n}  // namespace\
+    \ ebi\n#line 4 \"convolution/gcd_convolution.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class mint>\nstd::vector<mint> gcd_convolution(const std::vector<mint> &a,\n\
+    \                                  const std::vector<mint> &b) {\n    int n =\
+    \ a.size();\n    assert(a.size() == b.size());\n    auto ra = multiple_transform::zeta_transform(a);\n\
+    \    auto rb = multiple_transform::zeta_transform(b);\n    for (int i = 0; i <\
+    \ n; i++) {\n        ra[i] *= rb[i];\n    }\n    return multiple_transform::mobius_transform(ra);\n\
+    }\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include \"../math/multiple_transform.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <class mint>\nstd::vector<mint> gcd_convolution(const std::vector<mint>\
     \ &a,\n                                  const std::vector<mint> &b) {\n    int\
@@ -67,7 +68,7 @@ data:
   isVerificationFile: false
   path: convolution/gcd_convolution.hpp
   requiredBy: []
-  timestamp: '2023-08-23 17:33:30+09:00'
+  timestamp: '2023-10-22 18:44:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Gcd_Convolution.test.cpp
