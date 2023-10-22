@@ -19,6 +19,7 @@ struct multiple_transform {
             primes = sieve.prime_table();
         }
         for (const auto &p : primes) {
+            if (n < p) break;
             for (int i = n / p; i > 0; i--) F[i] += F[i * p];
         }
         return F;
@@ -34,6 +35,7 @@ struct multiple_transform {
             primes = sieve.prime_table();
         }
         for (const auto &p : primes) {
+            if (n < p) break;
             for (int i = 1; i * p <= n; i++) f[i] -= f[i * p];
         }
         return f;

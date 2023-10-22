@@ -19,6 +19,7 @@ struct divisor_transform {
             primes = sieve.prime_table();
         }
         for (const auto &p : primes) {
+            if (n < p) break;
             for (int i = 1; i * p <= n; i++) F[p * i] += F[i];
         }
         return F;
@@ -34,6 +35,7 @@ struct divisor_transform {
             primes = sieve.prime_table();
         }
         for (const auto &p : primes) {
+            if (n < p) break;
             for (int i = n / p; i > 0; i--) f[p * i] -= f[i];
         }
         return f;
