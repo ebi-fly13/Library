@@ -8,6 +8,7 @@
 #include <cassert>
 #include <ranges>
 #include <vector>
+#include <bit>
 
 namespace ebi {
 
@@ -35,7 +36,7 @@ struct lazy_segtree {
     lazy_segtree(const std::vector<S> &a)
         : n(a.size()),
           sz(std::bit_ceil(a.size())),
-          log(std::countr_zero(u32(sz))) {
+          lg2(std::countr_zero(std::uint32_t(sz))) {
         data = std::vector<S>(2 * sz, e());
         lazy = std::vector<F>(sz, id());
         for (int i : std::views::iota(0, n)) {
@@ -49,15 +50,15 @@ struct lazy_segtree {
     void set(int p, S x) {
         assert(0 <= p && p < n);
         p += sz;
-        for (int i = log; i >= 1; i--) push(p >> i);
+        for (int i = lg2; i >= 1; i--) push(p >> i);
         data[p] = x;
-        for (int i = 1; i <= log; i++) update(p >> i);
+        for (int i = 1; i <= lg2; i++) update(p >> i);
     }
 
     S get(int p) {
         assert(0 <= p && p < n);
         p += sz;
-        for (int i = log; i >= 1; i--) push(p >> i);
+        for (int i = lg2; i >= 1; i--) push(p >> i);
         return data[p];
     }
 
@@ -68,7 +69,7 @@ struct lazy_segtree {
         l += sz;
         r += sz;
 
-        for (int i = log; i >= 1; i--) {
+        for (int i = lg2; i >= 1; i--) {
             if (((l >> i) << i) != l) push(l >> i);
             if (((r >> i) << i) != r) push((r - 1) >> i);
         }
@@ -91,16 +92,16 @@ struct lazy_segtree {
     void apply(int p, F f) {
         assert(0 <= p && p < n);
         p += sz;
-        for (int i = log; i >= 1; i--) push(p >> i);
+        for (int i = lg2; i >= 1; i--) push(p >> i);
         data[p] = mapping(f, data[p]);
-        for (int i = 1; i <= log; i++) update(p >> i);
+        for (int i = 1; i <= lg2; i++) update(p >> i);
     }
 
     void apply(int l, int r, F f) {
         assert(0 <= l && l <= r && r <= n);
         l += sz;
         r += sz;
-        for (int i = log; i >= 1; i--) {
+        for (int i = lg2; i >= 1; i--) {
             if (((l >> i) << i) != l) push(l >> i);
             if (((r >> i) << i) != r) push((r - 1) >> i);
         }
@@ -117,7 +118,7 @@ struct lazy_segtree {
             r = memo_r;
         }
 
-        for (int i = 1; i <= log; i++) {
+        for (int i = 1; i <= lg2; i++) {
             if (((l >> i) << i) != l) update(l >> i);
             if (((r >> i) << i) != r) update((r - 1) >> i);
         }
@@ -128,7 +129,7 @@ struct lazy_segtree {
         assert(g(e()));
         if (l == n) return n;
         l += sz;
-        for (int i = log; i >= 1; i--) push(l >> i);
+        for (int i = lg2; i >= 1; i--) push(l >> i);
         S sm = e();
         do {
             while (l % 2 == 0) l >>= 1;
@@ -154,7 +155,7 @@ struct lazy_segtree {
         assert(g(e()));
         if (r == 0) return 0;
         r += sz;
-        for (int i = log; i >= 1; i--) push((r - 1) >> i);
+        for (int i = lg2; i >= 1; i--) push((r - 1) >> i);
         S sm = e();
         do {
             r--;
@@ -176,7 +177,7 @@ struct lazy_segtree {
     }
 
   private:
-    int n, sz, log;
+    int n, sz, lg2;
     std::vector<S> data;
     std::vector<F> lazy;
 };
