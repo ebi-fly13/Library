@@ -235,12 +235,11 @@ data:
     #include <set>\n#include <stack>\n#include <string>\n#include <tuple>\n#line 30\
     \ \"template/template.hpp\"\n#include <unordered_map>\n#include <unordered_set>\n\
     #include <utility>\n#line 34 \"template/template.hpp\"\n\n#define rep(i, a, n)\
-    \ for (int i : std::views::iota(int(a), int(n)))\n#define rrep(i, a, n) \\\n \
-    \   for (int i : std::views::iota(int(a), int(n)) | std::views::reverse)\n#define\
-    \ Rep(i, a, n) for (i64 i : std::views::iota(i64(a), i64(n)))\n#define RRep(i,\
-    \ a, n) \\\n    for (i64 i : std::views::iota(i64(a), i64(n)) | std::views::reverse)\n\
-    #define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\
-    \n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
+    \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
     \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
     \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
@@ -360,7 +359,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Multipoint_Evaluation.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 13:55:04+09:00'
+  timestamp: '2023-10-22 15:20:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Multipoint_Evaluation.test.cpp
