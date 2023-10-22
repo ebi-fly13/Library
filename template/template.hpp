@@ -32,10 +32,12 @@
 #include <utility>
 #include <vector>
 
-#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)
-#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)
-#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)
-#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)
+#define rep(i, a, n) for (int i : std::views::iota(int(a), int(n)))
+#define rrep(i, a, n) \
+    for (int i : std::views::iota(int(a), int(n)) | std::views::reverse)
+#define Rep(i, a, n) for (i64 i : std::views::iota(i64(a), i64(n)))
+#define RRep(i, a, n) \
+    for (i64 i : std::views::iota(i64(a), i64(n)) | std::views::reverse)
 #define all(v) (v).begin(), (v).end()
 #define rall(v) (v).rbegin(), (v).rend()
 
