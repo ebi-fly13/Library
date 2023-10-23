@@ -81,7 +81,7 @@ segtree_2d<S, op, e, data_structure> seg2d(h, w)
 
 ### set(i, j, x)
 
-$(i, j)$ を $x$ に更新する。O(\log H)
+$(i, j)$ を $x$ に更新する。$O(\log H)$
 
 ### get(i, j, x)
 

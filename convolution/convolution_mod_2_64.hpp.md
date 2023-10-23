@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -236,7 +236,7 @@ data:
   - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
 documentation_of: convolution/convolution_mod_2_64.hpp
 layout: document
-title: Convolution ($\mod 2^{64}$)
+title: Convolution $\pmod{2^{64}}$
 ---
 
 ## 説明

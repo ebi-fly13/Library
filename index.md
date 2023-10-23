@@ -30,7 +30,7 @@ data:
       title: Arbitrary Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/convolution_mod_2_64.hpp
-      title: Convolution ($\mod 2^{64}$)
+      title: Convolution $\pmod{2^{64}}$
     - icon: ':heavy_check_mark:'
       path: convolution/dirichlet_convolution.hpp
       title: Dirichlet Convolution
@@ -185,7 +185,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: fps/fps_sparse.hpp
       title: Formal Power Series (Sparse)
     - icon: ':heavy_check_mark:'
@@ -266,12 +266,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
+    - icon: ':question:'
+      path: math/binomial.hpp
+      title: Binomial Coefficient
     - icon: ':heavy_check_mark:'
       path: math/bostan_mori_algorithm.hpp
       title: Bostan-Mori Algorithm
-    - icon: ':heavy_check_mark:'
-      path: math/combination.hpp
-      title: Combination
     - icon: ':heavy_check_mark:'
       path: math/divisor_transform.hpp
       title: "Divisor Transform (Zeta / M\xF6bius)"
@@ -410,16 +410,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/hash.hpp
       title: Hash structure
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint_base.hpp
       title: utility/modint_base.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint_func.hpp
       title: utility/modint_func.hpp
     - icon: ':heavy_check_mark:'
@@ -477,7 +477,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2873.test.cpp
       title: test/aoj/aoj_2873.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/aoj_3361.test.cpp
       title: test/aoj/aoj_3361.test.cpp
   - name: test/convolution

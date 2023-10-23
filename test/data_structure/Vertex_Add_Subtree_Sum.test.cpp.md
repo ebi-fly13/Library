@@ -141,7 +141,8 @@ data:
     \     } else {\n                return m == a ? prev : rev[m - 1];\n         \
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
-    \  }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
+    \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
+    \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
     \ sz, in, out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace\
     \ ebi\n#line 9 \"test/data_structure/Vertex_Add_Subtree_Sum.test.cpp\"\n\nusing\
     \ i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\ni64 e() {\n\
@@ -183,7 +184,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-20 17:50:36+09:00'
+  timestamp: '2023-10-24 00:42:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp

@@ -1,9 +1,9 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: math/combination.hpp
-    title: Combination
+  - icon: ':question:'
+    path: math/binomial.hpp
+    title: Binomial Coefficient
   - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
@@ -22,7 +22,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -37,26 +37,34 @@ data:
     - https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
   bundledCode: "#line 1 \"test/math/Binomial_Coefficient_Prime_Mod.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\n\
-    \n#line 2 \"math/combination.hpp\"\n\n#include <cassert>\n#include <vector>\n\n\
-    namespace ebi {\n\ntemplate <class mint>\nstruct combination {\n    combination(int\
-    \ n) : m(n), fact(n + 1), inv_fact(n + 1) {\n        fact[0] = 1;\n        for\
-    \ (int i = 1; i <= n; i++) {\n            fact[i] = fact[i - 1] * i;\n       \
-    \ }\n        inv_fact[n] = fact[n].inv();\n        for (int i = n; i > 0; i--)\
-    \ {\n            inv_fact[i - 1] = inv_fact[i] * i;\n        }\n    }\n\n    mint\
-    \ operator()(int n, int k) const {\n        assert(n <= m);\n        if (k < 0\
-    \ || n < k) return 0;\n        return fact[n] * inv_fact[k] * inv_fact[n - k];\n\
-    \    }\n\n    mint f(int n) const {\n        assert(n <= m);\n        if (n <\
-    \ 0) return 0;\n        return fact[n];\n    }\n\n    mint inv_f(int n) const\
-    \ {\n        assert(n <= m);\n        if (n < 0) return 0;\n        return inv_fact[n];\n\
-    \    }\n\n    mint inv(int n) const {\n        assert(n <= m);\n        return\
-    \ inv_fact[n] * fact[n-1];\n    }\n\n  private:\n    int m;\n    std::vector<mint>\
-    \ fact, inv_fact;\n};\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
-    \n#include <algorithm>\n#include <bit>\n#include <bitset>\n#line 5 \"template/template.hpp\"\
-    \n#include <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n\
-    #include <cstddef>\n#include <cstdint>\n#include <cstdlib>\n#include <cstring>\n\
-    #include <functional>\n#include <iomanip>\n#include <iostream>\n#include <limits>\n\
-    #include <map>\n#include <memory>\n#include <numbers>\n#include <numeric>\n#include\
-    \ <optional>\n#include <queue>\n#include <random>\n#include <ranges>\n#include\
+    \n#line 2 \"math/binomial.hpp\"\n\n#include <cassert>\n#include <ranges>\n#include\
+    \ <vector>\n\nnamespace ebi {\n\ntemplate <class mint> struct Binomial {\n  private:\n\
+    \    static void extend(int len) {\n        int sz = (int)fact.size();\n     \
+    \   assert(sz <= len);\n        fact.resize(len);\n        inv_fact.resize(len);\n\
+    \        for (int i : std::views::iota(sz, len)) {\n            fact[i] = fact[i\
+    \ - 1] * i;\n        }\n        inv_fact[len - 1] = fact[len - 1].inv();\n   \
+    \     for (int i : std::views::iota(sz, len) | std::views::reverse) {\n      \
+    \      inv_fact[i - 1] = inv_fact[i] * i;\n        }\n    }\n\n  public:\n   \
+    \ Binomial(int n) {\n        extend(n + 1);\n    }\n\n    static mint c(int n,\
+    \ int r) {\n        assert(n < (int)fact.size());\n        if (r < 0 || n < r)\
+    \ return 0;\n        return fact[n] * inv_fact[r] * inv_fact[n - r];\n    }\n\n\
+    \    static mint p(int n, int r) {\n        assert(n < (int)fact.size());\n  \
+    \      if (r < 0 || n < r) return 0;\n        return fact[n] * inv_fact[n - r];\n\
+    \    }\n\n    static mint f(int n) {\n        assert(n < (int)fact.size());\n\
+    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        assert(n\
+    \ < (int)fact.size());\n        return inv_fact[n];\n    }\n\n    static mint\
+    \ inv(int n) {\n        assert(n < (int)fact.size());\n        return inv_fact[n]\
+    \ * fact[n - 1];\n    }\n\n    static void reserve(int n) {\n        extend(n\
+    \ + 1);\n    }\n\n  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\
+    \ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2,\
+    \ 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
+    \ 1);\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\n#include <algorithm>\n\
+    #include <bit>\n#include <bitset>\n#line 5 \"template/template.hpp\"\n#include\
+    \ <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n#include\
+    \ <cstddef>\n#include <cstdint>\n#include <cstdlib>\n#include <cstring>\n#include\
+    \ <functional>\n#include <iomanip>\n#include <iostream>\n#include <limits>\n#include\
+    \ <map>\n#include <memory>\n#include <numbers>\n#include <numeric>\n#include <optional>\n\
+    #include <queue>\n#include <random>\n#line 25 \"template/template.hpp\"\n#include\
     \ <set>\n#include <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n\
     #include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#line\
     \ 34 \"template/template.hpp\"\n\n#define rep(i, a, n) for (int i = (int)(a);\
@@ -148,23 +156,23 @@ data:
     \ {\n        return m;\n    }\n};\n\ntemplate <int id> int dynamic_modint<id>::m\
     \ = 998244353;\n\n}  // namespace ebi\n#line 6 \"test/math/Binomial_Coefficient_Prime_Mod.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = dynamic_modint<0>;\n\nvoid main_() {\n   \
-    \ int t, m;\n    std::cin >> t >> m;\n    mint::set_mod(m);\n    combination<mint>\
-    \ comb(std::min(m, 10000010) - 1);\n    rep(i, 0, t) {\n        int n, k;\n  \
-    \      std::cin >> n >> k;\n        std::cout << comb(n, k).val() << '\\n';\n\
-    \    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int\
+    \ int t, m;\n    std::cin >> t >> m;\n    mint::set_mod(m);\n    Binomial<mint>::reserve(std::min(m\
+    \ - 1, 10'000'000));\n    rep(i, 0, t) {\n        int n, k;\n        std::cin\
+    \ >> n >> k;\n        std::cout << Binomial<mint>::c(n, k).val() << '\\n';\n \
+    \   }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int\
     \ t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n  \
     \  }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
-    \n\n#include \"../../math/combination.hpp\"\n#include \"../../template/template.hpp\"\
+    \n\n#include \"../../math/binomial.hpp\"\n#include \"../../template/template.hpp\"\
     \n#include \"../../utility/dynamic_modint.hpp\"\n\nnamespace ebi {\n\nusing mint\
     \ = dynamic_modint<0>;\n\nvoid main_() {\n    int t, m;\n    std::cin >> t >>\
-    \ m;\n    mint::set_mod(m);\n    combination<mint> comb(std::min(m, 10000010)\
-    \ - 1);\n    rep(i, 0, t) {\n        int n, k;\n        std::cin >> n >> k;\n\
-    \        std::cout << comb(n, k).val() << '\\n';\n    }\n}\n\n}  // namespace\
-    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
-    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
+    \ m;\n    mint::set_mod(m);\n    Binomial<mint>::reserve(std::min(m - 1, 10'000'000));\n\
+    \    rep(i, 0, t) {\n        int n, k;\n        std::cin >> n >> k;\n        std::cout\
+    \ << Binomial<mint>::c(n, k).val() << '\\n';\n    }\n}\n\n}  // namespace ebi\n\
+    \nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n \
+    \   while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
-  - math/combination.hpp
+  - math/binomial.hpp
   - template/template.hpp
   - template/debug_template.hpp
   - template/int_alias.hpp
@@ -175,7 +183,7 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 15:20:07+09:00'
+  timestamp: '2023-10-24 00:42:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp

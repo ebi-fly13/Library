@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy: []

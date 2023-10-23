@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -133,7 +133,8 @@ data:
     \     } else {\n                return m == a ? prev : rev[m - 1];\n         \
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
-    \  }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
+    \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
+    \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
     \ sz, in, out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace\
     \ ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"utility/modint.hpp\"\n#include\
     \ <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\n\n#line 4 \"utility/modint_base.hpp\"\
@@ -241,7 +242,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   requiredBy: []
-  timestamp: '2023-10-20 17:50:36+09:00'
+  timestamp: '2023-10-24 00:42:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Set_Path_Compositie.test.cpp

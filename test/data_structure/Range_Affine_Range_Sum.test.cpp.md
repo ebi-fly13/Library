@@ -19,10 +19,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -91,7 +91,7 @@ data:
     \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 4 \"test/data_structure/Range_Affine_Range_Sum.test.cpp\"\
     \n\r\n#line 2 \"data_structure/lazy_segtree.hpp\"\n\r\n/*\r\n    reference:\r\n\
     \   https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html\r\
-    \n*/\r\n\r\n#line 11 \"data_structure/lazy_segtree.hpp\"\n\r\nnamespace ebi {\r\
+    \n*/\r\n\r\n#line 12 \"data_structure/lazy_segtree.hpp\"\n\r\nnamespace ebi {\r\
     \n\r\ntemplate <class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S),\r\
     \n          F (*composition)(F, F), F (*id)()>\r\nstruct lazy_segtree {\r\n  private:\r\
     \n    void update(int i) {\r\n        data[i] = op(data[2 * i], data[2 * i + 1]);\r\
@@ -101,19 +101,19 @@ data:
     \ all_apply(2 * i + 1, lazy[i]);\r\n        lazy[i] = id();\r\n    }\r\n\r\n \
     \ public:\r\n    lazy_segtree(int _n) : lazy_segtree(std::vector<S>(_n, e()))\
     \ {}\r\n    lazy_segtree(const std::vector<S> &a)\r\n        : n(a.size()),\r\n\
-    \          sz(std::bit_ceil(a.size())),\r\n          log(std::countr_zero(u32(sz)))\
+    \          sz(std::bit_ceil(a.size())),\r\n          lg2(std::countr_zero(std::uint32_t(sz)))\
     \ {\r\n        data = std::vector<S>(2 * sz, e());\r\n        lazy = std::vector<F>(sz,\
     \ id());\r\n        for (int i : std::views::iota(0, n)) {\r\n            data[sz\
     \ + i] = a[i];\r\n        }\r\n        for (int i : std::views::iota(1, sz) |\
     \ std::views::reverse) {\r\n            update(i);\r\n        }\r\n    }\r\n\r\
     \n    void set(int p, S x) {\r\n        assert(0 <= p && p < n);\r\n        p\
-    \ += sz;\r\n        for (int i = log; i >= 1; i--) push(p >> i);\r\n        data[p]\
-    \ = x;\r\n        for (int i = 1; i <= log; i++) update(p >> i);\r\n    }\r\n\r\
+    \ += sz;\r\n        for (int i = lg2; i >= 1; i--) push(p >> i);\r\n        data[p]\
+    \ = x;\r\n        for (int i = 1; i <= lg2; i++) update(p >> i);\r\n    }\r\n\r\
     \n    S get(int p) {\r\n        assert(0 <= p && p < n);\r\n        p += sz;\r\
-    \n        for (int i = log; i >= 1; i--) push(p >> i);\r\n        return data[p];\r\
+    \n        for (int i = lg2; i >= 1; i--) push(p >> i);\r\n        return data[p];\r\
     \n    }\r\n\r\n    S prod(int l, int r) {\r\n        assert(0 <= l && l <= r &&\
     \ r <= n);\r\n        if (l == r) return e();\r\n\r\n        l += sz;\r\n    \
-    \    r += sz;\r\n\r\n        for (int i = log; i >= 1; i--) {\r\n            if\
+    \    r += sz;\r\n\r\n        for (int i = lg2; i >= 1; i--) {\r\n            if\
     \ (((l >> i) << i) != l) push(l >> i);\r\n            if (((r >> i) << i) != r)\
     \ push((r - 1) >> i);\r\n        }\r\n\r\n        S sml = e(), smr = e();\r\n\
     \        while (l < r) {\r\n            if (l & 1) sml = op(sml, data[l++]);\r\
@@ -121,22 +121,22 @@ data:
     \            r >>= 1;\r\n        }\r\n\r\n        return op(sml, smr);\r\n   \
     \ }\r\n\r\n    S all_prod() const {\r\n        return data[1];\r\n    }\r\n\r\n\
     \    void apply(int p, F f) {\r\n        assert(0 <= p && p < n);\r\n        p\
-    \ += sz;\r\n        for (int i = log; i >= 1; i--) push(p >> i);\r\n        data[p]\
-    \ = mapping(f, data[p]);\r\n        for (int i = 1; i <= log; i++) update(p >>\
+    \ += sz;\r\n        for (int i = lg2; i >= 1; i--) push(p >> i);\r\n        data[p]\
+    \ = mapping(f, data[p]);\r\n        for (int i = 1; i <= lg2; i++) update(p >>\
     \ i);\r\n    }\r\n\r\n    void apply(int l, int r, F f) {\r\n        assert(0\
     \ <= l && l <= r && r <= n);\r\n        l += sz;\r\n        r += sz;\r\n     \
-    \   for (int i = log; i >= 1; i--) {\r\n            if (((l >> i) << i) != l)\
+    \   for (int i = lg2; i >= 1; i--) {\r\n            if (((l >> i) << i) != l)\
     \ push(l >> i);\r\n            if (((r >> i) << i) != r) push((r - 1) >> i);\r\
     \n        }\r\n\r\n        {\r\n            int memo_l = l, memo_r = r;\r\n  \
     \          while (l < r) {\r\n                if (l & 1) all_apply(l++, f);\r\n\
     \                if (r & 1) all_apply(--r, f);\r\n                l >>= 1;\r\n\
     \                r >>= 1;\r\n            }\r\n            l = memo_l;\r\n    \
-    \        r = memo_r;\r\n        }\r\n\r\n        for (int i = 1; i <= log; i++)\
+    \        r = memo_r;\r\n        }\r\n\r\n        for (int i = 1; i <= lg2; i++)\
     \ {\r\n            if (((l >> i) << i) != l) update(l >> i);\r\n            if\
     \ (((r >> i) << i) != r) update((r - 1) >> i);\r\n        }\r\n    }\r\n\r\n \
     \   template <class G> int max_right(int l, G g) {\r\n        assert(0 <= l &&\
     \ l <= n);\r\n        assert(g(e()));\r\n        if (l == n) return n;\r\n   \
-    \     l += sz;\r\n        for (int i = log; i >= 1; i--) push(l >> i);\r\n   \
+    \     l += sz;\r\n        for (int i = lg2; i >= 1; i--) push(l >> i);\r\n   \
     \     S sm = e();\r\n        do {\r\n            while (l % 2 == 0) l >>= 1;\r\
     \n            if (!g(op(sm, data[l]))) {\r\n                while (l < sz) {\r\
     \n                    push(l);\r\n                    l = l << 1;\r\n        \
@@ -146,7 +146,7 @@ data:
     \   sm = op(sm, data[l]);\r\n            l++;\r\n        } while ((l & -l) !=\
     \ l);\r\n        return n;\r\n    }\r\n\r\n    template <class G> int min_left(int\
     \ r, G g) {\r\n        assert(0 <= r && r <= n);\r\n        assert(g(e()));\r\n\
-    \        if (r == 0) return 0;\r\n        r += sz;\r\n        for (int i = log;\
+    \        if (r == 0) return 0;\r\n        r += sz;\r\n        for (int i = lg2;\
     \ i >= 1; i--) push((r - 1) >> i);\r\n        S sm = e();\r\n        do {\r\n\
     \            r--;\r\n            while (r > 1 && r % 2) r >>= 1;\r\n         \
     \   if (!g(op(data[r], sm))) {\r\n                while (r < sz) {\r\n       \
@@ -155,7 +155,7 @@ data:
     \ sm);\r\n                        r--;\r\n                    }\r\n          \
     \      }\r\n                return r + 1 - sz;\r\n            }\r\n          \
     \  sm = op(data[r], sm);\r\n        } while ((r & -r) != r);\r\n        return\
-    \ 0;\r\n    }\r\n\r\n  private:\r\n    int n, sz, log;\r\n    std::vector<S> data;\r\
+    \ 0;\r\n    }\r\n\r\n  private:\r\n    int n, sz, lg2;\r\n    std::vector<S> data;\r\
     \n    std::vector<F> lazy;\r\n};\r\n\r\n}  // namespace ebi\r\n#line 2 \"utility/modint.hpp\"\
     \n\r\n#line 6 \"utility/modint.hpp\"\n\r\n#line 2 \"utility/modint_base.hpp\"\n\
     \n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
@@ -257,7 +257,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 15:20:07+09:00'
+  timestamp: '2023-10-22 19:43:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Range_Sum.test.cpp

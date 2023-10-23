@@ -7,7 +7,7 @@ data:
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
-    title: Convolution ($\mod 2^{64}$)
+    title: Convolution $\pmod{2^{64}}$
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
@@ -29,7 +29,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2863.test.cpp
     title: test/aoj/aoj_2863.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
   - icon: ':heavy_check_mark:'
@@ -201,9 +201,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "utility/modint_base.hpp"
@@ -299,7 +299,7 @@ data:
   - math/mod_sqrt.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/Gcd_Convolution.test.cpp
   - test/convolution/Convolution_Mod_1000000007.test.cpp

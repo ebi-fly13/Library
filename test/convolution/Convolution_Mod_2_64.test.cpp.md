@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
-    title: Convolution ($\mod 2^{64}$)
+    title: Convolution $\pmod{2^{64}}$
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []

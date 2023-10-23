@@ -10,7 +10,7 @@ data:
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
-    title: Convolution ($\mod 2^{64}$)
+    title: Convolution $\pmod{2^{64}}$
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution

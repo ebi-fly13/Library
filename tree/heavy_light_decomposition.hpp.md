@@ -94,7 +94,8 @@ data:
     \     } else {\n                return m == a ? prev : rev[m - 1];\n         \
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
-    \  }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
+    \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
+    \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
     \ sz, in, out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace\
     \ ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <iostream>\n#include <vector>\n\
@@ -165,14 +166,15 @@ data:
     \     } else {\n                return m == a ? prev : rev[m - 1];\n         \
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
-    \  }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
+    \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
+    \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
     \ sz, in, out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace\
     \ ebi"
   dependsOn: []
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-10-20 17:50:36+09:00'
+  timestamp: '2023-10-24 00:42:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Jump_on_Tree_HLD.test.cpp
