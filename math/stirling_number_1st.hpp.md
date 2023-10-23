@@ -8,6 +8,9 @@ data:
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':heavy_check_mark:'
+    path: math/binomial.hpp
+    title: Binomial Coefficient
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy: []
@@ -104,36 +107,55 @@ data:
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
     \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\
-    \n\n#line 4 \"fps/taylor_shift.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint,\
-    \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
-    \ &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n\
-    \    FormalPowerSeries<mint, convolution> f, mint a) {\n    int d = f.deg();\n\
-    \    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1;\
-    \ i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d] = fact[d].inv();\n\
-    \    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i] * i;\n    for (int\
-    \ i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(), f.end());\n\
-    \    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a = a;\n    for\
-    \ (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n        pow_a\
-    \ *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n\
-    \    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n} \
-    \ // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\n\
-    constexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n\
-    \ & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int n, int bit_size)\
-    \ {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n\
-    \ |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint\
-    \ ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n))\
-    \ x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
-    }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
-    int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
-    \ ebi\n#line 8 \"math/stirling_number_1st.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
-    \ std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution>\
-    \ stirling_number_1st(int n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n\
-    \    assert(n >= 0);\n    if (n == 0) return {1};\n    int lg = msb(n);\n    FPS\
-    \ f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >>\
-    \ i;\n        f *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid\
-    \ & 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
-    \ ebi\n"
+    \n\n#line 2 \"math/binomial.hpp\"\n\n#line 4 \"math/binomial.hpp\"\n#include <ranges>\n\
+    #line 6 \"math/binomial.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint> struct\
+    \ Binomial {\n  private:\n    static void extend(int len) {\n        int sz =\
+    \ (int)fact.size();\n        assert(sz <= len);\n        fact.resize(len);\n \
+    \       inv_fact.resize(len);\n        for (int i : std::views::iota(sz, len))\
+    \ {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len -\
+    \ 1] = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len) |\
+    \ std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n   \
+    \     }\n    }\n\n  public:\n    Binomial(int n) {\n        extend(n + 1);\n \
+    \   }\n\n    static mint c(int n, int r) {\n        assert(n < (int)fact.size());\n\
+    \        if (r < 0 || n < r) return 0;\n        return fact[n] * inv_fact[r] *\
+    \ inv_fact[n - r];\n    }\n\n    static mint p(int n, int r) {\n        assert(n\
+    \ < (int)fact.size());\n        if (r < 0 || n < r) return 0;\n        return\
+    \ fact[n] * inv_fact[n - r];\n    }\n\n    static mint f(int n) {\n        assert(n\
+    \ < (int)fact.size());\n        return fact[n];\n    }\n\n    static mint inv_f(int\
+    \ n) {\n        assert(n < (int)fact.size());\n        return inv_fact[n];\n \
+    \   }\n\n    static mint inv(int n) {\n        assert(n < (int)fact.size());\n\
+    \        return inv_fact[n] * fact[n - 1];\n    }\n\n    static void reserve(int\
+    \ n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
+    \ fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::fact\
+    \ = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
+    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 5 \"fps/taylor_shift.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n    FormalPowerSeries<mint,\
+    \ convolution> f, mint a) {\n    int d = f.deg();\n    Binomial<mint>::reserve(d);\n\
+    \    for (int i = 0; i < d; i++) f[i] *= Binomial<mint>::f(i);\n    std::reverse(f.begin(),\
+    \ f.end());\n    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a\
+    \ = a;\n    for (int i = 1; i < d; i++) {\n        g[i] = pow_a * Binomial<mint>::inv_f(i);\n\
+    \        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(),\
+    \ f.end());\n    for (int i = 0; i < d; i++) f[i] *= Binomial<mint>::inv_f(i);\n\
+    \    return f;\n}\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
+    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
+    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
+    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
+    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
+    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
+    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
+    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
+    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
+    }\n\n}  // namespace ebi\n#line 8 \"math/stirling_number_1st.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
+    \                 const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
+    \ convolution> stirling_number_1st(int n) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    assert(n >= 0);\n    if (n == 0) return {1};\n    int lg\
+    \ = msb(n);\n    FPS f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n  \
+    \      int mid = n >> i;\n        f *= taylor_shift<mint, convolution>(f, mid\
+    \ >> 1);\n        if (mid & 1) f = (f << 1) + f * (mid - 1);\n    }\n    return\
+    \ f;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n\n#include \"../fps/fps.hpp\"\n#include\
     \ \"../fps/taylor_shift.hpp\"\n#include \"../utility/bit_operator.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
@@ -147,11 +169,12 @@ data:
   dependsOn:
   - fps/fps.hpp
   - fps/taylor_shift.hpp
+  - math/binomial.hpp
   - utility/bit_operator.hpp
   isVerificationFile: false
   path: math/stirling_number_1st.hpp
   requiredBy: []
-  timestamp: '2023-08-28 17:31:00+09:00'
+  timestamp: '2023-10-24 01:15:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp

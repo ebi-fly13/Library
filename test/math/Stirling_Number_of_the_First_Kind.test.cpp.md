@@ -11,6 +11,9 @@ data:
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':heavy_check_mark:'
+    path: math/binomial.hpp
+    title: Binomial Coefficient
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
@@ -19,10 +22,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -199,43 +202,62 @@ data:
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
     \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\n\n#line\
-    \ 4 \"fps/taylor_shift.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
-    \ (*convolution)(\n                          const std::vector<mint> &, const\
-    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n\
-    \    FormalPowerSeries<mint, convolution> f, mint a) {\n    int d = f.deg();\n\
-    \    std::vector<mint> fact(d + 1, 1), inv_fact(d + 1, 1);\n    for (int i = 1;\
-    \ i <= d; i++) fact[i] = fact[i - 1] * i;\n    inv_fact[d] = fact[d].inv();\n\
-    \    for (int i = d; i > 0; i--) inv_fact[i - 1] = inv_fact[i] * i;\n    for (int\
-    \ i = 0; i < d; i++) f[i] *= fact[i];\n    std::reverse(f.begin(), f.end());\n\
-    \    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a = a;\n    for\
-    \ (int i = 1; i < d; i++) {\n        g[i] = pow_a * inv_fact[i];\n        pow_a\
-    \ *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(), f.end());\n\
-    \    for (int i = 0; i < d; i++) f[i] *= inv_fact[i];\n    return f;\n}\n\n} \
-    \ // namespace ebi\n#line 8 \"math/stirling_number_1st.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n             \
-    \             const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
-    \ convolution> stirling_number_1st(int n) {\n    using FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n    assert(n >= 0);\n    if (n == 0) return {1};\n    int lg\
-    \ = msb(n);\n    FPS f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n  \
-    \      int mid = n >> i;\n        f *= taylor_shift<mint, convolution>(f, mid\
-    \ >> 1);\n        if (mid & 1) f = (f << 1) + f * (mid - 1);\n    }\n    return\
-    \ f;\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 6 \"\
-    utility/modint.hpp\"\n\r\n#line 8 \"utility/modint.hpp\"\n\r\nnamespace ebi {\r\
-    \n\r\ntemplate <int m> struct static_modint : internal::static_modint_base {\r\
-    \n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n    static\
-    \ constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr\
-    \ modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n        return\
-    \ x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr\
-    \ static_modint(long long v) {\r\n        v %= (long long)umod();\r\n        if\
-    \ (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\
-    \r\n    constexpr unsigned int val() const {\r\n        return _v;\r\n    }\r\n\
-    \r\n    constexpr unsigned int value() const {\r\n        return val();\r\n  \
-    \  }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n        if\
-    \ (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\n  \
-    \      return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\n\
-    \        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n  \
-    \  }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
+    \ 2 \"math/binomial.hpp\"\n\n#line 4 \"math/binomial.hpp\"\n#include <ranges>\n\
+    #line 6 \"math/binomial.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint> struct\
+    \ Binomial {\n  private:\n    static void extend(int len) {\n        int sz =\
+    \ (int)fact.size();\n        assert(sz <= len);\n        fact.resize(len);\n \
+    \       inv_fact.resize(len);\n        for (int i : std::views::iota(sz, len))\
+    \ {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len -\
+    \ 1] = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len) |\
+    \ std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n   \
+    \     }\n    }\n\n  public:\n    Binomial(int n) {\n        extend(n + 1);\n \
+    \   }\n\n    static mint c(int n, int r) {\n        assert(n < (int)fact.size());\n\
+    \        if (r < 0 || n < r) return 0;\n        return fact[n] * inv_fact[r] *\
+    \ inv_fact[n - r];\n    }\n\n    static mint p(int n, int r) {\n        assert(n\
+    \ < (int)fact.size());\n        if (r < 0 || n < r) return 0;\n        return\
+    \ fact[n] * inv_fact[n - r];\n    }\n\n    static mint f(int n) {\n        assert(n\
+    \ < (int)fact.size());\n        return fact[n];\n    }\n\n    static mint inv_f(int\
+    \ n) {\n        assert(n < (int)fact.size());\n        return inv_fact[n];\n \
+    \   }\n\n    static mint inv(int n) {\n        assert(n < (int)fact.size());\n\
+    \        return inv_fact[n] * fact[n - 1];\n    }\n\n    static void reserve(int\
+    \ n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
+    \ fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::fact\
+    \ = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
+    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 5 \"fps/taylor_shift.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n    FormalPowerSeries<mint,\
+    \ convolution> f, mint a) {\n    int d = f.deg();\n    Binomial<mint>::reserve(d);\n\
+    \    for (int i = 0; i < d; i++) f[i] *= Binomial<mint>::f(i);\n    std::reverse(f.begin(),\
+    \ f.end());\n    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a\
+    \ = a;\n    for (int i = 1; i < d; i++) {\n        g[i] = pow_a * Binomial<mint>::inv_f(i);\n\
+    \        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(),\
+    \ f.end());\n    for (int i = 0; i < d; i++) f[i] *= Binomial<mint>::inv_f(i);\n\
+    \    return f;\n}\n\n}  // namespace ebi\n#line 8 \"math/stirling_number_1st.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
+    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> stirling_number_1st(int n) {\n   \
+    \ using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >= 0);\n   \
+    \ if (n == 0) return {1};\n    int lg = msb(n);\n    FPS f = {0, 1};\n    for\
+    \ (int i = lg - 1; i >= 0; i--) {\n        int mid = n >> i;\n        f *= taylor_shift<mint,\
+    \ convolution>(f, mid >> 1);\n        if (mid & 1) f = (f << 1) + f * (mid - 1);\n\
+    \    }\n    return f;\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\
+    \n\r\n#line 6 \"utility/modint.hpp\"\n\r\n#line 8 \"utility/modint.hpp\"\n\r\n\
+    namespace ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
+    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
+    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
+    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
+    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
+    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
+    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
+    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
+    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
+    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
+    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
+    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
     \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
     \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
     \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
@@ -288,11 +310,12 @@ data:
   - math/stirling_number_1st.hpp
   - fps/fps.hpp
   - fps/taylor_shift.hpp
+  - math/binomial.hpp
   - utility/modint.hpp
   isVerificationFile: true
   path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   requiredBy: []
-  timestamp: '2023-08-31 02:52:44+09:00'
+  timestamp: '2023-10-24 01:15:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stirling_Number_of_the_First_Kind.test.cpp

@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy:

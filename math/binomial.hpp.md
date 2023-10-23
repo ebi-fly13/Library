@@ -1,20 +1,32 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: fps/taylor_shift.hpp
+    title: $f(x + c)$
+  - icon: ':heavy_check_mark:'
+    path: math/stirling_number_1st.hpp
+    title: Stirling Numbers of the First Kind
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+    title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/binomial.hpp\"\n\n#include <cassert>\n#include <ranges>\n\
@@ -63,12 +75,16 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/binomial.hpp
-  requiredBy: []
+  requiredBy:
+  - fps/taylor_shift.hpp
+  - math/stirling_number_1st.hpp
   timestamp: '2023-10-24 00:42:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/aoj/aoj_3361.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
