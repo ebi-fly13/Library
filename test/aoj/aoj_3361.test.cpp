@@ -5,11 +5,11 @@
 #include <vector>
 
 #include "../../fps/fps_sparse.hpp"
-#include "../../math/combination.hpp"
+#include "../../math/binomial.hpp"
 #include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
-ebi::combination<mint> comb(1000000);
+ebi::Binomial<mint> comb(1000000);
 
 int main() {
     int k, n;
@@ -22,7 +22,7 @@ int main() {
         assert(int(dp.size()) == n + 1);
         mint ans = 0;
         for (int i = n; i >= 0; i--) {
-            ans += dp[i] * comb(2 * k - 1 + n - i, n - i);
+            ans += dp[i] * comb.c(2 * k - 1 + n - i, n - i);
         }
         std::cout << ans.val() << '\n';
     }

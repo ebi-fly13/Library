@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod"
 
-#include "../../math/combination.hpp"
+#include "../../math/binomial.hpp"
 #include "../../template/template.hpp"
 #include "../../utility/dynamic_modint.hpp"
 
@@ -12,11 +12,11 @@ void main_() {
     int t, m;
     std::cin >> t >> m;
     mint::set_mod(m);
-    combination<mint> comb(std::min(m, 10000010) - 1);
+    Binomial<mint>::reserve(std::min(m - 1, 10'000'000));
     rep(i, 0, t) {
         int n, k;
         std::cin >> n >> k;
-        std::cout << comb(n, k).val() << '\n';
+        std::cout << Binomial<mint>::c(n, k).val() << '\n';
     }
 }
 

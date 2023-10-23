@@ -4,20 +4,21 @@
 
 #include "../../convolution/ntt.hpp"
 #include "../../fps/fps.hpp"
-#include "../../math/combination.hpp"
+#include "../../math/binomial.hpp"
 #include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
 using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;
+using Binomial = ebi::Binomial<mint>;
 
 int main() {
     int n;
     std::cin >> n;
     FPS f(n + 1);
-    ebi::combination<mint> comb(n);
+    Binomial::reserve(n);
     for (int i = 0; i < n + 1; i++) {
-        f[i] = (i + 1) * comb.inv_f(i);
+        f[i] = (i + 1) * Binomial::inv_f(i);
     }
-    mint ans = f.pow(n)[n - 2] * comb.f(n - 2) / mint(n).pow(n - 2);
+    mint ans = f.pow(n)[n - 2] * Binomial::f(n - 2) / mint(n).pow(n - 2);
     std::cout << ans.val() << '\n';
 }

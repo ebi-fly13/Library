@@ -186,6 +186,10 @@ struct heavy_light_decomposition {
         f(in[u] + int(!vertex), out[u]);
     }
 
+    const std::vector<int> &dfs_order() const {
+        return rev;
+    }
+
   private:
     int n;
     std::vector<std::vector<int>> g;
