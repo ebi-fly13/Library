@@ -9,11 +9,11 @@
 #include "../../utility/modint.hpp"
 
 using mint = ebi::modint998244353;
-ebi::Binomial<mint> comb(1000000);
 
 int main() {
     int k, n;
     std::vector<mint> f(300);
+    ebi::Binomial<mint> comb(1000000);
     f[1] = 1;
     f[256] = -256;
     f[257] = 255;
