@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/partition_function.hpp
     title: Partition Function
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
-    path: utility/modint_base.hpp
-    title: utility/modint_base.hpp
+  - icon: ':question:'
+    path: utility/modint_concept.hpp
+    title: utility/modint_concept.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/partition_function
@@ -126,15 +126,11 @@ data:
     \ 1LL * k *(3 * k - 1) / 2;\n        if(k2 > n) break;\n        if(k1 <= n) f[k1]\
     \ = ((k & 1) ? -1 : 1);\n        if(k2 <= n) f[k2] = ((k & 1) ? -1 : 1); \n  \
     \  }\n    return f.inv();\n}\n\n}\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5\
-    \ \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
-    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \nstruct static_modint_base : modint_base {};\n\ntemplate <class T>\nusing is_static_modint\
-    \ = std::is_base_of<internal::static_modint_base, T>;\n\ntemplate <class T>\n\
-    using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\n}\
-    \  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
+    \ \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_concept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
+    \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
+    \  a.inv();\n    a.val();\n    a.mod();\n};\n\n}  // namespace ebi\n#line 8 \"\
+    utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
     \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
     \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
     \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
@@ -198,51 +194,48 @@ data:
     \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
     \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
     }\n\n}  // namespace ebi\n#line 12 \"convolution/ntt.hpp\"\n\nnamespace ebi {\n\
-    \nnamespace internal {\n\ntemplate <class mint, int g = internal::primitive_root<mint::mod()>,\n\
-    \          internal::is_static_modint_t<mint>* = nullptr>\nstruct ntt_info {\n\
-    \    static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);\n\n    std::array<mint,\
-    \ rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2] = mint(g).pow((mint::mod()\
-    \ - 1) >> rank2);\n        inv_root[rank2] = root[rank2].inv();\n        for (int\
-    \ i = rank2 - 1; i >= 0; i--) {\n            root[i] = root[i + 1] * root[i +\
-    \ 1];\n            inv_root[i] = inv_root[i + 1] * inv_root[i + 1];\n        }\n\
-    \    }\n};\n\ntemplate <class mint, internal::is_static_modint_t<mint>* = nullptr>\n\
-    void butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n\
-    \    int n = int(a.size());\n    int bit_size = bsf(n);\n    assert(n == 1 <<\
-    \ ceil_pow2(n));\n    // bit reverse\n    for (int i = 0; i < n; i++) {\n    \
-    \    int rev = bit_reverse(i, bit_size);\n        if (i < rev) {\n           \
-    \ std::swap(a[i], a[rev]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size;\
-    \ bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n       \
-    \     mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n            for\
-    \ (int j = 0; j < (1 << bit); j++) {\n                int idx = i * (1 << (bit\
-    \ + 1)) + j;\n                int jdx = idx + (1 << bit);\n                mint\
-    \ p1 = a[idx];\n                mint p2 = a[jdx];\n                a[idx] = p1\
-    \ + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n                zeta1\
-    \ *= info.root[bit + 1];\n                zeta2 *= info.root[bit + 1];\n     \
-    \       }\n        }\n    }\n}\n\ntemplate <class mint, internal::is_static_modint_t<mint>*\
-    \ = nullptr>\nvoid butterfly_inv(std::vector<mint>& a) {\n    static const ntt_info<mint>\
-    \ info;\n    int n = int(a.size());\n    int bit_size = bsf(n);\n    assert(n\
-    \ == 1 << ceil_pow2(n));\n    // bit reverse\n    for (int i = 0; i < n; i++)\
-    \ {\n        int rev = bit_reverse(i, bit_size);\n        if (i < rev) std::swap(a[i],\
-    \ a[rev]);\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n        for\
+    \nnamespace internal {\n\ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\n\
+    struct ntt_info {\n    static constexpr int rank2 = bsf_constexpr(mint::mod()\
+    \ - 1);\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info() {\n\
+    \        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
+    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
+    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
+    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <modint mint> void\
+    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
+    \   int n = int(a.size());\n    int bit_size = bsf(n);\n    assert(n == 1 << ceil_pow2(n));\n\
+    \    // bit reverse\n    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i,\
+    \ bit_size);\n        if (i < rev) {\n            std::swap(a[i], a[rev]);\n \
+    \       }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n        for\
     \ (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1 = 1;\n\
-    \            mint zeta2 = info.inv_root[1];\n            for (int j = 0; j < (1\
-    \ << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n     \
-    \           int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n \
-    \               mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
-    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.inv_root[bit\
-    \ + 1];\n                zeta2 *= info.inv_root[bit + 1];\n            }\n   \
-    \     }\n    }\n    mint inv_n = mint(n).inv();\n    for (int i = 0; i < n; i++)\
-    \ {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace internal\n\ntemplate\
-    \ <class mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint>\
-    \ convolution_naive(const std::vector<mint>& f,\n                            \
-    \        const std::vector<mint>& g) {\n    if (f.empty() || g.empty()) return\
-    \ {};\n    int n = int(f.size()), m = int(g.size());\n    std::vector<mint> c(n\
-    \ + m - 1);\n    if (n < m) {\n        for (int j = 0; j < m; j++) {\n       \
-    \     for (int i = 0; i < n; i++) {\n                c[i + j] += f[i] * g[j];\n\
-    \            }\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n\
-    \            for (int j = 0; j < m; j++) {\n                c[i + j] += f[i] *\
-    \ g[j];\n            }\n        }\n    }\n    return c;\n}\n\ntemplate <class\
-    \ mint, internal::is_static_modint_t<mint>* = nullptr>\nstd::vector<mint> convolution(const\
+    \            mint zeta2 = info.root[1];\n            for (int j = 0; j < (1 <<\
+    \ bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n        \
+    \        int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n    \
+    \            mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n  \
+    \              a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
+    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
+    \ }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
+    \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
+    \  int bit_size = bsf(n);\n    assert(n == 1 << ceil_pow2(n));\n    // bit reverse\n\
+    \    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i, bit_size);\n\
+    \        if (i < rev) std::swap(a[i], a[rev]);\n    }\n\n    for (int bit = 0;\
+    \ bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1));\
+    \ i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.inv_root[1];\n\
+    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
+    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
+    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
+    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
+    \                zeta1 *= info.inv_root[bit + 1];\n                zeta2 *= info.inv_root[bit\
+    \ + 1];\n            }\n        }\n    }\n    mint inv_n = mint(n).inv();\n  \
+    \  for (int i = 0; i < n; i++) {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace\
+    \ internal\n\ntemplate <modint mint>\nstd::vector<mint> convolution_naive(const\
+    \ std::vector<mint>& f,\n                                    const std::vector<mint>&\
+    \ g) {\n    if (f.empty() || g.empty()) return {};\n    int n = int(f.size()),\
+    \ m = int(g.size());\n    std::vector<mint> c(n + m - 1);\n    if (n < m) {\n\
+    \        for (int j = 0; j < m; j++) {\n            for (int i = 0; i < n; i++)\
+    \ {\n                c[i + j] += f[i] * g[j];\n            }\n        }\n    }\
+    \ else {\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j\
+    \ < m; j++) {\n                c[i + j] += f[i] * g[j];\n            }\n     \
+    \   }\n    }\n    return c;\n}\n\ntemplate <modint mint>\nstd::vector<mint> convolution(const\
     \ std::vector<mint>& f,\n                              const std::vector<mint>&\
     \ g) {\n    if (f.empty() || g.empty()) return {};\n    if (std::min(f.size(),\
     \ g.size()) < 60) return convolution_naive(f, g);\n    int n = 1 << ceil_pow2(f.size()\
@@ -266,15 +259,15 @@ data:
   - math/partition_function.hpp
   - fps/fps.hpp
   - utility/modint.hpp
-  - utility/modint_base.hpp
+  - utility/modint_concept.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
   isVerificationFile: true
   path: test/math/Partition_Function_Pentagonal.test.cpp
   requiredBy: []
-  timestamp: '2023-08-31 02:52:44+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 01:29:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Partition_Function_Pentagonal.test.cpp
 layout: document

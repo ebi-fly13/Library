@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: set_function/poly_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is FPS)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
-    path: utility/modint_base.hpp
-    title: utility/modint_base.hpp
+  - icon: ':question:'
+    path: utility/modint_concept.hpp
+    title: utility/modint_concept.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/polynomial_composite_set_power_series
@@ -97,15 +97,11 @@ data:
     \ ? 0 : pow[j - 1]);\n    }\n    T fact = 1;\n    for (int i = 0; i < d + 1; i++)\
     \ {\n        g[i] *= fact;\n        fact *= (i + 1);\n    }\n    return egf_composite_sps<T,\
     \ LIM>(a, g);\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n\
-    #line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_base.hpp\"\
-    \n\n#line 4 \"utility/modint_base.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nstruct modint_base {};\n\ntemplate <class T> using is_modint = std::is_base_of<modint_base,\
-    \ T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \nstruct static_modint_base : modint_base {};\n\ntemplate <class T>\nusing is_static_modint\
-    \ = std::is_base_of<internal::static_modint_base, T>;\n\ntemplate <class T>\n\
-    using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\n}\
-    \  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint : internal::static_modint_base\
+    #line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_concept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
+    \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
+    \  a.inv();\n    a.val();\n    a.mod();\n};\n\n}  // namespace ebi\n#line 8 \"\
+    utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
     \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
     \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
     \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
@@ -174,12 +170,12 @@ data:
   - set_function/ranked_subset_transform.hpp
   - utility/bit_operator.hpp
   - utility/modint.hpp
-  - utility/modint_base.hpp
+  - utility/modint_concept.hpp
   isVerificationFile: true
   path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-08-16 10:56:05+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 01:29:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
 layout: document

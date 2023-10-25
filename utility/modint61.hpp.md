@@ -1,43 +1,33 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: utility/modint_base.hpp
-    title: utility/modint_base.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/hash.hpp
     title: Hash structure
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint61.hpp\"\n\n#include <cassert>\n#include <cstdint>\n\
-    #include <iostream>\n\n#line 2 \"utility/modint_base.hpp\"\n\n#include <type_traits>\n\
-    \nnamespace ebi {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate\
-    \ <class T> using is_modint = std::is_base_of<modint_base, T>;\ntemplate <class\
-    \ T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base\
-    \ : modint_base {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
-    \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 8 \"utility/modint61.hpp\"\
-    \n\nnamespace ebi {\n\nstruct modint61 : internal::static_modint_base {\n  private:\n\
-    \    using mint = modint61;\n    using u64 = std::uint64_t;\n    constexpr static\
-    \ u64 m = (1ull << 61) - 1;\n    constexpr static u64 MASK31 = (1ull << 31) -\
-    \ 1;\n    constexpr static u64 MASK30 = (1ull << 30) - 1;\n\n  public:\n    constexpr\
+    #include <iostream>\n\nnamespace ebi {\n\nstruct modint61 {\n  private:\n    using\
+    \ mint = modint61;\n    using u64 = std::uint64_t;\n    constexpr static u64 m\
+    \ = (1ull << 61) - 1;\n    constexpr static u64 MASK31 = (1ull << 31) - 1;\n \
+    \   constexpr static u64 MASK30 = (1ull << 30) - 1;\n\n  public:\n    constexpr\
     \ static u64 mod() {\n        return m;\n    }\n\n    constexpr modint61() : _v(0)\
     \ {}\n\n    constexpr modint61(long long v) {\n        v %= (long long)umod();\n\
     \        if (v < 0) v += (long long)umod();\n        _v = u64(v);\n    }\n\n \
@@ -76,9 +66,8 @@ data:
     \    u64 ad = a & umod();\n        u64 res = au + ad;\n        if (res >= umod())\
     \ res -= umod();\n        return res;\n    }\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <cstdint>\n#include <iostream>\n\
-    \n#include \"../utility/modint_base.hpp\"\n\nnamespace ebi {\n\nstruct modint61\
-    \ : internal::static_modint_base {\n  private:\n    using mint = modint61;\n \
-    \   using u64 = std::uint64_t;\n    constexpr static u64 m = (1ull << 61) - 1;\n\
+    \nnamespace ebi {\n\nstruct modint61 {\n  private:\n    using mint = modint61;\n\
+    \    using u64 = std::uint64_t;\n    constexpr static u64 m = (1ull << 61) - 1;\n\
     \    constexpr static u64 MASK31 = (1ull << 31) - 1;\n    constexpr static u64\
     \ MASK30 = (1ull << 30) - 1;\n\n  public:\n    constexpr static u64 mod() {\n\
     \        return m;\n    }\n\n    constexpr modint61() : _v(0) {}\n\n    constexpr\
@@ -118,16 +107,15 @@ data:
     \ u64 &a) {\n        u64 au = a >> 61;\n        u64 ad = a & umod();\n       \
     \ u64 res = au + ad;\n        if (res >= umod()) res -= umod();\n        return\
     \ res;\n    }\n};\n\n}  // namespace ebi"
-  dependsOn:
-  - utility/modint_base.hpp
+  dependsOn: []
   isVerificationFile: false
   path: utility/modint61.hpp
   requiredBy:
   - tree/rooted_tree_hash.hpp
   - utility/hash.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-07-17 11:19:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 01:29:22+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/aoj/aoj_2444.test.cpp

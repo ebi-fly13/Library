@@ -1,20 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
-    path: utility/modint_base.hpp
-    title: utility/modint_base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_mod
@@ -23,26 +20,19 @@ data:
   bundledCode: "#line 1 \"test/math/Sqrt_Mod.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_mod\"\
     \n\n#include <iostream>\n\n#line 2 \"math/mod_sqrt.hpp\"\n\n#include <cstdint>\n\
     #include <optional>\n\n#line 2 \"utility/dynamic_modint.hpp\"\n\n#include <cassert>\n\
-    \n#line 2 \"utility/modint_base.hpp\"\n\n#include <type_traits>\n\nnamespace ebi\
-    \ {\n\nnamespace internal {\n\nstruct modint_base {};\n\ntemplate <class T> using\
-    \ is_modint = std::is_base_of<modint_base, T>;\ntemplate <class T> using is_modint_t\
-    \ = std::enable_if_t<is_modint<T>::value>;\n\nstruct static_modint_base : modint_base\
-    \ {};\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<internal::static_modint_base,\
-    \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 6 \"utility/dynamic_modint.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint : internal::modint_base\
-    \ {\n  private:\n    using modint = dynamic_modint;\n\n  public:\n    static void\
-    \ set_mod(int p) {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static\
-    \ int mod() {\n        return m;\n    }\n\n    modint raw(int v) {\n        modint\
-    \ x;\n        x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0)\
-    \ {}\n\n    dynamic_modint(long long v) {\n        v %= (long long)umod();\n \
-    \       if (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n  \
-    \  }\n\n    unsigned int val() const {\n        return _v;\n    }\n\n    unsigned\
-    \ int value() const {\n        return val();\n    }\n\n    modint &operator++()\
-    \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
-    \    }\n    modint &operator--() {\n        if (_v == 0) _v = umod();\n      \
-    \  _v--;\n        return *this;\n    }\n    modint &operator+=(const modint &rhs)\
-    \ {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
+    \nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint {\n  private:\n \
+    \   using modint = dynamic_modint;\n\n  public:\n    static void set_mod(int p)\
+    \ {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static int mod() {\n\
+    \        return m;\n    }\n\n    modint raw(int v) {\n        modint x;\n    \
+    \    x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n\n\
+    \    dynamic_modint(long long v) {\n        v %= (long long)umod();\n        if\
+    \ (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n    }\n\n  \
+    \  unsigned int val() const {\n        return _v;\n    }\n\n    unsigned int value()\
+    \ const {\n        return val();\n    }\n\n    modint &operator++() {\n      \
+    \  _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n    }\n  \
+    \  modint &operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n\
+    \        return *this;\n    }\n    modint &operator+=(const modint &rhs) {\n \
+    \       _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
     \ *this;\n    }\n    modint &operator-=(const modint &rhs) {\n        _v -= rhs._v;\n\
     \        if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    modint\
     \ &operator*=(const modint &rhs) {\n        unsigned long long x = _v;\n     \
@@ -91,12 +81,11 @@ data:
   dependsOn:
   - math/mod_sqrt.hpp
   - utility/dynamic_modint.hpp
-  - utility/modint_base.hpp
   isVerificationFile: true
   path: test/math/Sqrt_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 14:12:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 01:29:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Sqrt_Mod.test.cpp
 layout: document

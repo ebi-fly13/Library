@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: set_function/superset_transform.hpp
     title: "Superset Transform (Zeta / M\xF6bius)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy: []
