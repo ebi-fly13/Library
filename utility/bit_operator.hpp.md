@@ -171,56 +171,56 @@ data:
   isVerificationFile: false
   path: utility/bit_operator.hpp
   requiredBy:
-  - data_structure/offline_dynamic_connectivity.hpp
-  - math/stirling_number_1st.hpp
-  - math/stirling_number_2nd.hpp
-  - set_function/exp_of_sps.hpp
-  - set_function/subset_transform.hpp
-  - set_function/ranked_subset_transform.hpp
-  - set_function/superset_transform.hpp
-  - set_function/poly_composite_sps.hpp
-  - set_function/egf_composite_sps.hpp
   - convolution/ntt.hpp
   - convolution/or_convolution.hpp
-  - convolution/arbitrary_ntt.hpp
   - convolution/convolution_mod_2_64.hpp
-  - convolution/subset_convolution.hpp
+  - convolution/arbitrary_ntt.hpp
   - convolution/and_convolution.hpp
+  - convolution/subset_convolution.hpp
+  - set_function/subset_transform.hpp
+  - set_function/exp_of_sps.hpp
+  - set_function/ranked_subset_transform.hpp
+  - set_function/poly_composite_sps.hpp
+  - set_function/egf_composite_sps.hpp
+  - set_function/superset_transform.hpp
+  - math/stirling_number_1st.hpp
+  - math/stirling_number_2nd.hpp
+  - data_structure/offline_dynamic_connectivity.hpp
   timestamp: '2023-05-17 17:05:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_2235.test.cpp
-  - test/yuki/yuki_1145.test.cpp
-  - test/yuki/yuki_1302.test.cpp
-  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
-  - test/math/Partition_Function_Pentagonal.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - test/math/Berunoulli_Number.test.cpp
-  - test/math/sharp_p_subset_sum.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
-  - test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - test/convolution/Convolution.test.cpp
   - test/convolution/Convolution_Mod_1000000007.test.cpp
-  - test/convolution/Bitwise_OR_Convolution.test.cpp
-  - test/convolution/Bitwise_And_Convolution.test.cpp
   - test/convolution/Subset_Convolution.test.cpp
+  - test/convolution/Bitwise_And_Convolution.test.cpp
+  - test/convolution/Convolution.test.cpp
   - test/convolution/Convolution_Mod_2_64.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/convolution/Bitwise_OR_Convolution.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/yuki/yuki_1145.test.cpp
+  - test/aoj/aoj_2235.test.cpp
+  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Berunoulli_Number.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
 redirect_from:

@@ -9,7 +9,7 @@ data:
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
   - icon: ':heavy_check_mark:'
@@ -24,9 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/binomial.hpp\"\n\n#include <bit>\n#include <cassert>\n\
@@ -39,19 +39,20 @@ data:
     \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
     \ - 1] = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len)\
     \ | std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n \
-    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    static mint f(int\
-    \ n) {\n        if (n >= (int)fact.size()) [[unlikely]] {\n            extend(n\
-    \ + 1);\n        }\n        return fact[n];\n    }\n\n    static mint inv_f(int\
-    \ n) {\n        if (n >= (int)fact.size()) [[unlikely]] {\n            extend(n\
-    \ + 1);\n        }\n        return inv_fact[n];\n    }\n\n    static mint c(int\
-    \ n, int r) {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r)\
-    \ * inv_f(n - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r <\
-    \ 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static\
-    \ mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static\
-    \ void reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static\
-    \ std::vector<mint> fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint>\
-    \ Binomial<mint>::fact = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint>\
-    \ Binomial<mint>::inv_fact = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n"
+    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    Binomial(int n)\
+    \ {\n        extend(n + 1);\n    }\n\n    static mint f(int n) {\n        if (n\
+    \ >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n        }\n\
+    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        if\
+    \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
+    \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
+    \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
+    \ - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n <\
+    \ r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint\
+    \ inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void\
+    \ reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
+    \ fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::fact\
+    \ = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
+    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <bit>\n#include <cassert>\n#include <iostream>\n\
     #include <ranges>\n#include <vector>\n\nnamespace ebi {\n\ntemplate <class mint>\
     \ struct Binomial {\n  private:\n    static void extend(int len = -1) {\n    \
@@ -62,33 +63,34 @@ data:
     \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
     \ - 1] = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len)\
     \ | std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n \
-    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    static mint f(int\
-    \ n) {\n        if (n >= (int)fact.size()) [[unlikely]] {\n            extend(n\
-    \ + 1);\n        }\n        return fact[n];\n    }\n\n    static mint inv_f(int\
-    \ n) {\n        if (n >= (int)fact.size()) [[unlikely]] {\n            extend(n\
-    \ + 1);\n        }\n        return inv_fact[n];\n    }\n\n    static mint c(int\
-    \ n, int r) {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r)\
-    \ * inv_f(n - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r <\
-    \ 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static\
-    \ mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static\
-    \ void reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static\
-    \ std::vector<mint> fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint>\
-    \ Binomial<mint>::fact = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint>\
-    \ Binomial<mint>::inv_fact = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n"
+    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    Binomial(int n)\
+    \ {\n        extend(n + 1);\n    }\n\n    static mint f(int n) {\n        if (n\
+    \ >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n        }\n\
+    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        if\
+    \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
+    \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
+    \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
+    \ - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n <\
+    \ r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint\
+    \ inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void\
+    \ reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
+    \ fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::fact\
+    \ = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
+    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n"
   dependsOn: []
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
-  - math/stirling_number_1st.hpp
   - fps/taylor_shift.hpp
-  timestamp: '2023-10-26 00:44:38+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  - math/stirling_number_1st.hpp
+  timestamp: '2023-10-26 00:53:52+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_3361.test.cpp
-  - test/yuki/yuki_1302.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/aoj/aoj_3361.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 title: Binomial Coefficient

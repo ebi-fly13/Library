@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
   - icon: ':heavy_check_mark:'
@@ -15,7 +15,7 @@ data:
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
   - icon: ':heavy_check_mark:'
@@ -42,9 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint_func.hpp\"\n\n#include <vector>\n#include\
@@ -65,21 +65,21 @@ data:
   path: utility/modint_func.hpp
   requiredBy:
   - fps/product_of_one_plus_xn.hpp
-  - fps/fps_sqrt.hpp
   - fps/product_of_one_minus_xn.hpp
   - fps/fps_sparse.hpp
+  - fps/fps_sqrt.hpp
   timestamp: '2023-06-08 01:58:28+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_3361.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
-  - test/math/sharp_p_subset_sum.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/aoj/aoj_3361.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
 documentation_of: utility/modint_func.hpp
 layout: document
 redirect_from:

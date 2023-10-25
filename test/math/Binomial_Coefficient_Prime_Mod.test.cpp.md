@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
   - icon: ':heavy_check_mark:'
@@ -22,7 +22,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/dynamic_modint.hpp
     title: utility/dynamic_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_base.hpp
     title: utility/modint_base.hpp
   _extendedRequiredBy: []
@@ -47,44 +47,44 @@ data:
     \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
     \ - 1] = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len)\
     \ | std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n \
-    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    static mint f(int\
-    \ n) {\n        if (n >= (int)fact.size()) [[unlikely]] {\n            extend(n\
-    \ + 1);\n        }\n        return fact[n];\n    }\n\n    static mint inv_f(int\
-    \ n) {\n        if (n >= (int)fact.size()) [[unlikely]] {\n            extend(n\
-    \ + 1);\n        }\n        return inv_fact[n];\n    }\n\n    static mint c(int\
-    \ n, int r) {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r)\
-    \ * inv_f(n - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r <\
-    \ 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static\
-    \ mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static\
-    \ void reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static\
-    \ std::vector<mint> fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint>\
-    \ Binomial<mint>::fact = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint>\
-    \ Binomial<mint>::inv_fact = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n\
-    #line 1 \"template/template.hpp\"\n#include <algorithm>\n#line 3 \"template/template.hpp\"\
-    \n#include <bitset>\n#line 5 \"template/template.hpp\"\n#include <chrono>\n#include\
-    \ <climits>\n#include <cmath>\n#include <complex>\n#include <cstddef>\n#include\
-    \ <cstdint>\n#include <cstdlib>\n#include <cstring>\n#include <functional>\n#include\
-    \ <iomanip>\n#line 16 \"template/template.hpp\"\n#include <limits>\n#include <map>\n\
-    #include <memory>\n#include <numbers>\n#include <numeric>\n#include <optional>\n\
-    #include <queue>\n#include <random>\n#line 25 \"template/template.hpp\"\n#include\
-    \ <set>\n#include <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n\
-    #include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#line\
-    \ 34 \"template/template.hpp\"\n\n#define rep(i, a, n) for (int i = (int)(a);\
-    \ i < (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
-    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
-    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
-    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
-    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
-    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
-    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
-    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
-    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
-    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
-    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
-    \ :\";\n    debug_out(t...);\n}\n\n}\n#line 2 \"template/int_alias.hpp\"\n\n#line\
-    \ 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing std::size_t;\nusing\
-    \ i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing\
-    \ u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
+    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    Binomial(int n)\
+    \ {\n        extend(n + 1);\n    }\n\n    static mint f(int n) {\n        if (n\
+    \ >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n        }\n\
+    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        if\
+    \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
+    \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
+    \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
+    \ - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n <\
+    \ r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint\
+    \ inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void\
+    \ reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
+    \ fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::fact\
+    \ = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
+    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
+    \n#include <algorithm>\n#line 3 \"template/template.hpp\"\n#include <bitset>\n\
+    #line 5 \"template/template.hpp\"\n#include <chrono>\n#include <climits>\n#include\
+    \ <cmath>\n#include <complex>\n#include <cstddef>\n#include <cstdint>\n#include\
+    \ <cstdlib>\n#include <cstring>\n#include <functional>\n#include <iomanip>\n#line\
+    \ 16 \"template/template.hpp\"\n#include <limits>\n#include <map>\n#include <memory>\n\
+    #include <numbers>\n#include <numeric>\n#include <optional>\n#include <queue>\n\
+    #include <random>\n#line 25 \"template/template.hpp\"\n#include <set>\n#include\
+    \ <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n#include\
+    \ <unordered_map>\n#include <unordered_set>\n#include <utility>\n#line 34 \"template/template.hpp\"\
+    \n\n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
+    \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
+    \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
+    \ i >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v)\
+    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line\
+    \ 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n#define\
+    \ debug(...)                                                      \\\n    std::cerr\
+    \ << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\", \\\n       \
+    \ debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid debug_out()\
+    \ {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename... Tail>\
+    \ void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t)\
+    \ > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing std::size_t;\n\
+    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
+    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
     using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
     using u128 = __uint128_t;\n\n}\n#line 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
@@ -185,7 +185,7 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 00:44:38+09:00'
+  timestamp: '2023-10-26 00:53:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp

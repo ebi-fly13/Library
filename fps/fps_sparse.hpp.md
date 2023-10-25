@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_func.hpp
     title: utility/modint_func.hpp
   _extendedRequiredBy:
@@ -9,7 +9,7 @@ data:
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,9 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps_sparse.hpp\"\n\n#include <cassert>\n#include <vector>\n\
@@ -151,15 +151,15 @@ data:
   requiredBy:
   - fps/fps_sqrt.hpp
   timestamp: '2023-06-12 01:02:00+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_3361.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/aoj/aoj_3361.test.cpp
 documentation_of: fps/fps_sparse.hpp
 layout: document
 title: Formal Power Series (Sparse)

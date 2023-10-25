@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
   - icon: ':heavy_check_mark:'
@@ -118,9 +118,10 @@ data:
     \            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len - 1]\
     \ = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len) | std::views::reverse)\
     \ {\n            inv_fact[i - 1] = inv_fact[i] * i;\n        }\n    }\n\n  public:\n\
-    \    Binomial() = default;\n\n    static mint f(int n) {\n        if (n >= (int)fact.size())\
-    \ [[unlikely]] {\n            extend(n + 1);\n        }\n        return fact[n];\n\
-    \    }\n\n    static mint inv_f(int n) {\n        if (n >= (int)fact.size()) [[unlikely]]\
+    \    Binomial() = default;\n\n    Binomial(int n) {\n        extend(n + 1);\n\
+    \    }\n\n    static mint f(int n) {\n        if (n >= (int)fact.size()) [[unlikely]]\
+    \ {\n            extend(n + 1);\n        }\n        return fact[n];\n    }\n\n\
+    \    static mint inv_f(int n) {\n        if (n >= (int)fact.size()) [[unlikely]]\
     \ {\n            extend(n + 1);\n        }\n        return inv_fact[n];\n    }\n\
     \n    static mint c(int n, int r) {\n        if (r < 0 || n < r) return 0;\n \
     \       return f(n) * inv_f(r) * inv_f(n - r);\n    }\n\n    static mint p(int\
@@ -176,7 +177,7 @@ data:
   isVerificationFile: false
   path: math/stirling_number_1st.hpp
   requiredBy: []
-  timestamp: '2023-10-26 00:44:38+09:00'
+  timestamp: '2023-10-26 00:53:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
