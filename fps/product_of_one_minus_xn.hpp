@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "../fps/fps.hpp"
-#include "../utility/modint_func.hpp"
+#include "../modint/modint_func.hpp"
 
 namespace ebi {
 

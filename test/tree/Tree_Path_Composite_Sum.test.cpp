@@ -3,8 +3,8 @@
 #include <iostream>
 #include <vector>
 
-#include "../../tree/rerooting.hpp"
 #include "../../modint/modint.hpp"
+#include "../../tree/rerooting.hpp"
 
 using mint = ebi::modint998244353;
 

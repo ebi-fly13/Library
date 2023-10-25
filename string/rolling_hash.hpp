@@ -5,8 +5,8 @@
 #include <cstdint>
 #include <vector>
 
-#include "../utility/hash.hpp"
 #include "../modint/modint61.hpp"
+#include "../utility/hash.hpp"
 
 /*
     reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6

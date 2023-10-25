@@ -9,8 +9,7 @@
 
 namespace ebi {
 
-
-template<class mint>
+template <class mint>
 mint lagrange_interpolation(const std::vector<mint> &f, long long n) {
     const int d = int(f.size()) - 1;  // Nのd次以下の多項式
     mint fact = 1;

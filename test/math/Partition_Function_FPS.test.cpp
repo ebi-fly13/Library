@@ -1,13 +1,13 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/partition_function"
 
 #include <iostream>
-#include <vector>
 #include <numeric>
+#include <vector>
 
+#include "../../convolution/ntt.hpp"
 #include "../../fps/fps.hpp"
 #include "../../fps/product_of_one_minus_xn.hpp"
 #include "../../modint/modint.hpp"
-#include "../../convolution/ntt.hpp"
 
 using mint = ebi::modint998244353;
 using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;
@@ -19,7 +19,7 @@ int main() {
     std::iota(a.begin(), a.end(), 1);
     FPS f = ebi::product_of_one_minus_xn<mint, ebi::convolution>(a, n + 1);
     f = f.inv();
-    for(int i = 0; i <= n; i++) {
+    for (int i = 0; i <= n; i++) {
         std::cout << f[i].val() << " \n"[i == n];
     }
 }

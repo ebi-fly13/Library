@@ -1,9 +1,8 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/2450"
 
-#include "../../template/template.hpp"
-
 #include "../../data_structure/lazy_segtree.hpp"
 #include "../../graph/template.hpp"
+#include "../../template/template.hpp"
 #include "../../tree/heavy_light_decomposition.hpp"
 
 using ebi::i64;

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../data_structure/persistent_array.hpp"
-
 #include <cstdint>
 #include <memory>
 #include <vector>
+
+#include "../data_structure/persistent_array.hpp"
 
 namespace ebi {
 

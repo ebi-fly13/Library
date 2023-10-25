@@ -5,10 +5,10 @@
    https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html
 */
 
+#include <bit>
 #include <cassert>
 #include <ranges>
 #include <vector>
-#include <bit>
 
 namespace ebi {
 

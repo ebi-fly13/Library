@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../graph/template.hpp"
-
 #include <algorithm>
 #include <vector>
+
+#include "../graph/template.hpp"
 
 namespace ebi {
 

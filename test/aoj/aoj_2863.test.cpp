@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "../../string/aho_corasick.hpp"
 #include "../../modint/modint.hpp"
+#include "../../string/aho_corasick.hpp"
 
 using mint = ebi::modint1000000007;
 

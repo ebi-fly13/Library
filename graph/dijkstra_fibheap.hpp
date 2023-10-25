@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../data_structure/fibonacci_heap.hpp"
-#include "../graph/template.hpp"
-
 #include <limits>
 #include <vector>
+
+#include "../data_structure/fibonacci_heap.hpp"
+#include "../graph/template.hpp"
 
 namespace ebi {
 

@@ -34,10 +34,12 @@ template <class T> struct compress {
         return cp.size();
     }
 
-    bool find(const T& val) const {
+    bool find(const T &val) const {
         auto itr = std::lower_bound(cp.begin(), cp.end(), val);
-        if(itr == cp.end()) return false;
-        else return *itr == val;
+        if (itr == cp.end())
+            return false;
+        else
+            return *itr == val;
     }
 
     T val(int idx) const {

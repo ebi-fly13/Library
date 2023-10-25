@@ -53,8 +53,8 @@ struct online_convolution {
     }
 
     mint operator[](int i) const {
-      assert(0 <= i && i < p);
-      return c[i];
+        assert(0 <= i && i < p);
+        return c[i];
     }
 
   private:

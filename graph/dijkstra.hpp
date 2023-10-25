@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../graph/template.hpp"
-
 #include <limits>
 #include <queue>
 #include <vector>
+
+#include "../graph/template.hpp"
 
 namespace ebi {
 

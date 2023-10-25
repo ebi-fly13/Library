@@ -7,8 +7,8 @@
     verify:    https://atcoder.jp/contests/abc162/submissions/25095562
 */
 
-#include <vector>
 #include <cassert>
+#include <vector>
 
 namespace ebi {
 
@@ -37,13 +37,13 @@ struct linear_sieve {
         return prime;
     }
 
-    std::vector<std::pair<int,int>> prime_power_table(int m) const {
+    std::vector<std::pair<int, int>> prime_power_table(int m) const {
         assert(m <= n);
-        std::vector<std::pair<int,int>> table(m+1, {1, 1});
-        for(int i = 2; i <= m; i++) {
+        std::vector<std::pair<int, int>> table(m + 1, {1, 1});
+        for (int i = 2; i <= m; i++) {
             int p = sieve[i];
             table[i] = {p, p};
-            if(sieve[i / p] == p) {
+            if (sieve[i / p] == p) {
                 table[i] = table[i / p];
                 table[i].second *= p;
             }

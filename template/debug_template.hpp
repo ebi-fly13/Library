@@ -22,4 +22,4 @@ template <typename Head, typename... Tail> void debug_out(Head h, Tail... t) {
     debug_out(t...);
 }
 
-}
+}  // namespace ebi

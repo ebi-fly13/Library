@@ -4,8 +4,8 @@
 #include <iostream>
 
 #include "../../data_structure/ImplicitTreap.hpp"
-#include "../../template/int_alias.hpp"
 #include "../../modint/modint.hpp"
+#include "../../template/int_alias.hpp"
 
 using mint = ebi::modint998244353;
 

@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod"
 
 #include "../../math/binomial.hpp"
-#include "../../template/template.hpp"
 #include "../../modint/dynamic_modint.hpp"
+#include "../../template/template.hpp"
 
 namespace ebi {
 

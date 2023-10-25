@@ -52,7 +52,7 @@ struct removable_priority_queue {
         return;
     }
 
-    template <class... Args> void emplace(Args &&... args) {
+    template <class... Args> void emplace(Args &&...args) {
         que.emplace(std::forward<Args>(args)...);
         return;
     }
@@ -63,7 +63,7 @@ struct removable_priority_queue {
         return;
     }
 
-    template <class... Args> void emplace_remove(Args &&... args) {
+    template <class... Args> void emplace_remove(Args &&...args) {
         rm_que.emplace(std::forward<Args>(args)...);
         assert(que.size() >= rm_que.size());
         return;

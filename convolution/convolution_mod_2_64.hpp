@@ -4,14 +4,14 @@
 #include <vector>
 
 #include "../convolution/ntt.hpp"
-#include "../modint/modint.hpp"
 #include "../modint/base.hpp"
+#include "../modint/modint.hpp"
 
 namespace ebi {
 
 namespace internal {
 
-template<modint mint>
+template <modint mint>
 std::vector<mint> multiply_uint64_t(const std::vector<std::uint64_t>& f,
                                     const std::vector<std::uint64_t>& g) {
     std::vector<mint> a, b;

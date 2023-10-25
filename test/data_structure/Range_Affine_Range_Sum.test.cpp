@@ -1,9 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
 
-#include "../../template/template.hpp"
-
 #include "../../data_structure/lazy_segtree.hpp"
 #include "../../modint/modint.hpp"
+#include "../../template/template.hpp"
 
 using mint = ebi::modint998244353;
 

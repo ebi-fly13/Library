@@ -1,10 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod_2_64"
 
+#include "../../convolution/convolution_mod_2_64.hpp"
+
 #include <cstdint>
 #include <iostream>
 #include <vector>
-
-#include "../../convolution/convolution_mod_2_64.hpp"
 
 using u64 = std::uint64_t;
 

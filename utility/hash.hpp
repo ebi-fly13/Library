@@ -100,7 +100,7 @@ template <int BASE_NUM> struct Hash : std::array<modint61, BASE_NUM> {
 
     Hash inv() const {
         Hash h;
-        for(int i = 0; i < BASE_NUM; i++) {
+        for (int i = 0; i < BASE_NUM; i++) {
             h[i] = (*this)[i].inv();
         }
         return h;

@@ -2,8 +2,8 @@
 
 #include "../../graph/template.hpp"
 #include "../../math/DirichletSeries.hpp"
-#include "../../template/template.hpp"
 #include "../../modint/modint.hpp"
+#include "../../template/template.hpp"
 
 namespace ebi {
 
