@@ -1,11 +1,11 @@
 #pragma once
 
 #include <array>
+#include <bit>
 #include <map>
 #include <vector>
 
 #include "../data_structure/undo_unionfind.hpp"
-#include "../utility/bit_operator.hpp"
 
 namespace ebi {
 
@@ -27,7 +27,7 @@ struct offline_dynamic_connective {
     offline_dynamic_connective(int n, std::vector<std::array<int, 3>> queries)
         : n(n) {
         m = queries.size() + 1;
-        log2 = ceil_pow2(m);
+        log2 = std::bit_ceil(queries.size() + 1);
         sz = 1 << log2;
         seg.resize(2 * sz);
         std::map<std::pair<int, int>, int> cnt, appear;

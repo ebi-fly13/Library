@@ -3,7 +3,7 @@
 #include <cassert>
 #include <vector>
 
-#include "../utility/modint_func.hpp"
+#include "../modint/modint_func.hpp"
 
 namespace ebi {
 
