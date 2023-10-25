@@ -8,14 +8,13 @@
 
 #include "../math/internal_math.hpp"
 #include "../utility/bit_operator.hpp"
-#include "../utility/modint_base.hpp"
+#include "../utility/modint_concept.hpp"
 
 namespace ebi {
 
 namespace internal {
 
-template <class mint, int g = internal::primitive_root<mint::mod()>,
-          internal::is_static_modint_t<mint>* = nullptr>
+template <modint mint, int g = internal::primitive_root<mint::mod()>>
 struct ntt_info {
     static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);
 
@@ -31,8 +30,7 @@ struct ntt_info {
     }
 };
 
-template <class mint, internal::is_static_modint_t<mint>* = nullptr>
-void butterfly(std::vector<mint>& a) {
+template <modint mint> void butterfly(std::vector<mint>& a) {
     static const ntt_info<mint> info;
     int n = int(a.size());
     int bit_size = bsf(n);
@@ -63,8 +61,7 @@ void butterfly(std::vector<mint>& a) {
     }
 }
 
-template <class mint, internal::is_static_modint_t<mint>* = nullptr>
-void butterfly_inv(std::vector<mint>& a) {
+template <modint mint> void butterfly_inv(std::vector<mint>& a) {
     static const ntt_info<mint> info;
     int n = int(a.size());
     int bit_size = bsf(n);
@@ -99,7 +96,7 @@ void butterfly_inv(std::vector<mint>& a) {
 
 }  // namespace internal
 
-template <class mint, internal::is_static_modint_t<mint>* = nullptr>
+template <modint mint>
 std::vector<mint> convolution_naive(const std::vector<mint>& f,
                                     const std::vector<mint>& g) {
     if (f.empty() || g.empty()) return {};
@@ -121,7 +118,7 @@ std::vector<mint> convolution_naive(const std::vector<mint>& f,
     return c;
 }
 
-template <class mint, internal::is_static_modint_t<mint>* = nullptr>
+template <modint mint>
 std::vector<mint> convolution(const std::vector<mint>& f,
                               const std::vector<mint>& g) {
     if (f.empty() || g.empty()) return {};

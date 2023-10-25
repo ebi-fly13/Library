@@ -4,11 +4,9 @@
 #include <cstdint>
 #include <iostream>
 
-#include "../utility/modint_base.hpp"
-
 namespace ebi {
 
-struct modint61 : internal::static_modint_base {
+struct modint61 {
   private:
     using mint = modint61;
     using u64 = std::uint64_t;

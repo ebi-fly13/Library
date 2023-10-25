@@ -2,11 +2,9 @@
 
 #include <cassert>
 
-#include "../utility/modint_base.hpp"
-
 namespace ebi {
 
-template <int id> struct dynamic_modint : internal::modint_base {
+template <int id> struct dynamic_modint {
   private:
     using modint = dynamic_modint;
 

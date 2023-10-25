@@ -3,11 +3,9 @@
 #include <cstdint>
 #include <iostream>
 
-#include "../utility/modint_base.hpp"
-
 namespace ebi {
 
-template <int m> struct montgomery_modint : internal::static_modint_base {
+template <int m> struct montgomery_modint {
   private:
     using modint = montgomery_modint;
     using i32 = std::int32_t;

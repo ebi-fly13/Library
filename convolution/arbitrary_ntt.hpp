@@ -5,13 +5,13 @@
 
 #include "../convolution/ntt.hpp"
 #include "../utility/modint.hpp"
-#include "../utility/modint_base.hpp"
+#include "../utility/modint_concept.hpp"
 
 namespace ebi {
 
 namespace internal {
 
-template <class T, class mint, internal::is_static_modint_t<mint>* = nullptr>
+template <class T, modint mint>
 std::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>& g) {
     std::vector<mint> a, b;
     a.reserve(f.size());
@@ -23,7 +23,7 @@ std::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>& g) {
 
 }  // namespace internal
 
-template <class mint, internal::is_modint_t<mint>* = nullptr>
+template <modint mint>
 std::vector<mint> arbitary_convolution(const std::vector<mint>& f,
                                        const std::vector<mint>& g) {
     if (f.empty() || g.empty()) return {};

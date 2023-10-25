@@ -4,11 +4,11 @@
 #include <iostream>
 #include <type_traits>
 
-#include "../utility/modint_base.hpp"
+#include "../utility/modint_concept.hpp"
 
 namespace ebi {
 
-template <int m> struct static_modint : internal::static_modint_base {
+template <int m> struct static_modint {
   private:
     using modint = static_modint;
 

@@ -5,13 +5,13 @@
 
 #include "../convolution/ntt.hpp"
 #include "../utility/modint.hpp"
-#include "../utility/modint_base.hpp"
+#include "../utility/modint_concept.hpp"
 
 namespace ebi {
 
 namespace internal {
 
-template <class mint, internal::is_static_modint_t<mint>* = nullptr>
+template<modint mint>
 std::vector<mint> multiply_uint64_t(const std::vector<std::uint64_t>& f,
                                     const std::vector<std::uint64_t>& g) {
     std::vector<mint> a, b;
