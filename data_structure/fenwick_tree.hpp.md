@@ -6,13 +6,13 @@ data:
     path: math/inversion_number.hpp
     title: Inversion Number
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversion_Query.test.cpp
     title: test/data_structure/Static_Range_Inversion_Query.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/segment_intersection.test.cpp
     title: test/geometry/segment_intersection.test.cpp
   - icon: ':x:'
@@ -20,7 +20,7 @@ data:
     title: test/math/Inversion_Number.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/fenwick_tree.hpp\"\n\r\n#include <cassert>\r\
@@ -65,7 +65,7 @@ data:
   requiredBy:
   - math/inversion_number.hpp
   timestamp: '2023-09-10 00:45:18+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Inversion_Number.test.cpp
   - test/geometry/segment_intersection.test.cpp

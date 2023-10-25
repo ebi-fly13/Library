@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Line_Add_Get_Min.test.cpp
     title: test/data_structure/Line_Add_Get_Min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/li_chao_tree.hpp\"\n\n#include <algorithm>\n\
@@ -87,7 +87,7 @@ data:
   path: data_structure/li_chao_tree.hpp
   requiredBy: []
   timestamp: '2023-07-10 17:44:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp

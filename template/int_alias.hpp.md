@@ -8,10 +8,10 @@ data:
   - icon: ':warning:'
     path: convolution/online_convolution.hpp
     title: Online Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/WaveletMatrix.hpp
     title: Wavelet Matrix
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
   - icon: ':x:'
@@ -36,22 +36,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Line_Add_Get_Min.test.cpp
     title: test/data_structure/Line_Add_Get_Min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Kth_Smallest.test.cpp
     title: test/data_structure/Range_Kth_Smallest.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Frequency.test.cpp
     title: test/data_structure/Static_Range_Frequency.test.cpp
   - icon: ':x:'
