@@ -27,8 +27,7 @@ struct offline_dynamic_connective {
     offline_dynamic_connective(int n, std::vector<std::array<int, 3>> queries)
         : n(n) {
         m = queries.size() + 1;
-        log2 = std::bit_ceil(queries.size() + 1);
-        sz = 1 << log2;
+        sz = std::bit_ceil(queries.size() + 1);
         seg.resize(2 * sz);
         std::map<std::pair<int, int>, int> cnt, appear;
         for (int i = 0; i < (int)queries.size(); i++) {
