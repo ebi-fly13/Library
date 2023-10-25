@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':x:'
@@ -13,6 +13,12 @@ data:
   - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
+  - icon: ':question:'
+    path: modint/base.hpp
+    title: modint/base.hpp
+  - icon: ':question:'
+    path: modint/modint.hpp
+    title: modint/modint.hpp
   - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
@@ -31,12 +37,6 @@ data:
   - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
-    path: utility/modint.hpp
-    title: utility/modint.hpp
-  - icon: ':question:'
-    path: utility/modint_concept.hpp
-    title: utility/modint_concept.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -150,35 +150,36 @@ data:
     \        else\n            fp[i] = subremainder_tree[i + m][0];\n    }\n    return\
     \ fp;\n}\n\n}  // namespace ebi\n#line 4 \"test/polynomial/Multipoint_Evaluation.test.cpp\"\
     \n\n#line 2 \"convolution/ntt.hpp\"\n\n#line 4 \"convolution/ntt.hpp\"\n#include\
-    \ <array>\n#line 6 \"convolution/ntt.hpp\"\n#include <type_traits>\n#line 8 \"\
-    convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
-    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
-    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n    if (m == 880803841) return 26;\n    if (m == 924844033) return\
-    \ 5;\n    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    \ <array>\n#include <bit>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
+    \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
+    \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
+    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
+    \ (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n    return -1;\n\
+    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
-    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
-    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
-    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
-    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
-    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
-    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
-    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"utility/modint_concept.hpp\"\n\n#include <concepts>\n\
-    \nnamespace ebi {\n\ntemplate<class T>\nconcept modint = requires (T a, T b) {\n\
-    \    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
-    \    a.mod();\n};\n\n}  // namespace ebi\n#line 12 \"convolution/ntt.hpp\"\n\n\
-    namespace ebi {\n\nnamespace internal {\n\ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\n\
-    struct ntt_info {\n    static constexpr int rank2 = bsf_constexpr(mint::mod()\
-    \ - 1);\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info() {\n\
-    \        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
-    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
-    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
-    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <modint mint> void\
-    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
-    \   int n = int(a.size());\n    int bit_size = bsf(n);\n    assert(n == 1 << ceil_pow2(n));\n\
+    \n\n#line 4 \"utility/bit_operator.hpp\"\n#include <cstdint>\n\nnamespace ebi\
+    \ {\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
+    \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
+    \ i - 1);\n    }\n    return rev_n;\n}\n\nint msb(int x) {\n    return (x == 0)\
+    \ ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n}\n\n}  // namespace ebi\n\
+    #line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\nnamespace\
+    \ ebi {\n\ntemplate<class T>\nconcept modint = requires (T a, T b) {\n    a +\
+    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n\
+    };\n\ntemplate <modint mint>\nstd::istream &operator>>(std::istream &os, mint\
+    \ &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
+    \ <modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
+    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 12 \"convolution/ntt.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <modint mint, int g =\
+    \ internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n    static constexpr\
+    \ int rank2 = std::countr_zero(uint(mint::mod() - 1));\n\n    std::array<mint,\
+    \ rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2] = mint(g).pow((mint::mod()\
+    \ - 1) >> rank2);\n        inv_root[rank2] = root[rank2].inv();\n        for (int\
+    \ i = rank2 - 1; i >= 0; i--) {\n            root[i] = root[i + 1] * root[i +\
+    \ 1];\n            inv_root[i] = inv_root[i + 1] * inv_root[i + 1];\n        }\n\
+    \    }\n};\n\ntemplate <modint mint> void butterfly(std::vector<mint>& a) {\n\
+    \    static const ntt_info<mint> info;\n    int n = int(a.size());\n    int bit_size\
+    \ = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
     \    // bit reverse\n    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i,\
     \ bit_size);\n        if (i < rev) {\n            std::swap(a[i], a[rev]);\n \
     \       }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n        for\
@@ -191,11 +192,11 @@ data:
     \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
     \ }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
     \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
-    \  int bit_size = bsf(n);\n    assert(n == 1 << ceil_pow2(n));\n    // bit reverse\n\
-    \    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i, bit_size);\n\
-    \        if (i < rev) std::swap(a[i], a[rev]);\n    }\n\n    for (int bit = 0;\
-    \ bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1));\
-    \ i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.inv_root[1];\n\
+    \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
+    \    // bit reverse\n    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i,\
+    \ bit_size);\n        if (i < rev) std::swap(a[i], a[rev]);\n    }\n\n    for\
+    \ (int bit = 0; bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 <<\
+    \ (bit + 1)); i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.inv_root[1];\n\
     \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
     \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
     \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
@@ -214,26 +215,26 @@ data:
     \   }\n    }\n    return c;\n}\n\ntemplate <modint mint>\nstd::vector<mint> convolution(const\
     \ std::vector<mint>& f,\n                              const std::vector<mint>&\
     \ g) {\n    if (f.empty() || g.empty()) return {};\n    if (std::min(f.size(),\
-    \ g.size()) < 60) return convolution_naive(f, g);\n    int n = 1 << ceil_pow2(f.size()\
+    \ g.size()) < 60) return convolution_naive(f, g);\n    int n = std::bit_ceil(f.size()\
     \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"template/template.hpp\"\
-    \n#include <bit>\n#include <bitset>\n#line 5 \"template/template.hpp\"\n#include\
-    \ <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n#include\
-    \ <cstddef>\n#include <cstdint>\n#include <cstdlib>\n#include <cstring>\n#include\
-    \ <functional>\n#include <iomanip>\n#include <iostream>\n#include <limits>\n#include\
-    \ <map>\n#include <memory>\n#include <numbers>\n#include <numeric>\n#line 22 \"\
-    template/template.hpp\"\n#include <queue>\n#include <random>\n#include <ranges>\n\
-    #include <set>\n#include <stack>\n#include <string>\n#include <tuple>\n#line 30\
-    \ \"template/template.hpp\"\n#include <unordered_map>\n#include <unordered_set>\n\
-    #include <utility>\n#line 34 \"template/template.hpp\"\n\n#define rep(i, a, n)\
-    \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
-    \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
-    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
-    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
-    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 3 \"template/template.hpp\"\
+    \n#include <bitset>\n#line 5 \"template/template.hpp\"\n#include <chrono>\n#include\
+    \ <climits>\n#include <cmath>\n#include <complex>\n#include <cstddef>\n#line 11\
+    \ \"template/template.hpp\"\n#include <cstdlib>\n#include <cstring>\n#include\
+    \ <functional>\n#include <iomanip>\n#line 16 \"template/template.hpp\"\n#include\
+    \ <limits>\n#include <map>\n#include <memory>\n#include <numbers>\n#include <numeric>\n\
+    #line 22 \"template/template.hpp\"\n#include <queue>\n#include <random>\n#include\
+    \ <ranges>\n#include <set>\n#include <stack>\n#include <string>\n#include <tuple>\n\
+    #include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n#include\
+    \ <utility>\n#line 34 \"template/template.hpp\"\n\n#define rep(i, a, n) for (int\
+    \ i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1);\
+    \ i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n);\
+    \ i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n\
+    #define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\
+    \n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
     \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
     \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
@@ -271,13 +272,13 @@ data:
     \        return a / b;\n    else\n        return -((-a) / b) - 1;\n}\n\nconstexpr\
     \ i64 LNF = std::numeric_limits<i64>::max() / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max()\
     \ / 2;\n\nconst std::vector<int> dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int>\
-    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\
-    \n\r\n#line 6 \"utility/modint.hpp\"\n\r\n#line 8 \"utility/modint.hpp\"\n\r\n\
-    namespace ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\
-    \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
-    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
-    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
-    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
+    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
+    \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
+    \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
+    \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
+    \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
+    \    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
     \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
     \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
     \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
@@ -330,7 +331,7 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/multipoint_evaluation\"\
     \n\n#include \"../../fps/multipoint_evaluation.hpp\"\n\n#include \"../../convolution/ntt.hpp\"\
     \n#include \"../../fps/fps.hpp\"\n#include \"../../template/template.hpp\"\n#include\
-    \ \"../../utility/modint.hpp\"\n\nnamespace ebi {\n\nusing mint = modint998244353;\n\
+    \ \"../../modint/modint.hpp\"\n\nnamespace ebi {\n\nusing mint = modint998244353;\n\
     using FPS = FormalPowerSeries<mint, convolution>;\n\nvoid main_() {\n    int n,\
     \ m;\n    std::cin >> n >> m;\n    FPS f(n);\n    std::cin >> f;\n    std::vector<mint>\
     \ p(m);\n    std::cin >> p;\n    auto fp = multipoint_evaluation<mint, convolution>(f,\
@@ -343,17 +344,17 @@ data:
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - utility/bit_operator.hpp
-  - utility/modint_concept.hpp
+  - modint/base.hpp
   - template/template.hpp
   - template/debug_template.hpp
   - template/int_alias.hpp
   - template/io.hpp
   - template/utility.hpp
-  - utility/modint.hpp
+  - modint/modint.hpp
   isVerificationFile: true
   path: test/polynomial/Multipoint_Evaluation.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 01:29:22+09:00'
+  timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/polynomial/Multipoint_Evaluation.test.cpp

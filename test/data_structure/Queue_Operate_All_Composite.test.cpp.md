@@ -5,11 +5,11 @@ data:
     path: data_structure/queue_aggregation.hpp
     title: Sliding Window Aggregation (Queue)
   - icon: ':question:'
-    path: utility/modint.hpp
-    title: utility/modint.hpp
+    path: modint/base.hpp
+    title: modint/base.hpp
   - icon: ':question:'
-    path: utility/modint_concept.hpp
-    title: utility/modint_concept.hpp
+    path: modint/modint.hpp
+    title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -47,17 +47,20 @@ data:
     \n        } else if (_back.empty()) {\r\n            return _front.top().fold;\r\
     \n        } else {\r\n            return op(_front.top().fold, _back.top().fold);\r\
     \n        }\r\n    }\r\n\r\n  private:\r\n    std::stack<Node> _front, _back;\r\
-    \n};\r\n\r\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"\
-    utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_concept.hpp\"\
-    \n\n#include <concepts>\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
+    \n};\r\n\r\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"\
+    modint/modint.hpp\"\n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
     \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
-    \  a.inv();\n    a.val();\n    a.mod();\n};\n\n}  // namespace ebi\n#line 8 \"\
-    utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \  a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream\
+    \ &operator>>(std::istream &os, mint &a) {\n    long long x;\n    os >> x;\n \
+    \   a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n\
+    #line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct\
+    \ static_modint {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n \
+    \ public:\r\n    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\
+    \r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v\
+    \ = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0)\
+    \ {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
     \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
     \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
     \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
@@ -113,7 +116,7 @@ data:
     \   }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/queue_aggregation.hpp\"\
-    \r\n#include \"../../utility/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\
+    \r\n#include \"../../modint/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\
     \n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint b) : a(a), b(b) {}\r\n\
     };\r\n\r\nF op(F f1, F f2) {\r\n    return F(f2.a * f1.a, f2.a * f1.b + f2.b);\r\
     \n}\r\n\r\nint main() {\r\n    ebi::queue_aggregation<F, op> swag;\r\n    int\
@@ -127,12 +130,12 @@ data:
     \ * (mint)x + f.b).val() << std::endl;\r\n        }\r\n    }\r\n}"
   dependsOn:
   - data_structure/queue_aggregation.hpp
-  - utility/modint.hpp
-  - utility/modint_concept.hpp
+  - modint/modint.hpp
+  - modint/base.hpp
   isVerificationFile: true
   path: test/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 01:29:22+09:00'
+  timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Queue_Operate_All_Composite.test.cpp

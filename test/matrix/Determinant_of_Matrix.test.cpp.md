@@ -5,11 +5,11 @@ data:
     path: matrix/square_matrix.hpp
     title: matrix/square_matrix.hpp
   - icon: ':question:'
-    path: utility/modint.hpp
-    title: utility/modint.hpp
+    path: modint/base.hpp
+    title: modint/base.hpp
   - icon: ':question:'
-    path: utility/modint_concept.hpp
-    title: utility/modint_concept.hpp
+    path: modint/modint.hpp
+    title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -63,17 +63,20 @@ data:
     \n    }\r\n\r\n    static void set_size(int n) {\r\n        N = n;\r\n    }\r\n\
     \r\n  private:\r\n    std::vector<std::vector<Field>> mat;\r\n    static int N;\r\
     \n};\r\n\r\ntemplate <class Field, int id> int square_matrix<Field, id>::N = 0;\r\
-    \n\r\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#include <cassert>\r\
-    \n#line 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_concept.hpp\"\
-    \n\n#include <concepts>\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
+    \n\r\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#include <cassert>\r\
+    \n#line 5 \"modint/modint.hpp\"\n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
     \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
-    \  a.inv();\n    a.val();\n    a.mod();\n};\n\n}  // namespace ebi\n#line 8 \"\
-    utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \  a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream\
+    \ &operator>>(std::istream &os, mint &a) {\n    long long x;\n    os >> x;\n \
+    \   a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n\
+    #line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct\
+    \ static_modint {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n \
+    \ public:\r\n    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\
+    \r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v\
+    \ = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0)\
+    \ {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
     \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
     \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
     \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
@@ -123,7 +126,7 @@ data:
     \n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\r\n\r\n#include\
     \ <iostream>\r\n\r\n#include \"../../matrix/square_matrix.hpp\"\r\n#include \"\
-    ../../utility/modint.hpp\"\r\n\r\nusing Matrix = ebi::square_matrix<ebi::modint998244353,\
+    ../../modint/modint.hpp\"\r\n\r\nusing Matrix = ebi::square_matrix<ebi::modint998244353,\
     \ 0>;\r\n\r\nint main() {\r\n    int n;\r\n    std::cin >> n;\r\n    Matrix::set_size(n);\r\
     \n    Matrix a;\r\n    for (int i = 0; i < n; ++i) {\r\n        for (int j = 0;\
     \ j < n; ++j) {\r\n            int val;\r\n            std::cin >> val;\r\n  \
@@ -131,12 +134,12 @@ data:
     \ << std::endl;\r\n}"
   dependsOn:
   - matrix/square_matrix.hpp
-  - utility/modint.hpp
-  - utility/modint_concept.hpp
+  - modint/modint.hpp
+  - modint/base.hpp
   isVerificationFile: true
   path: test/matrix/Determinant_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 01:29:22+09:00'
+  timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/matrix/Determinant_of_Matrix.test.cpp

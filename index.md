@@ -117,7 +117,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/link_cut_tree.hpp
       title: data_structure/link_cut_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/offline_dynamic_connectivity.hpp
       title: Offline Dynamic Connectivity
     - icon: ':heavy_check_mark:'
@@ -171,7 +171,7 @@ data:
     - icon: ':warning:'
       path: data_structure/splay_tree.hpp
       title: data_structure/splay_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/undo_unionfind.hpp
       title: data_structure/undo_unionfind.hpp
   - name: fps
@@ -182,13 +182,13 @@ data:
     - icon: ':x:'
       path: fps/compositional_inverse_of_fps.hpp
       title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-    - icon: ':x:'
+    - icon: ':question:'
       path: fps/fps.hpp
       title: Formal Power Series
-    - icon: ':question:'
+    - icon: ':warning:'
       path: fps/fps_sparse.hpp
       title: Formal Power Series (Sparse)
-    - icon: ':x:'
+    - icon: ':warning:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
     - icon: ':x:'
@@ -200,10 +200,10 @@ data:
     - icon: ':x:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$
-    - icon: ':x:'
+    - icon: ':warning:'
       path: fps/product_of_one_minus_xn.hpp
       title: $\prod (1 - x^{a_i}) \mod x^d$
-    - icon: ':x:'
+    - icon: ':warning:'
       path: fps/product_of_one_plus_xn.hpp
       title: $\prod (1 + x^{a_i}) \mod x^d$
     - icon: ':x:'
@@ -263,13 +263,13 @@ data:
     - icon: ':x:'
       path: math/DirichletSeries.hpp
       title: Dirichlet Series
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
     - icon: ':question:'
       path: math/binomial.hpp
       title: Binomial Coefficient
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/bostan_mori_algorithm.hpp
       title: Bostan-Mori Algorithm
     - icon: ':heavy_check_mark:'
@@ -313,6 +313,26 @@ data:
     - icon: ':x:'
       path: matrix/square_matrix.hpp
       title: matrix/square_matrix.hpp
+  - name: modint
+    pages:
+    - icon: ':question:'
+      path: modint/base.hpp
+      title: modint/base.hpp
+    - icon: ':question:'
+      path: modint/dynamic_modint.hpp
+      title: modint/dynamic_modint.hpp
+    - icon: ':question:'
+      path: modint/modint.hpp
+      title: modint/modint.hpp
+    - icon: ':question:'
+      path: modint/modint61.hpp
+      title: modint/modint61.hpp
+    - icon: ':warning:'
+      path: modint/modint_func.hpp
+      title: modint/modint_func.hpp
+    - icon: ':x:'
+      path: modint/montgomery_modint.hpp
+      title: modint/montgomery_modint.hpp
   - name: set_function
     pages:
     - icon: ':x:'
@@ -404,27 +424,9 @@ data:
     - icon: ':question:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
-    - icon: ':x:'
-      path: utility/dynamic_modint.hpp
-      title: utility/dynamic_modint.hpp
     - icon: ':question:'
       path: utility/hash.hpp
       title: Hash structure
-    - icon: ':question:'
-      path: utility/modint.hpp
-      title: utility/modint.hpp
-    - icon: ':question:'
-      path: utility/modint61.hpp
-      title: utility/modint61.hpp
-    - icon: ':question:'
-      path: utility/modint_concept.hpp
-      title: utility/modint_concept.hpp
-    - icon: ':question:'
-      path: utility/modint_func.hpp
-      title: utility/modint_func.hpp
-    - icon: ':x:'
-      path: utility/montgomery_modint.hpp
-      title: utility/montgomery_modint.hpp
     - icon: ':question:'
       path: utility/random_number_generator_64.hpp
       title: utility/random_number_generator_64.hpp
@@ -462,7 +464,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2152.test.cpp
       title: test/aoj/aoj_2152.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/aoj_2235.test.cpp
       title: test/aoj/aoj_2235.test.cpp
     - icon: ':heavy_check_mark:'
@@ -477,7 +479,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2873.test.cpp
       title: test/aoj/aoj_2873.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/aoj_3361.test.cpp
       title: test/aoj/aoj_3361.test.cpp
   - name: test/convolution
@@ -688,10 +690,10 @@ data:
       title: test/graph/scc_graph.test.cpp
   - name: test/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Berunoulli_Number.test.cpp
       title: test/math/Berunoulli_Number.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     - icon: ':heavy_check_mark:'
@@ -700,7 +702,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Inversion_Number.test.cpp
       title: test/math/Inversion_Number.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
       title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     - icon: ':heavy_check_mark:'

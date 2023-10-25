@@ -5,6 +5,12 @@ data:
     path: math/binomial.hpp
     title: Binomial Coefficient
   - icon: ':question:'
+    path: modint/base.hpp
+    title: modint/base.hpp
+  - icon: ':question:'
+    path: modint/dynamic_modint.hpp
+    title: modint/dynamic_modint.hpp
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
   - icon: ':question:'
@@ -19,14 +25,11 @@ data:
   - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':x:'
-    path: utility/dynamic_modint.hpp
-    title: utility/dynamic_modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -109,54 +112,61 @@ data:
     \        return a / b;\n    else\n        return -((-a) / b) - 1;\n}\n\nconstexpr\
     \ i64 LNF = std::numeric_limits<i64>::max() / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max()\
     \ / 2;\n\nconst std::vector<int> dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int>\
-    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"utility/dynamic_modint.hpp\"\
-    \n\n#line 4 \"utility/dynamic_modint.hpp\"\n\nnamespace ebi {\n\ntemplate <int\
-    \ id> struct dynamic_modint {\n  private:\n    using modint = dynamic_modint;\n\
-    \n  public:\n    static void set_mod(int p) {\n        assert(1 <= p);\n     \
-    \   m = p;\n    }\n\n    static int mod() {\n        return m;\n    }\n\n    modint\
-    \ raw(int v) {\n        modint x;\n        x._v = v;\n        return x;\n    }\n\
-    \n    dynamic_modint() : _v(0) {}\n\n    dynamic_modint(long long v) {\n     \
-    \   v %= (long long)umod();\n        if (v < 0) v += (long long)umod();\n    \
-    \    _v = (unsigned int)v;\n    }\n\n    unsigned int val() const {\n        return\
-    \ _v;\n    }\n\n    unsigned int value() const {\n        return val();\n    }\n\
-    \n    modint &operator++() {\n        _v++;\n        if (_v == umod()) _v = 0;\n\
-    \        return *this;\n    }\n    modint &operator--() {\n        if (_v == 0)\
-    \ _v = umod();\n        _v--;\n        return *this;\n    }\n    modint &operator+=(const\
-    \ modint &rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
-    \        return *this;\n    }\n    modint &operator-=(const modint &rhs) {\n \
-    \       _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n        return\
-    \ *this;\n    }\n    modint &operator*=(const modint &rhs) {\n        unsigned\
-    \ long long x = _v;\n        x *= rhs._v;\n        _v = (unsigned int)(x % (unsigned\
-    \ long long)umod());\n        return *this;\n    }\n    modint &operator/=(const\
-    \ modint &rhs) {\n        return *this = *this * rhs.inv();\n    }\n\n    modint\
-    \ operator+() const {\n        return *this;\n    }\n    modint operator-() const\
-    \ {\n        return modint() - *this;\n    }\n\n    modint pow(long long n) const\
-    \ {\n        assert(0 <= n);\n        modint x = *this, res = 1;\n        while\
-    \ (n) {\n            if (n & 1) res *= x;\n            x *= x;\n            n\
-    \ >>= 1;\n        }\n        return res;\n    }\n    modint inv() const {\n  \
-    \      assert(_v);\n        return pow(umod() - 2);\n    }\n\n    friend modint\
-    \ operator+(const modint &lhs, const modint &rhs) {\n        return modint(lhs)\
-    \ += rhs;\n    }\n    friend modint operator-(const modint &lhs, const modint\
-    \ &rhs) {\n        return modint(lhs) -= rhs;\n    }\n    friend modint operator*(const\
-    \ modint &lhs, const modint &rhs) {\n        return modint(lhs) *= rhs;\n    }\n\
-    \n    friend modint operator/(const modint &lhs, const modint &rhs) {\n      \
-    \  return modint(lhs) /= rhs;\n    }\n    friend bool operator==(const modint\
-    \ &lhs, const modint &rhs) {\n        return lhs.val() == rhs.val();\n    }\n\
-    \    friend bool operator!=(const modint &lhs, const modint &rhs) {\n        return\
-    \ !(lhs == rhs);\n    }\n\n  private:\n    unsigned int _v = 0;\n    static int\
-    \ m;\n\n    static unsigned int umod() {\n        return m;\n    }\n};\n\ntemplate\
-    \ <int id> int dynamic_modint<id>::m = 998244353;\n\n}  // namespace ebi\n#line\
-    \ 6 \"test/math/Binomial_Coefficient_Prime_Mod.test.cpp\"\n\nnamespace ebi {\n\
-    \nusing mint = dynamic_modint<0>;\n\nvoid main_() {\n    int t, m;\n    std::cin\
-    \ >> t >> m;\n    mint::set_mod(m);\n    Binomial<mint>::reserve(std::min(m -\
-    \ 1, 10'000'000));\n    rep(i, 0, t) {\n        int n, k;\n        std::cin >>\
-    \ n >> k;\n        std::cout << Binomial<mint>::c(n, k).val() << '\\n';\n    }\n\
-    }\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n\
-    \    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n    }\n    return\
-    \ 0;\n}\n"
+    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"modint/dynamic_modint.hpp\"\
+    \n\n#line 4 \"modint/dynamic_modint.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include\
+    \ <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
+    \ T>\nconcept modint = requires (T a, T b) {\n    a + b;\n    a - b;\n    a *\
+    \ b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
+    \ mint>\nstd::istream &operator>>(std::istream &os, mint &a) {\n    long long\
+    \ x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 6 \"modint/dynamic_modint.hpp\"\n\n\
+    namespace ebi {\n\ntemplate <int id> struct dynamic_modint {\n  private:\n   \
+    \ using modint = dynamic_modint;\n\n  public:\n    static void set_mod(int p)\
+    \ {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static int mod() {\n\
+    \        return m;\n    }\n\n    modint raw(int v) {\n        modint x;\n    \
+    \    x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n\n\
+    \    dynamic_modint(long long v) {\n        v %= (long long)umod();\n        if\
+    \ (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n    }\n\n  \
+    \  unsigned int val() const {\n        return _v;\n    }\n\n    unsigned int value()\
+    \ const {\n        return val();\n    }\n\n    modint &operator++() {\n      \
+    \  _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n    }\n  \
+    \  modint &operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n\
+    \        return *this;\n    }\n    modint &operator+=(const modint &rhs) {\n \
+    \       _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
+    \ *this;\n    }\n    modint &operator-=(const modint &rhs) {\n        _v -= rhs._v;\n\
+    \        if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    modint\
+    \ &operator*=(const modint &rhs) {\n        unsigned long long x = _v;\n     \
+    \   x *= rhs._v;\n        _v = (unsigned int)(x % (unsigned long long)umod());\n\
+    \        return *this;\n    }\n    modint &operator/=(const modint &rhs) {\n \
+    \       return *this = *this * rhs.inv();\n    }\n\n    modint operator+() const\
+    \ {\n        return *this;\n    }\n    modint operator-() const {\n        return\
+    \ modint() - *this;\n    }\n\n    modint pow(long long n) const {\n        assert(0\
+    \ <= n);\n        modint x = *this, res = 1;\n        while (n) {\n          \
+    \  if (n & 1) res *= x;\n            x *= x;\n            n >>= 1;\n        }\n\
+    \        return res;\n    }\n    modint inv() const {\n        assert(_v);\n \
+    \       return pow(umod() - 2);\n    }\n\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\n        return modint(lhs) += rhs;\n    }\n    friend\
+    \ modint operator-(const modint &lhs, const modint &rhs) {\n        return modint(lhs)\
+    \ -= rhs;\n    }\n    friend modint operator*(const modint &lhs, const modint\
+    \ &rhs) {\n        return modint(lhs) *= rhs;\n    }\n\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\n        return modint(lhs) /= rhs;\n    }\n\
+    \    friend bool operator==(const modint &lhs, const modint &rhs) {\n        return\
+    \ lhs.val() == rhs.val();\n    }\n    friend bool operator!=(const modint &lhs,\
+    \ const modint &rhs) {\n        return !(lhs == rhs);\n    }\n\n  private:\n \
+    \   unsigned int _v = 0;\n    static int m;\n\n    static unsigned int umod()\
+    \ {\n        return m;\n    }\n};\n\ntemplate <int id> int dynamic_modint<id>::m\
+    \ = 998244353;\n\n}  // namespace ebi\n#line 6 \"test/math/Binomial_Coefficient_Prime_Mod.test.cpp\"\
+    \n\nnamespace ebi {\n\nusing mint = dynamic_modint<0>;\n\nvoid main_() {\n   \
+    \ int t, m;\n    std::cin >> t >> m;\n    mint::set_mod(m);\n    Binomial<mint>::reserve(std::min(m\
+    \ - 1, 10'000'000));\n    rep(i, 0, t) {\n        int n, k;\n        std::cin\
+    \ >> n >> k;\n        std::cout << Binomial<mint>::c(n, k).val() << '\\n';\n \
+    \   }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int\
+    \ t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n  \
+    \  }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
     \n\n#include \"../../math/binomial.hpp\"\n#include \"../../template/template.hpp\"\
-    \n#include \"../../utility/dynamic_modint.hpp\"\n\nnamespace ebi {\n\nusing mint\
+    \n#include \"../../modint/dynamic_modint.hpp\"\n\nnamespace ebi {\n\nusing mint\
     \ = dynamic_modint<0>;\n\nvoid main_() {\n    int t, m;\n    std::cin >> t >>\
     \ m;\n    mint::set_mod(m);\n    Binomial<mint>::reserve(std::min(m - 1, 10'000'000));\n\
     \    rep(i, 0, t) {\n        int n, k;\n        std::cin >> n >> k;\n        std::cout\
@@ -170,12 +180,13 @@ data:
   - template/int_alias.hpp
   - template/io.hpp
   - template/utility.hpp
-  - utility/dynamic_modint.hpp
+  - modint/dynamic_modint.hpp
+  - modint/base.hpp
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 01:29:22+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-26 02:17:54+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 layout: document

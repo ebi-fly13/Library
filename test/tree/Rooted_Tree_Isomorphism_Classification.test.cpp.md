@@ -1,15 +1,18 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: modint/base.hpp
+    title: modint/base.hpp
+  - icon: ':question:'
+    path: modint/modint61.hpp
+    title: modint/modint61.hpp
   - icon: ':x:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
   - icon: ':question:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':question:'
-    path: utility/modint61.hpp
-    title: utility/modint61.hpp
   - icon: ':question:'
     path: utility/random_number_generator_64.hpp
     title: utility/random_number_generator_64.hpp
@@ -27,14 +30,21 @@ data:
     \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
     \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#line 2 \"tree/rooted_tree_hash.hpp\"\
     \n\n#line 4 \"tree/rooted_tree_hash.hpp\"\n\n#line 2 \"utility/hash.hpp\"\n\n\
-    #include <array>\n\n#line 2 \"utility/modint61.hpp\"\n\n#include <cassert>\n#include\
-    \ <cstdint>\n#line 6 \"utility/modint61.hpp\"\n\nnamespace ebi {\n\nstruct modint61\
-    \ {\n  private:\n    using mint = modint61;\n    using u64 = std::uint64_t;\n\
-    \    constexpr static u64 m = (1ull << 61) - 1;\n    constexpr static u64 MASK31\
-    \ = (1ull << 31) - 1;\n    constexpr static u64 MASK30 = (1ull << 30) - 1;\n\n\
-    \  public:\n    constexpr static u64 mod() {\n        return m;\n    }\n\n   \
-    \ constexpr modint61() : _v(0) {}\n\n    constexpr modint61(long long v) {\n \
-    \       v %= (long long)umod();\n        if (v < 0) v += (long long)umod();\n\
+    #include <array>\n\n#line 2 \"modint/modint61.hpp\"\n\n#include <cassert>\n#include\
+    \ <cstdint>\n#line 6 \"modint/modint61.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n\
+    #include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
+    \ T>\nconcept modint = requires (T a, T b) {\n    a + b;\n    a - b;\n    a *\
+    \ b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
+    \ mint>\nstd::istream &operator>>(std::istream &os, mint &a) {\n    long long\
+    \ x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 8 \"modint/modint61.hpp\"\n\nnamespace\
+    \ ebi {\n\nstruct modint61 {\n  private:\n    using mint = modint61;\n    using\
+    \ u64 = std::uint64_t;\n    constexpr static u64 m = (1ull << 61) - 1;\n    constexpr\
+    \ static u64 MASK31 = (1ull << 31) - 1;\n    constexpr static u64 MASK30 = (1ull\
+    \ << 30) - 1;\n\n  public:\n    constexpr static u64 mod() {\n        return m;\n\
+    \    }\n\n    constexpr modint61() : _v(0) {}\n\n    constexpr modint61(long long\
+    \ v) {\n        v %= (long long)umod();\n        if (v < 0) v += (long long)umod();\n\
     \        _v = u64(v);\n    }\n\n    constexpr u64 val() const {\n        return\
     \ _v;\n    }\n\n    constexpr u64 value() const {\n        return val();\n   \
     \ }\n\n    constexpr mint &operator++() {\n        _v++;\n        if (_v == umod())\
@@ -155,12 +165,13 @@ data:
   dependsOn:
   - tree/rooted_tree_hash.hpp
   - utility/hash.hpp
-  - utility/modint61.hpp
+  - modint/modint61.hpp
+  - modint/base.hpp
   - utility/random_number_generator_64.hpp
   isVerificationFile: true
   path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 01:29:22+09:00'
+  timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp

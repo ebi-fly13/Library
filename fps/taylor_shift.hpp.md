@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
@@ -162,8 +162,8 @@ data:
   timestamp: '2023-10-26 00:53:52+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
 documentation_of: fps/taylor_shift.hpp
 layout: document
 title: $f(x + c)$

@@ -1,15 +1,15 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: modint/base.hpp
+    title: modint/base.hpp
+  - icon: ':question:'
+    path: modint/modint.hpp
+    title: modint/modint.hpp
   - icon: ':x:'
     path: tree/rerooting.hpp
     title: Rerooting DP
-  - icon: ':question:'
-    path: utility/modint.hpp
-    title: utility/modint.hpp
-  - icon: ':question:'
-    path: utility/modint_concept.hpp
-    title: utility/modint_concept.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -48,17 +48,20 @@ data:
     \n        dfs_sub(0);\n        dfs_all(0);\n    }\n\n    V get(int v) const {\n\
     \        return dp[v];\n    }\n\n  private:\n    int n;\n    std::vector<std::vector<std::pair<int,\
     \ int>>> g;\n    std::vector<V> sub;\n    std::vector<V> dp;\n    std::vector<std::vector<E>>\
-    \ outs;\n};\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line\
-    \ 5 \"utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_concept.hpp\"\
-    \n\n#include <concepts>\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
+    \ outs;\n};\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5\
+    \ \"modint/modint.hpp\"\n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
     \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
-    \  a.inv();\n    a.val();\n    a.mod();\n};\n\n}  // namespace ebi\n#line 8 \"\
-    utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \  a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream\
+    \ &operator>>(std::istream &os, mint &a) {\n    long long x;\n    os >> x;\n \
+    \   a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n\
+    #line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct\
+    \ static_modint {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n \
+    \ public:\r\n    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\
+    \r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v\
+    \ = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0)\
+    \ {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
     \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
     \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
     \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
@@ -115,7 +118,7 @@ data:
     \ \" \\n\"[i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
     \n\n#include <iostream>\n#include <vector>\n\n#include \"../../tree/rerooting.hpp\"\
-    \n#include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
+    \n#include \"../../modint/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
     \nstd::vector<mint> a, b, c;\n\nstruct S {\n    mint sum;\n    mint sz;\n};\n\n\
     S e() {\n    return {0, 0};\n}\n\nS merge(S lhs, S rhs) {\n    return {lhs.sum\
     \ + rhs.sum, lhs.sz + rhs.sz};\n}\n\nS put_edge(int idx, S x) {\n    return {b[idx]\
@@ -131,12 +134,12 @@ data:
     }"
   dependsOn:
   - tree/rerooting.hpp
-  - utility/modint.hpp
-  - utility/modint_concept.hpp
+  - modint/modint.hpp
+  - modint/base.hpp
   isVerificationFile: true
   path: test/tree/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 01:29:22+09:00'
+  timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/Tree_Path_Composite_Sum.test.cpp

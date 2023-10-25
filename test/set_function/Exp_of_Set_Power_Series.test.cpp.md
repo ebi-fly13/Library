@@ -4,6 +4,12 @@ data:
   - icon: ':question:'
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
+  - icon: ':question:'
+    path: modint/base.hpp
+    title: modint/base.hpp
+  - icon: ':question:'
+    path: modint/modint.hpp
+    title: modint/modint.hpp
   - icon: ':x:'
     path: set_function/exp_of_sps.hpp
     title: $\exp {a}$ (Set Power Series)
@@ -13,12 +19,6 @@ data:
   - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
-  - icon: ':question:'
-    path: utility/modint.hpp
-    title: utility/modint.hpp
-  - icon: ':question:'
-    path: utility/modint_concept.hpp
-    title: utility/modint_concept.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -37,19 +37,15 @@ data:
     \              https://37zigen.com/subset-convolution/\r\n*/\r\n\r\n#include <array>\r\
     \n#line 11 \"convolution/subset_convolution.hpp\"\n\r\n#line 2 \"set_function/ranked_subset_transform.hpp\"\
     \n\n#line 6 \"set_function/ranked_subset_transform.hpp\"\n\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
-    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
+    \n\n#include <bit>\n#include <cstdint>\n\nnamespace ebi {\n\nint bit_reverse(int\
     \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
     \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
-    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
-    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
-    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
-    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
+    \ rev_n;\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n\
     }\n\n}  // namespace ebi\n#line 8 \"set_function/ranked_subset_transform.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T, int LIM = 20>\nstd::vector<std::array<T,\
     \ LIM + 1>> ranked_zeta(const std::vector<T> &f) {\n    int n = msb(f.size());\n\
     \    assert(n <= LIM);\n    assert((int)f.size() == (1 << n));\n    std::vector<std::array<T,\
-    \ LIM + 1>> rf(1 << n);\n    for (int s = 0; s < (1 << n); s++) rf[s][popcnt(s)]\
+    \ LIM + 1>> rf(1 << n);\n    for (int s = 0; s < (1 << n); s++) rf[s][std::popcount(uint(s))]\
     \ = f[s];\n    for (int i = 0; i < n; i++) {\n        int w = 1 << i;\n      \
     \  for (int p = 0; p < (1 << n); p += 2 * w) {\n            for (int s = p; s\
     \ < p + w; s++) {\n                int t = s | (1 << i);\n                for\
@@ -61,9 +57,9 @@ data:
     \ < p + w; s++) {\n                int t = s | (1 << i);\n                for\
     \ (int d = 0; d <= n; d++) rf[t][d] -= rf[s][d];\n            }\n        }\n \
     \   }\n    std::vector<T> f(1 << n);\n    for (int s = 0; s < (1 << n); s++) {\n\
-    \        f[s] = rf[s][popcnt(s)];\n    }\n    return f;\n}\n\n}  // namespace\
-    \ ebi\n#line 14 \"convolution/subset_convolution.hpp\"\n\r\nnamespace ebi {\r\n\
-    \r\ntemplate <class T, int LIM = 20>\r\nstd::vector<T> subset_convolution(const\
+    \        f[s] = rf[s][std::popcount(uint(s))];\n    }\n    return f;\n}\n\n} \
+    \ // namespace ebi\n#line 14 \"convolution/subset_convolution.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <class T, int LIM = 20>\r\nstd::vector<T> subset_convolution(const\
     \ std::vector<T> &a,\r\n                                  const std::vector<T>\
     \ &b) {\r\n    auto ra = ranked_zeta<T, LIM>(a);\r\n    auto rb = ranked_zeta<T,\
     \ LIM>(b);\r\n    int n = msb(ra.size());\r\n    for (int s = (1 << n) - 1; s\
@@ -79,17 +75,20 @@ data:
     \ + (1 << i), a.begin() + (2 << i)};\n        std::vector<T> t = {fa.begin(),\
     \ fa.begin() + (1 << i)};\n        auto c = subset_convolution<T, LIM>(s, t);\n\
     \        std::copy(c.begin(), c.end(), fa.begin() + (1 << i));\n    }\n    return\
-    \ fa;\n}\n\n}  // namespace ebi\n#line 2 \"utility/modint.hpp\"\n\r\n#line 5 \"\
-    utility/modint.hpp\"\n#include <type_traits>\r\n\r\n#line 2 \"utility/modint_concept.hpp\"\
-    \n\n#include <concepts>\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
+    \ fa;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"\
+    modint/modint.hpp\"\n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
     \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
-    \  a.inv();\n    a.val();\n    a.mod();\n};\n\n}  // namespace ebi\n#line 8 \"\
-    utility/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \  a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream\
+    \ &operator>>(std::istream &os, mint &a) {\n    long long x;\n    os >> x;\n \
+    \   a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n\
+    #line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct\
+    \ static_modint {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n \
+    \ public:\r\n    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\
+    \r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v\
+    \ = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0)\
+    \ {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
     \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
     \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
     \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
@@ -138,7 +137,7 @@ data:
     \        std::cout << c[i].val() << \" \\n\"[i == (1 << n) - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_set_power_series\"\
     \n\n#include <iostream>\n#include <vector>\n\n#include \"../../set_function/exp_of_sps.hpp\"\
-    \n#include \"../../utility/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
+    \n#include \"../../modint/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
     \nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> b(1 << n);\n\
     \    for (int i = 0; i < (1 << n); i++) {\n        int x;\n        std::cin >>\
     \ x;\n        b[i] = x;\n    }\n    auto c = ebi::exp_of_sps<mint, 20>(b);\n \
@@ -149,12 +148,12 @@ data:
   - convolution/subset_convolution.hpp
   - set_function/ranked_subset_transform.hpp
   - utility/bit_operator.hpp
-  - utility/modint.hpp
-  - utility/modint_concept.hpp
+  - modint/modint.hpp
+  - modint/base.hpp
   isVerificationFile: true
   path: test/set_function/Exp_of_Set_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 01:29:22+09:00'
+  timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/set_function/Exp_of_Set_Power_Series.test.cpp

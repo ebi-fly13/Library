@@ -18,28 +18,25 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"set_function/superset_transform.hpp\"\n\n#include <cassert>\n\
-    #include <vector>\n\n#line 2 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\
-    \nconstexpr int bsf_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n\
-    \ & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int n, int bit_size)\
+    #include <vector>\n\n#line 2 \"utility/bit_operator.hpp\"\n\n#include <bit>\n\
+    #include <cstdint>\n\nnamespace ebi {\n\nint bit_reverse(int n, int bit_size)\
     \ {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n\
     \ |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint\
-    \ ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) < (unsigned int)(n))\
-    \ x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return __builtin_popcount(x);\n\
-    }\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - __builtin_clz(x);\n}\n\n\
-    int bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n}\n\n}  // namespace\
-    \ ebi\n#line 7 \"set_function/superset_transform.hpp\"\n\nnamespace ebi {\n\n\
-    template <class T> std::vector<T> superset_zeta(const std::vector<T> &a) {\n \
-    \   int n = msb(a.size());\n    assert((1 << n) == (int)a.size());\n    std::vector<T>\
-    \ ra = a;\n    for (int i = 0; i < n; i++) {\n        int w = 1 << i;\n      \
-    \  for (int p = 0; p < (1 << n); p += 2 * w) {\n            for (int s = p; s\
-    \ < p + w; s++) {\n                int t = s | w;\n                ra[s] += ra[t];\n\
-    \            }\n        }\n    }\n    return ra;\n}\n\ntemplate <class T> std::vector<T>\
-    \ superset_mobius(const std::vector<T> &ra) {\n    int n = msb(ra.size());\n \
-    \   assert((1 << n) == (int)ra.size());\n    std::vector<T> a = ra;\n    for (int\
-    \ i = 0; i < n; i++) {\n        int w = 1 << i;\n        for (int p = 0; p < (1\
-    \ << n); p += 2 * w) {\n            for (int s = p; s < p + w; s++) {\n      \
-    \          int t = s | w;\n                a[s] -= a[t];\n            }\n    \
-    \    }\n    }\n    return a;\n}\n\n}  // namespace ebi\n"
+    \ msb(int x) {\n    return (x == 0) ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n\
+    }\n\n}  // namespace ebi\n#line 7 \"set_function/superset_transform.hpp\"\n\n\
+    namespace ebi {\n\ntemplate <class T> std::vector<T> superset_zeta(const std::vector<T>\
+    \ &a) {\n    int n = msb(a.size());\n    assert((1 << n) == (int)a.size());\n\
+    \    std::vector<T> ra = a;\n    for (int i = 0; i < n; i++) {\n        int w\
+    \ = 1 << i;\n        for (int p = 0; p < (1 << n); p += 2 * w) {\n           \
+    \ for (int s = p; s < p + w; s++) {\n                int t = s | w;\n        \
+    \        ra[s] += ra[t];\n            }\n        }\n    }\n    return ra;\n}\n\
+    \ntemplate <class T> std::vector<T> superset_mobius(const std::vector<T> &ra)\
+    \ {\n    int n = msb(ra.size());\n    assert((1 << n) == (int)ra.size());\n  \
+    \  std::vector<T> a = ra;\n    for (int i = 0; i < n; i++) {\n        int w =\
+    \ 1 << i;\n        for (int p = 0; p < (1 << n); p += 2 * w) {\n            for\
+    \ (int s = p; s < p + w; s++) {\n                int t = s | w;\n            \
+    \    a[s] -= a[t];\n            }\n        }\n    }\n    return a;\n}\n\n}  //\
+    \ namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../utility/bit_operator.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T> std::vector<T> superset_zeta(const std::vector<T>\
     \ &a) {\n    int n = msb(a.size());\n    assert((1 << n) == (int)a.size());\n\
@@ -60,7 +57,7 @@ data:
   path: set_function/superset_transform.hpp
   requiredBy:
   - convolution/and_convolution.hpp
-  timestamp: '2023-06-19 14:38:20+09:00'
+  timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Bitwise_And_Convolution.test.cpp

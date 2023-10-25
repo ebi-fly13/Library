@@ -19,14 +19,10 @@ data:
     links: []
   bundledCode: "#line 2 \"convolution/or_convolution.hpp\"\n\n#line 2 \"set_function/subset_transform.hpp\"\
     \n\n#include <cassert>\n#include <vector>\n\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\nnamespace ebi {\n\nconstexpr int bsf_constexpr(unsigned int n) {\n    int\
-    \ x = 0;\n    while (!(n & (1 << x))) x++;\n    return x;\n}\n\nint bit_reverse(int\
+    \n\n#include <bit>\n#include <cstdint>\n\nnamespace ebi {\n\nint bit_reverse(int\
     \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
     \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
-    \ rev_n;\n}\n\nint ceil_pow2(int n) {\n    int x = 0;\n    while ((1U << x) <\
-    \ (unsigned int)(n)) x++;\n    return x;\n}\n\nint popcnt(int x) {\n    return\
-    \ __builtin_popcount(x);\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
-    \ - __builtin_clz(x);\n}\n\nint bsf(int x) {\n    return (x == 0) ? -1 : __builtin_ctz(x);\n\
+    \ rev_n;\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n\
     }\n\n}  // namespace ebi\n#line 7 \"set_function/subset_transform.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <class T> std::vector<T> subset_zeta(const std::vector<T>\
     \ &a) {\n    int n = msb(a.size());\n    assert((1 << n) == (int)a.size());\n\
@@ -57,7 +53,7 @@ data:
   isVerificationFile: false
   path: convolution/or_convolution.hpp
   requiredBy: []
-  timestamp: '2023-06-19 14:38:20+09:00'
+  timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Bitwise_OR_Convolution.test.cpp
