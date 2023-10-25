@@ -24,10 +24,10 @@ data:
     \ que.top();\n    }\n\n    void pop() {\n        assert(!empty());\n        update();\n\
     \        que.pop();\n        return;\n    }\n\n    void push(const T &x) {\n \
     \       que.push(x);\n        return;\n    }\n\n    template <class... Args> void\
-    \ emplace(Args &&... args) {\n        que.emplace(std::forward<Args>(args)...);\n\
+    \ emplace(Args &&...args) {\n        que.emplace(std::forward<Args>(args)...);\n\
     \        return;\n    }\n\n    void remove(const T &x) {\n        rm_que.push(x);\n\
     \        assert(que.size() >= rm_que.size());\n        return;\n    }\n\n    template\
-    \ <class... Args> void emplace_remove(Args &&... args) {\n        rm_que.emplace(std::forward<Args>(args)...);\n\
+    \ <class... Args> void emplace_remove(Args &&...args) {\n        rm_que.emplace(std::forward<Args>(args)...);\n\
     \        assert(que.size() >= rm_que.size());\n        return;\n    }\n\n  private:\n\
     \    std::priority_queue<T, Container, Compare> que, rm_que;\n};\n\n}  // namespace\
     \ ebi\n"
@@ -45,10 +45,10 @@ data:
     \ que.top();\n    }\n\n    void pop() {\n        assert(!empty());\n        update();\n\
     \        que.pop();\n        return;\n    }\n\n    void push(const T &x) {\n \
     \       que.push(x);\n        return;\n    }\n\n    template <class... Args> void\
-    \ emplace(Args &&... args) {\n        que.emplace(std::forward<Args>(args)...);\n\
+    \ emplace(Args &&...args) {\n        que.emplace(std::forward<Args>(args)...);\n\
     \        return;\n    }\n\n    void remove(const T &x) {\n        rm_que.push(x);\n\
     \        assert(que.size() >= rm_que.size());\n        return;\n    }\n\n    template\
-    \ <class... Args> void emplace_remove(Args &&... args) {\n        rm_que.emplace(std::forward<Args>(args)...);\n\
+    \ <class... Args> void emplace_remove(Args &&...args) {\n        rm_que.emplace(std::forward<Args>(args)...);\n\
     \        assert(que.size() >= rm_que.size());\n        return;\n    }\n\n  private:\n\
     \    std::priority_queue<T, Container, Compare> que, rm_que;\n};\n\n}  // namespace\
     \ ebi"
@@ -56,7 +56,7 @@ data:
   isVerificationFile: false
   path: data_structure/removable_priority_queue.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/removable_priority_queue.hpp

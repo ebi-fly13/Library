@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: fps/fps.hpp
     title: Formal Power Series
   _extendedRequiredBy:
@@ -145,8 +145,8 @@ data:
   timestamp: '2023-10-08 16:46:18+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
 documentation_of: fps/multipoint_evaluation.hpp
 layout: document
 title: Multipoint Evaluation

@@ -20,11 +20,11 @@ data:
   bundledCode: "#line 1 \"test/math/Pow.test.cpp\"\n#define PROBLEM \\\r\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B\"\
     \r\n\r\n#include <iostream>\r\n\r\n#line 2 \"modint/montgomery_modint.hpp\"\n\n\
     #include <cstdint>\n#line 5 \"modint/montgomery_modint.hpp\"\n\n#line 2 \"modint/base.hpp\"\
-    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
-    \ T>\nconcept modint = requires (T a, T b) {\n    a + b;\n    a - b;\n    a *\
-    \ b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
-    \ mint>\nstd::istream &operator>>(std::istream &os, mint &a) {\n    long long\
-    \ x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a *b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate\
+    \ <modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
     std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
     \ a.val();\n}\n\n}  // namespace ebi\n#line 7 \"modint/montgomery_modint.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <int m> struct montgomery_modint {\n  private:\n\
@@ -91,7 +91,7 @@ data:
   isVerificationFile: true
   path: test/math/Pow.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Pow.test.cpp

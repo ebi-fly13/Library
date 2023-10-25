@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/queue_aggregation.hpp
     title: Sliding Window Aggregation (Queue)
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -49,9 +49,9 @@ data:
     \n        }\r\n    }\r\n\r\n  private:\r\n    std::stack<Node> _front, _back;\r\
     \n};\r\n\r\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"\
     modint/modint.hpp\"\n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
-    \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
-    \  a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream\
+    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept\
+    \ modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n\
+    \    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint> std::istream\
     \ &operator>>(std::istream &os, mint &a) {\n    long long x;\n    os >> x;\n \
     \   a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream\
     \ &os, const mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n\
@@ -135,8 +135,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Queue_Operate_All_Composite.test.cpp
 layout: document

@@ -95,9 +95,9 @@ data:
   timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/convolution/Subset_Convolution.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - test/convolution/Subset_Convolution.test.cpp
 documentation_of: convolution/subset_convolution.hpp
 layout: document
 title: Subset Convolution

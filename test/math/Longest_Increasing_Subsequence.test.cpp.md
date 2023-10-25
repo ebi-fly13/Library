@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/longest_increasing_subsequence.hpp
     title: LIS
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
@@ -31,22 +31,22 @@ data:
     }\n\n}  // namespace ebi\n#line 4 \"test/math/Longest_Increasing_Subsequence.test.cpp\"\
     \n\n#include <iostream>\n#line 7 \"test/math/Longest_Increasing_Subsequence.test.cpp\"\
     \n\nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<int> a(n);\n\
-    \    for(auto &x: a) std::cin >> x;\n    auto ans = ebi::LIS(a, true);\n    int\
-    \ k = ans.size();\n    std::cout << k << '\\n';\n    for(int i = 0; i < k; i++)\
-    \ {\n        std::cout << ans[i] << \" \\n\"[i == k-1];\n    }\n}\n"
+    \    for (auto &x : a) std::cin >> x;\n    auto ans = ebi::LIS(a, true);\n   \
+    \ int k = ans.size();\n    std::cout << k << '\\n';\n    for (int i = 0; i < k;\
+    \ i++) {\n        std::cout << ans[i] << \" \\n\"[i == k - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
     \n\n#include \"../../math/longest_increasing_subsequence.hpp\"\n\n#include <iostream>\n\
     #include <vector>\n\nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<int>\
-    \ a(n);\n    for(auto &x: a) std::cin >> x;\n    auto ans = ebi::LIS(a, true);\n\
-    \    int k = ans.size();\n    std::cout << k << '\\n';\n    for(int i = 0; i <\
-    \ k; i++) {\n        std::cout << ans[i] << \" \\n\"[i == k-1];\n    }\n}"
+    \ a(n);\n    for (auto &x : a) std::cin >> x;\n    auto ans = ebi::LIS(a, true);\n\
+    \    int k = ans.size();\n    std::cout << k << '\\n';\n    for (int i = 0; i\
+    \ < k; i++) {\n        std::cout << ans[i] << \" \\n\"[i == k - 1];\n    }\n}"
   dependsOn:
   - math/longest_increasing_subsequence.hpp
   isVerificationFile: true
   path: test/math/Longest_Increasing_Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 00:51:20+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Longest_Increasing_Subsequence.test.cpp
 layout: document

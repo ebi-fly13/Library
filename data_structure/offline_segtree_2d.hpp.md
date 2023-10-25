@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/compress.hpp
     title: Compress
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
     title: test/data_structure/Rectangle_Sum_Segtree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - http://codeforces.com/contest/893/submission/125531718
@@ -31,11 +31,11 @@ data:
     \    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n    }\n\
     \n    int get(const T &val) const {\n        return std::lower_bound(cp.begin(),\
     \ cp.end(), val) - cp.begin();\n    }\n\n    int size() const {\n        return\
-    \ cp.size();\n    }\n\n    bool find(const T& val) const {\n        auto itr =\
-    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if(itr == cp.end()) return\
-    \ false;\n        else return *itr == val;\n    }\n\n    T val(int idx) const\
-    \ {\n        assert(0 <= idx && idx < (int)cp.size());\n        return cp[idx];\n\
-    \    }\n};\n\n}  // namespace ebi\n#line 12 \"data_structure/offline_segtree_2d.hpp\"\
+    \ cp.size();\n    }\n\n    bool find(const T &val) const {\n        auto itr =\
+    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if (itr == cp.end())\n\
+    \            return false;\n        else\n            return *itr == val;\n  \
+    \  }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
+    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 12 \"data_structure/offline_segtree_2d.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class S, S (*op)(S, S), S (*e)(), class data_structure>\n\
     struct offline_segtree_2d {\n    offline_segtree_2d() = default;\n\n    void pre_set(std::pair<int,\
     \ int> p) {\n        ps.emplace_back(p);\n    }\n\n    void build() {\n      \
@@ -96,8 +96,8 @@ data:
   isVerificationFile: false
   path: data_structure/offline_segtree_2d.hpp
   requiredBy: []
-  timestamp: '2023-06-26 12:08:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/data_structure/Rectangle_Sum_Segtree.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/fenwick_tree.hpp
     title: fenwick tree
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
@@ -41,16 +41,16 @@ data:
     using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
     \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
     \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}\n#line 7 \"test/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
-    \n\r\nusing ebi::i64;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >>\
-    \ n >> q;\r\n    ebi::fenwick_tree<i64> fw(n);\r\n    for (int i = 0; i < n; i++)\
-    \ {\r\n        i64 a;\r\n        std::cin >> a;\r\n        fw.add(i, a);\r\n \
-    \   }\r\n    for (int i = 0; i < q; i++) {\r\n        int flag;\r\n        std::cin\
-    \ >> flag;\r\n        if (flag == 0) {\r\n            int p;\r\n            i64\
-    \ x;\r\n            std::cin >> p >> x;\r\n            fw.add(p, x);\r\n     \
-    \   } else {\r\n            int l, r;\r\n            std::cin >> l >> r;\r\n \
-    \           std::cout << fw.sum(l, r) << std::endl;\r\n        }\r\n    }\r\n\
-    }\n"
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 7 \"test/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\n\r\nusing ebi::i64;\r\
+    \n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::fenwick_tree<i64>\
+    \ fw(n);\r\n    for (int i = 0; i < n; i++) {\r\n        i64 a;\r\n        std::cin\
+    \ >> a;\r\n        fw.add(i, a);\r\n    }\r\n    for (int i = 0; i < q; i++) {\r\
+    \n        int flag;\r\n        std::cin >> flag;\r\n        if (flag == 0) {\r\
+    \n            int p;\r\n            i64 x;\r\n            std::cin >> p >> x;\r\
+    \n            fw.add(p, x);\r\n        } else {\r\n            int l, r;\r\n \
+    \           std::cin >> l >> r;\r\n            std::cout << fw.sum(l, r) << std::endl;\r\
+    \n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\r\
     \n\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/fenwick_tree.hpp\"\
     \r\n#include \"../../template/int_alias.hpp\"\r\n\r\nusing ebi::i64;\r\n\r\nint\
@@ -68,8 +68,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-09-10 00:45:18+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
 layout: document

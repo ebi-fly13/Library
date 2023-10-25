@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: fps/fps.hpp
     title: Formal Power Series
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/bernoulli_number.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\
@@ -101,25 +101,26 @@ data:
     \nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
     \ &)>\nFormalPowerSeries<mint, convolution> bernoulli_number_egf(int n) {\n  \
-    \  using FPS = FormalPowerSeries<mint, convolution>;\n    FPS f(n+1);\n    mint\
-    \ fact = 1;\n    for(int i = 2; i <= n+1; i++) fact *= i;\n    mint inv_fact =\
-    \ fact.inv();\n    for(int i = n; i >= 0; i--) {\n        f[i] = inv_fact;\n \
-    \       inv_fact *= i + 1;\n    }\n    return f.inv();\n}\n\n\n}\n"
+    \  using FPS = FormalPowerSeries<mint, convolution>;\n    FPS f(n + 1);\n    mint\
+    \ fact = 1;\n    for (int i = 2; i <= n + 1; i++) fact *= i;\n    mint inv_fact\
+    \ = fact.inv();\n    for (int i = n; i >= 0; i--) {\n        f[i] = inv_fact;\n\
+    \        inv_fact *= i + 1;\n    }\n    return f.inv();\n}\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
     \ <class mint, std::vector<mint> (*convolution)(\n                          const\
     \ std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution>\
     \ bernoulli_number_egf(int n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n\
-    \    FPS f(n+1);\n    mint fact = 1;\n    for(int i = 2; i <= n+1; i++) fact *=\
-    \ i;\n    mint inv_fact = fact.inv();\n    for(int i = n; i >= 0; i--) {\n   \
-    \     f[i] = inv_fact;\n        inv_fact *= i + 1;\n    }\n    return f.inv();\n\
-    }\n\n\n}"
+    \    FPS f(n + 1);\n    mint fact = 1;\n    for (int i = 2; i <= n + 1; i++) fact\
+    \ *= i;\n    mint inv_fact = fact.inv();\n    for (int i = n; i >= 0; i--) {\n\
+    \        f[i] = inv_fact;\n        inv_fact *= i + 1;\n    }\n    return f.inv();\n\
+    }\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
   isVerificationFile: false
   path: math/bernoulli_number.hpp
   requiredBy: []
-  timestamp: '2023-08-28 17:31:00+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/Berunoulli_Number.test.cpp
 documentation_of: math/bernoulli_number.hpp

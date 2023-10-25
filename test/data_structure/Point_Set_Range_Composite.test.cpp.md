@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/DynamicSegmentTree.hpp
     title: data_structure/DynamicSegmentTree.hpp
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -60,9 +60,9 @@ data:
     \n        }\r\n        return now->val;\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#include <cassert>\r\n#line 5 \"modint/modint.hpp\"\
     \n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint = requires (T a, T b)\
-    \ {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
-    \    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream &operator>>(std::istream\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nconcept modint = requires(T a, T b)\
+    \ {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n    a.val();\n\
+    \    a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
@@ -146,8 +146,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Point_Set_Range_Composite.test.cpp
 layout: document

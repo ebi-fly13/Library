@@ -47,21 +47,21 @@ data:
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
     \ return 3;\n    if (m == 880803841) return 26;\n    if (m == 924844033) return\
     \ 5;\n    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\n#line 5 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nint bit_reverse(int\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a *b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate\
+    \ <modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\n\
+    #line 5 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nint bit_reverse(int\
     \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
     \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
     \ rev_n;\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n\
-    }\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
-    \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
-    \  a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream\
-    \ &operator>>(std::istream &os, mint &a) {\n    long long x;\n    os >> x;\n \
-    \   a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n\
-    #line 12 \"convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\n\
-    template <modint mint, int g = internal::primitive_root<mint::mod()>>\nstruct\
-    \ ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
+    }\n\n}  // namespace ebi\n#line 12 \"convolution/ntt.hpp\"\n\nnamespace ebi {\n\
+    \nnamespace internal {\n\ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\n\
+    struct ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
     \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
     \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
     \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
@@ -158,7 +158,7 @@ data:
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
     \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"convolution/convolution_mod_2_64.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate<modint mint>\nstd::vector<mint>\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <modint mint>\nstd::vector<mint>\
     \ multiply_uint64_t(const std::vector<std::uint64_t>& f,\n                   \
     \                 const std::vector<std::uint64_t>& g) {\n    std::vector<mint>\
     \ a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n    for (auto x :\
@@ -279,15 +279,15 @@ data:
   - convolution/convolution_mod_2_64.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
-  - utility/bit_operator.hpp
   - modint/base.hpp
+  - utility/bit_operator.hpp
   - modint/modint.hpp
   - graph/template.hpp
   - tree/centroid_decomposition.hpp
   isVerificationFile: true
   path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/Frequency_Table_of_Tree_Distance.test.cpp

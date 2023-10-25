@@ -25,14 +25,13 @@ data:
     links:
     - https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
   bundledCode: "#line 2 \"string/rolling_hash.hpp\"\n\r\n#include <array>\r\n#include\
-    \ <cassert>\r\n#include <cstdint>\r\n#include <vector>\r\n\r\n#line 2 \"utility/hash.hpp\"\
-    \n\n#line 4 \"utility/hash.hpp\"\n\n#line 2 \"modint/modint61.hpp\"\n\n#line 5\
-    \ \"modint/modint61.hpp\"\n#include <iostream>\n\n#line 2 \"modint/base.hpp\"\n\
-    \n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
-    \ T>\nconcept modint = requires (T a, T b) {\n    a + b;\n    a - b;\n    a *\
-    \ b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
-    \ mint>\nstd::istream &operator>>(std::istream &os, mint &a) {\n    long long\
-    \ x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
+    \ <cassert>\r\n#include <cstdint>\r\n#include <vector>\r\n\r\n#line 2 \"modint/modint61.hpp\"\
+    \n\n#line 5 \"modint/modint61.hpp\"\n#include <iostream>\n\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a *b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate\
+    \ <modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
     std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
     \ a.val();\n}\n\n}  // namespace ebi\n#line 8 \"modint/modint61.hpp\"\n\nnamespace\
     \ ebi {\n\nstruct modint61 {\n  private:\n    using mint = modint61;\n    using\
@@ -75,15 +74,15 @@ data:
     \       return m;\n    }\n\n    constexpr u64 safe_mod(const u64 &a) {\n     \
     \   u64 au = a >> 61;\n        u64 ad = a & umod();\n        u64 res = au + ad;\n\
     \        if (res >= umod()) res -= umod();\n        return res;\n    }\n};\n\n\
-    }  // namespace ebi\n#line 2 \"utility/random_number_generator_64.hpp\"\n\r\n\
-    #line 4 \"utility/random_number_generator_64.hpp\"\n#include <random>\r\n\r\n\
-    namespace ebi {\r\n\r\nstruct random_number_generator_64 {\r\n  private:\r\n \
-    \   using u64 = std::uint64_t;\r\n    std::random_device rnd;\r\n    std::mt19937_64\
-    \ mt;\r\n\r\n  public:\r\n    random_number_generator_64() : mt(rnd()) {}\r\n\r\
-    \n    u64 get(u64 a, u64 b) {\r\n        std::uniform_int_distribution<u64> dist(a,\
-    \ b - 1);\r\n        return dist(mt);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
-    #line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM> struct\
-    \ Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
+    }  // namespace ebi\n#line 2 \"utility/hash.hpp\"\n\n#line 4 \"utility/hash.hpp\"\
+    \n\n#line 2 \"utility/random_number_generator_64.hpp\"\n\r\n#line 4 \"utility/random_number_generator_64.hpp\"\
+    \n#include <random>\r\n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator_64\
+    \ {\r\n  private:\r\n    using u64 = std::uint64_t;\r\n    std::random_device\
+    \ rnd;\r\n    std::mt19937_64 mt;\r\n\r\n  public:\r\n    random_number_generator_64()\
+    \ : mt(rnd()) {}\r\n\r\n    u64 get(u64 a, u64 b) {\r\n        std::uniform_int_distribution<u64>\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ ebi\n#line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM>\
+    \ struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
     \ BASE_NUM>::array;\n    using std::array<modint61, BASE_NUM>::operator=;\n\n\
     \  public:\n    Hash() : std::array<modint61, BASE_NUM>() {}\n\n    constexpr\
     \ static Hash set(const modint61 &a) {\n        Hash res;\n        std::fill(res.begin(),\
@@ -113,7 +112,7 @@ data:
     \n    static Hash get_basis() {\n        static random_number_generator_64 rng;\n\
     \        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n            h[i]\
     \ = rng.get(0, modint61::mod() - 1) + 1;\n        }\n        return h;\n    }\n\
-    \n    Hash inv() const {\n        Hash h;\n        for(int i = 0; i < BASE_NUM;\
+    \n    Hash inv() const {\n        Hash h;\n        for (int i = 0; i < BASE_NUM;\
     \ i++) {\n            h[i] = (*this)[i].inv();\n        }\n        return h;\n\
     \    }\n\n    static Hash get_basis_primitive() {\n        static random_number_generator_64\
     \ rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n      \
@@ -167,8 +166,8 @@ data:
     \ rolling_hash<n>::base = {};\r\ntemplate <int n> std::vector<Hash<n>> rolling_hash<n>::base_pow\
     \ = {};\r\n\r\n}  // namespace ebi\r\n"
   code: "#pragma once\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <cstdint>\r\
-    \n#include <vector>\r\n\r\n#include \"../utility/hash.hpp\"\r\n#include \"../modint/modint61.hpp\"\
-    \r\n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
+    \n#include <vector>\r\n\r\n#include \"../modint/modint61.hpp\"\r\n#include \"\
+    ../utility/hash.hpp\"\r\n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n> struct rolling_hash {\r\n\
     \  private:\r\n    static constexpr int h = 100;\r\n\r\n    using Self = rolling_hash<n>;\r\
     \n\r\n    static void expand(int m) {\r\n        int now = base_pow.size();\r\n\
@@ -212,14 +211,14 @@ data:
     \ rolling_hash<n>::base = {};\r\ntemplate <int n> std::vector<Hash<n>> rolling_hash<n>::base_pow\
     \ = {};\r\n\r\n}  // namespace ebi\r\n"
   dependsOn:
-  - utility/hash.hpp
   - modint/modint61.hpp
   - modint/base.hpp
+  - utility/hash.hpp
   - utility/random_number_generator_64.hpp
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp

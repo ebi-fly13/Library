@@ -55,17 +55,17 @@ data:
     \    for (int i = 0; i < n; i++) {\n        ra[i] *= rb[i];\n    }\n    return\
     \ superset_mobius(ra);\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
     \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 2 \"modint/base.hpp\"\n\n#include\
-    \ <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
-    \ T>\nconcept modint = requires (T a, T b) {\n    a + b;\n    a - b;\n    a *\
-    \ b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
-    \ mint>\nstd::istream &operator>>(std::istream &os, mint &a) {\n    long long\
-    \ x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
-    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
-    \ a.val();\n}\n\n}  // namespace ebi\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
-    \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
-    \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
-    \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
+    \ <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n\
+    \    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
+    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
+    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
+    }\n\n}  // namespace ebi\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\
+    \n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using modint\
+    \ = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\n  \
+    \      return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\n\
+    \        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
     \    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
     \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
     \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
@@ -134,7 +134,7 @@ data:
   isVerificationFile: true
   path: test/convolution/Bitwise_And_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Bitwise_And_Convolution.test.cpp

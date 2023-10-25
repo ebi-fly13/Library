@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: algorithm/mo_algorithm.hpp
     title: algorithm/mo_algorithm.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/compress.hpp
     title: Compress
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/fenwick_tree.hpp
     title: fenwick tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
@@ -47,11 +47,11 @@ data:
     \    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n    }\n\
     \n    int get(const T &val) const {\n        return std::lower_bound(cp.begin(),\
     \ cp.end(), val) - cp.begin();\n    }\n\n    int size() const {\n        return\
-    \ cp.size();\n    }\n\n    bool find(const T& val) const {\n        auto itr =\
-    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if(itr == cp.end()) return\
-    \ false;\n        else return *itr == val;\n    }\n\n    T val(int idx) const\
-    \ {\n        assert(0 <= idx && idx < (int)cp.size());\n        return cp[idx];\n\
-    \    }\n};\n\n}  // namespace ebi\n#line 2 \"data_structure/fenwick_tree.hpp\"\
+    \ cp.size();\n    }\n\n    bool find(const T &val) const {\n        auto itr =\
+    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if (itr == cp.end())\n\
+    \            return false;\n        else\n            return *itr == val;\n  \
+    \  }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
+    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 2 \"data_structure/fenwick_tree.hpp\"\
     \n\r\n#line 5 \"data_structure/fenwick_tree.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
     template <class T> struct fenwick_tree {\r\n  private:\r\n    int n;\r\n    std::vector<T>\
     \ data;\r\n\r\n  public:\r\n    fenwick_tree(int _n) : n(_n), data(std::vector<T>(_n\
@@ -117,8 +117,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Static_Range_Inversion_Query.test.cpp
   requiredBy: []
-  timestamp: '2023-09-10 00:45:18+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Static_Range_Inversion_Query.test.cpp
 layout: document

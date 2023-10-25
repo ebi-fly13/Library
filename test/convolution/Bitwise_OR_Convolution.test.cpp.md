@@ -55,9 +55,9 @@ data:
     \ *= rb[i];\n    }\n    return subset_mobius(ra);\n}\n\n}  // namespace ebi\n\
     #line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 2\
     \ \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\n\
-    namespace ebi {\n\ntemplate<class T>\nconcept modint = requires (T a, T b) {\n\
-    \    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
-    \    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream &operator>>(std::istream\
+    namespace ebi {\n\ntemplate <class T>\nconcept modint = requires(T a, T b) {\n\
+    \    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n    a.val();\n \
+    \   a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
@@ -135,7 +135,7 @@ data:
   isVerificationFile: true
   path: test/convolution/Bitwise_OR_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Bitwise_OR_Convolution.test.cpp

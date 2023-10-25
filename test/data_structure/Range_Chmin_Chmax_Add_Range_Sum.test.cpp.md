@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/SegmentTreeBeats.hpp
     title: data_structure/SegmentTreeBeats.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum
@@ -16,7 +16,7 @@ data:
     - https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum
   bundledCode: "#line 1 \"test/data_structure/Range_Chmin_Chmax_Add_Range_Sum.test.cpp\"\
     \n#define PROBLEM \\\r\n    \"https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum\"\
-    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n#include <cstdint>\r\n\r\n\
+    \r\n\r\n#include <cstdint>\r\n#include <iostream>\r\n#include <vector>\r\n\r\n\
     #line 2 \"data_structure/SegmentTreeBeats.hpp\"\n\r\n#include <algorithm>\r\n\
     #include <limits>\r\n#line 6 \"data_structure/SegmentTreeBeats.hpp\"\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate <class S> struct SegmentTreeBeats {\r\n  private:\r\n\
@@ -110,7 +110,7 @@ data:
     \n            std::cout << seg.prod(l, r) << std::endl;\r\n        }\r\n    }\r\
     \n}\n"
   code: "#define PROBLEM \\\r\n    \"https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum\"\
-    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n#include <cstdint>\r\n\r\n\
+    \r\n\r\n#include <cstdint>\r\n#include <iostream>\r\n#include <vector>\r\n\r\n\
     #include \"../../data_structure/SegmentTreeBeats.hpp\"\r\n\r\nusing i64 = std::int64_t;\r\
     \nusing S = i64;\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >>\
     \ q;\r\n    std::vector<i64> a(n);\r\n    for (int i = 0; i < n; i++) {\r\n  \
@@ -129,8 +129,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Chmin_Chmax_Add_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 14:52:04+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Range_Chmin_Chmax_Add_Range_Sum.test.cpp
 layout: document

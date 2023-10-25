@@ -6,26 +6,35 @@ data:
     title: modint/base.hpp
   _extendedRequiredBy:
   - icon: ':x:'
+    path: fps/fps_sqrt.hpp
+    title: $\sqrt{f}$
+  - icon: ':x:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':x:'
     path: test/math/Sqrt_Mod.test.cpp
     title: test/math/Sqrt_Mod.test.cpp
+  - icon: ':x:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/dynamic_modint.hpp\"\n\n#include <cassert>\n\n#line\
     \ 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\nnamespace\
-    \ ebi {\n\ntemplate<class T>\nconcept modint = requires (T a, T b) {\n    a +\
-    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n\
-    };\n\ntemplate <modint mint>\nstd::istream &operator>>(std::istream &os, mint\
-    \ &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
+    \ ebi {\n\ntemplate <class T>\nconcept modint = requires(T a, T b) {\n    a +\
+    \ b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n\
+    };\n\ntemplate <modint mint> std::istream &operator>>(std::istream &os, mint &a)\
+    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
     \ <modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
     \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 6 \"modint/dynamic_modint.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint {\n  private:\n\
@@ -106,12 +115,15 @@ data:
   isVerificationFile: false
   path: modint/dynamic_modint.hpp
   requiredBy:
+  - fps/fps_sqrt.hpp
   - math/mod_sqrt.hpp
-  timestamp: '2023-10-26 02:17:54+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/math/Sqrt_Mod.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 documentation_of: modint/dynamic_modint.hpp
 layout: document
 redirect_from:

@@ -32,11 +32,11 @@ data:
     \n\n#line 4 \"tree/rooted_tree_hash.hpp\"\n\n#line 2 \"utility/hash.hpp\"\n\n\
     #include <array>\n\n#line 2 \"modint/modint61.hpp\"\n\n#include <cassert>\n#include\
     \ <cstdint>\n#line 6 \"modint/modint61.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n\
-    #include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class\
-    \ T>\nconcept modint = requires (T a, T b) {\n    a + b;\n    a - b;\n    a *\
-    \ b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
-    \ mint>\nstd::istream &operator>>(std::istream &os, mint &a) {\n    long long\
-    \ x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
+    #include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a *b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate\
+    \ <modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
     std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
     \ a.val();\n}\n\n}  // namespace ebi\n#line 8 \"modint/modint61.hpp\"\n\nnamespace\
     \ ebi {\n\nstruct modint61 {\n  private:\n    using mint = modint61;\n    using\
@@ -117,7 +117,7 @@ data:
     \n    static Hash get_basis() {\n        static random_number_generator_64 rng;\n\
     \        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n            h[i]\
     \ = rng.get(0, modint61::mod() - 1) + 1;\n        }\n        return h;\n    }\n\
-    \n    Hash inv() const {\n        Hash h;\n        for(int i = 0; i < BASE_NUM;\
+    \n    Hash inv() const {\n        Hash h;\n        for (int i = 0; i < BASE_NUM;\
     \ i++) {\n            h[i] = (*this)[i].inv();\n        }\n        return h;\n\
     \    }\n\n    static Hash get_basis_primitive() {\n        static random_number_generator_64\
     \ rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n      \
@@ -171,7 +171,7 @@ data:
   isVerificationFile: true
   path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp

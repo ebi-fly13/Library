@@ -59,9 +59,9 @@ data:
     \ _back.top().fold);\n        }\n    }\n\n  private:\n    std::stack<Node> _front,\
     \ _back;\n};\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line\
     \ 5 \"modint/modint.hpp\"\n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
-    \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
-    \  a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream\
+    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept\
+    \ modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n\
+    \    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint> std::istream\
     \ &operator>>(std::istream &os, mint &a) {\n    long long x;\n    os >> x;\n \
     \   a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream\
     \ &os, const mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n\
@@ -147,7 +147,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Deque_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Deque_Operate_All_Composite.test.cpp

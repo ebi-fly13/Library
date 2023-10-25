@@ -3,17 +3,17 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/convex_hull.test.cpp
     title: test/geometry/convex_hull.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://atcoder.jp/contests/typical90/submissions/24974484
-  bundledCode: "#line 2 \"geometry/convex_hull.hpp\"\n\r\n#include <vector>\r\n#include\
-    \ <algorithm>\r\n\r\n/*\r\n    reference: \u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\
+  bundledCode: "#line 2 \"geometry/convex_hull.hpp\"\n\r\n#include <algorithm>\r\n\
+    #include <vector>\r\n\r\n/*\r\n    reference: \u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\
     \u30B0\u30B3\u30F3\u30C6\u30B9\u30C8\u30C1\u30E3\u30EC\u30F3\u30B8\u30D6\u30C3\
     \u30AF \u7B2C2\u7248 p234\r\n    verify:    https://atcoder.jp/contests/typical90/submissions/24974484\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct Point {\r\n    T\
@@ -40,7 +40,7 @@ data:
     \ ch(k1 + k2 - 2);\r\n    for (int i = 0; i < k1; i++) {\r\n        ch[i] = g1[i];\r\
     \n    }\r\n    for (int i = k2 - 2; i > 0; i--) {\r\n        ch[k1 + k2 - i -\
     \ 2] = g2[i];\r\n    }\r\n    return ch;\r\n}\r\n\r\n}  // namespace ebi\n"
-  code: "#pragma once\r\n\r\n#include <vector>\r\n#include <algorithm>\r\n\r\n/*\r\
+  code: "#pragma once\r\n\r\n#include <algorithm>\r\n#include <vector>\r\n\r\n/*\r\
     \n    reference: \u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u30B3\u30F3\u30C6\u30B9\
     \u30C8\u30C1\u30E3\u30EC\u30F3\u30B8\u30D6\u30C3\u30AF \u7B2C2\u7248 p234\r\n\
     \    verify:    https://atcoder.jp/contests/typical90/submissions/24974484\r\n\
@@ -72,8 +72,8 @@ data:
   isVerificationFile: false
   path: geometry/convex_hull.hpp
   requiredBy: []
-  timestamp: '2023-05-08 18:41:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/convex_hull.test.cpp
 documentation_of: geometry/convex_hull.hpp

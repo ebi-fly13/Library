@@ -38,39 +38,39 @@ data:
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
     \ return 3;\n    if (m == 880803841) return 26;\n    if (m == 924844033) return\
     \ 5;\n    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\n#line 5 \"utility/bit_operator.hpp\"\n\nnamespace ebi {\n\nint bit_reverse(int\
-    \ n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++)\
-    \ {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return\
-    \ rev_n;\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n\
-    }\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #include <iostream>\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint =\
-    \ requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n\
-    \    a.val();\n    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 12 \"\
-    convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <modint\
-    \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
-    \  static constexpr int rank2 = std::countr_zero(uint(mint::mod() - 1));\n\n \
-    \   std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2]\
-    \ = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2] = root[rank2].inv();\n\
-    \        for (int i = rank2 - 1; i >= 0; i--) {\n            root[i] = root[i\
-    \ + 1] * root[i + 1];\n            inv_root[i] = inv_root[i + 1] * inv_root[i\
-    \ + 1];\n        }\n    }\n};\n\ntemplate <modint mint> void butterfly(std::vector<mint>&\
-    \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
-    \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
-    \    // bit reverse\n    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i,\
-    \ bit_size);\n        if (i < rev) {\n            std::swap(a[i], a[rev]);\n \
-    \       }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n        for\
-    \ (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1 = 1;\n\
-    \            mint zeta2 = info.root[1];\n            for (int j = 0; j < (1 <<\
-    \ bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n        \
-    \        int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n    \
-    \            mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n  \
-    \              a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
-    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
-    \ }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#include <iostream>\n\nnamespace ebi {\n\ntemplate <class\
+    \ T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n\
+    \    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
+    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
+    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
+    }\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\n#line 5 \"utility/bit_operator.hpp\"\
+    \n\nnamespace ebi {\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n =\
+    \ 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1)\
+    \ << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint msb(int x) {\n  \
+    \  return (x == 0) ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n}\n\n}  //\
+    \ namespace ebi\n#line 12 \"convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace\
+    \ internal {\n\ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\n\
+    struct ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
+    \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
+    \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
+    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
+    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
+    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <modint mint> void\
+    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
+    \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
+    \   assert(n == (int)std::bit_ceil(a.size()));\n    // bit reverse\n    for (int\
+    \ i = 0; i < n; i++) {\n        int rev = bit_reverse(i, bit_size);\n        if\
+    \ (i < rev) {\n            std::swap(a[i], a[rev]);\n        }\n    }\n\n    for\
+    \ (int bit = 0; bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 <<\
+    \ (bit + 1)); i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n\
+    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
+    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
+    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
+    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
+    \                zeta1 *= info.root[bit + 1];\n                zeta2 *= info.root[bit\
+    \ + 1];\n            }\n        }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
     \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
     \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
     \    // bit reverse\n    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i,\
@@ -149,7 +149,7 @@ data:
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
     \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"convolution/convolution_mod_2_64.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate<modint mint>\nstd::vector<mint>\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <modint mint>\nstd::vector<mint>\
     \ multiply_uint64_t(const std::vector<std::uint64_t>& f,\n                   \
     \                 const std::vector<std::uint64_t>& g) {\n    std::vector<mint>\
     \ a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n    for (auto x :\
@@ -181,8 +181,8 @@ data:
     \               .val();\n        res[i] = x0 + m0 * (x1 + m1 * (x2 + m2 * (x3\
     \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cstdint>\n#include <vector>\n\n#include \"../convolution/ntt.hpp\"\
-    \n#include \"../modint/modint.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\ntemplate<modint mint>\nstd::vector<mint> multiply_uint64_t(const\
+    \n#include \"../modint/base.hpp\"\n#include \"../modint/modint.hpp\"\n\nnamespace\
+    \ ebi {\n\nnamespace internal {\n\ntemplate <modint mint>\nstd::vector<mint> multiply_uint64_t(const\
     \ std::vector<std::uint64_t>& f,\n                                    const std::vector<std::uint64_t>&\
     \ g) {\n    std::vector<mint> a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n\
     \    for (auto x : f) a.emplace_back(x % mint::mod());\n    for (auto x : g) b.emplace_back(x\
@@ -215,17 +215,17 @@ data:
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
-  - utility/bit_operator.hpp
   - modint/base.hpp
+  - utility/bit_operator.hpp
   - modint/modint.hpp
   isVerificationFile: false
   path: convolution/convolution_mod_2_64.hpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - test/convolution/Convolution_Mod_2_64.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
 documentation_of: convolution/convolution_mod_2_64.hpp
 layout: document
 title: Convolution $\pmod{2^{64}}$

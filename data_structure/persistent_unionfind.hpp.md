@@ -1,24 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/persistent_array.hpp
     title: data_structure/persistent_array.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Persistent_Unionfind.test.cpp
     title: test/data_structure/Persistent_Unionfind.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/persistent_unionfind.hpp\"\n\r\n#line 2 \"\
-    data_structure/persistent_array.hpp\"\n\r\n#include <cassert>\r\n#include <cstdint>\r\
-    \n#include <memory>\r\n#include <vector>\r\n\r\n/*\r\n    reference: https://37zigen.com/persistent-array/\r\
-    \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class T, std::size_t m> struct persistent_array\
-    \ {\r\n  private:\r\n    struct Node;\r\n    using node_ptr = std::shared_ptr<Node>;\r\
+  bundledCode: "#line 2 \"data_structure/persistent_unionfind.hpp\"\n\r\n#include\
+    \ <cstdint>\r\n#include <memory>\r\n#include <vector>\r\n\r\n#line 2 \"data_structure/persistent_array.hpp\"\
+    \n\r\n#include <cassert>\r\n#line 7 \"data_structure/persistent_array.hpp\"\n\r\
+    \n/*\r\n    reference: https://37zigen.com/persistent-array/\r\n*/\r\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <class T, std::size_t m> struct persistent_array {\r\n\
+    \  private:\r\n    struct Node;\r\n    using node_ptr = std::shared_ptr<Node>;\r\
     \n    using size_t = std::size_t;\r\n    struct Node {\r\n        T val;\r\n \
     \       std::vector<node_ptr> chr;\r\n        Node(T val, std::vector<node_ptr>\
     \ chr = std::vector<node_ptr>(m))\r\n            : val(val), chr(chr) {}\r\n \
@@ -64,9 +65,25 @@ data:
     \      while (i > 0) {\r\n            p = p->chr[i % m];\r\n            node->chr[i\
     \ % m] = std::make_shared<Node>(p->val, p->chr);\r\n            node = node->chr[i\
     \ % m];\r\n            i /= m;\r\n        }\r\n        node->val = rhs;\r\n  \
-    \  }\r\n};\r\n\r\n}  // namespace ebi\n#line 4 \"data_structure/persistent_unionfind.hpp\"\
-    \n\r\n#line 8 \"data_structure/persistent_unionfind.hpp\"\n\r\nnamespace ebi {\r\
-    \n\r\nstruct persistent_unionfind {\r\n  private:\r\n    using size_t = std::size_t;\r\
+    \  }\r\n};\r\n\r\n}  // namespace ebi\n#line 8 \"data_structure/persistent_unionfind.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nstruct persistent_unionfind {\r\n  private:\r\n \
+    \   using size_t = std::size_t;\r\n    persistent_array<int, 64> par;\r\n\r\n\
+    \  public:\r\n    persistent_unionfind(size_t n) : par(std::vector<int>(n, -1))\
+    \ {}\r\n\r\n    int leader(int x, int time = -1) {\r\n        int val = par.get(x,\
+    \ time);\r\n        if (val < 0)\r\n            return x;\r\n        else\r\n\
+    \            return leader(val, time);\r\n    }\r\n\r\n    bool merge(int x, int\
+    \ y, int time = -1) {\r\n        x = leader(x, time);\r\n        y = leader(y,\
+    \ time);\r\n        if (x == y) {\r\n            par.set(0, par.get(0));\r\n \
+    \           return false;\r\n        }\r\n        int val_x = par.get(x, time);\r\
+    \n        int val_y = par.get(y, time);\r\n        if (val_x > val_y) std::swap(x,\
+    \ y);\r\n        par.set(x, val_x + val_y, time);\r\n        par.update(y, x);\r\
+    \n        return true;\r\n    }\r\n\r\n    bool same(int x, int y, int time =\
+    \ -1) {\r\n        return leader(x, time) == leader(y, time);\r\n    }\r\n\r\n\
+    \    int size(int x, int time = -1) {\r\n        return -par.get(leader(x, time));\r\
+    \n    }\r\n};\r\n\r\n}  // namespace ebi\n"
+  code: "#pragma once\r\n\r\n#include <cstdint>\r\n#include <memory>\r\n#include <vector>\r\
+    \n\r\n#include \"../data_structure/persistent_array.hpp\"\r\n\r\nnamespace ebi\
+    \ {\r\n\r\nstruct persistent_unionfind {\r\n  private:\r\n    using size_t = std::size_t;\r\
     \n    persistent_array<int, 64> par;\r\n\r\n  public:\r\n    persistent_unionfind(size_t\
     \ n) : par(std::vector<int>(n, -1)) {}\r\n\r\n    int leader(int x, int time =\
     \ -1) {\r\n        int val = par.get(x, time);\r\n        if (val < 0)\r\n   \
@@ -80,31 +97,14 @@ data:
     \    bool same(int x, int y, int time = -1) {\r\n        return leader(x, time)\
     \ == leader(y, time);\r\n    }\r\n\r\n    int size(int x, int time = -1) {\r\n\
     \        return -par.get(leader(x, time));\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n"
-  code: "#pragma once\r\n\r\n#include \"../data_structure/persistent_array.hpp\"\r\
-    \n\r\n#include <cstdint>\r\n#include <memory>\r\n#include <vector>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\nstruct persistent_unionfind {\r\n  private:\r\n    using size_t\
-    \ = std::size_t;\r\n    persistent_array<int, 64> par;\r\n\r\n  public:\r\n  \
-    \  persistent_unionfind(size_t n) : par(std::vector<int>(n, -1)) {}\r\n\r\n  \
-    \  int leader(int x, int time = -1) {\r\n        int val = par.get(x, time);\r\
-    \n        if (val < 0)\r\n            return x;\r\n        else\r\n          \
-    \  return leader(val, time);\r\n    }\r\n\r\n    bool merge(int x, int y, int\
-    \ time = -1) {\r\n        x = leader(x, time);\r\n        y = leader(y, time);\r\
-    \n        if (x == y) {\r\n            par.set(0, par.get(0));\r\n           \
-    \ return false;\r\n        }\r\n        int val_x = par.get(x, time);\r\n    \
-    \    int val_y = par.get(y, time);\r\n        if (val_x > val_y) std::swap(x,\
-    \ y);\r\n        par.set(x, val_x + val_y, time);\r\n        par.update(y, x);\r\
-    \n        return true;\r\n    }\r\n\r\n    bool same(int x, int y, int time =\
-    \ -1) {\r\n        return leader(x, time) == leader(y, time);\r\n    }\r\n\r\n\
-    \    int size(int x, int time = -1) {\r\n        return -par.get(leader(x, time));\r\
-    \n    }\r\n};\r\n\r\n}  // namespace ebi"
+    \ ebi"
   dependsOn:
   - data_structure/persistent_array.hpp
   isVerificationFile: false
   path: data_structure/persistent_unionfind.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/data_structure/Persistent_Unionfind.test.cpp
 documentation_of: data_structure/persistent_unionfind.hpp

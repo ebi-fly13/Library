@@ -6,22 +6,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html
   bundledCode: "#line 2 \"data_structure/lazy_segtree.hpp\"\n\r\n/*\r\n    reference:\r\
     \n   https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html\r\
-    \n*/\r\n\r\n#include <cassert>\r\n#include <ranges>\r\n#include <vector>\r\n#include\
-    \ <bit>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)(),\
+    \n*/\r\n\r\n#include <bit>\r\n#include <cassert>\r\n#include <ranges>\r\n#include\
+    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)(),\
     \ class F, S (*mapping)(F, S),\r\n          F (*composition)(F, F), F (*id)()>\r\
     \nstruct lazy_segtree {\r\n  private:\r\n    void update(int i) {\r\n        data[i]\
     \ = op(data[2 * i], data[2 * i + 1]);\r\n    }\r\n\r\n    void all_apply(int k,\
@@ -88,8 +88,8 @@ data:
     \ n, sz, lg2;\r\n    std::vector<S> data;\r\n    std::vector<F> lazy;\r\n};\r\n\
     \r\n}  // namespace ebi\r\n"
   code: "#pragma once\r\n\r\n/*\r\n    reference:\r\n   https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html\r\
-    \n*/\r\n\r\n#include <cassert>\r\n#include <ranges>\r\n#include <vector>\r\n#include\
-    \ <bit>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)(),\
+    \n*/\r\n\r\n#include <bit>\r\n#include <cassert>\r\n#include <ranges>\r\n#include\
+    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)(),\
     \ class F, S (*mapping)(F, S),\r\n          F (*composition)(F, F), F (*id)()>\r\
     \nstruct lazy_segtree {\r\n  private:\r\n    void update(int i) {\r\n        data[i]\
     \ = op(data[2 * i], data[2 * i + 1]);\r\n    }\r\n\r\n    void all_apply(int k,\
@@ -159,11 +159,11 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2023-10-22 19:43:25+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/aoj_2450.test.cpp
   - test/yuki/yuki_2439.test.cpp
+  - test/aoj/aoj_2450.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
 documentation_of: data_structure/lazy_segtree.hpp
 layout: document

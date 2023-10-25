@@ -9,10 +9,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':x:'
@@ -27,7 +27,7 @@ data:
   - icon: ':x:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
   _isVerificationFailed: true
@@ -42,30 +42,31 @@ data:
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
     \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
-    \ :\";\n    debug_out(t...);\n}\n\n}\n"
+    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <iostream>\n\nnamespace ebi {\n\n#ifdef LOCAL\n\
     #define debug(...)                                                      \\\n \
     \   std::cerr << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\",\
     \ \\\n        debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid\
     \ debug_out() {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename...\
     \ Tail> void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n  \
-    \  if (sizeof...(t) > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}"
+    \  if (sizeof...(t) > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  //\
+    \ namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: template/debug_template.hpp
   requiredBy:
   - template/template.hpp
-  timestamp: '2023-08-10 23:52:27+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/aoj_2450.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/yuki/yuki_2439.test.cpp
   - test/yuki/yuki_1145.test.cpp
-  - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/aoj/aoj_2450.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
 documentation_of: template/debug_template.hpp
 layout: document
 redirect_from:

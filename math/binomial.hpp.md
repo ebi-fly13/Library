@@ -10,6 +10,9 @@ data:
     title: Stirling Numbers of the First Kind
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_3361.test.cpp
+    title: test/aoj/aoj_3361.test.cpp
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':x:'
@@ -78,15 +81,16 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
-  - math/stirling_number_1st.hpp
   - fps/taylor_shift.hpp
+  - math/stirling_number_1st.hpp
   timestamp: '2023-10-26 00:53:52+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/yuki_1302.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/aoj/aoj_3361.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 title: Binomial Coefficient

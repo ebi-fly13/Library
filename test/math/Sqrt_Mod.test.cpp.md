@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   _extendedRequiredBy: []
@@ -24,9 +24,9 @@ data:
     \n\n#include <iostream>\n\n#line 2 \"math/mod_sqrt.hpp\"\n\n#include <cstdint>\n\
     #include <optional>\n\n#line 2 \"modint/dynamic_modint.hpp\"\n\n#include <cassert>\n\
     \n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint = requires (T a, T b)\
-    \ {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
-    \    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream &operator>>(std::istream\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nconcept modint = requires(T a, T b)\
+    \ {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n    a.val();\n\
+    \    a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 6 \"\
@@ -95,7 +95,7 @@ data:
   isVerificationFile: true
   path: test/math/Sqrt_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Sqrt_Mod.test.cpp

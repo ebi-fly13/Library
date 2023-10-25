@@ -10,7 +10,7 @@ data:
   - icon: ':x:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':question:'
+  - icon: ':x:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
@@ -32,32 +32,33 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/" "compositional_inverse_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series
+    - https://judge.yosupo.jp/problem/
   bundledCode: "#line 1 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
-    \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series\"\
-    \n\n#include <iostream>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n\
-    #include <array>\n#include <bit>\n#include <cassert>\n#include <vector>\n\n#line\
-    \ 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
-    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
-    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n    if (m == 880803841) return 26;\n    if (m == 924844033) return\
-    \ 5;\n    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\n#line 4 \"utility/bit_operator.hpp\"\n#include <cstdint>\n\nnamespace ebi\
-    \ {\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
-    \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
-    \ i - 1);\n    }\n    return rev_n;\n}\n\nint msb(int x) {\n    return (x == 0)\
-    \ ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n}\n\n}  // namespace ebi\n\
-    #line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint = requires (T a, T b)\
-    \ {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
-    \    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 12 \"\
+    \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/\"\
+    \ \\\n    \"compositional_inverse_of_formal_power_series\"\n\n#include <iostream>\n\
+    \n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include <array>\n\
+    #include <bit>\n#include <cassert>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\
+    \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
+    \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
+    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
+    \ (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n    return -1;\n\
+    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a *b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate\
+    \ <modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\n\
+    #line 4 \"utility/bit_operator.hpp\"\n#include <cstdint>\n\nnamespace ebi {\n\n\
+    int bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int i = 0;\
+    \ i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size - i - 1);\n\
+    \    }\n    return rev_n;\n}\n\nint msb(int x) {\n    return (x == 0) ? -1 : 31\
+    \ - std::countl_zero(std::uint32_t(x));\n}\n\n}  // namespace ebi\n#line 12 \"\
     convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <modint\
     \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
     \  static constexpr int rank2 = std::countr_zero(uint(mint::mod() - 1));\n\n \
@@ -268,25 +269,26 @@ data:
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
     using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 9 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
+    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 10 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint,\
     \ ebi::convolution>;\n\nint main() {\n    int n;\n    std::cin >> n;\n    FPS\
     \ f(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n\
     \    FPS g = ebi::compositional_inverse_of_fps(f);\n    for (int i = 0; i < n;\
     \ i++) {\n        std::cout << g[i] << \" \\n\"[i == n - 1];\n    }\n}\n"
-  code: "#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series\"\
-    \n\n#include <iostream>\n\n#include \"../../convolution/ntt.hpp\"\n#include \"\
-    ../../fps/compositional_inverse_of_fps.hpp\"\n#include \"../../modint/modint.hpp\"\
-    \n\nusing mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint,\
-    \ ebi::convolution>;\n\nint main() {\n    int n;\n    std::cin >> n;\n    FPS\
-    \ f(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n\
-    \    FPS g = ebi::compositional_inverse_of_fps(f);\n    for (int i = 0; i < n;\
-    \ i++) {\n        std::cout << g[i] << \" \\n\"[i == n - 1];\n    }\n}"
+  code: "#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/\"\
+    \ \\\n    \"compositional_inverse_of_formal_power_series\"\n\n#include <iostream>\n\
+    \n#include \"../../convolution/ntt.hpp\"\n#include \"../../fps/compositional_inverse_of_fps.hpp\"\
+    \n#include \"../../modint/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
+    using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;\n\nint main() {\n\
+    \    int n;\n    std::cin >> n;\n    FPS f(n);\n    for (int i = 0; i < n; i++)\
+    \ {\n        std::cin >> f[i];\n    }\n    FPS g = ebi::compositional_inverse_of_fps(f);\n\
+    \    for (int i = 0; i < n; i++) {\n        std::cout << g[i] << \" \\n\"[i ==\
+    \ n - 1];\n    }\n}"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
-  - utility/bit_operator.hpp
   - modint/base.hpp
+  - utility/bit_operator.hpp
   - fps/compositional_inverse_of_fps.hpp
   - fps/composition_of_fps.hpp
   - fps/fps.hpp
@@ -294,7 +296,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:17:54+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp

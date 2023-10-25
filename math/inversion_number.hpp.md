@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/compress.hpp
     title: Compress
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/fenwick_tree.hpp
     title: fenwick tree
   - icon: ':question:'
@@ -12,12 +12,12 @@ data:
     title: template/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/inversion_number.hpp\"\n\n#include <cassert>\n#include\
@@ -30,11 +30,11 @@ data:
     \    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n    }\n\
     \n    int get(const T &val) const {\n        return std::lower_bound(cp.begin(),\
     \ cp.end(), val) - cp.begin();\n    }\n\n    int size() const {\n        return\
-    \ cp.size();\n    }\n\n    bool find(const T& val) const {\n        auto itr =\
-    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if(itr == cp.end()) return\
-    \ false;\n        else return *itr == val;\n    }\n\n    T val(int idx) const\
-    \ {\n        assert(0 <= idx && idx < (int)cp.size());\n        return cp[idx];\n\
-    \    }\n};\n\n}  // namespace ebi\n#line 2 \"data_structure/fenwick_tree.hpp\"\
+    \ cp.size();\n    }\n\n    bool find(const T &val) const {\n        auto itr =\
+    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if (itr == cp.end())\n\
+    \            return false;\n        else\n            return *itr == val;\n  \
+    \  }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
+    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 2 \"data_structure/fenwick_tree.hpp\"\
     \n\r\n#line 5 \"data_structure/fenwick_tree.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
     template <class T> struct fenwick_tree {\r\n  private:\r\n    int n;\r\n    std::vector<T>\
     \ data;\r\n\r\n  public:\r\n    fenwick_tree(int _n) : n(_n), data(std::vector<T>(_n\
@@ -56,15 +56,16 @@ data:
     using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
     \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
     \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}\n#line 10 \"math/inversion_number.hpp\"\
-    \n\nnamespace ebi {\n\ni64 inversion_number_max_n(const std::vector<int> &a, int\
-    \ n = 200000) {\n    fenwick_tree<i64> fw(n);\n    i64 res = 0;\n    for (auto\
-    \ x : a) {\n        assert(0 <= x && x < n);\n        res += fw.sum(x + 1, n);\n\
-    \        fw.add(x, 1);\n    }\n    return res;\n}\n\ntemplate <class T> i64 inversion_number(const\
-    \ std::vector<T> &a) {\n    compress<T> cp;\n    for (const auto &x : a) {\n \
-    \       cp.add(x);\n    }\n    cp.build();\n    std::vector<int> ca;\n    ca.reserve(a.size());\n\
-    \    for (const auto &x : a) {\n        ca.emplace_back(cp.get(x));\n    }\n \
-    \   return inversion_number_max_n(ca, cp.size());\n}\n\n}  // namespace ebi\n"
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 10 \"math/inversion_number.hpp\"\n\nnamespace ebi {\n\ni64 inversion_number_max_n(const\
+    \ std::vector<int> &a, int n = 200000) {\n    fenwick_tree<i64> fw(n);\n    i64\
+    \ res = 0;\n    for (auto x : a) {\n        assert(0 <= x && x < n);\n       \
+    \ res += fw.sum(x + 1, n);\n        fw.add(x, 1);\n    }\n    return res;\n}\n\
+    \ntemplate <class T> i64 inversion_number(const std::vector<T> &a) {\n    compress<T>\
+    \ cp;\n    for (const auto &x : a) {\n        cp.add(x);\n    }\n    cp.build();\n\
+    \    std::vector<int> ca;\n    ca.reserve(a.size());\n    for (const auto &x :\
+    \ a) {\n        ca.emplace_back(cp.get(x));\n    }\n    return inversion_number_max_n(ca,\
+    \ cp.size());\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <vector>\n\
     \n#include \"../data_structure/compress.hpp\"\n#include \"../data_structure/fenwick_tree.hpp\"\
     \n#include \"../template/int_alias.hpp\"\n\nnamespace ebi {\n\ni64 inversion_number_max_n(const\
@@ -83,8 +84,8 @@ data:
   isVerificationFile: false
   path: math/inversion_number.hpp
   requiredBy: []
-  timestamp: '2023-09-10 00:45:18+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/Inversion_Number.test.cpp
 documentation_of: math/inversion_number.hpp

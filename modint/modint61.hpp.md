@@ -28,14 +28,14 @@ data:
     links: []
   bundledCode: "#line 2 \"modint/modint61.hpp\"\n\n#include <cassert>\n#include <cstdint>\n\
     #include <iostream>\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line\
-    \ 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate<class T>\nconcept modint\
-    \ = requires (T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n  \
-    \  a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint>\nstd::istream\
-    \ &operator>>(std::istream &os, mint &a) {\n    long long x;\n    os >> x;\n \
-    \   a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n\
-    #line 8 \"modint/modint61.hpp\"\n\nnamespace ebi {\n\nstruct modint61 {\n  private:\n\
-    \    using mint = modint61;\n    using u64 = std::uint64_t;\n    constexpr static\
+    \ 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept modint\
+    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n\
+    \    a.val();\n    a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 8 \"\
+    modint/modint61.hpp\"\n\nnamespace ebi {\n\nstruct modint61 {\n  private:\n  \
+    \  using mint = modint61;\n    using u64 = std::uint64_t;\n    constexpr static\
     \ u64 m = (1ull << 61) - 1;\n    constexpr static u64 MASK31 = (1ull << 31) -\
     \ 1;\n    constexpr static u64 MASK30 = (1ull << 30) - 1;\n\n  public:\n    constexpr\
     \ static u64 mod() {\n        return m;\n    }\n\n    constexpr modint61() : _v(0)\
@@ -122,14 +122,14 @@ data:
   isVerificationFile: false
   path: modint/modint61.hpp
   requiredBy:
-  - string/rolling_hash.hpp
   - tree/rooted_tree_hash.hpp
   - utility/hash.hpp
-  timestamp: '2023-10-26 02:17:54+09:00'
+  - string/rolling_hash.hpp
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/aoj_2444.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/aoj/aoj_2444.test.cpp
 documentation_of: modint/modint61.hpp
 layout: document
 redirect_from:

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: fps/fps.hpp
     title: Formal Power Series
   _extendedRequiredBy: []
@@ -101,26 +101,26 @@ data:
     \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
     \ &)>\nstd::vector<mint> partition_function(int n) {\n    using FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n    FPS f(n+1);\n    f[0] = 1;\n    for(int k = 1; k <= n; k++)\
-    \ {\n        long long k1 = 1LL * k * (3 * k + 1) / 2;\n        long long k2 =\
-    \ 1LL * k *(3 * k - 1) / 2;\n        if(k2 > n) break;\n        if(k1 <= n) f[k1]\
-    \ = ((k & 1) ? -1 : 1);\n        if(k2 <= n) f[k2] = ((k & 1) ? -1 : 1); \n  \
-    \  }\n    return f.inv();\n}\n\n}\n"
+    \ convolution>;\n    FPS f(n + 1);\n    f[0] = 1;\n    for (int k = 1; k <= n;\
+    \ k++) {\n        long long k1 = 1LL * k * (3 * k + 1) / 2;\n        long long\
+    \ k2 = 1LL * k * (3 * k - 1) / 2;\n        if (k2 > n) break;\n        if (k1\
+    \ <= n) f[k1] = ((k & 1) ? -1 : 1);\n        if (k2 <= n) f[k2] = ((k & 1) ? -1\
+    \ : 1);\n    }\n    return f.inv();\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
     \ <class mint, std::vector<mint> (*convolution)(\n                          const\
     \ std::vector<mint> &, const std::vector<mint> &)>\nstd::vector<mint> partition_function(int\
-    \ n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n    FPS f(n+1);\n\
-    \    f[0] = 1;\n    for(int k = 1; k <= n; k++) {\n        long long k1 = 1LL\
-    \ * k * (3 * k + 1) / 2;\n        long long k2 = 1LL * k *(3 * k - 1) / 2;\n \
-    \       if(k2 > n) break;\n        if(k1 <= n) f[k1] = ((k & 1) ? -1 : 1);\n \
-    \       if(k2 <= n) f[k2] = ((k & 1) ? -1 : 1); \n    }\n    return f.inv();\n\
-    }\n\n}"
+    \ n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n    FPS f(n + 1);\n\
+    \    f[0] = 1;\n    for (int k = 1; k <= n; k++) {\n        long long k1 = 1LL\
+    \ * k * (3 * k + 1) / 2;\n        long long k2 = 1LL * k * (3 * k - 1) / 2;\n\
+    \        if (k2 > n) break;\n        if (k1 <= n) f[k1] = ((k & 1) ? -1 : 1);\n\
+    \        if (k2 <= n) f[k2] = ((k & 1) ? -1 : 1);\n    }\n    return f.inv();\n\
+    }\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
   isVerificationFile: false
   path: math/partition_function.hpp
   requiredBy: []
-  timestamp: '2023-08-28 17:31:00+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/Partition_Function_Pentagonal.test.cpp

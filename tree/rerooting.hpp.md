@@ -11,8 +11,8 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"tree/rerooting.hpp\"\n\n#include <vector>\n#include <utility>\n\
-    #include <cassert>\n\nnamespace ebi {\n\ntemplate <class V, class E, E (*e)(),\
+  bundledCode: "#line 2 \"tree/rerooting.hpp\"\n\n#include <cassert>\n#include <utility>\n\
+    #include <vector>\n\nnamespace ebi {\n\ntemplate <class V, class E, E (*e)(),\
     \ E (*merge)(E, E), E (*put_edge)(int, V),\n          V (*put_root)(int, E)>\n\
     struct rerooting {\n  private:\n    V dfs_sub(int v, int par = -1) {\n       \
     \ E ret = e();\n        for (auto &edge : g[v]) {\n            if (edge.first\
@@ -38,7 +38,7 @@ data:
     \        return dp[v];\n    }\n\n  private:\n    int n;\n    std::vector<std::vector<std::pair<int,\
     \ int>>> g;\n    std::vector<V> sub;\n    std::vector<V> dp;\n    std::vector<std::vector<E>>\
     \ outs;\n};\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <vector>\n#include <utility>\n#include <cassert>\n\
+  code: "#pragma once\n\n#include <cassert>\n#include <utility>\n#include <vector>\n\
     \nnamespace ebi {\n\ntemplate <class V, class E, E (*e)(), E (*merge)(E, E), E\
     \ (*put_edge)(int, V),\n          V (*put_root)(int, E)>\nstruct rerooting {\n\
     \  private:\n    V dfs_sub(int v, int par = -1) {\n        E ret = e();\n    \
@@ -69,7 +69,7 @@ data:
   isVerificationFile: false
   path: tree/rerooting.hpp
   requiredBy: []
-  timestamp: '2023-05-11 19:12:09+09:00'
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/tree/Tree_Path_Composite_Sum.test.cpp

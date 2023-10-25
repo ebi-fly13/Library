@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/li_chao_tree.hpp
     title: Li Chao Tree
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/line_add_get_min
@@ -57,20 +57,21 @@ data:
     using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
     \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
     \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}\n#line 9 \"test/data_structure/Line_Add_Get_Min.test.cpp\"\
-    \n\nusing ebi::i64;\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n\
-    \    std::vector<std::pair<i64, i64>> p(n);\n    for (auto &[a, b] : p) {\n  \
-    \      std::cin >> a >> b;\n    }\n    std::vector<i64> x;\n    std::vector<std::vector<i64>>\
-    \ query(q);\n    for (int i = 0; i < q; i++) {\n        int t;\n        std::cin\
-    \ >> t;\n        query[i].emplace_back(t);\n        if (t == 0) {\n          \
-    \  i64 a, b;\n            std::cin >> a >> b;\n            query[i].emplace_back(a);\n\
-    \            query[i].emplace_back(b);\n        } else {\n            i64 p;\n\
-    \            std::cin >> p;\n            query[i].emplace_back(p);\n         \
-    \   x.emplace_back(p);\n        }\n    }\n    ebi::li_chao_tree<i64> seg(x);\n\
-    \    for (auto [a, b] : p) {\n        seg.add_line(a, b);\n    }\n    for (int\
-    \ i = 0; i < q; i++) {\n        if (query[i][0] == 0) {\n            seg.add_line(query[i][1],\
-    \ query[i][2]);\n        } else {\n            std::cout << seg.min(query[i][1])\
-    \ << '\\n';\n        }\n    }\n}\n"
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 9 \"test/data_structure/Line_Add_Get_Min.test.cpp\"\n\nusing ebi::i64;\n\nint\
+    \ main() {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<std::pair<i64,\
+    \ i64>> p(n);\n    for (auto &[a, b] : p) {\n        std::cin >> a >> b;\n   \
+    \ }\n    std::vector<i64> x;\n    std::vector<std::vector<i64>> query(q);\n  \
+    \  for (int i = 0; i < q; i++) {\n        int t;\n        std::cin >> t;\n   \
+    \     query[i].emplace_back(t);\n        if (t == 0) {\n            i64 a, b;\n\
+    \            std::cin >> a >> b;\n            query[i].emplace_back(a);\n    \
+    \        query[i].emplace_back(b);\n        } else {\n            i64 p;\n   \
+    \         std::cin >> p;\n            query[i].emplace_back(p);\n            x.emplace_back(p);\n\
+    \        }\n    }\n    ebi::li_chao_tree<i64> seg(x);\n    for (auto [a, b] :\
+    \ p) {\n        seg.add_line(a, b);\n    }\n    for (int i = 0; i < q; i++) {\n\
+    \        if (query[i][0] == 0) {\n            seg.add_line(query[i][1], query[i][2]);\n\
+    \        } else {\n            std::cout << seg.min(query[i][1]) << '\\n';\n \
+    \       }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
     #include <iostream>\n#include <utility>\n#include <vector>\n\n#include \"../../data_structure/li_chao_tree.hpp\"\
     \n#include \"../../template/int_alias.hpp\"\n\nusing ebi::i64;\n\nint main() {\n\
@@ -92,8 +93,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-08-11 00:25:56+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Line_Add_Get_Min.test.cpp
 layout: document

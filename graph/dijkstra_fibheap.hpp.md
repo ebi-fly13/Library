@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/fibonacci_heap.hpp
     title: fibonacci heap
   - icon: ':question:'
@@ -9,24 +9,25 @@ data:
     title: graph/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/fibonacci_heap.test.cpp
     title: test/graph/fibonacci_heap.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/dijkstra_fibheap.hpp\"\n\r\n#line 2 \"data_structure/fibonacci_heap.hpp\"\
-    \n\r\n/*\r\n    reference:\r\n   http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf\r\
+  bundledCode: "#line 2 \"graph/dijkstra_fibheap.hpp\"\n\r\n#include <limits>\r\n\
+    #include <vector>\r\n\r\n#line 2 \"data_structure/fibonacci_heap.hpp\"\n\r\n/*\r\
+    \n    reference:\r\n   http://web.stanford.edu/class/archive/cs/cs166/cs166.1186/lectures/09/Slides09.pdf\r\
     \n               https://rsk0315.hatenablog.com/entry/2019/10/29/151823\r\n  \
     \             https://en.wikipedia.org/wiki/Fibonacci_heap\r\n*/\r\n\r\n#include\
-    \ <cassert>\r\n#include <queue>\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\
-    \r\nnamespace internal {\r\n\r\ntemplate <class K, class T> struct fibheap_node\
-    \ {\r\n    fibheap_node *par, *prev, *next, *chr;\r\n    int sz = 0;\r\n    bool\
-    \ damaged = 0;\r\n    K ord;\r\n    T val;\r\n    fibheap_node(K k, T val)\r\n\
-    \        : par(nullptr),\r\n          prev(this),\r\n          next(this),\r\n\
-    \          chr(nullptr),\r\n          ord(k),\r\n          val(val) {}\r\n\r\n\
+    \ <cassert>\r\n#include <queue>\r\n#line 13 \"data_structure/fibonacci_heap.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nnamespace internal {\r\n\r\ntemplate <class K, class\
+    \ T> struct fibheap_node {\r\n    fibheap_node *par, *prev, *next, *chr;\r\n \
+    \   int sz = 0;\r\n    bool damaged = 0;\r\n    K ord;\r\n    T val;\r\n    fibheap_node(K\
+    \ k, T val)\r\n        : par(nullptr),\r\n          prev(this),\r\n          next(this),\r\
+    \n          chr(nullptr),\r\n          ord(k),\r\n          val(val) {}\r\n\r\n\
     \    void emplace_back(fibheap_node *e) {\r\n        if (e == nullptr) return;\r\
     \n        prev->next = e;\r\n        e->prev->next = this;\r\n        std::swap(e->prev,\
     \ prev);\r\n    }\r\n\r\n    void cut_par() {\r\n        if (par == nullptr) return;\r\
@@ -95,10 +96,9 @@ data:
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
     \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 5 \"graph/dijkstra_fibheap.hpp\"\n\r\n#include <limits>\r\n#line\
-    \ 8 \"graph/dijkstra_fibheap.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <class\
-    \ T> bool op(T a, T b) {\r\n    return a <= b;\r\n}\r\n\r\ntemplate <class T>\
-    \ std::vector<T> dijkstra(int s, int n, const Graph<T> &g) {\r\n    std::vector<T>\
+    \ ebi\n#line 8 \"graph/dijkstra_fibheap.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate\
+    \ <class T> bool op(T a, T b) {\r\n    return a <= b;\r\n}\r\n\r\ntemplate <class\
+    \ T> std::vector<T> dijkstra(int s, int n, const Graph<T> &g) {\r\n    std::vector<T>\
     \ d(n, std::numeric_limits<T>::max());\r\n    fibonacci_heap<T, int, op> que;\r\
     \n    d[s] = 0;\r\n    std::vector<internal::fibheap_node<T, int> *> p(n, nullptr);\r\
     \n    p[s] = que.push(0, s);\r\n    while (!que.empty()) {\r\n        que.is_valid();\r\
@@ -109,9 +109,9 @@ data:
     \        continue;\r\n                }\r\n                que.prioritize(p[e.to],\
     \ d[e.to]);\r\n            }\r\n        }\r\n    }\r\n    return d;\r\n}\r\n\r\
     \n}  // namespace ebi\n"
-  code: "#pragma once\r\n\r\n#include \"../data_structure/fibonacci_heap.hpp\"\r\n\
-    #include \"../graph/template.hpp\"\r\n\r\n#include <limits>\r\n#include <vector>\r\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <class T> bool op(T a, T b) {\r\n    return\
+  code: "#pragma once\r\n\r\n#include <limits>\r\n#include <vector>\r\n\r\n#include\
+    \ \"../data_structure/fibonacci_heap.hpp\"\r\n#include \"../graph/template.hpp\"\
+    \r\n\r\nnamespace ebi {\r\n\r\ntemplate <class T> bool op(T a, T b) {\r\n    return\
     \ a <= b;\r\n}\r\n\r\ntemplate <class T> std::vector<T> dijkstra(int s, int n,\
     \ const Graph<T> &g) {\r\n    std::vector<T> d(n, std::numeric_limits<T>::max());\r\
     \n    fibonacci_heap<T, int, op> que;\r\n    d[s] = 0;\r\n    std::vector<internal::fibheap_node<T,\
@@ -129,8 +129,8 @@ data:
   isVerificationFile: false
   path: graph/dijkstra_fibheap.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/graph/fibonacci_heap.test.cpp
 documentation_of: graph/dijkstra_fibheap.hpp

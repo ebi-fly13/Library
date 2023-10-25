@@ -27,12 +27,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':x:'
+    path: test/math/Partition_Function_FPS.test.cpp
+    title: test/math/Partition_Function_FPS.test.cpp
   - icon: ':x:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
@@ -42,6 +45,9 @@ data:
   - icon: ':x:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - icon: ':x:'
+    path: test/math/sharp_p_subset_sum.test.cpp
+    title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':x:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
@@ -76,6 +82,12 @@ data:
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - icon: ':x:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
   - icon: ':x:'
@@ -97,40 +109,39 @@ data:
     \ return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353) return\
     \ 3;\n    if (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n\
     \    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\n#line 4 \"utility/bit_operator.hpp\"\n#include <cstdint>\n\nnamespace ebi\
-    \ {\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
-    \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
-    \ i - 1);\n    }\n    return rev_n;\n}\n\nint msb(int x) {\n    return (x == 0)\
-    \ ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n}\n\n}  // namespace ebi\n\
-    #line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\nnamespace\
-    \ ebi {\n\ntemplate<class T>\nconcept modint = requires (T a, T b) {\n    a +\
-    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n\
-    };\n\ntemplate <modint mint>\nstd::istream &operator>>(std::istream &os, mint\
-    \ &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
-    \ <modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
-    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 12 \"convolution/ntt.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <modint mint, int g =\
-    \ internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n    static constexpr\
-    \ int rank2 = std::countr_zero(uint(mint::mod() - 1));\n\n    std::array<mint,\
-    \ rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2] = mint(g).pow((mint::mod()\
-    \ - 1) >> rank2);\n        inv_root[rank2] = root[rank2].inv();\n        for (int\
-    \ i = rank2 - 1; i >= 0; i--) {\n            root[i] = root[i + 1] * root[i +\
-    \ 1];\n            inv_root[i] = inv_root[i + 1] * inv_root[i + 1];\n        }\n\
-    \    }\n};\n\ntemplate <modint mint> void butterfly(std::vector<mint>& a) {\n\
-    \    static const ntt_info<mint> info;\n    int n = int(a.size());\n    int bit_size\
-    \ = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
-    \    // bit reverse\n    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i,\
-    \ bit_size);\n        if (i < rev) {\n            std::swap(a[i], a[rev]);\n \
-    \       }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n        for\
-    \ (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1 = 1;\n\
-    \            mint zeta2 = info.root[1];\n            for (int j = 0; j < (1 <<\
-    \ bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n        \
-    \        int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n    \
-    \            mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n  \
-    \              a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
-    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
-    \ }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#include <iostream>\n\nnamespace ebi {\n\ntemplate <class\
+    \ T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n\
+    \    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
+    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
+    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
+    }\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\n#line 4 \"utility/bit_operator.hpp\"\
+    \n#include <cstdint>\n\nnamespace ebi {\n\nint bit_reverse(int n, int bit_size)\
+    \ {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n\
+    \ |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint\
+    \ msb(int x) {\n    return (x == 0) ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n\
+    }\n\n}  // namespace ebi\n#line 12 \"convolution/ntt.hpp\"\n\nnamespace ebi {\n\
+    \nnamespace internal {\n\ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\n\
+    struct ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
+    \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
+    \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
+    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
+    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
+    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <modint mint> void\
+    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
+    \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
+    \   assert(n == (int)std::bit_ceil(a.size()));\n    // bit reverse\n    for (int\
+    \ i = 0; i < n; i++) {\n        int rev = bit_reverse(i, bit_size);\n        if\
+    \ (i < rev) {\n            std::swap(a[i], a[rev]);\n        }\n    }\n\n    for\
+    \ (int bit = 0; bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 <<\
+    \ (bit + 1)); i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n\
+    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
+    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
+    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
+    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
+    \                zeta1 *= info.root[bit + 1];\n                zeta2 *= info.root[bit\
+    \ + 1];\n            }\n        }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
     \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
     \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
     \    // bit reverse\n    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i,\
@@ -163,7 +174,7 @@ data:
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <array>\n#include <bit>\n\
     #include <cassert>\n#include <vector>\n\n#include \"../math/internal_math.hpp\"\
-    \n#include \"../utility/bit_operator.hpp\"\n#include \"../modint/base.hpp\"\n\n\
+    \n#include \"../modint/base.hpp\"\n#include \"../utility/bit_operator.hpp\"\n\n\
     namespace ebi {\n\nnamespace internal {\n\ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\n\
     struct ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
     \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
@@ -216,38 +227,42 @@ data:
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi"
   dependsOn:
   - math/internal_math.hpp
-  - utility/bit_operator.hpp
   - modint/base.hpp
+  - utility/bit_operator.hpp
   isVerificationFile: false
   path: convolution/ntt.hpp
   requiredBy:
-  - convolution/arbitrary_ntt.hpp
   - convolution/convolution_mod_2_64.hpp
-  timestamp: '2023-10-26 02:17:54+09:00'
+  - convolution/arbitrary_ntt.hpp
+  timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/yuki_1145.test.cpp
-  - test/yuki/yuki_1302.test.cpp
-  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Partition_Function_Pentagonal.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - test/math/Berunoulli_Number.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
-  - test/convolution/Convolution.test.cpp
   - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/convolution/Convolution.test.cpp
   - test/convolution/Convolution_Mod_2_64.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/yuki/yuki_1145.test.cpp
+  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Berunoulli_Number.test.cpp
 documentation_of: convolution/ntt.hpp
 layout: document
 title: NTT Convolution

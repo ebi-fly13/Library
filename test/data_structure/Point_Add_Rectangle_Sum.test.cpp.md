@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/compress.hpp
     title: Compress
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/offline_segtree_2d.hpp
     title: offline 2D segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -31,11 +31,11 @@ data:
     \    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n    }\n\
     \n    int get(const T &val) const {\n        return std::lower_bound(cp.begin(),\
     \ cp.end(), val) - cp.begin();\n    }\n\n    int size() const {\n        return\
-    \ cp.size();\n    }\n\n    bool find(const T& val) const {\n        auto itr =\
-    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if(itr == cp.end()) return\
-    \ false;\n        else return *itr == val;\n    }\n\n    T val(int idx) const\
-    \ {\n        assert(0 <= idx && idx < (int)cp.size());\n        return cp[idx];\n\
-    \    }\n};\n\n}  // namespace ebi\n#line 2 \"data_structure/offline_segtree_2d.hpp\"\
+    \ cp.size();\n    }\n\n    bool find(const T &val) const {\n        auto itr =\
+    \ std::lower_bound(cp.begin(), cp.end(), val);\n        if (itr == cp.end())\n\
+    \            return false;\n        else\n            return *itr == val;\n  \
+    \  }\n\n    T val(int idx) const {\n        assert(0 <= idx && idx < (int)cp.size());\n\
+    \        return cp[idx];\n    }\n};\n\n}  // namespace ebi\n#line 2 \"data_structure/offline_segtree_2d.hpp\"\
     \n\n#line 5 \"data_structure/offline_segtree_2d.hpp\"\n\n/*\n    reference: https://blog.hamayanhamayan.com/entry/2017/12/09/015937\n\
     \    verify   : http://codeforces.com/contest/893/submission/125531718\n*/\n\n\
     #line 12 \"data_structure/offline_segtree_2d.hpp\"\n\nnamespace ebi {\n\ntemplate\
@@ -157,8 +157,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-26 12:08:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
 layout: document

@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/convex_hull.hpp
     title: geometry/convex_hull.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_A
@@ -16,7 +16,7 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_A
   bundledCode: "#line 1 \"test/geometry/convex_hull.test.cpp\"\n#define PROBLEM \\\
     \n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_4_A\"\n\
-    \n#line 2 \"geometry/convex_hull.hpp\"\n\r\n#include <vector>\r\n#include <algorithm>\r\
+    \n#line 2 \"geometry/convex_hull.hpp\"\n\r\n#include <algorithm>\r\n#include <vector>\r\
     \n\r\n/*\r\n    reference: \u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u30B3\u30F3\
     \u30C6\u30B9\u30C8\u30C1\u30E3\u30EC\u30F3\u30B8\u30D6\u30C3\u30AF \u7B2C2\u7248\
     \ p234\r\n    verify:    https://atcoder.jp/contests/typical90/submissions/24974484\r\
@@ -77,8 +77,8 @@ data:
   isVerificationFile: true
   path: test/geometry/convex_hull.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 18:41:12+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/geometry/convex_hull.test.cpp
 layout: document

@@ -7,14 +7,14 @@ data:
   - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/tree_diameter.hpp
     title: Tree Diameter
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
@@ -58,13 +58,13 @@ data:
     \ ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
     using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
     using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}\n#line 9 \"test/tree/Tree_Diameter.test.cpp\"\
-    \n\nusing ebi::i64;\n\nint main() {\n    int n;\n    std::cin >> n;\n    ebi::Graph<i64>\
-    \ g(n);\n    for (int i = 0; i < n - 1; i++) {\n        int a, b;\n        i64\
-    \ c;\n        std::cin >> a >> b >> c;\n        g.add_edge(a, b, c);\n    }\n\
-    \    auto [x, path] = ebi::tree_diameter(g);\n    std::cout << x << \" \" << path.size()\
-    \ << '\\n';\n    for (auto v : path) {\n        std::cout << v << \" \";\n   \
-    \ }\n    std::cout << '\\n';\n}\n"
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 9 \"test/tree/Tree_Diameter.test.cpp\"\n\nusing ebi::i64;\n\nint main() {\n\
+    \    int n;\n    std::cin >> n;\n    ebi::Graph<i64> g(n);\n    for (int i = 0;\
+    \ i < n - 1; i++) {\n        int a, b;\n        i64 c;\n        std::cin >> a\
+    \ >> b >> c;\n        g.add_edge(a, b, c);\n    }\n    auto [x, path] = ebi::tree_diameter(g);\n\
+    \    std::cout << x << \" \" << path.size() << '\\n';\n    for (auto v : path)\
+    \ {\n        std::cout << v << \" \";\n    }\n    std::cout << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\
     \ \"../../tree/tree_diameter.hpp\"\n\n#include <iostream>\n\n#include \"../../graph/template.hpp\"\
     \n#include \"../../template/int_alias.hpp\"\n\nusing ebi::i64;\n\nint main() {\n\
@@ -80,8 +80,8 @@ data:
   isVerificationFile: true
   path: test/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-08-11 00:25:56+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 02:38:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/Tree_Diameter.test.cpp
 layout: document
