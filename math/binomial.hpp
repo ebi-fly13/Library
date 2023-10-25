@@ -1,6 +1,8 @@
 #pragma once
 
+#include <bit>
 #include <cassert>
+#include <iostream>
 #include <ranges>
 #include <vector>
 
@@ -8,8 +10,13 @@ namespace ebi {
 
 template <class mint> struct Binomial {
   private:
-    static void extend(int len) {
+    static void extend(int len = -1) {
         int sz = (int)fact.size();
+        if (len < 0)
+            len = 2 * sz;
+        else
+            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));
+        len = std::min(len, mint::mod());
         assert(sz <= len);
         fact.resize(len);
         inv_fact.resize(len);
@@ -23,35 +30,34 @@ template <class mint> struct Binomial {
     }
 
   public:
-    Binomial(int n) {
-        extend(n + 1);
-    }
-
-    static mint c(int n, int r) {
-        assert(n < (int)fact.size());
-        if (r < 0 || n < r) return 0;
-        return fact[n] * inv_fact[r] * inv_fact[n - r];
-    }
-
-    static mint p(int n, int r) {
-        assert(n < (int)fact.size());
-        if (r < 0 || n < r) return 0;
-        return fact[n] * inv_fact[n - r];
-    }
+    Binomial() = default;
 
     static mint f(int n) {
-        assert(n < (int)fact.size());
+        if (n >= (int)fact.size()) [[unlikely]] {
+            extend(n + 1);
+        }
         return fact[n];
     }
 
     static mint inv_f(int n) {
-        assert(n < (int)fact.size());
+        if (n >= (int)fact.size()) [[unlikely]] {
+            extend(n + 1);
+        }
         return inv_fact[n];
     }
 
+    static mint c(int n, int r) {
+        if (r < 0 || n < r) return 0;
+        return f(n) * inv_f(r) * inv_f(n - r);
+    }
+
+    static mint p(int n, int r) {
+        if (r < 0 || n < r) return 0;
+        return f(n) * inv_f(n - r);
+    }
+
     static mint inv(int n) {
-        assert(n < (int)fact.size());
-        return inv_fact[n] * fact[n - 1];
+        return inv_f(n) * f(n - 1);
     }
 
     static void reserve(int n) {
