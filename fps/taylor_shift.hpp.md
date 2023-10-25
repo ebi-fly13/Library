@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: Binomial Coefficient
   _extendedRequiredBy:
@@ -107,38 +107,40 @@ data:
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
     \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"math/binomial.hpp\"\
-    \n\n#line 4 \"math/binomial.hpp\"\n#include <ranges>\n#line 6 \"math/binomial.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint> struct Binomial {\n  private:\n \
-    \   static void extend(int len) {\n        int sz = (int)fact.size();\n      \
-    \  assert(sz <= len);\n        fact.resize(len);\n        inv_fact.resize(len);\n\
-    \        for (int i : std::views::iota(sz, len)) {\n            fact[i] = fact[i\
-    \ - 1] * i;\n        }\n        inv_fact[len - 1] = fact[len - 1].inv();\n   \
-    \     for (int i : std::views::iota(sz, len) | std::views::reverse) {\n      \
-    \      inv_fact[i - 1] = inv_fact[i] * i;\n        }\n    }\n\n  public:\n   \
-    \ Binomial(int n) {\n        extend(n + 1);\n    }\n\n    static mint c(int n,\
-    \ int r) {\n        assert(n < (int)fact.size());\n        if (r < 0 || n < r)\
-    \ return 0;\n        return fact[n] * inv_fact[r] * inv_fact[n - r];\n    }\n\n\
-    \    static mint p(int n, int r) {\n        assert(n < (int)fact.size());\n  \
-    \      if (r < 0 || n < r) return 0;\n        return fact[n] * inv_fact[n - r];\n\
-    \    }\n\n    static mint f(int n) {\n        assert(n < (int)fact.size());\n\
-    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        assert(n\
-    \ < (int)fact.size());\n        return inv_fact[n];\n    }\n\n    static mint\
-    \ inv(int n) {\n        assert(n < (int)fact.size());\n        return inv_fact[n]\
-    \ * fact[n - 1];\n    }\n\n    static void reserve(int n) {\n        extend(n\
-    \ + 1);\n    }\n\n  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\
-    \ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2,\
-    \ 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
-    \ 1);\n\n}  // namespace ebi\n#line 5 \"fps/taylor_shift.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n             \
-    \             const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
-    \ convolution> taylor_shift(\n    FormalPowerSeries<mint, convolution> f, mint\
-    \ a) {\n    int d = f.deg();\n    Binomial<mint>::reserve(d);\n    for (int i\
-    \ = 0; i < d; i++) f[i] *= Binomial<mint>::f(i);\n    std::reverse(f.begin(),\
-    \ f.end());\n    FormalPowerSeries<mint, convolution> g(d, 1);\n    mint pow_a\
-    \ = a;\n    for (int i = 1; i < d; i++) {\n        g[i] = pow_a * Binomial<mint>::inv_f(i);\n\
-    \        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(),\
-    \ f.end());\n    for (int i = 0; i < d; i++) f[i] *= Binomial<mint>::inv_f(i);\n\
-    \    return f;\n}\n\n}  // namespace ebi\n"
+    \n\n#include <bit>\n#line 5 \"math/binomial.hpp\"\n#include <iostream>\n#include\
+    \ <ranges>\n#line 8 \"math/binomial.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ mint> struct Binomial {\n  private:\n    static void extend(int len = -1) {\n\
+    \        int sz = (int)fact.size();\n        if (len < 0)\n            len = 2\
+    \ * sz;\n        else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
+    \        len = std::min(len, mint::mod());\n        assert(sz <= len);\n     \
+    \   fact.resize(len);\n        inv_fact.resize(len);\n        for (int i : std::views::iota(sz,\
+    \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
+    \ - 1] = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len)\
+    \ | std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n \
+    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    static mint f(int\
+    \ n) {\n        if (n >= (int)fact.size()) [[unlikely]] {\n            extend(n\
+    \ + 1);\n        }\n        return fact[n];\n    }\n\n    static mint inv_f(int\
+    \ n) {\n        if (n >= (int)fact.size()) [[unlikely]] {\n            extend(n\
+    \ + 1);\n        }\n        return inv_fact[n];\n    }\n\n    static mint c(int\
+    \ n, int r) {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r)\
+    \ * inv_f(n - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r <\
+    \ 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static\
+    \ mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static\
+    \ void reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static\
+    \ std::vector<mint> fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint>\
+    \ Binomial<mint>::fact = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint>\
+    \ Binomial<mint>::inv_fact = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n\
+    #line 5 \"fps/taylor_shift.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
+    \ (*convolution)(\n                          const std::vector<mint> &, const\
+    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n\
+    \    FormalPowerSeries<mint, convolution> f, mint a) {\n    int d = f.deg();\n\
+    \    Binomial<mint>::reserve(d);\n    for (int i = 0; i < d; i++) f[i] *= Binomial<mint>::f(i);\n\
+    \    std::reverse(f.begin(), f.end());\n    FormalPowerSeries<mint, convolution>\
+    \ g(d, 1);\n    mint pow_a = a;\n    for (int i = 1; i < d; i++) {\n        g[i]\
+    \ = pow_a * Binomial<mint>::inv_f(i);\n        pow_a *= a;\n    }\n    f = (f\
+    \ * g).pre(d);\n    std::reverse(f.begin(), f.end());\n    for (int i = 0; i <\
+    \ d; i++) f[i] *= Binomial<mint>::inv_f(i);\n    return f;\n}\n\n}  // namespace\
+    \ ebi\n"
   code: "#include <vector>\n\n#include \"../fps/fps.hpp\"\n#include \"../math/binomial.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
     \                          const std::vector<mint> &, const std::vector<mint>\
@@ -157,11 +159,11 @@ data:
   path: fps/taylor_shift.hpp
   requiredBy:
   - math/stirling_number_1st.hpp
-  timestamp: '2023-10-24 01:15:33+09:00'
+  timestamp: '2023-10-26 00:44:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
 documentation_of: fps/taylor_shift.hpp
 layout: document
 title: $f(x + c)$

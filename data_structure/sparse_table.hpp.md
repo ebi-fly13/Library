@@ -68,9 +68,9 @@ data:
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data_structure/Static_Rmq.test.cpp
   - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
-  - test/data_structure/Static_Rmq.test.cpp
 documentation_of: data_structure/sparse_table.hpp
 layout: document
 title: Sparse Table

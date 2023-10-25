@@ -60,16 +60,16 @@ data:
   isVerificationFile: false
   path: data_structure/compress.hpp
   requiredBy:
-  - math/inversion_number.hpp
   - data_structure/offline_segtree_2d.hpp
+  - math/inversion_number.hpp
   timestamp: '2023-06-26 12:08:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Inversion_Number.test.cpp
-  - test/geometry/segment_intersection.test.cpp
   - test/data_structure/Rectangle_Sum_Segtree.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Static_Range_Inversion_Query.test.cpp
+  - test/math/Inversion_Number.test.cpp
+  - test/geometry/segment_intersection.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 title: Compress
