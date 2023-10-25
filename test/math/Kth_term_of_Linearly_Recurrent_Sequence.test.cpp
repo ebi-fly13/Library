@@ -6,7 +6,7 @@
 
 #include "../../convolution/ntt.hpp"
 #include "../../math/bostan_mori_algorithm.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 

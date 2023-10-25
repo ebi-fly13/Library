@@ -2,13 +2,13 @@
 
 #include <algorithm>
 #include <array>
+#include <bit>
 #include <cassert>
-#include <type_traits>
 #include <vector>
 
 #include "../math/internal_math.hpp"
 #include "../utility/bit_operator.hpp"
-#include "../utility/modint_concept.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
@@ -16,7 +16,7 @@ namespace internal {
 
 template <modint mint, int g = internal::primitive_root<mint::mod()>>
 struct ntt_info {
-    static constexpr int rank2 = bsf_constexpr(mint::mod() - 1);
+    static constexpr int rank2 = std::countr_zero(uint(mint::mod() - 1));
 
     std::array<mint, rank2 + 1> root, inv_root;
 
@@ -33,8 +33,8 @@ struct ntt_info {
 template <modint mint> void butterfly(std::vector<mint>& a) {
     static const ntt_info<mint> info;
     int n = int(a.size());
-    int bit_size = bsf(n);
-    assert(n == 1 << ceil_pow2(n));
+    int bit_size = std::countr_zero(a.size());
+    assert(n == (int)std::bit_ceil(a.size()));
     // bit reverse
     for (int i = 0; i < n; i++) {
         int rev = bit_reverse(i, bit_size);
@@ -64,8 +64,8 @@ template <modint mint> void butterfly(std::vector<mint>& a) {
 template <modint mint> void butterfly_inv(std::vector<mint>& a) {
     static const ntt_info<mint> info;
     int n = int(a.size());
-    int bit_size = bsf(n);
-    assert(n == 1 << ceil_pow2(n));
+    int bit_size = std::countr_zero(a.size());
+    assert(n == (int)std::bit_ceil(a.size()));
     // bit reverse
     for (int i = 0; i < n; i++) {
         int rev = bit_reverse(i, bit_size);
@@ -123,7 +123,7 @@ std::vector<mint> convolution(const std::vector<mint>& f,
                               const std::vector<mint>& g) {
     if (f.empty() || g.empty()) return {};
     if (std::min(f.size(), g.size()) < 60) return convolution_naive(f, g);
-    int n = 1 << ceil_pow2(f.size() + g.size() - 1);
+    int n = std::bit_ceil(f.size() + g.size() - 1);
     std::vector<mint> a(n), b(n);
     std::copy(f.begin(), f.end(), a.begin());
     std::copy(g.begin(), g.end(), b.begin());

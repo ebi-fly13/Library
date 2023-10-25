@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "../../convolution/ntt.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 

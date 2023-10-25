@@ -4,7 +4,7 @@
 
 #include "../../template/template.hpp"
 #include "convolution/ntt.hpp"
-#include "utility/modint.hpp"
+#include "modint/modint.hpp"
 
 namespace ebi {
 

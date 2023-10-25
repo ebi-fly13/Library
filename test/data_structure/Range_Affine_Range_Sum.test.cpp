@@ -3,7 +3,7 @@
 #include "../../template/template.hpp"
 
 #include "../../data_structure/lazy_segtree.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 

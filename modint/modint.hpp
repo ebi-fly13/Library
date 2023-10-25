@@ -2,9 +2,8 @@
 
 #include <cassert>
 #include <iostream>
-#include <type_traits>
 
-#include "../utility/modint_concept.hpp"
+#include "base.hpp"
 
 namespace ebi {
 

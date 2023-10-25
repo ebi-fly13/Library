@@ -5,7 +5,7 @@
 
 #include "../../convolution/ntt.hpp"
 #include "../../fps/compositional_inverse_of_fps.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;

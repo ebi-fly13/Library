@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <optional>
 
-#include "../utility/dynamic_modint.hpp"
+#include "../modint/dynamic_modint.hpp"
 
 namespace ebi {
 

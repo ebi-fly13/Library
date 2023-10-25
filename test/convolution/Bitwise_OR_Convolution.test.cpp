@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "../../convolution/or_convolution.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 

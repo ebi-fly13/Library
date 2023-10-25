@@ -5,7 +5,7 @@
 #include "../../fps/sums_of_powers.hpp"
 #include "../../graph/template.hpp"
 #include "../../template/template.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 namespace ebi {
 

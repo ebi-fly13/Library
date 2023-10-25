@@ -3,7 +3,7 @@
 #include "../../convolution/ntt.hpp"
 #include "../../fps/fps.hpp"
 #include "../../fps/fps_sqrt.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using namespace ebi;
 

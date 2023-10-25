@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "../utility/hash.hpp"
-#include "../utility/modint61.hpp"
+#include "../modint/modint61.hpp"
 
 /*
     reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6

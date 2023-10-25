@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 

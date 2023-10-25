@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "../../fps/fps_sparse.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 

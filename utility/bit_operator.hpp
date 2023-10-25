@@ -1,12 +1,9 @@
 #pragma once
 
-namespace ebi {
+#include <bit>
+#include <cstdint>
 
-constexpr int bsf_constexpr(unsigned int n) {
-    int x = 0;
-    while (!(n & (1 << x))) x++;
-    return x;
-}
+namespace ebi {
 
 int bit_reverse(int n, int bit_size) {
     int rev_n = 0;
@@ -16,22 +13,8 @@ int bit_reverse(int n, int bit_size) {
     return rev_n;
 }
 
-int ceil_pow2(int n) {
-    int x = 0;
-    while ((1U << x) < (unsigned int)(n)) x++;
-    return x;
-}
-
-int popcnt(int x) {
-    return __builtin_popcount(x);
-}
-
 int msb(int x) {
-    return (x == 0) ? -1 : 31 - __builtin_clz(x);
-}
-
-int bsf(int x) {
-    return (x == 0) ? -1 : __builtin_ctz(x);
+    return (x == 0) ? -1 : 31 - std::countl_zero(std::uint32_t(x));
 }
 
 }  // namespace ebi

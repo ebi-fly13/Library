@@ -2,7 +2,7 @@
 
 #include <array>
 
-#include "../utility/modint61.hpp"
+#include "../modint/modint61.hpp"
 #include "../utility/random_number_generator_64.hpp"
 
 namespace ebi {

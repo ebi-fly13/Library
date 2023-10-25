@@ -14,7 +14,7 @@ std::vector<std::array<T, LIM + 1>> ranked_zeta(const std::vector<T> &f) {
     assert(n <= LIM);
     assert((int)f.size() == (1 << n));
     std::vector<std::array<T, LIM + 1>> rf(1 << n);
-    for (int s = 0; s < (1 << n); s++) rf[s][popcnt(s)] = f[s];
+    for (int s = 0; s < (1 << n); s++) rf[s][std::popcount(uint(s))] = f[s];
     for (int i = 0; i < n; i++) {
         int w = 1 << i;
         for (int p = 0; p < (1 << n); p += 2 * w) {
@@ -42,7 +42,7 @@ std::vector<T> ranked_mobius(std::vector<std::array<T, LIM + 1>> rf) {
     }
     std::vector<T> f(1 << n);
     for (int s = 0; s < (1 << n); s++) {
-        f[s] = rf[s][popcnt(s)];
+        f[s] = rf[s][std::popcount(uint(s))];
     }
     return f;
 }

@@ -4,8 +4,8 @@
 #include <vector>
 
 #include "../convolution/ntt.hpp"
-#include "../utility/modint.hpp"
-#include "../utility/modint_concept.hpp"
+#include "../modint/modint.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 

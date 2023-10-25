@@ -3,6 +3,8 @@
 #include <cstdint>
 #include <iostream>
 
+#include "base.hpp"
+
 namespace ebi {
 
 template <int m> struct montgomery_modint {

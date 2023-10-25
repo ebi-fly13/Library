@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <iostream>
 
+#include "base.hpp"
+
 namespace ebi {
 
 struct modint61 {

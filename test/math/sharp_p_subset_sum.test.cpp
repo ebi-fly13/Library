@@ -5,7 +5,7 @@
 
 #include "../../convolution/ntt.hpp"
 #include "../../fps/product_of_one_plus_xn.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 

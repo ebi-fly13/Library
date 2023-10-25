@@ -6,7 +6,7 @@
 
 #include "../../fps/fps_sparse.hpp"
 #include "../../math/binomial.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 

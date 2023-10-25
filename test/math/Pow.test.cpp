@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "../../utility/montgomery_modint.hpp"
+#include "../../modint/montgomery_modint.hpp"
 
 using mint = ebi::montgomery_modint1000000007;
 

@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "../../math/partition_function.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 #include "../../convolution/ntt.hpp"
 
 using mint = ebi::modint998244353;

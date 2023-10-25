@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "../../matrix/square_matrix.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using Matrix = ebi::square_matrix<ebi::modint998244353, 0>;
 

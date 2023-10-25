@@ -2,6 +2,8 @@
 
 #include <cassert>
 
+#include "base.hpp"
+
 namespace ebi {
 
 template <int id> struct dynamic_modint {

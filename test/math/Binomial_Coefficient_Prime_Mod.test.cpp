@@ -2,7 +2,7 @@
 
 #include "../../math/binomial.hpp"
 #include "../../template/template.hpp"
-#include "../../utility/dynamic_modint.hpp"
+#include "../../modint/dynamic_modint.hpp"
 
 namespace ebi {
 

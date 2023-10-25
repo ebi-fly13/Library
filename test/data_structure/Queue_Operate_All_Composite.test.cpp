@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "../../data_structure/queue_aggregation.hpp"
-#include "../../utility/modint.hpp"
+#include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
 
