@@ -32,6 +32,10 @@ template <class mint> struct Binomial {
   public:
     Binomial() = default;
 
+    Binomial(int n) {
+        extend(n + 1);
+    }
+
     static mint f(int n) {
         if (n >= (int)fact.size()) [[unlikely]] {
             extend(n + 1);
