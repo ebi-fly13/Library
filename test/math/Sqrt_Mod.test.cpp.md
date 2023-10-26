@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_mod
@@ -96,7 +96,7 @@ data:
   path: test/math/Sqrt_Mod.test.cpp
   requiredBy: []
   timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sqrt_Mod.test.cpp
 layout: document

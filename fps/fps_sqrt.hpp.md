@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   - icon: ':question:'

@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/algorithm/Two_Sat.test.cpp
     title: test/algorithm/Two_Sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/scc_graph.test.cpp
     title: test/graph/scc_graph.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/scc_graph.hpp\"\n\r\n#include <algorithm>\r\n#include\
@@ -94,7 +94,7 @@ data:
   requiredBy:
   - algorithm/two_sat.hpp
   timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/scc_graph.test.cpp
   - test/algorithm/Two_Sat.test.cpp

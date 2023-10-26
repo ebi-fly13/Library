@@ -31,7 +31,7 @@ data:
     - icon: ':question:'
       path: convolution/convolution_mod_2_64.hpp
       title: Convolution $\pmod{2^{64}}$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: convolution/dirichlet_convolution.hpp
       title: Dirichlet Convolution
     - icon: ':heavy_check_mark:'
@@ -93,16 +93,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/bitVector.hpp
       title: data_structure/bitVector.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: Compress
     - icon: ':heavy_check_mark:'
       path: data_structure/deque_aggregation.hpp
       title: Sliding Window Aggregation (Deque)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: fenwick tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/fibonacci_heap.hpp
       title: fibonacci heap
     - icon: ':warning:'
@@ -176,13 +176,13 @@ data:
       title: data_structure/undo_unionfind.hpp
   - name: fps
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: fps/composition_of_fps.hpp
       title: $f(g(x))$
     - icon: ':x:'
       path: fps/compositional_inverse_of_fps.hpp
       title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-    - icon: ':x:'
+    - icon: ':question:'
       path: fps/fps.hpp
       title: Formal Power Series
     - icon: ':question:'
@@ -200,16 +200,16 @@ data:
     - icon: ':x:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/product_of_one_minus_xn.hpp
       title: $\prod (1 - x^{a_i}) \mod x^d$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/product_of_one_plus_xn.hpp
       title: $\prod (1 + x^{a_i}) \mod x^d$
     - icon: ':x:'
       path: fps/sums_of_powers.hpp
       title: $\sum_i (\sum_n A_n^i) x^i$
-    - icon: ':x:'
+    - icon: ':question:'
       path: fps/taylor_shift.hpp
       title: $f(x + c)$
   - name: geometry
@@ -240,16 +240,16 @@ data:
     - icon: ':warning:'
       path: graph/complement_graph_bfs.hpp
       title: Complement Graph BFS
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: graph/dijkstra.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra_fibheap.hpp
       title: graph/dijkstra_fibheap.hpp
     - icon: ':heavy_check_mark:'
       path: graph/low_link.hpp
       title: Low Link
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
     - icon: ':question:'
@@ -260,57 +260,57 @@ data:
       title: Two Edge Connected Components
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/DirichletSeries.hpp
       title: Dirichlet Series
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
     - icon: ':question:'
       path: math/binomial.hpp
       title: Binomial Coefficient
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/bostan_mori_algorithm.hpp
       title: Bostan-Mori Algorithm
     - icon: ':heavy_check_mark:'
       path: math/divisor_transform.hpp
       title: "Divisor Transform (Zeta / M\xF6bius)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: Eratosthenes Sieve
     - icon: ':question:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/inversion_number.hpp
       title: Inversion Number
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
       title: Lagrange Interpolation
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/linear_sieve.hpp
       title: Linear Sieve
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/longest_increasing_subsequence.hpp
       title: LIS
-    - icon: ':x:'
+    - icon: ':question:'
       path: math/mod_sqrt.hpp
       title: Mod Sqrt
     - icon: ':heavy_check_mark:'
       path: math/multiple_transform.hpp
       title: "Multiple Transform (Zeta / M\xF6bius)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/partition_function.hpp
       title: Partition Function
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/stirling_number_1st.hpp
       title: Stirling Numbers of the First Kind
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/stirling_number_2nd.hpp
       title: Stirling Numbers of the Second Kind
   - name: matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: matrix/square_matrix.hpp
       title: matrix/square_matrix.hpp
   - name: modint
@@ -318,7 +318,7 @@ data:
     - icon: ':question:'
       path: modint/base.hpp
       title: modint/base.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: modint/dynamic_modint.hpp
       title: modint/dynamic_modint.hpp
     - icon: ':question:'
@@ -330,7 +330,7 @@ data:
     - icon: ':question:'
       path: modint/modint_func.hpp
       title: modint/modint_func.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: modint/montgomery_modint.hpp
       title: modint/montgomery_modint.hpp
   - name: set_function
@@ -679,70 +679,70 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Two_Edge_Connected_Components.test.cpp
       title: test/graph/Two_Edge_Connected_Components.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/dijkstra.test.cpp
       title: test/graph/dijkstra.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/fibonacci_heap.test.cpp
       title: test/graph/fibonacci_heap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/scc_graph.test.cpp
       title: test/graph/scc_graph.test.cpp
   - name: test/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Berunoulli_Number.test.cpp
       title: test/math/Berunoulli_Number.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Enumerate_Primes.test.cpp
       title: test/math/Enumerate_Primes.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Inversion_Number.test.cpp
       title: test/math/Inversion_Number.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
       title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Longest_Increasing_Subsequence.test.cpp
       title: test/math/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Partition_Function_FPS.test.cpp
       title: test/math/Partition_Function_FPS.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Partition_Function_Pentagonal.test.cpp
       title: test/math/Partition_Function_Pentagonal.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Pow.test.cpp
       title: test/math/Pow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Sqrt_Mod.test.cpp
       title: test/math/Sqrt_Mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
       title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
       title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Totient_Function.test.cpp
       title: test/math/Sum_of_Totient_Function.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/eratosthenes_sieve.test.cpp
       title: test/math/eratosthenes_sieve.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/sharp_p_subset_sum.test.cpp
       title: test/math/sharp_p_subset_sum.test.cpp
   - name: test/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/matrix/Determinant_of_Matrix.test.cpp
       title: test/matrix/Determinant_of_Matrix.test.cpp
   - name: test/polynomial
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     - icon: ':x:'

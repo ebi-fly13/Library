@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
@@ -16,13 +16,13 @@ data:
   - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   - icon: ':question:'
