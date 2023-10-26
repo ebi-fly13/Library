@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../../data_structure/DualSegtree.hpp"
+#include "../../data_structure/dual_segtree_commutative.hpp"
 
 int op(int a, int b) {
     return a + b;
