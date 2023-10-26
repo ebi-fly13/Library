@@ -23,7 +23,7 @@ void main_() {
     offline_dynamic_connective uf(n, qs);
     for (auto [t, u, v] : q3) {
         uf.set(t);
-        std::cout << (uf.same(u, v) ? "Yes" : "No") << '\n';
+        std::cout << (uf.same(u, v) ? "YES" : "NO") << '\n';
     }
 }
 
