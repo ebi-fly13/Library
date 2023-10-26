@@ -23,7 +23,7 @@ template <class T> std::vector<T> subset_zeta(const std::vector<T> &a) {
 }
 
 template <class T> std::vector<T> subset_mobius(const std::vector<T> &ra) {
-    int n = msb(ra.size());
+    int n = std::bit_width(ra.size()) - 1;
     assert((1 << n) == (int)ra.size());
     std::vector<T> a = ra;
     for (int i = 0; i < n; i++) {
