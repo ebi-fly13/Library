@@ -1,12 +1,15 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':x:'
     path: fps/product_of_fps.hpp
     title: $\prod_{i=0}^n f_i$
+  - icon: ':question:'
+    path: modint/base.hpp
+    title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
@@ -19,8 +22,16 @@ data:
     links: []
   bundledCode: "#line 2 \"fps/sums_of_powers.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n\
     #include <algorithm>\n#include <cassert>\n#include <optional>\n#include <vector>\n\
-    \nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
+    \n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include\
+    \ <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T\
+    \ a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n  \
+    \  a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate\
+    \ <Modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 9 \"fps/fps.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
     \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
     \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
     \n  public:\n    FormalPowerSeries(const std::vector<mint> &a) {\n        *this\
@@ -101,15 +112,16 @@ data:
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
     \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/product_of_fps.hpp\"\n\n\
-    #include <deque>\n#line 5 \"fps/product_of_fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint, std::vector<mint> (*convolution)(\n                          const\
-    \ std::vector<mint> &, const std::vector<mint> &)>\nstd::vector<mint> product_of_fps(const\
-    \ std::vector<std::vector<mint>> &fs) {\n    if (fs.empty()) return {1};\n   \
-    \ std::deque<std::vector<mint>> deque;\n    for (auto &f : fs) deque.push_back(f);\n\
-    \    while (deque.size() > 1) {\n        auto f = deque.front();\n        deque.pop_front();\n\
-    \        auto g = deque.front();\n        deque.pop_front();\n        deque.push_back(convolution(f,\
-    \ g));\n    }\n    return deque.front();\n}\n\n}  // namespace ebi\n#line 5 \"\
-    fps/sums_of_powers.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
+    #include <deque>\n#line 5 \"fps/product_of_fps.hpp\"\n\n#line 7 \"fps/product_of_fps.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
+    \ &)>\nstd::vector<mint> product_of_fps(const std::vector<std::vector<mint>> &fs)\
+    \ {\n    if (fs.empty()) return {1};\n    std::deque<std::vector<mint>> deque;\n\
+    \    for (auto &f : fs) deque.push_back(f);\n    while (deque.size() > 1) {\n\
+    \        auto f = deque.front();\n        deque.pop_front();\n        auto g =\
+    \ deque.front();\n        deque.pop_front();\n        deque.push_back(convolution(f,\
+    \ g));\n    }\n    return deque.front();\n}\n\n}  // namespace ebi\n#line 6 \"\
+    fps/sums_of_powers.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint, std::vector<mint>\
     \ (*convolution)(\n                          const std::vector<mint> &, const\
     \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> sums_of_powers(const\
     \ std::vector<int> &a,\n                                                    int\
@@ -118,21 +130,22 @@ data:
     \ {\n        fs[i][1] = -a[i];\n    }\n    FPS g = product_of_fps<mint, convolution>(fs);\n\
     \    return (-g.log(d + 1).differential() << 1) + n;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n#include \"../fps/product_of_fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> sums_of_powers(const std::vector<int>\
-    \ &a,\n                                                    int d) {\n    using\
-    \ FPS = FormalPowerSeries<mint, convolution>;\n    int n = a.size();\n    std::vector\
-    \ fs(n, std::vector<mint>(2, 1));\n    for (int i = 0; i < n; i++) {\n       \
-    \ fs[i][1] = -a[i];\n    }\n    FPS g = product_of_fps<mint, convolution>(fs);\n\
+    \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\
+    \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
+    \ &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> sums_of_powers(const\
+    \ std::vector<int> &a,\n                                                    int\
+    \ d) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n    int n = a.size();\n\
+    \    std::vector fs(n, std::vector<mint>(2, 1));\n    for (int i = 0; i < n; i++)\
+    \ {\n        fs[i][1] = -a[i];\n    }\n    FPS g = product_of_fps<mint, convolution>(fs);\n\
     \    return (-g.log(d + 1).differential() << 1) + n;\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
+  - modint/base.hpp
   - fps/product_of_fps.hpp
   isVerificationFile: false
   path: fps/sums_of_powers.hpp
   requiredBy: []
-  timestamp: '2023-08-28 18:05:02+09:00'
+  timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yuki/yuki_1145.test.cpp

@@ -60,61 +60,61 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
   - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
@@ -166,11 +166,12 @@ data:
     links: []
   bundledCode: "#line 2 \"modint/modint.hpp\"\n\r\n#include <cassert>\r\n#include\
     \ <iostream>\r\n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line\
-    \ 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept modint\
-    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n\
-    \    a.val();\n    a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
+    \ 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi {\n\ntemplate <class\
+    \ T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n\
+    \    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n\
+    \    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
     modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
     \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
@@ -274,7 +275,7 @@ data:
   requiredBy:
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/Gcd_Convolution.test.cpp

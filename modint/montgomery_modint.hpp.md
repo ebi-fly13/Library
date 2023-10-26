@@ -6,21 +6,22 @@ data:
     title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Pow.test.cpp
     title: test/math/Pow.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/montgomery_modint.hpp\"\n\n#include <cstdint>\n#include\
     \ <iostream>\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"\
-    modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept modint = requires(T\
-    \ a, T b) {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n   \
-    \ a.val();\n    a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
+    modint/base.hpp\"\n#include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\n\
+    concept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n  \
+    \  a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n\
+    \    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
     modint/montgomery_modint.hpp\"\n\nnamespace ebi {\n\ntemplate <int m> struct montgomery_modint\
     \ {\n  private:\n    using modint = montgomery_modint;\n    using i32 = std::int32_t;\n\
@@ -62,18 +63,18 @@ data:
     \ {\n        return (lhs._v >= umod() ? lhs._v - umod() : lhs._v) ==\n       \
     \        (rhs._v >= umod() ? rhs._v - umod() : rhs._v);\n    }\n    friend bool\
     \ operator!=(const modint &lhs, const modint &rhs) {\n        return !(lhs ==\
-    \ rhs);\n    }\n\n    constexpr modint pow(u64 n) const {\n        modint x =\
-    \ *this, res = 1;\n        while (n) {\n            if (n & 1) res *= x;\n   \
-    \         x *= x;\n            n >>= 1;\n        }\n        return res;\n    }\n\
-    \n    constexpr modint inv() const {\n        return pow(umod() - 2);\n    }\n\
-    \n    constexpr u32 val() const {\n        u32 ret = reduce(i64(_v));\n      \
-    \  return ret >= umod() ? ret - umod() : ret;\n    }\n\n  private:\n    u32 _v\
-    \ = 0;\n};\n\ntemplate <int m>\nstd::istream &operator>>(std::istream &os, montgomery_modint<m>\
-    \ &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\ntemplate\
-    \ <int m>\nstd::ostream &operator<<(std::ostream &os, const montgomery_modint<m>\
-    \ &a) {\n    return os << a.val();\n}\n\nusing montgomery_modint998244353 = montgomery_modint<998244353>;\n\
-    using montgomery_modint1000000007 = montgomery_modint<1'000'000'007>;\n\n}  //\
-    \ namespace ebi\n"
+    \ rhs);\n    }\n\n    constexpr modint pow(long long n) const {\n        modint\
+    \ x = *this, res = 1;\n        while (n) {\n            if (n & 1) res *= x;\n\
+    \            x *= x;\n            n >>= 1;\n        }\n        return res;\n \
+    \   }\n\n    constexpr modint inv() const {\n        return pow(umod() - 2);\n\
+    \    }\n\n    constexpr u32 val() const {\n        u32 ret = reduce(i64(_v));\n\
+    \        return ret >= umod() ? ret - umod() : ret;\n    }\n\n  private:\n   \
+    \ u32 _v = 0;\n};\n\ntemplate <int m>\nstd::istream &operator>>(std::istream &os,\
+    \ montgomery_modint<m> &a) {\n    long long x;\n    os >> x;\n    a = x;\n   \
+    \ return os;\n}\ntemplate <int m>\nstd::ostream &operator<<(std::ostream &os,\
+    \ const montgomery_modint<m> &a) {\n    return os << a.val();\n}\n\nusing montgomery_modint998244353\
+    \ = montgomery_modint<998244353>;\nusing montgomery_modint1000000007 = montgomery_modint<1'000'000'007>;\n\
+    \n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cstdint>\n#include <iostream>\n\n#include \"base.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <int m> struct montgomery_modint {\n  private:\n\
     \    using modint = montgomery_modint;\n    using i32 = std::int32_t;\n    using\
@@ -114,25 +115,25 @@ data:
     \ {\n        return (lhs._v >= umod() ? lhs._v - umod() : lhs._v) ==\n       \
     \        (rhs._v >= umod() ? rhs._v - umod() : rhs._v);\n    }\n    friend bool\
     \ operator!=(const modint &lhs, const modint &rhs) {\n        return !(lhs ==\
-    \ rhs);\n    }\n\n    constexpr modint pow(u64 n) const {\n        modint x =\
-    \ *this, res = 1;\n        while (n) {\n            if (n & 1) res *= x;\n   \
-    \         x *= x;\n            n >>= 1;\n        }\n        return res;\n    }\n\
-    \n    constexpr modint inv() const {\n        return pow(umod() - 2);\n    }\n\
-    \n    constexpr u32 val() const {\n        u32 ret = reduce(i64(_v));\n      \
-    \  return ret >= umod() ? ret - umod() : ret;\n    }\n\n  private:\n    u32 _v\
-    \ = 0;\n};\n\ntemplate <int m>\nstd::istream &operator>>(std::istream &os, montgomery_modint<m>\
-    \ &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\ntemplate\
-    \ <int m>\nstd::ostream &operator<<(std::ostream &os, const montgomery_modint<m>\
-    \ &a) {\n    return os << a.val();\n}\n\nusing montgomery_modint998244353 = montgomery_modint<998244353>;\n\
-    using montgomery_modint1000000007 = montgomery_modint<1'000'000'007>;\n\n}  //\
-    \ namespace ebi"
+    \ rhs);\n    }\n\n    constexpr modint pow(long long n) const {\n        modint\
+    \ x = *this, res = 1;\n        while (n) {\n            if (n & 1) res *= x;\n\
+    \            x *= x;\n            n >>= 1;\n        }\n        return res;\n \
+    \   }\n\n    constexpr modint inv() const {\n        return pow(umod() - 2);\n\
+    \    }\n\n    constexpr u32 val() const {\n        u32 ret = reduce(i64(_v));\n\
+    \        return ret >= umod() ? ret - umod() : ret;\n    }\n\n  private:\n   \
+    \ u32 _v = 0;\n};\n\ntemplate <int m>\nstd::istream &operator>>(std::istream &os,\
+    \ montgomery_modint<m> &a) {\n    long long x;\n    os >> x;\n    a = x;\n   \
+    \ return os;\n}\ntemplate <int m>\nstd::ostream &operator<<(std::ostream &os,\
+    \ const montgomery_modint<m> &a) {\n    return os << a.val();\n}\n\nusing montgomery_modint998244353\
+    \ = montgomery_modint<998244353>;\nusing montgomery_modint1000000007 = montgomery_modint<1'000'000'007>;\n\
+    \n}  // namespace ebi"
   dependsOn:
   - modint/base.hpp
   isVerificationFile: false
   path: modint/montgomery_modint.hpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 11:41:06+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/Pow.test.cpp
 documentation_of: modint/montgomery_modint.hpp

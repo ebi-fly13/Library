@@ -34,34 +34,34 @@ data:
     \ (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n    return -1;\n\
     }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
-    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
-    \   a *b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate\
-    \ <modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
-    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\n\
-    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
-    \ a.val();\n}\n\n}  // namespace ebi\n#line 11 \"convolution/ntt.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\n\
-    struct ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
-    \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
-    \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
-    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
-    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
-    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <modint mint> void\
-    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
-    \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
-    \   assert(n == (int)std::bit_ceil(a.size()));\n\n    // bit reverse\n    for\
-    \ (int i = 0, j = 1; j < n - 1; j++) {\n        for (int k = n >> 1; k > (i ^=\
-    \ k); k >>= 1)\n            ;\n        if (j < i) {\n            std::swap(a[i],\
-    \ a[j]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n\
-    \        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1\
-    \ = 1;\n            mint zeta2 = info.root[1];\n            for (int j = 0; j\
-    \ < (1 << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n\
-    \                int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n\
-    \                mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
-    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
-    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
-    \ }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
+    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
+    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 11 \"\
+    convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <Modint\
+    \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
+    \  static constexpr int rank2 = std::countr_zero(uint(mint::mod() - 1));\n\n \
+    \   std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2]\
+    \ = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2] = root[rank2].inv();\n\
+    \        for (int i = rank2 - 1; i >= 0; i--) {\n            root[i] = root[i\
+    \ + 1] * root[i + 1];\n            inv_root[i] = inv_root[i + 1] * inv_root[i\
+    \ + 1];\n        }\n    }\n};\n\ntemplate <Modint mint> void butterfly(std::vector<mint>&\
+    \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
+    \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
+    \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
+    \ (int k = n >> 1; k > (i ^= k); k >>= 1)\n            ;\n        if (j < i) {\n\
+    \            std::swap(a[i], a[j]);\n        }\n    }\n\n    for (int bit = 0;\
+    \ bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1));\
+    \ i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n\
+    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
+    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
+    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
+    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
+    \                zeta1 *= info.root[bit + 1];\n                zeta2 *= info.root[bit\
+    \ + 1];\n            }\n        }\n    }\n}\n\ntemplate <Modint mint> void butterfly_inv(std::vector<mint>&\
     \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
     \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
     \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
@@ -76,7 +76,7 @@ data:
     \                zeta1 *= info.inv_root[bit + 1];\n                zeta2 *= info.inv_root[bit\
     \ + 1];\n            }\n        }\n    }\n    mint inv_n = mint(n).inv();\n  \
     \  for (int i = 0; i < n; i++) {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace\
-    \ internal\n\ntemplate <modint mint>\nstd::vector<mint> convolution_naive(const\
+    \ internal\n\ntemplate <Modint mint>\nstd::vector<mint> convolution_naive(const\
     \ std::vector<mint>& f,\n                                    const std::vector<mint>&\
     \ g) {\n    if (f.empty() || g.empty()) return {};\n    int n = int(f.size()),\
     \ m = int(g.size());\n    std::vector<mint> c(n + m - 1);\n    if (n < m) {\n\
@@ -84,7 +84,7 @@ data:
     \ {\n                c[i + j] += f[i] * g[j];\n            }\n        }\n    }\
     \ else {\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j\
     \ < m; j++) {\n                c[i + j] += f[i] * g[j];\n            }\n     \
-    \   }\n    }\n    return c;\n}\n\ntemplate <modint mint>\nstd::vector<mint> convolution(const\
+    \   }\n    }\n    return c;\n}\n\ntemplate <Modint mint>\nstd::vector<mint> convolution(const\
     \ std::vector<mint>& f,\n                              const std::vector<mint>&\
     \ g) {\n    if (f.empty() || g.empty()) return {};\n    if (std::min(f.size(),\
     \ g.size()) < 60) return convolution_naive(f, g);\n    int n = std::bit_ceil(f.size()\
@@ -164,7 +164,7 @@ data:
   isVerificationFile: true
   path: test/convolution/Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:17:59+09:00'
+  timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Convolution.test.cpp

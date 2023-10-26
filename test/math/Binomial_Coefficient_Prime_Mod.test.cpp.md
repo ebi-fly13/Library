@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -62,65 +62,65 @@ data:
     \ = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
     \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 2 \"modint/dynamic_modint.hpp\"\
     \n\n#line 4 \"modint/dynamic_modint.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include\
-    \ <concepts>\n#line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ T>\nconcept modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n\
-    \    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint\
-    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
-    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
-    }\n\n}  // namespace ebi\n#line 6 \"modint/dynamic_modint.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <int id> struct dynamic_modint {\n  private:\n    using modint\
-    \ = dynamic_modint;\n\n  public:\n    static void set_mod(int p) {\n        assert(1\
-    \ <= p);\n        m = p;\n    }\n\n    static int mod() {\n        return m;\n\
-    \    }\n\n    modint raw(int v) {\n        modint x;\n        x._v = v;\n    \
-    \    return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n\n    dynamic_modint(long\
-    \ long v) {\n        v %= (long long)umod();\n        if (v < 0) v += (long long)umod();\n\
-    \        _v = (unsigned int)v;\n    }\n\n    unsigned int val() const {\n    \
-    \    return _v;\n    }\n\n    unsigned int value() const {\n        return val();\n\
-    \    }\n\n    modint &operator++() {\n        _v++;\n        if (_v == umod())\
-    \ _v = 0;\n        return *this;\n    }\n    modint &operator--() {\n        if\
-    \ (_v == 0) _v = umod();\n        _v--;\n        return *this;\n    }\n    modint\
-    \ &operator+=(const modint &rhs) {\n        _v += rhs._v;\n        if (_v >= umod())\
-    \ _v -= umod();\n        return *this;\n    }\n    modint &operator-=(const modint\
-    \ &rhs) {\n        _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n  \
-    \      return *this;\n    }\n    modint &operator*=(const modint &rhs) {\n   \
-    \     unsigned long long x = _v;\n        x *= rhs._v;\n        _v = (unsigned\
-    \ int)(x % (unsigned long long)umod());\n        return *this;\n    }\n    modint\
-    \ &operator/=(const modint &rhs) {\n        return *this = *this * rhs.inv();\n\
-    \    }\n\n    modint operator+() const {\n        return *this;\n    }\n    modint\
-    \ operator-() const {\n        return modint() - *this;\n    }\n\n    modint pow(long\
-    \ long n) const {\n        assert(0 <= n);\n        modint x = *this, res = 1;\n\
-    \        while (n) {\n            if (n & 1) res *= x;\n            x *= x;\n\
-    \            n >>= 1;\n        }\n        return res;\n    }\n    modint inv()\
-    \ const {\n        assert(_v);\n        return pow(umod() - 2);\n    }\n\n   \
-    \ friend modint operator+(const modint &lhs, const modint &rhs) {\n        return\
-    \ modint(lhs) += rhs;\n    }\n    friend modint operator-(const modint &lhs, const\
-    \ modint &rhs) {\n        return modint(lhs) -= rhs;\n    }\n    friend modint\
-    \ operator*(const modint &lhs, const modint &rhs) {\n        return modint(lhs)\
-    \ *= rhs;\n    }\n\n    friend modint operator/(const modint &lhs, const modint\
-    \ &rhs) {\n        return modint(lhs) /= rhs;\n    }\n    friend bool operator==(const\
-    \ modint &lhs, const modint &rhs) {\n        return lhs.val() == rhs.val();\n\
-    \    }\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\n \
-    \       return !(lhs == rhs);\n    }\n\n  private:\n    unsigned int _v = 0;\n\
-    \    static int m;\n\n    static unsigned int umod() {\n        return m;\n  \
-    \  }\n};\n\ntemplate <int id> int dynamic_modint<id>::m = 998244353;\n\n}  //\
-    \ namespace ebi\n#line 1 \"template/template.hpp\"\n#include <algorithm>\n#line\
-    \ 3 \"template/template.hpp\"\n#include <bitset>\n#line 5 \"template/template.hpp\"\
-    \n#include <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n\
-    #include <cstddef>\n#include <cstdint>\n#include <cstdlib>\n#include <cstring>\n\
-    #include <functional>\n#include <iomanip>\n#line 16 \"template/template.hpp\"\n\
-    #include <limits>\n#include <map>\n#include <memory>\n#include <numbers>\n#include\
+    \ <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi\
+    \ {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n\
+    \    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 6 \"\
+    modint/dynamic_modint.hpp\"\n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint\
+    \ {\n  private:\n    using modint = dynamic_modint;\n\n  public:\n    static void\
+    \ set_mod(int p) {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static\
+    \ int mod() {\n        return m;\n    }\n\n    modint raw(int v) {\n        modint\
+    \ x;\n        x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0)\
+    \ {}\n\n    dynamic_modint(long long v) {\n        v %= (long long)umod();\n \
+    \       if (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n  \
+    \  }\n\n    unsigned int val() const {\n        return _v;\n    }\n\n    unsigned\
+    \ int value() const {\n        return val();\n    }\n\n    modint &operator++()\
+    \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
+    \    }\n    modint &operator--() {\n        if (_v == 0) _v = umod();\n      \
+    \  _v--;\n        return *this;\n    }\n    modint &operator+=(const modint &rhs)\
+    \ {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
+    \ *this;\n    }\n    modint &operator-=(const modint &rhs) {\n        _v -= rhs._v;\n\
+    \        if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    modint\
+    \ &operator*=(const modint &rhs) {\n        unsigned long long x = _v;\n     \
+    \   x *= rhs._v;\n        _v = (unsigned int)(x % (unsigned long long)umod());\n\
+    \        return *this;\n    }\n    modint &operator/=(const modint &rhs) {\n \
+    \       return *this = *this * rhs.inv();\n    }\n\n    modint operator+() const\
+    \ {\n        return *this;\n    }\n    modint operator-() const {\n        return\
+    \ modint() - *this;\n    }\n\n    modint pow(long long n) const {\n        assert(0\
+    \ <= n);\n        modint x = *this, res = 1;\n        while (n) {\n          \
+    \  if (n & 1) res *= x;\n            x *= x;\n            n >>= 1;\n        }\n\
+    \        return res;\n    }\n    modint inv() const {\n        assert(_v);\n \
+    \       return pow(umod() - 2);\n    }\n\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\n        return modint(lhs) += rhs;\n    }\n    friend\
+    \ modint operator-(const modint &lhs, const modint &rhs) {\n        return modint(lhs)\
+    \ -= rhs;\n    }\n    friend modint operator*(const modint &lhs, const modint\
+    \ &rhs) {\n        return modint(lhs) *= rhs;\n    }\n\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\n        return modint(lhs) /= rhs;\n    }\n\
+    \    friend bool operator==(const modint &lhs, const modint &rhs) {\n        return\
+    \ lhs.val() == rhs.val();\n    }\n    friend bool operator!=(const modint &lhs,\
+    \ const modint &rhs) {\n        return !(lhs == rhs);\n    }\n\n  private:\n \
+    \   unsigned int _v = 0;\n    static int m;\n\n    static unsigned int umod()\
+    \ {\n        return m;\n    }\n};\n\ntemplate <int id> int dynamic_modint<id>::m\
+    \ = 998244353;\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\n#include\
+    \ <algorithm>\n#line 3 \"template/template.hpp\"\n#include <bitset>\n#line 5 \"\
+    template/template.hpp\"\n#include <chrono>\n#include <climits>\n#include <cmath>\n\
+    #include <complex>\n#include <cstddef>\n#include <cstdint>\n#include <cstdlib>\n\
+    #include <cstring>\n#include <functional>\n#include <iomanip>\n#line 16 \"template/template.hpp\"\
+    \n#include <limits>\n#include <map>\n#include <memory>\n#include <numbers>\n#include\
     \ <numeric>\n#include <optional>\n#include <queue>\n#include <random>\n#line 25\
     \ \"template/template.hpp\"\n#include <set>\n#include <stack>\n#include <string>\n\
     #include <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
-    #include <utility>\n#line 34 \"template/template.hpp\"\n\n#define rep(i, a, n)\
-    \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
-    \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
-    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
-    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
-    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
-    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
-    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    #line 34 \"template/template.hpp\"\n\n#define rep(i, a, n) for (int i = (int)(a);\
+    \ i < (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
+    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
+    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
+    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
+    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
+    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
+    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
@@ -186,8 +186,8 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 11:41:06+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 layout: document

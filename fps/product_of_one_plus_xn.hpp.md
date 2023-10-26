@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
@@ -12,19 +12,27 @@ data:
     title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/product_of_one_plus_xn.hpp\"\n\n#include <vector>\n\n\
     #line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#include\
-    \ <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint,\
-    \ std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
-    \ &, const std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint>\
+    \ <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include\
+    \ <concepts>\n#include <iostream>\n#include <utility>\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 9 \"\
+    fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint>\
+    \ (*convolution)(const std::vector<mint> &,\n                                \
+    \           const std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint>\
     \ {\n  private:\n    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
     \    using FPS = FormalPowerSeries;\n\n  public:\n    FormalPowerSeries(const\
     \ std::vector<mint> &a) {\n        *this = a;\n    }\n\n    FPS operator+(const\
@@ -104,22 +112,16 @@ data:
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
     \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"math/mod_inv.hpp\"\
-    \n\n#line 5 \"math/mod_inv.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #include <iostream>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept modint =\
-    \ requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n\
-    \    a.val();\n    a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
-    math/mod_inv.hpp\"\n\nnamespace ebi {\n\ntemplate <modint mint> mint inv(int n)\
-    \ {\n    static const int mod = mint::mod();\n    static std::vector<mint> dat\
-    \ = {0, 1};\n    assert(0 <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size())\
-    \ <= n) {\n        int num = dat.size();\n        int q = (mod + num - 1) / num;\n\
-    \        dat.emplace_back(dat[num * q - mod] * mint(q));\n    }\n    return dat[n];\n\
-    }\n\n}  // namespace ebi\n#line 7 \"fps/product_of_one_plus_xn.hpp\"\n\nnamespace\
-    \ ebi {\n\n// prod (1 + x^a_i) mod x^d\ntemplate <class mint, std::vector<mint>\
-    \ (*convolution)(\n                          const std::vector<mint> &, const\
-    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> product_of_one_plus_xn(std::vector<int>\
+    \n\n#line 5 \"math/mod_inv.hpp\"\n\n#line 7 \"math/mod_inv.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint> mint inv(int n) {\n    static const int mod\
+    \ = mint::mod();\n    static std::vector<mint> dat = {0, 1};\n    assert(0 <=\
+    \ n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size()) <= n) {\n     \
+    \   int num = dat.size();\n        int q = (mod + num - 1) / num;\n        dat.emplace_back(dat[num\
+    \ * q - mod] * mint(q));\n    }\n    return dat[n];\n}\n\n}  // namespace ebi\n\
+    #line 8 \"fps/product_of_one_plus_xn.hpp\"\n\nnamespace ebi {\n\n// prod (1 +\
+    \ x^a_i) mod x^d\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> product_of_one_plus_xn(std::vector<int>\
     \ a,\n                                                            int d) {\n \
     \   using FPS = FormalPowerSeries<mint, convolution>;\n    std::vector<int> cnt(d,\
     \ 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    FPS log_f(d);\n\
@@ -129,11 +131,12 @@ data:
     \        }\n    }\n    mint ret = mint(2).pow(cnt[0]);\n    auto f = log_f.exp(d);\n\
     \    for (auto &x : f) x *= ret;\n    return f;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <vector>\n\n#include \"../fps/fps.hpp\"\n#include\
-    \ \"../math/mod_inv.hpp\"\n\nnamespace ebi {\n\n// prod (1 + x^a_i) mod x^d\n\
-    template <class mint, std::vector<mint> (*convolution)(\n                    \
-    \      const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
-    \ convolution> product_of_one_plus_xn(std::vector<int> a,\n                  \
-    \                                          int d) {\n    using FPS = FormalPowerSeries<mint,\
+    \ \"../math/mod_inv.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\
+    \n// prod (1 + x^a_i) mod x^d\ntemplate <Modint mint,\n          std::vector<mint>\
+    \ (*convolution)(const std::vector<mint> &,\n                                \
+    \           const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution>\
+    \ product_of_one_plus_xn(std::vector<int> a,\n                               \
+    \                             int d) {\n    using FPS = FormalPowerSeries<mint,\
     \ convolution>;\n    std::vector<int> cnt(d, 0);\n    for (auto x : a)\n     \
     \   if (x < d) cnt[x]++;\n    FPS log_f(d);\n    for (int x = 1; x < d; x++) {\n\
     \        for (int i = 1; x * i < d; i++) {\n            if (i & 1)\n         \
@@ -143,13 +146,13 @@ data:
     \ &x : f) x *= ret;\n    return f;\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
-  - math/mod_inv.hpp
   - modint/base.hpp
+  - math/mod_inv.hpp
   isVerificationFile: false
   path: fps/product_of_one_plus_xn.hpp
   requiredBy: []
-  timestamp: '2023-10-26 11:00:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 11:41:06+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/sharp_p_subset_sum.test.cpp
 documentation_of: fps/product_of_one_plus_xn.hpp

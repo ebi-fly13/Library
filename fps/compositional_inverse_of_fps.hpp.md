@@ -1,29 +1,40 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
-  - icon: ':question:'
+  - icon: ':x:'
     path: fps/fps.hpp
     title: Formal Power Series
+  - icon: ':question:'
+    path: modint/base.hpp
+    title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/compositional_inverse_of_fps.hpp\"\n\n#include <cassert>\n\
     \n#line 2 \"fps/composition_of_fps.hpp\"\n\n#line 4 \"fps/composition_of_fps.hpp\"\
     \n#include <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line\
-    \ 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
-    \                 const std::vector<mint> &, const std::vector<mint> &)>\nstruct\
-    \ FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
+    \ 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 2 \"\
+    modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include <utility>\n\
+    \nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n\
+    \    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
+    \    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate <Modint\
+    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
+    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
+    }\n\n}  // namespace ebi\n#line 9 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <Modint mint,\n          std::vector<mint> (*convolution)(const std::vector<mint>\
+    \ &,\n                                           const std::vector<mint> &)>\n\
+    struct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
     \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
     \n  public:\n    FormalPowerSeries(const std::vector<mint> &a) {\n        *this\
     \ = a;\n    }\n\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
@@ -102,9 +113,9 @@ data:
     \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
-    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 7 \"fps/composition_of_fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 8 \"fps/composition_of_fps.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
     \ &)>\nFormalPowerSeries<mint, convolution> composition_of_fps(\n    const FormalPowerSeries<mint,\
     \ convolution> &f,\n    const FormalPowerSeries<mint, convolution> &g) {\n   \
     \ using FPS = FormalPowerSeries<mint, convolution>;\n    // assert(f.deg() ==\
@@ -118,23 +129,24 @@ data:
     \      if (k * i + j < n) {\n                mint coef = f[k * i + j];\n     \
     \           a += baby[j] * coef;\n            } else\n                break;\n\
     \        }\n        h += (giant[i] * a).pre(n);\n    }\n    return h;\n}\n\n}\
-    \  // namespace ebi\n#line 7 \"fps/compositional_inverse_of_fps.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
-    \                 const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
-    \ convolution> compositional_inverse_of_fps(\n    FormalPowerSeries<mint, convolution>\
-    \ f, int d = -1) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n  \
-    \  if (d < 0) d = f.deg();\n    assert((int)f.size() >= 2 && f[0] == 0 && f[1]\
-    \ != 0);\n    FPS df = f.differential();\n    FPS g = {0, f[1].inv()};\n    for\
-    \ (int n = 2; n < d; n <<= 1) {\n        g.resize(2 * n);\n        if (f.deg()\
+    \  // namespace ebi\n#line 8 \"fps/compositional_inverse_of_fps.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> compositional_inverse_of_fps(\n  \
+    \  FormalPowerSeries<mint, convolution> f, int d = -1) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    if (d < 0) d = f.deg();\n    assert((int)f.size() >= 2 &&\
+    \ f[0] == 0 && f[1] != 0);\n    FPS df = f.differential();\n    FPS g = {0, f[1].inv()};\n\
+    \    for (int n = 2; n < d; n <<= 1) {\n        g.resize(2 * n);\n        if (f.deg()\
     \ < 2 * n) f.resize(2 * n);\n        if (df.deg() < 2 * n) df.resize(2 * n);\n\
     \        FPS fg = composition_of_fps(f.pre(2 * n), g);\n        FPS fdg = composition_of_fps(df.pre(2\
     \ * n), g);\n        g -= ((fg - FPS{0, 1}) * fdg.inv(2 * n)).pre(2 * n);\n  \
     \  }\n    g.resize(d);\n    return g;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n\n#include \"../fps/composition_of_fps.hpp\"\
-    \n#include \"../fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint, std::vector<mint>\
-    \ (*convolution)(\n                          const std::vector<mint> &, const\
-    \ std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> compositional_inverse_of_fps(\n\
-    \    FormalPowerSeries<mint, convolution> f, int d = -1) {\n    using FPS = FormalPowerSeries<mint,\
+    \n#include \"../fps/fps.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> compositional_inverse_of_fps(\n  \
+    \  FormalPowerSeries<mint, convolution> f, int d = -1) {\n    using FPS = FormalPowerSeries<mint,\
     \ convolution>;\n    if (d < 0) d = f.deg();\n    assert((int)f.size() >= 2 &&\
     \ f[0] == 0 && f[1] != 0);\n    FPS df = f.differential();\n    FPS g = {0, f[1].inv()};\n\
     \    for (int n = 2; n < d; n <<= 1) {\n        g.resize(2 * n);\n        if (f.deg()\
@@ -145,11 +157,12 @@ data:
   dependsOn:
   - fps/composition_of_fps.hpp
   - fps/fps.hpp
+  - modint/base.hpp
   isVerificationFile: false
   path: fps/compositional_inverse_of_fps.hpp
   requiredBy: []
-  timestamp: '2023-08-28 17:31:00+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-26 11:41:06+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
 documentation_of: fps/compositional_inverse_of_fps.hpp

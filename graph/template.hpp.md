@@ -42,7 +42,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/scc_graph.test.cpp
     title: test/graph/scc_graph.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':x:'

@@ -11,29 +11,29 @@ data:
   - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
@@ -51,21 +51,21 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"math/mod_inv.hpp\"\n\n#include <cassert>\n#include <vector>\n\
-    \n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\n\
-    namespace ebi {\n\ntemplate <class T>\nconcept modint = requires(T a, T b) {\n\
-    \    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n    a.val();\n \
-    \   a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
-    math/mod_inv.hpp\"\n\nnamespace ebi {\n\ntemplate <modint mint> mint inv(int n)\
-    \ {\n    static const int mod = mint::mod();\n    static std::vector<mint> dat\
-    \ = {0, 1};\n    assert(0 <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size())\
-    \ <= n) {\n        int num = dat.size();\n        int q = (mod + num - 1) / num;\n\
-    \        dat.emplace_back(dat[num * q - mod] * mint(q));\n    }\n    return dat[n];\n\
-    }\n\n}  // namespace ebi\n"
+    \n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include\
+    \ <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T\
+    \ a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n  \
+    \  a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate\
+    \ <Modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 7 \"math/mod_inv.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint> mint inv(int n) {\n    static const int mod\
+    \ = mint::mod();\n    static std::vector<mint> dat = {0, 1};\n    assert(0 <=\
+    \ n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size()) <= n) {\n     \
+    \   int num = dat.size();\n        int q = (mod + num - 1) / num;\n        dat.emplace_back(dat[num\
+    \ * q - mod] * mint(q));\n    }\n    return dat[n];\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../modint/base.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <modint mint> mint inv(int n) {\n    static const\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint> mint inv(int n) {\n    static const\
     \ int mod = mint::mod();\n    static std::vector<mint> dat = {0, 1};\n    assert(0\
     \ <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size()) <= n) {\n  \
     \      int num = dat.size();\n        int q = (mod + num - 1) / num;\n       \
@@ -80,7 +80,7 @@ data:
   - fps/product_of_one_minus_xn.hpp
   - fps/fps_sparse.hpp
   - fps/fps_sqrt.hpp
-  timestamp: '2023-10-26 11:00:12+09:00'
+  timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp

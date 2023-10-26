@@ -11,10 +11,10 @@ data:
   - icon: ':question:'
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
   - icon: ':x:'
@@ -45,10 +45,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Subset_Convolution.test.cpp
     title: test/convolution/Subset_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - icon: ':x:'

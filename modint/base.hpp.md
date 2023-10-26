@@ -11,25 +11,61 @@ data:
   - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
+  - icon: ':x:'
+    path: fps/composition_of_fps.hpp
+    title: $f(g(x))$
+  - icon: ':x:'
+    path: fps/compositional_inverse_of_fps.hpp
+    title: "$f(x)$ \u306E\u9006\u95A2\u6570"
+  - icon: ':x:'
+    path: fps/fps.hpp
+    title: Formal Power Series
   - icon: ':question:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
   - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: fps/multipoint_evaluation.hpp
+    title: Multipoint Evaluation
+  - icon: ':x:'
+    path: fps/polynomial_interpolation.hpp
+    title: Polynomial Interpolation
+  - icon: ':x:'
+    path: fps/product_of_fps.hpp
+    title: $\prod_{i=0}^n f_i$
+  - icon: ':x:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
+  - icon: ':x:'
+    path: fps/sums_of_powers.hpp
+    title: $\sum_i (\sum_n A_n^i) x^i$
+  - icon: ':x:'
+    path: fps/taylor_shift.hpp
+    title: $f(x + c)$
+  - icon: ':x:'
+    path: math/bernoulli_number.hpp
+    title: Bernoulli Number
   - icon: ':question:'
     path: math/mod_inv.hpp
     title: math/mod_inv.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
-  - icon: ':question:'
+  - icon: ':x:'
+    path: math/partition_function.hpp
+    title: Partition Function
+  - icon: ':x:'
+    path: math/stirling_number_1st.hpp
+    title: Stirling Numbers of the First Kind
+  - icon: ':x:'
+    path: math/stirling_number_2nd.hpp
+    title: Stirling Numbers of the Second Kind
+  - icon: ':x:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   - icon: ':question:'
@@ -38,10 +74,7 @@ data:
   - icon: ':question:'
     path: modint/modint61.hpp
     title: modint/modint61.hpp
-  - icon: ':warning:'
-    path: modint/modint_func.hpp
-    title: modint/modint_func.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: modint/montgomery_modint.hpp
     title: modint/montgomery_modint.hpp
   - icon: ':heavy_check_mark:'
@@ -105,70 +138,70 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Pow.test.cpp
     title: test/math/Pow.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sqrt_Mod.test.cpp
     title: test/math/Sqrt_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
   - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
@@ -222,19 +255,21 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\
-    \nnamespace ebi {\n\ntemplate <class T>\nconcept modint = requires(T a, T b) {\n\
-    \    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n    a.val();\n \
-    \   a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <concepts>\n#include <iostream>\n\nnamespace ebi\
-    \ {\n\ntemplate <class T>\nconcept modint = requires(T a, T b) {\n    a + b;\n\
-    \    a - b;\n    a *b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n\
-    };\n\ntemplate <modint mint> std::istream &operator>>(std::istream &os, mint &a)\
-    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
-    \ <modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
-    \    return os << a.val();\n}\n\n}  // namespace ebi"
+    #include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint =\
+    \ requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n\
+    \    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate\
+    \ <Modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <concepts>\n#include <iostream>\n#include <utility>\n\
+    \nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n\
+    \    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
+    \    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate <Modint\
+    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
+    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
+    }\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: modint/base.hpp
@@ -244,19 +279,30 @@ data:
   - convolution/arbitrary_ntt.hpp
   - modint/dynamic_modint.hpp
   - modint/modint.hpp
-  - modint/modint_func.hpp
   - modint/modint61.hpp
   - modint/montgomery_modint.hpp
   - tree/rooted_tree_hash.hpp
   - utility/hash.hpp
+  - fps/product_of_fps.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
+  - fps/composition_of_fps.hpp
+  - fps/fps.hpp
   - fps/fps_sparse.hpp
+  - fps/sums_of_powers.hpp
+  - fps/polynomial_interpolation.hpp
   - fps/fps_sqrt.hpp
+  - fps/multipoint_evaluation.hpp
+  - fps/compositional_inverse_of_fps.hpp
+  - fps/taylor_shift.hpp
+  - math/stirling_number_1st.hpp
+  - math/stirling_number_2nd.hpp
+  - math/bernoulli_number.hpp
   - math/mod_sqrt.hpp
   - math/mod_inv.hpp
+  - math/partition_function.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/Gcd_Convolution.test.cpp

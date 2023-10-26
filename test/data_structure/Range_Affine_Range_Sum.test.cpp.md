@@ -107,18 +107,19 @@ data:
     \ n, sz, lg2;\r\n    std::vector<S> data;\r\n    std::vector<F> lazy;\r\n};\r\n\
     \r\n}  // namespace ebi\r\n#line 2 \"modint/modint.hpp\"\n\r\n#line 4 \"modint/modint.hpp\"\
     \n#include <iostream>\r\n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #line 5 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept\
-    \ modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n\
-    \    a.inv();\n    a.val();\n    a.mod();\n};\n\ntemplate <modint mint> std::istream\
-    \ &operator>>(std::istream &os, mint &a) {\n    long long x;\n    os >> x;\n \
-    \   a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n\
-    #line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct\
-    \ static_modint {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n \
-    \ public:\r\n    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\
-    \r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v\
-    \ = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0)\
-    \ {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    #line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
+    modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
+    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
+    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
+    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
+    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
+    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
     \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
     \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
     \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
@@ -168,7 +169,7 @@ data:
     #include <numbers>\n#include <numeric>\n#include <optional>\n#include <queue>\n\
     #include <random>\n#line 25 \"template/template.hpp\"\n#include <set>\n#include\
     \ <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n#include\
-    \ <unordered_map>\n#include <unordered_set>\n#include <utility>\n#line 34 \"template/template.hpp\"\
+    \ <unordered_map>\n#include <unordered_set>\n#line 34 \"template/template.hpp\"\
     \n\n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
     \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
     \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
@@ -258,7 +259,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Range_Sum.test.cpp

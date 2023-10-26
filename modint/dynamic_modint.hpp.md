@@ -8,14 +8,14 @@ data:
   - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':question:'
+  - icon: ':x:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sqrt_Mod.test.cpp
     title: test/math/Sqrt_Mod.test.cpp
   - icon: ':x:'
@@ -26,28 +26,29 @@ data:
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/dynamic_modint.hpp\"\n\n#include <cassert>\n\n#line\
-    \ 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\nnamespace\
-    \ ebi {\n\ntemplate <class T>\nconcept modint = requires(T a, T b) {\n    a +\
-    \ b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n    a.val();\n    a.mod();\n\
-    };\n\ntemplate <modint mint> std::istream &operator>>(std::istream &os, mint &a)\
-    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
-    \ <modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
-    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 6 \"modint/dynamic_modint.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint {\n  private:\n\
-    \    using modint = dynamic_modint;\n\n  public:\n    static void set_mod(int\
-    \ p) {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static int mod()\
-    \ {\n        return m;\n    }\n\n    modint raw(int v) {\n        modint x;\n\
-    \        x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n\
-    \n    dynamic_modint(long long v) {\n        v %= (long long)umod();\n       \
-    \ if (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n    }\n\n\
-    \    unsigned int val() const {\n        return _v;\n    }\n\n    unsigned int\
-    \ value() const {\n        return val();\n    }\n\n    modint &operator++() {\n\
-    \        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n   \
-    \ }\n    modint &operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n\
+    \ 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include\
+    \ <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T\
+    \ a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n  \
+    \  a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate\
+    \ <Modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 6 \"modint/dynamic_modint.hpp\"\n\n\
+    namespace ebi {\n\ntemplate <int id> struct dynamic_modint {\n  private:\n   \
+    \ using modint = dynamic_modint;\n\n  public:\n    static void set_mod(int p)\
+    \ {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static int mod() {\n\
+    \        return m;\n    }\n\n    modint raw(int v) {\n        modint x;\n    \
+    \    x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n\n\
+    \    dynamic_modint(long long v) {\n        v %= (long long)umod();\n        if\
+    \ (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n    }\n\n  \
+    \  unsigned int val() const {\n        return _v;\n    }\n\n    unsigned int value()\
+    \ const {\n        return val();\n    }\n\n    modint &operator++() {\n      \
+    \  _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n    }\n  \
+    \  modint &operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n\
     \        return *this;\n    }\n    modint &operator+=(const modint &rhs) {\n \
     \       _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
     \ *this;\n    }\n    modint &operator-=(const modint &rhs) {\n        _v -= rhs._v;\n\
@@ -117,8 +118,8 @@ data:
   requiredBy:
   - fps/fps_sqrt.hpp
   - math/mod_sqrt.hpp
-  timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-10-26 11:41:06+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
