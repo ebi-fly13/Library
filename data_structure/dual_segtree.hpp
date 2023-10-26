@@ -21,6 +21,8 @@ template <class F, F (*merge)(F, F), F (*id)()> struct dual_segtree {
     }
 
   public:
+    dual_segtree(int n) : dual_segtree(std::vector<F>(n, id())) {}
+
     dual_segtree(const std::vector<F> &a)
         : n(a.size()),
           sz(std::bit_ceil(a.size())),
