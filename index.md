@@ -120,7 +120,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/link_cut_tree.hpp
       title: data_structure/link_cut_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/offline_dynamic_connectivity.hpp
       title: Offline Dynamic Connectivity
     - icon: ':heavy_check_mark:'
@@ -174,7 +174,7 @@ data:
     - icon: ':warning:'
       path: data_structure/splay_tree.hpp
       title: data_structure/splay_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/undo_unionfind.hpp
       title: Undo Union Find
   - name: fps
@@ -381,19 +381,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -467,7 +467,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2152.test.cpp
       title: test/aoj/aoj_2152.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/aoj/aoj_2235.test.cpp
       title: test/aoj/aoj_2235.test.cpp
     - icon: ':heavy_check_mark:'

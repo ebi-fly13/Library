@@ -162,8 +162,8 @@ data:
   timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_2439.test.cpp
   - test/aoj/aoj_2450.test.cpp
+  - test/yuki/yuki_2439.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
 documentation_of: data_structure/lazy_segtree.hpp
 layout: document

@@ -77,27 +77,27 @@ data:
   isVerificationFile: false
   path: utility/bit_operator.hpp
   requiredBy:
-  - convolution/or_convolution.hpp
-  - convolution/and_convolution.hpp
-  - convolution/subset_convolution.hpp
-  - set_function/subset_transform.hpp
-  - set_function/exp_of_sps.hpp
-  - set_function/ranked_subset_transform.hpp
-  - set_function/poly_composite_sps.hpp
-  - set_function/egf_composite_sps.hpp
-  - set_function/superset_transform.hpp
   - math/stirling_number_1st.hpp
   - math/stirling_number_2nd.hpp
+  - set_function/exp_of_sps.hpp
+  - set_function/subset_transform.hpp
+  - set_function/ranked_subset_transform.hpp
+  - set_function/superset_transform.hpp
+  - set_function/poly_composite_sps.hpp
+  - set_function/egf_composite_sps.hpp
+  - convolution/or_convolution.hpp
+  - convolution/subset_convolution.hpp
+  - convolution/and_convolution.hpp
   timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Subset_Convolution.test.cpp
-  - test/convolution/Bitwise_And_Convolution.test.cpp
-  - test/convolution/Bitwise_OR_Convolution.test.cpp
-  - test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+  - test/convolution/Bitwise_OR_Convolution.test.cpp
+  - test/convolution/Bitwise_And_Convolution.test.cpp
+  - test/convolution/Subset_Convolution.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
 redirect_from:
