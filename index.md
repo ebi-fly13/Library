@@ -40,13 +40,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':warning:'
       path: convolution/online_convolution.hpp
       title: Online Convolution
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: convolution/or_convolution.hpp
       title: Bitwise OR Convolution
     - icon: ':heavy_check_mark:'
@@ -185,7 +185,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/compositional_inverse_of_fps.hpp
       title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
     - icon: ':heavy_check_mark:'
@@ -212,7 +212,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/sums_of_powers.hpp
       title: $\sum_i (\sum_n A_n^i) x^i$
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/taylor_shift.hpp
       title: $f(x + c)$
   - name: geometry
@@ -269,7 +269,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: Binomial Coefficient
     - icon: ':heavy_check_mark:'
@@ -281,7 +281,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: Eratosthenes Sieve
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
@@ -308,7 +308,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/partition_function.hpp
       title: Partition Function
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/stirling_number_1st.hpp
       title: Stirling Numbers of the First Kind
     - icon: ':heavy_check_mark:'
@@ -321,13 +321,13 @@ data:
       title: matrix/square_matrix.hpp
   - name: modint
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/base.hpp
       title: modint/base.hpp
     - icon: ':heavy_check_mark:'
       path: modint/dynamic_modint.hpp
       title: modint/dynamic_modint.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
       title: modint/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -353,7 +353,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: set_function/ranked_subset_transform.hpp
       title: Ranked Subset Transform (Zeta / Mobius)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: set_function/subset_transform.hpp
       title: "Subset Transform (Zeta / M\xF6bius)"
     - icon: ':heavy_check_mark:'
@@ -487,7 +487,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/convolution/Bitwise_And_Convolution.test.cpp
       title: test/convolution/Bitwise_And_Convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/convolution/Bitwise_OR_Convolution.test.cpp
       title: test/convolution/Bitwise_OR_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
@@ -723,7 +723,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Sqrt_Mod.test.cpp
       title: test/math/Sqrt_Mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
       title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     - icon: ':heavy_check_mark:'

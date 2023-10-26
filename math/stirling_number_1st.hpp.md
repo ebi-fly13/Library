@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/stirling_number_1st.hpp\"\n\n#include <bit>\n#include\
@@ -153,10 +153,10 @@ data:
     \ std::vector<mint> &,\n                                           const std::vector<mint>\
     \ &)>\nFormalPowerSeries<mint, convolution> stirling_number_1st(int n) {\n   \
     \ using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >= 0);\n   \
-    \ if (n == 0) return {1};\n    int lg = std::bit_width(uint(n));\n    FPS f =\
-    \ {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >> i;\n\
-    \        f *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid &\
-    \ 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
+    \ if (n == 0) return {1};\n    int lg = std::bit_width(uint(n)) - 1;\n    FPS\
+    \ f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >>\
+    \ i;\n        f *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid\
+    \ & 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
     \ ebi\n"
   code: "#pragma once\n\n#include <bit>\n#include <cassert>\n\n#include \"../fps/fps.hpp\"\
     \n#include \"../fps/taylor_shift.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace\
@@ -164,10 +164,10 @@ data:
     \ std::vector<mint> &,\n                                           const std::vector<mint>\
     \ &)>\nFormalPowerSeries<mint, convolution> stirling_number_1st(int n) {\n   \
     \ using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >= 0);\n   \
-    \ if (n == 0) return {1};\n    int lg = std::bit_width(uint(n));\n    FPS f =\
-    \ {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >> i;\n\
-    \        f *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid &\
-    \ 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
+    \ if (n == 0) return {1};\n    int lg = std::bit_width(uint(n)) - 1;\n    FPS\
+    \ f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >>\
+    \ i;\n        f *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid\
+    \ & 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
     \ ebi"
   dependsOn:
   - fps/fps.hpp
@@ -177,8 +177,8 @@ data:
   isVerificationFile: false
   path: math/stirling_number_1st.hpp
   requiredBy: []
-  timestamp: '2023-10-26 18:33:49+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-10-26 18:43:58+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
 documentation_of: math/stirling_number_1st.hpp

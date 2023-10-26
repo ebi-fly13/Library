@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
@@ -228,10 +228,10 @@ data:
     \ std::vector<mint> &,\n                                           const std::vector<mint>\
     \ &)>\nFormalPowerSeries<mint, convolution> stirling_number_1st(int n) {\n   \
     \ using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >= 0);\n   \
-    \ if (n == 0) return {1};\n    int lg = std::bit_width(uint(n));\n    FPS f =\
-    \ {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >> i;\n\
-    \        f *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid &\
-    \ 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
+    \ if (n == 0) return {1};\n    int lg = std::bit_width(uint(n)) - 1;\n    FPS\
+    \ f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >>\
+    \ i;\n        f *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid\
+    \ & 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
     \ ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n\
     #line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct\
     \ static_modint {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n \
@@ -304,8 +304,8 @@ data:
   isVerificationFile: true
   path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 18:33:49+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-26 18:43:58+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stirling_Number_of_the_First_Kind.test.cpp
 layout: document

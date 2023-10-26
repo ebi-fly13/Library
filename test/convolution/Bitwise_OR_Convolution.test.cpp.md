@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: convolution/or_convolution.hpp
     title: Bitwise OR Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/subset_transform.hpp
     title: "Subset Transform (Zeta / M\xF6bius)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/bitwise_and_convolution
@@ -34,12 +34,12 @@ data:
     \ = 0; p < (1 << n); p += 2 * w) {\n            for (int s = p; s < p + w; s++)\
     \ {\n                int t = s | w;\n                ra[t] += ra[s];\n       \
     \     }\n        }\n    }\n    return ra;\n}\n\ntemplate <class T> std::vector<T>\
-    \ subset_mobius(const std::vector<T> &ra) {\n    int n = msb(ra.size());\n   \
-    \ assert((1 << n) == (int)ra.size());\n    std::vector<T> a = ra;\n    for (int\
-    \ i = 0; i < n; i++) {\n        int w = 1 << i;\n        for (int p = 0; p < (1\
-    \ << n); p += 2 * w) {\n            for (int s = p; s < p + w; s++) {\n      \
-    \          int t = s | w;\n                a[t] -= a[s];\n            }\n    \
-    \    }\n    }\n    return a;\n}\n\n}  // namespace ebi\n#line 4 \"convolution/or_convolution.hpp\"\
+    \ subset_mobius(const std::vector<T> &ra) {\n    int n = std::bit_width(ra.size())\
+    \ - 1;\n    assert((1 << n) == (int)ra.size());\n    std::vector<T> a = ra;\n\
+    \    for (int i = 0; i < n; i++) {\n        int w = 1 << i;\n        for (int\
+    \ p = 0; p < (1 << n); p += 2 * w) {\n            for (int s = p; s < p + w; s++)\
+    \ {\n                int t = s | w;\n                a[t] -= a[s];\n         \
+    \   }\n        }\n    }\n    return a;\n}\n\n}  // namespace ebi\n#line 4 \"convolution/or_convolution.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T>\nstd::vector<T> or_convolution(const\
     \ std::vector<T> &a,\n                              const std::vector<T> &b) {\n\
     \    int n = a.size();\n    auto ra = subset_zeta(a);\n    auto rb = subset_zeta(b);\n\
@@ -126,8 +126,8 @@ data:
   isVerificationFile: true
   path: test/convolution/Bitwise_OR_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 18:33:49+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-26 18:43:58+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Bitwise_OR_Convolution.test.cpp
 layout: document
