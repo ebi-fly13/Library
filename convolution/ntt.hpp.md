@@ -7,9 +7,6 @@ data:
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
-    path: utility/bit_operator.hpp
-    title: utility/bit_operator.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
@@ -57,22 +54,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - icon: ':x:'
@@ -116,12 +113,7 @@ data:
     \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
     \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <modint mint>\nstd::ostream\
     \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
-    }\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\n\n#line 4 \"utility/bit_operator.hpp\"\
-    \n#include <cstdint>\n\nnamespace ebi {\n\nint bit_reverse(int n, int bit_size)\
-    \ {\n    int rev_n = 0;\n    for (int i = 0; i < bit_size; i++) {\n        rev_n\
-    \ |= ((n >> i) & 1) << (bit_size - i - 1);\n    }\n    return rev_n;\n}\n\nint\
-    \ msb(int x) {\n    return (x == 0) ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n\
-    }\n\n}  // namespace ebi\n#line 12 \"convolution/ntt.hpp\"\n\nnamespace ebi {\n\
+    }\n\n}  // namespace ebi\n#line 11 \"convolution/ntt.hpp\"\n\nnamespace ebi {\n\
     \nnamespace internal {\n\ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\n\
     struct ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
     \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
@@ -131,23 +123,25 @@ data:
     \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <modint mint> void\
     \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
     \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
-    \   assert(n == (int)std::bit_ceil(a.size()));\n    // bit reverse\n    for (int\
-    \ i = 0; i < n; i++) {\n        int rev = bit_reverse(i, bit_size);\n        if\
-    \ (i < rev) {\n            std::swap(a[i], a[rev]);\n        }\n    }\n\n    for\
-    \ (int bit = 0; bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 <<\
-    \ (bit + 1)); i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n\
-    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
-    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
-    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
-    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
-    \                zeta1 *= info.root[bit + 1];\n                zeta2 *= info.root[bit\
-    \ + 1];\n            }\n        }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
+    \   assert(n == (int)std::bit_ceil(a.size()));\n\n    // bit reverse\n    for\
+    \ (int i = 0, j = 1; j < n - 1; j++) {\n        for (int k = n >> 1; k > (i ^=\
+    \ k); k >>= 1)\n            ;\n        if (j < i) {\n            std::swap(a[i],\
+    \ a[j]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n\
+    \        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1\
+    \ = 1;\n            mint zeta2 = info.root[1];\n            for (int j = 0; j\
+    \ < (1 << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n\
+    \                int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n\
+    \                mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
+    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
+    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
+    \ }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
     \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
     \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
-    \    // bit reverse\n    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i,\
-    \ bit_size);\n        if (i < rev) std::swap(a[i], a[rev]);\n    }\n\n    for\
-    \ (int bit = 0; bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 <<\
-    \ (bit + 1)); i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.inv_root[1];\n\
+    \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
+    \ (int k = n >> 1; k > (i ^= k); k >>= 1)\n            ;\n        if (j < i) {\n\
+    \            std::swap(a[i], a[j]);\n        }\n    }\n\n    for (int bit = 0;\
+    \ bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1));\
+    \ i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.inv_root[1];\n\
     \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
     \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
     \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
@@ -174,9 +168,9 @@ data:
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <array>\n#include <bit>\n\
     #include <cassert>\n#include <vector>\n\n#include \"../math/internal_math.hpp\"\
-    \n#include \"../modint/base.hpp\"\n#include \"../utility/bit_operator.hpp\"\n\n\
-    namespace ebi {\n\nnamespace internal {\n\ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\n\
-    struct ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
+    \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
+    \ntemplate <modint mint, int g = internal::primitive_root<mint::mod()>>\nstruct\
+    \ ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
     \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
     \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
     \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
@@ -184,23 +178,25 @@ data:
     \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <modint mint> void\
     \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
     \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
-    \   assert(n == (int)std::bit_ceil(a.size()));\n    // bit reverse\n    for (int\
-    \ i = 0; i < n; i++) {\n        int rev = bit_reverse(i, bit_size);\n        if\
-    \ (i < rev) {\n            std::swap(a[i], a[rev]);\n        }\n    }\n\n    for\
-    \ (int bit = 0; bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 <<\
-    \ (bit + 1)); i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n\
-    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
-    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
-    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
-    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
-    \                zeta1 *= info.root[bit + 1];\n                zeta2 *= info.root[bit\
-    \ + 1];\n            }\n        }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
+    \   assert(n == (int)std::bit_ceil(a.size()));\n\n    // bit reverse\n    for\
+    \ (int i = 0, j = 1; j < n - 1; j++) {\n        for (int k = n >> 1; k > (i ^=\
+    \ k); k >>= 1)\n            ;\n        if (j < i) {\n            std::swap(a[i],\
+    \ a[j]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n\
+    \        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1\
+    \ = 1;\n            mint zeta2 = info.root[1];\n            for (int j = 0; j\
+    \ < (1 << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n\
+    \                int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n\
+    \                mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
+    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
+    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
+    \ }\n    }\n}\n\ntemplate <modint mint> void butterfly_inv(std::vector<mint>&\
     \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
     \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
-    \    // bit reverse\n    for (int i = 0; i < n; i++) {\n        int rev = bit_reverse(i,\
-    \ bit_size);\n        if (i < rev) std::swap(a[i], a[rev]);\n    }\n\n    for\
-    \ (int bit = 0; bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 <<\
-    \ (bit + 1)); i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.inv_root[1];\n\
+    \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
+    \ (int k = n >> 1; k > (i ^= k); k >>= 1)\n            ;\n        if (j < i) {\n\
+    \            std::swap(a[i], a[j]);\n        }\n    }\n\n    for (int bit = 0;\
+    \ bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1));\
+    \ i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.inv_root[1];\n\
     \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
     \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
     \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
@@ -228,13 +224,12 @@ data:
   dependsOn:
   - math/internal_math.hpp
   - modint/base.hpp
-  - utility/bit_operator.hpp
   isVerificationFile: false
   path: convolution/ntt.hpp
   requiredBy:
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-10-26 11:17:59+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/Convolution_Mod_1000000007.test.cpp
