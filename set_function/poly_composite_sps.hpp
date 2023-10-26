@@ -4,13 +4,12 @@
 #include <vector>
 
 #include "../set_function/egf_composite_sps.hpp"
-#include "../utility/bit_operator.hpp"
 
 namespace ebi {
 
 template <class T, int LIM>
 std::vector<T> poly_composite_sps(std::vector<T> a, const std::vector<T> &f) {
-    int n = msb(a.size());
+    int n = std::bit_width(a.size()) - 1;
     assert(n <= LIM);
     if (f.empty()) return std::vector<T>(1 << n, 0);
     int d = std::min((int)f.size() - 1, n);

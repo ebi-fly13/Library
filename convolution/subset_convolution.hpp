@@ -6,11 +6,11 @@
 */
 
 #include <array>
+#include <bit>
 #include <cassert>
 #include <vector>
 
 #include "../set_function/ranked_subset_transform.hpp"
-#include "../utility/bit_operator.hpp"
 
 namespace ebi {
 
@@ -19,7 +19,7 @@ std::vector<T> subset_convolution(const std::vector<T> &a,
                                   const std::vector<T> &b) {
     auto ra = ranked_zeta<T, LIM>(a);
     auto rb = ranked_zeta<T, LIM>(b);
-    int n = msb(ra.size());
+    int n = std::bit_width(a.size()) - 1;
     for (int s = (1 << n) - 1; s >= 0; s--) {
         auto &f = ra[s];
         const auto &g = rb[s];

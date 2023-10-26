@@ -4,12 +4,11 @@
 #include <vector>
 
 #include "../convolution/subset_convolution.hpp"
-#include "../utility/bit_operator.hpp"
 
 namespace ebi {
 
 template <class T, int LIM> std::vector<T> exp_of_sps(const std::vector<T> &a) {
-    int n = msb(a.size());
+    int n = std::bit_width(a.size()) - 1;
     assert(n <= LIM);
     assert((int)a.size() == (1 << n));
     std::vector<T> fa(1 << n);

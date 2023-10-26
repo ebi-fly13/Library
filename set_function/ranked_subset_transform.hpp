@@ -3,14 +3,13 @@
 #include <array>
 #include <cassert>
 #include <vector>
-
-#include "../utility/bit_operator.hpp"
+#include <bit>
 
 namespace ebi {
 
 template <class T, int LIM = 20>
 std::vector<std::array<T, LIM + 1>> ranked_zeta(const std::vector<T> &f) {
-    int n = msb(f.size());
+    int n = std::bit_width(f.size()) - 1;
     assert(n <= LIM);
     assert((int)f.size() == (1 << n));
     std::vector<std::array<T, LIM + 1>> rf(1 << n);
@@ -29,7 +28,7 @@ std::vector<std::array<T, LIM + 1>> ranked_zeta(const std::vector<T> &f) {
 
 template <class T, int LIM = 20>
 std::vector<T> ranked_mobius(std::vector<std::array<T, LIM + 1>> rf) {
-    int n = msb(rf.size());
+    int n = std::bit_width(rf.size()) - 1;
     assert((int)rf.size() == (1 << n));
     for (int i = 0; i < n; i++) {
         int w = 1 << i;

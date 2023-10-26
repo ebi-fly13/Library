@@ -1,14 +1,13 @@
 #pragma once
 
+#include <bit>
 #include <cassert>
 #include <vector>
-
-#include "../utility/bit_operator.hpp"
 
 namespace ebi {
 
 template <class T> std::vector<T> superset_zeta(const std::vector<T> &a) {
-    int n = msb(a.size());
+    int n = std::bit_width(a.size()) - 1;
     assert((1 << n) == (int)a.size());
     std::vector<T> ra = a;
     for (int i = 0; i < n; i++) {
@@ -24,7 +23,7 @@ template <class T> std::vector<T> superset_zeta(const std::vector<T> &a) {
 }
 
 template <class T> std::vector<T> superset_mobius(const std::vector<T> &ra) {
-    int n = msb(ra.size());
+    int n = std::bit_width(ra.size()) - 1;
     assert((1 << n) == (int)ra.size());
     std::vector<T> a = ra;
     for (int i = 0; i < n; i++) {

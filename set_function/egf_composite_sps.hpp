@@ -4,13 +4,12 @@
 #include <vector>
 
 #include "../convolution/subset_convolution.hpp"
-#include "../utility/bit_operator.hpp"
 
 namespace ebi {
 
 template <class T, int LIM>
 std::vector<T> egf_composite_sps(const std::vector<T> &a, std::vector<T> egf) {
-    int n = msb(a.size());
+    int n = std::bit_width(a.size()) - 1;
     assert(n <= LIM);
     assert((int)a.size() == (1 << n) && a[0] == T(0));
     if ((int)egf.size() > n) egf.resize(n + 1);

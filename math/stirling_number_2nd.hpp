@@ -4,12 +4,13 @@
 #include <vector>
 
 #include "../fps/fps.hpp"
-#include "../utility/bit_operator.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
+template <Modint mint,
+          std::vector<mint> (*convolution)(const std::vector<mint> &,
+                                           const std::vector<mint> &)>
 FormalPowerSeries<mint, convolution> stirling_number_2nd(int n) {
     using FPS = FormalPowerSeries<mint, convolution>;
     assert(n >= 0);

@@ -1,20 +1,22 @@
 #pragma once
 
+#include <bit>
 #include <cassert>
 
 #include "../fps/fps.hpp"
 #include "../fps/taylor_shift.hpp"
-#include "../utility/bit_operator.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
+template <Modint mint,
+          std::vector<mint> (*convolution)(const std::vector<mint> &,
+                                           const std::vector<mint> &)>
 FormalPowerSeries<mint, convolution> stirling_number_1st(int n) {
     using FPS = FormalPowerSeries<mint, convolution>;
     assert(n >= 0);
     if (n == 0) return {1};
-    int lg = msb(n);
+    int lg = std::bit_width(uint(n));
     FPS f = {0, 1};
     for (int i = lg - 1; i >= 0; i--) {
         int mid = n >> i;
