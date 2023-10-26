@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
   _extendedVerifiedWith:
@@ -84,18 +84,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include\
@@ -230,7 +230,7 @@ data:
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Convolution.test.cpp

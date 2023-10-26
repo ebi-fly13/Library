@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
   - icon: ':heavy_check_mark:'
     path: set_function/exp_of_sps.hpp
     title: $\exp {a}$ (Set Power Series)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/poly_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is FPS)
   _extendedVerifiedWith:
@@ -24,12 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://37zigen.com/subset-convolution/
@@ -93,7 +93,7 @@ data:
   - set_function/poly_composite_sps.hpp
   - set_function/egf_composite_sps.hpp
   timestamp: '2023-10-26 02:17:54+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Subset_Convolution.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp

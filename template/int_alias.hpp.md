@@ -23,10 +23,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -75,18 +75,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -171,7 +171,7 @@ data:
   - data_structure/bitVector.hpp
   - data_structure/WaveletMatrix.hpp
   timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp

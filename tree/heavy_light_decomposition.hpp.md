@@ -18,12 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree_HLD.test.cpp
     title: test/tree/Jump_on_Tree_HLD.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <algorithm>\n\
@@ -175,7 +175,7 @@ data:
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
   timestamp: '2023-10-24 00:42:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Jump_on_Tree_HLD.test.cpp
   - test/yuki/yuki_2439.test.cpp

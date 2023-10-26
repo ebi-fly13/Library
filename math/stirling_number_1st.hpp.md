@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy: []

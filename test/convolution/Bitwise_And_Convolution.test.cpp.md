@@ -4,16 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/and_convolution.hpp
     title: Bitwise AND Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   - icon: ':heavy_check_mark:'
     path: set_function/superset_transform.hpp
     title: "Superset Transform (Zeta / M\xF6bius)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
   _extendedRequiredBy: []

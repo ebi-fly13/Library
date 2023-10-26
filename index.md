@@ -28,7 +28,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/convolution_mod_2_64.hpp
       title: Convolution $\pmod{2^{64}}$
     - icon: ':heavy_check_mark:'
@@ -40,7 +40,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':warning:'
@@ -49,7 +49,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/or_convolution.hpp
       title: Bitwise OR Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/subset_convolution.hpp
       title: Subset Convolution
     - icon: ':heavy_check_mark:'
@@ -108,7 +108,7 @@ data:
     - icon: ':warning:'
       path: data_structure/kd_tree.hpp
       title: data_structure/kd_tree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segtree.hpp
       title: lazy segtree
     - icon: ':heavy_check_mark:'
@@ -173,7 +173,7 @@ data:
       title: data_structure/splay_tree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/undo_unionfind.hpp
-      title: data_structure/undo_unionfind.hpp
+      title: Undo Union Find
   - name: fps
     pages:
     - icon: ':heavy_check_mark:'
@@ -182,7 +182,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/compositional_inverse_of_fps.hpp
       title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
     - icon: ':heavy_check_mark:'
@@ -197,7 +197,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/polynomial_interpolation.hpp
       title: Polynomial Interpolation
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$
     - icon: ':heavy_check_mark:'
@@ -206,7 +206,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/product_of_one_plus_xn.hpp
       title: $\prod (1 + x^{a_i}) \mod x^d$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/sums_of_powers.hpp
       title: $\sum_i (\sum_n A_n^i) x^i$
     - icon: ':heavy_check_mark:'
@@ -252,7 +252,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
     - icon: ':heavy_check_mark:'
@@ -266,7 +266,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: Binomial Coefficient
     - icon: ':heavy_check_mark:'
@@ -278,7 +278,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: Eratosthenes Sieve
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
@@ -318,16 +318,16 @@ data:
       title: matrix/square_matrix.hpp
   - name: modint
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/base.hpp
       title: modint/base.hpp
     - icon: ':heavy_check_mark:'
       path: modint/dynamic_modint.hpp
       title: modint/dynamic_modint.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
       title: modint/modint.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/modint61.hpp
       title: modint/modint61.hpp
     - icon: ':heavy_check_mark:'
@@ -335,7 +335,7 @@ data:
       title: modint/montgomery_modint.hpp
   - name: set_function
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: set_function/egf_composite_sps.hpp
       title: $f(a)$ (Set Power Series, f is EGF)
     - icon: ':heavy_check_mark:'
@@ -344,10 +344,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: set_function/hadamard_transform.hpp
       title: Hadamard Transform
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: set_function/poly_composite_sps.hpp
       title: $f(a)$ (Set Power Series, f is FPS)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: set_function/ranked_subset_transform.hpp
       title: Ranked Subset Transform (Zeta / Mobius)
     - icon: ':heavy_check_mark:'
@@ -378,19 +378,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -398,10 +398,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/block_cut_tree.hpp
       title: Block Cut Tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
@@ -410,24 +410,24 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/lowest_common_ancestor.hpp
       title: Lowest Common Ancestor
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/rerooting.hpp
       title: Rerooting DP
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/rooted_tree_hash.hpp
       title: Rooted Tree Hash
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/tree_diameter.hpp
       title: Tree Diameter
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/bit_operator.hpp
       title: utility/bit_operator.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/hash.hpp
       title: Hash structure
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/random_number_generator_64.hpp
       title: utility/random_number_generator_64.hpp
   verificationCategories:
@@ -798,7 +798,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/set_function/Exp_of_Set_Power_Series.test.cpp
       title: test/set_function/Exp_of_Set_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
       title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - name: test/string
@@ -808,7 +808,7 @@ data:
       title: test/string/Z_Algorithm.test.cpp
   - name: test/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
       title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     - icon: ':heavy_check_mark:'
@@ -817,13 +817,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree_HLD.test.cpp
       title: test/tree/Jump_on_Tree_HLD.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
       title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Path_Composite_Sum.test.cpp
       title: test/tree/Tree_Path_Composite_Sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -834,13 +834,13 @@ data:
       title: test/tree/lowest_common_ancestor.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1145.test.cpp
       title: test/yuki/yuki_1145.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1302.test.cpp
       title: test/yuki/yuki_1302.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_2439.test.cpp
       title: test/yuki/yuki_2439.test.cpp
     - icon: ':heavy_check_mark:'

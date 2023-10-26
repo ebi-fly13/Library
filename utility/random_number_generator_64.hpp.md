@@ -5,22 +5,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/random_number_generator_64.hpp\"\n\r\n#include <cstdint>\r\
@@ -44,7 +44,7 @@ data:
   - utility/hash.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/aoj/aoj_2444.test.cpp

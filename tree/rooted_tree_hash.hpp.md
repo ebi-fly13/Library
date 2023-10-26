@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint61.hpp
     title: modint/modint61.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/random_number_generator_64.hpp
     title: utility/random_number_generator_64.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/rooted_tree_hash.hpp\"\n\n#include <vector>\n\n#line\
@@ -168,7 +168,7 @@ data:
   path: tree/rooted_tree_hash.hpp
   requiredBy: []
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: tree/rooted_tree_hash.hpp
