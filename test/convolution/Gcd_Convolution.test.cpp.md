@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/gcd_convolution.hpp
     title: GCD Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: Eratosthenes Sieve
   - icon: ':heavy_check_mark:'

@@ -12,7 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - icon: ':heavy_check_mark:'
@@ -177,12 +177,12 @@ data:
   timestamp: '2023-10-24 00:42:15+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/tree/Jump_on_Tree_HLD.test.cpp
-  - test/yuki/yuki_2439.test.cpp
   - test/aoj/aoj_2450.test.cpp
+  - test/yuki/yuki_2439.test.cpp
   - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+  - test/tree/Jump_on_Tree_HLD.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
 title: Heavy Light Decomposition

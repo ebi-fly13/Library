@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -38,50 +38,51 @@ data:
   bundledCode: "#line 1 \"test/math/Binomial_Coefficient_Prime_Mod.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\n\
     \n#line 2 \"math/binomial.hpp\"\n\n#include <bit>\n#include <cassert>\n#include\
-    \ <iostream>\n#include <ranges>\n#include <vector>\n\nnamespace ebi {\n\ntemplate\
-    \ <class mint> struct Binomial {\n  private:\n    static void extend(int len =\
-    \ -1) {\n        int sz = (int)fact.size();\n        if (len < 0)\n          \
-    \  len = 2 * sz;\n        else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
-    \        len = std::min(len, mint::mod());\n        assert(sz <= len);\n     \
-    \   fact.resize(len);\n        inv_fact.resize(len);\n        for (int i : std::views::iota(sz,\
-    \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
-    \ - 1] = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len)\
-    \ | std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n \
-    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    Binomial(int n)\
-    \ {\n        extend(n + 1);\n    }\n\n    static mint f(int n) {\n        if (n\
-    \ >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n        }\n\
-    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        if\
-    \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
-    \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
-    \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
-    \ - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n <\
-    \ r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint\
-    \ inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void\
-    \ reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
-    \ fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::fact\
-    \ = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
-    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 2 \"modint/dynamic_modint.hpp\"\
-    \n\n#line 4 \"modint/dynamic_modint.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include\
-    \ <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi\
-    \ {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n\
-    \    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ <iostream>\n#include <ranges>\n#include <vector>\n\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
+    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
+    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
     \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 6 \"\
-    modint/dynamic_modint.hpp\"\n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint\
-    \ {\n  private:\n    using modint = dynamic_modint;\n\n  public:\n    static void\
-    \ set_mod(int p) {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static\
-    \ int mod() {\n        return m;\n    }\n\n    modint raw(int v) {\n        modint\
-    \ x;\n        x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0)\
-    \ {}\n\n    dynamic_modint(long long v) {\n        v %= (long long)umod();\n \
-    \       if (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n  \
-    \  }\n\n    unsigned int val() const {\n        return _v;\n    }\n\n    unsigned\
-    \ int value() const {\n        return val();\n    }\n\n    modint &operator++()\
-    \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
-    \    }\n    modint &operator--() {\n        if (_v == 0) _v = umod();\n      \
-    \  _v--;\n        return *this;\n    }\n    modint &operator+=(const modint &rhs)\
-    \ {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 10 \"\
+    math/binomial.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> struct Binomial\
+    \ {\n  private:\n    static void extend(int len = -1) {\n        int sz = (int)fact.size();\n\
+    \        if (len < 0)\n            len = 2 * sz;\n        else\n            len\
+    \ = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n        len = std::min(len,\
+    \ mint::mod());\n        assert(sz <= len);\n        fact.resize(len);\n     \
+    \   inv_fact.resize(len);\n        for (int i : std::views::iota(sz, len)) {\n\
+    \            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len - 1]\
+    \ = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len) | std::views::reverse)\
+    \ {\n            inv_fact[i - 1] = inv_fact[i] * i;\n        }\n    }\n\n  public:\n\
+    \    Binomial() = default;\n\n    Binomial(int n) {\n        extend(n + 1);\n\
+    \    }\n\n    static mint f(int n) {\n        if (n >= (int)fact.size()) [[unlikely]]\
+    \ {\n            extend(n + 1);\n        }\n        return fact[n];\n    }\n\n\
+    \    static mint inv_f(int n) {\n        if (n >= (int)fact.size()) [[unlikely]]\
+    \ {\n            extend(n + 1);\n        }\n        return inv_fact[n];\n    }\n\
+    \n    static mint c(int n, int r) {\n        if (r < 0 || n < r) return 0;\n \
+    \       return f(n) * inv_f(r) * inv_f(n - r);\n    }\n\n    static mint p(int\
+    \ n, int r) {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n\
+    \ - r);\n    }\n\n    static mint inv(int n) {\n        return inv_f(n) * f(n\
+    \ - 1);\n    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n \
+    \   }\n\n  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate\
+    \ <Modint mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2,\
+    \ 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact =\
+    \ std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 2 \"modint/dynamic_modint.hpp\"\
+    \n\n#line 4 \"modint/dynamic_modint.hpp\"\n\n#line 6 \"modint/dynamic_modint.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint {\n  private:\n\
+    \    using modint = dynamic_modint;\n\n  public:\n    static void set_mod(int\
+    \ p) {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static int mod()\
+    \ {\n        return m;\n    }\n\n    modint raw(int v) {\n        modint x;\n\
+    \        x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n\
+    \n    dynamic_modint(long long v) {\n        v %= (long long)umod();\n       \
+    \ if (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n    }\n\n\
+    \    unsigned int val() const {\n        return _v;\n    }\n\n    unsigned int\
+    \ value() const {\n        return val();\n    }\n\n    modint &operator++() {\n\
+    \        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n   \
+    \ }\n    modint &operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n\
+    \        return *this;\n    }\n    modint &operator+=(const modint &rhs) {\n \
+    \       _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
     \ *this;\n    }\n    modint &operator-=(const modint &rhs) {\n        _v -= rhs._v;\n\
     \        if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    modint\
     \ &operator*=(const modint &rhs) {\n        unsigned long long x = _v;\n     \
@@ -176,8 +177,8 @@ data:
     \   while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
   - math/binomial.hpp
-  - modint/dynamic_modint.hpp
   - modint/base.hpp
+  - modint/dynamic_modint.hpp
   - template/template.hpp
   - template/debug_template.hpp
   - template/int_alias.hpp
@@ -186,8 +187,8 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-26 12:28:44+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 layout: document

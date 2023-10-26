@@ -4,13 +4,13 @@ data:
   - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
@@ -24,9 +24,9 @@ data:
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series
@@ -287,7 +287,7 @@ data:
   path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   requiredBy: []
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
 layout: document

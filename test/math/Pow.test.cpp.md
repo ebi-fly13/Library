@@ -4,14 +4,14 @@ data:
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: modint/montgomery_modint.hpp
     title: modint/montgomery_modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_B
@@ -93,7 +93,7 @@ data:
   path: test/math/Pow.test.cpp
   requiredBy: []
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Pow.test.cpp
 layout: document

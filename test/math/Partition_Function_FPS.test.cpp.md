@@ -4,10 +4,10 @@ data:
   - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
   - icon: ':question:'
@@ -24,9 +24,9 @@ data:
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/partition_function
@@ -276,7 +276,7 @@ data:
   path: test/math/Partition_Function_FPS.test.cpp
   requiredBy: []
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Partition_Function_FPS.test.cpp
 layout: document

@@ -4,10 +4,10 @@ data:
   - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':question:'
@@ -16,7 +16,7 @@ data:
   - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
   - icon: ':question:'
@@ -30,9 +30,9 @@ data:
     title: utility/bit_operator.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
@@ -194,10 +194,10 @@ data:
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
     \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\
     \n\n#line 2 \"math/binomial.hpp\"\n\n#line 6 \"math/binomial.hpp\"\n#include <ranges>\n\
-    #line 8 \"math/binomial.hpp\"\n\nnamespace ebi {\n\ntemplate <class mint> struct\
-    \ Binomial {\n  private:\n    static void extend(int len = -1) {\n        int\
-    \ sz = (int)fact.size();\n        if (len < 0)\n            len = 2 * sz;\n  \
-    \      else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
+    #line 8 \"math/binomial.hpp\"\n\n#line 10 \"math/binomial.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <Modint mint> struct Binomial {\n  private:\n    static void extend(int\
+    \ len = -1) {\n        int sz = (int)fact.size();\n        if (len < 0)\n    \
+    \        len = 2 * sz;\n        else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
     \        len = std::min(len, mint::mod());\n        assert(sz <= len);\n     \
     \   fact.resize(len);\n        inv_fact.resize(len);\n        for (int i : std::views::iota(sz,\
     \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
@@ -214,8 +214,8 @@ data:
     \ r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint\
     \ inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void\
     \ reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
-    \ fact, inv_fact;\n};\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::fact\
-    \ = std::vector<mint>(2, 1);\n\ntemplate <class mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
+    \ fact, inv_fact;\n};\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::fact\
+    \ = std::vector<mint>(2, 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
     \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 6 \"fps/taylor_shift.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
     \ std::vector<mint> &,\n                                           const std::vector<mint>\
@@ -313,8 +313,8 @@ data:
   isVerificationFile: true
   path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-26 12:28:44+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stirling_Number_of_the_First_Kind.test.cpp
 layout: document

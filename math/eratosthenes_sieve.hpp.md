@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: convolution/dirichlet_convolution.hpp
     title: Dirichlet Convolution
   - icon: ':heavy_check_mark:'
@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/lcm_convolution.hpp
     title: LCM Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
   - icon: ':heavy_check_mark:'
@@ -30,15 +30,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Enumerate_Primes.test.cpp
     title: test/math/Enumerate_Primes.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/eratosthenes_sieve.test.cpp
     title: test/math/eratosthenes_sieve.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://37zigen.com/sieve-eratosthenes/
@@ -72,20 +72,20 @@ data:
   isVerificationFile: false
   path: math/eratosthenes_sieve.hpp
   requiredBy:
-  - convolution/dirichlet_convolution.hpp
-  - convolution/gcd_convolution.hpp
-  - convolution/lcm_convolution.hpp
-  - math/multiple_transform.hpp
   - math/divisor_transform.hpp
   - math/DirichletSeries.hpp
+  - math/multiple_transform.hpp
+  - convolution/gcd_convolution.hpp
+  - convolution/dirichlet_convolution.hpp
+  - convolution/lcm_convolution.hpp
   timestamp: '2023-08-23 17:33:30+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Gcd_Convolution.test.cpp
-  - test/convolution/Lcm_Convolution.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/eratosthenes_sieve.test.cpp
   - test/math/Enumerate_Primes.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
+  - test/convolution/Gcd_Convolution.test.cpp
+  - test/convolution/Lcm_Convolution.test.cpp
 documentation_of: math/eratosthenes_sieve.hpp
 layout: document
 title: Eratosthenes Sieve

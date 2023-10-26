@@ -5,19 +5,19 @@ data:
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: convolution/dirichlet_convolution.hpp
     title: Dirichlet Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://37zigen.com/linear-sieve/
@@ -130,10 +130,10 @@ data:
   isVerificationFile: false
   path: math/linear_sieve.hpp
   requiredBy:
-  - convolution/dirichlet_convolution.hpp
   - math/DirichletSeries.hpp
+  - convolution/dirichlet_convolution.hpp
   timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: math/linear_sieve.hpp
