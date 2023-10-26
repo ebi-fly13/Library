@@ -8,7 +8,6 @@
 
 #include "../math/internal_math.hpp"
 #include "../modint/base.hpp"
-#include "../utility/bit_operator.hpp"
 
 namespace ebi {
 
@@ -35,11 +34,13 @@ template <modint mint> void butterfly(std::vector<mint>& a) {
     int n = int(a.size());
     int bit_size = std::countr_zero(a.size());
     assert(n == (int)std::bit_ceil(a.size()));
+
     // bit reverse
-    for (int i = 0; i < n; i++) {
-        int rev = bit_reverse(i, bit_size);
-        if (i < rev) {
-            std::swap(a[i], a[rev]);
+    for (int i = 0, j = 1; j < n - 1; j++) {
+        for (int k = n >> 1; k > (i ^= k); k >>= 1)
+            ;
+        if (j < i) {
+            std::swap(a[i], a[j]);
         }
     }
 
@@ -66,10 +67,14 @@ template <modint mint> void butterfly_inv(std::vector<mint>& a) {
     int n = int(a.size());
     int bit_size = std::countr_zero(a.size());
     assert(n == (int)std::bit_ceil(a.size()));
+
     // bit reverse
-    for (int i = 0; i < n; i++) {
-        int rev = bit_reverse(i, bit_size);
-        if (i < rev) std::swap(a[i], a[rev]);
+    for (int i = 0, j = 1; j < n - 1; j++) {
+        for (int k = n >> 1; k > (i ^= k); k >>= 1)
+            ;
+        if (j < i) {
+            std::swap(a[i], a[j]);
+        }
     }
 
     for (int bit = 0; bit < bit_size; bit++) {
