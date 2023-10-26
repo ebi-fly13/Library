@@ -6,9 +6,11 @@
 #include <ranges>
 #include <vector>
 
+#include "../modint/base.hpp"
+
 namespace ebi {
 
-template <class mint> struct Binomial {
+template <Modint mint> struct Binomial {
   private:
     static void extend(int len = -1) {
         int sz = (int)fact.size();
@@ -72,10 +74,10 @@ template <class mint> struct Binomial {
     static std::vector<mint> fact, inv_fact;
 };
 
-template <class mint>
+template <Modint mint>
 std::vector<mint> Binomial<mint>::fact = std::vector<mint>(2, 1);
 
-template <class mint>
+template <Modint mint>
 std::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2, 1);
 
 }  // namespace ebi
