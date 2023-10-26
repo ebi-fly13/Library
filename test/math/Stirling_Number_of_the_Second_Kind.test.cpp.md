@@ -1,27 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
-    path: utility/bit_operator.hpp
-    title: utility/bit_operator.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -186,23 +183,18 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\n#line 4 \"utility/bit_operator.hpp\"\n#include <cstdint>\n\nnamespace ebi\
-    \ {\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
-    \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
-    \ i - 1);\n    }\n    return rev_n;\n}\n\nint msb(int x) {\n    return (x == 0)\
-    \ ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n}\n\n}  // namespace ebi\n\
-    #line 8 \"math/stirling_number_2nd.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ mint, std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
-    \ &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> stirling_number_2nd(int\
-    \ n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >=\
-    \ 0);\n    FPS f(n + 1), g(n + 1);\n    std::vector<mint> fact(n + 1, 1);\n  \
-    \  for (int i = 1; i <= n; i++) fact[i] = fact[i - 1] * i;\n    std::vector<mint>\
-    \ inv_fact(n + 1);\n    inv_fact[n] = fact[n].inv();\n    for (int i = n; i >\
-    \ 0; i--) {\n        inv_fact[i - 1] = inv_fact[i] * i;\n    }\n    for (int i\
-    \ = 0; i <= n; i++) {\n        f[i] = mint(i).pow(n) * inv_fact[i];\n        g[i]\
-    \ = (i & 1) ? -inv_fact[i] : inv_fact[i];\n    }\n    return (f * g).pre(n + 1);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 8 \"math/stirling_number_2nd.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> stirling_number_2nd(int n) {\n   \
+    \ using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >= 0);\n   \
+    \ FPS f(n + 1), g(n + 1);\n    std::vector<mint> fact(n + 1, 1);\n    for (int\
+    \ i = 1; i <= n; i++) fact[i] = fact[i - 1] * i;\n    std::vector<mint> inv_fact(n\
+    \ + 1);\n    inv_fact[n] = fact[n].inv();\n    for (int i = n; i > 0; i--) {\n\
+    \        inv_fact[i - 1] = inv_fact[i] * i;\n    }\n    for (int i = 0; i <= n;\
+    \ i++) {\n        f[i] = mint(i).pow(n) * inv_fact[i];\n        g[i] = (i & 1)\
+    \ ? -inv_fact[i] : inv_fact[i];\n    }\n    return (f * g).pre(n + 1);\n}\n\n\
+    }  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\
     \n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
     \ m> struct static_modint {\r\n  private:\r\n    using modint = static_modint;\r\
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
@@ -268,12 +260,11 @@ data:
   - modint/base.hpp
   - math/stirling_number_2nd.hpp
   - fps/fps.hpp
-  - utility/bit_operator.hpp
   - modint/modint.hpp
   isVerificationFile: true
   path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
+  timestamp: '2023-10-26 18:33:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stirling_Number_of_the_Second_Kind.test.cpp

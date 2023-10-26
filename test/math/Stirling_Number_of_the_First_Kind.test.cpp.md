@@ -1,38 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
-    path: utility/bit_operator.hpp
-    title: utility/bit_operator.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind
@@ -109,7 +106,7 @@ data:
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"math/stirling_number_1st.hpp\"\
-    \n\n#line 4 \"math/stirling_number_1st.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n#line\
+    \n\n#line 5 \"math/stirling_number_1st.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n#line\
     \ 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 9 \"\
     fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint>\
     \ (*convolution)(const std::vector<mint> &,\n                                \
@@ -226,63 +223,58 @@ data:
     \ = a;\n    for (int i = 1; i < d; i++) {\n        g[i] = pow_a * Binomial<mint>::inv_f(i);\n\
     \        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(),\
     \ f.end());\n    for (int i = 0; i < d; i++) f[i] *= Binomial<mint>::inv_f(i);\n\
-    \    return f;\n}\n\n}  // namespace ebi\n#line 2 \"utility/bit_operator.hpp\"\
-    \n\n#line 4 \"utility/bit_operator.hpp\"\n#include <cstdint>\n\nnamespace ebi\
-    \ {\n\nint bit_reverse(int n, int bit_size) {\n    int rev_n = 0;\n    for (int\
-    \ i = 0; i < bit_size; i++) {\n        rev_n |= ((n >> i) & 1) << (bit_size -\
-    \ i - 1);\n    }\n    return rev_n;\n}\n\nint msb(int x) {\n    return (x == 0)\
-    \ ? -1 : 31 - std::countl_zero(std::uint32_t(x));\n}\n\n}  // namespace ebi\n\
-    #line 8 \"math/stirling_number_1st.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ mint, std::vector<mint> (*convolution)(\n                          const std::vector<mint>\
-    \ &, const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution> stirling_number_1st(int\
-    \ n) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >=\
-    \ 0);\n    if (n == 0) return {1};\n    int lg = msb(n);\n    FPS f = {0, 1};\n\
-    \    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >> i;\n        f\
-    \ *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid & 1) f = (f\
-    \ << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace ebi\n#line\
-    \ 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\
-    \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
-    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
-    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
-    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
-    \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
-    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
-    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
-    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
-    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
-    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
-    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
-    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
-    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
-    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
-    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
-    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
-    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
-    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
-    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
-    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
-    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
-    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
-    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
-    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
-    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
-    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
-    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
-    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
-    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
-    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
-    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
-    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
-    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
-    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
-    \ m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
+    \    return f;\n}\n\n}  // namespace ebi\n#line 9 \"math/stirling_number_1st.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> stirling_number_1st(int n) {\n   \
+    \ using FPS = FormalPowerSeries<mint, convolution>;\n    assert(n >= 0);\n   \
+    \ if (n == 0) return {1};\n    int lg = std::bit_width(uint(n));\n    FPS f =\
+    \ {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid = n >> i;\n\
+    \        f *= taylor_shift<mint, convolution>(f, mid >> 1);\n        if (mid &\
+    \ 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
+    \ ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n\
+    #line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct\
+    \ static_modint {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n \
+    \ public:\r\n    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\
+    \r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v\
+    \ = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0)\
+    \ {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
+    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
+    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
+    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
+    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
+    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
+    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
+    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
+    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
+    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
+    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
+    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
+    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
+    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
+    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
+    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
+    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
+    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
+    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
+    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
+    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
+    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
+    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
+    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
+    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
+    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
+    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
+    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
+    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
+    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
+    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
+    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
     \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
     \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
     \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
@@ -308,13 +300,12 @@ data:
   - fps/fps.hpp
   - fps/taylor_shift.hpp
   - math/binomial.hpp
-  - utility/bit_operator.hpp
   - modint/modint.hpp
   isVerificationFile: true
   path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 12:28:44+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-26 18:33:49+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Stirling_Number_of_the_First_Kind.test.cpp
 layout: document
