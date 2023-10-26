@@ -4,11 +4,13 @@
 
 #include "../fps/composition_of_fps.hpp"
 #include "../fps/fps.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
+template <Modint mint,
+          std::vector<mint> (*convolution)(const std::vector<mint> &,
+                                           const std::vector<mint> &)>
 FormalPowerSeries<mint, convolution> compositional_inverse_of_fps(
     FormalPowerSeries<mint, convolution> f, int d = -1) {
     using FPS = FormalPowerSeries<mint, convolution>;

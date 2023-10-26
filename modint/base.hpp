@@ -2,28 +2,30 @@
 
 #include <concepts>
 #include <iostream>
+#include <utility>
 
 namespace ebi {
 
 template <class T>
-concept modint = requires(T a, T b) {
+concept Modint = requires(T a, T b) {
     a + b;
     a - b;
-    a *b;
+    a * b;
     a / b;
     a.inv();
     a.val();
-    a.mod();
+    a.pow(std::declval<long long>());
+    T::mod();
 };
 
-template <modint mint> std::istream &operator>>(std::istream &os, mint &a) {
+template <Modint mint> std::istream &operator>>(std::istream &os, mint &a) {
     long long x;
     os >> x;
     a = x;
     return os;
 }
 
-template <modint mint>
+template <Modint mint>
 std::ostream &operator<<(std::ostream &os, const mint &a) {
     return os << a.val();
 }

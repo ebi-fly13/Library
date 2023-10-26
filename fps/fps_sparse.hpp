@@ -4,10 +4,11 @@
 #include <vector>
 
 #include "../math/mod_inv.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
-template <class mint>
+template <Modint mint>
 std::vector<mint> mul_sparse(const std::vector<mint> &f,
                              const std::vector<mint> &g) {
     int n = f.size();
@@ -28,7 +29,7 @@ std::vector<mint> mul_sparse(const std::vector<mint> &f,
     return h;
 }
 
-template <class mint>
+template <Modint mint>
 std::vector<mint> inv_sparse(const std::vector<mint> &f, int d = -1) {
     assert(f[0] != 0);
     if (d < 0) {
@@ -52,7 +53,7 @@ std::vector<mint> inv_sparse(const std::vector<mint> &f, int d = -1) {
     return g;
 }
 
-template <class mint>
+template <Modint mint>
 std::vector<mint> exp_sparse(const std::vector<mint> &f, int d = -1) {
     int n = f.size();
     if (d < 0) d = n;
@@ -74,7 +75,7 @@ std::vector<mint> exp_sparse(const std::vector<mint> &f, int d = -1) {
     return g;
 }
 
-template <class mint>
+template <Modint mint>
 std::vector<mint> log_sparse(const std::vector<mint> &f, int d = -1) {
     int n = f.size();
     if (d < 0) d = n;
@@ -91,7 +92,7 @@ std::vector<mint> log_sparse(const std::vector<mint> &f, int d = -1) {
     return g;
 }
 
-template <class mint>
+template <Modint mint>
 std::vector<mint> pow_sparse_1(const std::vector<mint> &f, long long k,
                                int d = -1) {
     int n = f.size();
@@ -113,7 +114,7 @@ std::vector<mint> pow_sparse_1(const std::vector<mint> &f, long long k,
     return g;
 }
 
-template <class mint>
+template <Modint mint>
 std::vector<mint> pow_sparse(const std::vector<mint> &f, long long k,
                              int d = -1) {
     int n = f.size();

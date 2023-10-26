@@ -7,7 +7,7 @@
 
 namespace ebi {
 
-template <modint mint> mint inv(int n) {
+template <Modint mint> mint inv(int n) {
     static const int mod = mint::mod();
     static std::vector<mint> dat = {0, 1};
     assert(0 <= n);

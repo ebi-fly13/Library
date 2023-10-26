@@ -3,12 +3,13 @@
 #include <vector>
 
 #include "../fps/fps.hpp"
+#include "../modint/base.hpp"
 #include "../math/mod_inv.hpp"
 
 namespace ebi {
 
 // prod (1 - x^a_i) mod x^d
-template <class mint, std::vector<mint> (*convolution)(
+template <Modint mint, std::vector<mint> (*convolution)(
                           const std::vector<mint> &, const std::vector<mint> &)>
 FormalPowerSeries<mint, convolution> product_of_one_minus_xn(std::vector<int> a,
                                                              int d) {

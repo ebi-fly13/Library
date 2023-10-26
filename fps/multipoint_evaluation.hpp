@@ -1,11 +1,13 @@
 #pragma once
 
 #include "../fps/fps.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
+template <Modint mint,
+          std::vector<mint> (*convolution)(const std::vector<mint> &,
+                                           const std::vector<mint> &)>
 std::vector<mint> multipoint_evaluation(
     const FormalPowerSeries<mint, convolution> &f, const std::vector<mint> &p) {
     using FPS = FormalPowerSeries<mint, convolution>;

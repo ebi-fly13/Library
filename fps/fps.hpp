@@ -5,10 +5,13 @@
 #include <optional>
 #include <vector>
 
+#include "../modint/base.hpp"
+
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
+template <Modint mint,
+          std::vector<mint> (*convolution)(const std::vector<mint> &,
+                                           const std::vector<mint> &)>
 struct FormalPowerSeries : std::vector<mint> {
   private:
     using std::vector<mint>::vector;

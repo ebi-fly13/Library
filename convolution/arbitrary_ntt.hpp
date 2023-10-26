@@ -11,7 +11,7 @@ namespace ebi {
 
 namespace internal {
 
-template <class T, modint mint>
+template <class T, Modint mint>
 std::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>& g) {
     std::vector<mint> a, b;
     a.reserve(f.size());
@@ -23,7 +23,7 @@ std::vector<mint> multiply(const std::vector<T>& f, const std::vector<T>& g) {
 
 }  // namespace internal
 
-template <modint mint>
+template <Modint mint>
 std::vector<mint> arbitary_convolution(const std::vector<mint>& f,
                                        const std::vector<mint>& g) {
     if (f.empty() || g.empty()) return {};

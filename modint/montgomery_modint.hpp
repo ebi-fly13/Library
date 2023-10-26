@@ -118,7 +118,7 @@ template <int m> struct montgomery_modint {
         return !(lhs == rhs);
     }
 
-    constexpr modint pow(u64 n) const {
+    constexpr modint pow(long long n) const {
         modint x = *this, res = 1;
         while (n) {
             if (n & 1) res *= x;

@@ -3,11 +3,13 @@
 #include "../fps/fps.hpp"
 #include "../fps/fps_sparse.hpp"
 #include "../math/mod_sqrt.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
+template <Modint mint,
+          std::vector<mint> (*convolution)(const std::vector<mint> &,
+                                           const std::vector<mint> &)>
 std::optional<FormalPowerSeries<mint, convolution>>
 FormalPowerSeries<mint, convolution>::sqrt(int d) const {
     using FPS = FormalPowerSeries<mint, convolution>;

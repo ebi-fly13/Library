@@ -13,7 +13,7 @@ namespace ebi {
 
 namespace internal {
 
-template <modint mint, int g = internal::primitive_root<mint::mod()>>
+template <Modint mint, int g = internal::primitive_root<mint::mod()>>
 struct ntt_info {
     static constexpr int rank2 = std::countr_zero(uint(mint::mod() - 1));
 
@@ -29,7 +29,7 @@ struct ntt_info {
     }
 };
 
-template <modint mint> void butterfly(std::vector<mint>& a) {
+template <Modint mint> void butterfly(std::vector<mint>& a) {
     static const ntt_info<mint> info;
     int n = int(a.size());
     int bit_size = std::countr_zero(a.size());
@@ -62,7 +62,7 @@ template <modint mint> void butterfly(std::vector<mint>& a) {
     }
 }
 
-template <modint mint> void butterfly_inv(std::vector<mint>& a) {
+template <Modint mint> void butterfly_inv(std::vector<mint>& a) {
     static const ntt_info<mint> info;
     int n = int(a.size());
     int bit_size = std::countr_zero(a.size());
@@ -101,7 +101,7 @@ template <modint mint> void butterfly_inv(std::vector<mint>& a) {
 
 }  // namespace internal
 
-template <modint mint>
+template <Modint mint>
 std::vector<mint> convolution_naive(const std::vector<mint>& f,
                                     const std::vector<mint>& g) {
     if (f.empty() || g.empty()) return {};
@@ -123,7 +123,7 @@ std::vector<mint> convolution_naive(const std::vector<mint>& f,
     return c;
 }
 
-template <modint mint>
+template <Modint mint>
 std::vector<mint> convolution(const std::vector<mint>& f,
                               const std::vector<mint>& g) {
     if (f.empty() || g.empty()) return {};

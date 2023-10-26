@@ -4,11 +4,13 @@
 #include <vector>
 
 #include "../fps/fps.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
+template <Modint mint,
+          std::vector<mint> (*convolution)(const std::vector<mint> &,
+                                           const std::vector<mint> &)>
 FormalPowerSeries<mint, convolution> composition_of_fps(
     const FormalPowerSeries<mint, convolution> &f,
     const FormalPowerSeries<mint, convolution> &g) {

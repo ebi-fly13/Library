@@ -3,10 +3,13 @@
 #include <deque>
 #include <vector>
 
+#include "../modint/base.hpp"
+
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
+template <Modint mint,
+          std::vector<mint> (*convolution)(const std::vector<mint> &,
+                                           const std::vector<mint> &)>
 std::vector<mint> product_of_fps(const std::vector<std::vector<mint>> &fs) {
     if (fs.empty()) return {1};
     std::deque<std::vector<mint>> deque;

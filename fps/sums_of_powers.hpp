@@ -2,10 +2,11 @@
 
 #include "../fps/fps.hpp"
 #include "../fps/product_of_fps.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
+template <Modint mint, std::vector<mint> (*convolution)(
                           const std::vector<mint> &, const std::vector<mint> &)>
 FormalPowerSeries<mint, convolution> sums_of_powers(const std::vector<int> &a,
                                                     int d) {
