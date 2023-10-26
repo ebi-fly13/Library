@@ -2,7 +2,10 @@
 
 #include <array>
 #include <bit>
+#include <cassert>
 #include <map>
+#include <ranges>
+#include <utility>
 #include <vector>
 
 #include "../data_structure/undo_unionfind.hpp"
@@ -23,11 +26,25 @@ struct offline_dynamic_connective {
         }
     }
 
+    void add_block(int i) {
+        for (auto [u, v] : seg[i]) {
+            uf.merge(u, v);
+        }
+    }
+
+    void del_block(int i) {
+        int cnt = seg[i].size();
+        while (cnt--) {
+            uf.undo();
+        }
+    }
+
   public:
-    offline_dynamic_connective(int n, std::vector<std::array<int, 3>> queries)
-        : n(n) {
-        m = queries.size() + 1;
-        sz = std::bit_ceil(queries.size() + 1);
+    offline_dynamic_connective(int n_, std::vector<std::array<int, 3>> queries)
+        : n(n_),
+          m(queries.size() + 1),
+          sz(std::bit_ceil(uint(m))),
+          lg2(std::countr_zero(uint(sz))) {
         seg.resize(2 * sz);
         std::map<std::pair<int, int>, int> cnt, appear;
         for (int i = 0; i < (int)queries.size(); i++) {
@@ -46,39 +63,57 @@ struct offline_dynamic_connective {
             } else
                 assert(0);
         }
+
         for (auto [edge, c] : cnt) {
             if (c == 0) continue;
             add_query(appear[edge], m, edge);
         }
-    }
 
-    template <class F> void execute(F f) {
         uf = undo_unionfind(n);
-        auto dfs = [&](auto &&self, int now) -> void {
-            for (auto edge : seg[now]) uf.merge(edge.first, edge.second);
-            if (sz <= now) {
-                if (now - sz < m) f(now - sz);
-            } else {
-                self(self, 2 * now);
-                self(self, 2 * now + 1);
-            }
-            for (int i = 0; i < (int)seg[now].size(); i++) uf.undo();
-        };
-        dfs(dfs, 1);
+        for (int i : std::views::iota(0, lg2)) {
+            add_block(1 << i);
+        }
+        now = sz;
     }
 
-    bool is_same(int u, int v) {
+    void set(int t) {
+        assert(0 <= t && t < m);
+        t += sz;
+        if (now == t) return;
+        int k = 32 - std::countl_zero(uint(now ^ t));
+        for (int i = 0; i < k; i++) {
+            del_block(now);
+            now >>= 1;
+        }
+        for (int i : std::views::iota(0, k) | std::views::reverse) {
+            now <<= 1;
+            if ((t >> i) & 1) now++;
+            add_block(now);
+        }
+        assert(now == t);
+    }
+
+    bool same(int u, int v) const {
         return uf.same(u, v);
     }
 
-    int leader(int x) {
-        return uf.leader(x);
+    int leader(int u) const {
+        return uf.leader(u);
+    }
+
+    int size(int u) const {
+        return uf.size(u);
+    }
+
+    int count_group() const {
+        return uf.count_group();
     }
 
   private:
     int n, m;
-    int log2, sz;
+    int sz, lg2;
     std::vector<std::vector<std::pair<int, int>>> seg;
+    int now;
     undo_unionfind uf;
 };
 

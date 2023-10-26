@@ -15,7 +15,7 @@ struct undo_unionfind {
 
     undo_unionfind(int n = 0) : par(n, -1) {}
 
-    bool same(int x, int y) {
+    bool same(int x, int y) const {
         return leader(x) == leader(y);
     }
 
@@ -31,18 +31,18 @@ struct undo_unionfind {
         return true;
     }
 
-    int leader(int x) {
+    int leader(int x) const {
         if (par[x] < 0)
             return x;
         else
             return leader(par[x]);
     }
 
-    int size(int x) {
+    int size(int x) const {
         return -par[leader(x)];
     }
 
-    int count_group() {
+    int count_group() const {
         int c = 0;
         for (int i = 0; i < int(par.size()); i++) {
             if (par[i] < 0) c++;

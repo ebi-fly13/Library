@@ -15,6 +15,24 @@ documentation_of: //data_structure/offline_dynamic_connectivity.hpp
 offline_dynamic_connectivity uf(n, queries)
 ```
 
-### execute(f)
+### set(int t)
 
-`f(int i)` が $i$ 番目 (1-indexed)のクエリを処理した後の uf をoffline_dynamic_connectivityが持った状態で関数が呼び出される。ここで $i$ 番目のクエリを処理し終わった状態での各種操作をすればよい。
+$t$ 個のクエリを処理した後のUnionFindの状態にする。 $O(\log N)$
+
+与える $t$ が広義単調増加である場合は、全体で $O(N)$ となる。
+
+### same(int u, int v)
+
+$u$ と $v$ が同じグループにあるかを判定。 $O(\log N)$
+
+### leader(int u)
+
+$u$ のグループの代表を返す。 $O(\log N)$
+
+### size(int u)
+
+$u$ の属するグループのサイズを返す。 $O(\log N)$
+
+### count_group()
+
+グループの数を返す。 $O(N)$
