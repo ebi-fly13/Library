@@ -7,25 +7,25 @@ data:
   - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/mod_inv.hpp
-    title: math/mod_inv.hpp
-  - icon: ':question:'
+    title: Mod Inv
+  - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   - icon: ':question:'
@@ -33,9 +33,9 @@ data:
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
@@ -400,7 +400,7 @@ data:
   path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   requiredBy: []
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 layout: document

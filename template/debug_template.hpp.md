@@ -18,10 +18,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
   - icon: ':x:'
@@ -59,14 +59,14 @@ data:
   timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/aoj/aoj_2450.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/yuki/yuki_2439.test.cpp
   - test/yuki/yuki_1145.test.cpp
-  - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/aoj/aoj_2450.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
 documentation_of: template/debug_template.hpp
 layout: document
 redirect_from:

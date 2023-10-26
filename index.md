@@ -185,19 +185,19 @@ data:
     - icon: ':question:'
       path: fps/fps.hpp
       title: Formal Power Series
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sparse.hpp
       title: Formal Power Series (Sparse)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/multipoint_evaluation.hpp
       title: Multipoint Evaluation
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/polynomial_interpolation.hpp
       title: Polynomial Interpolation
-    - icon: ':x:'
+    - icon: ':question:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$
     - icon: ':heavy_check_mark:'
@@ -209,7 +209,7 @@ data:
     - icon: ':x:'
       path: fps/sums_of_powers.hpp
       title: $\sum_i (\sum_n A_n^i) x^i$
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/taylor_shift.hpp
       title: $f(x + c)$
   - name: geometry
@@ -293,10 +293,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/longest_increasing_subsequence.hpp
       title: LIS
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_inv.hpp
-      title: math/mod_inv.hpp
-    - icon: ':question:'
+      title: Mod Inv
+    - icon: ':heavy_check_mark:'
       path: math/mod_sqrt.hpp
       title: Mod Sqrt
     - icon: ':heavy_check_mark:'
@@ -321,7 +321,7 @@ data:
     - icon: ':question:'
       path: modint/base.hpp
       title: modint/base.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/dynamic_modint.hpp
       title: modint/dynamic_modint.hpp
     - icon: ':question:'
@@ -338,7 +338,7 @@ data:
     - icon: ':x:'
       path: set_function/egf_composite_sps.hpp
       title: $f(a)$ (Set Power Series, f is EGF)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: set_function/exp_of_sps.hpp
       title: $\exp {a}$ (Set Power Series)
     - icon: ':heavy_check_mark:'
@@ -754,48 +754,48 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Multipoint_Evaluation.test.cpp
       title: test/polynomial/Multipoint_Evaluation.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Polynomial_Interpolation.test.cpp
       title: test/polynomial/Polynomial_Interpolation.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
       title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
       title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - name: test/set_function
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/set_function/Exp_of_Set_Power_Series.test.cpp
       title: test/set_function/Exp_of_Set_Power_Series.test.cpp
     - icon: ':x:'

@@ -4,26 +4,26 @@ data:
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Sqrt_Mod.test.cpp
     title: test/math/Sqrt_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/mod_sqrt.hpp\"\n\n#include <cstdint>\n#include <optional>\n\
@@ -102,11 +102,11 @@ data:
   requiredBy:
   - fps/fps_sqrt.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Sqrt_Mod.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/math/Sqrt_Mod.test.cpp
 documentation_of: math/mod_sqrt.hpp
 layout: document
 title: Mod Sqrt

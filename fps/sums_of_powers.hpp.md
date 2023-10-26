@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/product_of_fps.hpp
     title: $\prod_{i=0}^n f_i$
   - icon: ':question:'

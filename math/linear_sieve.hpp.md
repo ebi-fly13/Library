@@ -130,8 +130,8 @@ data:
   isVerificationFile: false
   path: math/linear_sieve.hpp
   requiredBy:
-  - math/DirichletSeries.hpp
   - convolution/dirichlet_convolution.hpp
+  - math/DirichletSeries.hpp
   timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

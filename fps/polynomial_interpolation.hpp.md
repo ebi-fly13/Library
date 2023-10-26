@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
   - icon: ':question:'
@@ -12,12 +12,12 @@ data:
     title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/polynomial_interpolation.hpp\"\n\n#line 2 \"fps/fps.hpp\"\
@@ -169,7 +169,7 @@ data:
   path: fps/polynomial_interpolation.hpp
   requiredBy: []
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Polynomial_Interpolation.test.cpp
 documentation_of: fps/polynomial_interpolation.hpp

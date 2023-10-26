@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   - icon: ':question:'

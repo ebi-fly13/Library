@@ -13,9 +13,9 @@ data:
   - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/mod_inv.hpp
-    title: math/mod_inv.hpp
+    title: Mod Inv
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp

@@ -20,7 +20,7 @@ data:
   - icon: ':x:'
     path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: set_function/exp_of_sps.hpp
     title: $\exp {a}$ (Set Power Series)
   - icon: ':x:'
@@ -51,7 +51,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/set_function/Exp_of_Set_Power_Series.test.cpp
     title: test/set_function/Exp_of_Set_Power_Series.test.cpp
   - icon: ':x:'
@@ -77,27 +77,27 @@ data:
   isVerificationFile: false
   path: utility/bit_operator.hpp
   requiredBy:
-  - math/stirling_number_1st.hpp
-  - math/stirling_number_2nd.hpp
-  - set_function/exp_of_sps.hpp
+  - convolution/or_convolution.hpp
+  - convolution/and_convolution.hpp
+  - convolution/subset_convolution.hpp
   - set_function/subset_transform.hpp
+  - set_function/exp_of_sps.hpp
   - set_function/ranked_subset_transform.hpp
-  - set_function/superset_transform.hpp
   - set_function/poly_composite_sps.hpp
   - set_function/egf_composite_sps.hpp
-  - convolution/or_convolution.hpp
-  - convolution/subset_convolution.hpp
-  - convolution/and_convolution.hpp
+  - set_function/superset_transform.hpp
+  - math/stirling_number_1st.hpp
+  - math/stirling_number_2nd.hpp
   timestamp: '2023-10-26 02:17:54+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/convolution/Subset_Convolution.test.cpp
+  - test/convolution/Bitwise_And_Convolution.test.cpp
+  - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - test/convolution/Bitwise_OR_Convolution.test.cpp
-  - test/convolution/Bitwise_And_Convolution.test.cpp
-  - test/convolution/Subset_Convolution.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
 documentation_of: utility/bit_operator.hpp
 layout: document
 redirect_from:

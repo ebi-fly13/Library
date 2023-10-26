@@ -9,7 +9,7 @@ data:
     path: fps/sums_of_powers.hpp
     title: $\sum_i (\sum_n A_n^i) x^i$
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: test/yuki/yuki_1145.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/product_of_fps.hpp\"\n\n#include <deque>\n#include <vector>\n\
@@ -53,10 +53,10 @@ data:
   requiredBy:
   - fps/sums_of_powers.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/yuki_1145.test.cpp
   - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/yuki/yuki_1145.test.cpp
 documentation_of: fps/product_of_fps.hpp
 layout: document
 title: $\prod_{i=0}^n f_i$

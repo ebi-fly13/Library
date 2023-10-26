@@ -11,13 +11,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/polynomial_interpolation.hpp
     title: Polynomial Interpolation
   - icon: ':heavy_check_mark:'
@@ -29,7 +29,7 @@ data:
   - icon: ':x:'
     path: fps/sums_of_powers.hpp
     title: $\sum_i (\sum_n A_n^i) x^i$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':heavy_check_mark:'
@@ -75,28 +75,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
@@ -290,42 +290,42 @@ data:
   isVerificationFile: false
   path: fps/fps.hpp
   requiredBy:
+  - fps/product_of_one_plus_xn.hpp
+  - fps/product_of_one_minus_xn.hpp
+  - fps/composition_of_fps.hpp
+  - fps/sums_of_powers.hpp
+  - fps/polynomial_interpolation.hpp
+  - fps/fps_sqrt.hpp
+  - fps/multipoint_evaluation.hpp
+  - fps/compositional_inverse_of_fps.hpp
+  - fps/taylor_shift.hpp
   - math/stirling_number_1st.hpp
+  - math/stirling_number_2nd.hpp
   - math/bernoulli_number.hpp
   - math/partition_function.hpp
-  - math/stirling_number_2nd.hpp
-  - fps/composition_of_fps.hpp
-  - fps/product_of_one_plus_xn.hpp
-  - fps/polynomial_interpolation.hpp
-  - fps/sums_of_powers.hpp
-  - fps/multipoint_evaluation.hpp
-  - fps/fps_sqrt.hpp
-  - fps/taylor_shift.hpp
-  - fps/compositional_inverse_of_fps.hpp
-  - fps/product_of_one_minus_xn.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/yuki_1145.test.cpp
-  - test/yuki/yuki_1302.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
-  - test/math/Partition_Function_Pentagonal.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - test/math/Berunoulli_Number.test.cpp
-  - test/math/sharp_p_subset_sum.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/yuki/yuki_1145.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Berunoulli_Number.test.cpp
 documentation_of: fps/fps.hpp
 layout: document
 title: Formal Power Series
