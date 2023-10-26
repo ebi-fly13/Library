@@ -43,6 +43,9 @@ data:
     path: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Affine_Point_Get.test.cpp
+    title: test/data_structure/Range_Affine_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -191,6 +194,7 @@ data:
   - test/data_structure/Static_Range_Frequency.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Range_Kth_Smallest.test.cpp
+  - test/data_structure/Range_Affine_Point_Get.test.cpp
 documentation_of: template/int_alias.hpp
 layout: document
 redirect_from:

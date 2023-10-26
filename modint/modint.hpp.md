@@ -58,6 +58,9 @@ data:
     path: test/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/data_structure/Queue_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Affine_Point_Get.test.cpp
+    title: test/data_structure/Range_Affine_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -327,6 +330,7 @@ data:
   - test/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Deque_Operate_All_Composite.test.cpp
+  - test/data_structure/Range_Affine_Point_Get.test.cpp
 documentation_of: modint/modint.hpp
 layout: document
 redirect_from:

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/DualSegtree.hpp
-    title: data_structure/DualSegtree.hpp
+    path: data_structure/dual_segtree_commutative.hpp
+    title: dual segtree (commutative)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -16,14 +16,14 @@ data:
     - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E
   bundledCode: "#line 1 \"test/data_structure/Range_Add_Query.test.cpp\"\n#define\
     \ PROBLEM \\\r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E\"\
-    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n\r\n#line 2 \"data_structure/DualSegtree.hpp\"\
-    \n\r\n#include <cassert>\r\n#line 5 \"data_structure/DualSegtree.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <class Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\
-    \nstruct DualSegtree {\r\n  public:\r\n    DualSegtree(int n) : n(n) {\r\n   \
-    \     size = 1;\r\n        while (size < n) size <<= 1;\r\n        data.assign(2\
-    \ * size, e());\r\n    }\r\n\r\n    DualSegtree(const std::vector<Monoid> &vec)\
-    \ : n(vec.size()) {\r\n        size = 1;\r\n        while (size < n) size <<=\
-    \ 1;\r\n        data.assign(2 * size, e());\r\n        std::copy(vec.begin(),\
+    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n\r\n#line 2 \"data_structure/dual_segtree_commutative.hpp\"\
+    \n\r\n#include <cassert>\r\n#line 5 \"data_structure/dual_segtree_commutative.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\ntemplate <class Monoid, Monoid (*op)(Monoid, Monoid),\
+    \ Monoid (*e)()>\r\nstruct DualSegtree {\r\n  public:\r\n    DualSegtree(int n)\
+    \ : n(n) {\r\n        size = 1;\r\n        while (size < n) size <<= 1;\r\n  \
+    \      data.assign(2 * size, e());\r\n    }\r\n\r\n    DualSegtree(const std::vector<Monoid>\
+    \ &vec) : n(vec.size()) {\r\n        size = 1;\r\n        while (size < n) size\
+    \ <<= 1;\r\n        data.assign(2 * size, e());\r\n        std::copy(vec.begin(),\
     \ vec.end(), data.begin() + size);\r\n    }\r\n\r\n    Monoid get(int idx) const\
     \ {\r\n        assert(0 <= idx && idx < n);\r\n        idx += size;\r\n      \
     \  Monoid val = e();\r\n        while (idx > 0) {\r\n            val = op(val,\
@@ -45,7 +45,7 @@ data:
     \   int t;\r\n            std::cin >> t;\r\n            t--;\r\n            std::cout\
     \ << dseg.get(t) << std::endl;\r\n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \\\r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E\"\
-    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n\r\n#include \"../../data_structure/DualSegtree.hpp\"\
+    \r\n\r\n#include <iostream>\r\n#include <vector>\r\n\r\n#include \"../../data_structure/dual_segtree_commutative.hpp\"\
     \r\n\r\nint op(int a, int b) {\r\n    return a + b;\r\n}\r\n\r\nint e() {\r\n\
     \    return 0;\r\n}\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n\
     \ >> q;\r\n    ebi::DualSegtree<int, op, e> dseg(n);\r\n    while (q--) {\r\n\
@@ -55,11 +55,11 @@ data:
     \    int t;\r\n            std::cin >> t;\r\n            t--;\r\n            std::cout\
     \ << dseg.get(t) << std::endl;\r\n        }\r\n    }\r\n}"
   dependsOn:
-  - data_structure/DualSegtree.hpp
+  - data_structure/dual_segtree_commutative.hpp
   isVerificationFile: true
   path: test/data_structure/Range_Add_Query.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 14:12:40+09:00'
+  timestamp: '2023-10-26 13:46:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Add_Query.test.cpp

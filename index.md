@@ -58,9 +58,6 @@ data:
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
-      path: data_structure/DualSegtree.hpp
-      title: data_structure/DualSegtree.hpp
-    - icon: ':heavy_check_mark:'
       path: data_structure/DynamicSegmentTree.hpp
       title: data_structure/DynamicSegmentTree.hpp
     - icon: ':heavy_check_mark:'
@@ -99,6 +96,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/deque_aggregation.hpp
       title: Sliding Window Aggregation (Deque)
+    - icon: ':heavy_check_mark:'
+      path: data_structure/dual_segtree.hpp
+      title: dual segtree
+    - icon: ':heavy_check_mark:'
+      path: data_structure/dual_segtree_commutative.hpp
+      title: dual segtree (commutative)
     - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: fenwick tree
@@ -555,6 +558,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Add_Query.test.cpp
       title: test/data_structure/Range_Add_Query.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Range_Affine_Point_Get.test.cpp
+      title: test/data_structure/Range_Affine_Point_Get.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Range_Affine_Range_Sum.test.cpp

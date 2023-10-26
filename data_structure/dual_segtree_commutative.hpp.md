@@ -11,15 +11,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/DualSegtree.hpp\"\n\r\n#include <cassert>\r\
-    \n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class Monoid, Monoid\
-    \ (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct DualSegtree {\r\n  public:\r\
-    \n    DualSegtree(int n) : n(n) {\r\n        size = 1;\r\n        while (size\
-    \ < n) size <<= 1;\r\n        data.assign(2 * size, e());\r\n    }\r\n\r\n   \
-    \ DualSegtree(const std::vector<Monoid> &vec) : n(vec.size()) {\r\n        size\
-    \ = 1;\r\n        while (size < n) size <<= 1;\r\n        data.assign(2 * size,\
-    \ e());\r\n        std::copy(vec.begin(), vec.end(), data.begin() + size);\r\n\
-    \    }\r\n\r\n    Monoid get(int idx) const {\r\n        assert(0 <= idx && idx\
+  bundledCode: "#line 2 \"data_structure/dual_segtree_commutative.hpp\"\n\r\n#include\
+    \ <cassert>\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class\
+    \ Monoid, Monoid (*op)(Monoid, Monoid), Monoid (*e)()>\r\nstruct DualSegtree {\r\
+    \n  public:\r\n    DualSegtree(int n) : n(n) {\r\n        size = 1;\r\n      \
+    \  while (size < n) size <<= 1;\r\n        data.assign(2 * size, e());\r\n   \
+    \ }\r\n\r\n    DualSegtree(const std::vector<Monoid> &vec) : n(vec.size()) {\r\
+    \n        size = 1;\r\n        while (size < n) size <<= 1;\r\n        data.assign(2\
+    \ * size, e());\r\n        std::copy(vec.begin(), vec.end(), data.begin() + size);\r\
+    \n    }\r\n\r\n    Monoid get(int idx) const {\r\n        assert(0 <= idx && idx\
     \ < n);\r\n        idx += size;\r\n        Monoid val = e();\r\n        while\
     \ (idx > 0) {\r\n            val = op(val, data[idx]);\r\n            idx >>=\
     \ 1;\r\n        }\r\n        return val;\r\n    }\r\n\r\n    void apply(int l,\
@@ -52,16 +52,17 @@ data:
     \n    int n;\r\n    int size;\r\n};\r\n\r\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
-  path: data_structure/DualSegtree.hpp
+  path: data_structure/dual_segtree_commutative.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-10-26 13:46:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Range_Add_Query.test.cpp
-documentation_of: data_structure/DualSegtree.hpp
+documentation_of: data_structure/dual_segtree_commutative.hpp
 layout: document
-redirect_from:
-- /library/data_structure/DualSegtree.hpp
-- /library/data_structure/DualSegtree.hpp.html
-title: data_structure/DualSegtree.hpp
+title: dual segtree (commutative)
 ---
+
+## 説明
+
+モノイドの列$(a_0,a_1,\dots,a_{n-1})$に対して区間操作、 $1$ 点取得ができるデータ構造である。区間操作は可換な演算のみ使用できる。

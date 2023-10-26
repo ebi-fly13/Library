@@ -10,6 +10,9 @@ data:
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Affine_Point_Get.test.cpp
+    title: test/data_structure/Range_Affine_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -82,6 +85,7 @@ data:
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Range_Affine_Point_Get.test.cpp
 documentation_of: template/io.hpp
 layout: document
 redirect_from:
