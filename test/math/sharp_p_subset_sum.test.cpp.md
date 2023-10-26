@@ -14,14 +14,14 @@ data:
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':question:'
+    path: math/mod_inv.hpp
+    title: math/mod_inv.hpp
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
-    path: modint/modint_func.hpp
-    title: modint/modint_func.hpp
   - icon: ':question:'
     path: utility/bit_operator.hpp
     title: utility/bit_operator.hpp
@@ -192,31 +192,31 @@ data:
     \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
-    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"modint/modint_func.hpp\"\n\n\
-    #line 5 \"modint/modint_func.hpp\"\n\n#line 7 \"modint/modint_func.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <modint mint> mint inv(int n) {\n    static const int mod\
-    \ = mint::mod();\n    static std::vector<mint> dat = {0, 1};\n    assert(0 <=\
-    \ n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size()) <= n) {\n     \
-    \   int num = dat.size();\n        int q = (mod + num - 1) / num;\n        dat.emplace_back(dat[num\
-    \ * q - mod] * mint(q));\n    }\n    return dat[n];\n}\n\n}  // namespace ebi\n\
-    #line 7 \"fps/product_of_one_plus_xn.hpp\"\n\nnamespace ebi {\n\n// prod (1 +\
-    \ x^a_i) mod x^d\ntemplate <class mint, std::vector<mint> (*convolution)(\n  \
-    \                        const std::vector<mint> &, const std::vector<mint> &)>\n\
-    FormalPowerSeries<mint, convolution> product_of_one_plus_xn(std::vector<int> a,\n\
-    \                                                            int d) {\n    using\
-    \ FPS = FormalPowerSeries<mint, convolution>;\n    std::vector<int> cnt(d, 0);\n\
-    \    for (auto x : a)\n        if (x < d) cnt[x]++;\n    FPS log_f(d);\n    for\
-    \ (int x = 1; x < d; x++) {\n        for (int i = 1; x * i < d; i++) {\n     \
-    \       if (i & 1)\n                log_f[x * i] += mint(cnt[x]) * inv<mint>(i);\n\
-    \            else\n                log_f[x * i] -= mint(cnt[x]) * inv<mint>(i);\n\
-    \        }\n    }\n    mint ret = mint(2).pow(cnt[0]);\n    auto f = log_f.exp(d);\n\
-    \    for (auto &x : f) x *= ret;\n    return f;\n}\n\n}  // namespace ebi\n#line\
-    \ 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\
-    \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
-    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
-    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
-    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"math/mod_inv.hpp\"\n\n#line\
+    \ 5 \"math/mod_inv.hpp\"\n\n#line 7 \"math/mod_inv.hpp\"\n\nnamespace ebi {\n\n\
+    template <modint mint> mint inv(int n) {\n    static const int mod = mint::mod();\n\
+    \    static std::vector<mint> dat = {0, 1};\n    assert(0 <= n);\n    if (n >=\
+    \ mod) n -= mod;\n    while (int(dat.size()) <= n) {\n        int num = dat.size();\n\
+    \        int q = (mod + num - 1) / num;\n        dat.emplace_back(dat[num * q\
+    \ - mod] * mint(q));\n    }\n    return dat[n];\n}\n\n}  // namespace ebi\n#line\
+    \ 7 \"fps/product_of_one_plus_xn.hpp\"\n\nnamespace ebi {\n\n// prod (1 + x^a_i)\
+    \ mod x^d\ntemplate <class mint, std::vector<mint> (*convolution)(\n         \
+    \                 const std::vector<mint> &, const std::vector<mint> &)>\nFormalPowerSeries<mint,\
+    \ convolution> product_of_one_plus_xn(std::vector<int> a,\n                  \
+    \                                          int d) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    std::vector<int> cnt(d, 0);\n    for (auto x : a)\n     \
+    \   if (x < d) cnt[x]++;\n    FPS log_f(d);\n    for (int x = 1; x < d; x++) {\n\
+    \        for (int i = 1; x * i < d; i++) {\n            if (i & 1)\n         \
+    \       log_f[x * i] += mint(cnt[x]) * inv<mint>(i);\n            else\n     \
+    \           log_f[x * i] -= mint(cnt[x]) * inv<mint>(i);\n        }\n    }\n \
+    \   mint ret = mint(2).pow(cnt[0]);\n    auto f = log_f.exp(d);\n    for (auto\
+    \ &x : f) x *= ret;\n    return f;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
+    \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
+    \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
+    \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
+    \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
+    \    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
     \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
     \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
     \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
@@ -279,12 +279,12 @@ data:
   - utility/bit_operator.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/fps.hpp
-  - modint/modint_func.hpp
+  - math/mod_inv.hpp
   - modint/modint.hpp
   isVerificationFile: true
   path: test/math/sharp_p_subset_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-10-26 11:00:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/sharp_p_subset_sum.test.cpp

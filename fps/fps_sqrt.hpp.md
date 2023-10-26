@@ -8,6 +8,9 @@ data:
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
   - icon: ':question:'
+    path: math/mod_inv.hpp
+    title: math/mod_inv.hpp
+  - icon: ':question:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
   - icon: ':question:'
@@ -16,9 +19,6 @@ data:
   - icon: ':question:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
-  - icon: ':question:'
-    path: modint/modint_func.hpp
-    title: modint/modint_func.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':x:'
@@ -116,17 +116,17 @@ data:
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
     \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/fps_sparse.hpp\"\n\n#line\
-    \ 5 \"fps/fps_sparse.hpp\"\n\n#line 2 \"modint/modint_func.hpp\"\n\n#line 5 \"\
-    modint/modint_func.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #include <iostream>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept modint =\
-    \ requires(T a, T b) {\n    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n\
-    \    a.val();\n    a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
+    \ 5 \"fps/fps_sparse.hpp\"\n\n#line 2 \"math/mod_inv.hpp\"\n\n#line 5 \"math/mod_inv.hpp\"\
+    \n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\n\
+    namespace ebi {\n\ntemplate <class T>\nconcept modint = requires(T a, T b) {\n\
+    \    a + b;\n    a - b;\n    a *b;\n    a / b;\n    a.inv();\n    a.val();\n \
+    \   a.mod();\n};\n\ntemplate <modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
-    modint/modint_func.hpp\"\n\nnamespace ebi {\n\ntemplate <modint mint> mint inv(int\
-    \ n) {\n    static const int mod = mint::mod();\n    static std::vector<mint>\
-    \ dat = {0, 1};\n    assert(0 <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size())\
+    math/mod_inv.hpp\"\n\nnamespace ebi {\n\ntemplate <modint mint> mint inv(int n)\
+    \ {\n    static const int mod = mint::mod();\n    static std::vector<mint> dat\
+    \ = {0, 1};\n    assert(0 <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size())\
     \ <= n) {\n        int num = dat.size();\n        int q = (mod + num - 1) / num;\n\
     \        dat.emplace_back(dat[num * q - mod] * mint(q));\n    }\n    return dat[n];\n\
     }\n\n}  // namespace ebi\n#line 7 \"fps/fps_sparse.hpp\"\n\nnamespace ebi {\n\n\
@@ -272,14 +272,14 @@ data:
   dependsOn:
   - fps/fps.hpp
   - fps/fps_sparse.hpp
-  - modint/modint_func.hpp
+  - math/mod_inv.hpp
   - modint/base.hpp
   - math/mod_sqrt.hpp
   - modint/dynamic_modint.hpp
   isVerificationFile: false
   path: fps/fps_sqrt.hpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-10-26 11:00:12+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp

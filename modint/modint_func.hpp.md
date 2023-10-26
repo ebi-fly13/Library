@@ -4,50 +4,11 @@ data:
   - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  _extendedRequiredBy:
-  - icon: ':question:'
-    path: fps/fps_sparse.hpp
-    title: Formal Power Series (Sparse)
-  - icon: ':x:'
-    path: fps/fps_sqrt.hpp
-    title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
-    path: fps/product_of_one_minus_xn.hpp
-    title: $\prod (1 - x^{a_i}) \mod x^d$
-  - icon: ':heavy_check_mark:'
-    path: fps/product_of_one_plus_xn.hpp
-    title: $\prod (1 + x^{a_i}) \mod x^d$
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_3361.test.cpp
-    title: test/aoj/aoj_3361.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Partition_Function_FPS.test.cpp
-    title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/sharp_p_subset_sum.test.cpp
-    title: test/math/sharp_p_subset_sum.test.cpp
-  - icon: ':x:'
-    path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-    title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
-    path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-    title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
-    path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-    title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
-    path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-    title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
-    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
-    path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-    title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: true
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/modint_func.hpp\"\n\n#include <cassert>\n#include\
@@ -75,23 +36,10 @@ data:
   - modint/base.hpp
   isVerificationFile: false
   path: modint/modint_func.hpp
-  requiredBy:
-  - fps/product_of_one_plus_xn.hpp
-  - fps/product_of_one_minus_xn.hpp
-  - fps/fps_sparse.hpp
-  - fps/fps_sqrt.hpp
+  requiredBy: []
   timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_SOME_WA
-  verifiedWith:
-  - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/aoj/aoj_3361.test.cpp
-  - test/math/sharp_p_subset_sum.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: modint/modint_func.hpp
 layout: document
 redirect_from:

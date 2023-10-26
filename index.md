@@ -176,10 +176,10 @@ data:
       title: data_structure/undo_unionfind.hpp
   - name: fps
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/composition_of_fps.hpp
       title: $f(g(x))$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/compositional_inverse_of_fps.hpp
       title: "$f(x)$ \u306E\u9006\u95A2\u6570"
     - icon: ':question:'
@@ -191,10 +191,10 @@ data:
     - icon: ':x:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/multipoint_evaluation.hpp
       title: Multipoint Evaluation
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/polynomial_interpolation.hpp
       title: Polynomial Interpolation
     - icon: ':x:'
@@ -209,7 +209,7 @@ data:
     - icon: ':x:'
       path: fps/sums_of_powers.hpp
       title: $\sum_i (\sum_n A_n^i) x^i$
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/taylor_shift.hpp
       title: $f(x + c)$
   - name: geometry
@@ -294,6 +294,9 @@ data:
       path: math/longest_increasing_subsequence.hpp
       title: LIS
     - icon: ':question:'
+      path: math/mod_inv.hpp
+      title: math/mod_inv.hpp
+    - icon: ':question:'
       path: math/mod_sqrt.hpp
       title: Mod Sqrt
     - icon: ':heavy_check_mark:'
@@ -327,7 +330,7 @@ data:
     - icon: ':question:'
       path: modint/modint61.hpp
       title: modint/modint61.hpp
-    - icon: ':question:'
+    - icon: ':warning:'
       path: modint/modint_func.hpp
       title: modint/modint_func.hpp
     - icon: ':heavy_check_mark:'
@@ -745,37 +748,37 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Division_of_Polynomials.test.cpp
       title: test/polynomial/Division_of_Polynomials.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
       title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Multipoint_Evaluation.test.cpp
       title: test/polynomial/Multipoint_Evaluation.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Polynomial_Interpolation.test.cpp
       title: test/polynomial/Polynomial_Interpolation.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
       title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     - icon: ':x:'
