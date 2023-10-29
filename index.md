@@ -102,6 +102,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/dual_segtree_commutative.hpp
       title: dual segtree (commutative)
+    - icon: ':warning:'
+      path: data_structure/dynamic_dual_segtree.hpp
+      title: dynamic dual segtree
     - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: fenwick tree
