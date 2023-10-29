@@ -32,7 +32,7 @@ template <class T> struct section_set {
             r = std::max(r, itr->second);
             set.erase(itr);
         }
-        itr = set.lower_bound({l, -1});
+        itr = set.lower_bound({l, std::numeric_limits<T>::min()});
         while (itr->first <= r) {
             assert(l <= itr->first);
             r = std::max(r, itr->second);
