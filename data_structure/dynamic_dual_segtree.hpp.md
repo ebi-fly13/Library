@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
+    title: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/dynamic_dual_segtree.hpp\"\n\n#include <bit>\n\
@@ -78,8 +81,9 @@ data:
   path: data_structure/dynamic_dual_segtree.hpp
   requiredBy: []
   timestamp: '2023-10-30 02:43:59+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
 documentation_of: data_structure/dynamic_dual_segtree.hpp
 layout: document
 title: dynamic dual segtree

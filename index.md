@@ -102,7 +102,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/dual_segtree_commutative.hpp
       title: dual segtree (commutative)
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/dynamic_dual_segtree.hpp
       title: dynamic dual segtree
     - icon: ':heavy_check_mark:'
@@ -158,7 +158,7 @@ data:
       title: data_structure/removable_priority_queue.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
-      title: data_structure/section_set.hpp
+      title: section set
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree.hpp
       title: segtree
@@ -561,6 +561,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Affine_Point_Get.test.cpp
       title: test/data_structure/Range_Affine_Point_Get.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
+      title: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Range_Affine_Range_Sum.test.cpp

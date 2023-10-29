@@ -47,7 +47,7 @@ data:
     \        if (x <= itr->second) {\n            assert(itr->first <= x);\n     \
     \       return *itr;\n        } else {\n            return {0, 0};\n        }\n\
     \    }\n\n    std::pair<T, T> lower_bound(T l) const {\n        return *set.lower_bound({l,\
-    \ -1});\n    }\n};\n\n}  // namespace ebi\n"
+    \ std::numeric_limits<T>::min()});\n    }\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <set>\n\n\
     namespace ebi {\n\ntemplate <class T> struct section_set {\n  private:\n    std::set<std::pair<T,\
     \ T>> set;\n\n  public:\n    section_set() {\n        set.insert(\n          \
@@ -84,19 +84,44 @@ data:
     \        if (x <= itr->second) {\n            assert(itr->first <= x);\n     \
     \       return *itr;\n        } else {\n            return {0, 0};\n        }\n\
     \    }\n\n    std::pair<T, T> lower_bound(T l) const {\n        return *set.lower_bound({l,\
-    \ -1});\n    }\n};\n\n}  // namespace ebi"
+    \ std::numeric_limits<T>::min()});\n    }\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/section_set.hpp
   requiredBy: []
-  timestamp: '2023-10-30 02:44:12+09:00'
+  timestamp: '2023-10-30 03:02:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2152.test.cpp
 documentation_of: data_structure/section_set.hpp
 layout: document
-redirect_from:
-- /library/data_structure/section_set.hpp
-- /library/data_structure/section_set.hpp.html
-title: data_structure/section_set.hpp
+title: section set
 ---
+
+## 説明
+
+区間を管理するセットである。
+
+### insert(l, r)
+
+$[l, r)$ を追加
+
+### erase(l, r)
+
+$[l, r)$ を削除
+
+### find(x)
+
+$x$ が含まれるか判定
+
+### find(l, r)
+
+$[l, r)$ が含まれるか判定
+
+### belong(x)
+
+$x$ の含まれる区間 $[l, r)$ を返す。 $x$ を含む区間がないならば $[0, 0)$ を返す。
+
+### lower_bound(l)
+
+左端が $l$ 以上の区間を返す。

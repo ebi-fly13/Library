@@ -25,6 +25,9 @@ data:
     path: test/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/data_structure/Range_Affine_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
+    title: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -207,6 +210,7 @@ data:
   - test/yuki/yuki_1145.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Range_Affine_Point_Get.test.cpp
+  - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
