@@ -7,6 +7,7 @@
 
 #include <bit>
 #include <cassert>
+#include <cstdint>
 #include <ranges>
 #include <vector>
 
