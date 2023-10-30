@@ -21,14 +21,14 @@ struct heavy_light_decomposition {
     }
 
     void dfs_hld(int v) {
-        in[v] = t++;
+        in[v] = num++;
         rev[in[v]] = v;
         for (auto nv : g[v]) {
             if (nv == par[v]) continue;
             nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);
             dfs_hld(nv);
         }
-        out[v] = t;
+        out[v] = num;
     }
 
     // [u, v) パスの取得 (v は u の祖先)
@@ -54,7 +54,7 @@ struct heavy_light_decomposition {
   public:
     heavy_light_decomposition(const std::vector<std::vector<int>> &gh,
                               int root = 0)
-        : n(gh.size()),
+        : n((int)gh.size()),
           g(gh),
           sz(n, 1),
           in(n),
@@ -195,7 +195,7 @@ struct heavy_light_decomposition {
     std::vector<std::vector<int>> g;
     std::vector<int> sz, in, out, nxt, par, depth, rev;
 
-    int t = 0;
+    int num = 0;
 };
 
 }  // namespace ebi
