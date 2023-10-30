@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
@@ -26,7 +26,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/sums_of_powers.hpp
     title: $\sum_i (\sum_n A_n^i) x^i$
   - icon: ':heavy_check_mark:'
@@ -93,21 +93,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -304,7 +304,7 @@ data:
   - fps/compositional_inverse_of_fps.hpp
   - fps/product_of_one_minus_xn.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_1302.test.cpp

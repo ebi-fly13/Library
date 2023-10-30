@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/mod_inv.hpp
     title: Mod Inv
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy: []

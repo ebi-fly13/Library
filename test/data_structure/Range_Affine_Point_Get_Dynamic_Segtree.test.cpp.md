@@ -4,25 +4,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/dynamic_dual_segtree.hpp
     title: dynamic dual segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []

@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/mod_inv.hpp
     title: Mod Inv
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/mod_sqrt.hpp
     title: Mod Sqrt
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps_sqrt.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n#include\
@@ -281,7 +281,7 @@ data:
   path: fps/fps_sqrt.hpp
   requiredBy: []
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/fibonacci_heap.hpp
     title: fibonacci heap
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
