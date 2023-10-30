@@ -405,6 +405,9 @@ data:
       path: tree/block_cut_tree.hpp
       title: Block Cut Tree
     - icon: ':heavy_check_mark:'
+      path: tree/cartesian_tree.hpp
+      title: Cartesian Tree
+    - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
     - icon: ':heavy_check_mark:'
@@ -817,6 +820,9 @@ data:
       title: test/string/Z_Algorithm.test.cpp
   - name: test/tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Cartesian_Tree.test.cpp
+      title: test/tree/Cartesian_Tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
       title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp

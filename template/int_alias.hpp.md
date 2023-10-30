@@ -85,6 +85,9 @@ data:
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Cartesian_Tree.test.cpp
+    title: test/tree/Cartesian_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
   - icon: ':heavy_check_mark:'
@@ -198,6 +201,7 @@ data:
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Inversion_Number.test.cpp
+  - test/tree/Cartesian_Tree.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp

@@ -43,6 +43,9 @@ data:
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Cartesian_Tree.test.cpp
+    title: test/tree/Cartesian_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
@@ -213,6 +216,7 @@ data:
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/tree/Cartesian_Tree.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
 documentation_of: template/template.hpp
