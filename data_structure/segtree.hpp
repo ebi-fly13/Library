@@ -16,7 +16,7 @@ template <class S, S (*op)(S, S), S (*e)()> struct segtree {
     }
 
   public:
-    segtree(int n) : segtree(std::vector<S>(n, e())) {}
+    segtree(int n_) : segtree(std::vector<S>(n_, e())) {}
     segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {
         while (sz < n) sz *= 2;
         data = std::vector<S>(2 * sz, e());

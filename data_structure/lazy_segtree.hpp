@@ -32,7 +32,7 @@ struct lazy_segtree {
     }
 
   public:
-    lazy_segtree(int _n) : lazy_segtree(std::vector<S>(_n, e())) {}
+    lazy_segtree(int n_) : lazy_segtree(std::vector<S>(n_, e())) {}
     lazy_segtree(const std::vector<S> &a)
         : n(a.size()),
           sz(std::bit_ceil(a.size())),
