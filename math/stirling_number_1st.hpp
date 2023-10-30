@@ -16,7 +16,7 @@ FormalPowerSeries<mint, convolution> stirling_number_1st(int n) {
     using FPS = FormalPowerSeries<mint, convolution>;
     assert(n >= 0);
     if (n == 0) return {1};
-    int lg = std::bit_width(uint(n)) - 1;
+    int lg = std::bit_width((unsigned int)(n)) - 1;
     FPS f = {0, 1};
     for (int i = lg - 1; i >= 0; i--) {
         int mid = n >> i;

@@ -43,8 +43,8 @@ struct offline_dynamic_connective {
     offline_dynamic_connective(int n_, std::vector<std::array<int, 3>> queries)
         : n(n_),
           m(queries.size() + 1),
-          sz(std::bit_ceil(uint(m))),
-          lg2(std::countr_zero(uint(sz))) {
+          sz(std::bit_ceil((unsigned int)(m))),
+          lg2(std::countr_zero((unsigned int)(sz))) {
         seg.resize(2 * sz);
         std::map<std::pair<int, int>, int> cnt, appear;
         for (int i = 0; i < (int)queries.size(); i++) {
@@ -80,7 +80,7 @@ struct offline_dynamic_connective {
         assert(0 <= t && t < m);
         t += sz;
         if (now == t) return;
-        int k = 32 - std::countl_zero(uint(now ^ t));
+        int k = 32 - std::countl_zero((unsigned int)(now ^ t));
         for (int i = 0; i < k; i++) {
             del_block(now);
             now >>= 1;

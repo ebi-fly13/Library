@@ -15,7 +15,8 @@ namespace internal {
 
 template <Modint mint, int g = internal::primitive_root<mint::mod()>>
 struct ntt_info {
-    static constexpr int rank2 = std::countr_zero(uint(mint::mod() - 1));
+    static constexpr int rank2 =
+        std::countr_zero((unsigned int)(mint::mod() - 1));
 
     std::array<mint, rank2 + 1> root, inv_root;
 

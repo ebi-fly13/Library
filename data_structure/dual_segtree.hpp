@@ -26,7 +26,7 @@ template <class F, F (*merge)(F, F), F (*id)()> struct dual_segtree {
     dual_segtree(const std::vector<F> &a)
         : n(a.size()),
           sz(std::bit_ceil(a.size())),
-          lg2(std::countr_zero(uint(sz))) {
+          lg2(std::countr_zero((unsigned int)(sz))) {
         d = std::vector<F>(2 * sz, id());
         for (int i : std::views::iota(sz, sz + n)) {
             d[i] = a[i - sz];

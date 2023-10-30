@@ -45,8 +45,8 @@ template <class F, F (*merge)(F, F), F (*id)()> struct dynamice_dual_segtree {
   public:
     dynamice_dual_segtree(int n_)
         : n(n_),
-          sz(std::bit_ceil(uint(n))),
-          lg2(std::countr_zero(uint(sz))),
+          sz(std::bit_ceil((unsigned int)(n))),
+          lg2(std::countr_zero((unsigned int)(sz))),
           root(std::make_shared<Node>()) {}
 
     void apply(int l, int r, F f) {
