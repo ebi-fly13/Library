@@ -5,7 +5,7 @@ data:
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':heavy_check_mark:'
@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - icon: ':x:'
