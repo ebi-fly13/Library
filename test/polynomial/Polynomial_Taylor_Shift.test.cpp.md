@@ -4,10 +4,10 @@ data:
   - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':question:'

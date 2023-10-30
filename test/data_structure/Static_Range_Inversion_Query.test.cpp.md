@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/mo_algorithm.hpp
     title: algorithm/mo_algorithm.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: Compress
   - icon: ':heavy_check_mark:'

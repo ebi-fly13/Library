@@ -6,7 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':x:'
@@ -20,18 +20,18 @@ data:
     - https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html
   bundledCode: "#line 2 \"data_structure/lazy_segtree.hpp\"\n\r\n/*\r\n    reference:\r\
     \n   https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html\r\
-    \n*/\r\n\r\n#include <bit>\r\n#include <cassert>\r\n#include <ranges>\r\n#include\
-    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)(),\
-    \ class F, S (*mapping)(F, S),\r\n          F (*composition)(F, F), F (*id)()>\r\
-    \nstruct lazy_segtree {\r\n  private:\r\n    void update(int i) {\r\n        data[i]\
-    \ = op(data[2 * i], data[2 * i + 1]);\r\n    }\r\n\r\n    void all_apply(int k,\
-    \ F f) {\r\n        data[k] = mapping(f, data[k]);\r\n        if (k < sz) lazy[k]\
-    \ = composition(f, lazy[k]);\r\n    }\r\n\r\n    void push(int i) {\r\n      \
-    \  all_apply(2 * i, lazy[i]);\r\n        all_apply(2 * i + 1, lazy[i]);\r\n  \
-    \      lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n    lazy_segtree(int n_) :\
-    \ lazy_segtree(std::vector<S>(n_, e())) {}\r\n    lazy_segtree(const std::vector<S>\
-    \ &a)\r\n        : n(a.size()),\r\n          sz(std::bit_ceil(a.size())),\r\n\
-    \          lg2(std::countr_zero(std::uint32_t(sz))) {\r\n        data = std::vector<S>(2\
+    \n*/\r\n\r\n#include <bit>\r\n#include <cassert>\r\n#include <cstdint>\r\n#include\
+    \ <ranges>\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class\
+    \ S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S),\r\n          F (*composition)(F,\
+    \ F), F (*id)()>\r\nstruct lazy_segtree {\r\n  private:\r\n    void update(int\
+    \ i) {\r\n        data[i] = op(data[2 * i], data[2 * i + 1]);\r\n    }\r\n\r\n\
+    \    void all_apply(int k, F f) {\r\n        data[k] = mapping(f, data[k]);\r\n\
+    \        if (k < sz) lazy[k] = composition(f, lazy[k]);\r\n    }\r\n\r\n    void\
+    \ push(int i) {\r\n        all_apply(2 * i, lazy[i]);\r\n        all_apply(2 *\
+    \ i + 1, lazy[i]);\r\n        lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n  \
+    \  lazy_segtree(int n_) : lazy_segtree(std::vector<S>(n_, e())) {}\r\n    lazy_segtree(const\
+    \ std::vector<S> &a)\r\n        : n(a.size()),\r\n          sz(std::bit_ceil(a.size())),\r\
+    \n          lg2(std::countr_zero(std::uint32_t(sz))) {\r\n        data = std::vector<S>(2\
     \ * sz, e());\r\n        lazy = std::vector<F>(sz, id());\r\n        for (int\
     \ i : std::views::iota(0, n)) {\r\n            data[sz + i] = a[i];\r\n      \
     \  }\r\n        for (int i : std::views::iota(1, sz) | std::views::reverse) {\r\
@@ -88,18 +88,18 @@ data:
     \ n, sz, lg2;\r\n    std::vector<S> data;\r\n    std::vector<F> lazy;\r\n};\r\n\
     \r\n}  // namespace ebi\r\n"
   code: "#pragma once\r\n\r\n/*\r\n    reference:\r\n   https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html\r\
-    \n*/\r\n\r\n#include <bit>\r\n#include <cassert>\r\n#include <ranges>\r\n#include\
-    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)(),\
-    \ class F, S (*mapping)(F, S),\r\n          F (*composition)(F, F), F (*id)()>\r\
-    \nstruct lazy_segtree {\r\n  private:\r\n    void update(int i) {\r\n        data[i]\
-    \ = op(data[2 * i], data[2 * i + 1]);\r\n    }\r\n\r\n    void all_apply(int k,\
-    \ F f) {\r\n        data[k] = mapping(f, data[k]);\r\n        if (k < sz) lazy[k]\
-    \ = composition(f, lazy[k]);\r\n    }\r\n\r\n    void push(int i) {\r\n      \
-    \  all_apply(2 * i, lazy[i]);\r\n        all_apply(2 * i + 1, lazy[i]);\r\n  \
-    \      lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n    lazy_segtree(int n_) :\
-    \ lazy_segtree(std::vector<S>(n_, e())) {}\r\n    lazy_segtree(const std::vector<S>\
-    \ &a)\r\n        : n(a.size()),\r\n          sz(std::bit_ceil(a.size())),\r\n\
-    \          lg2(std::countr_zero(std::uint32_t(sz))) {\r\n        data = std::vector<S>(2\
+    \n*/\r\n\r\n#include <bit>\r\n#include <cassert>\r\n#include <cstdint>\r\n#include\
+    \ <ranges>\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class\
+    \ S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S),\r\n          F (*composition)(F,\
+    \ F), F (*id)()>\r\nstruct lazy_segtree {\r\n  private:\r\n    void update(int\
+    \ i) {\r\n        data[i] = op(data[2 * i], data[2 * i + 1]);\r\n    }\r\n\r\n\
+    \    void all_apply(int k, F f) {\r\n        data[k] = mapping(f, data[k]);\r\n\
+    \        if (k < sz) lazy[k] = composition(f, lazy[k]);\r\n    }\r\n\r\n    void\
+    \ push(int i) {\r\n        all_apply(2 * i, lazy[i]);\r\n        all_apply(2 *\
+    \ i + 1, lazy[i]);\r\n        lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n  \
+    \  lazy_segtree(int n_) : lazy_segtree(std::vector<S>(n_, e())) {}\r\n    lazy_segtree(const\
+    \ std::vector<S> &a)\r\n        : n(a.size()),\r\n          sz(std::bit_ceil(a.size())),\r\
+    \n          lg2(std::countr_zero(std::uint32_t(sz))) {\r\n        data = std::vector<S>(2\
     \ * sz, e());\r\n        lazy = std::vector<F>(sz, id());\r\n        for (int\
     \ i : std::views::iota(0, n)) {\r\n            data[sz + i] = a[i];\r\n      \
     \  }\r\n        for (int i : std::views::iota(1, sz) | std::views::reverse) {\r\
@@ -159,7 +159,7 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2023-10-31 01:04:45+09:00'
+  timestamp: '2023-10-31 01:56:26+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_2450.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':question:'
@@ -11,11 +11,11 @@ data:
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - icon: ':x:'
@@ -23,7 +23,7 @@ data:
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"fps/taylor_shift.hpp\"\n#include <vector>\n\n#line 2 \"\
@@ -173,7 +173,7 @@ data:
   requiredBy:
   - math/stirling_number_1st.hpp
   timestamp: '2023-10-26 12:28:44+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
