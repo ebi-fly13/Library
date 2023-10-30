@@ -130,18 +130,6 @@ template <int m> struct static_modint {
     }
 };
 
-template <int m>
-std::istream &operator>>(std::istream &os, static_modint<m> &a) {
-    long long x;
-    os >> x;
-    a = x;
-    return os;
-}
-template <int m>
-std::ostream &operator<<(std::ostream &os, const static_modint<m> &a) {
-    return os << a.val();
-}
-
 using modint998244353 = static_modint<998244353>;
 using modint1000000007 = static_modint<1000000007>;
 
