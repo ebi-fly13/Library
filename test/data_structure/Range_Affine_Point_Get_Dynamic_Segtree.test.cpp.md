@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/dynamic_dual_segtree.hpp
     title: dynamic dual segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
@@ -52,28 +52,28 @@ data:
     \            all_apply(node, f);\n            return;\n        }\n        push(node);\n\
     \        _apply(node->lch, l, (l + r) / 2, tl, tr, f);\n        _apply(node->rch,\
     \ (l + r) / 2, r, tl, tr, f);\n    }\n\n  public:\n    dynamice_dual_segtree(int\
-    \ n_)\n        : n(n_),\n          sz(std::bit_ceil(uint(n))),\n          lg2(std::countr_zero(uint(sz))),\n\
-    \          root(std::make_shared<Node>()) {}\n\n    void apply(int l, int r, F\
-    \ f) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return;\n\
-    \        _apply(root, 0, sz, l, r, f);\n    }\n\n    void set(int p, F f) {\n\
+    \ n_)\n        : n(n_),\n          sz(std::bit_ceil((unsigned int)(n))),\n   \
+    \       lg2(std::countr_zero((unsigned int)(sz))),\n          root(std::make_shared<Node>())\
+    \ {}\n\n    void apply(int l, int r, F f) {\n        assert(0 <= l && l <= r &&\
+    \ r <= n);\n        if (l == r) return;\n        _apply(root, 0, sz, l, r, f);\n\
+    \    }\n\n    void set(int p, F f) {\n        assert(0 <= p && p < n);\n     \
+    \   node_ptr node = root;\n        int l = 0, r = sz;\n        for (int i = 0;\
+    \ i < lg2; i++) {\n            push(node);\n            int m = (l + r) / 2;\n\
+    \            if (p < m) {\n                r = m;\n                node = node->lch;\n\
+    \            } else {\n                l = m;\n                node = node->rch;\n\
+    \            }\n        }\n        node->f = f;\n    }\n\n    F get(int p) {\n\
     \        assert(0 <= p && p < n);\n        node_ptr node = root;\n        int\
     \ l = 0, r = sz;\n        for (int i = 0; i < lg2; i++) {\n            push(node);\n\
     \            int m = (l + r) / 2;\n            if (p < m) {\n                r\
     \ = m;\n                node = node->lch;\n            } else {\n            \
     \    l = m;\n                node = node->rch;\n            }\n        }\n   \
-    \     node->f = f;\n    }\n\n    F get(int p) {\n        assert(0 <= p && p <\
-    \ n);\n        node_ptr node = root;\n        int l = 0, r = sz;\n        for\
-    \ (int i = 0; i < lg2; i++) {\n            push(node);\n            int m = (l\
-    \ + r) / 2;\n            if (p < m) {\n                r = m;\n              \
-    \  node = node->lch;\n            } else {\n                l = m;\n         \
-    \       node = node->rch;\n            }\n        }\n        return node->f;\n\
-    \    }\n\n  private:\n    int n, sz, lg2;\n    node_ptr root;\n};\n\n}  // namespace\
-    \ ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 4 \"modint/modint.hpp\"\n#include\
-    \ <iostream>\r\n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line\
-    \ 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi {\n\ntemplate <class\
-    \ T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n\
-    \    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n\
-    \    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \     return node->f;\n    }\n\n  private:\n    int n, sz, lg2;\n    node_ptr\
+    \ root;\n};\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 4\
+    \ \"modint/modint.hpp\"\n#include <iostream>\r\n\r\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
+    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
+    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
@@ -118,21 +118,17 @@ data:
     \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
     \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
     \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
-    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
-    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
-    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
-    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
-    \n#include <algorithm>\n#line 3 \"template/template.hpp\"\n#include <bitset>\n\
-    #line 5 \"template/template.hpp\"\n#include <chrono>\n#include <climits>\n#include\
-    \ <cmath>\n#include <complex>\n#include <cstddef>\n#include <cstdint>\n#include\
-    \ <cstdlib>\n#include <cstring>\n#include <functional>\n#include <iomanip>\n#line\
-    \ 16 \"template/template.hpp\"\n#include <limits>\n#include <map>\n#line 19 \"\
-    template/template.hpp\"\n#include <numbers>\n#include <numeric>\n#include <optional>\n\
-    #include <queue>\n#include <random>\n#include <ranges>\n#include <set>\n#include\
-    \ <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n#include\
-    \ <unordered_map>\n#include <unordered_set>\n#line 33 \"template/template.hpp\"\
+    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 1 \"template/template.hpp\"\n#include <algorithm>\n#line 3 \"template/template.hpp\"\
+    \n#include <bitset>\n#line 5 \"template/template.hpp\"\n#include <chrono>\n#include\
+    \ <climits>\n#include <cmath>\n#include <complex>\n#include <cstddef>\n#include\
+    \ <cstdint>\n#include <cstdlib>\n#include <cstring>\n#include <functional>\n#include\
+    \ <iomanip>\n#line 16 \"template/template.hpp\"\n#include <limits>\n#include <map>\n\
+    #line 19 \"template/template.hpp\"\n#include <numbers>\n#include <numeric>\n#include\
+    \ <optional>\n#include <queue>\n#include <random>\n#include <ranges>\n#include\
+    \ <set>\n#include <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n\
+    #include <unordered_map>\n#include <unordered_set>\n#line 33 \"template/template.hpp\"\
     \n#include <vector>\n\n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n);\
     \ i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n\
     #define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i,\
@@ -215,8 +211,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-10-30 03:05:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 00:17:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
 layout: document

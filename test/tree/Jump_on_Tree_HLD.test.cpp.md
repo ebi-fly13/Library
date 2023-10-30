@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
@@ -35,11 +35,11 @@ data:
     \           if (nv == par[v]) continue;\n            par[nv] = v;\n          \
     \  depth[nv] = depth[v] + 1;\n            dfs_sz(nv);\n            sz[v] += sz[nv];\n\
     \            if (sz[nv] > sz[g[v][0]] || g[v][0] == par[v])\n                std::swap(nv,\
-    \ g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = t++;\n\
+    \ g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n\
     \        rev[in[v]] = v;\n        for (auto nv : g[v]) {\n            if (nv ==\
     \ par[v]) continue;\n            nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);\n  \
-    \          dfs_hld(nv);\n        }\n        out[v] = t;\n    }\n\n    // [u, v)\
-    \ \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
+    \          dfs_hld(nv);\n        }\n        out[v] = num;\n    }\n\n    // [u,\
+    \ v) \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
     \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
     \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
     \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
@@ -49,7 +49,7 @@ data:
     \ return {{in[u] + 1, in[v]}};\n        auto res = descend(u, par[nxt[v]]);\n\
     \        res.emplace_back(in[nxt[v]], in[v]);\n        return res;\n    }\n\n\
     \  public:\n    heavy_light_decomposition(const std::vector<std::vector<int>>\
-    \ &gh,\n                              int root = 0)\n        : n(gh.size()),\n\
+    \ &gh,\n                              int root = 0)\n        : n((int)gh.size()),\n\
     \          g(gh),\n          sz(n, 1),\n          in(n),\n          out(n),\n\
     \          nxt(n),\n          par(n, -1),\n          depth(n, 0),\n          rev(n)\
     \ {\n        nxt[root] = root;\n        dfs_sz(root);\n        dfs_hld(root);\n\
@@ -99,7 +99,7 @@ data:
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
     \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace\
+    \ sz, in, out, nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace\
     \ ebi\n#line 7 \"test/tree/Jump_on_Tree_HLD.test.cpp\"\n\nint main() {\n    int\
     \ n, q;\n    std::cin >> n >> q;\n    ebi::graph g(n);\n    for (int i = 0; i\
     \ < n - 1; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        g.add_edge(a,\
@@ -119,8 +119,8 @@ data:
   isVerificationFile: true
   path: test/tree/Jump_on_Tree_HLD.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 00:42:15+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 01:03:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/Jump_on_Tree_HLD.test.cpp
 layout: document

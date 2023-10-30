@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
   _extendedVerifiedWith:
@@ -24,78 +24,78 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include\
@@ -116,25 +116,26 @@ data:
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 11 \"\
     convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <Modint\
     \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
-    \  static constexpr int rank2 = std::countr_zero(uint(mint::mod() - 1));\n\n \
-    \   std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2]\
-    \ = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2] = root[rank2].inv();\n\
-    \        for (int i = rank2 - 1; i >= 0; i--) {\n            root[i] = root[i\
-    \ + 1] * root[i + 1];\n            inv_root[i] = inv_root[i + 1] * inv_root[i\
-    \ + 1];\n        }\n    }\n};\n\ntemplate <Modint mint> void butterfly(std::vector<mint>&\
-    \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
-    \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
-    \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
-    \ (int k = n >> 1; k > (i ^= k); k >>= 1)\n            ;\n        if (j < i) {\n\
-    \            std::swap(a[i], a[j]);\n        }\n    }\n\n    for (int bit = 0;\
-    \ bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1));\
-    \ i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n\
-    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
-    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
-    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
-    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
-    \                zeta1 *= info.root[bit + 1];\n                zeta2 *= info.root[bit\
-    \ + 1];\n            }\n        }\n    }\n}\n\ntemplate <Modint mint> void butterfly_inv(std::vector<mint>&\
+    \  static constexpr int rank2 =\n        std::countr_zero((unsigned int)(mint::mod()\
+    \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
+    \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
+    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
+    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
+    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <Modint mint> void\
+    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
+    \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
+    \   assert(n == (int)std::bit_ceil(a.size()));\n\n    // bit reverse\n    for\
+    \ (int i = 0, j = 1; j < n - 1; j++) {\n        for (int k = n >> 1; k > (i ^=\
+    \ k); k >>= 1)\n            ;\n        if (j < i) {\n            std::swap(a[i],\
+    \ a[j]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n\
+    \        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1\
+    \ = 1;\n            mint zeta2 = info.root[1];\n            for (int j = 0; j\
+    \ < (1 << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n\
+    \                int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n\
+    \                mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
+    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
+    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
+    \ }\n    }\n}\n\ntemplate <Modint mint> void butterfly_inv(std::vector<mint>&\
     \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
     \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
     \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
@@ -170,15 +171,15 @@ data:
     #include <cassert>\n#include <vector>\n\n#include \"../math/internal_math.hpp\"\
     \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\
     \ntemplate <Modint mint, int g = internal::primitive_root<mint::mod()>>\nstruct\
-    \ ntt_info {\n    static constexpr int rank2 = std::countr_zero(uint(mint::mod()\
-    \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
-    \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
-    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
-    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
-    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <Modint mint> void\
-    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
-    \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
-    \   assert(n == (int)std::bit_ceil(a.size()));\n\n    // bit reverse\n    for\
+    \ ntt_info {\n    static constexpr int rank2 =\n        std::countr_zero((unsigned\
+    \ int)(mint::mod() - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\
+    \n    ntt_info() {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n\
+    \        inv_root[rank2] = root[rank2].inv();\n        for (int i = rank2 - 1;\
+    \ i >= 0; i--) {\n            root[i] = root[i + 1] * root[i + 1];\n         \
+    \   inv_root[i] = inv_root[i + 1] * inv_root[i + 1];\n        }\n    }\n};\n\n\
+    template <Modint mint> void butterfly(std::vector<mint>& a) {\n    static const\
+    \ ntt_info<mint> info;\n    int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n\
+    \    assert(n == (int)std::bit_ceil(a.size()));\n\n    // bit reverse\n    for\
     \ (int i = 0, j = 1; j < n - 1; j++) {\n        for (int k = n >> 1; k > (i ^=\
     \ k); k >>= 1)\n            ;\n        if (j < i) {\n            std::swap(a[i],\
     \ a[j]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n\
@@ -229,8 +230,8 @@ data:
   requiredBy:
   - convolution/arbitrary_ntt.hpp
   - convolution/convolution_mod_2_64.hpp
-  timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-31 00:17:11+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_1302.test.cpp

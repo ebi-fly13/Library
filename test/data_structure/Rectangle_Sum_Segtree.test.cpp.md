@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: Compress
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/offline_segtree_2d.hpp
     title: offline 2D segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
@@ -69,7 +69,7 @@ data:
     \n\r\nnamespace ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)()> struct\
     \ segtree {\r\n  private:\r\n    int n;\r\n    int sz;\r\n    std::vector<S> data;\r\
     \n\r\n    void update(int i) {\r\n        data[i] = op(data[2 * i], data[2 * i\
-    \ + 1]);\r\n    }\r\n\r\n  public:\r\n    segtree(int n) : segtree(std::vector<S>(n,\
+    \ + 1]);\r\n    }\r\n\r\n  public:\r\n    segtree(int n_) : segtree(std::vector<S>(n_,\
     \ e())) {}\r\n    segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {\r\
     \n        while (sz < n) sz *= 2;\r\n        data = std::vector<S>(2 * sz, e());\r\
     \n        for (int i = 0; i < n; i++) {\r\n            data[sz + i] = v[i];\r\n\
@@ -135,8 +135,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 01:04:45+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum_Segtree.test.cpp
 layout: document

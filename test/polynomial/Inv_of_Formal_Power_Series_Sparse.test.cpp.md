@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_inv.hpp
     title: Mod Inv
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series_sparse
@@ -132,18 +132,14 @@ data:
     \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
     \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
     \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
-    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\n\
-    std::istream &operator>>(std::istream &os, static_modint<m> &a) {\r\n    long\
-    \ long x;\r\n    os >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int\
-    \ m>\r\nstd::ostream &operator<<(std::ostream &os, const static_modint<m> &a)\
-    \ {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
-    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 9 \"test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp\"\n\nusing\
-    \ mint = ebi::modint998244353;\n\nint main() {\n    int n, k;\n    std::cin >>\
-    \ n >> k;\n    std::vector<mint> f(n);\n    for (int i = 0; i < k; i++) {\n  \
-    \      int idx, a;\n        std::cin >> idx >> a;\n        f[idx] = a;\n    }\n\
-    \    auto g = ebi::inv_sparse(f, n);\n    for (int i = 0; i < n; i++) {\n    \
-    \    std::cout << g[i].val() << \" \\n\"[i == n - 1];\n    }\n}\n"
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
+    \n\r\n}  // namespace ebi\n#line 9 \"test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp\"\
+    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n, k;\n    std::cin\
+    \ >> n >> k;\n    std::vector<mint> f(n);\n    for (int i = 0; i < k; i++) {\n\
+    \        int idx, a;\n        std::cin >> idx >> a;\n        f[idx] = a;\n   \
+    \ }\n    auto g = ebi::inv_sparse(f, n);\n    for (int i = 0; i < n; i++) {\n\
+    \        std::cout << g[i].val() << \" \\n\"[i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/inv_of_formal_power_series_sparse\"\
     \n\n#include <iostream>\n#include <vector>\n\n#include \"../../fps/fps_sparse.hpp\"\
     \n#include \"../../modint/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
@@ -160,8 +156,8 @@ data:
   isVerificationFile: true
   path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 00:16:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
 layout: document

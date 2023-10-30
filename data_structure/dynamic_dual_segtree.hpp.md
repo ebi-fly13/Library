@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
     title: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/dynamic_dual_segtree.hpp\"\n\n#include <bit>\n\
@@ -27,21 +27,21 @@ data:
     \ f);\n            return;\n        }\n        push(node);\n        _apply(node->lch,\
     \ l, (l + r) / 2, tl, tr, f);\n        _apply(node->rch, (l + r) / 2, r, tl, tr,\
     \ f);\n    }\n\n  public:\n    dynamice_dual_segtree(int n_)\n        : n(n_),\n\
-    \          sz(std::bit_ceil(uint(n))),\n          lg2(std::countr_zero(uint(sz))),\n\
-    \          root(std::make_shared<Node>()) {}\n\n    void apply(int l, int r, F\
-    \ f) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return;\n\
-    \        _apply(root, 0, sz, l, r, f);\n    }\n\n    void set(int p, F f) {\n\
-    \        assert(0 <= p && p < n);\n        node_ptr node = root;\n        int\
-    \ l = 0, r = sz;\n        for (int i = 0; i < lg2; i++) {\n            push(node);\n\
-    \            int m = (l + r) / 2;\n            if (p < m) {\n                r\
-    \ = m;\n                node = node->lch;\n            } else {\n            \
-    \    l = m;\n                node = node->rch;\n            }\n        }\n   \
-    \     node->f = f;\n    }\n\n    F get(int p) {\n        assert(0 <= p && p <\
-    \ n);\n        node_ptr node = root;\n        int l = 0, r = sz;\n        for\
-    \ (int i = 0; i < lg2; i++) {\n            push(node);\n            int m = (l\
-    \ + r) / 2;\n            if (p < m) {\n                r = m;\n              \
-    \  node = node->lch;\n            } else {\n                l = m;\n         \
-    \       node = node->rch;\n            }\n        }\n        return node->f;\n\
+    \          sz(std::bit_ceil((unsigned int)(n))),\n          lg2(std::countr_zero((unsigned\
+    \ int)(sz))),\n          root(std::make_shared<Node>()) {}\n\n    void apply(int\
+    \ l, int r, F f) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l\
+    \ == r) return;\n        _apply(root, 0, sz, l, r, f);\n    }\n\n    void set(int\
+    \ p, F f) {\n        assert(0 <= p && p < n);\n        node_ptr node = root;\n\
+    \        int l = 0, r = sz;\n        for (int i = 0; i < lg2; i++) {\n       \
+    \     push(node);\n            int m = (l + r) / 2;\n            if (p < m) {\n\
+    \                r = m;\n                node = node->lch;\n            } else\
+    \ {\n                l = m;\n                node = node->rch;\n            }\n\
+    \        }\n        node->f = f;\n    }\n\n    F get(int p) {\n        assert(0\
+    \ <= p && p < n);\n        node_ptr node = root;\n        int l = 0, r = sz;\n\
+    \        for (int i = 0; i < lg2; i++) {\n            push(node);\n          \
+    \  int m = (l + r) / 2;\n            if (p < m) {\n                r = m;\n  \
+    \              node = node->lch;\n            } else {\n                l = m;\n\
+    \                node = node->rch;\n            }\n        }\n        return node->f;\n\
     \    }\n\n  private:\n    int n, sz, lg2;\n    node_ptr root;\n};\n\n}  // namespace\
     \ ebi\n"
   code: "#pragma once\n\n#include <bit>\n#include <cassert>\n#include <memory>\n\n\
@@ -59,29 +59,29 @@ data:
     \            all_apply(node, f);\n            return;\n        }\n        push(node);\n\
     \        _apply(node->lch, l, (l + r) / 2, tl, tr, f);\n        _apply(node->rch,\
     \ (l + r) / 2, r, tl, tr, f);\n    }\n\n  public:\n    dynamice_dual_segtree(int\
-    \ n_)\n        : n(n_),\n          sz(std::bit_ceil(uint(n))),\n          lg2(std::countr_zero(uint(sz))),\n\
-    \          root(std::make_shared<Node>()) {}\n\n    void apply(int l, int r, F\
-    \ f) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return;\n\
-    \        _apply(root, 0, sz, l, r, f);\n    }\n\n    void set(int p, F f) {\n\
+    \ n_)\n        : n(n_),\n          sz(std::bit_ceil((unsigned int)(n))),\n   \
+    \       lg2(std::countr_zero((unsigned int)(sz))),\n          root(std::make_shared<Node>())\
+    \ {}\n\n    void apply(int l, int r, F f) {\n        assert(0 <= l && l <= r &&\
+    \ r <= n);\n        if (l == r) return;\n        _apply(root, 0, sz, l, r, f);\n\
+    \    }\n\n    void set(int p, F f) {\n        assert(0 <= p && p < n);\n     \
+    \   node_ptr node = root;\n        int l = 0, r = sz;\n        for (int i = 0;\
+    \ i < lg2; i++) {\n            push(node);\n            int m = (l + r) / 2;\n\
+    \            if (p < m) {\n                r = m;\n                node = node->lch;\n\
+    \            } else {\n                l = m;\n                node = node->rch;\n\
+    \            }\n        }\n        node->f = f;\n    }\n\n    F get(int p) {\n\
     \        assert(0 <= p && p < n);\n        node_ptr node = root;\n        int\
     \ l = 0, r = sz;\n        for (int i = 0; i < lg2; i++) {\n            push(node);\n\
     \            int m = (l + r) / 2;\n            if (p < m) {\n                r\
     \ = m;\n                node = node->lch;\n            } else {\n            \
     \    l = m;\n                node = node->rch;\n            }\n        }\n   \
-    \     node->f = f;\n    }\n\n    F get(int p) {\n        assert(0 <= p && p <\
-    \ n);\n        node_ptr node = root;\n        int l = 0, r = sz;\n        for\
-    \ (int i = 0; i < lg2; i++) {\n            push(node);\n            int m = (l\
-    \ + r) / 2;\n            if (p < m) {\n                r = m;\n              \
-    \  node = node->lch;\n            } else {\n                l = m;\n         \
-    \       node = node->rch;\n            }\n        }\n        return node->f;\n\
-    \    }\n\n  private:\n    int n, sz, lg2;\n    node_ptr root;\n};\n\n}  // namespace\
-    \ ebi"
+    \     return node->f;\n    }\n\n  private:\n    int n, sz, lg2;\n    node_ptr\
+    \ root;\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/dynamic_dual_segtree.hpp
   requiredBy: []
-  timestamp: '2023-10-30 02:43:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-31 00:17:11+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
 documentation_of: data_structure/dynamic_dual_segtree.hpp

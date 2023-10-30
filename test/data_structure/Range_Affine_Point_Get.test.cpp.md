@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/dual_segtree.hpp
     title: dual segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
@@ -45,83 +45,80 @@ data:
     \ * i + 1, d[i]);\n        d[i] = id();\n    }\n\n  public:\n    dual_segtree(int\
     \ n) : dual_segtree(std::vector<F>(n, id())) {}\n\n    dual_segtree(const std::vector<F>\
     \ &a)\n        : n(a.size()),\n          sz(std::bit_ceil(a.size())),\n      \
-    \    lg2(std::countr_zero(uint(sz))) {\n        d = std::vector<F>(2 * sz, id());\n\
-    \        for (int i : std::views::iota(sz, sz + n)) {\n            d[i] = a[i\
-    \ - sz];\n        }\n    }\n\n    void apply(int l, int r, F f) {\n        assert(0\
-    \ <= l && l <= r && r <= n);\n        if (l == r) return;\n\n        l += sz;\n\
-    \        r += sz;\n\n        for (int i : std::views::iota(1, lg2 + 1) | std::views::reverse)\
-    \ {\n            if (((l >> i) << i) != l) push(l >> i);\n            if (((r\
-    \ >> i) << i) != r) push((r - 1) >> i);\n        }\n\n        while (l < r) {\n\
-    \            if (l & 1) all_apply(l++, f);\n            if (r & 1) all_apply(--r,\
-    \ f);\n            l >>= 1;\n            r >>= 1;\n        }\n    }\n\n    F get(int\
-    \ p) {\n        assert(0 <= p && p < n);\n        p += sz;\n        for (int i\
-    \ : std::views::iota(1, lg2 + 1) | std::views::reverse) {\n            push(p\
-    \ >> i);\n        }\n        return d[p];\n    }\n\n  private:\n    int n, sz,\
-    \ lg2;\n    std::vector<F> d;\n};\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
-    \n\r\n#line 4 \"modint/modint.hpp\"\n#include <iostream>\r\n\r\n#line 2 \"modint/base.hpp\"\
-    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
-    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
-    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
-    modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
-    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
-    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
-    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
-    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
-    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
-    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
-    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
-    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
-    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
-    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
-    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
-    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
-    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
-    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
-    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
-    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
-    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
-    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
-    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
-    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
-    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
-    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
-    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
-    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
-    \n#include <algorithm>\n#line 3 \"template/template.hpp\"\n#include <bitset>\n\
-    #line 5 \"template/template.hpp\"\n#include <chrono>\n#include <climits>\n#include\
-    \ <cmath>\n#include <complex>\n#include <cstddef>\n#include <cstdint>\n#include\
-    \ <cstdlib>\n#include <cstring>\n#include <functional>\n#include <iomanip>\n#line\
-    \ 16 \"template/template.hpp\"\n#include <limits>\n#include <map>\n#include <memory>\n\
-    #include <numbers>\n#include <numeric>\n#include <optional>\n#include <queue>\n\
-    #include <random>\n#line 25 \"template/template.hpp\"\n#include <set>\n#include\
-    \ <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n#include\
-    \ <unordered_map>\n#include <unordered_set>\n#line 34 \"template/template.hpp\"\
+    \    lg2(std::countr_zero((unsigned int)(sz))) {\n        d = std::vector<F>(2\
+    \ * sz, id());\n        for (int i : std::views::iota(sz, sz + n)) {\n       \
+    \     d[i] = a[i - sz];\n        }\n    }\n\n    void apply(int l, int r, F f)\
+    \ {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return;\n\
+    \n        l += sz;\n        r += sz;\n\n        for (int i : std::views::iota(1,\
+    \ lg2 + 1) | std::views::reverse) {\n            if (((l >> i) << i) != l) push(l\
+    \ >> i);\n            if (((r >> i) << i) != r) push((r - 1) >> i);\n        }\n\
+    \n        while (l < r) {\n            if (l & 1) all_apply(l++, f);\n       \
+    \     if (r & 1) all_apply(--r, f);\n            l >>= 1;\n            r >>= 1;\n\
+    \        }\n    }\n\n    F get(int p) {\n        assert(0 <= p && p < n);\n  \
+    \      p += sz;\n        for (int i : std::views::iota(1, lg2 + 1) | std::views::reverse)\
+    \ {\n            push(p >> i);\n        }\n        return d[p];\n    }\n\n  private:\n\
+    \    int n, sz, lg2;\n    std::vector<F> d;\n};\n\n}  // namespace ebi\n#line\
+    \ 2 \"modint/modint.hpp\"\n\r\n#line 4 \"modint/modint.hpp\"\n#include <iostream>\r\
+    \n\r\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
+    \n#include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint\
+    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n   \
+    \ a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
+    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
+    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
+    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
+    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"modint/modint.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\
+    \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
+    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
+    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
+    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
+    \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
+    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
+    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
+    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
+    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
+    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
+    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
+    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
+    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
+    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
+    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
+    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
+    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
+    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
+    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
+    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
+    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
+    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
+    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
+    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
+    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
+    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
+    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
+    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
+    \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 1 \"template/template.hpp\"\n#include <algorithm>\n#line 3 \"template/template.hpp\"\
+    \n#include <bitset>\n#line 5 \"template/template.hpp\"\n#include <chrono>\n#include\
+    \ <climits>\n#include <cmath>\n#include <complex>\n#include <cstddef>\n#include\
+    \ <cstdint>\n#include <cstdlib>\n#include <cstring>\n#include <functional>\n#include\
+    \ <iomanip>\n#line 16 \"template/template.hpp\"\n#include <limits>\n#include <map>\n\
+    #include <memory>\n#include <numbers>\n#include <numeric>\n#include <optional>\n\
+    #include <queue>\n#include <random>\n#line 25 \"template/template.hpp\"\n#include\
+    \ <set>\n#include <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n\
+    #include <unordered_map>\n#include <unordered_set>\n#line 34 \"template/template.hpp\"\
     \n\n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
     \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
     \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
@@ -204,8 +201,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 14:15:18+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 00:17:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Point_Get.test.cpp
 layout: document

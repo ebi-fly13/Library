@@ -15,21 +15,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
     title: test/data_structure/Rectangle_Sum_Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/segtree.hpp\"\n\r\n#include <cassert>\r\n\
@@ -37,7 +37,7 @@ data:
     \ S), S (*e)()> struct segtree {\r\n  private:\r\n    int n;\r\n    int sz;\r\n\
     \    std::vector<S> data;\r\n\r\n    void update(int i) {\r\n        data[i] =\
     \ op(data[2 * i], data[2 * i + 1]);\r\n    }\r\n\r\n  public:\r\n    segtree(int\
-    \ n) : segtree(std::vector<S>(n, e())) {}\r\n    segtree(const std::vector<S>\
+    \ n_) : segtree(std::vector<S>(n_, e())) {}\r\n    segtree(const std::vector<S>\
     \ &v) : n((int)v.size()), sz(1) {\r\n        while (sz < n) sz *= 2;\r\n     \
     \   data = std::vector<S>(2 * sz, e());\r\n        for (int i = 0; i < n; i++)\
     \ {\r\n            data[sz + i] = v[i];\r\n        }\r\n        for (int i = sz\
@@ -76,7 +76,7 @@ data:
     \ ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)()> struct segtree {\r\n\
     \  private:\r\n    int n;\r\n    int sz;\r\n    std::vector<S> data;\r\n\r\n \
     \   void update(int i) {\r\n        data[i] = op(data[2 * i], data[2 * i + 1]);\r\
-    \n    }\r\n\r\n  public:\r\n    segtree(int n) : segtree(std::vector<S>(n, e()))\
+    \n    }\r\n\r\n  public:\r\n    segtree(int n_) : segtree(std::vector<S>(n_, e()))\
     \ {}\r\n    segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {\r\n \
     \       while (sz < n) sz *= 2;\r\n        data = std::vector<S>(2 * sz, e());\r\
     \n        for (int i = 0; i < n; i++) {\r\n            data[sz + i] = v[i];\r\n\
@@ -116,8 +116,8 @@ data:
   isVerificationFile: false
   path: data_structure/segtree.hpp
   requiredBy: []
-  timestamp: '2023-06-26 02:49:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-31 01:04:45+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_1645.test.cpp
   - test/aoj/aoj_1068_1.test.cpp

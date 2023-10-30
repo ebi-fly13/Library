@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/DynamicSegmentTree.hpp
     title: data_structure/DynamicSegmentTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -108,24 +108,21 @@ data:
     \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
     \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
     \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
-    \ m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
-    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
-    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
-    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
-    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 7 \"test/data_structure/Point_Set_Range_Composite.test.cpp\"\
-    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\
-    \n    F(mint a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n  \
-    \  return F(f2.a * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nF e() {\r\n    return\
-    \ F(1, 0);\r\n}\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\
-    \n    ebi::DynamicSegmentTree<F, op, e> seg(n);\r\n    for (int i = 0; i < n;\
-    \ i++) {\r\n        int a, b;\r\n        std::cin >> a >> b;\r\n        seg.set(i,\
-    \ F(a, b));\r\n    }\r\n    while (q--) {\r\n        int t;\r\n        std::cin\
-    \ >> t;\r\n        if (t == 0) {\r\n            int p, c, d;\r\n            std::cin\
-    \ >> p >> c >> d;\r\n            seg.set(p, F(c, d));\r\n        } else {\r\n\
-    \            int l, r, x;\r\n            std::cin >> l >> r >> x;\r\n        \
-    \    auto f = seg.prod(l, r);\r\n            std::cout << (f.a * x + f.b).value()\
-    \ << std::endl;\r\n        }\r\n    }\r\n}\n"
+    \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 7 \"test/data_structure/Point_Set_Range_Composite.test.cpp\"\n\r\nusing\
+    \ mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint\
+    \ a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n    return F(f2.a\
+    \ * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nF e() {\r\n    return F(1, 0);\r\n\
+    }\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::DynamicSegmentTree<F,\
+    \ op, e> seg(n);\r\n    for (int i = 0; i < n; i++) {\r\n        int a, b;\r\n\
+    \        std::cin >> a >> b;\r\n        seg.set(i, F(a, b));\r\n    }\r\n    while\
+    \ (q--) {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\
+    \n            int p, c, d;\r\n            std::cin >> p >> c >> d;\r\n       \
+    \     seg.set(p, F(c, d));\r\n        } else {\r\n            int l, r, x;\r\n\
+    \            std::cin >> l >> r >> x;\r\n            auto f = seg.prod(l, r);\r\
+    \n            std::cout << (f.a * x + f.b).value() << std::endl;\r\n        }\r\
+    \n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/DynamicSegmentTree.hpp\"\
     \r\n#include \"../../modint/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\
@@ -147,8 +144,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 00:16:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Point_Set_Range_Composite.test.cpp
 layout: document

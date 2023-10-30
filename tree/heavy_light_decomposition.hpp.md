@@ -6,24 +6,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree_HLD.test.cpp
     title: test/tree/Jump_on_Tree_HLD.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <algorithm>\n\
@@ -32,11 +32,11 @@ data:
     \           if (nv == par[v]) continue;\n            par[nv] = v;\n          \
     \  depth[nv] = depth[v] + 1;\n            dfs_sz(nv);\n            sz[v] += sz[nv];\n\
     \            if (sz[nv] > sz[g[v][0]] || g[v][0] == par[v])\n                std::swap(nv,\
-    \ g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = t++;\n\
+    \ g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n\
     \        rev[in[v]] = v;\n        for (auto nv : g[v]) {\n            if (nv ==\
     \ par[v]) continue;\n            nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);\n  \
-    \          dfs_hld(nv);\n        }\n        out[v] = t;\n    }\n\n    // [u, v)\
-    \ \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
+    \          dfs_hld(nv);\n        }\n        out[v] = num;\n    }\n\n    // [u,\
+    \ v) \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
     \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
     \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
     \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
@@ -46,7 +46,7 @@ data:
     \ return {{in[u] + 1, in[v]}};\n        auto res = descend(u, par[nxt[v]]);\n\
     \        res.emplace_back(in[nxt[v]], in[v]);\n        return res;\n    }\n\n\
     \  public:\n    heavy_light_decomposition(const std::vector<std::vector<int>>\
-    \ &gh,\n                              int root = 0)\n        : n(gh.size()),\n\
+    \ &gh,\n                              int root = 0)\n        : n((int)gh.size()),\n\
     \          g(gh),\n          sz(n, 1),\n          in(n),\n          out(n),\n\
     \          nxt(n),\n          par(n, -1),\n          depth(n, 0),\n          rev(n)\
     \ {\n        nxt[root] = root;\n        dfs_sz(root);\n        dfs_hld(root);\n\
@@ -96,7 +96,7 @@ data:
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
     \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace\
+    \ sz, in, out, nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace\
     \ ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <iostream>\n#include <vector>\n\
     \nnamespace ebi {\n\nstruct heavy_light_decomposition {\n  private:\n    void\
@@ -104,10 +104,10 @@ data:
     \ continue;\n            par[nv] = v;\n            depth[nv] = depth[v] + 1;\n\
     \            dfs_sz(nv);\n            sz[v] += sz[nv];\n            if (sz[nv]\
     \ > sz[g[v][0]] || g[v][0] == par[v])\n                std::swap(nv, g[v][0]);\n\
-    \        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = t++;\n       \
-    \ rev[in[v]] = v;\n        for (auto nv : g[v]) {\n            if (nv == par[v])\
+    \        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n     \
+    \   rev[in[v]] = v;\n        for (auto nv : g[v]) {\n            if (nv == par[v])\
     \ continue;\n            nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);\n          \
-    \  dfs_hld(nv);\n        }\n        out[v] = t;\n    }\n\n    // [u, v) \u30D1\
+    \  dfs_hld(nv);\n        }\n        out[v] = num;\n    }\n\n    // [u, v) \u30D1\
     \u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
     \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
     \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
@@ -118,7 +118,7 @@ data:
     \ return {{in[u] + 1, in[v]}};\n        auto res = descend(u, par[nxt[v]]);\n\
     \        res.emplace_back(in[nxt[v]], in[v]);\n        return res;\n    }\n\n\
     \  public:\n    heavy_light_decomposition(const std::vector<std::vector<int>>\
-    \ &gh,\n                              int root = 0)\n        : n(gh.size()),\n\
+    \ &gh,\n                              int root = 0)\n        : n((int)gh.size()),\n\
     \          g(gh),\n          sz(n, 1),\n          in(n),\n          out(n),\n\
     \          nxt(n),\n          par(n, -1),\n          depth(n, 0),\n          rev(n)\
     \ {\n        nxt[root] = root;\n        dfs_sz(root);\n        dfs_hld(root);\n\
@@ -168,14 +168,14 @@ data:
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
     \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace\
+    \ sz, in, out, nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace\
     \ ebi"
   dependsOn: []
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-10-24 00:42:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-31 01:03:26+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_2450.test.cpp
   - test/yuki/yuki_2439.test.cpp

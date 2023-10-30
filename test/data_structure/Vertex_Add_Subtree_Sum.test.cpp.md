@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
@@ -27,7 +27,7 @@ data:
     \ ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)()> struct segtree {\r\n\
     \  private:\r\n    int n;\r\n    int sz;\r\n    std::vector<S> data;\r\n\r\n \
     \   void update(int i) {\r\n        data[i] = op(data[2 * i], data[2 * i + 1]);\r\
-    \n    }\r\n\r\n  public:\r\n    segtree(int n) : segtree(std::vector<S>(n, e()))\
+    \n    }\r\n\r\n  public:\r\n    segtree(int n_) : segtree(std::vector<S>(n_, e()))\
     \ {}\r\n    segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {\r\n \
     \       while (sz < n) sz *= 2;\r\n        data = std::vector<S>(2 * sz, e());\r\
     \n        for (int i = 0; i < n; i++) {\r\n            data[sz + i] = v[i];\r\n\
@@ -79,11 +79,11 @@ data:
     \           if (nv == par[v]) continue;\n            par[nv] = v;\n          \
     \  depth[nv] = depth[v] + 1;\n            dfs_sz(nv);\n            sz[v] += sz[nv];\n\
     \            if (sz[nv] > sz[g[v][0]] || g[v][0] == par[v])\n                std::swap(nv,\
-    \ g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = t++;\n\
+    \ g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n\
     \        rev[in[v]] = v;\n        for (auto nv : g[v]) {\n            if (nv ==\
     \ par[v]) continue;\n            nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);\n  \
-    \          dfs_hld(nv);\n        }\n        out[v] = t;\n    }\n\n    // [u, v)\
-    \ \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
+    \          dfs_hld(nv);\n        }\n        out[v] = num;\n    }\n\n    // [u,\
+    \ v) \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
     \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
     \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
     \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
@@ -93,7 +93,7 @@ data:
     \ return {{in[u] + 1, in[v]}};\n        auto res = descend(u, par[nxt[v]]);\n\
     \        res.emplace_back(in[nxt[v]], in[v]);\n        return res;\n    }\n\n\
     \  public:\n    heavy_light_decomposition(const std::vector<std::vector<int>>\
-    \ &gh,\n                              int root = 0)\n        : n(gh.size()),\n\
+    \ &gh,\n                              int root = 0)\n        : n((int)gh.size()),\n\
     \          g(gh),\n          sz(n, 1),\n          in(n),\n          out(n),\n\
     \          nxt(n),\n          par(n, -1),\n          depth(n, 0),\n          rev(n)\
     \ {\n        nxt[root] = root;\n        dfs_sz(root);\n        dfs_hld(root);\n\
@@ -143,7 +143,7 @@ data:
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
     \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n\n    int t = 0;\n};\n\n}  // namespace\
+    \ sz, in, out, nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace\
     \ ebi\n#line 9 \"test/data_structure/Vertex_Add_Subtree_Sum.test.cpp\"\n\nusing\
     \ i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\ni64 e() {\n\
     \    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n  \
@@ -184,8 +184,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-24 00:42:15+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 01:04:45+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
 layout: document

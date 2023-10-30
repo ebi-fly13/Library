@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/ImplicitTreap.hpp
     title: data_structure/ImplicitTreap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []
@@ -137,21 +137,18 @@ data:
     \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
     \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
     \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
-    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
-    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
-    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
-    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#include <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\n\
-    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
-    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
-    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}  // namespace ebi\n#line 9 \"test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
-    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n\
-    \    int size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint\
-    \ b) : a(a), b(b) {}\r\n};\r\n\r\nS op(S l, S r) {\r\n    return S{l.a + r.a,\
-    \ l.size + r.size};\r\n}\r\n\r\nS e() {\r\n    return S{0, 0};\r\n}\r\n\r\nS mapping(F\
+    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 2 \"template/int_alias.hpp\"\n\n#include <cstdint>\n\nnamespace ebi {\n\n\
+    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
+    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 9 \"test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\n\
+    \r\nusing mint = ebi::modint998244353;\r\n\r\nstruct S {\r\n    mint a;\r\n  \
+    \  int size;\r\n};\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint a, mint b)\
+    \ : a(a), b(b) {}\r\n};\r\n\r\nS op(S l, S r) {\r\n    return S{l.a + r.a, l.size\
+    \ + r.size};\r\n}\r\n\r\nS e() {\r\n    return S{0, 0};\r\n}\r\n\r\nS mapping(F\
     \ l, S r) {\r\n    return S{r.a * l.a + (mint)r.size * l.b, r.size};\r\n}\r\n\r\
     \nF composition(F l, F r) {\r\n    return F{r.a * l.a, r.b * l.a + l.b};\r\n}\r\
     \n\r\nF id() {\r\n    return F{1, 0};\r\n}\r\n\r\nusing ebi::i64;\r\n\r\nint main()\
@@ -201,7 +198,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
+  timestamp: '2023-10-31 00:16:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

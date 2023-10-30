@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/composition_of_formal_power_series
@@ -49,25 +49,26 @@ data:
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 11 \"\
     convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <Modint\
     \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
-    \  static constexpr int rank2 = std::countr_zero(uint(mint::mod() - 1));\n\n \
-    \   std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info() {\n        root[rank2]\
-    \ = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2] = root[rank2].inv();\n\
-    \        for (int i = rank2 - 1; i >= 0; i--) {\n            root[i] = root[i\
-    \ + 1] * root[i + 1];\n            inv_root[i] = inv_root[i + 1] * inv_root[i\
-    \ + 1];\n        }\n    }\n};\n\ntemplate <Modint mint> void butterfly(std::vector<mint>&\
-    \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
-    \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
-    \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
-    \ (int k = n >> 1; k > (i ^= k); k >>= 1)\n            ;\n        if (j < i) {\n\
-    \            std::swap(a[i], a[j]);\n        }\n    }\n\n    for (int bit = 0;\
-    \ bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1));\
-    \ i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.root[1];\n\
-    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
-    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
-    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
-    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
-    \                zeta1 *= info.root[bit + 1];\n                zeta2 *= info.root[bit\
-    \ + 1];\n            }\n        }\n    }\n}\n\ntemplate <Modint mint> void butterfly_inv(std::vector<mint>&\
+    \  static constexpr int rank2 =\n        std::countr_zero((unsigned int)(mint::mod()\
+    \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
+    \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
+    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
+    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
+    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <Modint mint> void\
+    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
+    \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
+    \   assert(n == (int)std::bit_ceil(a.size()));\n\n    // bit reverse\n    for\
+    \ (int i = 0, j = 1; j < n - 1; j++) {\n        for (int k = n >> 1; k > (i ^=\
+    \ k); k >>= 1)\n            ;\n        if (j < i) {\n            std::swap(a[i],\
+    \ a[j]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n\
+    \        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1\
+    \ = 1;\n            mint zeta2 = info.root[1];\n            for (int j = 0; j\
+    \ < (1 << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n\
+    \                int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n\
+    \                mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
+    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
+    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
+    \ }\n    }\n}\n\ntemplate <Modint mint> void butterfly_inv(std::vector<mint>&\
     \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
     \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
     \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
@@ -240,19 +241,15 @@ data:
     \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
     \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
     \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
-    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\n\
-    std::istream &operator>>(std::istream &os, static_modint<m> &a) {\r\n    long\
-    \ long x;\r\n    os >> x;\r\n    a = x;\r\n    return os;\r\n}\r\ntemplate <int\
-    \ m>\r\nstd::ostream &operator<<(std::ostream &os, const static_modint<m> &a)\
-    \ {\r\n    return os << a.val();\r\n}\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
-    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 9 \"test/polynomial/Composition_of_Formal_Power_Series.test.cpp\"\n\nusing\
-    \ mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;\n\
-    \nint main() {\n    int n;\n    std::cin >> n;\n    FPS f(n), g(n);\n    for (int\
-    \ i = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n    for (int i = 0;\
-    \ i < n; i++) {\n        std::cin >> g[i];\n    }\n    FPS h = ebi::composition_of_fps(f,\
-    \ g);\n    for (int i = 0; i < n; i++) {\n        std::cout << h[i].val() << \"\
-    \ \\n\"[i == n - 1];\n    }\n}\n"
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
+    \n\r\n}  // namespace ebi\n#line 9 \"test/polynomial/Composition_of_Formal_Power_Series.test.cpp\"\
+    \n\nusing mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint,\
+    \ ebi::convolution>;\n\nint main() {\n    int n;\n    std::cin >> n;\n    FPS\
+    \ f(n), g(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >> f[i];\n\
+    \    }\n    for (int i = 0; i < n; i++) {\n        std::cin >> g[i];\n    }\n\
+    \    FPS h = ebi::composition_of_fps(f, g);\n    for (int i = 0; i < n; i++) {\n\
+    \        std::cout << h[i].val() << \" \\n\"[i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/composition_of_formal_power_series\"\
     \n\n#include <iostream>\n\n#include \"../../convolution/ntt.hpp\"\n#include \"\
     ../../fps/composition_of_fps.hpp\"\n#include \"../../modint/modint.hpp\"\n\nusing\
@@ -272,8 +269,8 @@ data:
   isVerificationFile: true
   path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 00:17:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
 layout: document

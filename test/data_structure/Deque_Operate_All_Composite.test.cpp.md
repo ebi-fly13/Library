@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/deque_aggregation.hpp
     title: Sliding Window Aggregation (Deque)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
@@ -107,17 +107,14 @@ data:
     \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
     \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
     \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
-    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
-    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
-    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
-    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 7 \"test/data_structure/Deque_Operate_All_Composite.test.cpp\"\
-    \n\nusing mint = ebi::modint998244353;\n\nstruct F {\n    mint a;\n    mint b;\n\
-    };\n\nF op(F f, F g) {\n    return {g.a * f.a, g.a * f.b + g.b};\n}\n\nint main()\
-    \ {\n    int q;\n    std::cin >> q;\n    ebi::deque_aggregation<F, op> swag;\n\
-    \    while (q--) {\n        int t;\n        std::cin >> t;\n        if (t == 0)\
-    \ {\n            mint a, b;\n            std::cin >> a >> b;\n            swag.push_front({a,\
+    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 7 \"test/data_structure/Deque_Operate_All_Composite.test.cpp\"\n\nusing\
+    \ mint = ebi::modint998244353;\n\nstruct F {\n    mint a;\n    mint b;\n};\n\n\
+    F op(F f, F g) {\n    return {g.a * f.a, g.a * f.b + g.b};\n}\n\nint main() {\n\
+    \    int q;\n    std::cin >> q;\n    ebi::deque_aggregation<F, op> swag;\n   \
+    \ while (q--) {\n        int t;\n        std::cin >> t;\n        if (t == 0) {\n\
+    \            mint a, b;\n            std::cin >> a >> b;\n            swag.push_front({a,\
     \ b});\n        } else if (t == 1) {\n            mint a, b;\n            std::cin\
     \ >> a >> b;\n            swag.push_back({a, b});\n        } else if (t == 2)\
     \ {\n            swag.pop_front();\n        } else if (t == 3) {\n           \
@@ -148,7 +145,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Deque_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
+  timestamp: '2023-10-31 00:16:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Deque_Operate_All_Composite.test.cpp

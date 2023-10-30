@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/queue_aggregation.hpp
     title: Sliding Window Aggregation (Queue)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -97,24 +97,20 @@ data:
     \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
     \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
     \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
-    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
-    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
-    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
-    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 7 \"test/data_structure/Queue_Operate_All_Composite.test.cpp\"\
-    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\
-    \n    F(mint a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n  \
-    \  return F(f2.a * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nint main() {\r\n   \
-    \ ebi::queue_aggregation<F, op> swag;\r\n    int q;\r\n    std::cin >> q;\r\n\
-    \    while (q--) {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t\
-    \ == 0) {\r\n            int a, b;\r\n            std::cin >> a >> b;\r\n    \
-    \        swag.push(F(a, b));\r\n        } else if (t == 1) {\r\n            swag.pop();\r\
-    \n        } else {\r\n            int x;\r\n            std::cin >> x;\r\n   \
-    \         if (swag.empty()) {\r\n                std::cout << x << std::endl;\r\
-    \n                continue;\r\n            }\r\n            auto f = swag.fold_all();\r\
-    \n            std::cout << (f.a * (mint)x + f.b).val() << std::endl;\r\n     \
-    \   }\r\n    }\r\n}\n"
+    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 7 \"test/data_structure/Queue_Operate_All_Composite.test.cpp\"\n\r\nusing\
+    \ mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint\
+    \ a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n    return F(f2.a\
+    \ * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nint main() {\r\n    ebi::queue_aggregation<F,\
+    \ op> swag;\r\n    int q;\r\n    std::cin >> q;\r\n    while (q--) {\r\n     \
+    \   int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\n            int\
+    \ a, b;\r\n            std::cin >> a >> b;\r\n            swag.push(F(a, b));\r\
+    \n        } else if (t == 1) {\r\n            swag.pop();\r\n        } else {\r\
+    \n            int x;\r\n            std::cin >> x;\r\n            if (swag.empty())\
+    \ {\r\n                std::cout << x << std::endl;\r\n                continue;\r\
+    \n            }\r\n            auto f = swag.fold_all();\r\n            std::cout\
+    \ << (f.a * (mint)x + f.b).val() << std::endl;\r\n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/queue_aggregation.hpp\"\
     \r\n#include \"../../modint/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\
@@ -136,8 +132,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 00:16:57+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Queue_Operate_All_Composite.test.cpp
 layout: document

@@ -6,15 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://atcoder.github.io/ac-library/master/document_ja/lazysegtree.html
@@ -28,8 +28,8 @@ data:
     \ F f) {\r\n        data[k] = mapping(f, data[k]);\r\n        if (k < sz) lazy[k]\
     \ = composition(f, lazy[k]);\r\n    }\r\n\r\n    void push(int i) {\r\n      \
     \  all_apply(2 * i, lazy[i]);\r\n        all_apply(2 * i + 1, lazy[i]);\r\n  \
-    \      lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n    lazy_segtree(int _n) :\
-    \ lazy_segtree(std::vector<S>(_n, e())) {}\r\n    lazy_segtree(const std::vector<S>\
+    \      lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n    lazy_segtree(int n_) :\
+    \ lazy_segtree(std::vector<S>(n_, e())) {}\r\n    lazy_segtree(const std::vector<S>\
     \ &a)\r\n        : n(a.size()),\r\n          sz(std::bit_ceil(a.size())),\r\n\
     \          lg2(std::countr_zero(std::uint32_t(sz))) {\r\n        data = std::vector<S>(2\
     \ * sz, e());\r\n        lazy = std::vector<F>(sz, id());\r\n        for (int\
@@ -96,8 +96,8 @@ data:
     \ F f) {\r\n        data[k] = mapping(f, data[k]);\r\n        if (k < sz) lazy[k]\
     \ = composition(f, lazy[k]);\r\n    }\r\n\r\n    void push(int i) {\r\n      \
     \  all_apply(2 * i, lazy[i]);\r\n        all_apply(2 * i + 1, lazy[i]);\r\n  \
-    \      lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n    lazy_segtree(int _n) :\
-    \ lazy_segtree(std::vector<S>(_n, e())) {}\r\n    lazy_segtree(const std::vector<S>\
+    \      lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n    lazy_segtree(int n_) :\
+    \ lazy_segtree(std::vector<S>(n_, e())) {}\r\n    lazy_segtree(const std::vector<S>\
     \ &a)\r\n        : n(a.size()),\r\n          sz(std::bit_ceil(a.size())),\r\n\
     \          lg2(std::countr_zero(std::uint32_t(sz))) {\r\n        data = std::vector<S>(2\
     \ * sz, e());\r\n        lazy = std::vector<F>(sz, id());\r\n        for (int\
@@ -159,8 +159,8 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-31 01:04:45+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_2450.test.cpp
   - test/yuki/yuki_2439.test.cpp

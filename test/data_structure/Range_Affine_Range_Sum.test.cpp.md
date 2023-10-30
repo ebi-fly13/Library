@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/lazy_segtree.hpp
     title: lazy segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -47,8 +47,8 @@ data:
     \ F f) {\r\n        data[k] = mapping(f, data[k]);\r\n        if (k < sz) lazy[k]\
     \ = composition(f, lazy[k]);\r\n    }\r\n\r\n    void push(int i) {\r\n      \
     \  all_apply(2 * i, lazy[i]);\r\n        all_apply(2 * i + 1, lazy[i]);\r\n  \
-    \      lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n    lazy_segtree(int _n) :\
-    \ lazy_segtree(std::vector<S>(_n, e())) {}\r\n    lazy_segtree(const std::vector<S>\
+    \      lazy[i] = id();\r\n    }\r\n\r\n  public:\r\n    lazy_segtree(int n_) :\
+    \ lazy_segtree(std::vector<S>(n_, e())) {}\r\n    lazy_segtree(const std::vector<S>\
     \ &a)\r\n        : n(a.size()),\r\n          sz(std::bit_ceil(a.size())),\r\n\
     \          lg2(std::countr_zero(std::uint32_t(sz))) {\r\n        data = std::vector<S>(2\
     \ * sz, e());\r\n        lazy = std::vector<F>(sz, id());\r\n        for (int\
@@ -155,21 +155,17 @@ data:
     \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
     \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
     \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\ntemplate <int m>\r\nstd::istream &operator>>(std::istream\
-    \ &os, static_modint<m> &a) {\r\n    long long x;\r\n    os >> x;\r\n    a = x;\r\
-    \n    return os;\r\n}\r\ntemplate <int m>\r\nstd::ostream &operator<<(std::ostream\
-    \ &os, const static_modint<m> &a) {\r\n    return os << a.val();\r\n}\r\n\r\n\
-    using modint998244353 = static_modint<998244353>;\r\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
-    \n#include <algorithm>\n#line 3 \"template/template.hpp\"\n#include <bitset>\n\
-    #line 5 \"template/template.hpp\"\n#include <chrono>\n#include <climits>\n#include\
-    \ <cmath>\n#include <complex>\n#include <cstddef>\n#include <cstdint>\n#include\
-    \ <cstdlib>\n#include <cstring>\n#include <functional>\n#include <iomanip>\n#line\
-    \ 16 \"template/template.hpp\"\n#include <limits>\n#include <map>\n#include <memory>\n\
-    #include <numbers>\n#include <numeric>\n#include <optional>\n#include <queue>\n\
-    #include <random>\n#line 25 \"template/template.hpp\"\n#include <set>\n#include\
-    \ <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n#include\
-    \ <unordered_map>\n#include <unordered_set>\n#line 34 \"template/template.hpp\"\
+    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 1 \"template/template.hpp\"\n#include <algorithm>\n#line 3 \"template/template.hpp\"\
+    \n#include <bitset>\n#line 5 \"template/template.hpp\"\n#include <chrono>\n#include\
+    \ <climits>\n#include <cmath>\n#include <complex>\n#include <cstddef>\n#include\
+    \ <cstdint>\n#include <cstdlib>\n#include <cstring>\n#include <functional>\n#include\
+    \ <iomanip>\n#line 16 \"template/template.hpp\"\n#include <limits>\n#include <map>\n\
+    #include <memory>\n#include <numbers>\n#include <numeric>\n#include <optional>\n\
+    #include <queue>\n#include <random>\n#line 25 \"template/template.hpp\"\n#include\
+    \ <set>\n#include <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n\
+    #include <unordered_map>\n#include <unordered_set>\n#line 34 \"template/template.hpp\"\
     \n\n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
     \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
     \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
@@ -259,8 +255,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-31 01:04:45+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Range_Sum.test.cpp
 layout: document

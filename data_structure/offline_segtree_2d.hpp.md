@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: Compress
   _extendedRequiredBy: []
@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
     title: test/data_structure/Rectangle_Sum_Segtree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - http://codeforces.com/contest/893/submission/125531718
@@ -97,7 +97,7 @@ data:
   path: data_structure/offline_segtree_2d.hpp
   requiredBy: []
   timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Rectangle_Sum_Segtree.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
