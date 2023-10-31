@@ -1,7 +1,7 @@
 #pragma once
 
 #include <algorithm>
-#include <iostream>
+#include <cassert>
 #include <vector>
 
 namespace ebi {
@@ -189,6 +189,9 @@ struct heavy_light_decomposition {
     const std::vector<int> &dfs_order() const {
         return rev;
     }
+
+    std::pair<std::vector<int>, std::vector<std::vector<int>>>
+    lca_based_auxiliary_tree(std::vector<int> vs) const;
 
   private:
     int n;
