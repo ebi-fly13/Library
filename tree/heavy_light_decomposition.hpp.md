@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: tree/lca_based_auxiliary_tree.hpp
+    title: LCA based Auxiliary Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
@@ -21,9 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yuki/yuki_901.test.cpp
+    title: test/yuki/yuki_901.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <algorithm>\n\
@@ -173,12 +179,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
-  requiredBy: []
+  requiredBy:
+  - tree/lca_based_auxiliary_tree.hpp
   timestamp: '2023-10-31 01:03:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_2450.test.cpp
   - test/yuki/yuki_2439.test.cpp
+  - test/yuki/yuki_901.test.cpp
   - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp

@@ -69,9 +69,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yuki/yuki_901.test.cpp
+    title: test/yuki/yuki_901.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
@@ -106,11 +109,12 @@ data:
   - graph/dijkstra_fibheap.hpp
   - graph/scc_graph.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_2450.test.cpp
   - test/yuki/yuki_2439.test.cpp
   - test/yuki/yuki_1145.test.cpp
+  - test/yuki/yuki_901.test.cpp
   - test/algorithm/Two_Sat.test.cpp
   - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
