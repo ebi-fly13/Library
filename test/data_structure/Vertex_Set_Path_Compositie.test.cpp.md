@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: segtree
   - icon: ':heavy_check_mark:'
@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
@@ -186,12 +186,14 @@ data:
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
-    \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace\
-    \ ebi\n#line 9 \"test/data_structure/Vertex_Set_Path_Compositie.test.cpp\"\n\n\
-    using mint = ebi::modint998244353;\n\nusing i64 = std::int64_t;\n\nstruct S {\n\
-    \    mint c, d;\n};\n\nS op(S a, S b) {\n    return {b.c * a.c, b.c * a.d + b.d};\n\
-    }\n\nS e() {\n    return {1, 0};\n}\n\nint main() {\n    int n, q;\n    std::cin\
+    \    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n   \
+    \ lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
+    \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
+    \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line\
+    \ 9 \"test/data_structure/Vertex_Set_Path_Compositie.test.cpp\"\n\nusing mint\
+    \ = ebi::modint998244353;\n\nusing i64 = std::int64_t;\n\nstruct S {\n    mint\
+    \ c, d;\n};\n\nS op(S a, S b) {\n    return {b.c * a.c, b.c * a.d + b.d};\n}\n\
+    \nS e() {\n    return {1, 0};\n}\n\nint main() {\n    int n, q;\n    std::cin\
     \ >> n >> q;\n    std::vector g(n, std::vector<int>());\n    std::vector<S> fx(n);\n\
     \    for (int i = 0; i < n; i++) {\n        int a, b;\n        std::cin >> a >>\
     \ b;\n        fx[i] = {a, b};\n    }\n    for (int i = 0; i < n - 1; i++) {\n\
@@ -240,7 +242,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 01:04:45+09:00'
+  timestamp: '2023-10-31 14:04:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Set_Path_Compositie.test.cpp

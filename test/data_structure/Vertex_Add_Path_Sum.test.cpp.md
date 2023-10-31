@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
@@ -142,25 +142,27 @@ data:
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
-    \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace\
-    \ ebi\n#line 9 \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\n\nusing i64\
-    \ = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\ni64 e() {\n \
-    \   return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n   \
-    \ std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n        std::cin\
-    \ >> a[i];\n    }\n    ebi::graph g(n);\n    for (int i = 0; i < n - 1; ++i) {\n\
-    \        int u, v;\n        std::cin >> u >> v;\n        g.add_edge(u, v);\n \
-    \   }\n    ebi::heavy_light_decomposition hld(g);\n    ebi::segtree<i64, op, e>\
-    \ seg(n);\n    i64 ans = e();\n    auto set = [&](int u, i64 x) {\n        int\
-    \ idx = hld.idx(u);\n        seg.set(idx, seg.get(idx) + x);\n    };\n    auto\
-    \ f = [&](int l, int r) {\n        if (l <= r)\n            ans = op(ans, seg.prod(l,\
-    \ r));\n        else\n            ans = op(ans, seg.prod(r, l));\n    };\n   \
-    \ for (int i = 0; i < n; i++) {\n        set(i, a[i]);\n    }\n    while (q--)\
-    \ {\n        int flag;\n        std::cin >> flag;\n        if (flag == 0) {\n\
-    \            int p;\n            i64 x;\n            std::cin >> p >> x;\n   \
-    \         set(p, x);\n        } else {\n            int u, v;\n            std::cin\
-    \ >> u >> v;\n            ans = e();\n            hld.path_noncommutative_query(u,\
-    \ v, true, f);\n            std::cout << ans << '\\n';\n        }\n    }\n}\n"
+    \    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n   \
+    \ lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
+    \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
+    \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line\
+    \ 9 \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\n\nusing i64 = std::int64_t;\n\
+    i64 op(i64 a, i64 b) {\n    return a + b;\n}\ni64 e() {\n    return 0;\n}\n\n\
+    int main() {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<i64> a(n);\n\
+    \    for (int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n    ebi::graph\
+    \ g(n);\n    for (int i = 0; i < n - 1; ++i) {\n        int u, v;\n        std::cin\
+    \ >> u >> v;\n        g.add_edge(u, v);\n    }\n    ebi::heavy_light_decomposition\
+    \ hld(g);\n    ebi::segtree<i64, op, e> seg(n);\n    i64 ans = e();\n    auto\
+    \ set = [&](int u, i64 x) {\n        int idx = hld.idx(u);\n        seg.set(idx,\
+    \ seg.get(idx) + x);\n    };\n    auto f = [&](int l, int r) {\n        if (l\
+    \ <= r)\n            ans = op(ans, seg.prod(l, r));\n        else\n          \
+    \  ans = op(ans, seg.prod(r, l));\n    };\n    for (int i = 0; i < n; i++) {\n\
+    \        set(i, a[i]);\n    }\n    while (q--) {\n        int flag;\n        std::cin\
+    \ >> flag;\n        if (flag == 0) {\n            int p;\n            i64 x;\n\
+    \            std::cin >> p >> x;\n            set(p, x);\n        } else {\n \
+    \           int u, v;\n            std::cin >> u >> v;\n            ans = e();\n\
+    \            hld.path_noncommutative_query(u, v, true, f);\n            std::cout\
+    \ << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
     \n#include <iostream>\n#include <vector>\n\n#include \"../../data_structure/segtree.hpp\"\
     \n#include \"../../graph/template.hpp\"\n#include \"../../tree/heavy_light_decomposition.hpp\"\
@@ -187,7 +189,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 01:04:45+09:00'
+  timestamp: '2023-10-31 14:04:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Path_Sum.test.cpp

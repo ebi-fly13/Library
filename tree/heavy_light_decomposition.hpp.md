@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/lca_based_auxiliary_tree.hpp
     title: LCA based Auxiliary Tree
   _extendedVerifiedWith:
@@ -24,16 +24,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <algorithm>\n\
-    #include <iostream>\n#include <vector>\n\nnamespace ebi {\n\nstruct heavy_light_decomposition\
+    #include <cassert>\n#include <vector>\n\nnamespace ebi {\n\nstruct heavy_light_decomposition\
     \ {\n  private:\n    void dfs_sz(int v) {\n        for (auto &nv : g[v]) {\n \
     \           if (nv == par[v]) continue;\n            par[nv] = v;\n          \
     \  depth[nv] = depth[v] + 1;\n            dfs_sz(nv);\n            sz[v] += sz[nv];\n\
@@ -101,10 +101,11 @@ data:
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
-    \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace\
-    \ ebi\n"
-  code: "#pragma once\n\n#include <algorithm>\n#include <iostream>\n#include <vector>\n\
+    \    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n   \
+    \ lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
+    \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
+    \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <vector>\n\
     \nnamespace ebi {\n\nstruct heavy_light_decomposition {\n  private:\n    void\
     \ dfs_sz(int v) {\n        for (auto &nv : g[v]) {\n            if (nv == par[v])\
     \ continue;\n            par[nv] = v;\n            depth[nv] = depth[v] + 1;\n\
@@ -173,16 +174,17 @@ data:
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
-    \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace\
-    \ ebi"
+    \    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n   \
+    \ lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
+    \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
+    \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy:
   - tree/lca_based_auxiliary_tree.hpp
-  timestamp: '2023-10-31 01:03:26+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-10-31 14:04:57+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2450.test.cpp
   - test/yuki/yuki_2439.test.cpp

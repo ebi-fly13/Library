@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/lca_based_auxiliary_tree.hpp
     title: LCA based Auxiliary Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/901
@@ -210,13 +210,14 @@ data:
     \ - 1];\n            }\n        }\n        return v;\n    }\n\n    template <class\
     \ F> void subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
     \ out[u]);\n    }\n\n    const std::vector<int> &dfs_order() const {\n       \
-    \ return rev;\n    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>>\
-    \ g;\n    std::vector<int> sz, in, out, nxt, par, depth, rev;\n\n    int num =\
-    \ 0;\n};\n\n}  // namespace ebi\n#line 2 \"tree/lca_based_auxiliary_tree.hpp\"\
-    \n\n#line 8 \"tree/lca_based_auxiliary_tree.hpp\"\n\n#line 10 \"tree/lca_based_auxiliary_tree.hpp\"\
-    \n\nnamespace ebi {\n\nstd::pair<std::vector<int>, std::vector<std::vector<int>>>\n\
-    heavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int> vs) const\
-    \ {\n    static std::vector<int> a(n, -1), p(n, -1);\n    int k = vs.size();\n\
+    \ return rev;\n    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n\
+    \    lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
+    \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
+    \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line\
+    \ 2 \"tree/lca_based_auxiliary_tree.hpp\"\n\n#line 8 \"tree/lca_based_auxiliary_tree.hpp\"\
+    \n\n#line 10 \"tree/lca_based_auxiliary_tree.hpp\"\n\nnamespace ebi {\n\nstd::pair<std::vector<int>,\
+    \ std::vector<std::vector<int>>>\nheavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int>\
+    \ vs) const {\n    static std::vector<int> a(n, -1), p(n, -1);\n    int k = vs.size();\n\
     \    if (k == 1) {\n        return {vs, std::vector(1, std::vector<int>())};\n\
     \    }\n    std::sort(vs.begin(), vs.end(),\n              [&](int v, int u) {\
     \ return in[v] < in[u]; });\n    std::stack<int> stack;\n    std::vector<int>\
@@ -290,8 +291,8 @@ data:
   isVerificationFile: true
   path: test/yuki/yuki_901.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 14:04:13+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-31 14:04:57+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yuki/yuki_901.test.cpp
 layout: document

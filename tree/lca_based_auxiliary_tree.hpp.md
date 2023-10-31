@@ -1,36 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/lca_based_auxiliary_tree.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <ranges>\n#include <stack>\n#include <vector>\n\n\
-    #line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#line 4 \"tree/heavy_light_decomposition.hpp\"\
-    \n#include <iostream>\n#line 6 \"tree/heavy_light_decomposition.hpp\"\n\nnamespace\
-    \ ebi {\n\nstruct heavy_light_decomposition {\n  private:\n    void dfs_sz(int\
-    \ v) {\n        for (auto &nv : g[v]) {\n            if (nv == par[v]) continue;\n\
-    \            par[nv] = v;\n            depth[nv] = depth[v] + 1;\n           \
-    \ dfs_sz(nv);\n            sz[v] += sz[nv];\n            if (sz[nv] > sz[g[v][0]]\
-    \ || g[v][0] == par[v])\n                std::swap(nv, g[v][0]);\n        }\n\
-    \    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n        rev[in[v]]\
-    \ = v;\n        for (auto nv : g[v]) {\n            if (nv == par[v]) continue;\n\
-    \            nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);\n            dfs_hld(nv);\n\
-    \        }\n        out[v] = num;\n    }\n\n    // [u, v) \u30D1\u30B9\u306E\u53D6\
-    \u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> ascend(int\
-    \ u, int v) const {\n        std::vector<std::pair<int, int>> res;\n        while\
-    \ (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n   \
-    \         u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
+    #line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#line 6 \"tree/heavy_light_decomposition.hpp\"\
+    \n\nnamespace ebi {\n\nstruct heavy_light_decomposition {\n  private:\n    void\
+    \ dfs_sz(int v) {\n        for (auto &nv : g[v]) {\n            if (nv == par[v])\
+    \ continue;\n            par[nv] = v;\n            depth[nv] = depth[v] + 1;\n\
+    \            dfs_sz(nv);\n            sz[v] += sz[nv];\n            if (sz[nv]\
+    \ > sz[g[v][0]] || g[v][0] == par[v])\n                std::swap(nv, g[v][0]);\n\
+    \        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n     \
+    \   rev[in[v]] = v;\n        for (auto nv : g[v]) {\n            if (nv == par[v])\
+    \ continue;\n            nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);\n          \
+    \  dfs_hld(nv);\n        }\n        out[v] = num;\n    }\n\n    // [u, v) \u30D1\
+    \u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
+    \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
+    \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
+    \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
     \ in[v] + 1);\n        return res;\n    }\n\n    // (u, v] \u30D1\u30B9\u306E\u53D6\
     \u5F97 (u \u306F v \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> descend(int\
     \ u, int v) const {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v])\
@@ -86,9 +85,11 @@ data:
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
-    \    }\n\n  private:\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace\
-    \ ebi\n#line 10 \"tree/lca_based_auxiliary_tree.hpp\"\n\nnamespace ebi {\n\nstd::pair<std::vector<int>,\
+    \    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n   \
+    \ lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
+    \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
+    \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line\
+    \ 10 \"tree/lca_based_auxiliary_tree.hpp\"\n\nnamespace ebi {\n\nstd::pair<std::vector<int>,\
     \ std::vector<std::vector<int>>>\nheavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int>\
     \ vs) const {\n    static std::vector<int> a(n, -1), p(n, -1);\n    int k = vs.size();\n\
     \    if (k == 1) {\n        return {vs, std::vector(1, std::vector<int>())};\n\
@@ -139,8 +140,8 @@ data:
   isVerificationFile: false
   path: tree/lca_based_auxiliary_tree.hpp
   requiredBy: []
-  timestamp: '2023-10-31 14:04:13+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-10-31 14:04:57+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_901.test.cpp
 documentation_of: tree/lca_based_auxiliary_tree.hpp
