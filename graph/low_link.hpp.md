@@ -70,15 +70,15 @@ data:
   isVerificationFile: false
   path: graph/low_link.hpp
   requiredBy:
-  - tree/block_cut_tree.hpp
-  - graph/biconnected_components.hpp
   - graph/two_edge_connected_components.hpp
+  - graph/biconnected_components.hpp
+  - tree/block_cut_tree.hpp
   timestamp: '2023-07-10 11:25:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Two_Edge_Connected_Components.test.cpp
-  - test/graph/Biconnected_Components.test.cpp
   - test/graph/Articulation_Points.test.cpp
+  - test/graph/Biconnected_Components.test.cpp
 documentation_of: graph/low_link.hpp
 layout: document
 title: Low Link

@@ -50,9 +50,10 @@ data:
     \n            } else if (now->childs[index ^ 1] &&\r\n                       now->childs[index\
     \ ^ 1]->count > 0) {\r\n                now = now->childs[index ^ 1];\r\n    \
     \        } else {\r\n                assert(0);\r\n            }\r\n        }\r\
-    \n    }\r\n\r\n    int size() const {\r\n        return root->count;\r\n    }\r\
-    \n\r\n  private:\r\n    const size_t bit_size = sizeof(T) * CHAR_BIT;\r\n    node_ptr\
-    \ root = std::make_shared<Node>();\r\n};\r\n\r\n}  // namespace ebi\n"
+    \n        return val;\r\n    }\r\n\r\n    int size() const {\r\n        return\
+    \ root->count;\r\n    }\r\n\r\n  private:\r\n    const size_t bit_size = sizeof(T)\
+    \ * CHAR_BIT;\r\n    node_ptr root = std::make_shared<Node>();\r\n};\r\n\r\n}\
+    \  // namespace ebi\n"
   code: "#pragma once\r\n\r\n/*\r\n    reference: https://kazuma8128.hatenablog.com/entry/2018/05/06/022654\r\
     \n*/\r\n\r\n#include <algorithm>\r\n#include <array>\r\n#include <cassert>\r\n\
     #include <climits>\r\n#include <memory>\r\n\r\nnamespace ebi {\r\n\r\ntemplate\
@@ -91,14 +92,15 @@ data:
     \n            } else if (now->childs[index ^ 1] &&\r\n                       now->childs[index\
     \ ^ 1]->count > 0) {\r\n                now = now->childs[index ^ 1];\r\n    \
     \        } else {\r\n                assert(0);\r\n            }\r\n        }\r\
-    \n    }\r\n\r\n    int size() const {\r\n        return root->count;\r\n    }\r\
-    \n\r\n  private:\r\n    const size_t bit_size = sizeof(T) * CHAR_BIT;\r\n    node_ptr\
-    \ root = std::make_shared<Node>();\r\n};\r\n\r\n}  // namespace ebi"
+    \n        return val;\r\n    }\r\n\r\n    int size() const {\r\n        return\
+    \ root->count;\r\n    }\r\n\r\n  private:\r\n    const size_t bit_size = sizeof(T)\
+    \ * CHAR_BIT;\r\n    node_ptr root = std::make_shared<Node>();\r\n};\r\n\r\n}\
+    \  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/binary_trie.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-11-04 02:11:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Set_Xor_Min.test.cpp

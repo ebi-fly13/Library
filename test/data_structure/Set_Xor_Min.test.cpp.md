@@ -54,16 +54,16 @@ data:
     \n            } else if (now->childs[index ^ 1] &&\r\n                       now->childs[index\
     \ ^ 1]->count > 0) {\r\n                now = now->childs[index ^ 1];\r\n    \
     \        } else {\r\n                assert(0);\r\n            }\r\n        }\r\
-    \n    }\r\n\r\n    int size() const {\r\n        return root->count;\r\n    }\r\
-    \n\r\n  private:\r\n    const size_t bit_size = sizeof(T) * CHAR_BIT;\r\n    node_ptr\
-    \ root = std::make_shared<Node>();\r\n};\r\n\r\n}  // namespace ebi\n#line 6 \"\
-    test/data_structure/Set_Xor_Min.test.cpp\"\n\r\nint main() {\r\n    int q;\r\n\
-    \    std::cin >> q;\r\n    ebi::binary_trie<int> trie;\r\n    while (q--) {\r\n\
-    \        int t, x;\r\n        std::cin >> t >> x;\r\n        if (t == 0) {\r\n\
-    \            if (!trie.find(x)) trie.insert(x);\r\n        } else if (t == 1)\
-    \ {\r\n            if (trie.find(x)) trie.erase(x);\r\n        } else {\r\n  \
-    \          std::cout << trie.min_element(x) << '\\n';\r\n        }\r\n    }\r\n\
-    }\n"
+    \n        return val;\r\n    }\r\n\r\n    int size() const {\r\n        return\
+    \ root->count;\r\n    }\r\n\r\n  private:\r\n    const size_t bit_size = sizeof(T)\
+    \ * CHAR_BIT;\r\n    node_ptr root = std::make_shared<Node>();\r\n};\r\n\r\n}\
+    \  // namespace ebi\n#line 6 \"test/data_structure/Set_Xor_Min.test.cpp\"\n\r\n\
+    int main() {\r\n    int q;\r\n    std::cin >> q;\r\n    ebi::binary_trie<int>\
+    \ trie;\r\n    while (q--) {\r\n        int t, x;\r\n        std::cin >> t >>\
+    \ x;\r\n        if (t == 0) {\r\n            if (!trie.find(x)) trie.insert(x);\r\
+    \n        } else if (t == 1) {\r\n            if (trie.find(x)) trie.erase(x);\r\
+    \n        } else {\r\n            std::cout << trie.min_element(x) << '\\n';\r\
+    \n        }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/set_xor_min\"\r\n\r\n#include\
     \ <iostream>\r\n\r\n#include \"../../data_structure/binary_trie.hpp\"\r\n\r\n\
     int main() {\r\n    int q;\r\n    std::cin >> q;\r\n    ebi::binary_trie<int>\
@@ -77,7 +77,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Set_Xor_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 14:12:40+09:00'
+  timestamp: '2023-11-04 02:11:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Set_Xor_Min.test.cpp

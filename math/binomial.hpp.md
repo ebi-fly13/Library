@@ -94,16 +94,16 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
-  - math/stirling_number_1st.hpp
   - fps/taylor_shift.hpp
+  - math/stirling_number_1st.hpp
   timestamp: '2023-10-26 12:28:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_3361.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/aoj/aoj_3361.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 title: Binomial Coefficient
