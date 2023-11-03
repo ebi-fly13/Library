@@ -100,6 +100,7 @@ template <class T> struct binary_trie {
                 assert(0);
             }
         }
+        return val;
     }
 
     int size() const {
