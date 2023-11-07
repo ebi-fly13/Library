@@ -12,12 +12,12 @@ template <class T, class F> std::vector<T> monge_shortest_path(int n, F f) {
     dp[0] = 0;
     auto get = [&](int i, int j) -> T {
         T val = f(j, i);
-        if (val == max) return max;
+        if (val == max || dp[j] == max) return max;
         return dp[j] + val;
     };
     auto check = [&](int i, int j) -> void {
         T val = get(i, j);
-        if (val <= dp[i]) {
+        if (val < dp[i]) {
             dp[i] = val;
             argmin[i] = j;
         }
