@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   _extendedVerifiedWith:
@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
+  - icon: ':x:'
+    path: test/aoj/aoj_3086.test.cpp
+    title: test/aoj/aoj_3086.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
     title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
@@ -48,9 +51,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/io.hpp\"\n\n#include <iomanip>\n#include <iostream>\n\
@@ -90,7 +93,7 @@ data:
   requiredBy:
   - template/template.hpp
   timestamp: '2023-08-27 22:59:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/tree/Cartesian_Tree.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
@@ -106,6 +109,7 @@ data:
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_2450.test.cpp
+  - test/aoj/aoj_3086.test.cpp
 documentation_of: template/io.hpp
 layout: document
 redirect_from:

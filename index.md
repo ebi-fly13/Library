@@ -14,6 +14,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp
+    - icon: ':x:'
+      path: algorithm/monge_shortest_path.hpp
+      title: Monge shortest path
     - icon: ':heavy_check_mark:'
       path: algorithm/monotone_minima.hpp
       title: Monotone Minima
@@ -165,7 +168,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: section set
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/segtree.hpp
       title: segtree
     - icon: ':heavy_check_mark:'
@@ -390,19 +393,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -494,6 +497,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2873.test.cpp
       title: test/aoj/aoj_2873.test.cpp
+    - icon: ':x:'
+      path: test/aoj/aoj_3086.test.cpp
+      title: test/aoj/aoj_3086.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_3361.test.cpp
       title: test/aoj/aoj_3361.test.cpp
