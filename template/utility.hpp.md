@@ -16,6 +16,9 @@ data:
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
+    title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/data_structure/Range_Affine_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
@@ -100,6 +103,7 @@ data:
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_2439.test.cpp
+  - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp

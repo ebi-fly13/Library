@@ -14,6 +14,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp
+    - icon: ':heavy_check_mark:'
+      path: algorithm/monotone_minima.hpp
+      title: Monotone Minima
     - icon: ':warning:'
       path: algorithm/submodular.hpp
       title: algorithm/submodular.hpp
@@ -40,6 +43,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/lcm_convolution.hpp
       title: LCM Convolution
+    - icon: ':heavy_check_mark:'
+      path: convolution/min_plus_convolution.hpp
+      title: Min Plus Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT Convolution
@@ -518,6 +524,9 @@ data:
       path: test/convolution/Lcm_Convolution.test.cpp
       title: test/convolution/Lcm_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
+      title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/convolution/Subset_Convolution.test.cpp
       title: test/convolution/Subset_Convolution.test.cpp
   - name: test/data_structure
@@ -864,14 +873,3 @@ data:
       title: test/yuki/yuki_901.test.cpp
 layout: toppage
 ---
-
- [![](https://img.shields.io/badge/license-CC0_License-blue.svg)](https://github.com/ebi-fly13/Library/blob/main/LICENSE)
- ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ebi-fly13/Library?style=flat-square)
-[![ebi_fly](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Febi_fly)](https://atcoder.jp/users/ebi_fly)
-[![ebi_fly](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fcodeforces%2Fjson%2Febi_fly)](https://codeforces.com/profile/ebi_fly)
-
-このライブラリは競技プログラミングで使用することを目的として作成されています。
-
-`g++/c++20` で動作することが確認されています。
-
-バグや誤り、改善案がある場合は [issue](https://github.com/ebi-fly13/Library/issues/new) にお願いします。
