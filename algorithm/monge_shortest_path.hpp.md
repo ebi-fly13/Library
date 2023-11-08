@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: algorithm/monge_d_edge_shortest_path.hpp
+    title: Monge d-edge shortest path
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3086.test.cpp
@@ -46,7 +49,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: algorithm/monge_shortest_path.hpp
-  requiredBy: []
+  requiredBy:
+  - algorithm/monge_d_edge_shortest_path.hpp
   timestamp: '2023-11-08 11:18:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -11,9 +11,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/convex_hull_trick.hpp
       title: Convex Hull Trick
+    - icon: ':warning:'
+      path: algorithm/golden_section_search.hpp
+      title: Golden section search
     - icon: ':heavy_check_mark:'
       path: algorithm/mo_algorithm.hpp
       title: algorithm/mo_algorithm.hpp
+    - icon: ':warning:'
+      path: algorithm/monge_d_edge_shortest_path.hpp
+      title: Monge d-edge shortest path
     - icon: ':heavy_check_mark:'
       path: algorithm/monge_shortest_path.hpp
       title: Monge shortest path

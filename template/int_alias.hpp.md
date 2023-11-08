@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: algorithm/golden_section_search.hpp
+    title: Golden section search
+  - icon: ':warning:'
+    path: algorithm/monge_d_edge_shortest_path.hpp
+    title: Monge d-edge shortest path
   - icon: ':heavy_check_mark:'
     path: convolution/dirichlet_convolution.hpp
     title: Dirichlet Convolution
@@ -182,6 +188,8 @@ data:
   isVerificationFile: false
   path: template/int_alias.hpp
   requiredBy:
+  - algorithm/golden_section_search.hpp
+  - algorithm/monge_d_edge_shortest_path.hpp
   - template/template.hpp
   - template/utility.hpp
   - data_structure/bitVector.hpp
