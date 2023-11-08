@@ -51,6 +51,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_952.test.cpp
+    title: test/yuki/yuki_952.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,6 +87,7 @@ data:
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Range_Affine_Point_Get.test.cpp
+  - test/yuki/yuki_952.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_2439.test.cpp

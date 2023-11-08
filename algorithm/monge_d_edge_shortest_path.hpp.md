@@ -52,20 +52,19 @@ data:
     \ i = l + 1; i <= m; i++) {\n            check(r, i);\n        }\n        self(self,\
     \ m, r);\n    };\n    dfs(dfs, 0, n - 1);\n    return dp;\n}\n\n}  // namespace\
     \ ebi\n#line 7 \"algorithm/monge_d_edge_shortest_path.hpp\"\n\nnamespace ebi {\n\
-    \ntemplate <class F, class T = decltype(std::declval<F>()(std::declval<int>(),\n\
-    \                                                        std::declval<int>()))>\n\
-    T monge_d_edge_shortest_path(int n, int d, T upper, F f) {\n    auto dp = [&](T\
-    \ x) -> T {\n        auto g = [&](int i, int j) -> T { return f(i, j) + x; };\n\
-    \        T c = monge_shortest_path(n, g)[n - 1];\n        return c - x * d;\n\
-    \    };\n    return golden_section_search(dp, -upper, upper, std::greater<T>()).second;\n\
-    }\n\n}  // namespace ebi\n"
+    \ntemplate <std::integral S, class F,\n          class T = decltype(std::declval<F>()(std::declval<int>(),\n\
+    \                                               std::declval<int>()))>\nT monge_d_edge_shortest_path(int\
+    \ n, int d, S upper, F f) {\n    auto dp = [&](S x) -> T {\n        auto g = [&](int\
+    \ i, int j) -> T { return f(i, j) + x; };\n        T c = monge_shortest_path(n,\
+    \ g)[n - 1];\n        return c - T(1) * x * d;\n    };\n    return golden_section_search(dp,\
+    \ -upper, upper, std::greater<T>()).second;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <utility>\n\n#include \"../algorithm/golden_section_search.hpp\"\
     \n#include \"../algorithm/monge_shortest_path.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class F, class T = decltype(std::declval<F>()(std::declval<int>(),\n      \
-    \                                                  std::declval<int>()))>\nT monge_d_edge_shortest_path(int\
-    \ n, int d, T upper, F f) {\n    auto dp = [&](T x) -> T {\n        auto g = [&](int\
+    \ <std::integral S, class F,\n          class T = decltype(std::declval<F>()(std::declval<int>(),\n\
+    \                                               std::declval<int>()))>\nT monge_d_edge_shortest_path(int\
+    \ n, int d, S upper, F f) {\n    auto dp = [&](S x) -> T {\n        auto g = [&](int\
     \ i, int j) -> T { return f(i, j) + x; };\n        T c = monge_shortest_path(n,\
-    \ g)[n - 1];\n        return c - x * d;\n    };\n    return golden_section_search(dp,\
+    \ g)[n - 1];\n        return c - T(1) * x * d;\n    };\n    return golden_section_search(dp,\
     \ -upper, upper, std::greater<T>()).second;\n}\n\n}  // namespace ebi"
   dependsOn:
   - algorithm/golden_section_search.hpp
@@ -74,7 +73,7 @@ data:
   isVerificationFile: false
   path: algorithm/monge_d_edge_shortest_path.hpp
   requiredBy: []
-  timestamp: '2023-11-08 14:43:49+09:00'
+  timestamp: '2023-11-08 15:46:57+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: algorithm/monge_d_edge_shortest_path.hpp

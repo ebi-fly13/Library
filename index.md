@@ -11,6 +11,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/convex_hull_trick.hpp
       title: Convex Hull Trick
+    - icon: ':heavy_check_mark:'
+      path: algorithm/enumerate_monge_d_edge_shortest_path.hpp
+      title: Enumerate Monge d-edge shortest path
     - icon: ':warning:'
       path: algorithm/golden_section_search.hpp
       title: Golden section search
@@ -883,6 +886,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_901.test.cpp
       title: test/yuki/yuki_901.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_952.test.cpp
+      title: test/yuki/yuki_952.test.cpp
 layout: toppage
 ---
  [![](https://img.shields.io/badge/license-CC0_License-blue.svg)](https://github.com/ebi-fly13/Library/blob/main/LICENSE)

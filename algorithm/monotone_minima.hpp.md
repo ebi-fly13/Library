@@ -3,12 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: algorithm/enumerate_monge_d_edge_shortest_path.hpp
+    title: Enumerate Monge d-edge shortest path
+  - icon: ':heavy_check_mark:'
     path: convolution/min_plus_convolution.hpp
     title: Min Plus Convolution
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
     title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_952.test.cpp
+    title: test/yuki/yuki_952.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -75,10 +81,12 @@ data:
   isVerificationFile: false
   path: algorithm/monotone_minima.hpp
   requiredBy:
+  - algorithm/enumerate_monge_d_edge_shortest_path.hpp
   - convolution/min_plus_convolution.hpp
   timestamp: '2023-11-08 11:18:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yuki/yuki_952.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
 documentation_of: algorithm/monotone_minima.hpp
 layout: document
