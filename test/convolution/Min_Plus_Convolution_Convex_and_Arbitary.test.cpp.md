@@ -67,7 +67,7 @@ data:
     \    int m = (int)b.size();\n    for (int i = 0; i < n - 2; i++) {\n        assert(a[i\
     \ + 1] - a[i] <= a[i + 2] - a[i + 1]);\n    }\n    auto f = [&](int i, int j)\
     \ -> T {\n        if (i - j < 0 || i - j >= n) return std::numeric_limits<T>::max();\n\
-    \        return a[i - j] + b[j];\n    };\n    auto [argmin, min_val] = monotone_minima<int>(n\
+    \        return a[i - j] + b[j];\n    };\n    auto [argmin, min_val] = monotone_minima<T>(n\
     \ + m - 1, m, f);\n    return min_val;\n}\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
     \n#include <algorithm>\n#include <bit>\n#include <bitset>\n#line 5 \"template/template.hpp\"\
     \n#include <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n\
@@ -145,7 +145,7 @@ data:
   isVerificationFile: true
   path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   requiredBy: []
-  timestamp: '2023-11-07 16:52:33+09:00'
+  timestamp: '2023-11-08 11:08:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp

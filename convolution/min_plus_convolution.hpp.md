@@ -47,7 +47,7 @@ data:
     \    int m = (int)b.size();\n    for (int i = 0; i < n - 2; i++) {\n        assert(a[i\
     \ + 1] - a[i] <= a[i + 2] - a[i + 1]);\n    }\n    auto f = [&](int i, int j)\
     \ -> T {\n        if (i - j < 0 || i - j >= n) return std::numeric_limits<T>::max();\n\
-    \        return a[i - j] + b[j];\n    };\n    auto [argmin, min_val] = monotone_minima<int>(n\
+    \        return a[i - j] + b[j];\n    };\n    auto [argmin, min_val] = monotone_minima<T>(n\
     \ + m - 1, m, f);\n    return min_val;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <vector>\n\
     \n#include \"../algorithm/monotone_minima.hpp\"\n\nnamespace ebi {\n\ntemplate\
@@ -56,14 +56,14 @@ data:
     \    int m = (int)b.size();\n    for (int i = 0; i < n - 2; i++) {\n        assert(a[i\
     \ + 1] - a[i] <= a[i + 2] - a[i + 1]);\n    }\n    auto f = [&](int i, int j)\
     \ -> T {\n        if (i - j < 0 || i - j >= n) return std::numeric_limits<T>::max();\n\
-    \        return a[i - j] + b[j];\n    };\n    auto [argmin, min_val] = monotone_minima<int>(n\
+    \        return a[i - j] + b[j];\n    };\n    auto [argmin, min_val] = monotone_minima<T>(n\
     \ + m - 1, m, f);\n    return min_val;\n}\n\n}  // namespace ebi"
   dependsOn:
   - algorithm/monotone_minima.hpp
   isVerificationFile: false
   path: convolution/min_plus_convolution.hpp
   requiredBy: []
-  timestamp: '2023-11-07 16:52:33+09:00'
+  timestamp: '2023-11-08 11:08:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
