@@ -13,8 +13,8 @@ namespace ebi {
 template <std::integral S, class F,
           class T = decltype(std::declval<F>()(std::declval<S>())),
           class Compare = std::less<T>>
-std::pair<i64, T> golden_section_search(F f, S min, S max,
-                                        const Compare &compare = Compare()) {
+std::pair<S, T> golden_section_search(F f, S min, S max,
+                                      const Compare &compare = Compare()) {
     assert(min <= max);
     S a = min - 1, x, b;
     {

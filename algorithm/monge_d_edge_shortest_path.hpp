@@ -15,7 +15,7 @@ T monge_d_edge_shortest_path(int n, int d, T upper, F f) {
         T c = monge_shortest_path(n, g)[n - 1];
         return c - x * d;
     };
-    return golden_section_search(dp, -upper, upper, std::greater<T>());
+    return golden_section_search(dp, -upper, upper, std::greater<T>()).second;
 }
 
 }  // namespace ebi
