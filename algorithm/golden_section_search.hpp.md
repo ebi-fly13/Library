@@ -24,8 +24,8 @@ data:
     \n}  // namespace ebi\n#line 9 \"algorithm/golden_section_search.hpp\"\n\nnamespace\
     \ ebi {\n\n// ref: https://x.com/noshi91/status/1399003086362865673\ntemplate\
     \ <std::integral S, class F,\n          class T = decltype(std::declval<F>()(std::declval<S>())),\n\
-    \          class Compare = std::less<T>>\nstd::pair<i64, T> golden_section_search(F\
-    \ f, S min, S max,\n                                        const Compare &compare\
+    \          class Compare = std::less<T>>\nstd::pair<S, T> golden_section_search(F\
+    \ f, S min, S max,\n                                      const Compare &compare\
     \ = Compare()) {\n    assert(min <= max);\n    S a = min - 1, x, b;\n    {\n \
     \       S s = 1, t = 2;\n        while (t < max - min + 2) {\n            std::swap(s\
     \ += t, t);\n        }\n        x = a + t - s;\n        b = a + t;\n    }\n  \
@@ -38,8 +38,8 @@ data:
     #include <utility>\n\n#include \"../template/int_alias.hpp\"\n\nnamespace ebi\
     \ {\n\n// ref: https://x.com/noshi91/status/1399003086362865673\ntemplate <std::integral\
     \ S, class F,\n          class T = decltype(std::declval<F>()(std::declval<S>())),\n\
-    \          class Compare = std::less<T>>\nstd::pair<i64, T> golden_section_search(F\
-    \ f, S min, S max,\n                                        const Compare &compare\
+    \          class Compare = std::less<T>>\nstd::pair<S, T> golden_section_search(F\
+    \ f, S min, S max,\n                                      const Compare &compare\
     \ = Compare()) {\n    assert(min <= max);\n    S a = min - 1, x, b;\n    {\n \
     \       S s = 1, t = 2;\n        while (t < max - min + 2) {\n            std::swap(s\
     \ += t, t);\n        }\n        x = a + t - s;\n        b = a + t;\n    }\n  \
@@ -54,7 +54,7 @@ data:
   path: algorithm/golden_section_search.hpp
   requiredBy:
   - algorithm/monge_d_edge_shortest_path.hpp
-  timestamp: '2023-11-08 12:04:55+09:00'
+  timestamp: '2023-11-08 14:43:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: algorithm/golden_section_search.hpp

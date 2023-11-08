@@ -27,8 +27,8 @@ data:
     using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
     \ 9 \"algorithm/golden_section_search.hpp\"\n\nnamespace ebi {\n\n// ref: https://x.com/noshi91/status/1399003086362865673\n\
     template <std::integral S, class F,\n          class T = decltype(std::declval<F>()(std::declval<S>())),\n\
-    \          class Compare = std::less<T>>\nstd::pair<i64, T> golden_section_search(F\
-    \ f, S min, S max,\n                                        const Compare &compare\
+    \          class Compare = std::less<T>>\nstd::pair<S, T> golden_section_search(F\
+    \ f, S min, S max,\n                                      const Compare &compare\
     \ = Compare()) {\n    assert(min <= max);\n    S a = min - 1, x, b;\n    {\n \
     \       S s = 1, t = 2;\n        while (t < max - min + 2) {\n            std::swap(s\
     \ += t, t);\n        }\n        x = a + t - s;\n        b = a + t;\n    }\n  \
@@ -57,7 +57,7 @@ data:
     T monge_d_edge_shortest_path(int n, int d, T upper, F f) {\n    auto dp = [&](T\
     \ x) -> T {\n        auto g = [&](int i, int j) -> T { return f(i, j) + x; };\n\
     \        T c = monge_shortest_path(n, g)[n - 1];\n        return c - x * d;\n\
-    \    };\n    return golden_section_search(dp, -upper, upper, std::greater<T>());\n\
+    \    };\n    return golden_section_search(dp, -upper, upper, std::greater<T>()).second;\n\
     }\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <utility>\n\n#include \"../algorithm/golden_section_search.hpp\"\
     \n#include \"../algorithm/monge_shortest_path.hpp\"\n\nnamespace ebi {\n\ntemplate\
@@ -66,7 +66,7 @@ data:
     \ n, int d, T upper, F f) {\n    auto dp = [&](T x) -> T {\n        auto g = [&](int\
     \ i, int j) -> T { return f(i, j) + x; };\n        T c = monge_shortest_path(n,\
     \ g)[n - 1];\n        return c - x * d;\n    };\n    return golden_section_search(dp,\
-    \ -upper, upper, std::greater<T>());\n}\n\n}  // namespace ebi"
+    \ -upper, upper, std::greater<T>()).second;\n}\n\n}  // namespace ebi"
   dependsOn:
   - algorithm/golden_section_search.hpp
   - template/int_alias.hpp
@@ -74,7 +74,7 @@ data:
   isVerificationFile: false
   path: algorithm/monge_d_edge_shortest_path.hpp
   requiredBy: []
-  timestamp: '2023-11-08 12:04:55+09:00'
+  timestamp: '2023-11-08 14:43:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: algorithm/monge_d_edge_shortest_path.hpp
