@@ -25,7 +25,7 @@ void main_() {
         if (j - i < l) return std::numeric_limits<i64>::max();
         return seg.prod(i, j);
     };
-    auto dp = monge_shortest_path<i64>(n + 1, f);
+    auto dp = monge_shortest_path(n + 1, f);
     std::cout << -dp[n] << '\n';
 }
 

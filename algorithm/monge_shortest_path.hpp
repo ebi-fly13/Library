@@ -5,7 +5,9 @@
 
 namespace ebi {
 
-template <class T, class F> std::vector<T> monge_shortest_path(int n, F f) {
+template <class F, class T = decltype(std::declval<F>()(std::declval<int>(),
+                                                        std::declval<int>()))>
+std::vector<T> monge_shortest_path(int n, F f) {
     const T max = std::numeric_limits<T>::max();
     std::vector<int> argmin(n, 0);
     std::vector<T> dp(n, max);

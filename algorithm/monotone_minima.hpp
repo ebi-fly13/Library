@@ -6,7 +6,10 @@
 
 namespace ebi {
 
-template <class T, class F, class Compare = std::less<T>>
+template <class F,
+          class T = decltype(std::declval<F>()(std::declval<int>(),
+                                               std::declval<int>())),
+          class Compare = std::less<T>>
 std::pair<std::vector<int>, std::vector<T>> monotone_minima(
     int n, int m, F f, const Compare &compare = Compare()) {
     std::vector<int> argmin(n);
