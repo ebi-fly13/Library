@@ -20,7 +20,7 @@ std::vector<T> min_plus_convolution_convex_and_arbitary(
         if (i - j < 0 || i - j >= n) return std::numeric_limits<T>::max();
         return a[i - j] + b[j];
     };
-    auto [argmin, min_val] = monotone_minima<int>(n + m - 1, m, f);
+    auto [argmin, min_val] = monotone_minima<T>(n + m - 1, m, f);
     return min_val;
 }
 
