@@ -94,9 +94,6 @@ data:
       path: data_structure/Suspension.hpp
       title: data_structure/Suspension.hpp
     - icon: ':heavy_check_mark:'
-      path: data_structure/UnionFind.hpp
-      title: data_structure/UnionFind.hpp
-    - icon: ':heavy_check_mark:'
       path: data_structure/WaveletMatrix.hpp
       title: Wavelet Matrix
     - icon: ':heavy_check_mark:'
@@ -198,6 +195,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/undo_unionfind.hpp
       title: Undo Union Find
+    - icon: ':heavy_check_mark:'
+      path: data_structure/unionfind.hpp
+      title: data_structure/unionfind.hpp
+    - icon: ':warning:'
+      path: data_structure/unionfind_with_potential.hpp
+      title: UnionFind with potential
   - name: fps
     pages:
     - icon: ':heavy_check_mark:'

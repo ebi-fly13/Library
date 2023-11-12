@@ -11,9 +11,9 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/UnionFind.hpp\"\n\r\n#include <vector>\r\n\
-    \r\nnamespace ebi {\r\n\r\nstruct UnionFind {\r\n  private:\r\n    std::vector<int>\
-    \ par;\r\n\r\n  public:\r\n    UnionFind(int n = 0) : par(n, -1) {}\r\n\r\n  \
+  bundledCode: "#line 2 \"data_structure/unionfind.hpp\"\n\r\n#include <vector>\r\n\
+    \r\nnamespace ebi {\r\n\r\nstruct unionfind {\r\n  private:\r\n    std::vector<int>\
+    \ par;\r\n\r\n  public:\r\n    unionfind(int n = 0) : par(n, -1) {}\r\n\r\n  \
     \  bool same(int x, int y) {\r\n        return leader(x) == leader(y);\r\n   \
     \ }\r\n\r\n    bool merge(int x, int y) {\r\n        x = leader(x);\r\n      \
     \  y = leader(y);\r\n        if (x == y) return false;\r\n        if (par[x] >\
@@ -27,8 +27,8 @@ data:
     \ (int i = 0; i < int(par.size()); i++) {\r\n            par[i] = -1;\r\n    \
     \    }\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct\
-    \ UnionFind {\r\n  private:\r\n    std::vector<int> par;\r\n\r\n  public:\r\n\
-    \    UnionFind(int n = 0) : par(n, -1) {}\r\n\r\n    bool same(int x, int y) {\r\
+    \ unionfind {\r\n  private:\r\n    std::vector<int> par;\r\n\r\n  public:\r\n\
+    \    unionfind(int n = 0) : par(n, -1) {}\r\n\r\n    bool same(int x, int y) {\r\
     \n        return leader(x) == leader(y);\r\n    }\r\n\r\n    bool merge(int x,\
     \ int y) {\r\n        x = leader(x);\r\n        y = leader(y);\r\n        if (x\
     \ == y) return false;\r\n        if (par[x] > par[y]) std::swap(x, y);\r\n   \
@@ -43,16 +43,16 @@ data:
     \    }\r\n};\r\n\r\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
-  path: data_structure/UnionFind.hpp
+  path: data_structure/unionfind.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2023-11-13 02:14:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Union_Find.test.cpp
-documentation_of: data_structure/UnionFind.hpp
+documentation_of: data_structure/unionfind.hpp
 layout: document
 redirect_from:
-- /library/data_structure/UnionFind.hpp
-- /library/data_structure/UnionFind.hpp.html
-title: data_structure/UnionFind.hpp
+- /library/data_structure/unionfind.hpp
+- /library/data_structure/unionfind.hpp.html
+title: data_structure/unionfind.hpp
 ---
