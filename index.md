@@ -197,7 +197,7 @@ data:
       title: Undo UnionFind
     - icon: ':heavy_check_mark:'
       path: data_structure/unionfind.hpp
-      title: data_structure/unionfind.hpp
+      title: UnionFind
     - icon: ':warning:'
       path: data_structure/unionfind_with_potential.hpp
       title: UnionFind with potential
