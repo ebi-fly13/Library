@@ -4,12 +4,12 @@
 
 namespace ebi {
 
-struct UnionFind {
+struct unionfind {
   private:
     std::vector<int> par;
 
   public:
-    UnionFind(int n = 0) : par(n, -1) {}
+    unionfind(int n = 0) : par(n, -1) {}
 
     bool same(int x, int y) {
         return leader(x) == leader(y);

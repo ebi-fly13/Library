@@ -2,12 +2,12 @@
 
 #include <iostream>
 
-#include "../../data_structure/UnionFind.hpp"
+#include "../../data_structure/unionfind.hpp"
 
 int main() {
     int n, q;
     std::cin >> n >> q;
-    ebi::UnionFind uf(n);
+    ebi::unionfind uf(n);
     while (q--) {
         int t, u, v;
         std::cin >> t >> u >> v;
