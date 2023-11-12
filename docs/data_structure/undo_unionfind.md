@@ -1,11 +1,11 @@
 ---
-title: Undo Union Find
+title: Undo UnionFind
 documentation_of: //data_structure/undo_unionfind.hpp
 ---
 
 ## 説明
 
-ロールバック可能なUnion Find。
+ロールバック可能なUnionFind。
 
 ### same(int x, int y)
 
