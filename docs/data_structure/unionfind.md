@@ -1,6 +1,6 @@
 ---
-title: UnionFind with potential
-documentation_of: //data_structure/unionfind_with_potential.hpp
+title: UnionFind
+documentation_of: //data_structure/unionfind.hpp
 ---
 
 ## 説明

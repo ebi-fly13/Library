@@ -6,7 +6,6 @@
 namespace ebi {
 
 template <class T> struct unionfind_with_potential {
-  private:
   public:
     unionfind_with_potential(int n) : data_(n, -1), potential_(n, T()) {}
 
