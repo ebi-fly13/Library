@@ -194,7 +194,7 @@ data:
       title: data_structure/splay_tree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/undo_unionfind.hpp
-      title: Undo Union Find
+      title: Undo UnionFind
     - icon: ':heavy_check_mark:'
       path: data_structure/unionfind.hpp
       title: data_structure/unionfind.hpp

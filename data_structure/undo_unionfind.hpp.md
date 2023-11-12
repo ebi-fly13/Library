@@ -64,12 +64,12 @@ data:
   - test/aoj/aoj_1645.test.cpp
 documentation_of: data_structure/undo_unionfind.hpp
 layout: document
-title: Undo Union Find
+title: Undo UnionFind
 ---
 
 ## 説明
 
-ロールバック可能なUnion Find。
+ロールバック可能なUnionFind。
 
 ### same(int x, int y)
 

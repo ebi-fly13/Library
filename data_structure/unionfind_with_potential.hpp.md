@@ -56,28 +56,28 @@ title: UnionFind with potential
 
 ## 説明
 
-ポテンシャル付きUnion Find。ここで、 $\alpha(n)$ をアッカーマン関数の逆関数とする。
+ポテンシャル付きUnionFind。ここで、 $\alpha(N)$ をアッカーマン関数の逆関数とする。
 
 ### same(int x, int y)
 
-$x$ と $y$ が同じグループか判定。 $O(\alpha(n))$
+$x$ と $y$ が同じグループか判定。 $O(\alpha(N))$
 
 ### merge(int x, int y, T p)
 
-$x$ のグループと $y$ のグループをマージ。ポテンシャルは $potential(x) = potential(y) + p$ とする。 $O(\alpha(n))$
+$x$ のグループと $y$ のグループをマージ。ポテンシャルは $potential(x) = potential(y) + p$ とする。 $O(\alpha(N))$
 
 ### leader(int x)
 
-$x$ のグループの代表を返す。 $O(\alpha(n))$
+$x$ のグループの代表を返す。 $O(\alpha(N))$
 
 ### size(int x)
 
-$x$ のグループのサイズを返す。 $O(\alpha(n))$
+$x$ のグループのサイズを返す。 $O(\alpha(N))$
 
 ### potential(int x)
 
-$x$ のポテンシャルを返す。 $O(\alpha(n))$
+$x$ のポテンシャルを返す。 $O(\alpha(N))$
 
 ### diff(int x, int y)
 
-$x$ と $y$ のポテンシャルの差分を返す。 $O(\alpha(n))$
+$x$ と $y$ のポテンシャルの差分を返す。 $O(\alpha(N))$
