@@ -890,6 +890,9 @@ data:
       path: test/yuki/yuki_901.test.cpp
       title: test/yuki/yuki_901.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_901_2.test.cpp
+      title: test/yuki/yuki_901_2.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_952.test.cpp
       title: test/yuki/yuki_952.test.cpp
 layout: toppage

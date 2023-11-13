@@ -52,6 +52,9 @@ data:
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_901_2.test.cpp
+    title: test/yuki/yuki_901_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
   _isVerificationFailed: false
@@ -91,6 +94,7 @@ data:
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_2439.test.cpp
+  - test/yuki/yuki_901_2.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp

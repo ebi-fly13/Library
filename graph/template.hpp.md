@@ -72,6 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_901_2.test.cpp
+    title: test/yuki/yuki_901_2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -127,6 +130,7 @@ data:
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_2439.test.cpp
+  - test/yuki/yuki_901_2.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/aoj/aoj_2450.test.cpp
 documentation_of: graph/template.hpp

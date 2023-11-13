@@ -210,13 +210,28 @@ data:
     \ - 1];\n            }\n        }\n        return v;\n    }\n\n    template <class\
     \ F> void subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
     \ out[u]);\n    }\n\n    const std::vector<int> &dfs_order() const {\n       \
-    \ return rev;\n    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n\
+    \ return rev;\n    }\n\n    std::vector<std::pair<int, int>> lca_based_auxiliary_tree_dfs_order(\n\
+    \        std::vector<int> vs) const;\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n\
     \    lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
     \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
     \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line\
     \ 2 \"tree/lca_based_auxiliary_tree.hpp\"\n\n#line 8 \"tree/lca_based_auxiliary_tree.hpp\"\
-    \n\n#line 10 \"tree/lca_based_auxiliary_tree.hpp\"\n\nnamespace ebi {\n\nstd::pair<std::vector<int>,\
-    \ std::vector<std::vector<int>>>\nheavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int>\
+    \n\n#line 10 \"tree/lca_based_auxiliary_tree.hpp\"\n\nnamespace ebi {\n\nstd::vector<std::pair<int,\
+    \ int>>\nheavy_light_decomposition::lca_based_auxiliary_tree_dfs_order(\n    std::vector<int>\
+    \ vs) const {\n    if (vs.empty()) return {};\n    std::sort(vs.begin(), vs.end(),\n\
+    \              [&](int u, int v) -> bool { return in[u] < in[v]; });\n    auto\
+    \ s = vs;\n    for (int i = 1; i < int(vs.size()); i++) {\n        s.emplace_back(lca(vs[i\
+    \ - 1], vs[i]));\n    }\n    std::sort(s.begin(), s.end(),\n              [&](int\
+    \ u, int v) -> bool { return in[u] < in[v]; });\n    s.erase(std::unique(s.begin(),\
+    \ s.end()), s.end());\n    std::stack<int> stack;\n    stack.push(s[0]);\n   \
+    \ int sz = s.size();\n    std::vector<std::pair<int, int>> dfs_order(sz);\n  \
+    \  dfs_order[0] = {s[0], -1};\n    for (int i = 1; i < int(s.size()); i++) {\n\
+    \        int v = s[i];\n        while (!stack.empty()) {\n            int u =\
+    \ stack.top();\n            if (in[u] <= in[v] && in[v] < out[u]) {\n        \
+    \        break;\n            } else {\n                stack.pop();\n        \
+    \    }\n        }\n        assert(!stack.empty());\n        int par = stack.top();\n\
+    \        dfs_order[i] = {v, par};\n        stack.push(v);\n    }\n    return dfs_order;\n\
+    }\n\nstd::pair<std::vector<int>, std::vector<std::vector<int>>>\nheavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int>\
     \ vs) const {\n    static std::vector<int> a(n, -1), p(n, -1);\n    int k = vs.size();\n\
     \    if (k == 1) {\n        return {vs, std::vector(1, std::vector<int>())};\n\
     \    }\n    std::sort(vs.begin(), vs.end(),\n              [&](int v, int u) {\
@@ -291,7 +306,7 @@ data:
   isVerificationFile: true
   path: test/yuki/yuki_901.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 14:04:57+09:00'
+  timestamp: '2023-11-13 18:22:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yuki/yuki_901.test.cpp

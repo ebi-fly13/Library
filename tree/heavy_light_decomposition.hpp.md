@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_901_2.test.cpp
+    title: test/yuki/yuki_901_2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -101,8 +104,9 @@ data:
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
-    \    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n   \
-    \ lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
+    \    }\n\n    std::vector<std::pair<int, int>> lca_based_auxiliary_tree_dfs_order(\n\
+    \        std::vector<int> vs) const;\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n\
+    \    lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
     \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
     \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <vector>\n\
@@ -174,8 +178,9 @@ data:
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
-    \    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n   \
-    \ lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
+    \    }\n\n    std::vector<std::pair<int, int>> lca_based_auxiliary_tree_dfs_order(\n\
+    \        std::vector<int> vs) const;\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n\
+    \    lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
     \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
     \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi"
   dependsOn: []
@@ -183,7 +188,7 @@ data:
   path: tree/heavy_light_decomposition.hpp
   requiredBy:
   - tree/lca_based_auxiliary_tree.hpp
-  timestamp: '2023-10-31 14:04:57+09:00'
+  timestamp: '2023-11-13 18:22:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Jump_on_Tree_HLD.test.cpp
@@ -192,6 +197,7 @@ data:
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
   - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_2439.test.cpp
+  - test/yuki/yuki_901_2.test.cpp
   - test/aoj/aoj_2450.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document

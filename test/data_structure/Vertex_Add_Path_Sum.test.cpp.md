@@ -142,8 +142,9 @@ data:
     \   }\n        }\n        return v;\n    }\n\n    template <class F> void subtree_query(int\
     \ u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n  \
     \  }\n\n    const std::vector<int> &dfs_order() const {\n        return rev;\n\
-    \    }\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n   \
-    \ lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
+    \    }\n\n    std::vector<std::pair<int, int>> lca_based_auxiliary_tree_dfs_order(\n\
+    \        std::vector<int> vs) const;\n\n    std::pair<std::vector<int>, std::vector<std::vector<int>>>\n\
+    \    lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
     \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
     \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line\
     \ 9 \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\n\nusing i64 = std::int64_t;\n\
@@ -189,7 +190,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 14:04:57+09:00'
+  timestamp: '2023-11-13 18:22:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Path_Sum.test.cpp
