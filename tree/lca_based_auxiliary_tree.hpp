@@ -10,6 +10,42 @@
 
 namespace ebi {
 
+std::vector<std::pair<int, int>>
+heavy_light_decomposition::lca_based_auxiliary_tree_dfs_order(
+    std::vector<int> vs) const {
+    if (vs.empty()) return {};
+    std::sort(vs.begin(), vs.end(),
+              [&](int u, int v) -> bool { return in[u] < in[v]; });
+    auto s = vs;
+    for (int i = 1; i < int(vs.size()); i++) {
+        s.emplace_back(lca(vs[i - 1], vs[i]));
+    }
+    std::sort(s.begin(), s.end(),
+              [&](int u, int v) -> bool { return in[u] < in[v]; });
+    s.erase(std::unique(s.begin(), s.end()), s.end());
+    std::stack<int> stack;
+    stack.push(s[0]);
+    int sz = s.size();
+    std::vector<std::pair<int, int>> dfs_order(sz);
+    dfs_order[0] = {s[0], -1};
+    for (int i = 1; i < int(s.size()); i++) {
+        int v = s[i];
+        while (!stack.empty()) {
+            int u = stack.top();
+            if (in[u] <= in[v] && in[v] < out[u]) {
+                break;
+            } else {
+                stack.pop();
+            }
+        }
+        assert(!stack.empty());
+        int par = stack.top();
+        dfs_order[i] = {v, par};
+        stack.push(v);
+    }
+    return dfs_order;
+}
+
 std::pair<std::vector<int>, std::vector<std::vector<int>>>
 heavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int> vs) const {
     static std::vector<int> a(n, -1), p(n, -1);

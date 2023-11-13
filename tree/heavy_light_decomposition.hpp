@@ -190,6 +190,9 @@ struct heavy_light_decomposition {
         return rev;
     }
 
+    std::vector<std::pair<int, int>> lca_based_auxiliary_tree_dfs_order(
+        std::vector<int> vs) const;
+
     std::pair<std::vector<int>, std::vector<std::vector<int>>>
     lca_based_auxiliary_tree(std::vector<int> vs) const;
 
