@@ -289,7 +289,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 00:17:11+09:00'
+  timestamp: '2023-11-14 20:33:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Polynomial_Taylor_Shift.test.cpp

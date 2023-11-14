@@ -177,7 +177,7 @@ data:
   isVerificationFile: false
   path: math/stirling_number_1st.hpp
   requiredBy: []
-  timestamp: '2023-10-31 00:17:11+09:00'
+  timestamp: '2023-11-14 20:33:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
