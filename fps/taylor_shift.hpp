@@ -1,4 +1,4 @@
-#include <vector>
+#pragma once
 
 #include "../fps/fps.hpp"
 #include "../math/binomial.hpp"

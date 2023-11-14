@@ -1,10 +1,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/polynomial_interpolation"
 
-#include "fps/polynomial_interpolation.hpp"
+#include "../../fps/polynomial_interpolation.hpp"
 
+#include "../../convolution/ntt.hpp"
+#include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
-#include "convolution/ntt.hpp"
-#include "modint/modint.hpp"
 
 namespace ebi {
 
