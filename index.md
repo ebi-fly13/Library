@@ -180,7 +180,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/slope_trick.hpp
       title: Slope Trick
     - icon: ':heavy_check_mark:'
@@ -874,6 +874,9 @@ data:
       title: test/tree/lowest_common_ancestor.test.cpp
   - name: test/yuki
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_1077.test.cpp
+      title: test/yuki/yuki_1077.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1145.test.cpp
       title: test/yuki/yuki_1145.test.cpp
