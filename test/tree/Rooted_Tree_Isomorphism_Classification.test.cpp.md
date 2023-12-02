@@ -86,8 +86,8 @@ data:
     \ rnd;\r\n    std::mt19937_64 mt;\r\n\r\n  public:\r\n    random_number_generator_64()\
     \ : mt(rnd()) {}\r\n\r\n    u64 get(u64 a, u64 b) {\r\n        std::uniform_int_distribution<u64>\
     \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM>\
-    \ struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
+    \ ebi\n#line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM\
+    \ = 2> struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
     \ BASE_NUM>::array;\n    using std::array<modint61, BASE_NUM>::operator=;\n\n\
     \  public:\n    Hash() : std::array<modint61, BASE_NUM>() {}\n\n    constexpr\
     \ static Hash set(const modint61 &a) {\n        Hash res;\n        std::fill(res.begin(),\
@@ -127,12 +127,12 @@ data:
     \ d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151, 331, 1321}) {\n            if (modint61(x).pow((modint61::mod()\
     \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
     \ true;\n    }\n};\n\n}  // namespace ebi\n#line 6 \"tree/rooted_tree_hash.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <int BASE_NUM> struct rooted_tree_hash {\n  private:\n\
-    \    using H = Hash<BASE_NUM>;\n\n    static H get_basis(int d) {\n        if\
-    \ (int(_basis.size()) <= d) _basis.emplace_back(H::get_basis());\n        return\
-    \ _basis[d];\n    }\n\n  public:\n    rooted_tree_hash() = default;\n\n    static\
-    \ std::vector<H> subtree_hash(const std::vector<std::vector<int>> &g,\n      \
-    \                                 int root = 0) {\n        int n = g.size();\n\
+    \n\nnamespace ebi {\n\ntemplate <int BASE_NUM = 2> struct rooted_tree_hash {\n\
+    \  private:\n    using H = Hash<BASE_NUM>;\n\n    static H get_basis(int d) {\n\
+    \        if (int(_basis.size()) <= d) _basis.emplace_back(H::get_basis());\n \
+    \       return _basis[d];\n    }\n\n  public:\n    rooted_tree_hash() = default;\n\
+    \n    static std::vector<H> subtree_hash(const std::vector<std::vector<int>> &g,\n\
+    \                                       int root = 0) {\n        int n = g.size();\n\
     \        std::vector<H> hash(n, H::set(1));\n        std::vector<int> depth(n,\
     \ 0);\n        auto dfs = [&](auto &&self, int v, int par = -1) -> void {\n  \
     \          for (auto nv : g[v]) {\n                if (nv == par) continue;\n\
@@ -171,7 +171,7 @@ data:
   isVerificationFile: true
   path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
+  timestamp: '2023-12-02 23:38:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp

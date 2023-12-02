@@ -86,8 +86,8 @@ data:
     \ mt;\r\n\r\n  public:\r\n    random_number_generator_64() : mt(rnd()) {}\r\n\r\
     \n    u64 get(u64 a, u64 b) {\r\n        std::uniform_int_distribution<u64> dist(a,\
     \ b - 1);\r\n        return dist(mt);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
-    #line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM> struct\
-    \ Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
+    #line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM = 2>\
+    \ struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
     \ BASE_NUM>::array;\n    using std::array<modint61, BASE_NUM>::operator=;\n\n\
     \  public:\n    Hash() : std::array<modint61, BASE_NUM>() {}\n\n    constexpr\
     \ static Hash set(const modint61 &a) {\n        Hash res;\n        std::fill(res.begin(),\
@@ -129,8 +129,8 @@ data:
     \ true;\n    }\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <array>\n\n#include \"../modint/modint61.hpp\"\n\
     #include \"../utility/random_number_generator_64.hpp\"\n\nnamespace ebi {\n\n\
-    template <int BASE_NUM> struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n\
-    \    using std::array<modint61, BASE_NUM>::array;\n    using std::array<modint61,\
+    template <int BASE_NUM = 2> struct Hash : std::array<modint61, BASE_NUM> {\n \
+    \ private:\n    using std::array<modint61, BASE_NUM>::array;\n    using std::array<modint61,\
     \ BASE_NUM>::operator=;\n\n  public:\n    Hash() : std::array<modint61, BASE_NUM>()\
     \ {}\n\n    constexpr static Hash set(const modint61 &a) {\n        Hash res;\n\
     \        std::fill(res.begin(), res.end(), a);\n        return res;\n    }\n\n\
@@ -179,7 +179,7 @@ data:
   requiredBy:
   - tree/rooted_tree_hash.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-10-26 11:41:06+09:00'
+  timestamp: '2023-12-02 23:38:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp

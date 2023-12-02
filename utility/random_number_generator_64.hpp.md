@@ -41,8 +41,8 @@ data:
   path: utility/random_number_generator_64.hpp
   requiredBy:
   - tree/rooted_tree_hash.hpp
-  - utility/hash.hpp
   - string/rolling_hash.hpp
+  - utility/hash.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -82,8 +82,8 @@ data:
     \ mt;\r\n\r\n  public:\r\n    random_number_generator_64() : mt(rnd()) {}\r\n\r\
     \n    u64 get(u64 a, u64 b) {\r\n        std::uniform_int_distribution<u64> dist(a,\
     \ b - 1);\r\n        return dist(mt);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
-    #line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM> struct\
-    \ Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
+    #line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM = 2>\
+    \ struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
     \ BASE_NUM>::array;\n    using std::array<modint61, BASE_NUM>::operator=;\n\n\
     \  public:\n    Hash() : std::array<modint61, BASE_NUM>() {}\n\n    constexpr\
     \ static Hash set(const modint61 &a) {\n        Hash res;\n        std::fill(res.begin(),\
@@ -124,8 +124,8 @@ data:
     \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
     \ true;\n    }\n};\n\n}  // namespace ebi\n#line 10 \"string/rolling_hash.hpp\"\
     \n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
-    \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n> struct rolling_hash {\r\n\
-    \  private:\r\n    static constexpr int h = 100;\r\n\r\n    using Self = rolling_hash<n>;\r\
+    \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n = 2> struct rolling_hash {\r\
+    \n  private:\r\n    static constexpr int h = 100;\r\n\r\n    using Self = rolling_hash<n>;\r\
     \n\r\n    static void expand(int m) {\r\n        int now = base_pow.size();\r\n\
     \        while (now <= m) {\r\n            now <<= 1;\r\n        }\r\n       \
     \ if (int(base_pow.size()) == now) return;\r\n        base_pow.reserve(now);\r\
@@ -169,8 +169,8 @@ data:
   code: "#pragma once\r\n\r\n#include <array>\r\n#include <cassert>\r\n#include <cstdint>\r\
     \n#include <vector>\r\n\r\n#include \"../modint/modint61.hpp\"\r\n#include \"\
     ../utility/hash.hpp\"\r\n\r\n/*\r\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\r\
-    \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n> struct rolling_hash {\r\n\
-    \  private:\r\n    static constexpr int h = 100;\r\n\r\n    using Self = rolling_hash<n>;\r\
+    \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int n = 2> struct rolling_hash {\r\
+    \n  private:\r\n    static constexpr int h = 100;\r\n\r\n    using Self = rolling_hash<n>;\r\
     \n\r\n    static void expand(int m) {\r\n        int now = base_pow.size();\r\n\
     \        while (now <= m) {\r\n            now <<= 1;\r\n        }\r\n       \
     \ if (int(base_pow.size()) == now) return;\r\n        base_pow.reserve(now);\r\
@@ -219,7 +219,7 @@ data:
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
+  timestamp: '2023-12-02 23:38:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
