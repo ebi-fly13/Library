@@ -7,7 +7,7 @@
 
 namespace ebi {
 
-template <int BASE_NUM> struct Hash : std::array<modint61, BASE_NUM> {
+template <int BASE_NUM = 2> struct Hash : std::array<modint61, BASE_NUM> {
   private:
     using std::array<modint61, BASE_NUM>::array;
     using std::array<modint61, BASE_NUM>::operator=;

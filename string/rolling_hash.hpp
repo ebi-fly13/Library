@@ -14,7 +14,7 @@
 
 namespace ebi {
 
-template <int n> struct rolling_hash {
+template <int n = 2> struct rolling_hash {
   private:
     static constexpr int h = 100;
 

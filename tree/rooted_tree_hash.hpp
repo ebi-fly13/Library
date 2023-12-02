@@ -6,7 +6,7 @@
 
 namespace ebi {
 
-template <int BASE_NUM> struct rooted_tree_hash {
+template <int BASE_NUM = 2> struct rooted_tree_hash {
   private:
     using H = Hash<BASE_NUM>;
 
