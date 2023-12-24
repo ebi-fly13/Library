@@ -77,8 +77,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Two_Edge_Connected_Components.test.cpp
-  - test/graph/Biconnected_Components.test.cpp
   - test/graph/Articulation_Points.test.cpp
+  - test/graph/Biconnected_Components.test.cpp
 documentation_of: graph/low_link.hpp
 layout: document
 title: Low Link

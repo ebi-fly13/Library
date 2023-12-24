@@ -174,8 +174,8 @@ data:
   timestamp: '2023-11-13 18:22:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_901_2.test.cpp
+  - test/yuki/yuki_901.test.cpp
 documentation_of: tree/lca_based_auxiliary_tree.hpp
 layout: document
 title: LCA based Auxiliary Tree

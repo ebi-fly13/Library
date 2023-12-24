@@ -290,42 +290,42 @@ data:
   isVerificationFile: false
   path: fps/fps.hpp
   requiredBy:
-  - fps/fps_sqrt.hpp
-  - fps/multipoint_evaluation.hpp
-  - fps/polynomial_interpolation.hpp
-  - fps/product_of_one_plus_xn.hpp
-  - fps/compositional_inverse_of_fps.hpp
-  - fps/taylor_shift.hpp
-  - fps/sums_of_powers.hpp
-  - fps/composition_of_fps.hpp
-  - fps/product_of_one_minus_xn.hpp
-  - math/stirling_number_1st.hpp
-  - math/stirling_number_2nd.hpp
   - math/partition_function.hpp
   - math/bernoulli_number.hpp
+  - math/stirling_number_2nd.hpp
+  - math/stirling_number_1st.hpp
+  - fps/product_of_one_minus_xn.hpp
+  - fps/composition_of_fps.hpp
+  - fps/compositional_inverse_of_fps.hpp
+  - fps/sums_of_powers.hpp
+  - fps/fps_sqrt.hpp
+  - fps/multipoint_evaluation.hpp
+  - fps/product_of_one_plus_xn.hpp
+  - fps/taylor_shift.hpp
+  - fps/polynomial_interpolation.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/math/Berunoulli_Number.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1145.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - test/math/Partition_Function_Pentagonal.test.cpp
-  - test/math/sharp_p_subset_sum.test.cpp
-  - test/math/Berunoulli_Number.test.cpp
 documentation_of: fps/fps.hpp
 layout: document
 title: Formal Power Series
