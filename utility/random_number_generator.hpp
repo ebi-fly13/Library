@@ -11,6 +11,10 @@ struct random_number_generator {
         mt.seed(seed);
     }
 
+    void set_seed(int seed) {
+        mt.seed(seed);
+    }
+
     template <class T> T get(T a, T b) {
         std::uniform_int_distribution<T> dist(a, b - 1);
         return dist(mt);
