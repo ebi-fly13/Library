@@ -83,10 +83,11 @@ data:
     \ 2 \"utility/random_number_generator.hpp\"\n\r\n#line 4 \"utility/random_number_generator.hpp\"\
     \n#include <random>\r\n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator\
     \ {\r\n    random_number_generator(int seed = -1) {\r\n        if (seed < 0) seed\
-    \ = rnd();\r\n        mt.seed(seed);\r\n    }\r\n\r\n    template <class T> T\
-    \ get(T a, T b) {\r\n        std::uniform_int_distribution<T> dist(a, b - 1);\r\
-    \n        return dist(mt);\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\
-    \n    std::random_device rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 7 \"utility/hash.hpp\"\
+    \ = rnd();\r\n        mt.seed(seed);\r\n    }\r\n\r\n    void set_seed(int seed)\
+    \ {\r\n        mt.seed(seed);\r\n    }\r\n\r\n    template <class T> T get(T a,\
+    \ T b) {\r\n        std::uniform_int_distribution<T> dist(a, b - 1);\r\n     \
+    \   return dist(mt);\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n\
+    \    std::random_device rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 7 \"utility/hash.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <int BASE_NUM = 2> struct Hash : std::array<modint61,\
     \ BASE_NUM> {\n  private:\n    using std::array<modint61, BASE_NUM>::array;\n\
     \    using std::array<modint61, BASE_NUM>::operator=;\n\n  public:\n    Hash()\
@@ -173,7 +174,7 @@ data:
   isVerificationFile: true
   path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   requiredBy: []
-  timestamp: '2023-12-26 02:18:25+09:00'
+  timestamp: '2023-12-26 02:24:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
