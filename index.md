@@ -458,8 +458,8 @@ data:
       path: utility/hash.hpp
       title: Hash structure
     - icon: ':heavy_check_mark:'
-      path: utility/random_number_generator_64.hpp
-      title: utility/random_number_generator_64.hpp
+      path: utility/random_number_generator.hpp
+      title: utility/random_number_generator.hpp
   verificationCategories:
   - name: test/Dice
     pages:

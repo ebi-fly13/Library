@@ -8,8 +8,8 @@ data:
     path: modint/modint61.hpp
     title: modint/modint61.hpp
   - icon: ':heavy_check_mark:'
-    path: utility/random_number_generator_64.hpp
-    title: utility/random_number_generator_64.hpp
+    path: utility/random_number_generator.hpp
+    title: utility/random_number_generator.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
@@ -79,15 +79,15 @@ data:
     \       return m;\n    }\n\n    constexpr u64 safe_mod(const u64 &a) {\n     \
     \   u64 au = a >> 61;\n        u64 ad = a & umod();\n        u64 res = au + ad;\n\
     \        if (res >= umod()) res -= umod();\n        return res;\n    }\n};\n\n\
-    }  // namespace ebi\n#line 2 \"utility/random_number_generator_64.hpp\"\n\r\n\
-    #line 4 \"utility/random_number_generator_64.hpp\"\n#include <random>\r\n\r\n\
-    namespace ebi {\r\n\r\nstruct random_number_generator_64 {\r\n  private:\r\n \
-    \   using u64 = std::uint64_t;\r\n    std::random_device rnd;\r\n    std::mt19937_64\
-    \ mt;\r\n\r\n  public:\r\n    random_number_generator_64() : mt(rnd()) {}\r\n\r\
-    \n    u64 get(u64 a, u64 b) {\r\n        std::uniform_int_distribution<u64> dist(a,\
-    \ b - 1);\r\n        return dist(mt);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
-    #line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM = 2>\
-    \ struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
+    }  // namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\n\r\n#line\
+    \ 4 \"utility/random_number_generator.hpp\"\n#include <random>\r\n\r\nnamespace\
+    \ ebi {\r\n\r\nstruct random_number_generator {\r\n    random_number_generator(int\
+    \ seed = -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\
+    \n    }\r\n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n  private:\r\n \
+    \   std::mt19937_64 mt;\r\n    std::random_device rnd;\r\n};\r\n\r\n}  // namespace\
+    \ ebi\n#line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM\
+    \ = 2> struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
     \ BASE_NUM>::array;\n    using std::array<modint61, BASE_NUM>::operator=;\n\n\
     \  public:\n    Hash() : std::array<modint61, BASE_NUM>() {}\n\n    constexpr\
     \ static Hash set(const modint61 &a) {\n        Hash res;\n        std::fill(res.begin(),\
@@ -114,23 +114,24 @@ data:
     \ *= rhs;\n    }\n\n    Hash pow(long long n) const {\n        Hash a = *this,\
     \ res = set(1);\n        while (n) {\n            if (n & 1) res *= a;\n     \
     \       a *= a;\n            n >>= 1;\n        }\n        return res;\n    }\n\
-    \n    static Hash get_basis() {\n        static random_number_generator_64 rng;\n\
+    \n    static Hash get_basis() {\n        static random_number_generator rng;\n\
     \        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n            h[i]\
-    \ = rng.get(0, modint61::mod() - 1) + 1;\n        }\n        return h;\n    }\n\
-    \n    Hash inv() const {\n        Hash h;\n        for (int i = 0; i < BASE_NUM;\
-    \ i++) {\n            h[i] = (*this)[i].inv();\n        }\n        return h;\n\
-    \    }\n\n    static Hash get_basis_primitive() {\n        static random_number_generator_64\
-    \ rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n      \
-    \      while (!is_primitive(\n                (h[i] = rng.get(0, modint61::mod()\
-    \ - 1) + 1).val()))\n                ;\n        }\n        return h;\n    }\n\n\
-    \  private:\n    static bool is_primitive(long long x) {\n        for (long long\
-    \ d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151, 331, 1321}) {\n            if (modint61(x).pow((modint61::mod()\
-    \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
-    \ true;\n    }\n};\n\n}  // namespace ebi\n"
+    \ = rng.get<std::uint64_t>(0, modint61::mod() - 1) + 1;\n        }\n        return\
+    \ h;\n    }\n\n    Hash inv() const {\n        Hash h;\n        for (int i = 0;\
+    \ i < BASE_NUM; i++) {\n            h[i] = (*this)[i].inv();\n        }\n    \
+    \    return h;\n    }\n\n    static Hash get_basis_primitive() {\n        static\
+    \ random_number_generator rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM;\
+    \ i++) {\n            while (!is_primitive(\n                (h[i] = rng.get<std::uint64_t>(0,\
+    \ modint61::mod() - 1) + 1).val()))\n                ;\n        }\n        return\
+    \ h;\n    }\n\n  private:\n    static bool is_primitive(long long x) {\n     \
+    \   for (long long d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151, 331, 1321}) {\n \
+    \           if (modint61(x).pow((modint61::mod() - 1) / d).val() <= 1)\n     \
+    \           return false;\n        }\n        return true;\n    }\n};\n\n}  //\
+    \ namespace ebi\n"
   code: "#pragma once\n\n#include <array>\n\n#include \"../modint/modint61.hpp\"\n\
-    #include \"../utility/random_number_generator_64.hpp\"\n\nnamespace ebi {\n\n\
-    template <int BASE_NUM = 2> struct Hash : std::array<modint61, BASE_NUM> {\n \
-    \ private:\n    using std::array<modint61, BASE_NUM>::array;\n    using std::array<modint61,\
+    #include \"../utility/random_number_generator.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <int BASE_NUM = 2> struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n\
+    \    using std::array<modint61, BASE_NUM>::array;\n    using std::array<modint61,\
     \ BASE_NUM>::operator=;\n\n  public:\n    Hash() : std::array<modint61, BASE_NUM>()\
     \ {}\n\n    constexpr static Hash set(const modint61 &a) {\n        Hash res;\n\
     \        std::fill(res.begin(), res.end(), a);\n        return res;\n    }\n\n\
@@ -157,29 +158,30 @@ data:
     \ *= rhs;\n    }\n\n    Hash pow(long long n) const {\n        Hash a = *this,\
     \ res = set(1);\n        while (n) {\n            if (n & 1) res *= a;\n     \
     \       a *= a;\n            n >>= 1;\n        }\n        return res;\n    }\n\
-    \n    static Hash get_basis() {\n        static random_number_generator_64 rng;\n\
+    \n    static Hash get_basis() {\n        static random_number_generator rng;\n\
     \        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n            h[i]\
-    \ = rng.get(0, modint61::mod() - 1) + 1;\n        }\n        return h;\n    }\n\
-    \n    Hash inv() const {\n        Hash h;\n        for (int i = 0; i < BASE_NUM;\
-    \ i++) {\n            h[i] = (*this)[i].inv();\n        }\n        return h;\n\
-    \    }\n\n    static Hash get_basis_primitive() {\n        static random_number_generator_64\
-    \ rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n      \
-    \      while (!is_primitive(\n                (h[i] = rng.get(0, modint61::mod()\
-    \ - 1) + 1).val()))\n                ;\n        }\n        return h;\n    }\n\n\
-    \  private:\n    static bool is_primitive(long long x) {\n        for (long long\
-    \ d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151, 331, 1321}) {\n            if (modint61(x).pow((modint61::mod()\
-    \ - 1) / d).val() <= 1)\n                return false;\n        }\n        return\
-    \ true;\n    }\n};\n\n}  // namespace ebi"
+    \ = rng.get<std::uint64_t>(0, modint61::mod() - 1) + 1;\n        }\n        return\
+    \ h;\n    }\n\n    Hash inv() const {\n        Hash h;\n        for (int i = 0;\
+    \ i < BASE_NUM; i++) {\n            h[i] = (*this)[i].inv();\n        }\n    \
+    \    return h;\n    }\n\n    static Hash get_basis_primitive() {\n        static\
+    \ random_number_generator rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM;\
+    \ i++) {\n            while (!is_primitive(\n                (h[i] = rng.get<std::uint64_t>(0,\
+    \ modint61::mod() - 1) + 1).val()))\n                ;\n        }\n        return\
+    \ h;\n    }\n\n  private:\n    static bool is_primitive(long long x) {\n     \
+    \   for (long long d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151, 331, 1321}) {\n \
+    \           if (modint61(x).pow((modint61::mod() - 1) / d).val() <= 1)\n     \
+    \           return false;\n        }\n        return true;\n    }\n};\n\n}  //\
+    \ namespace ebi"
   dependsOn:
   - modint/modint61.hpp
   - modint/base.hpp
-  - utility/random_number_generator_64.hpp
+  - utility/random_number_generator.hpp
   isVerificationFile: false
   path: utility/hash.hpp
   requiredBy:
   - tree/rooted_tree_hash.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-12-02 23:38:29+09:00'
+  timestamp: '2023-12-26 02:18:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
