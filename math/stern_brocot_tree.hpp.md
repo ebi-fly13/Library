@@ -79,15 +79,24 @@ data:
     \      }\n                std::swap(l, nl);\n                std::swap(r, nr);\n\
     \                break;\n            }\n            std::swap(l, nl);\n      \
     \      std::swap(r, nr);\n            is_right = !is_right;\n        }\n     \
-    \   return {l, r};\n    }\n\n    static Fraction val(const std::pair<Fraction,\
-    \ Fraction> &f) {\n        return add(f.first, f.second);\n    }\n\n    static\
-    \ void print_path(const std::vector<T> &path) {\n        if (path.empty()) {\n\
-    \            std::cout << \"0\\n\";\n            return;\n        }\n        int\
-    \ k = (int)path.size() - int(path[0] == 0);\n        std::cout << k;\n       \
-    \ for (bool is_right = true; auto c : path) {\n            if (c > 0) {\n    \
-    \            std::cout << \" \" << (is_right ? 'R' : 'L') << \" \" << c;\n   \
-    \         }\n            is_right = !is_right;\n        }\n        std::cout <<\
-    \ '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi\n"
+    \   return {l, r};\n    }\n\n    static Fraction best_rational_within_an_interval(Fraction\
+    \ l, Fraction r) {\n        Fraction m = lca(l, r);\n        if (l == m) {\n \
+    \           Fraction rch = childs(l).second;\n            if (rch == r) {\n  \
+    \              return childs(r).first;\n            } else {\n               \
+    \ return rch;\n            }\n        } else if (r == m) {\n            Fraction\
+    \ lch = childs(r).first;\n            if (lch == l) {\n                return\
+    \ childs(l).second;\n            } else {\n                return lch;\n     \
+    \       }\n        } else {\n            return m;\n        }\n    }\n\n    static\
+    \ std::pair<Fraction, Fraction> childs(Fraction f) {\n        auto [l, r] = range(f);\n\
+    \        return {add(l, f), add(f, r)};\n    }\n\n    static Fraction val(const\
+    \ std::pair<Fraction, Fraction> &f) {\n        return add(f.first, f.second);\n\
+    \    }\n\n    static void print_path(const std::vector<T> &path) {\n        if\
+    \ (path.empty()) {\n            std::cout << \"0\\n\";\n            return;\n\
+    \        }\n        int k = (int)path.size() - int(path[0] == 0);\n        std::cout\
+    \ << k;\n        for (bool is_right = true; auto c : path) {\n            if (c\
+    \ > 0) {\n                std::cout << \" \" << (is_right ? 'R' : 'L') << \" \"\
+    \ << c;\n            }\n            is_right = !is_right;\n        }\n       \
+    \ std::cout << '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <concepts>\n#include <cstdint>\n\
     #include <iostream>\n#include <optional>\n#include <vector>\n\n/*\nreference:\
     \ https://miscalc.hatenablog.com/entry/2023/12/22/213007\n           https://rsk0315.hatenablog.com/entry/2023/04/17/022705\n\
@@ -152,20 +161,29 @@ data:
     \      }\n                std::swap(l, nl);\n                std::swap(r, nr);\n\
     \                break;\n            }\n            std::swap(l, nl);\n      \
     \      std::swap(r, nr);\n            is_right = !is_right;\n        }\n     \
-    \   return {l, r};\n    }\n\n    static Fraction val(const std::pair<Fraction,\
-    \ Fraction> &f) {\n        return add(f.first, f.second);\n    }\n\n    static\
-    \ void print_path(const std::vector<T> &path) {\n        if (path.empty()) {\n\
-    \            std::cout << \"0\\n\";\n            return;\n        }\n        int\
-    \ k = (int)path.size() - int(path[0] == 0);\n        std::cout << k;\n       \
-    \ for (bool is_right = true; auto c : path) {\n            if (c > 0) {\n    \
-    \            std::cout << \" \" << (is_right ? 'R' : 'L') << \" \" << c;\n   \
-    \         }\n            is_right = !is_right;\n        }\n        std::cout <<\
-    \ '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi"
+    \   return {l, r};\n    }\n\n    static Fraction best_rational_within_an_interval(Fraction\
+    \ l, Fraction r) {\n        Fraction m = lca(l, r);\n        if (l == m) {\n \
+    \           Fraction rch = childs(l).second;\n            if (rch == r) {\n  \
+    \              return childs(r).first;\n            } else {\n               \
+    \ return rch;\n            }\n        } else if (r == m) {\n            Fraction\
+    \ lch = childs(r).first;\n            if (lch == l) {\n                return\
+    \ childs(l).second;\n            } else {\n                return lch;\n     \
+    \       }\n        } else {\n            return m;\n        }\n    }\n\n    static\
+    \ std::pair<Fraction, Fraction> childs(Fraction f) {\n        auto [l, r] = range(f);\n\
+    \        return {add(l, f), add(f, r)};\n    }\n\n    static Fraction val(const\
+    \ std::pair<Fraction, Fraction> &f) {\n        return add(f.first, f.second);\n\
+    \    }\n\n    static void print_path(const std::vector<T> &path) {\n        if\
+    \ (path.empty()) {\n            std::cout << \"0\\n\";\n            return;\n\
+    \        }\n        int k = (int)path.size() - int(path[0] == 0);\n        std::cout\
+    \ << k;\n        for (bool is_right = true; auto c : path) {\n            if (c\
+    \ > 0) {\n                std::cout << \" \" << (is_right ? 'R' : 'L') << \" \"\
+    \ << c;\n            }\n            is_right = !is_right;\n        }\n       \
+    \ std::cout << '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: math/stern_brocot_tree.hpp
   requiredBy: []
-  timestamp: '2023-12-29 01:17:51+09:00'
+  timestamp: '2023-12-29 02:10:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stern-Brocot_Tree.test.cpp
@@ -215,6 +233,14 @@ Stern-Brocot Tree の上の有理数 $f$ と対応するノードの持つ有理
 ### nearest_fraction(i64 max, Fraction f)
 
 有理数 $f$ について $l < f < r$ を満たす最大の有理数 $l$ と最小の有理数 $r$ を返す。
+
+出題例: [ABC333-G](https://atcoder.jp/contests/abc333/tasks/abc333_g)
+
+### [best_rational_within_an_interval](https://en.wikipedia.org/wiki/Continued_fraction#Best_rational_within_an_interval)(Fraction l, Fraction r)
+
+有理数開区間 $(l, r)$ に含まれており、分母が最小であるもののうち分子が最小であるような有理数を返す。
+
+出題例: [GCJ2019 Round 2](https://github.com/google/coding-competitions-archive/blob/main/codejam/2019/round_2/new_elements_part_2/statement.pdf)
 
 ### val(std::pair<Fraction, Fraction> f)
 
