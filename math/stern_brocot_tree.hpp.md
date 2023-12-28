@@ -12,10 +12,10 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"math/stern_brocot_tree.hpp\"\n\n#include <cassert>\n#include\
-    \ <concepts>\n#include <iostream>\n#include <optional>\n#include <vector>\n#include\
-    \ <cstdint>\n\nnamespace ebi {\n\nstruct stern_brocot_tree {\n  private:\n   \
-    \ using value_type = std::int64_t;\n    using T = value_type;\n    using Fraction\
-    \ = std::pair<T, T>;\n\n    static Fraction add(const Fraction &lhs, const Fraction\
+    \ <concepts>\n#include <cstdint>\n#include <iostream>\n#include <optional>\n#include\
+    \ <vector>\n\nnamespace ebi {\n\nstruct stern_brocot_tree {\n  private:\n    using\
+    \ value_type = std::int64_t;\n    using T = value_type;\n    using Fraction =\
+    \ std::pair<T, T>;\n\n    static Fraction add(const Fraction &lhs, const Fraction\
     \ &rhs) {\n        return {lhs.first + rhs.first, lhs.second + rhs.second};\n\
     \    }\n\n    static Fraction mul(const T k, const Fraction &a) {\n        return\
     \ {k * a.first, k * a.second};\n    }\n\n  public:\n    stern_brocot_tree() =\
@@ -48,29 +48,29 @@ data:
     \          k -= m;\n            if (k == 0) break;\n        }\n        if (k >\
     \ 0) return std::nullopt;\n        return val(decode_path(path));\n    }\n\n \
     \   static std::pair<Fraction, Fraction> range(Fraction f) {\n        return decode_path(encode_path(f));\n\
-    \    }\n\n    template<class F>\n    static Fraction binary_search(const T max_value,\
-    \ F f) {\n        Fraction l = {0, 1}, r = {1, 0};\n        while(true) {\n  \
-    \          Fraction now = val({l, r});\n            bool flag = f(now);\n    \
-    \        Fraction from = flag ? l : r;\n            Fraction to = flag ? r : l;\n\
-    \            T ok = 1, ng = 2;\n            while(f(add(from, mul(ng, to))) ==\
-    \ flag) {\n                ok <<= 1;\n                ng <<= 1;\n            \
-    \    auto nxt = add(from, mul(ok, to));\n                if(nxt.first > max_value\
-    \ || nxt.second > max_value) return to;\n            }\n            while(ng -\
-    \ ok > 1) {\n                T mid = (ok + ng) >> 1;\n                if(f(add(from,\
-    \ mul(mid, to))) == flag) {\n                    ok = mid;\n                }\n\
-    \                else {\n                    ng = mid;\n                }\n  \
-    \          }\n            (flag ? l : r) = add(from, mul(ok, to));\n        }\n\
-    \        assert(0);\n        return l;\n    }\n\n    static Fraction val(const\
-    \ std::pair<Fraction, Fraction> &f) {\n        return add(f.first, f.second);\n\
-    \    }\n\n    static void print_path(const std::vector<T> &path) {\n        if\
-    \ (path.empty()) {\n            std::cout << \"0\\n\";\n            return;\n\
-    \        }\n        int k = (int)path.size() - int(path[0] == 0);\n        std::cout\
-    \ << k;\n        for (bool is_right = true; auto c : path) {\n            if (c\
-    \ > 0) {\n                std::cout << \" \" << (is_right ? 'R' : 'L') << \" \"\
-    \ << c;\n            }\n            is_right = !is_right;\n        }\n       \
-    \ std::cout << '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <concepts>\n#include <iostream>\n\
-    #include <optional>\n#include <vector>\n#include <cstdint>\n\nnamespace ebi {\n\
+    \    }\n\n    template <class F> static Fraction binary_search(const T max_value,\
+    \ F f) {\n        Fraction l = {0, 1}, r = {1, 0};\n        while (true) {\n \
+    \           Fraction now = val({l, r});\n            bool flag = f(now);\n   \
+    \         Fraction from = flag ? l : r;\n            Fraction to = flag ? r :\
+    \ l;\n            T ok = 1, ng = 2;\n            while (f(add(from, mul(ng, to)))\
+    \ == flag) {\n                ok <<= 1;\n                ng <<= 1;\n         \
+    \       auto nxt = add(from, mul(ok, to));\n                if (nxt.first > max_value\
+    \ || nxt.second > max_value) return to;\n            }\n            while (ng\
+    \ - ok > 1) {\n                T mid = (ok + ng) >> 1;\n                if (f(add(from,\
+    \ mul(mid, to))) == flag) {\n                    ok = mid;\n                }\
+    \ else {\n                    ng = mid;\n                }\n            }\n  \
+    \          (flag ? l : r) = add(from, mul(ok, to));\n        }\n        assert(0);\n\
+    \        return l;\n    }\n\n    static Fraction val(const std::pair<Fraction,\
+    \ Fraction> &f) {\n        return add(f.first, f.second);\n    }\n\n    static\
+    \ void print_path(const std::vector<T> &path) {\n        if (path.empty()) {\n\
+    \            std::cout << \"0\\n\";\n            return;\n        }\n        int\
+    \ k = (int)path.size() - int(path[0] == 0);\n        std::cout << k;\n       \
+    \ for (bool is_right = true; auto c : path) {\n            if (c > 0) {\n    \
+    \            std::cout << \" \" << (is_right ? 'R' : 'L') << \" \" << c;\n   \
+    \         }\n            is_right = !is_right;\n        }\n        std::cout <<\
+    \ '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <concepts>\n#include <cstdint>\n\
+    #include <iostream>\n#include <optional>\n#include <vector>\n\nnamespace ebi {\n\
     \nstruct stern_brocot_tree {\n  private:\n    using value_type = std::int64_t;\n\
     \    using T = value_type;\n    using Fraction = std::pair<T, T>;\n\n    static\
     \ Fraction add(const Fraction &lhs, const Fraction &rhs) {\n        return {lhs.first\
@@ -105,32 +105,32 @@ data:
     \          k -= m;\n            if (k == 0) break;\n        }\n        if (k >\
     \ 0) return std::nullopt;\n        return val(decode_path(path));\n    }\n\n \
     \   static std::pair<Fraction, Fraction> range(Fraction f) {\n        return decode_path(encode_path(f));\n\
-    \    }\n\n    template<class F>\n    static Fraction binary_search(const T max_value,\
-    \ F f) {\n        Fraction l = {0, 1}, r = {1, 0};\n        while(true) {\n  \
-    \          Fraction now = val({l, r});\n            bool flag = f(now);\n    \
-    \        Fraction from = flag ? l : r;\n            Fraction to = flag ? r : l;\n\
-    \            T ok = 1, ng = 2;\n            while(f(add(from, mul(ng, to))) ==\
-    \ flag) {\n                ok <<= 1;\n                ng <<= 1;\n            \
-    \    auto nxt = add(from, mul(ok, to));\n                if(nxt.first > max_value\
-    \ || nxt.second > max_value) return to;\n            }\n            while(ng -\
-    \ ok > 1) {\n                T mid = (ok + ng) >> 1;\n                if(f(add(from,\
-    \ mul(mid, to))) == flag) {\n                    ok = mid;\n                }\n\
-    \                else {\n                    ng = mid;\n                }\n  \
-    \          }\n            (flag ? l : r) = add(from, mul(ok, to));\n        }\n\
-    \        assert(0);\n        return l;\n    }\n\n    static Fraction val(const\
-    \ std::pair<Fraction, Fraction> &f) {\n        return add(f.first, f.second);\n\
-    \    }\n\n    static void print_path(const std::vector<T> &path) {\n        if\
-    \ (path.empty()) {\n            std::cout << \"0\\n\";\n            return;\n\
-    \        }\n        int k = (int)path.size() - int(path[0] == 0);\n        std::cout\
-    \ << k;\n        for (bool is_right = true; auto c : path) {\n            if (c\
-    \ > 0) {\n                std::cout << \" \" << (is_right ? 'R' : 'L') << \" \"\
-    \ << c;\n            }\n            is_right = !is_right;\n        }\n       \
-    \ std::cout << '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi"
+    \    }\n\n    template <class F> static Fraction binary_search(const T max_value,\
+    \ F f) {\n        Fraction l = {0, 1}, r = {1, 0};\n        while (true) {\n \
+    \           Fraction now = val({l, r});\n            bool flag = f(now);\n   \
+    \         Fraction from = flag ? l : r;\n            Fraction to = flag ? r :\
+    \ l;\n            T ok = 1, ng = 2;\n            while (f(add(from, mul(ng, to)))\
+    \ == flag) {\n                ok <<= 1;\n                ng <<= 1;\n         \
+    \       auto nxt = add(from, mul(ok, to));\n                if (nxt.first > max_value\
+    \ || nxt.second > max_value) return to;\n            }\n            while (ng\
+    \ - ok > 1) {\n                T mid = (ok + ng) >> 1;\n                if (f(add(from,\
+    \ mul(mid, to))) == flag) {\n                    ok = mid;\n                }\
+    \ else {\n                    ng = mid;\n                }\n            }\n  \
+    \          (flag ? l : r) = add(from, mul(ok, to));\n        }\n        assert(0);\n\
+    \        return l;\n    }\n\n    static Fraction val(const std::pair<Fraction,\
+    \ Fraction> &f) {\n        return add(f.first, f.second);\n    }\n\n    static\
+    \ void print_path(const std::vector<T> &path) {\n        if (path.empty()) {\n\
+    \            std::cout << \"0\\n\";\n            return;\n        }\n        int\
+    \ k = (int)path.size() - int(path[0] == 0);\n        std::cout << k;\n       \
+    \ for (bool is_right = true; auto c : path) {\n            if (c > 0) {\n    \
+    \            std::cout << \" \" << (is_right ? 'R' : 'L') << \" \" << c;\n   \
+    \         }\n            is_right = !is_right;\n        }\n        std::cout <<\
+    \ '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: math/stern_brocot_tree.hpp
   requiredBy: []
-  timestamp: '2023-12-28 16:44:41+09:00'
+  timestamp: '2023-12-28 18:00:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stern-Brocot_Tree.test.cpp
@@ -175,7 +175,7 @@ Stern-Brocot Tree の上の有理数 $f$ と対応するノードの持つ有理
 
 ### binary_search(i64 max_value, F f)
 
-有理数を引数とし true / false を返す単調な関数 $f$ について、 $f(\frac{p}{q}) = true$ かつ $p < max\\_value$ かつ $q < max\\_value$ を満たす最大の $\frac{p}{q}$ を返す。 $f(0) = false$ の場合は $\frac{0}{1}$ を、 $f(\infty) = true$ の場合は $\frac{1}{0}$ を返す。
+有理数を引数とし true / false を返す単調な関数 $f$ について、 $f(\frac{p}{q}) = true$ を満たす最大の $\frac{p}{q}$ を返す。 $max\\_value$ は精度を表し、誤差は $\frac{1}{max\\_value}$ で抑えられる。 $f(0) = false$ の場合は $\frac{0}{1}$ を、 $f(\infty) = true$ の場合は $\frac{1}{0}$ を返す。
 
 ### val(std::pair<Fraction, Fraction> f)
 
