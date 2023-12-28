@@ -137,6 +137,37 @@ struct stern_brocot_tree {
         return l;
     }
 
+    static std::pair<Fraction, Fraction> nearest_fraction(T max, Fraction f) {
+        Fraction l = {0, 1}, r = {1, 0};
+        for (bool is_right = true; auto n : encode_path(f)) {
+            Fraction nl = l, nr = r;
+            if (is_right) {
+                nl = add(l, mul(n, r));
+            } else {
+                nr = add(r, mul(n, l));
+            }
+            if (std::max(nl.second, nr.second) > max) {
+                nl = l, nr = r;
+                if (is_right) {
+                    T x = (max - l.second) / r.second;
+                    nl.first += r.first * x;
+                    nl.second += r.second * x;
+                } else {
+                    T x = (max - r.second) / l.second;
+                    nr.first += l.first * x;
+                    nr.second += l.second * x;
+                }
+                std::swap(l, nl);
+                std::swap(r, nr);
+                break;
+            }
+            std::swap(l, nl);
+            std::swap(r, nr);
+            is_right = !is_right;
+        }
+        return {l, r};
+    }
+
     static Fraction val(const std::pair<Fraction, Fraction> &f) {
         return add(f.first, f.second);
     }
