@@ -39,7 +39,7 @@ Stern-Brocot Tree の上の有理数 $f$ と対応するノードの持つ有理
 
 ### binary_search(i64 max_value, F f)
 
-有理数を引数とし true / false を返す単調な関数 $f$ について、 $f(\frac{p}{q}) = true$ かつ $p < max\\_value$ かつ $q < max\\_value$ を満たす最大の $\frac{p}{q}$ を返す。 $f(0) = false$ の場合は $\frac{0}{1}$ を、 $f(\infty) = true$ の場合は $\frac{1}{0}$ を返す。
+有理数を引数とし true / false を返す単調な関数 $f$ について、 $f(\frac{p}{q}) = true$ を満たす最大の $\frac{p}{q}$ を返す。 $max\\_value$ は精度を表し、誤差は $\frac{1}{max\\_value}$ で抑えられる。 $f(0) = false$ の場合は $\frac{0}{1}$ を、 $f(\infty) = true$ の場合は $\frac{1}{0}$ を返す。
 
 ### val(std::pair<Fraction, Fraction> f)
 

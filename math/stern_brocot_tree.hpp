@@ -2,10 +2,10 @@
 
 #include <cassert>
 #include <concepts>
+#include <cstdint>
 #include <iostream>
 #include <optional>
 #include <vector>
-#include <cstdint>
 
 namespace ebi {
 
@@ -103,27 +103,25 @@ struct stern_brocot_tree {
         return decode_path(encode_path(f));
     }
 
-    template<class F>
-    static Fraction binary_search(const T max_value, F f) {
+    template <class F> static Fraction binary_search(const T max_value, F f) {
         Fraction l = {0, 1}, r = {1, 0};
-        while(true) {
+        while (true) {
             Fraction now = val({l, r});
             bool flag = f(now);
             Fraction from = flag ? l : r;
             Fraction to = flag ? r : l;
             T ok = 1, ng = 2;
-            while(f(add(from, mul(ng, to))) == flag) {
+            while (f(add(from, mul(ng, to))) == flag) {
                 ok <<= 1;
                 ng <<= 1;
                 auto nxt = add(from, mul(ok, to));
-                if(nxt.first > max_value || nxt.second > max_value) return to;
+                if (nxt.first > max_value || nxt.second > max_value) return to;
             }
-            while(ng - ok > 1) {
+            while (ng - ok > 1) {
                 T mid = (ok + ng) >> 1;
-                if(f(add(from, mul(mid, to))) == flag) {
+                if (f(add(from, mul(mid, to))) == flag) {
                     ok = mid;
-                }
-                else {
+                } else {
                     ng = mid;
                 }
             }
