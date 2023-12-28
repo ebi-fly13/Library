@@ -7,6 +7,12 @@
 #include <optional>
 #include <vector>
 
+/*
+reference: https://miscalc.hatenablog.com/entry/2023/12/22/213007
+           https://rsk0315.hatenablog.com/entry/2023/04/17/022705
+           https://atcoder.jp/contests/abc294/editorial/6017
+*/
+
 namespace ebi {
 
 struct stern_brocot_tree {
