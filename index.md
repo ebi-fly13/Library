@@ -333,6 +333,9 @@ data:
       path: math/partition_function.hpp
       title: Partition Function
     - icon: ':heavy_check_mark:'
+      path: math/stern_brocot_tree.hpp
+      title: Stern-Brocot Tree
+    - icon: ':heavy_check_mark:'
       path: math/stirling_number_1st.hpp
       title: Stirling Numbers of the First Kind
     - icon: ':heavy_check_mark:'
@@ -762,6 +765,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Sqrt_Mod.test.cpp
       title: test/math/Sqrt_Mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Stern-Brocot_Tree.test.cpp
+      title: test/math/Stern-Brocot_Tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
       title: test/math/Stirling_Number_of_the_First_Kind.test.cpp

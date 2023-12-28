@@ -31,6 +31,9 @@ data:
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Stern-Brocot_Tree.test.cpp
+    title: test/math/Stern-Brocot_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,6 +93,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp

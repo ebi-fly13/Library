@@ -88,6 +88,9 @@ data:
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Stern-Brocot_Tree.test.cpp
+    title: test/math/Stern-Brocot_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
@@ -213,6 +216,7 @@ data:
   verifiedWith:
   - test/math/Inversion_Number.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
