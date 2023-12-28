@@ -32,33 +32,35 @@ data:
   bundledCode: "#line 1 \"test/math/Stern-Brocot_Tree.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/stern_brocot_tree\"\n\n#line 2 \"math/stern_brocot_tree.hpp\"\
     \n\n#include <cassert>\n#include <concepts>\n#include <cstdint>\n#include <iostream>\n\
-    #include <optional>\n#include <vector>\n\nnamespace ebi {\n\nstruct stern_brocot_tree\
-    \ {\n  private:\n    using value_type = std::int64_t;\n    using T = value_type;\n\
-    \    using Fraction = std::pair<T, T>;\n\n    static Fraction add(const Fraction\
-    \ &lhs, const Fraction &rhs) {\n        return {lhs.first + rhs.first, lhs.second\
-    \ + rhs.second};\n    }\n\n    static Fraction mul(const T k, const Fraction &a)\
-    \ {\n        return {k * a.first, k * a.second};\n    }\n\n  public:\n    stern_brocot_tree()\
-    \ = default;\n\n    static std::vector<T> encode_path(const Fraction &f) {\n \
-    \       auto [x, y] = f;\n        std::vector<T> path;\n        while (x != y)\
-    \ {\n            T m = (x - 1) / y;\n            path.emplace_back(m);\n     \
-    \       x -= m * y;\n            std::swap(x, y);\n        }\n        return path;\n\
-    \    }\n\n    static std::pair<Fraction, Fraction> decode_path(\n        const\
-    \ std::vector<T> &path) {\n        T lx = 0, ly = 1, rx = 1, ry = 0;\n       \
-    \ for (bool is_right = true; auto n : path) {\n            if (is_right) {\n \
-    \               lx += rx * n;\n                ly += ry * n;\n            } else\
-    \ {\n                rx += lx * n;\n                ry += ly * n;\n          \
-    \  }\n            is_right = !is_right;\n        }\n        return {{lx, ly},\
-    \ {rx, ry}};\n    }\n\n    static std::pair<Fraction, Fraction> decode_path(\n\
-    \        const std::vector<std::pair<char, T>> &path) {\n        if (path.empty())\
-    \ {\n            return {{0, 1}, {1, 0}};\n        }\n        std::vector<T> p;\n\
-    \        bool is_right = true;\n        if (path[0].first == 'L') {\n        \
-    \    p.emplace_back(0);\n            is_right = !is_right;\n        }\n      \
-    \  for (auto [c, n] : path) {\n            assert(c == (is_right ? 'R' : 'L'));\n\
-    \            p.emplace_back(n);\n            is_right = !is_right;\n        }\n\
-    \        return decode_path(p);\n    }\n\n    static Fraction lca(Fraction f,\
-    \ Fraction g) {\n        auto path_f = encode_path(f);\n        auto path_g =\
-    \ encode_path(g);\n        std::vector<T> path_h;\n        for (int i = 0; i <\
-    \ (int)std::min(path_f.size(), path_g.size()); i++) {\n            T k = std::min(path_f[i],\
+    #include <optional>\n#include <vector>\n\n/*\nreference: https://miscalc.hatenablog.com/entry/2023/12/22/213007\n\
+    \           https://rsk0315.hatenablog.com/entry/2023/04/17/022705\n         \
+    \  https://atcoder.jp/contests/abc294/editorial/6017\n*/\n\nnamespace ebi {\n\n\
+    struct stern_brocot_tree {\n  private:\n    using value_type = std::int64_t;\n\
+    \    using T = value_type;\n    using Fraction = std::pair<T, T>;\n\n    static\
+    \ Fraction add(const Fraction &lhs, const Fraction &rhs) {\n        return {lhs.first\
+    \ + rhs.first, lhs.second + rhs.second};\n    }\n\n    static Fraction mul(const\
+    \ T k, const Fraction &a) {\n        return {k * a.first, k * a.second};\n   \
+    \ }\n\n  public:\n    stern_brocot_tree() = default;\n\n    static std::vector<T>\
+    \ encode_path(const Fraction &f) {\n        auto [x, y] = f;\n        std::vector<T>\
+    \ path;\n        while (x != y) {\n            T m = (x - 1) / y;\n          \
+    \  path.emplace_back(m);\n            x -= m * y;\n            std::swap(x, y);\n\
+    \        }\n        return path;\n    }\n\n    static std::pair<Fraction, Fraction>\
+    \ decode_path(\n        const std::vector<T> &path) {\n        T lx = 0, ly =\
+    \ 1, rx = 1, ry = 0;\n        for (bool is_right = true; auto n : path) {\n  \
+    \          if (is_right) {\n                lx += rx * n;\n                ly\
+    \ += ry * n;\n            } else {\n                rx += lx * n;\n          \
+    \      ry += ly * n;\n            }\n            is_right = !is_right;\n     \
+    \   }\n        return {{lx, ly}, {rx, ry}};\n    }\n\n    static std::pair<Fraction,\
+    \ Fraction> decode_path(\n        const std::vector<std::pair<char, T>> &path)\
+    \ {\n        if (path.empty()) {\n            return {{0, 1}, {1, 0}};\n     \
+    \   }\n        std::vector<T> p;\n        bool is_right = true;\n        if (path[0].first\
+    \ == 'L') {\n            p.emplace_back(0);\n            is_right = !is_right;\n\
+    \        }\n        for (auto [c, n] : path) {\n            assert(c == (is_right\
+    \ ? 'R' : 'L'));\n            p.emplace_back(n);\n            is_right = !is_right;\n\
+    \        }\n        return decode_path(p);\n    }\n\n    static Fraction lca(Fraction\
+    \ f, Fraction g) {\n        auto path_f = encode_path(f);\n        auto path_g\
+    \ = encode_path(g);\n        std::vector<T> path_h;\n        for (int i = 0; i\
+    \ < (int)std::min(path_f.size(), path_g.size()); i++) {\n            T k = std::min(path_f[i],\
     \ path_g[i]);\n            path_h.emplace_back(k);\n            if (path_f[i]\
     \ != path_g[i]) {\n                break;\n            }\n        }\n        return\
     \ val(decode_path(path_h));\n    }\n\n    static std::optional<Fraction> ancestor(T\
@@ -189,7 +191,7 @@ data:
   isVerificationFile: true
   path: test/math/Stern-Brocot_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-12-28 18:00:00+09:00'
+  timestamp: '2023-12-28 18:02:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stern-Brocot_Tree.test.cpp
