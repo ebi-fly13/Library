@@ -81,7 +81,21 @@ data:
     \ mul(mid, to))) == flag) {\n                    ok = mid;\n                }\
     \ else {\n                    ng = mid;\n                }\n            }\n  \
     \          (flag ? l : r) = add(from, mul(ok, to));\n        }\n        assert(0);\n\
-    \        return l;\n    }\n\n    static Fraction val(const std::pair<Fraction,\
+    \        return l;\n    }\n\n    static std::pair<Fraction, Fraction> nearest_fraction(T\
+    \ max, Fraction f) {\n        Fraction l = {0, 1}, r = {1, 0};\n        for (bool\
+    \ is_right = true; auto n : encode_path(f)) {\n            Fraction nl = l, nr\
+    \ = r;\n            if (is_right) {\n                nl = add(l, mul(n, r));\n\
+    \            } else {\n                nr = add(r, mul(n, l));\n            }\n\
+    \            if (std::max(nl.second, nr.second) > max) {\n                nl =\
+    \ l, nr = r;\n                if (is_right) {\n                    T x = (max\
+    \ - l.second) / r.second;\n                    nl.first += r.first * x;\n    \
+    \                nl.second += r.second * x;\n                } else {\n      \
+    \              T x = (max - r.second) / l.second;\n                    nr.first\
+    \ += l.first * x;\n                    nr.second += l.second * x;\n          \
+    \      }\n                std::swap(l, nl);\n                std::swap(r, nr);\n\
+    \                break;\n            }\n            std::swap(l, nl);\n      \
+    \      std::swap(r, nr);\n            is_right = !is_right;\n        }\n     \
+    \   return {l, r};\n    }\n\n    static Fraction val(const std::pair<Fraction,\
     \ Fraction> &f) {\n        return add(f.first, f.second);\n    }\n\n    static\
     \ void print_path(const std::vector<T> &path) {\n        if (path.empty()) {\n\
     \            std::cout << \"0\\n\";\n            return;\n        }\n        int\
@@ -191,7 +205,7 @@ data:
   isVerificationFile: true
   path: test/math/Stern-Brocot_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-12-28 18:02:36+09:00'
+  timestamp: '2023-12-29 01:17:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stern-Brocot_Tree.test.cpp

@@ -65,7 +65,21 @@ data:
     \ mul(mid, to))) == flag) {\n                    ok = mid;\n                }\
     \ else {\n                    ng = mid;\n                }\n            }\n  \
     \          (flag ? l : r) = add(from, mul(ok, to));\n        }\n        assert(0);\n\
-    \        return l;\n    }\n\n    static Fraction val(const std::pair<Fraction,\
+    \        return l;\n    }\n\n    static std::pair<Fraction, Fraction> nearest_fraction(T\
+    \ max, Fraction f) {\n        Fraction l = {0, 1}, r = {1, 0};\n        for (bool\
+    \ is_right = true; auto n : encode_path(f)) {\n            Fraction nl = l, nr\
+    \ = r;\n            if (is_right) {\n                nl = add(l, mul(n, r));\n\
+    \            } else {\n                nr = add(r, mul(n, l));\n            }\n\
+    \            if (std::max(nl.second, nr.second) > max) {\n                nl =\
+    \ l, nr = r;\n                if (is_right) {\n                    T x = (max\
+    \ - l.second) / r.second;\n                    nl.first += r.first * x;\n    \
+    \                nl.second += r.second * x;\n                } else {\n      \
+    \              T x = (max - r.second) / l.second;\n                    nr.first\
+    \ += l.first * x;\n                    nr.second += l.second * x;\n          \
+    \      }\n                std::swap(l, nl);\n                std::swap(r, nr);\n\
+    \                break;\n            }\n            std::swap(l, nl);\n      \
+    \      std::swap(r, nr);\n            is_right = !is_right;\n        }\n     \
+    \   return {l, r};\n    }\n\n    static Fraction val(const std::pair<Fraction,\
     \ Fraction> &f) {\n        return add(f.first, f.second);\n    }\n\n    static\
     \ void print_path(const std::vector<T> &path) {\n        if (path.empty()) {\n\
     \            std::cout << \"0\\n\";\n            return;\n        }\n        int\
@@ -124,7 +138,21 @@ data:
     \ mul(mid, to))) == flag) {\n                    ok = mid;\n                }\
     \ else {\n                    ng = mid;\n                }\n            }\n  \
     \          (flag ? l : r) = add(from, mul(ok, to));\n        }\n        assert(0);\n\
-    \        return l;\n    }\n\n    static Fraction val(const std::pair<Fraction,\
+    \        return l;\n    }\n\n    static std::pair<Fraction, Fraction> nearest_fraction(T\
+    \ max, Fraction f) {\n        Fraction l = {0, 1}, r = {1, 0};\n        for (bool\
+    \ is_right = true; auto n : encode_path(f)) {\n            Fraction nl = l, nr\
+    \ = r;\n            if (is_right) {\n                nl = add(l, mul(n, r));\n\
+    \            } else {\n                nr = add(r, mul(n, l));\n            }\n\
+    \            if (std::max(nl.second, nr.second) > max) {\n                nl =\
+    \ l, nr = r;\n                if (is_right) {\n                    T x = (max\
+    \ - l.second) / r.second;\n                    nl.first += r.first * x;\n    \
+    \                nl.second += r.second * x;\n                } else {\n      \
+    \              T x = (max - r.second) / l.second;\n                    nr.first\
+    \ += l.first * x;\n                    nr.second += l.second * x;\n          \
+    \      }\n                std::swap(l, nl);\n                std::swap(r, nr);\n\
+    \                break;\n            }\n            std::swap(l, nl);\n      \
+    \      std::swap(r, nr);\n            is_right = !is_right;\n        }\n     \
+    \   return {l, r};\n    }\n\n    static Fraction val(const std::pair<Fraction,\
     \ Fraction> &f) {\n        return add(f.first, f.second);\n    }\n\n    static\
     \ void print_path(const std::vector<T> &path) {\n        if (path.empty()) {\n\
     \            std::cout << \"0\\n\";\n            return;\n        }\n        int\
@@ -137,7 +165,7 @@ data:
   isVerificationFile: false
   path: math/stern_brocot_tree.hpp
   requiredBy: []
-  timestamp: '2023-12-28 18:02:36+09:00'
+  timestamp: '2023-12-29 01:17:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stern-Brocot_Tree.test.cpp
@@ -183,6 +211,10 @@ Stern-Brocot Tree の上の有理数 $f$ と対応するノードの持つ有理
 ### binary_search(i64 max_value, F f)
 
 有理数を引数とし true / false を返す単調な関数 $f$ について、 $f(\frac{p}{q}) = true$ を満たす最大の $\frac{p}{q}$ を返す。 $max\\_value$ は精度を表し、誤差は $\frac{1}{max\\_value}$ で抑えられる。 $f(0) = false$ の場合は $\frac{0}{1}$ を、 $f(\infty) = true$ の場合は $\frac{1}{0}$ を返す。
+
+### nearest_fraction(i64 max, Fraction f)
+
+有理数 $f$ について $l < f < r$ を満たす最大の有理数 $l$ と最小の有理数 $r$ を返す。
 
 ### val(std::pair<Fraction, Fraction> f)
 
