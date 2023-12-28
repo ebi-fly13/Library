@@ -53,19 +53,19 @@ data:
     \            x += k;\r\n                key -= data[x];\r\n            }\r\n \
     \       }\r\n        return x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
     #line 2 \"template/int_alias.hpp\"\n\n#include <cstdint>\n\nnamespace ebi {\n\n\
-    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
-    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
-    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
-    \ 10 \"math/inversion_number.hpp\"\n\nnamespace ebi {\n\ni64 inversion_number_max_n(const\
-    \ std::vector<int> &a, int n = 200000) {\n    fenwick_tree<i64> fw(n);\n    i64\
-    \ res = 0;\n    for (auto x : a) {\n        assert(0 <= x && x < n);\n       \
-    \ res += fw.sum(x + 1, n);\n        fw.add(x, 1);\n    }\n    return res;\n}\n\
-    \ntemplate <class T> i64 inversion_number(const std::vector<T> &a) {\n    compress<T>\
-    \ cp;\n    for (const auto &x : a) {\n        cp.add(x);\n    }\n    cp.build();\n\
-    \    std::vector<int> ca;\n    ca.reserve(a.size());\n    for (const auto &x :\
-    \ a) {\n        ca.emplace_back(cp.get(x));\n    }\n    return inversion_number_max_n(ca,\
-    \ cp.size());\n}\n\n}  // namespace ebi\n"
+    using ld = long double;\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8\
+    \ = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing\
+    \ i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
+    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    \n}  // namespace ebi\n#line 10 \"math/inversion_number.hpp\"\n\nnamespace ebi\
+    \ {\n\ni64 inversion_number_max_n(const std::vector<int> &a, int n = 200000) {\n\
+    \    fenwick_tree<i64> fw(n);\n    i64 res = 0;\n    for (auto x : a) {\n    \
+    \    assert(0 <= x && x < n);\n        res += fw.sum(x + 1, n);\n        fw.add(x,\
+    \ 1);\n    }\n    return res;\n}\n\ntemplate <class T> i64 inversion_number(const\
+    \ std::vector<T> &a) {\n    compress<T> cp;\n    for (const auto &x : a) {\n \
+    \       cp.add(x);\n    }\n    cp.build();\n    std::vector<int> ca;\n    ca.reserve(a.size());\n\
+    \    for (const auto &x : a) {\n        ca.emplace_back(cp.get(x));\n    }\n \
+    \   return inversion_number_max_n(ca, cp.size());\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <vector>\n\
     \n#include \"../data_structure/compress.hpp\"\n#include \"../data_structure/fenwick_tree.hpp\"\
     \n#include \"../template/int_alias.hpp\"\n\nnamespace ebi {\n\ni64 inversion_number_max_n(const\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: false
   path: math/inversion_number.hpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-12-28 15:52:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Inversion_Number.test.cpp

@@ -23,16 +23,17 @@ data:
     - https://miti-7.hatenablog.com/entry/2018/04/28/152259
   bundledCode: "#line 2 \"data_structure/WaveletMatrix.hpp\"\n\r\n#line 2 \"data_structure/bitVector.hpp\"\
     \n\r\n#line 2 \"template/int_alias.hpp\"\n\n#include <cstdint>\n\nnamespace ebi\
-    \ {\n\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
-    using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
-    using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
-    \ 4 \"data_structure/bitVector.hpp\"\n\r\n/*\r\n    reference: https://misteer.hatenablog.com/entry/bit-vector\r\
-    \n*/\r\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct bitVector {\r\
-    \n    u32 length, cn, bn;\r\n    static u32 cw,\r\n        bw;  // chunk, block\
-    \ \u306E\u9577\u3055 cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16>\
-    \ bit;\r\n    std::vector<u32> chunk;\r\n    std::vector<std::vector<u16>> blocks;\r\
-    \n\r\n    bitVector(int n) : length(n) {\r\n        cn = (length + cw - 1) / cw;\r\
+    \ {\n\nusing ld = long double;\nusing std::size_t;\nusing i8 = std::int8_t;\n\
+    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
+    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
+    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    \n}  // namespace ebi\n#line 4 \"data_structure/bitVector.hpp\"\n\r\n/*\r\n  \
+    \  reference: https://misteer.hatenablog.com/entry/bit-vector\r\n*/\r\n\r\n#include\
+    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\nstruct bitVector {\r\n    u32 length,\
+    \ cn, bn;\r\n    static u32 cw,\r\n        bw;  // chunk, block \u306E\u9577\u3055\
+    \ cw = (lg N)^2, bw = (lg N)/2 \u3068\u3059\u308B.\r\n    std::vector<u16> bit;\r\
+    \n    std::vector<u32> chunk;\r\n    std::vector<std::vector<u16>> blocks;\r\n\
+    \r\n    bitVector(int n) : length(n) {\r\n        cn = (length + cw - 1) / cw;\r\
     \n        bn = cw / bw;\r\n        bit.assign(cn * bn, 0);\r\n        chunk.assign(cn\
     \ + 1, 0);\r\n        blocks.assign(cn, std::vector<u16>(bn, 0));\r\n    }\r\n\
     \r\n    void set(int k, int b) {\r\n        u32 i = k / bw;\r\n        u32 j =\
@@ -148,7 +149,7 @@ data:
   isVerificationFile: false
   path: data_structure/WaveletMatrix.hpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-12-28 15:52:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Range_Kth_Smallest.test.cpp

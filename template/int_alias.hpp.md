@@ -137,6 +137,8 @@ data:
     namespace ebi {
 
 
+    using ld = long double;
+
     using std::size_t;
 
     using i8 = std::int8_t;
@@ -171,6 +173,8 @@ data:
 
     namespace ebi {
 
+
+    using ld = long double;
 
     using std::size_t;
 
@@ -211,7 +215,7 @@ data:
   - data_structure/bitVector.hpp
   - template/utility.hpp
   - template/template.hpp
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-12-28 15:52:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Inversion_Number.test.cpp

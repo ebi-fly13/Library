@@ -38,14 +38,14 @@ data:
     \        for (int i = 2; i <= m; i++) {\r\n            if (table[i]) prime.emplace_back(i);\r\
     \n        }\r\n        return prime;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
     #line 2 \"math/linear_sieve.hpp\"\n\r\n#line 2 \"template/int_alias.hpp\"\n\n\
-    #line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing std::size_t;\n\
-    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
-    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
-    using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
-    using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 4 \"math/linear_sieve.hpp\"\
-    \n\r\n/*\r\n    reference: https://37zigen.com/linear-sieve/\r\n    verify:  \
-    \  https://atcoder.jp/contests/abc162/submissions/25095562\r\n*/\r\n\r\n#line\
-    \ 12 \"math/linear_sieve.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve\
+    #line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
+    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
+    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 4 \"math/linear_sieve.hpp\"\n\r\n/*\r\n    reference: https://37zigen.com/linear-sieve/\r\
+    \n    verify:    https://atcoder.jp/contests/abc162/submissions/25095562\r\n*/\r\
+    \n\r\n#line 12 \"math/linear_sieve.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve\
     \ {\r\n  private:\r\n    using u64 = std::uint64_t;\r\n    int n;\r\n    std::vector<int>\
     \ sieve;\r\n    std::vector<int> prime;\r\n\r\n  public:\r\n    linear_sieve(int\
     \ _n) : n(_n), sieve(std::vector<int>(_n + 1, -1)) {\r\n        for (int i = 2;\
@@ -155,7 +155,7 @@ data:
   path: convolution/dirichlet_convolution.hpp
   requiredBy:
   - math/DirichletSeries.hpp
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-12-28 15:52:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Totient_Function.test.cpp

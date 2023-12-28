@@ -13,28 +13,29 @@ data:
     links: []
   bundledCode: "#line 2 \"convolution/online_convolution.hpp\"\n\n#include <atcoder/convolution>\n\
     #include <atcoder/modint>\n#include <bit>\n#include <vector>\n\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#include <cstdint>\n\nnamespace ebi {\n\nusing std::size_t;\nusing i8 = std::int8_t;\n\
-    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
-    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
-    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}  // namespace ebi\n#line 9 \"convolution/online_convolution.hpp\"\n\nnamespace\
-    \ ebi {\n\nstruct online_convolution {\n  private:\n    using mint = atcoder::modint998244353;\n\
-    \n  public:\n    online_convolution() = default;\n\n    mint add(int idx, mint\
-    \ ai, mint bi) {\n        assert(p == idx);\n        a.emplace_back(ai);\n   \
-    \     b.emplace_back(bi);\n        int z = std::countr_zero(u32(p + 2)), w = 1\
-    \ << z;\n        if (p + 2 == w) {\n            auto a0 = a;\n            a0.resize(2\
-    \ * w);\n            atcoder::internal::butterfly(a0);\n            fa.emplace_back(a0.begin(),\
-    \ a0.begin() + w);\n            auto b0 = b;\n            b0.resize(2 * w);\n\
-    \            atcoder::internal::butterfly(b0);\n            fb.emplace_back(b0.begin(),\
-    \ b0.begin() + w);\n            for (int i = 0; i < 2 * w; i++) a0[i] *= b0[i];\n\
-    \            atcoder::internal::butterfly_inv(a0);\n            mint inv_len =\
-    \ mint(2 * w).inv();\n            c.resize(2 * p + 2);\n            for (int i\
-    \ = 0; i < p + 1; i++) c[p + i] += a0[p + i] * inv_len;\n        } else {\n  \
-    \          std::vector<mint> a0 = {a.end() - w, a.end()};\n            a0.resize(2\
-    \ * w);\n            atcoder::internal::butterfly(a0);\n            std::vector<mint>\
-    \ b0 = {b.end() - w, b.end()};\n            b0.resize(2 * w);\n            atcoder::internal::butterfly(b0);\n\
-    \            for (int i = 0; i < 2 * w; i++) {\n                a0[i] = a0[i]\
-    \ * fb[z][i] + fa[z][i] * b0[i];\n            }\n            atcoder::internal::butterfly_inv(a0);\n\
+    \n\n#include <cstdint>\n\nnamespace ebi {\n\nusing ld = long double;\nusing std::size_t;\n\
+    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
+    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
+    using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
+    using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 9 \"convolution/online_convolution.hpp\"\
+    \n\nnamespace ebi {\n\nstruct online_convolution {\n  private:\n    using mint\
+    \ = atcoder::modint998244353;\n\n  public:\n    online_convolution() = default;\n\
+    \n    mint add(int idx, mint ai, mint bi) {\n        assert(p == idx);\n     \
+    \   a.emplace_back(ai);\n        b.emplace_back(bi);\n        int z = std::countr_zero(u32(p\
+    \ + 2)), w = 1 << z;\n        if (p + 2 == w) {\n            auto a0 = a;\n  \
+    \          a0.resize(2 * w);\n            atcoder::internal::butterfly(a0);\n\
+    \            fa.emplace_back(a0.begin(), a0.begin() + w);\n            auto b0\
+    \ = b;\n            b0.resize(2 * w);\n            atcoder::internal::butterfly(b0);\n\
+    \            fb.emplace_back(b0.begin(), b0.begin() + w);\n            for (int\
+    \ i = 0; i < 2 * w; i++) a0[i] *= b0[i];\n            atcoder::internal::butterfly_inv(a0);\n\
+    \            mint inv_len = mint(2 * w).inv();\n            c.resize(2 * p + 2);\n\
+    \            for (int i = 0; i < p + 1; i++) c[p + i] += a0[p + i] * inv_len;\n\
+    \        } else {\n            std::vector<mint> a0 = {a.end() - w, a.end()};\n\
+    \            a0.resize(2 * w);\n            atcoder::internal::butterfly(a0);\n\
+    \            std::vector<mint> b0 = {b.end() - w, b.end()};\n            b0.resize(2\
+    \ * w);\n            atcoder::internal::butterfly(b0);\n            for (int i\
+    \ = 0; i < 2 * w; i++) {\n                a0[i] = a0[i] * fb[z][i] + fa[z][i]\
+    \ * b0[i];\n            }\n            atcoder::internal::butterfly_inv(a0);\n\
     \            mint inv_len = mint(2 * w).inv();\n            for (int i = 0; i\
     \ < w; i++) c[p + i] += a0[w - 1 + i] * inv_len;\n        }\n        return c[p++];\n\
     \    }\n\n    mint operator[](int i) const {\n        assert(0 <= i && i < p);\n\
@@ -71,7 +72,7 @@ data:
   isVerificationFile: false
   path: convolution/online_convolution.hpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2023-12-28 15:52:36+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: convolution/online_convolution.hpp

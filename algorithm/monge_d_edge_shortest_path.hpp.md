@@ -21,12 +21,13 @@ data:
     \n#line 2 \"algorithm/golden_section_search.hpp\"\n\n#include <cassert>\n#include\
     \ <concepts>\n#include <functional>\n#line 7 \"algorithm/golden_section_search.hpp\"\
     \n\n#line 2 \"template/int_alias.hpp\"\n\n#include <cstdint>\n\nnamespace ebi\
-    \ {\n\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
-    using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
-    using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
-    \ 9 \"algorithm/golden_section_search.hpp\"\n\nnamespace ebi {\n\n// ref: https://x.com/noshi91/status/1399003086362865673\n\
-    template <std::integral S, class F,\n          class T = decltype(std::declval<F>()(std::declval<S>())),\n\
+    \ {\n\nusing ld = long double;\nusing std::size_t;\nusing i8 = std::int8_t;\n\
+    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
+    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
+    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    \n}  // namespace ebi\n#line 9 \"algorithm/golden_section_search.hpp\"\n\nnamespace\
+    \ ebi {\n\n// ref: https://x.com/noshi91/status/1399003086362865673\ntemplate\
+    \ <std::integral S, class F,\n          class T = decltype(std::declval<F>()(std::declval<S>())),\n\
     \          class Compare = std::less<T>>\nstd::pair<S, T> golden_section_search(F\
     \ f, S min, S max,\n                                      const Compare &compare\
     \ = Compare()) {\n    assert(min <= max);\n    S a = min - 1, x, b;\n    {\n \
@@ -73,7 +74,7 @@ data:
   isVerificationFile: false
   path: algorithm/monge_d_edge_shortest_path.hpp
   requiredBy: []
-  timestamp: '2023-11-08 15:46:57+09:00'
+  timestamp: '2023-12-28 15:52:36+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: algorithm/monge_d_edge_shortest_path.hpp
