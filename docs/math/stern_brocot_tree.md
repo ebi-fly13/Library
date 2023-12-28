@@ -45,6 +45,14 @@ Stern-Brocot Tree の上の有理数 $f$ と対応するノードの持つ有理
 
 有理数 $f$ について $l < f < r$ を満たす最大の有理数 $l$ と最小の有理数 $r$ を返す。
 
+出題例: [ABC333-G](https://atcoder.jp/contests/abc333/tasks/abc333_g)
+
+### [best_rational_within_an_interval](https://en.wikipedia.org/wiki/Continued_fraction#Best_rational_within_an_interval)(Fraction l, Fraction r)
+
+有理数開区間 $(l, r)$ に含まれており、分母が最小であるもののうち分子が最小であるような有理数を返す。
+
+出題例: [GCJ2019 Round 2](https://github.com/google/coding-competitions-archive/blob/main/codejam/2019/round_2/new_elements_part_2/statement.pdf)
+
 ### val(std::pair<Fraction, Fraction> f)
 
 ノード $f$ の値を有理数で返す。 $O(1)$

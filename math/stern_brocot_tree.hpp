@@ -168,6 +168,32 @@ struct stern_brocot_tree {
         return {l, r};
     }
 
+    static Fraction best_rational_within_an_interval(Fraction l, Fraction r) {
+        Fraction m = lca(l, r);
+        if (l == m) {
+            Fraction rch = childs(l).second;
+            if (rch == r) {
+                return childs(r).first;
+            } else {
+                return rch;
+            }
+        } else if (r == m) {
+            Fraction lch = childs(r).first;
+            if (lch == l) {
+                return childs(l).second;
+            } else {
+                return lch;
+            }
+        } else {
+            return m;
+        }
+    }
+
+    static std::pair<Fraction, Fraction> childs(Fraction f) {
+        auto [l, r] = range(f);
+        return {add(l, f), add(f, r)};
+    }
+
     static Fraction val(const std::pair<Fraction, Fraction> &f) {
         return add(f.first, f.second);
     }
