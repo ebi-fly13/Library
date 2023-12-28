@@ -37,6 +37,10 @@ Stern-Brocot Tree の根から有理数 $f$ までのパス上のノードであ
 
 Stern-Brocot Tree の上の有理数 $f$ と対応するノードの持つ有理数 $(l, r)$ を返す。
 
+### binary_search(i64 max_value, F f)
+
+有理数を引数とし true / false を返す単調な関数 $f$ について、 $f(\frac{p}{q}) = true$ かつ $p < max\_value$ かつ $q < max\_value$ を満たす最大の $\frac{p}{q}$ を返す。
+
 ### val(std::pair<Fraction, Fraction> f)
 
 ノード $f$ の値を有理数で返す。 $O(1)$
