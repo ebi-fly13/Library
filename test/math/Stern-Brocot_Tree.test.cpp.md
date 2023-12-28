@@ -34,11 +34,14 @@ data:
     \n\n#include <cassert>\n#include <concepts>\n#include <iostream>\n#include <optional>\n\
     #include <vector>\n#include <cstdint>\n\nnamespace ebi {\n\nstruct stern_brocot_tree\
     \ {\n  private:\n    using value_type = std::int64_t;\n    using T = value_type;\n\
-    \    using Fraction = std::pair<T, T>;\n\n  public:\n    stern_brocot_tree() =\
-    \ default;\n\n    static std::vector<T> encode_path(const Fraction &f) {\n   \
-    \     auto [x, y] = f;\n        std::vector<T> path;\n        while (x != y) {\n\
-    \            T m = (x - 1) / y;\n            path.emplace_back(m);\n         \
-    \   x -= m * y;\n            std::swap(x, y);\n        }\n        return path;\n\
+    \    using Fraction = std::pair<T, T>;\n\n    static Fraction add(const Fraction\
+    \ &lhs, const Fraction &rhs) {\n        return {lhs.first + rhs.first, lhs.second\
+    \ + rhs.second};\n    }\n\n    static Fraction mul(const T k, const Fraction &a)\
+    \ {\n        return {k * a.first, k * a.second};\n    }\n\n  public:\n    stern_brocot_tree()\
+    \ = default;\n\n    static std::vector<T> encode_path(const Fraction &f) {\n \
+    \       auto [x, y] = f;\n        std::vector<T> path;\n        while (x != y)\
+    \ {\n            T m = (x - 1) / y;\n            path.emplace_back(m);\n     \
+    \       x -= m * y;\n            std::swap(x, y);\n        }\n        return path;\n\
     \    }\n\n    static std::pair<Fraction, Fraction> decode_path(\n        const\
     \ std::vector<T> &path) {\n        T lx = 0, ly = 1, rx = 1, ry = 0;\n       \
     \ for (bool is_right = true; auto n : path) {\n            if (is_right) {\n \
@@ -55,7 +58,7 @@ data:
     \        return decode_path(p);\n    }\n\n    static Fraction lca(Fraction f,\
     \ Fraction g) {\n        auto path_f = encode_path(f);\n        auto path_g =\
     \ encode_path(g);\n        std::vector<T> path_h;\n        for (int i = 0; i <\
-    \ (int)std::min(path_f.size(), path_g.size()); i++) {\n            int k = std::min(path_f[i],\
+    \ (int)std::min(path_f.size(), path_g.size()); i++) {\n            T k = std::min(path_f[i],\
     \ path_g[i]);\n            path_h.emplace_back(k);\n            if (path_f[i]\
     \ != path_g[i]) {\n                break;\n            }\n        }\n        return\
     \ val(decode_path(path_h));\n    }\n\n    static std::optional<Fraction> ancestor(T\
@@ -64,11 +67,23 @@ data:
     \          k -= m;\n            if (k == 0) break;\n        }\n        if (k >\
     \ 0) return std::nullopt;\n        return val(decode_path(path));\n    }\n\n \
     \   static std::pair<Fraction, Fraction> range(Fraction f) {\n        return decode_path(encode_path(f));\n\
-    \    }\n\n    static Fraction val(std::pair<Fraction, Fraction> f) {\n       \
-    \ auto [l, r] = f;\n        return {l.first + r.first, l.second + r.second};\n\
+    \    }\n\n    template<class F>\n    static Fraction binary_search(const T max_value,\
+    \ F f) {\n        Fraction l = {0, 1}, r = {1, 0};\n        while(true) {\n  \
+    \          Fraction now = val({l, r});\n            bool flag = f(now);\n    \
+    \        Fraction from = flag ? l : r;\n            Fraction to = flag ? r : l;\n\
+    \            T ok = 1, ng = 2;\n            while(f(add(from, mul(ng, to))) ==\
+    \ flag) {\n                ok <<= 1;\n                ng <<= 1;\n            \
+    \    auto nxt = add(from, mul(ok, to));\n                if(nxt.first > max_value\
+    \ || nxt.second > max_value) return to;\n            }\n            while(ng -\
+    \ ok > 1) {\n                T mid = (ok + ng) >> 1;\n                if(f(add(from,\
+    \ mul(mid, to))) == flag) {\n                    ok = mid;\n                }\n\
+    \                else {\n                    ng = mid;\n                }\n  \
+    \          }\n            (flag ? l : r) = add(from, mul(ok, to));\n        }\n\
+    \        assert(0);\n        return l;\n    }\n\n    static Fraction val(const\
+    \ std::pair<Fraction, Fraction> &f) {\n        return add(f.first, f.second);\n\
     \    }\n\n    static void print_path(const std::vector<T> &path) {\n        if\
     \ (path.empty()) {\n            std::cout << \"0\\n\";\n            return;\n\
-    \        }\n        int k = path.size() - int(path[0] == 0);\n        std::cout\
+    \        }\n        int k = (int)path.size() - int(path[0] == 0);\n        std::cout\
     \ << k;\n        for (bool is_right = true; auto c : path) {\n            if (c\
     \ > 0) {\n                std::cout << \" \" << (is_right ? 'R' : 'L') << \" \"\
     \ << c;\n            }\n            is_right = !is_right;\n        }\n       \
@@ -174,7 +189,7 @@ data:
   isVerificationFile: true
   path: test/math/Stern-Brocot_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-12-28 15:52:36+09:00'
+  timestamp: '2023-12-28 16:44:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stern-Brocot_Tree.test.cpp
