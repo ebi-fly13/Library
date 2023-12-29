@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <cassert>
 #include <concepts>
 #include <cstdint>
@@ -31,6 +32,15 @@ struct stern_brocot_tree {
 
     static bool compare(Fraction a, Fraction b) {
         return __int128_t(a.first) * b.second < __int128_t(a.second) * b.first;
+    }
+
+    static void euler_tour_order(std::vector<Fraction> &fs) {
+        std::sort(fs.begin(), fs.end(), [&](Fraction a, Fraction b) -> bool {
+            if (a == b) return false;
+            if (in_subtree(a, b)) return false;
+            if (in_subtree(b, a)) return true;
+            return compare(a, b);
+        });
     }
 
   public:
@@ -193,19 +203,44 @@ struct stern_brocot_tree {
         }
     }
 
+    static std::vector<std::pair<Fraction, int>>
+    lca_based_auxiliary_tree_euler_tour_order(std::vector<Fraction> fs) {
+        if (fs.empty()) return {};
+        euler_tour_order(fs);
+        fs.erase(std::unique(fs.begin(), fs.end()), fs.end());
+        int n = (int)fs.size();
+        for (int i = 0; i < n - 1; i++) {
+            fs.emplace_back(lca(fs[i], fs[i + 1]));
+        }
+        euler_tour_order(fs);
+        fs.erase(std::unique(fs.begin(), fs.end()), fs.end());
+        n = (int)fs.size();
+        std::vector<std::pair<Fraction, int>> tree(n);
+        std::vector<int> stack = {0};
+        tree[0] = {fs[0], -1};
+        for (int i = 1; i < n; i++) {
+            while (!in_subtree(fs[i], fs[stack.back()])) {
+                stack.pop_back();
+            }
+            tree[i] = {fs[i], stack.back()};
+            stack.emplace_back(i);
+        }
+        return tree;
+    }
+
     static std::pair<Fraction, Fraction> childs(Fraction f) {
         auto [l, r] = range(f);
         return {add(l, f), add(f, r)};
     }
 
-    static bool in_substree(Fraction f, Fraction g) {
+    static bool in_subtree(Fraction f, Fraction g) {
         auto [l, r] = range(g);
         return compare(l, f) && compare(f, r);
     }
 
     static T depth(Fraction f) {
         T d = 0;
-        for(auto n: encode_path(f)) d += n;
+        for (auto n : encode_path(f)) d += n;
         return d;
     }
 

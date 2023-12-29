@@ -53,6 +53,12 @@ Stern-Brocot Tree の上の有理数 $f$ と対応するノードの持つ有理
 
 出題例: [GCJ2019 Round 2](https://github.com/google/coding-competitions-archive/blob/main/codejam/2019/round_2/new_elements_part_2/statement.pdf)
 
+### lca_based_an_auxiliary_tree_euler_tour_order(std::vector<Fraction> fs)
+
+有理数を $k$ 個与え、それらに対応するノードとそれらのLCAからなる補助的な木を構築する。返り値として、補助的な木のノードに対応する有理数とその親の組をeuler tour順で返す。根の親は $-1$ としている。
+
+出題例: [ABC273-Ex](https://atcoder.jp/contests/abc273/tasks/abc273_h)
+
 ### in_subtree(Fraction f, Fraction g)
 
 有理数 $g$ に対応するノードの部分木に有理数 $f$ が存在するか判定。つまり、 $f \in range(g)$ を判定。
