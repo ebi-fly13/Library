@@ -31,36 +31,42 @@ data:
     - https://judge.yosupo.jp/problem/stern_brocot_tree
   bundledCode: "#line 1 \"test/math/Stern-Brocot_Tree.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/stern_brocot_tree\"\n\n#line 2 \"math/stern_brocot_tree.hpp\"\
-    \n\n#include <cassert>\n#include <concepts>\n#include <cstdint>\n#include <iostream>\n\
-    #include <optional>\n#include <vector>\n\n/*\nreference: https://miscalc.hatenablog.com/entry/2023/12/22/213007\n\
-    \           https://rsk0315.hatenablog.com/entry/2023/04/17/022705\n         \
-    \  https://atcoder.jp/contests/abc294/editorial/6017\n*/\n\nnamespace ebi {\n\n\
-    struct stern_brocot_tree {\n  private:\n    using value_type = std::int64_t;\n\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <concepts>\n#include <cstdint>\n\
+    #include <iostream>\n#include <optional>\n#include <vector>\n\n/*\nreference:\
+    \ https://miscalc.hatenablog.com/entry/2023/12/22/213007\n           https://rsk0315.hatenablog.com/entry/2023/04/17/022705\n\
+    \           https://atcoder.jp/contests/abc294/editorial/6017\n*/\n\nnamespace\
+    \ ebi {\n\nstruct stern_brocot_tree {\n  private:\n    using value_type = std::int64_t;\n\
     \    using T = value_type;\n    using Fraction = std::pair<T, T>;\n\n    static\
     \ Fraction add(const Fraction &lhs, const Fraction &rhs) {\n        return {lhs.first\
     \ + rhs.first, lhs.second + rhs.second};\n    }\n\n    static Fraction mul(const\
     \ T k, const Fraction &a) {\n        return {k * a.first, k * a.second};\n   \
-    \ }\n\n  public:\n    stern_brocot_tree() = default;\n\n    static std::vector<T>\
-    \ encode_path(const Fraction &f) {\n        auto [x, y] = f;\n        std::vector<T>\
-    \ path;\n        while (x != y) {\n            T m = (x - 1) / y;\n          \
-    \  path.emplace_back(m);\n            x -= m * y;\n            std::swap(x, y);\n\
-    \        }\n        return path;\n    }\n\n    static std::pair<Fraction, Fraction>\
-    \ decode_path(\n        const std::vector<T> &path) {\n        T lx = 0, ly =\
-    \ 1, rx = 1, ry = 0;\n        for (bool is_right = true; auto n : path) {\n  \
-    \          if (is_right) {\n                lx += rx * n;\n                ly\
-    \ += ry * n;\n            } else {\n                rx += lx * n;\n          \
-    \      ry += ly * n;\n            }\n            is_right = !is_right;\n     \
-    \   }\n        return {{lx, ly}, {rx, ry}};\n    }\n\n    static std::pair<Fraction,\
-    \ Fraction> decode_path(\n        const std::vector<std::pair<char, T>> &path)\
-    \ {\n        if (path.empty()) {\n            return {{0, 1}, {1, 0}};\n     \
-    \   }\n        std::vector<T> p;\n        bool is_right = true;\n        if (path[0].first\
-    \ == 'L') {\n            p.emplace_back(0);\n            is_right = !is_right;\n\
-    \        }\n        for (auto [c, n] : path) {\n            assert(c == (is_right\
-    \ ? 'R' : 'L'));\n            p.emplace_back(n);\n            is_right = !is_right;\n\
-    \        }\n        return decode_path(p);\n    }\n\n    static Fraction lca(Fraction\
-    \ f, Fraction g) {\n        auto path_f = encode_path(f);\n        auto path_g\
-    \ = encode_path(g);\n        std::vector<T> path_h;\n        for (int i = 0; i\
-    \ < (int)std::min(path_f.size(), path_g.size()); i++) {\n            T k = std::min(path_f[i],\
+    \ }\n\n    static bool compare(Fraction a, Fraction b) {\n        return __int128_t(a.first)\
+    \ * b.second < __int128_t(a.second) * b.first;\n    }\n\n    static void euler_tour_order(std::vector<Fraction>\
+    \ &fs) {\n        std::sort(fs.begin(), fs.end(), [&](Fraction a, Fraction b)\
+    \ -> bool {\n            if (a == b) return false;\n            if (in_subtree(a,\
+    \ b)) return false;\n            if (in_subtree(b, a)) return true;\n        \
+    \    return compare(a, b);\n        });\n    }\n\n  public:\n    stern_brocot_tree()\
+    \ = default;\n\n    static std::vector<T> encode_path(const Fraction &f) {\n \
+    \       auto [x, y] = f;\n        std::vector<T> path;\n        while (x != y)\
+    \ {\n            T m = (x - 1) / y;\n            path.emplace_back(m);\n     \
+    \       x -= m * y;\n            std::swap(x, y);\n        }\n        return path;\n\
+    \    }\n\n    static std::pair<Fraction, Fraction> decode_path(\n        const\
+    \ std::vector<T> &path) {\n        T lx = 0, ly = 1, rx = 1, ry = 0;\n       \
+    \ for (bool is_right = true; auto n : path) {\n            if (is_right) {\n \
+    \               lx += rx * n;\n                ly += ry * n;\n            } else\
+    \ {\n                rx += lx * n;\n                ry += ly * n;\n          \
+    \  }\n            is_right = !is_right;\n        }\n        return {{lx, ly},\
+    \ {rx, ry}};\n    }\n\n    static std::pair<Fraction, Fraction> decode_path(\n\
+    \        const std::vector<std::pair<char, T>> &path) {\n        if (path.empty())\
+    \ {\n            return {{0, 1}, {1, 0}};\n        }\n        std::vector<T> p;\n\
+    \        bool is_right = true;\n        if (path[0].first == 'L') {\n        \
+    \    p.emplace_back(0);\n            is_right = !is_right;\n        }\n      \
+    \  for (auto [c, n] : path) {\n            assert(c == (is_right ? 'R' : 'L'));\n\
+    \            p.emplace_back(n);\n            is_right = !is_right;\n        }\n\
+    \        return decode_path(p);\n    }\n\n    static Fraction lca(Fraction f,\
+    \ Fraction g) {\n        auto path_f = encode_path(f);\n        auto path_g =\
+    \ encode_path(g);\n        std::vector<T> path_h;\n        for (int i = 0; i <\
+    \ (int)std::min(path_f.size(), path_g.size()); i++) {\n            T k = std::min(path_f[i],\
     \ path_g[i]);\n            path_h.emplace_back(k);\n            if (path_f[i]\
     \ != path_g[i]) {\n                break;\n            }\n        }\n        return\
     \ val(decode_path(path_h));\n    }\n\n    static std::optional<Fraction> ancestor(T\
@@ -103,9 +109,23 @@ data:
     \ lch = childs(r).first;\n            if (lch == l) {\n                return\
     \ childs(l).second;\n            } else {\n                return lch;\n     \
     \       }\n        } else {\n            return m;\n        }\n    }\n\n    static\
-    \ std::pair<Fraction, Fraction> childs(Fraction f) {\n        auto [l, r] = range(f);\n\
-    \        return {add(l, f), add(f, r)};\n    }\n\n    static Fraction val(const\
-    \ std::pair<Fraction, Fraction> &f) {\n        return add(f.first, f.second);\n\
+    \ std::vector<std::pair<Fraction, int>>\n    lca_based_auxiliary_tree_euler_tour_order(std::vector<Fraction>\
+    \ fs) {\n        if (fs.empty()) return {};\n        euler_tour_order(fs);\n \
+    \       fs.erase(std::unique(fs.begin(), fs.end()), fs.end());\n        int n\
+    \ = (int)fs.size();\n        for (int i = 0; i < n - 1; i++) {\n            fs.emplace_back(lca(fs[i],\
+    \ fs[i + 1]));\n        }\n        euler_tour_order(fs);\n        fs.erase(std::unique(fs.begin(),\
+    \ fs.end()), fs.end());\n        n = (int)fs.size();\n        std::vector<std::pair<Fraction,\
+    \ int>> tree(n);\n        std::vector<int> stack = {0};\n        tree[0] = {fs[0],\
+    \ -1};\n        for (int i = 1; i < n; i++) {\n            while (!in_subtree(fs[i],\
+    \ fs[stack.back()])) {\n                stack.pop_back();\n            }\n   \
+    \         tree[i] = {fs[i], stack.back()};\n            stack.emplace_back(i);\n\
+    \        }\n        return tree;\n    }\n\n    static std::pair<Fraction, Fraction>\
+    \ childs(Fraction f) {\n        auto [l, r] = range(f);\n        return {add(l,\
+    \ f), add(f, r)};\n    }\n\n    static bool in_subtree(Fraction f, Fraction g)\
+    \ {\n        auto [l, r] = range(g);\n        return compare(l, f) && compare(f,\
+    \ r);\n    }\n\n    static T depth(Fraction f) {\n        T d = 0;\n        for\
+    \ (auto n : encode_path(f)) d += n;\n        return d;\n    }\n\n    static Fraction\
+    \ val(const std::pair<Fraction, Fraction> &f) {\n        return add(f.first, f.second);\n\
     \    }\n\n    static void print_path(const std::vector<T> &path) {\n        if\
     \ (path.empty()) {\n            std::cout << \"0\\n\";\n            return;\n\
     \        }\n        int k = (int)path.size() - int(path[0] == 0);\n        std::cout\
@@ -113,35 +133,35 @@ data:
     \ > 0) {\n                std::cout << \" \" << (is_right ? 'R' : 'L') << \" \"\
     \ << c;\n            }\n            is_right = !is_right;\n        }\n       \
     \ std::cout << '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi\n#line\
-    \ 1 \"template/template.hpp\"\n#include <algorithm>\n#include <bit>\n#include\
-    \ <bitset>\n#line 5 \"template/template.hpp\"\n#include <chrono>\n#include <climits>\n\
-    #include <cmath>\n#include <complex>\n#include <cstddef>\n#line 11 \"template/template.hpp\"\
-    \n#include <cstdlib>\n#include <cstring>\n#include <functional>\n#include <iomanip>\n\
-    #line 16 \"template/template.hpp\"\n#include <limits>\n#include <map>\n#include\
-    \ <memory>\n#include <numbers>\n#include <numeric>\n#line 22 \"template/template.hpp\"\
-    \n#include <queue>\n#include <random>\n#include <ranges>\n#include <set>\n#include\
-    \ <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n#include\
-    \ <unordered_map>\n#include <unordered_set>\n#include <utility>\n#line 34 \"template/template.hpp\"\
-    \n\n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
-    \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
-    \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
-    \ i >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v)\
-    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line\
-    \ 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n#define\
-    \ debug(...)                                                      \\\n    std::cerr\
-    \ << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\", \\\n       \
-    \ debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid debug_out()\
-    \ {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename... Tail>\
-    \ void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t)\
-    \ > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n\
-    #line 2 \"template/int_alias.hpp\"\n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace\
-    \ ebi {\n\nusing ld = long double;\nusing std::size_t;\nusing i8 = std::int8_t;\n\
-    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
-    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
-    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    \ 2 \"template/template.hpp\"\n#include <bit>\n#include <bitset>\n#line 5 \"template/template.hpp\"\
+    \n#include <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n\
+    #include <cstddef>\n#line 11 \"template/template.hpp\"\n#include <cstdlib>\n#include\
+    \ <cstring>\n#include <functional>\n#include <iomanip>\n#line 16 \"template/template.hpp\"\
+    \n#include <limits>\n#include <map>\n#include <memory>\n#include <numbers>\n#include\
+    \ <numeric>\n#line 22 \"template/template.hpp\"\n#include <queue>\n#include <random>\n\
+    #include <ranges>\n#include <set>\n#include <stack>\n#include <string>\n#include\
+    \ <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
+    #include <utility>\n#line 34 \"template/template.hpp\"\n\n#define rep(i, a, n)\
+    \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
+    \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
+    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
+    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
+    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
+    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
+    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
+    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
+    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\n\
+    template <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os,\
+    \ const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
     \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
     template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
@@ -214,7 +234,7 @@ data:
   isVerificationFile: true
   path: test/math/Stern-Brocot_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-12-29 02:10:37+09:00'
+  timestamp: '2023-12-29 12:51:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stern-Brocot_Tree.test.cpp
