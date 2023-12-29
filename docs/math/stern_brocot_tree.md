@@ -53,6 +53,14 @@ Stern-Brocot Tree の上の有理数 $f$ と対応するノードの持つ有理
 
 出題例: [GCJ2019 Round 2](https://github.com/google/coding-competitions-archive/blob/main/codejam/2019/round_2/new_elements_part_2/statement.pdf)
 
+### in_subtree(Fraction f, Fraction g)
+
+有理数 $g$ に対応するノードの部分木に有理数 $f$ が存在するか判定。つまり、 $f \in range(g)$ を判定。
+
+### depth(Fraction f)
+
+有理数 $f$ の根からのパスの長さを返す。
+
 ### val(std::pair<Fraction, Fraction> f)
 
 ノード $f$ の値を有理数で返す。 $O(1)$

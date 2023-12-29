@@ -29,6 +29,10 @@ struct stern_brocot_tree {
         return {k * a.first, k * a.second};
     }
 
+    static bool compare(Fraction a, Fraction b) {
+        return __int128_t(a.first) * b.second < __int128_t(a.second) * b.first;
+    }
+
   public:
     stern_brocot_tree() = default;
 
@@ -192,6 +196,17 @@ struct stern_brocot_tree {
     static std::pair<Fraction, Fraction> childs(Fraction f) {
         auto [l, r] = range(f);
         return {add(l, f), add(f, r)};
+    }
+
+    static bool in_substree(Fraction f, Fraction g) {
+        auto [l, r] = range(g);
+        return compare(l, f) && compare(f, r);
+    }
+
+    static T depth(Fraction f) {
+        T d = 0;
+        for(auto n: encode_path(f)) d += n;
+        return d;
     }
 
     static Fraction val(const std::pair<Fraction, Fraction> &f) {
