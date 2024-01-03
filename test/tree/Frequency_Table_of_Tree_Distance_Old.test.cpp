@@ -8,7 +8,7 @@
 
 #include "../../convolution/convolution_mod_2_64.hpp"
 #include "../../graph/template.hpp"
-#include "../../tree/centroid_decomposition.hpp"
+#include "../../tree/centroid_decomposition_old.hpp"
 
 using u64 = uint64_t;
 

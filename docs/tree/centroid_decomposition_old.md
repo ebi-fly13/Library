@@ -1,6 +1,6 @@
 ---
-title: Centroid Decomposition
-documentation_of: //tree/centroid_decomposition.hpp
+title: Centroid Decomposition (old)
+documentation_of: //tree/centroid_decomposition_old.hpp
 ---
 
 ## 説明
