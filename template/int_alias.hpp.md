@@ -103,6 +103,9 @@ data:
     path: test/tree/Cartesian_Tree.test.cpp
     title: test/tree/Cartesian_Tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree.test.cpp
+    title: test/tree/Frequency_Table_of_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
   - icon: ':heavy_check_mark:'
@@ -238,6 +241,7 @@ data:
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/tree/Cartesian_Tree.test.cpp
+  - test/tree/Frequency_Table_of_Tree.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp

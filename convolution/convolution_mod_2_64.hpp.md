@@ -19,8 +19,11 @@ data:
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+    path: test/tree/Frequency_Table_of_Tree.test.cpp
+    title: test/tree/Frequency_Table_of_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -215,7 +218,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Convolution_Mod_2_64.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+  - test/tree/Frequency_Table_of_Tree.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
 documentation_of: convolution/convolution_mod_2_64.hpp
 layout: document
 title: Convolution $\pmod{2^{64}}$

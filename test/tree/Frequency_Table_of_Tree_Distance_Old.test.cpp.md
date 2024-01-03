@@ -20,8 +20,8 @@ data:
     path: modint/modint.hpp
     title: modint/modint.hpp
   - icon: ':heavy_check_mark:'
-    path: tree/centroid_decomposition.hpp
-    title: Centroid Decomposition
+    path: tree/centroid_decomposition_old.hpp
+    title: Centroid Decomposition (old)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -32,8 +32,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
     links:
     - https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
-  bundledCode: "#line 1 \"test/tree/Frequency_Table_of_Tree_Distance.test.cpp\"\n\
-    #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
+  bundledCode: "#line 1 \"test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp\"\
+    \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
     \n\n#include <cstdint>\n#include <iostream>\n#include <queue>\n#include <vector>\n\
     \n#line 2 \"convolution/convolution_mod_2_64.hpp\"\n\n#line 5 \"convolution/convolution_mod_2_64.hpp\"\
     \n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include <array>\n\
@@ -190,7 +190,7 @@ data:
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
     \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 2 \"tree/centroid_decomposition.hpp\"\n\r\n#line 4 \"tree/centroid_decomposition.hpp\"\
+    \ ebi\n#line 2 \"tree/centroid_decomposition_old.hpp\"\n\r\n#line 4 \"tree/centroid_decomposition_old.hpp\"\
     \n\r\n/*\r\n    reference: https://qiita.com/drken/items/4b4c3f1824339b090202\r\
     \n               https://ferin-tech.hatenablog.com/entry/2020/03/06/162311\r\n\
     */\r\n\r\nnamespace ebi {\r\n\r\nstruct centroid_decomposition {\r\n  private:\r\
@@ -217,8 +217,8 @@ data:
     \ }\r\n\r\n  private:\r\n    int n;\r\n    int root;\r\n    std::vector<std::vector<int>>\
     \ g;\r\n    std::vector<bool> dead;\r\n    std::vector<int> sz;\r\n    std::vector<int>\
     \ par;\r\n    std::vector<std::vector<int>> belong;\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 12 \"test/tree/Frequency_Table_of_Tree_Distance.test.cpp\"\n\nusing\
-    \ u64 = uint64_t;\n\nint main() {\n    int n;\n    std::cin >> n;\n    ebi::graph\
+    \ ebi\n#line 12 \"test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp\"\n\n\
+    using u64 = uint64_t;\n\nint main() {\n    int n;\n    std::cin >> n;\n    ebi::graph\
     \ g(n);\n    for (int i = 0; i < n - 1; i++) {\n        int a, b;\n        std::cin\
     \ >> a >> b;\n        g.add_edge(a, b);\n    }\n    ebi::centroid_decomposition\
     \ cdtree(g);\n    auto [root, tree] = cdtree.get_centroid_decomposition_tree();\n\
@@ -243,7 +243,7 @@ data:
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
     \n\n#include <cstdint>\n#include <iostream>\n#include <queue>\n#include <vector>\n\
     \n#include \"../../convolution/convolution_mod_2_64.hpp\"\n#include \"../../graph/template.hpp\"\
-    \n#include \"../../tree/centroid_decomposition.hpp\"\n\nusing u64 = uint64_t;\n\
+    \n#include \"../../tree/centroid_decomposition_old.hpp\"\n\nusing u64 = uint64_t;\n\
     \nint main() {\n    int n;\n    std::cin >> n;\n    ebi::graph g(n);\n    for\
     \ (int i = 0; i < n - 1; i++) {\n        int a, b;\n        std::cin >> a >> b;\n\
     \        g.add_edge(a, b);\n    }\n    ebi::centroid_decomposition cdtree(g);\n\
@@ -273,17 +273,17 @@ data:
   - modint/base.hpp
   - modint/modint.hpp
   - graph/template.hpp
-  - tree/centroid_decomposition.hpp
+  - tree/centroid_decomposition_old.hpp
   isVerificationFile: true
-  path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+  path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 00:17:11+09:00'
+  timestamp: '2024-01-04 03:14:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+documentation_of: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
 layout: document
 redirect_from:
-- /verify/test/tree/Frequency_Table_of_Tree_Distance.test.cpp
-- /verify/test/tree/Frequency_Table_of_Tree_Distance.test.cpp.html
-title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+- /verify/test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
+- /verify/test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp.html
+title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
 ---

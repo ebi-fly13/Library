@@ -49,6 +49,9 @@ data:
     path: test/tree/Cartesian_Tree.test.cpp
     title: test/tree/Cartesian_Tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree.test.cpp
+    title: test/tree/Frequency_Table_of_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1077.test.cpp
     title: test/yuki/yuki_1077.test.cpp
   - icon: ':heavy_check_mark:'
@@ -125,6 +128,7 @@ data:
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/tree/Cartesian_Tree.test.cpp
+  - test/tree/Frequency_Table_of_Tree.test.cpp
   - test/yuki/yuki_1077.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_952.test.cpp

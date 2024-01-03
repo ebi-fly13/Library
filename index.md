@@ -433,7 +433,10 @@ data:
       title: Cartesian Tree
     - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
-      title: Centroid Decomposition
+      title: tree/centroid_decomposition.hpp
+    - icon: ':heavy_check_mark:'
+      path: tree/centroid_decomposition_old.hpp
+      title: Centroid Decomposition (old)
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
@@ -855,8 +858,11 @@ data:
       path: test/tree/Cartesian_Tree.test.cpp
       title: test/tree/Cartesian_Tree.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
-      title: test/tree/Frequency_Table_of_Tree_Distance.test.cpp
+      path: test/tree/Frequency_Table_of_Tree.test.cpp
+      title: test/tree/Frequency_Table_of_Tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
+      title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp
