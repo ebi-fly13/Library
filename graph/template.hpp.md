@@ -45,12 +45,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree.test.cpp
     title: test/tree/Frequency_Table_of_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
@@ -78,9 +81,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901_2.test.cpp
     title: test/yuki/yuki_901_2.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
@@ -115,7 +118,7 @@ data:
   - graph/scc_graph.hpp
   - graph/dijkstra.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/algorithm/Two_Sat.test.cpp
@@ -125,6 +128,7 @@ data:
   - test/tree/level_ancestor_lca.test.cpp
   - test/tree/Frequency_Table_of_Tree.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
+  - test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Tree_Diameter.test.cpp

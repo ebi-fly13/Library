@@ -5,10 +5,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -71,7 +71,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -240,12 +240,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree.test.cpp
     title: test/tree/Frequency_Table_of_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
@@ -258,9 +261,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\
@@ -313,7 +316,7 @@ data:
   - modint/dynamic_modint.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Berunoulli_Number.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
@@ -367,6 +370,7 @@ data:
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/tree/Frequency_Table_of_Tree.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
+  - test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   - test/yuki/yuki_1302.test.cpp

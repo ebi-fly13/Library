@@ -39,16 +39,16 @@ data:
     title: tree/centroid_decomposition.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
     links:
     - https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
-  bundledCode: "#line 1 \"test/tree/Frequency_Table_of_Tree.test.cpp\"\n#define PROBLEM\
-    \ \\\n    \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
+  bundledCode: "#line 1 \"test/tree/Frequency_Table_of_Tree_One_Third.test.cpp\"\n\
+    #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
     \n\n#line 2 \"convolution/convolution_mod_2_64.hpp\"\n\n#include <cstdint>\n#include\
     \ <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include\
     \ <array>\n#include <bit>\n#include <cassert>\n#line 8 \"convolution/ntt.hpp\"\
@@ -348,47 +348,46 @@ data:
     \ bfs_order, f);\n    } else if constexpr (MODE == 1) {\n    } else {\n      \
     \  internal::one_third_centroid_decomposition(par, bfs_order,\n              \
     \                                     std::vector<int>(n, 1), f);\n    }\n}\n\n\
-    }  // namespace ebi\n#line 8 \"test/tree/Frequency_Table_of_Tree.test.cpp\"\n\n\
-    namespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    graph g(n);\n\
-    \    rep(i, 0, n - 1) {\n        int a, b;\n        std::cin >> a >> b;\n    \
-    \    g.add_edge(a, b);\n    }\n    std::vector<i64> ans(n, 0);\n    auto f = [&](const\
-    \ std::vector<int> &par, const std::vector<int> &vs,\n                 const std::vector<int>\
-    \ &index_ptr) -> void {\n        int sz = par.size();\n        std::vector<int>\
-    \ dist(sz, 0);\n        rep(v, 1, sz) {\n            dist[v] = dist[par[v]] +\
-    \ 1;\n        }\n        auto calc = [&](int l, int r, int sgn) -> void {\n  \
-    \          int max = *std::max_element(dist.begin() + l, dist.begin() + r);\n\
-    \            std::vector<u64> table(max + 1, 0);\n            rep(v, l, r) {\n\
-    \                table[dist[v]]++;\n            }\n            auto a = convolution_mod_2_64(table,\
-    \ table);\n            rep(i, 1, a.size()) {\n                ans[i] += sgn *\
-    \ i64(a[i]);\n            }\n        };\n        calc(0, sz, 1);\n        rep(c,\
-    \ 1, index_ptr.size() - 1) {\n            int l = index_ptr[c];\n            int\
-    \ r = index_ptr[c + 1];\n            calc(l, r, -1);\n        }\n    };\n    centroid_decomposition<0>(g,\
-    \ f);\n    ans.erase(ans.begin());\n    for (auto &x : ans) {\n        x /= 2;\n\
-    \    }\n    std::cout << ans << '\\n';\n}\n\n}  // namespace ebi\n\nint main()\
-    \ {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while (t--)\
-    \ {\n        ebi::main_();\n    }\n    return 0;\n}\n"
+    }  // namespace ebi\n#line 8 \"test/tree/Frequency_Table_of_Tree_One_Third.test.cpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    graph\
+    \ tree(n);\n    rep(i, 0, n - 1) {\n        int a, b;\n        std::cin >> a >>\
+    \ b;\n        tree.add_edge(a, b);\n    }\n    std::vector<u64> ans(n, 0);\n \
+    \   auto calc = [&](const std::vector<int> &par, const std::vector<int> &vs,\n\
+    \                    const std::vector<int> &color) -> void {\n        int sz\
+    \ = (int)par.size();\n        std::vector<int> dist(n, 0);\n        for (const\
+    \ int v : std::views::iota(1, sz)) {\n            dist[v] = dist[par[v]] + 1;\n\
+    \        }\n        std::vector<u64> f(sz, 0), g(sz, 0);\n        for (const int\
+    \ v : std::views::iota(0, sz)) {\n            if (color[v] == 0) f[dist[v]]++;\n\
+    \            if (color[v] == 1) g[dist[v]]++;\n        }\n        while (!f.empty()\
+    \ && f.back() == 0) {\n            f.pop_back();\n        }\n        while (!g.empty()\
+    \ && g.back() == 0) {\n            g.pop_back();\n        }\n        auto h =\
+    \ convolution_mod_2_64(f, g);\n        for (const int i : std::views::iota(0,\
+    \ (int)h.size())) {\n            ans[i] += h[i];\n        }\n    };\n    centroid_decomposition<2>(tree,\
+    \ calc);\n    ans.erase(ans.begin());\n    std::cout << ans << '\\n';\n}\n\n}\
+    \  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n   \
+    \ // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n    }\n    return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
     \n\n#include \"../../convolution/convolution_mod_2_64.hpp\"\n#include \"../../graph/template.hpp\"\
     \n#include \"../../template/template.hpp\"\n#include \"../../tree/centroid_decomposition.hpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    graph\
-    \ g(n);\n    rep(i, 0, n - 1) {\n        int a, b;\n        std::cin >> a >> b;\n\
-    \        g.add_edge(a, b);\n    }\n    std::vector<i64> ans(n, 0);\n    auto f\
-    \ = [&](const std::vector<int> &par, const std::vector<int> &vs,\n           \
-    \      const std::vector<int> &index_ptr) -> void {\n        int sz = par.size();\n\
-    \        std::vector<int> dist(sz, 0);\n        rep(v, 1, sz) {\n            dist[v]\
-    \ = dist[par[v]] + 1;\n        }\n        auto calc = [&](int l, int r, int sgn)\
-    \ -> void {\n            int max = *std::max_element(dist.begin() + l, dist.begin()\
-    \ + r);\n            std::vector<u64> table(max + 1, 0);\n            rep(v, l,\
-    \ r) {\n                table[dist[v]]++;\n            }\n            auto a =\
-    \ convolution_mod_2_64(table, table);\n            rep(i, 1, a.size()) {\n   \
-    \             ans[i] += sgn * i64(a[i]);\n            }\n        };\n        calc(0,\
-    \ sz, 1);\n        rep(c, 1, index_ptr.size() - 1) {\n            int l = index_ptr[c];\n\
-    \            int r = index_ptr[c + 1];\n            calc(l, r, -1);\n        }\n\
-    \    };\n    centroid_decomposition<0>(g, f);\n    ans.erase(ans.begin());\n \
-    \   for (auto &x : ans) {\n        x /= 2;\n    }\n    std::cout << ans << '\\\
-    n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t\
-    \ = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n    }\n\
-    \    return 0;\n}"
+    \ tree(n);\n    rep(i, 0, n - 1) {\n        int a, b;\n        std::cin >> a >>\
+    \ b;\n        tree.add_edge(a, b);\n    }\n    std::vector<u64> ans(n, 0);\n \
+    \   auto calc = [&](const std::vector<int> &par, const std::vector<int> &vs,\n\
+    \                    const std::vector<int> &color) -> void {\n        int sz\
+    \ = (int)par.size();\n        std::vector<int> dist(n, 0);\n        for (const\
+    \ int v : std::views::iota(1, sz)) {\n            dist[v] = dist[par[v]] + 1;\n\
+    \        }\n        std::vector<u64> f(sz, 0), g(sz, 0);\n        for (const int\
+    \ v : std::views::iota(0, sz)) {\n            if (color[v] == 0) f[dist[v]]++;\n\
+    \            if (color[v] == 1) g[dist[v]]++;\n        }\n        while (!f.empty()\
+    \ && f.back() == 0) {\n            f.pop_back();\n        }\n        while (!g.empty()\
+    \ && g.back() == 0) {\n            g.pop_back();\n        }\n        auto h =\
+    \ convolution_mod_2_64(f, g);\n        for (const int i : std::views::iota(0,\
+    \ (int)h.size())) {\n            ans[i] += h[i];\n        }\n    };\n    centroid_decomposition<2>(tree,\
+    \ calc);\n    ans.erase(ans.begin());\n    std::cout << ans << '\\n';\n}\n\n}\
+    \  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n   \
+    \ // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n    }\n    return\
+    \ 0;\n}"
   dependsOn:
   - convolution/convolution_mod_2_64.hpp
   - convolution/ntt.hpp
@@ -403,15 +402,15 @@ data:
   - template/utility.hpp
   - tree/centroid_decomposition.hpp
   isVerificationFile: true
-  path: test/tree/Frequency_Table_of_Tree.test.cpp
+  path: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   requiredBy: []
   timestamp: '2024-01-04 14:33:15+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/tree/Frequency_Table_of_Tree.test.cpp
+documentation_of: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
 layout: document
 redirect_from:
-- /verify/test/tree/Frequency_Table_of_Tree.test.cpp
-- /verify/test/tree/Frequency_Table_of_Tree.test.cpp.html
-title: test/tree/Frequency_Table_of_Tree.test.cpp
+- /verify/test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
+- /verify/test/tree/Frequency_Table_of_Tree_One_Third.test.cpp.html
+title: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
 ---

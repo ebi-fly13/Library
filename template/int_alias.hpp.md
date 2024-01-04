@@ -29,10 +29,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -102,9 +102,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Cartesian_Tree.test.cpp
     title: test/tree/Cartesian_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree.test.cpp
     title: test/tree/Frequency_Table_of_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
@@ -126,9 +129,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -219,7 +222,7 @@ data:
   - template/utility.hpp
   - template/template.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Inversion_Number.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
@@ -242,6 +245,7 @@ data:
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/tree/Cartesian_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree.test.cpp
+  - test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/fibonacci_heap.test.cpp

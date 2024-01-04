@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
   _extendedVerifiedWith:
@@ -84,21 +84,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree.test.cpp
     title: test/tree/Frequency_Table_of_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include\
@@ -234,7 +237,7 @@ data:
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
   timestamp: '2023-10-31 00:17:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Berunoulli_Number.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
@@ -260,6 +263,7 @@ data:
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/tree/Frequency_Table_of_Tree.test.cpp
+  - test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1145.test.cpp
