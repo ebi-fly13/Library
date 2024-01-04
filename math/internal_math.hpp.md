@@ -82,14 +82,17 @@ data:
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':x:'
-    path: test/tree/Frequency_Table_of_Tree.test.cpp
-    title: test/tree/Frequency_Table_of_Tree.test.cpp
+    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
@@ -148,8 +151,9 @@ data:
   - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/tree/Frequency_Table_of_Tree.test.cpp
-  - test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1145.test.cpp

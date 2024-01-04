@@ -858,14 +858,17 @@ data:
       path: test/tree/Cartesian_Tree.test.cpp
       title: test/tree/Cartesian_Tree.test.cpp
     - icon: ':x:'
-      path: test/tree/Frequency_Table_of_Tree.test.cpp
-      title: test/tree/Frequency_Table_of_Tree.test.cpp
+      path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+      title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+      title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+      title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
       title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
-      title: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp

@@ -46,14 +46,17 @@ data:
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':x:'
-    path: test/tree/Frequency_Table_of_Tree.test.cpp
-    title: test/tree/Frequency_Table_of_Tree.test.cpp
+    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
@@ -126,10 +129,11 @@ data:
   - test/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/aoj/aoj_2450.test.cpp
   - test/tree/level_ancestor_lca.test.cpp
-  - test/tree/Frequency_Table_of_Tree.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
-  - test/tree/Frequency_Table_of_Tree_One_Third.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
   - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
