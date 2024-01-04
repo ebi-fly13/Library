@@ -67,6 +67,12 @@ data:
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+    title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/level_ancestor_lca.test.cpp
     title: test/tree/level_ancestor_lca.test.cpp
   - icon: ':heavy_check_mark:'
@@ -131,7 +137,9 @@ data:
   - test/tree/level_ancestor_lca.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
   - test/tree/lowest_common_ancestor.test.cpp

@@ -55,6 +55,12 @@ data:
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+    title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1077.test.cpp
     title: test/yuki/yuki_1077.test.cpp
   - icon: ':heavy_check_mark:'
@@ -129,7 +135,9 @@ data:
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/tree/Cartesian_Tree.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
   - test/yuki/yuki_1077.test.cpp

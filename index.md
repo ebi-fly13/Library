@@ -438,6 +438,9 @@ data:
       path: tree/centroid_decomposition_old.hpp
       title: Centroid Decomposition (old)
     - icon: ':heavy_check_mark:'
+      path: tree/contour_query_on_tree.hpp
+      title: tree/contour_query_on_tree.hpp
+    - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
@@ -884,6 +887,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Path_Composite_Sum.test.cpp
       title: test/tree/Tree_Path_Composite_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+      title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+      title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/level_ancestor_lca.test.cpp
       title: test/tree/level_ancestor_lca.test.cpp

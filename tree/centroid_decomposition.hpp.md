@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: tree/contour_query_on_tree.hpp
+    title: tree/contour_query_on_tree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
@@ -12,6 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+    title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -266,11 +275,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: tree/centroid_decomposition.hpp
-  requiredBy: []
+  requiredBy:
+  - tree/contour_query_on_tree.hpp
   timestamp: '2024-01-04 16:07:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
 documentation_of: tree/centroid_decomposition.hpp
@@ -280,52 +292,23 @@ title: Centroid Decomposition
 
 ## 説明
 
-重心分解を行い、重心分解後の各木に対して関数 $f$ を適用する。下記のように使用する。ここで `MODE` の値によって指定した MODE で実行される。
+頂点 $v$ と距離が $[l, r)$ である頂点に対するクエリを処理するための構造体。構築 $O(N\log{N})$
 
-```
-centroid_decomposition<MODE>(tree, f)
-```
+### できること
 
-### 共通の仕様
+- [1点更新区間取得](https://judge.yosupo.jp/problem/vertex_add_range_contour_sum_on_tree)
+- [1点取得区間更新](https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree)
 
-重心分解後の木は $par$ で与えられ、頂点 $v$ の親が $par[v]$ となっている。また、重心分解後の頂点 $v$ の元の木の頂点番号は $vs[v]$ となっている。
+### できないこと
 
-### MODE 0
+- 区間更新区間所得
 
-通常の重心分解をする。下記のような関数 $f$ を重心分解後の木について適用する。
+### get_contour_from_vertex(int v, int l, int r)
 
-```
-f(const std::vector<int> &par, const std::vector<int> &vs, const std::vector<int> &index_ptr)
-```
+頂点 $v$ と距離が $[l, r)$ であるような頂点の属する区間を返す。 $O(\log{N})$
 
-重心、重心の部分木をそれぞれ異なる色で塗る。ここで、重心の色は $0$ である。
-色 $c$ の頂点数は $(index\\_ptr[c+1] - index\\_ptr[c])$ 個であり、頂点番号は $index\\_ptr[c]$ から $index\\_ptr[c+1]$ となっている。
+距離が $0$ であるよう場合は含まれないので別途処理が必要。
 
-### MODE 1
+### get_vertex(int v)
 
-$\frac{1}{3}$ 重心分解を行う。下記のような関数 $f$ を重心分解後の木について適用する。パスの長さが $1$ のものについては処理しないため別途処理が必要。
-
-```
-f(const std::vector<int> &par, const std::vector<int> &vs, int n0, int n1)
-```
-
-重心の部分木を $2$ 色に塗り分ける。ここで、頂点 $0$ が重心、 $[1, 1 + n0)$ が色 $0$ 、 $[1 + n0, 1 + n0 + n2)$ が色 $1$ となっている。
-
-辺の本数がだいたい $\frac{1}{2}$ になるように分割しているため、再帰の深さが $log{N}$ 回程度となる。一方で、各頂点の表れる回数は抑えられていないため注意。（スターグラフなど）
-
-### MODE 2
-
-$\frac{1}{3}$ 重心分解を行う。下記のような関数 $f$ を重心分解後の木について適用する。
-
-```
-f(const std::vector<int> &par, const std::vector<int> &vs, const std::vector<int> &color)
-```
-
-頂点には $virtual$ 属性と $real$ 属性があり、 $color[v] = -1$ のとき頂点 $v$ は $virtual$ 属性である。頂点は $2$ 色で塗られており、 $color$ に色が格納されている。
-
-各頂点の $real$ 属性で表れる回数が $\log{N}$ 回程度となる。始点を固定した場合のパスの処理などで活用できる。なお、 $virtual$ 属性で表れる回数は抑えられていないため注意。
-
-## reference
-
-- [重心分解・1/3重心分解のお絵描き](https://maspypy.com/%e9%87%8d%e5%bf%83%e5%88%86%e8%a7%a3%e3%83%bb1-3%e9%87%8d%e5%bf%83%e5%88%86%e8%a7%a3%e3%81%ae%e3%81%8a%e7%b5%b5%e6%8f%8f%e3%81%8d)
-- [Theoretically Faster HLD and Centroid Decomposition](https://codeforces.com/blog/entry/104997)
+頂点 $v$ に関わるインデックスを返す。 $O(\log{N})$

@@ -31,6 +31,9 @@ data:
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
   _isVerificationFailed: false
@@ -134,6 +137,7 @@ data:
   - test/aoj/aoj_3086.test.cpp
   - test/aoj/aoj_1645.test.cpp
   - test/aoj/aoj_1068_1.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
   - test/yuki/yuki_901.test.cpp
 documentation_of: data_structure/segtree.hpp
 layout: document
