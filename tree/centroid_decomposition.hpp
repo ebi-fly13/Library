@@ -11,12 +11,12 @@ namespace internal {
 
 template <class F>
 void centroid_decomposition_dfs_0(const std::vector<int> &par,
-                                  const std::vector<int> &origin_vs, F f) {
+                                  const std::vector<int> &original_vs, F f) {
     const int n = (int)par.size();
-    assert(par.size() == origin_vs.size());
+    assert(par.size() == original_vs.size());
     int center = -1;
     std::vector<int> sz(n, 1);
-    for (auto v : std::views::iota(0, n) | std::views::reverse) {
+    for (const int v : std::views::iota(0, n) | std::views::reverse) {
         if (sz[v] >= (n + 1) / 2) {
             center = v;
             break;
@@ -27,30 +27,30 @@ void centroid_decomposition_dfs_0(const std::vector<int> &par,
     std::vector<int> vs = {center};
     color[center] = 0;
     int c = 1;
-    for (int v : std::views::iota(1, n)) {
+    for (const int v : std::views::iota(1, n)) {
         if (par[v] == center) {
             vs.emplace_back(v);
             color[v] = c++;
         }
     }
     if (center > 0) {
-        for (int v = par[center]; v != -1; v = par[v]) {
+        for (const int v = par[center]; v != -1; v = par[v]) {
             vs.emplace_back(v);
             color[v] = c;
         }
         c++;
     }
-    for (int v : std::views::iota(0, n)) {
+    for (const int v : std::views::iota(0, n)) {
         if (color[v] == -1) {
             vs.emplace_back(v);
             color[v] = color[par[v]];
         }
     }
     std::vector<int> index_ptr(c + 1, 0);
-    for (int v : std::views::iota(0, n)) {
+    for (const int v : std::views::iota(0, n)) {
         index_ptr[color[v] + 1]++;
     }
-    for (int i : std::views::iota(0, c)) {
+    for (const int i : std::views::iota(0, c)) {
         index_ptr[i + 1] += index_ptr[i];
     }
     auto counter = index_ptr;
@@ -59,12 +59,12 @@ void centroid_decomposition_dfs_0(const std::vector<int> &par,
         ord[counter[color[v]]++] = v;
     }
     std::vector<int> relabel(n);
-    for (int v : std::views::iota(0, n)) {
+    for (const int v : std::views::iota(0, n)) {
         relabel[ord[v]] = v;
     }
-    std::vector<int> origin_vs2(n);
-    for (int v : std::views::iota(0, n)) {
-        origin_vs2[relabel[v]] = origin_vs[v];
+    std::vector<int> original_vs2(n);
+    for (const int v : std::views::iota(0, n)) {
+        original_vs2[relabel[v]] = original_vs[v];
     }
     std::vector<int> relabel_par(n, -1);
     for (int v : std::views::iota(1, n)) {
@@ -73,27 +73,128 @@ void centroid_decomposition_dfs_0(const std::vector<int> &par,
         if (a > b) std::swap(a, b);
         relabel_par[b] = a;
     }
-    f(relabel_par, origin_vs2, index_ptr);
-    for (int i : std::views::iota(1, c)) {
+    f(relabel_par, original_vs2, index_ptr);
+    for (const int i : std::views::iota(1, c)) {
         int l = index_ptr[i], r = index_ptr[i + 1];
         std::vector<int> par1(r - l, -1);
-        std::vector<int> origin_vs1(r - l, -1);
+        std::vector<int> original_vs1(r - l, -1);
         for (int v : std::views::iota(l, r)) {
             par1[v - l] = (relabel_par[v] == 0 ? -1 : relabel_par[v] - l);
-            origin_vs1[v - l] = origin_vs2[v];
+            original_vs1[v - l] = original_vs2[v];
         }
-        centroid_decomposition_dfs_0(par1, origin_vs1, f);
+        centroid_decomposition_dfs_0(par1, original_vs1, f);
     }
     return;
 }
 
 template <class F>
 void centroid_decomposition_dfs_1(const std::vector<int> &par,
-                                  const std::vector<int> &bfs_order, F f) {}
+                                  const std::vector<int> &original_vs,
+                                  const std::vector<int>, F f) {}
 
 template <class F>
 void one_third_centroid_decomposition(const std::vector<int> &par,
-                                      const std::vector<int> &bfs_order, F f) {}
+                                      const std::vector<int> &original_vs,
+                                      const std::vector<int> &is_real, F f) {
+    const int n = (int)par.size();
+    assert(n > 1);
+    if (n == 2) {
+        if (is_real[0] && is_real[1]) {
+            f(par, original_vs, {0, 1});
+        }
+        return;
+    }
+    int center = -1;
+    std::vector<int> sz(n, 1);
+
+    for (const int v : std::views::iota(0, n) | std::views::reverse) {
+        if (sz[v] >= (n + 1) / 2) {
+            center = v;
+            break;
+        }
+        sz[par[v]] += sz[v];
+    }
+
+    std::vector<int> color(n, -1);
+    std::vector<int> ord(n, -1);
+    ord[center] = 0;
+    int t = 1;
+    int red = n - sz[center];
+    for (int v = par[center]; v != -1; v = par[v]) {
+        ord[v] = t++;
+        color[v] = 0;
+    }
+    for (const int v : std::views::iota(1, n)) {
+        if (par[v] == center && 3 * (red + sz[v]) <= 2 * (n-1)) {
+            red += sz[v];
+            ord[v] = t++;
+            color[v] = 0;
+        }
+    }
+    for (const int v : std::views::iota(1, n)) {
+        if (v != center && color[v] == -1 && color[par[v]] == 0) {
+            ord[v] = t++;
+            color[v] = 0;
+        }
+    }
+    const int n0 = t - 1;
+    for (const int v : std::views::iota(1, n)) {
+        if (v != center && color[v] == -1) {
+            ord[v] = t++;
+            color[v] = 1;
+        }
+    }
+    assert(t == n);
+    const int n1 = n - 1 - n0;
+    std::vector<int> par0(n0 + 1, -1), par1(n1 + 1, -1), par2(n, -1);
+    std::vector<int> original_vs0(n0 + 1), original_vs1(n1 + 1),
+        original_vs2(n);
+    std::vector<int> is_real0(n0 + 1), is_real1(n1 + 1), is_real2(n);
+    for (const int i : std::views::iota(0, n)) {
+        int v = ord[i];
+        original_vs2[v] = original_vs[i];
+        is_real2[v] = is_real[i];
+        if (color[i] != 1) {
+            original_vs0[v] = original_vs[i];
+            is_real0[v] = is_real[i];
+        }
+        if (color[i] != 0) {
+            int idx = std::max(v - n0, 0);
+            original_vs1[idx] = original_vs[i];
+            is_real1[idx] = is_real[i];
+        }
+    }
+    for (const int v : std::views::iota(1, n)) {
+        int a = ord[v], b = ord[par[v]];
+        if (a > b) std::swap(a, b);
+        par2[b] = a;
+        if (color[v] != 1 && color[par[v]] != 1) {
+            par0[b] = a;
+        }
+        if (color[v] != 0 && color[par[v]] != 0) {
+            par1[b - n0] = std::max(a - n0, 0);
+        }
+    }
+    if (is_real[center]) {
+        color.assign(n, -1);
+        color[0] = 0;
+        for (const int v : std::views::iota(1, n)) {
+            if (is_real2[v]) color[v] = 1;
+        }
+        f(par2, original_vs2, color);
+        is_real0[0] = is_real1[0] = is_real2[0] = 0;
+    }
+    color.assign(n, -1);
+    for (const int v : std::views::iota(1, n)) {
+        if (is_real2[v]) {
+            color[v] = int(v > n0);
+        }
+    }
+    f(par2, original_vs2, color);
+    one_third_centroid_decomposition(par0, original_vs0, is_real0, f);
+    one_third_centroid_decomposition(par1, original_vs1, is_real1, f);
+    return;
+}
 
 }  // namespace internal
 
@@ -129,7 +230,8 @@ void centroid_decomposition(const std::vector<std::vector<int>> &tree, F f) {
         internal::centroid_decomposition_dfs_0(par, bfs_order, f);
     } else if constexpr (MODE == 1) {
     } else {
-        internal::one_third_centroid_decomposition(par, bfs_order, f);
+        internal::one_third_centroid_decomposition(par, bfs_order,
+                                                   std::vector<int>(n, 1), f);
     }
 }
 

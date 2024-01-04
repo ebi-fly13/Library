@@ -1,10 +1,10 @@
 #define PROBLEM \
     "https://judge.yosupo.jp/problem/frequency_table_of_tree_distance"
 
-#include "convolution/convolution_mod_2_64.hpp"
-#include "graph/template.hpp"
-#include "template/template.hpp"
-#include "tree/centroid_decomposition.hpp"
+#include "../../convolution/convolution_mod_2_64.hpp"
+#include "../../graph/template.hpp"
+#include "../../template/template.hpp"
+#include "../../tree/centroid_decomposition.hpp"
 
 namespace ebi {
 
