@@ -43,7 +43,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/convolution_mod_2_64.hpp
       title: Convolution $\pmod{2^{64}}$
     - icon: ':heavy_check_mark:'
@@ -58,7 +58,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/min_plus_convolution.hpp
       title: Min Plus Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':warning:'
@@ -279,7 +279,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/template.hpp
       title: graph/template.hpp
     - icon: ':heavy_check_mark:'
@@ -305,7 +305,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: Eratosthenes Sieve
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
@@ -348,13 +348,13 @@ data:
       title: matrix/square_matrix.hpp
   - name: modint
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/base.hpp
       title: modint/base.hpp
     - icon: ':heavy_check_mark:'
       path: modint/dynamic_modint.hpp
       title: modint/dynamic_modint.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
       title: modint/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -408,19 +408,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -431,7 +431,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/cartesian_tree.hpp
       title: Cartesian Tree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
     - icon: ':heavy_check_mark:'
@@ -857,7 +857,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Cartesian_Tree.test.cpp
       title: test/tree/Cartesian_Tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
       title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     - icon: ':heavy_check_mark:'

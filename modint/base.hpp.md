@@ -5,10 +5,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -71,7 +71,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -240,7 +240,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -264,9 +264,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\
@@ -319,7 +319,7 @@ data:
   - modint/dynamic_modint.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Berunoulli_Number.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -10,16 +10,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
     path: math/mod_inv.hpp
     title: Mod Inv
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []

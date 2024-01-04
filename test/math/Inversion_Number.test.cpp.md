@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: Inversion Number
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []

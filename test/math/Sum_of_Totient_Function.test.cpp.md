@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/dirichlet_convolution.hpp
     title: Dirichlet Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
   - icon: ':heavy_check_mark:'
@@ -16,25 +16,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []

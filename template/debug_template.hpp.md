@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
   _extendedVerifiedWith:
@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Cartesian_Tree.test.cpp
     title: test/tree/Cartesian_Tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -72,9 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/debug_template.hpp\"\n\n#include <iostream>\n\n\
@@ -99,7 +99,7 @@ data:
   requiredBy:
   - template/template.hpp
   timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Stern-Brocot_Tree.test.cpp

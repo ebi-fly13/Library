@@ -5,10 +5,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   _extendedVerifiedWith:
@@ -81,7 +81,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -99,9 +99,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/internal_math.hpp\"\n\n#include <cassert>\n\nnamespace\
@@ -126,7 +126,7 @@ data:
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
   timestamp: '2023-08-31 02:52:44+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Berunoulli_Number.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp

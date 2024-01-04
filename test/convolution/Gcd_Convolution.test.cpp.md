@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/multiple_transform.hpp
     title: "Multiple Transform (Zeta / M\xF6bius)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []

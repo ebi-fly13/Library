@@ -1,40 +1,40 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/centroid_decomposition.hpp
     title: tree/centroid_decomposition.hpp
   _extendedRequiredBy: []
@@ -269,7 +269,7 @@ data:
     \    color[center] = 0;\n    int c = 1;\n    for (const int v : std::views::iota(1,\
     \ n)) {\n        if (par[v] == center) {\n            vs.emplace_back(v);\n  \
     \          color[v] = c++;\n        }\n    }\n    if (center > 0) {\n        for\
-    \ (const int v = par[center]; v != -1; v = par[v]) {\n            vs.emplace_back(v);\n\
+    \ (int v = par[center]; v != -1; v = par[v]) {\n            vs.emplace_back(v);\n\
     \            color[v] = c;\n        }\n        c++;\n    }\n    for (const int\
     \ v : std::views::iota(0, n)) {\n        if (color[v] == -1) {\n            vs.emplace_back(v);\n\
     \            color[v] = color[par[v]];\n        }\n    }\n    std::vector<int>\
@@ -434,7 +434,7 @@ data:
   isVerificationFile: true
   path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   requiredBy: []
-  timestamp: '2024-01-04 16:02:29+09:00'
+  timestamp: '2024-01-04 16:07:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp

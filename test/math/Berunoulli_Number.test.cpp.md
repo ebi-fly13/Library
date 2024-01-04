@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -10,13 +10,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/bernoulli_number.hpp
     title: Bernoulli Number
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []

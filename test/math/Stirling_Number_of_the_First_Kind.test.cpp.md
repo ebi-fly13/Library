@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -13,16 +13,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []

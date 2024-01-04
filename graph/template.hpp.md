@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -84,9 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901_2.test.cpp
     title: test/yuki/yuki_901_2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace\
@@ -121,7 +121,7 @@ data:
   - graph/scc_graph.hpp
   - graph/dijkstra.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/algorithm/Two_Sat.test.cpp

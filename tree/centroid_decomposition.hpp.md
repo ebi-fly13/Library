@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -12,9 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/centroid_decomposition.hpp\"\n\n#include <algorithm>\n\
@@ -30,7 +30,7 @@ data:
     \    color[center] = 0;\n    int c = 1;\n    for (const int v : std::views::iota(1,\
     \ n)) {\n        if (par[v] == center) {\n            vs.emplace_back(v);\n  \
     \          color[v] = c++;\n        }\n    }\n    if (center > 0) {\n        for\
-    \ (const int v = par[center]; v != -1; v = par[v]) {\n            vs.emplace_back(v);\n\
+    \ (int v = par[center]; v != -1; v = par[v]) {\n            vs.emplace_back(v);\n\
     \            color[v] = c;\n        }\n        c++;\n    }\n    for (const int\
     \ v : std::views::iota(0, n)) {\n        if (color[v] == -1) {\n            vs.emplace_back(v);\n\
     \            color[v] = color[par[v]];\n        }\n    }\n    std::vector<int>\
@@ -152,16 +152,16 @@ data:
     \ color(n, -1);\n    std::vector<int> vs = {center};\n    color[center] = 0;\n\
     \    int c = 1;\n    for (const int v : std::views::iota(1, n)) {\n        if\
     \ (par[v] == center) {\n            vs.emplace_back(v);\n            color[v]\
-    \ = c++;\n        }\n    }\n    if (center > 0) {\n        for (const int v =\
-    \ par[center]; v != -1; v = par[v]) {\n            vs.emplace_back(v);\n     \
-    \       color[v] = c;\n        }\n        c++;\n    }\n    for (const int v :\
-    \ std::views::iota(0, n)) {\n        if (color[v] == -1) {\n            vs.emplace_back(v);\n\
-    \            color[v] = color[par[v]];\n        }\n    }\n    std::vector<int>\
-    \ index_ptr(c + 1, 0);\n    for (const int v : std::views::iota(0, n)) {\n   \
-    \     index_ptr[color[v] + 1]++;\n    }\n    for (const int i : std::views::iota(0,\
-    \ c)) {\n        index_ptr[i + 1] += index_ptr[i];\n    }\n    auto counter =\
-    \ index_ptr;\n    std::vector<int> ord(n);\n    for (auto v : vs) {\n        ord[counter[color[v]]++]\
-    \ = v;\n    }\n    std::vector<int> relabel(n);\n    for (const int v : std::views::iota(0,\
+    \ = c++;\n        }\n    }\n    if (center > 0) {\n        for (int v = par[center];\
+    \ v != -1; v = par[v]) {\n            vs.emplace_back(v);\n            color[v]\
+    \ = c;\n        }\n        c++;\n    }\n    for (const int v : std::views::iota(0,\
+    \ n)) {\n        if (color[v] == -1) {\n            vs.emplace_back(v);\n    \
+    \        color[v] = color[par[v]];\n        }\n    }\n    std::vector<int> index_ptr(c\
+    \ + 1, 0);\n    for (const int v : std::views::iota(0, n)) {\n        index_ptr[color[v]\
+    \ + 1]++;\n    }\n    for (const int i : std::views::iota(0, c)) {\n        index_ptr[i\
+    \ + 1] += index_ptr[i];\n    }\n    auto counter = index_ptr;\n    std::vector<int>\
+    \ ord(n);\n    for (auto v : vs) {\n        ord[counter[color[v]]++] = v;\n  \
+    \  }\n    std::vector<int> relabel(n);\n    for (const int v : std::views::iota(0,\
     \ n)) {\n        relabel[ord[v]] = v;\n    }\n    std::vector<int> original_vs2(n);\n\
     \    for (const int v : std::views::iota(0, n)) {\n        original_vs2[relabel[v]]\
     \ = original_vs[v];\n    }\n    std::vector<int> relabel_par(n, -1);\n    for\
@@ -267,8 +267,8 @@ data:
   isVerificationFile: false
   path: tree/centroid_decomposition.hpp
   requiredBy: []
-  timestamp: '2024-01-04 16:02:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2024-01-04 16:07:34+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
