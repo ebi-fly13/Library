@@ -21,6 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1038.test.cpp
+    title: test/yuki/yuki_1038.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1796.test.cpp
+    title: test/yuki/yuki_1796.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -285,6 +291,8 @@ data:
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - test/yuki/yuki_1796.test.cpp
+  - test/yuki/yuki_1038.test.cpp
 documentation_of: tree/centroid_decomposition.hpp
 layout: document
 title: Centroid Decomposition

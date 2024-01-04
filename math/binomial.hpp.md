@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1796.test.cpp
+    title: test/yuki/yuki_1796.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -104,6 +107,7 @@ data:
   - test/aoj/aoj_3361.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yuki/yuki_1302.test.cpp
+  - test/yuki/yuki_1796.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 title: Binomial Coefficient

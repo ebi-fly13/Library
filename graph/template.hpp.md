@@ -79,8 +79,14 @@ data:
     path: test/tree/lowest_common_ancestor.test.cpp
     title: test/tree/lowest_common_ancestor.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1038.test.cpp
+    title: test/yuki/yuki_1038.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1796.test.cpp
+    title: test/yuki/yuki_1796.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
@@ -150,8 +156,10 @@ data:
   - test/graph/Biconnected_Components.test.cpp
   - test/graph/fibonacci_heap.test.cpp
   - test/yuki/yuki_1145.test.cpp
+  - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_901_2.test.cpp
   - test/yuki/yuki_2439.test.cpp
+  - test/yuki/yuki_1038.test.cpp
   - test/yuki/yuki_901.test.cpp
 documentation_of: graph/template.hpp
 layout: document

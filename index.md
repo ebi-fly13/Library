@@ -219,6 +219,9 @@ data:
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
     - icon: ':heavy_check_mark:'
+      path: fps/middle_product.hpp
+      title: $[x^i]c = \sum_{j} a_{i+j} b_{j}$
+    - icon: ':heavy_check_mark:'
       path: fps/multipoint_evaluation.hpp
       title: Multipoint Evaluation
     - icon: ':heavy_check_mark:'
@@ -902,6 +905,9 @@ data:
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_1038.test.cpp
+      title: test/yuki/yuki_1038.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1077.test.cpp
       title: test/yuki/yuki_1077.test.cpp
     - icon: ':heavy_check_mark:'
@@ -910,6 +916,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1302.test.cpp
       title: test/yuki/yuki_1302.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_1796.test.cpp
+      title: test/yuki/yuki_1796.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_2439.test.cpp
       title: test/yuki/yuki_2439.test.cpp

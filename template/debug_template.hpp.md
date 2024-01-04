@@ -61,11 +61,17 @@ data:
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1038.test.cpp
+    title: test/yuki/yuki_1038.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1077.test.cpp
     title: test/yuki/yuki_1077.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1796.test.cpp
+    title: test/yuki/yuki_1796.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
@@ -128,8 +134,10 @@ data:
   - test/yuki/yuki_1077.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_952.test.cpp
+  - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_901_2.test.cpp
   - test/yuki/yuki_2439.test.cpp
+  - test/yuki/yuki_1038.test.cpp
   - test/yuki/yuki_901.test.cpp
 documentation_of: template/debug_template.hpp
 layout: document

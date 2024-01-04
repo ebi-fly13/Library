@@ -27,6 +27,9 @@ data:
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
+    path: fps/middle_product.hpp
+    title: $[x^i]c = \sum_{j} a_{i+j} b_{j}$
+  - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
@@ -264,6 +267,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1796.test.cpp
+    title: test/yuki/yuki_1796.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -296,6 +302,7 @@ data:
   - math/bernoulli_number.hpp
   - math/stirling_number_2nd.hpp
   - math/stirling_number_1st.hpp
+  - fps/middle_product.hpp
   - fps/fps_sparse.hpp
   - fps/product_of_one_minus_xn.hpp
   - fps/fps.hpp
@@ -379,6 +386,7 @@ data:
   - test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1145.test.cpp
+  - test/yuki/yuki_1796.test.cpp
 documentation_of: modint/base.hpp
 layout: document
 redirect_from:

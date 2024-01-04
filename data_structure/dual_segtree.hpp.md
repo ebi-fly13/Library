@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1038.test.cpp
+    title: test/yuki/yuki_1038.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -65,6 +68,7 @@ data:
   verifiedWith:
   - test/data_structure/Range_Affine_Point_Get.test.cpp
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+  - test/yuki/yuki_1038.test.cpp
 documentation_of: data_structure/dual_segtree.hpp
 layout: document
 title: dual segtree
