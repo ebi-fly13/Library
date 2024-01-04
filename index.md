@@ -220,7 +220,7 @@ data:
       title: $\sqrt{f}$
     - icon: ':heavy_check_mark:'
       path: fps/middle_product.hpp
-      title: $[x^i]c = \sum_{j} a_{i+j} b_{j}$
+      title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
     - icon: ':heavy_check_mark:'
       path: fps/multipoint_evaluation.hpp
       title: Multipoint Evaluation

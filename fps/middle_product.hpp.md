@@ -65,9 +65,9 @@ data:
   - test/yuki/yuki_1796.test.cpp
 documentation_of: fps/middle_product.hpp
 layout: document
-title: $[x^i]c = \sum_{j} a_{i+j} b_{j}$
+title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
 ---
 
 ## 説明
 
-$N$ 次多項式 $a$ と $M$ 時多項式 $b$ について $[x^i] c = \sum_{j} a_{i + j} b_j$ となる $N-M$ 次多項式 $c$ を求める。 $O(N\log N)$
+$N$ 次多項式 $a$ と $M$ 時多項式 $b$ について $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$ となる $N-M$ 次多項式 $c$ を求める。 $O(N\log N)$
