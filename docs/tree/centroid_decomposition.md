@@ -49,3 +49,8 @@ f(const std::vector<int> &par, const std::vector<int> &vs, const std::vector<int
 頂点には $virtual$ 属性と $real$ 属性があり、 $color[v] = -1$ のとき頂点 $v$ は $virtual$ 属性である。頂点は $2$ 色で塗られており、 $color$ に色が格納されている。
 
 各頂点の $real$ 属性で表れる回数が $\log{N}$ 回程度となる。始点を固定した場合のパスの処理などで活用できる。なお、 $virtual$ 属性で表れる回数は抑えられていないため注意。
+
+## reference
+
+- [重心分解・1/3重心分解のお絵描き](https://maspypy.com/%e9%87%8d%e5%bf%83%e5%88%86%e8%a7%a3%e3%83%bb1-3%e9%87%8d%e5%bf%83%e5%88%86%e8%a7%a3%e3%81%ae%e3%81%8a%e7%b5%b5%e6%8f%8f%e3%81%8d)
+- [Theoretically Faster HLD and Centroid Decomposition](https://codeforces.com/blog/entry/104997)
