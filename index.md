@@ -439,7 +439,7 @@ data:
       title: Centroid Decomposition (old)
     - icon: ':heavy_check_mark:'
       path: tree/contour_query_on_tree.hpp
-      title: tree/contour_query_on_tree.hpp
+      title: Contour Query on Tree
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition

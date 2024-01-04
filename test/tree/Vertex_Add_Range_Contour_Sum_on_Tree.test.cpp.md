@@ -27,7 +27,7 @@ data:
     title: Centroid Decomposition
   - icon: ':heavy_check_mark:'
     path: tree/contour_query_on_tree.hpp
-    title: tree/contour_query_on_tree.hpp
+    title: Contour Query on Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
