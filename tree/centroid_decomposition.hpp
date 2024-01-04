@@ -35,7 +35,7 @@ void centroid_decomposition_dfs_naive(const std::vector<int> &par,
         }
     }
     if (center > 0) {
-        for (const int v = par[center]; v != -1; v = par[v]) {
+        for (int v = par[center]; v != -1; v = par[v]) {
             vs.emplace_back(v);
             color[v] = c;
         }
