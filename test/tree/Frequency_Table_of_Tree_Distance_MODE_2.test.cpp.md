@@ -36,7 +36,7 @@ data:
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
     path: tree/centroid_decomposition.hpp
-    title: tree/centroid_decomposition.hpp
+    title: Centroid Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
