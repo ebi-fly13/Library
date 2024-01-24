@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <tuple>
 #include <vector>
 
@@ -8,18 +9,18 @@
 
 namespace ebi {
 
-template <class T> struct static_rectangle_sum {
+template <class S, class T> struct static_rectangle_sum {
   private:
   public:
     static_rectangle_sum() = default;
 
-    void add_point(int x, int y, T val) {
+    void add_point(S x, S y, T val) {
         p.emplace_back(x, y, val);
         cp_x.add(x);
         cp_y.add(y);
     }
 
-    void add_query(int l, int d, int r, int u) {
+    void add_query(S l, S d, S r, S u) {
         q.push_back({l, d, r, u});
         cp_x.add(l);
         cp_x.add(r);
@@ -28,7 +29,6 @@ template <class T> struct static_rectangle_sum {
     }
 
     std::vector<T> run() {
-        static bool is_first = true;
         assert(is_first);
         is_first = false;
         cp_x.build();
@@ -63,9 +63,10 @@ template <class T> struct static_rectangle_sum {
     }
 
   private:
-    std::vector<std::tuple<int, int, T>> p;
-    std::vector<std::array<int, 4>> q;
-    compress<int> cp_x, cp_y;
+    bool is_first = true;
+    std::vector<std::tuple<S, S, T>> p;
+    std::vector<std::array<S, 4>> q;
+    compress<S> cp_x, cp_y;
 };
 
 }  // namespace ebi

@@ -9,7 +9,7 @@ namespace ebi {
 void main_() {
     int n, q;
     std::cin >> n >> q;
-    static_rectangle_sum<i64> srs;
+    static_rectangle_sum<int, i64> srs;
     rep(i, 0, n) {
         int x, y;
         i64 w;
