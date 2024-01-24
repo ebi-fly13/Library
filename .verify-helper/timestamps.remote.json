@@ -50,6 +50,7 @@
 "test/data_structure/Set_Xor_Min.test.cpp": "2023-11-04 02:11:15 +0900",
 "test/data_structure/Static_Range_Frequency.test.cpp": "2023-12-28 15:52:36 +0900",
 "test/data_structure/Static_Range_Inversion_Query.test.cpp": "2023-10-26 02:38:17 +0900",
+"test/data_structure/Static_Rectangle_Sum.test.cpp": "2024-01-24 17:34:40 +0900",
 "test/data_structure/Static_Rmq.test.cpp": "2023-07-17 14:12:40 +0900",
 "test/data_structure/Union_Find.test.cpp": "2023-11-13 02:14:29 +0900",
 "test/data_structure/Vertex_Add_Path_Sum.test.cpp": "2023-11-13 18:22:27 +0900",
