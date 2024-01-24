@@ -193,6 +193,9 @@ data:
       path: data_structure/splay_tree.hpp
       title: data_structure/splay_tree.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structure/static_rectangle_sum.hpp
+      title: Static Rectangle Sum
+    - icon: ':heavy_check_mark:'
       path: data_structure/undo_unionfind.hpp
       title: Undo UnionFind
     - icon: ':heavy_check_mark:'
@@ -636,6 +639,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_Range_Inversion_Query.test.cpp
       title: test/data_structure/Static_Range_Inversion_Query.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Static_Rectangle_Sum.test.cpp
+      title: test/data_structure/Static_Rectangle_Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_Rmq.test.cpp
       title: test/data_structure/Static_Rmq.test.cpp

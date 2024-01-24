@@ -6,6 +6,9 @@ data:
     path: data_structure/offline_segtree_2d.hpp
     title: offline 2D segtree
   - icon: ':heavy_check_mark:'
+    path: data_structure/static_rectangle_sum.hpp
+    title: Static Rectangle Sum
+  - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: Inversion Number
   _extendedVerifiedWith:
@@ -18,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversion_Query.test.cpp
     title: test/data_structure/Static_Range_Inversion_Query.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Static_Rectangle_Sum.test.cpp
+    title: test/data_structure/Static_Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/segment_intersection.test.cpp
     title: test/geometry/segment_intersection.test.cpp
@@ -61,12 +67,14 @@ data:
   path: data_structure/compress.hpp
   requiredBy:
   - math/inversion_number.hpp
+  - data_structure/static_rectangle_sum.hpp
   - data_structure/offline_segtree_2d.hpp
   timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Inversion_Number.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+  - test/data_structure/Static_Rectangle_Sum.test.cpp
   - test/data_structure/Static_Range_Inversion_Query.test.cpp
   - test/data_structure/Rectangle_Sum_Segtree.test.cpp
   - test/geometry/segment_intersection.test.cpp
