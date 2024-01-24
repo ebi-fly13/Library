@@ -37,7 +37,7 @@ data:
     - https://judge.yosupo.jp/problem/rectangle_sum
   bundledCode: "#line 1 \"test/data_structure/Static_Rectangle_Sum.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#line 2 \"data_structure/static_rectangle_sum.hpp\"\
-    \n\n#include <tuple>\n#include <vector>\n\n#line 2 \"data_structure/compress.hpp\"\
+    \n\n#include <array>\n#include <tuple>\n#include <vector>\n\n#line 2 \"data_structure/compress.hpp\"\
     \n\n#include <algorithm>\n#include <cassert>\n#line 6 \"data_structure/compress.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T> struct compress {\n  private:\n    std::vector<T>\
     \ cp;\n\n  public:\n    compress() = default;\n\n    compress(std::vector<T> cp)\
@@ -68,13 +68,13 @@ data:
     \ 0; k >>= 1) {\r\n            if (x + k <= n && data[x + k] < key) {\r\n    \
     \            x += k;\r\n                key -= data[x];\r\n            }\r\n \
     \       }\r\n        return x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
-    #line 8 \"data_structure/static_rectangle_sum.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class T> struct static_rectangle_sum {\n  private:\n  public:\n    static_rectangle_sum()\
-    \ = default;\n\n    void add_point(int x, int y, T val) {\n        p.emplace_back(x,\
-    \ y, val);\n        cp_x.add(x);\n        cp_y.add(y);\n    }\n\n    void add_query(int\
-    \ l, int d, int r, int u) {\n        q.push_back({l, d, r, u});\n        cp_x.add(l);\n\
-    \        cp_x.add(r);\n        cp_y.add(d);\n        cp_y.add(u);\n    }\n\n \
-    \   std::vector<T> run() {\n        static bool is_first = true;\n        assert(is_first);\n\
+    #line 9 \"data_structure/static_rectangle_sum.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class S, class T> struct static_rectangle_sum {\n  private:\n  public:\n  \
+    \  static_rectangle_sum() = default;\n\n    void add_point(S x, S y, T val) {\n\
+    \        p.emplace_back(x, y, val);\n        cp_x.add(x);\n        cp_y.add(y);\n\
+    \    }\n\n    void add_query(S l, S d, S r, S u) {\n        q.push_back({l, d,\
+    \ r, u});\n        cp_x.add(l);\n        cp_x.add(r);\n        cp_y.add(d);\n\
+    \        cp_y.add(u);\n    }\n\n    std::vector<T> run() {\n        assert(is_first);\n\
     \        is_first = false;\n        cp_x.build();\n        cp_y.build();\n   \
     \     std::vector ptable(cp_x.size(), std::vector<int>());\n        std::vector\
     \ qtable(cp_x.size(), std::vector(2, std::vector<int>()));\n        for (int i\
@@ -89,8 +89,8 @@ data:
     \ ftree.sum(cp_y.get(d), cp_y.get(u));\n                }\n            }\n   \
     \         for (auto idx : ptable[i]) {\n                auto [x, y, val] = p[idx];\n\
     \                ftree.add(cp_y.get(y), val);\n            }\n        }\n    \
-    \    return res;\n    }\n\n  private:\n    std::vector<std::tuple<int, int, T>>\
-    \ p;\n    std::vector<std::array<int, 4>> q;\n    compress<int> cp_x, cp_y;\n\
+    \    return res;\n    }\n\n  private:\n    bool is_first = true;\n    std::vector<std::tuple<S,\
+    \ S, T>> p;\n    std::vector<std::array<S, 4>> q;\n    compress<S> cp_x, cp_y;\n\
     };\n\n}  // namespace ebi\n#line 4 \"test/data_structure/Static_Rectangle_Sum.test.cpp\"\
     \n\n#line 2 \"template/template.hpp\"\n#include <bit>\n#include <bitset>\n#line\
     \ 5 \"template/template.hpp\"\n#include <chrono>\n#include <climits>\n#include\
@@ -146,8 +146,8 @@ data:
     \ / 2;\n\nconst std::vector<int> dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int>\
     \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/data_structure/Static_Rectangle_Sum.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n, q;\n    std::cin >> n >> q;\n\
-    \    static_rectangle_sum<i64> srs;\n    rep(i, 0, n) {\n        int x, y;\n \
-    \       i64 w;\n        std::cin >> x >> y >> w;\n        srs.add_point(x, y,\
+    \    static_rectangle_sum<int, i64> srs;\n    rep(i, 0, n) {\n        int x, y;\n\
+    \        i64 w;\n        std::cin >> x >> y >> w;\n        srs.add_point(x, y,\
     \ w);\n    }\n    rep(i, 0, q) {\n        int l, d, r, u;\n        std::cin >>\
     \ l >> d >> r >> u;\n        srs.add_query(l, d, r, u);\n    }\n    std::cout\
     \ << srs.run() << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
@@ -156,8 +156,8 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
     \ \"../../data_structure/static_rectangle_sum.hpp\"\n\n#include \"../../template/template.hpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n, q;\n    std::cin >> n >> q;\n\
-    \    static_rectangle_sum<i64> srs;\n    rep(i, 0, n) {\n        int x, y;\n \
-    \       i64 w;\n        std::cin >> x >> y >> w;\n        srs.add_point(x, y,\
+    \    static_rectangle_sum<int, i64> srs;\n    rep(i, 0, n) {\n        int x, y;\n\
+    \        i64 w;\n        std::cin >> x >> y >> w;\n        srs.add_point(x, y,\
     \ w);\n    }\n    rep(i, 0, q) {\n        int l, d, r, u;\n        std::cin >>\
     \ l >> d >> r >> u;\n        srs.add_query(l, d, r, u);\n    }\n    std::cout\
     \ << srs.run() << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
@@ -175,7 +175,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Static_Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-01-24 17:34:40+09:00'
+  timestamp: '2024-01-24 18:28:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Static_Rectangle_Sum.test.cpp

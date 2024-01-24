@@ -17,12 +17,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/static_rectangle_sum.hpp\"\n\n#include <tuple>\n\
-    #include <vector>\n\n#line 2 \"data_structure/compress.hpp\"\n\n#include <algorithm>\n\
-    #include <cassert>\n#line 6 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\
-    \ntemplate <class T> struct compress {\n  private:\n    std::vector<T> cp;\n\n\
-    \  public:\n    compress() = default;\n\n    compress(std::vector<T> cp) : cp(cp)\
-    \ {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
+  bundledCode: "#line 2 \"data_structure/static_rectangle_sum.hpp\"\n\n#include <array>\n\
+    #include <tuple>\n#include <vector>\n\n#line 2 \"data_structure/compress.hpp\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#line 6 \"data_structure/compress.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> struct compress {\n  private:\n    std::vector<T>\
+    \ cp;\n\n  public:\n    compress() = default;\n\n    compress(std::vector<T> cp)\
+    \ : cp(cp) {\n        build();\n    }\n\n    void build() {\n        std::sort(cp.begin(),\
     \ cp.end());\n        cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n\
     \    }\n\n    void add(const T &val) {\n        cp.emplace_back(val);\n    }\n\
     \n    int get(const T &val) const {\n        return std::lower_bound(cp.begin(),\
@@ -49,13 +49,13 @@ data:
     \ 0; k >>= 1) {\r\n            if (x + k <= n && data[x + k] < key) {\r\n    \
     \            x += k;\r\n                key -= data[x];\r\n            }\r\n \
     \       }\r\n        return x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n\
-    #line 8 \"data_structure/static_rectangle_sum.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class T> struct static_rectangle_sum {\n  private:\n  public:\n    static_rectangle_sum()\
-    \ = default;\n\n    void add_point(int x, int y, T val) {\n        p.emplace_back(x,\
-    \ y, val);\n        cp_x.add(x);\n        cp_y.add(y);\n    }\n\n    void add_query(int\
-    \ l, int d, int r, int u) {\n        q.push_back({l, d, r, u});\n        cp_x.add(l);\n\
-    \        cp_x.add(r);\n        cp_y.add(d);\n        cp_y.add(u);\n    }\n\n \
-    \   std::vector<T> run() {\n        static bool is_first = true;\n        assert(is_first);\n\
+    #line 9 \"data_structure/static_rectangle_sum.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class S, class T> struct static_rectangle_sum {\n  private:\n  public:\n  \
+    \  static_rectangle_sum() = default;\n\n    void add_point(S x, S y, T val) {\n\
+    \        p.emplace_back(x, y, val);\n        cp_x.add(x);\n        cp_y.add(y);\n\
+    \    }\n\n    void add_query(S l, S d, S r, S u) {\n        q.push_back({l, d,\
+    \ r, u});\n        cp_x.add(l);\n        cp_x.add(r);\n        cp_y.add(d);\n\
+    \        cp_y.add(u);\n    }\n\n    std::vector<T> run() {\n        assert(is_first);\n\
     \        is_first = false;\n        cp_x.build();\n        cp_y.build();\n   \
     \     std::vector ptable(cp_x.size(), std::vector<int>());\n        std::vector\
     \ qtable(cp_x.size(), std::vector(2, std::vector<int>()));\n        for (int i\
@@ -70,21 +70,21 @@ data:
     \ ftree.sum(cp_y.get(d), cp_y.get(u));\n                }\n            }\n   \
     \         for (auto idx : ptable[i]) {\n                auto [x, y, val] = p[idx];\n\
     \                ftree.add(cp_y.get(y), val);\n            }\n        }\n    \
-    \    return res;\n    }\n\n  private:\n    std::vector<std::tuple<int, int, T>>\
-    \ p;\n    std::vector<std::array<int, 4>> q;\n    compress<int> cp_x, cp_y;\n\
+    \    return res;\n    }\n\n  private:\n    bool is_first = true;\n    std::vector<std::tuple<S,\
+    \ S, T>> p;\n    std::vector<std::array<S, 4>> q;\n    compress<S> cp_x, cp_y;\n\
     };\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <tuple>\n#include <vector>\n\n#include \"../data_structure/compress.hpp\"\
-    \n#include \"../data_structure/fenwick_tree.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class T> struct static_rectangle_sum {\n  private:\n  public:\n    static_rectangle_sum()\
-    \ = default;\n\n    void add_point(int x, int y, T val) {\n        p.emplace_back(x,\
-    \ y, val);\n        cp_x.add(x);\n        cp_y.add(y);\n    }\n\n    void add_query(int\
-    \ l, int d, int r, int u) {\n        q.push_back({l, d, r, u});\n        cp_x.add(l);\n\
-    \        cp_x.add(r);\n        cp_y.add(d);\n        cp_y.add(u);\n    }\n\n \
-    \   std::vector<T> run() {\n        static bool is_first = true;\n        assert(is_first);\n\
-    \        is_first = false;\n        cp_x.build();\n        cp_y.build();\n   \
-    \     std::vector ptable(cp_x.size(), std::vector<int>());\n        std::vector\
-    \ qtable(cp_x.size(), std::vector(2, std::vector<int>()));\n        for (int i\
-    \ = 0; auto [x, y, val] : p) {\n            ptable[cp_x.get(x)].emplace_back(i);\n\
+  code: "#pragma once\n\n#include <array>\n#include <tuple>\n#include <vector>\n\n\
+    #include \"../data_structure/compress.hpp\"\n#include \"../data_structure/fenwick_tree.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class S, class T> struct static_rectangle_sum\
+    \ {\n  private:\n  public:\n    static_rectangle_sum() = default;\n\n    void\
+    \ add_point(S x, S y, T val) {\n        p.emplace_back(x, y, val);\n        cp_x.add(x);\n\
+    \        cp_y.add(y);\n    }\n\n    void add_query(S l, S d, S r, S u) {\n   \
+    \     q.push_back({l, d, r, u});\n        cp_x.add(l);\n        cp_x.add(r);\n\
+    \        cp_y.add(d);\n        cp_y.add(u);\n    }\n\n    std::vector<T> run()\
+    \ {\n        assert(is_first);\n        is_first = false;\n        cp_x.build();\n\
+    \        cp_y.build();\n        std::vector ptable(cp_x.size(), std::vector<int>());\n\
+    \        std::vector qtable(cp_x.size(), std::vector(2, std::vector<int>()));\n\
+    \        for (int i = 0; auto [x, y, val] : p) {\n            ptable[cp_x.get(x)].emplace_back(i);\n\
     \            i++;\n        }\n        for (int i = 0; auto [l, d, r, u] : q) {\n\
     \            qtable[cp_x.get(l)][0].emplace_back(i);\n            qtable[cp_x.get(r)][1].emplace_back(i);\n\
     \            i++;\n        }\n        std::vector<T> res(q.size(), 0);\n     \
@@ -95,8 +95,8 @@ data:
     \ ftree.sum(cp_y.get(d), cp_y.get(u));\n                }\n            }\n   \
     \         for (auto idx : ptable[i]) {\n                auto [x, y, val] = p[idx];\n\
     \                ftree.add(cp_y.get(y), val);\n            }\n        }\n    \
-    \    return res;\n    }\n\n  private:\n    std::vector<std::tuple<int, int, T>>\
-    \ p;\n    std::vector<std::array<int, 4>> q;\n    compress<int> cp_x, cp_y;\n\
+    \    return res;\n    }\n\n  private:\n    bool is_first = true;\n    std::vector<std::tuple<S,\
+    \ S, T>> p;\n    std::vector<std::array<S, 4>> q;\n    compress<S> cp_x, cp_y;\n\
     };\n\n}  // namespace ebi"
   dependsOn:
   - data_structure/compress.hpp
@@ -104,7 +104,7 @@ data:
   isVerificationFile: false
   path: data_structure/static_rectangle_sum.hpp
   requiredBy: []
-  timestamp: '2024-01-24 17:34:40+09:00'
+  timestamp: '2024-01-24 18:28:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Static_Rectangle_Sum.test.cpp
