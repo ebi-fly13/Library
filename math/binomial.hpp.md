@@ -9,6 +9,12 @@ data:
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':heavy_check_mark:'
+    path: math/catalan_convolution.hpp
+    title: Catalan's Convolution Formula
+  - icon: ':heavy_check_mark:'
+    path: math/catalan_number.hpp
+    title: Catalan Number
+  - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
   _extendedVerifiedWith:
@@ -18,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Catalan_Convolution.test.cpp
+    title: test/math/Catalan_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
@@ -97,17 +106,20 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
-  - math/stirling_number_1st.hpp
   - fps/taylor_shift.hpp
+  - math/catalan_convolution.hpp
+  - math/catalan_number.hpp
+  - math/stirling_number_1st.hpp
   timestamp: '2023-10-26 12:28:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/aoj/aoj_3361.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/yuki/yuki_1302.test.cpp
+  - test/math/Catalan_Convolution.test.cpp
   - test/yuki/yuki_1796.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/aoj/aoj_3361.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 title: Binomial Coefficient

@@ -306,6 +306,12 @@ data:
       path: math/bostan_mori_algorithm.hpp
       title: Bostan-Mori Algorithm
     - icon: ':heavy_check_mark:'
+      path: math/catalan_convolution.hpp
+      title: Catalan's Convolution Formula
+    - icon: ':heavy_check_mark:'
+      path: math/catalan_number.hpp
+      title: Catalan Number
+    - icon: ':heavy_check_mark:'
       path: math/divisor_transform.hpp
       title: "Divisor Transform (Zeta / M\xF6bius)"
     - icon: ':heavy_check_mark:'
@@ -349,7 +355,7 @@ data:
       title: Stirling Numbers of the Second Kind
   - name: matrix
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: matrix/square_matrix.hpp
       title: matrix/square_matrix.hpp
   - name: modint
@@ -757,6 +763,9 @@ data:
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/math/Catalan_Convolution.test.cpp
+      title: test/math/Catalan_Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/math/Enumerate_Primes.test.cpp
       title: test/math/Enumerate_Primes.test.cpp
     - icon: ':heavy_check_mark:'
@@ -798,6 +807,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/sharp_p_subset_sum.test.cpp
       title: test/math/sharp_p_subset_sum.test.cpp
+  - name: test/matrix
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/matrix/Determinant_of_Matrix.test.cpp
+      title: test/matrix/Determinant_of_Matrix.test.cpp
   - name: test/polynomial
     pages:
     - icon: ':heavy_check_mark:'

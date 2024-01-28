@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Matrix.test.cpp
+    title: test/matrix/Determinant_of_Matrix.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"matrix/square_matrix.hpp\"\n\r\n#include <vector>\r\n\r\n\
@@ -97,8 +100,9 @@ data:
   path: matrix/square_matrix.hpp
   requiredBy: []
   timestamp: '2023-06-17 18:04:37+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/matrix/Determinant_of_Matrix.test.cpp
 documentation_of: matrix/square_matrix.hpp
 layout: document
 redirect_from:

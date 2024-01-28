@@ -72,20 +72,20 @@ data:
   isVerificationFile: false
   path: math/eratosthenes_sieve.hpp
   requiredBy:
-  - math/multiple_transform.hpp
-  - math/divisor_transform.hpp
-  - math/DirichletSeries.hpp
   - convolution/gcd_convolution.hpp
   - convolution/lcm_convolution.hpp
   - convolution/dirichlet_convolution.hpp
+  - math/multiple_transform.hpp
+  - math/divisor_transform.hpp
+  - math/DirichletSeries.hpp
   timestamp: '2023-08-23 17:33:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Enumerate_Primes.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
-  - test/math/eratosthenes_sieve.test.cpp
   - test/convolution/Gcd_Convolution.test.cpp
   - test/convolution/Lcm_Convolution.test.cpp
+  - test/math/Enumerate_Primes.test.cpp
+  - test/math/eratosthenes_sieve.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: math/eratosthenes_sieve.hpp
 layout: document
 title: Eratosthenes Sieve
