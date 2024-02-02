@@ -1,36 +1,4 @@
-#include <algorithm>
-#include <bit>
-#include <bitset>
-#include <cassert>
-#include <chrono>
-#include <climits>
-#include <cmath>
-#include <complex>
-#include <cstddef>
-#include <cstdint>
-#include <cstdlib>
-#include <cstring>
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <limits>
-#include <map>
-#include <memory>
-#include <numbers>
-#include <numeric>
-#include <optional>
-#include <queue>
-#include <random>
-#include <ranges>
-#include <set>
-#include <stack>
-#include <string>
-#include <tuple>
-#include <type_traits>
-#include <unordered_map>
-#include <unordered_set>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
 
 #define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)
 #define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)
