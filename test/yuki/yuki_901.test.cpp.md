@@ -89,18 +89,10 @@ data:
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
     \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 1 \"template/template.hpp\"\n#include <algorithm>\n#include <bit>\n\
-    #include <bitset>\n#line 5 \"template/template.hpp\"\n#include <chrono>\n#include\
-    \ <climits>\n#include <cmath>\n#include <complex>\n#include <cstddef>\n#include\
-    \ <cstdint>\n#include <cstdlib>\n#include <cstring>\n#include <functional>\n#include\
-    \ <iomanip>\n#include <iostream>\n#include <limits>\n#include <map>\n#include\
-    \ <memory>\n#include <numbers>\n#include <numeric>\n#include <optional>\n#include\
-    \ <queue>\n#include <random>\n#include <ranges>\n#include <set>\n#include <stack>\n\
-    #include <string>\n#include <tuple>\n#include <type_traits>\n#include <unordered_map>\n\
-    #include <unordered_set>\n#include <utility>\n#line 34 \"template/template.hpp\"\
-    \n\n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
-    \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
-    \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
+    \ ebi\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define\
+    \ rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n)\
+    \ for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64\
+    \ i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
     \ i >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v)\
     \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line\
     \ 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n#define\
@@ -115,9 +107,10 @@ data:
     using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
     using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
     using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\
+    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
     \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
     template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
@@ -215,8 +208,9 @@ data:
     \    lca_based_auxiliary_tree(std::vector<int> vs) const;\n\n  private:\n    int\
     \ n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> sz, in, out,\
     \ nxt, par, depth, rev;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line\
-    \ 2 \"tree/lca_based_auxiliary_tree.hpp\"\n\n#line 8 \"tree/lca_based_auxiliary_tree.hpp\"\
-    \n\n#line 10 \"tree/lca_based_auxiliary_tree.hpp\"\n\nnamespace ebi {\n\nstd::vector<std::pair<int,\
+    \ 2 \"tree/lca_based_auxiliary_tree.hpp\"\n\n#line 5 \"tree/lca_based_auxiliary_tree.hpp\"\
+    \n#include <ranges>\n#line 8 \"tree/lca_based_auxiliary_tree.hpp\"\n\n#line 10\
+    \ \"tree/lca_based_auxiliary_tree.hpp\"\n\nnamespace ebi {\n\nstd::vector<std::pair<int,\
     \ int>>\nheavy_light_decomposition::lca_based_auxiliary_tree_dfs_order(\n    std::vector<int>\
     \ vs) const {\n    if (vs.empty()) return {};\n    std::sort(vs.begin(), vs.end(),\n\
     \              [&](int u, int v) -> bool { return in[u] < in[v]; });\n    auto\
@@ -306,7 +300,7 @@ data:
   isVerificationFile: true
   path: test/yuki/yuki_901.test.cpp
   requiredBy: []
-  timestamp: '2023-12-28 15:52:36+09:00'
+  timestamp: '2024-02-03 03:29:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yuki/yuki_901.test.cpp

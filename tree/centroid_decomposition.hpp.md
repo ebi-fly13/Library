@@ -286,13 +286,13 @@ data:
   timestamp: '2024-01-04 16:07:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1038.test.cpp
+  - test/yuki/yuki_1796.test.cpp
 documentation_of: tree/centroid_decomposition.hpp
 layout: document
 title: Centroid Decomposition

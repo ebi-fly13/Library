@@ -133,15 +133,7 @@ data:
     \ > 0) {\n                std::cout << \" \" << (is_right ? 'R' : 'L') << \" \"\
     \ << c;\n            }\n            is_right = !is_right;\n        }\n       \
     \ std::cout << '\\n';\n        return;\n    }\n};\n\n}  // namespace ebi\n#line\
-    \ 2 \"template/template.hpp\"\n#include <bit>\n#include <bitset>\n#line 5 \"template/template.hpp\"\
-    \n#include <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n\
-    #include <cstddef>\n#line 11 \"template/template.hpp\"\n#include <cstdlib>\n#include\
-    \ <cstring>\n#include <functional>\n#include <iomanip>\n#line 16 \"template/template.hpp\"\
-    \n#include <limits>\n#include <map>\n#include <memory>\n#include <numbers>\n#include\
-    \ <numeric>\n#line 22 \"template/template.hpp\"\n#include <queue>\n#include <random>\n\
-    #include <ranges>\n#include <set>\n#include <stack>\n#include <string>\n#include\
-    \ <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
-    #include <utility>\n#line 34 \"template/template.hpp\"\n\n#define rep(i, a, n)\
+    \ 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i, a, n)\
     \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
     \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
     \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
@@ -234,7 +226,7 @@ data:
   isVerificationFile: true
   path: test/math/Stern-Brocot_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-12-29 12:51:14+09:00'
+  timestamp: '2024-02-03 03:29:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stern-Brocot_Tree.test.cpp

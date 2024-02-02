@@ -279,22 +279,14 @@ data:
     \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
     \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
     \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 3 \"template/template.hpp\"\n#include <bitset>\n#line 5 \"template/template.hpp\"\
-    \n#include <chrono>\n#include <climits>\n#include <cmath>\n#include <complex>\n\
-    #include <cstddef>\n#include <cstdint>\n#include <cstdlib>\n#include <cstring>\n\
-    #include <functional>\n#include <iomanip>\n#line 16 \"template/template.hpp\"\n\
-    #include <limits>\n#include <map>\n#include <memory>\n#include <numbers>\n#include\
-    \ <numeric>\n#line 22 \"template/template.hpp\"\n#include <queue>\n#include <random>\n\
-    #include <ranges>\n#include <set>\n#include <stack>\n#include <string>\n#include\
-    \ <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
-    #line 34 \"template/template.hpp\"\n\n#define rep(i, a, n) for (int i = (int)(a);\
-    \ i < (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
-    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
-    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
-    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
-    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
-    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
-    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    #line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i,\
+    \ a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int\
+    \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
+    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
@@ -365,7 +357,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Polynomial_Interpolation.test.cpp
   requiredBy: []
-  timestamp: '2023-12-28 15:52:36+09:00'
+  timestamp: '2024-02-03 03:29:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Polynomial_Interpolation.test.cpp
