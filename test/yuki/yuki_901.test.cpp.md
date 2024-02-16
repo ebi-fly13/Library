@@ -244,10 +244,11 @@ data:
     \ m = s.size();\n    for (int i : std::views::iota(0, m)) {\n        a[s[i]] =\
     \ i;\n    }\n    std::vector tree(m, std::vector<int>());\n    for (auto v : s)\
     \ {\n        if (p[v] < 0) continue;\n        tree[a[p[v]]].emplace_back(a[v]);\n\
-    \    }\n    for (auto v : s) {\n        a[v] = -1;\n        p[v] = -1;\n    }\n\
-    \    return {s, tree};\n}\n\n}  // namespace ebi\n#line 8 \"test/yuki/yuki_901.test.cpp\"\
-    \n\nnamespace ebi {\n\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\ni64 e()\
-    \ {\n    return 0;\n}\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<std::array<int,\
+    \        tree[a[v]].emplace_back(a[p[v]]);\n    }\n    for (auto v : s) {\n  \
+    \      a[v] = -1;\n        p[v] = -1;\n    }\n    return {s, tree};\n}\n\n}  //\
+    \ namespace ebi\n#line 8 \"test/yuki/yuki_901.test.cpp\"\n\nnamespace ebi {\n\n\
+    i64 op(i64 a, i64 b) {\n    return a + b;\n}\n\ni64 e() {\n    return 0;\n}\n\n\
+    void main_() {\n    int n;\n    std::cin >> n;\n    std::vector<std::array<int,\
     \ 3>> edges(n - 1);\n    graph g(n);\n    for (auto &[u, v, w] : edges) {\n  \
     \      std::cin >> u >> v >> w;\n        g.add_edge(u, v);\n    }\n    heavy_light_decomposition\
     \ hld(g);\n    segtree<i64, op, e> seg(n);\n    for (auto [u, v, w] : edges) {\n\
@@ -258,13 +259,14 @@ data:
     \ v, false, f);\n        return sum;\n    };\n    int q;\n    std::cin >> q;\n\
     \    while (q--) {\n        int k;\n        std::cin >> k;\n        std::vector<int>\
     \ vs(k);\n        for (auto &v : vs) std::cin >> v;\n        auto [ids, tree]\
-    \ = hld.lca_based_auxiliary_tree(vs);\n        i64 ans = 0;\n        auto dfs\
-    \ = [&](auto &&self, int v) -> void {\n            for (auto nv : tree[v]) {\n\
-    \                ans += path_sum(ids[v], ids[nv]);\n                self(self,\
-    \ nv);\n            }\n        };\n        dfs(dfs, 0);\n        std::cout <<\
-    \ ans << '\\n';\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
-    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    return 0;\n}\n"
+    \ = hld.lca_based_auxiliary_tree(vs);\n        std::vector<int> par(tree.size(),\
+    \ -1);\n        i64 ans = 0;\n        auto dfs = [&](auto &&self, int v) -> void\
+    \ {\n            for (auto nv : tree[v]) {\n                if (par[v] == nv)\
+    \ continue;\n                ans += path_sum(ids[v], ids[nv]);\n             \
+    \   par[nv] = v;\n                self(self, nv);\n            }\n        };\n\
+    \        dfs(dfs, 0);\n        std::cout << ans << '\\n';\n    }\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
+    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/901\"\n\n#include \"../../data_structure/segtree.hpp\"\
     \n#include \"../../graph/template.hpp\"\n#include \"../../template/template.hpp\"\
     \n#include \"../../tree/heavy_light_decomposition.hpp\"\n#include \"../../tree/lca_based_auxiliary_tree.hpp\"\
@@ -280,13 +282,14 @@ data:
     \ v, false, f);\n        return sum;\n    };\n    int q;\n    std::cin >> q;\n\
     \    while (q--) {\n        int k;\n        std::cin >> k;\n        std::vector<int>\
     \ vs(k);\n        for (auto &v : vs) std::cin >> v;\n        auto [ids, tree]\
-    \ = hld.lca_based_auxiliary_tree(vs);\n        i64 ans = 0;\n        auto dfs\
-    \ = [&](auto &&self, int v) -> void {\n            for (auto nv : tree[v]) {\n\
-    \                ans += path_sum(ids[v], ids[nv]);\n                self(self,\
-    \ nv);\n            }\n        };\n        dfs(dfs, 0);\n        std::cout <<\
-    \ ans << '\\n';\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
-    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    return 0;\n}"
+    \ = hld.lca_based_auxiliary_tree(vs);\n        std::vector<int> par(tree.size(),\
+    \ -1);\n        i64 ans = 0;\n        auto dfs = [&](auto &&self, int v) -> void\
+    \ {\n            for (auto nv : tree[v]) {\n                if (par[v] == nv)\
+    \ continue;\n                ans += path_sum(ids[v], ids[nv]);\n             \
+    \   par[nv] = v;\n                self(self, nv);\n            }\n        };\n\
+    \        dfs(dfs, 0);\n        std::cout << ans << '\\n';\n    }\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
+    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
   - data_structure/segtree.hpp
   - graph/template.hpp
@@ -300,7 +303,7 @@ data:
   isVerificationFile: true
   path: test/yuki/yuki_901.test.cpp
   requiredBy: []
-  timestamp: '2024-02-03 03:29:17+09:00'
+  timestamp: '2024-02-16 10:22:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yuki/yuki_901.test.cpp

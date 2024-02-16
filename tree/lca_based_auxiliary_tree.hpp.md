@@ -127,8 +127,9 @@ data:
     \ m = s.size();\n    for (int i : std::views::iota(0, m)) {\n        a[s[i]] =\
     \ i;\n    }\n    std::vector tree(m, std::vector<int>());\n    for (auto v : s)\
     \ {\n        if (p[v] < 0) continue;\n        tree[a[p[v]]].emplace_back(a[v]);\n\
-    \    }\n    for (auto v : s) {\n        a[v] = -1;\n        p[v] = -1;\n    }\n\
-    \    return {s, tree};\n}\n\n}  // namespace ebi\n"
+    \        tree[a[v]].emplace_back(a[p[v]]);\n    }\n    for (auto v : s) {\n  \
+    \      a[v] = -1;\n        p[v] = -1;\n    }\n    return {s, tree};\n}\n\n}  //\
+    \ namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <ranges>\n\
     #include <stack>\n#include <vector>\n\n#include \"../tree/heavy_light_decomposition.hpp\"\
     \n\nnamespace ebi {\n\nstd::vector<std::pair<int, int>>\nheavy_light_decomposition::lca_based_auxiliary_tree_dfs_order(\n\
@@ -164,14 +165,15 @@ data:
     \ m = s.size();\n    for (int i : std::views::iota(0, m)) {\n        a[s[i]] =\
     \ i;\n    }\n    std::vector tree(m, std::vector<int>());\n    for (auto v : s)\
     \ {\n        if (p[v] < 0) continue;\n        tree[a[p[v]]].emplace_back(a[v]);\n\
-    \    }\n    for (auto v : s) {\n        a[v] = -1;\n        p[v] = -1;\n    }\n\
-    \    return {s, tree};\n}\n\n}  // namespace ebi"
+    \        tree[a[v]].emplace_back(a[p[v]]);\n    }\n    for (auto v : s) {\n  \
+    \      a[v] = -1;\n        p[v] = -1;\n    }\n    return {s, tree};\n}\n\n}  //\
+    \ namespace ebi"
   dependsOn:
   - tree/heavy_light_decomposition.hpp
   isVerificationFile: false
   path: tree/lca_based_auxiliary_tree.hpp
   requiredBy: []
-  timestamp: '2023-11-13 18:22:27+09:00'
+  timestamp: '2024-02-16 10:22:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_901.test.cpp

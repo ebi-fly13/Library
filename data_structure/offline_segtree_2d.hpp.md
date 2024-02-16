@@ -99,8 +99,8 @@ data:
   timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Rectangle_Sum_Segtree.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+  - test/data_structure/Rectangle_Sum_Segtree.test.cpp
 documentation_of: data_structure/offline_segtree_2d.hpp
 layout: document
 title: offline 2D segtree

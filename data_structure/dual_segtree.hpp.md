@@ -67,8 +67,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Range_Affine_Point_Get.test.cpp
-  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/yuki/yuki_1038.test.cpp
+  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
 documentation_of: data_structure/dual_segtree.hpp
 layout: document
 title: dual segtree
