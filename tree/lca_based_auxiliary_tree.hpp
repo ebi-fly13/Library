@@ -96,6 +96,7 @@ heavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int> vs) const {
     for (auto v : s) {
         if (p[v] < 0) continue;
         tree[a[p[v]]].emplace_back(a[v]);
+        tree[a[v]].emplace_back(a[p[v]]);
     }
     for (auto v : s) {
         a[v] = -1;

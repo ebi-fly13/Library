@@ -48,10 +48,13 @@ void main_() {
         std::vector<int> vs(k);
         for (auto &v : vs) std::cin >> v;
         auto [ids, tree] = hld.lca_based_auxiliary_tree(vs);
+        std::vector<int> par(tree.size(), -1);
         i64 ans = 0;
         auto dfs = [&](auto &&self, int v) -> void {
             for (auto nv : tree[v]) {
+                if (par[v] == nv) continue;
                 ans += path_sum(ids[v], ids[nv]);
+                par[nv] = v;
                 self(self, nv);
             }
         };
