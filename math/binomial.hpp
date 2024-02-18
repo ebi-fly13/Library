@@ -16,6 +16,8 @@ template <Modint mint> struct Binomial {
         int sz = (int)fact.size();
         if (len < 0)
             len = 2 * sz;
+        else if (len <= sz)
+            return;
         else
             len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));
         len = std::min(len, mint::mod());

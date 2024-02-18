@@ -92,7 +92,7 @@ template <class T> struct section_set {
     std::pair<T, T> belong(T x) const {
         auto itr =
             std::prev(set.upper_bound({x, std::numeric_limits<T>::max()}));
-        if (x <= itr->second) {
+        if (x < itr->second) {
             assert(itr->first <= x);
             return *itr;
         } else {
