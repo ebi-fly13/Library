@@ -195,7 +195,8 @@ data:
     #line 8 \"math/binomial.hpp\"\n\n#line 10 \"math/binomial.hpp\"\n\nnamespace ebi\
     \ {\n\ntemplate <Modint mint> struct Binomial {\n  private:\n    static void extend(int\
     \ len = -1) {\n        int sz = (int)fact.size();\n        if (len < 0)\n    \
-    \        len = 2 * sz;\n        else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
+    \        len = 2 * sz;\n        else if (len <= sz)\n            return;\n   \
+    \     else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
     \        len = std::min(len, mint::mod());\n        assert(sz <= len);\n     \
     \   fact.resize(len);\n        inv_fact.resize(len);\n        for (int i : std::views::iota(sz,\
     \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
@@ -302,7 +303,7 @@ data:
   isVerificationFile: true
   path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   requiredBy: []
-  timestamp: '2023-11-14 20:33:07+09:00'
+  timestamp: '2024-02-18 14:20:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stirling_Number_of_the_First_Kind.test.cpp

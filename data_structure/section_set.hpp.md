@@ -44,8 +44,8 @@ data:
     \     assert(itr->first <= l);\n            return true;\n        } else {\n \
     \           return false;\n        }\n    }\n\n    std::pair<T, T> belong(T x)\
     \ const {\n        auto itr =\n            std::prev(set.upper_bound({x, std::numeric_limits<T>::max()}));\n\
-    \        if (x <= itr->second) {\n            assert(itr->first <= x);\n     \
-    \       return *itr;\n        } else {\n            return {0, 0};\n        }\n\
+    \        if (x < itr->second) {\n            assert(itr->first <= x);\n      \
+    \      return *itr;\n        } else {\n            return {0, 0};\n        }\n\
     \    }\n\n    std::pair<T, T> lower_bound(T l) const {\n        return *set.lower_bound({l,\
     \ std::numeric_limits<T>::min()});\n    }\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <set>\n\n\
@@ -81,15 +81,15 @@ data:
     \     assert(itr->first <= l);\n            return true;\n        } else {\n \
     \           return false;\n        }\n    }\n\n    std::pair<T, T> belong(T x)\
     \ const {\n        auto itr =\n            std::prev(set.upper_bound({x, std::numeric_limits<T>::max()}));\n\
-    \        if (x <= itr->second) {\n            assert(itr->first <= x);\n     \
-    \       return *itr;\n        } else {\n            return {0, 0};\n        }\n\
+    \        if (x < itr->second) {\n            assert(itr->first <= x);\n      \
+    \      return *itr;\n        } else {\n            return {0, 0};\n        }\n\
     \    }\n\n    std::pair<T, T> lower_bound(T l) const {\n        return *set.lower_bound({l,\
     \ std::numeric_limits<T>::min()});\n    }\n};\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/section_set.hpp
   requiredBy: []
-  timestamp: '2023-10-30 03:02:51+09:00'
+  timestamp: '2024-02-18 14:20:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2152.test.cpp
