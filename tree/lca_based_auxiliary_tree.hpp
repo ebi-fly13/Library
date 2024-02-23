@@ -48,7 +48,7 @@ heavy_light_decomposition::lca_based_auxiliary_tree_dfs_order(
 
 std::pair<std::vector<int>, std::vector<std::vector<int>>>
 heavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int> vs) const {
-    static std::vector<int> a(n, -1), p(n, -1);
+    static std::vector<int> a(1'000'000, -1), p(1'000'000, -1);
     int k = vs.size();
     if (k == 1) {
         return {vs, std::vector(1, std::vector<int>())};
