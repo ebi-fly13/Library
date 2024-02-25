@@ -139,6 +139,9 @@ data:
       path: data_structure/link_cut_tree.hpp
       title: data_structure/link_cut_tree.hpp
     - icon: ':heavy_check_mark:'
+      path: data_structure/offline_dual_segtree_2d.hpp
+      title: offline 2D dual segtree
+    - icon: ':heavy_check_mark:'
       path: data_structure/offline_dynamic_connectivity.hpp
       title: Offline Dynamic Connectivity
     - icon: ':heavy_check_mark:'
@@ -627,6 +630,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Kth_Smallest.test.cpp
       title: test/data_structure/Range_Kth_Smallest.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
+      title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Rectangle_Sum_Range_Tree.test.cpp
       title: test/data_structure/Rectangle_Sum_Range_Tree.test.cpp

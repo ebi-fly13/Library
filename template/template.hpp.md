@@ -37,6 +37,9 @@ data:
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
+    title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -192,6 +195,7 @@ data:
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Catalan_Convolution.test.cpp
+  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Range_Affine_Point_Get.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/data_structure/Static_Rectangle_Sum.test.cpp

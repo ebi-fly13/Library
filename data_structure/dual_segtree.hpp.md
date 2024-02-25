@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/offline_dual_segtree_2d.hpp
+    title: offline 2D dual segtree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/data_structure/Range_Affine_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
+    title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
@@ -62,10 +68,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data_structure/dual_segtree.hpp
-  requiredBy: []
+  requiredBy:
+  - data_structure/offline_dual_segtree_2d.hpp
   timestamp: '2023-10-31 00:17:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yuki/yuki_1038.test.cpp
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp

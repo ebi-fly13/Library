@@ -70,6 +70,9 @@ data:
     path: test/data_structure/Range_Kth_Smallest.test.cpp
     title: test/data_structure/Range_Kth_Smallest.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
+    title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
@@ -255,6 +258,7 @@ data:
   - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Inversion_Number.test.cpp
+  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/data_structure/Range_Kth_Smallest.test.cpp
   - test/data_structure/Range_Affine_Point_Get.test.cpp
