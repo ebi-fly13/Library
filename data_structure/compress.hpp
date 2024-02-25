@@ -13,7 +13,7 @@ template <class T> struct compress {
   public:
     compress() = default;
 
-    compress(std::vector<T> cp) : cp(cp) {
+    compress(std::vector<T> cp_) : cp(cp_) {
         build();
     }
 
