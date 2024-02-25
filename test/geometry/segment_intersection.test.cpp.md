@@ -23,7 +23,7 @@ data:
     #include <iostream>\n#include <map>\n#include <vector>\n\n#line 2 \"data_structure/compress.hpp\"\
     \n\n#line 6 \"data_structure/compress.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
     \ T> struct compress {\n  private:\n    std::vector<T> cp;\n\n  public:\n    compress()\
-    \ = default;\n\n    compress(std::vector<T> cp) : cp(cp) {\n        build();\n\
+    \ = default;\n\n    compress(std::vector<T> cp_) : cp(cp_) {\n        build();\n\
     \    }\n\n    void build() {\n        std::sort(cp.begin(), cp.end());\n     \
     \   cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n    }\n\n    void\
     \ add(const T &val) {\n        cp.emplace_back(val);\n    }\n\n    int get(const\
@@ -96,7 +96,7 @@ data:
   isVerificationFile: true
   path: test/geometry/segment_intersection.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2024-02-25 23:03:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/segment_intersection.test.cpp

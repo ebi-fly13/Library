@@ -25,8 +25,8 @@ data:
     \n#include <iostream>\r\n\r\n#line 2 \"data_structure/compress.hpp\"\n\n#include\
     \ <algorithm>\n#include <cassert>\n#include <vector>\n\nnamespace ebi {\n\ntemplate\
     \ <class T> struct compress {\n  private:\n    std::vector<T> cp;\n\n  public:\n\
-    \    compress() = default;\n\n    compress(std::vector<T> cp) : cp(cp) {\n   \
-    \     build();\n    }\n\n    void build() {\n        std::sort(cp.begin(), cp.end());\n\
+    \    compress() = default;\n\n    compress(std::vector<T> cp_) : cp(cp_) {\n \
+    \       build();\n    }\n\n    void build() {\n        std::sort(cp.begin(), cp.end());\n\
     \        cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n    }\n\n   \
     \ void add(const T &val) {\n        cp.emplace_back(val);\n    }\n\n    int get(const\
     \ T &val) const {\n        return std::lower_bound(cp.begin(), cp.end(), val)\
@@ -135,7 +135,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 01:04:45+09:00'
+  timestamp: '2024-02-25 23:03:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum_Segtree.test.cpp
