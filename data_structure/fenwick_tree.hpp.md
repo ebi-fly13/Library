@@ -69,16 +69,16 @@ data:
   isVerificationFile: false
   path: data_structure/fenwick_tree.hpp
   requiredBy:
-  - math/inversion_number.hpp
   - data_structure/static_rectangle_sum.hpp
+  - math/inversion_number.hpp
   timestamp: '2023-09-10 00:45:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Inversion_Number.test.cpp
   - test/geometry/segment_intersection.test.cpp
-  - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - test/data_structure/Static_Range_Inversion_Query.test.cpp
   - test/data_structure/Static_Rectangle_Sum.test.cpp
+  - test/data_structure/Static_Range_Inversion_Query.test.cpp
+  - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - test/math/Inversion_Number.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 title: fenwick tree

@@ -185,8 +185,8 @@ data:
   timestamp: '2023-12-26 02:24:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/aoj/aoj_2444.test.cpp
+  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: utility/hash.hpp
 layout: document
 title: Hash structure

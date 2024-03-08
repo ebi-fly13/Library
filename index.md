@@ -112,6 +112,9 @@ data:
       path: data_structure/deque_aggregation.hpp
       title: Sliding Window Aggregation (Deque)
     - icon: ':heavy_check_mark:'
+      path: data_structure/double_ended_priority_queue.hpp
+      title: Double-Ended Priority Queue
+    - icon: ':heavy_check_mark:'
       path: data_structure/dual_segtree.hpp
       title: dual segtree
     - icon: ':heavy_check_mark:'
@@ -171,9 +174,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/range_tree.hpp
       title: data_structure/range_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/removable_priority_queue.hpp
-      title: data_structure/removable_priority_queue.hpp
+      title: Removable Priority Queue
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: section set
@@ -576,6 +579,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Deque_Operate_All_Composite.test.cpp
       title: test/data_structure/Deque_Operate_All_Composite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Double-Ended_Priority_Queue.test.cpp
+      title: test/data_structure/Double-Ended_Priority_Queue.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
