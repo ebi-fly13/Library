@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 
 namespace ebi {
 
@@ -25,6 +26,20 @@ struct graph : std::vector<std::vector<int>> {
         (*this)[u].emplace_back(v);
         if (directed) return;
         (*this)[v].emplace_back(u);
+    }
+
+    void read_tree(int offset = 1) {
+        read_graph((int)size()-1, offset);
+    }
+
+    void read_graph(int m, int offset = 1, bool directed = false) {
+        for(int i = 0; i < m; i++) {
+            int u,v;
+            std::cin >> u >> v;
+            u -= offset;
+            v -= offset;
+            add_edge(u, v, directed);
+        }
     }
 };
 
