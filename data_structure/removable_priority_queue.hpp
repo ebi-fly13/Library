@@ -26,6 +26,11 @@ struct removable_priority_queue {
   public:
     removable_priority_queue() = default;
 
+    template <class InputIterator>
+    removable_priority_queue(InputIterator first, InputIterator last) {
+        que = std::priority_queue<T, Container, Compare>(first, last);
+    }
+
     bool empty() const {
         return (size() == 0);
     }
