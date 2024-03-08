@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
@@ -62,7 +62,7 @@ data:
     \ r + 1 - sz;\r\n            }\r\n            sm = op(data[r], sm);\r\n      \
     \  } while ((r & -r) != r);\r\n        return 0;\r\n    }\r\n\r\n    S operator[](int\
     \ p) const {\r\n        return data[sz + p];\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\r\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\
+    \ ebi\r\n#line 2 \"graph/template.hpp\"\n\r\n#line 5 \"graph/template.hpp\"\n\r\
     \nnamespace ebi {\r\n\r\ntemplate <class T> struct Edge {\r\n    int to;\r\n \
     \   T cost;\r\n    Edge(int _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n};\r\
     \n\r\ntemplate <class T> struct Graph : std::vector<std::vector<Edge<T>>> {\r\n\
@@ -72,7 +72,12 @@ data:
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n\r\n    void read_tree(int\
+    \ offset = 1) {\r\n        read_graph((int)size()-1, offset);\r\n    }\r\n\r\n\
+    \    void read_graph(int m, int offset = 1, bool directed = false) {\r\n     \
+    \   for(int i = 0; i < m; i++) {\r\n            int u,v;\r\n            std::cin\
+    \ >> u >> v;\r\n            u -= offset;\r\n            v -= offset;\r\n     \
+    \       add_edge(u, v, directed);\r\n        }\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\n#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <algorithm>\n\
     #line 6 \"tree/heavy_light_decomposition.hpp\"\n\nnamespace ebi {\n\nstruct heavy_light_decomposition\
     \ {\n  private:\n    void dfs_sz(int v) {\n        for (auto &nv : g[v]) {\n \
@@ -190,7 +195,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-11-13 18:22:27+09:00'
+  timestamp: '2024-03-08 14:06:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Path_Sum.test.cpp

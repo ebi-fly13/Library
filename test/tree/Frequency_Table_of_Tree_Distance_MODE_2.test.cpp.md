@@ -4,37 +4,37 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/centroid_decomposition.hpp
     title: Centroid Decomposition
   _extendedRequiredBy: []
@@ -194,7 +194,7 @@ data:
     \ * inv41 - mint4(x2) * inv42 -\n                  mint4(x3) * inv43)\n      \
     \               .val();\n        res[i] = x0 + m0 * (x1 + m1 * (x2 + m2 * (x3\
     \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi\n#line\
-    \ 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\nnamespace\
+    \ 2 \"graph/template.hpp\"\n\r\n#line 5 \"graph/template.hpp\"\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate <class T> struct Edge {\r\n    int to;\r\n    T cost;\r\
     \n    Edge(int _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate\
     \ <class T> struct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
@@ -203,7 +203,12 @@ data:
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n\r\n    void read_tree(int\
+    \ offset = 1) {\r\n        read_graph((int)size()-1, offset);\r\n    }\r\n\r\n\
+    \    void read_graph(int m, int offset = 1, bool directed = false) {\r\n     \
+    \   for(int i = 0; i < m; i++) {\r\n            int u,v;\r\n            std::cin\
+    \ >> u >> v;\r\n            u -= offset;\r\n            v -= offset;\r\n     \
+    \       add_edge(u, v, directed);\r\n        }\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define\
     \ rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n)\
     \ for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64\
@@ -238,7 +243,7 @@ data:
     \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
     \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
     }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
-    \n\n#line 7 \"template/utility.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\
+    \n\n#line 8 \"template/utility.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\
     \ inline bool chmin(T &a, T b) {\n    if (a > b) {\n        a = b;\n        return\
     \ true;\n    }\n    return false;\n}\n\ntemplate <class T> inline bool chmax(T\
     \ &a, T b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n\
@@ -428,7 +433,7 @@ data:
   isVerificationFile: true
   path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   requiredBy: []
-  timestamp: '2024-02-03 03:29:17+09:00'
+  timestamp: '2024-03-08 14:06:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp

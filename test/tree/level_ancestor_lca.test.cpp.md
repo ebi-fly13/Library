@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/level_ancestor.hpp
     title: Level Ancestor
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -19,16 +19,22 @@ data:
     - https://judge.yosupo.jp/problem/lca
   bundledCode: "#line 1 \"test/tree/level_ancestor_lca.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/lca\"\r\n\r\n#include <iostream>\r\n\r\n#line\
-    \ 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n\r\nnamespace ebi {\r\n\r\
-    \ntemplate <class T> struct Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int\
-    \ _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate <class T>\
-    \ struct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
-    \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \ 2 \"graph/template.hpp\"\n\r\n#include <vector>\r\n#line 5 \"graph/template.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct Edge {\r\n    int to;\r\
+    \n    T cost;\r\n    Edge(int _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n\
+    };\r\n\r\ntemplate <class T> struct Graph : std::vector<std::vector<Edge<T>>>\
+    \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
+    \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if (directed) return;\r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n\r\n    void read_tree(int\
+    \ offset = 1) {\r\n        read_graph((int)size()-1, offset);\r\n    }\r\n\r\n\
+    \    void read_graph(int m, int offset = 1, bool directed = false) {\r\n     \
+    \   for(int i = 0; i < m; i++) {\r\n            int u,v;\r\n            std::cin\
+    \ >> u >> v;\r\n            u -= offset;\r\n            v -= offset;\r\n     \
+    \       add_edge(u, v, directed);\r\n        }\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\n#line 2 \"tree/level_ancestor.hpp\"\n\r\n#include <algorithm>\r\n#include\
     \ <cassert>\r\n#line 6 \"tree/level_ancestor.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
     struct level_ancestor {\r\n  private:\r\n    int n;\r\n    std::vector<int> in;\r\
@@ -78,8 +84,8 @@ data:
   isVerificationFile: true
   path: test/tree/level_ancestor_lca.test.cpp
   requiredBy: []
-  timestamp: '2023-06-15 15:16:22+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-03-08 14:06:24+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/level_ancestor_lca.test.cpp
 layout: document

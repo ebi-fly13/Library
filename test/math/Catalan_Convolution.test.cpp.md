@@ -1,10 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: graph/template.hpp
+    title: graph/template.hpp
+  - icon: ':question:'
     path: math/binomial.hpp
     title: Binomial Coefficient
   - icon: ':heavy_check_mark:'
@@ -13,28 +16,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/catalan_number.hpp
     title: Catalan Number
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -225,19 +228,35 @@ data:
     \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
     void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
     \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
-    \n\n#line 5 \"template/utility.hpp\"\n\n#line 7 \"template/utility.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class T> inline bool chmin(T &a, T b) {\n    if (a > b) {\n\
-    \        a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate\
-    \ <class T> inline bool chmax(T &a, T b) {\n    if (a < b) {\n        a = b;\n\
-    \        return true;\n    }\n    return false;\n}\n\ntemplate <class T> T safe_ceil(T\
-    \ a, T b) {\n    if (a % b == 0)\n        return a / b;\n    else if (a >= 0)\n\
-    \        return (a / b) + 1;\n    else\n        return -((-a) / b);\n}\n\ntemplate\
-    \ <class T> T safe_floor(T a, T b) {\n    if (a % b == 0)\n        return a /\
-    \ b;\n    else if (a >= 0)\n        return a / b;\n    else\n        return -((-a)\
-    \ / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max() / 4;\n\n\
-    constexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
-    \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 9 \"test/math/Catalan_Convolution.test.cpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/template.hpp\"\n\r\n#line\
+    \ 5 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct\
+    \ Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost = 1) : to(_to),\
+    \ cost(_cost) {}\r\n};\r\n\r\ntemplate <class T> struct Graph : std::vector<std::vector<Edge<T>>>\
+    \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
+    \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
+    \ w);\r\n        if (directed) return;\r\n        (*this)[v].emplace_back(u, w);\r\
+    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
+    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
+    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n\r\n    void read_tree(int\
+    \ offset = 1) {\r\n        read_graph((int)size()-1, offset);\r\n    }\r\n\r\n\
+    \    void read_graph(int m, int offset = 1, bool directed = false) {\r\n     \
+    \   for(int i = 0; i < m; i++) {\r\n            int u,v;\r\n            std::cin\
+    \ >> u >> v;\r\n            u -= offset;\r\n            v -= offset;\r\n     \
+    \       add_edge(u, v, directed);\r\n        }\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ ebi\n#line 8 \"template/utility.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ T> inline bool chmin(T &a, T b) {\n    if (a > b) {\n        a = b;\n      \
+    \  return true;\n    }\n    return false;\n}\n\ntemplate <class T> inline bool\
+    \ chmax(T &a, T b) {\n    if (a < b) {\n        a = b;\n        return true;\n\
+    \    }\n    return false;\n}\n\ntemplate <class T> T safe_ceil(T a, T b) {\n \
+    \   if (a % b == 0)\n        return a / b;\n    else if (a >= 0)\n        return\
+    \ (a / b) + 1;\n    else\n        return -((-a) / b);\n}\n\ntemplate <class T>\
+    \ T safe_floor(T a, T b) {\n    if (a % b == 0)\n        return a / b;\n    else\
+    \ if (a >= 0)\n        return a / b;\n    else\n        return -((-a) / b) - 1;\n\
+    }\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max() / 4;\n\nconstexpr int\
+    \ INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int> dy = {1,\
+    \ 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1, 1, -1, 1,\
+    \ -1};\n\n}  // namespace ebi\n#line 9 \"test/math/Catalan_Convolution.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    const\
     \ int n = 100000;\n    int t = 10;\n    std::vector<mint> c(n);\n    rep(i, 0,\
     \ n) c[i] = catalan_number<mint>(i);\n    std::vector<mint> a = {1};\n    rep(i,\
@@ -272,10 +291,11 @@ data:
   - template/int_alias.hpp
   - template/io.hpp
   - template/utility.hpp
+  - graph/template.hpp
   isVerificationFile: true
   path: test/math/Catalan_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-02-18 14:20:37+09:00'
+  timestamp: '2024-03-08 14:06:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Catalan_Convolution.test.cpp

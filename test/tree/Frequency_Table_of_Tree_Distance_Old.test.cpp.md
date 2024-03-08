@@ -4,19 +4,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -180,7 +180,7 @@ data:
     \ * inv41 - mint4(x2) * inv42 -\n                  mint4(x3) * inv43)\n      \
     \               .val();\n        res[i] = x0 + m0 * (x1 + m1 * (x2 + m2 * (x3\
     \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi\n#line\
-    \ 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\n\r\nnamespace\
+    \ 2 \"graph/template.hpp\"\n\r\n#line 5 \"graph/template.hpp\"\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate <class T> struct Edge {\r\n    int to;\r\n    T cost;\r\
     \n    Edge(int _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate\
     \ <class T> struct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
@@ -189,7 +189,12 @@ data:
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n\r\n    void read_tree(int\
+    \ offset = 1) {\r\n        read_graph((int)size()-1, offset);\r\n    }\r\n\r\n\
+    \    void read_graph(int m, int offset = 1, bool directed = false) {\r\n     \
+    \   for(int i = 0; i < m; i++) {\r\n            int u,v;\r\n            std::cin\
+    \ >> u >> v;\r\n            u -= offset;\r\n            v -= offset;\r\n     \
+    \       add_edge(u, v, directed);\r\n        }\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\n#line 2 \"tree/centroid_decomposition_old.hpp\"\n\r\n#line 4 \"tree/centroid_decomposition_old.hpp\"\
     \n\r\n/*\r\n    reference: https://qiita.com/drken/items/4b4c3f1824339b090202\r\
     \n               https://ferin-tech.hatenablog.com/entry/2020/03/06/162311\r\n\
@@ -277,7 +282,7 @@ data:
   isVerificationFile: true
   path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   requiredBy: []
-  timestamp: '2024-01-04 03:14:39+09:00'
+  timestamp: '2024-03-08 14:06:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp

@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
@@ -23,16 +23,21 @@ data:
   bundledCode: "#line 1 \"test/algorithm/Two_Sat.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/two_sat\"\
     \n\n#line 2 \"algorithm/two_sat.hpp\"\n\n#include <cassert>\n\n#line 2 \"graph/scc_graph.hpp\"\
     \n\r\n#include <algorithm>\r\n#include <vector>\r\n\r\n#line 2 \"graph/template.hpp\"\
-    \n\r\n#line 4 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <class\
-    \ T> struct Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost\
-    \ = 1) : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate <class T> struct Graph\
-    \ : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
+    \n\r\n#line 4 \"graph/template.hpp\"\n#include <iostream>\r\n\r\nnamespace ebi\
+    \ {\r\n\r\ntemplate <class T> struct Edge {\r\n    int to;\r\n    T cost;\r\n\
+    \    Edge(int _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate\
+    \ <class T> struct Graph : std::vector<std::vector<Edge<T>>> {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\
     \n    void add_edge(int u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if (directed) return;\r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n\r\n    void read_tree(int\
+    \ offset = 1) {\r\n        read_graph((int)size()-1, offset);\r\n    }\r\n\r\n\
+    \    void read_graph(int m, int offset = 1, bool directed = false) {\r\n     \
+    \   for(int i = 0; i < m; i++) {\r\n            int u,v;\r\n            std::cin\
+    \ >> u >> v;\r\n            u -= offset;\r\n            v -= offset;\r\n     \
+    \       add_edge(u, v, directed);\r\n        }\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\n#line 7 \"graph/scc_graph.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct scc_graph\
     \ {\r\n  private:\r\n    graph g, rg;\r\n    int n, k;\r\n\r\n    std::vector<int>\
     \ vs, cmp;\r\n    std::vector<bool> seen;\r\n\r\n    void dfs(int v) {\r\n   \
@@ -71,15 +76,16 @@ data:
     \ * i] > id[2 * i + 1];\n        }\n        return true;\n    }\n\n    std::vector<bool>\
     \ answer() {\n        return _answer;\n    }\n\n  private:\n    int n;\n    scc_graph\
     \ scc;\n    std::vector<bool> _answer;\n};\n\n}  // namespace ebi\n#line 4 \"\
-    test/algorithm/Two_Sat.test.cpp\"\n\n#include <iostream>\n\nint main() {\n   \
-    \ char p;\n    std::string cnf;\n    std::cin >> p >> cnf;\n    int n, m;\n  \
-    \  std::cin >> n >> m;\n    ebi::two_sat ts(n);\n    for (int i = 0; i < m; i++)\
-    \ {\n        int a, b, c;\n        std::cin >> a >> b >> c;\n        ts.add_clause(std::abs(a)\
-    \ - 1, a > 0, std::abs(b) - 1, b > 0);\n    }\n    bool flag = ts.satisfiable();\n\
-    \    std::cout << \"s \" << (flag ? \"SATISFIABLE\" : \"UNSATISFIABLE\") << std::endl;\n\
-    \    if (flag) {\n        std::cout << \"v\";\n        auto ans = ts.answer();\n\
-    \        for (int i = 0; i < n; i++) {\n            std::cout << \" \" << (ans[i]\
-    \ ? i + 1 : -(i + 1));\n        }\n        std::cout << \" 0\\n\";\n    }\n}\n"
+    test/algorithm/Two_Sat.test.cpp\"\n\n#line 6 \"test/algorithm/Two_Sat.test.cpp\"\
+    \n\nint main() {\n    char p;\n    std::string cnf;\n    std::cin >> p >> cnf;\n\
+    \    int n, m;\n    std::cin >> n >> m;\n    ebi::two_sat ts(n);\n    for (int\
+    \ i = 0; i < m; i++) {\n        int a, b, c;\n        std::cin >> a >> b >> c;\n\
+    \        ts.add_clause(std::abs(a) - 1, a > 0, std::abs(b) - 1, b > 0);\n    }\n\
+    \    bool flag = ts.satisfiable();\n    std::cout << \"s \" << (flag ? \"SATISFIABLE\"\
+    \ : \"UNSATISFIABLE\") << std::endl;\n    if (flag) {\n        std::cout << \"\
+    v\";\n        auto ans = ts.answer();\n        for (int i = 0; i < n; i++) {\n\
+    \            std::cout << \" \" << (ans[i] ? i + 1 : -(i + 1));\n        }\n \
+    \       std::cout << \" 0\\n\";\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/two_sat\"\n\n#include \"\
     ../../algorithm/two_sat.hpp\"\n\n#include <iostream>\n\nint main() {\n    char\
     \ p;\n    std::string cnf;\n    std::cin >> p >> cnf;\n    int n, m;\n    std::cin\
@@ -97,7 +103,7 @@ data:
   isVerificationFile: true
   path: test/algorithm/Two_Sat.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 02:38:17+09:00'
+  timestamp: '2024-03-08 14:06:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/algorithm/Two_Sat.test.cpp

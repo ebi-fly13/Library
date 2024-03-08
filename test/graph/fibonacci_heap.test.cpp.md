@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []
@@ -94,7 +94,7 @@ data:
     \ roots; ptr = ptr->next) {\r\n            if (op(ptr->ord, k)) {\r\n        \
     \        k = ptr->ord;\r\n            }\r\n        }\r\n        assert(k == min->ord);\r\
     \n    }\r\n};\r\n\r\n}  // namespace ebi\r\n#line 2 \"graph/template.hpp\"\n\r\
-    \n#line 4 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <class T>\
+    \n#line 5 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <class T>\
     \ struct Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost = 1)\
     \ : to(_to), cost(_cost) {}\r\n};\r\n\r\ntemplate <class T> struct Graph : std::vector<std::vector<Edge<T>>>\
     \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
@@ -103,7 +103,12 @@ data:
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n\r\n    void read_tree(int\
+    \ offset = 1) {\r\n        read_graph((int)size()-1, offset);\r\n    }\r\n\r\n\
+    \    void read_graph(int m, int offset = 1, bool directed = false) {\r\n     \
+    \   for(int i = 0; i < m; i++) {\r\n            int u,v;\r\n            std::cin\
+    \ >> u >> v;\r\n            u -= offset;\r\n            v -= offset;\r\n     \
+    \       add_edge(u, v, directed);\r\n        }\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\n#line 8 \"graph/dijkstra_fibheap.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate\
     \ <class T> bool op(T a, T b) {\r\n    return a <= b;\r\n}\r\n\r\ntemplate <class\
     \ T> std::vector<T> dijkstra(int s, int n, const Graph<T> &g) {\r\n    std::vector<T>\
@@ -147,7 +152,7 @@ data:
   isVerificationFile: true
   path: test/graph/fibonacci_heap.test.cpp
   requiredBy: []
-  timestamp: '2023-12-28 15:52:36+09:00'
+  timestamp: '2024-03-08 14:06:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/fibonacci_heap.test.cpp

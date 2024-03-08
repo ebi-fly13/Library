@@ -11,7 +11,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/convex_hull_trick.hpp
       title: Convex Hull Trick
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algorithm/enumerate_monge_d_edge_shortest_path.hpp
       title: Enumerate Monge d-edge shortest path
     - icon: ':warning:'
@@ -26,7 +26,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/monge_shortest_path.hpp
       title: Monge shortest path
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: algorithm/monotone_minima.hpp
       title: Monotone Minima
     - icon: ':warning:'
@@ -58,7 +58,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/min_plus_convolution.hpp
       title: Min Plus Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: convolution/ntt.hpp
       title: NTT Convolution
     - icon: ':warning:'
@@ -114,7 +114,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/double_ended_priority_queue.hpp
       title: Double-Ended Priority Queue
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/dual_segtree.hpp
       title: dual segtree
     - icon: ':heavy_check_mark:'
@@ -132,7 +132,7 @@ data:
     - icon: ':warning:'
       path: data_structure/kd_tree.hpp
       title: data_structure/kd_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/lazy_segtree.hpp
       title: lazy segtree
     - icon: ':heavy_check_mark:'
@@ -180,16 +180,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: section set
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/segtree.hpp
       title: segtree
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/slope_trick.hpp
       title: Slope Trick
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/sparse_table.hpp
       title: Sparse Table
     - icon: ':heavy_check_mark:'
@@ -218,7 +218,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/compositional_inverse_of_fps.hpp
       title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: fps/fps.hpp
       title: Formal Power Series
     - icon: ':heavy_check_mark:'
@@ -227,7 +227,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/fps_sqrt.hpp
       title: $\sqrt{f}$
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: fps/middle_product.hpp
       title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
     - icon: ':heavy_check_mark:'
@@ -236,7 +236,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/polynomial_interpolation.hpp
       title: Polynomial Interpolation
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: fps/product_of_fps.hpp
       title: $\prod_{i=0}^n f_i$
     - icon: ':heavy_check_mark:'
@@ -245,7 +245,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/product_of_one_plus_xn.hpp
       title: $\prod (1 + x^{a_i}) \mod x^d$
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: fps/sums_of_powers.hpp
       title: $\sum_i (\sum_n A_n^i) x^i$
     - icon: ':heavy_check_mark:'
@@ -291,7 +291,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/template.hpp
       title: graph/template.hpp
     - icon: ':heavy_check_mark:'
@@ -305,7 +305,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/binomial.hpp
       title: Binomial Coefficient
     - icon: ':heavy_check_mark:'
@@ -323,7 +323,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes_sieve.hpp
       title: Eratosthenes Sieve
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
@@ -366,13 +366,13 @@ data:
       title: matrix/square_matrix.hpp
   - name: modint
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: modint/base.hpp
       title: modint/base.hpp
     - icon: ':heavy_check_mark:'
       path: modint/dynamic_modint.hpp
       title: modint/dynamic_modint.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: modint/modint.hpp
       title: modint/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -426,19 +426,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -449,25 +449,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/cartesian_tree.hpp
       title: Cartesian Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
     - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition_old.hpp
       title: Centroid Decomposition (old)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/contour_query_on_tree.hpp
       title: Contour Query on Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/lca_based_auxiliary_tree.hpp
       title: LCA based Auxiliary Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/level_ancestor.hpp
       title: Level Ancestor
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/lowest_common_ancestor.hpp
       title: Lowest Common Ancestor
     - icon: ':heavy_check_mark:'
@@ -476,7 +476,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/rooted_tree_hash.hpp
       title: Rooted Tree Hash
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/tree_diameter.hpp
       title: Tree Diameter
   - name: utility
@@ -907,63 +907,63 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
       title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Jump_on_Tree_HLD.test.cpp
       title: test/tree/Jump_on_Tree_HLD.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
       title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Path_Composite_Sum.test.cpp
       title: test/tree/Tree_Path_Composite_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
       title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
       title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/level_ancestor_lca.test.cpp
       title: test/tree/level_ancestor_lca.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/lowest_common_ancestor.test.cpp
       title: test/tree/lowest_common_ancestor.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/yuki_1038.test.cpp
       title: test/yuki/yuki_1038.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/yuki_1077.test.cpp
       title: test/yuki/yuki_1077.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/yuki_1145.test.cpp
       title: test/yuki/yuki_1145.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1302.test.cpp
       title: test/yuki/yuki_1302.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/yuki_1796.test.cpp
       title: test/yuki/yuki_1796.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/yuki_2439.test.cpp
       title: test/yuki/yuki_2439.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_409.test.cpp
       title: test/yuki/yuki_409.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/yuki_901.test.cpp
       title: test/yuki/yuki_901.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/yuki_901_2.test.cpp
       title: test/yuki/yuki_901_2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/yuki_952.test.cpp
       title: test/yuki/yuki_952.test.cpp
 layout: toppage

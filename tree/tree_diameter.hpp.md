@@ -1,31 +1,36 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/template.hpp
     title: graph/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/tree_diameter.hpp\"\n\n#include <algorithm>\n#include\
     \ <vector>\n\n#line 2 \"graph/template.hpp\"\n\r\n#line 4 \"graph/template.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct Edge {\r\n    int to;\r\
-    \n    T cost;\r\n    Edge(int _to, T _cost = 1) : to(_to), cost(_cost) {}\r\n\
-    };\r\n\r\ntemplate <class T> struct Graph : std::vector<std::vector<Edge<T>>>\
+    \n#include <iostream>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct\
+    \ Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost = 1) : to(_to),\
+    \ cost(_cost) {}\r\n};\r\n\r\ntemplate <class T> struct Graph : std::vector<std::vector<Edge<T>>>\
     \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
     \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
     \ w);\r\n        if (directed) return;\r\n        (*this)[v].emplace_back(u, w);\r\
     \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
     \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
     \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n};\r\n\r\n}  // namespace\
+    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n\r\n    void read_tree(int\
+    \ offset = 1) {\r\n        read_graph((int)size()-1, offset);\r\n    }\r\n\r\n\
+    \    void read_graph(int m, int offset = 1, bool directed = false) {\r\n     \
+    \   for(int i = 0; i < m; i++) {\r\n            int u,v;\r\n            std::cin\
+    \ >> u >> v;\r\n            u -= offset;\r\n            v -= offset;\r\n     \
+    \       add_edge(u, v, directed);\r\n        }\r\n    }\r\n};\r\n\r\n}  // namespace\
     \ ebi\n#line 7 \"tree/tree_diameter.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
     \ T>\nstd::pair<T, std::vector<int>> tree_diameter(const Graph<T> &g) {\n    int\
     \ n = g.size();\n    std::vector<T> dp(n);\n    std::vector<int> par(n, -1);\n\
@@ -75,8 +80,8 @@ data:
   isVerificationFile: false
   path: tree/tree_diameter.hpp
   requiredBy: []
-  timestamp: '2023-06-19 13:52:00+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-03-08 14:06:24+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/tree/Tree_Diameter.test.cpp
 documentation_of: tree/tree_diameter.hpp

@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/centroid_decomposition.hpp
     title: Centroid Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1038.test.cpp
     title: test/yuki/yuki_1038.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/contour_query_on_tree.hpp\"\n\n#include <cassert>\n\
@@ -244,7 +244,7 @@ data:
   path: tree/contour_query_on_tree.hpp
   requiredBy: []
   timestamp: '2024-01-04 19:22:23+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yuki/yuki_1038.test.cpp
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
