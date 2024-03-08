@@ -4,28 +4,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: Compress
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/dual_segtree.hpp
     title: dual segtree
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_dual_segtree_2d.hpp
     title: offline 2D dual segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/template.hpp
     title: graph/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []

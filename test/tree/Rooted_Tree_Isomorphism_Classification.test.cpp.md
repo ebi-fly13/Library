@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   - icon: ':heavy_check_mark:'
@@ -15,7 +15,7 @@ data:
     title: Hash structure
   - icon: ':heavy_check_mark:'
     path: utility/random_number_generator.hpp
-    title: utility/random_number_generator.hpp
+    title: Random Number Generator
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

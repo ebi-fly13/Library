@@ -53,8 +53,17 @@ data:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: utility/random_number_generator.hpp
 layout: document
-redirect_from:
-- /library/utility/random_number_generator.hpp
-- /library/utility/random_number_generator.hpp.html
-title: utility/random_number_generator.hpp
+title: Random Number Generator
 ---
+
+## 説明
+
+整数の乱数生成機。
+
+### set_seed(seed)
+
+シードを指定する。
+
+### get(a, b)
+
+$[a, b)$ の範囲から一様乱数を生成する。
