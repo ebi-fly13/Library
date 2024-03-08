@@ -8,10 +8,9 @@ documentation_of: //data_structure/offline_segtree_2d.hpp
 可換モノイドについて、1点更新、長方形領域クエリを行えるデータ構造。クエリ先読みにより、必要な部分だけ作ることでメモリ使用量を減らして点の座標が$10^9$とかでも使える。
 
 ```
-segtree_2d<S, op, e, data_structure> seg2d(h, w)
+offline_segtree_2d<S, op, e, data_structure> seg2d;
 ```
 
-とすることで $h \times w$ の単位元で初期化された長方形を作る。
 `S, op, e`は可換モノイド、`data_structure`には以下を要求する
 
 - `void set(int i, S x)`
@@ -32,7 +31,7 @@ $(i,j)$ を追加する。
 
 $(i, j)$ を $x$ に更新する。O(\log H)
 
-### get(i, j, x)
+### get(i, j)
 
 $(i, j)$ の値を返す。 $O(1)$
 
