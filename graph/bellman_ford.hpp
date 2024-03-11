@@ -7,19 +7,19 @@
 #include <utility>
 #include <vector>
 
-#include "../graph/template.hpp"
+#include "../graph/base.hpp"
 
 namespace ebi {
 
 template <class T> std::vector<T> bellman_ford(int s, const Graph<T> &g) {
-    int n = (int)g.size();
+    int n = g.size();
     assert(0 <= s && s < n);
     std::vector<T> dist(n, std::numeric_limits<T>::max());
     dist[s] = 0;
     std::vector<std::tuple<int, int, T>> edges;
     for (auto from : std::views::iota(0, n)) {
-        for (auto [to, cost] : g[from]) {
-            edges.emplace_back(from, to, cost);
+        for (auto e : g[from]) {
+            edges.emplace_back(from, e.to, e.cost);
         }
     }
     for (auto i : std::views::iota(0, n)) {
