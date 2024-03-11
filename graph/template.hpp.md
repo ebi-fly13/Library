@@ -6,6 +6,9 @@ data:
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
   - icon: ':heavy_check_mark:'
+    path: graph/bellman_ford.hpp
+    title: Bellman-Ford
+  - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: graph/dijkstra.hpp
   - icon: ':heavy_check_mark:'
@@ -36,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3086.test.cpp
     title: test/aoj/aoj_3086.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_grl_1_b.test.cpp
+    title: test/aoj/aoj_grl_1_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
     title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
@@ -195,6 +201,7 @@ data:
   isVerificationFile: false
   path: graph/template.hpp
   requiredBy:
+  - graph/bellman_ford.hpp
   - graph/scc_graph.hpp
   - graph/dijkstra.hpp
   - graph/dijkstra_fibheap.hpp
@@ -219,6 +226,7 @@ data:
   - test/graph/Biconnected_Components.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/aoj/aoj_2235.test.cpp
+  - test/aoj/aoj_grl_1_b.test.cpp
   - test/aoj/aoj_3086.test.cpp
   - test/aoj/aoj_2450.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp

@@ -274,6 +274,9 @@ data:
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: graph/bellman_ford.hpp
+      title: Bellman-Ford
+    - icon: ':heavy_check_mark:'
       path: graph/biconnected_components.hpp
       title: graph/biconnected_components.hpp
     - icon: ':warning:'
@@ -542,6 +545,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_3361.test.cpp
       title: test/aoj/aoj_3361.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj_grl_1_b.test.cpp
+      title: test/aoj/aoj_grl_1_b.test.cpp
   - name: test/convolution
     pages:
     - icon: ':heavy_check_mark:'

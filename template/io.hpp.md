@@ -16,6 +16,9 @@ data:
     path: test/aoj/aoj_3086.test.cpp
     title: test/aoj/aoj_3086.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_grl_1_b.test.cpp
+    title: test/aoj/aoj_grl_1_b.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
     title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - icon: ':heavy_check_mark:'
@@ -150,6 +153,7 @@ data:
   - test/yuki/yuki_901_2.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/aoj/aoj_2235.test.cpp
+  - test/aoj/aoj_grl_1_b.test.cpp
   - test/aoj/aoj_3086.test.cpp
   - test/aoj/aoj_2450.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
