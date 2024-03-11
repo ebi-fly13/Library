@@ -15,7 +15,7 @@ template <class T> struct Edge {
     int id;
 };
 
-template <class E, bool is_directed = false> struct Graph {
+template <class E> struct Graph {
   private:
     using cost_type = E;
     using edge_type = Edge<cost_type>;
@@ -31,7 +31,7 @@ template <class E, bool is_directed = false> struct Graph {
         read_graph(n-1, offset);
     }
 
-    void read_graph(int e, int offset = 1, bool is_weighted = false) {
+    void read_graph(int e, int offset = 1, bool is_directed = false, bool is_weighted = false) {
         for(int i = 0; i < e; i++) {
             int u, v;
             std::cin >> u >> v;
@@ -41,13 +41,13 @@ template <class E, bool is_directed = false> struct Graph {
                 cost_type c;
                 std::cin >> c;
                 add_edge(u, v, c);
-                if constexpr (!is_directed) {
+                if (!is_directed) {
                     add_edge(v, u, c);
                 }
             }
             else {
                 add_edge(u, v, 1);
-                if constexpr (!is_directed) {
+                if (!is_directed) {
                     add_edge(v, u, 1);
                 }
             }
