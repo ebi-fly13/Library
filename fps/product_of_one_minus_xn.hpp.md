@@ -119,9 +119,9 @@ data:
     \   int num = dat.size();\n        int q = (mod + num - 1) / num;\n        dat.emplace_back(dat[num\
     \ * q - mod] * mint(q));\n    }\n    return dat[n];\n}\n\n}  // namespace ebi\n\
     #line 8 \"fps/product_of_one_minus_xn.hpp\"\n\nnamespace ebi {\n\n// prod (1 -\
-    \ x^a_i) mod x^d\ntemplate <Modint mint, std::vector<mint> (*convolution)(\n \
-    \                         const std::vector<mint> &, const std::vector<mint> &)>\n\
-    FormalPowerSeries<mint, convolution> product_of_one_minus_xn(std::vector<int>\
+    \ x^a_i) mod x^d\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
+    \ &)>\nFormalPowerSeries<mint, convolution> product_of_one_minus_xn(std::vector<int>\
     \ a,\n                                                             int d) {\n\
     \    using FPS = FormalPowerSeries<mint, convolution>;\n    std::vector<int> cnt(d,\
     \ 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    if (cnt[0]) return\
@@ -129,16 +129,17 @@ data:
     \ i = 1; x * i < d; i++) {\n            log_f[x * i] -= mint(cnt[x]) * inv<mint>(i);\n\
     \        }\n    }\n    return log_f.exp(d);\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <vector>\n\n#include \"../fps/fps.hpp\"\n#include\
-    \ \"../modint/base.hpp\"\n#include \"../math/mod_inv.hpp\"\n\nnamespace ebi {\n\
-    \n// prod (1 - x^a_i) mod x^d\ntemplate <Modint mint, std::vector<mint> (*convolution)(\n\
-    \                          const std::vector<mint> &, const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> product_of_one_minus_xn(std::vector<int>\
-    \ a,\n                                                             int d) {\n\
-    \    using FPS = FormalPowerSeries<mint, convolution>;\n    std::vector<int> cnt(d,\
-    \ 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    if (cnt[0]) return\
-    \ FPS(d);\n    FPS log_f(d);\n    for (int x = 1; x < d; x++) {\n        for (int\
-    \ i = 1; x * i < d; i++) {\n            log_f[x * i] -= mint(cnt[x]) * inv<mint>(i);\n\
-    \        }\n    }\n    return log_f.exp(d);\n}\n\n}  // namespace ebi"
+    \ \"../math/mod_inv.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\
+    \n// prod (1 - x^a_i) mod x^d\ntemplate <Modint mint,\n          std::vector<mint>\
+    \ (*convolution)(const std::vector<mint> &,\n                                \
+    \           const std::vector<mint> &)>\nFormalPowerSeries<mint, convolution>\
+    \ product_of_one_minus_xn(std::vector<int> a,\n                              \
+    \                               int d) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    std::vector<int> cnt(d, 0);\n    for (auto x : a)\n     \
+    \   if (x < d) cnt[x]++;\n    if (cnt[0]) return FPS(d);\n    FPS log_f(d);\n\
+    \    for (int x = 1; x < d; x++) {\n        for (int i = 1; x * i < d; i++) {\n\
+    \            log_f[x * i] -= mint(cnt[x]) * inv<mint>(i);\n        }\n    }\n\
+    \    return log_f.exp(d);\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
   - modint/base.hpp
@@ -146,7 +147,7 @@ data:
   isVerificationFile: false
   path: fps/product_of_one_minus_xn.hpp
   requiredBy: []
-  timestamp: '2023-10-26 11:41:06+09:00'
+  timestamp: '2024-03-12 18:21:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Partition_Function_FPS.test.cpp

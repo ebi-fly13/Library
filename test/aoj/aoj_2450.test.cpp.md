@@ -9,7 +9,7 @@ data:
     title: Simple CSR
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: graph/base.hpp
+    title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp

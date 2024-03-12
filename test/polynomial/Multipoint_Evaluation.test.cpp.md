@@ -15,7 +15,7 @@ data:
     title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: graph/base.hpp
+    title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp

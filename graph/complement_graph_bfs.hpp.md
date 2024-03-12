@@ -6,7 +6,7 @@ data:
     title: Simple CSR
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: graph/base.hpp
+    title: Graph (CSR format)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

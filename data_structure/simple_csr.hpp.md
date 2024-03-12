@@ -7,7 +7,7 @@ data:
     title: algorithm/two_sat.hpp
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: graph/base.hpp
+    title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
     path: graph/bellman_ford.hpp
     title: Bellman-Ford
