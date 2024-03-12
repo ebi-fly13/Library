@@ -10,7 +10,7 @@
 namespace ebi {
 
 template <class T> struct Edge {
-    int to;
+    int from, to;
     T cost;
     int id;
 };
@@ -26,7 +26,7 @@ template <class E> struct Graph {
     Graph() = default;
 
     void add_edge(int u, int v, cost_type c) {
-        edges.emplace_back(u, edge_type{v, c, m++});
+        edges.emplace_back(u, edge_type{u, v, c, m++});
     }
 
     void read_tree(int offset = 1, bool is_weighted = false) {
