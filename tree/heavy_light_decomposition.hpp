@@ -10,26 +10,26 @@ namespace ebi {
 
 template <class T> struct heavy_light_decomposition {
   private:
-    void dfs_sz(int v) {
+    void dfs_sz(int v, Graph<T> &g) {
         for (auto &e : g[v]) {
             if (e.to == par[v]) continue;
             par[e.to] = v;
             depth_[e.to] = depth_[v] + 1;
             dist[e.to] = dist[v] + e.cost;
-            dfs_sz(e.to);
+            dfs_sz(e.to, g);
             sz[v] += sz[e.to];
             if (sz[e.to] > sz[g[v][0].to] || g[v][0].to == par[v])
                 std::swap(e, g[v][0]);
         }
     }
 
-    void dfs_hld(int v) {
+    void dfs_hld(int v, const Graph<T> &g) {
         in[v] = num++;
         rev[in[v]] = v;
         for (auto e : g[v]) {
             if (e.to == par[v]) continue;
             nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);
-            dfs_hld(e.to);
+            dfs_hld(e.to, g);
         }
         out[v] = num;
     }
@@ -55,9 +55,8 @@ template <class T> struct heavy_light_decomposition {
     }
 
   public:
-    heavy_light_decomposition(const Graph<T> &gh, int root = 0)
+    heavy_light_decomposition(Graph<T> gh, int root = 0)
         : n(gh.size()),
-          g(gh),
           sz(n, 1),
           in(n),
           out(n),
@@ -205,7 +204,6 @@ template <class T> struct heavy_light_decomposition {
 
   private:
     int n;
-    Graph<T> g;
     std::vector<int> sz, in, out, nxt, par, depth_, rev;
     std::vector<T> dist;
 

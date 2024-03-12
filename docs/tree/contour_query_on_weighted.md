@@ -24,6 +24,10 @@ documentation_of: //tree/contour_query_on_weighted_tree.hpp
 
 距離が $0$ であるよう場合は含まれないので別途処理が必要。
 
+### get_range_k_or_more_from_v(int v, T k)
+
+頂点 $v$ と距離が $k$ 以上の頂点の属する区間を返す。 $O((\log{N})^2)$
+
 ### get_contour_from_vertex(int v, T l, T r)
 
 頂点 $v$ から距離 $[l, r)$ の頂点の属する区間を返す。 $O((\log{N})^2)$
