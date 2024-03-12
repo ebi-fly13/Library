@@ -7,7 +7,7 @@ data:
     title: Contour Query on Tree
   - icon: ':warning:'
     path: tree/contour_query_on_weighted_tree.hpp
-    title: tree/contour_query_on_weighted_tree.hpp
+    title: Contour Query on Tree (Weighted)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp

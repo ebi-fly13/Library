@@ -46,7 +46,7 @@ data:
     title: Contour Query on Tree
   - icon: ':warning:'
     path: tree/contour_query_on_weighted_tree.hpp
-    title: tree/contour_query_on_weighted_tree.hpp
+    title: Contour Query on Tree (Weighted)
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
