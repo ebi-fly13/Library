@@ -3,18 +3,14 @@
 #include <iostream>
 #include <vector>
 
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../tree/block_cut_tree.hpp"
 
 int main() {
     int n, m;
     std::cin >> n >> m;
-    ebi::graph g(n);
-    for (int i = 0; i < m; i++) {
-        int a, b;
-        std::cin >> a >> b;
-        g.add_edge(a, b);
-    }
+    ebi::Graph<int> g(n);
+    g.read_graph(m, 0);
     ebi::block_cut_tree bct(g);
     auto bc = bct.bcc();
     int k = bc.size();

@@ -4,10 +4,12 @@
 #include <queue>
 #include <vector>
 
+#include "../graph/base.hpp"
+
 namespace ebi {
 
-template <class F>
-void complement_graph_bfs(int s, const std::vector<std::vector<int>> &h,
+template <class T, class F>
+void complement_graph_bfs(int s, const Graph<T> &h,
                           const F &func) {
     const int n = h.size();
     std::vector<int> not_visit;
@@ -20,8 +22,8 @@ void complement_graph_bfs(int s, const std::vector<std::vector<int>> &h,
     while (!que.empty()) {
         int v = que.front();
         que.pop();
-        for (auto nv : h[v]) {
-            f[nv] = true;
+        for (auto e : h[v]) {
+            f[e.to] = true;
         }
         std::vector<int> L;
         for (auto u : not_visit) {
@@ -32,10 +34,10 @@ void complement_graph_bfs(int s, const std::vector<std::vector<int>> &h,
                 func(v, u);
             }
         }
-        for (auto nv : h[v]) {
-            f[nv] = false;
+        for (auto e : h[v]) {
+            f[e.to] = false;
         }
-        not_visit = L;
+        std::swap(not_visit, L);
     }
     return;
 }

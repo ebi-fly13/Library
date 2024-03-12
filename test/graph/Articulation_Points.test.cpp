@@ -6,17 +6,13 @@
 #include <vector>
 
 #include "../../graph/low_link.hpp"
+#include "../../graph/base.hpp"
 
 int main() {
     int n, m;
     std::cin >> n >> m;
-    std::vector<std::vector<int>> g(n);
-    for (int i = 0; i < m; i++) {
-        int a, b;
-        std::cin >> a >> b;
-        g[a].emplace_back(b);
-        g[b].emplace_back(a);
-    }
+    ebi::Graph<int> g(n);
+    g.read_graph(m, 0);
     ebi::low_link low(g);
     auto arti = low.articulation();
     std::sort(arti.begin(), arti.end());

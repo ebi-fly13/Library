@@ -4,8 +4,11 @@
 #include <utility>
 #include <vector>
 
+#include "../graph/base.hpp"
+
 namespace ebi {
 
+template<class T>
 struct low_link {
   private:
     void dfs(int v, int par = -1) {
@@ -13,7 +16,8 @@ struct low_link {
         low[v] = ord[v] = k++;
         int cnt = 0;
         bool is_arti = false, is_second = false;
-        for (auto nv : g[v]) {
+        for (auto e : g[v]) {
+            int nv = e.to;
             if (ord[nv] == -1) {
                 cnt++;
                 dfs(nv, v);
@@ -33,7 +37,7 @@ struct low_link {
     }
 
   public:
-    low_link(const std::vector<std::vector<int>> &g)
+    low_link(const Graph<T> &g)
         : n(g.size()), g(g), ord(n, -1), low(n) {
         for (int i = 0; i < n; i++) {
             if (ord[i] == -1) dfs(i);
@@ -50,7 +54,7 @@ struct low_link {
 
   protected:
     int n;
-    std::vector<std::vector<int>> g;
+    Graph<T> g;
     std::vector<int> ord, low, _articulation;
     std::vector<std::pair<int, int>> _bridge;
 };
