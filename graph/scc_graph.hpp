@@ -3,13 +3,15 @@
 #include <algorithm>
 #include <vector>
 
-#include "../graph/template.hpp"
+#include "../data_structure/simple_csr.hpp"
+#include "../graph/base.hpp"
 
 namespace ebi {
 
 struct scc_graph {
   private:
-    graph g, rg;
+    std::vector<std::pair<int, int>> edges, redges;
+    simple_csr<int> g, rg;
     int n, k;
 
     std::vector<int> vs, cmp;
@@ -33,17 +35,18 @@ struct scc_graph {
     }
 
   public:
-    scc_graph(int n) : n(n) {
-        g.resize(n);
-        rg.resize(n);
-    }
+    scc_graph(int n_) : n(n_) {}
 
     void add_edge(int from, int to) {
-        g[from].emplace_back(to);
-        rg[to].emplace_back(from);
+        edges.emplace_back(from, to);
+        redges.emplace_back(to, from);
     }
 
     std::vector<std::vector<int>> scc() {
+        g = simple_csr<int>(n, edges);
+        rg = simple_csr<int>(n, redges);
+        edges.clear();
+        redges.clear();
         seen.assign(n, false);
         for (int i = 0; i < n; i++) {
             if (!seen[i]) {
@@ -74,20 +77,23 @@ struct scc_graph {
         return cmp[u] == cmp[v];
     }
 
-    graph create_graph() {
-        graph t(k);
+    Graph<int> create_graph() {
+        std::vector<std::pair<int, int>> es;
         for (int i = 0; i < n; i++) {
             int v = cmp[i];
             for (auto to : g[i]) {
                 int nv = cmp[to];
                 if (v == nv) continue;
-                t[v].emplace_back(nv);
+                es.emplace_back(v, nv);
             }
         }
-        for (int i = 0; i < k; i++) {
-            std::sort(t[i].begin(), t[i].end());
-            t[i].erase(std::unique(t[i].begin(), t[i].end()), t[i].end());
+        std::sort(es.begin(), es.end());
+        es.erase(std::unique(es.begin(), es.end()), es.end());
+        Graph<int> t(k);
+        for (auto [v, nv] : es) {
+            t.add_edge(v, nv, 1);
         }
+        t.build();
         return t;
     }
 };

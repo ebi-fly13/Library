@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "../../data_structure/segtree.hpp"
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../tree/heavy_light_decomposition.hpp"
 
 using i64 = std::int64_t;
@@ -22,12 +22,8 @@ int main() {
     for (int i = 0; i < n; ++i) {
         std::cin >> a[i];
     }
-    ebi::graph g(n);
-    for (int i = 0; i < n - 1; ++i) {
-        int u, v;
-        std::cin >> u >> v;
-        g.add_edge(u, v);
-    }
+    ebi::Graph<int> g(n);
+    g.read_tree(0);
     ebi::heavy_light_decomposition hld(g);
     ebi::segtree<i64, op, e> seg(n);
     i64 ans = e();

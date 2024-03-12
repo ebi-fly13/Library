@@ -2,7 +2,7 @@
 
 #include "../../convolution/ntt.hpp"
 #include "../../fps/middle_product.hpp"
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../math/binomial.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
@@ -18,17 +18,19 @@ void main_() {
     std::cin >> n;
     std::vector<mint> q(n);
     std::cin >> q;
-    graph tree(n);
+    Graph<int> tree(n);
     auto ans = q;
     rep(i, 0, n - 1) {
         int u, v;
         std::cin >> u >> v;
         u--;
         v--;
-        tree.add_edge(u, v);
+        tree.add_edge(u, v, 1);
+        tree.add_edge(v, u, 1);
         ans[u] += q[v] * binom.inv(4);
         ans[v] += q[u] * binom.inv(4);
     }
+    tree.build();
     auto calc = [&](const std::vector<int> &par, const std::vector<int> &vs,
                     int n0, int n1) {
         int sz = (int)par.size();

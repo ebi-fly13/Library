@@ -7,8 +7,7 @@
 #include <limits>
 #include <vector>
 
-#include "../../graph/template.hpp"
-#include "../../template/int_alias.hpp"
+#include "../../template/template.hpp"
 
 using ebi::i64;
 
@@ -16,12 +15,7 @@ int main() {
     int v, e, r;
     std::cin >> v >> e >> r;
     ebi::Graph<i64> g(v);
-    while (e--) {
-        int s, t;
-        i64 d;
-        std::cin >> s >> t >> d;
-        g[s].emplace_back(t, d);
-    }
+    g.read_graph(e, 0, true, true);
     std::vector<i64> dest = ebi::dijkstra(r, v, g);
     for (auto di : dest) {
         if (di == std::numeric_limits<i64>::max()) {

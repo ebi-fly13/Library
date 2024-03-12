@@ -2,7 +2,7 @@
     "https://judge.yosupo.jp/problem/frequency_table_of_tree_distance"
 
 #include "../../convolution/convolution_mod_2_64.hpp"
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../template/template.hpp"
 #include "../../tree/centroid_decomposition.hpp"
 
@@ -11,12 +11,8 @@ namespace ebi {
 void main_() {
     int n;
     std::cin >> n;
-    graph g(n);
-    rep(i, 0, n - 1) {
-        int a, b;
-        std::cin >> a >> b;
-        g.add_edge(a, b);
-    }
+    Graph<int> g(n);
+    g.read_tree(0);
     std::vector<i64> ans(n, 0);
     auto f = [&](const std::vector<int> &par, const std::vector<int> &vs,
                  const std::vector<int> &index_ptr) -> void {

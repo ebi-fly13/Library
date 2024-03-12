@@ -2,7 +2,7 @@
     "https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree"
 
 #include "../../data_structure/dual_segtree.hpp"
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../template/template.hpp"
 #include "../../tree/contour_query_on_tree.hpp"
 
@@ -21,12 +21,8 @@ void main_() {
     std::cin >> n >> q;
     std::vector<i64> a(n);
     std::cin >> a;
-    graph g(n);
-    rep(i, 0, n - 1) {
-        int u, v;
-        std::cin >> u >> v;
-        g.add_edge(u, v);
-    }
+    Graph<int> g(n);
+    g.read_tree(0);
     contour_query_on_tree cq(g);
     dual_segtree<i64, op, e> seg(cq.size());
     while (q--) {

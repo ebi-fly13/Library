@@ -4,9 +4,11 @@
 #include <cassert>
 #include <vector>
 
+#include "../graph/base.hpp"
+
 namespace ebi {
 
-struct level_ancestor {
+template <class T> struct level_ancestor {
   private:
     int n;
     std::vector<int> in;
@@ -15,7 +17,7 @@ struct level_ancestor {
     std::vector<std::vector<int>> s;
 
   public:
-    level_ancestor(const std::vector<std::vector<int>> &gh, int root = 0)
+    level_ancestor(const Graph<T> &gh, int root = 0)
         : n(gh.size()), in(n), inv_in(n), depths(n) {
         int cnt = 0;
         int max = 0;
@@ -23,10 +25,10 @@ struct level_ancestor {
             inv_in[cnt] = v;
             in[v] = cnt++;
             max = std::max(max, depths[v]);
-            for (auto nv : gh[v])
-                if (nv != par) {
-                    depths[nv] = depths[v] + 1;
-                    self(self, nv, v);
+            for (auto e : gh[v])
+                if (e.to != par) {
+                    depths[e.to] = depths[v] + 1;
+                    self(self, e.to, v);
                 }
         };
         dfs(dfs, root);

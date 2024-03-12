@@ -6,10 +6,10 @@
 
 namespace ebi {
 
-struct block_cut_tree : biconnected_components {
+template <class T> struct block_cut_tree : biconnected_components<T> {
   public:
-    block_cut_tree(const std::vector<std::vector<int>> &g)
-        : biconnected_components(g), rev(this->n, -1) {
+    block_cut_tree(const Graph<T> &g)
+        : biconnected_components<T>(g), rev(this->n, -1) {
         int cnt = 0;
         for (auto v : this->_articulation) {
             rev[v] = cnt++;

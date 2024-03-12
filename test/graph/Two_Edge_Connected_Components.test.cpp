@@ -5,16 +5,13 @@
 #include <iostream>
 #include <vector>
 
+#include "../../graph/base.hpp"
+
 int main() {
     int n, m;
     std::cin >> n >> m;
-    std::vector g(n, std::vector<int>());
-    for (int i = 0; i < m; i++) {
-        int a, b;
-        std::cin >> a >> b;
-        g[a].emplace_back(b);
-        g[b].emplace_back(a);
-    }
+    ebi::Graph<int> g(n);
+    g.read_graph(m, 0);
     ebi::two_edge_connected_components tecc(g);
     auto groups = tecc.groups();
     std::cout << groups.size() << '\n';

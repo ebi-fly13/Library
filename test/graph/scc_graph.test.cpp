@@ -4,8 +4,6 @@
 
 #include <iostream>
 
-#include "../../graph/template.hpp"
-
 int main() {
     int n, m;
     std::cin >> n >> m;

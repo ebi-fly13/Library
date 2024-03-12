@@ -4,40 +4,41 @@
 
 namespace ebi {
 
-struct two_edge_connected_components : low_link {
+template <class T> struct two_edge_connected_components : low_link<T> {
   private:
     void dfs(int v, int par = -1) {
         if (par != -1 && this->ord[par] >= this->low[v])
             _id[v] = _id[par];
         else
             _id[v] = k++;
-        for (auto nv : this->g[v]) {
-            if (_id[nv] == -1) dfs(nv, v);
+        for (auto e : this->g[v]) {
+            if (_id[e.to] == -1) dfs(e.to, v);
         }
     }
 
   public:
-    two_edge_connected_components(const std::vector<std::vector<int>> &_g)
-        : low_link(_g), _id(this->n, -1) {
+    two_edge_connected_components(const Graph<T> &_g)
+        : low_link<T>(_g), _id(this->n, -1) {
         for (int i = 0; i < this->n; i++) {
             if (_id[i] == -1) dfs(i);
         }
-        t.resize(k);
+    }
+
+    Graph<int> tecc() const {
+        Graph<int> t(k);
         for (auto [u, v] : this->_bridge) {
             u = _id[u];
             v = _id[v];
-            t[u].emplace_back(v);
-            t[v].emplace_back(u);
+            t.add_edge(u, v, 1);
+            t.add_edge(v, u, 1);
         }
-    }
-
-    std::vector<std::vector<int>> tecc() const {
+        t.build();
         return t;
     }
 
     std::vector<std::vector<int>> groups() const {
         std::vector _groups(k, std::vector<int>());
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < this->n; i++) {
             _groups[_id[i]].emplace_back(i);
         }
         return _groups;
@@ -50,7 +51,6 @@ struct two_edge_connected_components : low_link {
   private:
     int k = 0;
     std::vector<int> _id;
-    std::vector<std::vector<int>> t;
 };
 
 }  // namespace ebi

@@ -10,8 +10,9 @@
 
 namespace ebi {
 
+template <class T>
 std::vector<std::pair<int, int>>
-heavy_light_decomposition::lca_based_auxiliary_tree_dfs_order(
+heavy_light_decomposition<T>::lca_based_auxiliary_tree_dfs_order(
     std::vector<int> vs) const {
     if (vs.empty()) return {};
     std::sort(vs.begin(), vs.end(),
@@ -46,12 +47,14 @@ heavy_light_decomposition::lca_based_auxiliary_tree_dfs_order(
     return dfs_order;
 }
 
-std::pair<std::vector<int>, std::vector<std::vector<int>>>
-heavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int> vs) const {
+template <class T>
+std::pair<std::vector<int>, Graph<T>>
+heavy_light_decomposition<T>::lca_based_auxiliary_tree(
+    std::vector<int> vs) const {
     static std::vector<int> a(1'000'000, -1), p(1'000'000, -1);
     int k = vs.size();
     if (k == 1) {
-        return {vs, std::vector(1, std::vector<int>())};
+        return {vs, Graph<T>(1)};
     }
     std::sort(vs.begin(), vs.end(),
               [&](int v, int u) { return in[v] < in[u]; });
@@ -61,7 +64,7 @@ heavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int> vs) const {
     for (int i : std::views::iota(1, k)) {
         int w = lca(vs[i - 1], vs[i]);
         int prev = -1;
-        while (!stack.empty() && depth[w] <= depth[stack.top()]) {
+        while (!stack.empty() && depth_[w] <= depth_[stack.top()]) {
             if (prev != -1) {
                 s.emplace_back(prev);
                 p[prev] = stack.top();
@@ -92,12 +95,14 @@ heavy_light_decomposition::lca_based_auxiliary_tree(std::vector<int> vs) const {
     for (int i : std::views::iota(0, m)) {
         a[s[i]] = i;
     }
-    std::vector tree(m, std::vector<int>());
+    Graph<T> tree(m);
     for (auto v : s) {
         if (p[v] < 0) continue;
-        tree[a[p[v]]].emplace_back(a[v]);
-        tree[a[v]].emplace_back(a[p[v]]);
+        T cost = distance(p[v], v);
+        tree.add_edge(a[p[v]], a[v], cost);
+        tree.add_edge(a[v], a[p[v]], cost);
     }
+    tree.build();
     for (auto v : s) {
         a[v] = -1;
         p[v] = -1;

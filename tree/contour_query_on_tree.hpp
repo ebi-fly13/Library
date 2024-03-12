@@ -4,13 +4,13 @@
 #include <ranges>
 #include <vector>
 
+#include "../graph/base.hpp"
 #include "../tree/centroid_decomposition.hpp"
 
 namespace ebi {
 
-struct contour_query_on_tree {
-    contour_query_on_tree(const std::vector<std::vector<int>> &tree)
-        : n(int(tree.size())) {
+template <class T> struct contour_query_on_tree {
+    contour_query_on_tree(const Graph<T> &tree) : n(tree.size()) {
         int t = 0;
         range = {0};
         auto f = [&](const std::vector<int> &par, const std::vector<int> &vs,

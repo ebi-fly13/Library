@@ -4,20 +4,21 @@
 #include <utility>
 #include <vector>
 
+#include "../graph/base.hpp"
+
 namespace ebi {
 
-template <class V, class E, E (*e)(), E (*merge)(E, E), E (*put_edge)(int, V),
-          V (*put_root)(int, E)>
+template <class T, class V, class E, E (*e)(), E (*merge)(E, E),
+          E (*put_edge)(T, V), V (*put_root)(int, E)>
 struct rerooting {
   private:
     V dfs_sub(int v, int par = -1) {
         E ret = e();
         for (auto &edge : g[v]) {
-            if (edge.first == par && g[v].back().first != par)
+            if (edge.to == par && g[v].back().to != par)
                 std::swap(g[v].back(), edge);
-            auto [nv, index] = edge;
-            if (nv == par) continue;
-            E val = put_edge(index, dfs_sub(nv, v));
+            if (edge.to == par) continue;
+            E val = put_edge(edge.cost, dfs_sub(edge.to, v));
             outs[v].emplace_back(val);
             ret = merge(ret, val);
         }
@@ -33,24 +34,17 @@ struct rerooting {
             rcum[sz - i - 1] = merge(rcum[sz - i], outs[v][sz - i - 1]);
         }
         for (int i = 0; i < sz; i++) {
-            auto [nv, index] = g[v][i];
-            E ret = put_edge(
-                index, put_root(v, merge(merge(lcum[i], rcum[i + 1]), rev)));
-            dfs_all(nv, v, ret);
+            auto edge = g[v][i];
+            E ret =
+                put_edge(edge.cost,
+                         put_root(v, merge(merge(lcum[i], rcum[i + 1]), rev)));
+            dfs_all(edge.to, v, ret);
         }
         dp[v] = put_root(v, merge(lcum[sz], rev));
     }
 
   public:
-    rerooting(int n, const std::vector<std::pair<int, int>> &edges)
-        : n(n), g(n), sub(n), dp(n), outs(n) {
-        for (int i = 0; i < (int)edges.size(); i++) {
-            auto [u, v] = edges[i];
-            g[u].emplace_back(v, i);
-            if ((int)edges.size() == n - 1) g[v].emplace_back(u, i);
-        }
-        assert((int)edges.size() == n - 1 || (int)edges.size() == 2 * (n - 1));
-
+    rerooting(int n, const Graph<T> &g_) : n(n), g(g_), sub(n), dp(n), outs(n) {
         dfs_sub(0);
         dfs_all(0);
     }
@@ -61,7 +55,7 @@ struct rerooting {
 
   private:
     int n;
-    std::vector<std::vector<std::pair<int, int>>> g;
+    Graph<T> g;
     std::vector<V> sub;
     std::vector<V> dp;
     std::vector<std::vector<E>> outs;

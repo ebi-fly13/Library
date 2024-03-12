@@ -111,7 +111,8 @@ template <int BASE_NUM = 2> struct Hash : std::array<modint61, BASE_NUM> {
         Hash h;
         for (int i = 0; i < BASE_NUM; i++) {
             while (!is_primitive(
-                (h[i] = rng.get<std::uint64_t>(0, modint61::mod() - 1) + 1).val()))
+                (h[i] = rng.get<std::uint64_t>(0, modint61::mod() - 1) + 1)
+                    .val()))
                 ;
         }
         return h;

@@ -2,18 +2,14 @@
 
 #include <iostream>
 
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../tree/level_ancestor.hpp"
 
 int main() {
     int n, q;
     std::cin >> n >> q;
-    ebi::graph g(n);
-    for (int i = 1; i < n; i++) {
-        int p;
-        std::cin >> p;
-        g.add_edge(p, i);
-    }
+    ebi::Graph<int> g(n);
+    g.read_parents(0);
     ebi::level_ancestor la(g);
     auto lca = [&](int u, int v) -> int {
         if (la.depth(u) > la.depth(v)) std::swap(u, v);
