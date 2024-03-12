@@ -66,8 +66,8 @@ template <class T> struct heavy_light_decomposition {
           rev(n),
           dist(n, 0) {
         nxt[root] = root;
-        dfs_sz(root);
-        dfs_hld(root);
+        dfs_sz(root, gh);
+        dfs_hld(root, gh);
     }
 
     int idx(int u) const {
