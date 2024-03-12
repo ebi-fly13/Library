@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
@@ -49,15 +49,15 @@ data:
     \ + 1] + r);\n    }\n\n  private:\n    std::vector<int> start;\n    std::vector<E>\
     \ elist;\n};\n\n}  // namespace ebi\n#line 2 \"graph/base.hpp\"\n\n#include <cassert>\n\
     #include <iostream>\n#line 7 \"graph/base.hpp\"\n\n#line 9 \"graph/base.hpp\"\n\
-    \nnamespace ebi {\n\ntemplate <class T> struct Edge {\n    int to;\n    T cost;\n\
-    \    int id;\n};\n\ntemplate <class E> struct Graph {\n  private:\n    using cost_type\
-    \ = E;\n    using edge_type = Edge<cost_type>;\n\n  public:\n    Graph(int n_)\
-    \ : n(n_) {}\n\n    Graph() = default;\n\n    void add_edge(int u, int v, cost_type\
-    \ c) {\n        edges.emplace_back(u, edge_type{v, c, m++});\n    }\n\n    void\
-    \ read_tree(int offset = 1, bool is_weighted = false) {\n        read_graph(n\
-    \ - 1, offset, false, is_weighted);\n    }\n\n    void read_parents(int offset\
-    \ = 1) {\n        for (auto i : std::views::iota(1, n)) {\n            int p;\n\
-    \            std::cin >> p;\n            p -= offset;\n            add_edge(p,\
+    \nnamespace ebi {\n\ntemplate <class T> struct Edge {\n    int from, to;\n   \
+    \ T cost;\n    int id;\n};\n\ntemplate <class E> struct Graph {\n  private:\n\
+    \    using cost_type = E;\n    using edge_type = Edge<cost_type>;\n\n  public:\n\
+    \    Graph(int n_) : n(n_) {}\n\n    Graph() = default;\n\n    void add_edge(int\
+    \ u, int v, cost_type c) {\n        edges.emplace_back(u, edge_type{u, v, c, m++});\n\
+    \    }\n\n    void read_tree(int offset = 1, bool is_weighted = false) {\n   \
+    \     read_graph(n - 1, offset, false, is_weighted);\n    }\n\n    void read_parents(int\
+    \ offset = 1) {\n        for (auto i : std::views::iota(1, n)) {\n           \
+    \ int p;\n            std::cin >> p;\n            p -= offset;\n            add_edge(p,\
     \ i, 1);\n            add_edge(i, p, 1);\n        }\n        build();\n    }\n\
     \n    void read_graph(int e, int offset = 1, bool is_directed = false,\n     \
     \               bool is_weighted = false) {\n        for (int i = 0; i < e; i++)\
@@ -128,7 +128,7 @@ data:
   isVerificationFile: true
   path: test/graph/scc_graph.test.cpp
   requiredBy: []
-  timestamp: '2024-03-12 17:35:15+09:00'
+  timestamp: '2024-03-13 01:30:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/scc_graph.test.cpp

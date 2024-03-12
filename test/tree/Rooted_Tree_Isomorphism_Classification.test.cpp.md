@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint61.hpp
     title: modint/modint61.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/random_number_generator.hpp
     title: Random Number Generator
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
@@ -63,96 +63,96 @@ data:
     \ + start[i] + l,\n                                     elist.begin() + start[i\
     \ + 1] + r);\n    }\n\n  private:\n    std::vector<int> start;\n    std::vector<E>\
     \ elist;\n};\n\n}  // namespace ebi\n#line 9 \"graph/base.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class T> struct Edge {\n    int to;\n    T cost;\n    int id;\n\
-    };\n\ntemplate <class E> struct Graph {\n  private:\n    using cost_type = E;\n\
-    \    using edge_type = Edge<cost_type>;\n\n  public:\n    Graph(int n_) : n(n_)\
-    \ {}\n\n    Graph() = default;\n\n    void add_edge(int u, int v, cost_type c)\
-    \ {\n        edges.emplace_back(u, edge_type{v, c, m++});\n    }\n\n    void read_tree(int\
-    \ offset = 1, bool is_weighted = false) {\n        read_graph(n - 1, offset, false,\
-    \ is_weighted);\n    }\n\n    void read_parents(int offset = 1) {\n        for\
-    \ (auto i : std::views::iota(1, n)) {\n            int p;\n            std::cin\
-    \ >> p;\n            p -= offset;\n            add_edge(p, i, 1);\n          \
-    \  add_edge(i, p, 1);\n        }\n        build();\n    }\n\n    void read_graph(int\
-    \ e, int offset = 1, bool is_directed = false,\n                    bool is_weighted\
-    \ = false) {\n        for (int i = 0; i < e; i++) {\n            int u, v;\n \
-    \           std::cin >> u >> v;\n            u -= offset;\n            v -= offset;\n\
-    \            if (is_weighted) {\n                cost_type c;\n              \
-    \  std::cin >> c;\n                add_edge(u, v, c);\n                if (!is_directed)\
-    \ {\n                    add_edge(v, u, c);\n                }\n            }\
-    \ else {\n                add_edge(u, v, 1);\n                if (!is_directed)\
-    \ {\n                    add_edge(v, u, 1);\n                }\n            }\n\
-    \        }\n        build();\n    }\n\n    void build() {\n        assert(!prepared);\n\
-    \        csr = simple_csr<edge_type>(n, edges);\n        edges.clear();\n    \
-    \    prepared = true;\n    }\n\n    int size() const {\n        return n;\n  \
-    \  }\n\n    const auto operator[](int i) const {\n        return csr[i];\n   \
-    \ }\n    auto operator[](int i) {\n        return csr[i];\n    }\n\n  private:\n\
-    \    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>> edges;\n    simple_csr<edge_type>\
-    \ csr;\n    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"utility/hash.hpp\"\
-    \n\n#include <array>\n\n#line 2 \"modint/modint61.hpp\"\n\n#line 4 \"modint/modint61.hpp\"\
-    \n#include <cstdint>\n#line 6 \"modint/modint61.hpp\"\n\n#line 2 \"modint/base.hpp\"\
-    \n\n#include <concepts>\n#line 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
-    \   a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 8 \"\
-    modint/modint61.hpp\"\n\nnamespace ebi {\n\nstruct modint61 {\n  private:\n  \
-    \  using mint = modint61;\n    using u64 = std::uint64_t;\n    constexpr static\
-    \ u64 m = (1ull << 61) - 1;\n    constexpr static u64 MASK31 = (1ull << 31) -\
-    \ 1;\n    constexpr static u64 MASK30 = (1ull << 30) - 1;\n\n  public:\n    constexpr\
-    \ static u64 mod() {\n        return m;\n    }\n\n    constexpr modint61() : _v(0)\
-    \ {}\n\n    constexpr modint61(long long v) {\n        v %= (long long)umod();\n\
-    \        if (v < 0) v += (long long)umod();\n        _v = u64(v);\n    }\n\n \
-    \   constexpr u64 val() const {\n        return _v;\n    }\n\n    constexpr u64\
-    \ value() const {\n        return val();\n    }\n\n    constexpr mint &operator++()\
-    \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
-    \    }\n\n    constexpr mint &operator--() {\n        if (_v == 0) _v = umod();\n\
-    \        _v--;\n        return *this;\n    }\n\n    constexpr mint &operator+=(const\
-    \ mint &rhs) {\n        _v += rhs._v;\n        _v = safe_mod(_v);\n        return\
-    \ *this;\n    }\n\n    constexpr mint &operator-=(const mint &rhs) {\n       \
-    \ if (_v < rhs._v) _v += umod();\n        assert(_v >= rhs._v);\n        _v -=\
-    \ rhs._v;\n        return *this;\n    }\n\n    constexpr mint &operator*=(const\
-    \ mint &rhs) {\n        u64 au = _v >> 31, ad = _v & MASK31;\n        u64 bu =\
-    \ rhs._v >> 31, bd = rhs._v & MASK31;\n        u64 mid = ad * bu + au * bd;\n\
-    \        u64 midu = mid >> 30;\n        u64 midd = mid & MASK30;\n        _v =\
-    \ (au * bu * 2 + midu + (midd << 31) + ad * bd);\n        _v = safe_mod(_v);\n\
-    \        return *this;\n    }\n\n    constexpr mint &operator/=(const mint &rhs)\
-    \ {\n        return *this *= rhs.inv();\n    }\n\n    constexpr mint pow(long\
-    \ long n) const {\n        assert(0 <= n);\n        mint x = *this, res = 1;\n\
-    \        while (n) {\n            if (n & 1) res *= x;\n            x *= x;\n\
-    \            n >>= 1;\n        }\n        return res;\n    }\n\n    constexpr\
-    \ mint inv() const {\n        assert(_v);\n        return pow(umod() - 2);\n \
-    \   }\n\n    friend mint operator+(const mint &lhs, const mint &rhs) {\n     \
-    \   return mint(lhs) += rhs;\n    }\n    friend mint operator-(const mint &lhs,\
-    \ const mint &rhs) {\n        return mint(lhs) -= rhs;\n    }\n    friend mint\
-    \ operator*(const mint &lhs, const mint &rhs) {\n        return mint(lhs) *= rhs;\n\
-    \    }\n    friend mint operator/(const mint &lhs, const mint &rhs) {\n      \
-    \  return mint(lhs) /= rhs;\n    }\n    friend bool operator==(const mint &lhs,\
-    \ const mint &rhs) {\n        return lhs.val() == rhs.val();\n    }\n    friend\
-    \ bool operator!=(const mint &lhs, const mint &rhs) {\n        return !(lhs ==\
-    \ rhs);\n    }\n    friend bool operator<(const mint &lhs, const mint &rhs) {\n\
-    \        return lhs._v < rhs._v;\n    }\n    friend bool operator>(const mint\
-    \ &lhs, const mint &rhs) {\n        return rhs < lhs;\n    }\n\n  private:\n \
-    \   u64 _v = 0;\n\n    constexpr static u64 umod() {\n        return m;\n    }\n\
-    \n    constexpr u64 safe_mod(const u64 &a) {\n        u64 au = a >> 61;\n    \
-    \    u64 ad = a & umod();\n        u64 res = au + ad;\n        if (res >= umod())\
-    \ res -= umod();\n        return res;\n    }\n};\n\n}  // namespace ebi\n#line\
-    \ 2 \"utility/random_number_generator.hpp\"\n\r\n#line 4 \"utility/random_number_generator.hpp\"\
-    \n#include <random>\r\n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator\
-    \ {\r\n    random_number_generator(int seed = -1) {\r\n        if (seed < 0) seed\
-    \ = rnd();\r\n        mt.seed(seed);\r\n    }\r\n\r\n    void set_seed(int seed)\
-    \ {\r\n        mt.seed(seed);\r\n    }\r\n\r\n    template <class T> T get(T a,\
-    \ T b) {\r\n        std::uniform_int_distribution<T> dist(a, b - 1);\r\n     \
-    \   return dist(mt);\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n\
-    \    std::random_device rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 7 \"utility/hash.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <int BASE_NUM = 2> struct Hash : std::array<modint61,\
-    \ BASE_NUM> {\n  private:\n    using std::array<modint61, BASE_NUM>::array;\n\
-    \    using std::array<modint61, BASE_NUM>::operator=;\n\n  public:\n    Hash()\
-    \ : std::array<modint61, BASE_NUM>() {}\n\n    constexpr static Hash set(const\
-    \ modint61 &a) {\n        Hash res;\n        std::fill(res.begin(), res.end(),\
-    \ a);\n        return res;\n    }\n\n    constexpr Hash &operator+=(const Hash\
-    \ &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
+    \ {\n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
+    \ id;\n};\n\ntemplate <class E> struct Graph {\n  private:\n    using cost_type\
+    \ = E;\n    using edge_type = Edge<cost_type>;\n\n  public:\n    Graph(int n_)\
+    \ : n(n_) {}\n\n    Graph() = default;\n\n    void add_edge(int u, int v, cost_type\
+    \ c) {\n        edges.emplace_back(u, edge_type{u, v, c, m++});\n    }\n\n   \
+    \ void read_tree(int offset = 1, bool is_weighted = false) {\n        read_graph(n\
+    \ - 1, offset, false, is_weighted);\n    }\n\n    void read_parents(int offset\
+    \ = 1) {\n        for (auto i : std::views::iota(1, n)) {\n            int p;\n\
+    \            std::cin >> p;\n            p -= offset;\n            add_edge(p,\
+    \ i, 1);\n            add_edge(i, p, 1);\n        }\n        build();\n    }\n\
+    \n    void read_graph(int e, int offset = 1, bool is_directed = false,\n     \
+    \               bool is_weighted = false) {\n        for (int i = 0; i < e; i++)\
+    \ {\n            int u, v;\n            std::cin >> u >> v;\n            u -=\
+    \ offset;\n            v -= offset;\n            if (is_weighted) {\n        \
+    \        cost_type c;\n                std::cin >> c;\n                add_edge(u,\
+    \ v, c);\n                if (!is_directed) {\n                    add_edge(v,\
+    \ u, c);\n                }\n            } else {\n                add_edge(u,\
+    \ v, 1);\n                if (!is_directed) {\n                    add_edge(v,\
+    \ u, 1);\n                }\n            }\n        }\n        build();\n    }\n\
+    \n    void build() {\n        assert(!prepared);\n        csr = simple_csr<edge_type>(n,\
+    \ edges);\n        edges.clear();\n        prepared = true;\n    }\n\n    int\
+    \ size() const {\n        return n;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return csr[i];\n    }\n    auto operator[](int i) {\n     \
+    \   return csr[i];\n    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,\
+    \ edge_type>> edges;\n    simple_csr<edge_type> csr;\n    bool prepared = false;\n\
+    };\n\n}  // namespace ebi\n#line 2 \"utility/hash.hpp\"\n\n#include <array>\n\n\
+    #line 2 \"modint/modint61.hpp\"\n\n#line 4 \"modint/modint61.hpp\"\n#include <cstdint>\n\
+    #line 6 \"modint/modint61.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #line 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept\
+    \ Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n\
+    \    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
+    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
+    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
+    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
+    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 8 \"modint/modint61.hpp\"\
+    \n\nnamespace ebi {\n\nstruct modint61 {\n  private:\n    using mint = modint61;\n\
+    \    using u64 = std::uint64_t;\n    constexpr static u64 m = (1ull << 61) - 1;\n\
+    \    constexpr static u64 MASK31 = (1ull << 31) - 1;\n    constexpr static u64\
+    \ MASK30 = (1ull << 30) - 1;\n\n  public:\n    constexpr static u64 mod() {\n\
+    \        return m;\n    }\n\n    constexpr modint61() : _v(0) {}\n\n    constexpr\
+    \ modint61(long long v) {\n        v %= (long long)umod();\n        if (v < 0)\
+    \ v += (long long)umod();\n        _v = u64(v);\n    }\n\n    constexpr u64 val()\
+    \ const {\n        return _v;\n    }\n\n    constexpr u64 value() const {\n  \
+    \      return val();\n    }\n\n    constexpr mint &operator++() {\n        _v++;\n\
+    \        if (_v == umod()) _v = 0;\n        return *this;\n    }\n\n    constexpr\
+    \ mint &operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n   \
+    \     return *this;\n    }\n\n    constexpr mint &operator+=(const mint &rhs)\
+    \ {\n        _v += rhs._v;\n        _v = safe_mod(_v);\n        return *this;\n\
+    \    }\n\n    constexpr mint &operator-=(const mint &rhs) {\n        if (_v <\
+    \ rhs._v) _v += umod();\n        assert(_v >= rhs._v);\n        _v -= rhs._v;\n\
+    \        return *this;\n    }\n\n    constexpr mint &operator*=(const mint &rhs)\
+    \ {\n        u64 au = _v >> 31, ad = _v & MASK31;\n        u64 bu = rhs._v >>\
+    \ 31, bd = rhs._v & MASK31;\n        u64 mid = ad * bu + au * bd;\n        u64\
+    \ midu = mid >> 30;\n        u64 midd = mid & MASK30;\n        _v = (au * bu *\
+    \ 2 + midu + (midd << 31) + ad * bd);\n        _v = safe_mod(_v);\n        return\
+    \ *this;\n    }\n\n    constexpr mint &operator/=(const mint &rhs) {\n       \
+    \ return *this *= rhs.inv();\n    }\n\n    constexpr mint pow(long long n) const\
+    \ {\n        assert(0 <= n);\n        mint x = *this, res = 1;\n        while\
+    \ (n) {\n            if (n & 1) res *= x;\n            x *= x;\n            n\
+    \ >>= 1;\n        }\n        return res;\n    }\n\n    constexpr mint inv() const\
+    \ {\n        assert(_v);\n        return pow(umod() - 2);\n    }\n\n    friend\
+    \ mint operator+(const mint &lhs, const mint &rhs) {\n        return mint(lhs)\
+    \ += rhs;\n    }\n    friend mint operator-(const mint &lhs, const mint &rhs)\
+    \ {\n        return mint(lhs) -= rhs;\n    }\n    friend mint operator*(const\
+    \ mint &lhs, const mint &rhs) {\n        return mint(lhs) *= rhs;\n    }\n   \
+    \ friend mint operator/(const mint &lhs, const mint &rhs) {\n        return mint(lhs)\
+    \ /= rhs;\n    }\n    friend bool operator==(const mint &lhs, const mint &rhs)\
+    \ {\n        return lhs.val() == rhs.val();\n    }\n    friend bool operator!=(const\
+    \ mint &lhs, const mint &rhs) {\n        return !(lhs == rhs);\n    }\n    friend\
+    \ bool operator<(const mint &lhs, const mint &rhs) {\n        return lhs._v <\
+    \ rhs._v;\n    }\n    friend bool operator>(const mint &lhs, const mint &rhs)\
+    \ {\n        return rhs < lhs;\n    }\n\n  private:\n    u64 _v = 0;\n\n    constexpr\
+    \ static u64 umod() {\n        return m;\n    }\n\n    constexpr u64 safe_mod(const\
+    \ u64 &a) {\n        u64 au = a >> 61;\n        u64 ad = a & umod();\n       \
+    \ u64 res = au + ad;\n        if (res >= umod()) res -= umod();\n        return\
+    \ res;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\
+    \n\r\n#line 4 \"utility/random_number_generator.hpp\"\n#include <random>\r\n\r\
+    \nnamespace ebi {\r\n\r\nstruct random_number_generator {\r\n    random_number_generator(int\
+    \ seed = -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\
+    \n    }\r\n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n   \
+    \ }\r\n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n  private:\r\n \
+    \   std::mt19937_64 mt;\r\n    std::random_device rnd;\r\n};\r\n\r\n}  // namespace\
+    \ ebi\n#line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate <int BASE_NUM\
+    \ = 2> struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n    using std::array<modint61,\
+    \ BASE_NUM>::array;\n    using std::array<modint61, BASE_NUM>::operator=;\n\n\
+    \  public:\n    Hash() : std::array<modint61, BASE_NUM>() {}\n\n    constexpr\
+    \ static Hash set(const modint61 &a) {\n        Hash res;\n        std::fill(res.begin(),\
+    \ res.end(), a);\n        return res;\n    }\n\n    constexpr Hash &operator+=(const\
+    \ Hash &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
     \ += rhs[i];\n        }\n        return *this;\n    }\n    constexpr Hash &operator-=(const\
     \ Hash &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
     \ -= rhs[i];\n        }\n        return *this;\n    }\n    constexpr Hash &operator*=(const\
@@ -232,8 +232,8 @@ data:
   isVerificationFile: true
   path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   requiredBy: []
-  timestamp: '2024-03-12 17:35:15+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-03-13 01:30:42+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 layout: document

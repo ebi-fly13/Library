@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/middle_product.hpp\"\n\n#include <algorithm>\n#include\
@@ -60,7 +60,7 @@ data:
   path: fps/middle_product.hpp
   requiredBy: []
   timestamp: '2024-01-05 02:16:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yuki/yuki_1796.test.cpp
 documentation_of: fps/middle_product.hpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: algorithm/monotone_minima.hpp
     title: Monotone Minima
   _extendedRequiredBy: []

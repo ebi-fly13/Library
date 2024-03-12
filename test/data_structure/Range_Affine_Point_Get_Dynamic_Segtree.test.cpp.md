@@ -4,31 +4,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/dynamic_dual_segtree.hpp
     title: dynamic dual segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -186,41 +186,42 @@ data:
     \ + start[i] + l,\n                                     elist.begin() + start[i\
     \ + 1] + r);\n    }\n\n  private:\n    std::vector<int> start;\n    std::vector<E>\
     \ elist;\n};\n\n}  // namespace ebi\n#line 9 \"graph/base.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class T> struct Edge {\n    int to;\n    T cost;\n    int id;\n\
-    };\n\ntemplate <class E> struct Graph {\n  private:\n    using cost_type = E;\n\
-    \    using edge_type = Edge<cost_type>;\n\n  public:\n    Graph(int n_) : n(n_)\
-    \ {}\n\n    Graph() = default;\n\n    void add_edge(int u, int v, cost_type c)\
-    \ {\n        edges.emplace_back(u, edge_type{v, c, m++});\n    }\n\n    void read_tree(int\
-    \ offset = 1, bool is_weighted = false) {\n        read_graph(n - 1, offset, false,\
-    \ is_weighted);\n    }\n\n    void read_parents(int offset = 1) {\n        for\
-    \ (auto i : std::views::iota(1, n)) {\n            int p;\n            std::cin\
-    \ >> p;\n            p -= offset;\n            add_edge(p, i, 1);\n          \
-    \  add_edge(i, p, 1);\n        }\n        build();\n    }\n\n    void read_graph(int\
-    \ e, int offset = 1, bool is_directed = false,\n                    bool is_weighted\
-    \ = false) {\n        for (int i = 0; i < e; i++) {\n            int u, v;\n \
-    \           std::cin >> u >> v;\n            u -= offset;\n            v -= offset;\n\
-    \            if (is_weighted) {\n                cost_type c;\n              \
-    \  std::cin >> c;\n                add_edge(u, v, c);\n                if (!is_directed)\
-    \ {\n                    add_edge(v, u, c);\n                }\n            }\
-    \ else {\n                add_edge(u, v, 1);\n                if (!is_directed)\
-    \ {\n                    add_edge(v, u, 1);\n                }\n            }\n\
-    \        }\n        build();\n    }\n\n    void build() {\n        assert(!prepared);\n\
-    \        csr = simple_csr<edge_type>(n, edges);\n        edges.clear();\n    \
-    \    prepared = true;\n    }\n\n    int size() const {\n        return n;\n  \
-    \  }\n\n    const auto operator[](int i) const {\n        return csr[i];\n   \
-    \ }\n    auto operator[](int i) {\n        return csr[i];\n    }\n\n  private:\n\
-    \    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>> edges;\n    simple_csr<edge_type>\
-    \ csr;\n    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"template/utility.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T> inline bool chmin(T &a, T b) {\n   \
-    \ if (a > b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
-    }\n\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if (a < b) {\n   \
-    \     a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate <class\
-    \ T> T safe_ceil(T a, T b) {\n    if (a % b == 0)\n        return a / b;\n   \
-    \ else if (a >= 0)\n        return (a / b) + 1;\n    else\n        return -((-a)\
-    \ / b);\n}\n\ntemplate <class T> T safe_floor(T a, T b) {\n    if (a % b == 0)\n\
-    \        return a / b;\n    else if (a >= 0)\n        return a / b;\n    else\n\
-    \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
-    \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
+    \ {\n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
+    \ id;\n};\n\ntemplate <class E> struct Graph {\n  private:\n    using cost_type\
+    \ = E;\n    using edge_type = Edge<cost_type>;\n\n  public:\n    Graph(int n_)\
+    \ : n(n_) {}\n\n    Graph() = default;\n\n    void add_edge(int u, int v, cost_type\
+    \ c) {\n        edges.emplace_back(u, edge_type{u, v, c, m++});\n    }\n\n   \
+    \ void read_tree(int offset = 1, bool is_weighted = false) {\n        read_graph(n\
+    \ - 1, offset, false, is_weighted);\n    }\n\n    void read_parents(int offset\
+    \ = 1) {\n        for (auto i : std::views::iota(1, n)) {\n            int p;\n\
+    \            std::cin >> p;\n            p -= offset;\n            add_edge(p,\
+    \ i, 1);\n            add_edge(i, p, 1);\n        }\n        build();\n    }\n\
+    \n    void read_graph(int e, int offset = 1, bool is_directed = false,\n     \
+    \               bool is_weighted = false) {\n        for (int i = 0; i < e; i++)\
+    \ {\n            int u, v;\n            std::cin >> u >> v;\n            u -=\
+    \ offset;\n            v -= offset;\n            if (is_weighted) {\n        \
+    \        cost_type c;\n                std::cin >> c;\n                add_edge(u,\
+    \ v, c);\n                if (!is_directed) {\n                    add_edge(v,\
+    \ u, c);\n                }\n            } else {\n                add_edge(u,\
+    \ v, 1);\n                if (!is_directed) {\n                    add_edge(v,\
+    \ u, 1);\n                }\n            }\n        }\n        build();\n    }\n\
+    \n    void build() {\n        assert(!prepared);\n        csr = simple_csr<edge_type>(n,\
+    \ edges);\n        edges.clear();\n        prepared = true;\n    }\n\n    int\
+    \ size() const {\n        return n;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return csr[i];\n    }\n    auto operator[](int i) {\n     \
+    \   return csr[i];\n    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,\
+    \ edge_type>> edges;\n    simple_csr<edge_type> csr;\n    bool prepared = false;\n\
+    };\n\n}  // namespace ebi\n#line 8 \"template/utility.hpp\"\n\nnamespace ebi {\n\
+    \ntemplate <class T> inline bool chmin(T &a, T b) {\n    if (a > b) {\n      \
+    \  a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate <class\
+    \ T> inline bool chmax(T &a, T b) {\n    if (a < b) {\n        a = b;\n      \
+    \  return true;\n    }\n    return false;\n}\n\ntemplate <class T> T safe_ceil(T\
+    \ a, T b) {\n    if (a % b == 0)\n        return a / b;\n    else if (a >= 0)\n\
+    \        return (a / b) + 1;\n    else\n        return -((-a) / b);\n}\n\ntemplate\
+    \ <class T> T safe_floor(T a, T b) {\n    if (a % b == 0)\n        return a /\
+    \ b;\n    else if (a >= 0)\n        return a / b;\n    else\n        return -((-a)\
+    \ / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max() / 4;\n\n\
+    constexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
     \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nstruct F {\n    mint a,\
@@ -263,7 +264,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2024-03-12 17:35:15+09:00'
+  timestamp: '2024-03-13 01:30:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp

@@ -29,10 +29,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -120,54 +120,54 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Cartesian_Tree.test.cpp
     title: test/tree/Cartesian_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1038.test.cpp
     title: test/yuki/yuki_1038.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1077.test.cpp
     title: test/yuki/yuki_1077.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_901_2.test.cpp
     title: test/yuki/yuki_901_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -258,7 +258,7 @@ data:
   - math/DirichletSeries.hpp
   - math/linear_sieve.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1038.test.cpp
   - test/yuki/yuki_2439.test.cpp
