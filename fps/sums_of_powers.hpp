@@ -6,8 +6,9 @@
 
 namespace ebi {
 
-template <Modint mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
+template <Modint mint,
+          std::vector<mint> (*convolution)(const std::vector<mint> &,
+                                           const std::vector<mint> &)>
 FormalPowerSeries<mint, convolution> sums_of_powers(const std::vector<int> &a,
                                                     int d) {
     using FPS = FormalPowerSeries<mint, convolution>;
