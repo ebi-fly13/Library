@@ -29,6 +29,12 @@ template <class E> struct Graph {
         edges.emplace_back(u, edge_type{u, v, c, m++});
     }
 
+    void add_undirected_edge(int u, int v, cost_type c) {
+        edges.emplace_back(u, edge_type{u, v, c, m});
+        edges.emplace_back(v, edge_type{v, u, c, m});
+        m++;
+    }
+
     void read_tree(int offset = 1, bool is_weighted = false) {
         read_graph(n - 1, offset, false, is_weighted);
     }
@@ -38,8 +44,7 @@ template <class E> struct Graph {
             int p;
             std::cin >> p;
             p -= offset;
-            add_edge(p, i, 1);
-            add_edge(i, p, 1);
+            add_undirected_edge(p, i, 1);
         }
         build();
     }
@@ -54,14 +59,16 @@ template <class E> struct Graph {
             if (is_weighted) {
                 cost_type c;
                 std::cin >> c;
-                add_edge(u, v, c);
-                if (!is_directed) {
-                    add_edge(v, u, c);
+                if (is_directed) {
+                    add_edge(u, v, c);
+                } else {
+                    add_undirected_edge(u, v, c);
                 }
             } else {
-                add_edge(u, v, 1);
-                if (!is_directed) {
-                    add_edge(v, u, 1);
+                if (is_directed) {
+                    add_edge(u, v, 1);
+                } else {
+                    add_undirected_edge(u, v, 1);
                 }
             }
         }
