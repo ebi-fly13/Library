@@ -10,6 +10,7 @@ int main() {
     int n, q;
     std::cin >> n >> q;
     ebi::Graph<int> g(n);
+    g.read_tree(0);
     ebi::level_ancestor la(g);
     ebi::lowest_common_ancestor lca(g);
     while (q--) {

@@ -9,7 +9,7 @@ namespace ebi {
 void main_() {
     int v, e, r;
     std::cin >> v >> e >> r;
-    Graph<i64, true> g(v);
+    Graph<i64> g(v);
     g.read_graph(e, 0, true);
     auto d = bellman_ford(r, g);
     if (d.empty()) {
