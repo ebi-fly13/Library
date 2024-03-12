@@ -4,7 +4,7 @@
 #include <queue>
 #include <vector>
 
-#include "../graph/template.hpp"
+#include "../graph/base.hpp"
 
 namespace ebi {
 

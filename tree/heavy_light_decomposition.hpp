@@ -4,29 +4,32 @@
 #include <cassert>
 #include <vector>
 
+#include "../graph/base.hpp"
+
 namespace ebi {
 
-struct heavy_light_decomposition {
+template <class T> struct heavy_light_decomposition {
   private:
     void dfs_sz(int v) {
-        for (auto &nv : g[v]) {
-            if (nv == par[v]) continue;
-            par[nv] = v;
-            depth[nv] = depth[v] + 1;
-            dfs_sz(nv);
-            sz[v] += sz[nv];
-            if (sz[nv] > sz[g[v][0]] || g[v][0] == par[v])
-                std::swap(nv, g[v][0]);
+        for (auto &e : g[v]) {
+            if (e.to == par[v]) continue;
+            par[e.to] = v;
+            depth_[e.to] = depth_[v] + 1;
+            dist[e.to] = dist[v] + e.cost;
+            dfs_sz(e.to);
+            sz[v] += sz[e.to];
+            if (sz[e.to] > sz[g[v][0].to] || g[v][0].to == par[v])
+                std::swap(e, g[v][0]);
         }
     }
 
     void dfs_hld(int v) {
         in[v] = num++;
         rev[in[v]] = v;
-        for (auto nv : g[v]) {
-            if (nv == par[v]) continue;
-            nxt[nv] = (nv == g[v][0] ? nxt[v] : nv);
-            dfs_hld(nv);
+        for (auto e : g[v]) {
+            if (e.to == par[v]) continue;
+            nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);
+            dfs_hld(e.to);
         }
         out[v] = num;
     }
@@ -52,17 +55,17 @@ struct heavy_light_decomposition {
     }
 
   public:
-    heavy_light_decomposition(const std::vector<std::vector<int>> &gh,
-                              int root = 0)
-        : n((int)gh.size()),
+    heavy_light_decomposition(const Graph<T> &gh, int root = 0)
+        : n(gh.size()),
           g(gh),
           sz(n, 1),
           in(n),
           out(n),
           nxt(n),
           par(n, -1),
-          depth(n, 0),
-          rev(n) {
+          depth_(n, 0),
+          rev(n),
+          dist(n, 0) {
         nxt[root] = root;
         dfs_sz(root);
         dfs_hld(root);
@@ -90,15 +93,15 @@ struct heavy_light_decomposition {
             if (in[u] < in[v]) std::swap(u, v);
             u = par[nxt[u]];
         }
-        return depth[u] < depth[v] ? u : v;
+        return depth_[u] < depth_[v] ? u : v;
     }
 
     int jump(int s, int t, int i) const {
         if (i == 0) return s;
         int l = lca(s, t);
-        int d = depth[s] + depth[t] - depth[l] * 2;
+        int d = depth_[s] + depth_[t] - depth_[l] * 2;
         if (d < i) return -1;
-        if (depth[s] - depth[l] >= i) return la(s, i);
+        if (depth_[s] - depth_[l] >= i) return la(s, i);
         i = d - i;
         return la(t, i);
     }
@@ -118,12 +121,16 @@ struct heavy_light_decomposition {
         return par[u];
     }
 
-    int distance(int u, int v) const {
-        return depth[u] + depth[v] - 2 * depth[lca(u, v)];
+    T distance(int u, int v) const {
+        return dist[u] + dist[v] - 2 * dist[lca(u, v)];
     }
 
-    int distance_from_root(int v) const {
-        return depth[v];
+    T distance_from_root(int v) const {
+        return dist[v];
+    }
+
+    T depth(int v) const {
+        return depth_[v];
     }
 
     bool at_path(int u, int v, int s) const {
@@ -193,13 +200,14 @@ struct heavy_light_decomposition {
     std::vector<std::pair<int, int>> lca_based_auxiliary_tree_dfs_order(
         std::vector<int> vs) const;
 
-    std::pair<std::vector<int>, std::vector<std::vector<int>>>
-    lca_based_auxiliary_tree(std::vector<int> vs) const;
+    std::pair<std::vector<int>, Graph<T>> lca_based_auxiliary_tree(
+        std::vector<int> vs) const;
 
   private:
     int n;
-    std::vector<std::vector<int>> g;
-    std::vector<int> sz, in, out, nxt, par, depth, rev;
+    Graph<T> g;
+    std::vector<int> sz, in, out, nxt, par, depth_, rev;
+    std::vector<T> dist;
 
     int num = 0;
 };

@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../../data_structure/segtree.hpp"
+#include "../../graph/base.hpp"
 #include "../../modint/modint.hpp"
 #include "../../tree/heavy_light_decomposition.hpp"
 
@@ -26,19 +27,14 @@ S e() {
 int main() {
     int n, q;
     std::cin >> n >> q;
-    std::vector g(n, std::vector<int>());
+    ebi::Graph<int> g(n);
     std::vector<S> fx(n);
     for (int i = 0; i < n; i++) {
         int a, b;
         std::cin >> a >> b;
         fx[i] = {a, b};
     }
-    for (int i = 0; i < n - 1; i++) {
-        int u, v;
-        std::cin >> u >> v;
-        g[u].emplace_back(v);
-        g[v].emplace_back(u);
-    }
+    g.read_tree(0);
     ebi::heavy_light_decomposition hld(g);
     ebi::segtree<S, op, e> seg1(n);
     ebi::segtree<S, op, e> seg2(n);

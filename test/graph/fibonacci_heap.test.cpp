@@ -1,25 +1,17 @@
 #define PROBLEM \
-    "http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A"
-
-#include <iostream>
+    "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A"
 
 #include "../../graph/dijkstra_fibheap.hpp"
-#include "../../graph/template.hpp"
-#include "../../template/int_alias.hpp"
+#include "../../template/template.hpp"
 
-using ebi::i64;
+namespace ebi {
 
-int main() {
+void main_() {
     int n, m, r;
     std::cin >> n >> m >> r;
     ebi::Graph<i64> g(n);
-    while (m--) {
-        int s, t;
-        i64 d;
-        std::cin >> s >> t >> d;
-        g[s].emplace_back(t, d);
-    }
-    auto dist = ebi::dijkstra(r, n, g);
+    g.read_graph(m, 0, true, true);
+    auto dist = dijkstra_fibheap(r, n, g);
     for (int i = 0; i < n; i++) {
         if (dist[i] == std::numeric_limits<i64>::max()) {
             std::cout << "INF" << std::endl;
@@ -27,4 +19,16 @@ int main() {
         }
         std::cout << dist[i] << std::endl;
     }
+}
+
+}  // namespace ebi
+
+int main() {
+    ebi::fast_io();
+    int t = 1;
+    // std::cin >> t;
+    while (t--) {
+        ebi::main_();
+    }
+    return 0;
 }

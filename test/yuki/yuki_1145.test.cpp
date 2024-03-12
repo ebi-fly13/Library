@@ -3,7 +3,6 @@
 #include "../../convolution/ntt.hpp"
 #include "../../fps/fps.hpp"
 #include "../../fps/sums_of_powers.hpp"
-#include "../../graph/template.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
 

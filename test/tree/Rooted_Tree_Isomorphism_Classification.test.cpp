@@ -7,16 +7,13 @@
 
 #include "../../tree/rooted_tree_hash.hpp"
 #include "../../utility/hash.hpp"
+#include "../../graph/base.hpp"
 
 int main() {
     int n;
     std::cin >> n;
-    std::vector<std::vector<int>> g(n);
-    for (int i = 1; i < n; i++) {
-        int p;
-        std::cin >> p;
-        g[p].emplace_back(i);
-    }
+    ebi::Graph<int> g(n);
+    g.read_parents(0);
     auto hash = ebi::rooted_tree_hash<2>::subtree_hash(g, 0);
     int k = 0;
     std::map<ebi::Hash<2>, int> map;

@@ -4,11 +4,12 @@
 
 namespace ebi {
 
-struct biconnected_components : low_link {
+template <class T> struct biconnected_components : low_link<T> {
   private:
     void dfs(int v, int par = -1) {
         used[v] = true;
-        for (auto nv : this->g[v]) {
+        for (auto e : this->g[v]) {
+            int nv = e.to;
             if (nv == par) continue;
             if (!used[nv] || this->ord[nv] < this->ord[v]) {
                 tmp.emplace_back(std::minmax(v, nv));
@@ -32,8 +33,8 @@ struct biconnected_components : low_link {
     }
 
   public:
-    biconnected_components(const std::vector<std::vector<int>> &g)
-        : low_link(g), used(this->n, false) {
+    biconnected_components(const Graph<T> &g)
+        : low_link<T>(g), used(this->n, false) {
         for (int i = 0; i < this->n; i++) {
             if (!used[i]) dfs(i);
         }

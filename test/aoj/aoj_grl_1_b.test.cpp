@@ -10,12 +10,7 @@ void main_() {
     int v, e, r;
     std::cin >> v >> e >> r;
     Graph<i64> g(v);
-    rep(i, 0, e) {
-        int s, t;
-        i64 d;
-        std::cin >> s >> t >> d;
-        g.add_edge(s, t, d, true);
-    }
+    g.read_graph(e, 0, true, true);
     auto d = bellman_ford(r, g);
     if (d.empty()) {
         std::cout << "NEGATIVE CYCLE\n";

@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "../data_structure/fibonacci_heap.hpp"
-#include "../graph/template.hpp"
+#include "../graph/base.hpp"
 
 namespace ebi {
 
@@ -12,7 +12,8 @@ template <class T> bool op(T a, T b) {
     return a <= b;
 }
 
-template <class T> std::vector<T> dijkstra(int s, int n, const Graph<T> &g) {
+template <class T>
+std::vector<T> dijkstra_fibheap(int s, int n, const Graph<T> &g) {
     std::vector<T> d(n, std::numeric_limits<T>::max());
     fibonacci_heap<T, int, op> que;
     d[s] = 0;
@@ -21,7 +22,6 @@ template <class T> std::vector<T> dijkstra(int s, int n, const Graph<T> &g) {
     while (!que.empty()) {
         que.is_valid();
         int v = que.top();
-        // debug(v, d[v]);
         que.pop();
         for (auto e : g[v]) {
             if (d[e.to] > d[v] + e.cost) {
