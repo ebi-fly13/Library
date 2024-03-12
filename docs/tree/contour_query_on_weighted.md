@@ -1,6 +1,6 @@
 ---
 title: Contour Query on Tree (Weighted)
-documentation_of: //tree/contour_query_on_tree_on_weighted_tree.hpp
+documentation_of: //tree/contour_query_on_weighted_tree.hpp
 ---
 
 ## 説明
