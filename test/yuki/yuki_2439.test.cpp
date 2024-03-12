@@ -1,7 +1,7 @@
 #define PROBLEM "https://yukicoder.me/problems/no/2439"
 
 #include "../../data_structure/lazy_segtree.hpp"
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../template/template.hpp"
 #include "../../tree/heavy_light_decomposition.hpp"
 
@@ -30,21 +30,12 @@ i64 id() {
 void main_() {
     int n, q;
     std::cin >> n >> q;
-    Graph<i64> G(n);
-    graph g(n);
-    rep(i, 0, n - 1) {
-        int a, b;
-        i64 c;
-        std::cin >> a >> b >> c;
-        a--;
-        b--;
-        g.add_edge(a, b);
-        G.add_edge(a, b, c);
-    }
+    ebi::Graph<i64> g(n);
+    g.read_tree(1, true);
     std::vector<int> par(n, -1);
     std::vector<i64> c(n, 0);
     auto dfs = [&](auto &&self, int v) -> void {
-        for (auto e : G[v]) {
+        for (auto e : g[v]) {
             if (e.to == par[v]) continue;
             par[e.to] = v;
             c[e.to] = e.cost;
@@ -88,10 +79,10 @@ void main_() {
         broken[v] = 0;
         ans--;
         i64 sum = apples[v];
-        for (auto nv : g[v]) {
-            if (nv == par[v]) continue;
-            if (broken[nv] == 0) continue;
-            sum += self(self, nv);
+        for (auto e : g[v]) {
+            if (e.to == par[v]) continue;
+            if (broken[e.to] == 0) continue;
+            sum += self(self, e.to);
         }
         return sum;
     };

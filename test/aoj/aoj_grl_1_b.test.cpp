@@ -7,7 +7,7 @@
 namespace ebi {
 
 void main_() {
-    int v,e,r;
+    int v, e, r;
     std::cin >> v >> e >> r;
     Graph<i64, true> g(v);
     g.read_graph(e, 0, true);

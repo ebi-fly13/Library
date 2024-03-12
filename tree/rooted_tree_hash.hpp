@@ -2,6 +2,7 @@
 
 #include <vector>
 
+#include "../graph/base.hpp"
 #include "../utility/hash.hpp"
 
 namespace ebi {
@@ -18,20 +19,20 @@ template <int BASE_NUM = 2> struct rooted_tree_hash {
   public:
     rooted_tree_hash() = default;
 
-    static std::vector<H> subtree_hash(const std::vector<std::vector<int>> &g,
-                                       int root = 0) {
+    template <class T>
+    static std::vector<H> subtree_hash(const Graph<T> &g, int root = 0) {
         int n = g.size();
         std::vector<H> hash(n, H::set(1));
         std::vector<int> depth(n, 0);
         auto dfs = [&](auto &&self, int v, int par = -1) -> void {
-            for (auto nv : g[v]) {
-                if (nv == par) continue;
-                self(self, nv, v);
-                depth[v] = std::max(depth[v], depth[nv] + 1);
+            for (auto e : g[v]) {
+                if (e.to == par) continue;
+                self(self, e.to, v);
+                depth[v] = std::max(depth[v], depth[e.to] + 1);
             }
-            for (auto nv : g[v]) {
-                if (nv == par) continue;
-                hash[v] *= hash[nv];
+            for (auto e : g[v]) {
+                if (e.to == par) continue;
+                hash[v] *= hash[e.to];
             }
             if (hash[v] == H::set(1)) hash[v] = H::set(0);
             hash[v] += get_basis(depth[v]);

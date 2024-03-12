@@ -4,8 +4,7 @@
 
 namespace ebi {
 
-template<class T>
-struct biconnected_components : low_link<T> {
+template <class T> struct biconnected_components : low_link<T> {
   private:
     void dfs(int v, int par = -1) {
         used[v] = true;

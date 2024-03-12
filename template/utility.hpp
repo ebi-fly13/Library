@@ -3,8 +3,8 @@
 #include <limits>
 #include <vector>
 
+#include "../graph/base.hpp"
 #include "int_alias.hpp"
-#include "../graph/template.hpp"
 
 namespace ebi {
 

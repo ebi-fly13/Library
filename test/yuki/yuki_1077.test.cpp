@@ -1,7 +1,7 @@
 #define PROBLEM "https://yukicoder.me/problems/no/1077"
 
-#include "../../template/template.hpp"
 #include "../../data_structure/slope_trick.hpp"
+#include "../../template/template.hpp"
 
 namespace ebi {
 
@@ -9,7 +9,7 @@ void main_() {
     int n;
     std::cin >> n;
     slope_trick<i64> st;
-    rep(i,0,n) {
+    rep(i, 0, n) {
         i64 y;
         std::cin >> y;
         st.left_cumulative_min();

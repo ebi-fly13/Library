@@ -5,8 +5,8 @@
 #include <iostream>
 #include <vector>
 
-#include "../../graph/low_link.hpp"
 #include "../../graph/base.hpp"
+#include "../../graph/low_link.hpp"
 
 int main() {
     int n, m;

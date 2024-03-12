@@ -2,8 +2,8 @@
 
 #include <cassert>
 #include <iostream>
-#include <vector>
 #include <ranges>
+#include <vector>
 
 #include "../data_structure/simple_csr.hpp"
 
@@ -23,16 +23,30 @@ template <class E> struct Graph {
   public:
     Graph(int n_) : n(n_) {}
 
+    Graph() = default;
+
     void add_edge(int u, int v, cost_type c) {
         edges.emplace_back(u, edge_type{v, c, m++});
     }
 
-    void read_tree(int offset = 1) {
-        read_graph(n-1, offset);
+    void read_tree(int offset = 1, bool is_weighted = false) {
+        read_graph(n - 1, offset, false, is_weighted);
     }
 
-    void read_graph(int e, int offset = 1, bool is_directed = false, bool is_weighted = false) {
-        for(int i = 0; i < e; i++) {
+    void read_parents(int offset = 1) {
+        for (auto i : std::views::iota(1, n)) {
+            int p;
+            std::cin >> p;
+            p -= offset;
+            add_edge(p, i, 1);
+            add_edge(i, p, 1);
+        }
+        build();
+    }
+
+    void read_graph(int e, int offset = 1, bool is_directed = false,
+                    bool is_weighted = false) {
+        for (int i = 0; i < e; i++) {
             int u, v;
             std::cin >> u >> v;
             u -= offset;
@@ -44,8 +58,7 @@ template <class E> struct Graph {
                 if (!is_directed) {
                     add_edge(v, u, c);
                 }
-            }
-            else {
+            } else {
                 add_edge(u, v, 1);
                 if (!is_directed) {
                     add_edge(v, u, 1);

@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/2450"
 
 #include "../../data_structure/lazy_segtree.hpp"
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../template/template.hpp"
 #include "../../tree/heavy_light_decomposition.hpp"
 
@@ -62,14 +62,8 @@ int main() {
     std::cin >> n >> q;
     std::vector<i64> w(n);
     for (int i = 0; i < n; i++) std::cin >> w[i];
-    ebi::graph g(n);
-    for (int i = 0; i < n - 1; i++) {
-        int u, v;
-        std::cin >> u >> v;
-        u--;
-        v--;
-        g.add_edge(u, v);
-    }
+    ebi::Graph<int> g(n);
+    g.read_tree();
     ebi::heavy_light_decomposition hld(g);
     std::vector<S> vec(n);
     for (int i = 0; i < n; i++) {

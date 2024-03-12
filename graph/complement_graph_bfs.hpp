@@ -9,8 +9,7 @@
 namespace ebi {
 
 template <class T, class F>
-void complement_graph_bfs(int s, const Graph<T> &h,
-                          const F &func) {
+void complement_graph_bfs(int s, const Graph<T> &h, const F &func) {
     const int n = h.size();
     std::vector<int> not_visit;
     not_visit.reserve(n - 1);

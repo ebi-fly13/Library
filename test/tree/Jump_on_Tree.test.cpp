@@ -2,19 +2,14 @@
 
 #include <iostream>
 
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../tree/level_ancestor.hpp"
 #include "../../tree/lowest_common_ancestor.hpp"
 
 int main() {
     int n, q;
     std::cin >> n >> q;
-    ebi::graph g(n);
-    for (int i = 0; i < n - 1; i++) {
-        int a, b;
-        std::cin >> a >> b;
-        g.add_edge(a, b);
-    }
+    ebi::Graph<int> g(n);
     ebi::level_ancestor la(g);
     ebi::lowest_common_ancestor lca(g);
     while (q--) {

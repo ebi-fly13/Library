@@ -8,8 +8,7 @@
 
 namespace ebi {
 
-template<class T>
-struct low_link {
+template <class T> struct low_link {
   private:
     void dfs(int v, int par = -1) {
         static int k = 0;
@@ -37,8 +36,7 @@ struct low_link {
     }
 
   public:
-    low_link(const Graph<T> &g)
-        : n(g.size()), g(g), ord(n, -1), low(n) {
+    low_link(const Graph<T> &g) : n(g.size()), g(g), ord(n, -1), low(n) {
         for (int i = 0; i < n; i++) {
             if (ord[i] == -1) dfs(i);
         }

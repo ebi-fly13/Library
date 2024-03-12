@@ -4,17 +4,13 @@
 
 #include <iostream>
 
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 
 int main() {
     int n, q;
     std::cin >> n >> q;
-    ebi::graph g(n);
-    for (int i = 1; i < n; i++) {
-        int p;
-        std::cin >> p;
-        g.add_edge(p, i);
-    }
+    ebi::Graph<int> g(n);
+    g.read_parents(0);
     ebi::lowest_common_ancestor lca(g);
     while (q--) {
         int u, v;

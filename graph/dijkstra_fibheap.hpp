@@ -12,7 +12,8 @@ template <class T> bool op(T a, T b) {
     return a <= b;
 }
 
-template <class T> std::vector<T> dijkstra_fibheap(int s, int n, const Graph<T> &g) {
+template <class T>
+std::vector<T> dijkstra_fibheap(int s, int n, const Graph<T> &g) {
     std::vector<T> d(n, std::numeric_limits<T>::max());
     fibonacci_heap<T, int, op> que;
     d[s] = 0;

@@ -6,8 +6,7 @@
 
 namespace ebi {
 
-template<class T>
-struct block_cut_tree : biconnected_components<T> {
+template <class T> struct block_cut_tree : biconnected_components<T> {
   public:
     block_cut_tree(const Graph<T> &g)
         : biconnected_components<T>(g), rev(this->n, -1) {

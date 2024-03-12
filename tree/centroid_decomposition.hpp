@@ -276,8 +276,8 @@ void one_third_centroid_decomposition_virtual_real(
 
 }  // namespace internal
 
-template <int MODE, class F>
-void centroid_decomposition(const std::vector<std::vector<int>> &tree, F f) {
+template <int MODE, class T, class F>
+void centroid_decomposition(const Graph<T> &tree, F f) {
     int n = (int)tree.size();
     if (n == 1) return;
     std::vector<int> bfs_order(n), par(n, -1);
@@ -285,7 +285,8 @@ void centroid_decomposition(const std::vector<std::vector<int>> &tree, F f) {
     int l = 0, r = 1;
     while (l < r) {
         int v = bfs_order[l++];
-        for (auto nv : tree[v]) {
+        for (auto e : tree[v]) {
+            int nv = e.to;
             if (nv == par[v]) continue;
             bfs_order[r++] = nv;
             par[nv] = v;
