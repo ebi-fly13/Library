@@ -233,10 +233,10 @@ data:
     - icon: ':x:'
       path: fps/middle_product.hpp
       title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: fps/multipoint_evaluation.hpp
       title: Multipoint Evaluation
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: fps/polynomial_interpolation.hpp
       title: Polynomial Interpolation
     - icon: ':question:'
@@ -452,7 +452,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/block_cut_tree.hpp
       title: Block Cut Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/cartesian_tree.hpp
       title: Cartesian Tree
     - icon: ':x:'
@@ -868,7 +868,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Multipoint_Evaluation.test.cpp
       title: test/polynomial/Multipoint_Evaluation.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/polynomial/Polynomial_Interpolation.test.cpp
       title: test/polynomial/Polynomial_Interpolation.test.cpp
     - icon: ':heavy_check_mark:'
@@ -904,7 +904,7 @@ data:
       title: test/string/Z_Algorithm.test.cpp
   - name: test/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Cartesian_Tree.test.cpp
       title: test/tree/Cartesian_Tree.test.cpp
     - icon: ':x:'

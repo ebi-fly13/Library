@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/polynomial_interpolation.hpp
     title: Polynomial Interpolation
   - icon: ':heavy_check_mark:'
@@ -84,7 +84,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
   - icon: ':heavy_check_mark:'

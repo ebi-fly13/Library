@@ -150,10 +150,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Cartesian_Tree.test.cpp
     title: test/tree/Cartesian_Tree.test.cpp
   - icon: ':x:'
