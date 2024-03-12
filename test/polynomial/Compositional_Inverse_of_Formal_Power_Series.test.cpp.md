@@ -33,7 +33,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series
   bundledCode: "#line 1 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series\"\
+    \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series\"\
     \n\n#include <iostream>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n\
     #include <array>\n#include <bit>\n#include <cassert>\n#include <vector>\n\n#line\
     \ 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace\
@@ -259,13 +259,13 @@ data:
     \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
     \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
     \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 8 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
+    #line 9 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint,\
     \ ebi::convolution>;\n\nint main() {\n    int n;\n    std::cin >> n;\n    FPS\
     \ f(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n\
     \    FPS g = ebi::compositional_inverse_of_fps(f);\n    for (int i = 0; i < n;\
     \ i++) {\n        std::cout << g[i] << \" \\n\"[i == n - 1];\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series\"\
+  code: "#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series\"\
     \n\n#include <iostream>\n\n#include \"../../convolution/ntt.hpp\"\n#include \"\
     ../../fps/compositional_inverse_of_fps.hpp\"\n#include \"../../modint/modint.hpp\"\
     \n\nusing mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint,\
@@ -284,7 +284,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 00:17:11+09:00'
+  timestamp: '2024-03-12 18:09:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp

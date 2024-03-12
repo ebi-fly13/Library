@@ -187,6 +187,9 @@ data:
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
     - icon: ':heavy_check_mark:'
+      path: data_structure/simple_csr.hpp
+      title: Simple CSR
+    - icon: ':heavy_check_mark:'
       path: data_structure/slope_trick.hpp
       title: Slope Trick
     - icon: ':heavy_check_mark:'
@@ -274,6 +277,9 @@ data:
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: graph/base.hpp
+      title: graph/base.hpp
+    - icon: ':heavy_check_mark:'
       path: graph/bellman_ford.hpp
       title: Bellman-Ford
     - icon: ':heavy_check_mark:'
@@ -294,9 +300,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
       title: graph/scc_graph.hpp
-    - icon: ':heavy_check_mark:'
-      path: graph/template.hpp
-      title: graph/template.hpp
     - icon: ':heavy_check_mark:'
       path: graph/two_edge_connected_components.hpp
       title: Two Edge Connected Components
@@ -456,11 +459,11 @@ data:
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
     - icon: ':heavy_check_mark:'
-      path: tree/centroid_decomposition_old.hpp
-      title: Centroid Decomposition (old)
-    - icon: ':heavy_check_mark:'
       path: tree/contour_query_on_tree.hpp
       title: Contour Query on Tree
+    - icon: ':warning:'
+      path: tree/contour_query_on_weighted_tree.hpp
+      title: tree/contour_query_on_weighted_tree.hpp
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
@@ -910,9 +913,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
       title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-      title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp

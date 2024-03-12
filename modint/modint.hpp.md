@@ -166,9 +166,6 @@ data:
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -309,7 +306,6 @@ data:
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/matrix/Determinant_of_Matrix.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp

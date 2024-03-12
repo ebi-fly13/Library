@@ -94,9 +94,6 @@ data:
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
@@ -141,7 +138,6 @@ data:
   - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Convolution.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp

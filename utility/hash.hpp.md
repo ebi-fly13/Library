@@ -123,12 +123,12 @@ data:
     \    return h;\n    }\n\n    static Hash get_basis_primitive() {\n        static\
     \ random_number_generator rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM;\
     \ i++) {\n            while (!is_primitive(\n                (h[i] = rng.get<std::uint64_t>(0,\
-    \ modint61::mod() - 1) + 1).val()))\n                ;\n        }\n        return\
-    \ h;\n    }\n\n  private:\n    static bool is_primitive(long long x) {\n     \
-    \   for (long long d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151, 331, 1321}) {\n \
-    \           if (modint61(x).pow((modint61::mod() - 1) / d).val() <= 1)\n     \
-    \           return false;\n        }\n        return true;\n    }\n};\n\n}  //\
-    \ namespace ebi\n"
+    \ modint61::mod() - 1) + 1)\n                    .val()))\n                ;\n\
+    \        }\n        return h;\n    }\n\n  private:\n    static bool is_primitive(long\
+    \ long x) {\n        for (long long d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151,\
+    \ 331, 1321}) {\n            if (modint61(x).pow((modint61::mod() - 1) / d).val()\
+    \ <= 1)\n                return false;\n        }\n        return true;\n    }\n\
+    };\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <array>\n\n#include \"../modint/modint61.hpp\"\n\
     #include \"../utility/random_number_generator.hpp\"\n\nnamespace ebi {\n\ntemplate\
     \ <int BASE_NUM = 2> struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n\
@@ -167,12 +167,12 @@ data:
     \    return h;\n    }\n\n    static Hash get_basis_primitive() {\n        static\
     \ random_number_generator rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM;\
     \ i++) {\n            while (!is_primitive(\n                (h[i] = rng.get<std::uint64_t>(0,\
-    \ modint61::mod() - 1) + 1).val()))\n                ;\n        }\n        return\
-    \ h;\n    }\n\n  private:\n    static bool is_primitive(long long x) {\n     \
-    \   for (long long d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151, 331, 1321}) {\n \
-    \           if (modint61(x).pow((modint61::mod() - 1) / d).val() <= 1)\n     \
-    \           return false;\n        }\n        return true;\n    }\n};\n\n}  //\
-    \ namespace ebi"
+    \ modint61::mod() - 1) + 1)\n                    .val()))\n                ;\n\
+    \        }\n        return h;\n    }\n\n  private:\n    static bool is_primitive(long\
+    \ long x) {\n        for (long long d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151,\
+    \ 331, 1321}) {\n            if (modint61(x).pow((modint61::mod() - 1) / d).val()\
+    \ <= 1)\n                return false;\n        }\n        return true;\n    }\n\
+    };\n\n}  // namespace ebi"
   dependsOn:
   - modint/modint61.hpp
   - modint/base.hpp
@@ -182,7 +182,7 @@ data:
   requiredBy:
   - string/rolling_hash.hpp
   - tree/rooted_tree_hash.hpp
-  timestamp: '2023-12-26 02:24:03+09:00'
+  timestamp: '2024-03-12 17:35:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp

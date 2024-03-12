@@ -33,9 +33,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_901.test.cpp
-    title: test/yuki/yuki_901.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -128,7 +125,6 @@ data:
   timestamp: '2023-10-31 01:04:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_901.test.cpp
   - test/aoj/aoj_1068_1.test.cpp
   - test/aoj/aoj_1645.test.cpp
   - test/aoj/aoj_3086.test.cpp

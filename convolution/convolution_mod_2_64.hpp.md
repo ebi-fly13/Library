@@ -27,9 +27,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -225,7 +222,6 @@ data:
   verifiedWith:
   - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_Old.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
 documentation_of: convolution/convolution_mod_2_64.hpp

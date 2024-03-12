@@ -2,73 +2,29 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/dual_segtree.hpp
-    title: dual segtree
-  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: graph/base.hpp
   - icon: ':heavy_check_mark:'
-    path: template/debug_template.hpp
-    title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/int_alias.hpp
-    title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/io.hpp
-    title: template/io.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/template.hpp
-    title: template/template.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/utility.hpp
-    title: template/utility.hpp
-  - icon: ':heavy_check_mark:'
     path: tree/centroid_decomposition.hpp
     title: Centroid Decomposition
-  - icon: ':heavy_check_mark:'
-    path: tree/contour_query_on_tree.hpp
-    title: Contour Query on Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _pathExtension: hpp
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/no/1038
-    links:
-    - https://yukicoder.me/problems/no/1038
-  bundledCode: "#line 1 \"test/yuki/yuki_1038.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/1038\"\
-    \n\n#line 2 \"data_structure/dual_segtree.hpp\"\n\n#include <bit>\n#include <cassert>\n\
-    #include <ranges>\n#include <vector>\n\nnamespace ebi {\n\ntemplate <class F,\
-    \ F (*merge)(F, F), F (*id)()> struct dual_segtree {\n  private:\n    void all_apply(int\
-    \ i, F f) {\n        d[i] = merge(f, d[i]);\n    }\n\n    void push(int i) {\n\
-    \        assert(i < sz);\n        all_apply(2 * i, d[i]);\n        all_apply(2\
-    \ * i + 1, d[i]);\n        d[i] = id();\n    }\n\n  public:\n    dual_segtree(int\
-    \ n) : dual_segtree(std::vector<F>(n, id())) {}\n\n    dual_segtree(const std::vector<F>\
-    \ &a)\n        : n(a.size()),\n          sz(std::bit_ceil(a.size())),\n      \
-    \    lg2(std::countr_zero((unsigned int)(sz))) {\n        d = std::vector<F>(2\
-    \ * sz, id());\n        for (int i : std::views::iota(sz, sz + n)) {\n       \
-    \     d[i] = a[i - sz];\n        }\n    }\n\n    void apply(int l, int r, F f)\
-    \ {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return;\n\
-    \n        l += sz;\n        r += sz;\n\n        for (int i : std::views::iota(1,\
-    \ lg2 + 1) | std::views::reverse) {\n            if (((l >> i) << i) != l) push(l\
-    \ >> i);\n            if (((r >> i) << i) != r) push((r - 1) >> i);\n        }\n\
-    \n        while (l < r) {\n            if (l & 1) all_apply(l++, f);\n       \
-    \     if (r & 1) all_apply(--r, f);\n            l >>= 1;\n            r >>= 1;\n\
-    \        }\n    }\n\n    F get(int p) {\n        assert(0 <= p && p < n);\n  \
-    \      p += sz;\n        for (int i : std::views::iota(1, lg2 + 1) | std::views::reverse)\
-    \ {\n            push(p >> i);\n        }\n        return d[p];\n    }\n\n  private:\n\
-    \    int n, sz, lg2;\n    std::vector<F> d;\n};\n\n}  // namespace ebi\n#line\
-    \ 2 \"graph/base.hpp\"\n\n#line 4 \"graph/base.hpp\"\n#include <iostream>\n#line\
-    \ 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4\
-    \ \"data_structure/simple_csr.hpp\"\n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
-    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
-    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    links: []
+  bundledCode: "#line 2 \"tree/contour_query_on_weighted_tree.hpp\"\n\n#include <cassert>\n\
+    #include <ranges>\n#include <tuple>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\
+    \n\n#line 4 \"graph/base.hpp\"\n#include <iostream>\n#line 7 \"graph/base.hpp\"\
+    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
+    \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
+    \    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n     \
+    \   : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
     \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
     \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
     \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
@@ -114,56 +70,9 @@ data:
     \  }\n\n    const auto operator[](int i) const {\n        return csr[i];\n   \
     \ }\n    auto operator[](int i) {\n        return csr[i];\n    }\n\n  private:\n\
     \    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>> edges;\n    simple_csr<edge_type>\
-    \ csr;\n    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
-    \n#include <bits/stdc++.h>\n\n#define rep(i, a, n) for (int i = (int)(a); i <\
-    \ (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
-    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
-    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
-    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
-    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
-    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
-    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
-    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
-    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
-    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
-    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
-    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
-    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
-    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
-    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
-    \ 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
-    #line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
-    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
-    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
-    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
-    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
-    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
-    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
-    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
-    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
-    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
-    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
-    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
-    \n\n#line 5 \"template/utility.hpp\"\n\n#line 8 \"template/utility.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class T> inline bool chmin(T &a, T b) {\n    if (a > b) {\n\
-    \        a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate\
-    \ <class T> inline bool chmax(T &a, T b) {\n    if (a < b) {\n        a = b;\n\
-    \        return true;\n    }\n    return false;\n}\n\ntemplate <class T> T safe_ceil(T\
-    \ a, T b) {\n    if (a % b == 0)\n        return a / b;\n    else if (a >= 0)\n\
-    \        return (a / b) + 1;\n    else\n        return -((-a) / b);\n}\n\ntemplate\
-    \ <class T> T safe_floor(T a, T b) {\n    if (a % b == 0)\n        return a /\
-    \ b;\n    else if (a >= 0)\n        return a / b;\n    else\n        return -((-a)\
-    \ / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max() / 4;\n\n\
-    constexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
-    \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"tree/contour_query_on_tree.hpp\"\
-    \n\n#line 6 \"tree/contour_query_on_tree.hpp\"\n\n#line 2 \"tree/centroid_decomposition.hpp\"\
-    \n\n#line 7 \"tree/centroid_decomposition.hpp\"\n\nnamespace ebi {\n\nnamespace\
-    \ internal {\n\ntemplate <class F>\nvoid centroid_decomposition_dfs_naive(const\
+    \ csr;\n    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"tree/centroid_decomposition.hpp\"\
+    \n\n#include <algorithm>\n#line 7 \"tree/centroid_decomposition.hpp\"\n\nnamespace\
+    \ ebi {\n\nnamespace internal {\n\ntemplate <class F>\nvoid centroid_decomposition_dfs_naive(const\
     \ std::vector<int> &par,\n                                      const std::vector<int>\
     \ &original_vs,\n                                      F f) {\n    const int n\
     \ = (int)par.size();\n    assert(par.size() == original_vs.size());\n    int center\
@@ -283,99 +192,133 @@ data:
     \ bfs_order, f);\n    } else if constexpr (MODE == 1) {\n        internal::one_third_centroid_decomposition(par,\
     \ bfs_order, f);\n    } else {\n        internal::one_third_centroid_decomposition_virtual_real(\n\
     \            par, bfs_order, std::vector<int>(n, 1), f);\n    }\n}\n\n}  // namespace\
-    \ ebi\n#line 9 \"tree/contour_query_on_tree.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class T> struct contour_query_on_tree {\n    contour_query_on_tree(const Graph<T>\
-    \ &tree) : n(tree.size()) {\n        int t = 0;\n        range = {0};\n      \
-    \  auto f = [&](const std::vector<int> &par, const std::vector<int> &vs,\n   \
-    \                  const std::vector<int> &color) -> void {\n            int sz\
-    \ = (int)par.size();\n            std::vector<int> depth(sz, 0);\n           \
-    \ for (const int v : std::views::iota(1, sz)) {\n                depth[v] += depth[par[v]]\
-    \ + 1;\n            }\n            std::vector<int> red, blue;\n            for\
-    \ (const int v : std::views::iota(0, sz)) {\n                if (color[v] == 0)\
-    \ {\n                    red.emplace_back(v);\n                } else if (color[v]\
-    \ == 1) {\n                    blue.emplace_back(v);\n                } else\n\
-    \                    assert(color[v] == -1);\n            }\n            if (red.empty()\
-    \ || blue.empty()) return;\n            int max_red = -1;\n            for (const\
-    \ int v : red) {\n                vertexs.emplace_back(vs[v]);\n             \
-    \   number.emplace_back(t);\n                dep.emplace_back(depth[v]);\n   \
-    \             max_red = max_red < depth[v] ? depth[v] : max_red;\n           \
-    \ }\n            range.emplace_back(range.back() + max_red + 1);\n           \
-    \ t++;\n            int max_blue = -1;\n            for (const int v : blue) {\n\
-    \                vertexs.emplace_back(vs[v]);\n                number.emplace_back(t);\n\
-    \                dep.emplace_back(depth[v]);\n                max_blue = max_blue\
-    \ < depth[v] ? depth[v] : max_blue;\n            }\n            range.emplace_back(range.back()\
-    \ + max_blue + 1);\n            t++;\n        };\n        centroid_decomposition<2>(tree,\
-    \ f);\n        index_ptr.assign(n + 1, 0);\n        for (const int v : vertexs)\
-    \ {\n            index_ptr[v + 1]++;\n        }\n        for (const int v : std::views::iota(0,\
-    \ n)) {\n            index_ptr[v + 1] += index_ptr[v];\n        }\n        index.resize(index_ptr.back());\n\
-    \        auto counter = index_ptr;\n        for (int i = 0; const int v : vertexs)\
-    \ {\n            index[counter[v]++] = i;\n            i++;\n        }\n    }\n\
-    \n    std::vector<std::pair<int, int>> get_contour_from_vertex(int v, int l,\n\
-    \                                                             int r) const {\n\
-    \        assert(0 <= v && v < n);\n        std::vector<std::pair<int, int>> res;\n\
-    \        for (const int idx :\n             std::ranges::subrange(index.begin()\
-    \ + index_ptr[v],\n                                   index.begin() + index_ptr[v\
-    \ + 1])) {\n            int label = number[idx] ^ 1;\n            int left = l\
-    \ - dep[idx], right = r - dep[idx];\n            int max = range[label + 1] -\
-    \ range[label];\n            if (left < 0) left = 0;\n            if (right >\
-    \ max) right = max;\n            if (left < right) {\n                res.emplace_back(range[label]\
-    \ + left, range[label] + right);\n            }\n        }\n        return res;\n\
-    \    }\n\n    std::vector<int> get_vertex(int v) const {\n        assert(0 <=\
-    \ v && v < n);\n        std::vector<int> res;\n        for (const int idx :\n\
-    \             std::ranges::subrange(index.begin() + index_ptr[v],\n          \
-    \                         index.begin() + index_ptr[v + 1])) {\n            int\
-    \ label = number[idx];\n            assert(range[label] + dep[idx] < range[label\
-    \ + 1]);\n            res.emplace_back(range[label] + dep[idx]);\n        }\n\
-    \        return res;\n    }\n\n    int size() const {\n        return range.back();\n\
-    \    }\n\n  private:\n    int n;\n    std::vector<int> vertexs, number, dep;\n\
-    \    std::vector<int> index, index_ptr;\n    std::vector<int> range;\n};\n\n}\
-    \  // namespace ebi\n#line 7 \"test/yuki/yuki_1038.test.cpp\"\n\nnamespace ebi\
-    \ {\n\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\ni64 e() {\n    return 0;\n\
-    }\n\nvoid main_() {\n    int n, q;\n    std::cin >> n >> q;\n    Graph<int> g(n);\n\
-    \    g.read_tree(1);\n    std::vector<i64> res(n, 0);\n    contour_query_on_tree\
-    \ cq(g);\n    dual_segtree<i64, op, e> seg(cq.size());\n    while (q--) {\n  \
-    \      int x, y;\n        i64 z;\n        std::cin >> x >> y >> z;\n        x--;\n\
-    \        i64 ans = res[x];\n        for (auto i : cq.get_vertex(x)) {\n      \
-    \      ans += seg.get(i);\n        }\n        std::cout << ans << '\\n';\n   \
-    \     y++;\n        res[x] += z;\n        for (auto [l, r] : cq.get_contour_from_vertex(x,\
-    \ 0, y)) {\n            seg.apply(l, r, z);\n        }\n    }\n}\n\n}  // namespace\
-    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
-    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/no/1038\"\n\n#include \"\
-    ../../data_structure/dual_segtree.hpp\"\n#include \"../../graph/base.hpp\"\n#include\
-    \ \"../../template/template.hpp\"\n#include \"../../tree/contour_query_on_tree.hpp\"\
-    \n\nnamespace ebi {\n\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\ni64 e()\
-    \ {\n    return 0;\n}\n\nvoid main_() {\n    int n, q;\n    std::cin >> n >> q;\n\
-    \    Graph<int> g(n);\n    g.read_tree(1);\n    std::vector<i64> res(n, 0);\n\
-    \    contour_query_on_tree cq(g);\n    dual_segtree<i64, op, e> seg(cq.size());\n\
-    \    while (q--) {\n        int x, y;\n        i64 z;\n        std::cin >> x >>\
-    \ y >> z;\n        x--;\n        i64 ans = res[x];\n        for (auto i : cq.get_vertex(x))\
-    \ {\n            ans += seg.get(i);\n        }\n        std::cout << ans << '\\\
-    n';\n        y++;\n        res[x] += z;\n        for (auto [l, r] : cq.get_contour_from_vertex(x,\
-    \ 0, y)) {\n            seg.apply(l, r, z);\n        }\n    }\n}\n\n}  // namespace\
-    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
-    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
+    \ ebi\n#line 10 \"tree/contour_query_on_weighted_tree.hpp\"\n\nnamespace ebi {\n\
+    \ntemplate <class T> struct contour_query_on_weighted_tree {\n    contour_query_on_weighted_tree(const\
+    \ Graph<T> &tree) : n(int(tree.size())) {\n        int t = 0;\n        labels.resize(n);\n\
+    \        range = {0};\n        std::vector<int> rev(n, -1);\n        auto f =\
+    \ [&](const std::vector<int> &par, const std::vector<int> &vs,\n             \
+    \        const std::vector<int> &color) -> void {\n            int sz = (int)par.size();\n\
+    \            std::vector<T> depth(sz, -1);\n            depth[0] = 0;\n      \
+    \      for (int i : std::views::iota(0, sz)) {\n                rev[vs[i]] = i;\n\
+    \            }\n            for (int i : std::views::iota(0, sz)) {\n        \
+    \        int v = vs[i];\n                for (auto e : tree[v]) {\n          \
+    \          if (rev[e.to] == -1) continue;\n                    depth[rev[e.to]]\
+    \ = depth[rev[v]] + e.cost;\n                }\n                rev[v] = -1;\n\
+    \            }\n            std::vector<int> red, blue;\n            for (const\
+    \ int v : std::views::iota(0, sz)) {\n                if (color[v] == 0) {\n \
+    \                   red.emplace_back(v);\n                } else if (color[v]\
+    \ == 1) {\n                    blue.emplace_back(v);\n                } else {\n\
+    \                    assert(color[v] == -1);\n                }\n            }\n\
+    \            if (red.empty() || blue.empty()) return;\n\n            auto update\
+    \ = [&](std::vector<int> &s) -> void {\n                std::sort(s.begin(), s.end(),\
+    \ [&](int i, int j) -> bool {\n                    return depth[i] < depth[j];\n\
+    \                });\n                for (int i = 0; const int v : s) {\n   \
+    \                 dist.emplace_back(depth[v]);\n                    labels[vs[v]].emplace_back(t,\
+    \ i, depth[v]);\n                    i++;\n                }\n               \
+    \ range.emplace_back(dist.size());\n                t++;\n            };\n   \
+    \         update(red);\n            update(blue);\n        };\n        centroid_decomposition<2>(tree,\
+    \ f);\n    }\n\n    std::size_t size() {\n        return dist.size();\n    }\n\
+    \n    // [0, k)\n    std::vector<std::pair<std::size_t, std::size_t>>\n    get_range_less_than_k_from_v(int\
+    \ v, T k) const {\n        std::vector<std::pair<std::size_t, std::size_t>> res;\n\
+    \        for (auto [t, i, d] : labels[v]) {\n            t ^= 1;\n           \
+    \ std::size_t id_l = range[t];\n            std::size_t id_r =\n             \
+    \   std::lower_bound(dist.begin() + range[t],\n                              \
+    \   dist.begin() + range[t + 1], k - d) -\n                dist.begin();\n   \
+    \         res.emplace_back(id_l, id_r);\n        }\n        return res;\n    }\n\
+    \n    // [k, infty)\n    std::vector<std::pair<std::size_t, std::size_t>> get_range_k_or_more_from_v(\n\
+    \        int v, T k) const {\n        std::vector<std::pair<std::size_t, std::size_t>>\
+    \ res;\n        for (auto [t, i, d] : labels[v]) {\n            t ^= 1;\n    \
+    \        std::size_t id_l =\n                std::lower_bound(dist.begin() + range[t],\n\
+    \                                 dist.begin() + range[t + 1], k - d) -\n    \
+    \            dist.begin();\n            std::size_t id_r = range[t + 1];\n   \
+    \         res.emplace_back(id_l, id_r);\n        }\n        return res;\n    }\n\
+    \n    // [l, r)\n    std::vector<std::pair<std::size_t, std::size_t>> get_contour_from_vertex(\n\
+    \        int v, T l, T r) const {\n        std::vector<std::pair<std::size_t,\
+    \ std::size_t>> res;\n        for (auto [t, i, d] : labels[v]) {\n           \
+    \ t ^= 1;\n            std::size_t id_l =\n                std::lower_bound(dist.begin()\
+    \ + range[t],\n                                 dist.begin() + range[t + 1], l\
+    \ - d) -\n                dist.begin();\n            std::size_t id_r =\n    \
+    \            std::lower_bound(dist.begin() + range[t],\n                     \
+    \            dist.begin() + range[t + 1], r - d) -\n                dist.begin();\n\
+    \            res.emplace_back(id_l, id_r);\n        }\n        return res;\n \
+    \   }\n\n    std::vector<std::size_t> get_vertex(int v) const {\n        assert(0\
+    \ <= v && v < n);\n        std::vector<std::size_t> res;\n        for (auto [t,\
+    \ i, _] : labels[v]) {\n            res.emplace_back(range[t] + i);\n        }\n\
+    \        return res;\n    }\n\n    std::pair<int, int> sub_range(int i) const\
+    \ {\n        return {range[i], range[i + 1]};\n    }\n\n  private:\n    int n;\n\
+    \    std::vector<T> dist;\n    std::vector<int> range;\n    std::vector<std::vector<std::tuple<int,\
+    \ int, T>>> labels;\n};\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <ranges>\n#include <tuple>\n\
+    #include <vector>\n\n#include \"../graph/base.hpp\"\n#include \"../tree/centroid_decomposition.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> struct contour_query_on_weighted_tree\
+    \ {\n    contour_query_on_weighted_tree(const Graph<T> &tree) : n(int(tree.size()))\
+    \ {\n        int t = 0;\n        labels.resize(n);\n        range = {0};\n   \
+    \     std::vector<int> rev(n, -1);\n        auto f = [&](const std::vector<int>\
+    \ &par, const std::vector<int> &vs,\n                     const std::vector<int>\
+    \ &color) -> void {\n            int sz = (int)par.size();\n            std::vector<T>\
+    \ depth(sz, -1);\n            depth[0] = 0;\n            for (int i : std::views::iota(0,\
+    \ sz)) {\n                rev[vs[i]] = i;\n            }\n            for (int\
+    \ i : std::views::iota(0, sz)) {\n                int v = vs[i];\n           \
+    \     for (auto e : tree[v]) {\n                    if (rev[e.to] == -1) continue;\n\
+    \                    depth[rev[e.to]] = depth[rev[v]] + e.cost;\n            \
+    \    }\n                rev[v] = -1;\n            }\n            std::vector<int>\
+    \ red, blue;\n            for (const int v : std::views::iota(0, sz)) {\n    \
+    \            if (color[v] == 0) {\n                    red.emplace_back(v);\n\
+    \                } else if (color[v] == 1) {\n                    blue.emplace_back(v);\n\
+    \                } else {\n                    assert(color[v] == -1);\n     \
+    \           }\n            }\n            if (red.empty() || blue.empty()) return;\n\
+    \n            auto update = [&](std::vector<int> &s) -> void {\n             \
+    \   std::sort(s.begin(), s.end(), [&](int i, int j) -> bool {\n              \
+    \      return depth[i] < depth[j];\n                });\n                for (int\
+    \ i = 0; const int v : s) {\n                    dist.emplace_back(depth[v]);\n\
+    \                    labels[vs[v]].emplace_back(t, i, depth[v]);\n           \
+    \         i++;\n                }\n                range.emplace_back(dist.size());\n\
+    \                t++;\n            };\n            update(red);\n            update(blue);\n\
+    \        };\n        centroid_decomposition<2>(tree, f);\n    }\n\n    std::size_t\
+    \ size() {\n        return dist.size();\n    }\n\n    // [0, k)\n    std::vector<std::pair<std::size_t,\
+    \ std::size_t>>\n    get_range_less_than_k_from_v(int v, T k) const {\n      \
+    \  std::vector<std::pair<std::size_t, std::size_t>> res;\n        for (auto [t,\
+    \ i, d] : labels[v]) {\n            t ^= 1;\n            std::size_t id_l = range[t];\n\
+    \            std::size_t id_r =\n                std::lower_bound(dist.begin()\
+    \ + range[t],\n                                 dist.begin() + range[t + 1], k\
+    \ - d) -\n                dist.begin();\n            res.emplace_back(id_l, id_r);\n\
+    \        }\n        return res;\n    }\n\n    // [k, infty)\n    std::vector<std::pair<std::size_t,\
+    \ std::size_t>> get_range_k_or_more_from_v(\n        int v, T k) const {\n   \
+    \     std::vector<std::pair<std::size_t, std::size_t>> res;\n        for (auto\
+    \ [t, i, d] : labels[v]) {\n            t ^= 1;\n            std::size_t id_l\
+    \ =\n                std::lower_bound(dist.begin() + range[t],\n             \
+    \                    dist.begin() + range[t + 1], k - d) -\n                dist.begin();\n\
+    \            std::size_t id_r = range[t + 1];\n            res.emplace_back(id_l,\
+    \ id_r);\n        }\n        return res;\n    }\n\n    // [l, r)\n    std::vector<std::pair<std::size_t,\
+    \ std::size_t>> get_contour_from_vertex(\n        int v, T l, T r) const {\n \
+    \       std::vector<std::pair<std::size_t, std::size_t>> res;\n        for (auto\
+    \ [t, i, d] : labels[v]) {\n            t ^= 1;\n            std::size_t id_l\
+    \ =\n                std::lower_bound(dist.begin() + range[t],\n             \
+    \                    dist.begin() + range[t + 1], l - d) -\n                dist.begin();\n\
+    \            std::size_t id_r =\n                std::lower_bound(dist.begin()\
+    \ + range[t],\n                                 dist.begin() + range[t + 1], r\
+    \ - d) -\n                dist.begin();\n            res.emplace_back(id_l, id_r);\n\
+    \        }\n        return res;\n    }\n\n    std::vector<std::size_t> get_vertex(int\
+    \ v) const {\n        assert(0 <= v && v < n);\n        std::vector<std::size_t>\
+    \ res;\n        for (auto [t, i, _] : labels[v]) {\n            res.emplace_back(range[t]\
+    \ + i);\n        }\n        return res;\n    }\n\n    std::pair<int, int> sub_range(int\
+    \ i) const {\n        return {range[i], range[i + 1]};\n    }\n\n  private:\n\
+    \    int n;\n    std::vector<T> dist;\n    std::vector<int> range;\n    std::vector<std::vector<std::tuple<int,\
+    \ int, T>>> labels;\n};\n\n}  // namespace ebi"
   dependsOn:
-  - data_structure/dual_segtree.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
-  - template/template.hpp
-  - template/debug_template.hpp
-  - template/int_alias.hpp
-  - template/io.hpp
-  - template/utility.hpp
-  - tree/contour_query_on_tree.hpp
   - tree/centroid_decomposition.hpp
-  isVerificationFile: true
-  path: test/yuki/yuki_1038.test.cpp
+  isVerificationFile: false
+  path: tree/contour_query_on_weighted_tree.hpp
   requiredBy: []
-  timestamp: '2024-03-12 17:49:24+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-03-12 17:35:15+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: test/yuki/yuki_1038.test.cpp
+documentation_of: tree/contour_query_on_weighted_tree.hpp
 layout: document
 redirect_from:
-- /verify/test/yuki/yuki_1038.test.cpp
-- /verify/test/yuki/yuki_1038.test.cpp.html
-title: test/yuki/yuki_1038.test.cpp
+- /library/tree/contour_query_on_weighted_tree.hpp
+- /library/tree/contour_query_on_weighted_tree.hpp.html
+title: tree/contour_query_on_weighted_tree.hpp
 ---

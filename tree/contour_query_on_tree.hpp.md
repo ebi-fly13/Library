@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/simple_csr.hpp
+    title: Simple CSR
+  - icon: ':heavy_check_mark:'
+    path: graph/base.hpp
+    title: graph/base.hpp
+  - icon: ':heavy_check_mark:'
     path: tree/centroid_decomposition.hpp
     title: Centroid Decomposition
   _extendedRequiredBy: []
@@ -21,7 +27,59 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/contour_query_on_tree.hpp\"\n\n#include <cassert>\n\
-    #include <ranges>\n#include <vector>\n\n#line 2 \"tree/centroid_decomposition.hpp\"\
+    #include <ranges>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#line 4\
+    \ \"graph/base.hpp\"\n#include <iostream>\n#line 7 \"graph/base.hpp\"\n\n#line\
+    \ 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
+    \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
+    \    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n     \
+    \   : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
+    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
+    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
+    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
+    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
+    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
+    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
+    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
+    \                                   elist.begin() + start[i + 1]);\n    }\n  \
+    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \ + start[i],\n                                     elist.begin() + start[i +\
+    \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
+    \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
+    \                         elist.begin() + start[i + 1] + r);\n    }\n    auto\
+    \ operator()(int i, int l, int r) {\n        return std::ranges::subrange(elist.begin()\
+    \ + start[i] + l,\n                                     elist.begin() + start[i\
+    \ + 1] + r);\n    }\n\n  private:\n    std::vector<int> start;\n    std::vector<E>\
+    \ elist;\n};\n\n}  // namespace ebi\n#line 9 \"graph/base.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <class T> struct Edge {\n    int to;\n    T cost;\n    int id;\n\
+    };\n\ntemplate <class E> struct Graph {\n  private:\n    using cost_type = E;\n\
+    \    using edge_type = Edge<cost_type>;\n\n  public:\n    Graph(int n_) : n(n_)\
+    \ {}\n\n    Graph() = default;\n\n    void add_edge(int u, int v, cost_type c)\
+    \ {\n        edges.emplace_back(u, edge_type{v, c, m++});\n    }\n\n    void read_tree(int\
+    \ offset = 1, bool is_weighted = false) {\n        read_graph(n - 1, offset, false,\
+    \ is_weighted);\n    }\n\n    void read_parents(int offset = 1) {\n        for\
+    \ (auto i : std::views::iota(1, n)) {\n            int p;\n            std::cin\
+    \ >> p;\n            p -= offset;\n            add_edge(p, i, 1);\n          \
+    \  add_edge(i, p, 1);\n        }\n        build();\n    }\n\n    void read_graph(int\
+    \ e, int offset = 1, bool is_directed = false,\n                    bool is_weighted\
+    \ = false) {\n        for (int i = 0; i < e; i++) {\n            int u, v;\n \
+    \           std::cin >> u >> v;\n            u -= offset;\n            v -= offset;\n\
+    \            if (is_weighted) {\n                cost_type c;\n              \
+    \  std::cin >> c;\n                add_edge(u, v, c);\n                if (!is_directed)\
+    \ {\n                    add_edge(v, u, c);\n                }\n            }\
+    \ else {\n                add_edge(u, v, 1);\n                if (!is_directed)\
+    \ {\n                    add_edge(v, u, 1);\n                }\n            }\n\
+    \        }\n        build();\n    }\n\n    void build() {\n        assert(!prepared);\n\
+    \        csr = simple_csr<edge_type>(n, edges);\n        edges.clear();\n    \
+    \    prepared = true;\n    }\n\n    int size() const {\n        return n;\n  \
+    \  }\n\n    const auto operator[](int i) const {\n        return csr[i];\n   \
+    \ }\n    auto operator[](int i) {\n        return csr[i];\n    }\n\n  private:\n\
+    \    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>> edges;\n    simple_csr<edge_type>\
+    \ csr;\n    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"tree/centroid_decomposition.hpp\"\
     \n\n#include <algorithm>\n#line 7 \"tree/centroid_decomposition.hpp\"\n\nnamespace\
     \ ebi {\n\nnamespace internal {\n\ntemplate <class F>\nvoid centroid_decomposition_dfs_naive(const\
     \ std::vector<int> &par,\n                                      const std::vector<int>\
@@ -128,11 +186,11 @@ data:
     \ original_vs0, is_real0,\n                                                  f);\n\
     \    one_third_centroid_decomposition_virtual_real(par1, original_vs1, is_real1,\n\
     \                                                  f);\n    return;\n}\n\n}  //\
-    \ namespace internal\n\ntemplate <int MODE, class F>\nvoid centroid_decomposition(const\
-    \ std::vector<std::vector<int>> &tree, F f) {\n    int n = (int)tree.size();\n\
-    \    if (n == 1) return;\n    std::vector<int> bfs_order(n), par(n, -1);\n   \
-    \ bfs_order[0] = 0;\n    int l = 0, r = 1;\n    while (l < r) {\n        int v\
-    \ = bfs_order[l++];\n        for (auto nv : tree[v]) {\n            if (nv ==\
+    \ namespace internal\n\ntemplate <int MODE, class T, class F>\nvoid centroid_decomposition(const\
+    \ Graph<T> &tree, F f) {\n    int n = (int)tree.size();\n    if (n == 1) return;\n\
+    \    std::vector<int> bfs_order(n), par(n, -1);\n    bfs_order[0] = 0;\n    int\
+    \ l = 0, r = 1;\n    while (l < r) {\n        int v = bfs_order[l++];\n      \
+    \  for (auto e : tree[v]) {\n            int nv = e.to;\n            if (nv ==\
     \ par[v]) continue;\n            bfs_order[r++] = nv;\n            par[nv] = v;\n\
     \        }\n    }\n    assert(l == n && r == n);\n    {\n        std::vector<int>\
     \ relabel(n);\n        for (int i : std::views::iota(0, n)) {\n            relabel[bfs_order[i]]\
@@ -143,25 +201,25 @@ data:
     \ bfs_order, f);\n    } else if constexpr (MODE == 1) {\n        internal::one_third_centroid_decomposition(par,\
     \ bfs_order, f);\n    } else {\n        internal::one_third_centroid_decomposition_virtual_real(\n\
     \            par, bfs_order, std::vector<int>(n, 1), f);\n    }\n}\n\n}  // namespace\
-    \ ebi\n#line 8 \"tree/contour_query_on_tree.hpp\"\n\nnamespace ebi {\n\nstruct\
-    \ contour_query_on_tree {\n    contour_query_on_tree(const std::vector<std::vector<int>>\
-    \ &tree)\n        : n(int(tree.size())) {\n        int t = 0;\n        range =\
-    \ {0};\n        auto f = [&](const std::vector<int> &par, const std::vector<int>\
-    \ &vs,\n                     const std::vector<int> &color) -> void {\n      \
-    \      int sz = (int)par.size();\n            std::vector<int> depth(sz, 0);\n\
-    \            for (const int v : std::views::iota(1, sz)) {\n                depth[v]\
-    \ += depth[par[v]] + 1;\n            }\n            std::vector<int> red, blue;\n\
-    \            for (const int v : std::views::iota(0, sz)) {\n                if\
-    \ (color[v] == 0) {\n                    red.emplace_back(v);\n              \
-    \  } else if (color[v] == 1) {\n                    blue.emplace_back(v);\n  \
-    \              } else\n                    assert(color[v] == -1);\n         \
-    \   }\n            if (red.empty() || blue.empty()) return;\n            int max_red\
-    \ = -1;\n            for (const int v : red) {\n                vertexs.emplace_back(vs[v]);\n\
-    \                number.emplace_back(t);\n                dep.emplace_back(depth[v]);\n\
-    \                max_red = max_red < depth[v] ? depth[v] : max_red;\n        \
-    \    }\n            range.emplace_back(range.back() + max_red + 1);\n        \
-    \    t++;\n            int max_blue = -1;\n            for (const int v : blue)\
-    \ {\n                vertexs.emplace_back(vs[v]);\n                number.emplace_back(t);\n\
+    \ ebi\n#line 9 \"tree/contour_query_on_tree.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T> struct contour_query_on_tree {\n    contour_query_on_tree(const Graph<T>\
+    \ &tree) : n(tree.size()) {\n        int t = 0;\n        range = {0};\n      \
+    \  auto f = [&](const std::vector<int> &par, const std::vector<int> &vs,\n   \
+    \                  const std::vector<int> &color) -> void {\n            int sz\
+    \ = (int)par.size();\n            std::vector<int> depth(sz, 0);\n           \
+    \ for (const int v : std::views::iota(1, sz)) {\n                depth[v] += depth[par[v]]\
+    \ + 1;\n            }\n            std::vector<int> red, blue;\n            for\
+    \ (const int v : std::views::iota(0, sz)) {\n                if (color[v] == 0)\
+    \ {\n                    red.emplace_back(v);\n                } else if (color[v]\
+    \ == 1) {\n                    blue.emplace_back(v);\n                } else\n\
+    \                    assert(color[v] == -1);\n            }\n            if (red.empty()\
+    \ || blue.empty()) return;\n            int max_red = -1;\n            for (const\
+    \ int v : red) {\n                vertexs.emplace_back(vs[v]);\n             \
+    \   number.emplace_back(t);\n                dep.emplace_back(depth[v]);\n   \
+    \             max_red = max_red < depth[v] ? depth[v] : max_red;\n           \
+    \ }\n            range.emplace_back(range.back() + max_red + 1);\n           \
+    \ t++;\n            int max_blue = -1;\n            for (const int v : blue) {\n\
+    \                vertexs.emplace_back(vs[v]);\n                number.emplace_back(t);\n\
     \                dep.emplace_back(depth[v]);\n                max_blue = max_blue\
     \ < depth[v] ? depth[v] : max_blue;\n            }\n            range.emplace_back(range.back()\
     \ + max_blue + 1);\n            t++;\n        };\n        centroid_decomposition<2>(tree,\
@@ -191,20 +249,20 @@ data:
     \    std::vector<int> index, index_ptr;\n    std::vector<int> range;\n};\n\n}\
     \  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <ranges>\n#include <vector>\n\
-    \n#include \"../tree/centroid_decomposition.hpp\"\n\nnamespace ebi {\n\nstruct\
-    \ contour_query_on_tree {\n    contour_query_on_tree(const std::vector<std::vector<int>>\
-    \ &tree)\n        : n(int(tree.size())) {\n        int t = 0;\n        range =\
-    \ {0};\n        auto f = [&](const std::vector<int> &par, const std::vector<int>\
-    \ &vs,\n                     const std::vector<int> &color) -> void {\n      \
-    \      int sz = (int)par.size();\n            std::vector<int> depth(sz, 0);\n\
-    \            for (const int v : std::views::iota(1, sz)) {\n                depth[v]\
-    \ += depth[par[v]] + 1;\n            }\n            std::vector<int> red, blue;\n\
-    \            for (const int v : std::views::iota(0, sz)) {\n                if\
-    \ (color[v] == 0) {\n                    red.emplace_back(v);\n              \
-    \  } else if (color[v] == 1) {\n                    blue.emplace_back(v);\n  \
-    \              } else\n                    assert(color[v] == -1);\n         \
-    \   }\n            if (red.empty() || blue.empty()) return;\n            int max_red\
-    \ = -1;\n            for (const int v : red) {\n                vertexs.emplace_back(vs[v]);\n\
+    \n#include \"../graph/base.hpp\"\n#include \"../tree/centroid_decomposition.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> struct contour_query_on_tree {\n   \
+    \ contour_query_on_tree(const Graph<T> &tree) : n(tree.size()) {\n        int\
+    \ t = 0;\n        range = {0};\n        auto f = [&](const std::vector<int> &par,\
+    \ const std::vector<int> &vs,\n                     const std::vector<int> &color)\
+    \ -> void {\n            int sz = (int)par.size();\n            std::vector<int>\
+    \ depth(sz, 0);\n            for (const int v : std::views::iota(1, sz)) {\n \
+    \               depth[v] += depth[par[v]] + 1;\n            }\n            std::vector<int>\
+    \ red, blue;\n            for (const int v : std::views::iota(0, sz)) {\n    \
+    \            if (color[v] == 0) {\n                    red.emplace_back(v);\n\
+    \                } else if (color[v] == 1) {\n                    blue.emplace_back(v);\n\
+    \                } else\n                    assert(color[v] == -1);\n       \
+    \     }\n            if (red.empty() || blue.empty()) return;\n            int\
+    \ max_red = -1;\n            for (const int v : red) {\n                vertexs.emplace_back(vs[v]);\n\
     \                number.emplace_back(t);\n                dep.emplace_back(depth[v]);\n\
     \                max_red = max_red < depth[v] ? depth[v] : max_red;\n        \
     \    }\n            range.emplace_back(range.back() + max_red + 1);\n        \
@@ -239,11 +297,13 @@ data:
     \    std::vector<int> index, index_ptr;\n    std::vector<int> range;\n};\n\n}\
     \  // namespace ebi"
   dependsOn:
+  - graph/base.hpp
+  - data_structure/simple_csr.hpp
   - tree/centroid_decomposition.hpp
   isVerificationFile: false
   path: tree/contour_query_on_tree.hpp
   requiredBy: []
-  timestamp: '2024-01-04 19:22:23+09:00'
+  timestamp: '2024-03-12 17:35:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1038.test.cpp

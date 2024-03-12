@@ -40,6 +40,12 @@ data:
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/dijkstra.test.cpp
+    title: test/graph/dijkstra.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/fibonacci_heap.test.cpp
+    title: test/graph/fibonacci_heap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -136,6 +142,8 @@ data:
   - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_901_2.test.cpp
+  - test/graph/fibonacci_heap.test.cpp
+  - test/graph/dijkstra.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_grl_1_b.test.cpp

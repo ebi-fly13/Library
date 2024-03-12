@@ -13,7 +13,7 @@ data:
     links:
     - https://maspypy.com/slope-trick-1-%e8%a7%a3%e8%aa%ac%e7%b7%a8
   bundledCode: "#line 2 \"data_structure/slope_trick.hpp\"\n\n#include <cassert>\n\
-    #include <queue>\n#include <vector>\n\n/*\n    reference: https://maspypy.com/slope-trick-1-%e8%a7%a3%e8%aa%ac%e7%b7%a8\n\
+    #include <limits>\n#include <queue>\n#include <vector>\n\n/*\n    reference: https://maspypy.com/slope-trick-1-%e8%a7%a3%e8%aa%ac%e7%b7%a8\n\
     */\n\nnamespace ebi {\n\ntemplate <class T> struct slope_trick {\n  private:\n\
     \    using Self = slope_trick<T>;\n\n    void pop_L() {\n        if (L.empty())\
     \ return;\n        L.pop();\n        return;\n    }\n\n    T top_L() const {\n\
@@ -53,8 +53,8 @@ data:
     \ std::priority_queue<T> L;\n    std::priority_queue<T, std::vector<T>, std::greater<T>>\
     \ R;\n    T add_L, add_R;\n    const T INF = std::numeric_limits<T>::max() / 4;\n\
     };\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <queue>\n#include <vector>\n\
-    \n/*\n    reference: https://maspypy.com/slope-trick-1-%e8%a7%a3%e8%aa%ac%e7%b7%a8\n\
+  code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <queue>\n\
+    #include <vector>\n\n/*\n    reference: https://maspypy.com/slope-trick-1-%e8%a7%a3%e8%aa%ac%e7%b7%a8\n\
     */\n\nnamespace ebi {\n\ntemplate <class T> struct slope_trick {\n  private:\n\
     \    using Self = slope_trick<T>;\n\n    void pop_L() {\n        if (L.empty())\
     \ return;\n        L.pop();\n        return;\n    }\n\n    T top_L() const {\n\
@@ -98,7 +98,7 @@ data:
   isVerificationFile: false
   path: data_structure/slope_trick.hpp
   requiredBy: []
-  timestamp: '2023-05-08 16:51:58+09:00'
+  timestamp: '2024-03-12 18:09:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1077.test.cpp

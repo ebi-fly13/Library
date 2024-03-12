@@ -8,8 +8,11 @@ data:
     path: convolution/min_plus_convolution.hpp
     title: Min Plus Convolution
   - icon: ':heavy_check_mark:'
-    path: graph/template.hpp
-    title: graph/template.hpp
+    path: data_structure/simple_csr.hpp
+    title: Simple CSR
+  - icon: ':heavy_check_mark:'
+    path: graph/base.hpp
+    title: graph/base.hpp
   - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
@@ -107,35 +110,70 @@ data:
     \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
     void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
     \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
-    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/template.hpp\"\n\r\n#line\
-    \ 5 \"graph/template.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct\
-    \ Edge {\r\n    int to;\r\n    T cost;\r\n    Edge(int _to, T _cost = 1) : to(_to),\
-    \ cost(_cost) {}\r\n};\r\n\r\ntemplate <class T> struct Graph : std::vector<std::vector<Edge<T>>>\
-    \ {\r\n    using std::vector<std::vector<Edge<T>>>::vector;\r\n    void add_edge(int\
-    \ u, int v, T w, bool directed = false) {\r\n        (*this)[u].emplace_back(v,\
-    \ w);\r\n        if (directed) return;\r\n        (*this)[v].emplace_back(u, w);\r\
-    \n    }\r\n};\r\n\r\nstruct graph : std::vector<std::vector<int>> {\r\n    using\
-    \ std::vector<std::vector<int>>::vector;\r\n    void add_edge(int u, int v, bool\
-    \ directed = false) {\r\n        (*this)[u].emplace_back(v);\r\n        if (directed)\
-    \ return;\r\n        (*this)[v].emplace_back(u);\r\n    }\r\n\r\n    void read_tree(int\
-    \ offset = 1) {\r\n        read_graph((int)size()-1, offset);\r\n    }\r\n\r\n\
-    \    void read_graph(int m, int offset = 1, bool directed = false) {\r\n     \
-    \   for(int i = 0; i < m; i++) {\r\n            int u,v;\r\n            std::cin\
-    \ >> u >> v;\r\n            u -= offset;\r\n            v -= offset;\r\n     \
-    \       add_edge(u, v, directed);\r\n        }\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 8 \"template/utility.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ T> inline bool chmin(T &a, T b) {\n    if (a > b) {\n        a = b;\n      \
-    \  return true;\n    }\n    return false;\n}\n\ntemplate <class T> inline bool\
-    \ chmax(T &a, T b) {\n    if (a < b) {\n        a = b;\n        return true;\n\
-    \    }\n    return false;\n}\n\ntemplate <class T> T safe_ceil(T a, T b) {\n \
-    \   if (a % b == 0)\n        return a / b;\n    else if (a >= 0)\n        return\
-    \ (a / b) + 1;\n    else\n        return -((-a) / b);\n}\n\ntemplate <class T>\
-    \ T safe_floor(T a, T b) {\n    if (a % b == 0)\n        return a / b;\n    else\
-    \ if (a >= 0)\n        return a / b;\n    else\n        return -((-a) / b) - 1;\n\
-    }\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max() / 4;\n\nconstexpr int\
-    \ INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int> dy = {1,\
-    \ 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1, 1, -1, 1,\
-    \ -1};\n\n}  // namespace ebi\n#line 6 \"test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 5\
+    \ \"graph/base.hpp\"\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
+    \ \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
+    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
+    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
+    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
+    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
+    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
+    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
+    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
+    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
+    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
+    \                                   elist.begin() + start[i + 1]);\n    }\n  \
+    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \ + start[i],\n                                     elist.begin() + start[i +\
+    \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
+    \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
+    \                         elist.begin() + start[i + 1] + r);\n    }\n    auto\
+    \ operator()(int i, int l, int r) {\n        return std::ranges::subrange(elist.begin()\
+    \ + start[i] + l,\n                                     elist.begin() + start[i\
+    \ + 1] + r);\n    }\n\n  private:\n    std::vector<int> start;\n    std::vector<E>\
+    \ elist;\n};\n\n}  // namespace ebi\n#line 9 \"graph/base.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <class T> struct Edge {\n    int to;\n    T cost;\n    int id;\n\
+    };\n\ntemplate <class E> struct Graph {\n  private:\n    using cost_type = E;\n\
+    \    using edge_type = Edge<cost_type>;\n\n  public:\n    Graph(int n_) : n(n_)\
+    \ {}\n\n    Graph() = default;\n\n    void add_edge(int u, int v, cost_type c)\
+    \ {\n        edges.emplace_back(u, edge_type{v, c, m++});\n    }\n\n    void read_tree(int\
+    \ offset = 1, bool is_weighted = false) {\n        read_graph(n - 1, offset, false,\
+    \ is_weighted);\n    }\n\n    void read_parents(int offset = 1) {\n        for\
+    \ (auto i : std::views::iota(1, n)) {\n            int p;\n            std::cin\
+    \ >> p;\n            p -= offset;\n            add_edge(p, i, 1);\n          \
+    \  add_edge(i, p, 1);\n        }\n        build();\n    }\n\n    void read_graph(int\
+    \ e, int offset = 1, bool is_directed = false,\n                    bool is_weighted\
+    \ = false) {\n        for (int i = 0; i < e; i++) {\n            int u, v;\n \
+    \           std::cin >> u >> v;\n            u -= offset;\n            v -= offset;\n\
+    \            if (is_weighted) {\n                cost_type c;\n              \
+    \  std::cin >> c;\n                add_edge(u, v, c);\n                if (!is_directed)\
+    \ {\n                    add_edge(v, u, c);\n                }\n            }\
+    \ else {\n                add_edge(u, v, 1);\n                if (!is_directed)\
+    \ {\n                    add_edge(v, u, 1);\n                }\n            }\n\
+    \        }\n        build();\n    }\n\n    void build() {\n        assert(!prepared);\n\
+    \        csr = simple_csr<edge_type>(n, edges);\n        edges.clear();\n    \
+    \    prepared = true;\n    }\n\n    int size() const {\n        return n;\n  \
+    \  }\n\n    const auto operator[](int i) const {\n        return csr[i];\n   \
+    \ }\n    auto operator[](int i) {\n        return csr[i];\n    }\n\n  private:\n\
+    \    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>> edges;\n    simple_csr<edge_type>\
+    \ csr;\n    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"template/utility.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> inline bool chmin(T &a, T b) {\n   \
+    \ if (a > b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
+    }\n\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if (a < b) {\n   \
+    \     a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate <class\
+    \ T> T safe_ceil(T a, T b) {\n    if (a % b == 0)\n        return a / b;\n   \
+    \ else if (a >= 0)\n        return (a / b) + 1;\n    else\n        return -((-a)\
+    \ / b);\n}\n\ntemplate <class T> T safe_floor(T a, T b) {\n    if (a % b == 0)\n\
+    \        return a / b;\n    else if (a >= 0)\n        return a / b;\n    else\n\
+    \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
+    \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
+    \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
     \    std::vector<int> a(n), b(m);\n    std::cin >> a >> b;\n    auto c = min_plus_convolution_convex_and_arbitary(a,\
     \ b);\n    std::cout << c << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n\
@@ -156,11 +194,12 @@ data:
   - template/int_alias.hpp
   - template/io.hpp
   - template/utility.hpp
-  - graph/template.hpp
+  - graph/base.hpp
+  - data_structure/simple_csr.hpp
   isVerificationFile: true
   path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   requiredBy: []
-  timestamp: '2024-03-08 14:06:24+09:00'
+  timestamp: '2024-03-12 17:35:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp

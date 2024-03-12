@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/contour_query_on_tree.hpp
     title: Contour Query on Tree
+  - icon: ':warning:'
+    path: tree/contour_query_on_weighted_tree.hpp
+    title: tree/contour_query_on_weighted_tree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
@@ -139,11 +142,11 @@ data:
     \ original_vs0, is_real0,\n                                                  f);\n\
     \    one_third_centroid_decomposition_virtual_real(par1, original_vs1, is_real1,\n\
     \                                                  f);\n    return;\n}\n\n}  //\
-    \ namespace internal\n\ntemplate <int MODE, class F>\nvoid centroid_decomposition(const\
-    \ std::vector<std::vector<int>> &tree, F f) {\n    int n = (int)tree.size();\n\
-    \    if (n == 1) return;\n    std::vector<int> bfs_order(n), par(n, -1);\n   \
-    \ bfs_order[0] = 0;\n    int l = 0, r = 1;\n    while (l < r) {\n        int v\
-    \ = bfs_order[l++];\n        for (auto nv : tree[v]) {\n            if (nv ==\
+    \ namespace internal\n\ntemplate <int MODE, class T, class F>\nvoid centroid_decomposition(const\
+    \ Graph<T> &tree, F f) {\n    int n = (int)tree.size();\n    if (n == 1) return;\n\
+    \    std::vector<int> bfs_order(n), par(n, -1);\n    bfs_order[0] = 0;\n    int\
+    \ l = 0, r = 1;\n    while (l < r) {\n        int v = bfs_order[l++];\n      \
+    \  for (auto e : tree[v]) {\n            int nv = e.to;\n            if (nv ==\
     \ par[v]) continue;\n            bfs_order[r++] = nv;\n            par[nv] = v;\n\
     \        }\n    }\n    assert(l == n && r == n);\n    {\n        std::vector<int>\
     \ relabel(n);\n        for (int i : std::views::iota(0, n)) {\n            relabel[bfs_order[i]]\
@@ -262,11 +265,11 @@ data:
     \ original_vs0, is_real0,\n                                                  f);\n\
     \    one_third_centroid_decomposition_virtual_real(par1, original_vs1, is_real1,\n\
     \                                                  f);\n    return;\n}\n\n}  //\
-    \ namespace internal\n\ntemplate <int MODE, class F>\nvoid centroid_decomposition(const\
-    \ std::vector<std::vector<int>> &tree, F f) {\n    int n = (int)tree.size();\n\
-    \    if (n == 1) return;\n    std::vector<int> bfs_order(n), par(n, -1);\n   \
-    \ bfs_order[0] = 0;\n    int l = 0, r = 1;\n    while (l < r) {\n        int v\
-    \ = bfs_order[l++];\n        for (auto nv : tree[v]) {\n            if (nv ==\
+    \ namespace internal\n\ntemplate <int MODE, class T, class F>\nvoid centroid_decomposition(const\
+    \ Graph<T> &tree, F f) {\n    int n = (int)tree.size();\n    if (n == 1) return;\n\
+    \    std::vector<int> bfs_order(n), par(n, -1);\n    bfs_order[0] = 0;\n    int\
+    \ l = 0, r = 1;\n    while (l < r) {\n        int v = bfs_order[l++];\n      \
+    \  for (auto e : tree[v]) {\n            int nv = e.to;\n            if (nv ==\
     \ par[v]) continue;\n            bfs_order[r++] = nv;\n            par[nv] = v;\n\
     \        }\n    }\n    assert(l == n && r == n);\n    {\n        std::vector<int>\
     \ relabel(n);\n        for (int i : std::views::iota(0, n)) {\n            relabel[bfs_order[i]]\
@@ -283,7 +286,8 @@ data:
   path: tree/centroid_decomposition.hpp
   requiredBy:
   - tree/contour_query_on_tree.hpp
-  timestamp: '2024-01-04 16:07:34+09:00'
+  - tree/contour_query_on_weighted_tree.hpp
+  timestamp: '2024-03-12 17:35:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1038.test.cpp
