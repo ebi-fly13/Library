@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
@@ -141,22 +141,22 @@ data:
     \  public:\n    heavy_light_decomposition(Graph<T> gh, int root = 0)\n       \
     \ : n(gh.size()),\n          sz(n, 1),\n          in(n),\n          out(n),\n\
     \          nxt(n),\n          par(n, -1),\n          depth_(n, 0),\n         \
-    \ rev(n),\n          dist(n, 0) {\n        nxt[root] = root;\n        dfs_sz(root);\n\
-    \        dfs_hld(root);\n    }\n\n    int idx(int u) const {\n        return in[u];\n\
-    \    }\n\n    int rev_idx(int i) const {\n        return rev[i];\n    }\n\n  \
-    \  int la(int v, int k) const {\n        while (1) {\n            int u = nxt[v];\n\
-    \            if (in[u] <= in[v] - k) return rev[in[v] - k];\n            k -=\
-    \ in[v] - in[u] + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int\
-    \ u, int v) const {\n        while (nxt[u] != nxt[v]) {\n            if (in[u]\
-    \ < in[v]) std::swap(u, v);\n            u = par[nxt[u]];\n        }\n       \
-    \ return depth_[u] < depth_[v] ? u : v;\n    }\n\n    int jump(int s, int t, int\
-    \ i) const {\n        if (i == 0) return s;\n        int l = lca(s, t);\n    \
-    \    int d = depth_[s] + depth_[t] - depth_[l] * 2;\n        if (d < i) return\
-    \ -1;\n        if (depth_[s] - depth_[l] >= i) return la(s, i);\n        i = d\
-    \ - i;\n        return la(t, i);\n    }\n\n    std::vector<int> path(int s, int\
-    \ t) const {\n        int l = lca(s, t);\n        std::vector<int> a, b;\n   \
-    \     for (; s != l; s = par[s]) a.emplace_back(s);\n        for (; t != l; t\
-    \ = par[t]) b.emplace_back(t);\n        a.emplace_back(l);\n        std::reverse(b.begin(),\
+    \ rev(n),\n          dist(n, 0) {\n        nxt[root] = root;\n        dfs_sz(root,\
+    \ gh);\n        dfs_hld(root, gh);\n    }\n\n    int idx(int u) const {\n    \
+    \    return in[u];\n    }\n\n    int rev_idx(int i) const {\n        return rev[i];\n\
+    \    }\n\n    int la(int v, int k) const {\n        while (1) {\n            int\
+    \ u = nxt[v];\n            if (in[u] <= in[v] - k) return rev[in[v] - k];\n  \
+    \          k -= in[v] - in[u] + 1;\n            v = par[u];\n        }\n    }\n\
+    \n    int lca(int u, int v) const {\n        while (nxt[u] != nxt[v]) {\n    \
+    \        if (in[u] < in[v]) std::swap(u, v);\n            u = par[nxt[u]];\n \
+    \       }\n        return depth_[u] < depth_[v] ? u : v;\n    }\n\n    int jump(int\
+    \ s, int t, int i) const {\n        if (i == 0) return s;\n        int l = lca(s,\
+    \ t);\n        int d = depth_[s] + depth_[t] - depth_[l] * 2;\n        if (d <\
+    \ i) return -1;\n        if (depth_[s] - depth_[l] >= i) return la(s, i);\n  \
+    \      i = d - i;\n        return la(t, i);\n    }\n\n    std::vector<int> path(int\
+    \ s, int t) const {\n        int l = lca(s, t);\n        std::vector<int> a, b;\n\
+    \        for (; s != l; s = par[s]) a.emplace_back(s);\n        for (; t != l;\
+    \ t = par[t]) b.emplace_back(t);\n        a.emplace_back(l);\n        std::reverse(b.begin(),\
     \ b.end());\n        a.insert(a.end(), b.begin(), b.end());\n        return a;\n\
     \    }\n\n    int parent(int u) const {\n        return par[u];\n    }\n\n   \
     \ T distance(int u, int v) const {\n        return dist[u] + dist[v] - 2 * dist[lca(u,\
@@ -234,8 +234,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-03-12 23:14:51+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-03-13 00:41:51+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Path_Sum.test.cpp
 layout: document
