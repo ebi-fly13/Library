@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: graph/minimum_spanning_tree.hpp
+    title: Minimum Spanning Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Union_Find.test.cpp
     title: test/data_structure/Union_Find.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Minimum_Spanning_Tree.test.cpp
+    title: test/graph/Minimum_Spanning_Tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -44,10 +50,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data_structure/unionfind.hpp
-  requiredBy: []
+  requiredBy:
+  - graph/minimum_spanning_tree.hpp
   timestamp: '2023-11-13 02:14:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/data_structure/Union_Find.test.cpp
 documentation_of: data_structure/unionfind.hpp
 layout: document

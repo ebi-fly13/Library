@@ -5,23 +5,43 @@ data:
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   - icon: ':heavy_check_mark:'
+    path: data_structure/unionfind.hpp
+    title: UnionFind
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Minimum_Spanning_Tree.test.cpp
+    title: test/graph/Minimum_Spanning_Tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/complement_graph_bfs.hpp\"\n\n#include <numeric>\n\
-    #include <queue>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#include\
+  bundledCode: "#line 2 \"graph/minimum_spanning_tree.hpp\"\n\n#include <algorithm>\n\
+    #include <utility>\n#include <vector>\n\n#line 2 \"data_structure/unionfind.hpp\"\
+    \n\r\n#line 4 \"data_structure/unionfind.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct\
+    \ unionfind {\r\n  private:\r\n    std::vector<int> par;\r\n\r\n  public:\r\n\
+    \    unionfind(int n = 0) : par(n, -1) {}\r\n\r\n    bool same(int x, int y) {\r\
+    \n        return leader(x) == leader(y);\r\n    }\r\n\r\n    bool merge(int x,\
+    \ int y) {\r\n        x = leader(x);\r\n        y = leader(y);\r\n        if (x\
+    \ == y) return false;\r\n        if (par[x] > par[y]) std::swap(x, y);\r\n   \
+    \     par[x] += par[y];\r\n        par[y] = x;\r\n        return true;\r\n   \
+    \ }\r\n\r\n    int leader(int x) {\r\n        if (par[x] < 0)\r\n            return\
+    \ x;\r\n        else\r\n            return par[x] = leader(par[x]);\r\n    }\r\
+    \n\r\n    int size(int x) {\r\n        return -par[leader(x)];\r\n    }\r\n\r\n\
+    \    int count_group() {\r\n        int c = 0;\r\n        for (int i = 0; i <\
+    \ int(par.size()); i++) {\r\n            if (par[i] < 0) c++;\r\n        }\r\n\
+    \        return c;\r\n    }\r\n\r\n    void clear() {\r\n        for (int i =\
+    \ 0; i < int(par.size()); i++) {\r\n            par[i] = -1;\r\n        }\r\n\
+    \    }\r\n};\r\n\r\n}  // namespace ebi\n#line 2 \"graph/base.hpp\"\n\n#include\
     \ <cassert>\n#include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\
-    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
-    \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
-    \    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n     \
-    \   : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
+    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
+    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
     \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
     \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
     \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
@@ -71,52 +91,45 @@ data:
     \ const {\n        return csr[i];\n    }\n    auto operator[](int i) {\n     \
     \   return csr[i];\n    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,\
     \ edge_type>> edges;\n    simple_csr<edge_type> csr;\n    bool prepared = false;\n\
-    };\n\n}  // namespace ebi\n#line 8 \"graph/complement_graph_bfs.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class T, class F>\nvoid complement_graph_bfs(int s, const\
-    \ Graph<T> &h, const F &func) {\n    const int n = h.size();\n    std::vector<int>\
-    \ not_visit;\n    not_visit.reserve(n - 1);\n    for (int i = 0; i < n; i++)\n\
-    \        if (i != s) not_visit.emplace_back(i);\n    std::vector<bool> f(n, false);\n\
-    \    std::queue<int> que;\n    que.push(s);\n    while (!que.empty()) {\n    \
-    \    int v = que.front();\n        que.pop();\n        for (auto e : h[v]) {\n\
-    \            f[e.to] = true;\n        }\n        std::vector<int> L;\n       \
-    \ for (auto u : not_visit) {\n            if (f[u])\n                L.emplace_back(u);\n\
-    \            else {\n                que.push(u);\n                func(v, u);\n\
-    \            }\n        }\n        for (auto e : h[v]) {\n            f[e.to]\
-    \ = false;\n        }\n        std::swap(not_visit, L);\n    }\n    return;\n\
-    }\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <numeric>\n#include <queue>\n#include <vector>\n\
-    \n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T, class\
-    \ F>\nvoid complement_graph_bfs(int s, const Graph<T> &h, const F &func) {\n \
-    \   const int n = h.size();\n    std::vector<int> not_visit;\n    not_visit.reserve(n\
-    \ - 1);\n    for (int i = 0; i < n; i++)\n        if (i != s) not_visit.emplace_back(i);\n\
-    \    std::vector<bool> f(n, false);\n    std::queue<int> que;\n    que.push(s);\n\
-    \    while (!que.empty()) {\n        int v = que.front();\n        que.pop();\n\
-    \        for (auto e : h[v]) {\n            f[e.to] = true;\n        }\n     \
-    \   std::vector<int> L;\n        for (auto u : not_visit) {\n            if (f[u])\n\
-    \                L.emplace_back(u);\n            else {\n                que.push(u);\n\
-    \                func(v, u);\n            }\n        }\n        for (auto e :\
-    \ h[v]) {\n            f[e.to] = false;\n        }\n        std::swap(not_visit,\
-    \ L);\n    }\n    return;\n}\n\n}  // namespace ebi"
+    };\n\n}  // namespace ebi\n#line 9 \"graph/minimum_spanning_tree.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T>\nstd::pair<T, std::vector<int>> minimum_spanning_tree(const\
+    \ Graph<T> &g) {\n    unionfind uf(g.size());\n    std::vector<Edge<T>> edges;\n\
+    \    for (auto v : std::views::iota(0, g.size())) {\n        for (auto e : g[v])\
+    \ {\n            edges.emplace_back(e);\n        }\n    }\n    std::sort(edges.begin(),\
+    \ edges.end(),\n              [](const Edge<T> &a, const Edge<T> &b) -> bool {\n\
+    \                  return a.cost < b.cost;\n              });\n    std::vector<int>\
+    \ used;\n    T sum = 0;\n    for (auto e : edges) {\n        if (uf.same(e.from,\
+    \ e.to)) continue;\n        uf.merge(e.from, e.to);\n        used.emplace_back(e.id);\n\
+    \        sum += e.cost;\n    }\n\n    return {sum, used};\n}\n\n}  // namespace\
+    \ ebi\n"
+  code: "#pragma once\n\n#include <algorithm>\n#include <utility>\n#include <vector>\n\
+    \n#include \"../data_structure/unionfind.hpp\"\n#include \"../graph/base.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nstd::pair<T, std::vector<int>> minimum_spanning_tree(const\
+    \ Graph<T> &g) {\n    unionfind uf(g.size());\n    std::vector<Edge<T>> edges;\n\
+    \    for (auto v : std::views::iota(0, g.size())) {\n        for (auto e : g[v])\
+    \ {\n            edges.emplace_back(e);\n        }\n    }\n    std::sort(edges.begin(),\
+    \ edges.end(),\n              [](const Edge<T> &a, const Edge<T> &b) -> bool {\n\
+    \                  return a.cost < b.cost;\n              });\n    std::vector<int>\
+    \ used;\n    T sum = 0;\n    for (auto e : edges) {\n        if (uf.same(e.from,\
+    \ e.to)) continue;\n        uf.merge(e.from, e.to);\n        used.emplace_back(e.id);\n\
+    \        sum += e.cost;\n    }\n\n    return {sum, used};\n}\n\n}  // namespace\
+    \ ebi"
   dependsOn:
+  - data_structure/unionfind.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
-  path: graph/complement_graph_bfs.hpp
+  path: graph/minimum_spanning_tree.hpp
   requiredBy: []
-  timestamp: '2024-03-13 01:44:37+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: graph/complement_graph_bfs.hpp
+  timestamp: '2024-03-13 02:01:08+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/graph/Minimum_Spanning_Tree.test.cpp
+documentation_of: graph/minimum_spanning_tree.hpp
 layout: document
-title: Complement Graph BFS
+title: Minimum Spanning Tree
 ---
 
 ## 説明
 
-頂点 $s$ から始めて、 $h$ の補グラフをBFSする。頂点数を $N$ 、辺の本数を $M$ 、`func`の計算量を $F$ として計算量は $O(NF + M)$ である。
-
-インターフェースは以下である。ここで、 `func(v, u)` はBFSの際に頂点 $v$ から $u$ に遷移するときに呼ばれる関数である。
-
-```
-void complement_graph_bfs(int s, std::vector<std::vector<int>> h, F func)
-```
+最小全域木を構築する。返り値は、最小コストと使用した辺番号の配列である。 $O(N\alpha(N))$
