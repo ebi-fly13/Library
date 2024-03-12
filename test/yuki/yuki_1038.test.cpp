@@ -1,7 +1,7 @@
 #define PROBLEM "https://yukicoder.me/problems/no/1038"
 
 #include "../../data_structure/dual_segtree.hpp"
-#include "../../graph/template.hpp"
+#include "../../graph/base.hpp"
 #include "../../template/template.hpp"
 #include "../../tree/contour_query_on_tree.hpp"
 
@@ -18,14 +18,8 @@ i64 e() {
 void main_() {
     int n, q;
     std::cin >> n >> q;
-    graph g(n);
-    rep(i, 0, n - 1) {
-        int a, b;
-        std::cin >> a >> b;
-        a--;
-        b--;
-        g.add_edge(a, b);
-    }
+    Graph<int> g(n);
+    g.read_tree(1);
     std::vector<i64> res(n, 0);
     contour_query_on_tree cq(g);
     dual_segtree<i64, op, e> seg(cq.size());

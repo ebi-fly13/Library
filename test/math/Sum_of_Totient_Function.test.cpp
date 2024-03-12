@@ -1,6 +1,5 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/sum_of_totient_function"
 
-#include "../../graph/template.hpp"
 #include "../../math/DirichletSeries.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
