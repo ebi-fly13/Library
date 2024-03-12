@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/contour_query_on_tree.hpp
     title: Contour Query on Tree
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: tree/contour_query_on_weighted_tree.hpp
     title: Contour Query on Tree (Weighted)
   _extendedVerifiedWith:
@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
+    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
@@ -296,6 +299,7 @@ data:
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
 documentation_of: tree/centroid_decomposition.hpp
 layout: document

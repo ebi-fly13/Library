@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/lca_based_auxiliary_tree.hpp
     title: LCA based Auxiliary Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/901
@@ -139,43 +139,44 @@ data:
     \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"tree/heavy_light_decomposition.hpp\"\
     \n\n#line 6 \"tree/heavy_light_decomposition.hpp\"\n\n#line 8 \"tree/heavy_light_decomposition.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T> struct heavy_light_decomposition {\n\
-    \  private:\n    void dfs_sz(int v) {\n        for (auto &e : g[v]) {\n      \
-    \      if (e.to == par[v]) continue;\n            par[e.to] = v;\n           \
-    \ depth_[e.to] = depth_[v] + 1;\n            dist[e.to] = dist[v] + e.cost;\n\
-    \            dfs_sz(e.to);\n            sz[v] += sz[e.to];\n            if (sz[e.to]\
-    \ > sz[g[v][0].to] || g[v][0].to == par[v])\n                std::swap(e, g[v][0]);\n\
-    \        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n     \
-    \   rev[in[v]] = v;\n        for (auto e : g[v]) {\n            if (e.to == par[v])\
-    \ continue;\n            nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);\n \
-    \           dfs_hld(e.to);\n        }\n        out[v] = num;\n    }\n\n    //\
-    \ [u, v) \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
-    \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
-    \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
-    \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
+    \  private:\n    void dfs_sz(int v, Graph<T> &g) {\n        for (auto &e : g[v])\
+    \ {\n            if (e.to == par[v]) continue;\n            par[e.to] = v;\n \
+    \           depth_[e.to] = depth_[v] + 1;\n            dist[e.to] = dist[v] +\
+    \ e.cost;\n            dfs_sz(e.to, g);\n            sz[v] += sz[e.to];\n    \
+    \        if (sz[e.to] > sz[g[v][0].to] || g[v][0].to == par[v])\n            \
+    \    std::swap(e, g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v, const\
+    \ Graph<T> &g) {\n        in[v] = num++;\n        rev[in[v]] = v;\n        for\
+    \ (auto e : g[v]) {\n            if (e.to == par[v]) continue;\n            nxt[e.to]\
+    \ = (e.to == g[v][0].to ? nxt[v] : e.to);\n            dfs_hld(e.to, g);\n   \
+    \     }\n        out[v] = num;\n    }\n\n    // [u, v) \u30D1\u30B9\u306E\u53D6\
+    \u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> ascend(int\
+    \ u, int v) const {\n        std::vector<std::pair<int, int>> res;\n        while\
+    \ (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n   \
+    \         u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
     \ in[v] + 1);\n        return res;\n    }\n\n    // (u, v] \u30D1\u30B9\u306E\u53D6\
     \u5F97 (u \u306F v \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> descend(int\
     \ u, int v) const {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v])\
     \ return {{in[u] + 1, in[v]}};\n        auto res = descend(u, par[nxt[v]]);\n\
     \        res.emplace_back(in[nxt[v]], in[v]);\n        return res;\n    }\n\n\
-    \  public:\n    heavy_light_decomposition(const Graph<T> &gh, int root = 0)\n\
-    \        : n(gh.size()),\n          g(gh),\n          sz(n, 1),\n          in(n),\n\
-    \          out(n),\n          nxt(n),\n          par(n, -1),\n          depth_(n,\
-    \ 0),\n          rev(n),\n          dist(n, 0) {\n        nxt[root] = root;\n\
-    \        dfs_sz(root);\n        dfs_hld(root);\n    }\n\n    int idx(int u) const\
-    \ {\n        return in[u];\n    }\n\n    int rev_idx(int i) const {\n        return\
-    \ rev[i];\n    }\n\n    int la(int v, int k) const {\n        while (1) {\n  \
-    \          int u = nxt[v];\n            if (in[u] <= in[v] - k) return rev[in[v]\
-    \ - k];\n            k -= in[v] - in[u] + 1;\n            v = par[u];\n      \
-    \  }\n    }\n\n    int lca(int u, int v) const {\n        while (nxt[u] != nxt[v])\
-    \ {\n            if (in[u] < in[v]) std::swap(u, v);\n            u = par[nxt[u]];\n\
-    \        }\n        return depth_[u] < depth_[v] ? u : v;\n    }\n\n    int jump(int\
-    \ s, int t, int i) const {\n        if (i == 0) return s;\n        int l = lca(s,\
-    \ t);\n        int d = depth_[s] + depth_[t] - depth_[l] * 2;\n        if (d <\
-    \ i) return -1;\n        if (depth_[s] - depth_[l] >= i) return la(s, i);\n  \
-    \      i = d - i;\n        return la(t, i);\n    }\n\n    std::vector<int> path(int\
-    \ s, int t) const {\n        int l = lca(s, t);\n        std::vector<int> a, b;\n\
-    \        for (; s != l; s = par[s]) a.emplace_back(s);\n        for (; t != l;\
-    \ t = par[t]) b.emplace_back(t);\n        a.emplace_back(l);\n        std::reverse(b.begin(),\
+    \  public:\n    heavy_light_decomposition(Graph<T> gh, int root = 0)\n       \
+    \ : n(gh.size()),\n          sz(n, 1),\n          in(n),\n          out(n),\n\
+    \          nxt(n),\n          par(n, -1),\n          depth_(n, 0),\n         \
+    \ rev(n),\n          dist(n, 0) {\n        nxt[root] = root;\n        dfs_sz(root);\n\
+    \        dfs_hld(root);\n    }\n\n    int idx(int u) const {\n        return in[u];\n\
+    \    }\n\n    int rev_idx(int i) const {\n        return rev[i];\n    }\n\n  \
+    \  int la(int v, int k) const {\n        while (1) {\n            int u = nxt[v];\n\
+    \            if (in[u] <= in[v] - k) return rev[in[v] - k];\n            k -=\
+    \ in[v] - in[u] + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int\
+    \ u, int v) const {\n        while (nxt[u] != nxt[v]) {\n            if (in[u]\
+    \ < in[v]) std::swap(u, v);\n            u = par[nxt[u]];\n        }\n       \
+    \ return depth_[u] < depth_[v] ? u : v;\n    }\n\n    int jump(int s, int t, int\
+    \ i) const {\n        if (i == 0) return s;\n        int l = lca(s, t);\n    \
+    \    int d = depth_[s] + depth_[t] - depth_[l] * 2;\n        if (d < i) return\
+    \ -1;\n        if (depth_[s] - depth_[l] >= i) return la(s, i);\n        i = d\
+    \ - i;\n        return la(t, i);\n    }\n\n    std::vector<int> path(int s, int\
+    \ t) const {\n        int l = lca(s, t);\n        std::vector<int> a, b;\n   \
+    \     for (; s != l; s = par[s]) a.emplace_back(s);\n        for (; t != l; t\
+    \ = par[t]) b.emplace_back(t);\n        a.emplace_back(l);\n        std::reverse(b.begin(),\
     \ b.end());\n        a.insert(a.end(), b.begin(), b.end());\n        return a;\n\
     \    }\n\n    int parent(int u) const {\n        return par[u];\n    }\n\n   \
     \ T distance(int u, int v) const {\n        return dist[u] + dist[v] - 2 * dist[lca(u,\
@@ -209,9 +210,9 @@ data:
     \ std::vector<int> &dfs_order() const {\n        return rev;\n    }\n\n    std::vector<std::pair<int,\
     \ int>> lca_based_auxiliary_tree_dfs_order(\n        std::vector<int> vs) const;\n\
     \n    std::pair<std::vector<int>, Graph<T>> lca_based_auxiliary_tree(\n      \
-    \  std::vector<int> vs) const;\n\n  private:\n    int n;\n    Graph<T> g;\n  \
-    \  std::vector<int> sz, in, out, nxt, par, depth_, rev;\n    std::vector<T> dist;\n\
-    \n    int num = 0;\n};\n\n}  // namespace ebi\n#line 2 \"tree/lca_based_auxiliary_tree.hpp\"\
+    \  std::vector<int> vs) const;\n\n  private:\n    int n;\n    std::vector<int>\
+    \ sz, in, out, nxt, par, depth_, rev;\n    std::vector<T> dist;\n\n    int num\
+    \ = 0;\n};\n\n}  // namespace ebi\n#line 2 \"tree/lca_based_auxiliary_tree.hpp\"\
     \n\n#line 8 \"tree/lca_based_auxiliary_tree.hpp\"\n\n#line 10 \"tree/lca_based_auxiliary_tree.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T>\nstd::vector<std::pair<int, int>>\n\
     heavy_light_decomposition<T>::lca_based_auxiliary_tree_dfs_order(\n    std::vector<int>\
@@ -293,8 +294,8 @@ data:
   isVerificationFile: true
   path: test/yuki/yuki_901.test.cpp
   requiredBy: []
-  timestamp: '2024-03-12 17:35:15+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-03-12 23:14:51+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yuki/yuki_901.test.cpp
 layout: document

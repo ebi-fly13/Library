@@ -21,21 +21,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Sum_Segtree.test.cpp
     title: test/data_structure/Rectangle_Sum_Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
+    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/segtree.hpp\"\n\r\n#include <cassert>\r\n\
@@ -123,12 +126,13 @@ data:
   path: data_structure/segtree.hpp
   requiredBy: []
   timestamp: '2023-10-31 01:04:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/aoj/aoj_1068_1.test.cpp
   - test/aoj/aoj_1645.test.cpp
   - test/aoj/aoj_3086.test.cpp
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   - test/data_structure/Rectangle_Sum_Segtree.test.cpp
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp

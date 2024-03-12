@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
@@ -112,6 +112,6 @@ title: Bellman-Ford
 
 ## 説明
 
-負辺ありのグラフについて、単一始点最短路を求める。 $O(|V||E|)$
+負辺ありのグラフについて、単一始点最短路を求める。 $O(NM)$
 
 負の閉路が存在する場合、返り値の配列は空である。

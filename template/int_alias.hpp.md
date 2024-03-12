@@ -29,17 +29,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2235.test.cpp
     title: test/aoj/aoj_2235.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
   - icon: ':heavy_check_mark:'
@@ -88,6 +88,9 @@ data:
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/Shortest_Path.test.cpp
+    title: test/graph/Shortest_Path.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/dijkstra.test.cpp
     title: test/graph/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
@@ -133,6 +136,9 @@ data:
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
+    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -147,21 +153,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_901_2.test.cpp
     title: test/yuki/yuki_901_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -252,7 +258,7 @@ data:
   - math/DirichletSeries.hpp
   - math/linear_sieve.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1038.test.cpp
   - test/yuki/yuki_2439.test.cpp
@@ -263,6 +269,7 @@ data:
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_901_2.test.cpp
   - test/graph/fibonacci_heap.test.cpp
+  - test/graph/Shortest_Path.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/aoj/aoj_2235.test.cpp
@@ -275,6 +282,7 @@ data:
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Cartesian_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp

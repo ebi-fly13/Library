@@ -1,20 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
     path: tree/centroid_decomposition.hpp
     title: Centroid Decomposition
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
+    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/contour_query_on_weighted_tree.hpp\"\n\n#include <cassert>\n\
@@ -313,8 +316,9 @@ data:
   path: tree/contour_query_on_weighted_tree.hpp
   requiredBy: []
   timestamp: '2024-03-12 17:35:15+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
 documentation_of: tree/contour_query_on_weighted_tree.hpp
 layout: document
 title: Contour Query on Tree (Weighted)
@@ -340,6 +344,10 @@ title: Contour Query on Tree (Weighted)
 頂点 $v$ と距離が $k$ 未満であるような頂点の属する区間を返す。 $O((\log{N})^2)$
 
 距離が $0$ であるよう場合は含まれないので別途処理が必要。
+
+### get_range_k_or_more_from_v(int v, T k)
+
+頂点 $v$ と距離が $k$ 以上の頂点の属する区間を返す。 $O((\log{N})^2)$
 
 ### get_contour_from_vertex(int v, T l, T r)
 
