@@ -16,22 +16,22 @@ template <class T> struct Edge {
 };
 
 template <class E> struct Graph {
-  private:
     using cost_type = E;
     using edge_type = Edge<cost_type>;
 
-  public:
     Graph(int n_) : n(n_) {}
 
     Graph() = default;
 
     void add_edge(int u, int v, cost_type c) {
-        edges.emplace_back(u, edge_type{u, v, c, m++});
+        buff.emplace_back(u, edge_type{u, v, c, m});
+        edges.emplace_back(edge_type{u, v, c, m++});
     }
 
     void add_undirected_edge(int u, int v, cost_type c) {
-        edges.emplace_back(u, edge_type{u, v, c, m});
-        edges.emplace_back(v, edge_type{v, u, c, m});
+        buff.emplace_back(u, edge_type{u, v, c, m});
+        buff.emplace_back(v, edge_type{v, u, c, m});
+        edges.emplace_back(edge_type{u, v, c, m});
         m++;
     }
 
@@ -77,13 +77,29 @@ template <class E> struct Graph {
 
     void build() {
         assert(!prepared);
-        csr = simple_csr<edge_type>(n, edges);
-        edges.clear();
+        csr = simple_csr<edge_type>(n, buff);
+        buff.clear();
         prepared = true;
     }
 
     int size() const {
         return n;
+    }
+
+    int node_number() const {
+        return n;
+    }
+
+    int edge_number() const {
+        return m;
+    }
+
+    edge_type get_edge(int i) const {
+        return edges[i];
+    }
+
+    std::vector<edge_type> get_edges() const {
+        return edges;
     }
 
     const auto operator[](int i) const {
@@ -96,7 +112,9 @@ template <class E> struct Graph {
   private:
     int n, m = 0;
 
-    std::vector<std::pair<int, edge_type>> edges;
+    std::vector<std::pair<int,edge_type>> buff;
+
+    std::vector<edge_type> edges;
     simple_csr<edge_type> csr;
     bool prepared = false;
 };
