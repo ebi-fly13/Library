@@ -2,22 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/lowest_common_ancestor.hpp
     title: Lowest Common Ancestor
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Rmq.test.cpp
     title: test/data_structure/Static_Rmq.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/lowest_common_ancestor.test.cpp
     title: test/tree/lowest_common_ancestor.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://scrapbox.io/data-structures/Sparse_Table
@@ -66,7 +66,7 @@ data:
   requiredBy:
   - tree/lowest_common_ancestor.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Jump_on_Tree.test.cpp

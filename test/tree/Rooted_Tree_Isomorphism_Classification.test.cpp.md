@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint61.hpp
     title: modint/modint61.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/random_number_generator.hpp
     title: Random Number Generator
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
@@ -241,7 +241,7 @@ data:
   path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   requiredBy: []
   timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 layout: document

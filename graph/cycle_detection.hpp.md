@@ -5,40 +5,22 @@ data:
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   - icon: ':heavy_check_mark:'
-    path: data_structure/unionfind.hpp
-    title: UnionFind
-  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/graph/Minimum_Spanning_Tree.test.cpp
-    title: test/graph/Minimum_Spanning_Tree.test.cpp
+    path: test/graph/Cycle_Detection_Undirected.test.cpp
+    title: test/graph/Cycle_Detection_Undirected.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/minimum_spanning_tree.hpp\"\n\n#include <algorithm>\n\
-    #include <utility>\n#include <vector>\n\n#line 2 \"data_structure/unionfind.hpp\"\
-    \n\r\n#line 4 \"data_structure/unionfind.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct\
-    \ unionfind {\r\n  private:\r\n    std::vector<int> par;\r\n\r\n  public:\r\n\
-    \    unionfind(int n = 0) : par(n, -1) {}\r\n\r\n    bool same(int x, int y) {\r\
-    \n        return leader(x) == leader(y);\r\n    }\r\n\r\n    bool merge(int x,\
-    \ int y) {\r\n        x = leader(x);\r\n        y = leader(y);\r\n        if (x\
-    \ == y) return false;\r\n        if (par[x] > par[y]) std::swap(x, y);\r\n   \
-    \     par[x] += par[y];\r\n        par[y] = x;\r\n        return true;\r\n   \
-    \ }\r\n\r\n    int leader(int x) {\r\n        if (par[x] < 0)\r\n            return\
-    \ x;\r\n        else\r\n            return par[x] = leader(par[x]);\r\n    }\r\
-    \n\r\n    int size(int x) {\r\n        return -par[leader(x)];\r\n    }\r\n\r\n\
-    \    int count_group() {\r\n        int c = 0;\r\n        for (int i = 0; i <\
-    \ int(par.size()); i++) {\r\n            if (par[i] < 0) c++;\r\n        }\r\n\
-    \        return c;\r\n    }\r\n\r\n    void clear() {\r\n        for (int i =\
-    \ 0; i < int(par.size()); i++) {\r\n            par[i] = -1;\r\n        }\r\n\
-    \    }\r\n};\r\n\r\n}  // namespace ebi\n#line 2 \"graph/base.hpp\"\n\n#include\
-    \ <cassert>\n#include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\
-    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
+  bundledCode: "#line 2 \"graph/cycle_detection.hpp\"\n\n#include <optional>\n#include\
+    \ <utility>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#include <cassert>\n\
+    #include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
+    \ \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
     \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
     \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
@@ -95,45 +77,63 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 9 \"graph/minimum_spanning_tree.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T>\nstd::pair<T, std::vector<int>> minimum_spanning_tree(const\
-    \ Graph<T> &g) {\n    unionfind uf(g.size());\n    std::vector<Edge<T>> edges;\n\
-    \    for (auto v : std::views::iota(0, g.size())) {\n        for (auto e : g[v])\
-    \ {\n            edges.emplace_back(e);\n        }\n    }\n    std::sort(edges.begin(),\
-    \ edges.end(),\n              [](const Edge<T> &a, const Edge<T> &b) -> bool {\n\
-    \                  return a.cost < b.cost;\n              });\n    std::vector<int>\
-    \ used;\n    T sum = 0;\n    for (auto e : edges) {\n        if (uf.same(e.from,\
-    \ e.to)) continue;\n        uf.merge(e.from, e.to);\n        used.emplace_back(e.id);\n\
-    \        sum += e.cost;\n    }\n\n    return {sum, used};\n}\n\n}  // namespace\
-    \ ebi\n"
-  code: "#pragma once\n\n#include <algorithm>\n#include <utility>\n#include <vector>\n\
-    \n#include \"../data_structure/unionfind.hpp\"\n#include \"../graph/base.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T>\nstd::pair<T, std::vector<int>> minimum_spanning_tree(const\
-    \ Graph<T> &g) {\n    unionfind uf(g.size());\n    std::vector<Edge<T>> edges;\n\
-    \    for (auto v : std::views::iota(0, g.size())) {\n        for (auto e : g[v])\
-    \ {\n            edges.emplace_back(e);\n        }\n    }\n    std::sort(edges.begin(),\
-    \ edges.end(),\n              [](const Edge<T> &a, const Edge<T> &b) -> bool {\n\
-    \                  return a.cost < b.cost;\n              });\n    std::vector<int>\
-    \ used;\n    T sum = 0;\n    for (auto e : edges) {\n        if (uf.same(e.from,\
-    \ e.to)) continue;\n        uf.merge(e.from, e.to);\n        used.emplace_back(e.id);\n\
-    \        sum += e.cost;\n    }\n\n    return {sum, used};\n}\n\n}  // namespace\
-    \ ebi"
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"graph/cycle_detection.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nstd::optional<std::pair<std::vector<int>,\
+    \ std::vector<int>>>\ncycle_detection_undirected(const Graph<T> &g) {\n    int\
+    \ n = g.node_number();\n    int m = g.edge_number();\n    std::vector<bool> used_edge(m,\
+    \ false);\n    std::vector<int> depth(n, -1);\n    std::vector<int> par_idx(n,\
+    \ -1);\n\n    auto dfs = [&](auto &&self, int v) -> int {\n        for (auto e\
+    \ : g[v]) {\n            if (used_edge[e.id]) continue;\n            if (depth[e.to]\
+    \ != -1) return e.id;\n            used_edge[e.id] = true;\n            par_idx[e.to]\
+    \ = e.id;\n            depth[e.to] = depth[v] + 1;\n            int x = self(self,\
+    \ e.to);\n            if (x != -1) return x;\n        }\n        return -1;\n\
+    \    };\n\n    for (auto v : std::views::iota(0, n)) {\n        if (depth[v] !=\
+    \ -1) continue;\n        depth[v] = 0;\n        int id = dfs(dfs, v);\n      \
+    \  if (id == -1) continue;\n        int s = -1;\n        {\n            auto e\
+    \ = g.get_edge(id);\n            if (depth[e.to] < depth[e.from])\n          \
+    \      s = e.to;\n            else\n                s = e.from;\n        }\n \
+    \       std::vector<int> vs, es;\n        vs.emplace_back(s), es.emplace_back(id);\n\
+    \        while (1) {\n            auto e = g.get_edge(es.back());\n          \
+    \  int u = e.from ^ e.to ^ vs.back();\n            if (u == s) break;\n      \
+    \      vs.emplace_back(u), es.emplace_back(par_idx[u]);\n        }\n        return\
+    \ std::pair<std::vector<int>, std::vector<int>>{vs, es};\n    }\n    return std::nullopt;\n\
+    }\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <optional>\n#include <utility>\n#include <vector>\n\
+    \n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nstd::optional<std::pair<std::vector<int>,\
+    \ std::vector<int>>>\ncycle_detection_undirected(const Graph<T> &g) {\n    int\
+    \ n = g.node_number();\n    int m = g.edge_number();\n    std::vector<bool> used_edge(m,\
+    \ false);\n    std::vector<int> depth(n, -1);\n    std::vector<int> par_idx(n,\
+    \ -1);\n\n    auto dfs = [&](auto &&self, int v) -> int {\n        for (auto e\
+    \ : g[v]) {\n            if (used_edge[e.id]) continue;\n            if (depth[e.to]\
+    \ != -1) return e.id;\n            used_edge[e.id] = true;\n            par_idx[e.to]\
+    \ = e.id;\n            depth[e.to] = depth[v] + 1;\n            int x = self(self,\
+    \ e.to);\n            if (x != -1) return x;\n        }\n        return -1;\n\
+    \    };\n\n    for (auto v : std::views::iota(0, n)) {\n        if (depth[v] !=\
+    \ -1) continue;\n        depth[v] = 0;\n        int id = dfs(dfs, v);\n      \
+    \  if (id == -1) continue;\n        int s = -1;\n        {\n            auto e\
+    \ = g.get_edge(id);\n            if (depth[e.to] < depth[e.from])\n          \
+    \      s = e.to;\n            else\n                s = e.from;\n        }\n \
+    \       std::vector<int> vs, es;\n        vs.emplace_back(s), es.emplace_back(id);\n\
+    \        while (1) {\n            auto e = g.get_edge(es.back());\n          \
+    \  int u = e.from ^ e.to ^ vs.back();\n            if (u == s) break;\n      \
+    \      vs.emplace_back(u), es.emplace_back(par_idx[u]);\n        }\n        return\
+    \ std::pair<std::vector<int>, std::vector<int>>{vs, es};\n    }\n    return std::nullopt;\n\
+    }\n\n}  // namespace ebi"
   dependsOn:
-  - data_structure/unionfind.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
-  path: graph/minimum_spanning_tree.hpp
+  path: graph/cycle_detection.hpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-03-13 16:10:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Minimum_Spanning_Tree.test.cpp
-documentation_of: graph/minimum_spanning_tree.hpp
+  - test/graph/Cycle_Detection_Undirected.test.cpp
+documentation_of: graph/cycle_detection.hpp
 layout: document
-title: Minimum Spanning Tree
+title: Cycle Detection
 ---
 
 ## 説明
 
-最小全域木を構築する。返り値は、最小コストと使用した辺番号の配列である。 $O(N\alpha(N))$
+グラフを与えてサイクルを検出する。サイクルが存在する場合、サイクルの $1$ つを返す。 $O(N+M)$

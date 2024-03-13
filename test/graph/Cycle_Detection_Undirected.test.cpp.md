@@ -8,8 +8,8 @@ data:
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
-    path: graph/dijkstra.hpp
-    title: dijkstra
+    path: graph/cycle_detection.hpp
+    title: Cycle Detection
   - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
@@ -32,23 +32,24 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/shortest_path
+    PROBLEM: https://judge.yosupo.jp/problem/cycle_detection_undirected
     links:
-    - https://judge.yosupo.jp/problem/shortest_path
-  bundledCode: "#line 1 \"test/graph/Shortest_Path.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/shortest_path\"\n\n#line 2 \"graph/base.hpp\"\n\
-    \n#include <cassert>\n#include <iostream>\n#include <ranges>\n#include <vector>\n\
-    \n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
-    \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
-    \    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n     \
-    \   : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
-    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
-    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
-    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
-    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
-    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    - https://judge.yosupo.jp/problem/cycle_detection_undirected
+  bundledCode: "#line 1 \"test/graph/Cycle_Detection_Undirected.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection_undirected\"\n\n#line\
+    \ 2 \"graph/cycle_detection.hpp\"\n\n#include <optional>\n#include <utility>\n\
+    #include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#include <cassert>\n#include\
+    \ <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
+    \n\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ E> struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n,\
+    \ const std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0),\
+    \ elist(elements.size()) {\n        for (auto e : elements) {\n            start[e.first\
+    \ + 1]++;\n        }\n        for (auto i : std::views::iota(0, n)) {\n      \
+    \      start[i + 1] += start[i];\n        }\n        auto counter = start;\n \
+    \       for (auto [i, e] : elements) {\n            elist[counter[i]++] = e;\n\
+    \        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>& es)\n \
+    \       : start(es.size() + 1, 0) {\n        int n = es.size();\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
     \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
     \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
     \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
@@ -96,35 +97,27 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"graph/dijkstra.hpp\"\
-    \n\r\n#include <algorithm>\r\n#include <limits>\r\n#include <queue>\r\n#line 7\
-    \ \"graph/dijkstra.hpp\"\n\r\n#line 9 \"graph/dijkstra.hpp\"\n\r\nnamespace ebi\
-    \ {\r\n\r\ntemplate <class T> std::vector<T> dijkstra(int s, int n, const Graph<T>\
-    \ &g) {\r\n    typedef std::pair<T, int> P;\r\n    std::vector<T> d(n, std::numeric_limits<T>::max());\r\
-    \n    std::priority_queue<P, std::vector<P>, std::greater<P>> que;\r\n    que.push(P(0,\
-    \ s));\r\n    d[s] = 0;\r\n    while (!que.empty()) {\r\n        auto [ret, v]\
-    \ = que.top();\r\n        que.pop();\r\n        if (d[v] < ret) continue;\r\n\
-    \        for (auto e : g[v]) {\r\n            if (d[e.to] > d[v] + e.cost) {\r\
-    \n                d[e.to] = d[v] + e.cost;\r\n                que.push(P(d[e.to],\
-    \ e.to));\r\n            }\r\n        }\r\n    }\r\n    return d;\r\n}\r\n\r\n\
-    template <class T> struct dijkstra_path {\r\n  public:\r\n    dijkstra_path(int\
-    \ s_, const Graph<T> &g)\r\n        : s(s_),\r\n          dist(g.size(), std::numeric_limits<T>::max()),\r\
-    \n          prev(g.size(), -1) {\r\n        dist[s] = 0;\r\n        using P =\
-    \ std::pair<T, int>;\r\n        std::priority_queue<P, std::vector<P>, std::greater<P>>\
-    \ que;\r\n        que.push(P(0, s));\r\n        while (!que.empty()) {\r\n   \
-    \         auto [ret, v] = que.top();\r\n            que.pop();\r\n           \
-    \ if (dist[v] < ret) continue;\r\n            for (auto e : g[v]) {\r\n      \
-    \          if (dist[e.to] > dist[v] + e.cost) {\r\n                    dist[e.to]\
-    \ = dist[v] + e.cost;\r\n                    prev[e.to] = v;\r\n             \
-    \       que.push(P(dist[e.to], e.to));\r\n                }\r\n            }\r\
-    \n        }\r\n    }\r\n\r\n    std::pair<T, std::vector<int>> shortest_path(int\
-    \ v) const {\r\n        if (dist[v] == std::numeric_limits<T>::max()) return {dist[v],\
-    \ {}};\r\n        std::vector<int> path;\r\n        int u = v;\r\n        while\
-    \ (u != s) {\r\n            path.emplace_back(u);\r\n            u = prev[u];\r\
-    \n        }\r\n        path.emplace_back(u);\r\n        std::reverse(path.begin(),\
-    \ path.end());\r\n        return {dist[v], path};\r\n    }\r\n\r\n  private:\r\
-    \n    int s;\r\n    std::vector<T> dist;\r\n    std::vector<int> prev;\r\n};\r\
-    \n\r\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"graph/cycle_detection.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nstd::optional<std::pair<std::vector<int>,\
+    \ std::vector<int>>>\ncycle_detection_undirected(const Graph<T> &g) {\n    int\
+    \ n = g.node_number();\n    int m = g.edge_number();\n    std::vector<bool> used_edge(m,\
+    \ false);\n    std::vector<int> depth(n, -1);\n    std::vector<int> par_idx(n,\
+    \ -1);\n\n    auto dfs = [&](auto &&self, int v) -> int {\n        for (auto e\
+    \ : g[v]) {\n            if (used_edge[e.id]) continue;\n            if (depth[e.to]\
+    \ != -1) return e.id;\n            used_edge[e.id] = true;\n            par_idx[e.to]\
+    \ = e.id;\n            depth[e.to] = depth[v] + 1;\n            int x = self(self,\
+    \ e.to);\n            if (x != -1) return x;\n        }\n        return -1;\n\
+    \    };\n\n    for (auto v : std::views::iota(0, n)) {\n        if (depth[v] !=\
+    \ -1) continue;\n        depth[v] = 0;\n        int id = dfs(dfs, v);\n      \
+    \  if (id == -1) continue;\n        int s = -1;\n        {\n            auto e\
+    \ = g.get_edge(id);\n            if (depth[e.to] < depth[e.from])\n          \
+    \      s = e.to;\n            else\n                s = e.from;\n        }\n \
+    \       std::vector<int> vs, es;\n        vs.emplace_back(s), es.emplace_back(id);\n\
+    \        while (1) {\n            auto e = g.get_edge(es.back());\n          \
+    \  int u = e.from ^ e.to ^ vs.back();\n            if (u == s) break;\n      \
+    \      vs.emplace_back(u), es.emplace_back(par_idx[u]);\n        }\n        return\
+    \ std::pair<std::vector<int>, std::vector<int>>{vs, es};\n    }\n    return std::nullopt;\n\
+    }\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\
     \n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
     \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
     \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
@@ -142,10 +135,9 @@ data:
     using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
     using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
     using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\
-    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
     \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
     template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
@@ -169,46 +161,42 @@ data:
     \        return a / b;\n    else\n        return -((-a) / b) - 1;\n}\n\nconstexpr\
     \ i64 LNF = std::numeric_limits<i64>::max() / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max()\
     \ / 2;\n\nconst std::vector<int> dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int>\
-    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/graph/Shortest_Path.test.cpp\"\
-    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m, s, t;\n    std::cin >> n\
-    \ >> m >> s >> t;\n    Graph<i64> g(n);\n    g.read_graph(m, 0, true, true);\n\
-    \    dijkstra_path d(s, g);\n    auto [x, path] = d.shortest_path(t);\n    if\
-    \ (x == std::numeric_limits<i64>::max()) {\n        std::cout << \"-1\\n\";\n\
-    \        return;\n    }\n    int y = (int)path.size() - 1;\n    std::cout << x\
-    \ << \" \" << y << '\\n';\n    rep(i, 0, y) {\n        std::cout << path[i] <<\
-    \ \" \" << path[i + 1] << '\\n';\n    }\n}\n\n}  // namespace ebi\n\nint main()\
-    \ {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while (t--)\
-    \ {\n        ebi::main_();\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\
-    \ \"../../graph/base.hpp\"\n#include \"../../graph/dijkstra.hpp\"\n#include \"\
-    ../../template/template.hpp\"\n\nnamespace ebi {\n\nvoid main_() {\n    int n,\
-    \ m, s, t;\n    std::cin >> n >> m >> s >> t;\n    Graph<i64> g(n);\n    g.read_graph(m,\
-    \ 0, true, true);\n    dijkstra_path d(s, g);\n    auto [x, path] = d.shortest_path(t);\n\
-    \    if (x == std::numeric_limits<i64>::max()) {\n        std::cout << \"-1\\\
-    n\";\n        return;\n    }\n    int y = (int)path.size() - 1;\n    std::cout\
-    \ << x << \" \" << y << '\\n';\n    rep(i, 0, y) {\n        std::cout << path[i]\
-    \ << \" \" << path[i + 1] << '\\n';\n    }\n}\n\n}  // namespace ebi\n\nint main()\
-    \ {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while (t--)\
-    \ {\n        ebi::main_();\n    }\n    return 0;\n}"
+    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 5 \"test/graph/Cycle_Detection_Undirected.test.cpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
+    \    Graph<int> g(n);\n    g.read_graph(m, 0);\n    auto res = cycle_detection_undirected(g);\n\
+    \    if (res) {\n        auto [vs, es] = res.value();\n        std::cout << vs.size()\
+    \ << '\\n';\n        std::cout << vs << '\\n';\n        std::cout << es << '\\\
+    n';\n    } else {\n        std::cout << \"-1\\n\";\n    }\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
+    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection_undirected\"\
+    \n\n#include \"../../graph/cycle_detection.hpp\"\n#include \"../../template/template.hpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
+    \    Graph<int> g(n);\n    g.read_graph(m, 0);\n    auto res = cycle_detection_undirected(g);\n\
+    \    if (res) {\n        auto [vs, es] = res.value();\n        std::cout << vs.size()\
+    \ << '\\n';\n        std::cout << vs << '\\n';\n        std::cout << es << '\\\
+    n';\n    } else {\n        std::cout << \"-1\\n\";\n    }\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
+    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
+  - graph/cycle_detection.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
-  - graph/dijkstra.hpp
   - template/template.hpp
   - template/debug_template.hpp
   - template/int_alias.hpp
   - template/io.hpp
   - template/utility.hpp
   isVerificationFile: true
-  path: test/graph/Shortest_Path.test.cpp
+  path: test/graph/Cycle_Detection_Undirected.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-03-13 16:10:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/graph/Shortest_Path.test.cpp
+documentation_of: test/graph/Cycle_Detection_Undirected.test.cpp
 layout: document
 redirect_from:
-- /verify/test/graph/Shortest_Path.test.cpp
-- /verify/test/graph/Shortest_Path.test.cpp.html
-title: test/graph/Shortest_Path.test.cpp
+- /verify/test/graph/Cycle_Detection_Undirected.test.cpp
+- /verify/test/graph/Cycle_Detection_Undirected.test.cpp.html
+title: test/graph/Cycle_Detection_Undirected.test.cpp
 ---
