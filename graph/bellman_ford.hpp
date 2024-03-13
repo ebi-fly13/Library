@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <limits>
+#include <optional>
 #include <ranges>
 #include <tuple>
 #include <utility>
@@ -11,7 +12,8 @@
 
 namespace ebi {
 
-template <class T> std::vector<T> bellman_ford(int s, const Graph<T> &g) {
+template <class T>
+std::optional<std::vector<T>> bellman_ford(int s, const Graph<T> &g) {
     int n = g.size();
     assert(0 <= s && s < n);
     std::vector<T> dist(n, std::numeric_limits<T>::max());
@@ -28,7 +30,7 @@ template <class T> std::vector<T> bellman_ford(int s, const Graph<T> &g) {
             if (dist[from] + cost < dist[to]) {
                 dist[to] = dist[from] + cost;
                 if (i == n - 1) {
-                    return {};
+                    return std::nullopt;
                 }
             }
         }

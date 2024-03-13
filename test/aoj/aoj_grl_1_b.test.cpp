@@ -12,16 +12,16 @@ void main_() {
     Graph<i64> g(v);
     g.read_graph(e, 0, true, true);
     auto d = bellman_ford(r, g);
-    if (d.empty()) {
-        std::cout << "NEGATIVE CYCLE\n";
-    } else {
-        for (auto c : d) {
+    if (d) {
+        for (auto c : d.value()) {
             if (c == std::numeric_limits<i64>::max()) {
                 std::cout << "INF\n";
             } else {
                 std::cout << c << '\n';
             }
         }
+    } else {
+        std::cout << "NEGATIVE CYCLE\n";
     }
 }
 
