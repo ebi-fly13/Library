@@ -18,9 +18,9 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/bellman_ford.hpp\"\n\n#include <cassert>\n#include\
-    \ <limits>\n#include <ranges>\n#include <tuple>\n#include <utility>\n#include\
-    \ <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#line 4 \"graph/base.hpp\"\n#include\
-    \ <iostream>\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
+    \ <limits>\n#include <optional>\n#include <ranges>\n#include <tuple>\n#include\
+    \ <utility>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#line 4 \"graph/base.hpp\"\
+    \n#include <iostream>\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
     \n\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
     \ E> struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n,\
     \ const std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0),\
@@ -78,38 +78,40 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 11 \"graph/bellman_ford.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T> std::vector<T> bellman_ford(int s, const\
-    \ Graph<T> &g) {\n    int n = g.size();\n    assert(0 <= s && s < n);\n    std::vector<T>\
-    \ dist(n, std::numeric_limits<T>::max());\n    dist[s] = 0;\n    std::vector<std::tuple<int,\
-    \ int, T>> edges;\n    for (auto from : std::views::iota(0, n)) {\n        for\
-    \ (auto e : g[from]) {\n            edges.emplace_back(from, e.to, e.cost);\n\
-    \        }\n    }\n    for (auto i : std::views::iota(0, n)) {\n        for (auto\
-    \ [from, to, cost] : edges) {\n            if (dist[from] == std::numeric_limits<T>::max())\
-    \ continue;\n            if (dist[from] + cost < dist[to]) {\n               \
-    \ dist[to] = dist[from] + cost;\n                if (i == n - 1) {\n         \
-    \           return {};\n                }\n            }\n        }\n    }\n \
-    \   return dist;\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <ranges>\n\
-    #include <tuple>\n#include <utility>\n#include <vector>\n\n#include \"../graph/base.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T> std::vector<T> bellman_ford(int s, const\
-    \ Graph<T> &g) {\n    int n = g.size();\n    assert(0 <= s && s < n);\n    std::vector<T>\
-    \ dist(n, std::numeric_limits<T>::max());\n    dist[s] = 0;\n    std::vector<std::tuple<int,\
-    \ int, T>> edges;\n    for (auto from : std::views::iota(0, n)) {\n        for\
-    \ (auto e : g[from]) {\n            edges.emplace_back(from, e.to, e.cost);\n\
-    \        }\n    }\n    for (auto i : std::views::iota(0, n)) {\n        for (auto\
-    \ [from, to, cost] : edges) {\n            if (dist[from] == std::numeric_limits<T>::max())\
-    \ continue;\n            if (dist[from] + cost < dist[to]) {\n               \
-    \ dist[to] = dist[from] + cost;\n                if (i == n - 1) {\n         \
-    \           return {};\n                }\n            }\n        }\n    }\n \
-    \   return dist;\n}\n\n}  // namespace ebi"
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 12 \"graph/bellman_ford.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nstd::optional<std::vector<T>> bellman_ford(int\
+    \ s, const Graph<T> &g) {\n    int n = g.size();\n    assert(0 <= s && s < n);\n\
+    \    std::vector<T> dist(n, std::numeric_limits<T>::max());\n    dist[s] = 0;\n\
+    \    std::vector<std::tuple<int, int, T>> edges;\n    for (auto from : std::views::iota(0,\
+    \ n)) {\n        for (auto e : g[from]) {\n            edges.emplace_back(from,\
+    \ e.to, e.cost);\n        }\n    }\n    for (auto i : std::views::iota(0, n))\
+    \ {\n        for (auto [from, to, cost] : edges) {\n            if (dist[from]\
+    \ == std::numeric_limits<T>::max()) continue;\n            if (dist[from] + cost\
+    \ < dist[to]) {\n                dist[to] = dist[from] + cost;\n             \
+    \   if (i == n - 1) {\n                    return std::nullopt;\n            \
+    \    }\n            }\n        }\n    }\n    return dist;\n}\n\n}  // namespace\
+    \ ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <optional>\n\
+    #include <ranges>\n#include <tuple>\n#include <utility>\n#include <vector>\n\n\
+    #include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nstd::optional<std::vector<T>>\
+    \ bellman_ford(int s, const Graph<T> &g) {\n    int n = g.size();\n    assert(0\
+    \ <= s && s < n);\n    std::vector<T> dist(n, std::numeric_limits<T>::max());\n\
+    \    dist[s] = 0;\n    std::vector<std::tuple<int, int, T>> edges;\n    for (auto\
+    \ from : std::views::iota(0, n)) {\n        for (auto e : g[from]) {\n       \
+    \     edges.emplace_back(from, e.to, e.cost);\n        }\n    }\n    for (auto\
+    \ i : std::views::iota(0, n)) {\n        for (auto [from, to, cost] : edges) {\n\
+    \            if (dist[from] == std::numeric_limits<T>::max()) continue;\n    \
+    \        if (dist[from] + cost < dist[to]) {\n                dist[to] = dist[from]\
+    \ + cost;\n                if (i == n - 1) {\n                    return std::nullopt;\n\
+    \                }\n            }\n        }\n    }\n    return dist;\n}\n\n}\
+    \  // namespace ebi"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
   path: graph/bellman_ford.hpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-03-13 23:19:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_grl_1_b.test.cpp
