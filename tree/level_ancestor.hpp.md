@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/level_ancestor_lca.test.cpp
     title: test/tree/level_ancestor_lca.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/level_ancestor.hpp\"\n\r\n#include <algorithm>\r\n\
@@ -50,51 +50,55 @@ data:
     \ + 1] + r);\n    }\n\n  private:\n    std::vector<int> start;\n    std::vector<E>\
     \ elist;\n};\n\n}  // namespace ebi\n#line 9 \"graph/base.hpp\"\n\nnamespace ebi\
     \ {\n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
-    \ id;\n};\n\ntemplate <class E> struct Graph {\n  private:\n    using cost_type\
-    \ = E;\n    using edge_type = Edge<cost_type>;\n\n  public:\n    Graph(int n_)\
-    \ : n(n_) {}\n\n    Graph() = default;\n\n    void add_edge(int u, int v, cost_type\
-    \ c) {\n        edges.emplace_back(u, edge_type{u, v, c, m++});\n    }\n\n   \
-    \ void add_undirected_edge(int u, int v, cost_type c) {\n        edges.emplace_back(u,\
-    \ edge_type{u, v, c, m});\n        edges.emplace_back(v, edge_type{v, u, c, m});\n\
-    \        m++;\n    }\n\n    void read_tree(int offset = 1, bool is_weighted =\
-    \ false) {\n        read_graph(n - 1, offset, false, is_weighted);\n    }\n\n\
-    \    void read_parents(int offset = 1) {\n        for (auto i : std::views::iota(1,\
-    \ n)) {\n            int p;\n            std::cin >> p;\n            p -= offset;\n\
-    \            add_undirected_edge(p, i, 1);\n        }\n        build();\n    }\n\
-    \n    void read_graph(int e, int offset = 1, bool is_directed = false,\n     \
-    \               bool is_weighted = false) {\n        for (int i = 0; i < e; i++)\
-    \ {\n            int u, v;\n            std::cin >> u >> v;\n            u -=\
-    \ offset;\n            v -= offset;\n            if (is_weighted) {\n        \
-    \        cost_type c;\n                std::cin >> c;\n                if (is_directed)\
-    \ {\n                    add_edge(u, v, c);\n                } else {\n      \
-    \              add_undirected_edge(u, v, c);\n                }\n            }\
-    \ else {\n                if (is_directed) {\n                    add_edge(u,\
-    \ v, 1);\n                } else {\n                    add_undirected_edge(u,\
-    \ v, 1);\n                }\n            }\n        }\n        build();\n    }\n\
-    \n    void build() {\n        assert(!prepared);\n        csr = simple_csr<edge_type>(n,\
-    \ edges);\n        edges.clear();\n        prepared = true;\n    }\n\n    int\
-    \ size() const {\n        return n;\n    }\n\n    const auto operator[](int i)\
-    \ const {\n        return csr[i];\n    }\n    auto operator[](int i) {\n     \
-    \   return csr[i];\n    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,\
-    \ edge_type>> edges;\n    simple_csr<edge_type> csr;\n    bool prepared = false;\n\
-    };\n\n}  // namespace ebi\n#line 8 \"tree/level_ancestor.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <class T> struct level_ancestor {\r\n  private:\r\n  \
-    \  int n;\r\n    std::vector<int> in;\r\n    std::vector<int> inv_in;\r\n    std::vector<int>\
-    \ depths;\r\n    std::vector<std::vector<int>> s;\r\n\r\n  public:\r\n    level_ancestor(const\
-    \ Graph<T> &gh, int root = 0)\r\n        : n(gh.size()), in(n), inv_in(n), depths(n)\
-    \ {\r\n        int cnt = 0;\r\n        int max = 0;\r\n        auto dfs = [&](auto\
-    \ &&self, int v, int par = -1) -> void {\r\n            inv_in[cnt] = v;\r\n \
-    \           in[v] = cnt++;\r\n            max = std::max(max, depths[v]);\r\n\
-    \            for (auto e : gh[v])\r\n                if (e.to != par) {\r\n  \
-    \                  depths[e.to] = depths[v] + 1;\r\n                    self(self,\
-    \ e.to, v);\r\n                }\r\n        };\r\n        dfs(dfs, root);\r\n\
-    \        s.resize(max + 1);\r\n        for (int i = 0; i < n; i++) {\r\n     \
-    \       int u = inv_in[i];\r\n            s[depths[u]].emplace_back(i);\r\n  \
-    \      }\r\n    }\r\n\r\n    int query(int u, int k) const {\r\n        int m\
-    \ = depths[u] - k;\r\n        assert(m >= 0);\r\n        return inv_in[*std::prev(\r\
-    \n            std::upper_bound(s[m].begin(), s[m].end(), in[u]))];\r\n    }\r\n\
-    \r\n    int depth(int u) const {\r\n        return depths[u];\r\n    }\r\n};\r\
-    \n\r\n}  // namespace ebi\n"
+    \ id;\n};\n\ntemplate <class E> struct Graph {\n    using cost_type = E;\n   \
+    \ using edge_type = Edge<cost_type>;\n\n    Graph(int n_) : n(n_) {}\n\n    Graph()\
+    \ = default;\n\n    void add_edge(int u, int v, cost_type c) {\n        buff.emplace_back(u,\
+    \ edge_type{u, v, c, m});\n        edges.emplace_back(edge_type{u, v, c, m++});\n\
+    \    }\n\n    void add_undirected_edge(int u, int v, cost_type c) {\n        buff.emplace_back(u,\
+    \ edge_type{u, v, c, m});\n        buff.emplace_back(v, edge_type{v, u, c, m});\n\
+    \        edges.emplace_back(edge_type{u, v, c, m});\n        m++;\n    }\n\n \
+    \   void read_tree(int offset = 1, bool is_weighted = false) {\n        read_graph(n\
+    \ - 1, offset, false, is_weighted);\n    }\n\n    void read_parents(int offset\
+    \ = 1) {\n        for (auto i : std::views::iota(1, n)) {\n            int p;\n\
+    \            std::cin >> p;\n            p -= offset;\n            add_undirected_edge(p,\
+    \ i, 1);\n        }\n        build();\n    }\n\n    void read_graph(int e, int\
+    \ offset = 1, bool is_directed = false,\n                    bool is_weighted\
+    \ = false) {\n        for (int i = 0; i < e; i++) {\n            int u, v;\n \
+    \           std::cin >> u >> v;\n            u -= offset;\n            v -= offset;\n\
+    \            if (is_weighted) {\n                cost_type c;\n              \
+    \  std::cin >> c;\n                if (is_directed) {\n                    add_edge(u,\
+    \ v, c);\n                } else {\n                    add_undirected_edge(u,\
+    \ v, c);\n                }\n            } else {\n                if (is_directed)\
+    \ {\n                    add_edge(u, v, 1);\n                } else {\n      \
+    \              add_undirected_edge(u, v, 1);\n                }\n            }\n\
+    \        }\n        build();\n    }\n\n    void build() {\n        assert(!prepared);\n\
+    \        csr = simple_csr<edge_type>(n, buff);\n        buff.clear();\n      \
+    \  prepared = true;\n    }\n\n    int size() const {\n        return n;\n    }\n\
+    \n    int node_number() const {\n        return n;\n    }\n\n    int edge_number()\
+    \ const {\n        return m;\n    }\n\n    edge_type get_edge(int i) const {\n\
+    \        return edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const\
+    \ {\n        return edges;\n    }\n\n    const auto operator[](int i) const {\n\
+    \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
+    \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
+    \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"tree/level_ancestor.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct level_ancestor {\r\n  private:\r\
+    \n    int n;\r\n    std::vector<int> in;\r\n    std::vector<int> inv_in;\r\n \
+    \   std::vector<int> depths;\r\n    std::vector<std::vector<int>> s;\r\n\r\n \
+    \ public:\r\n    level_ancestor(const Graph<T> &gh, int root = 0)\r\n        :\
+    \ n(gh.size()), in(n), inv_in(n), depths(n) {\r\n        int cnt = 0;\r\n    \
+    \    int max = 0;\r\n        auto dfs = [&](auto &&self, int v, int par = -1)\
+    \ -> void {\r\n            inv_in[cnt] = v;\r\n            in[v] = cnt++;\r\n\
+    \            max = std::max(max, depths[v]);\r\n            for (auto e : gh[v])\r\
+    \n                if (e.to != par) {\r\n                    depths[e.to] = depths[v]\
+    \ + 1;\r\n                    self(self, e.to, v);\r\n                }\r\n  \
+    \      };\r\n        dfs(dfs, root);\r\n        s.resize(max + 1);\r\n       \
+    \ for (int i = 0; i < n; i++) {\r\n            int u = inv_in[i];\r\n        \
+    \    s[depths[u]].emplace_back(i);\r\n        }\r\n    }\r\n\r\n    int query(int\
+    \ u, int k) const {\r\n        int m = depths[u] - k;\r\n        assert(m >= 0);\r\
+    \n        return inv_in[*std::prev(\r\n            std::upper_bound(s[m].begin(),\
+    \ s[m].end(), in[u]))];\r\n    }\r\n\r\n    int depth(int u) const {\r\n     \
+    \   return depths[u];\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <algorithm>\r\n#include <cassert>\r\n#include\
     \ <vector>\r\n\r\n#include \"../graph/base.hpp\"\r\n\r\nnamespace ebi {\r\n\r\n\
     template <class T> struct level_ancestor {\r\n  private:\r\n    int n;\r\n   \
@@ -120,8 +124,8 @@ data:
   isVerificationFile: false
   path: tree/level_ancestor.hpp
   requiredBy: []
-  timestamp: '2024-03-13 01:44:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-03-13 15:52:21+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/tree/level_ancestor_lca.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
