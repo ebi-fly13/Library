@@ -88,6 +88,9 @@ data:
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/Cycle_Detection_Directed.test.cpp
+    title: test/graph/Cycle_Detection_Directed.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Undirected.test.cpp
     title: test/graph/Cycle_Detection_Undirected.test.cpp
   - icon: ':heavy_check_mark:'
@@ -279,6 +282,7 @@ data:
   - test/graph/Shortest_Path.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/Minimum_Spanning_Tree.test.cpp
+  - test/graph/Cycle_Detection_Directed.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_grl_1_b.test.cpp

@@ -10,6 +10,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/graph/Cycle_Detection_Directed.test.cpp
+    title: test/graph/Cycle_Detection_Directed.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Undirected.test.cpp
     title: test/graph/Cycle_Detection_Undirected.test.cpp
   _isVerificationFailed: false
@@ -17,10 +20,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/cycle_detection.hpp\"\n\n#include <optional>\n#include\
-    \ <utility>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#include <cassert>\n\
-    #include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
-    \ \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
+  bundledCode: "#line 2 \"graph/cycle_detection.hpp\"\n\n#include <algorithm>\n#include\
+    \ <optional>\n#include <utility>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\
+    \n\n#include <cassert>\n#include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\
+    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
     \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
     \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
@@ -77,58 +80,91 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"graph/cycle_detection.hpp\"\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 9 \"graph/cycle_detection.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T>\nstd::optional<std::pair<std::vector<int>,\
-    \ std::vector<int>>>\ncycle_detection_undirected(const Graph<T> &g) {\n    int\
-    \ n = g.node_number();\n    int m = g.edge_number();\n    std::vector<bool> used_edge(m,\
-    \ false);\n    std::vector<int> depth(n, -1);\n    std::vector<int> par_idx(n,\
-    \ -1);\n\n    auto dfs = [&](auto &&self, int v) -> int {\n        for (auto e\
-    \ : g[v]) {\n            if (used_edge[e.id]) continue;\n            if (depth[e.to]\
-    \ != -1) return e.id;\n            used_edge[e.id] = true;\n            par_idx[e.to]\
-    \ = e.id;\n            depth[e.to] = depth[v] + 1;\n            int x = self(self,\
-    \ e.to);\n            if (x != -1) return x;\n        }\n        return -1;\n\
-    \    };\n\n    for (auto v : std::views::iota(0, n)) {\n        if (depth[v] !=\
-    \ -1) continue;\n        depth[v] = 0;\n        int id = dfs(dfs, v);\n      \
-    \  if (id == -1) continue;\n        int s = -1;\n        {\n            auto e\
-    \ = g.get_edge(id);\n            if (depth[e.to] < depth[e.from])\n          \
-    \      s = e.to;\n            else\n                s = e.from;\n        }\n \
-    \       std::vector<int> vs, es;\n        vs.emplace_back(s), es.emplace_back(id);\n\
-    \        while (1) {\n            auto e = g.get_edge(es.back());\n          \
-    \  int u = e.from ^ e.to ^ vs.back();\n            if (u == s) break;\n      \
-    \      vs.emplace_back(u), es.emplace_back(par_idx[u]);\n        }\n        return\
-    \ std::pair<std::vector<int>, std::vector<int>>{vs, es};\n    }\n    return std::nullopt;\n\
-    }\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <optional>\n#include <utility>\n#include <vector>\n\
-    \n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nstd::optional<std::pair<std::vector<int>,\
-    \ std::vector<int>>>\ncycle_detection_undirected(const Graph<T> &g) {\n    int\
-    \ n = g.node_number();\n    int m = g.edge_number();\n    std::vector<bool> used_edge(m,\
-    \ false);\n    std::vector<int> depth(n, -1);\n    std::vector<int> par_idx(n,\
-    \ -1);\n\n    auto dfs = [&](auto &&self, int v) -> int {\n        for (auto e\
-    \ : g[v]) {\n            if (used_edge[e.id]) continue;\n            if (depth[e.to]\
-    \ != -1) return e.id;\n            used_edge[e.id] = true;\n            par_idx[e.to]\
-    \ = e.id;\n            depth[e.to] = depth[v] + 1;\n            int x = self(self,\
-    \ e.to);\n            if (x != -1) return x;\n        }\n        return -1;\n\
-    \    };\n\n    for (auto v : std::views::iota(0, n)) {\n        if (depth[v] !=\
-    \ -1) continue;\n        depth[v] = 0;\n        int id = dfs(dfs, v);\n      \
-    \  if (id == -1) continue;\n        int s = -1;\n        {\n            auto e\
-    \ = g.get_edge(id);\n            if (depth[e.to] < depth[e.from])\n          \
-    \      s = e.to;\n            else\n                s = e.from;\n        }\n \
-    \       std::vector<int> vs, es;\n        vs.emplace_back(s), es.emplace_back(id);\n\
-    \        while (1) {\n            auto e = g.get_edge(es.back());\n          \
-    \  int u = e.from ^ e.to ^ vs.back();\n            if (u == s) break;\n      \
-    \      vs.emplace_back(u), es.emplace_back(par_idx[u]);\n        }\n        return\
-    \ std::pair<std::vector<int>, std::vector<int>>{vs, es};\n    }\n    return std::nullopt;\n\
-    }\n\n}  // namespace ebi"
+    \ std::vector<int>>>\ncycle_detection_directed(const Graph<T> &g) {\n    int n\
+    \ = g.node_number();\n    std::vector<int> used(n, -1);\n    std::vector<int>\
+    \ par_idx(n, -1);\n\n    std::vector<int> vs, es;\n    auto dfs = [&](auto &&self,\
+    \ int v) -> void {\n        used[v] = 1;\n        for (auto e : g[v]) {\n    \
+    \        if (!es.empty()) return;\n            if (used[e.to] == -1) {\n     \
+    \           used[e.to] = 1;\n                par_idx[e.to] = e.id;\n         \
+    \       self(self, e.to);\n            } else if (used[e.to] == 1) {\n       \
+    \         int now = v;\n                vs.emplace_back(now);\n              \
+    \  es.emplace_back(e.id);\n                while (now != e.to) {\n           \
+    \         es.emplace_back(par_idx[now]);\n                    now = g.get_edge(par_idx[now]).from;\n\
+    \                }\n                std::reverse(vs.begin(), vs.end());\n    \
+    \            std::reverse(es.begin(), es.end());\n                return;\n  \
+    \          }\n        }\n        used[v] = 2;\n    };\n    for (auto v : std::views::iota(0,\
+    \ n)) {\n        if (used[v] != -1) continue;\n        dfs(dfs, v);\n        if\
+    \ (!es.empty()) {\n            return std::pair<std::vector<int>, std::vector<int>>{vs,\
+    \ es};\n        }\n    }\n    return std::nullopt;\n}\n\ntemplate <class T>\n\
+    std::optional<std::pair<std::vector<int>, std::vector<int>>>\ncycle_detection_undirected(const\
+    \ Graph<T> &g) {\n    int n = g.node_number();\n    int m = g.edge_number();\n\
+    \    std::vector<bool> used_edge(m, false);\n    std::vector<int> depth(n, -1);\n\
+    \    std::vector<int> par_idx(n, -1);\n\n    auto dfs = [&](auto &&self, int v)\
+    \ -> int {\n        for (auto e : g[v]) {\n            if (used_edge[e.id]) continue;\n\
+    \            if (depth[e.to] != -1) return e.id;\n            used_edge[e.id]\
+    \ = true;\n            par_idx[e.to] = e.id;\n            depth[e.to] = depth[v]\
+    \ + 1;\n            int x = self(self, e.to);\n            if (x != -1) return\
+    \ x;\n        }\n        return -1;\n    };\n\n    for (auto v : std::views::iota(0,\
+    \ n)) {\n        if (depth[v] != -1) continue;\n        depth[v] = 0;\n      \
+    \  int id = dfs(dfs, v);\n        if (id == -1) continue;\n        int s = -1;\n\
+    \        {\n            auto e = g.get_edge(id);\n            if (depth[e.to]\
+    \ < depth[e.from])\n                s = e.to;\n            else\n            \
+    \    s = e.from;\n        }\n        std::vector<int> vs, es;\n        vs.emplace_back(s),\
+    \ es.emplace_back(id);\n        while (1) {\n            auto e = g.get_edge(es.back());\n\
+    \            int u = e.from ^ e.to ^ vs.back();\n            if (u == s) break;\n\
+    \            vs.emplace_back(u), es.emplace_back(par_idx[u]);\n        }\n   \
+    \     return std::pair<std::vector<int>, std::vector<int>>{vs, es};\n    }\n \
+    \   return std::nullopt;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <algorithm>\n#include <optional>\n#include <utility>\n\
+    #include <vector>\n\n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nstd::optional<std::pair<std::vector<int>, std::vector<int>>>\ncycle_detection_directed(const\
+    \ Graph<T> &g) {\n    int n = g.node_number();\n    std::vector<int> used(n, -1);\n\
+    \    std::vector<int> par_idx(n, -1);\n\n    std::vector<int> vs, es;\n    auto\
+    \ dfs = [&](auto &&self, int v) -> void {\n        used[v] = 1;\n        for (auto\
+    \ e : g[v]) {\n            if (!es.empty()) return;\n            if (used[e.to]\
+    \ == -1) {\n                used[e.to] = 1;\n                par_idx[e.to] = e.id;\n\
+    \                self(self, e.to);\n            } else if (used[e.to] == 1) {\n\
+    \                int now = v;\n                vs.emplace_back(now);\n       \
+    \         es.emplace_back(e.id);\n                while (now != e.to) {\n    \
+    \                es.emplace_back(par_idx[now]);\n                    now = g.get_edge(par_idx[now]).from;\n\
+    \                }\n                std::reverse(vs.begin(), vs.end());\n    \
+    \            std::reverse(es.begin(), es.end());\n                return;\n  \
+    \          }\n        }\n        used[v] = 2;\n    };\n    for (auto v : std::views::iota(0,\
+    \ n)) {\n        if (used[v] != -1) continue;\n        dfs(dfs, v);\n        if\
+    \ (!es.empty()) {\n            return std::pair<std::vector<int>, std::vector<int>>{vs,\
+    \ es};\n        }\n    }\n    return std::nullopt;\n}\n\ntemplate <class T>\n\
+    std::optional<std::pair<std::vector<int>, std::vector<int>>>\ncycle_detection_undirected(const\
+    \ Graph<T> &g) {\n    int n = g.node_number();\n    int m = g.edge_number();\n\
+    \    std::vector<bool> used_edge(m, false);\n    std::vector<int> depth(n, -1);\n\
+    \    std::vector<int> par_idx(n, -1);\n\n    auto dfs = [&](auto &&self, int v)\
+    \ -> int {\n        for (auto e : g[v]) {\n            if (used_edge[e.id]) continue;\n\
+    \            if (depth[e.to] != -1) return e.id;\n            used_edge[e.id]\
+    \ = true;\n            par_idx[e.to] = e.id;\n            depth[e.to] = depth[v]\
+    \ + 1;\n            int x = self(self, e.to);\n            if (x != -1) return\
+    \ x;\n        }\n        return -1;\n    };\n\n    for (auto v : std::views::iota(0,\
+    \ n)) {\n        if (depth[v] != -1) continue;\n        depth[v] = 0;\n      \
+    \  int id = dfs(dfs, v);\n        if (id == -1) continue;\n        int s = -1;\n\
+    \        {\n            auto e = g.get_edge(id);\n            if (depth[e.to]\
+    \ < depth[e.from])\n                s = e.to;\n            else\n            \
+    \    s = e.from;\n        }\n        std::vector<int> vs, es;\n        vs.emplace_back(s),\
+    \ es.emplace_back(id);\n        while (1) {\n            auto e = g.get_edge(es.back());\n\
+    \            int u = e.from ^ e.to ^ vs.back();\n            if (u == s) break;\n\
+    \            vs.emplace_back(u), es.emplace_back(par_idx[u]);\n        }\n   \
+    \     return std::pair<std::vector<int>, std::vector<int>>{vs, es};\n    }\n \
+    \   return std::nullopt;\n}\n\n}  // namespace ebi"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
   path: graph/cycle_detection.hpp
   requiredBy: []
-  timestamp: '2024-03-13 16:10:54+09:00'
+  timestamp: '2024-03-13 17:06:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Cycle_Detection_Undirected.test.cpp
+  - test/graph/Cycle_Detection_Directed.test.cpp
 documentation_of: graph/cycle_detection.hpp
 layout: document
 title: Cycle Detection

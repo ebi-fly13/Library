@@ -32,24 +32,24 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/cycle_detection_undirected
+    PROBLEM: https://judge.yosupo.jp/problem/cycle_detection
     links:
-    - https://judge.yosupo.jp/problem/cycle_detection_undirected
-  bundledCode: "#line 1 \"test/graph/Cycle_Detection_Undirected.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection_undirected\"\n\n#line\
-    \ 2 \"graph/cycle_detection.hpp\"\n\n#include <algorithm>\n#include <optional>\n\
-    #include <utility>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#include\
-    \ <cassert>\n#include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\
-    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
-    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
-    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
-    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
-    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
-    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
-    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
-    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    - https://judge.yosupo.jp/problem/cycle_detection
+  bundledCode: "#line 1 \"test/graph/Cycle_Detection_Directed.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection\"\n\n#line 2 \"graph/cycle_detection.hpp\"\
+    \n\n#include <algorithm>\n#include <optional>\n#include <utility>\n#include <vector>\n\
+    \n#line 2 \"graph/base.hpp\"\n\n#include <cassert>\n#include <iostream>\n#include\
+    \ <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
+    \n\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ E> struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n,\
+    \ const std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0),\
+    \ elist(elements.size()) {\n        for (auto e : elements) {\n            start[e.first\
+    \ + 1]++;\n        }\n        for (auto i : std::views::iota(0, n)) {\n      \
+    \      start[i + 1] += start[i];\n        }\n        auto counter = start;\n \
+    \       for (auto [i, e] : elements) {\n            elist[counter[i]++] = e;\n\
+    \        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>& es)\n \
+    \       : start(es.size() + 1, 0) {\n        int n = es.size();\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
     \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
     \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
     \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
@@ -178,21 +178,21 @@ data:
     \        return a / b;\n    else\n        return -((-a) / b) - 1;\n}\n\nconstexpr\
     \ i64 LNF = std::numeric_limits<i64>::max() / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max()\
     \ / 2;\n\nconst std::vector<int> dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int>\
-    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 5 \"test/graph/Cycle_Detection_Undirected.test.cpp\"\
+    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 5 \"test/graph/Cycle_Detection_Directed.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
-    \    Graph<int> g(n);\n    g.read_graph(m, 0);\n    auto res = cycle_detection_undirected(g);\n\
-    \    if (res) {\n        auto [vs, es] = res.value();\n        std::cout << vs.size()\
-    \ << '\\n';\n        std::cout << vs << '\\n';\n        std::cout << es << '\\\
-    n';\n    } else {\n        std::cout << \"-1\\n\";\n    }\n}\n\n}  // namespace\
+    \    Graph<int> g(n);\n    g.read_graph(m, 0, true);\n    auto res = cycle_detection_directed(g);\n\
+    \    if (res) {\n        auto [vs, es] = res.value();\n        std::cout << es.size()\
+    \ << '\\n';\n        for (auto e : es) {\n            std::cout << e << '\\n';\n\
+    \        }\n    } else {\n        std::cout << \"-1\\n\";\n    }\n}\n\n}  // namespace\
     \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
     \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection_undirected\"\
-    \n\n#include \"../../graph/cycle_detection.hpp\"\n#include \"../../template/template.hpp\"\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection\"\n\n#include\
+    \ \"../../graph/cycle_detection.hpp\"\n#include \"../../template/template.hpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
-    \    Graph<int> g(n);\n    g.read_graph(m, 0);\n    auto res = cycle_detection_undirected(g);\n\
-    \    if (res) {\n        auto [vs, es] = res.value();\n        std::cout << vs.size()\
-    \ << '\\n';\n        std::cout << vs << '\\n';\n        std::cout << es << '\\\
-    n';\n    } else {\n        std::cout << \"-1\\n\";\n    }\n}\n\n}  // namespace\
+    \    Graph<int> g(n);\n    g.read_graph(m, 0, true);\n    auto res = cycle_detection_directed(g);\n\
+    \    if (res) {\n        auto [vs, es] = res.value();\n        std::cout << es.size()\
+    \ << '\\n';\n        for (auto e : es) {\n            std::cout << e << '\\n';\n\
+    \        }\n    } else {\n        std::cout << \"-1\\n\";\n    }\n}\n\n}  // namespace\
     \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
     \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
@@ -205,15 +205,15 @@ data:
   - template/io.hpp
   - template/utility.hpp
   isVerificationFile: true
-  path: test/graph/Cycle_Detection_Undirected.test.cpp
+  path: test/graph/Cycle_Detection_Directed.test.cpp
   requiredBy: []
   timestamp: '2024-03-13 17:06:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/graph/Cycle_Detection_Undirected.test.cpp
+documentation_of: test/graph/Cycle_Detection_Directed.test.cpp
 layout: document
 redirect_from:
-- /verify/test/graph/Cycle_Detection_Undirected.test.cpp
-- /verify/test/graph/Cycle_Detection_Undirected.test.cpp.html
-title: test/graph/Cycle_Detection_Undirected.test.cpp
+- /verify/test/graph/Cycle_Detection_Directed.test.cpp
+- /verify/test/graph/Cycle_Detection_Directed.test.cpp.html
+title: test/graph/Cycle_Detection_Directed.test.cpp
 ---

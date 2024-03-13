@@ -770,6 +770,9 @@ data:
       path: test/graph/Biconnected_Components.test.cpp
       title: test/graph/Biconnected_Components.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/graph/Cycle_Detection_Directed.test.cpp
+      title: test/graph/Cycle_Detection_Directed.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/graph/Cycle_Detection_Undirected.test.cpp
       title: test/graph/Cycle_Detection_Undirected.test.cpp
     - icon: ':heavy_check_mark:'
