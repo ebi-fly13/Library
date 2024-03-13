@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <optional>
 #include <utility>
 #include <vector>
@@ -7,6 +8,47 @@
 #include "../graph/base.hpp"
 
 namespace ebi {
+
+template <class T>
+std::optional<std::pair<std::vector<int>, std::vector<int>>>
+cycle_detection_directed(const Graph<T> &g) {
+    int n = g.node_number();
+    std::vector<int> used(n, -1);
+    std::vector<int> par_idx(n, -1);
+
+    std::vector<int> vs, es;
+    auto dfs = [&](auto &&self, int v) -> void {
+        used[v] = 1;
+        for (auto e : g[v]) {
+            if (!es.empty()) return;
+            if (used[e.to] == -1) {
+                used[e.to] = 1;
+                par_idx[e.to] = e.id;
+                self(self, e.to);
+            } else if (used[e.to] == 1) {
+                int now = v;
+                vs.emplace_back(now);
+                es.emplace_back(e.id);
+                while (now != e.to) {
+                    es.emplace_back(par_idx[now]);
+                    now = g.get_edge(par_idx[now]).from;
+                }
+                std::reverse(vs.begin(), vs.end());
+                std::reverse(es.begin(), es.end());
+                return;
+            }
+        }
+        used[v] = 2;
+    };
+    for (auto v : std::views::iota(0, n)) {
+        if (used[v] != -1) continue;
+        dfs(dfs, v);
+        if (!es.empty()) {
+            return std::pair<std::vector<int>, std::vector<int>>{vs, es};
+        }
+    }
+    return std::nullopt;
+}
 
 template <class T>
 std::optional<std::pair<std::vector<int>, std::vector<int>>>
