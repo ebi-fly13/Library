@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   - icon: ':heavy_check_mark:'
     path: data_structure/unionfind.hpp
     title: UnionFind
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
-    path: graph/minimum_spanning_tree.hpp
+    path: graph/mst.hpp
     title: Minimum Spanning Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -39,7 +39,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/minimum_spanning_tree
   bundledCode: "#line 1 \"test/graph/Minimum_Spanning_Tree.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/minimum_spanning_tree\"\n\n#line 2 \"graph/minimum_spanning_tree.hpp\"\
+    \ \"https://judge.yosupo.jp/problem/minimum_spanning_tree\"\n\n#line 2 \"graph/mst.hpp\"\
     \n\n#include <algorithm>\n#include <utility>\n#include <vector>\n\n#line 2 \"\
     data_structure/unionfind.hpp\"\n\r\n#line 4 \"data_structure/unionfind.hpp\"\n\
     \r\nnamespace ebi {\r\n\r\nstruct unionfind {\r\n  private:\r\n    std::vector<int>\
@@ -114,8 +114,8 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 9 \"graph/minimum_spanning_tree.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T>\nstd::pair<T, std::vector<int>> minimum_spanning_tree(const\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 9 \"graph/mst.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> std::pair<T, std::vector<int>> mst(const\
     \ Graph<T> &g) {\n    unionfind uf(g.size());\n    std::vector<Edge<T>> edges;\n\
     \    for (auto v : std::views::iota(0, g.size())) {\n        for (auto e : g[v])\
     \ {\n            edges.emplace_back(e);\n        }\n    }\n    std::sort(edges.begin(),\
@@ -173,20 +173,20 @@ data:
     \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 7 \"test/graph/Minimum_Spanning_Tree.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
     \    Graph<i64> g(n);\n    g.read_graph(m, 0, false, true);\n    auto [x, e] =\
-    \ minimum_spanning_tree(g);\n    std::cout << x << '\\n';\n    std::cout << e\
-    \ << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n \
-    \   int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    return 0;\n}\n"
+    \ mst(g);\n    std::cout << x << '\\n';\n    std::cout << e << '\\n';\n}\n\n}\
+    \  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n   \
+    \ // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n    }\n    return\
+    \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/minimum_spanning_tree\"\
-    \n\n#include \"../../graph/minimum_spanning_tree.hpp\"\n\n#include \"../../graph/base.hpp\"\
-    \n#include \"../../template/template.hpp\"\n\nnamespace ebi {\n\nvoid main_()\
-    \ {\n    int n, m;\n    std::cin >> n >> m;\n    Graph<i64> g(n);\n    g.read_graph(m,\
-    \ 0, false, true);\n    auto [x, e] = minimum_spanning_tree(g);\n    std::cout\
-    \ << x << '\\n';\n    std::cout << e << '\\n';\n}\n\n}  // namespace ebi\n\nint\
-    \ main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while\
-    \ (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
+    \n\n#include \"../../graph/mst.hpp\"\n\n#include \"../../graph/base.hpp\"\n#include\
+    \ \"../../template/template.hpp\"\n\nnamespace ebi {\n\nvoid main_() {\n    int\
+    \ n, m;\n    std::cin >> n >> m;\n    Graph<i64> g(n);\n    g.read_graph(m, 0,\
+    \ false, true);\n    auto [x, e] = mst(g);\n    std::cout << x << '\\n';\n   \
+    \ std::cout << e << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    return 0;\n}"
   dependsOn:
-  - graph/minimum_spanning_tree.hpp
+  - graph/mst.hpp
   - data_structure/unionfind.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
@@ -198,7 +198,7 @@ data:
   isVerificationFile: true
   path: test/graph/Minimum_Spanning_Tree.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-03-15 00:35:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Minimum_Spanning_Tree.test.cpp

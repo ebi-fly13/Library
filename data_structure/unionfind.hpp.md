@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: graph/minimum_spanning_tree.hpp
+    path: graph/mst.hpp
     title: Minimum Spanning Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -51,7 +51,7 @@ data:
   isVerificationFile: false
   path: data_structure/unionfind.hpp
   requiredBy:
-  - graph/minimum_spanning_tree.hpp
+  - graph/mst.hpp
   timestamp: '2023-11-13 02:14:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

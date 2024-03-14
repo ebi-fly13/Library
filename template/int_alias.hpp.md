@@ -29,10 +29,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3086.test.cpp
     title: test/aoj/aoj_3086.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_grl_1_a.test.cpp
     title: test/aoj/aoj_grl_1_a.test.cpp
   - icon: ':heavy_check_mark:'
@@ -96,6 +96,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Undirected.test.cpp
     title: test/graph/Cycle_Detection_Undirected.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Directed_MST.test.cpp
+    title: test/graph/Directed_MST.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Minimum_Spanning_Tree.test.cpp
     title: test/graph/Minimum_Spanning_Tree.test.cpp
@@ -177,9 +180,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -270,7 +273,7 @@ data:
   - template/utility.hpp
   - template/template.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
@@ -316,6 +319,7 @@ data:
   - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/graph/Cycle_Detection_Undirected.test.cpp
   - test/graph/dijkstra.test.cpp
+  - test/graph/Directed_MST.test.cpp
   - test/graph/Cycle_Detection_Directed.test.cpp
   - test/graph/fibonacci_heap.test.cpp
   - test/graph/Shortest_Path.test.cpp

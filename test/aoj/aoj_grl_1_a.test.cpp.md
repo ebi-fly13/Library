@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/skew_heap.hpp
     title: data_structure/skew_heap.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
@@ -49,7 +49,7 @@ data:
     \ = value_type();\n        iterator lhs = nullptr, rhs = nullptr;\n    };\n\n\
     \    iterator internal_meld(iterator lhs, iterator rhs) {\n        if (lhs ==\
     \ nullptr) return rhs;\n        if (rhs == nullptr) return lhs;\n        lhs->propagate();\n\
-    \        rhs->propagate();\n        if (Compare()(rhs->x, lhs->x)) {\n       \
+    \        rhs->propagate();\n        if (Compare()(lhs->x, rhs->x)) {\n       \
     \     std::swap(lhs, rhs);\n        }\n        lhs->rhs = internal_meld(lhs->rhs,\
     \ rhs);\n        std::swap(lhs->lhs, lhs->rhs);\n        return lhs;\n    }\n\n\
     \  public:\n    skew_heap() = default;\n\n    void push(value_type x, T info)\
@@ -57,8 +57,9 @@ data:
     \      sz++;\n    }\n\n    void pop() {\n        assert(!empty());\n        root\
     \ = internal_meld(root->lhs, root->rhs);\n        sz--;\n    }\n\n    void meld(Self\
     \ &heap) {\n        root = internal_meld(root, heap.root);\n        sz += heap.sz;\n\
-    \    }\n\n    void add(value_type lazy) {\n        root->lazy += lazy;\n    }\n\
-    \n    bool empty() const {\n        return root == nullptr;\n    }\n\n    std::pair<value_type,\
+    \    }\n\n    void add(value_type lazy) {\n        if (root == nullptr) return;\n\
+    \        root->lazy += lazy;\n        root->propagate();\n    }\n\n    bool empty()\
+    \ const {\n        return root == nullptr;\n    }\n\n    std::pair<value_type,\
     \ T> top() const {\n        return {root->x, root->info};\n    }\n\n    int size()\
     \ const {\n        return sz;\n    }\n\n  private:\n    iterator root = nullptr;\n\
     \    int sz = 0;\n};\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
@@ -205,8 +206,8 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj_grl_1_a.test.cpp
   requiredBy: []
-  timestamp: '2024-03-14 18:01:09+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-03-15 00:35:58+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/aoj/aoj_grl_1_a.test.cpp
 layout: document

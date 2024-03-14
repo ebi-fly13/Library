@@ -186,10 +186,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/skew_heap.hpp
       title: data_structure/skew_heap.hpp
     - icon: ':heavy_check_mark:'
@@ -279,7 +279,7 @@ data:
       title: geometry/polygon.hpp
   - name: graph
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/base.hpp
       title: Graph (CSR format)
     - icon: ':heavy_check_mark:'
@@ -301,10 +301,13 @@ data:
       path: graph/dijkstra_fibheap.hpp
       title: graph/dijkstra_fibheap.hpp
     - icon: ':heavy_check_mark:'
+      path: graph/directed_mst.hpp
+      title: Directed MST
+    - icon: ':heavy_check_mark:'
       path: graph/low_link.hpp
       title: Low Link
     - icon: ':heavy_check_mark:'
-      path: graph/minimum_spanning_tree.hpp
+      path: graph/mst.hpp
       title: Minimum Spanning Tree
     - icon: ':heavy_check_mark:'
       path: graph/scc_graph.hpp
@@ -441,19 +444,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -557,7 +560,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_3361.test.cpp
       title: test/aoj/aoj_3361.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_grl_1_a.test.cpp
       title: test/aoj/aoj_grl_1_a.test.cpp
     - icon: ':heavy_check_mark:'
@@ -781,6 +784,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Cycle_Detection_Undirected.test.cpp
       title: test/graph/Cycle_Detection_Undirected.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Directed_MST.test.cpp
+      title: test/graph/Directed_MST.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/Minimum_Spanning_Tree.test.cpp
       title: test/graph/Minimum_Spanning_Tree.test.cpp
