@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cassert>
 #include <functional>
 #include <memory>
 #include <vector>
@@ -62,7 +63,7 @@ template <class Key, class T, class Compare = std::less<Key>> struct skew_heap {
         sz += heap.sz;
     }
 
-    void add(T lazy) {
+    void add(value_type lazy) {
         root->lazy += lazy;
     }
 
