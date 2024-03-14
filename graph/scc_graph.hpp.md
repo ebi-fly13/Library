@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy:
@@ -155,8 +155,8 @@ data:
   timestamp: '2024-03-13 15:52:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/scc_graph.test.cpp
   - test/algorithm/Two_Sat.test.cpp
+  - test/graph/scc_graph.test.cpp
 documentation_of: graph/scc_graph.hpp
 layout: document
 redirect_from:

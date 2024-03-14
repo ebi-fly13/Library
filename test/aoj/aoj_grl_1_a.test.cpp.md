@@ -4,6 +4,9 @@ data:
   - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
+  - icon: ':x:'
+    path: data_structure/skew_heap.hpp
+    title: data_structure/skew_heap.hpp
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
@@ -17,133 +20,48 @@ data:
     path: template/io.hpp
     title: template/io.hpp
   - icon: ':question:'
+    path: template/template.hpp
+    title: template/template.hpp
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_2235.test.cpp
-    title: test/aoj/aoj_2235.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_2450.test.cpp
-    title: test/aoj/aoj_2450.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_3086.test.cpp
-    title: test/aoj/aoj_3086.test.cpp
-  - icon: ':x:'
-    path: test/aoj/aoj_grl_1_a.test.cpp
-    title: test/aoj/aoj_grl_1_a.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_grl_1_b.test.cpp
-    title: test/aoj/aoj_grl_1_b.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
-    title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Double-Ended_Priority_Queue.test.cpp
-    title: test/data_structure/Double-Ended_Priority_Queue.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Range_Affine_Point_Get.test.cpp
-    title: test/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
-    title: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Range_Affine_Range_Sum.test.cpp
-    title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
-    title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Static_Rectangle_Sum.test.cpp
-    title: test/data_structure/Static_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/Cycle_Detection_Directed.test.cpp
-    title: test/graph/Cycle_Detection_Directed.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/Cycle_Detection_Undirected.test.cpp
-    title: test/graph/Cycle_Detection_Undirected.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/Minimum_Spanning_Tree.test.cpp
-    title: test/graph/Minimum_Spanning_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/Shortest_Path.test.cpp
-    title: test/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/dijkstra.test.cpp
-    title: test/graph/dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/fibonacci_heap.test.cpp
-    title: test/graph/fibonacci_heap.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-    title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Catalan_Convolution.test.cpp
-    title: test/math/Catalan_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Stern-Brocot_Tree.test.cpp
-    title: test/math/Stern-Brocot_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Sum_of_Totient_Function.test.cpp
-    title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Multipoint_Evaluation.test.cpp
-    title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Polynomial_Interpolation.test.cpp
-    title: test/polynomial/Polynomial_Interpolation.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Cartesian_Tree.test.cpp
-    title: test/tree/Cartesian_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
-    title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-    title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1038.test.cpp
-    title: test/yuki/yuki_1038.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1077.test.cpp
-    title: test/yuki/yuki_1077.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1145.test.cpp
-    title: test/yuki/yuki_1145.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1796.test.cpp
-    title: test/yuki/yuki_1796.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_2439.test.cpp
-    title: test/yuki/yuki_2439.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_901.test.cpp
-    title: test/yuki/yuki_901.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_901_2.test.cpp
-    title: test/yuki/yuki_901_2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_952.test.cpp
-    title: test/yuki/yuki_952.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: true
-  _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _pathExtension: cpp
+  _verificationStatusIcon: ':x:'
   attributes:
-    links: []
-  bundledCode: "#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
+    links:
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
+  bundledCode: "#line 1 \"test/aoj/aoj_grl_1_a.test.cpp\"\n#define PROBLEM \\\n  \
+    \  \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\n\n#line\
+    \ 2 \"data_structure/skew_heap.hpp\"\n\n#include <functional>\n#include <memory>\n\
+    #include <vector>\n\nnamespace ebi {\n\ntemplate <class Key, class T, class Compare\
+    \ = std::less<Key>> struct skew_heap {\n  private:\n    using value_type = Key;\n\
+    \    using Self = skew_heap<Key, T, Compare>;\n\n    struct Node;\n    using iterator\
+    \ = std::shared_ptr<Node>;\n\n    struct Node {\n        Node(value_type x_, T\
+    \ info_) : x(x_), info(info_) {}\n\n        void propagate() {\n            if\
+    \ (lhs) lhs->lazy += lazy;\n            if (rhs) rhs->lazy += lazy;\n        \
+    \    x += lazy;\n            lazy = value_type();\n        }\n\n        value_type\
+    \ x;\n        T info;\n        value_type lazy = value_type();\n        iterator\
+    \ lhs = nullptr, rhs = nullptr;\n    };\n\n    iterator internal_meld(iterator\
+    \ lhs, iterator rhs) {\n        if (lhs == nullptr) return rhs;\n        if (rhs\
+    \ == nullptr) return lhs;\n        lhs->propagate();\n        rhs->propagate();\n\
+    \        if (Compare()(rhs->x, lhs->x)) {\n            std::swap(lhs, rhs);\n\
+    \        }\n        lhs->rhs = internal_meld(lhs->rhs, rhs);\n        std::swap(lhs->lhs,\
+    \ lhs->rhs);\n        return lhs;\n    }\n\n  public:\n    skew_heap() = default;\n\
+    \n    void push(value_type x, T info) {\n        root = internal_meld(root, std::make_shared<Node>(x,\
+    \ info));\n        sz++;\n    }\n\n    void pop() {\n        assert(!empty());\n\
+    \        root = internal_meld(root->lhs, root->rhs);\n        sz--;\n    }\n\n\
+    \    void meld(Self &heap) {\n        root = internal_meld(root, heap.root);\n\
+    \        sz += heap.sz;\n    }\n\n    void add(T lazy) {\n        root->lazy +=\
+    \ lazy;\n    }\n\n    bool empty() const {\n        return root == nullptr;\n\
+    \    }\n\n    std::pair<value_type, T> top() const {\n        return {root->x,\
+    \ root->info};\n    }\n\n    int size() const {\n        return sz;\n    }\n\n\
+    \  private:\n    iterator root = nullptr;\n    int sz = 0;\n};\n\n}  // namespace\
+    \ ebi\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define\
     \ rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n)\
     \ for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64\
     \ i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
@@ -247,86 +165,52 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 14 \"template/template.hpp\"\n"
-  code: '#include <bits/stdc++.h>
-
-
-    #define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)
-
-    #define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)
-
-    #define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)
-
-    #define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)
-
-    #define all(v) (v).begin(), (v).end()
-
-    #define rall(v) (v).rbegin(), (v).rend()
-
-
-    #include "debug_template.hpp"
-
-    #include "int_alias.hpp"
-
-    #include "io.hpp"
-
-    #include "utility.hpp"'
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/aoj/aoj_grl_1_a.test.cpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m, r;\n    std::cin >> n >>\
+    \ m >> r;\n    Graph<i64> g(n);\n    g.read_graph(m, 0, true, true);\n    skew_heap<i64,\
+    \ int, std::greater<i64>> heap;\n    std::vector<i64> dp(n, LNF);\n    dp[r] =\
+    \ 0;\n    heap.push(0, r);\n    while (!heap.empty()) {\n        auto [ret, v]\
+    \ = heap.top();\n        heap.pop();\n        if (dp[v] < ret) continue;\n   \
+    \     for (auto e : g[v]) {\n            if (chmin(dp[e.to], dp[v] + e.cost))\
+    \ {\n                heap.push(dp[e.to], e.to);\n            }\n        }\n  \
+    \  }\n    for (auto ans : dp) {\n        if (ans == LNF) {\n            std::cout\
+    \ << \"INF\\n\";\n        } else {\n            std::cout << ans << '\\n';\n \
+    \       }\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
+    \n\n#include \"../../data_structure/skew_heap.hpp\"\n#include \"../../template/template.hpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m, r;\n    std::cin >> n >>\
+    \ m >> r;\n    Graph<i64> g(n);\n    g.read_graph(m, 0, true, true);\n    skew_heap<i64,\
+    \ int, std::greater<i64>> heap;\n    std::vector<i64> dp(n, LNF);\n    dp[r] =\
+    \ 0;\n    heap.push(0, r);\n    while (!heap.empty()) {\n        auto [ret, v]\
+    \ = heap.top();\n        heap.pop();\n        if (dp[v] < ret) continue;\n   \
+    \     for (auto e : g[v]) {\n            if (chmin(dp[e.to], dp[v] + e.cost))\
+    \ {\n                heap.push(dp[e.to], e.to);\n            }\n        }\n  \
+    \  }\n    for (auto ans : dp) {\n        if (ans == LNF) {\n            std::cout\
+    \ << \"INF\\n\";\n        } else {\n            std::cout << ans << '\\n';\n \
+    \       }\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    return 0;\n}"
   dependsOn:
+  - data_structure/skew_heap.hpp
+  - template/template.hpp
   - template/debug_template.hpp
   - template/int_alias.hpp
   - template/io.hpp
   - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
-  isVerificationFile: false
-  path: template/template.hpp
+  isVerificationFile: true
+  path: test/aoj/aoj_grl_1_a.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_SOME_WA
-  verifiedWith:
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/aoj/aoj_2235.test.cpp
-  - test/aoj/aoj_grl_1_a.test.cpp
-  - test/aoj/aoj_3086.test.cpp
-  - test/aoj/aoj_grl_1_b.test.cpp
-  - test/aoj/aoj_2450.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
-  - test/math/Stern-Brocot_Tree.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Catalan_Convolution.test.cpp
-  - test/data_structure/Range_Affine_Point_Get.test.cpp
-  - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
-  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
-  - test/data_structure/Static_Rectangle_Sum.test.cpp
-  - test/data_structure/Double-Ended_Priority_Queue.test.cpp
-  - test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
-  - test/yuki/yuki_2439.test.cpp
-  - test/yuki/yuki_901.test.cpp
-  - test/yuki/yuki_1077.test.cpp
-  - test/yuki/yuki_952.test.cpp
-  - test/yuki/yuki_1038.test.cpp
-  - test/yuki/yuki_901_2.test.cpp
-  - test/yuki/yuki_1796.test.cpp
-  - test/yuki/yuki_1145.test.cpp
-  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - test/tree/Cartesian_Tree.test.cpp
-  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-  - test/graph/Minimum_Spanning_Tree.test.cpp
-  - test/graph/Cycle_Detection_Undirected.test.cpp
-  - test/graph/dijkstra.test.cpp
-  - test/graph/Cycle_Detection_Directed.test.cpp
-  - test/graph/fibonacci_heap.test.cpp
-  - test/graph/Shortest_Path.test.cpp
-documentation_of: template/template.hpp
+  timestamp: '2024-03-14 15:59:20+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
+  verifiedWith: []
+documentation_of: test/aoj/aoj_grl_1_a.test.cpp
 layout: document
 redirect_from:
-- /library/template/template.hpp
-- /library/template/template.hpp.html
-title: template/template.hpp
+- /verify/test/aoj/aoj_grl_1_a.test.cpp
+- /verify/test/aoj/aoj_grl_1_a.test.cpp.html
+title: test/aoj/aoj_grl_1_a.test.cpp
 ---

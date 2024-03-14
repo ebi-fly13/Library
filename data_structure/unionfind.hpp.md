@@ -55,8 +55,8 @@ data:
   timestamp: '2023-11-13 02:14:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/data_structure/Union_Find.test.cpp
+  - test/graph/Minimum_Spanning_Tree.test.cpp
 documentation_of: data_structure/unionfind.hpp
 layout: document
 title: UnionFind

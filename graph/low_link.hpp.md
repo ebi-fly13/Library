@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy:
@@ -137,14 +137,14 @@ data:
   isVerificationFile: false
   path: graph/low_link.hpp
   requiredBy:
-  - graph/biconnected_components.hpp
-  - graph/two_edge_connected_components.hpp
   - tree/block_cut_tree.hpp
+  - graph/two_edge_connected_components.hpp
+  - graph/biconnected_components.hpp
   timestamp: '2024-03-13 15:52:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Two_Edge_Connected_Components.test.cpp
   - test/graph/Articulation_Points.test.cpp
+  - test/graph/Two_Edge_Connected_Components.test.cpp
   - test/graph/Biconnected_Components.test.cpp
 documentation_of: graph/low_link.hpp
 layout: document

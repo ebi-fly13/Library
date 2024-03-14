@@ -186,9 +186,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
+    - icon: ':x:'
+      path: data_structure/skew_heap.hpp
+      title: data_structure/skew_heap.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/slope_trick.hpp
       title: Slope Trick
@@ -276,7 +279,7 @@ data:
       title: geometry/polygon.hpp
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/base.hpp
       title: Graph (CSR format)
     - icon: ':heavy_check_mark:'
@@ -438,19 +441,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -554,6 +557,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_3361.test.cpp
       title: test/aoj/aoj_3361.test.cpp
+    - icon: ':x:'
+      path: test/aoj/aoj_grl_1_a.test.cpp
+      title: test/aoj/aoj_grl_1_a.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_grl_1_b.test.cpp
       title: test/aoj/aoj_grl_1_b.test.cpp
