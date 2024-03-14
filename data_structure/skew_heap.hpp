@@ -36,7 +36,7 @@ template <class Key, class T, class Compare = std::less<Key>> struct skew_heap {
         if (rhs == nullptr) return lhs;
         lhs->propagate();
         rhs->propagate();
-        if (Compare()(rhs->x, lhs->x)) {
+        if (Compare()(lhs->x, rhs->x)) {
             std::swap(lhs, rhs);
         }
         lhs->rhs = internal_meld(lhs->rhs, rhs);
@@ -64,7 +64,9 @@ template <class Key, class T, class Compare = std::less<Key>> struct skew_heap {
     }
 
     void add(value_type lazy) {
+        if (root == nullptr) return;
         root->lazy += lazy;
+        root->propagate();
     }
 
     bool empty() const {

@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/minimum_spanning_tree"
 
-#include "../../graph/minimum_spanning_tree.hpp"
+#include "../../graph/mst.hpp"
 
 #include "../../graph/base.hpp"
 #include "../../template/template.hpp"
@@ -12,7 +12,7 @@ void main_() {
     std::cin >> n >> m;
     Graph<i64> g(n);
     g.read_graph(m, 0, false, true);
-    auto [x, e] = minimum_spanning_tree(g);
+    auto [x, e] = mst(g);
     std::cout << x << '\n';
     std::cout << e << '\n';
 }

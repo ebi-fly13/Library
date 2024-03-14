@@ -9,8 +9,7 @@
 
 namespace ebi {
 
-template <class T>
-std::pair<T, std::vector<int>> minimum_spanning_tree(const Graph<T> &g) {
+template <class T> std::pair<T, std::vector<int>> mst(const Graph<T> &g) {
     unionfind uf(g.size());
     std::vector<Edge<T>> edges;
     for (auto v : std::views::iota(0, g.size())) {
