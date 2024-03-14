@@ -37,82 +37,83 @@ data:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
   bundledCode: "#line 1 \"test/aoj/aoj_grl_1_a.test.cpp\"\n#define PROBLEM \\\n  \
     \  \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\n\n#line\
-    \ 2 \"data_structure/skew_heap.hpp\"\n\n#include <functional>\n#include <memory>\n\
-    #include <vector>\n\nnamespace ebi {\n\ntemplate <class Key, class T, class Compare\
-    \ = std::less<Key>> struct skew_heap {\n  private:\n    using value_type = Key;\n\
-    \    using Self = skew_heap<Key, T, Compare>;\n\n    struct Node;\n    using iterator\
-    \ = std::shared_ptr<Node>;\n\n    struct Node {\n        Node(value_type x_, T\
-    \ info_) : x(x_), info(info_) {}\n\n        void propagate() {\n            if\
-    \ (lhs) lhs->lazy += lazy;\n            if (rhs) rhs->lazy += lazy;\n        \
-    \    x += lazy;\n            lazy = value_type();\n        }\n\n        value_type\
-    \ x;\n        T info;\n        value_type lazy = value_type();\n        iterator\
-    \ lhs = nullptr, rhs = nullptr;\n    };\n\n    iterator internal_meld(iterator\
-    \ lhs, iterator rhs) {\n        if (lhs == nullptr) return rhs;\n        if (rhs\
-    \ == nullptr) return lhs;\n        lhs->propagate();\n        rhs->propagate();\n\
-    \        if (Compare()(rhs->x, lhs->x)) {\n            std::swap(lhs, rhs);\n\
-    \        }\n        lhs->rhs = internal_meld(lhs->rhs, rhs);\n        std::swap(lhs->lhs,\
-    \ lhs->rhs);\n        return lhs;\n    }\n\n  public:\n    skew_heap() = default;\n\
-    \n    void push(value_type x, T info) {\n        root = internal_meld(root, std::make_shared<Node>(x,\
-    \ info));\n        sz++;\n    }\n\n    void pop() {\n        assert(!empty());\n\
-    \        root = internal_meld(root->lhs, root->rhs);\n        sz--;\n    }\n\n\
-    \    void meld(Self &heap) {\n        root = internal_meld(root, heap.root);\n\
-    \        sz += heap.sz;\n    }\n\n    void add(T lazy) {\n        root->lazy +=\
-    \ lazy;\n    }\n\n    bool empty() const {\n        return root == nullptr;\n\
-    \    }\n\n    std::pair<value_type, T> top() const {\n        return {root->x,\
-    \ root->info};\n    }\n\n    int size() const {\n        return sz;\n    }\n\n\
-    \  private:\n    iterator root = nullptr;\n    int sz = 0;\n};\n\n}  // namespace\
-    \ ebi\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define\
-    \ rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n)\
-    \ for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64\
-    \ i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
-    \ i >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v)\
-    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line\
-    \ 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n#define\
-    \ debug(...)                                                      \\\n    std::cerr\
-    \ << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\", \\\n       \
-    \ debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid debug_out()\
-    \ {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename... Tail>\
-    \ void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t)\
-    \ > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n\
-    #line 2 \"template/int_alias.hpp\"\n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace\
-    \ ebi {\n\nusing ld = long double;\nusing std::size_t;\nusing i8 = std::int8_t;\n\
-    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
-    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
-    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\
-    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
-    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
-    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
-    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
-    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
-    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
-    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
-    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
-    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
-    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
-    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
-    \n\n#line 2 \"graph/base.hpp\"\n\n#line 5 \"graph/base.hpp\"\n#include <ranges>\n\
-    #line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line\
-    \ 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E>\
-    \ struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const\
-    \ std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0), elist(elements.size())\
-    \ {\n        for (auto e : elements) {\n            start[e.first + 1]++;\n  \
-    \      }\n        for (auto i : std::views::iota(0, n)) {\n            start[i\
-    \ + 1] += start[i];\n        }\n        auto counter = start;\n        for (auto\
-    \ [i, e] : elements) {\n            elist[counter[i]++] = e;\n        }\n    }\n\
-    \n    simple_csr(const std::vector<std::vector<E>>& es)\n        : start(es.size()\
-    \ + 1, 0) {\n        int n = es.size();\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] = (int)es[i].size() + start[i];\n        }\n\
-    \        elist.resize(start.back());\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            std::copy(es[i].begin(), es[i].end(), elist.begin() + start[i]);\n\
-    \        }\n    }\n\n    int size() const {\n        return (int)start.size()\
-    \ - 1;\n    }\n\n    const auto operator[](int i) const {\n        return std::ranges::subrange(elist.begin()\
-    \ + start[i],\n                                     elist.begin() + start[i +\
-    \ 1]);\n    }\n    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \ 2 \"data_structure/skew_heap.hpp\"\n\n#include <cassert>\n#include <functional>\n\
+    #include <memory>\n#include <vector>\n\nnamespace ebi {\n\ntemplate <class Key,\
+    \ class T, class Compare = std::less<Key>> struct skew_heap {\n  private:\n  \
+    \  using value_type = Key;\n    using Self = skew_heap<Key, T, Compare>;\n\n \
+    \   struct Node;\n    using iterator = std::shared_ptr<Node>;\n\n    struct Node\
+    \ {\n        Node(value_type x_, T info_) : x(x_), info(info_) {}\n\n        void\
+    \ propagate() {\n            if (lhs) lhs->lazy += lazy;\n            if (rhs)\
+    \ rhs->lazy += lazy;\n            x += lazy;\n            lazy = value_type();\n\
+    \        }\n\n        value_type x;\n        T info;\n        value_type lazy\
+    \ = value_type();\n        iterator lhs = nullptr, rhs = nullptr;\n    };\n\n\
+    \    iterator internal_meld(iterator lhs, iterator rhs) {\n        if (lhs ==\
+    \ nullptr) return rhs;\n        if (rhs == nullptr) return lhs;\n        lhs->propagate();\n\
+    \        rhs->propagate();\n        if (Compare()(rhs->x, lhs->x)) {\n       \
+    \     std::swap(lhs, rhs);\n        }\n        lhs->rhs = internal_meld(lhs->rhs,\
+    \ rhs);\n        std::swap(lhs->lhs, lhs->rhs);\n        return lhs;\n    }\n\n\
+    \  public:\n    skew_heap() = default;\n\n    void push(value_type x, T info)\
+    \ {\n        root = internal_meld(root, std::make_shared<Node>(x, info));\n  \
+    \      sz++;\n    }\n\n    void pop() {\n        assert(!empty());\n        root\
+    \ = internal_meld(root->lhs, root->rhs);\n        sz--;\n    }\n\n    void meld(Self\
+    \ &heap) {\n        root = internal_meld(root, heap.root);\n        sz += heap.sz;\n\
+    \    }\n\n    void add(value_type lazy) {\n        root->lazy += lazy;\n    }\n\
+    \n    bool empty() const {\n        return root == nullptr;\n    }\n\n    std::pair<value_type,\
+    \ T> top() const {\n        return {root->x, root->info};\n    }\n\n    int size()\
+    \ const {\n        return sz;\n    }\n\n  private:\n    iterator root = nullptr;\n\
+    \    int sz = 0;\n};\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
+    \n#include <bits/stdc++.h>\n\n#define rep(i, a, n) for (int i = (int)(a); i <\
+    \ (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
+    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
+    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
+    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
+    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
+    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
+    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
+    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
+    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
+    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
+    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
+    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
+    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
+    #line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
+    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
+    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
+    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
+    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
+    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
+    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
+    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
+    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 5\
+    \ \"graph/base.hpp\"\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
+    \ \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
+    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
+    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
+    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
+    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
+    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
+    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
+    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
+    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
+    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
+    \                                   elist.begin() + start[i + 1]);\n    }\n  \
+    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -204,7 +205,7 @@ data:
   isVerificationFile: true
   path: test/aoj/aoj_grl_1_a.test.cpp
   requiredBy: []
-  timestamp: '2024-03-14 15:59:20+09:00'
+  timestamp: '2024-03-14 18:01:09+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/aoj/aoj_grl_1_a.test.cpp
