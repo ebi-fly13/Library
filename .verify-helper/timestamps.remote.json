@@ -88,6 +88,7 @@
 "test/graph/Cycle_Detection_Directed.test.cpp": "2024-03-13 17:06:09 +0900",
 "test/graph/Cycle_Detection_Undirected.test.cpp": "2024-03-13 17:06:09 +0900",
 "test/graph/Directed_MST.test.cpp": "2024-03-15 00:35:58 +0900",
+"test/graph/Manhattan_MST.test.cpp": "2024-03-15 14:46:09 +0900",
 "test/graph/Minimum_Spanning_Tree.test.cpp": "2024-03-15 00:35:58 +0900",
 "test/graph/Shortest_Path.test.cpp": "2024-03-13 15:52:21 +0900",
 "test/graph/Two_Edge_Connected_Components.test.cpp": "2024-03-13 15:52:21 +0900",
