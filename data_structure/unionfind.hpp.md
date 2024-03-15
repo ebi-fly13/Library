@@ -3,12 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: graph/manhattan_mst.hpp
+    title: Manhattan MST
+  - icon: ':heavy_check_mark:'
     path: graph/mst.hpp
     title: Minimum Spanning Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Union_Find.test.cpp
     title: test/data_structure/Union_Find.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Manhattan_MST.test.cpp
+    title: test/graph/Manhattan_MST.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Minimum_Spanning_Tree.test.cpp
     title: test/graph/Minimum_Spanning_Tree.test.cpp
@@ -52,11 +58,13 @@ data:
   path: data_structure/unionfind.hpp
   requiredBy:
   - graph/mst.hpp
+  - graph/manhattan_mst.hpp
   timestamp: '2023-11-13 02:14:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Union_Find.test.cpp
   - test/graph/Minimum_Spanning_Tree.test.cpp
+  - test/graph/Manhattan_MST.test.cpp
 documentation_of: data_structure/unionfind.hpp
 layout: document
 title: UnionFind

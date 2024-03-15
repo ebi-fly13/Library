@@ -307,6 +307,9 @@ data:
       path: graph/low_link.hpp
       title: Low Link
     - icon: ':heavy_check_mark:'
+      path: graph/manhattan_mst.hpp
+      title: Manhattan MST
+    - icon: ':heavy_check_mark:'
       path: graph/mst.hpp
       title: Minimum Spanning Tree
     - icon: ':heavy_check_mark:'
@@ -787,6 +790,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Directed_MST.test.cpp
       title: test/graph/Directed_MST.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Manhattan_MST.test.cpp
+      title: test/graph/Manhattan_MST.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/Minimum_Spanning_Tree.test.cpp
       title: test/graph/Minimum_Spanning_Tree.test.cpp

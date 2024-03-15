@@ -33,6 +33,9 @@ data:
     path: graph/low_link.hpp
     title: Low Link
   - icon: ':heavy_check_mark:'
+    path: graph/manhattan_mst.hpp
+    title: Manhattan MST
+  - icon: ':heavy_check_mark:'
     path: graph/mst.hpp
     title: Minimum Spanning Tree
   - icon: ':heavy_check_mark:'
@@ -141,6 +144,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Directed_MST.test.cpp
     title: test/graph/Directed_MST.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Manhattan_MST.test.cpp
+    title: test/graph/Manhattan_MST.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Minimum_Spanning_Tree.test.cpp
     title: test/graph/Minimum_Spanning_Tree.test.cpp
@@ -322,6 +328,7 @@ data:
   - graph/complement_graph_bfs.hpp
   - graph/directed_mst.hpp
   - graph/low_link.hpp
+  - graph/manhattan_mst.hpp
   - graph/dijkstra.hpp
   - graph/base.hpp
   - graph/biconnected_components.hpp
@@ -381,6 +388,7 @@ data:
   - test/graph/dijkstra.test.cpp
   - test/graph/Directed_MST.test.cpp
   - test/graph/Biconnected_Components.test.cpp
+  - test/graph/Manhattan_MST.test.cpp
   - test/graph/scc_graph.test.cpp
   - test/graph/Cycle_Detection_Directed.test.cpp
   - test/graph/fibonacci_heap.test.cpp
