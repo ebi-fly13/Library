@@ -14,10 +14,13 @@ data:
     path: set_function/subset_transform.hpp
     title: "Subset Transform (Zeta / M\xF6bius)"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Chromatic_Number.test.cpp
+    title: test/graph/Chromatic_Number.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/chromatic_number.hpp\"\n\n#include <cassert>\n#include\
@@ -135,8 +138,9 @@ data:
   path: graph/chromatic_number.hpp
   requiredBy: []
   timestamp: '2024-04-02 00:37:17+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/graph/Chromatic_Number.test.cpp
 documentation_of: graph/chromatic_number.hpp
 layout: document
 title: "Chromatic Number (\u5F69\u8272\u6570)"

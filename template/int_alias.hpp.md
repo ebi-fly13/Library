@@ -91,6 +91,9 @@ data:
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/Chromatic_Number.test.cpp
+    title: test/graph/Chromatic_Number.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Directed.test.cpp
     title: test/graph/Cycle_Detection_Directed.test.cpp
   - icon: ':heavy_check_mark:'
@@ -322,6 +325,7 @@ data:
   - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/graph/Cycle_Detection_Undirected.test.cpp
   - test/graph/dijkstra.test.cpp
+  - test/graph/Chromatic_Number.test.cpp
   - test/graph/Directed_MST.test.cpp
   - test/graph/Manhattan_MST.test.cpp
   - test/graph/Cycle_Detection_Directed.test.cpp

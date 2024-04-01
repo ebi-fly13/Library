@@ -5,13 +5,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/or_convolution.hpp
     title: Bitwise OR Convolution
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/chromatic_number.hpp
     title: "Chromatic Number (\u5F69\u8272\u6570)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Bitwise_OR_Convolution.test.cpp
     title: test/convolution/Bitwise_OR_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Chromatic_Number.test.cpp
+    title: test/graph/Chromatic_Number.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -55,6 +58,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Bitwise_OR_Convolution.test.cpp
+  - test/graph/Chromatic_Number.test.cpp
 documentation_of: set_function/subset_transform.hpp
 layout: document
 title: "Subset Transform (Zeta / M\xF6bius)"

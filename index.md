@@ -288,7 +288,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/biconnected_components.hpp
       title: graph/biconnected_components.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/chromatic_number.hpp
       title: "Chromatic Number (\u5F69\u8272\u6570)"
     - icon: ':warning:'
@@ -784,6 +784,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Biconnected_Components.test.cpp
       title: test/graph/Biconnected_Components.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Chromatic_Number.test.cpp
+      title: test/graph/Chromatic_Number.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/Cycle_Detection_Directed.test.cpp
       title: test/graph/Cycle_Detection_Directed.test.cpp
