@@ -289,6 +289,9 @@ data:
       path: graph/biconnected_components.hpp
       title: graph/biconnected_components.hpp
     - icon: ':warning:'
+      path: graph/chromatic_number.hpp
+      title: "Chromatic Number (\u5F69\u8272\u6570)"
+    - icon: ':warning:'
       path: graph/complement_graph_bfs.hpp
       title: Complement Graph BFS
     - icon: ':heavy_check_mark:'

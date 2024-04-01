@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/or_convolution.hpp
     title: Bitwise OR Convolution
+  - icon: ':warning:'
+    path: graph/chromatic_number.hpp
+    title: "Chromatic Number (\u5F69\u8272\u6570)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Bitwise_OR_Convolution.test.cpp
@@ -47,6 +50,7 @@ data:
   path: set_function/subset_transform.hpp
   requiredBy:
   - convolution/or_convolution.hpp
+  - graph/chromatic_number.hpp
   timestamp: '2023-10-26 18:43:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

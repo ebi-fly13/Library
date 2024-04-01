@@ -15,6 +15,9 @@ data:
     path: graph/biconnected_components.hpp
     title: graph/biconnected_components.hpp
   - icon: ':warning:'
+    path: graph/chromatic_number.hpp
+    title: "Chromatic Number (\u5F69\u8272\u6570)"
+  - icon: ':warning:'
     path: graph/complement_graph_bfs.hpp
     title: Complement Graph BFS
   - icon: ':heavy_check_mark:'
@@ -379,6 +382,7 @@ data:
   - graph/dijkstra.hpp
   - graph/biconnected_components.hpp
   - graph/scc_graph.hpp
+  - graph/chromatic_number.hpp
   - graph/dijkstra_fibheap.hpp
   timestamp: '2024-03-13 15:52:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
