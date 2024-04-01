@@ -85,6 +85,7 @@
 "test/geometry/tangent_to_circle.test.cpp": "2023-05-08 16:51:58 +0900",
 "test/graph/Articulation_Points.test.cpp": "2024-03-13 15:52:21 +0900",
 "test/graph/Biconnected_Components.test.cpp": "2024-03-13 15:52:21 +0900",
+"test/graph/Chromatic_Number.test.cpp": "2024-04-02 00:37:53 +0900",
 "test/graph/Cycle_Detection_Directed.test.cpp": "2024-03-13 17:06:09 +0900",
 "test/graph/Cycle_Detection_Undirected.test.cpp": "2024-03-13 17:06:09 +0900",
 "test/graph/Directed_MST.test.cpp": "2024-03-15 00:35:58 +0900",
