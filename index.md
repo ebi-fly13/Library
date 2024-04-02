@@ -307,6 +307,9 @@ data:
       path: graph/directed_mst.hpp
       title: Directed MST
     - icon: ':heavy_check_mark:'
+      path: graph/euler_trail.hpp
+      title: Euler Trail
+    - icon: ':heavy_check_mark:'
       path: graph/low_link.hpp
       title: Low Link
     - icon: ':heavy_check_mark:'
@@ -796,6 +799,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Directed_MST.test.cpp
       title: test/graph/Directed_MST.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Eulerian_Trail_Directed.test.cpp
+      title: test/graph/Eulerian_Trail_Directed.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Eulerian_Trail_Undirected.test.cpp
+      title: test/graph/Eulerian_Trail_Undirected.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/Manhattan_MST.test.cpp
       title: test/graph/Manhattan_MST.test.cpp

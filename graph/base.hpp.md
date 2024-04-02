@@ -33,6 +33,9 @@ data:
     path: graph/directed_mst.hpp
     title: Directed MST
   - icon: ':heavy_check_mark:'
+    path: graph/euler_trail.hpp
+    title: Euler Trail
+  - icon: ':heavy_check_mark:'
     path: graph/low_link.hpp
     title: Low Link
   - icon: ':heavy_check_mark:'
@@ -150,6 +153,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Directed_MST.test.cpp
     title: test/graph/Directed_MST.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Eulerian_Trail_Directed.test.cpp
+    title: test/graph/Eulerian_Trail_Directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Eulerian_Trail_Undirected.test.cpp
+    title: test/graph/Eulerian_Trail_Undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Manhattan_MST.test.cpp
     title: test/graph/Manhattan_MST.test.cpp
@@ -381,6 +390,7 @@ data:
   - graph/complement_graph_bfs.hpp
   - graph/directed_mst.hpp
   - graph/low_link.hpp
+  - graph/euler_trail.hpp
   - graph/manhattan_mst.hpp
   - graph/dijkstra.hpp
   - graph/biconnected_components.hpp
@@ -438,12 +448,14 @@ data:
   - test/graph/Cycle_Detection_Undirected.test.cpp
   - test/graph/Articulation_Points.test.cpp
   - test/graph/Two_Edge_Connected_Components.test.cpp
+  - test/graph/Eulerian_Trail_Undirected.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/Chromatic_Number.test.cpp
   - test/graph/Directed_MST.test.cpp
   - test/graph/Biconnected_Components.test.cpp
   - test/graph/Manhattan_MST.test.cpp
   - test/graph/scc_graph.test.cpp
+  - test/graph/Eulerian_Trail_Directed.test.cpp
   - test/graph/Cycle_Detection_Directed.test.cpp
   - test/graph/fibonacci_heap.test.cpp
   - test/graph/Shortest_Path.test.cpp

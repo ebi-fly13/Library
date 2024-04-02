@@ -64,6 +64,12 @@ data:
     path: test/graph/Directed_MST.test.cpp
     title: test/graph/Directed_MST.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/Eulerian_Trail_Directed.test.cpp
+    title: test/graph/Eulerian_Trail_Directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Eulerian_Trail_Undirected.test.cpp
+    title: test/graph/Eulerian_Trail_Undirected.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/Manhattan_MST.test.cpp
     title: test/graph/Manhattan_MST.test.cpp
   - icon: ':heavy_check_mark:'
@@ -283,10 +289,12 @@ data:
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/graph/Cycle_Detection_Undirected.test.cpp
+  - test/graph/Eulerian_Trail_Undirected.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/Chromatic_Number.test.cpp
   - test/graph/Directed_MST.test.cpp
   - test/graph/Manhattan_MST.test.cpp
+  - test/graph/Eulerian_Trail_Directed.test.cpp
   - test/graph/Cycle_Detection_Directed.test.cpp
   - test/graph/fibonacci_heap.test.cpp
   - test/graph/Shortest_Path.test.cpp
