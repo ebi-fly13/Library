@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
@@ -41,6 +41,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/manhattan_mst.hpp
     title: Manhattan MST
+  - icon: ':x:'
+    path: graph/maximum_independent_set.hpp
+    title: Maximum Independent Set
   - icon: ':heavy_check_mark:'
     path: graph/mst.hpp
     title: Minimum Spanning Tree
@@ -50,10 +53,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
@@ -162,6 +165,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Manhattan_MST.test.cpp
     title: test/graph/Manhattan_MST.test.cpp
+  - icon: ':x:'
+    path: test/graph/Maximum_Independent_Set.test.cpp
+    title: test/graph/Maximum_Independent_Set.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Minimum_Spanning_Tree.test.cpp
     title: test/graph/Minimum_Spanning_Tree.test.cpp
@@ -264,9 +270,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/simple_csr.hpp\"\n\n#include <ranges>\n#include\
@@ -338,6 +344,7 @@ data:
   - tree/heavy_light_decomposition.hpp
   - graph/cycle_detection.hpp
   - graph/two_edge_connected_components.hpp
+  - graph/maximum_independent_set.hpp
   - graph/mst.hpp
   - graph/bellman_ford.hpp
   - graph/complement_graph_bfs.hpp
@@ -352,7 +359,7 @@ data:
   - graph/chromatic_number.hpp
   - graph/dijkstra_fibheap.hpp
   timestamp: '2024-03-11 18:04:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
@@ -398,6 +405,7 @@ data:
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+  - test/graph/Maximum_Independent_Set.test.cpp
   - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/graph/Cycle_Detection_Undirected.test.cpp
   - test/graph/Articulation_Points.test.cpp

@@ -186,7 +186,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
     - icon: ':heavy_check_mark:'
@@ -279,7 +279,7 @@ data:
       title: geometry/polygon.hpp
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/base.hpp
       title: Graph (CSR format)
     - icon: ':heavy_check_mark:'
@@ -315,6 +315,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/manhattan_mst.hpp
       title: Manhattan MST
+    - icon: ':x:'
+      path: graph/maximum_independent_set.hpp
+      title: Maximum Independent Set
     - icon: ':heavy_check_mark:'
       path: graph/mst.hpp
       title: Minimum Spanning Tree
@@ -453,19 +456,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -808,6 +811,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Manhattan_MST.test.cpp
       title: test/graph/Manhattan_MST.test.cpp
+    - icon: ':x:'
+      path: test/graph/Maximum_Independent_Set.test.cpp
+      title: test/graph/Maximum_Independent_Set.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/Minimum_Spanning_Tree.test.cpp
       title: test/graph/Minimum_Spanning_Tree.test.cpp

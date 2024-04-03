@@ -7,9 +7,9 @@ data:
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
-    path: graph/dijkstra.hpp
-    title: dijkstra
+  - icon: ':x:'
+    path: graph/maximum_independent_set.hpp
+    title: Maximum Independent Set
   - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
@@ -27,37 +27,36 @@ data:
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
+    PROBLEM: https://judge.yosupo.jp/problem/maximum_independent_setad
     links:
-    - http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "#line 1 \"test/graph/dijkstra.test.cpp\"\n#define PROBLEM \\\r\n \
-    \   \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\r\n\r\
-    \n#line 2 \"graph/dijkstra.hpp\"\n\r\n#include <algorithm>\r\n#include <limits>\r\
-    \n#include <queue>\r\n#include <vector>\r\n\r\n#line 2 \"graph/base.hpp\"\n\n\
-    #include <cassert>\n#include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\
-    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
-    \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
-    \    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n     \
-    \   : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
-    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
-    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
-    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
-    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
-    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
-    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
-    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
-    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
-    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
-    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
-    \                                   elist.begin() + start[i + 1]);\n    }\n  \
-    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    - https://judge.yosupo.jp/problem/maximum_independent_setad
+  bundledCode: "#line 1 \"test/graph/Maximum_Independent_Set.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/maximum_independent_setad\"\n\n#line 2 \"\
+    graph/maximum_independent_set.hpp\"\n\n#include <cassert>\n#include <ranges>\n\
+    #include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#line 4 \"graph/base.hpp\"\n\
+    #include <iostream>\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
+    \n\n#line 4 \"data_structure/simple_csr.hpp\"\n#include <utility>\n#line 6 \"\
+    data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E> struct\
+    \ simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const std::vector<std::pair<int,\
+    \ E>>& elements)\n        : start(n + 1, 0), elist(elements.size()) {\n      \
+    \  for (auto e : elements) {\n            start[e.first + 1]++;\n        }\n \
+    \       for (auto i : std::views::iota(0, n)) {\n            start[i + 1] += start[i];\n\
+    \        }\n        auto counter = start;\n        for (auto [i, e] : elements)\
+    \ {\n            elist[counter[i]++] = e;\n        }\n    }\n\n    simple_csr(const\
+    \ std::vector<std::vector<E>>& es)\n        : start(es.size() + 1, 0) {\n    \
+    \    int n = es.size();\n        for (auto i : std::views::iota(0, n)) {\n   \
+    \         start[i + 1] = (int)es[i].size() + start[i];\n        }\n        elist.resize(start.back());\n\
+    \        for (auto i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(),\
+    \ es[i].end(), elist.begin() + start[i]);\n        }\n    }\n\n    int size()\
+    \ const {\n        return (int)start.size() - 1;\n    }\n\n    const auto operator[](int\
+    \ i) const {\n        return std::ranges::subrange(elist.begin() + start[i],\n\
+    \                                     elist.begin() + start[i + 1]);\n    }\n\
+    \    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -98,42 +97,37 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 9 \"graph/dijkstra.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <class T> std::vector<T> dijkstra(int s,\
-    \ int n, const Graph<T> &g) {\r\n    typedef std::pair<T, int> P;\r\n    std::vector<T>\
-    \ d(n, std::numeric_limits<T>::max());\r\n    std::priority_queue<P, std::vector<P>,\
-    \ std::greater<P>> que;\r\n    que.push(P(0, s));\r\n    d[s] = 0;\r\n    while\
-    \ (!que.empty()) {\r\n        auto [ret, v] = que.top();\r\n        que.pop();\r\
-    \n        if (d[v] < ret) continue;\r\n        for (auto e : g[v]) {\r\n     \
-    \       if (d[e.to] > d[v] + e.cost) {\r\n                d[e.to] = d[v] + e.cost;\r\
-    \n                que.push(P(d[e.to], e.to));\r\n            }\r\n        }\r\n\
-    \    }\r\n    return d;\r\n}\r\n\r\ntemplate <class T> struct dijkstra_path {\r\
-    \n  public:\r\n    dijkstra_path(int s_, const Graph<T> &g)\r\n        : s(s_),\r\
-    \n          dist(g.size(), std::numeric_limits<T>::max()),\r\n          prev(g.size(),\
-    \ -1) {\r\n        dist[s] = 0;\r\n        using P = std::pair<T, int>;\r\n  \
-    \      std::priority_queue<P, std::vector<P>, std::greater<P>> que;\r\n      \
-    \  que.push(P(0, s));\r\n        while (!que.empty()) {\r\n            auto [ret,\
-    \ v] = que.top();\r\n            que.pop();\r\n            if (dist[v] < ret)\
-    \ continue;\r\n            for (auto e : g[v]) {\r\n                if (dist[e.to]\
-    \ > dist[v] + e.cost) {\r\n                    dist[e.to] = dist[v] + e.cost;\r\
-    \n                    prev[e.to] = v;\r\n                    que.push(P(dist[e.to],\
-    \ e.to));\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n\
-    \    std::pair<T, std::vector<int>> shortest_path(int v) const {\r\n        if\
-    \ (dist[v] == std::numeric_limits<T>::max()) return {dist[v], {}};\r\n       \
-    \ std::vector<int> path;\r\n        int u = v;\r\n        while (u != s) {\r\n\
-    \            path.emplace_back(u);\r\n            u = prev[u];\r\n        }\r\n\
-    \        path.emplace_back(u);\r\n        std::reverse(path.begin(), path.end());\r\
-    \n        return {dist[v], path};\r\n    }\r\n\r\n  private:\r\n    int s;\r\n\
-    \    std::vector<T> dist;\r\n    std::vector<int> prev;\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 5 \"test/graph/dijkstra.test.cpp\"\n\r\n#line 9 \"test/graph/dijkstra.test.cpp\"\
-    \n\r\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i,\
-    \ a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int\
-    \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
-    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
-    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
-    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
-    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
-    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"graph/maximum_independent_set.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> std::vector<int> maximum_independent_set(const\
+    \ Graph<T> &g) {\n    int n = g.node_number();\n    std::vector<int> deg(n);\n\
+    \    for (auto v : std::views::iota(0, n)) {\n        deg[v] = g[v].size();\n\
+    \    }\n    std::vector<int> max_set;\n    std::vector<int> used;\n    std::vector<int>\
+    \ dead(n, 0);\n    int alive = n;\n    auto dfs = [&](auto &&self) -> void {\n\
+    \        if ((int)used.size() + alive <= (int)max_set.size()) return;\n      \
+    \  int v = -1;\n        for (auto u : std::views::iota(0, n)) {\n            if\
+    \ (dead[u]) continue;\n            if (deg[u] <= 1) {\n                v = u;\n\
+    \                break;\n            }\n            if (v == -1 || deg[v] < deg[u])\
+    \ v = u;\n        }\n        if (v < 0) return;\n\n        if (deg[v] > 1) {\n\
+    \            dead[v] = 1;\n            alive--;\n            for (auto e : g[v])\
+    \ deg[e.to]--;\n\n            self(self);\n\n            dead[v] = 0;\n      \
+    \      alive++;\n            for (auto e : g[v]) deg[e.to]++;\n        }\n   \
+    \     {\n            used.emplace_back(v);\n            dead[v] = 1;\n       \
+    \     alive--;\n            for (auto e : g[v]) {\n                if (dead[e.to]++\
+    \ == 0) {\n                    alive--;\n                }\n            }\n  \
+    \          if (max_set.size() < used.size()) max_set = used;\n\n            self(self);\n\
+    \n            used.pop_back();\n            dead[v] = 0;\n            alive++;\n\
+    \            for (auto e : g[v]) {\n                if (--dead[e.to] == 0) {\n\
+    \                    alive++;\n                }\n            }\n        }\n \
+    \   };\n    dfs(dfs);\n    return max_set;\n}\n\n}  // namespace ebi\n#line 4\
+    \ \"test/graph/Maximum_Independent_Set.test.cpp\"\n\n#line 1 \"template/template.hpp\"\
+    \n#include <bits/stdc++.h>\n\n#define rep(i, a, n) for (int i = (int)(a); i <\
+    \ (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
+    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
+    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
+    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
+    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
+    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
+    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
@@ -171,24 +165,21 @@ data:
     \ / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max() / 4;\n\n\
     constexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 11 \"test/graph/dijkstra.test.cpp\"\
-    \n\r\nusing ebi::i64;\r\n\r\nint main() {\r\n    int v, e, r;\r\n    std::cin\
-    \ >> v >> e >> r;\r\n    ebi::Graph<i64> g(v);\r\n    g.read_graph(e, 0, true,\
-    \ true);\r\n    std::vector<i64> dest = ebi::dijkstra(r, v, g);\r\n    for (auto\
-    \ di : dest) {\r\n        if (di == std::numeric_limits<i64>::max()) {\r\n   \
-    \         std::cout << \"INF\" << std::endl;\r\n            continue;\r\n    \
-    \    }\r\n        std::cout << di << std::endl;\r\n    }\r\n}\n"
-  code: "#define PROBLEM \\\r\n    \"http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \r\n\r\n#include \"../../graph/dijkstra.hpp\"\r\n\r\n#include <iostream>\r\n#include\
-    \ <limits>\r\n#include <vector>\r\n\r\n#include \"../../template/template.hpp\"\
-    \r\n\r\nusing ebi::i64;\r\n\r\nint main() {\r\n    int v, e, r;\r\n    std::cin\
-    \ >> v >> e >> r;\r\n    ebi::Graph<i64> g(v);\r\n    g.read_graph(e, 0, true,\
-    \ true);\r\n    std::vector<i64> dest = ebi::dijkstra(r, v, g);\r\n    for (auto\
-    \ di : dest) {\r\n        if (di == std::numeric_limits<i64>::max()) {\r\n   \
-    \         std::cout << \"INF\" << std::endl;\r\n            continue;\r\n    \
-    \    }\r\n        std::cout << di << std::endl;\r\n    }\r\n}"
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/graph/Maximum_Independent_Set.test.cpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
+    \    Graph<int> g(n);\n    g.read_graph(m, 0);\n    auto p = maximum_independent_set(g);\n\
+    \    std::cout << p.size() << '\\n';\n    std::cout << p << '\\n';\n}\n\n}  //\
+    \ namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin\
+    \ >> t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/maximum_independent_setad\"\
+    \n\n#include \"../../graph/maximum_independent_set.hpp\"\n\n#include \"../../template/template.hpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
+    \    Graph<int> g(n);\n    g.read_graph(m, 0);\n    auto p = maximum_independent_set(g);\n\
+    \    std::cout << p.size() << '\\n';\n    std::cout << p << '\\n';\n}\n\n}  //\
+    \ namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin\
+    \ >> t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
-  - graph/dijkstra.hpp
+  - graph/maximum_independent_set.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   - template/template.hpp
@@ -197,15 +188,15 @@ data:
   - template/io.hpp
   - template/utility.hpp
   isVerificationFile: true
-  path: test/graph/dijkstra.test.cpp
+  path: test/graph/Maximum_Independent_Set.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-04-03 15:35:30+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/graph/dijkstra.test.cpp
+documentation_of: test/graph/Maximum_Independent_Set.test.cpp
 layout: document
 redirect_from:
-- /verify/test/graph/dijkstra.test.cpp
-- /verify/test/graph/dijkstra.test.cpp.html
-title: test/graph/dijkstra.test.cpp
+- /verify/test/graph/Maximum_Independent_Set.test.cpp
+- /verify/test/graph/Maximum_Independent_Set.test.cpp.html
+title: test/graph/Maximum_Independent_Set.test.cpp
 ---

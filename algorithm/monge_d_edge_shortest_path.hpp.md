@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/monge_shortest_path.hpp
     title: Monge shortest path
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []

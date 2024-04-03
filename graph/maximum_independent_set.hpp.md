@@ -8,16 +8,19 @@ data:
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/graph/Maximum_Independent_Set.test.cpp
+    title: test/graph/Maximum_Independent_Set.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/complement_graph_bfs.hpp\"\n\n#include <numeric>\n\
-    #include <queue>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#include\
-    \ <cassert>\n#include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\
-    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
+  bundledCode: "#line 2 \"graph/maximum_independent_set.hpp\"\n\n#include <cassert>\n\
+    #include <ranges>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#line 4\
+    \ \"graph/base.hpp\"\n#include <iostream>\n#line 7 \"graph/base.hpp\"\n\n#line\
+    \ 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
     \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
     \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
     \    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n     \
@@ -75,52 +78,66 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"graph/complement_graph_bfs.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T, class F>\nvoid complement_graph_bfs(int\
-    \ s, const Graph<T> &h, const F &func) {\n    const int n = h.size();\n    std::vector<int>\
-    \ not_visit;\n    not_visit.reserve(n - 1);\n    for (int i = 0; i < n; i++)\n\
-    \        if (i != s) not_visit.emplace_back(i);\n    std::vector<bool> f(n, false);\n\
-    \    std::queue<int> que;\n    que.push(s);\n    while (!que.empty()) {\n    \
-    \    int v = que.front();\n        que.pop();\n        for (auto e : h[v]) {\n\
-    \            f[e.to] = true;\n        }\n        std::vector<int> L;\n       \
-    \ for (auto u : not_visit) {\n            if (f[u])\n                L.emplace_back(u);\n\
-    \            else {\n                que.push(u);\n                func(v, u);\n\
-    \            }\n        }\n        for (auto e : h[v]) {\n            f[e.to]\
-    \ = false;\n        }\n        std::swap(not_visit, L);\n    }\n    return;\n\
-    }\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <numeric>\n#include <queue>\n#include <vector>\n\
-    \n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T, class\
-    \ F>\nvoid complement_graph_bfs(int s, const Graph<T> &h, const F &func) {\n \
-    \   const int n = h.size();\n    std::vector<int> not_visit;\n    not_visit.reserve(n\
-    \ - 1);\n    for (int i = 0; i < n; i++)\n        if (i != s) not_visit.emplace_back(i);\n\
-    \    std::vector<bool> f(n, false);\n    std::queue<int> que;\n    que.push(s);\n\
-    \    while (!que.empty()) {\n        int v = que.front();\n        que.pop();\n\
-    \        for (auto e : h[v]) {\n            f[e.to] = true;\n        }\n     \
-    \   std::vector<int> L;\n        for (auto u : not_visit) {\n            if (f[u])\n\
-    \                L.emplace_back(u);\n            else {\n                que.push(u);\n\
-    \                func(v, u);\n            }\n        }\n        for (auto e :\
-    \ h[v]) {\n            f[e.to] = false;\n        }\n        std::swap(not_visit,\
-    \ L);\n    }\n    return;\n}\n\n}  // namespace ebi"
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"graph/maximum_independent_set.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> std::vector<int> maximum_independent_set(const\
+    \ Graph<T> &g) {\n    int n = g.node_number();\n    std::vector<int> deg(n);\n\
+    \    for (auto v : std::views::iota(0, n)) {\n        deg[v] = g[v].size();\n\
+    \    }\n    std::vector<int> max_set;\n    std::vector<int> used;\n    std::vector<int>\
+    \ dead(n, 0);\n    int alive = n;\n    auto dfs = [&](auto &&self) -> void {\n\
+    \        if ((int)used.size() + alive <= (int)max_set.size()) return;\n      \
+    \  int v = -1;\n        for (auto u : std::views::iota(0, n)) {\n            if\
+    \ (dead[u]) continue;\n            if (deg[u] <= 1) {\n                v = u;\n\
+    \                break;\n            }\n            if (v == -1 || deg[v] < deg[u])\
+    \ v = u;\n        }\n        if (v < 0) return;\n\n        if (deg[v] > 1) {\n\
+    \            dead[v] = 1;\n            alive--;\n            for (auto e : g[v])\
+    \ deg[e.to]--;\n\n            self(self);\n\n            dead[v] = 0;\n      \
+    \      alive++;\n            for (auto e : g[v]) deg[e.to]++;\n        }\n   \
+    \     {\n            used.emplace_back(v);\n            dead[v] = 1;\n       \
+    \     alive--;\n            for (auto e : g[v]) {\n                if (dead[e.to]++\
+    \ == 0) {\n                    alive--;\n                }\n            }\n  \
+    \          if (max_set.size() < used.size()) max_set = used;\n\n            self(self);\n\
+    \n            used.pop_back();\n            dead[v] = 0;\n            alive++;\n\
+    \            for (auto e : g[v]) {\n                if (--dead[e.to] == 0) {\n\
+    \                    alive++;\n                }\n            }\n        }\n \
+    \   };\n    dfs(dfs);\n    return max_set;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <ranges>\n#include <vector>\n\
+    \n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T> std::vector<int>\
+    \ maximum_independent_set(const Graph<T> &g) {\n    int n = g.node_number();\n\
+    \    std::vector<int> deg(n);\n    for (auto v : std::views::iota(0, n)) {\n \
+    \       deg[v] = g[v].size();\n    }\n    std::vector<int> max_set;\n    std::vector<int>\
+    \ used;\n    std::vector<int> dead(n, 0);\n    int alive = n;\n    auto dfs =\
+    \ [&](auto &&self) -> void {\n        if ((int)used.size() + alive <= (int)max_set.size())\
+    \ return;\n        int v = -1;\n        for (auto u : std::views::iota(0, n))\
+    \ {\n            if (dead[u]) continue;\n            if (deg[u] <= 1) {\n    \
+    \            v = u;\n                break;\n            }\n            if (v\
+    \ == -1 || deg[v] < deg[u]) v = u;\n        }\n        if (v < 0) return;\n\n\
+    \        if (deg[v] > 1) {\n            dead[v] = 1;\n            alive--;\n \
+    \           for (auto e : g[v]) deg[e.to]--;\n\n            self(self);\n\n  \
+    \          dead[v] = 0;\n            alive++;\n            for (auto e : g[v])\
+    \ deg[e.to]++;\n        }\n        {\n            used.emplace_back(v);\n    \
+    \        dead[v] = 1;\n            alive--;\n            for (auto e : g[v]) {\n\
+    \                if (dead[e.to]++ == 0) {\n                    alive--;\n    \
+    \            }\n            }\n            if (max_set.size() < used.size()) max_set\
+    \ = used;\n\n            self(self);\n\n            used.pop_back();\n       \
+    \     dead[v] = 0;\n            alive++;\n            for (auto e : g[v]) {\n\
+    \                if (--dead[e.to] == 0) {\n                    alive++;\n    \
+    \            }\n            }\n        }\n    };\n    dfs(dfs);\n    return max_set;\n\
+    }\n\n}  // namespace ebi"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
-  path: graph/complement_graph_bfs.hpp
+  path: graph/maximum_independent_set.hpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: graph/complement_graph_bfs.hpp
+  timestamp: '2024-04-03 15:35:30+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/graph/Maximum_Independent_Set.test.cpp
+documentation_of: graph/maximum_independent_set.hpp
 layout: document
-title: Complement Graph BFS
+title: Maximum Independent Set
 ---
 
 ## 説明
 
-頂点 $s$ から始めて、 $h$ の補グラフをBFSする。頂点数を $N$ 、辺の本数を $M$ 、`func`の計算量を $F$ として計算量は $O(NF + M)$ である。
-
-インターフェースは以下である。ここで、 `func(v, u)` はBFSの際に頂点 $v$ から $u$ に遷移するときに呼ばれる関数である。
-
-```
-void complement_graph_bfs(int s, std::vector<std::vector<int>> h, F func)
-```
+グラフを与えて、最大独立集合を求める。

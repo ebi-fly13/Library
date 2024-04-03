@@ -29,10 +29,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -111,6 +111,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Manhattan_MST.test.cpp
     title: test/graph/Manhattan_MST.test.cpp
+  - icon: ':x:'
+    path: test/graph/Maximum_Independent_Set.test.cpp
+    title: test/graph/Maximum_Independent_Set.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Minimum_Spanning_Tree.test.cpp
     title: test/graph/Minimum_Spanning_Tree.test.cpp
@@ -192,9 +195,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -285,7 +288,7 @@ data:
   - template/utility.hpp
   - template/template.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
@@ -328,6 +331,7 @@ data:
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+  - test/graph/Maximum_Independent_Set.test.cpp
   - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/graph/Cycle_Detection_Undirected.test.cpp
   - test/graph/Eulerian_Trail_Undirected.test.cpp
