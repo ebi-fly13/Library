@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/maximum_independent_setad"
+#define PROBLEM "https://judge.yosupo.jp/problem/maximum_independent_set"
 
 #include "../../graph/maximum_independent_set.hpp"
 
