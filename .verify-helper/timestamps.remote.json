@@ -92,6 +92,7 @@
 "test/graph/Eulerian_Trail_Directed.test.cpp": "2024-04-02 14:52:16 +0900",
 "test/graph/Eulerian_Trail_Undirected.test.cpp": "2024-04-02 14:52:16 +0900",
 "test/graph/Manhattan_MST.test.cpp": "2024-03-15 14:46:09 +0900",
+"test/graph/Maximum_Independent_Set.test.cpp": "2024-04-03 15:44:05 +0900",
 "test/graph/Minimum_Spanning_Tree.test.cpp": "2024-03-15 00:35:58 +0900",
 "test/graph/Shortest_Path.test.cpp": "2024-03-13 15:52:21 +0900",
 "test/graph/Two_Edge_Connected_Components.test.cpp": "2024-03-13 15:52:21 +0900",
