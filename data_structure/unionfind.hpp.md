@@ -57,14 +57,14 @@ data:
   isVerificationFile: false
   path: data_structure/unionfind.hpp
   requiredBy:
-  - graph/mst.hpp
   - graph/manhattan_mst.hpp
+  - graph/mst.hpp
   timestamp: '2023-11-13 02:14:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Union_Find.test.cpp
   - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/graph/Manhattan_MST.test.cpp
+  - test/data_structure/Union_Find.test.cpp
 documentation_of: data_structure/unionfind.hpp
 layout: document
 title: UnionFind

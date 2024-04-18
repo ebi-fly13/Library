@@ -392,6 +392,9 @@ data:
   - name: matrix
     pages:
     - icon: ':heavy_check_mark:'
+      path: matrix/base.hpp
+      title: matrix/base.hpp
+    - icon: ':heavy_check_mark:'
       path: matrix/square_matrix.hpp
       title: matrix/square_matrix.hpp
   - name: modint
@@ -890,6 +893,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/matrix/Determinant_of_Matrix.test.cpp
       title: test/matrix/Determinant_of_Matrix.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/matrix/Matrix_Product.test.cpp
+      title: test/matrix/Matrix_Product.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/matrix/Pow_of_Matrix.test.cpp
+      title: test/matrix/Pow_of_Matrix.test.cpp
   - name: test/polynomial
     pages:
     - icon: ':heavy_check_mark:'

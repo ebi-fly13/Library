@@ -199,6 +199,12 @@ data:
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/matrix/Matrix_Product.test.cpp
+    title: test/matrix/Matrix_Product.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Pow_of_Matrix.test.cpp
+    title: test/matrix/Pow_of_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
   - icon: ':heavy_check_mark:'
@@ -329,98 +335,100 @@ data:
   isVerificationFile: false
   path: data_structure/simple_csr.hpp
   requiredBy:
-  - algorithm/two_sat.hpp
-  - template/utility.hpp
-  - template/template.hpp
-  - tree/level_ancestor.hpp
-  - tree/lca_based_auxiliary_tree.hpp
-  - tree/block_cut_tree.hpp
-  - tree/contour_query_on_tree.hpp
-  - tree/lowest_common_ancestor.hpp
-  - tree/rerooting.hpp
-  - tree/rooted_tree_hash.hpp
-  - tree/contour_query_on_weighted_tree.hpp
-  - tree/tree_diameter.hpp
-  - tree/heavy_light_decomposition.hpp
-  - graph/cycle_detection.hpp
-  - graph/two_edge_connected_components.hpp
-  - graph/maximum_independent_set.hpp
-  - graph/mst.hpp
-  - graph/bellman_ford.hpp
-  - graph/complement_graph_bfs.hpp
-  - graph/directed_mst.hpp
   - graph/low_link.hpp
-  - graph/euler_trail.hpp
-  - graph/manhattan_mst.hpp
+  - graph/scc_graph.hpp
   - graph/dijkstra.hpp
+  - graph/chromatic_number.hpp
   - graph/base.hpp
   - graph/biconnected_components.hpp
-  - graph/scc_graph.hpp
-  - graph/chromatic_number.hpp
+  - graph/bellman_ford.hpp
+  - graph/maximum_independent_set.hpp
+  - graph/complement_graph_bfs.hpp
+  - graph/euler_trail.hpp
+  - graph/manhattan_mst.hpp
+  - graph/two_edge_connected_components.hpp
+  - graph/directed_mst.hpp
+  - graph/mst.hpp
   - graph/dijkstra_fibheap.hpp
+  - graph/cycle_detection.hpp
+  - algorithm/two_sat.hpp
+  - template/template.hpp
+  - template/utility.hpp
+  - tree/tree_diameter.hpp
+  - tree/rooted_tree_hash.hpp
+  - tree/rerooting.hpp
+  - tree/lca_based_auxiliary_tree.hpp
+  - tree/level_ancestor.hpp
+  - tree/heavy_light_decomposition.hpp
+  - tree/lowest_common_ancestor.hpp
+  - tree/contour_query_on_weighted_tree.hpp
+  - tree/block_cut_tree.hpp
+  - tree/contour_query_on_tree.hpp
   timestamp: '2024-03-11 18:04:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/aoj/aoj_2235.test.cpp
-  - test/aoj/aoj_grl_1_a.test.cpp
-  - test/aoj/aoj_3086.test.cpp
-  - test/aoj/aoj_grl_1_b.test.cpp
-  - test/aoj/aoj_2450.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
-  - test/math/Stern-Brocot_Tree.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Catalan_Convolution.test.cpp
-  - test/algorithm/Two_Sat.test.cpp
-  - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - test/data_structure/Range_Affine_Point_Get.test.cpp
-  - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
-  - test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
-  - test/data_structure/Static_Rectangle_Sum.test.cpp
-  - test/data_structure/Double-Ended_Priority_Queue.test.cpp
-  - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
+  - test/yuki/yuki_1077.test.cpp
+  - test/yuki/yuki_1038.test.cpp
   - test/yuki/yuki_2439.test.cpp
   - test/yuki/yuki_901.test.cpp
-  - test/yuki/yuki_1077.test.cpp
   - test/yuki/yuki_952.test.cpp
-  - test/yuki/yuki_1038.test.cpp
   - test/yuki/yuki_901_2.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1145.test.cpp
+  - test/graph/Cycle_Detection_Directed.test.cpp
+  - test/graph/Minimum_Spanning_Tree.test.cpp
+  - test/graph/Eulerian_Trail_Undirected.test.cpp
+  - test/graph/Two_Edge_Connected_Components.test.cpp
+  - test/graph/Eulerian_Trail_Directed.test.cpp
+  - test/graph/Manhattan_MST.test.cpp
+  - test/graph/Shortest_Path.test.cpp
+  - test/graph/Directed_MST.test.cpp
+  - test/graph/Maximum_Independent_Set.test.cpp
+  - test/graph/dijkstra.test.cpp
+  - test/graph/Chromatic_Number.test.cpp
+  - test/graph/Cycle_Detection_Undirected.test.cpp
+  - test/graph/Biconnected_Components.test.cpp
+  - test/graph/scc_graph.test.cpp
+  - test/graph/fibonacci_heap.test.cpp
+  - test/graph/Articulation_Points.test.cpp
+  - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
+  - test/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/data_structure/Range_Affine_Point_Get.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - test/data_structure/Static_Rectangle_Sum.test.cpp
+  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
+  - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
+  - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+  - test/matrix/Matrix_Product.test.cpp
+  - test/matrix/Pow_of_Matrix.test.cpp
+  - test/algorithm/Two_Sat.test.cpp
+  - test/math/Catalan_Convolution.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Stern-Brocot_Tree.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/aoj/aoj_grl_1_b.test.cpp
+  - test/aoj/aoj_2235.test.cpp
+  - test/aoj/aoj_2450.test.cpp
+  - test/aoj/aoj_3086.test.cpp
+  - test/aoj/aoj_grl_1_a.test.cpp
+  - test/tree/Tree_Diameter.test.cpp
+  - test/tree/level_ancestor_lca.test.cpp
+  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
-  - test/tree/Tree_Diameter.test.cpp
-  - test/tree/level_ancestor_lca.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Cartesian_Tree.test.cpp
-  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-  - test/graph/Maximum_Independent_Set.test.cpp
-  - test/graph/Minimum_Spanning_Tree.test.cpp
-  - test/graph/Cycle_Detection_Undirected.test.cpp
-  - test/graph/Articulation_Points.test.cpp
-  - test/graph/Two_Edge_Connected_Components.test.cpp
-  - test/graph/Eulerian_Trail_Undirected.test.cpp
-  - test/graph/dijkstra.test.cpp
-  - test/graph/Chromatic_Number.test.cpp
-  - test/graph/Directed_MST.test.cpp
-  - test/graph/Biconnected_Components.test.cpp
-  - test/graph/Manhattan_MST.test.cpp
-  - test/graph/scc_graph.test.cpp
-  - test/graph/Eulerian_Trail_Directed.test.cpp
-  - test/graph/Cycle_Detection_Directed.test.cpp
-  - test/graph/fibonacci_heap.test.cpp
-  - test/graph/Shortest_Path.test.cpp
 documentation_of: data_structure/simple_csr.hpp
 layout: document
 title: Simple CSR
