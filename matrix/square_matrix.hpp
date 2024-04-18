@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
 
 namespace ebi {
@@ -45,8 +46,8 @@ template <class Field, int id> struct square_matrix {
     Self &operator*=(Self &rhs) noexcept {
         Self ret;
         for (int i = 0; i < N; ++i) {
-            for (int j = 0; j < N; ++j) {
-                for (int k = 0; k < N; ++k) {
+            for (int k = 0; k < N; ++k) {
+                for (int j = 0; j < N; ++j) {
                     ret[i][j] += mat[i][k] * rhs[k][j];
                 }
             }
@@ -110,8 +111,16 @@ template <class Field, int id> struct square_matrix {
         return mat[i];
     }
 
+    const std::vector<Field> &operator[](int i) const {
+        return mat[i];
+    }
+
     static void set_size(int n) {
         N = n;
+    }
+
+    int size() const {
+        return N;
     }
 
   private:
@@ -120,5 +129,29 @@ template <class Field, int id> struct square_matrix {
 };
 
 template <class Field, int id> int square_matrix<Field, id>::N = 0;
+
+template <class Field, int id>
+std::istream &operator>>(std::istream &os, square_matrix<Field, id> &a) {
+    int n = a.size();
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            os >> a[i][j];
+        }
+    }
+    return os;
+}
+
+template <class Field, int id>
+std::ostream &operator<<(std::ostream &os, const square_matrix<Field, id> &a) {
+    int n = a.size();
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            os << a[i][j];
+            if (j < n - 1) os << ' ';
+        }
+        if (i < n - 1) os << '\n';
+    }
+    return os;
+}
 
 }  // namespace ebi
