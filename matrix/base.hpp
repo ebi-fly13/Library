@@ -8,6 +8,16 @@
 
 namespace ebi {
 
+template <class T> struct matrix;
+
+template <class T> matrix<T> identify_matrix(int n) {
+    matrix<T> a(n, n);
+    for (int i = 0; i < n; i++) {
+        a[i][i] = 1;
+    }
+    return a;
+}
+
 template <class T> struct matrix {
   private:
     using Self = matrix<T>;
@@ -34,6 +44,18 @@ template <class T> struct matrix {
 
     Self operator*(Self &rhs) const noexcept {
         return Self(*this) *= rhs;
+    }
+
+    Self operator/(Self &rhs) const noexcept {
+        return Self(*this) /= rhs;
+    }
+
+    friend Self operator*(const T &lhs, const Self &rhs) {
+        return Self(rhs) *= lhs;
+    }
+    
+    friend Self operator*(const Self &lhs, const T &rhs) {
+        return Self(lhs) *= rhs;
     }
 
     Self &operator+=(Self &rhs) noexcept {
@@ -70,6 +92,21 @@ template <class T> struct matrix {
         return *this = ret;
     }
 
+    Self &operator/=(const Self &rhs) noexcept {
+        auto ret = rhs.inv();
+        assert(ret);
+        return *this *= ret.value();
+    }
+
+    Self &operator*=(const T &rhs) noexcept {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                (*this)[i][j] *= rhs;
+            }
+        }
+        return *this;
+    }
+
     const auto operator[](int i) const {
         return std::ranges::subrange(data.begin() + i * m,
                                      data.begin() + (i + 1) * m);
@@ -83,6 +120,57 @@ template <class T> struct matrix {
     void swap(int i, int j) {
         std::swap_ranges(data.begin() + i * m, data.begin() + (i + 1) * m,
                          data.begin() + j * m);
+    }
+
+    Self transposition() const {
+        Self res(m, n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                res[j][i] = data[i][j];
+            }
+        }
+        return res;
+    }
+
+    std::optional<Self> inv() const {
+        assert(row_size() == column_size());
+        Self a = *this;
+        Self b = identify_matrix<T>(n);
+        for (int r = 0; r < n; r++) {
+            for (int i = r; i < n; i++) {
+                if (a[i][r] != 0) {
+                    a.swap(r, i);
+                    b.swap(r, i);
+                    break;
+                }
+            }
+            if (a[r][r] == 0) return std::nullopt;
+            T x = a[r][r].inv();
+            for (int j = 0; j < n; j++) {
+                if (r < j) a[r][j] *= x;
+                b[r][j] *= x;
+            }
+            for (int i = 0; i < n; i++) {
+                if (i == r) continue;
+                for (int j = 0; j < n; j++) {
+                    if (r < j) a[i][j] -= a[i][r] * a[r][j];
+                    b[i][j] -= a[i][r] * b[r][j];
+                }
+            }
+        }
+        return b;
+    }
+
+    Self pow(long long k) const {
+        assert(row_size() == column_size() && k >= 0);
+        Self res = identify_matrix<T>(row_size());
+        Self x = *this;
+        while (k) {
+            if (k & 1) res *= x;
+            x *= x;
+            k >>= 1;
+        }
+        return res;
     }
 
     int row_size() const {
