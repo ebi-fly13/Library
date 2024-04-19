@@ -199,6 +199,9 @@ data:
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_off_Matrix_2.test.cpp
+    title: test/matrix/Determinant_off_Matrix_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Inverse_Matrix.test.cpp
     title: test/matrix/Inverse_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -381,6 +384,7 @@ data:
   - test/matrix/Determinant_of_Matrix.test.cpp
   - test/matrix/Matrix_Product.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
+  - test/matrix/Determinant_off_Matrix_2.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
   - test/math/Sqrt_Mod.test.cpp
   - test/math/Catalan_Convolution.test.cpp

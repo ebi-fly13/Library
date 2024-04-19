@@ -38,11 +38,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/inverse_matrix
+    PROBLEM: https://judge.yosupo.jp/problem/matrix_det
     links:
-    - https://judge.yosupo.jp/problem/inverse_matrix
-  bundledCode: "#line 1 \"test/matrix/Inverse_Matrix.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/inverse_matrix\"\n\n#line 2 \"matrix/base.hpp\"\
+    - https://judge.yosupo.jp/problem/matrix_det
+  bundledCode: "#line 1 \"test/matrix/Determinant_off_Matrix_2.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n\n#line 2 \"matrix/base.hpp\"\
     \n\n#include <algorithm>\n#include <cassert>\n#include <iostream>\n#include <ranges>\n\
     #include <vector>\n\nnamespace ebi {\n\ntemplate <class T> struct matrix;\n\n\
     template <class T> matrix<T> identify_matrix(int n) {\n    matrix<T> a(n, n);\n\
@@ -277,22 +277,19 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/matrix/Inverse_Matrix.test.cpp\"\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/matrix/Determinant_off_Matrix_2.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    int\
-    \ n;\n    std::cin >> n;\n    matrix<mint> a(n, n);\n    std::cin >> a;\n    auto\
-    \ inv_a = a.inv();\n    if (!inv_a) {\n        std::cout << \"-1\\n\";\n    }\
-    \ else {\n        std::cout << inv_a.value() << '\\n';\n    }\n}\n\n}  // namespace\
-    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
-    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inverse_matrix\"\n\n#include\
+    \ n;\n    std::cin >> n;\n    matrix<mint> a(n, n);\n    std::cin >> a;\n    std::cout\
+    \ << det(a) << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n\n#include\
     \ \"../../matrix/base.hpp\"\n#include \"../../modint/modint.hpp\"\n#include \"\
     ../../template/template.hpp\"\n\nnamespace ebi {\n\nusing mint = modint998244353;\n\
     \nvoid main_() {\n    int n;\n    std::cin >> n;\n    matrix<mint> a(n, n);\n\
-    \    std::cin >> a;\n    auto inv_a = a.inv();\n    if (!inv_a) {\n        std::cout\
-    \ << \"-1\\n\";\n    } else {\n        std::cout << inv_a.value() << '\\n';\n\
-    \    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int\
-    \ t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n  \
-    \  }\n    return 0;\n}"
+    \    std::cin >> a;\n    std::cout << det(a) << '\\n';\n}\n\n}  // namespace ebi\n\
+    \nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n \
+    \   while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
   - matrix/base.hpp
   - modint/modint.hpp
@@ -305,15 +302,15 @@ data:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: true
-  path: test/matrix/Inverse_Matrix.test.cpp
+  path: test/matrix/Determinant_off_Matrix_2.test.cpp
   requiredBy: []
   timestamp: '2024-04-19 19:44:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/matrix/Inverse_Matrix.test.cpp
+documentation_of: test/matrix/Determinant_off_Matrix_2.test.cpp
 layout: document
 redirect_from:
-- /verify/test/matrix/Inverse_Matrix.test.cpp
-- /verify/test/matrix/Inverse_Matrix.test.cpp.html
-title: test/matrix/Inverse_Matrix.test.cpp
+- /verify/test/matrix/Determinant_off_Matrix_2.test.cpp
+- /verify/test/matrix/Determinant_off_Matrix_2.test.cpp.html
+title: test/matrix/Determinant_off_Matrix_2.test.cpp
 ---

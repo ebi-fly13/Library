@@ -7,6 +7,9 @@ data:
     title: matrix/gauss_jordan.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_off_Matrix_2.test.cpp
+    title: test/matrix/Determinant_off_Matrix_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Inverse_Matrix.test.cpp
     title: test/matrix/Inverse_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -38,16 +41,16 @@ data:
     \    }\n\n    Self operator*(Self &rhs) const noexcept {\n        return Self(*this)\
     \ *= rhs;\n    }\n\n    Self operator/(Self &rhs) const noexcept {\n        return\
     \ Self(*this) /= rhs;\n    }\n\n    friend Self operator*(const T &lhs, const\
-    \ Self &rhs) {\n        return Self(rhs) *= lhs;\n    }\n    \n    friend Self\
-    \ operator*(const Self &lhs, const T &rhs) {\n        return Self(lhs) *= rhs;\n\
-    \    }\n\n    Self &operator+=(Self &rhs) noexcept {\n        assert(this->size()\
-    \ == rhs.size());\n        for (int i = 0; i < n; ++i) {\n            for (int\
-    \ j = 0; j < m; ++j) {\n                data[i][j] += rhs[i][j];\n           \
-    \ }\n        }\n        return *this;\n    }\n\n    Self &operator-=(Self &rhs)\
-    \ noexcept {\n        assert(this->size() == rhs.size());\n        for (int i\
-    \ = 0; i < n; ++i) {\n            for (int j = 0; j < m; ++j) {\n            \
-    \    data[i][j] -= rhs[i][j];\n            }\n        }\n        return *this;\n\
-    \    }\n\n    Self &operator*=(Self &rhs) noexcept {\n        int h = n, w = rhs.column_size();\n\
+    \ Self &rhs) {\n        return Self(rhs) *= lhs;\n    }\n\n    friend Self operator*(const\
+    \ Self &lhs, const T &rhs) {\n        return Self(lhs) *= rhs;\n    }\n\n    Self\
+    \ &operator+=(Self &rhs) noexcept {\n        assert(this->size() == rhs.size());\n\
+    \        for (int i = 0; i < n; ++i) {\n            for (int j = 0; j < m; ++j)\
+    \ {\n                data[i][j] += rhs[i][j];\n            }\n        }\n    \
+    \    return *this;\n    }\n\n    Self &operator-=(Self &rhs) noexcept {\n    \
+    \    assert(this->size() == rhs.size());\n        for (int i = 0; i < n; ++i)\
+    \ {\n            for (int j = 0; j < m; ++j) {\n                data[i][j] -=\
+    \ rhs[i][j];\n            }\n        }\n        return *this;\n    }\n\n    Self\
+    \ &operator*=(Self &rhs) noexcept {\n        int h = n, w = rhs.column_size();\n\
     \        assert(m == rhs.row_size());\n        Self ret(h, w);\n        for (int\
     \ i = 0; i < h; ++i) {\n            for (int k = 0; k < m; ++k) {\n          \
     \      for (int j = 0; j < w; ++j) {\n                    ret[i][j] += (*this)[i][k]\
@@ -85,10 +88,19 @@ data:
     \   }\n\n    int row_size() const {\n        return n;\n    }\n\n    int column_size()\
     \ const {\n        return m;\n    }\n\n    std::pair<int, int> size() const {\n\
     \        return {n, m};\n    }\n\n  private:\n    int n, m;\n    std::vector<T>\
-    \ data;\n};\n\ntemplate <class T> std::istream &operator>>(std::istream &os, matrix<T>\
-    \ &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int j = 0;\
-    \ j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n    }\n\
-    \    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
+    \ data;\n};\n\ntemplate <class T> T det(matrix<T> a) {\n    assert(a.row_size()\
+    \ == a.column_size());\n    T d = 1;\n    int n = a.row_size();\n    for (int\
+    \ r = 0; r < n; r++) {\n        if (a[r][r] == 0) {\n            for (int i =\
+    \ r + 1; i < n; i++) {\n                if (a[i][r] != 0) {\n                \
+    \    a.swap(r, i);\n                    d = -d;\n                }\n         \
+    \   }\n        }\n        if (a[r][r] == 0) return 0;\n        d *= a[r][r];\n\
+    \        T inv = a[r][r].inv();\n        for (int i = r + 1; i < n; i++) {\n \
+    \           T x = a[i][r] * inv;\n            for (int j = r; j < n; j++) {\n\
+    \                a[i][j] -= x * a[r][j];\n            }\n        }\n    }\n  \
+    \  return d;\n}\n\ntemplate <class T> std::istream &operator>>(std::istream &os,\
+    \ matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int\
+    \ j = 0; j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n\
+    \    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
     \ &os, const matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n \
     \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
     \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
@@ -109,16 +121,16 @@ data:
     \    }\n\n    Self operator*(Self &rhs) const noexcept {\n        return Self(*this)\
     \ *= rhs;\n    }\n\n    Self operator/(Self &rhs) const noexcept {\n        return\
     \ Self(*this) /= rhs;\n    }\n\n    friend Self operator*(const T &lhs, const\
-    \ Self &rhs) {\n        return Self(rhs) *= lhs;\n    }\n    \n    friend Self\
-    \ operator*(const Self &lhs, const T &rhs) {\n        return Self(lhs) *= rhs;\n\
-    \    }\n\n    Self &operator+=(Self &rhs) noexcept {\n        assert(this->size()\
-    \ == rhs.size());\n        for (int i = 0; i < n; ++i) {\n            for (int\
-    \ j = 0; j < m; ++j) {\n                data[i][j] += rhs[i][j];\n           \
-    \ }\n        }\n        return *this;\n    }\n\n    Self &operator-=(Self &rhs)\
-    \ noexcept {\n        assert(this->size() == rhs.size());\n        for (int i\
-    \ = 0; i < n; ++i) {\n            for (int j = 0; j < m; ++j) {\n            \
-    \    data[i][j] -= rhs[i][j];\n            }\n        }\n        return *this;\n\
-    \    }\n\n    Self &operator*=(Self &rhs) noexcept {\n        int h = n, w = rhs.column_size();\n\
+    \ Self &rhs) {\n        return Self(rhs) *= lhs;\n    }\n\n    friend Self operator*(const\
+    \ Self &lhs, const T &rhs) {\n        return Self(lhs) *= rhs;\n    }\n\n    Self\
+    \ &operator+=(Self &rhs) noexcept {\n        assert(this->size() == rhs.size());\n\
+    \        for (int i = 0; i < n; ++i) {\n            for (int j = 0; j < m; ++j)\
+    \ {\n                data[i][j] += rhs[i][j];\n            }\n        }\n    \
+    \    return *this;\n    }\n\n    Self &operator-=(Self &rhs) noexcept {\n    \
+    \    assert(this->size() == rhs.size());\n        for (int i = 0; i < n; ++i)\
+    \ {\n            for (int j = 0; j < m; ++j) {\n                data[i][j] -=\
+    \ rhs[i][j];\n            }\n        }\n        return *this;\n    }\n\n    Self\
+    \ &operator*=(Self &rhs) noexcept {\n        int h = n, w = rhs.column_size();\n\
     \        assert(m == rhs.row_size());\n        Self ret(h, w);\n        for (int\
     \ i = 0; i < h; ++i) {\n            for (int k = 0; k < m; ++k) {\n          \
     \      for (int j = 0; j < w; ++j) {\n                    ret[i][j] += (*this)[i][k]\
@@ -156,10 +168,19 @@ data:
     \   }\n\n    int row_size() const {\n        return n;\n    }\n\n    int column_size()\
     \ const {\n        return m;\n    }\n\n    std::pair<int, int> size() const {\n\
     \        return {n, m};\n    }\n\n  private:\n    int n, m;\n    std::vector<T>\
-    \ data;\n};\n\ntemplate <class T> std::istream &operator>>(std::istream &os, matrix<T>\
-    \ &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int j = 0;\
-    \ j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n    }\n\
-    \    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
+    \ data;\n};\n\ntemplate <class T> T det(matrix<T> a) {\n    assert(a.row_size()\
+    \ == a.column_size());\n    T d = 1;\n    int n = a.row_size();\n    for (int\
+    \ r = 0; r < n; r++) {\n        if (a[r][r] == 0) {\n            for (int i =\
+    \ r + 1; i < n; i++) {\n                if (a[i][r] != 0) {\n                \
+    \    a.swap(r, i);\n                    d = -d;\n                }\n         \
+    \   }\n        }\n        if (a[r][r] == 0) return 0;\n        d *= a[r][r];\n\
+    \        T inv = a[r][r].inv();\n        for (int i = r + 1; i < n; i++) {\n \
+    \           T x = a[i][r] * inv;\n            for (int j = r; j < n; j++) {\n\
+    \                a[i][j] -= x * a[r][j];\n            }\n        }\n    }\n  \
+    \  return d;\n}\n\ntemplate <class T> std::istream &operator>>(std::istream &os,\
+    \ matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int\
+    \ j = 0; j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n\
+    \    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
     \ &os, const matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n \
     \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
     \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
@@ -170,12 +191,13 @@ data:
   path: matrix/base.hpp
   requiredBy:
   - matrix/gauss_jordan.hpp
-  timestamp: '2024-04-19 17:32:32+09:00'
+  timestamp: '2024-04-19 19:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Matrix_Product.test.cpp
+  - test/matrix/Determinant_off_Matrix_2.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
 documentation_of: matrix/base.hpp
 layout: document
