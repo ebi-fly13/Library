@@ -80,6 +80,11 @@ template <class T> struct matrix {
                                      data.begin() + (i + 1) * m);
     }
 
+    void swap(int i, int j) {
+        std::swap_ranges(data.begin() + i * m, data.begin() + (i + 1) * m,
+                         data.begin() + j * m);
+    }
+
     int row_size() const {
         return n;
     }
