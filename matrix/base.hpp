@@ -53,7 +53,7 @@ template <class T> struct matrix {
     friend Self operator*(const T &lhs, const Self &rhs) {
         return Self(rhs) *= lhs;
     }
-    
+
     friend Self operator*(const Self &lhs, const T &rhs) {
         return Self(lhs) *= rhs;
     }
@@ -189,6 +189,32 @@ template <class T> struct matrix {
     int n, m;
     std::vector<T> data;
 };
+
+template <class T> T det(matrix<T> a) {
+    assert(a.row_size() == a.column_size());
+    T d = 1;
+    int n = a.row_size();
+    for (int r = 0; r < n; r++) {
+        if (a[r][r] == 0) {
+            for (int i = r + 1; i < n; i++) {
+                if (a[i][r] != 0) {
+                    a.swap(r, i);
+                    d = -d;
+                }
+            }
+        }
+        if (a[r][r] == 0) return 0;
+        d *= a[r][r];
+        T inv = a[r][r].inv();
+        for (int i = r + 1; i < n; i++) {
+            T x = a[i][r] * inv;
+            for (int j = r; j < n; j++) {
+                a[i][j] -= x * a[r][j];
+            }
+        }
+    }
+    return d;
+}
 
 template <class T> std::istream &operator>>(std::istream &os, matrix<T> &a) {
     for (int i = 0; i < a.row_size(); i++) {
