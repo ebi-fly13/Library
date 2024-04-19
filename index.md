@@ -897,6 +897,9 @@ data:
       path: test/matrix/Determinant_of_Matrix.test.cpp
       title: test/matrix/Determinant_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/matrix/Inverse_Matrix.test.cpp
+      title: test/matrix/Inverse_Matrix.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/matrix/Matrix_Product.test.cpp
       title: test/matrix/Matrix_Product.test.cpp
     - icon: ':heavy_check_mark:'

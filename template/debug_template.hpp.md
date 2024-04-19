@@ -91,6 +91,9 @@ data:
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/matrix/Inverse_Matrix.test.cpp
+    title: test/matrix/Inverse_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Matrix_Product.test.cpp
     title: test/matrix/Matrix_Product.test.cpp
   - icon: ':heavy_check_mark:'
@@ -209,6 +212,7 @@ data:
   - test/data_structure/Static_Rectangle_Sum.test.cpp
   - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
+  - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Matrix_Product.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp

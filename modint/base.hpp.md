@@ -199,6 +199,9 @@ data:
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/matrix/Inverse_Matrix.test.cpp
+    title: test/matrix/Inverse_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Matrix_Product.test.cpp
     title: test/matrix/Matrix_Product.test.cpp
   - icon: ':heavy_check_mark:'
@@ -373,6 +376,7 @@ data:
   - test/data_structure/Deque_Operate_All_Composite.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
+  - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Determinant_of_Matrix.test.cpp
   - test/matrix/Matrix_Product.test.cpp

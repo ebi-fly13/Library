@@ -11,9 +11,6 @@ data:
     path: matrix/base.hpp
     title: matrix/base.hpp
   - icon: ':heavy_check_mark:'
-    path: matrix/gauss_jordan.hpp
-    title: matrix/gauss_jordan.hpp
-  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   - icon: ':heavy_check_mark:'
@@ -41,19 +38,19 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/system_of_linear_equations
+    PROBLEM: https://judge.yosupo.jp/problem/inverse_matrix
     links:
-    - https://judge.yosupo.jp/problem/system_of_linear_equations
-  bundledCode: "#line 1 \"test/matrix/System_of_Linear_Equations.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/system_of_linear_equations\"\n\n#line\
-    \ 2 \"matrix/base.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#include\
-    \ <iostream>\n#include <ranges>\n#include <vector>\n\nnamespace ebi {\n\ntemplate\
-    \ <class T> struct matrix;\n\ntemplate <class T> matrix<T> identify_matrix(int\
-    \ n) {\n    matrix<T> a(n, n);\n    for (int i = 0; i < n; i++) {\n        a[i][i]\
-    \ = 1;\n    }\n    return a;\n}\n\ntemplate <class T> struct matrix {\n  private:\n\
-    \    using Self = matrix<T>;\n\n  public:\n    matrix(int n_, int m_, T init_val\
-    \ = 0)\n        : n(n_), m(m_), data(n * m, init_val) {}\n\n    matrix(const std::vector<std::vector<T>>\
-    \ &a)\n        : n((int)a.size()), m((int)a[0].size()) {\n        data = std::vector(n\
+    - https://judge.yosupo.jp/problem/inverse_matrix
+  bundledCode: "#line 1 \"test/matrix/Inverse_Matrix.test.cpp\"\n#define PROBLEM \"\
+    https://judge.yosupo.jp/problem/inverse_matrix\"\n\n#line 2 \"matrix/base.hpp\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <iostream>\n#include <ranges>\n\
+    #include <vector>\n\nnamespace ebi {\n\ntemplate <class T> struct matrix;\n\n\
+    template <class T> matrix<T> identify_matrix(int n) {\n    matrix<T> a(n, n);\n\
+    \    for (int i = 0; i < n; i++) {\n        a[i][i] = 1;\n    }\n    return a;\n\
+    }\n\ntemplate <class T> struct matrix {\n  private:\n    using Self = matrix<T>;\n\
+    \n  public:\n    matrix(int n_, int m_, T init_val = 0)\n        : n(n_), m(m_),\
+    \ data(n * m, init_val) {}\n\n    matrix(const std::vector<std::vector<T>> &a)\n\
+    \        : n((int)a.size()), m((int)a[0].size()) {\n        data = std::vector(n\
     \ * m);\n        for (int i = 0; i < n; i++) {\n            std::copy(a[i].begin(),\
     \ a[i].end(), data.begin() + i * m);\n        }\n    }\n\n    Self operator+(Self\
     \ &rhs) const noexcept {\n        return Self(*this) += rhs;\n    }\n\n    Self\
@@ -116,91 +113,57 @@ data:
     \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
     \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
     \ < a.row_size() - 1) os << '\\n';\n    }\n    return os;\n}\n\n}  // namespace\
-    \ ebi\n#line 2 \"matrix/gauss_jordan.hpp\"\n\n#line 4 \"matrix/gauss_jordan.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T> int find_pivot(const matrix<T> &a, int\
-    \ r, int w) {\n    for (int i = r; i < a.row_size(); i++) {\n        if (a[i][w]\
-    \ != 0) return i;\n    }\n    return -1;\n}\n\ntemplate <class T> int gauss_jordan(matrix<T>\
-    \ &a) {\n    int h = a.row_size(), w = a.column_size();\n    int rank = 0;\n \
-    \   for (int j = 0; j < w; j++) {\n        int pivot = find_pivot(a, rank, j);\n\
-    \        if (pivot == -1) continue;\n        a.swap(rank, pivot);\n        T inv\
-    \ = T(1) / a[rank][j];\n        for (int k = j; k < w; k++) {\n            a[rank][k]\
-    \ *= inv;\n        }\n        for (int i = 0; i < h; i++) {\n            if (i\
-    \ != rank && a[i][j] != 0) {\n                T x = a[i][j];\n               \
-    \ for (int k = j; k < w; k++) {\n                    a[i][k] -= a[rank][k] * x;\n\
-    \                }\n            }\n        }\n        rank++;\n    }\n    return\
-    \ rank;\n}\n\ntemplate <class T> int gauss_jordan(matrix<T> &a, std::vector<T>\
-    \ &b) {\n    int h = a.row_size(), w = a.column_size();\n    assert(h == (int)b.size());\n\
-    \    int rank = 0;\n    for (int j = 0; j < w; j++) {\n        int pivot = find_pivot(a,\
-    \ rank, j);\n        if (pivot == -1) continue;\n        a.swap(rank, pivot);\n\
-    \        std::swap(b[rank], b[pivot]);\n        T inv = T(1) / a[rank][j];\n \
-    \       for (int k = j; k < w; k++) {\n            a[rank][k] *= inv;\n      \
-    \  }\n        b[rank] *= inv;\n        for (int i = 0; i < h; i++) {\n       \
-    \     if (i != rank && a[i][j] != 0) {\n                T x = a[i][j];\n     \
-    \           for (int k = j; k < w; k++) {\n                    a[i][k] -= a[rank][k]\
-    \ * x;\n                }\n                b[i] -= b[rank] * x;\n            }\n\
-    \        }\n        rank++;\n    }\n    return rank;\n}\n\ntemplate <class T>\n\
-    std::optional<std::vector<std::vector<T>>> solve_linear_equations(\n    matrix<T>\
-    \ a, std::vector<T> b) {\n    assert(a.row_size() == (int)b.size());\n    int\
-    \ rank = gauss_jordan(a, b);\n    int h = a.row_size(), w = a.column_size();\n\
-    \    for (int i = rank; i < h; i++) {\n        if (b[i] != 0) return std::nullopt;\n\
-    \    }\n    std::vector res(1, std::vector<T>(w, 0));\n    std::vector<int> pivot(w,\
-    \ -1);\n    {\n        int p = 0;\n        for (int i = 0; i < rank; i++) {\n\
-    \            while (a[i][p] == 0) p++;\n            res[0][p] = b[i];\n      \
-    \      pivot[p] = i;\n        }\n    }\n    for (int j = 0; j < w; j++) {\n  \
-    \      if (pivot[j] == -1) {\n            std::vector<T> x(w, 0);\n          \
-    \  x[j] = -1;\n            for (int i = 0; i < j; i++) {\n                if (pivot[i]\
-    \ != -1) x[i] = a[pivot[i]][j];\n            }\n            res.emplace_back(x);\n\
-    \        }\n    }\n    return res;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
-    \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 2 \"modint/base.hpp\"\n\n#include\
-    \ <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi\
-    \ {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n\
-    \    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
-    modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
-    \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
-    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
-    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
-    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
-    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
-    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
-    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
-    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
-    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
-    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
-    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
-    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
-    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
-    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
-    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
-    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
-    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
-    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
-    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
-    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \ ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n\
+    #line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
+    \n#include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint\
+    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n   \
+    \ a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
+    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
+    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
+    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
+    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"modint/modint.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\
+    \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
+    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
+    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
+    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
+    \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
+    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
+    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
+    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
+    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
+    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
+    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
+    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
+    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
+    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
+    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
+    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
+    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
+    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
+    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
+    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
+    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
+    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
+    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
+    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
+    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
+    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
+    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
+    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
+    \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
     \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
     #line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i,\
     \ a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int\
@@ -305,31 +268,24 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 7 \"test/matrix/System_of_Linear_Equations.test.cpp\"\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/matrix/Inverse_Matrix.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    int\
-    \ n, m;\n    std::cin >> n >> m;\n    matrix<mint> a(n, m);\n    std::cin >> a;\n\
-    \    std::vector<mint> b(n);\n    std::cin >> b;\n    auto ans = solve_linear_equations(a,\
-    \ b);\n    if (ans) {\n        auto res = ans.value();\n        int r = res.size()\
-    \ - 1;\n        std::cout << r << '\\n';\n        for (auto c : res) {\n     \
-    \       std::cout << c << '\\n';\n        }\n    } else {\n        std::cout <<\
-    \ \"-1\\n\";\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
-    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/system_of_linear_equations\"\
-    \n\n#include \"../../matrix/base.hpp\"\n#include \"../../matrix/gauss_jordan.hpp\"\
-    \n#include \"../../modint/modint.hpp\"\n#include \"../../template/template.hpp\"\
-    \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    int\
-    \ n, m;\n    std::cin >> n >> m;\n    matrix<mint> a(n, m);\n    std::cin >> a;\n\
-    \    std::vector<mint> b(n);\n    std::cin >> b;\n    auto ans = solve_linear_equations(a,\
-    \ b);\n    if (ans) {\n        auto res = ans.value();\n        int r = res.size()\
-    \ - 1;\n        std::cout << r << '\\n';\n        for (auto c : res) {\n     \
-    \       std::cout << c << '\\n';\n        }\n    } else {\n        std::cout <<\
-    \ \"-1\\n\";\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
-    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    return 0;\n}"
+    \ n;\n    std::cin >> n;\n    matrix<mint> a(n, n);\n    std::cin >> a;\n    auto\
+    \ inv_a = a.inv();\n    if (!inv_a) {\n        std::cout << \"-1\\n\";\n    }\
+    \ else {\n        std::cout << inv_a.value() << '\\n';\n    }\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
+    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inverse_matrix\"\n\n#include\
+    \ \"../../matrix/base.hpp\"\n#include \"../../modint/modint.hpp\"\n#include \"\
+    ../../template/template.hpp\"\n\nnamespace ebi {\n\nusing mint = modint998244353;\n\
+    \nvoid main_() {\n    int n;\n    std::cin >> n;\n    matrix<mint> a(n, n);\n\
+    \    std::cin >> a;\n    auto inv_a = a.inv();\n    if (!inv_a) {\n        std::cout\
+    \ << \"-1\\n\";\n    } else {\n        std::cout << inv_a.value() << '\\n';\n\
+    \    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int\
+    \ t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n  \
+    \  }\n    return 0;\n}"
   dependsOn:
   - matrix/base.hpp
-  - matrix/gauss_jordan.hpp
   - modint/modint.hpp
   - modint/base.hpp
   - template/template.hpp
@@ -340,15 +296,15 @@ data:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: true
-  path: test/matrix/System_of_Linear_Equations.test.cpp
+  path: test/matrix/Inverse_Matrix.test.cpp
   requiredBy: []
   timestamp: '2024-04-19 17:32:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/matrix/System_of_Linear_Equations.test.cpp
+documentation_of: test/matrix/Inverse_Matrix.test.cpp
 layout: document
 redirect_from:
-- /verify/test/matrix/System_of_Linear_Equations.test.cpp
-- /verify/test/matrix/System_of_Linear_Equations.test.cpp.html
-title: test/matrix/System_of_Linear_Equations.test.cpp
+- /verify/test/matrix/Inverse_Matrix.test.cpp
+- /verify/test/matrix/Inverse_Matrix.test.cpp.html
+title: test/matrix/Inverse_Matrix.test.cpp
 ---
