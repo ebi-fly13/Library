@@ -1,11 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: matrix/gauss_jordan.hpp
+    title: matrix/gauss_jordan.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/matrix/Matrix_Product.test.cpp
     title: test/matrix/Matrix_Product.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Rank_of_Matrix.test.cpp
+    title: test/matrix/Rank_of_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/System_of_Linear_Equations.test.cpp
+    title: test/matrix/System_of_Linear_Equations.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -38,13 +47,15 @@ data:
     \ + i * m,\n                                     data.begin() + (i + 1) * m);\n\
     \    }\n\n    auto operator[](int i) {\n        return std::ranges::subrange(data.begin()\
     \ + i * m,\n                                     data.begin() + (i + 1) * m);\n\
-    \    }\n\n    int row_size() const {\n        return n;\n    }\n\n    int column_size()\
-    \ const {\n        return m;\n    }\n\n    std::pair<int, int> size() const {\n\
-    \        return {n, m};\n    }\n\n  private:\n    int n, m;\n    std::vector<T>\
-    \ data;\n};\n\ntemplate <class T> std::istream &operator>>(std::istream &os, matrix<T>\
-    \ &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int j = 0;\
-    \ j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n    }\n\
-    \    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
+    \    }\n\n    void swap(int i, int j) {\n        std::swap_ranges(data.begin()\
+    \ + i * m, data.begin() + (i + 1) * m,\n                         data.begin()\
+    \ + j * m);\n    }\n\n    int row_size() const {\n        return n;\n    }\n\n\
+    \    int column_size() const {\n        return m;\n    }\n\n    std::pair<int,\
+    \ int> size() const {\n        return {n, m};\n    }\n\n  private:\n    int n,\
+    \ m;\n    std::vector<T> data;\n};\n\ntemplate <class T> std::istream &operator>>(std::istream\
+    \ &os, matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n       \
+    \ for (int j = 0; j < a.column_size(); j++) {\n            os >> a[i][j];\n  \
+    \      }\n    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
     \ &os, const matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n \
     \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
     \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
@@ -77,13 +88,15 @@ data:
     \ + i * m,\n                                     data.begin() + (i + 1) * m);\n\
     \    }\n\n    auto operator[](int i) {\n        return std::ranges::subrange(data.begin()\
     \ + i * m,\n                                     data.begin() + (i + 1) * m);\n\
-    \    }\n\n    int row_size() const {\n        return n;\n    }\n\n    int column_size()\
-    \ const {\n        return m;\n    }\n\n    std::pair<int, int> size() const {\n\
-    \        return {n, m};\n    }\n\n  private:\n    int n, m;\n    std::vector<T>\
-    \ data;\n};\n\ntemplate <class T> std::istream &operator>>(std::istream &os, matrix<T>\
-    \ &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int j = 0;\
-    \ j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n    }\n\
-    \    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
+    \    }\n\n    void swap(int i, int j) {\n        std::swap_ranges(data.begin()\
+    \ + i * m, data.begin() + (i + 1) * m,\n                         data.begin()\
+    \ + j * m);\n    }\n\n    int row_size() const {\n        return n;\n    }\n\n\
+    \    int column_size() const {\n        return m;\n    }\n\n    std::pair<int,\
+    \ int> size() const {\n        return {n, m};\n    }\n\n  private:\n    int n,\
+    \ m;\n    std::vector<T> data;\n};\n\ntemplate <class T> std::istream &operator>>(std::istream\
+    \ &os, matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n       \
+    \ for (int j = 0; j < a.column_size(); j++) {\n            os >> a[i][j];\n  \
+    \      }\n    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
     \ &os, const matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n \
     \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
     \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
@@ -92,11 +105,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: matrix/base.hpp
-  requiredBy: []
-  timestamp: '2024-04-19 02:01:07+09:00'
+  requiredBy:
+  - matrix/gauss_jordan.hpp
+  timestamp: '2024-04-19 15:44:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Matrix_Product.test.cpp
+  - test/matrix/Rank_of_Matrix.test.cpp
 documentation_of: matrix/base.hpp
 layout: document
 redirect_from:

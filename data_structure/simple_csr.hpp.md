@@ -205,6 +205,12 @@ data:
     path: test/matrix/Pow_of_Matrix.test.cpp
     title: test/matrix/Pow_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/matrix/Rank_of_Matrix.test.cpp
+    title: test/matrix/Rank_of_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/System_of_Linear_Equations.test.cpp
+    title: test/matrix/System_of_Linear_Equations.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
   - icon: ':heavy_check_mark:'
@@ -401,8 +407,10 @@ data:
   - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+  - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Matrix_Product.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
+  - test/matrix/Rank_of_Matrix.test.cpp
   - test/algorithm/Two_Sat.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp

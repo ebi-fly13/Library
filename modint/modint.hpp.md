@@ -106,6 +106,12 @@ data:
     path: test/matrix/Pow_of_Matrix.test.cpp
     title: test/matrix/Pow_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/matrix/Rank_of_Matrix.test.cpp
+    title: test/matrix/Rank_of_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/System_of_Linear_Equations.test.cpp
+    title: test/matrix/System_of_Linear_Equations.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -316,9 +322,11 @@ data:
   - test/data_structure/Deque_Operate_All_Composite.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
+  - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Determinant_of_Matrix.test.cpp
   - test/matrix/Matrix_Product.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
+  - test/matrix/Rank_of_Matrix.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/math/Berunoulli_Number.test.cpp

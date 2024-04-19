@@ -395,6 +395,9 @@ data:
       path: matrix/base.hpp
       title: matrix/base.hpp
     - icon: ':heavy_check_mark:'
+      path: matrix/gauss_jordan.hpp
+      title: matrix/gauss_jordan.hpp
+    - icon: ':heavy_check_mark:'
       path: matrix/square_matrix.hpp
       title: matrix/square_matrix.hpp
   - name: modint
@@ -899,6 +902,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/matrix/Pow_of_Matrix.test.cpp
       title: test/matrix/Pow_of_Matrix.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/matrix/Rank_of_Matrix.test.cpp
+      title: test/matrix/Rank_of_Matrix.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/matrix/System_of_Linear_Equations.test.cpp
+      title: test/matrix/System_of_Linear_Equations.test.cpp
   - name: test/polynomial
     pages:
     - icon: ':heavy_check_mark:'
