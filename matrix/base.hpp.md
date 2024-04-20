@@ -3,12 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: matrix/det_arbitrary_mod.hpp
+    title: matrix/det_arbitrary_mod.hpp
+  - icon: ':heavy_check_mark:'
     path: matrix/gauss_jordan.hpp
     title: matrix/gauss_jordan.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/matrix/Determinant_off_Matrix_2.test.cpp
-    title: test/matrix/Determinant_off_Matrix_2.test.cpp
+    path: test/matrix/Determinant_of_Matrix_2.test.cpp
+    title: test/matrix/Determinant_of_Matrix_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+    title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Inverse_Matrix.test.cpp
     title: test/matrix/Inverse_Matrix.test.cpp
@@ -190,6 +196,7 @@ data:
   isVerificationFile: false
   path: matrix/base.hpp
   requiredBy:
+  - matrix/det_arbitrary_mod.hpp
   - matrix/gauss_jordan.hpp
   timestamp: '2024-04-19 19:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -197,7 +204,8 @@ data:
   - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Matrix_Product.test.cpp
-  - test/matrix/Determinant_off_Matrix_2.test.cpp
+  - test/matrix/Determinant_of_Matrix_2.test.cpp
+  - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
 documentation_of: matrix/base.hpp
 layout: document

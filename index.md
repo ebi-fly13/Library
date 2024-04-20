@@ -395,6 +395,9 @@ data:
       path: matrix/base.hpp
       title: matrix/base.hpp
     - icon: ':heavy_check_mark:'
+      path: matrix/det_arbitrary_mod.hpp
+      title: matrix/det_arbitrary_mod.hpp
+    - icon: ':heavy_check_mark:'
       path: matrix/gauss_jordan.hpp
       title: matrix/gauss_jordan.hpp
     - icon: ':heavy_check_mark:'
@@ -897,8 +900,11 @@ data:
       path: test/matrix/Determinant_of_Matrix.test.cpp
       title: test/matrix/Determinant_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/matrix/Determinant_off_Matrix_2.test.cpp
-      title: test/matrix/Determinant_off_Matrix_2.test.cpp
+      path: test/matrix/Determinant_of_Matrix_2.test.cpp
+      title: test/matrix/Determinant_of_Matrix_2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+      title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/matrix/Inverse_Matrix.test.cpp
       title: test/matrix/Inverse_Matrix.test.cpp

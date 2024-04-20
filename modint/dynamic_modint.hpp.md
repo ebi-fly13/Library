@@ -19,6 +19,9 @@ data:
     path: test/math/Sqrt_Mod.test.cpp
     title: test/math/Sqrt_Mod.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+    title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -121,6 +124,7 @@ data:
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - test/math/Sqrt_Mod.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp

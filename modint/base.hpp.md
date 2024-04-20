@@ -78,6 +78,9 @@ data:
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
   - icon: ':heavy_check_mark:'
+    path: matrix/det_arbitrary_mod.hpp
+    title: matrix/det_arbitrary_mod.hpp
+  - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
   - icon: ':heavy_check_mark:'
@@ -199,8 +202,11 @@ data:
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/matrix/Determinant_off_Matrix_2.test.cpp
-    title: test/matrix/Determinant_off_Matrix_2.test.cpp
+    path: test/matrix/Determinant_of_Matrix_2.test.cpp
+    title: test/matrix/Determinant_of_Matrix_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+    title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Inverse_Matrix.test.cpp
     title: test/matrix/Inverse_Matrix.test.cpp
@@ -342,6 +348,7 @@ data:
   - fps/polynomial_interpolation.hpp
   - fps/fps_sqrt.hpp
   - fps/fps.hpp
+  - matrix/det_arbitrary_mod.hpp
   - string/rolling_hash.hpp
   - math/bernoulli_number.hpp
   - math/partition_function.hpp
@@ -384,7 +391,8 @@ data:
   - test/matrix/Determinant_of_Matrix.test.cpp
   - test/matrix/Matrix_Product.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
-  - test/matrix/Determinant_off_Matrix_2.test.cpp
+  - test/matrix/Determinant_of_Matrix_2.test.cpp
+  - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
   - test/math/Sqrt_Mod.test.cpp
   - test/math/Catalan_Convolution.test.cpp

@@ -106,8 +106,11 @@ data:
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/matrix/Determinant_off_Matrix_2.test.cpp
-    title: test/matrix/Determinant_off_Matrix_2.test.cpp
+    path: test/matrix/Determinant_of_Matrix_2.test.cpp
+    title: test/matrix/Determinant_of_Matrix_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+    title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Inverse_Matrix.test.cpp
     title: test/matrix/Inverse_Matrix.test.cpp
@@ -351,7 +354,8 @@ data:
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Matrix_Product.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
-  - test/matrix/Determinant_off_Matrix_2.test.cpp
+  - test/matrix/Determinant_of_Matrix_2.test.cpp
+  - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
