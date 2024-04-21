@@ -354,12 +354,15 @@ data:
       path: math/eratosthenes_sieve.hpp
       title: Eratosthenes Sieve
     - icon: ':heavy_check_mark:'
+      path: math/factorial_mod_998.hpp
+      title: math/factorial_mod_998.hpp
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
       path: math/inversion_number.hpp
       title: Inversion Number
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/lagrange_interpolation.hpp
       title: Lagrange Interpolation
     - icon: ':heavy_check_mark:'
@@ -856,6 +859,9 @@ data:
       path: test/math/Enumerate_Primes.test.cpp
       title: test/math/Enumerate_Primes.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/math/Factorial.test.cpp
+      title: test/math/Factorial.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/math/Inversion_Number.test.cpp
       title: test/math/Inversion_Number.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1050,6 +1056,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_2439.test.cpp
       title: test/yuki/yuki_2439.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_2747.test.cpp
+      title: test/yuki/yuki_2747.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_409.test.cpp
       title: test/yuki/yuki_409.test.cpp

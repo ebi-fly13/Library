@@ -63,6 +63,9 @@ data:
     path: math/catalan_number.hpp
     title: Catalan Number
   - icon: ':heavy_check_mark:'
+    path: math/factorial_mod_998.hpp
+    title: math/factorial_mod_998.hpp
+  - icon: ':heavy_check_mark:'
     path: math/mod_inv.hpp
     title: Mod Inv
   - icon: ':heavy_check_mark:'
@@ -171,6 +174,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Catalan_Convolution.test.cpp
     title: test/math/Catalan_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Factorial.test.cpp
+    title: test/math/Factorial.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
@@ -303,6 +309,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_2747.test.cpp
+    title: test/yuki/yuki_2747.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -354,6 +363,7 @@ data:
   - math/partition_function.hpp
   - math/binomial.hpp
   - math/stirling_number_2nd.hpp
+  - math/factorial_mod_998.hpp
   - math/catalan_convolution.hpp
   - math/mod_sqrt.hpp
   - math/catalan_number.hpp
@@ -374,6 +384,7 @@ data:
   - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/yuki/yuki_1302.test.cpp
+  - test/yuki/yuki_2747.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
@@ -405,6 +416,7 @@ data:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/math/Factorial.test.cpp
   - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp

@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_2747.test.cpp
+    title: test/yuki/yuki_2747.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -136,6 +139,7 @@ data:
   timestamp: '2023-12-28 15:52:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yuki/yuki_2747.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: math/linear_sieve.hpp
 layout: document

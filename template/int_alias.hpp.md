@@ -133,6 +133,9 @@ data:
     path: test/math/Catalan_Convolution.test.cpp
     title: test/math/Catalan_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Factorial.test.cpp
+    title: test/math/Factorial.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
   - icon: ':heavy_check_mark:'
@@ -207,6 +210,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_2747.test.cpp
+    title: test/yuki/yuki_2747.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
@@ -318,6 +324,7 @@ data:
   - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_952.test.cpp
   - test/yuki/yuki_901_2.test.cpp
+  - test/yuki/yuki_2747.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/graph/Cycle_Detection_Directed.test.cpp
@@ -356,6 +363,7 @@ data:
   - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Inversion_Number.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/Factorial.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/aoj/aoj_grl_1_b.test.cpp
