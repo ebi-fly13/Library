@@ -169,6 +169,9 @@ data:
       path: data_structure/queue_aggregation.hpp
       title: Sliding Window Aggregation (Queue)
     - icon: ':warning:'
+      path: data_structure/range_parallel_dsu.hpp
+      title: data_structure/range_parallel_dsu.hpp
+    - icon: ':warning:'
       path: data_structure/range_query_binary_trie.hpp
       title: data_structure/range_query_binary_trie.hpp
     - icon: ':heavy_check_mark:'

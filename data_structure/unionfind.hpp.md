@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: data_structure/range_parallel_dsu.hpp
+    title: data_structure/range_parallel_dsu.hpp
   - icon: ':heavy_check_mark:'
     path: graph/manhattan_mst.hpp
     title: Manhattan MST
@@ -59,6 +62,7 @@ data:
   requiredBy:
   - graph/manhattan_mst.hpp
   - graph/mst.hpp
+  - data_structure/range_parallel_dsu.hpp
   timestamp: '2023-11-13 02:14:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
