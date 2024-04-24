@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: Range Parallel DSU
   - icon: ':heavy_check_mark:'
@@ -12,6 +12,9 @@ data:
     path: graph/mst.hpp
     title: Minimum Spanning Tree
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Parallel_DSU.test.cpp
+    title: test/data_structure/Range_Parallel_DSU.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Union_Find.test.cpp
     title: test/data_structure/Union_Find.test.cpp
@@ -83,6 +86,7 @@ data:
   - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/graph/Manhattan_MST.test.cpp
   - test/data_structure/Union_Find.test.cpp
+  - test/data_structure/Range_Parallel_DSU.test.cpp
 documentation_of: data_structure/dsu.hpp
 layout: document
 title: DSU

@@ -46,6 +46,9 @@ data:
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Parallel_DSU.test.cpp
+    title: test/data_structure/Range_Parallel_DSU.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
     title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
@@ -310,6 +313,7 @@ data:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/data_structure/Static_Rectangle_Sum.test.cpp
+  - test/data_structure/Range_Parallel_DSU.test.cpp
   - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/matrix/Inverse_Matrix.test.cpp

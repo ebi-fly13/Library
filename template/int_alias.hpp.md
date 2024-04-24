@@ -79,6 +79,9 @@ data:
     path: test/data_structure/Range_Kth_Smallest.test.cpp
     title: test/data_structure/Range_Kth_Smallest.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Parallel_DSU.test.cpp
+    title: test/data_structure/Range_Parallel_DSU.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
     title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
@@ -348,6 +351,7 @@ data:
   - test/data_structure/Range_Kth_Smallest.test.cpp
   - test/data_structure/Static_Rectangle_Sum.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
+  - test/data_structure/Range_Parallel_DSU.test.cpp
   - test/data_structure/Static_Range_Frequency.test.cpp
   - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp

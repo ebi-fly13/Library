@@ -16,6 +16,9 @@ data:
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Parallel_DSU.test.cpp
+    title: test/data_structure/Range_Parallel_DSU.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   _isVerificationFailed: false
@@ -49,6 +52,7 @@ data:
   timestamp: '2023-12-26 02:24:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data_structure/Range_Parallel_DSU.test.cpp
   - test/aoj/aoj_2444.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: utility/random_number_generator.hpp

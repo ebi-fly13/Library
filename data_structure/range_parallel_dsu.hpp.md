@@ -5,10 +5,13 @@ data:
     path: data_structure/dsu.hpp
     title: DSU
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Parallel_DSU.test.cpp
+    title: test/data_structure/Range_Parallel_DSU.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/range_parallel_dsu.hpp\"\n\n#include <bit>\n\
@@ -72,8 +75,9 @@ data:
   path: data_structure/range_parallel_dsu.hpp
   requiredBy: []
   timestamp: '2024-04-24 16:34:25+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/data_structure/Range_Parallel_DSU.test.cpp
 documentation_of: data_structure/range_parallel_dsu.hpp
 layout: document
 title: Range Parallel DSU

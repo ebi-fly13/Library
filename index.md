@@ -171,7 +171,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/queue_aggregation.hpp
       title: Sliding Window Aggregation (Queue)
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/range_parallel_dsu.hpp
       title: Range Parallel DSU
     - icon: ':warning:'
@@ -687,6 +687,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Kth_Smallest.test.cpp
       title: test/data_structure/Range_Kth_Smallest.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Range_Parallel_DSU.test.cpp
+      title: test/data_structure/Range_Parallel_DSU.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
       title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
