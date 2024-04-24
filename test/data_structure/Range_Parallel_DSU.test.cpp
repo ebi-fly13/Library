@@ -23,6 +23,12 @@ void main_() {
             if (u + i >= n || v + i >= n) break;
             uf.merge(u + i, v + i);
         }
+        int a = rng.get(1, 5000);
+        while(a--) {
+            int x = rng.get(0, n);
+            int y = rng.get(0, n);
+            assert(rpd.same(x, y) == uf.same(x, y));
+        }
     }
     rep(i, 0, n) {
         rep(j, i + 1, n) {
