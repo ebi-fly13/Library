@@ -199,12 +199,14 @@ data:
     \ uf(n);\n    rep(i, 0, q) {\n        int u = rng.get(0, n);\n        int v =\
     \ rng.get(0, n);\n        int w = rng.get(0, n);\n        rpd.merge(u, v, w);\n\
     \        for (int i = 0; i < w; i++) {\n            if (u + i >= n || v + i >=\
-    \ n) break;\n            uf.merge(u + i, v + i);\n        }\n    }\n    rep(i,\
-    \ 0, n) {\n        rep(j, i + 1, n) {\n            assert(rpd.same(i, j) == uf.same(i,\
-    \ j));\n        }\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
-    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    int a, b;\n    std::cin >> a >> b;\n    std::cout << a + b << '\\\
-    n';\n    return 0;\n}\n"
+    \ n) break;\n            uf.merge(u + i, v + i);\n        }\n        int a = rng.get(1,\
+    \ 5000);\n        while(a--) {\n            int x = rng.get(0, n);\n         \
+    \   int y = rng.get(0, n);\n            assert(rpd.same(x, y) == uf.same(x, y));\n\
+    \        }\n    }\n    rep(i, 0, n) {\n        rep(j, i + 1, n) {\n          \
+    \  assert(rpd.same(i, j) == uf.same(i, j));\n        }\n    }\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
+    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    int a, b;\n    std::cin\
+    \ >> a >> b;\n    std::cout << a + b << '\\n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n#include \"\
     ../../data_structure/range_parallel_dsu.hpp\"\n\n#include \"../../data_structure/dsu.hpp\"\
     \n#include \"../../template/template.hpp\"\n#include \"../../utility/random_number_generator.hpp\"\
@@ -213,12 +215,15 @@ data:
     \ rpd(n);\n    dsu uf(n);\n    rep(i, 0, q) {\n        int u = rng.get(0, n);\n\
     \        int v = rng.get(0, n);\n        int w = rng.get(0, n);\n        rpd.merge(u,\
     \ v, w);\n        for (int i = 0; i < w; i++) {\n            if (u + i >= n ||\
-    \ v + i >= n) break;\n            uf.merge(u + i, v + i);\n        }\n    }\n\
-    \    rep(i, 0, n) {\n        rep(j, i + 1, n) {\n            assert(rpd.same(i,\
-    \ j) == uf.same(i, j));\n        }\n    }\n}\n\n}  // namespace ebi\n\nint main()\
-    \ {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while (t--)\
-    \ {\n        ebi::main_();\n    }\n    int a, b;\n    std::cin >> a >> b;\n  \
-    \  std::cout << a + b << '\\n';\n    return 0;\n}"
+    \ v + i >= n) break;\n            uf.merge(u + i, v + i);\n        }\n       \
+    \ int a = rng.get(1, 5000);\n        while(a--) {\n            int x = rng.get(0,\
+    \ n);\n            int y = rng.get(0, n);\n            assert(rpd.same(x, y) ==\
+    \ uf.same(x, y));\n        }\n    }\n    rep(i, 0, n) {\n        rep(j, i + 1,\
+    \ n) {\n            assert(rpd.same(i, j) == uf.same(i, j));\n        }\n    }\n\
+    }\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n\
+    \    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n    }\n    int\
+    \ a, b;\n    std::cin >> a >> b;\n    std::cout << a + b << '\\n';\n    return\
+    \ 0;\n}"
   dependsOn:
   - data_structure/range_parallel_dsu.hpp
   - data_structure/dsu.hpp
@@ -233,7 +238,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Parallel_DSU.test.cpp
   requiredBy: []
-  timestamp: '2024-04-24 16:44:09+09:00'
+  timestamp: '2024-04-24 17:01:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Parallel_DSU.test.cpp
