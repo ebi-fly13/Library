@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/dsu.hpp
+    title: DSU
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
-    path: data_structure/unionfind.hpp
-    title: UnionFind
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
@@ -41,32 +41,39 @@ data:
   bundledCode: "#line 1 \"test/graph/Minimum_Spanning_Tree.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/minimum_spanning_tree\"\n\n#line 2 \"graph/mst.hpp\"\
     \n\n#include <algorithm>\n#include <utility>\n#include <vector>\n\n#line 2 \"\
-    data_structure/unionfind.hpp\"\n\r\n#line 4 \"data_structure/unionfind.hpp\"\n\
-    \r\nnamespace ebi {\r\n\r\nstruct unionfind {\r\n  private:\r\n    std::vector<int>\
-    \ par;\r\n\r\n  public:\r\n    unionfind(int n = 0) : par(n, -1) {}\r\n\r\n  \
-    \  bool same(int x, int y) {\r\n        return leader(x) == leader(y);\r\n   \
-    \ }\r\n\r\n    bool merge(int x, int y) {\r\n        x = leader(x);\r\n      \
-    \  y = leader(y);\r\n        if (x == y) return false;\r\n        if (par[x] >\
-    \ par[y]) std::swap(x, y);\r\n        par[x] += par[y];\r\n        par[y] = x;\r\
-    \n        return true;\r\n    }\r\n\r\n    int leader(int x) {\r\n        if (par[x]\
-    \ < 0)\r\n            return x;\r\n        else\r\n            return par[x] =\
-    \ leader(par[x]);\r\n    }\r\n\r\n    int size(int x) {\r\n        return -par[leader(x)];\r\
-    \n    }\r\n\r\n    int count_group() {\r\n        int c = 0;\r\n        for (int\
+    data_structure/dsu.hpp\"\n\r\n#line 4 \"data_structure/dsu.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\nstruct dsu {\r\n  private:\r\n    std::vector<int> par;\r\n\r\n\
+    \  public:\r\n    dsu(int n = 0) : par(n, -1) {}\r\n\r\n    bool same(int x, int\
+    \ y) {\r\n        return leader(x) == leader(y);\r\n    }\r\n\r\n    bool merge(int\
+    \ x, int y) {\r\n        x = leader(x);\r\n        y = leader(y);\r\n        if\
+    \ (x == y) return false;\r\n        if (par[x] > par[y]) std::swap(x, y);\r\n\
+    \        par[x] += par[y];\r\n        par[y] = x;\r\n        return true;\r\n\
+    \    }\r\n\r\n    int leader(int x) {\r\n        if (par[x] < 0)\r\n         \
+    \   return x;\r\n        else\r\n            return par[x] = leader(par[x]);\r\
+    \n    }\r\n\r\n    int size(int x) {\r\n        return -par[leader(x)];\r\n  \
+    \  }\r\n\r\n    int count_group() {\r\n        int c = 0;\r\n        for (int\
     \ i = 0; i < int(par.size()); i++) {\r\n            if (par[i] < 0) c++;\r\n \
-    \       }\r\n        return c;\r\n    }\r\n\r\n    void clear() {\r\n        for\
-    \ (int i = 0; i < int(par.size()); i++) {\r\n            par[i] = -1;\r\n    \
-    \    }\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n#line 2 \"graph/base.hpp\"\n\
-    \n#include <cassert>\n#include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\
-    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
-    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
-    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
-    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
-    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
-    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
-    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
-    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \       }\r\n        return c;\r\n    }\r\n\r\n    std::vector<std::vector<int>>\
+    \ groups() {\r\n        int n = par.size();\r\n        std::vector result(n, std::vector<int>());\r\
+    \n        for (int i = 0; i < n; i++) {\r\n            result[leader(i)].emplace_back(i);\r\
+    \n        }\r\n        result.erase(std::remove_if(result.begin(), result.end(),\r\
+    \n                                    [](const std::vector<int> &v) -> bool {\r\
+    \n                                        return v.empty();\r\n              \
+    \                      }),\r\n                     result.end());\r\n        return\
+    \ result;\r\n    }\r\n\r\n    void clear() {\r\n        for (int i = 0; i < int(par.size());\
+    \ i++) {\r\n            par[i] = -1;\r\n        }\r\n    }\r\n};\r\n\r\n}  //\
+    \ namespace ebi\n#line 2 \"graph/base.hpp\"\n\n#include <cassert>\n#include <iostream>\n\
+    #include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
+    \n\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ E> struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n,\
+    \ const std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0),\
+    \ elist(elements.size()) {\n        for (auto e : elements) {\n            start[e.first\
+    \ + 1]++;\n        }\n        for (auto i : std::views::iota(0, n)) {\n      \
+    \      start[i + 1] += start[i];\n        }\n        auto counter = start;\n \
+    \       for (auto [i, e] : elements) {\n            elist[counter[i]++] = e;\n\
+    \        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>& es)\n \
+    \       : start(es.size() + 1, 0) {\n        int n = es.size();\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
     \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
     \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
     \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
@@ -116,8 +123,8 @@ data:
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
     \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 9 \"graph/mst.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T> std::pair<T, std::vector<int>> mst(const\
-    \ Graph<T> &g) {\n    unionfind uf(g.size());\n    std::vector<Edge<T>> edges;\n\
-    \    for (auto v : std::views::iota(0, g.size())) {\n        for (auto e : g[v])\
+    \ Graph<T> &g) {\n    dsu uf(g.size());\n    std::vector<Edge<T>> edges;\n   \
+    \ for (auto v : std::views::iota(0, g.size())) {\n        for (auto e : g[v])\
     \ {\n            edges.emplace_back(e);\n        }\n    }\n    std::sort(edges.begin(),\
     \ edges.end(),\n              [](const Edge<T> &a, const Edge<T> &b) -> bool {\n\
     \                  return a.cost < b.cost;\n              });\n    std::vector<int>\
@@ -187,7 +194,7 @@ data:
     \    }\n    return 0;\n}"
   dependsOn:
   - graph/mst.hpp
-  - data_structure/unionfind.hpp
+  - data_structure/dsu.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   - template/template.hpp
@@ -198,7 +205,7 @@ data:
   isVerificationFile: true
   path: test/graph/Minimum_Spanning_Tree.test.cpp
   requiredBy: []
-  timestamp: '2024-03-15 00:35:58+09:00'
+  timestamp: '2024-04-24 16:34:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Minimum_Spanning_Tree.test.cpp

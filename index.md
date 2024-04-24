@@ -115,6 +115,9 @@ data:
       path: data_structure/double_ended_priority_queue.hpp
       title: Double-Ended Priority Queue
     - icon: ':heavy_check_mark:'
+      path: data_structure/dsu.hpp
+      title: DSU
+    - icon: ':heavy_check_mark:'
       path: data_structure/dual_segtree.hpp
       title: dual segtree
     - icon: ':heavy_check_mark:'
@@ -170,7 +173,7 @@ data:
       title: Sliding Window Aggregation (Queue)
     - icon: ':warning:'
       path: data_structure/range_parallel_dsu.hpp
-      title: data_structure/range_parallel_dsu.hpp
+      title: Range Parallel DSU
     - icon: ':warning:'
       path: data_structure/range_query_binary_trie.hpp
       title: data_structure/range_query_binary_trie.hpp
@@ -213,9 +216,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/undo_unionfind.hpp
       title: Undo UnionFind
-    - icon: ':heavy_check_mark:'
-      path: data_structure/unionfind.hpp
-      title: UnionFind
     - icon: ':warning:'
       path: data_structure/unionfind_with_potential.hpp
       title: UnionFind with potential
