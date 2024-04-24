@@ -4,12 +4,12 @@
 
 namespace ebi {
 
-struct unionfind {
+struct dsu {
   private:
     std::vector<int> par;
 
   public:
-    unionfind(int n = 0) : par(n, -1) {}
+    dsu(int n = 0) : par(n, -1) {}
 
     bool same(int x, int y) {
         return leader(x) == leader(y);
@@ -42,6 +42,20 @@ struct unionfind {
             if (par[i] < 0) c++;
         }
         return c;
+    }
+
+    std::vector<std::vector<int>> groups() {
+        int n = par.size();
+        std::vector result(n, std::vector<int>());
+        for (int i = 0; i < n; i++) {
+            result[leader(i)].emplace_back(i);
+        }
+        result.erase(std::remove_if(result.begin(), result.end(),
+                                    [](const std::vector<int> &v) -> bool {
+                                        return v.empty();
+                                    }),
+                     result.end());
+        return result;
     }
 
     void clear() {

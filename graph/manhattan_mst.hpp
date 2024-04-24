@@ -7,7 +7,7 @@
 #include <utility>
 #include <vector>
 
-#include "../data_structure/unionfind.hpp"
+#include "../data_structure/dsu.hpp"
 #include "../graph/base.hpp"
 
 namespace ebi {
@@ -43,7 +43,7 @@ std::pair<T, std::vector<std::pair<int, int>>> manhattan_mst(
     std::sort(edges.begin(), edges.end(), [&](auto a, auto b) -> bool {
         return std::get<0>(a) < std::get<0>(b);
     });
-    unionfind uf(n);
+    dsu uf(n);
     std::vector<std::pair<int, int>> es;
     T sum = 0;
     for (auto [cost, i, j] : edges) {

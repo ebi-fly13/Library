@@ -4,13 +4,13 @@
 #include <utility>
 #include <vector>
 
-#include "../data_structure/unionfind.hpp"
+#include "../data_structure/dsu.hpp"
 #include "../graph/base.hpp"
 
 namespace ebi {
 
 template <class T> std::pair<T, std::vector<int>> mst(const Graph<T> &g) {
-    unionfind uf(g.size());
+    dsu uf(g.size());
     std::vector<Edge<T>> edges;
     for (auto v : std::views::iota(0, g.size())) {
         for (auto e : g[v]) {

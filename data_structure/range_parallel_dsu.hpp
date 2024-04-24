@@ -4,7 +4,7 @@
 #include <cassert>
 #include <vector>
 
-#include "../data_structure/unionfind.hpp"
+#include "../data_structure/dsu.hpp"
 
 namespace ebi {
 
@@ -21,7 +21,7 @@ struct range_parallel_dsu {
 
   public:
     range_parallel_dsu(int n_)
-        : n(n_), uf(std::bit_width((unsigned int)n), unionfind(n)) {}
+        : n(n_), uf(std::bit_width((unsigned int)n), dsu(n)) {}
 
     void merge(int u, int v, int w) {
         if (u > v) std::swap(u, v);
@@ -44,9 +44,17 @@ struct range_parallel_dsu {
         return uf[0].leader(u);
     }
 
+    std::vector<std::vector<int>> groups() {
+        return uf[0].groups();
+    }
+
+    int count_group() {
+        return uf[0].count_group();
+    }
+
   private:
     int n;
-    std::vector<unionfind> uf;
+    std::vector<dsu> uf;
 };
 
 }  // namespace ebi
