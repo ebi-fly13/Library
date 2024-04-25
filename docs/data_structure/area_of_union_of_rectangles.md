@@ -9,7 +9,7 @@ documentation_of: //data_structure/area_of_union_of_rectangles.hpp
 
 ### add_rectangle(l, d, r, u)
 
-長方形 $\{(x, y): l \leq x \leq r, d \leq y \leq u\}$ を追加する。
+長方形 $\lbrace (x, y): l \leq x \leq r, d \leq y \leq u\rbrace$ を追加する。
 
 ### run()
 
