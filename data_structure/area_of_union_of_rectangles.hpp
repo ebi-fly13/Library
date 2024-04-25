@@ -42,6 +42,34 @@ int id() {
 }  // namespace internal
 
 struct area_of_union_of_rectangles {
+  private:
+    using S = std::pair<int, i64>;
+
+    static S op(S a, S b) {
+        if (a.first == b.first)
+            return {a.first, a.second + b.second};
+        else if (a.first < b.first)
+            return a;
+        else
+            return b;
+    }
+
+    static S e() {
+        return {std::numeric_limits<int>::max(), 0};
+    }
+
+    static S mapping(int f, S x) {
+        return {x.first + f, x.second};
+    }
+
+    static int composition(int f, int g) {
+        return f + g;
+    }
+
+    static int id() {
+        return 0;
+    }
+
   public:
     area_of_union_of_rectangles() = default;
 
@@ -59,7 +87,6 @@ struct area_of_union_of_rectangles {
         cp_x.build();
         cp_y.build();
         int n = cp_x.size(), m = cp_y.size();
-        using namespace internal;
         lazy_segtree<S, op, e, int, mapping, composition, id> seg(
             [&]() -> std::vector<S> {
                 std::vector<S> data(m - 1);
