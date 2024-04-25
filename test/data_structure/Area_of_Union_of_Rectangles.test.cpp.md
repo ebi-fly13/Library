@@ -132,17 +132,11 @@ data:
     \ = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing\
     \ i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
     using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 10 \"data_structure/area_of_union_of_rectangles.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\nusing S = std::pair<int, i64>;\n\
-    \nS op(S a, S b) {\n    if (a.first == b.first)\n        return {a.first, a.second\
-    \ + b.second};\n    else if (a.first < b.first)\n        return a;\n    else\n\
-    \        return b;\n}\n\nS e() {\n    return {std::numeric_limits<int>::max(),\
-    \ 0};\n}\n\nS mapping(int f, S x) {\n    return {x.first + f, x.second};\n}\n\n\
-    int composition(int f, int g) {\n    return f + g;\n}\n\nint id() {\n    return\
-    \ 0;\n}\n\n}  // namespace internal\n\nstruct area_of_union_of_rectangles {\n\
-    \  private:\n    using S = std::pair<int, i64>;\n\n    static S op(S a, S b) {\n\
-    \        if (a.first == b.first)\n            return {a.first, a.second + b.second};\n\
-    \        else if (a.first < b.first)\n            return a;\n        else\n  \
-    \          return b;\n    }\n\n    static S e() {\n        return {std::numeric_limits<int>::max(),\
+    \n\nnamespace ebi {\n\nstruct area_of_union_of_rectangles {\n  private:\n    using\
+    \ S = std::pair<int, i64>;\n\n    static S op(S a, S b) {\n        if (a.first\
+    \ == b.first)\n            return {a.first, a.second + b.second};\n        else\
+    \ if (a.first < b.first)\n            return a;\n        else\n            return\
+    \ b;\n    }\n\n    static S e() {\n        return {std::numeric_limits<int>::max(),\
     \ 0};\n    }\n\n    static S mapping(int f, S x) {\n        return {x.first +\
     \ f, x.second};\n    }\n\n    static int composition(int f, int g) {\n       \
     \ return f + g;\n    }\n\n    static int id() {\n        return 0;\n    }\n\n\
@@ -297,7 +291,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
   requiredBy: []
-  timestamp: '2024-04-25 15:45:07+09:00'
+  timestamp: '2024-04-25 16:41:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Area_of_Union_of_Rectangles.test.cpp

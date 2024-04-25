@@ -109,17 +109,11 @@ data:
     \ = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing\
     \ i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
     using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 10 \"data_structure/area_of_union_of_rectangles.hpp\"\
-    \n\nnamespace ebi {\n\nnamespace internal {\n\nusing S = std::pair<int, i64>;\n\
-    \nS op(S a, S b) {\n    if (a.first == b.first)\n        return {a.first, a.second\
-    \ + b.second};\n    else if (a.first < b.first)\n        return a;\n    else\n\
-    \        return b;\n}\n\nS e() {\n    return {std::numeric_limits<int>::max(),\
-    \ 0};\n}\n\nS mapping(int f, S x) {\n    return {x.first + f, x.second};\n}\n\n\
-    int composition(int f, int g) {\n    return f + g;\n}\n\nint id() {\n    return\
-    \ 0;\n}\n\n}  // namespace internal\n\nstruct area_of_union_of_rectangles {\n\
-    \  private:\n    using S = std::pair<int, i64>;\n\n    static S op(S a, S b) {\n\
-    \        if (a.first == b.first)\n            return {a.first, a.second + b.second};\n\
-    \        else if (a.first < b.first)\n            return a;\n        else\n  \
-    \          return b;\n    }\n\n    static S e() {\n        return {std::numeric_limits<int>::max(),\
+    \n\nnamespace ebi {\n\nstruct area_of_union_of_rectangles {\n  private:\n    using\
+    \ S = std::pair<int, i64>;\n\n    static S op(S a, S b) {\n        if (a.first\
+    \ == b.first)\n            return {a.first, a.second + b.second};\n        else\
+    \ if (a.first < b.first)\n            return a;\n        else\n            return\
+    \ b;\n    }\n\n    static S e() {\n        return {std::numeric_limits<int>::max(),\
     \ 0};\n    }\n\n    static S mapping(int f, S x) {\n        return {x.first +\
     \ f, x.second};\n    }\n\n    static int composition(int f, int g) {\n       \
     \ return f + g;\n    }\n\n    static int id() {\n        return 0;\n    }\n\n\
@@ -147,26 +141,20 @@ data:
     \ 4>> qs;\n    compress<i64> cp_x, cp_y;\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <vector>\n\
     \n#include \"../data_structure/compress.hpp\"\n#include \"../data_structure/lazy_segtree.hpp\"\
-    \n#include \"../template/int_alias.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nusing S = std::pair<int, i64>;\n\nS op(S a, S b) {\n    if (a.first ==\
-    \ b.first)\n        return {a.first, a.second + b.second};\n    else if (a.first\
-    \ < b.first)\n        return a;\n    else\n        return b;\n}\n\nS e() {\n \
-    \   return {std::numeric_limits<int>::max(), 0};\n}\n\nS mapping(int f, S x) {\n\
-    \    return {x.first + f, x.second};\n}\n\nint composition(int f, int g) {\n \
-    \   return f + g;\n}\n\nint id() {\n    return 0;\n}\n\n}  // namespace internal\n\
-    \nstruct area_of_union_of_rectangles {\n  private:\n    using S = std::pair<int,\
-    \ i64>;\n\n    static S op(S a, S b) {\n        if (a.first == b.first)\n    \
-    \        return {a.first, a.second + b.second};\n        else if (a.first < b.first)\n\
-    \            return a;\n        else\n            return b;\n    }\n\n    static\
-    \ S e() {\n        return {std::numeric_limits<int>::max(), 0};\n    }\n\n   \
-    \ static S mapping(int f, S x) {\n        return {x.first + f, x.second};\n  \
-    \  }\n\n    static int composition(int f, int g) {\n        return f + g;\n  \
-    \  }\n\n    static int id() {\n        return 0;\n    }\n\n  public:\n    area_of_union_of_rectangles()\
-    \ = default;\n\n    void add_rectangle(i64 l, i64 d, i64 r, i64 u) {\n       \
-    \ qs.push_back({l, d, r, u});\n        cp_x.add(l);\n        cp_x.add(r);\n  \
-    \      cp_y.add(d);\n        cp_y.add(u);\n    }\n\n    i64 run() {\n        assert(is_first);\n\
-    \        is_first = false;\n        cp_x.build();\n        cp_y.build();\n   \
-    \     int n = cp_x.size(), m = cp_y.size();\n        lazy_segtree<S, op, e, int,\
+    \n#include \"../template/int_alias.hpp\"\n\nnamespace ebi {\n\nstruct area_of_union_of_rectangles\
+    \ {\n  private:\n    using S = std::pair<int, i64>;\n\n    static S op(S a, S\
+    \ b) {\n        if (a.first == b.first)\n            return {a.first, a.second\
+    \ + b.second};\n        else if (a.first < b.first)\n            return a;\n \
+    \       else\n            return b;\n    }\n\n    static S e() {\n        return\
+    \ {std::numeric_limits<int>::max(), 0};\n    }\n\n    static S mapping(int f,\
+    \ S x) {\n        return {x.first + f, x.second};\n    }\n\n    static int composition(int\
+    \ f, int g) {\n        return f + g;\n    }\n\n    static int id() {\n       \
+    \ return 0;\n    }\n\n  public:\n    area_of_union_of_rectangles() = default;\n\
+    \n    void add_rectangle(i64 l, i64 d, i64 r, i64 u) {\n        qs.push_back({l,\
+    \ d, r, u});\n        cp_x.add(l);\n        cp_x.add(r);\n        cp_y.add(d);\n\
+    \        cp_y.add(u);\n    }\n\n    i64 run() {\n        assert(is_first);\n \
+    \       is_first = false;\n        cp_x.build();\n        cp_y.build();\n    \
+    \    int n = cp_x.size(), m = cp_y.size();\n        lazy_segtree<S, op, e, int,\
     \ mapping, composition, id> seg(\n            [&]() -> std::vector<S> {\n    \
     \            std::vector<S> data(m - 1);\n                for (int i = 0; i <\
     \ m - 1; i++) {\n                    data[i] = {0, cp_y.val(i + 1) - cp_y.val(i)};\n\
@@ -191,7 +179,7 @@ data:
   isVerificationFile: false
   path: data_structure/area_of_union_of_rectangles.hpp
   requiredBy: []
-  timestamp: '2024-04-25 15:45:07+09:00'
+  timestamp: '2024-04-25 16:41:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
