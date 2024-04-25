@@ -18,6 +18,9 @@ data:
     path: data_structure/WaveletMatrix.hpp
     title: Wavelet Matrix
   - icon: ':heavy_check_mark:'
+    path: data_structure/area_of_union_of_rectangles.hpp
+    title: Area of Union of Rectangles
+  - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
   - icon: ':heavy_check_mark:'
@@ -54,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
     title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
+    title: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Double-Ended_Priority_Queue.test.cpp
     title: test/data_structure/Double-Ended_Priority_Queue.test.cpp
@@ -310,6 +316,7 @@ data:
   - convolution/online_convolution.hpp
   - data_structure/WaveletMatrix.hpp
   - data_structure/bitVector.hpp
+  - data_structure/area_of_union_of_rectangles.hpp
   - algorithm/monge_d_edge_shortest_path.hpp
   - algorithm/golden_section_search.hpp
   - template/template.hpp
@@ -355,6 +362,7 @@ data:
   - test/data_structure/Static_Range_Frequency.test.cpp
   - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
+  - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
   - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Matrix_Product.test.cpp

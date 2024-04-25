@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/area_of_union_of_rectangles.hpp
+    title: Area of Union of Rectangles
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
+    title: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
@@ -158,12 +164,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data_structure/lazy_segtree.hpp
-  requiredBy: []
+  requiredBy:
+  - data_structure/area_of_union_of_rectangles.hpp
   timestamp: '2023-10-31 01:56:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_2439.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
   - test/aoj/aoj_2450.test.cpp
 documentation_of: data_structure/lazy_segtree.hpp
 layout: document

@@ -112,6 +112,9 @@ data:
     path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
     title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
+    title: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Double-Ended_Priority_Queue.test.cpp
     title: test/data_structure/Double-Ended_Priority_Queue.test.cpp
   - icon: ':heavy_check_mark:'
@@ -427,6 +430,7 @@ data:
   - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+  - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
   - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Matrix_Product.test.cpp

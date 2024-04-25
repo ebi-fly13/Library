@@ -97,6 +97,9 @@ data:
       path: data_structure/WaveletMatrix.hpp
       title: Wavelet Matrix
     - icon: ':heavy_check_mark:'
+      path: data_structure/area_of_union_of_rectangles.hpp
+      title: Area of Union of Rectangles
+    - icon: ':heavy_check_mark:'
       path: data_structure/bankers_queue.hpp
       title: data_structure/bankers_queue.hpp
     - icon: ':heavy_check_mark:'
@@ -627,6 +630,9 @@ data:
       title: test/convolution/Subset_Convolution.test.cpp
   - name: test/data_structure
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
+      title: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Deque_Operate_All_Composite.test.cpp
       title: test/data_structure/Deque_Operate_All_Composite.test.cpp
