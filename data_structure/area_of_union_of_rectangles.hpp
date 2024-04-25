@@ -10,37 +10,6 @@
 
 namespace ebi {
 
-namespace internal {
-
-using S = std::pair<int, i64>;
-
-S op(S a, S b) {
-    if (a.first == b.first)
-        return {a.first, a.second + b.second};
-    else if (a.first < b.first)
-        return a;
-    else
-        return b;
-}
-
-S e() {
-    return {std::numeric_limits<int>::max(), 0};
-}
-
-S mapping(int f, S x) {
-    return {x.first + f, x.second};
-}
-
-int composition(int f, int g) {
-    return f + g;
-}
-
-int id() {
-    return 0;
-}
-
-}  // namespace internal
-
 struct area_of_union_of_rectangles {
   private:
     using S = std::pair<int, i64>;
