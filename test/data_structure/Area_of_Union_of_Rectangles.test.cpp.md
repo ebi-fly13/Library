@@ -139,37 +139,44 @@ data:
     \ 0};\n}\n\nS mapping(int f, S x) {\n    return {x.first + f, x.second};\n}\n\n\
     int composition(int f, int g) {\n    return f + g;\n}\n\nint id() {\n    return\
     \ 0;\n}\n\n}  // namespace internal\n\nstruct area_of_union_of_rectangles {\n\
+    \  private:\n    using S = std::pair<int, i64>;\n\n    static S op(S a, S b) {\n\
+    \        if (a.first == b.first)\n            return {a.first, a.second + b.second};\n\
+    \        else if (a.first < b.first)\n            return a;\n        else\n  \
+    \          return b;\n    }\n\n    static S e() {\n        return {std::numeric_limits<int>::max(),\
+    \ 0};\n    }\n\n    static S mapping(int f, S x) {\n        return {x.first +\
+    \ f, x.second};\n    }\n\n    static int composition(int f, int g) {\n       \
+    \ return f + g;\n    }\n\n    static int id() {\n        return 0;\n    }\n\n\
     \  public:\n    area_of_union_of_rectangles() = default;\n\n    void add_rectangle(i64\
     \ l, i64 d, i64 r, i64 u) {\n        qs.push_back({l, d, r, u});\n        cp_x.add(l);\n\
     \        cp_x.add(r);\n        cp_y.add(d);\n        cp_y.add(u);\n    }\n\n \
     \   i64 run() {\n        assert(is_first);\n        is_first = false;\n      \
     \  cp_x.build();\n        cp_y.build();\n        int n = cp_x.size(), m = cp_y.size();\n\
-    \        using namespace internal;\n        lazy_segtree<S, op, e, int, mapping,\
-    \ composition, id> seg(\n            [&]() -> std::vector<S> {\n             \
-    \   std::vector<S> data(m - 1);\n                for (int i = 0; i < m - 1; i++)\
-    \ {\n                    data[i] = {0, cp_y.val(i + 1) - cp_y.val(i)};\n     \
-    \           }\n                return data;\n            }());\n        std::vector\
-    \ table(n,\n                          std::vector(2, std::vector<std::pair<i64,\
-    \ i64>>()));\n        for (auto [l, d, r, u] : qs) {\n            int x = cp_y.get(d);\n\
-    \            int y = cp_y.get(u);\n            table[cp_x.get(l)][0].emplace_back(x,\
-    \ y);\n            table[cp_x.get(r)][1].emplace_back(x, y);\n        }\n    \
-    \    i64 ans = 0;\n        for (int i = 0; i < n - 1; i++) {\n            i64\
-    \ wy = cp_y.val(m - 1) - cp_y.val(0);\n            i64 wx = cp_x.val(i + 1) -\
-    \ cp_x.val(i);\n            for (auto [d, u] : table[i][0]) {\n              \
-    \  seg.apply(d, u, 1);\n            }\n            for (auto [d, u] : table[i][1])\
-    \ {\n                seg.apply(d, u, -1);\n            }\n            auto [min,\
-    \ cnt] = seg.all_prod();\n            if (min == 0) wy -= cnt;\n            ans\
-    \ += wx * wy;\n        }\n        return ans;\n    }\n\n  private:\n    bool is_first\
-    \ = true;\n    std::vector<std::array<i64, 4>> qs;\n    compress<i64> cp_x, cp_y;\n\
-    };\n\n}  // namespace ebi\n#line 4 \"test/data_structure/Area_of_Union_of_Rectangles.test.cpp\"\
-    \n\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i,\
-    \ a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int\
-    \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
-    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
-    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
-    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
-    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
-    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \        lazy_segtree<S, op, e, int, mapping, composition, id> seg(\n        \
+    \    [&]() -> std::vector<S> {\n                std::vector<S> data(m - 1);\n\
+    \                for (int i = 0; i < m - 1; i++) {\n                    data[i]\
+    \ = {0, cp_y.val(i + 1) - cp_y.val(i)};\n                }\n                return\
+    \ data;\n            }());\n        std::vector table(n,\n                   \
+    \       std::vector(2, std::vector<std::pair<i64, i64>>()));\n        for (auto\
+    \ [l, d, r, u] : qs) {\n            int x = cp_y.get(d);\n            int y =\
+    \ cp_y.get(u);\n            table[cp_x.get(l)][0].emplace_back(x, y);\n      \
+    \      table[cp_x.get(r)][1].emplace_back(x, y);\n        }\n        i64 ans =\
+    \ 0;\n        for (int i = 0; i < n - 1; i++) {\n            i64 wy = cp_y.val(m\
+    \ - 1) - cp_y.val(0);\n            i64 wx = cp_x.val(i + 1) - cp_x.val(i);\n \
+    \           for (auto [d, u] : table[i][0]) {\n                seg.apply(d, u,\
+    \ 1);\n            }\n            for (auto [d, u] : table[i][1]) {\n        \
+    \        seg.apply(d, u, -1);\n            }\n            auto [min, cnt] = seg.all_prod();\n\
+    \            if (min == 0) wy -= cnt;\n            ans += wx * wy;\n        }\n\
+    \        return ans;\n    }\n\n  private:\n    bool is_first = true;\n    std::vector<std::array<i64,\
+    \ 4>> qs;\n    compress<i64> cp_x, cp_y;\n};\n\n}  // namespace ebi\n#line 4 \"\
+    test/data_structure/Area_of_Union_of_Rectangles.test.cpp\"\n\n#line 1 \"template/template.hpp\"\
+    \n#include <bits/stdc++.h>\n\n#define rep(i, a, n) for (int i = (int)(a); i <\
+    \ (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
+    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
+    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
+    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
+    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
+    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
+    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
@@ -290,7 +297,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
   requiredBy: []
-  timestamp: '2024-04-25 14:53:27+09:00'
+  timestamp: '2024-04-25 15:45:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
