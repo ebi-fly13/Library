@@ -27,6 +27,7 @@
 "test/convolution/Lcm_Convolution.test.cpp": "2023-10-31 00:16:57 +0900",
 "test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp": "2024-03-13 15:52:21 +0900",
 "test/convolution/Subset_Convolution.test.cpp": "2023-10-31 00:17:11 +0900",
+"test/data_structure/Area_of_Union_of_Rectangles.test.cpp": "2024-04-25 14:53:27 +0900",
 "test/data_structure/Deque_Operate_All_Composite.test.cpp": "2023-10-31 00:16:57 +0900",
 "test/data_structure/Double-Ended_Priority_Queue.test.cpp": "2024-03-13 15:52:21 +0900",
 "test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp": "2023-12-28 15:52:36 +0900",
