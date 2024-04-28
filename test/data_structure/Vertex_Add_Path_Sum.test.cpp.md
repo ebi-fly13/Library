@@ -166,6 +166,7 @@ data:
     \        for (; s != l; s = par[s]) a.emplace_back(s);\n        for (; t != l;\
     \ t = par[t]) b.emplace_back(t);\n        a.emplace_back(l);\n        std::reverse(b.begin(),\
     \ b.end());\n        a.insert(a.end(), b.begin(), b.end());\n        return a;\n\
+    \    }\n\n    int root_of_heavy_path(int u) const {\n        return nxt[u];\n\
     \    }\n\n    int parent(int u) const {\n        return par[u];\n    }\n\n   \
     \ T distance(int u, int v) const {\n        return dist[u] + dist[v] - 2 * dist[lca(u,\
     \ v)];\n    }\n\n    T distance_from_root(int v) const {\n        return dist[v];\n\
@@ -242,7 +243,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-04-28 15:17:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Path_Sum.test.cpp
