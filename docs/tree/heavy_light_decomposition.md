@@ -45,6 +45,10 @@ documentation_of: //tree/heavy_light_decomposition.hpp
 
 $u-v$ パスに $s$ が含まれるか判定。 $O(\log N)$
 
+### root_of_heavy_path(int u)
+
+$u$ の属するheavy pathの最も親に近いものを返す。 $O(1)$
+
 ### path_noncommutative_query(int u, int v, bool vertex, const F &f)
 
 パス $u-v$ にクエリ`f`を適用する。非可換。vertexがtrueのとき、頂点に属性がある。vertexがfalseのとき、辺に属性がある。親-子間の辺属性は子のidxに持つ。

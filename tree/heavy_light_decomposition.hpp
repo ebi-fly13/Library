@@ -116,6 +116,10 @@ template <class T> struct heavy_light_decomposition {
         return a;
     }
 
+    int root_of_heavy_path(int u) const {
+        return nxt[u];
+    }
+
     int parent(int u) const {
         return par[u];
     }
