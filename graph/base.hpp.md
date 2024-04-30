@@ -91,7 +91,7 @@ data:
     title: Rooted Tree Hash
   - icon: ':warning:'
     path: tree/static_top_tree.hpp
-    title: tree/static_top_tree.hpp
+    title: Static Top Tree
   - icon: ':heavy_check_mark:'
     path: tree/tree_diameter.hpp
     title: Tree Diameter

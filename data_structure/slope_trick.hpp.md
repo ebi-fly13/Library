@@ -133,7 +133,7 @@ $(a-x)_+ = \max(0, a-x)$ を加算する。 $O(\log N)$
 
 ### add_abs(T a)
 
-$|x - a|$ を加算する。 $O(\log N)$
+$\lvert x - a \rvert$ を加算する。 $O(\log N)$
 
 ### sliding_window_minimum(T a, T b)
 

@@ -9,7 +9,7 @@ data:
     title: Graph (CSR format)
   - icon: ':warning:'
     path: tree/static_top_tree.hpp
-    title: tree/static_top_tree.hpp
+    title: Static Top Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false

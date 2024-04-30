@@ -177,8 +177,21 @@ data:
   verifiedWith: []
 documentation_of: tree/static_top_tree.hpp
 layout: document
-redirect_from:
-- /library/tree/static_top_tree.hpp
-- /library/tree/static_top_tree.hpp.html
-title: tree/static_top_tree.hpp
+title: Static Top Tree
 ---
+
+## 説明
+
+Static Top Treeを構成する。 $O(N)$
+
+Static Top Treeの各ノードには次のタイプがある。
+
+- `Vertex`: 頂点属性
+- `Compress`: path clusterをマージしている属性
+- `Rake`: point clusterをマージしている属性
+- `AddEdge`: point clusterを作成している属性
+- `AddVertex`: point clusterに頂点を追加してpath clusterにしている属性
+
+### 参考文献
+
+[AtCoder Beginner Contest 351 解説](https://atcoder.jp/contests/abc351/editorial/9868)
