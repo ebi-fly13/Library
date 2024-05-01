@@ -90,6 +90,10 @@ template <class T> struct static_top_tree {
   public:
     static_top_tree(Graph<T> g_, int root = 0)
         : n(g_.size()), g(g_), par(n, -1), sz(n, 1), stt(n) {
+        if (n == 1) {
+            stt_root = 0;
+            return;
+        }
         dfs_sz(root);
         stt_root = compress(root).first;
     }
