@@ -506,7 +506,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/contour_query_on_weighted_tree.hpp
       title: Contour Query on Tree (Weighted)
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/dp_on_static_top_tree.hpp
       title: DP on Static Top Tree
     - icon: ':heavy_check_mark:'
@@ -527,7 +527,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/rooted_tree_hash.hpp
       title: Rooted Tree Hash
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/static_top_tree.hpp
       title: Static Top Tree
     - icon: ':heavy_check_mark:'
@@ -1030,6 +1030,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree_HLD.test.cpp
       title: test/tree/Jump_on_Tree_HLD.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
+      title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
       title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp

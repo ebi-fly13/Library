@@ -184,6 +184,9 @@ data:
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
+    title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -367,6 +370,7 @@ data:
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - test/aoj/aoj_2863.test.cpp
   - test/aoj/aoj_3361.test.cpp
+  - test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp

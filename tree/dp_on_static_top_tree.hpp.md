@@ -7,14 +7,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: tree/static_top_tree.hpp
     title: Static Top Tree
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
+    title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/dp_on_static_top_tree.hpp\"\n\n#line 2 \"tree/static_top_tree.hpp\"\
@@ -111,9 +114,10 @@ data:
     \ si] = rake(v);\n        return {new_node(v, i, -1, i == -1 ? Type::Vertex :\
     \ Type::AddVertex),\n                si + 1};\n    }\n\n  public:\n    static_top_tree(Graph<T>\
     \ g_, int root = 0)\n        : n(g_.size()), g(g_), par(n, -1), sz(n, 1), stt(n)\
-    \ {\n        dfs_sz(root);\n        stt_root = compress(root).first;\n    }\n\n\
-    \    int node_num() const {\n        return (int)stt.size();\n    }\n\n    int\
-    \ parent(int v) const {\n        return stt[v].par;\n    }\n\n    std::pair<int,\
+    \ {\n        if (n == 1) {\n            stt_root = 0;\n            return;\n \
+    \       }\n        dfs_sz(root);\n        stt_root = compress(root).first;\n \
+    \   }\n\n    int node_num() const {\n        return (int)stt.size();\n    }\n\n\
+    \    int parent(int v) const {\n        return stt[v].par;\n    }\n\n    std::pair<int,\
     \ int> child(int v) const {\n        return {stt[v].lch, stt[v].rch};\n    }\n\
     \n    int left_child(int v) const {\n        return stt[v].lch;\n    }\n\n   \
     \ int right_child(int v) const {\n        return stt[v].rch;\n    }\n\n    Type\
@@ -181,9 +185,10 @@ data:
   isVerificationFile: false
   path: tree/dp_on_static_top_tree.hpp
   requiredBy: []
-  timestamp: '2024-05-01 14:12:01+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2024-05-01 14:32:12+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
 documentation_of: tree/dp_on_static_top_tree.hpp
 layout: document
 title: DP on Static Top Tree

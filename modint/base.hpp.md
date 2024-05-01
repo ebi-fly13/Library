@@ -295,6 +295,9 @@ data:
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
+    title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - icon: ':heavy_check_mark:'
@@ -438,6 +441,7 @@ data:
   - test/aoj/aoj_2863.test.cpp
   - test/aoj/aoj_2444.test.cpp
   - test/aoj/aoj_3361.test.cpp
+  - test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
