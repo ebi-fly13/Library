@@ -4,8 +4,8 @@
 
 namespace ebi {
 
-template <class T, class Path, class Point, class Vertex, class Compress,
-          class Rake, class Add_edge, class Add_vertex>
+template <class T, class Path, class Point, class Compress, class Rake,
+          class Add_edge, class Add_vertex>
 struct dp_on_static_top_tree {
   private:
     void dfs(int v) {
@@ -17,7 +17,7 @@ struct dp_on_static_top_tree {
 
     void update_(int v) {
         if (stt.type(v) == Type::Vertex) {
-            path[v] = vertex(v);
+            path[v] = vertex[v];
         } else if (stt.type(v) == Type::Compress) {
             path[v] =
                 compress(path[stt.left_child(v)], path[stt.right_child(v)]);
@@ -27,12 +27,19 @@ struct dp_on_static_top_tree {
         } else if (stt.type(v) == Type::AddEdge) {
             point[v] = add_edge(path[stt.left_child(v)]);
         } else if (stt.type(v) == Type::AddVertex) {
-            path[v] = add_vertex(point[stt.left_child(v)], v);
+            path[v] = add_vertex(point[stt.left_child(v)], vertex[v]);
+        }
+    }
+
+    void update(int v) {
+        while (v != -1) {
+            update_(v);
+            v = stt.parent(v);
         }
     }
 
   public:
-    dp_on_static_top_tree(const Graph<T> &g, const Vertex &vertex_,
+    dp_on_static_top_tree(const Graph<T> &g, const std::vector<Path> &vertex_,
                           const Compress &compress_, const Rake &rake_,
                           const Add_edge &add_edge_,
                           const Add_vertex &add_vertex_)
@@ -52,11 +59,9 @@ struct dp_on_static_top_tree {
         return path[stt.root()];
     }
 
-    void update(int v) {
-        while (v != -1) {
-            update_(v);
-            v = stt.parent(v);
-        }
+    void set(int v, Path x) {
+        vertex[v] = x;
+        update(v);
     }
 
   private:
@@ -65,7 +70,7 @@ struct dp_on_static_top_tree {
     int n;
     std::vector<Path> path;
     std::vector<Point> point;
-    const Vertex vertex;
+    std::vector<Path> vertex;
     const Compress compress;
     const Rake rake;
     const Add_edge add_edge;
