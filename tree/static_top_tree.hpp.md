@@ -10,7 +10,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: tree/dp_on_static_top_tree.hpp
-    title: tree/dp_on_static_top_tree.hpp
+    title: DP on Static Top Tree
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp

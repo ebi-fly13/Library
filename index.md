@@ -508,7 +508,7 @@ data:
       title: Contour Query on Tree (Weighted)
     - icon: ':warning:'
       path: tree/dp_on_static_top_tree.hpp
-      title: tree/dp_on_static_top_tree.hpp
+      title: DP on Static Top Tree
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
