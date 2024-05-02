@@ -261,19 +261,19 @@ data:
     \        } else if (stt.type(v) == Type::AddVertex) {\n            path[v] = add_vertex(point[stt.left_child(v)],\
     \ vertex[v]);\n        }\n    }\n\n    void update(int v) {\n        while (v\
     \ != -1) {\n            update_(v);\n            v = stt.parent(v);\n        }\n\
-    \    }\n\n  public:\n    dp_on_static_top_tree(const Graph<T> &g, const std::vector<Path>\
-    \ &vertex_,\n                          const Compress &compress_, const Rake &rake_,\n\
-    \                          const Add_edge &add_edge_,\n                      \
-    \    const Add_vertex &add_vertex_)\n        : stt(g),\n          n(stt.node_num()),\n\
-    \          path(n),\n          point(n),\n          vertex(vertex_),\n       \
-    \   compress(compress_),\n          rake(rake_),\n          add_edge(add_edge_),\n\
-    \          add_vertex(add_vertex_) {\n        dfs(stt.root());\n    }\n\n    Path\
-    \ get() const {\n        return path[stt.root()];\n    }\n\n    void set(int v,\
-    \ Path x) {\n        vertex[v] = x;\n        update(v);\n    }\n\n  private:\n\
-    \    static_top_tree<T> stt;\n\n    int n;\n    std::vector<Path> path;\n    std::vector<Point>\
-    \ point;\n    std::vector<Path> vertex;\n    const Compress compress;\n    const\
-    \ Rake rake;\n    const Add_edge add_edge;\n    const Add_vertex add_vertex;\n\
-    };\n\n}  // namespace ebi\n#line 7 \"test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp\"\
+    \    }\n\n  public:\n    dp_on_static_top_tree(const Graph<T> &g, int root, const\
+    \ std::vector<Path> &vertex_,\n                          const Compress &compress_,\
+    \ const Rake &rake_,\n                          const Add_edge &add_edge_,\n \
+    \                         const Add_vertex &add_vertex_)\n        : stt(g, root),\n\
+    \          n(stt.node_num()),\n          path(n),\n          point(n),\n     \
+    \     vertex(vertex_),\n          compress(compress_),\n          rake(rake_),\n\
+    \          add_edge(add_edge_),\n          add_vertex(add_vertex_) {\n       \
+    \ dfs(stt.root());\n    }\n\n    Path get() const {\n        return path[stt.root()];\n\
+    \    }\n\n    void set(int v, Path x) {\n        vertex[v] = x;\n        update(v);\n\
+    \    }\n\n  private:\n    static_top_tree<T> stt;\n\n    int n;\n    std::vector<Path>\
+    \ path;\n    std::vector<Point> point;\n    std::vector<Path> vertex;\n    const\
+    \ Compress compress;\n    const Rake rake;\n    const Add_edge add_edge;\n   \
+    \ const Add_vertex add_vertex;\n};\n\n}  // namespace ebi\n#line 7 \"test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nstruct Path {\n    mint\
     \ a, b, s, c;\n};\n\nstruct Point {\n    mint s, c;\n};\n\nvoid main_() {\n  \
     \  int n, q;\n    std::cin >> n >> q;\n    Graph<int> g(2 * n - 1);\n    std::vector<Path>\
@@ -289,7 +289,7 @@ data:
     \ a, Path v) -> Path {\n        return {v.a, v.b, v.s + v.a * a.s + v.b * a.c,\
     \ a.c + v.c};\n    };\n    dp_on_static_top_tree<int, Path, Point, decltype(compress),\
     \ decltype(rake),\n                          decltype(add_edge), decltype(add_vertex)>\n\
-    \        dp(g, a, compress, rake, add_edge, add_vertex);\n    while (q--) {\n\
+    \        dp(g, 0, a, compress, rake, add_edge, add_vertex);\n    while (q--) {\n\
     \        int t;\n        std::cin >> t;\n        if (t == 0) {\n            int\
     \ w, x;\n            std::cin >> w >> x;\n            dp.set(w, {1, 0, x, 1});\n\
     \        } else {\n            int e, y, z;\n            std::cin >> e >> y >>\
@@ -314,7 +314,7 @@ data:
     \ };\n    auto add_vertex = [&](Point a, Path v) -> Path {\n        return {v.a,\
     \ v.b, v.s + v.a * a.s + v.b * a.c, a.c + v.c};\n    };\n    dp_on_static_top_tree<int,\
     \ Path, Point, decltype(compress), decltype(rake),\n                         \
-    \ decltype(add_edge), decltype(add_vertex)>\n        dp(g, a, compress, rake,\
+    \ decltype(add_edge), decltype(add_vertex)>\n        dp(g, 0, a, compress, rake,\
     \ add_edge, add_vertex);\n    while (q--) {\n        int t;\n        std::cin\
     \ >> t;\n        if (t == 0) {\n            int w, x;\n            std::cin >>\
     \ w >> x;\n            dp.set(w, {1, 0, x, 1});\n        } else {\n          \
@@ -338,7 +338,7 @@ data:
   isVerificationFile: true
   path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   requiredBy: []
-  timestamp: '2024-05-01 14:32:12+09:00'
+  timestamp: '2024-05-02 12:24:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
