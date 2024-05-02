@@ -48,7 +48,7 @@ void main_() {
     };
     dp_on_static_top_tree<int, Path, Point, decltype(compress), decltype(rake),
                           decltype(add_edge), decltype(add_vertex)>
-        dp(g, a, compress, rake, add_edge, add_vertex);
+        dp(g, 0, a, compress, rake, add_edge, add_vertex);
     while (q--) {
         int t;
         std::cin >> t;
