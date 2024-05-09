@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
+  - icon: ':heavy_check_mark:'
+    path: string/wildcard_pattern_matching.hpp
+    title: Wildcard Pattern Matching
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution.test.cpp
@@ -85,6 +88,9 @@ data:
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/Wildcard_Pattern_Matching.test.cpp
+    title: test/string/Wildcard_Pattern_Matching.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -128,6 +134,7 @@ data:
   - convolution/convolution_mod_2_64.hpp
   - convolution/ntt.hpp
   - convolution/arbitrary_ntt.hpp
+  - string/wildcard_pattern_matching.hpp
   timestamp: '2023-08-31 02:52:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -137,6 +144,7 @@ data:
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1145.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/math/Berunoulli_Number.test.cpp

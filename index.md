@@ -472,6 +472,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/trie.hpp
       title: string/trie.hpp
+    - icon: ':heavy_check_mark:'
+      path: string/wildcard_pattern_matching.hpp
+      title: Wildcard Pattern Matching
   - name: template
     pages:
     - icon: ':heavy_check_mark:'
@@ -1010,6 +1013,9 @@ data:
       title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - name: test/string
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/string/Wildcard_Pattern_Matching.test.cpp
+      title: test/string/Wildcard_Pattern_Matching.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/string/Z_Algorithm.test.cpp
       title: test/string/Z_Algorithm.test.cpp

@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
+  - icon: ':heavy_check_mark:'
+    path: string/wildcard_pattern_matching.hpp
+    title: Wildcard Pattern Matching
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2863.test.cpp
@@ -178,6 +181,9 @@ data:
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/Wildcard_Pattern_Matching.test.cpp
+    title: test/string/Wildcard_Pattern_Matching.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -312,6 +318,7 @@ data:
   requiredBy:
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
+  - string/wildcard_pattern_matching.hpp
   timestamp: '2023-10-31 00:16:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -345,6 +352,7 @@ data:
   - test/matrix/Pow_of_Matrix.test.cpp
   - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/math/Berunoulli_Number.test.cpp

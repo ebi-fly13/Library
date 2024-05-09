@@ -99,6 +99,9 @@ data:
     path: string/rolling_hash.hpp
     title: Rolling Hash
   - icon: ':heavy_check_mark:'
+    path: string/wildcard_pattern_matching.hpp
+    title: Wildcard Pattern Matching
+  - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
   - icon: ':heavy_check_mark:'
@@ -289,6 +292,9 @@ data:
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/Wildcard_Pattern_Matching.test.cpp
+    title: test/string/Wildcard_Pattern_Matching.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -365,6 +371,7 @@ data:
   - fps/fps.hpp
   - matrix/det_arbitrary_mod.hpp
   - string/rolling_hash.hpp
+  - string/wildcard_pattern_matching.hpp
   - math/bernoulli_number.hpp
   - math/partition_function.hpp
   - math/binomial.hpp
@@ -411,6 +418,7 @@ data:
   - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Sqrt_Mod.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp

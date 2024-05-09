@@ -139,6 +139,9 @@ data:
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/Wildcard_Pattern_Matching.test.cpp
+    title: test/string/Wildcard_Pattern_Matching.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Cartesian_Tree.test.cpp
     title: test/tree/Cartesian_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -333,6 +336,7 @@ data:
   - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp

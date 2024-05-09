@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: convolution/convolution_mod_2_64.hpp
+    title: Convolution $\pmod{2^{64}}$
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
@@ -13,40 +16,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: string/wildcard_pattern_matching.hpp
-    title: Wildcard Pattern Matching
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_Mod_2_64.test.cpp
-    title: test/convolution/Convolution_Mod_2_64.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"convolution/convolution_mod_2_64.hpp\"\n\n#include <cstdint>\n\
-    #include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n\
-    #include <array>\n#include <bit>\n#include <cassert>\n#line 8 \"convolution/ntt.hpp\"\
-    \n\n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\
-    \nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
-    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
-    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n    if (m == 880803841) return 26;\n    if (m == 924844033) return\
-    \ 5;\n    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+  bundledCode: "#line 2 \"string/wildcard_pattern_matching.hpp\"\n\n#include <cassert>\n\
+    #include <string>\n#include <vector>\n\n#line 2 \"convolution/convolution_mod_2_64.hpp\"\
+    \n\n#include <cstdint>\n#line 5 \"convolution/convolution_mod_2_64.hpp\"\n\n#line\
+    \ 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include <array>\n#include\
+    \ <bit>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
+    \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
+    \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
+    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
+    \ (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n    return -1;\n\
+    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
     \n\n#include <concepts>\n#include <iostream>\n#include <utility>\n\nnamespace\
     \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
@@ -182,61 +172,58 @@ data:
     \                    .val();\n        i64 x4 = ((d4[i] - x0) * inv40 - mint4(x1)\
     \ * inv41 - mint4(x2) * inv42 -\n                  mint4(x3) * inv43)\n      \
     \               .val();\n        res[i] = x0 + m0 * (x1 + m1 * (x2 + m2 * (x3\
-    \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cstdint>\n#include <vector>\n\n#include \"../convolution/ntt.hpp\"\
-    \n#include \"../modint/base.hpp\"\n#include \"../modint/modint.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\ntemplate <Modint mint>\nstd::vector<mint> multiply_uint64_t(const\
-    \ std::vector<std::uint64_t>& f,\n                                    const std::vector<std::uint64_t>&\
-    \ g) {\n    std::vector<mint> a, b;\n    a.reserve(f.size());\n    b.reserve(g.size());\n\
-    \    for (auto x : f) a.emplace_back(x % mint::mod());\n    for (auto x : g) b.emplace_back(x\
-    \ % mint::mod());\n    return convolution<mint>(a, b);\n}\n\n}  // namespace internal\n\
-    \nstd::vector<std::uint64_t> convolution_mod_2_64(\n    const std::vector<std::uint64_t>&\
-    \ f, const std::vector<std::uint64_t>& g) {\n    if (f.empty() || g.empty()) return\
-    \ {};\n    using i32 = std::int32_t;\n    using i64 = std::int64_t;\n    using\
-    \ u64 = std::uint64_t;\n    static constexpr i32 m0 = 998244353;\n    static constexpr\
-    \ i32 m1 = 754974721;\n    static constexpr i32 m2 = 167772161;\n    static constexpr\
-    \ i32 m3 = 469762049;\n    static constexpr i32 m4 = 880803841;\n    using mint0\
-    \ = static_modint<m0>;\n    using mint1 = static_modint<m1>;\n    using mint2\
-    \ = static_modint<m2>;\n    using mint3 = static_modint<m3>;\n    using mint4\
-    \ = static_modint<m4>;\n\n    auto d0 = internal::multiply_uint64_t<mint0>(f,\
-    \ g);\n    auto d1 = internal::multiply_uint64_t<mint1>(f, g);\n    auto d2 =\
-    \ internal::multiply_uint64_t<mint2>(f, g);\n    auto d3 = internal::multiply_uint64_t<mint3>(f,\
-    \ g);\n    auto d4 = internal::multiply_uint64_t<mint4>(f, g);\n\n    static const\
-    \ mint1 inv10 = mint1(m0).inv();\n    static const mint2 inv21 = mint2(m1).inv(),\
-    \ inv20 = inv21 / mint2(m0);\n    static const mint3 inv32 = mint3(m2).inv(),\
-    \ inv31 = inv32 / mint3(m1),\n                       inv30 = inv31 / mint3(m0);\n\
-    \    static const mint4 inv43 = mint4(m3).inv(), inv42 = inv43 / mint4(m2),\n\
-    \                       inv41 = inv42 / mint4(m1), inv40 = inv41 / mint4(m0);\n\
-    \    int n = d0.size();\n    std::vector<u64> res(n);\n    for (int i = 0; i <\
-    \ n; i++) {\n        i64 x0 = d0[i].val();\n        i64 x1 = ((d1[i] - x0) * inv10).val();\n\
-    \        i64 x2 = (((d2[i] - x0)) * inv20 - mint2(x1) * inv21).val();\n      \
-    \  i64 x3 = ((d3[i] - x0) * inv30 - mint3(x1) * inv31 - mint3(x2) * inv32)\n \
-    \                    .val();\n        i64 x4 = ((d4[i] - x0) * inv40 - mint4(x1)\
-    \ * inv41 - mint4(x2) * inv42 -\n                  mint4(x3) * inv43)\n      \
-    \               .val();\n        res[i] = x0 + m0 * (x1 + m1 * (x2 + m2 * (x3\
-    \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi"
+    \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi\n#line\
+    \ 8 \"string/wildcard_pattern_matching.hpp\"\n\nnamespace ebi {\n\ntemplate <char\
+    \ base = 'a', char wildcard = '*'>\nstd::vector<bool> wildcard_pattern_matching(const\
+    \ std::string &s,\n                                            const std::string\
+    \ &t) {\n    int n = s.size(), m = t.size();\n    if (n < m) return std::vector<bool>(n,\
+    \ false);\n    std::vector<std::uint64_t> s1(n), s2(n), s3(n);\n    for (int i\
+    \ = 0; i < n; i++) {\n        if (s[i] == wildcard) continue;\n        s1[i] =\
+    \ s[i] - base + 1;\n        s2[i] = s1[i] * s1[i];\n        s3[i] = s2[i] * s1[i];\n\
+    \    }\n    std::vector<std::uint64_t> t1(m), t2(m), t3(m);\n    for (int i =\
+    \ 0; i < m; i++) {\n        if (t[m - 1 - i] == wildcard) continue;\n        t1[i]\
+    \ = t[m - 1 - i] - base + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i] =\
+    \ t2[i] * t1[i];\n    }\n    auto s3t1 = convolution_mod_2_64(s3, t1), s2t2 =\
+    \ convolution_mod_2_64(s2, t2),\n         s1t3 = convolution_mod_2_64(s1, t3);\n\
+    \    std::vector<bool> res(n - m + 1);\n    for (int i = 0; i < n - m + 1; i++)\
+    \ {\n        std::uint64_t val = s3t1[i + m - 1] + s1t3[i + m - 1] - 2 * s2t2[i\
+    \ + m - 1];\n        res[i] = (val == 0);\n    }\n    return res;\n}\n\n}  //\
+    \ namespace ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <string>\n#include <vector>\n\
+    \n#include \"../convolution/convolution_mod_2_64.hpp\"\n\nnamespace ebi {\n\n\
+    template <char base = 'a', char wildcard = '*'>\nstd::vector<bool> wildcard_pattern_matching(const\
+    \ std::string &s,\n                                            const std::string\
+    \ &t) {\n    int n = s.size(), m = t.size();\n    if (n < m) return std::vector<bool>(n,\
+    \ false);\n    std::vector<std::uint64_t> s1(n), s2(n), s3(n);\n    for (int i\
+    \ = 0; i < n; i++) {\n        if (s[i] == wildcard) continue;\n        s1[i] =\
+    \ s[i] - base + 1;\n        s2[i] = s1[i] * s1[i];\n        s3[i] = s2[i] * s1[i];\n\
+    \    }\n    std::vector<std::uint64_t> t1(m), t2(m), t3(m);\n    for (int i =\
+    \ 0; i < m; i++) {\n        if (t[m - 1 - i] == wildcard) continue;\n        t1[i]\
+    \ = t[m - 1 - i] - base + 1;\n        t2[i] = t1[i] * t1[i];\n        t3[i] =\
+    \ t2[i] * t1[i];\n    }\n    auto s3t1 = convolution_mod_2_64(s3, t1), s2t2 =\
+    \ convolution_mod_2_64(s2, t2),\n         s1t3 = convolution_mod_2_64(s1, t3);\n\
+    \    std::vector<bool> res(n - m + 1);\n    for (int i = 0; i < n - m + 1; i++)\
+    \ {\n        std::uint64_t val = s3t1[i + m - 1] + s1t3[i + m - 1] - 2 * s2t2[i\
+    \ + m - 1];\n        res[i] = (val == 0);\n    }\n    return res;\n}\n\n}  //\
+    \ namespace ebi"
   dependsOn:
+  - convolution/convolution_mod_2_64.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - modint/base.hpp
   - modint/modint.hpp
   isVerificationFile: false
-  path: convolution/convolution_mod_2_64.hpp
-  requiredBy:
-  - string/wildcard_pattern_matching.hpp
-  timestamp: '2023-10-31 00:17:11+09:00'
+  path: string/wildcard_pattern_matching.hpp
+  requiredBy: []
+  timestamp: '2024-05-09 18:09:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-documentation_of: convolution/convolution_mod_2_64.hpp
+documentation_of: string/wildcard_pattern_matching.hpp
 layout: document
-title: Convolution $\pmod{2^{64}}$
+title: Wildcard Pattern Matching
 ---
 
 ## 説明
 
-$\mod 2^{64}$ における $O(N\log N)$ 時間での畳み込み。
+ワイルドカード付きパターンマッチングを行う。 $O((|S|+|T|)\log{(|S| + |T|)})$
