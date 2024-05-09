@@ -12,15 +12,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
     title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1038.test.cpp
     title: test/yuki/yuki_1038.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/dual_segtree.hpp\"\n\n#include <bit>\n#include\
@@ -71,7 +71,7 @@ data:
   requiredBy:
   - data_structure/offline_dual_segtree_2d.hpp
   timestamp: '2023-10-31 00:17:11+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1038.test.cpp
   - test/data_structure/Range_Affine_Point_Get.test.cpp

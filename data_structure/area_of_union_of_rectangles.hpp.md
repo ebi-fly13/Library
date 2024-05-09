@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: Compress
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/lazy_segtree.hpp
     title: lazy segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []

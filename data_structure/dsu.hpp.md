@@ -5,10 +5,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: Range Parallel DSU
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/manhattan_mst.hpp
     title: Manhattan MST
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/mst.hpp
     title: Minimum Spanning Tree
   _extendedVerifiedWith:
@@ -18,15 +18,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Union_Find.test.cpp
     title: test/data_structure/Union_Find.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Manhattan_MST.test.cpp
     title: test/graph/Manhattan_MST.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Minimum_Spanning_Tree.test.cpp
     title: test/graph/Minimum_Spanning_Tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/dsu.hpp\"\n\r\n#include <vector>\r\n\r\n\
@@ -81,7 +81,7 @@ data:
   - graph/mst.hpp
   - data_structure/range_parallel_dsu.hpp
   timestamp: '2024-04-24 16:34:25+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Minimum_Spanning_Tree.test.cpp
   - test/graph/Manhattan_MST.test.cpp

@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/dsu.hpp
     title: DSU
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Minimum_Spanning_Tree.test.cpp
     title: test/graph/Minimum_Spanning_Tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/mst.hpp\"\n\n#include <algorithm>\n#include <utility>\n\
@@ -132,7 +132,7 @@ data:
   path: graph/mst.hpp
   requiredBy: []
   timestamp: '2024-04-24 16:34:25+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Minimum_Spanning_Tree.test.cpp
 documentation_of: graph/mst.hpp

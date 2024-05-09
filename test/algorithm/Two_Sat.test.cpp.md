@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/scc_graph.hpp
     title: graph/scc_graph.hpp
   _extendedRequiredBy: []

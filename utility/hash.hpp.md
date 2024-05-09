@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint61.hpp
     title: modint/modint61.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/random_number_generator.hpp
     title: Random Number Generator
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/hash.hpp\"\n\n#include <array>\n\n#line 2 \"modint/modint61.hpp\"\
@@ -183,7 +183,7 @@ data:
   - string/rolling_hash.hpp
   - tree/rooted_tree_hash.hpp
   timestamp: '2024-03-12 17:35:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp

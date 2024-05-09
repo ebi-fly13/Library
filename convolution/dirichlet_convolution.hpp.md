@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: Eratosthenes Sieve
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/dirichlet_convolution.hpp\"\n\n#include <vector>\n\
@@ -156,7 +156,7 @@ data:
   requiredBy:
   - math/DirichletSeries.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: convolution/dirichlet_convolution.hpp

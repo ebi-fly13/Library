@@ -2,34 +2,34 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: matrix/det_arbitrary_mod.hpp
     title: matrix/det_arbitrary_mod.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: matrix/gauss_jordan.hpp
     title: matrix/gauss_jordan.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix_2.test.cpp
     title: test/matrix/Determinant_of_Matrix_2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
     title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Inverse_Matrix.test.cpp
     title: test/matrix/Inverse_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Matrix_Product.test.cpp
     title: test/matrix/Matrix_Product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Rank_of_Matrix.test.cpp
     title: test/matrix/Rank_of_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/matrix/System_of_Linear_Equations.test.cpp
     title: test/matrix/System_of_Linear_Equations.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"matrix/base.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -199,7 +199,7 @@ data:
   - matrix/det_arbitrary_mod.hpp
   - matrix/gauss_jordan.hpp
   timestamp: '2024-04-19 19:44:36+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp

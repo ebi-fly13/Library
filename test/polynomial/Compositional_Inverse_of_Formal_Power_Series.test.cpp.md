@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series
@@ -285,7 +285,7 @@ data:
   path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   requiredBy: []
   timestamp: '2024-03-12 18:09:18+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
 layout: document

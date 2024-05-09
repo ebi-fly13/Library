@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/divisor_transform.hpp
     title: "Divisor Transform (Zeta / M\xF6bius)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: Eratosthenes Sieve
   _extendedRequiredBy: []

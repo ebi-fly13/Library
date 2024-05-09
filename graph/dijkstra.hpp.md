@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path.test.cpp
     title: test/graph/Shortest_Path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/dijkstra.test.cpp
     title: test/graph/dijkstra.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\r\n#include <algorithm>\r\n#include\
@@ -145,7 +145,7 @@ data:
   path: graph/dijkstra.hpp
   requiredBy: []
   timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Shortest_Path.test.cpp
   - test/graph/dijkstra.test.cpp

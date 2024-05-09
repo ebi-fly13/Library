@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy:
@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/algorithm/Two_Sat.test.cpp
     title: test/algorithm/Two_Sat.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/scc_graph.test.cpp
     title: test/graph/scc_graph.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/scc_graph.hpp\"\n\r\n#include <algorithm>\r\n#include\
@@ -153,7 +153,7 @@ data:
   requiredBy:
   - algorithm/two_sat.hpp
   timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/scc_graph.test.cpp
   - test/algorithm/Two_Sat.test.cpp

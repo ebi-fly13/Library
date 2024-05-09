@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/wildcard_pattern_matching.hpp\"\n\n#include <atcoder/convolution>\n\
@@ -50,7 +50,7 @@ data:
   path: string/wildcard_pattern_matching.hpp
   requiredBy: []
   timestamp: '2024-05-09 21:53:45+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/string/Wildcard_Pattern_Matching.test.cpp
 documentation_of: string/wildcard_pattern_matching.hpp

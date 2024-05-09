@@ -14,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/static_rectangle_sum.hpp
     title: Static Rectangle Sum
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: Inversion Number
   _extendedVerifiedWith:
@@ -39,12 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/segment_intersection.test.cpp
     title: test/geometry/segment_intersection.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/compress.hpp\"\n\n#include <algorithm>\n\
@@ -84,7 +84,7 @@ data:
   - data_structure/area_of_union_of_rectangles.hpp
   - math/inversion_number.hpp
   timestamp: '2024-02-25 23:03:04+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Rectangle_Sum_Segtree.test.cpp
   - test/data_structure/Static_Range_Inversion_Query.test.cpp
