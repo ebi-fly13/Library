@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_inv.hpp
     title: Mod Inv
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps_sparse.hpp\"\n\n#include <cassert>\n#include <vector>\n\
@@ -163,7 +163,7 @@ data:
   requiredBy:
   - fps/fps_sqrt.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: Compress
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/dual_segtree.hpp
     title: dual segtree
   _extendedRequiredBy: []

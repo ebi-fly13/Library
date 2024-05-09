@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/wildcard_pattern_matching.hpp\"\n\n#include <cassert>\n\
@@ -216,7 +216,7 @@ data:
   path: string/wildcard_pattern_matching.hpp
   requiredBy: []
   timestamp: '2024-05-09 18:09:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/string/Wildcard_Pattern_Matching.test.cpp
 documentation_of: string/wildcard_pattern_matching.hpp

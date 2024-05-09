@@ -1,50 +1,50 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/point.hpp
     title: point
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/circumscribed_circle_of_triangle.test.cpp
     title: test/geometry/circumscribed_circle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_area.test.cpp
     title: test/geometry/common_area.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_area_circles.test.cpp
     title: test/geometry/common_area_circles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/common_tangent.test.cpp
     title: test/geometry/common_tangent.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_points_of_circle_and_line.test.cpp
     title: test/geometry/cross_points_of_circle_and_line.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/cross_points_of_circles.test.cpp
     title: test/geometry/cross_points_of_circles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/incircle_of_triangle.test.cpp
     title: test/geometry/incircle_of_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/intersection_circle.test.cpp
     title: test/geometry/intersection_circle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/tangent_to_circle.test.cpp
     title: test/geometry/tangent_to_circle.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/circle.hpp\"\n\n#include <cmath>\n#include <vector>\n\
@@ -435,7 +435,7 @@ data:
   path: geometry/circle.hpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/common_tangent.test.cpp
   - test/geometry/incircle_of_triangle.test.cpp

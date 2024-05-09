@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
   _extendedRequiredBy: []

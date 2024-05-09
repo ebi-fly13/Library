@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: matrix/base.hpp
     title: matrix/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: matrix/gauss_jordan.hpp
     title: matrix/gauss_jordan.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/system_of_linear_equations
@@ -352,7 +352,7 @@ data:
   path: test/matrix/System_of_Linear_Equations.test.cpp
   requiredBy: []
   timestamp: '2024-04-19 19:44:36+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/matrix/System_of_Linear_Equations.test.cpp
 layout: document

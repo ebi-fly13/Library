@@ -1,34 +1,34 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/dsu.hpp
     title: DSU
   - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: Range Parallel DSU
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/random_number_generator.hpp
     title: Random Number Generator
   _extendedRequiredBy: []

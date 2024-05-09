@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_409.test.cpp
     title: test/yuki/yuki_409.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"algorithm/convex_hull_trick.hpp\"\n\n#include <cassert>\n\
@@ -42,7 +42,7 @@ data:
   path: algorithm/convex_hull_trick.hpp
   requiredBy: []
   timestamp: '2023-07-05 21:52:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yuki/yuki_409.test.cpp
 documentation_of: algorithm/convex_hull_trick.hpp

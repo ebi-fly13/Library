@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/euler_trail.hpp
     title: Euler Trail
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/eulerian_trail_undirected
@@ -207,7 +207,7 @@ data:
   path: test/graph/Eulerian_Trail_Undirected.test.cpp
   requiredBy: []
   timestamp: '2024-04-02 14:52:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/graph/Eulerian_Trail_Undirected.test.cpp
 layout: document

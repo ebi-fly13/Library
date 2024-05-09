@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: matrix/base.hpp
     title: matrix/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Rank_of_Matrix.test.cpp
     title: test/matrix/Rank_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/System_of_Linear_Equations.test.cpp
     title: test/matrix/System_of_Linear_Equations.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"matrix/gauss_jordan.hpp\"\n\n#line 2 \"matrix/base.hpp\"\
@@ -173,7 +173,7 @@ data:
   path: matrix/gauss_jordan.hpp
   requiredBy: []
   timestamp: '2024-04-19 19:44:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp

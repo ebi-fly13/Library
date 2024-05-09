@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: convolution/dirichlet_convolution.hpp
     title: Dirichlet Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_2747.test.cpp
     title: test/yuki/yuki_2747.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://37zigen.com/linear-sieve/
@@ -137,7 +137,7 @@ data:
   - convolution/dirichlet_convolution.hpp
   - math/DirichletSeries.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yuki/yuki_2747.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp

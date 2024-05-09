@@ -4,16 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/gcd_convolution.hpp
     title: GCD Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/eratosthenes_sieve.hpp
     title: Eratosthenes Sieve
   - icon: ':heavy_check_mark:'
     path: math/multiple_transform.hpp
     title: "Multiple Transform (Zeta / M\xF6bius)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []

@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/convolution_mod_2_64.hpp\"\n\n#include <cstdint>\n\
@@ -225,7 +225,7 @@ data:
   requiredBy:
   - string/wildcard_pattern_matching.hpp
   timestamp: '2023-10-31 00:17:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp

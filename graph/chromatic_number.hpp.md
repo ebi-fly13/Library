@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/or_convolution.hpp
     title: Bitwise OR Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: set_function/subset_transform.hpp
     title: "Subset Transform (Zeta / M\xF6bius)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/chromatic_number.hpp\"\n\n#include <cassert>\n#include\
@@ -138,7 +138,7 @@ data:
   path: graph/chromatic_number.hpp
   requiredBy: []
   timestamp: '2024-04-02 00:37:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/graph/Chromatic_Number.test.cpp
 documentation_of: graph/chromatic_number.hpp

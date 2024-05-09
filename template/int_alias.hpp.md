@@ -8,7 +8,7 @@ data:
   - icon: ':warning:'
     path: algorithm/monge_d_edge_shortest_path.hpp
     title: Monge d-edge shortest path
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: convolution/dirichlet_convolution.hpp
     title: Dirichlet Convolution
   - icon: ':warning:'
@@ -23,19 +23,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/inversion_number.hpp
     title: Inversion Number
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -99,150 +99,150 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Cycle_Detection_Directed.test.cpp
     title: test/graph/Cycle_Detection_Directed.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Cycle_Detection_Undirected.test.cpp
     title: test/graph/Cycle_Detection_Undirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Directed_MST.test.cpp
     title: test/graph/Directed_MST.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Eulerian_Trail_Directed.test.cpp
     title: test/graph/Eulerian_Trail_Directed.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Eulerian_Trail_Undirected.test.cpp
     title: test/graph/Eulerian_Trail_Undirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Manhattan_MST.test.cpp
     title: test/graph/Manhattan_MST.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Maximum_Independent_Set.test.cpp
     title: test/graph/Maximum_Independent_Set.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Minimum_Spanning_Tree.test.cpp
     title: test/graph/Minimum_Spanning_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Shortest_Path.test.cpp
     title: test/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/dijkstra.test.cpp
     title: test/graph/dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/fibonacci_heap.test.cpp
     title: test/graph/fibonacci_heap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Catalan_Convolution.test.cpp
     title: test/math/Catalan_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Factorial.test.cpp
     title: test/math/Factorial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Negative_Binomial_Coefficient.test.cpp
     title: test/math/Negative_Binomial_Coefficient.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Stern-Brocot_Tree.test.cpp
     title: test/math/Stern-Brocot_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Determinant_of_Matrix_2.test.cpp
     title: test/matrix/Determinant_of_Matrix_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
     title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Inverse_Matrix.test.cpp
     title: test/matrix/Inverse_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Matrix_Product.test.cpp
     title: test/matrix/Matrix_Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Pow_of_Matrix.test.cpp
     title: test/matrix/Pow_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Rank_of_Matrix.test.cpp
     title: test/matrix/Rank_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/System_of_Linear_Equations.test.cpp
     title: test/matrix/System_of_Linear_Equations.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Cartesian_Tree.test.cpp
     title: test/tree/Cartesian_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
     title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1038.test.cpp
     title: test/yuki/yuki_1038.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1077.test.cpp
     title: test/yuki/yuki_1077.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_2747.test.cpp
     title: test/yuki/yuki_2747.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_901.test.cpp
     title: test/yuki/yuki_901.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_901_2.test.cpp
     title: test/yuki/yuki_901_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -334,7 +334,7 @@ data:
   - math/DirichletSeries.hpp
   - math/linear_sieve.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/yuki/yuki_1077.test.cpp

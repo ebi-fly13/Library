@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: set_function/egf_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is EGF)
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: set_function/poly_composite_sps.hpp
     title: $f(a)$ (Set Power Series, f is FPS)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: set_function/ranked_subset_transform.hpp
     title: Ranked Subset Transform (Zeta / Mobius)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/polynomial_composite_set_power_series
@@ -164,7 +164,7 @@ data:
   path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   requiredBy: []
   timestamp: '2023-10-31 00:17:11+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
 layout: document

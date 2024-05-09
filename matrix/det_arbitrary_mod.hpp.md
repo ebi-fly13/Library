@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: matrix/base.hpp
     title: matrix/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
     title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"matrix/det_arbitrary_mod.hpp\"\n\n#include <cassert>\n\n\
@@ -139,7 +139,7 @@ data:
   path: matrix/det_arbitrary_mod.hpp
   requiredBy: []
   timestamp: '2024-04-20 12:21:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
 documentation_of: matrix/det_arbitrary_mod.hpp

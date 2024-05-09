@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/matrix/Pow_of_Matrix.test.cpp
     title: test/matrix/Pow_of_Matrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"matrix/square_matrix.hpp\"\n\r\n#include <iostream>\r\n\
@@ -123,7 +123,7 @@ data:
   path: matrix/square_matrix.hpp
   requiredBy: []
   timestamp: '2024-04-19 02:01:07+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/matrix/Determinant_of_Matrix.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp

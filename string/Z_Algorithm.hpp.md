@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/string/Z_Algorithm.test.cpp
     title: test/string/Z_Algorithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://snuke.hatenablog.com/entry/2014/12/03/214243
@@ -41,7 +41,7 @@ data:
   path: string/Z_Algorithm.hpp
   requiredBy: []
   timestamp: '2023-06-06 01:19:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/string/Z_Algorithm.test.cpp
 documentation_of: string/Z_Algorithm.hpp

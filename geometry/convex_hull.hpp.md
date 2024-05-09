@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/convex_hull.test.cpp
     title: test/geometry/convex_hull.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://atcoder.jp/contests/typical90/submissions/24974484
@@ -73,7 +73,7 @@ data:
   path: geometry/convex_hull.hpp
   requiredBy: []
   timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/convex_hull.test.cpp
 documentation_of: geometry/convex_hull.hpp

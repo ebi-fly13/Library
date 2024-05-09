@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/biconnected_components.hpp
     title: graph/biconnected_components.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/low_link.hpp
     title: Low Link
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Biconnected_Components.test.cpp
     title: test/graph/Biconnected_Components.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/block_cut_tree.hpp\"\n\n#include <cassert>\n\n#line\
@@ -179,7 +179,7 @@ data:
   path: tree/block_cut_tree.hpp
   requiredBy: []
   timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/graph/Biconnected_Components.test.cpp
 documentation_of: tree/block_cut_tree.hpp

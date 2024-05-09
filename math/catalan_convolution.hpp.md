@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Catalan_Convolution.test.cpp
     title: test/math/Catalan_Convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/catalan_convolution.hpp\"\n\n#line 2 \"math/binomial.hpp\"\
@@ -66,7 +66,7 @@ data:
   path: math/catalan_convolution.hpp
   requiredBy: []
   timestamp: '2024-05-09 17:04:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/Catalan_Convolution.test.cpp
 documentation_of: math/catalan_convolution.hpp
