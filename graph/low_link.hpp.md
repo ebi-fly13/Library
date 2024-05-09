@@ -8,20 +8,20 @@ data:
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/biconnected_components.hpp
     title: graph/biconnected_components.hpp
   - icon: ':x:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/block_cut_tree.hpp
     title: Block Cut Tree
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Articulation_Points.test.cpp
     title: test/graph/Articulation_Points.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Biconnected_Components.test.cpp
     title: test/graph/Biconnected_Components.test.cpp
   - icon: ':x:'
@@ -29,7 +29,7 @@ data:
     title: test/graph/Two_Edge_Connected_Components.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/low_link.hpp\"\n\n#include <algorithm>\n#include <utility>\n\
@@ -141,7 +141,7 @@ data:
   - graph/two_edge_connected_components.hpp
   - tree/block_cut_tree.hpp
   timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/graph/Two_Edge_Connected_Components.test.cpp
   - test/graph/Biconnected_Components.test.cpp

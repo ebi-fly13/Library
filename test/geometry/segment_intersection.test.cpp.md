@@ -9,9 +9,9 @@ data:
     title: fenwick tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_6_A
@@ -97,7 +97,7 @@ data:
   path: test/geometry/segment_intersection.test.cpp
   requiredBy: []
   timestamp: '2024-02-25 23:03:04+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/segment_intersection.test.cpp
 layout: document

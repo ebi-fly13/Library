@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/or_convolution.hpp
     title: Bitwise OR Convolution
   - icon: ':question:'
@@ -10,10 +10,10 @@ data:
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/chromatic_number.hpp
     title: "Chromatic Number (\u5F69\u8272\u6570)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: set_function/subset_transform.hpp
     title: "Subset Transform (Zeta / M\xF6bius)"
   - icon: ':question:'
@@ -33,9 +33,9 @@ data:
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/chromatic_number
@@ -208,7 +208,7 @@ data:
   path: test/graph/Chromatic_Number.test.cpp
   requiredBy: []
   timestamp: '2024-04-02 00:37:53+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Chromatic_Number.test.cpp
 layout: document

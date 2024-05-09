@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/skew_heap.hpp
     title: data_structure/skew_heap.hpp
   - icon: ':question:'

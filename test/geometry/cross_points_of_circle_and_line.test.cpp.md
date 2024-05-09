@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/circle.hpp
     title: geometry/circle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line.hpp
     title: geometry/line.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/line_segment.hpp
     title: geometry/line_segment.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/point.hpp
     title: point
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/polygon.hpp
     title: geometry/polygon.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: '0.00000001'
@@ -351,7 +351,7 @@ data:
   path: test/geometry/cross_points_of_circle_and_line.test.cpp
   requiredBy: []
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/geometry/cross_points_of_circle_and_line.test.cpp
 layout: document

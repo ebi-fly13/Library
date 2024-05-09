@@ -21,9 +21,9 @@ data:
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -311,7 +311,7 @@ data:
   path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   requiredBy: []
   timestamp: '2024-04-28 15:17:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
 layout: document

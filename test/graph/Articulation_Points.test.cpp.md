@@ -7,14 +7,14 @@ data:
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/low_link.hpp
     title: Low Link
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A
@@ -122,7 +122,7 @@ data:
   path: test/graph/Articulation_Points.test.cpp
   requiredBy: []
   timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Articulation_Points.test.cpp
 layout: document

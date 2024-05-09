@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/low_link.hpp
     title: Low Link
   _extendedRequiredBy: []

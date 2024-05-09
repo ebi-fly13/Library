@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/euler_trail.hpp
     title: Euler Trail
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/eulerian_trail_directed
@@ -207,7 +207,7 @@ data:
   path: test/graph/Eulerian_Trail_Directed.test.cpp
   requiredBy: []
   timestamp: '2024-04-02 14:52:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Eulerian_Trail_Directed.test.cpp
 layout: document

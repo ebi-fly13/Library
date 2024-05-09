@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/or_convolution.hpp
     title: Bitwise OR Convolution
   - icon: ':question:'
@@ -10,7 +10,7 @@ data:
   - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: set_function/subset_transform.hpp
     title: "Subset Transform (Zeta / M\xF6bius)"
   _extendedRequiredBy: []

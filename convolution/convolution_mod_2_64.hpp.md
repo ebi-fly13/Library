@@ -13,17 +13,11 @@ data:
   - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  _extendedRequiredBy:
-  - icon: ':x:'
-    path: string/wildcard_pattern_matching.hpp
-    title: Wildcard Pattern Matching
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
-  - icon: ':x:'
-    path: test/string/Wildcard_Pattern_Matching.test.cpp
-    title: test/string/Wildcard_Pattern_Matching.test.cpp
   - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
@@ -222,13 +216,11 @@ data:
   - modint/modint.hpp
   isVerificationFile: false
   path: convolution/convolution_mod_2_64.hpp
-  requiredBy:
-  - string/wildcard_pattern_matching.hpp
+  requiredBy: []
   timestamp: '2023-10-31 00:17:11+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/Convolution_Mod_2_64.test.cpp
-  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp

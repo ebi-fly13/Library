@@ -11,16 +11,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/bellman_ford.hpp
     title: Bellman-Ford
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/biconnected_components.hpp
     title: graph/biconnected_components.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/chromatic_number.hpp
     title: "Chromatic Number (\u5F69\u8272\u6570)"
   - icon: ':warning:'
     path: graph/complement_graph_bfs.hpp
     title: Complement Graph BFS
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/cycle_detection.hpp
     title: Cycle Detection
   - icon: ':x:'
@@ -29,13 +29,13 @@ data:
   - icon: ':x:'
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/directed_mst.hpp
     title: Directed MST
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/euler_trail.hpp
     title: Euler Trail
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/low_link.hpp
     title: Low Link
   - icon: ':x:'
@@ -59,7 +59,7 @@ data:
   - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/block_cut_tree.hpp
     title: Block Cut Tree
   - icon: ':x:'
@@ -141,37 +141,37 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Articulation_Points.test.cpp
     title: test/graph/Articulation_Points.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Biconnected_Components.test.cpp
     title: test/graph/Biconnected_Components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Directed.test.cpp
     title: test/graph/Cycle_Detection_Directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Undirected.test.cpp
     title: test/graph/Cycle_Detection_Undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Directed_MST.test.cpp
     title: test/graph/Directed_MST.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Eulerian_Trail_Directed.test.cpp
     title: test/graph/Eulerian_Trail_Directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Eulerian_Trail_Undirected.test.cpp
     title: test/graph/Eulerian_Trail_Undirected.test.cpp
   - icon: ':x:'

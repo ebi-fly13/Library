@@ -64,7 +64,7 @@ data:
     - icon: ':warning:'
       path: convolution/online_convolution.hpp
       title: Online Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/or_convolution.hpp
       title: Bitwise OR Convolution
     - icon: ':question:'
@@ -198,7 +198,7 @@ data:
     - icon: ':question:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/skew_heap.hpp
       title: data_structure/skew_heap.hpp
     - icon: ':x:'
@@ -265,22 +265,22 @@ data:
       title: $f(x + c)$
   - name: geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/circle.hpp
       title: geometry/circle.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/convex_hull.hpp
       title: geometry/convex_hull.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/line.hpp
       title: geometry/line.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/line_segment.hpp
       title: geometry/line_segment.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/point.hpp
       title: point
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/polygon.hpp
       title: geometry/polygon.hpp
   - name: graph
@@ -291,16 +291,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/bellman_ford.hpp
       title: Bellman-Ford
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/biconnected_components.hpp
       title: graph/biconnected_components.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/chromatic_number.hpp
       title: "Chromatic Number (\u5F69\u8272\u6570)"
     - icon: ':warning:'
       path: graph/complement_graph_bfs.hpp
       title: Complement Graph BFS
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/cycle_detection.hpp
       title: Cycle Detection
     - icon: ':x:'
@@ -309,13 +309,13 @@ data:
     - icon: ':x:'
       path: graph/dijkstra_fibheap.hpp
       title: graph/dijkstra_fibheap.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/directed_mst.hpp
       title: Directed MST
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/euler_trail.hpp
       title: Euler Trail
-    - icon: ':x:'
+    - icon: ':question:'
       path: graph/low_link.hpp
       title: Low Link
     - icon: ':x:'
@@ -446,7 +446,7 @@ data:
     - icon: ':question:'
       path: set_function/ranked_subset_transform.hpp
       title: Ranked Subset Transform (Zeta / Mobius)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: set_function/subset_transform.hpp
       title: "Subset Transform (Zeta / M\xF6bius)"
     - icon: ':heavy_check_mark:'
@@ -494,7 +494,7 @@ data:
       title: template/utility.hpp
   - name: tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/block_cut_tree.hpp
       title: Block Cut Tree
     - icon: ':x:'
@@ -735,110 +735,110 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Union_Find.test.cpp
       title: test/data_structure/Union_Find.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
       title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
       title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - name: test/geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/area.test.cpp
       title: test/geometry/area.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/circumscribed_circle_of_triangle.test.cpp
       title: test/geometry/circumscribed_circle_of_triangle.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/closest_pair.test.cpp
       title: test/geometry/closest_pair.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/common_area.test.cpp
       title: test/geometry/common_area.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/common_area_circles.test.cpp
       title: test/geometry/common_area_circles.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/common_tangent.test.cpp
       title: test/geometry/common_tangent.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/contains.test.cpp
       title: test/geometry/contains.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/convex_diameter.test.cpp
       title: test/geometry/convex_diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/convex_hull.test.cpp
       title: test/geometry/convex_hull.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/convex_polygon_cut.test.cpp
       title: test/geometry/convex_polygon_cut.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/cross_point.test.cpp
       title: test/geometry/cross_point.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/cross_points_of_circle_and_line.test.cpp
       title: test/geometry/cross_points_of_circle_and_line.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/cross_points_of_circles.test.cpp
       title: test/geometry/cross_points_of_circles.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/distance.test.cpp
       title: test/geometry/distance.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/incircle_of_triangle.test.cpp
       title: test/geometry/incircle_of_triangle.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/intersection.test.cpp
       title: test/geometry/intersection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/intersection_circle.test.cpp
       title: test/geometry/intersection_circle.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/intersection_line_segment.test.cpp
       title: test/geometry/intersection_line_segment.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/is_convex.test.cpp
       title: test/geometry/is_convex.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/isp.test.cpp
       title: test/geometry/isp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/reflection.test.cpp
       title: test/geometry/reflection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/segment_intersection.test.cpp
       title: test/geometry/segment_intersection.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/tangent_to_circle.test.cpp
       title: test/geometry/tangent_to_circle.test.cpp
   - name: test/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Articulation_Points.test.cpp
       title: test/graph/Articulation_Points.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Biconnected_Components.test.cpp
       title: test/graph/Biconnected_Components.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Chromatic_Number.test.cpp
       title: test/graph/Chromatic_Number.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Cycle_Detection_Directed.test.cpp
       title: test/graph/Cycle_Detection_Directed.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Cycle_Detection_Undirected.test.cpp
       title: test/graph/Cycle_Detection_Undirected.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Directed_MST.test.cpp
       title: test/graph/Directed_MST.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Eulerian_Trail_Directed.test.cpp
       title: test/graph/Eulerian_Trail_Directed.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Eulerian_Trail_Undirected.test.cpp
       title: test/graph/Eulerian_Trail_Undirected.test.cpp
     - icon: ':x:'

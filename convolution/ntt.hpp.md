@@ -14,9 +14,6 @@ data:
   - icon: ':question:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
-  - icon: ':x:'
-    path: string/wildcard_pattern_matching.hpp
-    title: Wildcard Pattern Matching
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution.test.cpp
@@ -90,9 +87,6 @@ data:
   - icon: ':x:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':x:'
-    path: test/string/Wildcard_Pattern_Matching.test.cpp
-    title: test/string/Wildcard_Pattern_Matching.test.cpp
   - icon: ':x:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
@@ -248,7 +242,6 @@ data:
   requiredBy:
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
-  - string/wildcard_pattern_matching.hpp
   timestamp: '2023-10-31 00:17:11+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
@@ -258,7 +251,6 @@ data:
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1145.test.cpp
-  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/math/Berunoulli_Number.test.cpp

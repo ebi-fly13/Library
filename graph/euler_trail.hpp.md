@@ -9,15 +9,15 @@ data:
     title: Graph (CSR format)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Eulerian_Trail_Directed.test.cpp
     title: test/graph/Eulerian_Trail_Directed.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Eulerian_Trail_Undirected.test.cpp
     title: test/graph/Eulerian_Trail_Undirected.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/euler_trail.hpp\"\n\n#include <algorithm>\n#include\
@@ -163,7 +163,7 @@ data:
   path: graph/euler_trail.hpp
   requiredBy: []
   timestamp: '2024-04-02 14:52:16+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Eulerian_Trail_Undirected.test.cpp
   - test/graph/Eulerian_Trail_Directed.test.cpp
