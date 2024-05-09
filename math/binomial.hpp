@@ -59,6 +59,11 @@ template <Modint mint> struct Binomial {
         return f(n) * inv_f(r) * inv_f(n - r);
     }
 
+    static mint neg_c(int k, int d) {
+        assert(d > 0);
+        return c(k + d - 1, d - 1);
+    }
+
     static mint p(int n, int r) {
         if (r < 0 || n < r) return 0;
         return f(n) * inv_f(n - r);

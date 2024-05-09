@@ -11,6 +11,10 @@ documentation_of: //math/binomial.hpp
 
 $\binom{n}{r}$ を求める。
 
+### neg_c(int k, int d)
+
+$[x^k] \frac{1}{(1 - x)^d}$ を求める。
+
 ### p(int n, int r)
 
 $n$ この中から $r$ 個選び、それを一列に並べる組み合わせを返す。
