@@ -43,16 +43,17 @@ data:
     \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
     \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
     \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
-    \ - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n <\
-    \ r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint\
-    \ inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void\
-    \ reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
-    \ fact, inv_fact;\n};\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::fact\
-    \ = std::vector<mint>(2, 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
-    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 5 \"math/catalan_number.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint> mint catalan_number(int n) {\n \
-    \   return Binomial<mint>::c(2 * n, n) * Binomial<mint>::inv(n + 1);\n}\n\n} \
-    \ // namespace ebi\n"
+    \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
+    \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
+    \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
+    \    }\n\n    static mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n\
+    \    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n    }\n\n\
+    \  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate <Modint\
+    \ mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2, 1);\n\n\
+    template <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
+    \ 1);\n\n}  // namespace ebi\n#line 5 \"math/catalan_number.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint> mint catalan_number(int n) {\n    return Binomial<mint>::c(2\
+    \ * n, n) * Binomial<mint>::inv(n + 1);\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include \"../math/binomial.hpp\"\n#include \"../modint/base.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <Modint mint> mint catalan_number(int n) {\n \
     \   return Binomial<mint>::c(2 * n, n) * Binomial<mint>::inv(n + 1);\n}\n\n} \
@@ -63,7 +64,7 @@ data:
   isVerificationFile: false
   path: math/catalan_number.hpp
   requiredBy: []
-  timestamp: '2024-02-18 14:20:37+09:00'
+  timestamp: '2024-05-09 17:04:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Catalan_Convolution.test.cpp

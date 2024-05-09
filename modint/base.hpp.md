@@ -181,6 +181,9 @@ data:
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Negative_Binomial_Coefficient.test.cpp
+    title: test/math/Negative_Binomial_Coefficient.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
   - icon: ':heavy_check_mark:'
@@ -413,6 +416,7 @@ data:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/math/Berunoulli_Number.test.cpp
+  - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp
   - test/math/Pow.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp

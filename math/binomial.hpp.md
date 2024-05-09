@@ -28,6 +28,9 @@ data:
     path: test/math/Catalan_Convolution.test.cpp
     title: test/math/Catalan_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Negative_Binomial_Coefficient.test.cpp
+    title: test/math/Negative_Binomial_Coefficient.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - icon: ':heavy_check_mark:'
@@ -69,13 +72,15 @@ data:
     \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
     \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
     \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
-    \ - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n <\
-    \ r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint\
-    \ inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void\
-    \ reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
-    \ fact, inv_fact;\n};\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::fact\
-    \ = std::vector<mint>(2, 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
-    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n"
+    \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
+    \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
+    \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
+    \    }\n\n    static mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n\
+    \    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n    }\n\n\
+    \  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate <Modint\
+    \ mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2, 1);\n\n\
+    template <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
+    \ 1);\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <bit>\n#include <cassert>\n#include <iostream>\n\
     #include <ranges>\n#include <vector>\n\n#include \"../modint/base.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <Modint mint> struct Binomial {\n  private:\n    static void\
@@ -94,13 +99,15 @@ data:
     \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
     \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
     \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
-    \ - r);\n    }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n <\
-    \ r) return 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint\
-    \ inv(int n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void\
-    \ reserve(int n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
-    \ fact, inv_fact;\n};\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::fact\
-    \ = std::vector<mint>(2, 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
-    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n"
+    \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
+    \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
+    \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
+    \    }\n\n    static mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n\
+    \    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n    }\n\n\
+    \  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate <Modint\
+    \ mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2, 1);\n\n\
+    template <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
+    \ 1);\n\n}  // namespace ebi\n"
   dependsOn:
   - modint/base.hpp
   isVerificationFile: false
@@ -110,13 +117,14 @@ data:
   - math/catalan_convolution.hpp
   - math/catalan_number.hpp
   - math/stirling_number_1st.hpp
-  timestamp: '2024-02-18 14:20:37+09:00'
+  timestamp: '2024-05-09 17:04:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/aoj/aoj_3361.test.cpp
@@ -132,6 +140,10 @@ title: Binomial Coefficient
 ### c(int n, int r)
 
 $\binom{n}{r}$ を求める。
+
+### neg_c(int k, int d)
+
+$[x^k] \frac{1}{(1 - x)^d}$ を求める。
 
 ### p(int n, int r)
 

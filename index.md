@@ -889,6 +889,9 @@ data:
       path: test/math/Longest_Increasing_Subsequence.test.cpp
       title: test/math/Longest_Increasing_Subsequence.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/math/Negative_Binomial_Coefficient.test.cpp
+      title: test/math/Negative_Binomial_Coefficient.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/math/Partition_Function_FPS.test.cpp
       title: test/math/Partition_Function_FPS.test.cpp
     - icon: ':heavy_check_mark:'
