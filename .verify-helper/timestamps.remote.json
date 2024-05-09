@@ -147,6 +147,7 @@
 "test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp": "2023-10-31 00:17:11 +0900",
 "test/set_function/Exp_of_Set_Power_Series.test.cpp": "2023-10-31 00:17:11 +0900",
 "test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp": "2023-10-31 00:17:11 +0900",
+"test/string/Wildcard_Pattern_Matching.test.cpp": "2024-05-09 18:09:52 +0900",
 "test/string/Z_Algorithm.test.cpp": "2023-07-17 14:12:40 +0900",
 "test/tree/Cartesian_Tree.test.cpp": "2024-03-13 15:52:21 +0900",
 "test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp": "2024-03-13 15:52:21 +0900",
