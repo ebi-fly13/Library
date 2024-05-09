@@ -7,21 +7,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
+      with:
+        path: main
+        fetch-depth: 0
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.12.0
 
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
 
     - name: Clone ac-library
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
           repository: atcoder/ac-library
           path: ac-library
+          sparse-checkout: atcoder
+          
 
     - name: Run tests
+      working-directory: main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
