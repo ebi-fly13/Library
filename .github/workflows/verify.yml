@@ -35,4 +35,4 @@ jobs:
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
         CPLUS_INCLUDE_PATH: ${{ github.workspace }}/ac-library
         GH_PAT: ${{ secrets.GH_PAT }}
-      run: oj-verify all
+      run: oj-verify all --jobs 2 --timeout 3600
