@@ -5,10 +5,16 @@ data:
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Online_Convolution.test.cpp
+    title: test/convolution/Online_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_2633.test.cpp
+    title: test/yuki/yuki_2633.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/online_convolution.hpp\"\n\n#include <atcoder/convolution>\n\
@@ -73,8 +79,10 @@ data:
   path: convolution/online_convolution.hpp
   requiredBy: []
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/convolution/Online_Convolution.test.cpp
+  - test/yuki/yuki_2633.test.cpp
 documentation_of: convolution/online_convolution.hpp
 layout: document
 title: Online Convolution
