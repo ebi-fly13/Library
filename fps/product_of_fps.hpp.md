@@ -5,9 +5,6 @@ data:
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: fps/sums_of_powers.hpp
-    title: fps/sums_of_powers.hpp
   - icon: ':heavy_check_mark:'
     path: math/sums_of_powers.hpp
     title: "$\\sum_n A_n^i$ \u306E $i = 0, 1,\\dots, k$ \u306E\u5217\u6319"
@@ -60,7 +57,6 @@ data:
   isVerificationFile: false
   path: fps/product_of_fps.hpp
   requiredBy:
-  - fps/sums_of_powers.hpp
   - math/sums_of_powers.hpp
   - math/sums_of_powers_iota.hpp
   timestamp: '2023-10-26 11:41:06+09:00'

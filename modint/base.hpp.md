@@ -44,9 +44,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
-  - icon: ':warning:'
-    path: fps/sums_of_powers.hpp
-    title: fps/sums_of_powers.hpp
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
@@ -367,7 +364,6 @@ data:
   - modint/montgomery_modint.hpp
   - fps/fps_sparse.hpp
   - fps/product_of_one_minus_xn.hpp
-  - fps/sums_of_powers.hpp
   - fps/middle_product.hpp
   - fps/composition_of_fps.hpp
   - fps/compositional_inverse_of_fps.hpp
