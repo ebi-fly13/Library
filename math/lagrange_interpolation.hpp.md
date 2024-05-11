@@ -1,8 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/sum_of_powers_iota.hpp
+    title: math/sum_of_powers_iota.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Powers_Iota.test.cpp
+    title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2747.test.cpp
     title: test/yuki/yuki_2747.test.cpp
@@ -45,11 +51,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/lagrange_interpolation.hpp
-  requiredBy: []
+  requiredBy:
+  - math/sum_of_powers_iota.hpp
   timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_2747.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
 documentation_of: math/lagrange_interpolation.hpp
 layout: document
 title: Lagrange Interpolation

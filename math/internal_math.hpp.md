@@ -43,6 +43,9 @@ data:
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Powers_Iota.test.cpp
+    title: test/math/Sum_of_Powers_Iota.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/sharp_p_subset_sum.test.cpp
     title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -141,6 +144,7 @@ data:
   - test/math/Partition_Function_FPS.test.cpp
   - test/math/Berunoulli_Number.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp

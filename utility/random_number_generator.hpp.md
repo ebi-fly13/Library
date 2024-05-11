@@ -22,6 +22,9 @@ data:
     path: test/math/Negative_Binomial_Coefficient.test.cpp
     title: test/math/Negative_Binomial_Coefficient.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Powers_Iota.test.cpp
+    title: test/math/Sum_of_Powers_Iota.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   _isVerificationFailed: false
@@ -57,6 +60,7 @@ data:
   verifiedWith:
   - test/data_structure/Range_Parallel_DSU.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/aoj/aoj_2444.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: utility/random_number_generator.hpp

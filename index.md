@@ -257,9 +257,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/product_of_one_plus_xn.hpp
       title: $\prod (1 + x^{a_i}) \mod x^d$
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: fps/sums_of_powers.hpp
-      title: $\sum_i (\sum_n A_n^i) x^i$
+      title: fps/sums_of_powers.hpp
     - icon: ':heavy_check_mark:'
       path: fps/taylor_shift.hpp
       title: $f(x + c)$
@@ -398,6 +398,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/stirling_number_2nd.hpp
       title: Stirling Numbers of the Second Kind
+    - icon: ':heavy_check_mark:'
+      path: math/sum_of_powers_iota.hpp
+      title: math/sum_of_powers_iota.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/sums_of_powers.hpp
+      title: "$\\sum_i (\\sum_n A_n^i)$ \u306E $i = 0, \\dots, k$ \u306E\u5217\u6319"
+    - icon: ':heavy_check_mark:'
+      path: math/sums_of_powers_iota.hpp
+      title: math/sums_of_powers_iota.hpp
   - name: matrix
     pages:
     - icon: ':heavy_check_mark:'
@@ -918,6 +927,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
       title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Sum_of_Powers_Iota.test.cpp
+      title: test/math/Sum_of_Powers_Iota.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Totient_Function.test.cpp
       title: test/math/Sum_of_Totient_Function.test.cpp

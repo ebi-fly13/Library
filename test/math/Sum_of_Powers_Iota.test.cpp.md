@@ -20,8 +20,17 @@ data:
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
-    path: math/sums_of_powers.hpp
-    title: "$\\sum_i (\\sum_n A_n^i)$ \u306E $i = 0, \\dots, k$ \u306E\u5217\u6319"
+    path: math/lagrange_interpolation.hpp
+    title: Lagrange Interpolation
+  - icon: ':heavy_check_mark:'
+    path: math/linear_sieve.hpp
+    title: Linear Sieve
+  - icon: ':heavy_check_mark:'
+    path: math/sum_of_powers_iota.hpp
+    title: math/sum_of_powers_iota.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/sums_of_powers_iota.hpp
+    title: math/sums_of_powers_iota.hpp
   - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
@@ -43,6 +52,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
+  - icon: ':heavy_check_mark:'
+    path: utility/random_number_generator.hpp
+    title: Random Number Generator
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -50,31 +62,108 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/no/1145
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - https://yukicoder.me/problems/no/1145
-  bundledCode: "#line 1 \"test/yuki/yuki_1145.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/1145\"\
-    \n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include <array>\n\
-    #include <bit>\n#include <cassert>\n#include <vector>\n\n#line 2 \"math/internal_math.hpp\"\
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"test/math/Sum_of_Powers_Iota.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/aplusb\"\n\n#line 2 \"math/sum_of_powers_iota.hpp\"\
+    \n\n#include <cassert>\n\n#line 2 \"math/lagrange_interpolation.hpp\"\n\n#include\
+    \ <vector>\n\n/*\n    reference: https://atcoder.jp/contests/abc208/editorial/2195\n\
+    \    verify: https://atcoder.jp/contests/abc208/tasks/abc208_f\n*/\n\nnamespace\
+    \ ebi {\n\ntemplate <class mint>\nmint lagrange_interpolation(const std::vector<mint>\
+    \ &f, long long n) {\n    const int d = int(f.size()) - 1;  // N\u306Ed\u6B21\u4EE5\
+    \u4E0B\u306E\u591A\u9805\u5F0F\n    mint fact = 1;\n    std::vector<mint> inv_fact(d\
+    \ + 1);\n    for (int i = 1; i < d + 1; ++i) {\n        fact *= i;\n    }\n  \
+    \  inv_fact[d] = fact.inv();\n    for (int i = d; i > 0; i--) {\n        inv_fact[i\
+    \ - 1] = inv_fact[i] * i;\n    }\n    std::vector<mint> l(d + 1), r(d + 1);\n\
+    \    l[0] = 1;\n    for (int i = 0; i < d; ++i) {\n        l[i + 1] = l[i] * (n\
+    \ - i);\n    }\n    r[d] = 1;\n    for (int i = d; i > 0; --i) {\n        r[i\
+    \ - 1] = r[i] * (n - i);\n    }\n    mint res = 0;\n    for (int i = 0; i < d\
+    \ + 1; ++i) {\n        res += mint((d - i) % 2 == 1 ? -1 : 1) * f[i] * l[i] *\
+    \ r[i] *\n               inv_fact[i] * inv_fact[d - i];\n    }\n    return res;\n\
+    }\n\n}  // namespace ebi\n#line 2 \"math/linear_sieve.hpp\"\n\r\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#include <cstdint>\n\nnamespace ebi {\n\nusing ld = long double;\nusing std::size_t;\n\
+    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
+    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
+    using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
+    using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 4 \"math/linear_sieve.hpp\"\
+    \n\r\n/*\r\n    reference: https://37zigen.com/linear-sieve/\r\n    verify:  \
+    \  https://atcoder.jp/contests/abc162/submissions/25095562\r\n*/\r\n\r\n#line\
+    \ 12 \"math/linear_sieve.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve\
+    \ {\r\n  private:\r\n    using u64 = std::uint64_t;\r\n    int n;\r\n    std::vector<int>\
+    \ sieve;\r\n    std::vector<int> prime;\r\n\r\n  public:\r\n    linear_sieve(int\
+    \ _n) : n(_n), sieve(std::vector<int>(_n + 1, -1)) {\r\n        for (int i = 2;\
+    \ i <= n; i++) {\r\n            if (sieve[i] < 0) {\r\n                sieve[i]\
+    \ = i;\r\n                prime.emplace_back(i);\r\n            }\r\n        \
+    \    for (auto p : prime) {\r\n                if (u64(p) * u64(i) > u64(n) ||\
+    \ p > sieve[i]) break;\r\n                sieve[p * i] = p;\r\n            }\r\
+    \n        }\r\n    }\r\n\r\n    std::vector<int> prime_table() const {\r\n   \
+    \     return prime;\r\n    }\r\n\r\n    std::vector<std::pair<int, int>> prime_power_table(int\
+    \ m) const {\r\n        assert(m <= n);\r\n        std::vector<std::pair<int,\
+    \ int>> table(m + 1, {1, 1});\r\n        for (int i = 2; i <= m; i++) {\r\n  \
+    \          int p = sieve[i];\r\n            table[i] = {p, p};\r\n           \
+    \ if (sieve[i / p] == p) {\r\n                table[i] = table[i / p];\r\n   \
+    \             table[i].second *= p;\r\n            }\r\n        }\r\n        return\
+    \ table;\r\n    }\r\n\r\n    std::vector<std::pair<int, int>> factorize(int x)\
+    \ {\r\n        assert(x <= n);\r\n        std::vector<std::pair<int, int>> res;\r\
+    \n        while (x > 1) {\r\n            int p = sieve[x];\r\n            int\
+    \ exp = 0;\r\n            if (p < 0) {\r\n                res.emplace_back(x,\
+    \ 1);\r\n                break;\r\n            }\r\n            while (sieve[x]\
+    \ == p) {\r\n                x /= p;\r\n                exp++;\r\n           \
+    \ }\r\n            res.emplace_back(p, exp);\r\n        }\r\n        return res;\r\
+    \n    }\r\n\r\n    std::vector<int> divisors(int x) {\r\n        assert(x <= n);\r\
+    \n        std::vector<int> res;\r\n        res.emplace_back(1);\r\n        auto\
+    \ pf = factorize(x);\r\n        for (auto p : pf) {\r\n            int sz = (int)res.size();\r\
+    \n            for (int i = 0; i < sz; i++) {\r\n                int ret = 1;\r\
+    \n                for (int j = 0; j < p.second; j++) {\r\n                   \
+    \ ret *= p.first;\r\n                    res.emplace_back(res[i] * ret);\r\n \
+    \               }\r\n            }\r\n        }\r\n        return res;\r\n   \
+    \ }\r\n\r\n    template <class T> std::vector<T> fast_zeta(const std::vector<T>\
+    \ &f) {\r\n        std::vector<T> F = f;\r\n        int sz = f.size();\r\n   \
+    \     assert(sz <= n + 1);\r\n        for (int i = 2; i < sz; i++) {\r\n     \
+    \       if (sieve[i] != i) continue;\r\n            for (int j = (sz - 1) / i;\
+    \ j >= 1; j--) {\r\n                F[j] += F[j * i];\r\n            }\r\n   \
+    \     }\r\n        return F;\r\n    }\r\n\r\n    template <class T> std::vector<T>\
+    \ fast_mobius(const std::vector<T> &F) {\r\n        std::vector<T> f = F;\r\n\
+    \        int sz = F.size();\r\n        assert(sz <= n + 1);\r\n        for (int\
+    \ i = 2; i < sz; i++) {\r\n            if (sieve[i] != i) continue;\r\n      \
+    \      for (int j = 1; j * i < sz; j++) {\r\n                f[j] -= f[j * i];\r\
+    \n            }\r\n        }\r\n        return f;\r\n    }\r\n\r\n    template\
+    \ <class modint> std::vector<modint> pow_table(int m, int k) {\r\n        assert(m\
+    \ <= n && k >= 0);\r\n        std::vector<modint> table(m + 1, 1);\r\n       \
+    \ table[0] = (k == 0);\r\n        for (int i = 2; i <= m; i++) {\r\n         \
+    \   if (sieve[i] == i) {\r\n                table[i] = modint(i).pow(k);\r\n \
+    \               continue;\r\n            }\r\n            table[i] = table[sieve[i]]\
+    \ * table[i / sieve[i]];\r\n        }\r\n        return table;\r\n    }\r\n\r\n\
+    \    template <class modint> std::vector<modint> inv_table() {\r\n        return\
+    \ pow_table(modint::mod() - 2);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\r\n\
+    #line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include\
+    \ <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T\
+    \ a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n  \
+    \  a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate\
+    \ <Modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 8 \"math/sum_of_powers_iota.hpp\"\n\
+    \nnamespace ebi {\n\ntemplate <Modint mint> mint sum_of_powers_iota(long long\
+    \ n, int k) {\n    assert(n > 0 && k >= 0);\n    linear_sieve sieve(k + 1);\n\
+    \    auto pow_table = sieve.pow_table<mint>(k + 1, k);\n    for (int i = 0; i\
+    \ < k + 1; i++) {\n        pow_table[i + 1] += pow_table[i];\n    }\n    return\
+    \ lagrange_interpolation(pow_table, n - 1);\n}\n\n}  // namespace ebi\n#line 2\
+    \ \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include <array>\n#include\
+    \ <bit>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
     \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
     \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
     \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
     \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
     \ (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n    return -1;\n\
     }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
-    \n\n#include <concepts>\n#include <iostream>\n#include <utility>\n\nnamespace\
-    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
-    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 11 \"\
-    convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <Modint\
-    \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
-    \  static constexpr int rank2 =\n        std::countr_zero((unsigned int)(mint::mod()\
-    \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
-    \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 11 \"convolution/ntt.hpp\"\
+    \n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <Modint mint, int g =\
+    \ internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n    static constexpr\
+    \ int rank2 =\n        std::countr_zero((unsigned int)(mint::mod() - 1));\n\n\
+    \    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info() {\n       \
+    \ root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
     \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
     \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
     \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <Modint mint> void\
@@ -122,9 +211,10 @@ data:
     \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
-    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"fps/fps.hpp\"\n\n\
-    #line 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line\
-    \ 9 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint>\
+    \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"math/sums_of_powers_iota.hpp\"\
+    \n\n#line 4 \"math/sums_of_powers_iota.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n#line\
+    \ 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 9 \"\
+    fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint>\
     \ (*convolution)(const std::vector<mint> &,\n                                \
     \           const std::vector<mint> &)>\nstruct FormalPowerSeries : std::vector<mint>\
     \ {\n  private:\n    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
@@ -205,27 +295,27 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"math/sums_of_powers.hpp\"\
-    \n\n#line 2 \"fps/product_of_fps.hpp\"\n\n#include <deque>\n#line 5 \"fps/product_of_fps.hpp\"\
-    \n\n#line 7 \"fps/product_of_fps.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
-    \ mint,\n          std::vector<mint> (*convolution)(const std::vector<mint> &,\n\
-    \                                           const std::vector<mint> &)>\nstd::vector<mint>\
-    \ product_of_fps(const std::vector<std::vector<mint>> &fs) {\n    if (fs.empty())\
-    \ return {1};\n    std::deque<std::vector<mint>> deque;\n    for (auto &f : fs)\
-    \ deque.push_back(f);\n    while (deque.size() > 1) {\n        auto f = deque.front();\n\
-    \        deque.pop_front();\n        auto g = deque.front();\n        deque.pop_front();\n\
-    \        deque.push_back(convolution(f, g));\n    }\n    return deque.front();\n\
-    }\n\n}  // namespace ebi\n#line 6 \"math/sums_of_powers.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/product_of_fps.hpp\"\
+    \n\n#include <deque>\n#line 5 \"fps/product_of_fps.hpp\"\n\n#line 7 \"fps/product_of_fps.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
     \ std::vector<mint> &,\n                                           const std::vector<mint>\
-    \ &)>\nstd::vector<mint> sums_of_powers(const std::vector<int> &a,\n         \
-    \                                           int d) {\n    using FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n    int n = a.size();\n    std::vector fs(n, std::vector<mint>(2,\
-    \ 1));\n    for (int i = 0; i < n; i++) {\n        fs[i][1] = -a[i];\n    }\n\
-    \    FPS g = product_of_fps<mint, convolution>(fs);\n    return (-g.log(d + 1).differential()\
-    \ << 1) + n;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line\
-    \ 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi\
-    \ {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
+    \ &)>\nstd::vector<mint> product_of_fps(const std::vector<std::vector<mint>> &fs)\
+    \ {\n    if (fs.empty()) return {1};\n    std::deque<std::vector<mint>> deque;\n\
+    \    for (auto &f : fs) deque.push_back(f);\n    while (deque.size() > 1) {\n\
+    \        auto f = deque.front();\n        deque.pop_front();\n        auto g =\
+    \ deque.front();\n        deque.pop_front();\n        deque.push_back(convolution(f,\
+    \ g));\n    }\n    return deque.front();\n}\n\n}  // namespace ebi\n#line 8 \"\
+    math/sums_of_powers_iota.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n\
+    \          std::vector<mint> (*convolution)(const std::vector<mint> &,\n     \
+    \                                      const std::vector<mint> &)>\nstd::vector<mint>\
+    \ sums_of_powers_iota(long long n, int k) {\n    assert(n > 0 && k >= 0);\n  \
+    \  using FPS = FormalPowerSeries<mint, convolution>;\n    FPS p = FPS{0, n}.exp(k\
+    \ + 2) >> 1;\n    FPS q = FPS::exp_x(k + 2) >> 1;\n    FPS pq = (p * q.inv()).pre(k\
+    \ + 1);\n    std::vector<mint> res(k + 1);\n    mint fact = 1;\n    for (int i\
+    \ = 0; i < k + 1; i++) {\n        res[i] = pq[i] * fact;\n        fact *= i +\
+    \ 1;\n    }\n    return res;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
+    \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
     \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
     \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
     \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
@@ -280,45 +370,40 @@ data:
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
     \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
-    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
-    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
-    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
-    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
-    \ 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\n\
-    template <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os,\
-    \ const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
-    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
-    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
-    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
-    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
-    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
-    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
-    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
-    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
-    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
-    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
-    \n\n#line 2 \"graph/base.hpp\"\n\n#line 5 \"graph/base.hpp\"\n#include <ranges>\n\
-    #line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line\
-    \ 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E>\
-    \ struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const\
-    \ std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0), elist(elements.size())\
-    \ {\n        for (auto e : elements) {\n            start[e.first + 1]++;\n  \
-    \      }\n        for (auto i : std::views::iota(0, n)) {\n            start[i\
-    \ + 1] += start[i];\n        }\n        auto counter = start;\n        for (auto\
-    \ [i, e] : elements) {\n            elist[counter[i]++] = e;\n        }\n    }\n\
-    \n    simple_csr(const std::vector<std::vector<E>>& es)\n        : start(es.size()\
-    \ + 1, 0) {\n        int n = es.size();\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] = (int)es[i].size() + start[i];\n        }\n\
-    \        elist.resize(start.back());\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            std::copy(es[i].begin(), es[i].end(), elist.begin() + start[i]);\n\
-    \        }\n    }\n\n    int size() const {\n        return (int)start.size()\
-    \ - 1;\n    }\n\n    const auto operator[](int i) const {\n        return std::ranges::subrange(elist.begin()\
-    \ + start[i],\n                                     elist.begin() + start[i +\
-    \ 1]);\n    }\n    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/io.hpp\"\
+    \n\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
+    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
+    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
+    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
+    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
+    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
+    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
+    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
+    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 5\
+    \ \"graph/base.hpp\"\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
+    \ \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
+    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
+    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
+    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
+    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
+    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
+    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
+    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
+    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
+    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
+    \                                   elist.begin() + start[i + 1]);\n    }\n  \
+    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -371,49 +456,62 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 8 \"test/yuki/yuki_1145.test.cpp\"\
-    \n\nnamespace ebi {\n\nusing mint = modint998244353;\nusing FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n  \
-    \  std::vector<int> a(n);\n    std::cin >> a;\n    auto ans = sums_of_powers<mint,\
-    \ convolution>(a, m);\n    rep(i, 1, m + 1) {\n        std::cout << ans[i] <<\
-    \ \" \\n\"[i == m];\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\
+    \n\r\n#line 5 \"utility/random_number_generator.hpp\"\n\r\nnamespace ebi {\r\n\
+    \r\nstruct random_number_generator {\r\n    random_number_generator(int seed =\
+    \ -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\n \
+    \   }\r\n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n    }\r\
+    \n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n  private:\r\n \
+    \   std::mt19937_64 mt;\r\n    std::random_device rnd;\r\n};\r\n\r\n}  // namespace\
+    \ ebi\n#line 9 \"test/math/Sum_of_Powers_Iota.test.cpp\"\n\nnamespace ebi {\n\n\
+    using mint = modint998244353;\n\nvoid main_() {\n    random_number_generator rng;\n\
+    \    i64 n = rng.get(1, 1'000'000'000);\n    int k = 2'000;\n    auto f = sums_of_powers_iota<mint,\
+    \ convolution>(n, k);\n    rep(i, 0, k) {\n        assert(f[i] == sum_of_powers_iota<mint>(n,\
+    \ i));\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
     \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://yukicoder.me/problems/no/1145\"\n\n#include \"\
-    ../../convolution/ntt.hpp\"\n#include \"../../fps/fps.hpp\"\n#include \"../../math/sums_of_powers.hpp\"\
-    \n#include \"../../modint/modint.hpp\"\n#include \"../../template/template.hpp\"\
-    \n\nnamespace ebi {\n\nusing mint = modint998244353;\nusing FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n  \
-    \  std::vector<int> a(n);\n    std::cin >> a;\n    auto ans = sums_of_powers<mint,\
-    \ convolution>(a, m);\n    rep(i, 1, m + 1) {\n        std::cout << ans[i] <<\
-    \ \" \\n\"[i == m];\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
-    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    return 0;\n}"
+    \    }\n    int a,b;\n    std::cin >> a >> b;\n    std::cout << a + b << '\\n';\n\
+    \    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n#include \"\
+    ../../math/sum_of_powers_iota.hpp\"\n#include \"../../convolution/ntt.hpp\"\n\
+    #include \"../../math/sums_of_powers_iota.hpp\"\n#include \"../../modint/modint.hpp\"\
+    \n#include \"../../template/template.hpp\"\n#include \"../../utility/random_number_generator.hpp\"\
+    \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    random_number_generator\
+    \ rng;\n    i64 n = rng.get(1, 1'000'000'000);\n    int k = 2'000;\n    auto f\
+    \ = sums_of_powers_iota<mint, convolution>(n, k);\n    rep(i, 0, k) {\n      \
+    \  assert(f[i] == sum_of_powers_iota<mint>(n, i));\n    }\n}\n\n}  // namespace\
+    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
+    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    int a,b;\n    std::cin\
+    \ >> a >> b;\n    std::cout << a + b << '\\n';\n    return 0;\n}"
   dependsOn:
+  - math/sum_of_powers_iota.hpp
+  - math/lagrange_interpolation.hpp
+  - math/linear_sieve.hpp
+  - template/int_alias.hpp
+  - modint/base.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
-  - modint/base.hpp
+  - math/sums_of_powers_iota.hpp
   - fps/fps.hpp
-  - math/sums_of_powers.hpp
   - fps/product_of_fps.hpp
   - modint/modint.hpp
   - template/template.hpp
   - template/debug_template.hpp
-  - template/int_alias.hpp
   - template/io.hpp
   - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
+  - utility/random_number_generator.hpp
   isVerificationFile: true
-  path: test/yuki/yuki_1145.test.cpp
+  path: test/math/Sum_of_Powers_Iota.test.cpp
   requiredBy: []
   timestamp: '2024-05-11 16:30:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yuki/yuki_1145.test.cpp
+documentation_of: test/math/Sum_of_Powers_Iota.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yuki/yuki_1145.test.cpp
-- /verify/test/yuki/yuki_1145.test.cpp.html
-title: test/yuki/yuki_1145.test.cpp
+- /verify/test/math/Sum_of_Powers_Iota.test.cpp
+- /verify/test/math/Sum_of_Powers_Iota.test.cpp.html
+title: test/math/Sum_of_Powers_Iota.test.cpp
 ---

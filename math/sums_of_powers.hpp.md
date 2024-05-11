@@ -11,13 +11,16 @@ data:
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1145.test.cpp
+    title: test/yuki/yuki_1145.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps/sums_of_powers.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n\
+  bundledCode: "#line 2 \"math/sums_of_powers.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n\
     #include <algorithm>\n#include <cassert>\n#include <optional>\n#include <vector>\n\
     \n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include\
     \ <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T\
@@ -118,39 +121,63 @@ data:
     \        auto f = deque.front();\n        deque.pop_front();\n        auto g =\
     \ deque.front();\n        deque.pop_front();\n        deque.push_back(convolution(f,\
     \ g));\n    }\n    return deque.front();\n}\n\n}  // namespace ebi\n#line 6 \"\
-    fps/sums_of_powers.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n      \
-    \    std::vector<mint> (*convolution)(const std::vector<mint> &,\n           \
-    \                                const std::vector<mint> &)>\nFormalPowerSeries<mint,\
-    \ convolution> sums_of_powers(const std::vector<int> &a,\n                   \
-    \                                 int d) {\n    using FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n    int n = a.size();\n    std::vector fs(n, std::vector<mint>(2,\
-    \ 1));\n    for (int i = 0; i < n; i++) {\n        fs[i][1] = -a[i];\n    }\n\
-    \    FPS g = product_of_fps<mint, convolution>(fs);\n    return (-g.log(d + 1).differential()\
-    \ << 1) + n;\n}\n\n}  // namespace ebi\n"
+    math/sums_of_powers.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n     \
+    \     std::vector<mint> (*convolution)(const std::vector<mint> &,\n          \
+    \                                 const std::vector<mint> &)>\nstd::vector<mint>\
+    \ sums_of_powers(const std::vector<int> &a,\n                                \
+    \                    int d) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n\
+    \    int n = a.size();\n    std::vector fs(n, std::vector<mint>(2, 1));\n    for\
+    \ (int i = 0; i < n; i++) {\n        fs[i][1] = -a[i];\n    }\n    FPS g = product_of_fps<mint,\
+    \ convolution>(fs);\n    return (-g.log(d + 1).differential() << 1) + n;\n}\n\n\
+    }  // namespace ebi\n"
   code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n#include \"../fps/product_of_fps.hpp\"\
     \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n\
     \          std::vector<mint> (*convolution)(const std::vector<mint> &,\n     \
-    \                                      const std::vector<mint> &)>\nFormalPowerSeries<mint,\
-    \ convolution> sums_of_powers(const std::vector<int> &a,\n                   \
-    \                                 int d) {\n    using FPS = FormalPowerSeries<mint,\
-    \ convolution>;\n    int n = a.size();\n    std::vector fs(n, std::vector<mint>(2,\
-    \ 1));\n    for (int i = 0; i < n; i++) {\n        fs[i][1] = -a[i];\n    }\n\
-    \    FPS g = product_of_fps<mint, convolution>(fs);\n    return (-g.log(d + 1).differential()\
-    \ << 1) + n;\n}\n\n}  // namespace ebi"
+    \                                      const std::vector<mint> &)>\nstd::vector<mint>\
+    \ sums_of_powers(const std::vector<int> &a,\n                                \
+    \                    int d) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n\
+    \    int n = a.size();\n    std::vector fs(n, std::vector<mint>(2, 1));\n    for\
+    \ (int i = 0; i < n; i++) {\n        fs[i][1] = -a[i];\n    }\n    FPS g = product_of_fps<mint,\
+    \ convolution>(fs);\n    return (-g.log(d + 1).differential() << 1) + n;\n}\n\n\
+    }  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
   - modint/base.hpp
   - fps/product_of_fps.hpp
   isVerificationFile: false
-  path: fps/sums_of_powers.hpp
+  path: math/sums_of_powers.hpp
   requiredBy: []
-  timestamp: '2024-03-12 18:21:26+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
-documentation_of: fps/sums_of_powers.hpp
+  timestamp: '2024-05-11 16:30:28+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yuki/yuki_1145.test.cpp
+documentation_of: math/sums_of_powers.hpp
 layout: document
-redirect_from:
-- /library/fps/sums_of_powers.hpp
-- /library/fps/sums_of_powers.hpp.html
-title: fps/sums_of_powers.hpp
+title: "$\\sum_i (\\sum_n A_n^i)$ \u306E $i = 0, \\dots, k$ \u306E\u5217\u6319"
 ---
+
+## 説明
+
+$A_1, \dots, A_N$ が与えられたとき、 $\sum_i (\sum_n A_n^i)$ を $i = d$ まで列挙する。 $O(N(\log N)^2 + D\log D)$
+
+求める形式的べき級数は
+
+$$\sum_i (\sum_n A_n^i) x^i = \sum_n \frac{1}{1-A_nx}$$
+
+である。定数項は $len(A)$ であるので、非定数項を求められればよい。
+
+$$\sum_{i = 1}^{\infty} (\sum_n A_n^i) x^i = \sum_n A_nx \frac{1}{1-A_nx}$$
+
+であるので、 $x$ で割った後に積分すると
+
+$$\int \sum_n A_n \frac{1}{1-A_nx} dx = - \sum_n \log(1 - A_nx)$$
+
+となる。ここで
+
+$$- \sum_n \log(1 - A_nx) = - \log \prod_n (1-A_nx)$$
+
+であるので
+
+$$\sum_i (\sum_n A_n^i) x^i = len(A) + x(-\log \prod_n (1-A_nx))^{\prime}$$
+
+となる。計算量は多項式の総積が $O(N(\log N)^2)$ 、 形式的べき級数の $\log$ が $O(D\log D)$ 、形式的べき級数の微分が $O(D)$ より $O(N(\log N)^2 + D\log D)$ となる。

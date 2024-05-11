@@ -33,6 +33,9 @@ data:
     path: math/linear_sieve.hpp
     title: Linear Sieve
   - icon: ':heavy_check_mark:'
+    path: math/sum_of_powers_iota.hpp
+    title: math/sum_of_powers_iota.hpp
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
   - icon: ':heavy_check_mark:'
@@ -156,6 +159,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stern-Brocot_Tree.test.cpp
     title: test/math/Stern-Brocot_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Powers_Iota.test.cpp
+    title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
@@ -337,6 +343,7 @@ data:
   - template/template.hpp
   - template/utility.hpp
   - math/inversion_number.hpp
+  - math/sum_of_powers_iota.hpp
   - math/DirichletSeries.hpp
   - math/linear_sieve.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
@@ -393,6 +400,7 @@ data:
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Inversion_Number.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Factorial.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp

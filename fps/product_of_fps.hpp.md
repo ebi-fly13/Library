@@ -5,10 +5,19 @@ data:
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: fps/sums_of_powers.hpp
-    title: $\sum_i (\sum_n A_n^i) x^i$
+    title: fps/sums_of_powers.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/sums_of_powers.hpp
+    title: "$\\sum_i (\\sum_n A_n^i)$ \u306E $i = 0, \\dots, k$ \u306E\u5217\u6319"
+  - icon: ':heavy_check_mark:'
+    path: math/sums_of_powers_iota.hpp
+    title: math/sums_of_powers_iota.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Powers_Iota.test.cpp
+    title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
@@ -52,10 +61,13 @@ data:
   path: fps/product_of_fps.hpp
   requiredBy:
   - fps/sums_of_powers.hpp
+  - math/sums_of_powers.hpp
+  - math/sums_of_powers_iota.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1145.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
 documentation_of: fps/product_of_fps.hpp
 layout: document

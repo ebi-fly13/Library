@@ -44,9 +44,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: fps/sums_of_powers.hpp
-    title: $\sum_i (\sum_n A_n^i) x^i$
+    title: fps/sums_of_powers.hpp
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
@@ -80,6 +80,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
+  - icon: ':heavy_check_mark:'
+    path: math/sum_of_powers_iota.hpp
+    title: math/sum_of_powers_iota.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/sums_of_powers.hpp
+    title: "$\\sum_i (\\sum_n A_n^i)$ \u306E $i = 0, \\dots, k$ \u306E\u5217\u6319"
+  - icon: ':heavy_check_mark:'
+    path: math/sums_of_powers_iota.hpp
+    title: math/sums_of_powers_iota.hpp
   - icon: ':heavy_check_mark:'
     path: matrix/det_arbitrary_mod.hpp
     title: matrix/det_arbitrary_mod.hpp
@@ -201,6 +210,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Powers_Iota.test.cpp
+    title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
@@ -374,10 +386,13 @@ data:
   - math/stirling_number_2nd.hpp
   - math/factorial_mod_998.hpp
   - math/catalan_convolution.hpp
+  - math/sums_of_powers.hpp
   - math/mod_sqrt.hpp
+  - math/sum_of_powers_iota.hpp
   - math/catalan_number.hpp
   - math/mod_inv.hpp
   - math/stirling_number_1st.hpp
+  - math/sums_of_powers_iota.hpp
   - utility/hash.hpp
   - tree/rooted_tree_hash.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
@@ -423,6 +438,7 @@ data:
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp
   - test/math/Pow.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/sharp_p_subset_sum.test.cpp

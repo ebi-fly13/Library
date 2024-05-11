@@ -11,7 +11,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
+  - icon: ':heavy_check_mark:'
+    path: math/sum_of_powers_iota.hpp
+    title: math/sum_of_powers_iota.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Powers_Iota.test.cpp
+    title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
@@ -73,10 +79,11 @@ data:
     \ i = 2; i < sz; i++) {\r\n            if (sieve[i] != i) continue;\r\n      \
     \      for (int j = 1; j * i < sz; j++) {\r\n                f[j] -= f[j * i];\r\
     \n            }\r\n        }\r\n        return f;\r\n    }\r\n\r\n    template\
-    \ <class modint> std::vector<modint> pow_table(int k) {\r\n        std::vector<modint>\
-    \ table(n + 1, 1);\r\n        table[0] = 0;\r\n        for (int i = 2; i <= n;\
-    \ i++) {\r\n            if (sieve[i] == i) {\r\n                table[i] = modint(i).pow(k);\r\
-    \n                continue;\r\n            }\r\n            table[i] = table[sieve[i]]\
+    \ <class modint> std::vector<modint> pow_table(int m, int k) {\r\n        assert(m\
+    \ <= n && k >= 0);\r\n        std::vector<modint> table(m + 1, 1);\r\n       \
+    \ table[0] = (k == 0);\r\n        for (int i = 2; i <= m; i++) {\r\n         \
+    \   if (sieve[i] == i) {\r\n                table[i] = modint(i).pow(k);\r\n \
+    \               continue;\r\n            }\r\n            table[i] = table[sieve[i]]\
     \ * table[i / sieve[i]];\r\n        }\r\n        return table;\r\n    }\r\n\r\n\
     \    template <class modint> std::vector<modint> inv_table() {\r\n        return\
     \ pow_table(modint::mod() - 2);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\r\n"
@@ -122,10 +129,11 @@ data:
     \ i = 2; i < sz; i++) {\r\n            if (sieve[i] != i) continue;\r\n      \
     \      for (int j = 1; j * i < sz; j++) {\r\n                f[j] -= f[j * i];\r\
     \n            }\r\n        }\r\n        return f;\r\n    }\r\n\r\n    template\
-    \ <class modint> std::vector<modint> pow_table(int k) {\r\n        std::vector<modint>\
-    \ table(n + 1, 1);\r\n        table[0] = 0;\r\n        for (int i = 2; i <= n;\
-    \ i++) {\r\n            if (sieve[i] == i) {\r\n                table[i] = modint(i).pow(k);\r\
-    \n                continue;\r\n            }\r\n            table[i] = table[sieve[i]]\
+    \ <class modint> std::vector<modint> pow_table(int m, int k) {\r\n        assert(m\
+    \ <= n && k >= 0);\r\n        std::vector<modint> table(m + 1, 1);\r\n       \
+    \ table[0] = (k == 0);\r\n        for (int i = 2; i <= m; i++) {\r\n         \
+    \   if (sieve[i] == i) {\r\n                table[i] = modint(i).pow(k);\r\n \
+    \               continue;\r\n            }\r\n            table[i] = table[sieve[i]]\
     \ * table[i / sieve[i]];\r\n        }\r\n        return table;\r\n    }\r\n\r\n\
     \    template <class modint> std::vector<modint> inv_table() {\r\n        return\
     \ pow_table(modint::mod() - 2);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\r\n"
@@ -135,11 +143,13 @@ data:
   path: math/linear_sieve.hpp
   requiredBy:
   - convolution/dirichlet_convolution.hpp
+  - math/sum_of_powers_iota.hpp
   - math/DirichletSeries.hpp
-  timestamp: '2023-12-28 15:52:36+09:00'
+  timestamp: '2024-05-11 16:30:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_2747.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: math/linear_sieve.hpp
 layout: document
@@ -153,6 +163,10 @@ title: Linear Sieve
 ### prime_table()
 
 $[1, N]$ に含まれる素数を列挙する。 $O(N)$
+
+### prime_power_table(int m)
+
+$i \in [1, M]$ について、 $i$ の最小素因数を $p$ と $p^k \mid i$ となる最大の $p^k$ を列挙する。 $O(M)$
 
 ### factorize(int n)
 
@@ -170,9 +184,9 @@ $f$ を約数に関してゼータ変換（Multiple）する。 $O(N\log \log N)
 
 $F$ を約数に関してメビウス変換（Multiple）する。 $O(N\log \log N)$
 
-### pow_table(int k)
+### pow_table(int m, int k)
 
-$[1, N]$ に含まれる $i$ に対して $i^k$ を計算する。 $O(N \frac{\log k}{\log N})$
+$[1, M]$ に含まれる $i$ に対して $i^k$ を計算する。 $O(M \frac{\log k}{\log M})$
 
 ### inv_table()
 
