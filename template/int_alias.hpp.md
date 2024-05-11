@@ -34,7 +34,7 @@ data:
     title: Linear Sieve
   - icon: ':heavy_check_mark:'
     path: math/sum_of_powers_iota.hpp
-    title: math/sum_of_powers_iota.hpp
+    title: $\sum_{i = 0}^{n-1} i^k$
   - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp

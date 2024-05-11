@@ -153,7 +153,7 @@ data:
   - test/yuki/yuki_1145.test.cpp
 documentation_of: math/sums_of_powers.hpp
 layout: document
-title: "$\\sum_i (\\sum_n A_n^i)$ \u306E $i = 0, \\dots, k$ \u306E\u5217\u6319"
+title: "$\\sum_n A_n^i$ \u306E $i = 0, 1,\\dots, k$ \u306E\u5217\u6319"
 ---
 
 ## 説明

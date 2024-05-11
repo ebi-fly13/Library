@@ -82,13 +82,13 @@ data:
     title: Stirling Numbers of the Second Kind
   - icon: ':heavy_check_mark:'
     path: math/sum_of_powers_iota.hpp
-    title: math/sum_of_powers_iota.hpp
+    title: $\sum_{i = 0}^{n-1} i^k$
   - icon: ':heavy_check_mark:'
     path: math/sums_of_powers.hpp
-    title: "$\\sum_i (\\sum_n A_n^i)$ \u306E $i = 0, \\dots, k$ \u306E\u5217\u6319"
+    title: "$\\sum_n A_n^i$ \u306E $i = 0, 1,\\dots, k$ \u306E\u5217\u6319"
   - icon: ':heavy_check_mark:'
     path: math/sums_of_powers_iota.hpp
-    title: math/sums_of_powers_iota.hpp
+    title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
   - icon: ':heavy_check_mark:'
     path: matrix/det_arbitrary_mod.hpp
     title: matrix/det_arbitrary_mod.hpp

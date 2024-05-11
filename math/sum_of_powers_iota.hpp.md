@@ -131,8 +131,9 @@ data:
   - test/math/Sum_of_Powers_Iota.test.cpp
 documentation_of: math/sum_of_powers_iota.hpp
 layout: document
-redirect_from:
-- /library/math/sum_of_powers_iota.hpp
-- /library/math/sum_of_powers_iota.hpp.html
-title: math/sum_of_powers_iota.hpp
+title: $\sum_{i = 0}^{n-1} i^k$
 ---
+
+## 説明
+
+$\sum_{i = 0}^{n-1} i ^ k$ を $O(k)$ で求める。

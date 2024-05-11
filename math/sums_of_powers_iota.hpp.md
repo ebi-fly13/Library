@@ -154,8 +154,9 @@ data:
   - test/math/Sum_of_Powers_Iota.test.cpp
 documentation_of: math/sums_of_powers_iota.hpp
 layout: document
-redirect_from:
-- /library/math/sums_of_powers_iota.hpp
-- /library/math/sums_of_powers_iota.hpp.html
-title: math/sums_of_powers_iota.hpp
+title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
 ---
+
+## 説明
+
+$\sum_{i = 0}^{n-1} i ^ k$ を $k =0,1,\dots,K$ について列挙する。 $O(K\log{K})$

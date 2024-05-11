@@ -13,7 +13,7 @@ data:
     title: Dirichlet Series
   - icon: ':heavy_check_mark:'
     path: math/sum_of_powers_iota.hpp
-    title: math/sum_of_powers_iota.hpp
+    title: $\sum_{i = 0}^{n-1} i^k$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp

@@ -27,10 +27,10 @@ data:
     title: Linear Sieve
   - icon: ':heavy_check_mark:'
     path: math/sum_of_powers_iota.hpp
-    title: math/sum_of_powers_iota.hpp
+    title: $\sum_{i = 0}^{n-1} i^k$
   - icon: ':heavy_check_mark:'
     path: math/sums_of_powers_iota.hpp
-    title: math/sums_of_powers_iota.hpp
+    title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
   - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
