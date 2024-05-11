@@ -1,5 +1,5 @@
 ---
-title: $\sum_i (\sum_n A_n^i)$ の $i = 0, \dots, k$ の列挙
+title: $\sum_n A_n^i$ の $i = 0, 1,\dots, k$ の列挙
 documentation_of: //math/sums_of_powers.hpp
 ---
 
