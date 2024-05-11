@@ -11,6 +11,10 @@ documentation_of: //math/linear_sieve.hpp
 
 $[1, N]$ に含まれる素数を列挙する。 $O(N)$
 
+### prime_power_table(int m)
+
+$i \in [1, M]$ について、 $i$ の最小素因数を $p$ と $p^k \mid i$ となる最大の $p^k$ を列挙する。 $O(M)$
+
 ### factorize(int n)
 
 $n$ を素因数分解する。 $O(\log N)$
@@ -27,9 +31,9 @@ $f$ を約数に関してゼータ変換（Multiple）する。 $O(N\log \log N)
 
 $F$ を約数に関してメビウス変換（Multiple）する。 $O(N\log \log N)$
 
-### pow_table(int k)
+### pow_table(int m, int k)
 
-$[1, N]$ に含まれる $i$ に対して $i^k$ を計算する。 $O(N \frac{\log k}{\log N})$
+$[1, M]$ に含まれる $i$ に対して $i^k$ を計算する。 $O(M \frac{\log k}{\log M})$
 
 ### inv_table()
 

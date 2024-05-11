@@ -1,11 +1,11 @@
 ---
-title: $\sum_i (\sum_n A_n^i) x^i$
-documentation_of: //fps/sums_of_powers.hpp
+title: $\sum_i (\sum_n A_n^i)$ の $i = 0, \dots, k$ の列挙
+documentation_of: //math/sums_of_powers.hpp
 ---
 
 ## 説明
 
-$A_1, \dots, A_N$ が与えられたとき、 $\sum_i (\sum_n A_n^i) x^i$ を $i = d$ まで列挙する。 $O(N(\log N)^2 + D\log D)$
+$A_1, \dots, A_N$ が与えられたとき、 $\sum_i (\sum_n A_n^i)$ を $i = d$ まで列挙する。 $O(N(\log N)^2 + D\log D)$
 
 求める形式的べき級数は
 

@@ -114,10 +114,11 @@ struct linear_sieve {
         return f;
     }
 
-    template <class modint> std::vector<modint> pow_table(int k) {
-        std::vector<modint> table(n + 1, 1);
-        table[0] = 0;
-        for (int i = 2; i <= n; i++) {
+    template <class modint> std::vector<modint> pow_table(int m, int k) {
+        assert(m <= n && k >= 0);
+        std::vector<modint> table(m + 1, 1);
+        table[0] = (k == 0);
+        for (int i = 2; i <= m; i++) {
             if (sieve[i] == i) {
                 table[i] = modint(i).pow(k);
                 continue;

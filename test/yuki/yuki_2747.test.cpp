@@ -3,6 +3,7 @@
 #include "../../math/factorial_mod_998.hpp"
 #include "../../math/lagrange_interpolation.hpp"
 #include "../../math/linear_sieve.hpp"
+#include "../../math/sum_of_powers_iota.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
 
@@ -13,16 +14,9 @@ using mint = modint998244353;
 void main_() {
     int n, k;
     std::cin >> n >> k;
-    linear_sieve sieve(k + 5);
-    auto f = [&](int s) -> mint {
-        std::vector<mint> f(s + 2, 0);
-        auto pow_table = sieve.pow_table<mint>(s);
-        rep(i, 1, s + 2) {
-            f[i] = f[i - 1] + pow_table[i];
-        }
-        return lagrange_interpolation(f, n - 1);
-    };
-    mint ans = factorial_mod_998(n - 1) * 2 * (n * f(k) - f(k + 1));
+    mint ans = factorial_mod_998(n - 1) * 2 *
+               (n * sum_of_powers_iota<mint>(n, k) -
+                sum_of_powers_iota<mint>(n, k + 1));
     std::cout << ans << '\n';
 }
 
