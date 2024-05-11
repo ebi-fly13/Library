@@ -235,6 +235,9 @@ data:
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1857.test.cpp
+    title: test/yuki/yuki_1857.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2439.test.cpp
     title: test/yuki/yuki_2439.test.cpp
   - icon: ':heavy_check_mark:'
@@ -357,6 +360,7 @@ data:
   - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_2633.test.cpp
   - test/yuki/yuki_952.test.cpp
+  - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_901_2.test.cpp
   - test/yuki/yuki_2747.test.cpp
   - test/yuki/yuki_1796.test.cpp

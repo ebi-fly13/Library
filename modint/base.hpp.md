@@ -37,13 +37,16 @@ data:
     title: Polynomial Interpolation
   - icon: ':heavy_check_mark:'
     path: fps/product_of_fps.hpp
-    title: $\prod_{i=0}^n f_i$
+    title: $\prod f_i$
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
+  - icon: ':heavy_check_mark:'
+    path: fps/sum_of_rational_fps.hpp
+    title: $\sum \frac{f_i}{g_i}$
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
@@ -325,6 +328,9 @@ data:
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1857.test.cpp
+    title: test/yuki/yuki_1857.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2633.test.cpp
     title: test/yuki/yuki_2633.test.cpp
   - icon: ':heavy_check_mark:'
@@ -369,6 +375,7 @@ data:
   - fps/compositional_inverse_of_fps.hpp
   - fps/product_of_fps.hpp
   - fps/taylor_shift.hpp
+  - fps/sum_of_rational_fps.hpp
   - fps/multipoint_evaluation.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/polynomial_interpolation.hpp
@@ -405,6 +412,7 @@ data:
   - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_2633.test.cpp
+  - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_2747.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1145.test.cpp

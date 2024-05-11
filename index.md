@@ -250,13 +250,16 @@ data:
       title: Polynomial Interpolation
     - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
-      title: $\prod_{i=0}^n f_i$
+      title: $\prod f_i$
     - icon: ':heavy_check_mark:'
       path: fps/product_of_one_minus_xn.hpp
       title: $\prod (1 - x^{a_i}) \mod x^d$
     - icon: ':heavy_check_mark:'
       path: fps/product_of_one_plus_xn.hpp
       title: $\prod (1 + x^{a_i}) \mod x^d$
+    - icon: ':heavy_check_mark:'
+      path: fps/sum_of_rational_fps.hpp
+      title: $\sum \frac{f_i}{g_i}$
     - icon: ':heavy_check_mark:'
       path: fps/taylor_shift.hpp
       title: $f(x + c)$
@@ -1095,6 +1098,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1796.test.cpp
       title: test/yuki/yuki_1796.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_1857.test.cpp
+      title: test/yuki/yuki_1857.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_2439.test.cpp
       title: test/yuki/yuki_2439.test.cpp

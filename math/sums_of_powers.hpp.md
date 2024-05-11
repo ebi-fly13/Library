@@ -6,7 +6,7 @@ data:
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: fps/product_of_fps.hpp
-    title: $\prod_{i=0}^n f_i$
+    title: $\prod f_i$
   - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
@@ -112,24 +112,21 @@ data:
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
     \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/product_of_fps.hpp\"\n\n\
-    #include <deque>\n#line 5 \"fps/product_of_fps.hpp\"\n\n#line 7 \"fps/product_of_fps.hpp\"\
+    #line 4 \"fps/product_of_fps.hpp\"\n\n#line 6 \"fps/product_of_fps.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
+    \ &)>\nstd::vector<mint> product_of_fps(std::vector<std::vector<mint>> fs) {\n\
+    \    if (fs.empty()) return {1};\n    int i = 0;\n    while (i + 1 < (int)fs.size())\
+    \ {\n        fs.emplace_back(convolution(fs[i], fs[i+1]));\n        i += 2;\n\
+    \    }\n    return fs.back();\n}\n\n}  // namespace ebi\n#line 6 \"math/sums_of_powers.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
     \ std::vector<mint> &,\n                                           const std::vector<mint>\
-    \ &)>\nstd::vector<mint> product_of_fps(const std::vector<std::vector<mint>> &fs)\
-    \ {\n    if (fs.empty()) return {1};\n    std::deque<std::vector<mint>> deque;\n\
-    \    for (auto &f : fs) deque.push_back(f);\n    while (deque.size() > 1) {\n\
-    \        auto f = deque.front();\n        deque.pop_front();\n        auto g =\
-    \ deque.front();\n        deque.pop_front();\n        deque.push_back(convolution(f,\
-    \ g));\n    }\n    return deque.front();\n}\n\n}  // namespace ebi\n#line 6 \"\
-    math/sums_of_powers.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n     \
-    \     std::vector<mint> (*convolution)(const std::vector<mint> &,\n          \
-    \                                 const std::vector<mint> &)>\nstd::vector<mint>\
-    \ sums_of_powers(const std::vector<int> &a,\n                                \
-    \                    int d) {\n    using FPS = FormalPowerSeries<mint, convolution>;\n\
-    \    int n = a.size();\n    std::vector fs(n, std::vector<mint>(2, 1));\n    for\
-    \ (int i = 0; i < n; i++) {\n        fs[i][1] = -a[i];\n    }\n    FPS g = product_of_fps<mint,\
-    \ convolution>(fs);\n    return (-g.log(d + 1).differential() << 1) + n;\n}\n\n\
-    }  // namespace ebi\n"
+    \ &)>\nstd::vector<mint> sums_of_powers(const std::vector<int> &a,\n         \
+    \                                           int d) {\n    using FPS = FormalPowerSeries<mint,\
+    \ convolution>;\n    int n = a.size();\n    std::vector fs(n, std::vector<mint>(2,\
+    \ 1));\n    for (int i = 0; i < n; i++) {\n        fs[i][1] = -a[i];\n    }\n\
+    \    FPS g = product_of_fps<mint, convolution>(fs);\n    return (-g.log(d + 1).differential()\
+    \ << 1) + n;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n#include \"../fps/product_of_fps.hpp\"\
     \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint,\n\
     \          std::vector<mint> (*convolution)(const std::vector<mint> &,\n     \
@@ -147,7 +144,7 @@ data:
   isVerificationFile: false
   path: math/sums_of_powers.hpp
   requiredBy: []
-  timestamp: '2024-05-11 16:30:28+09:00'
+  timestamp: '2024-05-11 20:19:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1145.test.cpp

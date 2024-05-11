@@ -6,7 +6,7 @@ data:
     title: NTT Convolution
   - icon: ':heavy_check_mark:'
     path: fps/product_of_fps.hpp
-    title: $\prod_{i=0}^n f_i$
+    title: $\prod f_i$
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
@@ -98,21 +98,19 @@ data:
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"fps/product_of_fps.hpp\"\
-    \n\n#include <deque>\n#line 5 \"fps/product_of_fps.hpp\"\n\n#line 7 \"fps/product_of_fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \n\n#line 4 \"fps/product_of_fps.hpp\"\n\n#line 6 \"fps/product_of_fps.hpp\"\n\
+    \nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
     \ std::vector<mint> &,\n                                           const std::vector<mint>\
-    \ &)>\nstd::vector<mint> product_of_fps(const std::vector<std::vector<mint>> &fs)\
-    \ {\n    if (fs.empty()) return {1};\n    std::deque<std::vector<mint>> deque;\n\
-    \    for (auto &f : fs) deque.push_back(f);\n    while (deque.size() > 1) {\n\
-    \        auto f = deque.front();\n        deque.pop_front();\n        auto g =\
-    \ deque.front();\n        deque.pop_front();\n        deque.push_back(convolution(f,\
-    \ g));\n    }\n    return deque.front();\n}\n\n}  // namespace ebi\n#line 2 \"\
-    modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\
-    \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
-    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
-    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
-    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
+    \ &)>\nstd::vector<mint> product_of_fps(std::vector<std::vector<mint>> fs) {\n\
+    \    if (fs.empty()) return {1};\n    int i = 0;\n    while (i + 1 < (int)fs.size())\
+    \ {\n        fs.emplace_back(convolution(fs[i], fs[i+1]));\n        i += 2;\n\
+    \    }\n    return fs.back();\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
+    \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
+    \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
+    \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
+    \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
+    \    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
     \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
     \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
     \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
@@ -178,7 +176,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 00:17:11+09:00'
+  timestamp: '2024-05-11 20:19:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Product_of_Polynomial_Sequence.test.cpp

@@ -108,6 +108,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1857.test.cpp
+    title: test/yuki/yuki_1857.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -252,6 +255,7 @@ data:
   - test/convolution/Convolution.test.cpp
   - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/yuki/yuki_1302.test.cpp
+  - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/math/Catalan_Convolution.test.cpp
