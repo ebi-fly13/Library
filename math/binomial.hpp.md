@@ -17,6 +17,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
+  - icon: ':heavy_check_mark:'
+    path: math/sum_of_exp_times_poly.hpp
+    title: $\sum_{i = 0}^{n-1} a^i f(i)$
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
@@ -33,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+    title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
@@ -118,6 +124,7 @@ data:
   requiredBy:
   - fps/taylor_shift.hpp
   - math/catalan_convolution.hpp
+  - math/sum_of_exp_times_poly.hpp
   - math/catalan_number.hpp
   - math/stirling_number_1st.hpp
   timestamp: '2024-05-09 17:04:21+09:00'
@@ -128,6 +135,7 @@ data:
   - test/yuki/yuki_1796.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp

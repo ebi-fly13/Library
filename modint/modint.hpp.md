@@ -94,6 +94,9 @@ data:
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+    title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
@@ -354,6 +357,7 @@ data:
   - test/matrix/Rank_of_Matrix.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Berunoulli_Number.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp

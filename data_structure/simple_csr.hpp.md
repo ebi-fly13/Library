@@ -217,6 +217,9 @@ data:
     path: test/math/Stern-Brocot_Tree.test.cpp
     title: test/math/Stern-Brocot_Tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+    title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
@@ -474,6 +477,7 @@ data:
   - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp

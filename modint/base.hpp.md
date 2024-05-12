@@ -81,6 +81,9 @@ data:
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
   - icon: ':heavy_check_mark:'
+    path: math/sum_of_exp_times_poly.hpp
+    title: $\sum_{i = 0}^{n-1} a^i f(i)$
+  - icon: ':heavy_check_mark:'
     path: math/sum_of_powers_iota.hpp
     title: $\sum_{i = 0}^{n-1} i^k$
   - icon: ':heavy_check_mark:'
@@ -210,6 +213,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+    title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
@@ -392,6 +398,7 @@ data:
   - math/sums_of_powers.hpp
   - math/mod_sqrt.hpp
   - math/sum_of_powers_iota.hpp
+  - math/sum_of_exp_times_poly.hpp
   - math/catalan_number.hpp
   - math/mod_inv.hpp
   - math/stirling_number_1st.hpp
@@ -438,6 +445,7 @@ data:
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Berunoulli_Number.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Partition_Function_Pentagonal.test.cpp

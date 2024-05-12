@@ -12,9 +12,15 @@ data:
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
   - icon: ':heavy_check_mark:'
+    path: math/sum_of_exp_times_poly.hpp
+    title: $\sum_{i = 0}^{n-1} a^i f(i)$
+  - icon: ':heavy_check_mark:'
     path: math/sum_of_powers_iota.hpp
     title: $\sum_{i = 0}^{n-1} i^k$
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+    title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
@@ -144,11 +150,13 @@ data:
   requiredBy:
   - convolution/dirichlet_convolution.hpp
   - math/sum_of_powers_iota.hpp
+  - math/sum_of_exp_times_poly.hpp
   - math/DirichletSeries.hpp
   timestamp: '2024-05-11 16:30:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_2747.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: math/linear_sieve.hpp

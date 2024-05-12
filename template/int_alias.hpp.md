@@ -33,6 +33,9 @@ data:
     path: math/linear_sieve.hpp
     title: Linear Sieve
   - icon: ':heavy_check_mark:'
+    path: math/sum_of_exp_times_poly.hpp
+    title: $\sum_{i = 0}^{n-1} a^i f(i)$
+  - icon: ':heavy_check_mark:'
     path: math/sum_of_powers_iota.hpp
     title: $\sum_{i = 0}^{n-1} i^k$
   - icon: ':heavy_check_mark:'
@@ -159,6 +162,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stern-Brocot_Tree.test.cpp
     title: test/math/Stern-Brocot_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+    title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
@@ -347,6 +353,7 @@ data:
   - template/utility.hpp
   - math/inversion_number.hpp
   - math/sum_of_powers_iota.hpp
+  - math/sum_of_exp_times_poly.hpp
   - math/DirichletSeries.hpp
   - math/linear_sieve.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
@@ -401,6 +408,7 @@ data:
   - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Inversion_Number.test.cpp
