@@ -44,18 +44,19 @@ data:
   bundledCode: "#line 1 \"test/math/Binomial_Coefficient_Prime_Mod.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\n\
     \n#line 2 \"math/binomial.hpp\"\n\n#include <bit>\n#include <cassert>\n#include\
-    \ <iostream>\n#include <ranges>\n#include <vector>\n\n#line 2 \"modint/base.hpp\"\
-    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
-    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
-    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 10 \"\
-    math/binomial.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> struct Binomial\
-    \ {\n  private:\n    static void extend(int len = -1) {\n        int sz = (int)fact.size();\n\
-    \        if (len < 0)\n            len = 2 * sz;\n        else if (len <= sz)\n\
-    \            return;\n        else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
+    \ <cstdint>\n#include <iostream>\n#include <ranges>\n#include <vector>\n\n#line\
+    \ 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\
+    #include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint =\
+    \ requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n\
+    \    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate\
+    \ <Modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 11 \"math/binomial.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint> struct Binomial {\n  private:\n    static void\
+    \ extend(int len = -1) {\n        int sz = (int)fact.size();\n        if (len\
+    \ < 0)\n            len = 2 * sz;\n        else if (len <= sz)\n            return;\n\
+    \        else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
     \        len = std::min(len, mint::mod());\n        assert(sz <= len);\n     \
     \   fact.resize(len);\n        inv_fact.resize(len);\n        for (int i : std::views::iota(sz,\
     \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
@@ -248,7 +249,7 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2024-05-09 17:04:21+09:00'
+  timestamp: '2024-05-12 18:17:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp

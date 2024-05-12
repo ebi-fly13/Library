@@ -115,34 +115,34 @@ data:
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
     \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\
-    \n\n#line 2 \"math/binomial.hpp\"\n\n#line 6 \"math/binomial.hpp\"\n#include <ranges>\n\
-    #line 8 \"math/binomial.hpp\"\n\n#line 10 \"math/binomial.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <Modint mint> struct Binomial {\n  private:\n    static void extend(int\
-    \ len = -1) {\n        int sz = (int)fact.size();\n        if (len < 0)\n    \
-    \        len = 2 * sz;\n        else if (len <= sz)\n            return;\n   \
-    \     else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
-    \        len = std::min(len, mint::mod());\n        assert(sz <= len);\n     \
-    \   fact.resize(len);\n        inv_fact.resize(len);\n        for (int i : std::views::iota(sz,\
-    \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
-    \ - 1] = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len)\
-    \ | std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n \
-    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    Binomial(int n)\
-    \ {\n        extend(n + 1);\n    }\n\n    static mint f(int n) {\n        if (n\
-    \ >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n        }\n\
-    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        if\
-    \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
-    \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
-    \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
-    \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
-    \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
-    \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
-    \    }\n\n    static mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n\
-    \    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n    }\n\n\
-    \  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate <Modint\
-    \ mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2, 1);\n\n\
-    template <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
-    \ 1);\n\n}  // namespace ebi\n#line 6 \"fps/taylor_shift.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \n\n#line 2 \"math/binomial.hpp\"\n\n#line 5 \"math/binomial.hpp\"\n#include <cstdint>\n\
+    #line 7 \"math/binomial.hpp\"\n#include <ranges>\n#line 9 \"math/binomial.hpp\"\
+    \n\n#line 11 \"math/binomial.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\
+    \ struct Binomial {\n  private:\n    static void extend(int len = -1) {\n    \
+    \    int sz = (int)fact.size();\n        if (len < 0)\n            len = 2 * sz;\n\
+    \        else if (len <= sz)\n            return;\n        else\n            len\
+    \ = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n        len = std::min(len,\
+    \ mint::mod());\n        assert(sz <= len);\n        fact.resize(len);\n     \
+    \   inv_fact.resize(len);\n        for (int i : std::views::iota(sz, len)) {\n\
+    \            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len - 1]\
+    \ = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len) | std::views::reverse)\
+    \ {\n            inv_fact[i - 1] = inv_fact[i] * i;\n        }\n    }\n\n  public:\n\
+    \    Binomial() = default;\n\n    Binomial(int n) {\n        extend(n + 1);\n\
+    \    }\n\n    static mint f(int n) {\n        if (n >= (int)fact.size()) [[unlikely]]\
+    \ {\n            extend(n + 1);\n        }\n        return fact[n];\n    }\n\n\
+    \    static mint inv_f(int n) {\n        if (n >= (int)fact.size()) [[unlikely]]\
+    \ {\n            extend(n + 1);\n        }\n        return inv_fact[n];\n    }\n\
+    \n    static mint c(int n, int r) {\n        if (r < 0 || n < r) return 0;\n \
+    \       return f(n) * inv_f(r) * inv_f(n - r);\n    }\n\n    static mint neg_c(int\
+    \ k, int d) {\n        assert(d > 0);\n        return c(k + d - 1, d - 1);\n \
+    \   }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n < r) return\
+    \ 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint inv(int n)\
+    \ {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void reserve(int\
+    \ n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
+    \ fact, inv_fact;\n};\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::fact\
+    \ = std::vector<mint>(2, 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
+    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 6 \"fps/taylor_shift.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
     \ std::vector<mint> &,\n                                           const std::vector<mint>\
     \ &)>\nFormalPowerSeries<mint, convolution> taylor_shift(\n    FormalPowerSeries<mint,\
     \ convolution> f, mint a) {\n    int d = f.deg();\n    Binomial<mint>::reserve(d);\n\
@@ -180,7 +180,7 @@ data:
   isVerificationFile: false
   path: math/stirling_number_1st.hpp
   requiredBy: []
-  timestamp: '2024-05-09 17:04:21+09:00'
+  timestamp: '2024-05-12 18:17:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
