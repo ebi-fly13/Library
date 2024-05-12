@@ -2,6 +2,7 @@
 
 #include <bit>
 #include <cassert>
+#include <cstdint>
 #include <iostream>
 #include <ranges>
 #include <vector>
