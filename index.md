@@ -934,6 +934,9 @@ data:
       path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
       title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+      title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Powers_Iota.test.cpp
       title: test/math/Sum_of_Powers_Iota.test.cpp
     - icon: ':heavy_check_mark:'

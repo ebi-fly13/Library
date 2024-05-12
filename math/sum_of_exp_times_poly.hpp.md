@@ -21,23 +21,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+    title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/sum_of_exp_times_poly.hpp\"\n\n#include <vector>\n\n\
-    #line 2 \"math/binomial.hpp\"\n\n#include <bit>\n#include <cassert>\n#include\
-    \ <iostream>\n#include <ranges>\n#line 8 \"math/binomial.hpp\"\n\n#line 2 \"modint/base.hpp\"\
-    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
-    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
-    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 10 \"\
-    math/binomial.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> struct Binomial\
-    \ {\n  private:\n    static void extend(int len = -1) {\n        int sz = (int)fact.size();\n\
+  bundledCode: "#line 2 \"math/sum_of_exp_times_poly.hpp\"\n\n#include <cassert>\n\
+    #include <vector>\n\n#line 2 \"math/binomial.hpp\"\n\n#include <bit>\n#line 5\
+    \ \"math/binomial.hpp\"\n#include <iostream>\n#include <ranges>\n#line 8 \"math/binomial.hpp\"\
+    \n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
+    \n#include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint\
+    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n   \
+    \ a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
+    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
+    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
+    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
+    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 10 \"math/binomial.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint> struct Binomial {\n  private:\n\
+    \    static void extend(int len = -1) {\n        int sz = (int)fact.size();\n\
     \        if (len < 0)\n            len = 2 * sz;\n        else if (len <= sz)\n\
     \            return;\n        else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
     \        len = std::min(len, mint::mod());\n        assert(sz <= len);\n     \
@@ -130,7 +134,7 @@ data:
     \ * table[i / sieve[i]];\r\n        }\r\n        return table;\r\n    }\r\n\r\n\
     \    template <class modint> std::vector<modint> inv_table() {\r\n        return\
     \ pow_table(modint::mod() - 2);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\r\n\
-    #line 10 \"math/sum_of_exp_times_poly.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
+    #line 11 \"math/sum_of_exp_times_poly.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
     \ mint>\nmint sum_of_exp_times_poly(const std::vector<mint> &f, mint a, i64 n)\
     \ {\n    if (n == 0) return 0;\n    if (a == 0) return f[0];\n    if (a == 1)\
     \ {\n        std::vector<mint> g(f.size() + 1, 0);\n        for (int i = 1; i\
@@ -146,12 +150,23 @@ data:
     \n    {\n        mint inv_a_pow = 1, inv_a = a.inv();\n        for (int i = 0;\
     \ i < k + 1; i++) {\n            g[i] = (-c + g[i]) * inv_a_pow;\n           \
     \ inv_a_pow *= inv_a;\n        }\n    }\n    mint tn = lagrange_interpolation(g,\
-    \ n - 1);\n    return tn * a.pow(n - 1) + c;\n}\n\ntemplate <Modint mint> mint\
-    \ sum_of_exp2(mint r, int d, i64 n) {\n    linear_sieve sieve(d);\n    auto f\
-    \ = sieve.pow_table<mint>(d, d);\n    return sum_of_exp_times_poly(f, r, n);\n\
-    }\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <vector>\n\n#include \"../math/binomial.hpp\"\n\
-    #include \"../math/lagrange_interpolation.hpp\"\n#include \"../math/linear_sieve.hpp\"\
+    \ n - 1);\n    return tn * a.pow(n - 1) + c;\n}\n\ntemplate <Modint mint>\nmint\
+    \ sum_of_exp_times_poly_limit(const std::vector<mint> &f, mint a) {\n    assert(a\
+    \ != 1);\n    if (a == 0) return f[0];\n    int k = (int)f.size() - 1;\n    Binomial<mint>\
+    \ binom(k + 1);\n    std::vector<mint> g(k + 1, 0);\n    {\n        mint pow_a\
+    \ = 1;\n        for (int i = 0; i < k + 1; i++) {\n            g[i] = f[i] * pow_a;\n\
+    \            pow_a *= a;\n        }\n        for (int i = 0; i < k; i++) {\n \
+    \           g[i + 1] += g[i];\n        }\n    }\n    mint c = 0;\n    {\n    \
+    \    mint pow_neg_a = 1;\n        for (int i = 0; i < k + 1; i++) {\n        \
+    \    c += binom.c(k + 1, i) * g[k - i] * pow_neg_a;\n            pow_neg_a *=\
+    \ -a;\n        }\n    }\n    c /= (1 - a).pow(k + 1);\n    return c;\n}\n\ntemplate\
+    \ <Modint mint> mint sum_of_exp2(mint r, int d, i64 n) {\n    linear_sieve sieve(d);\n\
+    \    auto f = sieve.pow_table<mint>(d, d);\n    return sum_of_exp_times_poly(f,\
+    \ r, n);\n}\n\ntemplate <Modint mint> mint sum_of_exp2_limit(mint r, int d) {\n\
+    \    linear_sieve sieve(d);\n    auto f = sieve.pow_table<mint>(d, d);\n    return\
+    \ sum_of_exp_times_poly_limit(f, r);\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../math/binomial.hpp\"\
+    \n#include \"../math/lagrange_interpolation.hpp\"\n#include \"../math/linear_sieve.hpp\"\
     \n#include \"../modint/base.hpp\"\n#include \"../template/int_alias.hpp\"\n\n\
     namespace ebi {\n\ntemplate <Modint mint>\nmint sum_of_exp_times_poly(const std::vector<mint>\
     \ &f, mint a, i64 n) {\n    if (n == 0) return 0;\n    if (a == 0) return f[0];\n\
@@ -168,10 +183,21 @@ data:
     \n    {\n        mint inv_a_pow = 1, inv_a = a.inv();\n        for (int i = 0;\
     \ i < k + 1; i++) {\n            g[i] = (-c + g[i]) * inv_a_pow;\n           \
     \ inv_a_pow *= inv_a;\n        }\n    }\n    mint tn = lagrange_interpolation(g,\
-    \ n - 1);\n    return tn * a.pow(n - 1) + c;\n}\n\ntemplate <Modint mint> mint\
-    \ sum_of_exp2(mint r, int d, i64 n) {\n    linear_sieve sieve(d);\n    auto f\
-    \ = sieve.pow_table<mint>(d, d);\n    return sum_of_exp_times_poly(f, r, n);\n\
-    }\n\n}  // namespace ebi"
+    \ n - 1);\n    return tn * a.pow(n - 1) + c;\n}\n\ntemplate <Modint mint>\nmint\
+    \ sum_of_exp_times_poly_limit(const std::vector<mint> &f, mint a) {\n    assert(a\
+    \ != 1);\n    if (a == 0) return f[0];\n    int k = (int)f.size() - 1;\n    Binomial<mint>\
+    \ binom(k + 1);\n    std::vector<mint> g(k + 1, 0);\n    {\n        mint pow_a\
+    \ = 1;\n        for (int i = 0; i < k + 1; i++) {\n            g[i] = f[i] * pow_a;\n\
+    \            pow_a *= a;\n        }\n        for (int i = 0; i < k; i++) {\n \
+    \           g[i + 1] += g[i];\n        }\n    }\n    mint c = 0;\n    {\n    \
+    \    mint pow_neg_a = 1;\n        for (int i = 0; i < k + 1; i++) {\n        \
+    \    c += binom.c(k + 1, i) * g[k - i] * pow_neg_a;\n            pow_neg_a *=\
+    \ -a;\n        }\n    }\n    c /= (1 - a).pow(k + 1);\n    return c;\n}\n\ntemplate\
+    \ <Modint mint> mint sum_of_exp2(mint r, int d, i64 n) {\n    linear_sieve sieve(d);\n\
+    \    auto f = sieve.pow_table<mint>(d, d);\n    return sum_of_exp_times_poly(f,\
+    \ r, n);\n}\n\ntemplate <Modint mint> mint sum_of_exp2_limit(mint r, int d) {\n\
+    \    linear_sieve sieve(d);\n    auto f = sieve.pow_table<mint>(d, d);\n    return\
+    \ sum_of_exp_times_poly_limit(f, r);\n}\n\n}  // namespace ebi"
   dependsOn:
   - math/binomial.hpp
   - modint/base.hpp
@@ -181,10 +207,11 @@ data:
   isVerificationFile: false
   path: math/sum_of_exp_times_poly.hpp
   requiredBy: []
-  timestamp: '2024-05-12 15:07:20+09:00'
+  timestamp: '2024-05-12 15:20:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
 documentation_of: math/sum_of_exp_times_poly.hpp
 layout: document
 title: $\sum_{i = 0}^{n-1} a^i f(i)$
@@ -199,7 +226,15 @@ $\sum_{i = 0}^{n-1} a^i f(i)$ を $O(K + \log{mod})$ で求める。
 
 $K$ 次多項式 $f(n)$ の $f(0), f(1), \dots, f(k)$ と $a, n$ を与えて $\sum_{i = 0}^{n-1} a^i f(i)$ を求める。
 
+### sum_of_exp_times_poly_limit(f, a)
+
+$K$ 次多項式 $f(n)$ の $f(0), f(1), \dots, f(k)$ と $a$ を与えて $\sum_{i = 0}^{\infty} a^i f(i)$ を求める。ここで、 $a$ は $-1 < a < 1$ であるとする（$a \neq 1\pmod p$ である）。
+
 ### sum_of_exp2(r, d, n)
 
 $f(n) = n^k$ について求める。つまり、 $\sum_{i = 0}^{n-1} r^i i^d$ を求める。
+
+### sum_of_exp2_limit(r, d, n)
+
+$f(n) = n^k$ について求める。つまり、 $\sum_{i = 0}^{\infty} r^i i^d$ を求める。
 

@@ -47,11 +47,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial
+    PROBLEM: https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial_limit
     links:
-    - https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial
-  bundledCode: "#line 1 \"test/math/Sum_of_Exponential_Times_Polynomial.test.cpp\"\
-    \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial\"\
+    - https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial_limit
+  bundledCode: "#line 1 \"test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp\"\
+    \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial_limit\"\
     \n\n#line 2 \"math/sum_of_exp_times_poly.hpp\"\n\n#include <cassert>\n#include\
     \ <vector>\n\n#line 2 \"math/binomial.hpp\"\n\n#include <bit>\n#line 5 \"math/binomial.hpp\"\
     \n#include <iostream>\n#include <ranges>\n#line 8 \"math/binomial.hpp\"\n\n#line\
@@ -330,17 +330,17 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 7 \"test/math/Sum_of_Exponential_Times_Polynomial.test.cpp\"\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 7 \"test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    i64\
-    \ r, d, n;\n    std::cin >> r >> d >> n;\n    std::cout << sum_of_exp2<mint>(r,\
-    \ d, n) << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \ r, d;\n    std::cin >> r >> d;\n    std::cout << sum_of_exp2_limit<mint>(r,\
+    \ d) << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
     \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
     \    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial\"\
+  code: "#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial_limit\"\
     \n\n#include \"../../math/sum_of_exp_times_poly.hpp\"\n#include \"../../modint/modint.hpp\"\
     \n#include \"../../template/template.hpp\"\n\nnamespace ebi {\n\nusing mint =\
-    \ modint998244353;\n\nvoid main_() {\n    i64 r, d, n;\n    std::cin >> r >> d\
-    \ >> n;\n    std::cout << sum_of_exp2<mint>(r, d, n) << '\\n';\n}\n\n}  // namespace\
+    \ modint998244353;\n\nvoid main_() {\n    i64 r, d;\n    std::cin >> r >> d;\n\
+    \    std::cout << sum_of_exp2_limit<mint>(r, d) << '\\n';\n}\n\n}  // namespace\
     \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
     \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
@@ -358,15 +358,15 @@ data:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: true
-  path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+  path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   requiredBy: []
   timestamp: '2024-05-12 15:20:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+documentation_of: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
 layout: document
 redirect_from:
-- /verify/test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-- /verify/test/math/Sum_of_Exponential_Times_Polynomial.test.cpp.html
-title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+- /verify/test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+- /verify/test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp.html
+title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
 ---

@@ -106,6 +106,9 @@ data:
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+    title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
@@ -290,6 +293,7 @@ data:
   - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/math/Factorial.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp

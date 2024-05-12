@@ -40,6 +40,9 @@ data:
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+    title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - icon: ':heavy_check_mark:'
@@ -138,6 +141,7 @@ data:
   - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/aoj/aoj_3361.test.cpp
 documentation_of: math/binomial.hpp
