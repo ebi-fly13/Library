@@ -60,4 +60,4 @@ title: Wildcard Pattern Matching
 
 ## 説明
 
-ワイルドカード付きパターンマッチングを行う。 $O((|S|+|T|)\log{(|S| + |T|)})$
+ワイルドカード付きパターンマッチングを行う。 $O((\lvert S \rvert+ \lvert T \rvert)\log{(\lvert S \rvert+ \lvert T \rvert)})$
