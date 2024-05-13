@@ -45,6 +45,9 @@ data:
     path: fps/product_of_one_plus_xn.hpp
     title: $\prod (1 + x^{a_i}) \mod x^d$
   - icon: ':heavy_check_mark:'
+    path: fps/shift_of_sampling_points_of_poly.hpp
+    title: Shift of Sampling Points of Polynomial
+  - icon: ':heavy_check_mark:'
     path: fps/sum_of_rational_fps.hpp
     title: $\sum \frac{f_i}{g_i}$
   - icon: ':heavy_check_mark:'
@@ -298,6 +301,9 @@ data:
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+    title: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -379,6 +385,7 @@ data:
   - modint/montgomery_modint.hpp
   - fps/fps_sparse.hpp
   - fps/product_of_one_minus_xn.hpp
+  - fps/shift_of_sampling_points_of_poly.hpp
   - fps/middle_product.hpp
   - fps/composition_of_fps.hpp
   - fps/compositional_inverse_of_fps.hpp
@@ -475,6 +482,7 @@ data:
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp

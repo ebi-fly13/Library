@@ -256,6 +256,9 @@ data:
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+    title: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
   - icon: ':heavy_check_mark:'
@@ -535,6 +538,7 @@ data:
   - test/math/Factorial.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/aoj/aoj_grl_1_b.test.cpp
   - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_2450.test.cpp

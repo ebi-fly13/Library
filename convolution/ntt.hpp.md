@@ -85,6 +85,9 @@ data:
     path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
     title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+    title: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -278,6 +281,7 @@ data:
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp

@@ -6,6 +6,9 @@ data:
     title: modint/base.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: fps/shift_of_sampling_points_of_poly.hpp
+    title: Shift of Sampling Points of Polynomial
+  - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':heavy_check_mark:'
@@ -45,6 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+    title: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
@@ -126,6 +132,7 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
+  - fps/shift_of_sampling_points_of_poly.hpp
   - fps/taylor_shift.hpp
   - math/catalan_convolution.hpp
   - math/sum_of_exp_times_poly.hpp
@@ -144,6 +151,7 @@ data:
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/aoj/aoj_3361.test.cpp
 documentation_of: math/binomial.hpp
 layout: document

@@ -258,6 +258,9 @@ data:
       path: fps/product_of_one_plus_xn.hpp
       title: $\prod (1 + x^{a_i}) \mod x^d$
     - icon: ':heavy_check_mark:'
+      path: fps/shift_of_sampling_points_of_poly.hpp
+      title: Shift of Sampling Points of Polynomial
+    - icon: ':heavy_check_mark:'
       path: fps/sum_of_rational_fps.hpp
       title: $\sum \frac{f_i}{g_i}$
     - icon: ':heavy_check_mark:'
@@ -1021,6 +1024,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
       title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+      title: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
