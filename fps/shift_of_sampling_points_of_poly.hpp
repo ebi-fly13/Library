@@ -19,7 +19,7 @@ std::vector<mint> shift_of_sampling_points_of_poly(std::vector<mint> f, int c,
         std::vector<mint> g(n);
         for (int i = 0; i < n; i++) {
             f[i] *= binom.inv_f(i);
-            g[i] = (i % 2 == 0 ? 1 : -1) * binom.inv_f(i);
+            g[i] = i % 2 == 0 ? binom.inv_f(i) : -binom.inv_f(i);
         }
         f = convolution(f, g);
         f.resize(n);
