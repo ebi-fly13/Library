@@ -155,20 +155,20 @@ data:
     \ int c,\n                                                   int m) {\n    int\
     \ n = (int)f.size();\n    Binomial<mint> binom(std::max(n, m));\n    {\n     \
     \   std::vector<mint> g(n);\n        for (int i = 0; i < n; i++) {\n         \
-    \   f[i] *= binom.inv_f(i);\n            g[i] = (i % 2 == 0 ? 1 : -1) * binom.inv_f(i);\n\
-    \        }\n        f = convolution(f, g);\n        f.resize(n);\n    }\n    {\n\
-    \        mint cc = 1;\n        std::vector<mint> g(n);\n        for (int i = 0;\
-    \ i < n; i++) {\n            f[i] *= binom.f(i);\n        }\n        for (int\
-    \ i = n - 1; i >= 0; i--) {\n            g[i] = cc * binom.inv_f(n - 1 - i);\n\
-    \            cc *= c - (n - 1 - i);\n        }\n        auto fg = convolution(f,\
-    \ g);\n        for (int i = 0; i < n; i++) {\n            f[i] = fg[n - 1 + i]\
-    \ * binom.inv_f(i);\n        }\n    }\n    {\n        std::vector<mint> g(m);\n\
-    \        for (int i = 0; i < m; i++) {\n            g[i] = binom.inv_f(i);\n \
-    \       }\n        f = convolution(f, g);\n        f.resize(m);\n        for (int\
-    \ i = 0; i < m; i++) {\n            f[i] *= binom.f(i);\n        }\n    }\n  \
-    \  return f;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line\
-    \ 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi\
-    \ {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
+    \   f[i] *= binom.inv_f(i);\n            g[i] = i % 2 == 0 ? binom.inv_f(i) :\
+    \ -binom.inv_f(i);\n        }\n        f = convolution(f, g);\n        f.resize(n);\n\
+    \    }\n    {\n        mint cc = 1;\n        std::vector<mint> g(n);\n       \
+    \ for (int i = 0; i < n; i++) {\n            f[i] *= binom.f(i);\n        }\n\
+    \        for (int i = n - 1; i >= 0; i--) {\n            g[i] = cc * binom.inv_f(n\
+    \ - 1 - i);\n            cc *= c - (n - 1 - i);\n        }\n        auto fg =\
+    \ convolution(f, g);\n        for (int i = 0; i < n; i++) {\n            f[i]\
+    \ = fg[n - 1 + i] * binom.inv_f(i);\n        }\n    }\n    {\n        std::vector<mint>\
+    \ g(m);\n        for (int i = 0; i < m; i++) {\n            g[i] = binom.inv_f(i);\n\
+    \        }\n        f = convolution(f, g);\n        f.resize(m);\n        for\
+    \ (int i = 0; i < m; i++) {\n            f[i] *= binom.f(i);\n        }\n    }\n\
+    \    return f;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n\
+    #line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
     \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
     \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
     \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
@@ -347,7 +347,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   requiredBy: []
-  timestamp: '2024-05-13 23:58:58+09:00'
+  timestamp: '2024-05-14 00:08:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
