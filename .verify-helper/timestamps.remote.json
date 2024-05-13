@@ -147,6 +147,7 @@
 "test/polynomial/Pow_of_Formal_Power_Series.test.cpp": "2023-10-31 00:17:11 +0900",
 "test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp": "2023-10-31 00:16:57 +0900",
 "test/polynomial/Product_of_Polynomial_Sequence.test.cpp": "2024-05-11 20:19:27 +0900",
+"test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp": "2024-05-13 23:58:58 +0900",
 "test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp": "2023-10-31 00:17:11 +0900",
 "test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp": "2023-10-31 00:17:11 +0900",
 "test/set_function/Exp_of_Set_Power_Series.test.cpp": "2023-10-31 00:17:11 +0900",
