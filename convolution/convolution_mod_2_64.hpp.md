@@ -221,9 +221,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Convolution_Mod_2_64.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
 documentation_of: convolution/convolution_mod_2_64.hpp
 layout: document
 title: Convolution $\pmod{2^{64}}$

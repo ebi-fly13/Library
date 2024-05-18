@@ -47,7 +47,12 @@ data:
     \        if (x < itr->second) {\n            assert(itr->first <= x);\n      \
     \      return *itr;\n        } else {\n            return {0, 0};\n        }\n\
     \    }\n\n    std::pair<T, T> lower_bound(T l) const {\n        return *set.lower_bound({l,\
-    \ std::numeric_limits<T>::min()});\n    }\n};\n\n}  // namespace ebi\n"
+    \ std::numeric_limits<T>::min()});\n    }\n\n    std::vector<std::pair<T, T>>\
+    \ all_section() {\n        std::vector<std::pair<T, T>> sec;\n        for (auto\
+    \ p : set) {\n            if (p.first == std::numeric_limits<T>::min() ||\n  \
+    \              p.first == std::numeric_limits<T>::max())\n                continue;\n\
+    \            sec.emplace_back(p);\n        }\n        return sec;\n    }\n};\n\
+    \n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <limits>\n#include <set>\n\n\
     namespace ebi {\n\ntemplate <class T> struct section_set {\n  private:\n    std::set<std::pair<T,\
     \ T>> set;\n\n  public:\n    section_set() {\n        set.insert(\n          \
@@ -84,12 +89,17 @@ data:
     \        if (x < itr->second) {\n            assert(itr->first <= x);\n      \
     \      return *itr;\n        } else {\n            return {0, 0};\n        }\n\
     \    }\n\n    std::pair<T, T> lower_bound(T l) const {\n        return *set.lower_bound({l,\
-    \ std::numeric_limits<T>::min()});\n    }\n};\n\n}  // namespace ebi"
+    \ std::numeric_limits<T>::min()});\n    }\n\n    std::vector<std::pair<T, T>>\
+    \ all_section() {\n        std::vector<std::pair<T, T>> sec;\n        for (auto\
+    \ p : set) {\n            if (p.first == std::numeric_limits<T>::min() ||\n  \
+    \              p.first == std::numeric_limits<T>::max())\n                continue;\n\
+    \            sec.emplace_back(p);\n        }\n        return sec;\n    }\n};\n\
+    \n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/section_set.hpp
   requiredBy: []
-  timestamp: '2024-02-18 14:20:37+09:00'
+  timestamp: '2024-05-18 16:49:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2152.test.cpp

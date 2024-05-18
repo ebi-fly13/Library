@@ -56,15 +56,15 @@ data:
   isVerificationFile: false
   path: fps/product_of_fps.hpp
   requiredBy:
-  - math/sums_of_powers.hpp
   - math/sums_of_powers_iota.hpp
+  - math/sums_of_powers.hpp
   timestamp: '2024-05-11 20:19:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp
-  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
 documentation_of: fps/product_of_fps.hpp
 layout: document
 title: $\prod f_i$

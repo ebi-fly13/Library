@@ -58,10 +58,10 @@ data:
   timestamp: '2023-12-26 02:24:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/aoj/aoj_2444.test.cpp
   - test/data_structure/Range_Parallel_DSU.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/aoj/aoj_2444.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: utility/random_number_generator.hpp
 layout: document

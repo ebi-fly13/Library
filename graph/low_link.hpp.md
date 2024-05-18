@@ -137,8 +137,8 @@ data:
   isVerificationFile: false
   path: graph/low_link.hpp
   requiredBy:
-  - graph/biconnected_components.hpp
   - graph/two_edge_connected_components.hpp
+  - graph/biconnected_components.hpp
   - tree/block_cut_tree.hpp
   timestamp: '2024-03-13 15:52:21+09:00'
   verificationStatus: LIBRARY_ALL_AC

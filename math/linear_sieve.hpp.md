@@ -151,18 +151,18 @@ data:
   isVerificationFile: false
   path: math/linear_sieve.hpp
   requiredBy:
-  - convolution/dirichlet_convolution.hpp
   - math/sum_of_powers_iota.hpp
   - math/sum_of_exp_times_poly.hpp
   - math/DirichletSeries.hpp
+  - convolution/dirichlet_convolution.hpp
   timestamp: '2024-05-11 16:30:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_2747.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
-  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
 documentation_of: math/linear_sieve.hpp
 layout: document
 title: Linear Sieve

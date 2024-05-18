@@ -77,16 +77,16 @@ data:
   isVerificationFile: false
   path: data_structure/dsu.hpp
   requiredBy:
-  - graph/manhattan_mst.hpp
-  - graph/mst.hpp
   - data_structure/range_parallel_dsu.hpp
+  - graph/mst.hpp
+  - graph/manhattan_mst.hpp
   timestamp: '2024-04-24 16:34:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Minimum_Spanning_Tree.test.cpp
-  - test/graph/Manhattan_MST.test.cpp
-  - test/data_structure/Union_Find.test.cpp
   - test/data_structure/Range_Parallel_DSU.test.cpp
+  - test/data_structure/Union_Find.test.cpp
+  - test/graph/Manhattan_MST.test.cpp
+  - test/graph/Minimum_Spanning_Tree.test.cpp
 documentation_of: data_structure/dsu.hpp
 layout: document
 title: DSU

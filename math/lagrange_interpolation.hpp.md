@@ -67,9 +67,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_2747.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
 documentation_of: math/lagrange_interpolation.hpp
 layout: document
 title: Lagrange Interpolation

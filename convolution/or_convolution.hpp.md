@@ -55,8 +55,8 @@ data:
   timestamp: '2023-10-26 18:43:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/graph/Chromatic_Number.test.cpp
+  - test/convolution/Bitwise_OR_Convolution.test.cpp
 documentation_of: convolution/or_convolution.hpp
 layout: document
 title: Bitwise OR Convolution
