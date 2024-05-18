@@ -103,6 +103,17 @@ template <class T> struct section_set {
     std::pair<T, T> lower_bound(T l) const {
         return *set.lower_bound({l, std::numeric_limits<T>::min()});
     }
+
+    std::vector<std::pair<T, T>> all_section() {
+        std::vector<std::pair<T, T>> sec;
+        for (auto p : set) {
+            if (p.first == std::numeric_limits<T>::min() ||
+                p.first == std::numeric_limits<T>::max())
+                continue;
+            sec.emplace_back(p);
+        }
+        return sec;
+    }
 };
 
 }  // namespace ebi
