@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 
 #include "../../math/sum_of_powers_iota.hpp"
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../math/sums_of_powers_iota.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"

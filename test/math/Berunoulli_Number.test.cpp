@@ -4,7 +4,7 @@
 #include <numeric>
 #include <vector>
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../math/bernoulli_number.hpp"
 #include "../../modint/modint.hpp"
 

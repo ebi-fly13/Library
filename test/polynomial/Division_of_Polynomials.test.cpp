@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/division_of_polynomials"
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../fps/fps.hpp"
 #include "../../modint/modint.hpp"
 

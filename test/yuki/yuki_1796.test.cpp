@@ -1,6 +1,6 @@
 #define PROBLEM "https://yukicoder.me/problems/no/1796"
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../fps/middle_product.hpp"
 #include "../../graph/base.hpp"
 #include "../../math/binomial.hpp"

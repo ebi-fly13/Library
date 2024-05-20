@@ -2,7 +2,7 @@
 
 #include "../../fps/polynomial_interpolation.hpp"
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
 

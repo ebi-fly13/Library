@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <vector>
 
-#include "../convolution/ntt.hpp"
+#include "../convolution/convolution.hpp"
 #include "../modint/base.hpp"
 #include "../modint/modint.hpp"
 

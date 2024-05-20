@@ -5,7 +5,7 @@
 #include <numeric>
 #include <vector>
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../math/stirling_number_2nd.hpp"
 #include "../../modint/modint.hpp"
 

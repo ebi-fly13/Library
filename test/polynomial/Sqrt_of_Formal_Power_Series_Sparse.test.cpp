@@ -1,7 +1,7 @@
 #define PROBLEM \
     "https://judge.yosupo.jp/problem/sqrt_of_formal_power_series_sparse"
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../fps/fps.hpp"
 #include "../../fps/fps_sqrt.hpp"
 #include "../../modint/modint.hpp"

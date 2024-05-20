@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../fps/product_of_fps.hpp"
 #include "../../modint/modint.hpp"
 

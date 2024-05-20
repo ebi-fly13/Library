@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../math/bostan_mori_algorithm.hpp"
 #include "../../modint/modint.hpp"
 

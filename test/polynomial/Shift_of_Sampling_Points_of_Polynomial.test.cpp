@@ -1,7 +1,7 @@
 #define PROBLEM \
     "https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial"
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../fps/shift_of_sampling_points_of_poly.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"

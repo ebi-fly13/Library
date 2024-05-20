@@ -2,7 +2,7 @@
 
 #include "../../fps/multipoint_evaluation.hpp"
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../fps/fps.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"

@@ -4,7 +4,7 @@
 #include <numeric>
 #include <vector>
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../fps/fps.hpp"
 #include "../../fps/product_of_one_minus_xn.hpp"
 #include "../../modint/modint.hpp"

@@ -1,6 +1,6 @@
 #define PROBLEM "https://yukicoder.me/problems/no/1145"
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../fps/fps.hpp"
 #include "../../math/sums_of_powers.hpp"
 #include "../../modint/modint.hpp"

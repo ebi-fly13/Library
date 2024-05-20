@@ -1,25 +1,30 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod"
 
-#include <iostream>
+#include "../../convolution/convolution.hpp"
 
-#include "../../convolution/ntt.hpp"
 #include "../../modint/modint.hpp"
+#include "../../template/template.hpp"
 
-using mint = ebi::modint998244353;
+namespace ebi {
 
-int main() {
+using mint = modint998244353;
+
+void main_() {
     int n, m;
     std::cin >> n >> m;
     std::vector<mint> a(n), b(m);
-    for (int i = 0; i < n; ++i) {
-        std::cin >> a[i];
+    std::cin >> a >> b;
+    std::cout << convolution(a, b) << '\n';
+}
+
+}  // namespace ebi
+
+int main() {
+    ebi::fast_io();
+    int t = 1;
+    // std::cin >> t;
+    while (t--) {
+        ebi::main_();
     }
-    for (int i = 0; i < m; ++i) {
-        std::cin >> b[i];
-    }
-    auto c = ebi::convolution<mint>(a, b);
-    for (int i = 0; i < n + m - 1; ++i) {
-        std::cout << c[i] << " ";
-    }
-    std::cout << '\n';
+    return 0;
 }

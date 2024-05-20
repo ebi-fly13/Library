@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../fps/fps.hpp"
 #include "../../fps/taylor_shift.hpp"
 #include "../../modint/modint.hpp"

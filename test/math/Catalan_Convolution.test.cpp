@@ -2,7 +2,7 @@
 
 #include "../../math/catalan_convolution.hpp"
 
-#include "../../convolution/ntt.hpp"
+#include "../../convolution/convolution.hpp"
 #include "../../math/catalan_number.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
