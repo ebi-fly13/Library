@@ -4,7 +4,7 @@
 #include <bit>
 #include <vector>
 
-#include "../convolution/convolution.hpp"
+#include "../convolution/ntt.hpp"
 #include "../modint/base.hpp"
 
 namespace ebi {
