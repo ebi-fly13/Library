@@ -21,15 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Negative_Binomial_Coefficient.test.cpp
     title: test/math/Negative_Binomial_Coefficient.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/random_number_generator.hpp\"\n\r\n#include <cstdint>\r\
@@ -56,7 +56,7 @@ data:
   - utility/hash.hpp
   - tree/rooted_tree_hash.hpp
   timestamp: '2023-12-26 02:24:03+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
   - test/data_structure/Range_Parallel_DSU.test.cpp

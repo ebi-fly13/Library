@@ -1,17 +1,125 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: convolution/arbitrary_ntt.hpp
+    title: Arbitrary Convolution
+  - icon: ':heavy_check_mark:'
+    path: convolution/convolution.hpp
+    title: Convolution
+  - icon: ':heavy_check_mark:'
+    path: convolution/convolution_mod_2_64.hpp
+    title: Convolution $\pmod{2^{64}}$
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution.test.cpp
+    title: test/convolution/Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_Mod_1000000007.test.cpp
+    title: test/convolution/Convolution_Mod_1000000007.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_Mod_2_64.test.cpp
+    title: test/convolution/Convolution_Mod_2_64.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Berunoulli_Number.test.cpp
+    title: test/math/Berunoulli_Number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Catalan_Convolution.test.cpp
+    title: test/math/Catalan_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_FPS.test.cpp
+    title: test/math/Partition_Function_FPS.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_Pentagonal.test.cpp
+    title: test/math/Partition_Function_Pentagonal.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Powers_Iota.test.cpp
+    title: test/math/Sum_of_Powers_Iota.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/sharp_p_subset_sum.test.cpp
+    title: test/math/sharp_p_subset_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Division_of_Polynomials.test.cpp
+    title: test/polynomial/Division_of_Polynomials.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Multipoint_Evaluation.test.cpp
+    title: test/polynomial/Multipoint_Evaluation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Polynomial_Interpolation.test.cpp
+    title: test/polynomial/Polynomial_Interpolation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+    title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+    title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+    title: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1145.test.cpp
+    title: test/yuki/yuki_1145.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1302.test.cpp
+    title: test/yuki/yuki_1302.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1796.test.cpp
+    title: test/yuki/yuki_1796.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1857.test.cpp
+    title: test/yuki/yuki_1857.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include\
@@ -91,10 +199,46 @@ data:
   - modint/base.hpp
   isVerificationFile: false
   path: convolution/ntt.hpp
-  requiredBy: []
+  requiredBy:
+  - convolution/convolution_mod_2_64.hpp
+  - convolution/convolution.hpp
+  - convolution/arbitrary_ntt.hpp
   timestamp: '2024-05-20 22:28:31+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yuki/yuki_1857.test.cpp
+  - test/yuki/yuki_1145.test.cpp
+  - test/yuki/yuki_1796.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/math/Catalan_Convolution.test.cpp
+  - test/math/Berunoulli_Number.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
+  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/convolution/Convolution.test.cpp
+  - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/convolution/Convolution_Mod_2_64.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
 documentation_of: convolution/ntt.hpp
 layout: document
 title: NTT

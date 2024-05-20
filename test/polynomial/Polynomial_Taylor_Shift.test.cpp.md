@@ -1,29 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution.hpp
     title: Convolution
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: convolution/ntt.hpp
+    title: NTT
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
+    path: math/internal_math.hpp
+    title: math/internal_math.hpp
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/polynomial_taylor_shift
@@ -32,20 +38,56 @@ data:
   bundledCode: "#line 1 \"test/polynomial/Polynomial_Taylor_Shift.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\n\n#include\
     \ <iostream>\n\n#line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n\
-    #include <bit>\n#include <vector>\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi {\n\ntemplate\
-    \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
-    \   a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    #include <bit>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#line\
+    \ 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 6 \"convolution/ntt.hpp\"\
+    \n#include <cassert>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
+    \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
+    \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
+    \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
+    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
+    \ (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n    return -1;\n\
+    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
+    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
+    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
     \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 9 \"\
-    convolution/convolution.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint>\
-    \ convolution_naive(const std::vector<mint>& f,\n                            \
-    \        const std::vector<mint>& g) {\n    if (f.empty() || g.empty()) return\
-    \ {};\n    int n = int(f.size()), m = int(g.size());\n    std::vector<mint> c(n\
-    \ + m - 1);\n    if (n < m) {\n        for (int j = 0; j < m; j++) {\n       \
-    \     for (int i = 0; i < n; i++) {\n                c[i + j] += f[i] * g[j];\n\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 11 \"\
+    convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <Modint\
+    \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
+    \  static constexpr int rank2 =\n        std::countr_zero((unsigned int)(mint::mod()\
+    \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
+    \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
+    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
+    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
+    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <Modint mint> void\
+    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
+    \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
+    \   assert(n == 1 << bit_size);\n    for (int bit = bit_size - 1; bit >= 0; bit--)\
+    \ {\n        int m = 1 << bit;\n        for (int i = 0; i < n; i += 2 * m) {\n\
+    \            mint w = 1;\n            for (int j = 0; j < m; j++) {\n        \
+    \        mint p1 = a[i + j];\n                mint p2 = a[i + j + m];\n      \
+    \          a[i + j] = p1 + p2;\n                a[i + j + m] = (p1 - p2) * w;\n\
+    \                w *= info.root[bit + 1];\n            }\n        }\n    }\n}\n\
+    \ntemplate <Modint mint> void butterfly_inv(std::vector<mint>& a) {\n    static\
+    \ const ntt_info<mint> info;\n    int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n\
+    \    assert(n == 1 << bit_size);\n\n    for (int bit = 0; bit < bit_size; bit++)\
+    \ {\n        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint\
+    \ w = 1;\n            for (int j = 0; j < (1 << bit); j++) {\n               \
+    \ int idx = i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n\
+    \                mint p1 = a[idx];\n                mint p2 = a[jdx];\n      \
+    \          a[idx] = p1 + w * p2;\n                a[jdx] = p1 - w * p2;\n    \
+    \            w *= info.inv_root[bit + 1];\n            }\n        }\n    }\n \
+    \   mint inv_n = mint(n).inv();\n    for (int i = 0; i < n; i++) {\n        a[i]\
+    \ *= inv_n;\n    }\n}\n\n}  // namespace internal\n\n}  // namespace ebi\n#line\
+    \ 9 \"convolution/convolution.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\n\
+    std::vector<mint> convolution_naive(const std::vector<mint>& f,\n            \
+    \                        const std::vector<mint>& g) {\n    if (f.empty() || g.empty())\
+    \ return {};\n    int n = int(f.size()), m = int(g.size());\n    std::vector<mint>\
+    \ c(n + m - 1);\n    if (n < m) {\n        for (int j = 0; j < m; j++) {\n   \
+    \         for (int i = 0; i < n; i++) {\n                c[i + j] += f[i] * g[j];\n\
     \            }\n        }\n    } else {\n        for (int i = 0; i < n; i++) {\n\
     \            for (int j = 0; j < m; j++) {\n                c[i + j] += f[i] *\
     \ g[j];\n            }\n        }\n    }\n    return c;\n}\n\ntemplate <Modint\
@@ -57,11 +99,11 @@ data:
     \ g.end(), b.begin());\n    internal::butterfly(a);\n    internal::butterfly(b);\n\
     \    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n    }\n    internal::butterfly_inv(a);\n\
     \    a.resize(f.size() + g.size() - 1);\n    return a;\n}\n\n}  // namespace ebi\n\
-    #line 2 \"fps/fps.hpp\"\n\n#line 4 \"fps/fps.hpp\"\n#include <cassert>\n#include\
-    \ <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 9 \"fps/fps.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
-    \ std::vector<mint> &,\n                                           const std::vector<mint>\
-    \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
+    #line 2 \"fps/fps.hpp\"\n\n#line 5 \"fps/fps.hpp\"\n#include <optional>\n#line\
+    \ 7 \"fps/fps.hpp\"\n\n#line 9 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <Modint mint,\n          std::vector<mint> (*convolution)(const std::vector<mint>\
+    \ &,\n                                           const std::vector<mint> &)>\n\
+    struct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
     \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
     \n  public:\n    FormalPowerSeries(const std::vector<mint> &a) {\n        *this\
     \ = a;\n    }\n\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
@@ -239,6 +281,8 @@ data:
     \ n - 1];\n    }\n}"
   dependsOn:
   - convolution/convolution.hpp
+  - convolution/ntt.hpp
+  - math/internal_math.hpp
   - modint/base.hpp
   - fps/fps.hpp
   - fps/taylor_shift.hpp
@@ -247,8 +291,8 @@ data:
   isVerificationFile: true
   path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
   requiredBy: []
-  timestamp: '2024-05-20 22:28:31+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-05-20 22:50:06+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Polynomial_Taylor_Shift.test.cpp
 layout: document
