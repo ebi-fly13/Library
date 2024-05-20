@@ -1,53 +1,50 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: convolution/ntt.hpp
-    title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: convolution/convolution.hpp
+    title: Convolution
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/catalan_convolution.hpp
     title: Catalan's Convolution Formula
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/catalan_number.hpp
     title: Catalan Number
-  - icon: ':heavy_check_mark:'
-    path: math/internal_math.hpp
-    title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
@@ -93,64 +90,22 @@ data:
     \ ebi {\n\ntemplate <Modint mint> mint catalan_convolution(int pow, int n) {\n\
     \    return Binomial<mint>::c(n + n + pow - 1, n) * pow *\n           Binomial<mint>::inv(n\
     \ + pow);\n}\n\n}  // namespace ebi\n#line 4 \"test/math/Catalan_Convolution.test.cpp\"\
-    \n\n#line 2 \"convolution/ntt.hpp\"\n\n#include <algorithm>\n#include <array>\n\
-    #line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\n\n#line\
-    \ 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\n\
-    constexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n \
-    \   if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if (m\
-    \ == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if (m == 880803841)\
-    \ return 26;\n    if (m == 924844033) return 5;\n    return -1;\n}\ntemplate <int\
-    \ m> constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  // namespace\
-    \ internal\n\n}  // namespace ebi\n#line 11 \"convolution/ntt.hpp\"\n\nnamespace\
-    \ ebi {\n\nnamespace internal {\n\ntemplate <Modint mint, int g = internal::primitive_root<mint::mod()>>\n\
-    struct ntt_info {\n    static constexpr int rank2 =\n        std::countr_zero((unsigned\
-    \ int)(mint::mod() - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\
-    \n    ntt_info() {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n\
-    \        inv_root[rank2] = root[rank2].inv();\n        for (int i = rank2 - 1;\
-    \ i >= 0; i--) {\n            root[i] = root[i + 1] * root[i + 1];\n         \
-    \   inv_root[i] = inv_root[i + 1] * inv_root[i + 1];\n        }\n    }\n};\n\n\
-    template <Modint mint> void butterfly(std::vector<mint>& a) {\n    static const\
-    \ ntt_info<mint> info;\n    int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n\
-    \    assert(n == (int)std::bit_ceil(a.size()));\n\n    // bit reverse\n    for\
-    \ (int i = 0, j = 1; j < n - 1; j++) {\n        for (int k = n >> 1; k > (i ^=\
-    \ k); k >>= 1)\n            ;\n        if (j < i) {\n            std::swap(a[i],\
-    \ a[j]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n\
-    \        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1\
-    \ = 1;\n            mint zeta2 = info.root[1];\n            for (int j = 0; j\
-    \ < (1 << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n\
-    \                int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n\
-    \                mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
-    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
-    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
-    \ }\n    }\n}\n\ntemplate <Modint mint> void butterfly_inv(std::vector<mint>&\
-    \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
-    \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
-    \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
-    \ (int k = n >> 1; k > (i ^= k); k >>= 1)\n            ;\n        if (j < i) {\n\
-    \            std::swap(a[i], a[j]);\n        }\n    }\n\n    for (int bit = 0;\
-    \ bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1));\
-    \ i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.inv_root[1];\n\
-    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
-    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
-    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
-    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
-    \                zeta1 *= info.inv_root[bit + 1];\n                zeta2 *= info.inv_root[bit\
-    \ + 1];\n            }\n        }\n    }\n    mint inv_n = mint(n).inv();\n  \
-    \  for (int i = 0; i < n; i++) {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace\
-    \ internal\n\ntemplate <Modint mint>\nstd::vector<mint> convolution_naive(const\
-    \ std::vector<mint>& f,\n                                    const std::vector<mint>&\
-    \ g) {\n    if (f.empty() || g.empty()) return {};\n    int n = int(f.size()),\
-    \ m = int(g.size());\n    std::vector<mint> c(n + m - 1);\n    if (n < m) {\n\
-    \        for (int j = 0; j < m; j++) {\n            for (int i = 0; i < n; i++)\
-    \ {\n                c[i + j] += f[i] * g[j];\n            }\n        }\n    }\
-    \ else {\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j\
-    \ < m; j++) {\n                c[i + j] += f[i] * g[j];\n            }\n     \
-    \   }\n    }\n    return c;\n}\n\ntemplate <Modint mint>\nstd::vector<mint> convolution(const\
-    \ std::vector<mint>& f,\n                              const std::vector<mint>&\
-    \ g) {\n    if (f.empty() || g.empty()) return {};\n    if (std::min(f.size(),\
-    \ g.size()) < 60) return convolution_naive(f, g);\n    int n = std::bit_ceil(f.size()\
-    \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
-    \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
+    \n\n#line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n#line 6 \"\
+    convolution/convolution.hpp\"\n\n#line 9 \"convolution/convolution.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> convolution_naive(const std::vector<mint>&\
+    \ f,\n                                    const std::vector<mint>& g) {\n    if\
+    \ (f.empty() || g.empty()) return {};\n    int n = int(f.size()), m = int(g.size());\n\
+    \    std::vector<mint> c(n + m - 1);\n    if (n < m) {\n        for (int j = 0;\
+    \ j < m; j++) {\n            for (int i = 0; i < n; i++) {\n                c[i\
+    \ + j] += f[i] * g[j];\n            }\n        }\n    } else {\n        for (int\
+    \ i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++) {\n          \
+    \      c[i + j] += f[i] * g[j];\n            }\n        }\n    }\n    return c;\n\
+    }\n\ntemplate <Modint mint>\nstd::vector<mint> convolution(const std::vector<mint>&\
+    \ f,\n                              const std::vector<mint>& g) {\n    if (f.empty()\
+    \ || g.empty()) return {};\n    if (std::min(f.size(), g.size()) < 60) return\
+    \ convolution_naive(f, g);\n    int n = std::bit_ceil(f.size() + g.size() - 1);\n\
+    \    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(), f.end(), a.begin());\n\
+    \    std::copy(g.begin(), g.end(), b.begin());\n    internal::butterfly(a);\n\
     \    internal::butterfly(b);\n    for (int i = 0; i < n; i++) {\n        a[i]\
     \ *= b[i];\n    }\n    internal::butterfly_inv(a);\n    a.resize(f.size() + g.size()\
     \ - 1);\n    return a;\n}\n\n}  // namespace ebi\n#line 2 \"math/catalan_number.hpp\"\
@@ -315,7 +270,7 @@ data:
     \ a, b;\n    std::cin >> a >> b;\n    std::cout << a + b << '\\n';\n    return\
     \ 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n#include \"\
-    ../../math/catalan_convolution.hpp\"\n\n#include \"../../convolution/ntt.hpp\"\
+    ../../math/catalan_convolution.hpp\"\n\n#include \"../../convolution/convolution.hpp\"\
     \n#include \"../../math/catalan_number.hpp\"\n#include \"../../modint/modint.hpp\"\
     \n#include \"../../template/template.hpp\"\n\nnamespace ebi {\n\nusing mint =\
     \ modint998244353;\n\nvoid main_() {\n    const int n = 100000;\n    int t = 10;\n\
@@ -330,8 +285,7 @@ data:
   - math/catalan_convolution.hpp
   - math/binomial.hpp
   - modint/base.hpp
-  - convolution/ntt.hpp
-  - math/internal_math.hpp
+  - convolution/convolution.hpp
   - math/catalan_number.hpp
   - modint/modint.hpp
   - template/template.hpp
@@ -344,8 +298,8 @@ data:
   isVerificationFile: true
   path: test/math/Catalan_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-05-12 18:17:23+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-20 22:28:31+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Catalan_Convolution.test.cpp
 layout: document

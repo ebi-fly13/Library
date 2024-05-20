@@ -1,26 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: convolution/ntt.hpp
-    title: NTT Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: convolution/convolution.hpp
+    title: Convolution
+  - icon: ':x:'
     path: fps/product_of_fps.hpp
     title: $\prod f_i$
-  - icon: ':heavy_check_mark:'
-    path: math/internal_math.hpp
-    title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/product_of_polynomial_sequence
@@ -28,60 +25,17 @@ data:
     - https://judge.yosupo.jp/problem/product_of_polynomial_sequence
   bundledCode: "#line 1 \"test/polynomial/Product_of_Polynomial_Sequence.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\
-    \n#include <algorithm>\n#include <array>\n#include <bit>\n#include <cassert>\n\
-    #line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\n\n#line\
-    \ 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\n\
-    constexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n \
-    \   if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if (m\
-    \ == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if (m == 880803841)\
-    \ return 26;\n    if (m == 924844033) return 5;\n    return -1;\n}\ntemplate <int\
-    \ m> constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  // namespace\
-    \ internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi {\n\ntemplate\
-    \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
-    \   a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 11 \"\
-    convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <Modint\
-    \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
-    \  static constexpr int rank2 =\n        std::countr_zero((unsigned int)(mint::mod()\
-    \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
-    \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
-    \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
-    \       root[i] = root[i + 1] * root[i + 1];\n            inv_root[i] = inv_root[i\
-    \ + 1] * inv_root[i + 1];\n        }\n    }\n};\n\ntemplate <Modint mint> void\
-    \ butterfly(std::vector<mint>& a) {\n    static const ntt_info<mint> info;\n \
-    \   int n = int(a.size());\n    int bit_size = std::countr_zero(a.size());\n \
-    \   assert(n == (int)std::bit_ceil(a.size()));\n\n    // bit reverse\n    for\
-    \ (int i = 0, j = 1; j < n - 1; j++) {\n        for (int k = n >> 1; k > (i ^=\
-    \ k); k >>= 1)\n            ;\n        if (j < i) {\n            std::swap(a[i],\
-    \ a[j]);\n        }\n    }\n\n    for (int bit = 0; bit < bit_size; bit++) {\n\
-    \        for (int i = 0; i < n / (1 << (bit + 1)); i++) {\n            mint zeta1\
-    \ = 1;\n            mint zeta2 = info.root[1];\n            for (int j = 0; j\
-    \ < (1 << bit); j++) {\n                int idx = i * (1 << (bit + 1)) + j;\n\
-    \                int jdx = idx + (1 << bit);\n                mint p1 = a[idx];\n\
-    \                mint p2 = a[jdx];\n                a[idx] = p1 + zeta1 * p2;\n\
-    \                a[jdx] = p1 + zeta2 * p2;\n                zeta1 *= info.root[bit\
-    \ + 1];\n                zeta2 *= info.root[bit + 1];\n            }\n       \
-    \ }\n    }\n}\n\ntemplate <Modint mint> void butterfly_inv(std::vector<mint>&\
-    \ a) {\n    static const ntt_info<mint> info;\n    int n = int(a.size());\n  \
-    \  int bit_size = std::countr_zero(a.size());\n    assert(n == (int)std::bit_ceil(a.size()));\n\
-    \n    // bit reverse\n    for (int i = 0, j = 1; j < n - 1; j++) {\n        for\
-    \ (int k = n >> 1; k > (i ^= k); k >>= 1)\n            ;\n        if (j < i) {\n\
-    \            std::swap(a[i], a[j]);\n        }\n    }\n\n    for (int bit = 0;\
-    \ bit < bit_size; bit++) {\n        for (int i = 0; i < n / (1 << (bit + 1));\
-    \ i++) {\n            mint zeta1 = 1;\n            mint zeta2 = info.inv_root[1];\n\
-    \            for (int j = 0; j < (1 << bit); j++) {\n                int idx =\
-    \ i * (1 << (bit + 1)) + j;\n                int jdx = idx + (1 << bit);\n   \
-    \             mint p1 = a[idx];\n                mint p2 = a[jdx];\n         \
-    \       a[idx] = p1 + zeta1 * p2;\n                a[jdx] = p1 + zeta2 * p2;\n\
-    \                zeta1 *= info.inv_root[bit + 1];\n                zeta2 *= info.inv_root[bit\
-    \ + 1];\n            }\n        }\n    }\n    mint inv_n = mint(n).inv();\n  \
-    \  for (int i = 0; i < n; i++) {\n        a[i] *= inv_n;\n    }\n}\n\n}  // namespace\
-    \ internal\n\ntemplate <Modint mint>\nstd::vector<mint> convolution_naive(const\
+    \n\n#include <iostream>\n#include <vector>\n\n#line 2 \"convolution/convolution.hpp\"\
+    \n\n#include <algorithm>\n#include <bit>\n#line 6 \"convolution/convolution.hpp\"\
+    \n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
+    \n#include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint\
+    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n   \
+    \ a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
+    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
+    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
+    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
+    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 9 \"convolution/convolution.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> convolution_naive(const\
     \ std::vector<mint>& f,\n                                    const std::vector<mint>&\
     \ g) {\n    if (f.empty() || g.empty()) return {};\n    int n = int(f.size()),\
     \ m = int(g.size());\n    std::vector<mint> c(n + m - 1);\n    if (n < m) {\n\
@@ -105,12 +59,12 @@ data:
     \    if (fs.empty()) return {1};\n    int i = 0;\n    while (i + 1 < (int)fs.size())\
     \ {\n        fs.emplace_back(convolution(fs[i], fs[i+1]));\n        i += 2;\n\
     \    }\n    return fs.back();\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
-    \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
-    \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
-    \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
-    \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
-    \    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
+    \n\r\n#include <cassert>\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\
+    \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
+    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
+    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
+    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
     \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
     \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
     \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
@@ -158,7 +112,7 @@ data:
     \ ebi::convolution>(fs);\n    for (int i = 0; i < D + 1; i++) {\n        std::cout\
     \ << f[i] << \" \\n\"[i == D];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../../convolution/ntt.hpp\"\
+    \n\n#include <iostream>\n#include <vector>\n\n#include \"../../convolution/convolution.hpp\"\
     \n#include \"../../fps/product_of_fps.hpp\"\n#include \"../../modint/modint.hpp\"\
     \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
     \ >> n;\n    std::vector<std::vector<mint>> fs(n);\n    int D = 0;\n    for (int\
@@ -168,16 +122,15 @@ data:
     \ ebi::convolution>(fs);\n    for (int i = 0; i < D + 1; i++) {\n        std::cout\
     \ << f[i] << \" \\n\"[i == D];\n    }\n}"
   dependsOn:
-  - convolution/ntt.hpp
-  - math/internal_math.hpp
+  - convolution/convolution.hpp
   - modint/base.hpp
   - fps/product_of_fps.hpp
   - modint/modint.hpp
   isVerificationFile: true
   path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   requiredBy: []
-  timestamp: '2024-05-11 20:19:27+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-20 22:28:31+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
 layout: document

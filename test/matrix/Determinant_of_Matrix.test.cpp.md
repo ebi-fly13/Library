@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: matrix/square_matrix.hpp
     title: matrix/square_matrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
