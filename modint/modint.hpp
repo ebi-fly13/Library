@@ -24,15 +24,16 @@ template <int m> struct static_modint {
 
     constexpr static_modint() : _v(0) {}
 
-    constexpr static_modint(long long v) {
-        v %= (long long)umod();
-        if (v < 0) v += umod();
-        _v = (unsigned int)v;
+    template<std::signed_integral T>
+    constexpr static_modint(T v) {
+        long long x = (long long)(v % (long long)(umod()));
+        if (x < 0) x += umod();
+        _v = (unsigned int)(x);
     }
 
     template<std::unsigned_integral T>
     constexpr static_modint(T v) {
-        _v = (unsigned long long)v % umod();
+        _v = v % umod();
     }
 
     constexpr unsigned int val() const {
