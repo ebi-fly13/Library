@@ -2,8 +2,6 @@
 
 #include "../../convolution/online_convolution.hpp"
 
-#include <atcoder/modint>
-
 #include "../../template/template.hpp"
 
 namespace ebi {

@@ -30,6 +30,12 @@ template <int m> struct static_modint {
         _v = (unsigned int)v;
     }
 
+    template<std::unsigned_integral T>
+    constexpr static_modint(T v) {
+        v %= (T)umod();
+        _v = (unsigned int)v;
+    }
+
     constexpr unsigned int val() const {
         return _v;
     }
