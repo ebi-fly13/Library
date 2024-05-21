@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
@@ -53,10 +53,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
@@ -219,13 +219,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stern-Brocot_Tree.test.cpp
     title: test/math/Stern-Brocot_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
@@ -342,9 +342,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/simple_csr.hpp\"\n\n#include <ranges>\n#include\
@@ -433,7 +433,7 @@ data:
   - tree/rerooting.hpp
   - tree/dp_on_static_top_tree.hpp
   timestamp: '2024-03-11 18:04:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_952.test.cpp

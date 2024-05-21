@@ -9,8 +9,20 @@ data:
     path: algorithm/monge_d_edge_shortest_path.hpp
     title: Monge d-edge shortest path
   - icon: ':heavy_check_mark:'
+    path: convolution/arbitrary_ntt.hpp
+    title: Arbitrary Convolution
+  - icon: ':question:'
+    path: convolution/convolution.hpp
+    title: Convolution
+  - icon: ':heavy_check_mark:'
+    path: convolution/convolution_mod_2_64.hpp
+    title: Convolution $\pmod{2^{64}}$
+  - icon: ':heavy_check_mark:'
     path: convolution/dirichlet_convolution.hpp
     title: Dirichlet Convolution
+  - icon: ':question:'
+    path: convolution/ntt.hpp
+    title: NTT
   - icon: ':heavy_check_mark:'
     path: convolution/online_convolution.hpp
     title: Online Convolution
@@ -29,19 +41,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: Inversion Number
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/sum_of_exp_times_poly.hpp
     title: $\sum_{i = 0}^{n-1} a^i f(i)$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/sum_of_powers_iota.hpp
     title: $\sum_{i = 0}^{n-1} i^k$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -63,6 +75,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution.test.cpp
     title: test/convolution/Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_Mod_1000000007.test.cpp
+    title: test/convolution/Convolution_Mod_1000000007.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_Mod_2_64.test.cpp
+    title: test/convolution/Convolution_Mod_2_64.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
     title: test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
@@ -148,6 +166,9 @@ data:
     path: test/graph/fibonacci_heap.test.cpp
     title: test/graph/fibonacci_heap.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Berunoulli_Number.test.cpp
+    title: test/math/Berunoulli_Number.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -160,23 +181,41 @@ data:
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Negative_Binomial_Coefficient.test.cpp
     title: test/math/Negative_Binomial_Coefficient.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_FPS.test.cpp
+    title: test/math/Partition_Function_FPS.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Partition_Function_Pentagonal.test.cpp
+    title: test/math/Partition_Function_Pentagonal.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Stern-Brocot_Tree.test.cpp
     title: test/math/Stern-Brocot_Tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+    title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/sharp_p_subset_sum.test.cpp
+    title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix_2.test.cpp
     title: test/matrix/Determinant_of_Matrix_2.test.cpp
@@ -199,14 +238,47 @@ data:
     path: test/matrix/System_of_Linear_Equations.test.cpp
     title: test/matrix/System_of_Linear_Equations.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Division_of_Polynomials.test.cpp
+    title: test/polynomial/Division_of_Polynomials.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Multipoint_Evaluation.test.cpp
     title: test/polynomial/Multipoint_Evaluation.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Polynomial_Interpolation.test.cpp
     title: test/polynomial/Polynomial_Interpolation.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+    title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+    title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
     title: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+    title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
@@ -247,6 +319,9 @@ data:
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1302.test.cpp
+    title: test/yuki/yuki_1302.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
   - icon: ':heavy_check_mark:'
@@ -270,9 +345,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -364,9 +439,13 @@ data:
   - algorithm/monge_d_edge_shortest_path.hpp
   - algorithm/golden_section_search.hpp
   - convolution/dirichlet_convolution.hpp
+  - convolution/convolution_mod_2_64.hpp
+  - convolution/convolution.hpp
+  - convolution/arbitrary_ntt.hpp
+  - convolution/ntt.hpp
   - convolution/online_convolution.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_952.test.cpp
@@ -379,6 +458,7 @@ data:
   - test/yuki/yuki_2439.test.cpp
   - test/yuki/yuki_2633.test.cpp
   - test/yuki/yuki_1796.test.cpp
+  - test/yuki/yuki_1302.test.cpp
   - test/aoj/aoj_grl_1_a.test.cpp
   - test/aoj/aoj_grl_1_b.test.cpp
   - test/aoj/aoj_3086.test.cpp
@@ -398,8 +478,19 @@ data:
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/graph/Shortest_Path.test.cpp
   - test/graph/Directed_MST.test.cpp
@@ -417,13 +508,20 @@ data:
   - test/math/Inversion_Number.test.cpp
   - test/math/Stern-Brocot_Tree.test.cpp
   - test/math/Catalan_Convolution.test.cpp
+  - test/math/Berunoulli_Number.test.cpp
   - test/math/Factorial.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/sharp_p_subset_sum.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp
+  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
@@ -433,7 +531,9 @@ data:
   - test/matrix/Rank_of_Matrix.test.cpp
   - test/convolution/Convolution.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
+  - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Online_Convolution.test.cpp
+  - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Tree_Diameter.test.cpp

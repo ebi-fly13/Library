@@ -4,31 +4,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/dynamic_dual_segtree.hpp
     title: dynamic dual segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -90,14 +90,16 @@ data:
     \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
     \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
     \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
-    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
+    \n    }\r\n\r\n    template<std::unsigned_integral T>\r\n    constexpr static_modint(T\
+    \ v) {\r\n        v %= (T)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\
+    \r\n    constexpr unsigned int val() const {\r\n        return _v;\r\n    }\r\n\
+    \r\n    constexpr unsigned int value() const {\r\n        return val();\r\n  \
+    \  }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n        if\
+    \ (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\n  \
+    \      return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\n\
+    \        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n  \
+    \  }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
     \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
     \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
     \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
@@ -271,7 +273,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-05-21 15:12:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp

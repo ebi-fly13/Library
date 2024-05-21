@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
@@ -20,7 +20,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/sum_of_exp_times_poly.hpp
     title: $\sum_{i = 0}^{n-1} a^i f(i)$
   _extendedVerifiedWith:
@@ -39,10 +39,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - icon: ':heavy_check_mark:'
@@ -60,9 +60,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2633.test.cpp
     title: test/yuki/yuki_2633.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/binomial.hpp\"\n\n#include <bit>\n#include <cassert>\n\
@@ -139,7 +139,7 @@ data:
   - math/catalan_number.hpp
   - math/sum_of_exp_times_poly.hpp
   timestamp: '2024-05-12 18:17:23+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_2633.test.cpp
   - test/yuki/yuki_1796.test.cpp

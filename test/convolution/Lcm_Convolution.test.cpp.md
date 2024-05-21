@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/eratosthenes_sieve.hpp
     title: Eratosthenes Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
@@ -81,49 +81,51 @@ data:
     \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
     \    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
     \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
-    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
-    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
-    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
-    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
-    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
-    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
-    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
-    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
-    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
-    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
-    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
-    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
-    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
-    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
-    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
-    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
-    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
-    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
-    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
-    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
-    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
-    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
-    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
-    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
-    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
-    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
-    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
-    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
-    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
-    \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
-    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 9 \"test/convolution/Lcm_Convolution.test.cpp\"\n\nusing mint = ebi::modint998244353;\n\
-    \nint main() {\n    int n;\n    std::cin >> n;\n    std::vector<mint> a(n + 1),\
-    \ b(n + 1);\n    for (int i = 1; i <= n; i++) {\n        std::cin >> a[i];\n \
-    \   }\n    for (int i = 1; i <= n; i++) {\n        std::cin >> b[i];\n    }\n\
-    \    auto c = ebi::lcm_convolution(a, b);\n    for (int i = 1; i <= n; i++) {\n\
-    \        std::cout << c[i].val() << \" \\n\"[i == n];\n    }\n}\n"
+    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    template<std::unsigned_integral\
+    \ T>\r\n    constexpr static_modint(T v) {\r\n        v %= (T)umod();\r\n    \
+    \    _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr unsigned int val() const\
+    \ {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
+    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
+    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
+    \n        _v--;\r\n        return *this;\r\n    }\r\n\r\n    constexpr modint\
+    \ operator++(int) {\r\n        modint res = *this;\r\n        ++*this;\r\n   \
+    \     return res;\r\n    }\r\n    constexpr modint operator--(int) {\r\n     \
+    \   modint res = *this;\r\n        --*this;\r\n        return res;\r\n    }\r\n\
+    \r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
+    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\
+    \n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned long\
+    \ long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned\
+    \ long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
+    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
+    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
+    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
+    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
+    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
+    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
+    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
+    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
+    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
+    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
+    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
+    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
+    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
+    \n\r\n}  // namespace ebi\n#line 9 \"test/convolution/Lcm_Convolution.test.cpp\"\
+    \n\nusing mint = ebi::modint998244353;\n\nint main() {\n    int n;\n    std::cin\
+    \ >> n;\n    std::vector<mint> a(n + 1), b(n + 1);\n    for (int i = 1; i <= n;\
+    \ i++) {\n        std::cin >> a[i];\n    }\n    for (int i = 1; i <= n; i++) {\n\
+    \        std::cin >> b[i];\n    }\n    auto c = ebi::lcm_convolution(a, b);\n\
+    \    for (int i = 1; i <= n; i++) {\n        std::cout << c[i].val() << \" \\\
+    n\"[i == n];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lcm_convolution\"\n\n#include\
     \ \"../../convolution/lcm_convolution.hpp\"\n\n#include <iostream>\n#include <vector>\n\
     \n#include \"../../modint/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
@@ -141,7 +143,7 @@ data:
   isVerificationFile: true
   path: test/convolution/Lcm_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 00:16:57+09:00'
+  timestamp: '2024-05-21 15:12:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Lcm_Convolution.test.cpp

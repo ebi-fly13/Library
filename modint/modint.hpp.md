@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
@@ -93,13 +93,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
@@ -219,9 +219,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2747.test.cpp
     title: test/yuki/yuki_2747.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/modint.hpp\"\n\r\n#include <cassert>\r\n#include\
@@ -240,14 +240,16 @@ data:
     \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
     \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
     \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
-    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
+    \n    }\r\n\r\n    template<std::unsigned_integral T>\r\n    constexpr static_modint(T\
+    \ v) {\r\n        v %= (T)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\
+    \r\n    constexpr unsigned int val() const {\r\n        return _v;\r\n    }\r\n\
+    \r\n    constexpr unsigned int value() const {\r\n        return val();\r\n  \
+    \  }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n        if\
+    \ (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\n  \
+    \      return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\n\
+    \        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n  \
+    \  }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
     \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
     \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
     \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
@@ -284,14 +286,16 @@ data:
     \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
     \r\n    constexpr static_modint(long long v) {\r\n        v %= (long long)umod();\r\
     \n        if (v < 0) v += (long long)umod();\r\n        _v = (unsigned int)v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\
-    \n    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
-    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
+    \n    }\r\n\r\n    template<std::unsigned_integral T>\r\n    constexpr static_modint(T\
+    \ v) {\r\n        v %= (T)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\
+    \r\n    constexpr unsigned int val() const {\r\n        return _v;\r\n    }\r\n\
+    \r\n    constexpr unsigned int value() const {\r\n        return val();\r\n  \
+    \  }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n        if\
+    \ (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\n  \
+    \      return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\n\
+    \        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n  \
+    \  }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
     \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
     \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
     \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
@@ -327,8 +331,8 @@ data:
   requiredBy:
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
-  timestamp: '2023-10-31 00:16:57+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-21 15:12:14+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp

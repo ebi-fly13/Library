@@ -4,25 +4,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/online_convolution.hpp
     title: Online Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -66,16 +66,15 @@ data:
     \    }\n\n    mint operator[](int i) const {\n        assert(0 <= i && i < p);\n\
     \        return c[i];\n    }\n\n  private:\n    int p = 0;\n    std::vector<mint>\
     \ a, b, c;\n    std::vector<std::vector<mint>> fa, fb;\n};\n\n}  // namespace\
-    \ ebi\n#line 4 \"test/convolution/Online_Convolution.test.cpp\"\n\n#line 6 \"\
-    test/convolution/Online_Convolution.test.cpp\"\n\n#line 1 \"template/template.hpp\"\
-    \n#include <bits/stdc++.h>\n\n#define rep(i, a, n) for (int i = (int)(a); i <\
-    \ (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
-    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
-    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
-    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
-    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
-    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
-    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ ebi\n#line 4 \"test/convolution/Online_Convolution.test.cpp\"\n\n#line 1 \"\
+    template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i, a, n) for\
+    \ (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1);\
+    \ i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n);\
+    \ i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n\
+    #define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\
+    \n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
+    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
@@ -166,7 +165,7 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 8 \"test/convolution/Online_Convolution.test.cpp\"\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/convolution/Online_Convolution.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
     \    std::vector<int> a(n + m - 1, 0), b(n + m - 1, 0);\n    rep(i, 0, n) std::cin\
     \ >> a[i];\n    rep(i, 0, m) std::cin >> b[i];\n    online_convolution oc;\n \
@@ -175,15 +174,14 @@ data:
     \nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n \
     \   while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\
-    \ \"../../convolution/online_convolution.hpp\"\n\n#include <atcoder/modint>\n\n\
-    #include \"../../template/template.hpp\"\n\nnamespace ebi {\n\nvoid main_() {\n\
-    \    int n, m;\n    std::cin >> n >> m;\n    std::vector<int> a(n + m - 1, 0),\
-    \ b(n + m - 1, 0);\n    rep(i, 0, n) std::cin >> a[i];\n    rep(i, 0, m) std::cin\
-    \ >> b[i];\n    online_convolution oc;\n    rep(i, 0, n + m - 1) {\n        oc.add(i,\
-    \ a[i], b[i]);\n        std::cout << oc[i].val() << \" \\n\"[i == n - m - 2];\n\
-    \    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int\
-    \ t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n  \
-    \  }\n    return 0;\n}"
+    \ \"../../convolution/online_convolution.hpp\"\n\n#include \"../../template/template.hpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
+    \    std::vector<int> a(n + m - 1, 0), b(n + m - 1, 0);\n    rep(i, 0, n) std::cin\
+    \ >> a[i];\n    rep(i, 0, m) std::cin >> b[i];\n    online_convolution oc;\n \
+    \   rep(i, 0, n + m - 1) {\n        oc.add(i, a[i], b[i]);\n        std::cout\
+    \ << oc[i].val() << \" \\n\"[i == n - m - 2];\n    }\n}\n\n}  // namespace ebi\n\
+    \nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n \
+    \   while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
   - convolution/online_convolution.hpp
   - template/int_alias.hpp
@@ -196,7 +194,7 @@ data:
   isVerificationFile: true
   path: test/convolution/Online_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-05-10 11:45:21+09:00'
+  timestamp: '2024-05-21 15:12:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Online_Convolution.test.cpp

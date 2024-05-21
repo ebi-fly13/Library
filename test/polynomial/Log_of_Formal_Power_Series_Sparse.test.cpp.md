@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/mod_inv.hpp
     title: Mod Inv
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
@@ -98,8 +98,10 @@ data:
     \        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint()\
     \ : _v(0) {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %=\
     \ (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\n       \
-    \ _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr unsigned int val() const\
-    \ {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
+    \ _v = (unsigned int)v;\r\n    }\r\n\r\n    template<std::unsigned_integral T>\r\
+    \n    constexpr static_modint(T v) {\r\n        v %= (T)umod();\r\n        _v\
+    \ = (unsigned int)v;\r\n    }\r\n\r\n    constexpr unsigned int val() const {\r\
+    \n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
     \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
     \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
     \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
@@ -156,7 +158,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   requiredBy: []
-  timestamp: '2023-10-31 00:16:57+09:00'
+  timestamp: '2024-05-21 15:12:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
