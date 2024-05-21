@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
@@ -59,98 +59,99 @@ data:
     \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
     \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
     \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
-    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
-    \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
-    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    template<std::unsigned_integral\
-    \ T>\r\n    constexpr static_modint(T v) {\r\n        v %= (T)umod();\r\n    \
-    \    _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr unsigned int val() const\
-    \ {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
-    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
-    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
-    \n        _v--;\r\n        return *this;\r\n    }\r\n\r\n    constexpr modint\
-    \ operator++(int) {\r\n        modint res = *this;\r\n        ++*this;\r\n   \
-    \     return res;\r\n    }\r\n    constexpr modint operator--(int) {\r\n     \
-    \   modint res = *this;\r\n        --*this;\r\n        return res;\r\n    }\r\n\
-    \r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
-    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\
-    \n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned long\
-    \ long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned\
-    \ long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
-    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
-    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
-    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
-    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
-    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
-    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
-    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
-    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
-    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
-    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
-    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
-    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
-    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
-    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
-    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
-    \n\r\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    \n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
-    \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
-    \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
-    \ i >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v)\
-    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line\
-    \ 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n#define\
-    \ debug(...)                                                      \\\n    std::cerr\
-    \ << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\", \\\n       \
-    \ debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid debug_out()\
-    \ {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename... Tail>\
-    \ void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t)\
-    \ > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n\
-    #line 2 \"template/int_alias.hpp\"\n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace\
-    \ ebi {\n\nusing ld = long double;\nusing std::size_t;\nusing i8 = std::int8_t;\n\
-    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
-    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
-    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\
-    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
-    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
-    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
-    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
-    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
-    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
-    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
-    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
-    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
-    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
-    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
-    \n\n#line 2 \"graph/base.hpp\"\n\n#line 5 \"graph/base.hpp\"\n#include <ranges>\n\
-    #line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line\
-    \ 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E>\
-    \ struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const\
-    \ std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0), elist(elements.size())\
-    \ {\n        for (auto e : elements) {\n            start[e.first + 1]++;\n  \
-    \      }\n        for (auto i : std::views::iota(0, n)) {\n            start[i\
-    \ + 1] += start[i];\n        }\n        auto counter = start;\n        for (auto\
-    \ [i, e] : elements) {\n            elist[counter[i]++] = e;\n        }\n    }\n\
-    \n    simple_csr(const std::vector<std::vector<E>>& es)\n        : start(es.size()\
-    \ + 1, 0) {\n        int n = es.size();\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] = (int)es[i].size() + start[i];\n        }\n\
-    \        elist.resize(start.back());\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            std::copy(es[i].begin(), es[i].end(), elist.begin() + start[i]);\n\
-    \        }\n    }\n\n    int size() const {\n        return (int)start.size()\
-    \ - 1;\n    }\n\n    const auto operator[](int i) const {\n        return std::ranges::subrange(elist.begin()\
-    \ + start[i],\n                                     elist.begin() + start[i +\
-    \ 1]);\n    }\n    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    template<std::signed_integral\
+    \ T>\r\n    constexpr static_modint(T v) {\r\n        long long x = (long long)(v\
+    \ % (long long)(umod()));\r\n        if (x < 0) x += umod();\r\n        _v = (unsigned\
+    \ int)(x);\r\n    }\r\n\r\n    template<std::unsigned_integral T>\r\n    constexpr\
+    \ static_modint(T v) {\r\n        _v = v % umod();\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
+    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
+    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
+    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
+    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
+    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
+    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
+    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
+    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
+    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
+    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
+    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
+    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
+    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
+    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
+    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
+    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
+    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
+    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
+    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
+    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
+    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
+    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
+    \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i,\
+    \ a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int\
+    \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
+    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
+    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
+    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
+    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
+    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
+    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
+    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
+    #line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
+    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
+    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
+    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
+    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
+    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
+    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
+    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
+    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 5\
+    \ \"graph/base.hpp\"\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
+    \ \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
+    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
+    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
+    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
+    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
+    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
+    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
+    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
+    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
+    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
+    \                                   elist.begin() + start[i + 1]);\n    }\n  \
+    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -339,7 +340,7 @@ data:
   isVerificationFile: true
   path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   requiredBy: []
-  timestamp: '2024-05-21 15:12:14+09:00'
+  timestamp: '2024-05-21 16:03:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp

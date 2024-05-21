@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution.hpp
     title: Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
   - icon: ':heavy_check_mark:'
@@ -22,28 +22,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/catalan_number.hpp
     title: Catalan Number
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -211,12 +211,12 @@ data:
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
     \   }\r\n\r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n\
     \        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint()\
-    \ : _v(0) {}\r\n\r\n    constexpr static_modint(long long v) {\r\n        v %=\
-    \ (long long)umod();\r\n        if (v < 0) v += (long long)umod();\r\n       \
-    \ _v = (unsigned int)v;\r\n    }\r\n\r\n    template<std::unsigned_integral T>\r\
-    \n    constexpr static_modint(T v) {\r\n        v %= (T)umod();\r\n        _v\
-    \ = (unsigned int)v;\r\n    }\r\n\r\n    constexpr unsigned int val() const {\r\
-    \n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
+    \ : _v(0) {}\r\n\r\n    template<std::signed_integral T>\r\n    constexpr static_modint(T\
+    \ v) {\r\n        long long x = (long long)(v % (long long)(umod()));\r\n    \
+    \    if (x < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\
+    \n    template<std::unsigned_integral T>\r\n    constexpr static_modint(T v) {\r\
+    \n        _v = v % umod();\r\n    }\r\n\r\n    constexpr unsigned int val() const\
+    \ {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
     \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
     \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
     \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
@@ -390,7 +390,7 @@ data:
   isVerificationFile: true
   path: test/math/Catalan_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-05-21 15:12:14+09:00'
+  timestamp: '2024-05-21 16:03:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Catalan_Convolution.test.cpp

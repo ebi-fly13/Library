@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
@@ -44,7 +44,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/sums_of_powers.hpp
     title: "$\\sum_n A_n^i$ \u306E $i = 0, 1,\\dots, k$ \u306E\u5217\u6319"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/sums_of_powers_iota.hpp
     title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
   _extendedVerifiedWith:
@@ -63,7 +63,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
@@ -114,9 +114,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1857.test.cpp
     title: test/yuki/yuki_1857.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
@@ -314,7 +314,7 @@ data:
   - math/stirling_number_2nd.hpp
   - math/partition_function.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp

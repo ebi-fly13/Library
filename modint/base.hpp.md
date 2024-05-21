@@ -5,13 +5,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution.hpp
     title: Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
+    path: convolution/dirichlet_convolution.hpp
+    title: Dirichlet Convolution
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT
   - icon: ':heavy_check_mark:'
@@ -20,7 +23,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
@@ -38,7 +41,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/polynomial_interpolation.hpp
     title: Polynomial Interpolation
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/product_of_fps.hpp
     title: $\prod f_i$
   - icon: ':heavy_check_mark:'
@@ -57,9 +60,12 @@ data:
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
   - icon: ':heavy_check_mark:'
+    path: math/DirichletSeries.hpp
+    title: Dirichlet Series
+  - icon: ':heavy_check_mark:'
     path: math/bernoulli_number.hpp
     title: Bernoulli Number
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
   - icon: ':heavy_check_mark:'
@@ -71,6 +77,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/factorial_mod_998.hpp
     title: math/factorial_mod_998.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/linear_sieve.hpp
+    title: Linear Sieve
   - icon: ':heavy_check_mark:'
     path: math/mod_inv.hpp
     title: Mod Inv
@@ -86,16 +95,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/sum_of_exp_times_poly.hpp
     title: $\sum_{i = 0}^{n-1} a^i f(i)$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/sum_of_powers_iota.hpp
     title: $\sum_{i = 0}^{n-1} i^k$
   - icon: ':heavy_check_mark:'
     path: math/sums_of_powers.hpp
     title: "$\\sum_n A_n^i$ \u306E $i = 0, 1,\\dots, k$ \u306E\u5217\u6319"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/sums_of_powers_iota.hpp
     title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
   - icon: ':heavy_check_mark:'
@@ -104,7 +113,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -219,13 +228,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
     title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
   - icon: ':heavy_check_mark:'
@@ -354,9 +363,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2747.test.cpp
     title: test/yuki/yuki_2747.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\
@@ -404,8 +413,10 @@ data:
   - math/mod_inv.hpp
   - math/factorial_mod_998.hpp
   - math/sum_of_exp_times_poly.hpp
+  - math/linear_sieve.hpp
   - math/sums_of_powers.hpp
   - math/stirling_number_2nd.hpp
+  - math/DirichletSeries.hpp
   - math/partition_function.hpp
   - math/mod_sqrt.hpp
   - modint/modint.hpp
@@ -414,13 +425,14 @@ data:
   - modint/dynamic_modint.hpp
   - utility/hash.hpp
   - matrix/det_arbitrary_mod.hpp
+  - convolution/dirichlet_convolution.hpp
   - convolution/convolution_mod_2_64.hpp
   - convolution/convolution.hpp
   - convolution/arbitrary_ntt.hpp
   - convolution/ntt.hpp
   - tree/rooted_tree_hash.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp

@@ -43,7 +43,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/convolution.hpp
       title: Convolution
     - icon: ':heavy_check_mark:'
@@ -61,7 +61,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/min_plus_convolution.hpp
       title: Min Plus Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT
     - icon: ':heavy_check_mark:'
@@ -198,7 +198,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
     - icon: ':heavy_check_mark:'
@@ -233,7 +233,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/compositional_inverse_of_fps.hpp
       title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
     - icon: ':heavy_check_mark:'
@@ -251,7 +251,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/polynomial_interpolation.hpp
       title: Polynomial Interpolation
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
       title: $\prod f_i$
     - icon: ':heavy_check_mark:'
@@ -291,7 +291,7 @@ data:
       title: geometry/polygon.hpp
   - name: graph
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/base.hpp
       title: Graph (CSR format)
     - icon: ':heavy_check_mark:'
@@ -347,7 +347,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: Binomial Coefficient
     - icon: ':heavy_check_mark:'
@@ -368,16 +368,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/factorial_mod_998.hpp
       title: math/factorial_mod_998.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
       path: math/inversion_number.hpp
       title: Inversion Number
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/lagrange_interpolation.hpp
       title: Lagrange Interpolation
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/linear_sieve.hpp
       title: Linear Sieve
     - icon: ':heavy_check_mark:'
@@ -404,16 +404,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/stirling_number_2nd.hpp
       title: Stirling Numbers of the Second Kind
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/sum_of_exp_times_poly.hpp
       title: $\sum_{i = 0}^{n-1} a^i f(i)$
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/sum_of_powers_iota.hpp
       title: $\sum_{i = 0}^{n-1} i^k$
     - icon: ':heavy_check_mark:'
       path: math/sums_of_powers.hpp
       title: "$\\sum_n A_n^i$ \u306E $i = 0, 1,\\dots, k$ \u306E\u5217\u6319"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/sums_of_powers_iota.hpp
       title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
   - name: matrix
@@ -432,13 +432,13 @@ data:
       title: matrix/square_matrix.hpp
   - name: modint
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/base.hpp
       title: modint/base.hpp
     - icon: ':heavy_check_mark:'
       path: modint/dynamic_modint.hpp
       title: modint/dynamic_modint.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
       title: modint/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -495,19 +495,19 @@ data:
       title: Wildcard Pattern Matching
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -559,7 +559,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: utility/hash.hpp
       title: Hash structure
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/random_number_generator.hpp
       title: Random Number Generator
   verificationCategories:
@@ -936,13 +936,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
       title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
       title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
       title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Powers_Iota.test.cpp
       title: test/math/Sum_of_Powers_Iota.test.cpp
     - icon: ':heavy_check_mark:'

@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/DynamicSegmentTree.hpp
     title: data_structure/DynamicSegmentTree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   _extendedRequiredBy: []
@@ -71,59 +71,60 @@ data:
     \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
     \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
     \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
-    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
-    \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
-    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    template<std::unsigned_integral\
-    \ T>\r\n    constexpr static_modint(T v) {\r\n        v %= (T)umod();\r\n    \
-    \    _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr unsigned int val() const\
-    \ {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
-    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
-    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
-    \n        _v--;\r\n        return *this;\r\n    }\r\n\r\n    constexpr modint\
-    \ operator++(int) {\r\n        modint res = *this;\r\n        ++*this;\r\n   \
-    \     return res;\r\n    }\r\n    constexpr modint operator--(int) {\r\n     \
-    \   modint res = *this;\r\n        --*this;\r\n        return res;\r\n    }\r\n\
-    \r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
-    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\
-    \n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned long\
-    \ long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned\
-    \ long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
-    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
-    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
-    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
-    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
-    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
-    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
-    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
-    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
-    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
-    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
-    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
-    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
-    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
-    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
-    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
-    \n\r\n}  // namespace ebi\n#line 7 \"test/data_structure/Point_Set_Range_Composite.test.cpp\"\
-    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\
-    \n    F(mint a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n  \
-    \  return F(f2.a * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nF e() {\r\n    return\
-    \ F(1, 0);\r\n}\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\
-    \n    ebi::DynamicSegmentTree<F, op, e> seg(n);\r\n    for (int i = 0; i < n;\
-    \ i++) {\r\n        int a, b;\r\n        std::cin >> a >> b;\r\n        seg.set(i,\
-    \ F(a, b));\r\n    }\r\n    while (q--) {\r\n        int t;\r\n        std::cin\
-    \ >> t;\r\n        if (t == 0) {\r\n            int p, c, d;\r\n            std::cin\
-    \ >> p >> c >> d;\r\n            seg.set(p, F(c, d));\r\n        } else {\r\n\
-    \            int l, r, x;\r\n            std::cin >> l >> r >> x;\r\n        \
-    \    auto f = seg.prod(l, r);\r\n            std::cout << (f.a * x + f.b).value()\
-    \ << std::endl;\r\n        }\r\n    }\r\n}\n"
+    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    template<std::signed_integral\
+    \ T>\r\n    constexpr static_modint(T v) {\r\n        long long x = (long long)(v\
+    \ % (long long)(umod()));\r\n        if (x < 0) x += umod();\r\n        _v = (unsigned\
+    \ int)(x);\r\n    }\r\n\r\n    template<std::unsigned_integral T>\r\n    constexpr\
+    \ static_modint(T v) {\r\n        _v = v % umod();\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
+    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
+    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
+    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
+    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
+    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
+    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
+    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
+    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
+    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
+    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
+    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
+    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
+    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
+    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
+    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
+    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
+    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
+    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
+    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
+    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
+    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
+    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
+    \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 7 \"test/data_structure/Point_Set_Range_Composite.test.cpp\"\n\r\nusing\
+    \ mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint\
+    \ a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n    return F(f2.a\
+    \ * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nF e() {\r\n    return F(1, 0);\r\n\
+    }\r\n\r\nint main() {\r\n    int n, q;\r\n    std::cin >> n >> q;\r\n    ebi::DynamicSegmentTree<F,\
+    \ op, e> seg(n);\r\n    for (int i = 0; i < n; i++) {\r\n        int a, b;\r\n\
+    \        std::cin >> a >> b;\r\n        seg.set(i, F(a, b));\r\n    }\r\n    while\
+    \ (q--) {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\
+    \n            int p, c, d;\r\n            std::cin >> p >> c >> d;\r\n       \
+    \     seg.set(p, F(c, d));\r\n        } else {\r\n            int l, r, x;\r\n\
+    \            std::cin >> l >> r >> x;\r\n            auto f = seg.prod(l, r);\r\
+    \n            std::cout << (f.a * x + f.b).value() << std::endl;\r\n        }\r\
+    \n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/DynamicSegmentTree.hpp\"\
     \r\n#include \"../../modint/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\
@@ -145,7 +146,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-21 15:12:14+09:00'
+  timestamp: '2024-05-21 16:03:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Point_Set_Range_Composite.test.cpp

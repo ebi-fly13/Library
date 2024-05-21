@@ -1,50 +1,50 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/lagrange_interpolation.hpp
     title: Lagrange Interpolation
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/sum_of_exp_times_poly.hpp
     title: $\sum_{i = 0}^{n-1} a^i f(i)$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial
@@ -107,9 +107,9 @@ data:
     \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
     \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
     using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
-    \ 4 \"math/linear_sieve.hpp\"\n\r\n/*\r\n    reference: https://37zigen.com/linear-sieve/\r\
+    \ 5 \"math/linear_sieve.hpp\"\n\r\n/*\r\n    reference: https://37zigen.com/linear-sieve/\r\
     \n    verify:    https://atcoder.jp/contests/abc162/submissions/25095562\r\n*/\r\
-    \n\r\n#line 12 \"math/linear_sieve.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve\
+    \n\r\n#line 13 \"math/linear_sieve.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct linear_sieve\
     \ {\r\n  private:\r\n    using u64 = std::uint64_t;\r\n    int n;\r\n    std::vector<int>\
     \ sieve;\r\n    std::vector<int> prime;\r\n\r\n  public:\r\n    linear_sieve(int\
     \ _n) : n(_n), sieve(std::vector<int>(_n + 1, -1)) {\r\n        for (int i = 2;\
@@ -149,136 +149,137 @@ data:
     \ i = 2; i < sz; i++) {\r\n            if (sieve[i] != i) continue;\r\n      \
     \      for (int j = 1; j * i < sz; j++) {\r\n                f[j] -= f[j * i];\r\
     \n            }\r\n        }\r\n        return f;\r\n    }\r\n\r\n    template\
-    \ <class modint> std::vector<modint> pow_table(int m, int k) {\r\n        assert(m\
-    \ <= n && k >= 0);\r\n        std::vector<modint> table(m + 1, 1);\r\n       \
-    \ table[0] = (k == 0);\r\n        for (int i = 2; i <= m; i++) {\r\n         \
-    \   if (sieve[i] == i) {\r\n                table[i] = modint(i).pow(k);\r\n \
-    \               continue;\r\n            }\r\n            table[i] = table[sieve[i]]\
-    \ * table[i / sieve[i]];\r\n        }\r\n        return table;\r\n    }\r\n\r\n\
-    \    template <class modint> std::vector<modint> inv_table() {\r\n        return\
-    \ pow_table(modint::mod() - 2);\r\n    }\r\n};\r\n\r\n}  // namespace ebi\r\n\
-    #line 11 \"math/sum_of_exp_times_poly.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
-    \ mint>\nmint sum_of_exp_times_poly(const std::vector<mint> &f, mint a, i64 n)\
-    \ {\n    if (n == 0) return 0;\n    if (a == 0) return f[0];\n    if (a == 1)\
-    \ {\n        std::vector<mint> g(f.size() + 1, 0);\n        for (int i = 1; i\
-    \ < (int)g.size(); i++) {\n            g[i] = g[i - 1] + f[i - 1];\n        }\n\
-    \        return lagrange_interpolation(g, n);\n    }\n    int k = (int)f.size()\
-    \ - 1;\n    Binomial<mint> binom(k + 1);\n    std::vector<mint> g(k + 1, 0);\n\
-    \    {\n        mint pow_a = 1;\n        for (int i = 0; i < k + 1; i++) {\n \
-    \           g[i] = f[i] * pow_a;\n            pow_a *= a;\n        }\n       \
-    \ for (int i = 0; i < k; i++) {\n            g[i + 1] += g[i];\n        }\n  \
-    \  }\n    mint c = 0;\n    {\n        mint pow_neg_a = 1;\n        for (int i\
-    \ = 0; i < k + 1; i++) {\n            c += binom.c(k + 1, i) * g[k - i] * pow_neg_a;\n\
-    \            pow_neg_a *= -a;\n        }\n    }\n    c /= (1 - a).pow(k + 1);\n\
-    \n    {\n        mint inv_a_pow = 1, inv_a = a.inv();\n        for (int i = 0;\
-    \ i < k + 1; i++) {\n            g[i] = (-c + g[i]) * inv_a_pow;\n           \
-    \ inv_a_pow *= inv_a;\n        }\n    }\n    mint tn = lagrange_interpolation(g,\
-    \ n - 1);\n    return tn * a.pow(n - 1) + c;\n}\n\ntemplate <Modint mint>\nmint\
-    \ sum_of_exp_times_poly_limit(const std::vector<mint> &f, mint a) {\n    assert(a\
-    \ != 1);\n    if (a == 0) return f[0];\n    int k = (int)f.size() - 1;\n    Binomial<mint>\
-    \ binom(k + 1);\n    std::vector<mint> g(k + 1, 0);\n    {\n        mint pow_a\
-    \ = 1;\n        for (int i = 0; i < k + 1; i++) {\n            g[i] = f[i] * pow_a;\n\
-    \            pow_a *= a;\n        }\n        for (int i = 0; i < k; i++) {\n \
-    \           g[i + 1] += g[i];\n        }\n    }\n    mint c = 0;\n    {\n    \
-    \    mint pow_neg_a = 1;\n        for (int i = 0; i < k + 1; i++) {\n        \
-    \    c += binom.c(k + 1, i) * g[k - i] * pow_neg_a;\n            pow_neg_a *=\
-    \ -a;\n        }\n    }\n    c /= (1 - a).pow(k + 1);\n    return c;\n}\n\ntemplate\
-    \ <Modint mint> mint sum_of_exp2(mint r, int d, i64 n) {\n    linear_sieve sieve(d);\n\
-    \    auto f = sieve.pow_table<mint>(d, d);\n    return sum_of_exp_times_poly(f,\
-    \ r, n);\n}\n\ntemplate <Modint mint> mint sum_of_exp2_limit(mint r, int d) {\n\
-    \    linear_sieve sieve(d);\n    auto f = sieve.pow_table<mint>(d, d);\n    return\
-    \ sum_of_exp_times_poly_limit(f, r);\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
-    \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
-    \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
-    \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
-    \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
-    \    constexpr static_modint() : _v(0) {}\r\n\r\n    constexpr static_modint(long\
-    \ long v) {\r\n        v %= (long long)umod();\r\n        if (v < 0) v += (long\
-    \ long)umod();\r\n        _v = (unsigned int)v;\r\n    }\r\n\r\n    template<std::unsigned_integral\
-    \ T>\r\n    constexpr static_modint(T v) {\r\n        v %= (T)umod();\r\n    \
-    \    _v = (unsigned int)v;\r\n    }\r\n\r\n    constexpr unsigned int val() const\
-    \ {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
-    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
-    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
-    \n        _v--;\r\n        return *this;\r\n    }\r\n\r\n    constexpr modint\
-    \ operator++(int) {\r\n        modint res = *this;\r\n        ++*this;\r\n   \
-    \     return res;\r\n    }\r\n    constexpr modint operator--(int) {\r\n     \
-    \   modint res = *this;\r\n        --*this;\r\n        return res;\r\n    }\r\n\
-    \r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
-    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\
-    \n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned long\
-    \ long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned\
-    \ long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
-    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
-    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
-    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
-    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
-    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
-    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
-    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
-    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
-    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
-    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
-    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
-    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
-    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
-    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
-    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
-    \n\r\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\
-    \n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i,\
-    \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
-    \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
-    \ i >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v)\
-    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line\
-    \ 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n#define\
-    \ debug(...)                                                      \\\n    std::cerr\
-    \ << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\", \\\n       \
-    \ debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid debug_out()\
-    \ {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename... Tail>\
-    \ void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t)\
-    \ > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n\
-    #line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
-    #line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
-    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
-    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
-    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
-    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
-    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
-    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
-    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
-    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
-    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
-    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
-    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
-    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 7\
-    \ \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 6 \"\
-    data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E> struct\
-    \ simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const std::vector<std::pair<int,\
-    \ E>>& elements)\n        : start(n + 1, 0), elist(elements.size()) {\n      \
-    \  for (auto e : elements) {\n            start[e.first + 1]++;\n        }\n \
-    \       for (auto i : std::views::iota(0, n)) {\n            start[i + 1] += start[i];\n\
-    \        }\n        auto counter = start;\n        for (auto [i, e] : elements)\
-    \ {\n            elist[counter[i]++] = e;\n        }\n    }\n\n    simple_csr(const\
-    \ std::vector<std::vector<E>>& es)\n        : start(es.size() + 1, 0) {\n    \
-    \    int n = es.size();\n        for (auto i : std::views::iota(0, n)) {\n   \
-    \         start[i + 1] = (int)es[i].size() + start[i];\n        }\n        elist.resize(start.back());\n\
-    \        for (auto i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(),\
-    \ es[i].end(), elist.begin() + start[i]);\n        }\n    }\n\n    int size()\
-    \ const {\n        return (int)start.size() - 1;\n    }\n\n    const auto operator[](int\
-    \ i) const {\n        return std::ranges::subrange(elist.begin() + start[i],\n\
-    \                                     elist.begin() + start[i + 1]);\n    }\n\
-    \    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \ <Modint mint> std::vector<mint> pow_table(int m, int k) {\r\n        assert(m\
+    \ <= n && k >= 0);\r\n        std::vector<mint> table(m + 1, 1);\r\n        table[0]\
+    \ = (k == 0);\r\n        for (int i = 2; i <= m; i++) {\r\n            if (sieve[i]\
+    \ == i) {\r\n                table[i] = mint(i).pow(k);\r\n                continue;\r\
+    \n            }\r\n            table[i] = table[sieve[i]] * table[i / sieve[i]];\r\
+    \n        }\r\n        return table;\r\n    }\r\n\r\n    template <Modint mint>\
+    \ std::vector<mint> inv_table() {\r\n        return pow_table(mint::mod() - 2);\r\
+    \n    }\r\n};\r\n\r\n}  // namespace ebi\r\n#line 11 \"math/sum_of_exp_times_poly.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nmint sum_of_exp_times_poly(const\
+    \ std::vector<mint> &f, mint a, i64 n) {\n    if (n == 0) return 0;\n    if (a\
+    \ == 0) return f[0];\n    if (a == 1) {\n        std::vector<mint> g(f.size()\
+    \ + 1, 0);\n        for (int i = 1; i < (int)g.size(); i++) {\n            g[i]\
+    \ = g[i - 1] + f[i - 1];\n        }\n        return lagrange_interpolation(g,\
+    \ n);\n    }\n    int k = (int)f.size() - 1;\n    Binomial<mint> binom(k + 1);\n\
+    \    std::vector<mint> g(k + 1, 0);\n    {\n        mint pow_a = 1;\n        for\
+    \ (int i = 0; i < k + 1; i++) {\n            g[i] = f[i] * pow_a;\n          \
+    \  pow_a *= a;\n        }\n        for (int i = 0; i < k; i++) {\n           \
+    \ g[i + 1] += g[i];\n        }\n    }\n    mint c = 0;\n    {\n        mint pow_neg_a\
+    \ = 1;\n        for (int i = 0; i < k + 1; i++) {\n            c += binom.c(k\
+    \ + 1, i) * g[k - i] * pow_neg_a;\n            pow_neg_a *= -a;\n        }\n \
+    \   }\n    c /= (1 - a).pow(k + 1);\n\n    {\n        mint inv_a_pow = 1, inv_a\
+    \ = a.inv();\n        for (int i = 0; i < k + 1; i++) {\n            g[i] = (-c\
+    \ + g[i]) * inv_a_pow;\n            inv_a_pow *= inv_a;\n        }\n    }\n  \
+    \  mint tn = lagrange_interpolation(g, n - 1);\n    return tn * a.pow(n - 1) +\
+    \ c;\n}\n\ntemplate <Modint mint>\nmint sum_of_exp_times_poly_limit(const std::vector<mint>\
+    \ &f, mint a) {\n    assert(a != 1);\n    if (a == 0) return f[0];\n    int k\
+    \ = (int)f.size() - 1;\n    Binomial<mint> binom(k + 1);\n    std::vector<mint>\
+    \ g(k + 1, 0);\n    {\n        mint pow_a = 1;\n        for (int i = 0; i < k\
+    \ + 1; i++) {\n            g[i] = f[i] * pow_a;\n            pow_a *= a;\n   \
+    \     }\n        for (int i = 0; i < k; i++) {\n            g[i + 1] += g[i];\n\
+    \        }\n    }\n    mint c = 0;\n    {\n        mint pow_neg_a = 1;\n     \
+    \   for (int i = 0; i < k + 1; i++) {\n            c += binom.c(k + 1, i) * g[k\
+    \ - i] * pow_neg_a;\n            pow_neg_a *= -a;\n        }\n    }\n    c /=\
+    \ (1 - a).pow(k + 1);\n    return c;\n}\n\ntemplate <Modint mint> mint sum_of_exp2(mint\
+    \ r, int d, i64 n) {\n    linear_sieve sieve(d);\n    auto f = sieve.pow_table<mint>(d,\
+    \ d);\n    return sum_of_exp_times_poly(f, r, n);\n}\n\ntemplate <Modint mint>\
+    \ mint sum_of_exp2_limit(mint r, int d) {\n    linear_sieve sieve(d);\n    auto\
+    \ f = sieve.pow_table<mint>(d, d);\n    return sum_of_exp_times_poly_limit(f,\
+    \ r);\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"\
+    modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\
+    \r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using modint\
+    \ = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\n  \
+    \      return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\n\
+    \        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
+    \    constexpr static_modint() : _v(0) {}\r\n\r\n    template<std::signed_integral\
+    \ T>\r\n    constexpr static_modint(T v) {\r\n        long long x = (long long)(v\
+    \ % (long long)(umod()));\r\n        if (x < 0) x += umod();\r\n        _v = (unsigned\
+    \ int)(x);\r\n    }\r\n\r\n    template<std::unsigned_integral T>\r\n    constexpr\
+    \ static_modint(T v) {\r\n        _v = v % umod();\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
+    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
+    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
+    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
+    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
+    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
+    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
+    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
+    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
+    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
+    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
+    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
+    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
+    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
+    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
+    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
+    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
+    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
+    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
+    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
+    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
+    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
+    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
+    \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i,\
+    \ a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int\
+    \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
+    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
+    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
+    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
+    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
+    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/io.hpp\"\
+    \n\n#line 5 \"template/io.hpp\"\n#include <optional>\n#line 7 \"template/io.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
+    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
+    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
+    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
+    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
+    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
+    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
+    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
+    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
+    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
+    \n\n#line 2 \"graph/base.hpp\"\n\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
+    \n\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ E> struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n,\
+    \ const std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0),\
+    \ elist(elements.size()) {\n        for (auto e : elements) {\n            start[e.first\
+    \ + 1]++;\n        }\n        for (auto i : std::views::iota(0, n)) {\n      \
+    \      start[i + 1] += start[i];\n        }\n        auto counter = start;\n \
+    \       for (auto [i, e] : elements) {\n            elist[counter[i]++] = e;\n\
+    \        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>& es)\n \
+    \       : start(es.size() + 1, 0) {\n        int n = es.size();\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
+    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
+    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
+    \                                   elist.begin() + start[i + 1]);\n    }\n  \
+    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -361,8 +362,8 @@ data:
   isVerificationFile: true
   path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   requiredBy: []
-  timestamp: '2024-05-21 15:12:14+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-05-21 16:03:56+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
 layout: document
