@@ -351,13 +351,12 @@ title: NTT
 
 NTTをするために必要なデータを格納している。
 
-### butterfly(std::vector<mint> &a)
+### fft4(std::vector<mint> &a)
 
-配列 $a$ をNTTする。
+配列 $a$ を基数 $4$ のNTTする。
 $a$ の配列の大きさは $2$ 冪でのみ動作する。
 
-### butterfly_inv(std::vector<mint> &a)
+### ifft4(std::vector<mint> &a)
 
-配列 $a$ をinverse NTTする。
+配列 $a$ を基数 $4$ のinverse NTTする。
 $a$ の配列の大きさは $2$ 冪でのみ動作する。
-inverse NTT後に割る $N$ を行う。
