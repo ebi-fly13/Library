@@ -37,13 +37,13 @@ std::vector<mint> middle_product(const std::vector<mint> &a,
     return fa;
 }
 
-template <Modint mint>
-std::vector<mint> middle_product_naive(const std::vector<mint> &a,
-                                       const std::vector<mint> &b) {
+template <class T>
+std::vector<T> middle_product_naive(const std::vector<T> &a,
+                                       const std::vector<T> &b) {
     int n = (int)a.size();
     int m = (int)b.size();
     assert(n >= m);
-    std::vector<mint> c(n - m + 1, 0);
+    std::vector<T> c(n - m + 1, 0);
     for (int i : std::views::iota(0, n - m + 1)) {
         for (int j : std::views::iota(0, m)) {
             c[i] += b[j] * a[i + j];
