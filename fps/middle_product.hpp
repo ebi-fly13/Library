@@ -6,25 +6,35 @@
 #include <ranges>
 #include <vector>
 
+#include "../convolution/ntt.hpp"
 #include "../modint/base.hpp"
 
 namespace ebi {
 
-template <Modint mint,
-          std::vector<mint> (*convolution)(const std::vector<mint> &,
-                                           const std::vector<mint> &)>
+template <Modint mint>
 std::vector<mint> middle_product(const std::vector<mint> &a,
                                  const std::vector<mint> &b) {
     assert(a.size() >= b.size());
     if (std::min(a.size() - b.size() + 1, b.size()) <= 60) {
         return middle_product_naive<mint>(a, b);
     }
-    auto rb = b;
-    std::reverse(rb.begin(), rb.end());
-    std::vector<mint> c = convolution(a, rb);
-    c.resize(a.size());
-    c.erase(c.begin(), c.begin() + b.size() - 1);
-    return c;
+    int n = std::bit_ceil(a.size());
+    std::vector<mint> fa(n), fb(n);
+    std::copy(a.begin(), a.end(), fa.begin());
+    std::copy(b.rbegin(), b.rend(), fb.begin());
+    internal::fft4(fa);
+    internal::fft4(fb);
+    for (int i = 0; i < n; i++) {
+        fa[i] *= fb[i];
+    }
+    internal::ifft4(fa);
+    mint inv_n = mint(n).inv();
+    for (auto &x : fa) {
+        x *= inv_n;
+    }
+    fa.resize(a.size());
+    fa.erase(fa.begin(), fa.begin() + b.size() - 1);
+    return fa;
 }
 
 template <Modint mint>
