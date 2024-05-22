@@ -1,6 +1,6 @@
 ---
 title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
-documentation_of: //fps/middle_product.hpp
+documentation_of: //fps/middle_product_arbitrary.hpp
 ---
 
 ## 説明
