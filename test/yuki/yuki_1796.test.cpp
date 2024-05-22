@@ -1,6 +1,5 @@
 #define PROBLEM "https://yukicoder.me/problems/no/1796"
 
-#include "../../convolution/convolution.hpp"
 #include "../../fps/middle_product.hpp"
 #include "../../graph/base.hpp"
 #include "../../math/binomial.hpp"
@@ -48,7 +47,7 @@ void main_() {
             rep(i, l1, r1) {
                 g[depth[i]] += q[vs[i]];
             }
-            auto h = middle_product<mint, convolution>(f, g);
+            auto h = middle_product<mint>(f, g);
             assert((int)h.size() == sz0 + 1);
             rep(i, l0, r0) {
                 ans[vs[i]] += h[depth[i]];
