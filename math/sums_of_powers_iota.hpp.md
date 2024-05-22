@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/product_of_fps.hpp
     title: $\prod f_i$
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy: []
