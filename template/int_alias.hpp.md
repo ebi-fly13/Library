@@ -39,6 +39,9 @@ data:
     path: fps/middle_product.hpp
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
+    path: fps/middle_product_arbitrary.hpp
+    title: fps/middle_product_arbitrary.hpp
+  - icon: ':heavy_check_mark:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
   - icon: ':heavy_check_mark:'
@@ -53,6 +56,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/sum_of_powers_iota.hpp
     title: $\sum_{i = 0}^{n-1} i^k$
+  - icon: ':heavy_check_mark:'
+    path: string/wildcard_pattern_matching.hpp
+    title: Wildcard Pattern Matching
   - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
@@ -432,9 +438,11 @@ data:
   - data_structure/bitVector.hpp
   - data_structure/WaveletMatrix.hpp
   - data_structure/area_of_union_of_rectangles.hpp
+  - string/wildcard_pattern_matching.hpp
   - template/utility.hpp
   - template/template.hpp
   - fps/middle_product.hpp
+  - fps/middle_product_arbitrary.hpp
   - math/sum_of_powers_iota.hpp
   - math/sum_of_exp_times_poly.hpp
   - math/linear_sieve.hpp

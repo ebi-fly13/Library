@@ -36,6 +36,9 @@ data:
     path: fps/middle_product.hpp
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
+    path: fps/middle_product_arbitrary.hpp
+    title: fps/middle_product_arbitrary.hpp
+  - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
@@ -125,6 +128,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
+  - icon: ':heavy_check_mark:'
+    path: string/wildcard_pattern_matching.hpp
+    title: Wildcard Pattern Matching
   - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
@@ -328,6 +334,9 @@ data:
     path: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
     title: test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/Wildcard_Pattern_Matching.test.cpp
+    title: test/string/Wildcard_Pattern_Matching.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
   - icon: ':heavy_check_mark:'
@@ -389,12 +398,14 @@ data:
   path: modint/base.hpp
   requiredBy:
   - string/rolling_hash.hpp
+  - string/wildcard_pattern_matching.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
   - fps/middle_product.hpp
   - fps/product_of_fps.hpp
   - fps/composition_of_fps.hpp
   - fps/fps_sqrt.hpp
+  - fps/middle_product_arbitrary.hpp
   - fps/polynomial_interpolation.hpp
   - fps/taylor_shift.hpp
   - fps/multipoint_evaluation.hpp
@@ -471,6 +482,7 @@ data:
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Sqrt_Mod.test.cpp
   - test/math/Berunoulli_Number.test.cpp

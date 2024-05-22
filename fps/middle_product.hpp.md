@@ -13,8 +13,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: fps/middle_product_arbitrary.hpp
+    title: fps/middle_product_arbitrary.hpp
+  - icon: ':heavy_check_mark:'
+    path: string/wildcard_pattern_matching.hpp
+    title: Wildcard Pattern Matching
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/string/Wildcard_Pattern_Matching.test.cpp
+    title: test/string/Wildcard_Pattern_Matching.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
@@ -129,13 +138,13 @@ data:
     \   internal::fft4(fb);\n    for (int i = 0; i < n; i++) {\n        fa[i] *= fb[i];\n\
     \    }\n    internal::ifft4(fa);\n    mint inv_n = mint(n).inv();\n    for (auto\
     \ &x : fa) {\n        x *= inv_n;\n    }\n    fa.resize(a.size());\n    fa.erase(fa.begin(),\
-    \ fa.begin() + b.size() - 1);\n    return fa;\n}\n\ntemplate <Modint mint>\nstd::vector<mint>\
-    \ middle_product_naive(const std::vector<mint> &a,\n                         \
-    \              const std::vector<mint> &b) {\n    int n = (int)a.size();\n   \
-    \ int m = (int)b.size();\n    assert(n >= m);\n    std::vector<mint> c(n - m +\
-    \ 1, 0);\n    for (int i : std::views::iota(0, n - m + 1)) {\n        for (int\
-    \ j : std::views::iota(0, m)) {\n            c[i] += b[j] * a[i + j];\n      \
-    \  }\n    }\n    return c;\n}\n\n}  // namespace ebi\n"
+    \ fa.begin() + b.size() - 1);\n    return fa;\n}\n\ntemplate <class T>\nstd::vector<T>\
+    \ middle_product_naive(const std::vector<T> &a,\n                            \
+    \           const std::vector<T> &b) {\n    int n = (int)a.size();\n    int m\
+    \ = (int)b.size();\n    assert(n >= m);\n    std::vector<T> c(n - m + 1, 0);\n\
+    \    for (int i : std::views::iota(0, n - m + 1)) {\n        for (int j : std::views::iota(0,\
+    \ m)) {\n            c[i] += b[j] * a[i + j];\n        }\n    }\n    return c;\n\
+    }\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <bit>\n#include <cassert>\n\
     #include <ranges>\n#include <vector>\n\n#include \"../convolution/ntt.hpp\"\n\
     #include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\n\
@@ -148,13 +157,13 @@ data:
     \   internal::fft4(fb);\n    for (int i = 0; i < n; i++) {\n        fa[i] *= fb[i];\n\
     \    }\n    internal::ifft4(fa);\n    mint inv_n = mint(n).inv();\n    for (auto\
     \ &x : fa) {\n        x *= inv_n;\n    }\n    fa.resize(a.size());\n    fa.erase(fa.begin(),\
-    \ fa.begin() + b.size() - 1);\n    return fa;\n}\n\ntemplate <Modint mint>\nstd::vector<mint>\
-    \ middle_product_naive(const std::vector<mint> &a,\n                         \
-    \              const std::vector<mint> &b) {\n    int n = (int)a.size();\n   \
-    \ int m = (int)b.size();\n    assert(n >= m);\n    std::vector<mint> c(n - m +\
-    \ 1, 0);\n    for (int i : std::views::iota(0, n - m + 1)) {\n        for (int\
-    \ j : std::views::iota(0, m)) {\n            c[i] += b[j] * a[i + j];\n      \
-    \  }\n    }\n    return c;\n}\n\n}  // namespace ebi"
+    \ fa.begin() + b.size() - 1);\n    return fa;\n}\n\ntemplate <class T>\nstd::vector<T>\
+    \ middle_product_naive(const std::vector<T> &a,\n                            \
+    \           const std::vector<T> &b) {\n    int n = (int)a.size();\n    int m\
+    \ = (int)b.size();\n    assert(n >= m);\n    std::vector<T> c(n - m + 1, 0);\n\
+    \    for (int i : std::views::iota(0, n - m + 1)) {\n        for (int j : std::views::iota(0,\
+    \ m)) {\n            c[i] += b[j] * a[i + j];\n        }\n    }\n    return c;\n\
+    }\n\n}  // namespace ebi"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
@@ -162,11 +171,14 @@ data:
   - modint/base.hpp
   isVerificationFile: false
   path: fps/middle_product.hpp
-  requiredBy: []
-  timestamp: '2024-05-22 12:17:51+09:00'
+  requiredBy:
+  - string/wildcard_pattern_matching.hpp
+  - fps/middle_product_arbitrary.hpp
+  timestamp: '2024-05-22 14:27:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1796.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
 documentation_of: fps/middle_product.hpp
 layout: document
 title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
@@ -174,4 +186,4 @@ title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
 
 ## 説明
 
-$N$ 次多項式 $a$ と $M$ 時多項式 $b$ について $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$ となる $N-M$ 次多項式 $c$ を求める。 $O(N\log N)$
+$N$ 次多項式 $a$ と $M$ 次多項式 $b$ について $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$ となる $N-M$ 次多項式 $c$ を求める。 $O(N\log N)$

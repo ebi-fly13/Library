@@ -23,6 +23,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/middle_product.hpp
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
+  - icon: ':heavy_check_mark:'
+    path: fps/middle_product_arbitrary.hpp
+    title: fps/middle_product_arbitrary.hpp
+  - icon: ':heavy_check_mark:'
+    path: string/wildcard_pattern_matching.hpp
+    title: Wildcard Pattern Matching
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution.test.cpp
@@ -102,6 +108,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/string/Wildcard_Pattern_Matching.test.cpp
+    title: test/string/Wildcard_Pattern_Matching.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
@@ -304,7 +313,9 @@ data:
   isVerificationFile: false
   path: convolution/ntt.hpp
   requiredBy:
+  - string/wildcard_pattern_matching.hpp
   - fps/middle_product.hpp
+  - fps/middle_product_arbitrary.hpp
   - convolution/convolution_mod_2_64.hpp
   - convolution/convolution.hpp
   - convolution/arbitrary_ntt.hpp
@@ -329,6 +340,7 @@ data:
   - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Berunoulli_Number.test.cpp
   - test/math/Partition_Function_FPS.test.cpp

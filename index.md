@@ -246,6 +246,9 @@ data:
       path: fps/middle_product.hpp
       title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
     - icon: ':heavy_check_mark:'
+      path: fps/middle_product_arbitrary.hpp
+      title: fps/middle_product_arbitrary.hpp
+    - icon: ':heavy_check_mark:'
       path: fps/multipoint_evaluation.hpp
       title: Multipoint Evaluation
     - icon: ':heavy_check_mark:'
