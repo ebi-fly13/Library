@@ -6,7 +6,7 @@ data:
     title: Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_2d.hpp
-    title: convolution/convolution_2d.hpp
+    title: Convolution 2D
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT
