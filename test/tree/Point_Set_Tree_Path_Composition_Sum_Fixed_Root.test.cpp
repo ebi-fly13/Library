@@ -1,6 +1,5 @@
 #define PROBLEM                        \
-    "https://judge.yosupo.jp/problem/" \
-    "point_set_tree_path_composite_sum_fixed_root"
+    "https://judge.yosupo.jp/problem/point_set_tree_path_composite_sum_fixed_root"
 
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
