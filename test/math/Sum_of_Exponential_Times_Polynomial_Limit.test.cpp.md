@@ -1,70 +1,70 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/lagrange_interpolation.hpp
     title: Lagrange Interpolation
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/sum_of_exp_times_poly.hpp
     title: $\sum_{i = 0}^{n-1} a^i f(i)$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial_limit
+    PROBLEM: https://judge.yosupo.jp/problem/" "sum_of_exponential_times_polynomial_limit
     links:
-    - https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial_limit
+    - https://judge.yosupo.jp/problem/
   bundledCode: "#line 1 \"test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp\"\
-    \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial_limit\"\
-    \n\n#line 2 \"math/sum_of_exp_times_poly.hpp\"\n\n#include <cassert>\n#include\
-    \ <vector>\n\n#line 2 \"math/binomial.hpp\"\n\n#include <bit>\n#line 5 \"math/binomial.hpp\"\
-    \n#include <cstdint>\n#include <iostream>\n#include <ranges>\n#line 9 \"math/binomial.hpp\"\
-    \n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
-    \n#include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint\
-    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n   \
-    \ a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
-    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
-    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
-    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
-    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 11 \"math/binomial.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint> struct Binomial {\n  private:\n\
-    \    static void extend(int len = -1) {\n        int sz = (int)fact.size();\n\
+    \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/\"\
+    \ \\\n    \"sum_of_exponential_times_polynomial_limit\"\n\n#line 2 \"math/sum_of_exp_times_poly.hpp\"\
+    \n\n#include <cassert>\n#include <vector>\n\n#line 2 \"math/binomial.hpp\"\n\n\
+    #include <bit>\n#line 5 \"math/binomial.hpp\"\n#include <cstdint>\n#include <iostream>\n\
+    #include <ranges>\n#line 9 \"math/binomial.hpp\"\n\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
+    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
+    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 11 \"\
+    math/binomial.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> struct Binomial\
+    \ {\n  private:\n    static void extend(int len = -1) {\n        int sz = (int)fact.size();\n\
     \        if (len < 0)\n            len = 2 * sz;\n        else if (len <= sz)\n\
     \            return;\n        else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
     \        len = std::min(len, mint::mod());\n        assert(sz <= len);\n     \
@@ -332,19 +332,20 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 7 \"test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp\"\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 8 \"test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    i64\
     \ r, d;\n    std::cin >> r >> d;\n    std::cout << sum_of_exp2_limit<mint>(r,\
     \ d) << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
     \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
     \    }\n    return 0;\n}\n"
-  code: "#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial_limit\"\
-    \n\n#include \"../../math/sum_of_exp_times_poly.hpp\"\n#include \"../../modint/modint.hpp\"\
-    \n#include \"../../template/template.hpp\"\n\nnamespace ebi {\n\nusing mint =\
-    \ modint998244353;\n\nvoid main_() {\n    i64 r, d;\n    std::cin >> r >> d;\n\
-    \    std::cout << sum_of_exp2_limit<mint>(r, d) << '\\n';\n}\n\n}  // namespace\
-    \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
-    \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
+  code: "#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/\"\
+    \ \\\n    \"sum_of_exponential_times_polynomial_limit\"\n\n#include \"../../math/sum_of_exp_times_poly.hpp\"\
+    \n#include \"../../modint/modint.hpp\"\n#include \"../../template/template.hpp\"\
+    \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    i64\
+    \ r, d;\n    std::cin >> r >> d;\n    std::cout << sum_of_exp2_limit<mint>(r,\
+    \ d) << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    return 0;\n}"
   dependsOn:
   - math/sum_of_exp_times_poly.hpp
   - math/binomial.hpp
@@ -362,8 +363,8 @@ data:
   isVerificationFile: true
   path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   requiredBy: []
-  timestamp: '2024-05-23 18:52:03+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-23 21:35:59+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
 layout: document

@@ -1,31 +1,34 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution.hpp
     title: Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
+  - icon: ':question:'
+    path: fps/ntt_friendly_fps.hpp
+    title: fps/ntt_friendly_fps.hpp
   - icon: ':heavy_check_mark:'
     path: fps/product_of_one_minus_xn.hpp
     title: $\prod (1 - x^{a_i}) \mod x^d$
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
     path: math/mod_inv.hpp
     title: Mod Inv
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []
@@ -50,22 +53,22 @@ data:
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
     \ return 3;\n    if (m == 880803841) return 26;\n    if (m == 924844033) return\
     \ 5;\n    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#include <cstdint>\n\nnamespace ebi {\n\nusing ld = long double;\nusing std::size_t;\n\
-    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
-    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
-    using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
-    using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\
-    \n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
+    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace\
     \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
     \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
     \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 12 \"\
-    convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <Modint\
-    \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
-    \  static constexpr int rank2 =\n        std::countr_zero((unsigned int)(mint::mod()\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 2 \"\
+    template/int_alias.hpp\"\n\n#include <cstdint>\n\nnamespace ebi {\n\nusing ld\
+    \ = long double;\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
+    using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
+    using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 12 \"convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate\
+    \ <Modint mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info\
+    \ {\n    static constexpr int rank2 =\n        std::countr_zero((unsigned int)(mint::mod()\
     \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
     \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
     \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
@@ -153,13 +156,12 @@ data:
     \ a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::fft4(a);\n\
     \    internal::fft4(b);\n    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n\
     \    }\n    internal::ifft4(a);\n    a.resize(f.size() + g.size() - 1);\n    mint\
-    \ inv_n = mint(n).inv();\n    for(auto &x: a) x *= inv_n;\n    return a;\n}\n\n\
-    }  // namespace ebi\n#line 2 \"fps/fps.hpp\"\n\n#line 5 \"fps/fps.hpp\"\n#include\
-    \ <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 9 \"fps/fps.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
-    \ std::vector<mint> &,\n                                           const std::vector<mint>\
-    \ &)>\nstruct FormalPowerSeries : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n\
-    \    using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
+    \ inv_n = mint(n).inv();\n    for (auto& x : a) x *= inv_n;\n    return a;\n}\n\
+    \n}  // namespace ebi\n#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#line 2 \"fps/fps.hpp\"\
+    \n\n#line 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n\
+    #line 9 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> struct FormalPowerSeries\
+    \ : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n  \
+    \  using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
     \n  public:\n    FormalPowerSeries(const std::vector<mint> &a) {\n        *this\
     \ = a;\n    }\n\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
     \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
@@ -178,11 +180,10 @@ data:
     \ }\n\n    FPS &operator-=(const FPS &rhs) noexcept {\n        if (this->size()\
     \ < rhs.size()) this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
     \ ++i) {\n            (*this)[i] -= rhs[i];\n        }\n        return *this;\n\
-    \    }\n\n    FPS &operator*=(const FPS &rhs) noexcept {\n        *this = convolution(*this,\
-    \ rhs);\n        return *this;\n    }\n\n    FPS &operator/=(const FPS &rhs) noexcept\
-    \ {\n        int n = deg() - 1;\n        int m = rhs.deg() - 1;\n        if (n\
-    \ < m) {\n            *this = {};\n            return *this;\n        }\n    \
-    \    *this = (*this).rev() * rhs.rev().inv(n - m + 1);\n        (*this).resize(n\
+    \    }\n\n    FPS &operator*=(const FPS &);\n\n    FPS &operator/=(const FPS &rhs)\
+    \ noexcept {\n        int n = deg() - 1;\n        int m = rhs.deg() - 1;\n   \
+    \     if (n < m) {\n            *this = {};\n            return *this;\n     \
+    \   }\n        *this = (*this).rev() * rhs.rev().inv(n - m + 1);\n        (*this).resize(n\
     \ - m + 1);\n        std::reverse((*this).begin(), (*this).end());\n        return\
     \ *this;\n    }\n\n    FPS &operator%=(const FPS &rhs) noexcept {\n        *this\
     \ -= *this / rhs * rhs;\n        shrink();\n        return *this;\n    }\n\n \
@@ -237,7 +238,10 @@ data:
     \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
     \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
     \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
-    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/product_of_one_minus_xn.hpp\"\
+    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 6 \"fps/ntt_friendly_fps.hpp\"\n\
+    \nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
+    \    const FormalPowerSeries<mint> &rhs) {\n    *this = convolution(*this, rhs);\n\
+    \    return *this;\n}\n\n}  // namespace ebi\n#line 2 \"fps/product_of_one_minus_xn.hpp\"\
     \n\n#line 4 \"fps/product_of_one_minus_xn.hpp\"\n\n#line 2 \"math/mod_inv.hpp\"\
     \n\n#line 5 \"math/mod_inv.hpp\"\n\n#line 7 \"math/mod_inv.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <Modint mint> mint inv(int n) {\n    static const int mod\
@@ -246,31 +250,29 @@ data:
     \   int num = dat.size();\n        int q = (mod + num - 1) / num;\n        dat.emplace_back(dat[num\
     \ * q - mod] * mint(q));\n    }\n    return dat[n];\n}\n\n}  // namespace ebi\n\
     #line 8 \"fps/product_of_one_minus_xn.hpp\"\n\nnamespace ebi {\n\n// prod (1 -\
-    \ x^a_i) mod x^d\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
-    \ std::vector<mint> &,\n                                           const std::vector<mint>\
-    \ &)>\nFormalPowerSeries<mint, convolution> product_of_one_minus_xn(std::vector<int>\
-    \ a,\n                                                             int d) {\n\
-    \    using FPS = FormalPowerSeries<mint, convolution>;\n    std::vector<int> cnt(d,\
-    \ 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    if (cnt[0]) return\
-    \ FPS(d);\n    FPS log_f(d);\n    for (int x = 1; x < d; x++) {\n        for (int\
-    \ i = 1; x * i < d; i++) {\n            log_f[x * i] -= mint(cnt[x]) * inv<mint>(i);\n\
-    \        }\n    }\n    return log_f.exp(d);\n}\n\n}  // namespace ebi\n#line 2\
-    \ \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\
-    \n    using modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int\
-    \ mod() {\r\n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int\
-    \ v) {\r\n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\
-    \n\r\n    constexpr static_modint() : _v(0) {}\r\n\r\n    template <std::signed_integral\
-    \ T> constexpr static_modint(T v) {\r\n        long long x = (long long)(v % (long\
-    \ long)(umod()));\r\n        if (x < 0) x += umod();\r\n        _v = (unsigned\
-    \ int)(x);\r\n    }\r\n\r\n    template <std::unsigned_integral T> constexpr static_modint(T\
-    \ v) {\r\n        _v = (unsigned int)(v % umod());\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
-    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
-    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
-    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \ x^a_i) mod x^d\ntemplate <Modint mint>\nFormalPowerSeries<mint> product_of_one_minus_xn(std::vector<int>\
+    \ a, int d) {\n    using FPS = FormalPowerSeries<mint>;\n    std::vector<int>\
+    \ cnt(d, 0);\n    for (auto x : a)\n        if (x < d) cnt[x]++;\n    if (cnt[0])\
+    \ return FPS(d);\n    FPS log_f(d);\n    for (int x = 1; x < d; x++) {\n     \
+    \   for (int i = 1; x * i < d; i++) {\n            log_f[x * i] -= mint(cnt[x])\
+    \ * inv<mint>(i);\n        }\n    }\n    return log_f.exp(d);\n}\n\n}  // namespace\
+    \ ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n\
+    #line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct\
+    \ static_modint {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n \
+    \ public:\r\n    static constexpr int mod() {\r\n        return m;\r\n    }\r\n\
+    \r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v\
+    \ = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0)\
+    \ {}\r\n\r\n    template <std::signed_integral T> constexpr static_modint(T v)\
+    \ {\r\n        long long x = (long long)(v % (long long)(umod()));\r\n       \
+    \ if (x < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n\
+    \    template <std::unsigned_integral T> constexpr static_modint(T v) {\r\n  \
+    \      _v = (unsigned int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned\
+    \ int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned\
+    \ int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint\
+    \ &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n  \
+    \      return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n    \
+    \    if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n \
+    \   }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
     \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
     \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
     \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
@@ -302,26 +304,27 @@ data:
     \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
     \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
     #line 11 \"test/math/Partition_Function_FPS.test.cpp\"\n\nusing mint = ebi::modint998244353;\n\
-    using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;\n\nint main() {\n\
-    \    int n;\n    std::cin >> n;\n    std::vector<int> a(n);\n    std::iota(a.begin(),\
-    \ a.end(), 1);\n    FPS f = ebi::product_of_one_minus_xn<mint, ebi::convolution>(a,\
-    \ n + 1);\n    f = f.inv();\n    for (int i = 0; i <= n; i++) {\n        std::cout\
-    \ << f[i].val() << \" \\n\"[i == n];\n    }\n}\n"
+    using FPS = ebi::FormalPowerSeries<mint>;\n\nint main() {\n    int n;\n    std::cin\
+    \ >> n;\n    std::vector<int> a(n);\n    std::iota(a.begin(), a.end(), 1);\n \
+    \   FPS f = ebi::product_of_one_minus_xn<mint>(a, n + 1);\n    f = f.inv();\n\
+    \    for (int i = 0; i <= n; i++) {\n        std::cout << f[i].val() << \" \\\
+    n\"[i == n];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/partition_function\"\n\n\
     #include <iostream>\n#include <numeric>\n#include <vector>\n\n#include \"../../convolution/convolution.hpp\"\
-    \n#include \"../../fps/fps.hpp\"\n#include \"../../fps/product_of_one_minus_xn.hpp\"\
+    \n#include \"../../fps/ntt_friendly_fps.hpp\"\n#include \"../../fps/product_of_one_minus_xn.hpp\"\
     \n#include \"../../modint/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
-    using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;\n\nint main() {\n\
-    \    int n;\n    std::cin >> n;\n    std::vector<int> a(n);\n    std::iota(a.begin(),\
-    \ a.end(), 1);\n    FPS f = ebi::product_of_one_minus_xn<mint, ebi::convolution>(a,\
-    \ n + 1);\n    f = f.inv();\n    for (int i = 0; i <= n; i++) {\n        std::cout\
-    \ << f[i].val() << \" \\n\"[i == n];\n    }\n}"
+    using FPS = ebi::FormalPowerSeries<mint>;\n\nint main() {\n    int n;\n    std::cin\
+    \ >> n;\n    std::vector<int> a(n);\n    std::iota(a.begin(), a.end(), 1);\n \
+    \   FPS f = ebi::product_of_one_minus_xn<mint>(a, n + 1);\n    f = f.inv();\n\
+    \    for (int i = 0; i <= n; i++) {\n        std::cout << f[i].val() << \" \\\
+    n\"[i == n];\n    }\n}"
   dependsOn:
   - convolution/convolution.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
-  - template/int_alias.hpp
   - modint/base.hpp
+  - template/int_alias.hpp
+  - fps/ntt_friendly_fps.hpp
   - fps/fps.hpp
   - fps/product_of_one_minus_xn.hpp
   - math/mod_inv.hpp
@@ -329,7 +332,7 @@ data:
   isVerificationFile: true
   path: test/math/Partition_Function_FPS.test.cpp
   requiredBy: []
-  timestamp: '2024-05-23 18:52:03+09:00'
+  timestamp: '2024-05-23 21:35:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Partition_Function_FPS.test.cpp

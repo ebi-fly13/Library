@@ -7,25 +7,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: Range Parallel DSU
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
@@ -200,8 +200,8 @@ data:
     \ rng.get(0, n);\n        int w = rng.get(0, n);\n        rpd.merge(u, v, w);\n\
     \        for (int i = 0; i < w; i++) {\n            if (u + i >= n || v + i >=\
     \ n) break;\n            uf.merge(u + i, v + i);\n        }\n        int a = rng.get(1,\
-    \ 5000);\n        while(a--) {\n            int x = rng.get(0, n);\n         \
-    \   int y = rng.get(0, n);\n            assert(rpd.same(x, y) == uf.same(x, y));\n\
+    \ 5000);\n        while (a--) {\n            int x = rng.get(0, n);\n        \
+    \    int y = rng.get(0, n);\n            assert(rpd.same(x, y) == uf.same(x, y));\n\
     \        }\n    }\n    rep(i, 0, n) {\n        rep(j, i + 1, n) {\n          \
     \  assert(rpd.same(i, j) == uf.same(i, j));\n        }\n    }\n}\n\n}  // namespace\
     \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
@@ -216,7 +216,7 @@ data:
     \        int v = rng.get(0, n);\n        int w = rng.get(0, n);\n        rpd.merge(u,\
     \ v, w);\n        for (int i = 0; i < w; i++) {\n            if (u + i >= n ||\
     \ v + i >= n) break;\n            uf.merge(u + i, v + i);\n        }\n       \
-    \ int a = rng.get(1, 5000);\n        while(a--) {\n            int x = rng.get(0,\
+    \ int a = rng.get(1, 5000);\n        while (a--) {\n            int x = rng.get(0,\
     \ n);\n            int y = rng.get(0, n);\n            assert(rpd.same(x, y) ==\
     \ uf.same(x, y));\n        }\n    }\n    rep(i, 0, n) {\n        rep(j, i + 1,\
     \ n) {\n            assert(rpd.same(i, j) == uf.same(i, j));\n        }\n    }\n\
@@ -238,7 +238,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Parallel_DSU.test.cpp
   requiredBy: []
-  timestamp: '2024-04-24 17:01:23+09:00'
+  timestamp: '2024-05-23 21:35:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Parallel_DSU.test.cpp

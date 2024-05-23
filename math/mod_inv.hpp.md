@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
@@ -25,8 +25,8 @@ data:
     path: test/math/Partition_Function_FPS.test.cpp
     title: test/math/Partition_Function_FPS.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/math/sharp_p_subset_sum.test.cpp
-    title: test/math/sharp_p_subset_sum.test.cpp
+    path: test/math/Sharp_P_Subset_Sum.test.cpp
+    title: test/math/Sharp_P_Subset_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
@@ -90,8 +90,8 @@ data:
   - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
-  - test/math/sharp_p_subset_sum.test.cpp
 documentation_of: math/mod_inv.hpp
 layout: document
 title: Mod Inv

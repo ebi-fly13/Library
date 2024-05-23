@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   - icon: ':heavy_check_mark:'
@@ -34,14 +34,13 @@ data:
     - https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
   bundledCode: "#line 1 \"test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp\"\
     \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
-    \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#line 2 \"tree/rooted_tree_hash.hpp\"\
-    \n\n#line 4 \"tree/rooted_tree_hash.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#include\
-    \ <cassert>\n#line 5 \"graph/base.hpp\"\n#include <ranges>\n#line 7 \"graph/base.hpp\"\
-    \n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
-    \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
-    \    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n     \
-    \   : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\
+    \n\n#include <cassert>\n#line 5 \"graph/base.hpp\"\n#include <ranges>\n#line 7\
+    \ \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"\
+    data_structure/simple_csr.hpp\"\n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
+    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
+    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
     \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
     \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
     \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
@@ -95,8 +94,9 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"utility/hash.hpp\"\
-    \n\n#include <array>\n\n#line 2 \"modint/modint61.hpp\"\n\n#line 4 \"modint/modint61.hpp\"\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"tree/rooted_tree_hash.hpp\"\
+    \n\n#line 4 \"tree/rooted_tree_hash.hpp\"\n\n#line 2 \"utility/hash.hpp\"\n\n\
+    #include <array>\n\n#line 2 \"modint/modint61.hpp\"\n\n#line 4 \"modint/modint61.hpp\"\
     \n#include <cstdint>\n#line 6 \"modint/modint61.hpp\"\n\n#line 2 \"modint/base.hpp\"\
     \n\n#include <concepts>\n#line 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
     \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
@@ -221,18 +221,18 @@ data:
     \ << k << '\\n';\n    for (int i = 0; i < n; i++) {\n        std::cout << map[hash[i]]\
     \ << \" \\n\"[i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
-    \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#include \"../../tree/rooted_tree_hash.hpp\"\
-    \n#include \"../../utility/hash.hpp\"\n#include \"../../graph/base.hpp\"\n\nint\
-    \ main() {\n    int n;\n    std::cin >> n;\n    ebi::Graph<int> g(n);\n    g.read_parents(0);\n\
-    \    auto hash = ebi::rooted_tree_hash<2>::subtree_hash(g, 0);\n    int k = 0;\n\
-    \    std::map<ebi::Hash<2>, int> map;\n    for (auto h : hash) {\n        if (map.find(h)\
-    \ == map.end()) map[h] = k++;\n    }\n    std::cout << k << '\\n';\n    for (int\
-    \ i = 0; i < n; i++) {\n        std::cout << map[hash[i]] << \" \\n\"[i == n -\
-    \ 1];\n    }\n}"
+    \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#include \"../../graph/base.hpp\"\
+    \n#include \"../../tree/rooted_tree_hash.hpp\"\n#include \"../../utility/hash.hpp\"\
+    \n\nint main() {\n    int n;\n    std::cin >> n;\n    ebi::Graph<int> g(n);\n\
+    \    g.read_parents(0);\n    auto hash = ebi::rooted_tree_hash<2>::subtree_hash(g,\
+    \ 0);\n    int k = 0;\n    std::map<ebi::Hash<2>, int> map;\n    for (auto h :\
+    \ hash) {\n        if (map.find(h) == map.end()) map[h] = k++;\n    }\n    std::cout\
+    \ << k << '\\n';\n    for (int i = 0; i < n; i++) {\n        std::cout << map[hash[i]]\
+    \ << \" \\n\"[i == n - 1];\n    }\n}"
   dependsOn:
-  - tree/rooted_tree_hash.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
+  - tree/rooted_tree_hash.hpp
   - utility/hash.hpp
   - modint/modint61.hpp
   - modint/base.hpp
@@ -240,7 +240,7 @@ data:
   isVerificationFile: true
   path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-05-23 21:35:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp

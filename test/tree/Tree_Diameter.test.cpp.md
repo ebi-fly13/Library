@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   - icon: ':heavy_check_mark:'
@@ -88,7 +88,7 @@ data:
     \n\nnamespace ebi {\n\ntemplate <class T>\nstd::pair<T, std::vector<int>> tree_diameter(const\
     \ Graph<T> &g) {\n    int n = g.size();\n    std::vector<T> dp(n);\n    std::vector<int>\
     \ par(n, -1);\n    dp[0] = 0;\n    auto dfs = [&](auto &&self, int v) -> void\
-    \ {\n        for (const auto e: g[v]) {\n            if (e.to == par[v]) continue;\n\
+    \ {\n        for (const auto e : g[v]) {\n            if (e.to == par[v]) continue;\n\
     \            par[e.to] = v;\n            dp[e.to] = dp[v] + e.cost;\n        \
     \    self(self, e.to);\n        }\n    };\n    dfs(dfs, 0);\n    int u = std::max_element(dp.begin(),\
     \ dp.end()) - dp.begin();\n    par[u] = -1;\n    dp[u] = 0;\n    dfs(dfs, u);\n\
@@ -121,7 +121,7 @@ data:
   isVerificationFile: true
   path: test/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-05-23 21:35:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Tree_Diameter.test.cpp

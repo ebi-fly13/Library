@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution.hpp
     title: Convolution
   - icon: ':heavy_check_mark:'
@@ -17,16 +17,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/dirichlet_convolution.hpp
     title: Dirichlet Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
@@ -44,6 +44,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
+  - icon: ':question:'
+    path: fps/ntt_friendly_fps.hpp
+    title: fps/ntt_friendly_fps.hpp
   - icon: ':heavy_check_mark:'
     path: fps/polynomial_interpolation.hpp
     title: Polynomial Interpolation
@@ -71,7 +74,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/bernoulli_number.hpp
     title: Bernoulli Number
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: Binomial Coefficient
   - icon: ':heavy_check_mark:'
@@ -83,7 +86,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/factorial_mod_998.hpp
     title: math/factorial_mod_998.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
   - icon: ':heavy_check_mark:'
@@ -101,7 +104,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/stirling_number_2nd.hpp
     title: Stirling Numbers of the Second Kind
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/sum_of_exp_times_poly.hpp
     title: $\sum_{i = 0}^{n-1} a^i f(i)$
   - icon: ':heavy_check_mark:'
@@ -119,7 +122,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -232,6 +235,9 @@ data:
     path: test/math/Pow.test.cpp
     title: test/math/Pow.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Sharp_P_Subset_Sum.test.cpp
+    title: test/math/Sharp_P_Subset_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Sqrt_Mod.test.cpp
     title: test/math/Sqrt_Mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -243,7 +249,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - icon: ':heavy_check_mark:'
@@ -252,9 +258,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/sharp_p_subset_sum.test.cpp
-    title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix.test.cpp
     title: test/matrix/Determinant_of_Matrix.test.cpp
@@ -282,7 +285,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -351,7 +354,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
     title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   - icon: ':heavy_check_mark:'
@@ -378,9 +381,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2747.test.cpp
     title: test/yuki/yuki_2747.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\
@@ -408,6 +411,7 @@ data:
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
   - fps/middle_product.hpp
+  - fps/ntt_friendly_fps.hpp
   - fps/product_of_fps.hpp
   - fps/composition_of_fps.hpp
   - fps/fps_sqrt.hpp
@@ -450,7 +454,7 @@ data:
   - convolution/ntt.hpp
   - tree/rooted_tree_hash.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp
@@ -490,6 +494,7 @@ data:
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
+  - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Sqrt_Mod.test.cpp
   - test/math/Berunoulli_Number.test.cpp
@@ -497,7 +502,6 @@ data:
   - test/math/Partition_Function_FPS.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
-  - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/Pow.test.cpp

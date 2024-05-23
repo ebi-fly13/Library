@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/arbitrary_ntt.hpp
     title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/convolution.hpp
     title: Convolution
   - icon: ':heavy_check_mark:'
@@ -23,7 +23,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/dirichlet_convolution.hpp
     title: Dirichlet Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT
   - icon: ':heavy_check_mark:'
@@ -44,16 +44,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/middle_product_arbitrary.hpp
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
+  - icon: ':question:'
+    path: fps/ntt_friendly_fps.hpp
+    title: fps/ntt_friendly_fps.hpp
   - icon: ':heavy_check_mark:'
     path: math/DirichletSeries.hpp
     title: Dirichlet Series
   - icon: ':heavy_check_mark:'
     path: math/inversion_number.hpp
     title: Inversion Number
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/linear_sieve.hpp
     title: Linear Sieve
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/sum_of_exp_times_poly.hpp
     title: $\sum_{i = 0}^{n-1} a^i f(i)$
   - icon: ':heavy_check_mark:'
@@ -62,10 +65,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedVerifiedWith:
@@ -208,6 +211,9 @@ data:
     path: test/math/Partition_Function_Pentagonal.test.cpp
     title: test/math/Partition_Function_Pentagonal.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Sharp_P_Subset_Sum.test.cpp
+    title: test/math/Sharp_P_Subset_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Stern-Brocot_Tree.test.cpp
     title: test/math/Stern-Brocot_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -219,7 +225,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
     title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - icon: ':heavy_check_mark:'
@@ -228,9 +234,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Totient_Function.test.cpp
     title: test/math/Sum_of_Totient_Function.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/sharp_p_subset_sum.test.cpp
-    title: test/math/sharp_p_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix_2.test.cpp
     title: test/matrix/Determinant_of_Matrix_2.test.cpp
@@ -255,7 +258,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -309,7 +312,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
     title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   - icon: ':heavy_check_mark:'
@@ -360,9 +363,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template/int_alias.hpp"
@@ -448,6 +451,7 @@ data:
   - template/utility.hpp
   - template/template.hpp
   - fps/middle_product.hpp
+  - fps/ntt_friendly_fps.hpp
   - fps/middle_product_arbitrary.hpp
   - math/sum_of_powers_iota.hpp
   - math/sum_of_exp_times_poly.hpp
@@ -464,7 +468,7 @@ data:
   - convolution/ntt.hpp
   - convolution/online_convolution.hpp
   timestamp: '2023-12-28 15:52:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_952.test.cpp
@@ -526,13 +530,13 @@ data:
   - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Inversion_Number.test.cpp
   - test/math/Stern-Brocot_Tree.test.cpp
+  - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Berunoulli_Number.test.cpp
   - test/math/Factorial.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/math/Sum_of_Totient_Function.test.cpp
-  - test/math/sharp_p_subset_sum.test.cpp
   - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp

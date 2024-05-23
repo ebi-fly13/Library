@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/static_top_tree.hpp
     title: Static Top Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
     title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/dp_on_static_top_tree.hpp\"\n\n#line 2 \"tree/static_top_tree.hpp\"\
@@ -138,19 +138,20 @@ data:
     \        } else if (stt.type(v) == Type::AddVertex) {\n            path[v] = add_vertex(point[stt.left_child(v)],\
     \ vertex[v]);\n        }\n    }\n\n    void update(int v) {\n        while (v\
     \ != -1) {\n            update_(v);\n            v = stt.parent(v);\n        }\n\
-    \    }\n\n  public:\n    dp_on_static_top_tree(const Graph<T> &g, int root, const\
-    \ std::vector<Path> &vertex_,\n                          const Compress &compress_,\
-    \ const Rake &rake_,\n                          const Add_edge &add_edge_,\n \
-    \                         const Add_vertex &add_vertex_)\n        : stt(g, root),\n\
-    \          n(stt.node_num()),\n          path(n),\n          point(n),\n     \
-    \     vertex(vertex_),\n          compress(compress_),\n          rake(rake_),\n\
-    \          add_edge(add_edge_),\n          add_vertex(add_vertex_) {\n       \
-    \ dfs(stt.root());\n    }\n\n    Path get() const {\n        return path[stt.root()];\n\
-    \    }\n\n    void set(int v, Path x) {\n        vertex[v] = x;\n        update(v);\n\
-    \    }\n\n  private:\n    static_top_tree<T> stt;\n\n    int n;\n    std::vector<Path>\
-    \ path;\n    std::vector<Point> point;\n    std::vector<Path> vertex;\n    const\
-    \ Compress compress;\n    const Rake rake;\n    const Add_edge add_edge;\n   \
-    \ const Add_vertex add_vertex;\n};\n\n}  // namespace ebi\n"
+    \    }\n\n  public:\n    dp_on_static_top_tree(const Graph<T> &g, int root,\n\
+    \                          const std::vector<Path> &vertex_,\n               \
+    \           const Compress &compress_, const Rake &rake_,\n                  \
+    \        const Add_edge &add_edge_,\n                          const Add_vertex\
+    \ &add_vertex_)\n        : stt(g, root),\n          n(stt.node_num()),\n     \
+    \     path(n),\n          point(n),\n          vertex(vertex_),\n          compress(compress_),\n\
+    \          rake(rake_),\n          add_edge(add_edge_),\n          add_vertex(add_vertex_)\
+    \ {\n        dfs(stt.root());\n    }\n\n    Path get() const {\n        return\
+    \ path[stt.root()];\n    }\n\n    void set(int v, Path x) {\n        vertex[v]\
+    \ = x;\n        update(v);\n    }\n\n  private:\n    static_top_tree<T> stt;\n\
+    \n    int n;\n    std::vector<Path> path;\n    std::vector<Point> point;\n   \
+    \ std::vector<Path> vertex;\n    const Compress compress;\n    const Rake rake;\n\
+    \    const Add_edge add_edge;\n    const Add_vertex add_vertex;\n};\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include \"../tree/static_top_tree.hpp\"\n\nnamespace ebi\
     \ {\n\ntemplate <class T, class Path, class Point, class Compress, class Rake,\n\
     \          class Add_edge, class Add_vertex>\nstruct dp_on_static_top_tree {\n\
@@ -165,19 +166,20 @@ data:
     \        } else if (stt.type(v) == Type::AddVertex) {\n            path[v] = add_vertex(point[stt.left_child(v)],\
     \ vertex[v]);\n        }\n    }\n\n    void update(int v) {\n        while (v\
     \ != -1) {\n            update_(v);\n            v = stt.parent(v);\n        }\n\
-    \    }\n\n  public:\n    dp_on_static_top_tree(const Graph<T> &g, int root, const\
-    \ std::vector<Path> &vertex_,\n                          const Compress &compress_,\
-    \ const Rake &rake_,\n                          const Add_edge &add_edge_,\n \
-    \                         const Add_vertex &add_vertex_)\n        : stt(g, root),\n\
-    \          n(stt.node_num()),\n          path(n),\n          point(n),\n     \
-    \     vertex(vertex_),\n          compress(compress_),\n          rake(rake_),\n\
-    \          add_edge(add_edge_),\n          add_vertex(add_vertex_) {\n       \
-    \ dfs(stt.root());\n    }\n\n    Path get() const {\n        return path[stt.root()];\n\
-    \    }\n\n    void set(int v, Path x) {\n        vertex[v] = x;\n        update(v);\n\
-    \    }\n\n  private:\n    static_top_tree<T> stt;\n\n    int n;\n    std::vector<Path>\
-    \ path;\n    std::vector<Point> point;\n    std::vector<Path> vertex;\n    const\
-    \ Compress compress;\n    const Rake rake;\n    const Add_edge add_edge;\n   \
-    \ const Add_vertex add_vertex;\n};\n\n}  // namespace ebi"
+    \    }\n\n  public:\n    dp_on_static_top_tree(const Graph<T> &g, int root,\n\
+    \                          const std::vector<Path> &vertex_,\n               \
+    \           const Compress &compress_, const Rake &rake_,\n                  \
+    \        const Add_edge &add_edge_,\n                          const Add_vertex\
+    \ &add_vertex_)\n        : stt(g, root),\n          n(stt.node_num()),\n     \
+    \     path(n),\n          point(n),\n          vertex(vertex_),\n          compress(compress_),\n\
+    \          rake(rake_),\n          add_edge(add_edge_),\n          add_vertex(add_vertex_)\
+    \ {\n        dfs(stt.root());\n    }\n\n    Path get() const {\n        return\
+    \ path[stt.root()];\n    }\n\n    void set(int v, Path x) {\n        vertex[v]\
+    \ = x;\n        update(v);\n    }\n\n  private:\n    static_top_tree<T> stt;\n\
+    \n    int n;\n    std::vector<Path> path;\n    std::vector<Point> point;\n   \
+    \ std::vector<Path> vertex;\n    const Compress compress;\n    const Rake rake;\n\
+    \    const Add_edge add_edge;\n    const Add_vertex add_vertex;\n};\n\n}  // namespace\
+    \ ebi"
   dependsOn:
   - tree/static_top_tree.hpp
   - graph/base.hpp
@@ -185,8 +187,8 @@ data:
   isVerificationFile: false
   path: tree/dp_on_static_top_tree.hpp
   requiredBy: []
-  timestamp: '2024-05-02 12:24:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-23 21:35:59+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
 documentation_of: tree/dp_on_static_top_tree.hpp

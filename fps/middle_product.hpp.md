@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: convolution/ntt.hpp
     title: NTT
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy:
@@ -42,22 +42,22 @@ data:
     \ return 11;\n    if (m == 998244353) return 3;\n    if (m == 880803841) return\
     \ 26;\n    if (m == 924844033) return 5;\n    return -1;\n}\ntemplate <int m>\
     \ constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  // namespace\
-    \ internal\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\n\n#include\
-    \ <cstdint>\n\nnamespace ebi {\n\nusing ld = long double;\nusing std::size_t;\n\
-    using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
-    using u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\n\
-    using i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
-    using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\
-    \n#include <concepts>\n#include <iostream>\n#include <utility>\n\nnamespace ebi\
-    \ {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n\
-    \    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #include <iostream>\n#include <utility>\n\nnamespace ebi {\n\ntemplate <class\
+    \ T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n\
+    \    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n\
+    \    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 12 \"\
-    convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate <Modint\
-    \ mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info {\n  \
-    \  static constexpr int rank2 =\n        std::countr_zero((unsigned int)(mint::mod()\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 2 \"\
+    template/int_alias.hpp\"\n\n#include <cstdint>\n\nnamespace ebi {\n\nusing ld\
+    \ = long double;\nusing std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\n\
+    using i16 = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\n\
+    using u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 12 \"convolution/ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\ntemplate\
+    \ <Modint mint, int g = internal::primitive_root<mint::mod()>>\nstruct ntt_info\
+    \ {\n    static constexpr int rank2 =\n        std::countr_zero((unsigned int)(mint::mod()\
     \ - 1));\n\n    std::array<mint, rank2 + 1> root, inv_root;\n\n    ntt_info()\
     \ {\n        root[rank2] = mint(g).pow((mint::mod() - 1) >> rank2);\n        inv_root[rank2]\
     \ = root[rank2].inv();\n        for (int i = rank2 - 1; i >= 0; i--) {\n     \
@@ -140,11 +140,10 @@ data:
     \ &x : fa) {\n        x *= inv_n;\n    }\n    fa.resize(a.size());\n    fa.erase(fa.begin(),\
     \ fa.begin() + b.size() - 1);\n    return fa;\n}\n\ntemplate <class T>\nstd::vector<T>\
     \ middle_product_naive(const std::vector<T> &a,\n                            \
-    \           const std::vector<T> &b) {\n    int n = (int)a.size();\n    int m\
-    \ = (int)b.size();\n    assert(n >= m);\n    std::vector<T> c(n - m + 1, 0);\n\
-    \    for (int i : std::views::iota(0, n - m + 1)) {\n        for (int j : std::views::iota(0,\
-    \ m)) {\n            c[i] += b[j] * a[i + j];\n        }\n    }\n    return c;\n\
-    }\n\n}  // namespace ebi\n"
+    \        const std::vector<T> &b) {\n    int n = (int)a.size();\n    int m = (int)b.size();\n\
+    \    assert(n >= m);\n    std::vector<T> c(n - m + 1, 0);\n    for (int i : std::views::iota(0,\
+    \ n - m + 1)) {\n        for (int j : std::views::iota(0, m)) {\n            c[i]\
+    \ += b[j] * a[i + j];\n        }\n    }\n    return c;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <bit>\n#include <cassert>\n\
     #include <ranges>\n#include <vector>\n\n#include \"../convolution/ntt.hpp\"\n\
     #include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\n\
@@ -159,22 +158,21 @@ data:
     \ &x : fa) {\n        x *= inv_n;\n    }\n    fa.resize(a.size());\n    fa.erase(fa.begin(),\
     \ fa.begin() + b.size() - 1);\n    return fa;\n}\n\ntemplate <class T>\nstd::vector<T>\
     \ middle_product_naive(const std::vector<T> &a,\n                            \
-    \           const std::vector<T> &b) {\n    int n = (int)a.size();\n    int m\
-    \ = (int)b.size();\n    assert(n >= m);\n    std::vector<T> c(n - m + 1, 0);\n\
-    \    for (int i : std::views::iota(0, n - m + 1)) {\n        for (int j : std::views::iota(0,\
-    \ m)) {\n            c[i] += b[j] * a[i + j];\n        }\n    }\n    return c;\n\
-    }\n\n}  // namespace ebi"
+    \        const std::vector<T> &b) {\n    int n = (int)a.size();\n    int m = (int)b.size();\n\
+    \    assert(n >= m);\n    std::vector<T> c(n - m + 1, 0);\n    for (int i : std::views::iota(0,\
+    \ n - m + 1)) {\n        for (int j : std::views::iota(0, m)) {\n            c[i]\
+    \ += b[j] * a[i + j];\n        }\n    }\n    return c;\n}\n\n}  // namespace ebi"
   dependsOn:
   - convolution/ntt.hpp
   - math/internal_math.hpp
-  - template/int_alias.hpp
   - modint/base.hpp
+  - template/int_alias.hpp
   isVerificationFile: false
   path: fps/middle_product.hpp
   requiredBy:
   - string/wildcard_pattern_matching.hpp
   - fps/middle_product_arbitrary.hpp
-  timestamp: '2024-05-22 14:27:52+09:00'
+  timestamp: '2024-05-23 21:35:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1796.test.cpp
