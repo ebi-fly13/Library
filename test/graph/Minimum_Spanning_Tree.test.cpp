@@ -1,8 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/minimum_spanning_tree"
 
-#include "../../graph/mst.hpp"
-
 #include "../../graph/base.hpp"
+#include "../../graph/mst.hpp"
 #include "../../template/template.hpp"
 
 namespace ebi {

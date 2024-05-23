@@ -9,12 +9,9 @@
 namespace ebi {
 
 // prod (1 + x^a_i) mod x^d
-template <Modint mint,
-          std::vector<mint> (*convolution)(const std::vector<mint> &,
-                                           const std::vector<mint> &)>
-FormalPowerSeries<mint, convolution> product_of_one_plus_xn(std::vector<int> a,
-                                                            int d) {
-    using FPS = FormalPowerSeries<mint, convolution>;
+template <Modint mint>
+FormalPowerSeries<mint> product_of_one_plus_xn(std::vector<int> a, int d) {
+    using FPS = FormalPowerSeries<mint>;
     std::vector<int> cnt(d, 0);
     for (auto x : a)
         if (x < d) cnt[x]++;

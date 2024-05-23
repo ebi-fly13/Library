@@ -1,6 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/manhattanmst"
 
 #include "../../graph/manhattan_mst.hpp"
+
 #include "../../template/template.hpp"
 
 namespace ebi {

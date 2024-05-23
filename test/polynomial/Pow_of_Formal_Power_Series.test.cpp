@@ -2,8 +2,7 @@
 
 #include <iostream>
 
-#include "../../convolution/convolution.hpp"
-#include "../../fps/fps.hpp"
+#include "../../fps/ntt_friendly_fps.hpp"
 #include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
@@ -12,7 +11,7 @@ int main() {
     int n;
     long long m;
     std::cin >> n >> m;
-    ebi::FormalPowerSeries<mint, ebi::convolution<mint>> f(n);
+    ebi::FormalPowerSeries<mint> f(n);
     for (int i = 0; i < n; i++) {
         std::cin >> f[i];
     }

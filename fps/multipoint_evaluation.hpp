@@ -5,12 +5,10 @@
 
 namespace ebi {
 
-template <Modint mint,
-          std::vector<mint> (*convolution)(const std::vector<mint> &,
-                                           const std::vector<mint> &)>
-std::vector<mint> multipoint_evaluation(
-    const FormalPowerSeries<mint, convolution> &f, const std::vector<mint> &p) {
-    using FPS = FormalPowerSeries<mint, convolution>;
+template <Modint mint>
+std::vector<mint> multipoint_evaluation(const FormalPowerSeries<mint> &f,
+                                        const std::vector<mint> &p) {
+    using FPS = FormalPowerSeries<mint>;
     int m = 1;
     while (m < (int)p.size()) m <<= 1;
     std::vector<FPS> subproduct_tree(2 * m, {1});

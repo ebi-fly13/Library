@@ -5,9 +5,9 @@
 #include <map>
 #include <vector>
 
+#include "../../graph/base.hpp"
 #include "../../tree/rooted_tree_hash.hpp"
 #include "../../utility/hash.hpp"
-#include "../../graph/base.hpp"
 
 int main() {
     int n;

@@ -31,7 +31,7 @@ void main_() {
     std::cout << ans << '\n';
 }
 
-}
+}  // namespace ebi
 
 int main() {
     ebi::fast_io();

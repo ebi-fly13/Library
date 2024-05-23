@@ -2,6 +2,7 @@
 
 #include <vector>
 
+#include "../fps/fps.hpp"
 #include "../modint/base.hpp"
 
 namespace ebi {
@@ -13,7 +14,20 @@ std::vector<mint> product_of_fps(std::vector<std::vector<mint>> fs) {
     if (fs.empty()) return {1};
     int i = 0;
     while (i + 1 < (int)fs.size()) {
-        fs.emplace_back(convolution(fs[i], fs[i+1]));
+        fs.emplace_back(convolution(fs[i], fs[i + 1]));
+        i += 2;
+    }
+    return fs.back();
+}
+
+template <Modint mint>
+FormalPowerSeries<mint> product_of_fps(
+    std::vector<FormalPowerSeries<mint>> fs) {
+    if (fs.empty()) return {1};
+    if (fs.empty()) return {1};
+    int i = 0;
+    while (i + 1 < (int)fs.size()) {
+        fs.emplace_back(fs[i] * fs[i + 1]);
         i += 2;
     }
     return fs.back();

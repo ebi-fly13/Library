@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "../../convolution/convolution.hpp"
+#include "../../fps/ntt_friendly_fps.hpp"
 #include "../../fps/product_of_one_plus_xn.hpp"
 #include "../../modint/modint.hpp"
 
@@ -16,7 +16,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         std::cin >> s[i];
     }
-    auto p = ebi::product_of_one_plus_xn<mint, ebi::convolution>(s, t + 1);
+    auto p = ebi::product_of_one_plus_xn<mint>(s, t + 1);
     for (int i = 1; i <= t; i++) {
         std::cout << p[i] << " \n"[i == t];
     }

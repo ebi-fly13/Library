@@ -9,10 +9,7 @@
 
 namespace ebi {
 
-template <Modint mint,
-          std::vector<mint> (*convolution)(const std::vector<mint> &,
-                                           const std::vector<mint> &)>
-struct FormalPowerSeries : std::vector<mint> {
+template <Modint mint> struct FormalPowerSeries : std::vector<mint> {
   private:
     using std::vector<mint>::vector;
     using std::vector<mint>::vector::operator=;
@@ -68,10 +65,7 @@ struct FormalPowerSeries : std::vector<mint> {
         return *this;
     }
 
-    FPS &operator*=(const FPS &rhs) noexcept {
-        *this = convolution(*this, rhs);
-        return *this;
-    }
+    FPS &operator*=(const FPS &);
 
     FPS &operator/=(const FPS &rhs) noexcept {
         int n = deg() - 1;

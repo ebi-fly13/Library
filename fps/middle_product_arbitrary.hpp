@@ -5,16 +5,16 @@
 #include <vector>
 
 #include "../convolution/ntt.hpp"
-#include "../modint/modint.hpp"
 #include "../fps/middle_product.hpp"
 #include "../modint/base.hpp"
+#include "../modint/modint.hpp"
 #include "../template/int_alias.hpp"
 
 namespace ebi {
 
 template <Modint mint>
 std::vector<mint> middle_product_arbitrary(const std::vector<mint> &a,
-                                 const std::vector<mint> &b) {
+                                           const std::vector<mint> &b) {
     static constexpr i32 m0 = 167772161;  // 2^25
     static constexpr i32 m1 = 469762049;  // 2^26
     static constexpr i32 m2 = 754974721;  // 2^24
@@ -43,7 +43,7 @@ std::vector<mint> middle_product_arbitrary(const std::vector<mint> &a,
         a1[i] = a[i].val();
         a2[i] = a[i].val();
     }
-    for(int i = 0; i < m; i++) {
+    for (int i = 0; i < m; i++) {
         b0[i] = b[i].val();
         b1[i] = b[i].val();
         b2[i] = b[i].val();
@@ -56,7 +56,7 @@ std::vector<mint> middle_product_arbitrary(const std::vector<mint> &a,
     std::vector<mint> res(n - m + 1);
     const i32 W1 = w1 % mod;
     const i32 W2 = w2 % mod;
-    for(int i = 0; i < n - m + 1; i++) {
+    for (int i = 0; i < n - m + 1; i++) {
         i32 n1 = c1[i].val(), n2 = c2[i].val(), a = c0[i].val();
         i32 b = i64(n1 + m1 - a) * inv01 % m1;
         i32 c = (i64(n2 + m2 - a) * inv02inv12 + i64(m2 - b) * inv12) % m2;
@@ -65,9 +65,8 @@ std::vector<mint> middle_product_arbitrary(const std::vector<mint> &a,
     return res;
 }
 
-
 std::vector<u64> middle_product_mod_2_64(const std::vector<u64> &a,
-                                 const std::vector<u64> &b) {
+                                         const std::vector<u64> &b) {
     static constexpr i32 m0 = 998244353;
     static constexpr i32 m1 = 754974721;
     static constexpr i32 m2 = 167772161;
@@ -104,7 +103,7 @@ std::vector<u64> middle_product_mod_2_64(const std::vector<u64> &a,
         a3[i] = a[i];
         a4[i] = a[i];
     }
-    for(int i = 0; i < m; i++) {
+    for (int i = 0; i < m; i++) {
         b0[i] = b[i];
         b1[i] = b[i];
         b2[i] = b[i];
@@ -119,7 +118,7 @@ std::vector<u64> middle_product_mod_2_64(const std::vector<u64> &a,
     auto c4 = middle_product<mint4>(a4, b4);
 
     std::vector<u64> res(n - m + 1);
-    for(int i = 0; i < n - m + 1; i++) {
+    for (int i = 0; i < n - m + 1; i++) {
         i64 x0 = c0[i].val();
         i64 x1 = ((c1[i] - x0) * inv10).val();
         i64 x2 = (((c2[i] - x0)) * inv20 - mint2(x1) * inv21).val();

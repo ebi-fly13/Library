@@ -6,12 +6,10 @@
 
 namespace ebi {
 
-template <Modint mint,
-          std::vector<mint> (*convolution)(const std::vector<mint> &,
-                                           const std::vector<mint> &)>
-FormalPowerSeries<mint, convolution> polynomial_interpolation(
-    const std::vector<mint> &xs, const std::vector<mint> &ys) {
-    using FPS = FormalPowerSeries<mint, convolution>;
+template <Modint mint>
+FormalPowerSeries<mint> polynomial_interpolation(const std::vector<mint> &xs,
+                                                 const std::vector<mint> &ys) {
+    using FPS = FormalPowerSeries<mint>;
     assert(xs.size() == ys.size());
     int m = 1;
     int n = xs.size();

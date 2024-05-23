@@ -1,14 +1,15 @@
 #define PROBLEM                        \
-    "https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series"
+    "https://judge.yosupo.jp/problem/" \
+    "compositional_inverse_of_formal_power_series"
 
 #include <iostream>
 
-#include "../../convolution/convolution.hpp"
 #include "../../fps/compositional_inverse_of_fps.hpp"
+#include "../../fps/ntt_friendly_fps.hpp"
 #include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
-using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;
+using FPS = ebi::FormalPowerSeries<mint>;
 
 int main() {
     int n;

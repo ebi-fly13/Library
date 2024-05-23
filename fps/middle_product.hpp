@@ -39,7 +39,7 @@ std::vector<mint> middle_product(const std::vector<mint> &a,
 
 template <class T>
 std::vector<T> middle_product_naive(const std::vector<T> &a,
-                                       const std::vector<T> &b) {
+                                    const std::vector<T> &b) {
     int n = (int)a.size();
     int m = (int)b.size();
     assert(n >= m);

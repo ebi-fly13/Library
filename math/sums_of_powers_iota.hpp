@@ -3,17 +3,14 @@
 #include <cassert>
 
 #include "../fps/fps.hpp"
-#include "../fps/product_of_fps.hpp"
 #include "../modint/base.hpp"
 
 namespace ebi {
 
-template <Modint mint,
-          std::vector<mint> (*convolution)(const std::vector<mint> &,
-                                           const std::vector<mint> &)>
+template <Modint mint>
 std::vector<mint> sums_of_powers_iota(long long n, int k) {
     assert(n > 0 && k >= 0);
-    using FPS = FormalPowerSeries<mint, convolution>;
+    using FPS = FormalPowerSeries<mint>;
     FPS p = FPS{0, n}.exp(k + 2) >> 1;
     FPS q = FPS::exp_x(k + 2) >> 1;
     FPS pq = (p * q.inv()).pre(k + 1);

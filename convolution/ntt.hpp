@@ -7,8 +7,8 @@
 #include <vector>
 
 #include "../math/internal_math.hpp"
-#include "../template/int_alias.hpp"
 #include "../modint/base.hpp"
+#include "../template/int_alias.hpp"
 
 namespace ebi {
 

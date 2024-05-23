@@ -4,7 +4,7 @@
 #include <numeric>
 #include <vector>
 
-#include "../../convolution/convolution.hpp"
+#include "../../fps/ntt_friendly_fps.hpp"
 #include "../../math/bernoulli_number.hpp"
 #include "../../modint/modint.hpp"
 
@@ -13,7 +13,7 @@ using mint = ebi::modint998244353;
 int main() {
     int n;
     std::cin >> n;
-    auto ans = ebi::bernoulli_number_egf<mint, ebi::convolution>(n);
+    auto ans = ebi::bernoulli_number_egf<mint>(n);
     mint fact = 1;
     for (int i = 0; i <= n; i++) {
         std::cout << ans[i] * fact << " \n"[i == n];

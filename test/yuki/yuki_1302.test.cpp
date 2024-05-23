@@ -2,13 +2,12 @@
 
 #include <iostream>
 
-#include "../../convolution/convolution.hpp"
-#include "../../fps/fps.hpp"
+#include "../../fps/ntt_friendly_fps.hpp"
 #include "../../math/binomial.hpp"
 #include "../../modint/modint.hpp"
 
 using mint = ebi::modint998244353;
-using FPS = ebi::FormalPowerSeries<mint, ebi::convolution>;
+using FPS = ebi::FormalPowerSeries<mint>;
 using Binomial = ebi::Binomial<mint>;
 
 int main() {

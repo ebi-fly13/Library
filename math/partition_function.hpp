@@ -1,13 +1,12 @@
 #pragma once
 
 #include "../fps/fps.hpp"
+#include "../modint/base.hpp"
 
 namespace ebi {
 
-template <class mint, std::vector<mint> (*convolution)(
-                          const std::vector<mint> &, const std::vector<mint> &)>
-std::vector<mint> partition_function(int n) {
-    using FPS = FormalPowerSeries<mint, convolution>;
+template <Modint mint> std::vector<mint> partition_function(int n) {
+    using FPS = FormalPowerSeries<mint>;
     FPS f(n + 1);
     f[0] = 1;
     for (int k = 1; k <= n; k++) {

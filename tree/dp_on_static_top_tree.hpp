@@ -39,7 +39,8 @@ struct dp_on_static_top_tree {
     }
 
   public:
-    dp_on_static_top_tree(const Graph<T> &g, int root, const std::vector<Path> &vertex_,
+    dp_on_static_top_tree(const Graph<T> &g, int root,
+                          const std::vector<Path> &vertex_,
                           const Compress &compress_, const Rake &rake_,
                           const Add_edge &add_edge_,
                           const Add_vertex &add_vertex_)

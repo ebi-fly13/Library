@@ -1,14 +1,13 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/sqrt_of_formal_power_series"
 
-#include "../../convolution/convolution.hpp"
-#include "../../fps/fps.hpp"
 #include "../../fps/fps_sqrt.hpp"
+#include "../../fps/ntt_friendly_fps.hpp"
 #include "../../modint/modint.hpp"
 
 using namespace ebi;
 
 using mint = modint998244353;
-using FPS = FormalPowerSeries<mint, convolution>;
+using FPS = FormalPowerSeries<mint>;
 
 int main() {
     int n;

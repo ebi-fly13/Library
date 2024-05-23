@@ -14,7 +14,7 @@ std::pair<T, std::vector<int>> tree_diameter(const Graph<T> &g) {
     std::vector<int> par(n, -1);
     dp[0] = 0;
     auto dfs = [&](auto &&self, int v) -> void {
-        for (const auto e: g[v]) {
+        for (const auto e : g[v]) {
             if (e.to == par[v]) continue;
             par[e.to] = v;
             dp[e.to] = dp[v] + e.cost;

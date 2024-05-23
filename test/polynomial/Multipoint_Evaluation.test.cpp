@@ -2,15 +2,14 @@
 
 #include "../../fps/multipoint_evaluation.hpp"
 
-#include "../../convolution/convolution.hpp"
-#include "../../fps/fps.hpp"
+#include "../../fps/ntt_friendly_fps.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
 
 namespace ebi {
 
 using mint = modint998244353;
-using FPS = FormalPowerSeries<mint, convolution>;
+using FPS = FormalPowerSeries<mint>;
 
 void main_() {
     int n, m;
@@ -19,7 +18,7 @@ void main_() {
     std::cin >> f;
     std::vector<mint> p(m);
     std::cin >> p;
-    auto fp = multipoint_evaluation<mint, convolution>(f, p);
+    auto fp = multipoint_evaluation<mint>(f, p);
     std::cout << fp << '\n';
 }
 

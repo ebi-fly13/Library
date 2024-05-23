@@ -2,7 +2,7 @@
 
 #include "../../fps/polynomial_interpolation.hpp"
 
-#include "../../convolution/convolution.hpp"
+#include "../../fps/ntt_friendly_fps.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
 
@@ -15,7 +15,7 @@ void main_() {
     std::cin >> n;
     std::vector<mint> x(n), y(n);
     std::cin >> x >> y;
-    auto f = polynomial_interpolation<mint, convolution>(x, y);
+    auto f = polynomial_interpolation<mint>(x, y);
     rep(i, 0, n) {
         std::cout << f[i] << " \n"[i == n - 1];
     }

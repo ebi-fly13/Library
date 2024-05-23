@@ -8,11 +8,8 @@
 
 namespace ebi {
 
-template <Modint mint,
-          std::vector<mint> (*convolution)(const std::vector<mint> &,
-                                           const std::vector<mint> &)>
-FormalPowerSeries<mint, convolution> stirling_number_2nd(int n) {
-    using FPS = FormalPowerSeries<mint, convolution>;
+template <Modint mint> FormalPowerSeries<mint> stirling_number_2nd(int n) {
+    using FPS = FormalPowerSeries<mint>;
     assert(n >= 0);
     FPS f(n + 1), g(n + 1);
     std::vector<mint> fact(n + 1, 1);

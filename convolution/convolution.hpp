@@ -48,7 +48,7 @@ std::vector<mint> convolution(const std::vector<mint>& f,
     internal::ifft4(a);
     a.resize(f.size() + g.size() - 1);
     mint inv_n = mint(n).inv();
-    for(auto &x: a) x *= inv_n;
+    for (auto& x : a) x *= inv_n;
     return a;
 }
 

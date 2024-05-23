@@ -7,12 +7,10 @@
 
 namespace ebi {
 
-template <Modint mint,
-          std::vector<mint> (*convolution)(const std::vector<mint> &,
-                                           const std::vector<mint> &)>
-std::optional<FormalPowerSeries<mint, convolution>>
-FormalPowerSeries<mint, convolution>::sqrt(int d) const {
-    using FPS = FormalPowerSeries<mint, convolution>;
+template <Modint mint>
+std::optional<FormalPowerSeries<mint>> FormalPowerSeries<mint>::sqrt(
+    int d) const {
+    using FPS = FormalPowerSeries<mint>;
     if (d < 0) d = deg();
     if ((*this)[0] == 0) {
         for (int i = 1; i < this->deg(); i++) {

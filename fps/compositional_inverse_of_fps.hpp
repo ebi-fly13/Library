@@ -8,12 +8,10 @@
 
 namespace ebi {
 
-template <Modint mint,
-          std::vector<mint> (*convolution)(const std::vector<mint> &,
-                                           const std::vector<mint> &)>
-FormalPowerSeries<mint, convolution> compositional_inverse_of_fps(
-    FormalPowerSeries<mint, convolution> f, int d = -1) {
-    using FPS = FormalPowerSeries<mint, convolution>;
+template <Modint mint>
+FormalPowerSeries<mint> compositional_inverse_of_fps(FormalPowerSeries<mint> f,
+                                                     int d = -1) {
+    using FPS = FormalPowerSeries<mint>;
     if (d < 0) d = f.deg();
     assert((int)f.size() >= 2 && f[0] == 0 && f[1] != 0);
     FPS df = f.differential();

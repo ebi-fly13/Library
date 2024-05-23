@@ -24,7 +24,7 @@ void main_() {
             uf.merge(u + i, v + i);
         }
         int a = rng.get(1, 5000);
-        while(a--) {
+        while (a--) {
             int x = rng.get(0, n);
             int y = rng.get(0, n);
             assert(rpd.same(x, y) == uf.same(x, y));
