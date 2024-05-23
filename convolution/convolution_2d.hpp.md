@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: convolution/convolution.hpp
+    title: Convolution
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT
   - icon: ':heavy_check_mark:'
@@ -13,124 +16,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitrary_ntt.hpp
-    title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
-    path: convolution/convolution_2d.hpp
-    title: convolution/convolution_2d.hpp
-  - icon: ':heavy_check_mark:'
-    path: convolution/convolution_mod_2_64.hpp
-    title: Convolution $\pmod{2^{64}}$
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution.test.cpp
-    title: test/convolution/Convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_2D.test.cpp
     title: test/convolution/Convolution_2D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_Mod_1000000007.test.cpp
-    title: test/convolution/Convolution_Mod_1000000007.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_Mod_2_64.test.cpp
-    title: test/convolution/Convolution_Mod_2_64.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Berunoulli_Number.test.cpp
-    title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Catalan_Convolution.test.cpp
-    title: test/math/Catalan_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-    title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Partition_Function_FPS.test.cpp
-    title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Partition_Function_Pentagonal.test.cpp
-    title: test/math/Partition_Function_Pentagonal.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-    title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-    title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Sum_of_Powers_Iota.test.cpp
-    title: test/math/Sum_of_Powers_Iota.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/sharp_p_subset_sum.test.cpp
-    title: test/math/sharp_p_subset_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Division_of_Polynomials.test.cpp
-    title: test/polynomial/Division_of_Polynomials.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Multipoint_Evaluation.test.cpp
-    title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Polynomial_Interpolation.test.cpp
-    title: test/polynomial/Polynomial_Interpolation.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-    title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-    title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-    title: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-    title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1145.test.cpp
-    title: test/yuki/yuki_1145.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1302.test.cpp
-    title: test/yuki/yuki_1302.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1857.test.cpp
-    title: test/yuki/yuki_1857.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n\
-    #include <bit>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#line\
-    \ 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 6 \"convolution/ntt.hpp\"\
+  bundledCode: "#line 2 \"convolution/convolution_2d.hpp\"\n\n#include <vector>\n\n\
+    #line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n#include <bit>\n\
+    #line 6 \"convolution/convolution.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\n\n\
+    #line 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 6 \"convolution/ntt.hpp\"\
     \n#include <cassert>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
     \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
     \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
@@ -242,89 +141,65 @@ data:
     \    internal::fft4(b);\n    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n\
     \    }\n    internal::ifft4(a);\n    a.resize(f.size() + g.size() - 1);\n    mint\
     \ inv_n = mint(n).inv();\n    for(auto &x: a) x *= inv_n;\n    return a;\n}\n\n\
-    }  // namespace ebi\n"
-  code: "#pragma once\n\n#include <algorithm>\n#include <bit>\n#include <vector>\n\
-    \n#include \"../convolution/ntt.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> convolution_naive(const std::vector<mint>&\
-    \ f,\n                                    const std::vector<mint>& g) {\n    if\
-    \ (f.empty() || g.empty()) return {};\n    int n = int(f.size()), m = int(g.size());\n\
-    \    std::vector<mint> c(n + m - 1);\n    if (n < m) {\n        for (int j = 0;\
-    \ j < m; j++) {\n            for (int i = 0; i < n; i++) {\n                c[i\
-    \ + j] += f[i] * g[j];\n            }\n        }\n    } else {\n        for (int\
-    \ i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++) {\n          \
-    \      c[i + j] += f[i] * g[j];\n            }\n        }\n    }\n    return c;\n\
-    }\n\ntemplate <Modint mint>\nstd::vector<mint> convolution(const std::vector<mint>&\
-    \ f,\n                              const std::vector<mint>& g) {\n    if (f.empty()\
-    \ || g.empty()) return {};\n    if (std::min(f.size(), g.size()) < 60) return\
-    \ convolution_naive(f, g);\n    int n = (int)std::bit_ceil(f.size() + g.size()\
-    \ - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(), f.end(),\
-    \ a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::fft4(a);\n\
-    \    internal::fft4(b);\n    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n\
-    \    }\n    internal::ifft4(a);\n    a.resize(f.size() + g.size() - 1);\n    mint\
-    \ inv_n = mint(n).inv();\n    for(auto &x: a) x *= inv_n;\n    return a;\n}\n\n\
-    }  // namespace ebi"
+    }  // namespace ebi\n#line 7 \"convolution/convolution_2d.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <Modint mint>\nstd::vector<std::vector<mint>> convolution_2d(\n\
+    \    const std::vector<std::vector<mint>> &a,\n    const std::vector<std::vector<mint>>\
+    \ &b) {\n    if (a.empty() || b.empty()) return {};\n    int h1 = (int)a.size(),\
+    \ w1 = (int)a[0].size();\n    int h2 = (int)b.size(), w2 = (int)b[0].size();\n\
+    \    int h = h1 + h2 - 1, w = w1 + w2 - 1;\n    std::vector<mint> f(h1 * w, 0),\
+    \ g(h2 * w, 0);\n    for (int i = 0; i < h1; i++) {\n        std::copy(a[i].begin(),\
+    \ a[i].end(), f.begin() + i * w);\n    }\n    for (int i = 0; i < h2; i++) {\n\
+    \        std::copy(b[i].begin(), b[i].end(), g.begin() + i * w);\n    }\n    auto\
+    \ fg = convolution(f, g);\n    std::vector c(h, std::vector<mint>(w, 0));\n  \
+    \  for (int i = 0; i < h; i++) {\n        std::copy(fg.begin() + i * w, fg.begin()\
+    \ + (i + 1) * w, c[i].begin());\n    }\n    return c;\n}\n\ntemplate <Modint mint>\n\
+    std::vector<std::vector<mint>> convolution_2d_naive(\n    const std::vector<std::vector<mint>>\
+    \ &a,\n    const std::vector<std::vector<mint>> &b) {\n    int h1 = (int)a.size(),\
+    \ w1 = (int)a[0].size();\n    int h2 = (int)b.size(), w2 = (int)b[0].size();\n\
+    \    int h = h1 + h2 - 1, w = w1 + w2 - 1;\n    std::vector c(h, std::vector<mint>(w,\
+    \ 0));\n    for (int i = 0; i < h1; i++) {\n        for (int j = 0; j < w1; j++)\
+    \ {\n            for (int k = 0; k < h2; k++) {\n                for (int l =\
+    \ 0; l < w2; l++) {\n                    c[i + k][j + l] += a[i][j] * b[k][l];\n\
+    \                }\n            }\n        }\n    }\n    return c;\n}\n\n}  //\
+    \ namespace ebi\n"
+  code: "#pragma once\n\n#include <vector>\n\n#include \"../convolution/convolution.hpp\"\
+    \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\n\
+    std::vector<std::vector<mint>> convolution_2d(\n    const std::vector<std::vector<mint>>\
+    \ &a,\n    const std::vector<std::vector<mint>> &b) {\n    if (a.empty() || b.empty())\
+    \ return {};\n    int h1 = (int)a.size(), w1 = (int)a[0].size();\n    int h2 =\
+    \ (int)b.size(), w2 = (int)b[0].size();\n    int h = h1 + h2 - 1, w = w1 + w2\
+    \ - 1;\n    std::vector<mint> f(h1 * w, 0), g(h2 * w, 0);\n    for (int i = 0;\
+    \ i < h1; i++) {\n        std::copy(a[i].begin(), a[i].end(), f.begin() + i *\
+    \ w);\n    }\n    for (int i = 0; i < h2; i++) {\n        std::copy(b[i].begin(),\
+    \ b[i].end(), g.begin() + i * w);\n    }\n    auto fg = convolution(f, g);\n \
+    \   std::vector c(h, std::vector<mint>(w, 0));\n    for (int i = 0; i < h; i++)\
+    \ {\n        std::copy(fg.begin() + i * w, fg.begin() + (i + 1) * w, c[i].begin());\n\
+    \    }\n    return c;\n}\n\ntemplate <Modint mint>\nstd::vector<std::vector<mint>>\
+    \ convolution_2d_naive(\n    const std::vector<std::vector<mint>> &a,\n    const\
+    \ std::vector<std::vector<mint>> &b) {\n    int h1 = (int)a.size(), w1 = (int)a[0].size();\n\
+    \    int h2 = (int)b.size(), w2 = (int)b[0].size();\n    int h = h1 + h2 - 1,\
+    \ w = w1 + w2 - 1;\n    std::vector c(h, std::vector<mint>(w, 0));\n    for (int\
+    \ i = 0; i < h1; i++) {\n        for (int j = 0; j < w1; j++) {\n            for\
+    \ (int k = 0; k < h2; k++) {\n                for (int l = 0; l < w2; l++) {\n\
+    \                    c[i + k][j + l] += a[i][j] * b[k][l];\n                }\n\
+    \            }\n        }\n    }\n    return c;\n}\n\n}  // namespace ebi"
   dependsOn:
+  - convolution/convolution.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - template/int_alias.hpp
   - modint/base.hpp
   isVerificationFile: false
-  path: convolution/convolution.hpp
-  requiredBy:
-  - convolution/convolution_2d.hpp
-  - convolution/convolution_mod_2_64.hpp
-  - convolution/arbitrary_ntt.hpp
-  timestamp: '2024-05-21 15:12:14+09:00'
+  path: convolution/convolution_2d.hpp
+  requiredBy: []
+  timestamp: '2024-05-23 18:52:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_1857.test.cpp
-  - test/yuki/yuki_1145.test.cpp
-  - test/yuki/yuki_1302.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/math/Catalan_Convolution.test.cpp
-  - test/math/Berunoulli_Number.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
-  - test/math/sharp_p_subset_sum.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Partition_Function_Pentagonal.test.cpp
-  - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/convolution/Convolution.test.cpp
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Convolution_2D.test.cpp
-  - test/convolution/Convolution_Mod_2_64.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-documentation_of: convolution/convolution.hpp
+documentation_of: convolution/convolution_2d.hpp
 layout: document
-title: Convolution
+redirect_from:
+- /library/convolution/convolution_2d.hpp
+- /library/convolution/convolution_2d.hpp.html
+title: convolution/convolution_2d.hpp
 ---
-
-## 説明
-
-$a$ と $b$ を畳み込み、その配列を返す。
-
-### convolution_naive(std::vector<mint> a, std::vector<mint> b)
-
-愚直に畳み込む。
-$O(N^2)$
-
-### convolution(std::vector<mint> a, std::vector<mint> b)
-
-NTT friendlyな素数における $O(N\log N)$ 時間での畳み込み。
-$O(N\log N)$

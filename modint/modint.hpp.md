@@ -37,6 +37,9 @@ data:
     path: test/convolution/Convolution.test.cpp
     title: test/convolution/Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_2D.test.cpp
+    title: test/convolution/Convolution_2D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_1000000007.test.cpp
     title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
@@ -247,92 +250,94 @@ data:
     \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
     \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
     \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    template<std::signed_integral T>\r\n    constexpr static_modint(T v) {\r\
-    \n        long long x = (long long)(v % (long long)(umod()));\r\n        if (x\
-    \ < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n    template<std::unsigned_integral\
-    \ T>\r\n    constexpr static_modint(T v) {\r\n        _v = v % umod();\r\n   \
-    \ }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\n\
-    \    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
-    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
-    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
-    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
-    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
-    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
-    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
-    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
-    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
-    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
-    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
-    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
-    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
-    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
-    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
-    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
-    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
-    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
-    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
-    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
-    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n"
+    \r\n    template <std::signed_integral T> constexpr static_modint(T v) {\r\n \
+    \       long long x = (long long)(v % (long long)(umod()));\r\n        if (x <\
+    \ 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n    template\
+    \ <std::unsigned_integral T> constexpr static_modint(T v) {\r\n        _v = (unsigned\
+    \ int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned int val() const {\r\
+    \n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
+    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
+    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
+    \n        _v--;\r\n        return *this;\r\n    }\r\n\r\n    constexpr modint\
+    \ operator++(int) {\r\n        modint res = *this;\r\n        ++*this;\r\n   \
+    \     return res;\r\n    }\r\n    constexpr modint operator--(int) {\r\n     \
+    \   modint res = *this;\r\n        --*this;\r\n        return res;\r\n    }\r\n\
+    \r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
+    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\
+    \n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned long\
+    \ long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned\
+    \ long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
+    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
+    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
+    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
+    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
+    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
+    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
+    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
+    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
+    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
+    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
+    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
+    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
+    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
+    \n\r\n}  // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <cassert>\r\n#include <iostream>\r\n\r\n#include\
     \ \"base.hpp\"\r\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
     \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
     \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
     \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
     \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    template<std::signed_integral T>\r\n    constexpr static_modint(T v) {\r\
-    \n        long long x = (long long)(v % (long long)(umod()));\r\n        if (x\
-    \ < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n    template<std::unsigned_integral\
-    \ T>\r\n    constexpr static_modint(T v) {\r\n        _v = v % umod();\r\n   \
-    \ }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\n\
-    \    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
-    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
-    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
-    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
-    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
-    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
-    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
-    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
-    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
-    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
-    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
-    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
-    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
-    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
-    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
-    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
-    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
-    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
-    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
-    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
-    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi"
+    \r\n    template <std::signed_integral T> constexpr static_modint(T v) {\r\n \
+    \       long long x = (long long)(v % (long long)(umod()));\r\n        if (x <\
+    \ 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n    template\
+    \ <std::unsigned_integral T> constexpr static_modint(T v) {\r\n        _v = (unsigned\
+    \ int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned int val() const {\r\
+    \n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
+    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
+    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
+    \n        _v--;\r\n        return *this;\r\n    }\r\n\r\n    constexpr modint\
+    \ operator++(int) {\r\n        modint res = *this;\r\n        ++*this;\r\n   \
+    \     return res;\r\n    }\r\n    constexpr modint operator--(int) {\r\n     \
+    \   modint res = *this;\r\n        --*this;\r\n        return res;\r\n    }\r\n\
+    \r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
+    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\
+    \n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned long\
+    \ long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned\
+    \ long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
+    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
+    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
+    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
+    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
+    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
+    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
+    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
+    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
+    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
+    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
+    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
+    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
+    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
+    \n\r\n}  // namespace ebi"
   dependsOn:
   - modint/base.hpp
   isVerificationFile: false
@@ -342,7 +347,7 @@ data:
   - fps/middle_product_arbitrary.hpp
   - convolution/convolution_mod_2_64.hpp
   - convolution/arbitrary_ntt.hpp
-  timestamp: '2024-05-21 16:03:56+09:00'
+  timestamp: '2024-05-23 18:52:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
@@ -403,6 +408,7 @@ data:
   - test/matrix/Rank_of_Matrix.test.cpp
   - test/convolution/Convolution.test.cpp
   - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/convolution/Convolution_2D.test.cpp
   - test/convolution/Bitwise_And_Convolution.test.cpp
   - test/convolution/Bitwise_Xor_Convolution.test.cpp
   - test/convolution/Lcm_Convolution.test.cpp

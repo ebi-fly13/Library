@@ -16,6 +16,9 @@ data:
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_2D.test.cpp
+    title: test/convolution/Convolution_2D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Parallel_DSU.test.cpp
     title: test/data_structure/Range_Parallel_DSU.test.cpp
   - icon: ':heavy_check_mark:'
@@ -62,6 +65,7 @@ data:
   - test/data_structure/Range_Parallel_DSU.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp
+  - test/convolution/Convolution_2D.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
 documentation_of: utility/random_number_generator.hpp
 layout: document

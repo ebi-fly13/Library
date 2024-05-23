@@ -61,58 +61,59 @@ data:
     \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
     \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
     \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    template<std::signed_integral T>\r\n    constexpr static_modint(T v) {\r\
-    \n        long long x = (long long)(v % (long long)(umod()));\r\n        if (x\
-    \ < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n    template<std::unsigned_integral\
-    \ T>\r\n    constexpr static_modint(T v) {\r\n        _v = v % umod();\r\n   \
-    \ }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\n\
-    \    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
-    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
-    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
-    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
-    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
-    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
-    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
-    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
-    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
-    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
-    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
-    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
-    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
-    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
-    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
-    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
-    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
-    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
-    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
-    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
-    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 7 \"test/data_structure/Queue_Operate_All_Composite.test.cpp\"\n\r\nusing\
-    \ mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\n    F(mint\
-    \ a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n    return F(f2.a\
-    \ * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nint main() {\r\n    ebi::queue_aggregation<F,\
-    \ op> swag;\r\n    int q;\r\n    std::cin >> q;\r\n    while (q--) {\r\n     \
-    \   int t;\r\n        std::cin >> t;\r\n        if (t == 0) {\r\n            int\
-    \ a, b;\r\n            std::cin >> a >> b;\r\n            swag.push(F(a, b));\r\
-    \n        } else if (t == 1) {\r\n            swag.pop();\r\n        } else {\r\
-    \n            int x;\r\n            std::cin >> x;\r\n            if (swag.empty())\
-    \ {\r\n                std::cout << x << std::endl;\r\n                continue;\r\
-    \n            }\r\n            auto f = swag.fold_all();\r\n            std::cout\
-    \ << (f.a * (mint)x + f.b).val() << std::endl;\r\n        }\r\n    }\r\n}\n"
+    \r\n    template <std::signed_integral T> constexpr static_modint(T v) {\r\n \
+    \       long long x = (long long)(v % (long long)(umod()));\r\n        if (x <\
+    \ 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n    template\
+    \ <std::unsigned_integral T> constexpr static_modint(T v) {\r\n        _v = (unsigned\
+    \ int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned int val() const {\r\
+    \n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
+    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
+    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
+    \n        _v--;\r\n        return *this;\r\n    }\r\n\r\n    constexpr modint\
+    \ operator++(int) {\r\n        modint res = *this;\r\n        ++*this;\r\n   \
+    \     return res;\r\n    }\r\n    constexpr modint operator--(int) {\r\n     \
+    \   modint res = *this;\r\n        --*this;\r\n        return res;\r\n    }\r\n\
+    \r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
+    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\
+    \n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned long\
+    \ long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned\
+    \ long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
+    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
+    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
+    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
+    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
+    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
+    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
+    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
+    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
+    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
+    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
+    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
+    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
+    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
+    \n\r\n}  // namespace ebi\n#line 7 \"test/data_structure/Queue_Operate_All_Composite.test.cpp\"\
+    \n\r\nusing mint = ebi::modint998244353;\r\n\r\nstruct F {\r\n    mint a, b;\r\
+    \n    F(mint a, mint b) : a(a), b(b) {}\r\n};\r\n\r\nF op(F f1, F f2) {\r\n  \
+    \  return F(f2.a * f1.a, f2.a * f1.b + f2.b);\r\n}\r\n\r\nint main() {\r\n   \
+    \ ebi::queue_aggregation<F, op> swag;\r\n    int q;\r\n    std::cin >> q;\r\n\
+    \    while (q--) {\r\n        int t;\r\n        std::cin >> t;\r\n        if (t\
+    \ == 0) {\r\n            int a, b;\r\n            std::cin >> a >> b;\r\n    \
+    \        swag.push(F(a, b));\r\n        } else if (t == 1) {\r\n            swag.pop();\r\
+    \n        } else {\r\n            int x;\r\n            std::cin >> x;\r\n   \
+    \         if (swag.empty()) {\r\n                std::cout << x << std::endl;\r\
+    \n                continue;\r\n            }\r\n            auto f = swag.fold_all();\r\
+    \n            std::cout << (f.a * (mint)x + f.b).val() << std::endl;\r\n     \
+    \   }\r\n    }\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \r\n\r\n#include <iostream>\r\n\r\n#include \"../../data_structure/queue_aggregation.hpp\"\
     \r\n#include \"../../modint/modint.hpp\"\r\n\r\nusing mint = ebi::modint998244353;\r\
@@ -134,7 +135,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-21 16:03:56+09:00'
+  timestamp: '2024-05-23 18:52:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Queue_Operate_All_Composite.test.cpp

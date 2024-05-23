@@ -249,11 +249,11 @@ data:
     \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
     \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
     \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
-    \    constexpr static_modint() : _v(0) {}\r\n\r\n    template<std::signed_integral\
-    \ T>\r\n    constexpr static_modint(T v) {\r\n        long long x = (long long)(v\
-    \ % (long long)(umod()));\r\n        if (x < 0) x += umod();\r\n        _v = (unsigned\
-    \ int)(x);\r\n    }\r\n\r\n    template<std::unsigned_integral T>\r\n    constexpr\
-    \ static_modint(T v) {\r\n        _v = v % umod();\r\n    }\r\n\r\n    constexpr\
+    \    constexpr static_modint() : _v(0) {}\r\n\r\n    template <std::signed_integral\
+    \ T> constexpr static_modint(T v) {\r\n        long long x = (long long)(v % (long\
+    \ long)(umod()));\r\n        if (x < 0) x += umod();\r\n        _v = (unsigned\
+    \ int)(x);\r\n    }\r\n\r\n    template <std::unsigned_integral T> constexpr static_modint(T\
+    \ v) {\r\n        _v = (unsigned int)(v % umod());\r\n    }\r\n\r\n    constexpr\
     \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
     \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
     \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
@@ -314,7 +314,7 @@ data:
   isVerificationFile: true
   path: test/math/Partition_Function_Pentagonal.test.cpp
   requiredBy: []
-  timestamp: '2024-05-21 16:03:56+09:00'
+  timestamp: '2024-05-23 18:52:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Partition_Function_Pentagonal.test.cpp

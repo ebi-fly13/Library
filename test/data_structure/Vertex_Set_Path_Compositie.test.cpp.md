@@ -144,63 +144,63 @@ data:
     \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
     \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
     \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    template<std::signed_integral T>\r\n    constexpr static_modint(T v) {\r\
-    \n        long long x = (long long)(v % (long long)(umod()));\r\n        if (x\
-    \ < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n    template<std::unsigned_integral\
-    \ T>\r\n    constexpr static_modint(T v) {\r\n        _v = v % umod();\r\n   \
-    \ }\r\n\r\n    constexpr unsigned int val() const {\r\n        return _v;\r\n\
-    \    }\r\n\r\n    constexpr unsigned int value() const {\r\n        return val();\r\
-    \n    }\r\n\r\n    constexpr modint &operator++() {\r\n        _v++;\r\n     \
-    \   if (_v == umod()) _v = 0;\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\n        _v--;\r\
-    \n        return *this;\r\n    }\r\n\r\n    constexpr modint operator++(int) {\r\
-    \n        modint res = *this;\r\n        ++*this;\r\n        return res;\r\n \
-    \   }\r\n    constexpr modint operator--(int) {\r\n        modint res = *this;\r\
-    \n        --*this;\r\n        return res;\r\n    }\r\n\r\n    constexpr modint\
-    \ &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\n        if (_v\
-    \ >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\n       \
-    \ if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint &operator*=(const modint &rhs) {\r\n        unsigned long long x = _v;\r\
-    \n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned long long)umod());\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator/=(const modint\
-    \ &rhs) {\r\n        return *this = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr\
-    \ modint operator+() const {\r\n        return *this;\r\n    }\r\n    constexpr\
-    \ modint operator-() const {\r\n        return modint() - *this;\r\n    }\r\n\r\
-    \n    constexpr modint pow(long long n) const {\r\n        assert(0 <= n);\r\n\
-    \        modint x = *this, res = 1;\r\n        while (n) {\r\n            if (n\
-    \ & 1) res *= x;\r\n            x *= x;\r\n            n >>= 1;\r\n        }\r\
-    \n        return res;\r\n    }\r\n    constexpr modint inv() const {\r\n     \
-    \   assert(_v);\r\n        return pow(umod() - 2);\r\n    }\r\n\r\n    friend\
-    \ modint operator+(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ += rhs;\r\n    }\r\n    friend modint operator-(const modint &lhs, const modint\
-    \ &rhs) {\r\n        return modint(lhs) -= rhs;\r\n    }\r\n    friend modint\
-    \ operator*(const modint &lhs, const modint &rhs) {\r\n        return modint(lhs)\
-    \ *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n    }\r\n    friend\
-    \ bool operator==(const modint &lhs, const modint &rhs) {\r\n        return lhs.val()\
-    \ == rhs.val();\r\n    }\r\n    friend bool operator!=(const modint &lhs, const\
-    \ modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\
-    \n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\
-    \n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
-    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <algorithm>\n#line\
-    \ 6 \"tree/heavy_light_decomposition.hpp\"\n\n#line 8 \"tree/heavy_light_decomposition.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T> struct heavy_light_decomposition {\n\
-    \  private:\n    void dfs_sz(int v, Graph<T> &g) {\n        for (auto &e : g[v])\
-    \ {\n            if (e.to == par[v]) continue;\n            par[e.to] = v;\n \
-    \           depth_[e.to] = depth_[v] + 1;\n            dist[e.to] = dist[v] +\
-    \ e.cost;\n            dfs_sz(e.to, g);\n            sz[v] += sz[e.to];\n    \
-    \        if (sz[e.to] > sz[g[v][0].to] || g[v][0].to == par[v])\n            \
-    \    std::swap(e, g[v][0]);\n        }\n    }\n\n    void dfs_hld(int v, const\
-    \ Graph<T> &g) {\n        in[v] = num++;\n        rev[in[v]] = v;\n        for\
-    \ (auto e : g[v]) {\n            if (e.to == par[v]) continue;\n            nxt[e.to]\
-    \ = (e.to == g[v][0].to ? nxt[v] : e.to);\n            dfs_hld(e.to, g);\n   \
-    \     }\n        out[v] = num;\n    }\n\n    // [u, v) \u30D1\u30B9\u306E\u53D6\
-    \u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> ascend(int\
-    \ u, int v) const {\n        std::vector<std::pair<int, int>> res;\n        while\
-    \ (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n   \
-    \         u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
+    \r\n    template <std::signed_integral T> constexpr static_modint(T v) {\r\n \
+    \       long long x = (long long)(v % (long long)(umod()));\r\n        if (x <\
+    \ 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n    template\
+    \ <std::unsigned_integral T> constexpr static_modint(T v) {\r\n        _v = (unsigned\
+    \ int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned int val() const {\r\
+    \n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
+    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
+    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
+    \n        _v--;\r\n        return *this;\r\n    }\r\n\r\n    constexpr modint\
+    \ operator++(int) {\r\n        modint res = *this;\r\n        ++*this;\r\n   \
+    \     return res;\r\n    }\r\n    constexpr modint operator--(int) {\r\n     \
+    \   modint res = *this;\r\n        --*this;\r\n        return res;\r\n    }\r\n\
+    \r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
+    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\
+    \n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned long\
+    \ long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned\
+    \ long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr modint\
+    \ &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
+    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
+    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
+    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
+    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
+    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
+    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
+    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
+    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
+    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
+    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
+    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
+    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
+    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
+    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
+    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
+    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
+    \n\r\n}  // namespace ebi\n#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n\
+    #include <algorithm>\n#line 6 \"tree/heavy_light_decomposition.hpp\"\n\n#line\
+    \ 8 \"tree/heavy_light_decomposition.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ T> struct heavy_light_decomposition {\n  private:\n    void dfs_sz(int v, Graph<T>\
+    \ &g) {\n        for (auto &e : g[v]) {\n            if (e.to == par[v]) continue;\n\
+    \            par[e.to] = v;\n            depth_[e.to] = depth_[v] + 1;\n     \
+    \       dist[e.to] = dist[v] + e.cost;\n            dfs_sz(e.to, g);\n       \
+    \     sz[v] += sz[e.to];\n            if (sz[e.to] > sz[g[v][0].to] || g[v][0].to\
+    \ == par[v])\n                std::swap(e, g[v][0]);\n        }\n    }\n\n   \
+    \ void dfs_hld(int v, const Graph<T> &g) {\n        in[v] = num++;\n        rev[in[v]]\
+    \ = v;\n        for (auto e : g[v]) {\n            if (e.to == par[v]) continue;\n\
+    \            nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);\n            dfs_hld(e.to,\
+    \ g);\n        }\n        out[v] = num;\n    }\n\n    // [u, v) \u30D1\u30B9\u306E\
+    \u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>>\
+    \ ascend(int u, int v) const {\n        std::vector<std::pair<int, int>> res;\n\
+    \        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n\
+    \            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
     \ in[v] + 1);\n        return res;\n    }\n\n    // (u, v] \u30D1\u30B9\u306E\u53D6\
     \u5F97 (u \u306F v \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> descend(int\
     \ u, int v) const {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v])\
@@ -312,7 +312,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   requiredBy: []
-  timestamp: '2024-05-21 16:03:56+09:00'
+  timestamp: '2024-05-23 18:52:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Set_Path_Compositie.test.cpp

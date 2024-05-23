@@ -47,6 +47,9 @@ data:
       path: convolution/convolution.hpp
       title: Convolution
     - icon: ':heavy_check_mark:'
+      path: convolution/convolution_2d.hpp
+      title: convolution/convolution_2d.hpp
+    - icon: ':heavy_check_mark:'
       path: convolution/convolution_mod_2_64.hpp
       title: Convolution $\pmod{2^{64}}$
     - icon: ':heavy_check_mark:'
@@ -640,6 +643,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/convolution/Convolution.test.cpp
       title: test/convolution/Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/convolution/Convolution_2D.test.cpp
+      title: test/convolution/Convolution_2D.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/convolution/Convolution_Mod_1000000007.test.cpp
       title: test/convolution/Convolution_Mod_1000000007.test.cpp
