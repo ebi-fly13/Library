@@ -1,53 +1,52 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/convolution.hpp
     title: Convolution
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
     title: fps/ntt_friendly_fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/" "compositional_inverse_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/
+    - https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series
   bundledCode: "#line 1 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
-    \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/\"\
-    \ \\\n    \"compositional_inverse_of_formal_power_series\"\n\n#include <iostream>\n\
-    \n#line 2 \"fps/compositional_inverse_of_fps.hpp\"\n\n#include <cassert>\n\n#line\
-    \ 2 \"fps/composition_of_fps.hpp\"\n\n#line 4 \"fps/composition_of_fps.hpp\"\n\
-    #include <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line 5\
-    \ \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 2 \"\
+    \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series\"\
+    \n\n#include <iostream>\n\n#line 2 \"fps/compositional_inverse_of_fps.hpp\"\n\n\
+    #include <cassert>\n\n#line 2 \"fps/composition_of_fps.hpp\"\n\n#line 4 \"fps/composition_of_fps.hpp\"\
+    \n#include <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line\
+    \ 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 2 \"\
     modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n#include\
     \ <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T\
     \ a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n  \
@@ -315,21 +314,20 @@ data:
     \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
     \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
     \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 10 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
+    #line 9 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
     \n\nusing mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint>;\n\
     \nint main() {\n    int n;\n    std::cin >> n;\n    FPS f(n);\n    for (int i\
     \ = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n    FPS g = ebi::compositional_inverse_of_fps(f);\n\
     \    for (int i = 0; i < n; i++) {\n        std::cout << g[i] << \" \\n\"[i ==\
     \ n - 1];\n    }\n}\n"
-  code: "#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/\"\
-    \ \\\n    \"compositional_inverse_of_formal_power_series\"\n\n#include <iostream>\n\
-    \n#include \"../../fps/compositional_inverse_of_fps.hpp\"\n#include \"../../fps/ntt_friendly_fps.hpp\"\
-    \n#include \"../../modint/modint.hpp\"\n\nusing mint = ebi::modint998244353;\n\
-    using FPS = ebi::FormalPowerSeries<mint>;\n\nint main() {\n    int n;\n    std::cin\
-    \ >> n;\n    FPS f(n);\n    for (int i = 0; i < n; i++) {\n        std::cin >>\
-    \ f[i];\n    }\n    FPS g = ebi::compositional_inverse_of_fps(f);\n    for (int\
-    \ i = 0; i < n; i++) {\n        std::cout << g[i] << \" \\n\"[i == n - 1];\n \
-    \   }\n}"
+  code: "#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series\"\
+    \n\n#include <iostream>\n\n#include \"../../fps/compositional_inverse_of_fps.hpp\"\
+    \n#include \"../../fps/ntt_friendly_fps.hpp\"\n#include \"../../modint/modint.hpp\"\
+    \n\nusing mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint>;\n\
+    \nint main() {\n    int n;\n    std::cin >> n;\n    FPS f(n);\n    for (int i\
+    \ = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n    FPS g = ebi::compositional_inverse_of_fps(f);\n\
+    \    for (int i = 0; i < n; i++) {\n        std::cout << g[i] << \" \\n\"[i ==\
+    \ n - 1];\n    }\n}"
   dependsOn:
   - fps/compositional_inverse_of_fps.hpp
   - fps/composition_of_fps.hpp
@@ -344,8 +342,8 @@ data:
   isVerificationFile: true
   path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2024-05-23 21:35:59+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-05-23 21:58:49+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
 layout: document

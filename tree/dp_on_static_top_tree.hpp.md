@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/static_top_tree.hpp
     title: Static Top Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
     title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/dp_on_static_top_tree.hpp\"\n\n#line 2 \"tree/static_top_tree.hpp\"\
@@ -188,7 +188,7 @@ data:
   path: tree/dp_on_static_top_tree.hpp
   requiredBy: []
   timestamp: '2024-05-23 21:35:59+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
 documentation_of: tree/dp_on_static_top_tree.hpp

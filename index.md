@@ -43,7 +43,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/arbitrary_ntt.hpp
       title: Arbitrary Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/convolution.hpp
       title: Convolution
     - icon: ':heavy_check_mark:'
@@ -64,7 +64,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/min_plus_convolution.hpp
       title: Min Plus Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/ntt.hpp
       title: NTT
     - icon: ':heavy_check_mark:'
@@ -201,7 +201,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
     - icon: ':heavy_check_mark:'
@@ -230,13 +230,13 @@ data:
       title: UnionFind with potential
   - name: fps
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/composition_of_fps.hpp
       title: $f(g(x))$
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/compositional_inverse_of_fps.hpp
       title: "$f(x)$ \u306E\u9006\u95A2\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
     - icon: ':heavy_check_mark:'
@@ -254,7 +254,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/multipoint_evaluation.hpp
       title: Multipoint Evaluation
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/ntt_friendly_fps.hpp
       title: fps/ntt_friendly_fps.hpp
     - icon: ':heavy_check_mark:'
@@ -300,7 +300,7 @@ data:
       title: geometry/polygon.hpp
   - name: graph
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/base.hpp
       title: Graph (CSR format)
     - icon: ':heavy_check_mark:'
@@ -356,7 +356,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: Binomial Coefficient
     - icon: ':heavy_check_mark:'
@@ -377,16 +377,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/factorial_mod_998.hpp
       title: math/factorial_mod_998.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/internal_math.hpp
       title: math/internal_math.hpp
     - icon: ':heavy_check_mark:'
       path: math/inversion_number.hpp
       title: Inversion Number
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/lagrange_interpolation.hpp
       title: Lagrange Interpolation
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/linear_sieve.hpp
       title: Linear Sieve
     - icon: ':heavy_check_mark:'
@@ -413,7 +413,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/stirling_number_2nd.hpp
       title: Stirling Numbers of the Second Kind
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/sum_of_exp_times_poly.hpp
       title: $\sum_{i = 0}^{n-1} a^i f(i)$
     - icon: ':heavy_check_mark:'
@@ -441,13 +441,13 @@ data:
       title: matrix/square_matrix.hpp
   - name: modint
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/base.hpp
       title: modint/base.hpp
     - icon: ':heavy_check_mark:'
       path: modint/dynamic_modint.hpp
       title: modint/dynamic_modint.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: modint/modint.hpp
       title: modint/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -504,19 +504,19 @@ data:
       title: Wildcard Pattern Matching
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -536,7 +536,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/contour_query_on_weighted_tree.hpp
       title: Contour Query on Tree (Weighted)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/dp_on_static_top_tree.hpp
       title: DP on Static Top Tree
     - icon: ':heavy_check_mark:'
@@ -557,7 +557,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/rooted_tree_hash.hpp
       title: Rooted Tree Hash
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/static_top_tree.hpp
       title: Static Top Tree
     - icon: ':heavy_check_mark:'
@@ -954,7 +954,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
       title: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
       title: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
     - icon: ':heavy_check_mark:'
@@ -997,7 +997,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1084,7 +1084,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree_HLD.test.cpp
       title: test/tree/Jump_on_Tree_HLD.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
       title: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
     - icon: ':heavy_check_mark:'
