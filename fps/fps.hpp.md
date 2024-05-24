@@ -21,6 +21,12 @@ data:
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
   - icon: ':heavy_check_mark:'
+    path: fps/middle_product.hpp
+    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
+  - icon: ':heavy_check_mark:'
+    path: fps/middle_product_arbitrary.hpp
+    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
+  - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
@@ -66,6 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/sums_of_powers_iota.hpp
     title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
+  - icon: ':heavy_check_mark:'
+    path: string/wildcard_pattern_matching.hpp
+    title: Wildcard Pattern Matching
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Berunoulli_Number.test.cpp
@@ -134,11 +143,17 @@ data:
     path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/Wildcard_Pattern_Matching.test.cpp
+    title: test/string/Wildcard_Pattern_Matching.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1796.test.cpp
+    title: test/yuki/yuki_1796.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1857.test.cpp
     title: test/yuki/yuki_1857.test.cpp
@@ -345,13 +360,16 @@ data:
   isVerificationFile: false
   path: fps/fps.hpp
   requiredBy:
+  - string/wildcard_pattern_matching.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
+  - fps/middle_product.hpp
   - fps/ntt_friendly_fps.hpp
   - fps/product_of_fps.hpp
   - fps/composition_of_fps.hpp
   - fps/fps_sqrt.hpp
   - fps/power_projection_of_fps.hpp
+  - fps/middle_product_arbitrary.hpp
   - fps/polynomial_interpolation.hpp
   - fps/taylor_shift.hpp
   - fps/multipoint_evaluation.hpp
@@ -370,6 +388,7 @@ data:
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp
+  - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
@@ -386,6 +405,7 @@ data:
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Berunoulli_Number.test.cpp
   - test/math/Partition_Function_FPS.test.cpp

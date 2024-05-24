@@ -249,26 +249,36 @@ data:
     \ * w1 % mod;\n                w3 = w2 * w1 % mod;\n                iw1 = iw *\
     \ w1 % mod;\n                iw3 = iw * w3 % mod;\n            }\n        }\n\
     \        len += 2;\n    }\n}\n\n}  // namespace internal\n\n}  // namespace ebi\n\
-    #line 11 \"fps/middle_product.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\n\
-    std::vector<mint> middle_product(const std::vector<mint> &a,\n               \
-    \                  const std::vector<mint> &b) {\n    assert(a.size() >= b.size());\n\
-    \    if (std::min(a.size() - b.size() + 1, b.size()) <= 60) {\n        return\
-    \ middle_product_naive<mint>(a, b);\n    }\n    int n = std::bit_ceil(a.size());\n\
-    \    std::vector<mint> fa(n), fb(n);\n    std::copy(a.begin(), a.end(), fa.begin());\n\
-    \    std::copy(b.rbegin(), b.rend(), fb.begin());\n    internal::fft4(fa);\n \
-    \   internal::fft4(fb);\n    for (int i = 0; i < n; i++) {\n        fa[i] *= fb[i];\n\
-    \    }\n    internal::ifft4(fa);\n    mint inv_n = mint(n).inv();\n    for (auto\
-    \ &x : fa) {\n        x *= inv_n;\n    }\n    fa.resize(a.size());\n    fa.erase(fa.begin(),\
-    \ fa.begin() + b.size() - 1);\n    return fa;\n}\n\ntemplate <class T>\nstd::vector<T>\
-    \ middle_product_naive(const std::vector<T> &a,\n                            \
-    \        const std::vector<T> &b) {\n    int n = (int)a.size();\n    int m = (int)b.size();\n\
-    \    assert(n >= m);\n    std::vector<T> c(n - m + 1, 0);\n    for (int i : std::views::iota(0,\
-    \ n - m + 1)) {\n        for (int j : std::views::iota(0, m)) {\n            c[i]\
-    \ += b[j] * a[i + j];\n        }\n    }\n    return c;\n}\n\n}  // namespace ebi\n\
-    #line 8 \"fps/composition_of_fps.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
-    \ mint>\nFormalPowerSeries<mint> composition_of_fps(FormalPowerSeries<mint> f,\n\
-    \                                           FormalPowerSeries<mint> g) {\n   \
-    \ auto rec = [&](auto &&self, int n, int k,\n                   std::vector<mint>\
+    #line 12 \"fps/middle_product.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\n\
+    std::vector<T> middle_product_naive(const std::vector<T> &a,\n               \
+    \                     const std::vector<T> &b) {\n    int n = (int)a.size();\n\
+    \    int m = (int)b.size();\n    assert(n >= m);\n    std::vector<T> c(n - m +\
+    \ 1, 0);\n    for (int i : std::views::iota(0, n - m + 1)) {\n        for (int\
+    \ j : std::views::iota(0, m)) {\n            c[i] += b[j] * a[i + j];\n      \
+    \  }\n    }\n    return c;\n}\n\ntemplate <Modint mint>\nstd::vector<mint> middle_product(const\
+    \ std::vector<mint> &a,\n                                 const std::vector<mint>\
+    \ &b) {\n    assert(a.size() >= b.size());\n    if (std::min(a.size() - b.size()\
+    \ + 1, b.size()) <= 60) {\n        return middle_product_naive<mint>(a, b);\n\
+    \    }\n    int n = std::bit_ceil(a.size());\n    std::vector<mint> fa(n), fb(n);\n\
+    \    std::copy(a.begin(), a.end(), fa.begin());\n    std::copy(b.rbegin(), b.rend(),\
+    \ fb.begin());\n    internal::fft4(fa);\n    internal::fft4(fb);\n    for (int\
+    \ i = 0; i < n; i++) {\n        fa[i] *= fb[i];\n    }\n    internal::ifft4(fa);\n\
+    \    mint inv_n = mint(n).inv();\n    for (auto &x : fa) {\n        x *= inv_n;\n\
+    \    }\n    fa.resize(a.size());\n    fa.erase(fa.begin(), fa.begin() + b.size()\
+    \ - 1);\n    return fa;\n}\n\ntemplate <Modint mint>\nFormalPowerSeries<mint>\
+    \ middle_product(const FormalPowerSeries<mint> &a,\n                         \
+    \              const FormalPowerSeries<mint> &b) {\n    using FPS = FormalPowerSeries<mint>;\n\
+    \    assert(a.size() >= b.size());\n    if (std::min(a.size() - b.size() + 1,\
+    \ b.size()) <= 60) {\n        return middle_product_naive<mint>(a, b);\n    }\n\
+    \    int n = std::bit_ceil(a.size());\n    FPS fa(n), fb(n);\n    std::copy(a.begin(),\
+    \ a.end(), fa.begin());\n    std::copy(b.rbegin(), b.rend(), fb.begin());\n  \
+    \  fa.fft();\n    fb.fft();\n    for (int i = 0; i < n; i++) {\n        fa[i]\
+    \ *= fb[i];\n    }\n    fa.ifft();\n    fa /= n;\n    fa = fa.pre(a.size());\n\
+    \    fa.erase(fa.begin(), fa.begin() + b.size() - 1);\n    return fa;\n}\n\n}\
+    \  // namespace ebi\n#line 8 \"fps/composition_of_fps.hpp\"\n\nnamespace ebi {\n\
+    \ntemplate <Modint mint>\nFormalPowerSeries<mint> composition_of_fps(FormalPowerSeries<mint>\
+    \ f,\n                                           FormalPowerSeries<mint> g) {\n\
+    \    auto rec = [&](auto &&self, int n, int k,\n                   std::vector<mint>\
     \ Q) -> std::vector<mint> {\n        if (n == 1) {\n            std::vector<mint>\
     \ p(2 * k);\n            f.resize(k);\n            std::reverse(f.begin(), f.end());\n\
     \            for (int i = 0; i < k; i++) {\n                p[2 * i] = f[i];\n\
@@ -494,7 +504,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   requiredBy: []
-  timestamp: '2024-05-24 17:25:02+09:00'
+  timestamp: '2024-05-24 18:44:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp

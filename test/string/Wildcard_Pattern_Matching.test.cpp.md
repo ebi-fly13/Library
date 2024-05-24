@@ -8,6 +8,9 @@ data:
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   - icon: ':heavy_check_mark:'
+    path: fps/fps.hpp
+    title: Formal Power Series
+  - icon: ':heavy_check_mark:'
     path: fps/middle_product.hpp
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
@@ -153,76 +156,178 @@ data:
     \ w1 % mod;\n                iw3 = iw * w3 % mod;\n            }\n        }\n\
     \        len += 2;\n    }\n}\n\n}  // namespace internal\n\n}  // namespace ebi\n\
     #line 2 \"fps/middle_product.hpp\"\n\n#line 6 \"fps/middle_product.hpp\"\n#include\
-    \ <ranges>\n#line 8 \"fps/middle_product.hpp\"\n\n#line 11 \"fps/middle_product.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> middle_product(const\
-    \ std::vector<mint> &a,\n                                 const std::vector<mint>\
-    \ &b) {\n    assert(a.size() >= b.size());\n    if (std::min(a.size() - b.size()\
-    \ + 1, b.size()) <= 60) {\n        return middle_product_naive<mint>(a, b);\n\
-    \    }\n    int n = std::bit_ceil(a.size());\n    std::vector<mint> fa(n), fb(n);\n\
-    \    std::copy(a.begin(), a.end(), fa.begin());\n    std::copy(b.rbegin(), b.rend(),\
-    \ fb.begin());\n    internal::fft4(fa);\n    internal::fft4(fb);\n    for (int\
-    \ i = 0; i < n; i++) {\n        fa[i] *= fb[i];\n    }\n    internal::ifft4(fa);\n\
-    \    mint inv_n = mint(n).inv();\n    for (auto &x : fa) {\n        x *= inv_n;\n\
-    \    }\n    fa.resize(a.size());\n    fa.erase(fa.begin(), fa.begin() + b.size()\
-    \ - 1);\n    return fa;\n}\n\ntemplate <class T>\nstd::vector<T> middle_product_naive(const\
+    \ <ranges>\n#line 8 \"fps/middle_product.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n\
+    #line 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line\
+    \ 9 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> struct FormalPowerSeries\
+    \ : std::vector<mint> {\n  private:\n    using std::vector<mint>::vector;\n  \
+    \  using std::vector<mint>::vector::operator=;\n    using FPS = FormalPowerSeries;\n\
+    \n  public:\n    FormalPowerSeries(const std::vector<mint> &a) {\n        *this\
+    \ = a;\n    }\n\n    FPS operator+(const FPS &rhs) const noexcept {\n        return\
+    \ FPS(*this) += rhs;\n    }\n    FPS operator-(const FPS &rhs) const noexcept\
+    \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const FPS &rhs)\
+    \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n    FPS operator/(const\
+    \ FPS &rhs) const noexcept {\n        return FPS(*this) /= rhs;\n    }\n    FPS\
+    \ operator%(const FPS &rhs) const noexcept {\n        return FPS(*this) %= rhs;\n\
+    \    }\n\n    FPS operator+(const mint &rhs) const noexcept {\n        return\
+    \ FPS(*this) += rhs;\n    }\n    FPS operator-(const mint &rhs) const noexcept\
+    \ {\n        return FPS(*this) -= rhs;\n    }\n    FPS operator*(const mint &rhs)\
+    \ const noexcept {\n        return FPS(*this) *= rhs;\n    }\n    FPS operator/(const\
+    \ mint &rhs) const noexcept {\n        return FPS(*this) /= rhs;\n    }\n\n  \
+    \  FPS &operator+=(const FPS &rhs) noexcept {\n        if (this->size() < rhs.size())\
+    \ this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size(); ++i)\
+    \ {\n            (*this)[i] += rhs[i];\n        }\n        return *this;\n   \
+    \ }\n\n    FPS &operator-=(const FPS &rhs) noexcept {\n        if (this->size()\
+    \ < rhs.size()) this->resize(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
+    \ ++i) {\n            (*this)[i] -= rhs[i];\n        }\n        return *this;\n\
+    \    }\n\n    FPS &operator*=(const FPS &);\n\n    FPS &operator/=(const FPS &rhs)\
+    \ noexcept {\n        int n = deg() - 1;\n        int m = rhs.deg() - 1;\n   \
+    \     if (n < m) {\n            *this = {};\n            return *this;\n     \
+    \   }\n        *this = (*this).rev() * rhs.rev().inv(n - m + 1);\n        (*this).resize(n\
+    \ - m + 1);\n        std::reverse((*this).begin(), (*this).end());\n        return\
+    \ *this;\n    }\n\n    FPS &operator%=(const FPS &rhs) noexcept {\n        *this\
+    \ -= *this / rhs * rhs;\n        shrink();\n        return *this;\n    }\n\n \
+    \   FPS &operator+=(const mint &rhs) noexcept {\n        if (this->empty()) this->resize(1);\n\
+    \        (*this)[0] += rhs;\n        return *this;\n    }\n\n    FPS &operator-=(const\
+    \ mint &rhs) noexcept {\n        if (this->empty()) this->resize(1);\n       \
+    \ (*this)[0] -= rhs;\n        return *this;\n    }\n\n    FPS &operator*=(const\
+    \ mint &rhs) noexcept {\n        for (int i = 0; i < deg(); ++i) {\n         \
+    \   (*this)[i] *= rhs;\n        }\n        return *this;\n    }\n    FPS &operator/=(const\
+    \ mint &rhs) noexcept {\n        mint inv_rhs = rhs.inv();\n        for (int i\
+    \ = 0; i < deg(); ++i) {\n            (*this)[i] *= inv_rhs;\n        }\n    \
+    \    return *this;\n    }\n\n    FPS operator>>(int d) const {\n        if (deg()\
+    \ <= d) return {};\n        FPS f = *this;\n        f.erase(f.begin(), f.begin()\
+    \ + d);\n        return f;\n    }\n\n    FPS operator<<(int d) const {\n     \
+    \   FPS f = *this;\n        f.insert(f.begin(), d, 0);\n        return f;\n  \
+    \  }\n\n    FPS operator-() const {\n        FPS g(this->size());\n        for\
+    \ (int i = 0; i < (int)this->size(); i++) g[i] = -(*this)[i];\n        return\
+    \ g;\n    }\n\n    FPS pre(int sz) const {\n        return FPS(this->begin(),\
+    \ this->begin() + std::min(deg(), sz));\n    }\n\n    FPS rev() const {\n    \
+    \    auto f = *this;\n        std::reverse(f.begin(), f.end());\n        return\
+    \ f;\n    }\n\n    FPS differential() const {\n        int n = deg();\n      \
+    \  FPS g(std::max(0, n - 1));\n        for (int i = 0; i < n - 1; i++) {\n   \
+    \         g[i] = (*this)[i + 1] * (i + 1);\n        }\n        return g;\n   \
+    \ }\n\n    FPS integral() const {\n        int n = deg();\n        FPS g(n + 1);\n\
+    \        g[0] = 0;\n        if (n > 0) g[1] = 1;\n        auto mod = mint::mod();\n\
+    \        for (int i = 2; i <= n; i++) g[i] = (-g[mod % i]) * (mod / i);\n    \
+    \    for (int i = 0; i < n; i++) g[i + 1] *= (*this)[i];\n        return g;\n\
+    \    }\n\n    FPS inv(int d = -1) const {\n        int n = 1;\n        if (d <\
+    \ 0) d = deg();\n        FPS g(n);\n        g[0] = (*this)[0].inv();\n       \
+    \ while (n < d) {\n            n <<= 1;\n            g = (g * 2 - g * g * this->pre(n)).pre(n);\n\
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS log(int\
+    \ d = -1) const {\n        assert((*this)[0].val() == 1);\n        if (d < 0)\
+    \ d = deg();\n        return ((*this).differential() * (*this).inv(d)).pre(d -\
+    \ 1).integral();\n    }\n\n    FPS exp(int d = -1) const {\n        assert((*this)[0].val()\
+    \ == 0);\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n\
+    \        g[0] = 1;\n        while (n < d) {\n            n <<= 1;\n          \
+    \  g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n        }\n        g.resize(d);\n\
+    \        return g;\n    }\n\n    FPS pow(long long k, int d = -1) const {\n  \
+    \      assert(k >= 0);\n        int n = deg();\n        if (d < 0) d = n;\n  \
+    \      if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0] = 1;\n\
+    \            return f;\n        }\n        int low = d;\n        for (int i =\
+    \ n - 1; i >= 0; i--)\n            if ((*this)[i] != 0) low = i;\n        if (low\
+    \ >= (d + k - 1) / k) return FPS(d, 0);\n        int offset = k * low;\n     \
+    \   mint c = (*this)[low];\n        FPS g(d - offset);\n        for (int i = 0;\
+    \ i < std::min(n - low, d - offset); i++) {\n            g[i] = (*this)[i + low];\n\
+    \        }\n        g /= c;\n        g = g.pow_1(k);\n        return (g << offset)\
+    \ * c.pow(k);\n    }\n\n    FPS pow_1(mint k, int d = -1) const {\n        assert((*this)[0]\
+    \ == 1);\n        return ((*this).log(d) * k).exp(d);\n    }\n\n    FPS pow_newton(long\
+    \ long k, int d = -1) const {\n        assert(k >= 0);\n        const int n =\
+    \ deg();\n        if (d < 0) d = n;\n        if (k == 0) {\n            FPS f(d);\n\
+    \            if (d > 0) f[0] = 1;\n            return f;\n        }\n        for\
+    \ (int i = 0; i < n; i++) {\n            if ((*this)[i] != 0) {\n            \
+    \    mint rev = (*this)[i].inv();\n                FPS f = (((*this * rev) >>\
+    \ i).log(d) * k).exp(d);\n                f *= (*this)[i].pow(k);\n          \
+    \      f = (f << (i * k)).pre(d);\n                if (f.deg() < d) f.resize(d);\n\
+    \                return f;\n            }\n            if (i + 1 >= (d + k - 1)\
+    \ / k) break;\n        }\n        return FPS(d);\n    }\n\n    int deg() const\
+    \ {\n        return (*this).size();\n    }\n\n    void shrink() {\n        while\
+    \ ((!this->empty()) && this->back() == 0) this->pop_back();\n    }\n\n    int\
+    \ count_terms() const {\n        int c = 0;\n        for (int i = 0; i < deg();\
+    \ i++) {\n            if ((*this)[i] != 0) c++;\n        }\n        return c;\n\
+    \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
+    \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
+    \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 12 \"fps/middle_product.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nstd::vector<T> middle_product_naive(const\
     \ std::vector<T> &a,\n                                    const std::vector<T>\
     \ &b) {\n    int n = (int)a.size();\n    int m = (int)b.size();\n    assert(n\
     \ >= m);\n    std::vector<T> c(n - m + 1, 0);\n    for (int i : std::views::iota(0,\
     \ n - m + 1)) {\n        for (int j : std::views::iota(0, m)) {\n            c[i]\
-    \ += b[j] * a[i + j];\n        }\n    }\n    return c;\n}\n\n}  // namespace ebi\n\
-    #line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7\
-    \ \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int m> struct static_modint\
-    \ {\r\n  private:\r\n    using modint = static_modint;\r\n\r\n  public:\r\n  \
-    \  static constexpr int mod() {\r\n        return m;\r\n    }\r\n\r\n    static\
-    \ constexpr modint raw(int v) {\r\n        modint x;\r\n        x._v = v;\r\n\
-    \        return x;\r\n    }\r\n\r\n    constexpr static_modint() : _v(0) {}\r\n\
-    \r\n    template <std::signed_integral T> constexpr static_modint(T v) {\r\n \
-    \       long long x = (long long)(v % (long long)(umod()));\r\n        if (x <\
-    \ 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\n    template\
-    \ <std::unsigned_integral T> constexpr static_modint(T v) {\r\n        _v = (unsigned\
-    \ int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned int val() const {\r\
-    \n        return _v;\r\n    }\r\n\r\n    constexpr unsigned int value() const\
-    \ {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint &operator++()\
-    \ {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint &operator--() {\r\n        if (_v == 0) _v = umod();\r\
-    \n        _v--;\r\n        return *this;\r\n    }\r\n\r\n    constexpr modint\
-    \ operator++(int) {\r\n        modint res = *this;\r\n        ++*this;\r\n   \
-    \     return res;\r\n    }\r\n    constexpr modint operator--(int) {\r\n     \
-    \   modint res = *this;\r\n        --*this;\r\n        return res;\r\n    }\r\n\
-    \r\n    constexpr modint &operator+=(const modint &rhs) {\r\n        _v += rhs._v;\r\
-    \n        if (_v >= umod()) _v -= umod();\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator-=(const modint &rhs) {\r\n        _v -= rhs._v;\r\
-    \n        if (_v >= umod()) _v += umod();\r\n        return *this;\r\n    }\r\n\
-    \    constexpr modint &operator*=(const modint &rhs) {\r\n        unsigned long\
-    \ long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned int)(x % (unsigned\
-    \ long long)umod());\r\n        return *this;\r\n    }\r\n    constexpr modint\
-    \ &operator/=(const modint &rhs) {\r\n        return *this = *this * rhs.inv();\r\
-    \n    }\r\n\r\n    constexpr modint operator+() const {\r\n        return *this;\r\
-    \n    }\r\n    constexpr modint operator-() const {\r\n        return modint()\
-    \ - *this;\r\n    }\r\n\r\n    constexpr modint pow(long long n) const {\r\n \
-    \       assert(0 <= n);\r\n        modint x = *this, res = 1;\r\n        while\
-    \ (n) {\r\n            if (n & 1) res *= x;\r\n            x *= x;\r\n       \
-    \     n >>= 1;\r\n        }\r\n        return res;\r\n    }\r\n    constexpr modint\
-    \ inv() const {\r\n        assert(_v);\r\n        return pow(umod() - 2);\r\n\
-    \    }\r\n\r\n    friend modint operator+(const modint &lhs, const modint &rhs)\
-    \ {\r\n        return modint(lhs) += rhs;\r\n    }\r\n    friend modint operator-(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) -= rhs;\r\n\
-    \    }\r\n    friend modint operator*(const modint &lhs, const modint &rhs) {\r\
-    \n        return modint(lhs) *= rhs;\r\n    }\r\n\r\n    friend modint operator/(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return modint(lhs) /= rhs;\r\n\
-    \    }\r\n    friend bool operator==(const modint &lhs, const modint &rhs) {\r\
-    \n        return lhs.val() == rhs.val();\r\n    }\r\n    friend bool operator!=(const\
-    \ modint &lhs, const modint &rhs) {\r\n        return !(lhs == rhs);\r\n    }\r\
-    \n\r\n  private:\r\n    unsigned int _v = 0;\r\n\r\n    static constexpr unsigned\
-    \ int umod() {\r\n        return m;\r\n    }\r\n};\r\n\r\nusing modint998244353\
-    \ = static_modint<998244353>;\r\nusing modint1000000007 = static_modint<1000000007>;\r\
-    \n\r\n}  // namespace ebi\n#line 12 \"fps/middle_product_arbitrary.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> middle_product_arbitrary(const\
-    \ std::vector<mint> &a,\n                                           const std::vector<mint>\
-    \ &b) {\n    static constexpr i32 m0 = 167772161;  // 2^25\n    static constexpr\
-    \ i32 m1 = 469762049;  // 2^26\n    static constexpr i32 m2 = 754974721;  // 2^24\n\
-    \    using mint0 = static_modint<m0>;\n    using mint1 = static_modint<m1>;\n\
-    \    using mint2 = static_modint<m2>;\n    static constexpr i32 inv01 = mint1(m0).inv().val();\n\
+    \ += b[j] * a[i + j];\n        }\n    }\n    return c;\n}\n\ntemplate <Modint\
+    \ mint>\nstd::vector<mint> middle_product(const std::vector<mint> &a,\n      \
+    \                           const std::vector<mint> &b) {\n    assert(a.size()\
+    \ >= b.size());\n    if (std::min(a.size() - b.size() + 1, b.size()) <= 60) {\n\
+    \        return middle_product_naive<mint>(a, b);\n    }\n    int n = std::bit_ceil(a.size());\n\
+    \    std::vector<mint> fa(n), fb(n);\n    std::copy(a.begin(), a.end(), fa.begin());\n\
+    \    std::copy(b.rbegin(), b.rend(), fb.begin());\n    internal::fft4(fa);\n \
+    \   internal::fft4(fb);\n    for (int i = 0; i < n; i++) {\n        fa[i] *= fb[i];\n\
+    \    }\n    internal::ifft4(fa);\n    mint inv_n = mint(n).inv();\n    for (auto\
+    \ &x : fa) {\n        x *= inv_n;\n    }\n    fa.resize(a.size());\n    fa.erase(fa.begin(),\
+    \ fa.begin() + b.size() - 1);\n    return fa;\n}\n\ntemplate <Modint mint>\nFormalPowerSeries<mint>\
+    \ middle_product(const FormalPowerSeries<mint> &a,\n                         \
+    \              const FormalPowerSeries<mint> &b) {\n    using FPS = FormalPowerSeries<mint>;\n\
+    \    assert(a.size() >= b.size());\n    if (std::min(a.size() - b.size() + 1,\
+    \ b.size()) <= 60) {\n        return middle_product_naive<mint>(a, b);\n    }\n\
+    \    int n = std::bit_ceil(a.size());\n    FPS fa(n), fb(n);\n    std::copy(a.begin(),\
+    \ a.end(), fa.begin());\n    std::copy(b.rbegin(), b.rend(), fb.begin());\n  \
+    \  fa.fft();\n    fb.fft();\n    for (int i = 0; i < n; i++) {\n        fa[i]\
+    \ *= fb[i];\n    }\n    fa.ifft();\n    fa /= n;\n    fa = fa.pre(a.size());\n\
+    \    fa.erase(fa.begin(), fa.begin() + b.size() - 1);\n    return fa;\n}\n\n}\
+    \  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\
+    \n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
+    \ m> struct static_modint {\r\n  private:\r\n    using modint = static_modint;\r\
+    \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
+    \   }\r\n\r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n\
+    \        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint()\
+    \ : _v(0) {}\r\n\r\n    template <std::signed_integral T> constexpr static_modint(T\
+    \ v) {\r\n        long long x = (long long)(v % (long long)(umod()));\r\n    \
+    \    if (x < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\
+    \n    template <std::unsigned_integral T> constexpr static_modint(T v) {\r\n \
+    \       _v = (unsigned int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned\
+    \ int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned\
+    \ int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint\
+    \ &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n  \
+    \      return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n    \
+    \    if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n \
+    \   }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
+    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
+    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
+    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
+    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
+    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
+    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
+    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
+    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
+    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
+    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
+    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
+    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
+    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
+    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
+    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
+    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
+    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
+    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
+    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
+    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
+    \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 12 \"fps/middle_product_arbitrary.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
+    \ mint>\nstd::vector<mint> middle_product_arbitrary(const std::vector<mint> &a,\n\
+    \                                           const std::vector<mint> &b) {\n  \
+    \  static constexpr i32 m0 = 167772161;  // 2^25\n    static constexpr i32 m1\
+    \ = 469762049;  // 2^26\n    static constexpr i32 m2 = 754974721;  // 2^24\n \
+    \   using mint0 = static_modint<m0>;\n    using mint1 = static_modint<m1>;\n \
+    \   using mint2 = static_modint<m2>;\n    static constexpr i32 inv01 = mint1(m0).inv().val();\n\
     \    static constexpr i32 inv02 = mint2(m0).inv().val();\n    static constexpr\
     \ i32 inv12 = mint2(m1).inv().val();\n    static constexpr i32 inv02inv12 = i64(inv02)\
     \ * inv12 % m2;\n    static constexpr i64 w1 = m0;\n    static constexpr i64 w2\
@@ -301,39 +406,38 @@ data:
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
     \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
     \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/io.hpp\"\
-    \n\n#line 5 \"template/io.hpp\"\n#include <optional>\n#line 7 \"template/io.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
-    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
-    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
-    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
-    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
-    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
-    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
-    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
-    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
-    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
-    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
-    \n\n#line 2 \"graph/base.hpp\"\n\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
-    \n\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ E> struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n,\
-    \ const std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0),\
-    \ elist(elements.size()) {\n        for (auto e : elements) {\n            start[e.first\
-    \ + 1]++;\n        }\n        for (auto i : std::views::iota(0, n)) {\n      \
-    \      start[i + 1] += start[i];\n        }\n        auto counter = start;\n \
-    \       for (auto [i, e] : elements) {\n            elist[counter[i]++] = e;\n\
-    \        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>& es)\n \
-    \       : start(es.size() + 1, 0) {\n        int n = es.size();\n        for (auto\
-    \ i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
-    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
-    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
-    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
-    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
-    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
-    \                                   elist.begin() + start[i + 1]);\n    }\n  \
-    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \n\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
+    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
+    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
+    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
+    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
+    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
+    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
+    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
+    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 7\
+    \ \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 6 \"\
+    data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E> struct\
+    \ simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const std::vector<std::pair<int,\
+    \ E>>& elements)\n        : start(n + 1, 0), elist(elements.size()) {\n      \
+    \  for (auto e : elements) {\n            start[e.first + 1]++;\n        }\n \
+    \       for (auto i : std::views::iota(0, n)) {\n            start[i + 1] += start[i];\n\
+    \        }\n        auto counter = start;\n        for (auto [i, e] : elements)\
+    \ {\n            elist[counter[i]++] = e;\n        }\n    }\n\n    simple_csr(const\
+    \ std::vector<std::vector<E>>& es)\n        : start(es.size() + 1, 0) {\n    \
+    \    int n = es.size();\n        for (auto i : std::views::iota(0, n)) {\n   \
+    \         start[i + 1] = (int)es[i].size() + start[i];\n        }\n        elist.resize(start.back());\n\
+    \        for (auto i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(),\
+    \ es[i].end(), elist.begin() + start[i]);\n        }\n    }\n\n    int size()\
+    \ const {\n        return (int)start.size() - 1;\n    }\n\n    const auto operator[](int\
+    \ i) const {\n        return std::ranges::subrange(elist.begin() + start[i],\n\
+    \                                     elist.begin() + start[i + 1]);\n    }\n\
+    \    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -409,6 +513,7 @@ data:
   - modint/base.hpp
   - template/int_alias.hpp
   - fps/middle_product.hpp
+  - fps/fps.hpp
   - modint/modint.hpp
   - template/template.hpp
   - template/debug_template.hpp
@@ -419,7 +524,7 @@ data:
   isVerificationFile: true
   path: test/string/Wildcard_Pattern_Matching.test.cpp
   requiredBy: []
-  timestamp: '2024-05-23 21:35:59+09:00'
+  timestamp: '2024-05-24 18:44:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/string/Wildcard_Pattern_Matching.test.cpp
