@@ -9,7 +9,7 @@ data:
     title: NTT
   - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
-    title: $f(g(x))$
+    title: $f(g(x))$ ( $O(N\log^2{N})$ )
   - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps_old.hpp
     title: "$f(x)$ \u306E\u9006\u95A2\u6570 ( $O(N^2)$ )"
@@ -17,8 +17,11 @@ data:
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
+    path: fps/middle_product.hpp
+    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
+  - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
-    title: fps/ntt_friendly_fps.hpp
+    title: Formal Power Series (NTT Friendly)
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
@@ -44,14 +47,13 @@ data:
   bundledCode: "#line 1 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp\"\
     \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series\"\
     \n\n#include <iostream>\n\n#line 2 \"fps/compositional_inverse_of_fps_old.hpp\"\
-    \n\n#include <cassert>\n\n#line 2 \"fps/composition_of_fps.hpp\"\n\n#line 4 \"\
-    fps/composition_of_fps.hpp\"\n#include <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n\
-    #include <algorithm>\n#line 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"\
-    fps/fps.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"\
-    modint/base.hpp\"\n#include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\n\
-    concept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n  \
-    \  a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n\
-    \    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \n\n#include <cassert>\n\n#line 2 \"fps/composition_of_fps.hpp\"\n\n#include <bit>\n\
+    \n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line 5 \"fps/fps.hpp\"\n#include\
+    \ <optional>\n#include <vector>\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 9 \"\
@@ -145,32 +147,8 @@ data:
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
     \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
-    \    void ifft();\n};\n\n}  // namespace ebi\n#line 8 \"fps/composition_of_fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> composition_of_fps(const\
-    \ FormalPowerSeries<mint> &f,\n                                           const\
-    \ FormalPowerSeries<mint> &g) {\n    using FPS = FormalPowerSeries<mint>;\n  \
-    \  // assert(f.deg() == g.deg());\n    int n = f.deg();\n    int k = 1;\n    while\
-    \ (k * k < n) k++;\n    std::vector<FPS> baby(k + 1);\n    baby[0] = FPS{1};\n\
-    \    baby[1] = g;\n    for (int i = 2; i < k + 1; i++) {\n        baby[i] = (baby[i\
-    \ - 1] * g).pre(n);\n    }\n    std::vector<FPS> giant(k + 1);\n    giant[0] =\
-    \ FPS{1};\n    giant[1] = baby[k];\n    for (int i = 2; i < k + 1; i++) {\n  \
-    \      giant[i] = (giant[i - 1] * giant[1]).pre(n);\n    }\n    FPS h(n);\n  \
-    \  for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n        for (int j =\
-    \ 0; j < k; j++) {\n            if (k * i + j < n) {\n                mint coef\
-    \ = f[k * i + j];\n                a += baby[j] * coef;\n            } else\n\
-    \                break;\n        }\n        h += (giant[i] * a).pre(n);\n    }\n\
-    \    return h;\n}\n\n}  // namespace ebi\n#line 8 \"fps/compositional_inverse_of_fps_old.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> compositional_inverse_of_fps(FormalPowerSeries<mint>\
-    \ f,\n                                                     int d = -1) {\n   \
-    \ using FPS = FormalPowerSeries<mint>;\n    if (d < 0) d = f.deg();\n    assert((int)f.size()\
-    \ >= 2 && f[0] == 0 && f[1] != 0);\n    FPS df = f.differential();\n    FPS g\
-    \ = {0, f[1].inv()};\n    for (int n = 2; n < d; n <<= 1) {\n        g.resize(2\
-    \ * n);\n        if (f.deg() < 2 * n) f.resize(2 * n);\n        if (df.deg() <\
-    \ 2 * n) df.resize(2 * n);\n        FPS fg = composition_of_fps(f.pre(2 * n),\
-    \ g);\n        FPS fdg = composition_of_fps(df.pre(2 * n), g);\n        g -= ((fg\
-    \ - FPS{0, 1}) * fdg.inv(2 * n)).pre(2 * n);\n    }\n    g.resize(d);\n    return\
-    \ g;\n}\n\n}  // namespace ebi\n#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#include\
-    \ <bit>\n\n#line 2 \"convolution/convolution.hpp\"\n\n#line 6 \"convolution/convolution.hpp\"\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 2 \"fps/middle_product.hpp\"\
+    \n\n#line 6 \"fps/middle_product.hpp\"\n#include <ranges>\n#line 8 \"fps/middle_product.hpp\"\
     \n\n#line 2 \"convolution/ntt.hpp\"\n\n#line 4 \"convolution/ntt.hpp\"\n#include\
     \ <array>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
     \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
@@ -258,21 +236,74 @@ data:
     \ * w1 % mod;\n                w3 = w2 * w1 % mod;\n                iw1 = iw *\
     \ w1 % mod;\n                iw3 = iw * w3 % mod;\n            }\n        }\n\
     \        len += 2;\n    }\n}\n\n}  // namespace internal\n\n}  // namespace ebi\n\
-    #line 9 \"convolution/convolution.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
-    \ mint>\nstd::vector<mint> convolution_naive(const std::vector<mint>& f,\n   \
-    \                                 const std::vector<mint>& g) {\n    if (f.empty()\
-    \ || g.empty()) return {};\n    int n = int(f.size()), m = int(g.size());\n  \
-    \  std::vector<mint> c(n + m - 1);\n    if (n < m) {\n        for (int j = 0;\
-    \ j < m; j++) {\n            for (int i = 0; i < n; i++) {\n                c[i\
-    \ + j] += f[i] * g[j];\n            }\n        }\n    } else {\n        for (int\
-    \ i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++) {\n          \
-    \      c[i + j] += f[i] * g[j];\n            }\n        }\n    }\n    return c;\n\
-    }\n\ntemplate <Modint mint>\nstd::vector<mint> convolution(const std::vector<mint>&\
-    \ f,\n                              const std::vector<mint>& g) {\n    if (f.empty()\
-    \ || g.empty()) return {};\n    if (std::min(f.size(), g.size()) < 60) return\
-    \ convolution_naive(f, g);\n    int n = (int)std::bit_ceil(f.size() + g.size()\
-    \ - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(), f.end(),\
-    \ a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::fft4(a);\n\
+    #line 11 \"fps/middle_product.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\n\
+    std::vector<mint> middle_product(const std::vector<mint> &a,\n               \
+    \                  const std::vector<mint> &b) {\n    assert(a.size() >= b.size());\n\
+    \    if (std::min(a.size() - b.size() + 1, b.size()) <= 60) {\n        return\
+    \ middle_product_naive<mint>(a, b);\n    }\n    int n = std::bit_ceil(a.size());\n\
+    \    std::vector<mint> fa(n), fb(n);\n    std::copy(a.begin(), a.end(), fa.begin());\n\
+    \    std::copy(b.rbegin(), b.rend(), fb.begin());\n    internal::fft4(fa);\n \
+    \   internal::fft4(fb);\n    for (int i = 0; i < n; i++) {\n        fa[i] *= fb[i];\n\
+    \    }\n    internal::ifft4(fa);\n    mint inv_n = mint(n).inv();\n    for (auto\
+    \ &x : fa) {\n        x *= inv_n;\n    }\n    fa.resize(a.size());\n    fa.erase(fa.begin(),\
+    \ fa.begin() + b.size() - 1);\n    return fa;\n}\n\ntemplate <class T>\nstd::vector<T>\
+    \ middle_product_naive(const std::vector<T> &a,\n                            \
+    \        const std::vector<T> &b) {\n    int n = (int)a.size();\n    int m = (int)b.size();\n\
+    \    assert(n >= m);\n    std::vector<T> c(n - m + 1, 0);\n    for (int i : std::views::iota(0,\
+    \ n - m + 1)) {\n        for (int j : std::views::iota(0, m)) {\n            c[i]\
+    \ += b[j] * a[i + j];\n        }\n    }\n    return c;\n}\n\n}  // namespace ebi\n\
+    #line 8 \"fps/composition_of_fps.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
+    \ mint>\nFormalPowerSeries<mint> composition_of_fps(FormalPowerSeries<mint> f,\n\
+    \                                           FormalPowerSeries<mint> g) {\n   \
+    \ auto rec = [&](auto &&self, int n, int k,\n                   std::vector<mint>\
+    \ Q) -> std::vector<mint> {\n        if (n == 1) {\n            std::vector<mint>\
+    \ p(2 * k);\n            f.resize(k);\n            std::reverse(f.begin(), f.end());\n\
+    \            for (int i = 0; i < k; i++) {\n                p[2 * i] = f[i];\n\
+    \            }\n            return p;\n        }\n        auto R = Q;\n      \
+    \  for (int i = 1; i < 2 * n * k; i += 2) {\n            R[i] = -R[i];\n     \
+    \   }\n        auto QQ = convolution(Q, R);\n        for (int i = 0; i < 2 * n\
+    \ * k; i++) {\n            QQ[2 * n * k + i] += Q[i] + R[i];\n        }\n    \
+    \    std::vector<mint> nxt_Q(2 * n * k, 0);\n        for (int j = 0; j < 2 * k;\
+    \ j++) {\n            for (int i = 0; i < n / 2; i++) {\n                nxt_Q[j\
+    \ * n + i] = QQ[2 * j * n + 2 * i];\n            }\n        }\n        auto nxt_p\
+    \ = self(self, n / 2, k * 2, nxt_Q);\n\n        std::vector<mint> pq(4 * n * k,\
+    \ 0);\n        for (int j = 0; j < 2 * k; j++) {\n            for (int i = 0;\
+    \ i < n / 2; i++) {\n                pq[2 * n * j + 2 * i + 1] = nxt_p[n * j +\
+    \ i];\n            }\n        }\n        std::vector<mint> p(2 * n * k, 0);\n\
+    \        for (int i = 0; i < 2 * n * k; i++) {\n            p[i] = pq[2 * n *\
+    \ k + i];\n        }\n        pq.pop_back();\n        auto x = middle_product(pq,\
+    \ R);\n        for (int i = 0; i < 2 * n * k; i++) {\n            p[i] += x[i];\n\
+    \        }\n        return p;\n    };\n    int n = (int)std::bit_ceil(g.size());\n\
+    \    std::vector<mint> Q(2 * n, 0);\n    for (int i = 0; i < (int)g.size(); i++)\
+    \ {\n        Q[i] = -g[i];\n    }\n    auto p = rec(rec, n, 1, Q);\n    p.resize(n);\n\
+    \    std::reverse(p.begin(), p.end());\n    p.resize(g.size());\n    return p;\n\
+    }\n\n}  // namespace ebi\n#line 8 \"fps/compositional_inverse_of_fps_old.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> compositional_inverse_of_fps(FormalPowerSeries<mint>\
+    \ f,\n                                                     int d = -1) {\n   \
+    \ using FPS = FormalPowerSeries<mint>;\n    if (d < 0) d = f.deg();\n    assert((int)f.size()\
+    \ >= 2 && f[0] == 0 && f[1] != 0);\n    FPS df = f.differential();\n    FPS g\
+    \ = {0, f[1].inv()};\n    for (int n = 2; n < d; n <<= 1) {\n        g.resize(2\
+    \ * n);\n        if (f.deg() < 2 * n) f.resize(2 * n);\n        if (df.deg() <\
+    \ 2 * n) df.resize(2 * n);\n        FPS fg = composition_of_fps(f.pre(2 * n),\
+    \ g);\n        FPS fdg = composition_of_fps(df.pre(2 * n), g);\n        g -= ((fg\
+    \ - FPS{0, 1}) * fdg.inv(2 * n)).pre(2 * n);\n    }\n    g.resize(d);\n    return\
+    \ g;\n}\n\n}  // namespace ebi\n#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#line\
+    \ 4 \"fps/ntt_friendly_fps.hpp\"\n\n#line 2 \"convolution/convolution.hpp\"\n\n\
+    #line 6 \"convolution/convolution.hpp\"\n\n#line 9 \"convolution/convolution.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> convolution_naive(const\
+    \ std::vector<mint>& f,\n                                    const std::vector<mint>&\
+    \ g) {\n    if (f.empty() || g.empty()) return {};\n    int n = int(f.size()),\
+    \ m = int(g.size());\n    std::vector<mint> c(n + m - 1);\n    if (n < m) {\n\
+    \        for (int j = 0; j < m; j++) {\n            for (int i = 0; i < n; i++)\
+    \ {\n                c[i + j] += f[i] * g[j];\n            }\n        }\n    }\
+    \ else {\n        for (int i = 0; i < n; i++) {\n            for (int j = 0; j\
+    \ < m; j++) {\n                c[i + j] += f[i] * g[j];\n            }\n     \
+    \   }\n    }\n    return c;\n}\n\ntemplate <Modint mint>\nstd::vector<mint> convolution(const\
+    \ std::vector<mint>& f,\n                              const std::vector<mint>&\
+    \ g) {\n    if (f.empty() || g.empty()) return {};\n    if (std::min(f.size(),\
+    \ g.size()) < 60) return convolution_naive(f, g);\n    int n = (int)std::bit_ceil(f.size()\
+    \ + g.size() - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(),\
+    \ f.end(), a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::fft4(a);\n\
     \    internal::fft4(b);\n    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n\
     \    }\n    internal::ifft4(a);\n    a.resize(f.size() + g.size() - 1);\n    mint\
     \ inv_n = mint(n).inv();\n    for (auto& x : a) x *= inv_n;\n    return a;\n}\n\
@@ -348,16 +379,17 @@ data:
   - fps/composition_of_fps.hpp
   - fps/fps.hpp
   - modint/base.hpp
-  - fps/ntt_friendly_fps.hpp
-  - convolution/convolution.hpp
+  - fps/middle_product.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - template/int_alias.hpp
+  - fps/ntt_friendly_fps.hpp
+  - convolution/convolution.hpp
   - modint/modint.hpp
   isVerificationFile: true
   path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2024-05-24 14:53:16+09:00'
+  timestamp: '2024-05-24 17:25:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp

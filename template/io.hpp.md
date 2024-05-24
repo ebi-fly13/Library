@@ -142,6 +142,9 @@ data:
     path: test/matrix/System_of_Linear_Equations.test.cpp
     title: test/matrix/System_of_Linear_Equations.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - icon: ':heavy_check_mark:'
@@ -284,6 +287,7 @@ data:
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp

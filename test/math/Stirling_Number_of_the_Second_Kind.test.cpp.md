@@ -12,7 +12,7 @@ data:
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
-    title: fps/ntt_friendly_fps.hpp
+    title: Formal Power Series (NTT Friendly)
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp

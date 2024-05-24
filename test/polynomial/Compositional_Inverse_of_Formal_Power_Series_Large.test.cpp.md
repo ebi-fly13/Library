@@ -18,7 +18,7 @@ data:
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
-    title: fps/ntt_friendly_fps.hpp
+    title: Formal Power Series (NTT Friendly)
   - icon: ':heavy_check_mark:'
     path: fps/power_projection_of_fps.hpp
     title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\

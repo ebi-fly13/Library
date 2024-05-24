@@ -8,14 +8,14 @@ data:
     path: convolution/ntt.hpp
     title: NTT
   - icon: ':heavy_check_mark:'
-    path: fps/composition_of_fps.hpp
-    title: $f(g(x))$
+    path: fps/composition_of_fps_old.hpp
+    title: $f(g(x)) ( $O(N^2)$ )$
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
-    title: fps/ntt_friendly_fps.hpp
+    title: Formal Power Series (NTT Friendly)
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
@@ -40,7 +40,7 @@ data:
     - https://judge.yosupo.jp/problem/composition_of_formal_power_series
   bundledCode: "#line 1 \"test/polynomial/Composition_of_Formal_Power_Series.test.cpp\"\
     \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/composition_of_formal_power_series\"\
-    \n\n#include <iostream>\n\n#line 2 \"fps/composition_of_fps.hpp\"\n\n#include\
+    \n\n#include <iostream>\n\n#line 2 \"fps/composition_of_fps_old.hpp\"\n\n#include\
     \ <cassert>\n#include <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n\
     #line 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line\
     \ 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\n\
@@ -141,20 +141,21 @@ data:
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
     \ * i;\n        return f;\n    }\n\n    void fft();\n    void ifft();\n};\n\n\
-    }  // namespace ebi\n#line 8 \"fps/composition_of_fps.hpp\"\n\nnamespace ebi {\n\
-    \ntemplate <Modint mint>\nFormalPowerSeries<mint> composition_of_fps(const FormalPowerSeries<mint>\
-    \ &f,\n                                           const FormalPowerSeries<mint>\
-    \ &g) {\n    using FPS = FormalPowerSeries<mint>;\n    // assert(f.deg() == g.deg());\n\
-    \    int n = f.deg();\n    int k = 1;\n    while (k * k < n) k++;\n    std::vector<FPS>\
-    \ baby(k + 1);\n    baby[0] = FPS{1};\n    baby[1] = g;\n    for (int i = 2; i\
-    \ < k + 1; i++) {\n        baby[i] = (baby[i - 1] * g).pre(n);\n    }\n    std::vector<FPS>\
-    \ giant(k + 1);\n    giant[0] = FPS{1};\n    giant[1] = baby[k];\n    for (int\
-    \ i = 2; i < k + 1; i++) {\n        giant[i] = (giant[i - 1] * giant[1]).pre(n);\n\
-    \    }\n    FPS h(n);\n    for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n\
-    \        for (int j = 0; j < k; j++) {\n            if (k * i + j < n) {\n   \
-    \             mint coef = f[k * i + j];\n                a += baby[j] * coef;\n\
-    \            } else\n                break;\n        }\n        h += (giant[i]\
-    \ * a).pre(n);\n    }\n    return h;\n}\n\n}  // namespace ebi\n#line 2 \"fps/ntt_friendly_fps.hpp\"\
+    }  // namespace ebi\n#line 8 \"fps/composition_of_fps_old.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> composition_of_fps(const\
+    \ FormalPowerSeries<mint> &f,\n                                           const\
+    \ FormalPowerSeries<mint> &g) {\n    using FPS = FormalPowerSeries<mint>;\n  \
+    \  // assert(f.deg() == g.deg());\n    int n = f.deg();\n    int k = 1;\n    while\
+    \ (k * k < n) k++;\n    std::vector<FPS> baby(k + 1);\n    baby[0] = FPS{1};\n\
+    \    baby[1] = g;\n    for (int i = 2; i < k + 1; i++) {\n        baby[i] = (baby[i\
+    \ - 1] * g).pre(n);\n    }\n    std::vector<FPS> giant(k + 1);\n    giant[0] =\
+    \ FPS{1};\n    giant[1] = baby[k];\n    for (int i = 2; i < k + 1; i++) {\n  \
+    \      giant[i] = (giant[i - 1] * giant[1]).pre(n);\n    }\n    FPS h(n);\n  \
+    \  for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n        for (int j =\
+    \ 0; j < k; j++) {\n            if (k * i + j < n) {\n                mint coef\
+    \ = f[k * i + j];\n                a += baby[j] * coef;\n            } else\n\
+    \                break;\n        }\n        h += (giant[i] * a).pre(n);\n    }\n\
+    \    return h;\n}\n\n}  // namespace ebi\n#line 2 \"fps/ntt_friendly_fps.hpp\"\
     \n\n#include <bit>\n\n#line 2 \"convolution/convolution.hpp\"\n\n#line 6 \"convolution/convolution.hpp\"\
     \n\n#line 2 \"convolution/ntt.hpp\"\n\n#line 4 \"convolution/ntt.hpp\"\n#include\
     \ <array>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
@@ -322,16 +323,16 @@ data:
     \ g);\n    for (int i = 0; i < n; i++) {\n        std::cout << h[i].val() << \"\
     \ \\n\"[i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/composition_of_formal_power_series\"\
-    \n\n#include <iostream>\n\n#include \"../../fps/composition_of_fps.hpp\"\n#include\
-    \ \"../../fps/ntt_friendly_fps.hpp\"\n#include \"../../modint/modint.hpp\"\n\n\
-    using mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint>;\n\
+    \n\n#include <iostream>\n\n#include \"../../fps/composition_of_fps_old.hpp\"\n\
+    #include \"../../fps/ntt_friendly_fps.hpp\"\n#include \"../../modint/modint.hpp\"\
+    \n\nusing mint = ebi::modint998244353;\nusing FPS = ebi::FormalPowerSeries<mint>;\n\
     \nint main() {\n    int n;\n    std::cin >> n;\n    FPS f(n), g(n);\n    for (int\
     \ i = 0; i < n; i++) {\n        std::cin >> f[i];\n    }\n    for (int i = 0;\
     \ i < n; i++) {\n        std::cin >> g[i];\n    }\n    FPS h = ebi::composition_of_fps(f,\
     \ g);\n    for (int i = 0; i < n; i++) {\n        std::cout << h[i].val() << \"\
     \ \\n\"[i == n - 1];\n    }\n}"
   dependsOn:
-  - fps/composition_of_fps.hpp
+  - fps/composition_of_fps_old.hpp
   - fps/fps.hpp
   - modint/base.hpp
   - fps/ntt_friendly_fps.hpp
@@ -343,7 +344,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2024-05-24 14:53:16+09:00'
+  timestamp: '2024-05-24 17:25:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Composition_of_Formal_Power_Series.test.cpp

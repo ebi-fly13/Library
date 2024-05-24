@@ -15,12 +15,24 @@ data:
     title: template/int_alias.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: fps/composition_of_fps.hpp
+    title: $f(g(x))$ ( $O(N\log^2{N})$ )
+  - icon: ':heavy_check_mark:'
+    path: fps/compositional_inverse_of_fps_old.hpp
+    title: "$f(x)$ \u306E\u9006\u95A2\u6570 ( $O(N^2)$ )"
+  - icon: ':heavy_check_mark:'
     path: fps/middle_product_arbitrary.hpp
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
@@ -171,11 +183,15 @@ data:
   path: fps/middle_product.hpp
   requiredBy:
   - string/wildcard_pattern_matching.hpp
+  - fps/composition_of_fps.hpp
   - fps/middle_product_arbitrary.hpp
+  - fps/compositional_inverse_of_fps_old.hpp
   timestamp: '2024-05-23 21:35:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1796.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
 documentation_of: fps/middle_product.hpp
 layout: document
@@ -184,4 +200,4 @@ title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
 
 ## 説明
 
-$N$ 次多項式 $a$ と $M$ 次多項式 $b$ について $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$ となる $N-M$ 次多項式 $c$ を求める。 $O(N\log N)$
+$N-1$ 次多項式 $a$ と $M-1$ 次多項式 $b$ について $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$ となる $N-M$ 次多項式 $c$ を求める。 $O(N\log N)$

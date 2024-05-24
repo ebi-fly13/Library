@@ -46,6 +46,9 @@ data:
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -333,6 +336,7 @@ data:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_1302.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
@@ -355,8 +359,17 @@ data:
   - test/math/Sum_of_Powers_Iota.test.cpp
 documentation_of: fps/ntt_friendly_fps.hpp
 layout: document
-redirect_from:
-- /library/fps/ntt_friendly_fps.hpp
-- /library/fps/ntt_friendly_fps.hpp.html
-title: fps/ntt_friendly_fps.hpp
+title: Formal Power Series (NTT Friendly)
 ---
+
+## 説明
+
+係数がNTT friendlyなmodであるときに用いる。NTTができることを利用した高速化が可能。
+
+### fft()
+
+fftする。破壊的であることに注意。
+
+### ifft()
+
+inverse fftする。破壊的であることに注意。

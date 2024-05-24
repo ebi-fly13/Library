@@ -142,6 +142,9 @@ data:
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -370,6 +373,7 @@ data:
   - test/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp

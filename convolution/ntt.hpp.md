@@ -24,6 +24,12 @@ data:
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
   - icon: ':heavy_check_mark:'
+    path: fps/composition_of_fps.hpp
+    title: $f(g(x))$ ( $O(N\log^2{N})$ )
+  - icon: ':heavy_check_mark:'
+    path: fps/compositional_inverse_of_fps_old.hpp
+    title: "$f(x)$ \u306E\u9006\u95A2\u6570 ( $O(N^2)$ )"
+  - icon: ':heavy_check_mark:'
     path: fps/middle_product.hpp
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
@@ -31,7 +37,7 @@ data:
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
-    title: fps/ntt_friendly_fps.hpp
+    title: Formal Power Series (NTT Friendly)
   - icon: ':heavy_check_mark:'
     path: string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
@@ -78,6 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
@@ -328,7 +337,9 @@ data:
   - string/wildcard_pattern_matching.hpp
   - fps/middle_product.hpp
   - fps/ntt_friendly_fps.hpp
+  - fps/composition_of_fps.hpp
   - fps/middle_product_arbitrary.hpp
+  - fps/compositional_inverse_of_fps_old.hpp
   - convolution/convolution_2d.hpp
   - convolution/convolution_mod_2_64.hpp
   - convolution/convolution.hpp
@@ -340,6 +351,7 @@ data:
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1302.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
