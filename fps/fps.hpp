@@ -272,6 +272,9 @@ template <Modint mint> struct FormalPowerSeries : std::vector<mint> {
         for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;
         return f;
     }
+
+    void fft();
+    void ifft();
 };
 
 }  // namespace ebi

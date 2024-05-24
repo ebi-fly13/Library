@@ -1,6 +1,6 @@
 ---
 title: $\sum_{j}^{n-1} w_j [x^j] f(x)^i$ の $i = 0,1,\dots,M$ の列挙
-documentation_of: //fps/compositional_inverse_of_fps.hpp
+documentation_of: //fps/power_projection.hpp
 ---
 
 ## 説明
