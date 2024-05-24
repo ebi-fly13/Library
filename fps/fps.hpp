@@ -194,7 +194,37 @@ template <Modint mint> struct FormalPowerSeries : std::vector<mint> {
         return g;
     }
 
-    FPS pow(int64_t k, int d = -1) const {
+    FPS pow(long long k, int d = -1) const {
+        assert(k >= 0);
+        int n = deg();
+        if (d < 0) d = n;
+        if (k == 0) {
+            FPS f(d);
+            if (d > 0) f[0] = 1;
+            return f;
+        }
+        int low = d;
+        for (int i = n - 1; i >= 0; i--)
+            if ((*this)[i] != 0) low = i;
+        if (low >= (d + k - 1) / k) return FPS(d, 0);
+        int offset = k * low;
+        mint c = (*this)[low];
+        FPS g(d - offset);
+        for (int i = 0; i < std::min(n - low, d - offset); i++) {
+            g[i] = (*this)[i + low];
+        }
+        g /= c;
+        g = g.pow_1(k);
+        return (g << offset) * c.pow(k);
+    }
+
+    FPS pow_1(mint k, int d = -1) const {
+        assert((*this)[0] == 1);
+        return ((*this).log(d) * k).exp(d);
+    }
+
+    FPS pow_newton(long long k, int d = -1) const {
+        assert(k >= 0);
         const int n = deg();
         if (d < 0) d = n;
         if (k == 0) {

@@ -8,6 +8,8 @@
 using mint = ebi::modint998244353;
 
 int main() {
+    std::cin.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int n;
     long long m;
     std::cin >> n >> m;

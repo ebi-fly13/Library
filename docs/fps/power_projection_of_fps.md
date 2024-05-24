@@ -1,11 +1,11 @@
 ---
-title: $f(x)$ の逆関数 ( $O(N\log^2{N})$ )
+title: $\sum_{j}^{n-1} w_j [x^j] f(x)^i$ の $i = 0,1,\dots,M$ の列挙
 documentation_of: //fps/compositional_inverse_of_fps.hpp
 ---
 
 ## 説明
 
-形式的べき級数 $f$ について、その逆関数を求める。
+$i=0,1,\dots,M$ について、 $\sum_{j}^{n-1} w_j [x^j] f(x)^i$ を求める。 $O(N\log^2{N} + M\log{M})$
 
 ### 参考文献
 

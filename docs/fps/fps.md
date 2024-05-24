@@ -72,14 +72,16 @@ $O(N\log N)$
 形式的べき級数 $f$ の $\exp$ を $\mod x^d$ で求める。
 $O(N\log N)$
 
-### pow(int64_t k, int d)
+### pow(long long k, int d)
 
-形式的べき級数 $f$ について $f^k \mod x^d$ を求める。愚直だと $O(N\log N \log K)$ だが、$\log$ を取って $k$ を掛けて $\exp$ を取ることで求める。
+非負整数 $k$ について、形式的べき級数 $f$ について $f^k \pmod{x^d}$ を求める。愚直だと $O(N\log N \log K)$ だが、$\log$ を取って $k$ を掛けて $\exp$ を取ることで求める。
 $O(N\log N)$
 
+### pow_1(mint k, int d)
+
+非零の有理数 $k$ 、 $[x^0] f = 1$ であるFPSについて、 $f^k \pmod{x^d}$ を求める。
+
 ### sqrt(int d)
-
-
 
 形式的べき級数 $f$ について $\sqrt{f}$ が存在するなら求める。存在しない場合は `std::nullopt`を返す。
 $O(N\log N)$
