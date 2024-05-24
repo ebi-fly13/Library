@@ -126,59 +126,41 @@ data:
     \                                   const std::vector<mint> &w, int m) {\n   \
     \ assert(f.size() == w.size());\n    if (f.empty()) {\n        return std::vector<mint>(m\
     \ + 1, 0);\n    }\n    assert(f[0] == 0);\n    int n = (int)std::bit_ceil(f.size());\n\
-    \    std::vector P(n, std::vector<mint>(1, 0)), Q(n, std::vector<mint>(1, 0));\n\
-    \    for (int i = 0; i < (int)f.size(); i++) {\n        P[n - 1 - i][0] = w[i];\n\
-    \        Q[i][0] = -f[i];\n    }\n    int k = 1;\n    while (n > 1) {\n      \
-    \  auto R = Q;\n        for (int i = 1; i < n; i += 2) {\n            for (int\
-    \ j = 0; j < k; j++) {\n                R[i][j] = -R[i][j];\n            }\n \
-    \       }\n        auto conv_2d = [&](std::vector<std::vector<mint>> &a,\n   \
-    \                        std::vector<std::vector<mint>> &b)\n            -> std::vector<std::vector<mint>>\
-    \ {\n            FormalPowerSeries<mint> f(2 * n * k, 0), g(2 * n * k, 0);\n \
-    \           for (int i = 0; i < n; i++) {\n                for (int j = 0; j <\
-    \ k; j++) {\n                    f[2 * i * k + j] = a[i][j];\n               \
-    \     g[2 * i * k + j] = b[i][j];\n                }\n            }\n        \
-    \    f = f * g;\n            f.resize(4 * n * k);\n            std::vector c(2\
-    \ * n, std::vector<mint>(2 * k, 0));\n            for (int i = 0; i < 2 * n; i++)\
-    \ {\n                for (int j = 0; j < 2 * k; j++) {\n                    c[i][j]\
-    \ = f[i * 2 * k + j];\n                }\n            }\n            return c;\n\
-    \        };\n        auto PQ = conv_2d(P, R), QQ = conv_2d(Q, R);\n        for\
-    \ (int i = 0; i < n; i++) {\n            for (int j = 0; j < k; j++) {\n     \
-    \           PQ[i][j + k] += P[i][j];\n                QQ[i][j + k] += Q[i][j]\
-    \ + R[i][j];\n            }\n        }\n        for (int i = 0; i < n / 2; i++)\
-    \ {\n            P[i] = PQ[2 * i + 1];\n            Q[i] = QQ[2 * i];\n      \
-    \  }\n        P.resize(n / 2);\n        Q.resize(n / 2);\n        n /= 2;\n  \
-    \      k *= 2;\n    }\n    auto p = P[0];\n    std::reverse(p.begin(), p.end());\n\
-    \    p.resize(m + 1);\n    return p;\n}\n\n}  // namespace ebi\n"
+    \    std::vector<mint> P(2 * n, 0), Q(2 * n, 0);\n    for (int i = 0; i < (int)f.size();\
+    \ i++) {\n        P[n - 1 - i] = w[i];\n        Q[i] = -f[i];\n    }\n    int\
+    \ k = 1;\n    while (n > 1) {\n        auto R = Q;\n        for (int i = 1; i\
+    \ < 2 * n * k; i += 2) {\n            R[i] = -R[i];\n        }\n        auto PQ\
+    \ = convolution(P, R), QQ = convolution(Q, R);\n        PQ.resize(4 * n * k);\n\
+    \        QQ.resize(4 * n * k);\n        for (int i = 0; i < 2 * n * k; i++) {\n\
+    \            PQ[2 * n * k + i] += P[i];\n            QQ[2 * n * k + i] += Q[i]\
+    \ + R[i];\n        }\n        std::fill(P.begin(), P.end(), 0);\n        std::fill(Q.begin(),\
+    \ Q.end(), 0);\n        for (int j = 0; j < 2 * k; j++) {\n            for (int\
+    \ i = 0; i < n / 2; i++) {\n                P[j * n + i] = PQ[2 * j * n + 2 *\
+    \ i + 1];\n                Q[j * n + i] = QQ[2 * j * n + 2 * i];\n           \
+    \ }\n        }\n        n /= 2;\n        k *= 2;\n    }\n    std::vector<mint>\
+    \ p(k);\n    for (int i = 0; i < k; i++) p[i] = P[2 * i];\n    std::reverse(p.begin(),\
+    \ p.end());\n    p.resize(m + 1);\n    return p;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <bit>\n#include <cassert>\n\
     \n#include \"../fps/fps.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace ebi\
     \ {\n\n// sum_j w_j [x^j] f^i, for i = 0,1,...,m\ntemplate <Modint mint>\nstd::vector<mint>\
     \ power_projection(const FormalPowerSeries<mint> &f,\n                       \
     \            const std::vector<mint> &w, int m) {\n    assert(f.size() == w.size());\n\
     \    if (f.empty()) {\n        return std::vector<mint>(m + 1, 0);\n    }\n  \
-    \  assert(f[0] == 0);\n    int n = (int)std::bit_ceil(f.size());\n    std::vector\
-    \ P(n, std::vector<mint>(1, 0)), Q(n, std::vector<mint>(1, 0));\n    for (int\
-    \ i = 0; i < (int)f.size(); i++) {\n        P[n - 1 - i][0] = w[i];\n        Q[i][0]\
-    \ = -f[i];\n    }\n    int k = 1;\n    while (n > 1) {\n        auto R = Q;\n\
-    \        for (int i = 1; i < n; i += 2) {\n            for (int j = 0; j < k;\
-    \ j++) {\n                R[i][j] = -R[i][j];\n            }\n        }\n    \
-    \    auto conv_2d = [&](std::vector<std::vector<mint>> &a,\n                 \
-    \          std::vector<std::vector<mint>> &b)\n            -> std::vector<std::vector<mint>>\
-    \ {\n            FormalPowerSeries<mint> f(2 * n * k, 0), g(2 * n * k, 0);\n \
-    \           for (int i = 0; i < n; i++) {\n                for (int j = 0; j <\
-    \ k; j++) {\n                    f[2 * i * k + j] = a[i][j];\n               \
-    \     g[2 * i * k + j] = b[i][j];\n                }\n            }\n        \
-    \    f = f * g;\n            f.resize(4 * n * k);\n            std::vector c(2\
-    \ * n, std::vector<mint>(2 * k, 0));\n            for (int i = 0; i < 2 * n; i++)\
-    \ {\n                for (int j = 0; j < 2 * k; j++) {\n                    c[i][j]\
-    \ = f[i * 2 * k + j];\n                }\n            }\n            return c;\n\
-    \        };\n        auto PQ = conv_2d(P, R), QQ = conv_2d(Q, R);\n        for\
-    \ (int i = 0; i < n; i++) {\n            for (int j = 0; j < k; j++) {\n     \
-    \           PQ[i][j + k] += P[i][j];\n                QQ[i][j + k] += Q[i][j]\
-    \ + R[i][j];\n            }\n        }\n        for (int i = 0; i < n / 2; i++)\
-    \ {\n            P[i] = PQ[2 * i + 1];\n            Q[i] = QQ[2 * i];\n      \
-    \  }\n        P.resize(n / 2);\n        Q.resize(n / 2);\n        n /= 2;\n  \
-    \      k *= 2;\n    }\n    auto p = P[0];\n    std::reverse(p.begin(), p.end());\n\
-    \    p.resize(m + 1);\n    return p;\n}\n\n}  // namespace ebi"
+    \  assert(f[0] == 0);\n    int n = (int)std::bit_ceil(f.size());\n    std::vector<mint>\
+    \ P(2 * n, 0), Q(2 * n, 0);\n    for (int i = 0; i < (int)f.size(); i++) {\n \
+    \       P[n - 1 - i] = w[i];\n        Q[i] = -f[i];\n    }\n    int k = 1;\n \
+    \   while (n > 1) {\n        auto R = Q;\n        for (int i = 1; i < 2 * n *\
+    \ k; i += 2) {\n            R[i] = -R[i];\n        }\n        auto PQ = convolution(P,\
+    \ R), QQ = convolution(Q, R);\n        PQ.resize(4 * n * k);\n        QQ.resize(4\
+    \ * n * k);\n        for (int i = 0; i < 2 * n * k; i++) {\n            PQ[2 *\
+    \ n * k + i] += P[i];\n            QQ[2 * n * k + i] += Q[i] + R[i];\n       \
+    \ }\n        std::fill(P.begin(), P.end(), 0);\n        std::fill(Q.begin(), Q.end(),\
+    \ 0);\n        for (int j = 0; j < 2 * k; j++) {\n            for (int i = 0;\
+    \ i < n / 2; i++) {\n                P[j * n + i] = PQ[2 * j * n + 2 * i + 1];\n\
+    \                Q[j * n + i] = QQ[2 * j * n + 2 * i];\n            }\n      \
+    \  }\n        n /= 2;\n        k *= 2;\n    }\n    std::vector<mint> p(k);\n \
+    \   for (int i = 0; i < k; i++) p[i] = P[2 * i];\n    std::reverse(p.begin(),\
+    \ p.end());\n    p.resize(m + 1);\n    return p;\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
   - modint/base.hpp
@@ -186,14 +168,19 @@ data:
   path: fps/power_projection_of_fps.hpp
   requiredBy:
   - fps/compositional_inverse_of_fps.hpp
-  timestamp: '2024-05-24 14:53:16+09:00'
+  timestamp: '2024-05-24 15:19:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
 documentation_of: fps/power_projection_of_fps.hpp
 layout: document
-redirect_from:
-- /library/fps/power_projection_of_fps.hpp
-- /library/fps/power_projection_of_fps.hpp.html
-title: fps/power_projection_of_fps.hpp
+title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\u6319"
 ---
+
+## 説明
+
+$i=0,1,\dots,M$ について、 $\sum_{j}^{n-1} w_j [x^j] f(x)^i$ を求める。 $O(N\log^2{N} + M\log{M})$
+
+### 参考文献
+
+[FPS 合成・逆関数の解説（１）逆関数と Power Projection](https://maspypy.com/fps-%e5%90%88%e6%88%90%e3%83%bb%e9%80%86%e9%96%a2%e6%95%b0%e3%81%ae%e8%a7%a3%e8%aa%ac-1-%e9%80%86%e9%96%a2%e6%95%b0%e3%81%a8-power-projection)

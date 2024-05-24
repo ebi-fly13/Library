@@ -265,7 +265,8 @@ data:
       title: Polynomial Interpolation
     - icon: ':heavy_check_mark:'
       path: fps/power_projection_of_fps.hpp
-      title: fps/power_projection_of_fps.hpp
+      title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\
+        \u6319"
     - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
       title: $\prod f_i$
