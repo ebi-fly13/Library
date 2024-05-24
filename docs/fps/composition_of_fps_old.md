@@ -1,5 +1,5 @@
 ---
-title: $f(g(x)) ( $O(N^2)$ )$
+title: $f(g(x))$ ( $O(N^2)$ )
 documentation_of: //fps/composition_of_fps_old.hpp
 ---
 
