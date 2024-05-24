@@ -116,10 +116,10 @@ data:
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
-    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
-    \ namespace ebi\n#line 7 \"math/sums_of_powers_iota.hpp\"\n\nnamespace ebi {\n\
-    \ntemplate <Modint mint>\nstd::vector<mint> sums_of_powers_iota(long long n, int\
-    \ k) {\n    assert(n > 0 && k >= 0);\n    using FPS = FormalPowerSeries<mint>;\n\
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 7 \"math/sums_of_powers_iota.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> sums_of_powers_iota(long\
+    \ long n, int k) {\n    assert(n > 0 && k >= 0);\n    using FPS = FormalPowerSeries<mint>;\n\
     \    FPS p = FPS{0, n}.exp(k + 2) >> 1;\n    FPS q = FPS::exp_x(k + 2) >> 1;\n\
     \    FPS pq = (p * q.inv()).pre(k + 1);\n    std::vector<mint> res(k + 1);\n \
     \   mint fact = 1;\n    for (int i = 0; i < k + 1; i++) {\n        res[i] = pq[i]\
@@ -139,7 +139,7 @@ data:
   isVerificationFile: false
   path: math/sums_of_powers_iota.hpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Powers_Iota.test.cpp

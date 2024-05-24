@@ -116,14 +116,15 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 5 \"math/partition_function.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint> std::vector<mint> partition_function(int\
-    \ n) {\n    using FPS = FormalPowerSeries<mint>;\n    FPS f(n + 1);\n    f[0]\
-    \ = 1;\n    for (int k = 1; k <= n; k++) {\n        long long k1 = 1LL * k * (3\
-    \ * k + 1) / 2;\n        long long k2 = 1LL * k * (3 * k - 1) / 2;\n        if\
-    \ (k2 > n) break;\n        if (k1 <= n) f[k1] = ((k & 1) ? -1 : 1);\n        if\
-    \ (k2 <= n) f[k2] = ((k & 1) ? -1 : 1);\n    }\n    return f.inv();\n}\n\n}  //\
-    \ namespace ebi\n"
+    \ * i;\n        return f;\n    }\n\n    void fft();\n    void ifft();\n};\n\n\
+    }  // namespace ebi\n#line 5 \"math/partition_function.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <Modint mint> std::vector<mint> partition_function(int n) {\n\
+    \    using FPS = FormalPowerSeries<mint>;\n    FPS f(n + 1);\n    f[0] = 1;\n\
+    \    for (int k = 1; k <= n; k++) {\n        long long k1 = 1LL * k * (3 * k +\
+    \ 1) / 2;\n        long long k2 = 1LL * k * (3 * k - 1) / 2;\n        if (k2 >\
+    \ n) break;\n        if (k1 <= n) f[k1] = ((k & 1) ? -1 : 1);\n        if (k2\
+    \ <= n) f[k2] = ((k & 1) ? -1 : 1);\n    }\n    return f.inv();\n}\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n#include \"../modint/base.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <Modint mint> std::vector<mint> partition_function(int\
     \ n) {\n    using FPS = FormalPowerSeries<mint>;\n    FPS f(n + 1);\n    f[0]\
@@ -138,7 +139,7 @@ data:
   isVerificationFile: false
   path: math/partition_function.hpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Partition_Function_Pentagonal.test.cpp

@@ -43,8 +43,8 @@ data:
     - https://judge.yosupo.jp/problem/sharp_p_subset_sum
   bundledCode: "#line 1 \"test/math/Sharp_P_Subset_Sum.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/sharp_p_subset_sum\"\n\n#include <iostream>\n\
-    #include <vector>\n\n#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#line 2 \"convolution/convolution.hpp\"\
-    \n\n#include <algorithm>\n#include <bit>\n#line 6 \"convolution/convolution.hpp\"\
+    #include <vector>\n\n#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#include <bit>\n\n\
+    #line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n#line 6 \"convolution/convolution.hpp\"\
     \n\n#line 2 \"convolution/ntt.hpp\"\n\n#line 4 \"convolution/ntt.hpp\"\n#include\
     \ <array>\n#line 6 \"convolution/ntt.hpp\"\n#include <cassert>\n#line 8 \"convolution/ntt.hpp\"\
     \n\n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\
@@ -248,10 +248,14 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 6 \"fps/ntt_friendly_fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
+    \ * i;\n        return f;\n    }\n\n    void fft();\n    void ifft();\n};\n\n\
+    }  // namespace ebi\n#line 8 \"fps/ntt_friendly_fps.hpp\"\n\nnamespace ebi {\n\
+    \ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
     \    const FormalPowerSeries<mint> &rhs) {\n    *this = convolution(*this, rhs);\n\
-    \    return *this;\n}\n\n}  // namespace ebi\n#line 2 \"fps/product_of_one_plus_xn.hpp\"\
+    \    return *this;\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::fft()\
+    \ {\n    this->resize(std::bit_ceil(this->size()));\n    internal::fft4(*this);\n\
+    }\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::ifft() {\n    this->resize(std::bit_ceil(this->size()));\n\
+    \    internal::ifft4(*this);\n}\n\n}  // namespace ebi\n#line 2 \"fps/product_of_one_plus_xn.hpp\"\
     \n\n#line 4 \"fps/product_of_one_plus_xn.hpp\"\n\n#line 2 \"math/mod_inv.hpp\"\
     \n\n#line 5 \"math/mod_inv.hpp\"\n\n#line 7 \"math/mod_inv.hpp\"\n\nnamespace\
     \ ebi {\n\ntemplate <Modint mint> mint inv(int n) {\n    static const int mod\
@@ -341,7 +345,7 @@ data:
   isVerificationFile: true
   path: test/math/Sharp_P_Subset_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sharp_P_Subset_Sum.test.cpp

@@ -119,14 +119,14 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/multipoint_evaluation.hpp\"\
-    \n\n#line 5 \"fps/multipoint_evaluation.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
-    \ mint>\nstd::vector<mint> multipoint_evaluation(const FormalPowerSeries<mint>\
-    \ &f,\n                                        const std::vector<mint> &p) {\n\
-    \    using FPS = FormalPowerSeries<mint>;\n    int m = 1;\n    while (m < (int)p.size())\
-    \ m <<= 1;\n    std::vector<FPS> subproduct_tree(2 * m, {1});\n    for (int i\
-    \ = 0; i < (int)p.size(); i++) {\n        subproduct_tree[i + m] = FPS{-p[i],\
-    \ 1};\n    }\n    for (int i = m - 1; i >= 1; i--) {\n        subproduct_tree[i]\
+    \ * i;\n        return f;\n    }\n\n    void fft();\n    void ifft();\n};\n\n\
+    }  // namespace ebi\n#line 2 \"fps/multipoint_evaluation.hpp\"\n\n#line 5 \"fps/multipoint_evaluation.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> multipoint_evaluation(const\
+    \ FormalPowerSeries<mint> &f,\n                                        const std::vector<mint>\
+    \ &p) {\n    using FPS = FormalPowerSeries<mint>;\n    int m = 1;\n    while (m\
+    \ < (int)p.size()) m <<= 1;\n    std::vector<FPS> subproduct_tree(2 * m, {1});\n\
+    \    for (int i = 0; i < (int)p.size(); i++) {\n        subproduct_tree[i + m]\
+    \ = FPS{-p[i], 1};\n    }\n    for (int i = m - 1; i >= 1; i--) {\n        subproduct_tree[i]\
     \ =\n            subproduct_tree[2 * i] * subproduct_tree[2 * i + 1];\n    }\n\
     \    std::vector<FPS> subremainder_tree(2 * m);\n    subremainder_tree[1] = f\
     \ % subproduct_tree[1];\n    for (int i = 2; i < m + (int)p.size(); i++) {\n \
@@ -172,7 +172,7 @@ data:
   isVerificationFile: false
   path: fps/polynomial_interpolation.hpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Polynomial_Interpolation.test.cpp

@@ -150,20 +150,20 @@ data:
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
-    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
-    \ namespace ebi\n#line 2 \"fps/fps_sparse.hpp\"\n\n#line 5 \"fps/fps_sparse.hpp\"\
-    \n\n#line 2 \"math/mod_inv.hpp\"\n\n#line 5 \"math/mod_inv.hpp\"\n\n#line 7 \"\
-    math/mod_inv.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> mint inv(int n)\
-    \ {\n    static const int mod = mint::mod();\n    static std::vector<mint> dat\
-    \ = {0, 1};\n    assert(0 <= n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size())\
-    \ <= n) {\n        int num = dat.size();\n        int q = (mod + num - 1) / num;\n\
-    \        dat.emplace_back(dat[num * q - mod] * mint(q));\n    }\n    return dat[n];\n\
-    }\n\n}  // namespace ebi\n#line 8 \"fps/fps_sparse.hpp\"\n\nnamespace ebi {\n\n\
-    template <Modint mint>\nstd::vector<mint> mul_sparse(const std::vector<mint> &f,\n\
-    \                             const std::vector<mint> &g) {\n    int n = f.size();\n\
-    \    int m = g.size();\n    std::vector<std::pair<int, mint>> cf, cg;\n    for\
-    \ (int i = 0; i < n; i++) {\n        if (f[i] != 0) cf.emplace_back(i, f[i]);\n\
-    \    }\n    for (int i = 0; i < m; i++) {\n        if (g[i] != 0) cg.emplace_back(i,\
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 2 \"fps/fps_sparse.hpp\"\n\
+    \n#line 5 \"fps/fps_sparse.hpp\"\n\n#line 2 \"math/mod_inv.hpp\"\n\n#line 5 \"\
+    math/mod_inv.hpp\"\n\n#line 7 \"math/mod_inv.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <Modint mint> mint inv(int n) {\n    static const int mod = mint::mod();\n \
+    \   static std::vector<mint> dat = {0, 1};\n    assert(0 <= n);\n    if (n >=\
+    \ mod) n -= mod;\n    while (int(dat.size()) <= n) {\n        int num = dat.size();\n\
+    \        int q = (mod + num - 1) / num;\n        dat.emplace_back(dat[num * q\
+    \ - mod] * mint(q));\n    }\n    return dat[n];\n}\n\n}  // namespace ebi\n#line\
+    \ 8 \"fps/fps_sparse.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint>\
+    \ mul_sparse(const std::vector<mint> &f,\n                             const std::vector<mint>\
+    \ &g) {\n    int n = f.size();\n    int m = g.size();\n    std::vector<std::pair<int,\
+    \ mint>> cf, cg;\n    for (int i = 0; i < n; i++) {\n        if (f[i] != 0) cf.emplace_back(i,\
+    \ f[i]);\n    }\n    for (int i = 0; i < m; i++) {\n        if (g[i] != 0) cg.emplace_back(i,\
     \ g[i]);\n    }\n    std::vector<mint> h(n + m - 1);\n    for (auto [i, p] : cf)\
     \ {\n        for (auto [j, q] : cg) {\n            h[i + j] += p * q;\n      \
     \  }\n    }\n    return h;\n}\n\ntemplate <Modint mint>\nstd::vector<mint> inv_sparse(const\
@@ -274,16 +274,15 @@ data:
     \ n = 1;\n    FPS g(n);\n    g[0] = s.value();\n    mint inv_two = mint(2).inv();\n\
     \    while (n < d) {\n        n <<= 1;\n        g = (g + this->pre(n) * g.inv(n)).pre(n)\
     \ * inv_two;\n    }\n    g.resize(d);\n    return g;\n}\n\n}  // namespace ebi\n\
-    #line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#line 2 \"convolution/convolution.hpp\"\
-    \n\n#line 4 \"convolution/convolution.hpp\"\n#include <bit>\n#line 6 \"convolution/convolution.hpp\"\
-    \n\n#line 2 \"convolution/ntt.hpp\"\n\n#line 4 \"convolution/ntt.hpp\"\n#include\
-    \ <array>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
-    \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
-    \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
-    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
-    \ (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n    return -1;\n\
-    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    #line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#include <bit>\n\n#line 2 \"convolution/convolution.hpp\"\
+    \n\n#line 6 \"convolution/convolution.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\
+    \n\n#line 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 8 \"convolution/ntt.hpp\"\
+    \n\n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\
+    \nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
+    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
+    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
+    \ return 3;\n    if (m == 880803841) return 26;\n    if (m == 924844033) return\
+    \ 5;\n    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
     \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
     using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
@@ -381,11 +380,14 @@ data:
     \    internal::fft4(b);\n    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n\
     \    }\n    internal::ifft4(a);\n    a.resize(f.size() + g.size() - 1);\n    mint\
     \ inv_n = mint(n).inv();\n    for (auto& x : a) x *= inv_n;\n    return a;\n}\n\
-    \n}  // namespace ebi\n#line 6 \"fps/ntt_friendly_fps.hpp\"\n\nnamespace ebi {\n\
+    \n}  // namespace ebi\n#line 8 \"fps/ntt_friendly_fps.hpp\"\n\nnamespace ebi {\n\
     \ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
     \    const FormalPowerSeries<mint> &rhs) {\n    *this = convolution(*this, rhs);\n\
-    \    return *this;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\
-    \n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
+    \    return *this;\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::fft()\
+    \ {\n    this->resize(std::bit_ceil(this->size()));\n    internal::fft4(*this);\n\
+    }\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::ifft() {\n    this->resize(std::bit_ceil(this->size()));\n\
+    \    internal::ifft4(*this);\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
+    \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
     \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
     \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
@@ -465,7 +467,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp

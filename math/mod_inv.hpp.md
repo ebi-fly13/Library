@@ -7,8 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
-    title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\
-      \u6319"
+    title: "$f(x)$ \u306E\u9006\u95A2\u6570 ( $O(N\\log^2{N})$ )"
   - icon: ':heavy_check_mark:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)

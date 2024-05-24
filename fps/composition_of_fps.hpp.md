@@ -122,21 +122,22 @@ data:
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
-    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
-    \ namespace ebi\n#line 8 \"fps/composition_of_fps.hpp\"\n\nnamespace ebi {\n\n\
-    template <Modint mint>\nFormalPowerSeries<mint> composition_of_fps(const FormalPowerSeries<mint>\
-    \ &f,\n                                           const FormalPowerSeries<mint>\
-    \ &g) {\n    using FPS = FormalPowerSeries<mint>;\n    // assert(f.deg() == g.deg());\n\
-    \    int n = f.deg();\n    int k = 1;\n    while (k * k < n) k++;\n    std::vector<FPS>\
-    \ baby(k + 1);\n    baby[0] = FPS{1};\n    baby[1] = g;\n    for (int i = 2; i\
-    \ < k + 1; i++) {\n        baby[i] = (baby[i - 1] * g).pre(n);\n    }\n    std::vector<FPS>\
-    \ giant(k + 1);\n    giant[0] = FPS{1};\n    giant[1] = baby[k];\n    for (int\
-    \ i = 2; i < k + 1; i++) {\n        giant[i] = (giant[i - 1] * giant[1]).pre(n);\n\
-    \    }\n    FPS h(n);\n    for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n\
-    \        for (int j = 0; j < k; j++) {\n            if (k * i + j < n) {\n   \
-    \             mint coef = f[k * i + j];\n                a += baby[j] * coef;\n\
-    \            } else\n                break;\n        }\n        h += (giant[i]\
-    \ * a).pre(n);\n    }\n    return h;\n}\n\n}  // namespace ebi\n"
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 8 \"fps/composition_of_fps.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> composition_of_fps(const\
+    \ FormalPowerSeries<mint> &f,\n                                           const\
+    \ FormalPowerSeries<mint> &g) {\n    using FPS = FormalPowerSeries<mint>;\n  \
+    \  // assert(f.deg() == g.deg());\n    int n = f.deg();\n    int k = 1;\n    while\
+    \ (k * k < n) k++;\n    std::vector<FPS> baby(k + 1);\n    baby[0] = FPS{1};\n\
+    \    baby[1] = g;\n    for (int i = 2; i < k + 1; i++) {\n        baby[i] = (baby[i\
+    \ - 1] * g).pre(n);\n    }\n    std::vector<FPS> giant(k + 1);\n    giant[0] =\
+    \ FPS{1};\n    giant[1] = baby[k];\n    for (int i = 2; i < k + 1; i++) {\n  \
+    \      giant[i] = (giant[i - 1] * giant[1]).pre(n);\n    }\n    FPS h(n);\n  \
+    \  for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n        for (int j =\
+    \ 0; j < k; j++) {\n            if (k * i + j < n) {\n                mint coef\
+    \ = f[k * i + j];\n                a += baby[j] * coef;\n            } else\n\
+    \                break;\n        }\n        h += (giant[i] * a).pre(n);\n    }\n\
+    \    return h;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../fps/fps.hpp\"\
     \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\n\
     FormalPowerSeries<mint> composition_of_fps(const FormalPowerSeries<mint> &f,\n\
@@ -159,7 +160,7 @@ data:
   path: fps/composition_of_fps.hpp
   requiredBy:
   - fps/compositional_inverse_of_fps_old.hpp
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp

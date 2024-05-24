@@ -156,14 +156,14 @@ data:
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
-    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
-    \ namespace ebi\n#line 5 \"fps/multipoint_evaluation.hpp\"\n\nnamespace ebi {\n\
-    \ntemplate <Modint mint>\nstd::vector<mint> multipoint_evaluation(const FormalPowerSeries<mint>\
-    \ &f,\n                                        const std::vector<mint> &p) {\n\
-    \    using FPS = FormalPowerSeries<mint>;\n    int m = 1;\n    while (m < (int)p.size())\
-    \ m <<= 1;\n    std::vector<FPS> subproduct_tree(2 * m, {1});\n    for (int i\
-    \ = 0; i < (int)p.size(); i++) {\n        subproduct_tree[i + m] = FPS{-p[i],\
-    \ 1};\n    }\n    for (int i = m - 1; i >= 1; i--) {\n        subproduct_tree[i]\
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 5 \"fps/multipoint_evaluation.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> multipoint_evaluation(const\
+    \ FormalPowerSeries<mint> &f,\n                                        const std::vector<mint>\
+    \ &p) {\n    using FPS = FormalPowerSeries<mint>;\n    int m = 1;\n    while (m\
+    \ < (int)p.size()) m <<= 1;\n    std::vector<FPS> subproduct_tree(2 * m, {1});\n\
+    \    for (int i = 0; i < (int)p.size(); i++) {\n        subproduct_tree[i + m]\
+    \ = FPS{-p[i], 1};\n    }\n    for (int i = m - 1; i >= 1; i--) {\n        subproduct_tree[i]\
     \ =\n            subproduct_tree[2 * i] * subproduct_tree[2 * i + 1];\n    }\n\
     \    std::vector<FPS> subremainder_tree(2 * m);\n    subremainder_tree[1] = f\
     \ % subproduct_tree[1];\n    for (int i = 2; i < m + (int)p.size(); i++) {\n \
@@ -172,16 +172,15 @@ data:
     \ fp(p.size());\n    for (int i = 0; i < (int)p.size(); i++) {\n        if (subremainder_tree[i\
     \ + m].empty())\n            fp[i] = 0;\n        else\n            fp[i] = subremainder_tree[i\
     \ + m][0];\n    }\n    return fp;\n}\n\n}  // namespace ebi\n#line 4 \"test/polynomial/Multipoint_Evaluation.test.cpp\"\
-    \n\n#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#line 2 \"convolution/convolution.hpp\"\
-    \n\n#line 4 \"convolution/convolution.hpp\"\n#include <bit>\n#line 6 \"convolution/convolution.hpp\"\
-    \n\n#line 2 \"convolution/ntt.hpp\"\n\n#line 4 \"convolution/ntt.hpp\"\n#include\
-    \ <array>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
-    \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
-    \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
-    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
-    \ (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n    return -1;\n\
-    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
+    \n\n#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#include <bit>\n\n#line 2 \"convolution/convolution.hpp\"\
+    \n\n#line 6 \"convolution/convolution.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\
+    \n\n#line 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 8 \"convolution/ntt.hpp\"\
+    \n\n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"math/internal_math.hpp\"\n\
+    \nnamespace ebi {\n\nnamespace internal {\n\nconstexpr int primitive_root_constexpr(int\
+    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
+    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
+    \ return 3;\n    if (m == 880803841) return 26;\n    if (m == 924844033) return\
+    \ 5;\n    return -1;\n}\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
     \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
     \n\n#include <cstdint>\n\nnamespace ebi {\n\nusing ld = long double;\nusing std::size_t;\n\
     using i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\n\
@@ -279,11 +278,14 @@ data:
     \    internal::fft4(b);\n    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n\
     \    }\n    internal::ifft4(a);\n    a.resize(f.size() + g.size() - 1);\n    mint\
     \ inv_n = mint(n).inv();\n    for (auto& x : a) x *= inv_n;\n    return a;\n}\n\
-    \n}  // namespace ebi\n#line 6 \"fps/ntt_friendly_fps.hpp\"\n\nnamespace ebi {\n\
+    \n}  // namespace ebi\n#line 8 \"fps/ntt_friendly_fps.hpp\"\n\nnamespace ebi {\n\
     \ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
     \    const FormalPowerSeries<mint> &rhs) {\n    *this = convolution(*this, rhs);\n\
-    \    return *this;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\
-    \n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
+    \    return *this;\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::fft()\
+    \ {\n    this->resize(std::bit_ceil(this->size()));\n    internal::fft4(*this);\n\
+    }\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::ifft() {\n    this->resize(std::bit_ceil(this->size()));\n\
+    \    internal::ifft4(*this);\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\
+    \n\r\n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
     \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
     \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
@@ -462,7 +464,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Multipoint_Evaluation.test.cpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Multipoint_Evaluation.test.cpp

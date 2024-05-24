@@ -47,9 +47,9 @@ data:
   bundledCode: "#line 1 \"test/math/Stirling_Number_of_the_First_Kind.test.cpp\"\n\
     #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/stirling_number_of_the_first_kind\"\
     \n\n#include <iostream>\n#include <numeric>\n#include <vector>\n\n#line 2 \"fps/ntt_friendly_fps.hpp\"\
-    \n\n#line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n#include\
-    \ <bit>\n#line 6 \"convolution/convolution.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\
-    \n\n#line 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 6 \"convolution/ntt.hpp\"\
+    \n\n#include <bit>\n\n#line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n\
+    #line 6 \"convolution/convolution.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\n\n\
+    #line 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 6 \"convolution/ntt.hpp\"\
     \n#include <cassert>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
     \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
     \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
@@ -252,10 +252,14 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 6 \"fps/ntt_friendly_fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
+    \ * i;\n        return f;\n    }\n\n    void fft();\n    void ifft();\n};\n\n\
+    }  // namespace ebi\n#line 8 \"fps/ntt_friendly_fps.hpp\"\n\nnamespace ebi {\n\
+    \ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
     \    const FormalPowerSeries<mint> &rhs) {\n    *this = convolution(*this, rhs);\n\
-    \    return *this;\n}\n\n}  // namespace ebi\n#line 2 \"math/stirling_number_1st.hpp\"\
+    \    return *this;\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::fft()\
+    \ {\n    this->resize(std::bit_ceil(this->size()));\n    internal::fft4(*this);\n\
+    }\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::ifft() {\n    this->resize(std::bit_ceil(this->size()));\n\
+    \    internal::ifft4(*this);\n}\n\n}  // namespace ebi\n#line 2 \"math/stirling_number_1st.hpp\"\
     \n\n#line 5 \"math/stirling_number_1st.hpp\"\n\n#line 2 \"fps/taylor_shift.hpp\"\
     \n\n#line 2 \"math/binomial.hpp\"\n\n#line 7 \"math/binomial.hpp\"\n#include <ranges>\n\
     #line 9 \"math/binomial.hpp\"\n\n#line 11 \"math/binomial.hpp\"\n\nnamespace ebi\
@@ -372,7 +376,7 @@ data:
   isVerificationFile: true
   path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Stirling_Number_of_the_First_Kind.test.cpp

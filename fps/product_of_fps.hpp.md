@@ -125,12 +125,12 @@ data:
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
-    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
-    \ namespace ebi\n#line 7 \"fps/product_of_fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <Modint mint,\n          std::vector<mint> (*convolution)(const std::vector<mint>\
-    \ &,\n                                           const std::vector<mint> &)>\n\
-    std::vector<mint> product_of_fps(std::vector<std::vector<mint>> fs) {\n    if\
-    \ (fs.empty()) return {1};\n    int i = 0;\n    while (i + 1 < (int)fs.size())\
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 7 \"fps/product_of_fps.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint,\n          std::vector<mint> (*convolution)(const\
+    \ std::vector<mint> &,\n                                           const std::vector<mint>\
+    \ &)>\nstd::vector<mint> product_of_fps(std::vector<std::vector<mint>> fs) {\n\
+    \    if (fs.empty()) return {1};\n    int i = 0;\n    while (i + 1 < (int)fs.size())\
     \ {\n        fs.emplace_back(convolution(fs[i], fs[i + 1]));\n        i += 2;\n\
     \    }\n    return fs.back();\n}\n\ntemplate <Modint mint>\nFormalPowerSeries<mint>\
     \ product_of_fps(\n    std::vector<FormalPowerSeries<mint>> fs) {\n    if (fs.empty())\
@@ -156,7 +156,7 @@ data:
   path: fps/product_of_fps.hpp
   requiredBy:
   - math/sums_of_powers.hpp
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp

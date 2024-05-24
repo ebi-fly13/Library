@@ -122,8 +122,9 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/power_projection_of_fps.hpp\"\
-    \n\n#line 4 \"fps/power_projection_of_fps.hpp\"\n#include <bit>\n#line 6 \"fps/power_projection_of_fps.hpp\"\
+    \ * i;\n        return f;\n    }\n\n    void fft();\n    void ifft();\n};\n\n\
+    }  // namespace ebi\n#line 2 \"fps/power_projection_of_fps.hpp\"\n\n#line 4 \"\
+    fps/power_projection_of_fps.hpp\"\n#include <bit>\n#line 6 \"fps/power_projection_of_fps.hpp\"\
     \n\n#line 9 \"fps/power_projection_of_fps.hpp\"\n\nnamespace ebi {\n\n// sum_j\
     \ w_j [x^j] f^i, for i = 0,1,...,m\ntemplate <Modint mint>\nstd::vector<mint>\
     \ power_projection(const FormalPowerSeries<mint> &f,\n                       \
@@ -188,18 +189,18 @@ data:
   isVerificationFile: false
   path: fps/compositional_inverse_of_fps.hpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
 documentation_of: fps/compositional_inverse_of_fps.hpp
 layout: document
-title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\u6319"
+title: "$f(x)$ \u306E\u9006\u95A2\u6570 ( $O(N\\log^2{N})$ )"
 ---
 
 ## 説明
 
-$i=0,1,\dots,M$ について、 $\sum_{j}^{n-1} w_j [x^j] f(x)^i$ を求める。 $O(N\log^2{N} + M\log{M})$
+形式的べき級数 $f$ について、その逆関数を求める。
 
 ### 参考文献
 

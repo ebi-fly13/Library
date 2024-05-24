@@ -116,16 +116,17 @@ data:
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
-    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
-    \ namespace ebi\n#line 8 \"fps/sum_of_rational_fps.hpp\"\n\nnamespace ebi {\n\n\
-    template <Modint mint>\nstd::pair<FormalPowerSeries<mint>, FormalPowerSeries<mint>>\
-    \ sum_of_rational_fps(\n    std::vector<std::pair<FormalPowerSeries<mint>, FormalPowerSeries<mint>>>\n\
-    \        fs) {\n    if (fs.empty()) {\n        return {{0}, {1}};\n    }\n   \
-    \ using FPS = FormalPowerSeries<mint>;\n    using P = std::pair<FPS, FPS>;\n \
-    \   auto add = [&](const P &a, const P &b) -> P {\n        return {a.first * b.second\
-    \ + a.second * b.first, a.second * b.second};\n    };\n    int i = 0;\n    while\
-    \ (i + 1 < (int)fs.size()) {\n        fs.emplace_back(add(fs[i], fs[i + 1]));\n\
-    \        i += 2;\n    }\n    return fs.back();\n}\n\n}  // namespace ebi\n"
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 8 \"fps/sum_of_rational_fps.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::pair<FormalPowerSeries<mint>,\
+    \ FormalPowerSeries<mint>> sum_of_rational_fps(\n    std::vector<std::pair<FormalPowerSeries<mint>,\
+    \ FormalPowerSeries<mint>>>\n        fs) {\n    if (fs.empty()) {\n        return\
+    \ {{0}, {1}};\n    }\n    using FPS = FormalPowerSeries<mint>;\n    using P =\
+    \ std::pair<FPS, FPS>;\n    auto add = [&](const P &a, const P &b) -> P {\n  \
+    \      return {a.first * b.second + a.second * b.first, a.second * b.second};\n\
+    \    };\n    int i = 0;\n    while (i + 1 < (int)fs.size()) {\n        fs.emplace_back(add(fs[i],\
+    \ fs[i + 1]));\n        i += 2;\n    }\n    return fs.back();\n}\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <vector>\n\n#include \"../fps/fps.hpp\"\
     \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\n\
     std::pair<FormalPowerSeries<mint>, FormalPowerSeries<mint>> sum_of_rational_fps(\n\
@@ -142,7 +143,7 @@ data:
   isVerificationFile: false
   path: fps/sum_of_rational_fps.hpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp

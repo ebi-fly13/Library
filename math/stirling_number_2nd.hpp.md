@@ -116,17 +116,17 @@ data:
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
-    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
-    \ namespace ebi\n#line 8 \"math/stirling_number_2nd.hpp\"\n\nnamespace ebi {\n\
-    \ntemplate <Modint mint> FormalPowerSeries<mint> stirling_number_2nd(int n) {\n\
-    \    using FPS = FormalPowerSeries<mint>;\n    assert(n >= 0);\n    FPS f(n +\
-    \ 1), g(n + 1);\n    std::vector<mint> fact(n + 1, 1);\n    for (int i = 1; i\
-    \ <= n; i++) fact[i] = fact[i - 1] * i;\n    std::vector<mint> inv_fact(n + 1);\n\
-    \    inv_fact[n] = fact[n].inv();\n    for (int i = n; i > 0; i--) {\n       \
-    \ inv_fact[i - 1] = inv_fact[i] * i;\n    }\n    for (int i = 0; i <= n; i++)\
-    \ {\n        f[i] = mint(i).pow(n) * inv_fact[i];\n        g[i] = (i & 1) ? -inv_fact[i]\
-    \ : inv_fact[i];\n    }\n    return (f * g).pre(n + 1);\n}\n\n}  // namespace\
-    \ ebi\n"
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 8 \"math/stirling_number_2nd.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint> FormalPowerSeries<mint> stirling_number_2nd(int\
+    \ n) {\n    using FPS = FormalPowerSeries<mint>;\n    assert(n >= 0);\n    FPS\
+    \ f(n + 1), g(n + 1);\n    std::vector<mint> fact(n + 1, 1);\n    for (int i =\
+    \ 1; i <= n; i++) fact[i] = fact[i - 1] * i;\n    std::vector<mint> inv_fact(n\
+    \ + 1);\n    inv_fact[n] = fact[n].inv();\n    for (int i = n; i > 0; i--) {\n\
+    \        inv_fact[i - 1] = inv_fact[i] * i;\n    }\n    for (int i = 0; i <= n;\
+    \ i++) {\n        f[i] = mint(i).pow(n) * inv_fact[i];\n        g[i] = (i & 1)\
+    \ ? -inv_fact[i] : inv_fact[i];\n    }\n    return (f * g).pre(n + 1);\n}\n\n\
+    }  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../fps/fps.hpp\"\
     \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\
     \ FormalPowerSeries<mint> stirling_number_2nd(int n) {\n    using FPS = FormalPowerSeries<mint>;\n\
@@ -143,7 +143,7 @@ data:
   isVerificationFile: false
   path: math/stirling_number_2nd.hpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_Second_Kind.test.cpp

@@ -95,21 +95,22 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#line 2 \"convolution/convolution.hpp\"\
-    \n\n#include <algorithm>\n#include <bit>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\
-    \n\n#line 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 6 \"convolution/ntt.hpp\"\
-    \n#include <cassert>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
-    \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
-    \ 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049) return 3;\n \
-    \   if (m == 754974721) return 11;\n    if (m == 998244353) return 3;\n    if\
-    \ (m == 880803841) return 26;\n    if (m == 924844033) return 5;\n    return -1;\n\
-    }\ntemplate <int m> constexpr int primitive_root = primitive_root_constexpr(m);\n\
-    \n}  // namespace internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\
-    \n\n#include <concepts>\n#include <iostream>\n#include <utility>\n\nnamespace\
-    \ ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a +\
-    \ b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+  bundledCode: "#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#include <bit>\n\n#line 2\
+    \ \"convolution/convolution.hpp\"\n\n#include <algorithm>\n#line 5 \"convolution/convolution.hpp\"\
+    \n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#line 4 \"convolution/ntt.hpp\"\
+    \n#include <array>\n#line 6 \"convolution/ntt.hpp\"\n#include <cassert>\n#line\
+    \ 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\n\n#line 4 \"\
+    math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal {\n\nconstexpr\
+    \ int primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n    if (m\
+    \ == 167772161) return 3;\n    if (m == 469762049) return 3;\n    if (m == 754974721)\
+    \ return 11;\n    if (m == 998244353) return 3;\n    if (m == 880803841) return\
+    \ 26;\n    if (m == 924844033) return 5;\n    return -1;\n}\ntemplate <int m>\
+    \ constexpr int primitive_root = primitive_root_constexpr(m);\n\n}  // namespace\
+    \ internal\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #include <iostream>\n#include <utility>\n\nnamespace ebi {\n\ntemplate <class\
+    \ T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n\
+    \    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n\
+    \    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
     \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
     }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
     \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 2 \"\
@@ -300,15 +301,22 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 6 \"fps/ntt_friendly_fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
+    \ * i;\n        return f;\n    }\n\n    void fft();\n    void ifft();\n};\n\n\
+    }  // namespace ebi\n#line 8 \"fps/ntt_friendly_fps.hpp\"\n\nnamespace ebi {\n\
+    \ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
     \    const FormalPowerSeries<mint> &rhs) {\n    *this = convolution(*this, rhs);\n\
-    \    return *this;\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include \"../convolution/convolution.hpp\"\n#include \"\
-    ../fps/fps.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
+    \    return *this;\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::fft()\
+    \ {\n    this->resize(std::bit_ceil(this->size()));\n    internal::fft4(*this);\n\
+    }\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::ifft() {\n    this->resize(std::bit_ceil(this->size()));\n\
+    \    internal::ifft4(*this);\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <bit>\n\n#include \"../convolution/convolution.hpp\"\
+    \n#include \"../fps/fps.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
     \    const FormalPowerSeries<mint> &rhs) {\n    *this = convolution(*this, rhs);\n\
-    \    return *this;\n}\n\n}  // namespace ebi"
+    \    return *this;\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::fft()\
+    \ {\n    this->resize(std::bit_ceil(this->size()));\n    internal::fft4(*this);\n\
+    }\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::ifft() {\n    this->resize(std::bit_ceil(this->size()));\n\
+    \    internal::ifft4(*this);\n}\n\n}  // namespace ebi"
   dependsOn:
   - convolution/convolution.hpp
   - convolution/ntt.hpp
@@ -319,7 +327,7 @@ data:
   isVerificationFile: false
   path: fps/ntt_friendly_fps.hpp
   requiredBy: []
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp

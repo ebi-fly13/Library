@@ -10,8 +10,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
-    title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\
-      \u6319"
+    title: "$f(x)$ \u306E\u9006\u95A2\u6570 ( $O(N\\log^2{N})$ )"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
@@ -120,20 +119,20 @@ data:
     \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
-    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
-    \ namespace ebi\n#line 9 \"fps/power_projection_of_fps.hpp\"\n\nnamespace ebi\
-    \ {\n\n// sum_j w_j [x^j] f^i, for i = 0,1,...,m\ntemplate <Modint mint>\nstd::vector<mint>\
-    \ power_projection(const FormalPowerSeries<mint> &f,\n                       \
-    \            const std::vector<mint> &w, int m) {\n    assert(f.size() == w.size());\n\
-    \    if (f.empty()) {\n        return std::vector<mint>(m + 1, 0);\n    }\n  \
-    \  assert(f[0] == 0);\n    int n = (int)std::bit_ceil(f.size());\n    std::vector\
-    \ P(n, std::vector<mint>(1, 0)), Q(n, std::vector<mint>(1, 0));\n    for (int\
-    \ i = 0; i < (int)f.size(); i++) {\n        P[n - 1 - i][0] = w[i];\n        Q[i][0]\
-    \ = -f[i];\n    }\n    int k = 1;\n    while (n > 1) {\n        auto R = Q;\n\
-    \        for (int i = 1; i < n; i += 2) {\n            for (int j = 0; j < k;\
-    \ j++) {\n                R[i][j] = -R[i][j];\n            }\n        }\n    \
-    \    auto conv_2d = [&](std::vector<std::vector<mint>> &a,\n                 \
-    \          std::vector<std::vector<mint>> &b)\n            -> std::vector<std::vector<mint>>\
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n\n    void fft();\n\
+    \    void ifft();\n};\n\n}  // namespace ebi\n#line 9 \"fps/power_projection_of_fps.hpp\"\
+    \n\nnamespace ebi {\n\n// sum_j w_j [x^j] f^i, for i = 0,1,...,m\ntemplate <Modint\
+    \ mint>\nstd::vector<mint> power_projection(const FormalPowerSeries<mint> &f,\n\
+    \                                   const std::vector<mint> &w, int m) {\n   \
+    \ assert(f.size() == w.size());\n    if (f.empty()) {\n        return std::vector<mint>(m\
+    \ + 1, 0);\n    }\n    assert(f[0] == 0);\n    int n = (int)std::bit_ceil(f.size());\n\
+    \    std::vector P(n, std::vector<mint>(1, 0)), Q(n, std::vector<mint>(1, 0));\n\
+    \    for (int i = 0; i < (int)f.size(); i++) {\n        P[n - 1 - i][0] = w[i];\n\
+    \        Q[i][0] = -f[i];\n    }\n    int k = 1;\n    while (n > 1) {\n      \
+    \  auto R = Q;\n        for (int i = 1; i < n; i += 2) {\n            for (int\
+    \ j = 0; j < k; j++) {\n                R[i][j] = -R[i][j];\n            }\n \
+    \       }\n        auto conv_2d = [&](std::vector<std::vector<mint>> &a,\n   \
+    \                        std::vector<std::vector<mint>> &b)\n            -> std::vector<std::vector<mint>>\
     \ {\n            FormalPowerSeries<mint> f(2 * n * k, 0), g(2 * n * k, 0);\n \
     \           for (int i = 0; i < n; i++) {\n                for (int j = 0; j <\
     \ k; j++) {\n                    f[2 * i * k + j] = a[i][j];\n               \
@@ -187,7 +186,7 @@ data:
   path: fps/power_projection_of_fps.hpp
   requiredBy:
   - fps/compositional_inverse_of_fps.hpp
-  timestamp: '2024-05-24 14:32:49+09:00'
+  timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
