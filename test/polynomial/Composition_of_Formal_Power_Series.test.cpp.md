@@ -9,7 +9,7 @@ data:
     title: NTT
   - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps_old.hpp
-    title: $f(g(x)) ( $O(N^2)$ )$
+    title: $f(g(x))$ ( $O(N^2)$ )
   - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series

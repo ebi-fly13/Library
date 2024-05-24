@@ -235,7 +235,7 @@ data:
       title: $f(g(x))$ ( $O(N\log^2{N})$ )
     - icon: ':heavy_check_mark:'
       path: fps/composition_of_fps_old.hpp
-      title: $f(g(x)) ( $O(N^2)$ )$
+      title: $f(g(x))$ ( $O(N^2)$ )
     - icon: ':heavy_check_mark:'
       path: fps/compositional_inverse_of_fps.hpp
       title: "$f(x)$ \u306E\u9006\u95A2\u6570 ( $O(N\\log^2{N})$ )"

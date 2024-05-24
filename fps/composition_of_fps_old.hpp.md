@@ -160,7 +160,7 @@ data:
   - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
 documentation_of: fps/composition_of_fps_old.hpp
 layout: document
-title: $f(g(x)) ( $O(N^2)$ )$
+title: $f(g(x))$ ( $O(N^2)$ )
 ---
 
 ## 説明
