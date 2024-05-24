@@ -19,56 +19,37 @@ std::vector<mint> power_projection(const FormalPowerSeries<mint> &f,
     }
     assert(f[0] == 0);
     int n = (int)std::bit_ceil(f.size());
-    std::vector P(n, std::vector<mint>(1, 0)), Q(n, std::vector<mint>(1, 0));
+    std::vector<mint> P(2 * n, 0), Q(2 * n, 0);
     for (int i = 0; i < (int)f.size(); i++) {
-        P[n - 1 - i][0] = w[i];
-        Q[i][0] = -f[i];
+        P[n - 1 - i] = w[i];
+        Q[i] = -f[i];
     }
     int k = 1;
     while (n > 1) {
         auto R = Q;
-        for (int i = 1; i < n; i += 2) {
-            for (int j = 0; j < k; j++) {
-                R[i][j] = -R[i][j];
+        for (int i = 1; i < 2 * n * k; i += 2) {
+            R[i] = -R[i];
+        }
+        auto PQ = convolution(P, R), QQ = convolution(Q, R);
+        PQ.resize(4 * n * k);
+        QQ.resize(4 * n * k);
+        for (int i = 0; i < 2 * n * k; i++) {
+            PQ[2 * n * k + i] += P[i];
+            QQ[2 * n * k + i] += Q[i] + R[i];
+        }
+        std::fill(P.begin(), P.end(), 0);
+        std::fill(Q.begin(), Q.end(), 0);
+        for (int j = 0; j < 2 * k; j++) {
+            for (int i = 0; i < n / 2; i++) {
+                P[j * n + i] = PQ[2 * j * n + 2 * i + 1];
+                Q[j * n + i] = QQ[2 * j * n + 2 * i];
             }
         }
-        auto conv_2d = [&](std::vector<std::vector<mint>> &a,
-                           std::vector<std::vector<mint>> &b)
-            -> std::vector<std::vector<mint>> {
-            FormalPowerSeries<mint> f(2 * n * k, 0), g(2 * n * k, 0);
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < k; j++) {
-                    f[2 * i * k + j] = a[i][j];
-                    g[2 * i * k + j] = b[i][j];
-                }
-            }
-            f = f * g;
-            f.resize(4 * n * k);
-            std::vector c(2 * n, std::vector<mint>(2 * k, 0));
-            for (int i = 0; i < 2 * n; i++) {
-                for (int j = 0; j < 2 * k; j++) {
-                    c[i][j] = f[i * 2 * k + j];
-                }
-            }
-            return c;
-        };
-        auto PQ = conv_2d(P, R), QQ = conv_2d(Q, R);
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < k; j++) {
-                PQ[i][j + k] += P[i][j];
-                QQ[i][j + k] += Q[i][j] + R[i][j];
-            }
-        }
-        for (int i = 0; i < n / 2; i++) {
-            P[i] = PQ[2 * i + 1];
-            Q[i] = QQ[2 * i];
-        }
-        P.resize(n / 2);
-        Q.resize(n / 2);
         n /= 2;
         k *= 2;
     }
-    auto p = P[0];
+    std::vector<mint> p(k);
+    for (int i = 0; i < k; i++) p[i] = P[2 * i];
     std::reverse(p.begin(), p.end());
     p.resize(m + 1);
     return p;
