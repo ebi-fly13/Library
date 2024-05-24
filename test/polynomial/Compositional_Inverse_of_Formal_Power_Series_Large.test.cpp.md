@@ -11,23 +11,27 @@ data:
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   - icon: ':heavy_check_mark:'
+    path: fps/compositional_inverse_of_fps.hpp
+    title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\
+      \u6319"
+  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
-  - icon: ':heavy_check_mark:'
-    path: fps/multipoint_evaluation.hpp
-    title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
     title: fps/ntt_friendly_fps.hpp
   - icon: ':heavy_check_mark:'
-    path: fps/polynomial_interpolation.hpp
-    title: Polynomial Interpolation
+    path: fps/power_projection_of_fps.hpp
+    title: fps/power_projection_of_fps.hpp
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/mod_inv.hpp
+    title: Mod Inv
   - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
@@ -56,14 +60,14 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/polynomial_interpolation
+    PROBLEM: https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series_large
     links:
-    - https://judge.yosupo.jp/problem/polynomial_interpolation
-  bundledCode: "#line 1 \"test/polynomial/Polynomial_Interpolation.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/polynomial_interpolation\"\n\n#line\
-    \ 2 \"fps/polynomial_interpolation.hpp\"\n\n#line 2 \"fps/fps.hpp\"\n\n#include\
-    \ <algorithm>\n#include <cassert>\n#include <optional>\n#include <vector>\n\n\
-    #line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include\
+    - https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series_large
+  bundledCode: "#line 1 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp\"\
+    \n#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series_large\"\
+    \n\n#line 2 \"fps/compositional_inverse_of_fps.hpp\"\n\n#line 2 \"fps/fps.hpp\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <optional>\n#include <vector>\n\
+    \n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include\
     \ <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T\
     \ a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n  \
     \  a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate\
@@ -160,38 +164,54 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/multipoint_evaluation.hpp\"\
-    \n\n#line 5 \"fps/multipoint_evaluation.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
-    \ mint>\nstd::vector<mint> multipoint_evaluation(const FormalPowerSeries<mint>\
-    \ &f,\n                                        const std::vector<mint> &p) {\n\
-    \    using FPS = FormalPowerSeries<mint>;\n    int m = 1;\n    while (m < (int)p.size())\
-    \ m <<= 1;\n    std::vector<FPS> subproduct_tree(2 * m, {1});\n    for (int i\
-    \ = 0; i < (int)p.size(); i++) {\n        subproduct_tree[i + m] = FPS{-p[i],\
-    \ 1};\n    }\n    for (int i = m - 1; i >= 1; i--) {\n        subproduct_tree[i]\
-    \ =\n            subproduct_tree[2 * i] * subproduct_tree[2 * i + 1];\n    }\n\
-    \    std::vector<FPS> subremainder_tree(2 * m);\n    subremainder_tree[1] = f\
-    \ % subproduct_tree[1];\n    for (int i = 2; i < m + (int)p.size(); i++) {\n \
-    \       if (subremainder_tree[i / 2].empty()) continue;\n        subremainder_tree[i]\
-    \ = subremainder_tree[i / 2] % subproduct_tree[i];\n    }\n    std::vector<mint>\
-    \ fp(p.size());\n    for (int i = 0; i < (int)p.size(); i++) {\n        if (subremainder_tree[i\
-    \ + m].empty())\n            fp[i] = 0;\n        else\n            fp[i] = subremainder_tree[i\
-    \ + m][0];\n    }\n    return fp;\n}\n\n}  // namespace ebi\n#line 6 \"fps/polynomial_interpolation.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> polynomial_interpolation(const\
-    \ std::vector<mint> &xs,\n                                                 const\
-    \ std::vector<mint> &ys) {\n    using FPS = FormalPowerSeries<mint>;\n    assert(xs.size()\
-    \ == ys.size());\n    int m = 1;\n    int n = xs.size();\n    while (m < n) m\
-    \ <<= 1;\n    std::vector<FPS> subproduct_tree(2 * m, {1});\n    for (int i =\
-    \ 0; i < (int)xs.size(); i++) {\n        subproduct_tree[i + m] = FPS{-xs[i],\
-    \ 1};\n    }\n    for (int i = m - 1; i >= 1; i--) {\n        subproduct_tree[i]\
-    \ =\n            subproduct_tree[2 * i] * subproduct_tree[2 * i + 1];\n    }\n\
-    \    std::vector<mint> fp =\n        multipoint_evaluation(subproduct_tree[1].differential(),\
-    \ xs);\n    std::vector<FPS> f(2 * m);\n    for (int i = 0; i < n; i++) {\n  \
-    \      f[i + m] = FPS{ys[i] / fp[i]};\n    }\n    for (int i = m - 1; i >= 1;\
-    \ i--) {\n        f[i] = f[2 * i] * subproduct_tree[2 * i + 1] +\n           \
-    \    subproduct_tree[2 * i] * f[2 * i + 1];\n    }\n    f[1].resize(n);\n    return\
-    \ f[1];\n}\n\n}  // namespace ebi\n#line 4 \"test/polynomial/Polynomial_Interpolation.test.cpp\"\
-    \n\n#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#line 2 \"convolution/convolution.hpp\"\
-    \n\n#line 4 \"convolution/convolution.hpp\"\n#include <bit>\n#line 6 \"convolution/convolution.hpp\"\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/power_projection_of_fps.hpp\"\
+    \n\n#line 4 \"fps/power_projection_of_fps.hpp\"\n#include <bit>\n#line 6 \"fps/power_projection_of_fps.hpp\"\
+    \n\n#line 9 \"fps/power_projection_of_fps.hpp\"\n\nnamespace ebi {\n\n// sum_j\
+    \ w_j [x^j] f^i, for i = 0,1,...,m\ntemplate <Modint mint>\nstd::vector<mint>\
+    \ power_projection(const FormalPowerSeries<mint> &f,\n                       \
+    \            const std::vector<mint> &w, int m) {\n    assert(f.size() == w.size());\n\
+    \    if (f.empty()) {\n        return std::vector<mint>(m + 1, 0);\n    }\n  \
+    \  assert(f[0] == 0);\n    int n = (int)std::bit_ceil(f.size());\n    std::vector\
+    \ P(n, std::vector<mint>(1, 0)), Q(n, std::vector<mint>(1, 0));\n    for (int\
+    \ i = 0; i < (int)f.size(); i++) {\n        P[n - 1 - i][0] = w[i];\n        Q[i][0]\
+    \ = -f[i];\n    }\n    int k = 1;\n    while (n > 1) {\n        auto R = Q;\n\
+    \        for (int i = 1; i < n; i += 2) {\n            for (int j = 0; j < k;\
+    \ j++) {\n                R[i][j] = -R[i][j];\n            }\n        }\n    \
+    \    auto conv_2d = [&](std::vector<std::vector<mint>> &a,\n                 \
+    \          std::vector<std::vector<mint>> &b)\n            -> std::vector<std::vector<mint>>\
+    \ {\n            FormalPowerSeries<mint> f(2 * n * k, 0), g(2 * n * k, 0);\n \
+    \           for (int i = 0; i < n; i++) {\n                for (int j = 0; j <\
+    \ k; j++) {\n                    f[2 * i * k + j] = a[i][j];\n               \
+    \     g[2 * i * k + j] = b[i][j];\n                }\n            }\n        \
+    \    f = f * g;\n            f.resize(4 * n * k);\n            std::vector c(2\
+    \ * n, std::vector<mint>(2 * k, 0));\n            for (int i = 0; i < 2 * n; i++)\
+    \ {\n                for (int j = 0; j < 2 * k; j++) {\n                    c[i][j]\
+    \ = f[i * 2 * k + j];\n                }\n            }\n            return c;\n\
+    \        };\n        auto PQ = conv_2d(P, R), QQ = conv_2d(Q, R);\n        for\
+    \ (int i = 0; i < n; i++) {\n            for (int j = 0; j < k; j++) {\n     \
+    \           PQ[i][j + k] += P[i][j];\n                QQ[i][j + k] += Q[i][j]\
+    \ + R[i][j];\n            }\n        }\n        for (int i = 0; i < n / 2; i++)\
+    \ {\n            P[i] = PQ[2 * i + 1];\n            Q[i] = QQ[2 * i];\n      \
+    \  }\n        P.resize(n / 2);\n        Q.resize(n / 2);\n        n /= 2;\n  \
+    \      k *= 2;\n    }\n    auto p = P[0];\n    std::reverse(p.begin(), p.end());\n\
+    \    p.resize(m + 1);\n    return p;\n}\n\n}  // namespace ebi\n#line 2 \"math/mod_inv.hpp\"\
+    \n\n#line 5 \"math/mod_inv.hpp\"\n\n#line 7 \"math/mod_inv.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint> mint inv(int n) {\n    static const int mod\
+    \ = mint::mod();\n    static std::vector<mint> dat = {0, 1};\n    assert(0 <=\
+    \ n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size()) <= n) {\n     \
+    \   int num = dat.size();\n        int q = (mod + num - 1) / num;\n        dat.emplace_back(dat[num\
+    \ * q - mod] * mint(q));\n    }\n    return dat[n];\n}\n\n}  // namespace ebi\n\
+    #line 7 \"fps/compositional_inverse_of_fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <Modint mint>\nFormalPowerSeries<mint> compositional_inverse_of_fps(\n    FormalPowerSeries<mint>\
+    \ f) {\n    using FPS = FormalPowerSeries<mint>;\n    assert((int)f.size() >=\
+    \ 2 && f[0] == 0 && f[1] != 0);\n    int n = (int)f.size() - 1;\n    mint inv_c\
+    \ = f[1].inv();\n    f *= inv_c;\n    std::vector<mint> w(n + 1);\n    w[n] =\
+    \ 1;\n    auto s = power_projection(f, w, n);\n    FPS g(n);\n    for (int i =\
+    \ 1; i < n + 1; i++) {\n        g[n - i] = n * s[i] * inv<mint>(i);\n    }\n \
+    \   g = g.pow_1(mint(-n).inv()) << 1;\n    mint p = 1;\n    for (int i = 0; i\
+    \ < n + 1; i++) {\n        g[i] *= p;\n        p *= inv_c;\n    }\n    return\
+    \ g;\n}\n\n}  // namespace ebi\n#line 2 \"fps/ntt_friendly_fps.hpp\"\n\n#line\
+    \ 2 \"convolution/convolution.hpp\"\n\n#line 6 \"convolution/convolution.hpp\"\
     \n\n#line 2 \"convolution/ntt.hpp\"\n\n#line 4 \"convolution/ntt.hpp\"\n#include\
     \ <array>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
     \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
@@ -445,27 +465,26 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 8 \"test/polynomial/Polynomial_Interpolation.test.cpp\"\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 8 \"test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    int\
-    \ n;\n    std::cin >> n;\n    std::vector<mint> x(n), y(n);\n    std::cin >> x\
-    \ >> y;\n    auto f = polynomial_interpolation<mint>(x, y);\n    rep(i, 0, n)\
-    \ {\n        std::cout << f[i] << \" \\n\"[i == n - 1];\n    }\n}\n\n}  // namespace\
+    \ n;\n    std::cin >> n;\n    FormalPowerSeries<mint> f(n);\n    std::cin >> f;\n\
+    \    std::cout << compositional_inverse_of_fps(f) << '\\n';\n}\n\n}  // namespace\
     \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
     \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/polynomial_interpolation\"\
-    \n\n#include \"../../fps/polynomial_interpolation.hpp\"\n\n#include \"../../fps/ntt_friendly_fps.hpp\"\
+  code: "#define PROBLEM                        \\\n    \"https://judge.yosupo.jp/problem/compositional_inverse_of_formal_power_series_large\"\
+    \n\n#include \"../../fps/compositional_inverse_of_fps.hpp\"\n#include \"../../fps/ntt_friendly_fps.hpp\"\
     \n#include \"../../modint/modint.hpp\"\n#include \"../../template/template.hpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    int\
-    \ n;\n    std::cin >> n;\n    std::vector<mint> x(n), y(n);\n    std::cin >> x\
-    \ >> y;\n    auto f = polynomial_interpolation<mint>(x, y);\n    rep(i, 0, n)\
-    \ {\n        std::cout << f[i] << \" \\n\"[i == n - 1];\n    }\n}\n\n}  // namespace\
+    \ n;\n    std::cin >> n;\n    FormalPowerSeries<mint> f(n);\n    std::cin >> f;\n\
+    \    std::cout << compositional_inverse_of_fps(f) << '\\n';\n}\n\n}  // namespace\
     \ ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >>\
     \ t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
-  - fps/polynomial_interpolation.hpp
+  - fps/compositional_inverse_of_fps.hpp
   - fps/fps.hpp
   - modint/base.hpp
-  - fps/multipoint_evaluation.hpp
+  - fps/power_projection_of_fps.hpp
+  - math/mod_inv.hpp
   - fps/ntt_friendly_fps.hpp
   - convolution/convolution.hpp
   - convolution/ntt.hpp
@@ -479,15 +498,15 @@ data:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: true
-  path: test/polynomial/Polynomial_Interpolation.test.cpp
+  path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   requiredBy: []
   timestamp: '2024-05-24 14:32:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/polynomial/Polynomial_Interpolation.test.cpp
+documentation_of: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
 layout: document
 redirect_from:
-- /verify/test/polynomial/Polynomial_Interpolation.test.cpp
-- /verify/test/polynomial/Polynomial_Interpolation.test.cpp.html
-title: test/polynomial/Polynomial_Interpolation.test.cpp
+- /verify/test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+- /verify/test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp.html
+title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
 ---

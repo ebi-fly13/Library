@@ -76,6 +76,9 @@ data:
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
   - icon: ':heavy_check_mark:'
@@ -188,6 +191,7 @@ data:
   - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Catalan_Convolution.test.cpp

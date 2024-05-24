@@ -2,38 +2,39 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: fps/composition_of_fps.hpp
-    title: $f(g(x))$
-  - icon: ':heavy_check_mark:'
     path: fps/fps.hpp
     title: Formal Power Series
+  - icon: ':heavy_check_mark:'
+    path: fps/power_projection_of_fps.hpp
+    title: fps/power_projection_of_fps.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/mod_inv.hpp
+    title: Mod Inv
   - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps/compositional_inverse_of_fps.hpp\"\n\n#include <cassert>\n\
-    \n#line 2 \"fps/composition_of_fps.hpp\"\n\n#line 4 \"fps/composition_of_fps.hpp\"\
-    \n#include <vector>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line\
-    \ 5 \"fps/fps.hpp\"\n#include <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 2 \"\
-    modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include <utility>\n\
-    \nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n\
-    \    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
-    \    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate <Modint\
-    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
-    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
-    }\n\n}  // namespace ebi\n#line 9 \"fps/fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <Modint mint> struct FormalPowerSeries : std::vector<mint> {\n  private:\n \
-    \   using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
+  bundledCode: "#line 2 \"fps/compositional_inverse_of_fps.hpp\"\n\n#line 2 \"fps/fps.hpp\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <optional>\n#include <vector>\n\
+    \n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n#include\
+    \ <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T\
+    \ a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n  \
+    \  a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate\
+    \ <Modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 9 \"fps/fps.hpp\"\n\nnamespace ebi\
+    \ {\n\ntemplate <Modint mint> struct FormalPowerSeries : std::vector<mint> {\n\
+    \  private:\n    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
     \    using FPS = FormalPowerSeries;\n\n  public:\n    FormalPowerSeries(const\
     \ std::vector<mint> &a) {\n        *this = a;\n    }\n\n    FPS operator+(const\
     \ FPS &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS\
@@ -93,8 +94,19 @@ data:
     \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
     \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
     \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
-    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(int64_t\
-    \ k, int d = -1) const {\n        const int n = deg();\n        if (d < 0) d =\
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(long\
+    \ long k, int d = -1) const {\n        assert(k >= 0);\n        int n = deg();\n\
+    \        if (d < 0) d = n;\n        if (k == 0) {\n            FPS f(d);\n   \
+    \         if (d > 0) f[0] = 1;\n            return f;\n        }\n        int\
+    \ low = d;\n        for (int i = n - 1; i >= 0; i--)\n            if ((*this)[i]\
+    \ != 0) low = i;\n        if (low >= (d + k - 1) / k) return FPS(d, 0);\n    \
+    \    int offset = k * low;\n        mint c = (*this)[low];\n        FPS g(d -\
+    \ offset);\n        for (int i = 0; i < std::min(n - low, d - offset); i++) {\n\
+    \            g[i] = (*this)[i + low];\n        }\n        g /= c;\n        g =\
+    \ g.pow_1(k);\n        return (g << offset) * c.pow(k);\n    }\n\n    FPS pow_1(mint\
+    \ k, int d = -1) const {\n        assert((*this)[0] == 1);\n        return ((*this).log(d)\
+    \ * k).exp(d);\n    }\n\n    FPS pow_newton(long long k, int d = -1) const {\n\
+    \        assert(k >= 0);\n        const int n = deg();\n        if (d < 0) d =\
     \ n;\n        if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0]\
     \ = 1;\n            return f;\n        }\n        for (int i = 0; i < n; i++)\
     \ {\n            if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
@@ -110,63 +122,85 @@ data:
     \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
     \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
     \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
-    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 8 \"fps/composition_of_fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> composition_of_fps(const\
-    \ FormalPowerSeries<mint> &f,\n                                           const\
-    \ FormalPowerSeries<mint> &g) {\n    using FPS = FormalPowerSeries<mint>;\n  \
-    \  // assert(f.deg() == g.deg());\n    int n = f.deg();\n    int k = 1;\n    while\
-    \ (k * k < n) k++;\n    std::vector<FPS> baby(k + 1);\n    baby[0] = FPS{1};\n\
-    \    baby[1] = g;\n    for (int i = 2; i < k + 1; i++) {\n        baby[i] = (baby[i\
-    \ - 1] * g).pre(n);\n    }\n    std::vector<FPS> giant(k + 1);\n    giant[0] =\
-    \ FPS{1};\n    giant[1] = baby[k];\n    for (int i = 2; i < k + 1; i++) {\n  \
-    \      giant[i] = (giant[i - 1] * giant[1]).pre(n);\n    }\n    FPS h(n);\n  \
-    \  for (int i = 0; i < k + 1; i++) {\n        FPS a(n);\n        for (int j =\
-    \ 0; j < k; j++) {\n            if (k * i + j < n) {\n                mint coef\
-    \ = f[k * i + j];\n                a += baby[j] * coef;\n            } else\n\
-    \                break;\n        }\n        h += (giant[i] * a).pre(n);\n    }\n\
-    \    return h;\n}\n\n}  // namespace ebi\n#line 8 \"fps/compositional_inverse_of_fps.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> compositional_inverse_of_fps(FormalPowerSeries<mint>\
-    \ f,\n                                                     int d = -1) {\n   \
-    \ using FPS = FormalPowerSeries<mint>;\n    if (d < 0) d = f.deg();\n    assert((int)f.size()\
-    \ >= 2 && f[0] == 0 && f[1] != 0);\n    FPS df = f.differential();\n    FPS g\
-    \ = {0, f[1].inv()};\n    for (int n = 2; n < d; n <<= 1) {\n        g.resize(2\
-    \ * n);\n        if (f.deg() < 2 * n) f.resize(2 * n);\n        if (df.deg() <\
-    \ 2 * n) df.resize(2 * n);\n        FPS fg = composition_of_fps(f.pre(2 * n),\
-    \ g);\n        FPS fdg = composition_of_fps(df.pre(2 * n), g);\n        g -= ((fg\
-    \ - FPS{0, 1}) * fdg.inv(2 * n)).pre(2 * n);\n    }\n    g.resize(d);\n    return\
+    \ * i;\n        return f;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"fps/power_projection_of_fps.hpp\"\
+    \n\n#line 4 \"fps/power_projection_of_fps.hpp\"\n#include <bit>\n#line 6 \"fps/power_projection_of_fps.hpp\"\
+    \n\n#line 9 \"fps/power_projection_of_fps.hpp\"\n\nnamespace ebi {\n\n// sum_j\
+    \ w_j [x^j] f^i, for i = 0,1,...,m\ntemplate <Modint mint>\nstd::vector<mint>\
+    \ power_projection(const FormalPowerSeries<mint> &f,\n                       \
+    \            const std::vector<mint> &w, int m) {\n    assert(f.size() == w.size());\n\
+    \    if (f.empty()) {\n        return std::vector<mint>(m + 1, 0);\n    }\n  \
+    \  assert(f[0] == 0);\n    int n = (int)std::bit_ceil(f.size());\n    std::vector\
+    \ P(n, std::vector<mint>(1, 0)), Q(n, std::vector<mint>(1, 0));\n    for (int\
+    \ i = 0; i < (int)f.size(); i++) {\n        P[n - 1 - i][0] = w[i];\n        Q[i][0]\
+    \ = -f[i];\n    }\n    int k = 1;\n    while (n > 1) {\n        auto R = Q;\n\
+    \        for (int i = 1; i < n; i += 2) {\n            for (int j = 0; j < k;\
+    \ j++) {\n                R[i][j] = -R[i][j];\n            }\n        }\n    \
+    \    auto conv_2d = [&](std::vector<std::vector<mint>> &a,\n                 \
+    \          std::vector<std::vector<mint>> &b)\n            -> std::vector<std::vector<mint>>\
+    \ {\n            FormalPowerSeries<mint> f(2 * n * k, 0), g(2 * n * k, 0);\n \
+    \           for (int i = 0; i < n; i++) {\n                for (int j = 0; j <\
+    \ k; j++) {\n                    f[2 * i * k + j] = a[i][j];\n               \
+    \     g[2 * i * k + j] = b[i][j];\n                }\n            }\n        \
+    \    f = f * g;\n            f.resize(4 * n * k);\n            std::vector c(2\
+    \ * n, std::vector<mint>(2 * k, 0));\n            for (int i = 0; i < 2 * n; i++)\
+    \ {\n                for (int j = 0; j < 2 * k; j++) {\n                    c[i][j]\
+    \ = f[i * 2 * k + j];\n                }\n            }\n            return c;\n\
+    \        };\n        auto PQ = conv_2d(P, R), QQ = conv_2d(Q, R);\n        for\
+    \ (int i = 0; i < n; i++) {\n            for (int j = 0; j < k; j++) {\n     \
+    \           PQ[i][j + k] += P[i][j];\n                QQ[i][j + k] += Q[i][j]\
+    \ + R[i][j];\n            }\n        }\n        for (int i = 0; i < n / 2; i++)\
+    \ {\n            P[i] = PQ[2 * i + 1];\n            Q[i] = QQ[2 * i];\n      \
+    \  }\n        P.resize(n / 2);\n        Q.resize(n / 2);\n        n /= 2;\n  \
+    \      k *= 2;\n    }\n    auto p = P[0];\n    std::reverse(p.begin(), p.end());\n\
+    \    p.resize(m + 1);\n    return p;\n}\n\n}  // namespace ebi\n#line 2 \"math/mod_inv.hpp\"\
+    \n\n#line 5 \"math/mod_inv.hpp\"\n\n#line 7 \"math/mod_inv.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint> mint inv(int n) {\n    static const int mod\
+    \ = mint::mod();\n    static std::vector<mint> dat = {0, 1};\n    assert(0 <=\
+    \ n);\n    if (n >= mod) n -= mod;\n    while (int(dat.size()) <= n) {\n     \
+    \   int num = dat.size();\n        int q = (mod + num - 1) / num;\n        dat.emplace_back(dat[num\
+    \ * q - mod] * mint(q));\n    }\n    return dat[n];\n}\n\n}  // namespace ebi\n\
+    #line 7 \"fps/compositional_inverse_of_fps.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <Modint mint>\nFormalPowerSeries<mint> compositional_inverse_of_fps(\n    FormalPowerSeries<mint>\
+    \ f) {\n    using FPS = FormalPowerSeries<mint>;\n    assert((int)f.size() >=\
+    \ 2 && f[0] == 0 && f[1] != 0);\n    int n = (int)f.size() - 1;\n    mint inv_c\
+    \ = f[1].inv();\n    f *= inv_c;\n    std::vector<mint> w(n + 1);\n    w[n] =\
+    \ 1;\n    auto s = power_projection(f, w, n);\n    FPS g(n);\n    for (int i =\
+    \ 1; i < n + 1; i++) {\n        g[n - i] = n * s[i] * inv<mint>(i);\n    }\n \
+    \   g = g.pow_1(mint(-n).inv()) << 1;\n    mint p = 1;\n    for (int i = 0; i\
+    \ < n + 1; i++) {\n        g[i] *= p;\n        p *= inv_c;\n    }\n    return\
     \ g;\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n\n#include \"../fps/composition_of_fps.hpp\"\
-    \n#include \"../fps/fps.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> compositional_inverse_of_fps(FormalPowerSeries<mint>\
-    \ f,\n                                                     int d = -1) {\n   \
-    \ using FPS = FormalPowerSeries<mint>;\n    if (d < 0) d = f.deg();\n    assert((int)f.size()\
-    \ >= 2 && f[0] == 0 && f[1] != 0);\n    FPS df = f.differential();\n    FPS g\
-    \ = {0, f[1].inv()};\n    for (int n = 2; n < d; n <<= 1) {\n        g.resize(2\
-    \ * n);\n        if (f.deg() < 2 * n) f.resize(2 * n);\n        if (df.deg() <\
-    \ 2 * n) df.resize(2 * n);\n        FPS fg = composition_of_fps(f.pre(2 * n),\
-    \ g);\n        FPS fdg = composition_of_fps(df.pre(2 * n), g);\n        g -= ((fg\
-    \ - FPS{0, 1}) * fdg.inv(2 * n)).pre(2 * n);\n    }\n    g.resize(d);\n    return\
-    \ g;\n}\n\n}  // namespace ebi"
+  code: "#pragma once\n\n#include \"../fps/fps.hpp\"\n#include \"../fps/power_projection_of_fps.hpp\"\
+    \n#include \"../math/mod_inv.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> compositional_inverse_of_fps(\n\
+    \    FormalPowerSeries<mint> f) {\n    using FPS = FormalPowerSeries<mint>;\n\
+    \    assert((int)f.size() >= 2 && f[0] == 0 && f[1] != 0);\n    int n = (int)f.size()\
+    \ - 1;\n    mint inv_c = f[1].inv();\n    f *= inv_c;\n    std::vector<mint> w(n\
+    \ + 1);\n    w[n] = 1;\n    auto s = power_projection(f, w, n);\n    FPS g(n);\n\
+    \    for (int i = 1; i < n + 1; i++) {\n        g[n - i] = n * s[i] * inv<mint>(i);\n\
+    \    }\n    g = g.pow_1(mint(-n).inv()) << 1;\n    mint p = 1;\n    for (int i\
+    \ = 0; i < n + 1; i++) {\n        g[i] *= p;\n        p *= inv_c;\n    }\n   \
+    \ return g;\n}\n\n}  // namespace ebi"
   dependsOn:
-  - fps/composition_of_fps.hpp
   - fps/fps.hpp
   - modint/base.hpp
+  - fps/power_projection_of_fps.hpp
+  - math/mod_inv.hpp
   isVerificationFile: false
   path: fps/compositional_inverse_of_fps.hpp
   requiredBy: []
-  timestamp: '2024-05-23 21:35:59+09:00'
+  timestamp: '2024-05-24 14:32:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
 documentation_of: fps/compositional_inverse_of_fps.hpp
 layout: document
-title: "$f(x)$ \u306E\u9006\u95A2\u6570"
+title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\u6319"
 ---
 
 ## 説明
 
-形式的べき級数 $f$ について、その逆関数を求める。ニュートン法を用いると、形式的べき級数の合成がボトルネックとなり $O(N^2)$ となる。
+$i=0,1,\dots,M$ について、 $\sum_{j}^{n-1} w_j [x^j] f(x)^i$ を求める。 $O(N\log^2{N} + M\log{M})$
 
-$$
-g_{2n} = g_{n} - \frac{f(g_{n}) - x}{f^{\prime}(g_{n})} \mod x^{2n}
-$$
+### 参考文献
+
+[FPS 合成・逆関数の解説（１）逆関数と Power Projection](https://maspypy.com/fps-%e5%90%88%e6%88%90%e3%83%bb%e9%80%86%e9%96%a2%e6%95%b0%e3%81%ae%e8%a7%a3%e8%aa%ac-1-%e9%80%86%e9%96%a2%e6%95%b0%e3%81%a8-power-projection)

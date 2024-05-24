@@ -5,26 +5,24 @@ data:
     path: fps/fps.hpp
     title: Formal Power Series
   - icon: ':heavy_check_mark:'
-    path: fps/taylor_shift.hpp
-    title: $f(x + c)$
-  - icon: ':heavy_check_mark:'
-    path: math/binomial.hpp
-    title: Binomial Coefficient
-  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: fps/compositional_inverse_of_fps.hpp
+    title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\
+      \u6319"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-    title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/stirling_number_1st.hpp\"\n\n#include <bit>\n#include\
-    \ <cassert>\n\n#line 2 \"fps/fps.hpp\"\n\n#include <algorithm>\n#line 5 \"fps/fps.hpp\"\
+  bundledCode: "#line 2 \"fps/power_projection_of_fps.hpp\"\n\n#include <algorithm>\n\
+    #include <bit>\n#include <cassert>\n\n#line 2 \"fps/fps.hpp\"\n\n#line 5 \"fps/fps.hpp\"\
     \n#include <optional>\n#include <vector>\n\n#line 2 \"modint/base.hpp\"\n\n#include\
     \ <concepts>\n#include <iostream>\n#include <utility>\n\nnamespace ebi {\n\ntemplate\
     \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
@@ -123,77 +121,80 @@ data:
     \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
     \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
     \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
-    \ namespace ebi\n#line 2 \"fps/taylor_shift.hpp\"\n\n#line 2 \"math/binomial.hpp\"\
-    \n\n#line 5 \"math/binomial.hpp\"\n#include <cstdint>\n#line 7 \"math/binomial.hpp\"\
-    \n#include <ranges>\n#line 9 \"math/binomial.hpp\"\n\n#line 11 \"math/binomial.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint> struct Binomial {\n  private:\n\
-    \    static void extend(int len = -1) {\n        int sz = (int)fact.size();\n\
-    \        if (len < 0)\n            len = 2 * sz;\n        else if (len <= sz)\n\
-    \            return;\n        else\n            len = std::max(2 * sz, (int)std::bit_ceil(std::uint32_t(len)));\n\
-    \        len = std::min(len, mint::mod());\n        assert(sz <= len);\n     \
-    \   fact.resize(len);\n        inv_fact.resize(len);\n        for (int i : std::views::iota(sz,\
-    \ len)) {\n            fact[i] = fact[i - 1] * i;\n        }\n        inv_fact[len\
-    \ - 1] = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len)\
-    \ | std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n \
-    \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    Binomial(int n)\
-    \ {\n        extend(n + 1);\n    }\n\n    static mint f(int n) {\n        if (n\
-    \ >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n        }\n\
-    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        if\
-    \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
-    \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
-    \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
-    \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
-    \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
-    \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
-    \    }\n\n    static mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n\
-    \    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n    }\n\n\
-    \  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate <Modint\
-    \ mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2, 1);\n\n\
-    template <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
-    \ 1);\n\n}  // namespace ebi\n#line 6 \"fps/taylor_shift.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <Modint mint>\nFormalPowerSeries<mint> taylor_shift(FormalPowerSeries<mint>\
-    \ f, mint a) {\n    int d = f.deg();\n    Binomial<mint>::reserve(d);\n    for\
-    \ (int i = 0; i < d; i++) f[i] *= Binomial<mint>::f(i);\n    std::reverse(f.begin(),\
-    \ f.end());\n    FormalPowerSeries<mint> g(d, 1);\n    mint pow_a = a;\n    for\
-    \ (int i = 1; i < d; i++) {\n        g[i] = pow_a * Binomial<mint>::inv_f(i);\n\
-    \        pow_a *= a;\n    }\n    f = (f * g).pre(d);\n    std::reverse(f.begin(),\
-    \ f.end());\n    for (int i = 0; i < d; i++) f[i] *= Binomial<mint>::inv_f(i);\n\
-    \    return f;\n}\n\n}  // namespace ebi\n#line 9 \"math/stirling_number_1st.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint> FormalPowerSeries<mint> stirling_number_1st(int\
-    \ n) {\n    using FPS = FormalPowerSeries<mint>;\n    assert(n >= 0);\n    if\
-    \ (n == 0) return {1};\n    int lg = std::bit_width((unsigned int)(n)) - 1;\n\
-    \    FPS f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid\
-    \ = n >> i;\n        f *= taylor_shift<mint>(f, mid >> 1);\n        if (mid &\
-    \ 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
-    \ ebi\n"
-  code: "#pragma once\n\n#include <bit>\n#include <cassert>\n\n#include \"../fps/fps.hpp\"\
-    \n#include \"../fps/taylor_shift.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint> FormalPowerSeries<mint> stirling_number_1st(int\
-    \ n) {\n    using FPS = FormalPowerSeries<mint>;\n    assert(n >= 0);\n    if\
-    \ (n == 0) return {1};\n    int lg = std::bit_width((unsigned int)(n)) - 1;\n\
-    \    FPS f = {0, 1};\n    for (int i = lg - 1; i >= 0; i--) {\n        int mid\
-    \ = n >> i;\n        f *= taylor_shift<mint>(f, mid >> 1);\n        if (mid &\
-    \ 1) f = (f << 1) + f * (mid - 1);\n    }\n    return f;\n}\n\n}  // namespace\
-    \ ebi"
+    \ namespace ebi\n#line 9 \"fps/power_projection_of_fps.hpp\"\n\nnamespace ebi\
+    \ {\n\n// sum_j w_j [x^j] f^i, for i = 0,1,...,m\ntemplate <Modint mint>\nstd::vector<mint>\
+    \ power_projection(const FormalPowerSeries<mint> &f,\n                       \
+    \            const std::vector<mint> &w, int m) {\n    assert(f.size() == w.size());\n\
+    \    if (f.empty()) {\n        return std::vector<mint>(m + 1, 0);\n    }\n  \
+    \  assert(f[0] == 0);\n    int n = (int)std::bit_ceil(f.size());\n    std::vector\
+    \ P(n, std::vector<mint>(1, 0)), Q(n, std::vector<mint>(1, 0));\n    for (int\
+    \ i = 0; i < (int)f.size(); i++) {\n        P[n - 1 - i][0] = w[i];\n        Q[i][0]\
+    \ = -f[i];\n    }\n    int k = 1;\n    while (n > 1) {\n        auto R = Q;\n\
+    \        for (int i = 1; i < n; i += 2) {\n            for (int j = 0; j < k;\
+    \ j++) {\n                R[i][j] = -R[i][j];\n            }\n        }\n    \
+    \    auto conv_2d = [&](std::vector<std::vector<mint>> &a,\n                 \
+    \          std::vector<std::vector<mint>> &b)\n            -> std::vector<std::vector<mint>>\
+    \ {\n            FormalPowerSeries<mint> f(2 * n * k, 0), g(2 * n * k, 0);\n \
+    \           for (int i = 0; i < n; i++) {\n                for (int j = 0; j <\
+    \ k; j++) {\n                    f[2 * i * k + j] = a[i][j];\n               \
+    \     g[2 * i * k + j] = b[i][j];\n                }\n            }\n        \
+    \    f = f * g;\n            f.resize(4 * n * k);\n            std::vector c(2\
+    \ * n, std::vector<mint>(2 * k, 0));\n            for (int i = 0; i < 2 * n; i++)\
+    \ {\n                for (int j = 0; j < 2 * k; j++) {\n                    c[i][j]\
+    \ = f[i * 2 * k + j];\n                }\n            }\n            return c;\n\
+    \        };\n        auto PQ = conv_2d(P, R), QQ = conv_2d(Q, R);\n        for\
+    \ (int i = 0; i < n; i++) {\n            for (int j = 0; j < k; j++) {\n     \
+    \           PQ[i][j + k] += P[i][j];\n                QQ[i][j + k] += Q[i][j]\
+    \ + R[i][j];\n            }\n        }\n        for (int i = 0; i < n / 2; i++)\
+    \ {\n            P[i] = PQ[2 * i + 1];\n            Q[i] = QQ[2 * i];\n      \
+    \  }\n        P.resize(n / 2);\n        Q.resize(n / 2);\n        n /= 2;\n  \
+    \      k *= 2;\n    }\n    auto p = P[0];\n    std::reverse(p.begin(), p.end());\n\
+    \    p.resize(m + 1);\n    return p;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <algorithm>\n#include <bit>\n#include <cassert>\n\
+    \n#include \"../fps/fps.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace ebi\
+    \ {\n\n// sum_j w_j [x^j] f^i, for i = 0,1,...,m\ntemplate <Modint mint>\nstd::vector<mint>\
+    \ power_projection(const FormalPowerSeries<mint> &f,\n                       \
+    \            const std::vector<mint> &w, int m) {\n    assert(f.size() == w.size());\n\
+    \    if (f.empty()) {\n        return std::vector<mint>(m + 1, 0);\n    }\n  \
+    \  assert(f[0] == 0);\n    int n = (int)std::bit_ceil(f.size());\n    std::vector\
+    \ P(n, std::vector<mint>(1, 0)), Q(n, std::vector<mint>(1, 0));\n    for (int\
+    \ i = 0; i < (int)f.size(); i++) {\n        P[n - 1 - i][0] = w[i];\n        Q[i][0]\
+    \ = -f[i];\n    }\n    int k = 1;\n    while (n > 1) {\n        auto R = Q;\n\
+    \        for (int i = 1; i < n; i += 2) {\n            for (int j = 0; j < k;\
+    \ j++) {\n                R[i][j] = -R[i][j];\n            }\n        }\n    \
+    \    auto conv_2d = [&](std::vector<std::vector<mint>> &a,\n                 \
+    \          std::vector<std::vector<mint>> &b)\n            -> std::vector<std::vector<mint>>\
+    \ {\n            FormalPowerSeries<mint> f(2 * n * k, 0), g(2 * n * k, 0);\n \
+    \           for (int i = 0; i < n; i++) {\n                for (int j = 0; j <\
+    \ k; j++) {\n                    f[2 * i * k + j] = a[i][j];\n               \
+    \     g[2 * i * k + j] = b[i][j];\n                }\n            }\n        \
+    \    f = f * g;\n            f.resize(4 * n * k);\n            std::vector c(2\
+    \ * n, std::vector<mint>(2 * k, 0));\n            for (int i = 0; i < 2 * n; i++)\
+    \ {\n                for (int j = 0; j < 2 * k; j++) {\n                    c[i][j]\
+    \ = f[i * 2 * k + j];\n                }\n            }\n            return c;\n\
+    \        };\n        auto PQ = conv_2d(P, R), QQ = conv_2d(Q, R);\n        for\
+    \ (int i = 0; i < n; i++) {\n            for (int j = 0; j < k; j++) {\n     \
+    \           PQ[i][j + k] += P[i][j];\n                QQ[i][j + k] += Q[i][j]\
+    \ + R[i][j];\n            }\n        }\n        for (int i = 0; i < n / 2; i++)\
+    \ {\n            P[i] = PQ[2 * i + 1];\n            Q[i] = QQ[2 * i];\n      \
+    \  }\n        P.resize(n / 2);\n        Q.resize(n / 2);\n        n /= 2;\n  \
+    \      k *= 2;\n    }\n    auto p = P[0];\n    std::reverse(p.begin(), p.end());\n\
+    \    p.resize(m + 1);\n    return p;\n}\n\n}  // namespace ebi"
   dependsOn:
   - fps/fps.hpp
   - modint/base.hpp
-  - fps/taylor_shift.hpp
-  - math/binomial.hpp
   isVerificationFile: false
-  path: math/stirling_number_1st.hpp
-  requiredBy: []
+  path: fps/power_projection_of_fps.hpp
+  requiredBy:
+  - fps/compositional_inverse_of_fps.hpp
   timestamp: '2024-05-24 14:32:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-documentation_of: math/stirling_number_1st.hpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+documentation_of: fps/power_projection_of_fps.hpp
 layout: document
-title: Stirling Numbers of the First Kind
+redirect_from:
+- /library/fps/power_projection_of_fps.hpp
+- /library/fps/power_projection_of_fps.hpp.html
+title: fps/power_projection_of_fps.hpp
 ---
-
-## 説明
-
-第 $1$ 種スターリング数 $S(N, K)$ を $k = 0, \dots, N$ に対して求める。分割統治とTaylor Shiftを用いて $O(N\log N)$ で求める。
-
-$S(N, K)$ は、 $N$ 個の区別できる要素を $K$ 個のサイクルに並べる場合の数である。

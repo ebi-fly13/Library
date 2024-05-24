@@ -10,7 +10,11 @@ data:
     title: $f(g(x))$
   - icon: ':heavy_check_mark:'
     path: fps/compositional_inverse_of_fps.hpp
-    title: "$f(x)$ \u306E\u9006\u95A2\u6570"
+    title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\
+      \u6319"
+  - icon: ':heavy_check_mark:'
+    path: fps/compositional_inverse_of_fps_old.hpp
+    title: "$f(x)$ \u306E\u9006\u95A2\u6570 ( $O(N^2)$ )"
   - icon: ':heavy_check_mark:'
     path: fps/fps_sqrt.hpp
     title: $\sqrt{f}$
@@ -23,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/polynomial_interpolation.hpp
     title: Polynomial Interpolation
+  - icon: ':heavy_check_mark:'
+    path: fps/power_projection_of_fps.hpp
+    title: fps/power_projection_of_fps.hpp
   - icon: ':heavy_check_mark:'
     path: fps/product_of_fps.hpp
     title: $\prod f_i$
@@ -84,6 +91,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Division_of_Polynomials.test.cpp
     title: test/polynomial/Division_of_Polynomials.test.cpp
@@ -202,24 +212,35 @@ data:
     \ == 0);\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n\
     \        g[0] = 1;\n        while (n < d) {\n            n <<= 1;\n          \
     \  g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n        }\n        g.resize(d);\n\
-    \        return g;\n    }\n\n    FPS pow(int64_t k, int d = -1) const {\n    \
-    \    const int n = deg();\n        if (d < 0) d = n;\n        if (k == 0) {\n\
-    \            FPS f(d);\n            if (d > 0) f[0] = 1;\n            return f;\n\
-    \        }\n        for (int i = 0; i < n; i++) {\n            if ((*this)[i]\
-    \ != 0) {\n                mint rev = (*this)[i].inv();\n                FPS f\
-    \ = (((*this * rev) >> i).log(d) * k).exp(d);\n                f *= (*this)[i].pow(k);\n\
-    \                f = (f << (i * k)).pre(d);\n                if (f.deg() < d)\
-    \ f.resize(d);\n                return f;\n            }\n            if (i +\
-    \ 1 >= (d + k - 1) / k) break;\n        }\n        return FPS(d);\n    }\n\n \
-    \   int deg() const {\n        return (*this).size();\n    }\n\n    void shrink()\
-    \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
-    \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
-    \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
-    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n\
-    \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
-    \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
-    \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
-    \ f;\n    }\n};\n\n}  // namespace ebi\n"
+    \        return g;\n    }\n\n    FPS pow(long long k, int d = -1) const {\n  \
+    \      assert(k >= 0);\n        int n = deg();\n        if (d < 0) d = n;\n  \
+    \      if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0] = 1;\n\
+    \            return f;\n        }\n        int low = d;\n        for (int i =\
+    \ n - 1; i >= 0; i--)\n            if ((*this)[i] != 0) low = i;\n        if (low\
+    \ >= (d + k - 1) / k) return FPS(d, 0);\n        int offset = k * low;\n     \
+    \   mint c = (*this)[low];\n        FPS g(d - offset);\n        for (int i = 0;\
+    \ i < std::min(n - low, d - offset); i++) {\n            g[i] = (*this)[i + low];\n\
+    \        }\n        g /= c;\n        g = g.pow_1(k);\n        return (g << offset)\
+    \ * c.pow(k);\n    }\n\n    FPS pow_1(mint k, int d = -1) const {\n        assert((*this)[0]\
+    \ == 1);\n        return ((*this).log(d) * k).exp(d);\n    }\n\n    FPS pow_newton(long\
+    \ long k, int d = -1) const {\n        assert(k >= 0);\n        const int n =\
+    \ deg();\n        if (d < 0) d = n;\n        if (k == 0) {\n            FPS f(d);\n\
+    \            if (d > 0) f[0] = 1;\n            return f;\n        }\n        for\
+    \ (int i = 0; i < n; i++) {\n            if ((*this)[i] != 0) {\n            \
+    \    mint rev = (*this)[i].inv();\n                FPS f = (((*this * rev) >>\
+    \ i).log(d) * k).exp(d);\n                f *= (*this)[i].pow(k);\n          \
+    \      f = (f << (i * k)).pre(d);\n                if (f.deg() < d) f.resize(d);\n\
+    \                return f;\n            }\n            if (i + 1 >= (d + k - 1)\
+    \ / k) break;\n        }\n        return FPS(d);\n    }\n\n    int deg() const\
+    \ {\n        return (*this).size();\n    }\n\n    void shrink() {\n        while\
+    \ ((!this->empty()) && this->back() == 0) this->pop_back();\n    }\n\n    int\
+    \ count_terms() const {\n        int c = 0;\n        for (int i = 0; i < deg();\
+    \ i++) {\n            if ((*this)[i] != 0) c++;\n        }\n        return c;\n\
+    \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
+    \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
+    \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
+    \ namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <optional>\n\
     #include <vector>\n\n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
     \ <Modint mint> struct FormalPowerSeries : std::vector<mint> {\n  private:\n \
@@ -283,8 +304,19 @@ data:
     \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
     \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
     \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
-    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(int64_t\
-    \ k, int d = -1) const {\n        const int n = deg();\n        if (d < 0) d =\
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(long\
+    \ long k, int d = -1) const {\n        assert(k >= 0);\n        int n = deg();\n\
+    \        if (d < 0) d = n;\n        if (k == 0) {\n            FPS f(d);\n   \
+    \         if (d > 0) f[0] = 1;\n            return f;\n        }\n        int\
+    \ low = d;\n        for (int i = n - 1; i >= 0; i--)\n            if ((*this)[i]\
+    \ != 0) low = i;\n        if (low >= (d + k - 1) / k) return FPS(d, 0);\n    \
+    \    int offset = k * low;\n        mint c = (*this)[low];\n        FPS g(d -\
+    \ offset);\n        for (int i = 0; i < std::min(n - low, d - offset); i++) {\n\
+    \            g[i] = (*this)[i + low];\n        }\n        g /= c;\n        g =\
+    \ g.pow_1(k);\n        return (g << offset) * c.pow(k);\n    }\n\n    FPS pow_1(mint\
+    \ k, int d = -1) const {\n        assert((*this)[0] == 1);\n        return ((*this).log(d)\
+    \ * k).exp(d);\n    }\n\n    FPS pow_newton(long long k, int d = -1) const {\n\
+    \        assert(k >= 0);\n        const int n = deg();\n        if (d < 0) d =\
     \ n;\n        if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0]\
     \ = 1;\n            return f;\n        }\n        for (int i = 0; i < n; i++)\
     \ {\n            if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
@@ -312,10 +344,12 @@ data:
   - fps/product_of_fps.hpp
   - fps/composition_of_fps.hpp
   - fps/fps_sqrt.hpp
+  - fps/power_projection_of_fps.hpp
   - fps/polynomial_interpolation.hpp
   - fps/taylor_shift.hpp
   - fps/multipoint_evaluation.hpp
   - fps/compositional_inverse_of_fps.hpp
+  - fps/compositional_inverse_of_fps_old.hpp
   - fps/sum_of_rational_fps.hpp
   - math/sums_of_powers_iota.hpp
   - math/stirling_number_1st.hpp
@@ -323,7 +357,7 @@ data:
   - math/sums_of_powers.hpp
   - math/stirling_number_2nd.hpp
   - math/partition_function.hpp
-  timestamp: '2024-05-23 21:35:59+09:00'
+  timestamp: '2024-05-24 14:32:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
@@ -342,6 +376,7 @@ data:
   - test/polynomial/Polynomial_Interpolation.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Berunoulli_Number.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
@@ -423,14 +458,16 @@ $O(N\log N)$
 形式的べき級数 $f$ の $\exp$ を $\mod x^d$ で求める。
 $O(N\log N)$
 
-### pow(int64_t k, int d)
+### pow(long long k, int d)
 
-形式的べき級数 $f$ について $f^k \mod x^d$ を求める。愚直だと $O(N\log N \log K)$ だが、$\log$ を取って $k$ を掛けて $\exp$ を取ることで求める。
+非負整数 $k$ について、形式的べき級数 $f$ について $f^k \pmod{x^d}$ を求める。愚直だと $O(N\log N \log K)$ だが、$\log$ を取って $k$ を掛けて $\exp$ を取ることで求める。
 $O(N\log N)$
 
+### pow_1(mint k, int d)
+
+非零の有理数 $k$ 、 $[x^0] f = 1$ であるFPSについて、 $f^k \pmod{x^d}$ を求める。
+
 ### sqrt(int d)
-
-
 
 形式的べき級数 $f$ について $\sqrt{f}$ が存在するなら求める。存在しない場合は `std::nullopt`を返す。
 $O(N\log N)$

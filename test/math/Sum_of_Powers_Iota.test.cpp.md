@@ -317,8 +317,19 @@ data:
     \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
     \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
     \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
-    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(int64_t\
-    \ k, int d = -1) const {\n        const int n = deg();\n        if (d < 0) d =\
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(long\
+    \ long k, int d = -1) const {\n        assert(k >= 0);\n        int n = deg();\n\
+    \        if (d < 0) d = n;\n        if (k == 0) {\n            FPS f(d);\n   \
+    \         if (d > 0) f[0] = 1;\n            return f;\n        }\n        int\
+    \ low = d;\n        for (int i = n - 1; i >= 0; i--)\n            if ((*this)[i]\
+    \ != 0) low = i;\n        if (low >= (d + k - 1) / k) return FPS(d, 0);\n    \
+    \    int offset = k * low;\n        mint c = (*this)[low];\n        FPS g(d -\
+    \ offset);\n        for (int i = 0; i < std::min(n - low, d - offset); i++) {\n\
+    \            g[i] = (*this)[i + low];\n        }\n        g /= c;\n        g =\
+    \ g.pow_1(k);\n        return (g << offset) * c.pow(k);\n    }\n\n    FPS pow_1(mint\
+    \ k, int d = -1) const {\n        assert((*this)[0] == 1);\n        return ((*this).log(d)\
+    \ * k).exp(d);\n    }\n\n    FPS pow_newton(long long k, int d = -1) const {\n\
+    \        assert(k >= 0);\n        const int n = deg();\n        if (d < 0) d =\
     \ n;\n        if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0]\
     \ = 1;\n            return f;\n        }\n        for (int i = 0; i < n; i++)\
     \ {\n            if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
@@ -540,7 +551,7 @@ data:
   isVerificationFile: true
   path: test/math/Sum_of_Powers_Iota.test.cpp
   requiredBy: []
-  timestamp: '2024-05-23 21:35:59+09:00'
+  timestamp: '2024-05-24 14:32:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sum_of_Powers_Iota.test.cpp

@@ -89,33 +89,44 @@ data:
     \ == 0);\n        int n = 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n\
     \        g[0] = 1;\n        while (n < d) {\n            n <<= 1;\n          \
     \  g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n        }\n        g.resize(d);\n\
-    \        return g;\n    }\n\n    FPS pow(int64_t k, int d = -1) const {\n    \
-    \    const int n = deg();\n        if (d < 0) d = n;\n        if (k == 0) {\n\
-    \            FPS f(d);\n            if (d > 0) f[0] = 1;\n            return f;\n\
-    \        }\n        for (int i = 0; i < n; i++) {\n            if ((*this)[i]\
-    \ != 0) {\n                mint rev = (*this)[i].inv();\n                FPS f\
-    \ = (((*this * rev) >> i).log(d) * k).exp(d);\n                f *= (*this)[i].pow(k);\n\
-    \                f = (f << (i * k)).pre(d);\n                if (f.deg() < d)\
-    \ f.resize(d);\n                return f;\n            }\n            if (i +\
-    \ 1 >= (d + k - 1) / k) break;\n        }\n        return FPS(d);\n    }\n\n \
-    \   int deg() const {\n        return (*this).size();\n    }\n\n    void shrink()\
-    \ {\n        while ((!this->empty()) && this->back() == 0) this->pop_back();\n\
-    \    }\n\n    int count_terms() const {\n        int c = 0;\n        for (int\
-    \ i = 0; i < deg(); i++) {\n            if ((*this)[i] != 0) c++;\n        }\n\
-    \        return c;\n    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n\
-    \    static FPS exp_x(int n) {\n        FPS f(n);\n        mint fact = 1;\n  \
-    \      for (int i = 1; i < n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n\
-    \        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return\
-    \ f;\n    }\n};\n\n}  // namespace ebi\n#line 8 \"math/stirling_number_2nd.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint> FormalPowerSeries<mint> stirling_number_2nd(int\
-    \ n) {\n    using FPS = FormalPowerSeries<mint>;\n    assert(n >= 0);\n    FPS\
-    \ f(n + 1), g(n + 1);\n    std::vector<mint> fact(n + 1, 1);\n    for (int i =\
-    \ 1; i <= n; i++) fact[i] = fact[i - 1] * i;\n    std::vector<mint> inv_fact(n\
-    \ + 1);\n    inv_fact[n] = fact[n].inv();\n    for (int i = n; i > 0; i--) {\n\
-    \        inv_fact[i - 1] = inv_fact[i] * i;\n    }\n    for (int i = 0; i <= n;\
-    \ i++) {\n        f[i] = mint(i).pow(n) * inv_fact[i];\n        g[i] = (i & 1)\
-    \ ? -inv_fact[i] : inv_fact[i];\n    }\n    return (f * g).pre(n + 1);\n}\n\n\
-    }  // namespace ebi\n"
+    \        return g;\n    }\n\n    FPS pow(long long k, int d = -1) const {\n  \
+    \      assert(k >= 0);\n        int n = deg();\n        if (d < 0) d = n;\n  \
+    \      if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0] = 1;\n\
+    \            return f;\n        }\n        int low = d;\n        for (int i =\
+    \ n - 1; i >= 0; i--)\n            if ((*this)[i] != 0) low = i;\n        if (low\
+    \ >= (d + k - 1) / k) return FPS(d, 0);\n        int offset = k * low;\n     \
+    \   mint c = (*this)[low];\n        FPS g(d - offset);\n        for (int i = 0;\
+    \ i < std::min(n - low, d - offset); i++) {\n            g[i] = (*this)[i + low];\n\
+    \        }\n        g /= c;\n        g = g.pow_1(k);\n        return (g << offset)\
+    \ * c.pow(k);\n    }\n\n    FPS pow_1(mint k, int d = -1) const {\n        assert((*this)[0]\
+    \ == 1);\n        return ((*this).log(d) * k).exp(d);\n    }\n\n    FPS pow_newton(long\
+    \ long k, int d = -1) const {\n        assert(k >= 0);\n        const int n =\
+    \ deg();\n        if (d < 0) d = n;\n        if (k == 0) {\n            FPS f(d);\n\
+    \            if (d > 0) f[0] = 1;\n            return f;\n        }\n        for\
+    \ (int i = 0; i < n; i++) {\n            if ((*this)[i] != 0) {\n            \
+    \    mint rev = (*this)[i].inv();\n                FPS f = (((*this * rev) >>\
+    \ i).log(d) * k).exp(d);\n                f *= (*this)[i].pow(k);\n          \
+    \      f = (f << (i * k)).pre(d);\n                if (f.deg() < d) f.resize(d);\n\
+    \                return f;\n            }\n            if (i + 1 >= (d + k - 1)\
+    \ / k) break;\n        }\n        return FPS(d);\n    }\n\n    int deg() const\
+    \ {\n        return (*this).size();\n    }\n\n    void shrink() {\n        while\
+    \ ((!this->empty()) && this->back() == 0) this->pop_back();\n    }\n\n    int\
+    \ count_terms() const {\n        int c = 0;\n        for (int i = 0; i < deg();\
+    \ i++) {\n            if ((*this)[i] != 0) c++;\n        }\n        return c;\n\
+    \    }\n\n    std::optional<FPS> sqrt(int d = -1) const;\n\n    static FPS exp_x(int\
+    \ n) {\n        FPS f(n);\n        mint fact = 1;\n        for (int i = 1; i <\
+    \ n; i++) fact *= i;\n        f[n - 1] = fact.inv();\n        for (int i = n -\
+    \ 1; i >= 0; i--) f[i - 1] = f[i] * i;\n        return f;\n    }\n};\n\n}  //\
+    \ namespace ebi\n#line 8 \"math/stirling_number_2nd.hpp\"\n\nnamespace ebi {\n\
+    \ntemplate <Modint mint> FormalPowerSeries<mint> stirling_number_2nd(int n) {\n\
+    \    using FPS = FormalPowerSeries<mint>;\n    assert(n >= 0);\n    FPS f(n +\
+    \ 1), g(n + 1);\n    std::vector<mint> fact(n + 1, 1);\n    for (int i = 1; i\
+    \ <= n; i++) fact[i] = fact[i - 1] * i;\n    std::vector<mint> inv_fact(n + 1);\n\
+    \    inv_fact[n] = fact[n].inv();\n    for (int i = n; i > 0; i--) {\n       \
+    \ inv_fact[i - 1] = inv_fact[i] * i;\n    }\n    for (int i = 0; i <= n; i++)\
+    \ {\n        f[i] = mint(i).pow(n) * inv_fact[i];\n        g[i] = (i & 1) ? -inv_fact[i]\
+    \ : inv_fact[i];\n    }\n    return (f * g).pre(n + 1);\n}\n\n}  // namespace\
+    \ ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../fps/fps.hpp\"\
     \n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\
     \ FormalPowerSeries<mint> stirling_number_2nd(int n) {\n    using FPS = FormalPowerSeries<mint>;\n\
@@ -132,7 +143,7 @@ data:
   isVerificationFile: false
   path: math/stirling_number_2nd.hpp
   requiredBy: []
-  timestamp: '2024-05-23 21:35:59+09:00'
+  timestamp: '2024-05-24 14:32:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Stirling_Number_of_the_Second_Kind.test.cpp

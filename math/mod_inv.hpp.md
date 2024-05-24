@@ -6,6 +6,10 @@ data:
     title: modint/base.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: fps/compositional_inverse_of_fps.hpp
+    title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\
+      \u6319"
+  - icon: ':heavy_check_mark:'
     path: fps/fps_sparse.hpp
     title: Formal Power Series (Sparse)
   - icon: ':heavy_check_mark:'
@@ -27,6 +31,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sharp_P_Subset_Sum.test.cpp
     title: test/math/Sharp_P_Subset_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
     title: test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
@@ -79,6 +86,7 @@ data:
   - fps/product_of_one_plus_xn.hpp
   - fps/product_of_one_minus_xn.hpp
   - fps/fps_sqrt.hpp
+  - fps/compositional_inverse_of_fps.hpp
   - fps/fps_sparse.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -89,6 +97,7 @@ data:
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Partition_Function_FPS.test.cpp

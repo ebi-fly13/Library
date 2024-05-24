@@ -235,7 +235,11 @@ data:
       title: $f(g(x))$
     - icon: ':heavy_check_mark:'
       path: fps/compositional_inverse_of_fps.hpp
-      title: "$f(x)$ \u306E\u9006\u95A2\u6570"
+      title: "$\\sum_{j}^{n-1} w_j [x^j] f(x)^i$ \u306E $i = 0,1,\\dots,M$ \u306E\u5217\
+        \u6319"
+    - icon: ':heavy_check_mark:'
+      path: fps/compositional_inverse_of_fps_old.hpp
+      title: "$f(x)$ \u306E\u9006\u95A2\u6570 ( $O(N^2)$ )"
     - icon: ':heavy_check_mark:'
       path: fps/fps.hpp
       title: Formal Power Series
@@ -260,6 +264,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/polynomial_interpolation.hpp
       title: Polynomial Interpolation
+    - icon: ':heavy_check_mark:'
+      path: fps/power_projection_of_fps.hpp
+      title: fps/power_projection_of_fps.hpp
     - icon: ':heavy_check_mark:'
       path: fps/product_of_fps.hpp
       title: $\prod f_i$
@@ -1000,6 +1007,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
       title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+      title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/polynomial/Division_of_Polynomials.test.cpp
       title: test/polynomial/Division_of_Polynomials.test.cpp
