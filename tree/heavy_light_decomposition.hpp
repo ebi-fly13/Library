@@ -140,6 +140,14 @@ template <class T> struct heavy_light_decomposition {
         return distance(u, v) == distance(u, s) + distance(s, v);
     }
 
+    std::pair<int, int> subtree_section(int v) const {
+        return {in[v], out[v]};
+    }
+
+    bool is_subtree(int u, int v) const {
+        return in[u] <= in[v] && in[v] < out[u];
+    }
+
     template <class F>
     void path_noncommutative_query(int u, int v, bool vertex,
                                    const F &f) const {
