@@ -172,36 +172,38 @@ data:
     \ v)];\n    }\n\n    T distance_from_root(int v) const {\n        return dist[v];\n\
     \    }\n\n    T depth(int v) const {\n        return depth_[v];\n    }\n\n   \
     \ bool at_path(int u, int v, int s) const {\n        return distance(u, v) ==\
-    \ distance(u, s) + distance(s, v);\n    }\n\n    template <class F>\n    void\
-    \ path_noncommutative_query(int u, int v, bool vertex,\n                     \
-    \              const F &f) const {\n        int l = lca(u, v);\n        for (auto\
-    \ [a, b] : ascend(u, l)) f(a + 1, b);\n        if (vertex) f(in[l], in[l] + 1);\n\
-    \        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    std::vector<std::pair<int,\
-    \ int>> path_sections(int u, int v,\n                                        \
-    \           bool vertex) const {\n        int l = lca(u, v);\n        std::vector<std::pair<int,\
-    \ int>> sections;\n        for (auto [a, b] : ascend(u, l)) sections.emplace_back(a\
-    \ + 1, b);\n        if (vertex) sections.emplace_back(in[l], in[l] + 1);\n   \
-    \     for (auto [a, b] : descend(l, v)) sections.emplace_back(a, b + 1);\n   \
-    \     return sections;\n    }\n\n    template <class F>\n    int max_path(int\
-    \ u, int v, bool vertex, F binary_search) const {\n        int prev = -1;\n  \
-    \      int l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) {\n      \
-    \      a++;\n            int m = binary_search(a, b);\n            if (m == b)\
-    \ {\n                prev = rev[b];\n            } else {\n                return\
-    \ (m == a ? prev : rev[m]);\n            }\n        }\n        if (vertex) {\n\
-    \            int m = binary_search(in[l], in[l] + 1);\n            if (m == in[l])\
-    \ {\n                return prev;\n            } else {\n                prev\
-    \ = l;\n            }\n        }\n        for (auto [a, b] : descend(l, v)) {\n\
-    \            b++;\n            int m = binary_search(a, b);\n            if (m\
-    \ == b) {\n                prev = rev[b - 1];\n            } else {\n        \
-    \        return m == a ? prev : rev[m - 1];\n            }\n        }\n      \
-    \  return v;\n    }\n\n    template <class F> void subtree_query(int u, bool vertex,\
-    \ const F &f) {\n        f(in[u] + int(!vertex), out[u]);\n    }\n\n    const\
-    \ std::vector<int> &dfs_order() const {\n        return rev;\n    }\n\n    std::vector<std::pair<int,\
-    \ int>> lca_based_auxiliary_tree_dfs_order(\n        std::vector<int> vs) const;\n\
-    \n    std::pair<std::vector<int>, Graph<T>> lca_based_auxiliary_tree(\n      \
-    \  std::vector<int> vs) const;\n\n  private:\n    int n;\n    std::vector<int>\
-    \ sz, in, out, nxt, par, depth_, rev;\n    std::vector<T> dist;\n\n    int num\
-    \ = 0;\n};\n\n}  // namespace ebi\n#line 9 \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\
+    \ distance(u, s) + distance(s, v);\n    }\n\n    std::pair<int, int> subtree_section(int\
+    \ v) const {\n        return {in[v], out[v]};\n    }\n\n    bool is_subtree(int\
+    \ u, int v) const {\n        return in[u] <= in[v] && in[v] < out[u];\n    }\n\
+    \n    template <class F>\n    void path_noncommutative_query(int u, int v, bool\
+    \ vertex,\n                                   const F &f) const {\n        int\
+    \ l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n    \
+    \    if (vertex) f(in[l], in[l] + 1);\n        for (auto [a, b] : descend(l, v))\
+    \ f(a, b + 1);\n    }\n\n    std::vector<std::pair<int, int>> path_sections(int\
+    \ u, int v,\n                                                   bool vertex) const\
+    \ {\n        int l = lca(u, v);\n        std::vector<std::pair<int, int>> sections;\n\
+    \        for (auto [a, b] : ascend(u, l)) sections.emplace_back(a + 1, b);\n \
+    \       if (vertex) sections.emplace_back(in[l], in[l] + 1);\n        for (auto\
+    \ [a, b] : descend(l, v)) sections.emplace_back(a, b + 1);\n        return sections;\n\
+    \    }\n\n    template <class F>\n    int max_path(int u, int v, bool vertex,\
+    \ F binary_search) const {\n        int prev = -1;\n        int l = lca(u, v);\n\
+    \        for (auto [a, b] : ascend(u, l)) {\n            a++;\n            int\
+    \ m = binary_search(a, b);\n            if (m == b) {\n                prev =\
+    \ rev[b];\n            } else {\n                return (m == a ? prev : rev[m]);\n\
+    \            }\n        }\n        if (vertex) {\n            int m = binary_search(in[l],\
+    \ in[l] + 1);\n            if (m == in[l]) {\n                return prev;\n \
+    \           } else {\n                prev = l;\n            }\n        }\n  \
+    \      for (auto [a, b] : descend(l, v)) {\n            b++;\n            int\
+    \ m = binary_search(a, b);\n            if (m == b) {\n                prev =\
+    \ rev[b - 1];\n            } else {\n                return m == a ? prev : rev[m\
+    \ - 1];\n            }\n        }\n        return v;\n    }\n\n    template <class\
+    \ F> void subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
+    \ out[u]);\n    }\n\n    const std::vector<int> &dfs_order() const {\n       \
+    \ return rev;\n    }\n\n    std::vector<std::pair<int, int>> lca_based_auxiliary_tree_dfs_order(\n\
+    \        std::vector<int> vs) const;\n\n    std::pair<std::vector<int>, Graph<T>>\
+    \ lca_based_auxiliary_tree(\n        std::vector<int> vs) const;\n\n  private:\n\
+    \    int n;\n    std::vector<int> sz, in, out, nxt, par, depth_, rev;\n    std::vector<T>\
+    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 9 \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\
     \n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
     i64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n\
     \ >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n     \
@@ -243,7 +245,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-04-28 15:17:37+09:00'
+  timestamp: '2024-05-26 14:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Path_Sum.test.cpp

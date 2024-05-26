@@ -6,6 +6,9 @@ data:
     path: string/rolling_hash.hpp
     title: Rolling Hash
   - icon: ':heavy_check_mark:'
+    path: string/wildcard_pattern_matching.hpp
+    title: Wildcard Pattern Matching
+  - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
   - icon: ':heavy_check_mark:'
@@ -27,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/string/Wildcard_Pattern_Matching.test.cpp
+    title: test/string/Wildcard_Pattern_Matching.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
@@ -56,6 +62,7 @@ data:
   path: utility/random_number_generator.hpp
   requiredBy:
   - string/rolling_hash.hpp
+  - string/wildcard_pattern_matching.hpp
   - utility/hash.hpp
   - tree/rooted_tree_hash.hpp
   timestamp: '2023-12-26 02:24:03+09:00'
@@ -63,6 +70,7 @@ data:
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
   - test/data_structure/Range_Parallel_DSU.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp
   - test/convolution/Convolution_2D.test.cpp
