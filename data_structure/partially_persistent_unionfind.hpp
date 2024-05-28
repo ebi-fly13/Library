@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <limits>
 #include <vector>
 
 /*
@@ -18,7 +19,8 @@ struct partially_persistent_unionfind {
     std::vector<std::vector<std::pair<int, int>>> data;
 
   public:
-    partially_persistent_unionfind(int n) : par(n, 1), time(n, 1e9), data(n) {
+    partially_persistent_unionfind(int n)
+        : par(n, 1), time(n, std::numeric_limits<int>::max()), data(n) {
         for (auto &v : data) {
             v.emplace_back(0, 1);
         }
@@ -50,8 +52,10 @@ struct partially_persistent_unionfind {
 
     int size(int t, int v) {
         v = find(t, v);
-        return std::prev(std::upper_bound(data[v].begin(), data[v].end(),
-                                          std::pair<int, int>(t, 0)))
+        return std::prev(
+                   std::upper_bound(
+                       data[v].begin(), data[v].end(),
+                       std::pair<int, int>(t, std::numeric_limits<int>::max())))
             ->second;
     }
 };
