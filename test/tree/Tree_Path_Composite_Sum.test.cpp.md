@@ -159,25 +159,25 @@ data:
     \ {\n            auto edge = g[v][i];\n            E ret =\n                put_edge(edge.cost,\n\
     \                         put_root(v, merge(merge(lcum[i], rcum[i + 1]), rev)));\n\
     \            dfs_all(edge.to, v, ret);\n        }\n        dp[v] = put_root(v,\
-    \ merge(lcum[sz], rev));\n    }\n\n  public:\n    rerooting(int n, const Graph<T>\
-    \ &g_) : n(n), g(g_), sub(n), dp(n), outs(n) {\n        dfs_sub(0);\n        dfs_all(0);\n\
-    \    }\n\n    V get(int v) const {\n        return dp[v];\n    }\n\n  private:\n\
-    \    int n;\n    Graph<T> g;\n    std::vector<V> sub;\n    std::vector<V> dp;\n\
-    \    std::vector<std::vector<E>> outs;\n};\n\n}  // namespace ebi\n#line 9 \"\
-    test/tree/Tree_Path_Composite_Sum.test.cpp\"\n\nusing mint = ebi::modint998244353;\n\
-    \nstd::vector<mint> a;\n\nstruct S {\n    mint sum;\n    mint sz;\n};\n\nS e()\
-    \ {\n    return {0, 0};\n}\n\nS merge(S lhs, S rhs) {\n    return {lhs.sum + rhs.sum,\
-    \ lhs.sz + rhs.sz};\n}\n\nS put_edge(std::pair<mint, mint> e, S x) {\n    auto\
-    \ [b, c] = e;\n    return {b * x.sum + c * x.sz, x.sz};\n}\n\nS put_root(int idx,\
-    \ S x) {\n    return {a[idx] + x.sum, x.sz + 1};\n}\n\nint main() {\n    int n;\n\
-    \    std::cin >> n;\n    for (int i = 0; i < n; i++) {\n        int val;\n   \
-    \     std::cin >> val;\n        a.emplace_back(val);\n    }\n    ebi::Graph<std::pair<mint,\
-    \ mint>> g(n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v, b, c;\n\
-    \        std::cin >> u >> v >> b >> c;\n        g.add_edge(u, v, {b, c});\n  \
-    \      g.add_edge(v, u, {b, c});\n    }\n    g.build();\n    ebi::rerooting<std::pair<mint,\
-    \ mint>, S, S, e, merge, put_edge, put_root>\n        dp(n, g);\n    for (int\
-    \ i = 0; i < n; i++) {\n        std::cout << dp.get(i).sum.val() << \" \\n\"[i\
-    \ == n - 1];\n    }\n}\n"
+    \ merge(lcum[sz], rev));\n    }\n\n  public:\n    rerooting(const Graph<T> &g_)\n\
+    \        : n((int)g_.size()), g(g_), sub(n), dp(n), outs(n) {\n        dfs_sub(0);\n\
+    \        dfs_all(0);\n    }\n\n    V get(int v) const {\n        return dp[v];\n\
+    \    }\n\n  private:\n    int n;\n    Graph<T> g;\n    std::vector<V> sub;\n \
+    \   std::vector<V> dp;\n    std::vector<std::vector<E>> outs;\n};\n\n}  // namespace\
+    \ ebi\n#line 9 \"test/tree/Tree_Path_Composite_Sum.test.cpp\"\n\nusing mint =\
+    \ ebi::modint998244353;\n\nstd::vector<mint> a;\n\nstruct S {\n    mint sum;\n\
+    \    mint sz;\n};\n\nS e() {\n    return {0, 0};\n}\n\nS merge(S lhs, S rhs) {\n\
+    \    return {lhs.sum + rhs.sum, lhs.sz + rhs.sz};\n}\n\nS put_edge(std::pair<mint,\
+    \ mint> e, S x) {\n    auto [b, c] = e;\n    return {b * x.sum + c * x.sz, x.sz};\n\
+    }\n\nS put_root(int idx, S x) {\n    return {a[idx] + x.sum, x.sz + 1};\n}\n\n\
+    int main() {\n    int n;\n    std::cin >> n;\n    for (int i = 0; i < n; i++)\
+    \ {\n        int val;\n        std::cin >> val;\n        a.emplace_back(val);\n\
+    \    }\n    ebi::Graph<std::pair<mint, mint>> g(n);\n    for (int i = 0; i < n\
+    \ - 1; i++) {\n        int u, v, b, c;\n        std::cin >> u >> v >> b >> c;\n\
+    \        g.add_edge(u, v, {b, c});\n        g.add_edge(v, u, {b, c});\n    }\n\
+    \    g.build();\n    ebi::rerooting<std::pair<mint, mint>, S, S, e, merge, put_edge,\
+    \ put_root>\n        dp(g);\n    for (int i = 0; i < n; i++) {\n        std::cout\
+    \ << dp.get(i).sum.val() << \" \\n\"[i == n - 1];\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
     \n\n#include <iostream>\n#include <vector>\n\n#include \"../../graph/base.hpp\"\
     \n#include \"../../modint/modint.hpp\"\n#include \"../../tree/rerooting.hpp\"\n\
@@ -192,7 +192,7 @@ data:
     \ - 1; i++) {\n        int u, v, b, c;\n        std::cin >> u >> v >> b >> c;\n\
     \        g.add_edge(u, v, {b, c});\n        g.add_edge(v, u, {b, c});\n    }\n\
     \    g.build();\n    ebi::rerooting<std::pair<mint, mint>, S, S, e, merge, put_edge,\
-    \ put_root>\n        dp(n, g);\n    for (int i = 0; i < n; i++) {\n        std::cout\
+    \ put_root>\n        dp(g);\n    for (int i = 0; i < n; i++) {\n        std::cout\
     \ << dp.get(i).sum.val() << \" \\n\"[i == n - 1];\n    }\n}"
   dependsOn:
   - graph/base.hpp
@@ -203,7 +203,7 @@ data:
   isVerificationFile: true
   path: test/tree/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-05-23 18:52:03+09:00'
+  timestamp: '2024-06-04 23:11:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Tree_Path_Composite_Sum.test.cpp

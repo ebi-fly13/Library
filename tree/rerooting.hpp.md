@@ -94,11 +94,11 @@ data:
     \            E ret =\n                put_edge(edge.cost,\n                  \
     \       put_root(v, merge(merge(lcum[i], rcum[i + 1]), rev)));\n            dfs_all(edge.to,\
     \ v, ret);\n        }\n        dp[v] = put_root(v, merge(lcum[sz], rev));\n  \
-    \  }\n\n  public:\n    rerooting(int n, const Graph<T> &g_) : n(n), g(g_), sub(n),\
-    \ dp(n), outs(n) {\n        dfs_sub(0);\n        dfs_all(0);\n    }\n\n    V get(int\
-    \ v) const {\n        return dp[v];\n    }\n\n  private:\n    int n;\n    Graph<T>\
-    \ g;\n    std::vector<V> sub;\n    std::vector<V> dp;\n    std::vector<std::vector<E>>\
-    \ outs;\n};\n\n}  // namespace ebi\n"
+    \  }\n\n  public:\n    rerooting(const Graph<T> &g_)\n        : n((int)g_.size()),\
+    \ g(g_), sub(n), dp(n), outs(n) {\n        dfs_sub(0);\n        dfs_all(0);\n\
+    \    }\n\n    V get(int v) const {\n        return dp[v];\n    }\n\n  private:\n\
+    \    int n;\n    Graph<T> g;\n    std::vector<V> sub;\n    std::vector<V> dp;\n\
+    \    std::vector<std::vector<E>> outs;\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <utility>\n#include <vector>\n\
     \n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T, class\
     \ V, class E, E (*e)(), E (*merge)(E, E),\n          E (*put_edge)(T, V), V (*put_root)(int,\
@@ -116,18 +116,19 @@ data:
     \ {\n            auto edge = g[v][i];\n            E ret =\n                put_edge(edge.cost,\n\
     \                         put_root(v, merge(merge(lcum[i], rcum[i + 1]), rev)));\n\
     \            dfs_all(edge.to, v, ret);\n        }\n        dp[v] = put_root(v,\
-    \ merge(lcum[sz], rev));\n    }\n\n  public:\n    rerooting(int n, const Graph<T>\
-    \ &g_) : n(n), g(g_), sub(n), dp(n), outs(n) {\n        dfs_sub(0);\n        dfs_all(0);\n\
-    \    }\n\n    V get(int v) const {\n        return dp[v];\n    }\n\n  private:\n\
-    \    int n;\n    Graph<T> g;\n    std::vector<V> sub;\n    std::vector<V> dp;\n\
-    \    std::vector<std::vector<E>> outs;\n};\n\n}  // namespace ebi\n"
+    \ merge(lcum[sz], rev));\n    }\n\n  public:\n    rerooting(const Graph<T> &g_)\n\
+    \        : n((int)g_.size()), g(g_), sub(n), dp(n), outs(n) {\n        dfs_sub(0);\n\
+    \        dfs_all(0);\n    }\n\n    V get(int v) const {\n        return dp[v];\n\
+    \    }\n\n  private:\n    int n;\n    Graph<T> g;\n    std::vector<V> sub;\n \
+    \   std::vector<V> dp;\n    std::vector<std::vector<E>> outs;\n};\n\n}  // namespace\
+    \ ebi\n"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
   path: tree/rerooting.hpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-06-04 23:11:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Tree_Path_Composite_Sum.test.cpp
