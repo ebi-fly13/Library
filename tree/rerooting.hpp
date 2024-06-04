@@ -44,7 +44,8 @@ struct rerooting {
     }
 
   public:
-    rerooting(int n, const Graph<T> &g_) : n(n), g(g_), sub(n), dp(n), outs(n) {
+    rerooting(const Graph<T> &g_)
+        : n((int)g_.size()), g(g_), sub(n), dp(n), outs(n) {
         dfs_sub(0);
         dfs_all(0);
     }

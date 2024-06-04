@@ -50,7 +50,7 @@ int main() {
     }
     g.build();
     ebi::rerooting<std::pair<mint, mint>, S, S, e, merge, put_edge, put_root>
-        dp(n, g);
+        dp(g);
     for (int i = 0; i < n; i++) {
         std::cout << dp.get(i).sum.val() << " \n"[i == n - 1];
     }
