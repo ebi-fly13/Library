@@ -10,6 +10,7 @@ namespace ebi {
 template <Modint mint>
 mint count_directed_euler_circuit(const std::vector<std::vector<int>> &g) {
     int n = (int)g.size();
+    if(n == 0) return 1;
     std::vector<int> indeg(n, 0);
     std::vector<int> outdeg(n, 0);
     for (int i = 0; i < n; i++) {
@@ -42,6 +43,7 @@ mint count_directed_euler_circuit(const Graph<T> &g) {
 template <Modint mint>
 mint count_directed_euler_trail(std::vector<std::vector<int>> g) {
     int n = (int)g.size();
+    if(n == 0) return 1;
     std::vector<int> indeg(n, 0);
     std::vector<int> outdeg(n, 0);
     for (int i = 0; i < n; i++) {
