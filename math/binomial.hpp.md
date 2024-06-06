@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
+  - icon: ':warning:'
+    path: graph/count_directed_euler_trail.hpp
+    title: graph/count_directed_euler_trail.hpp
   - icon: ':heavy_check_mark:'
     path: math/catalan_convolution.hpp
     title: Catalan's Convolution Formula
@@ -132,6 +135,7 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
+  - graph/count_directed_euler_trail.hpp
   - fps/taylor_shift.hpp
   - fps/shift_of_sampling_points_of_poly.hpp
   - math/stirling_number_1st.hpp

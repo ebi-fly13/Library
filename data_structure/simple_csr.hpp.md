@@ -20,6 +20,12 @@ data:
   - icon: ':warning:'
     path: graph/complement_graph_bfs.hpp
     title: Complement Graph BFS
+  - icon: ':warning:'
+    path: graph/count_directed_euler_trail.hpp
+    title: graph/count_directed_euler_trail.hpp
+  - icon: ':heavy_check_mark:'
+    path: graph/count_spanning_tree.hpp
+    title: Count Spanning Tree
   - icon: ':heavy_check_mark:'
     path: graph/cycle_detection.hpp
     title: Cycle Detection
@@ -168,6 +174,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
+    title: test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
+    title: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Directed.test.cpp
     title: test/graph/Cycle_Detection_Directed.test.cpp
@@ -416,6 +428,7 @@ data:
   - graph/dijkstra.hpp
   - graph/two_edge_connected_components.hpp
   - graph/scc_graph.hpp
+  - graph/count_spanning_tree.hpp
   - graph/directed_mst.hpp
   - graph/chromatic_number.hpp
   - graph/mst.hpp
@@ -428,6 +441,7 @@ data:
   - graph/bellman_ford.hpp
   - graph/complement_graph_bfs.hpp
   - graph/maximum_independent_set.hpp
+  - graph/count_directed_euler_trail.hpp
   - graph/euler_trail.hpp
   - template/utility.hpp
   - template/template.hpp
@@ -482,9 +496,11 @@ data:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - test/graph/Shortest_Path.test.cpp
   - test/graph/Directed_MST.test.cpp
+  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
   - test/graph/dijkstra.test.cpp
   - test/graph/Manhattan_MST.test.cpp
   - test/graph/Cycle_Detection_Directed.test.cpp
+  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - test/graph/Two_Edge_Connected_Components.test.cpp
   - test/graph/Eulerian_Trail_Undirected.test.cpp
   - test/graph/Maximum_Independent_Set.test.cpp

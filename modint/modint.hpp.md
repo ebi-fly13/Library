@@ -79,6 +79,12 @@ data:
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
+    title: test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
+    title: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Berunoulli_Number.test.cpp
     title: test/math/Berunoulli_Number.test.cpp
   - icon: ':heavy_check_mark:'
@@ -393,6 +399,8 @@ data:
   - test/polynomial/Multipoint_Evaluation.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
+  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Catalan_Convolution.test.cpp

@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: graph/count_directed_euler_trail.hpp
+    title: graph/count_directed_euler_trail.hpp
+  - icon: ':heavy_check_mark:'
+    path: graph/count_spanning_tree.hpp
+    title: Count Spanning Tree
   - icon: ':heavy_check_mark:'
     path: matrix/det_arbitrary_mod.hpp
     title: matrix/det_arbitrary_mod.hpp
@@ -9,6 +15,12 @@ data:
     path: matrix/gauss_jordan.hpp
     title: matrix/gauss_jordan.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
+    title: test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
+    title: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix_2.test.cpp
     title: test/matrix/Determinant_of_Matrix_2.test.cpp
@@ -196,11 +208,15 @@ data:
   isVerificationFile: false
   path: matrix/base.hpp
   requiredBy:
+  - graph/count_spanning_tree.hpp
+  - graph/count_directed_euler_trail.hpp
   - matrix/gauss_jordan.hpp
   - matrix/det_arbitrary_mod.hpp
   timestamp: '2024-04-19 19:44:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/Matrix_Product.test.cpp

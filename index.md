@@ -325,6 +325,12 @@ data:
     - icon: ':warning:'
       path: graph/complement_graph_bfs.hpp
       title: Complement Graph BFS
+    - icon: ':warning:'
+      path: graph/count_directed_euler_trail.hpp
+      title: graph/count_directed_euler_trail.hpp
+    - icon: ':heavy_check_mark:'
+      path: graph/count_spanning_tree.hpp
+      title: Count Spanning Tree
     - icon: ':heavy_check_mark:'
       path: graph/cycle_detection.hpp
       title: Cycle Detection
@@ -869,6 +875,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Chromatic_Number.test.cpp
       title: test/graph/Chromatic_Number.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
+      title: test/graph/Counting_Spanning_Trees_Directed.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
+      title: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/Cycle_Detection_Directed.test.cpp
       title: test/graph/Cycle_Detection_Directed.test.cpp
