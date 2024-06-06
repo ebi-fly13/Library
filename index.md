@@ -312,7 +312,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: graph/base.hpp
-      title: Graph (CSR format)
+      title: "\u4FBF\u5229\u95A2\u6570"
     - icon: ':heavy_check_mark:'
       path: graph/bellman_ford.hpp
       title: Bellman-Ford
@@ -364,6 +364,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/two_edge_connected_components.hpp
       title: Two Edge Connected Components
+    - icon: ':warning:'
+      path: graph/utility.hpp
+      title: graph/utility.hpp
   - name: math
     pages:
     - icon: ':heavy_check_mark:'

@@ -9,7 +9,7 @@ data:
     title: Simple CSR
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: Graph (CSR format)
+    title: "\u4FBF\u5229\u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: graph/chromatic_number.hpp
     title: "Chromatic Number (\u5F69\u8272\u6570)"

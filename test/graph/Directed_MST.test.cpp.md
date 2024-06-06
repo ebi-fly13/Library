@@ -9,7 +9,7 @@ data:
     title: data_structure/skew_heap.hpp
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: Graph (CSR format)
+    title: "\u4FBF\u5229\u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: graph/directed_mst.hpp
     title: Directed MST

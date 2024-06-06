@@ -59,6 +59,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
+  - icon: ':warning:'
+    path: graph/utility.hpp
+    title: graph/utility.hpp
   - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
@@ -476,6 +479,7 @@ data:
   - graph/two_edge_connected_components.hpp
   - graph/scc_graph.hpp
   - graph/count_spanning_tree.hpp
+  - graph/utility.hpp
   - graph/directed_mst.hpp
   - graph/chromatic_number.hpp
   - graph/mst.hpp
@@ -597,37 +601,17 @@ data:
   - test/tree/Jump_on_Tree_HLD.test.cpp
 documentation_of: graph/base.hpp
 layout: document
-title: Graph (CSR format)
+title: "\u4FBF\u5229\u95A2\u6570"
 ---
 
 ## 説明
 
-CSR形式でグラフを保持する。辺を追加した後、 `build()` を実行する必要がある。
+グラフを取り扱う便利関数詰め合わせ。
 
-### Graph<T>(int n)
+### remove_isolated_vertex(Graph<T> g)
 
-頂点数 $n$ のグラフを作る。
+$g$ から孤立点を取り除いたグラフを返す。
 
-### add_edge(int u, int v, T c)
+### remove_isolated_vertex(std::vector<std::vector<int>> g)
 
-$u$ $v$ 間に重み $c$ の有向辺を貼る。
-
-### read_tree(int offset, bool is_weighted)
-
-木を標準入力から入力する。
-
-### read_parents(int offset)
-
-木を標準入力から入力する。根を $0$ として親を入力として受け取る。
-
-### read_graph(int e, int offset, bool is_directed, bool is_weighted)
-
-$m$ 辺のグラフを標準入力から入力する。
-
-### build()
-
-グラフを構築する。 $O(N)$
-
-### size()
-
-頂点数を返す。
+グラフを隣接行列表現で与え、 $g$ から孤立店を取り除いたグラフを返す。

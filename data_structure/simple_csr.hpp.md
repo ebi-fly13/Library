@@ -7,7 +7,7 @@ data:
     title: algorithm/two_sat.hpp
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: Graph (CSR format)
+    title: "\u4FBF\u5229\u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: graph/bellman_ford.hpp
     title: Bellman-Ford
@@ -59,6 +59,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
+  - icon: ':warning:'
+    path: graph/utility.hpp
+    title: graph/utility.hpp
   - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
@@ -429,6 +432,7 @@ data:
   - graph/two_edge_connected_components.hpp
   - graph/scc_graph.hpp
   - graph/count_spanning_tree.hpp
+  - graph/utility.hpp
   - graph/directed_mst.hpp
   - graph/chromatic_number.hpp
   - graph/mst.hpp

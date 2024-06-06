@@ -12,7 +12,7 @@ data:
     title: Simple CSR
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: Graph (CSR format)
+    title: "\u4FBF\u5229\u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
