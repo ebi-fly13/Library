@@ -229,25 +229,65 @@ data:
     \ fact, inv_fact;\n};\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::fact\
     \ = std::vector<mint>(2, 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
     \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 7 \"graph/count_directed_euler_trail.hpp\"\
-    \n\nnamespace ebi {\n\n\n\n}\n"
-  code: '#pragma once
-
-
-    #include "../graph/base.hpp"
-
-    #include "../graph/count_spanning_tree.hpp"
-
-    #include "../modint/base.hpp"
-
-    #include "../math/binomial.hpp"
-
-
-    namespace ebi {
-
-
-
-
-    }'
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nmint count_directed_euler_circuit(const\
+    \ std::vector<std::vector<int>> &g) {\n    int n = (int)g.size();\n    std::vector<int>\
+    \ indeg(n, 0);\n    std::vector<int> outdeg(n, 0);\n    for (int i = 0; i < n;\
+    \ i++) {\n        for (int j = 0; j < n; j++) {\n            indeg[j] += g[i][j];\n\
+    \            outdeg[i] += g[i][j];\n        }\n    }\n    for (int i = 0; i <\
+    \ n; i++) {\n        if (indeg[i] != outdeg[i]) return 0;\n    }\n\n    mint res\
+    \ = count_directed_spanning_tree<mint>(g, 0, true);\n    for (int i = 0; i < n;\
+    \ i++) {\n        res *= Binomial<mint>::f(outdeg[i] - 1);\n    }\n    return\
+    \ res;\n}\n\ntemplate <Modint mint, class T>\nmint count_directed_euler_circuit(const\
+    \ Graph<T> &g) {\n    int n = g.node_number();\n    std::vector a(n, std::vector<int>(n,\
+    \ 0));\n    for (auto e : g.get_edges()) {\n        a[e.from][e.to]++;\n    }\n\
+    \    return count_directed_euler_circuit<mint>(a);\n}\n\ntemplate <Modint mint>\n\
+    mint count_directed_euler_trail(std::vector<std::vector<int>> g) {\n    int n\
+    \ = (int)g.size();\n    std::vector<int> indeg(n, 0);\n    std::vector<int> outdeg(n,\
+    \ 0);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++)\
+    \ {\n            indeg[j] += g[i][j];\n            outdeg[i] += g[i][j];\n   \
+    \     }\n    }\n    int s = -1, t = -1;\n    mint m = 0;\n    for (int v = 0;\
+    \ v < n; v++) {\n        m += indeg[v];\n        if (indeg[v] + 1 == outdeg[v])\
+    \ {\n            if (s != -1) return 0;\n            s = v;\n        } else if\
+    \ (indeg[v] == outdeg[v] + 1) {\n            if (t != -1) return 0;\n        \
+    \    t = v;\n        } else if (indeg[v] == outdeg[v])\n            continue;\n\
+    \        else\n            return 0;\n    }\n    if (s == -1 && t == -1) {\n \
+    \       return m * count_directed_euler_circuit<mint>(g);\n    } else if (s !=\
+    \ -1 && t != -1) {\n        g[t][s]++;\n        return count_directed_euler_circuit<mint>(g);\n\
+    \    } else {\n        return 0;\n    }\n}\n\ntemplate <Modint mint, class T>\n\
+    mint count_directed_euler_trail(const Graph<T> &g) {\n    int n = g.node_number();\n\
+    \    std::vector a(n, std::vector<int>(n, 0));\n    for (auto e : g.get_edges())\
+    \ {\n        a[e.from][e.to]++;\n    }\n    return count_directed_euler_trail<mint>(a);\n\
+    }\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include \"../graph/base.hpp\"\n#include \"../graph/count_spanning_tree.hpp\"\
+    \n#include \"../math/binomial.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint>\nmint count_directed_euler_circuit(const std::vector<std::vector<int>>\
+    \ &g) {\n    int n = (int)g.size();\n    std::vector<int> indeg(n, 0);\n    std::vector<int>\
+    \ outdeg(n, 0);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j\
+    \ < n; j++) {\n            indeg[j] += g[i][j];\n            outdeg[i] += g[i][j];\n\
+    \        }\n    }\n    for (int i = 0; i < n; i++) {\n        if (indeg[i] !=\
+    \ outdeg[i]) return 0;\n    }\n\n    mint res = count_directed_spanning_tree<mint>(g,\
+    \ 0, true);\n    for (int i = 0; i < n; i++) {\n        res *= Binomial<mint>::f(outdeg[i]\
+    \ - 1);\n    }\n    return res;\n}\n\ntemplate <Modint mint, class T>\nmint count_directed_euler_circuit(const\
+    \ Graph<T> &g) {\n    int n = g.node_number();\n    std::vector a(n, std::vector<int>(n,\
+    \ 0));\n    for (auto e : g.get_edges()) {\n        a[e.from][e.to]++;\n    }\n\
+    \    return count_directed_euler_circuit<mint>(a);\n}\n\ntemplate <Modint mint>\n\
+    mint count_directed_euler_trail(std::vector<std::vector<int>> g) {\n    int n\
+    \ = (int)g.size();\n    std::vector<int> indeg(n, 0);\n    std::vector<int> outdeg(n,\
+    \ 0);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++)\
+    \ {\n            indeg[j] += g[i][j];\n            outdeg[i] += g[i][j];\n   \
+    \     }\n    }\n    int s = -1, t = -1;\n    mint m = 0;\n    for (int v = 0;\
+    \ v < n; v++) {\n        m += indeg[v];\n        if (indeg[v] + 1 == outdeg[v])\
+    \ {\n            if (s != -1) return 0;\n            s = v;\n        } else if\
+    \ (indeg[v] == outdeg[v] + 1) {\n            if (t != -1) return 0;\n        \
+    \    t = v;\n        } else if (indeg[v] == outdeg[v])\n            continue;\n\
+    \        else\n            return 0;\n    }\n    if (s == -1 && t == -1) {\n \
+    \       return m * count_directed_euler_circuit<mint>(g);\n    } else if (s !=\
+    \ -1 && t != -1) {\n        g[t][s]++;\n        return count_directed_euler_circuit<mint>(g);\n\
+    \    } else {\n        return 0;\n    }\n}\n\ntemplate <Modint mint, class T>\n\
+    mint count_directed_euler_trail(const Graph<T> &g) {\n    int n = g.node_number();\n\
+    \    std::vector a(n, std::vector<int>(n, 0));\n    for (auto e : g.get_edges())\
+    \ {\n        a[e.from][e.to]++;\n    }\n    return count_directed_euler_trail<mint>(a);\n\
+    }\n\n}  // namespace ebi"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
@@ -258,13 +298,15 @@ data:
   isVerificationFile: false
   path: graph/count_directed_euler_trail.hpp
   requiredBy: []
-  timestamp: '2024-06-06 18:49:47+09:00'
+  timestamp: '2024-06-06 20:41:39+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/count_directed_euler_trail.hpp
 layout: document
-redirect_from:
-- /library/graph/count_directed_euler_trail.hpp
-- /library/graph/count_directed_euler_trail.hpp.html
-title: graph/count_directed_euler_trail.hpp
+title: Count Directed Euler Trail
 ---
+
+## 説明
+
+与えられたグラフについて、オイラー路の個数を数える。頂点数を $N$ 辺数を $M$ として、 $O(N^3 + M)$ 。
+Euler Circuitはオイラー閉路を、Euler Trailはオイラー路のこととしている。

@@ -16,7 +16,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: graph/count_directed_euler_trail.hpp
-    title: graph/count_directed_euler_trail.hpp
+    title: Count Directed Euler Trail
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/graph/Counting_Spanning_Trees_Directed.test.cpp

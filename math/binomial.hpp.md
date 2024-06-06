@@ -13,7 +13,7 @@ data:
     title: $f(x + c)$
   - icon: ':warning:'
     path: graph/count_directed_euler_trail.hpp
-    title: graph/count_directed_euler_trail.hpp
+    title: Count Directed Euler Trail
   - icon: ':heavy_check_mark:'
     path: math/catalan_convolution.hpp
     title: Catalan's Convolution Formula

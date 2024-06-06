@@ -327,7 +327,7 @@ data:
       title: Complement Graph BFS
     - icon: ':warning:'
       path: graph/count_directed_euler_trail.hpp
-      title: graph/count_directed_euler_trail.hpp
+      title: Count Directed Euler Trail
     - icon: ':heavy_check_mark:'
       path: graph/count_spanning_tree.hpp
       title: Count Spanning Tree
