@@ -1,6 +1,6 @@
 ---
 title: 便利関数
-documentation_of: //graph/base.hpp
+documentation_of: //graph/utility.hpp
 ---
 
 ## 説明
