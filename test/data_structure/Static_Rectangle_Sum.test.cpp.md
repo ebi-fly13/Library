@@ -15,7 +15,7 @@ data:
     title: Static Rectangle Sum
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: "\u4FBF\u5229\u95A2\u6570"
+    title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp

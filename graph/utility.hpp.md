@@ -6,7 +6,7 @@ data:
     title: Simple CSR
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: "\u4FBF\u5229\u95A2\u6570"
+    title: Graph (CSR format)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -120,8 +120,17 @@ data:
   verifiedWith: []
 documentation_of: graph/utility.hpp
 layout: document
-redirect_from:
-- /library/graph/utility.hpp
-- /library/graph/utility.hpp.html
-title: graph/utility.hpp
+title: "\u4FBF\u5229\u95A2\u6570"
 ---
+
+## 説明
+
+グラフを取り扱う便利関数詰め合わせ。
+
+### remove_isolated_vertex(Graph<T> g)
+
+$g$ から孤立点を取り除いたグラフを返す。
+
+### remove_isolated_vertex(std::vector<std::vector<int>> g)
+
+グラフを隣接行列表現で与え、 $g$ から孤立店を取り除いたグラフを返す。

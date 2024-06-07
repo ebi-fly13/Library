@@ -6,7 +6,7 @@ data:
     title: Simple CSR
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: "\u4FBF\u5229\u95A2\u6570"
+    title: Graph (CSR format)
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: algorithm/two_sat.hpp

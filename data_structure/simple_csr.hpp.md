@@ -7,7 +7,7 @@ data:
     title: algorithm/two_sat.hpp
   - icon: ':heavy_check_mark:'
     path: graph/base.hpp
-    title: "\u4FBF\u5229\u95A2\u6570"
+    title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
     path: graph/bellman_ford.hpp
     title: Bellman-Ford
@@ -61,7 +61,7 @@ data:
     title: Two Edge Connected Components
   - icon: ':warning:'
     path: graph/utility.hpp
-    title: graph/utility.hpp
+    title: "\u4FBF\u5229\u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
