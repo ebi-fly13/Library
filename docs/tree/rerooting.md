@@ -7,10 +7,10 @@ documentation_of: //tree/rerooting.hpp
 
 抽象化全方位木DPライブラリ。各頂点を根としたときの木DPを求める。$O(N)$
 
-### コンストラクタ
+### 使用方法
 
 ```
-rerooting<V, E, e, merge, put_edge, put_root> dp(int n, std::vector<std::pair<int,int>> edges);
+auto dp = rerooting<V, E>(g, e, merge, put_edge, put_root);
 ```
 
 - DPの値の型 `V`
@@ -20,4 +20,4 @@ rerooting<V, E, e, merge, put_edge, put_root> dp(int n, std::vector<std::pair<in
 - 辺 `i` を根に付与する関数 `E put_edge(T edge, V x)`
 - 頂点 $v$ を根として追加する関数 `V put_root(int v, E x)`
 
-をテンプレートとして用いている。
+を渡して使用する。
