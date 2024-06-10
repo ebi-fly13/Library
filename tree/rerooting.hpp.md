@@ -78,57 +78,57 @@ data:
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
     \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"tree/rerooting.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T, class V, class E, E (*e)(), E (*merge)(E,\
-    \ E),\n          E (*put_edge)(T, V), V (*put_root)(int, E)>\nstruct rerooting\
-    \ {\n  private:\n    V dfs_sub(int v, int par = -1) {\n        E ret = e();\n\
-    \        for (auto &edge : g[v]) {\n            if (edge.to == par && g[v].back().to\
-    \ != par)\n                std::swap(g[v].back(), edge);\n            if (edge.to\
-    \ == par) continue;\n            E val = put_edge(edge.cost, dfs_sub(edge.to,\
-    \ v));\n            outs[v].emplace_back(val);\n            ret = merge(ret, val);\n\
-    \        }\n        sub[v] = put_root(v, ret);\n        return sub[v];\n    }\n\
-    \n    void dfs_all(int v, int par = -1, E rev = e()) {\n        int sz = outs[v].size();\n\
-    \        std::vector<E> lcum(sz + 1, e()), rcum(sz + 1, e());\n        for (int\
-    \ i = 0; i < sz; i++) {\n            lcum[i + 1] = merge(lcum[i], outs[v][i]);\n\
-    \            rcum[sz - i - 1] = merge(rcum[sz - i], outs[v][sz - i - 1]);\n  \
-    \      }\n        for (int i = 0; i < sz; i++) {\n            auto edge = g[v][i];\n\
-    \            E ret =\n                put_edge(edge.cost,\n                  \
-    \       put_root(v, merge(merge(lcum[i], rcum[i + 1]), rev)));\n            dfs_all(edge.to,\
-    \ v, ret);\n        }\n        dp[v] = put_root(v, merge(lcum[sz], rev));\n  \
-    \  }\n\n  public:\n    rerooting(const Graph<T> &g_)\n        : n((int)g_.size()),\
-    \ g(g_), sub(n), dp(n), outs(n) {\n        dfs_sub(0);\n        dfs_all(0);\n\
-    \    }\n\n    V get(int v) const {\n        return dp[v];\n    }\n\n  private:\n\
-    \    int n;\n    Graph<T> g;\n    std::vector<V> sub;\n    std::vector<V> dp;\n\
-    \    std::vector<std::vector<E>> outs;\n};\n\n}  // namespace ebi\n"
+    \n\nnamespace ebi {\n\ntemplate <class V, class E, class T, class ID, class MERGE,\
+    \ class PUT_EDGE,\n          class PUT_ROOT>\nstd::vector<V> rerooting_dp(Graph<T>\
+    \ g, const ID &e, const MERGE &merge,\n                            const PUT_EDGE\
+    \ &put_edge,\n                            const PUT_ROOT &put_root) {\n    int\
+    \ n = g.node_number();\n    std::vector<V> dp(n);\n    std::vector outs(n, std::vector<E>());\n\
+    \    auto dfs_sub = [&](auto &&self, int v, int par = -1) -> V {\n        E ret\
+    \ = e();\n        for (auto &edge : g[v]) {\n            if (edge.to == par &&\
+    \ g[v].back().to != par) {\n                std::swap(edge, g[v].back());\n  \
+    \          }\n            if (edge.to == par) continue;\n            E val = put_edge(edge.id,\
+    \ self(self, edge.to, v));\n            outs[v].emplace_back(val);\n         \
+    \   ret = merge(ret, val);\n        }\n        return put_root(v, ret);\n    };\n\
+    \    dfs_sub(dfs_sub, 0);\n    auto dfs_all = [&](auto &&self, int v, int par,\
+    \ E rev) -> void {\n        int sz = outs[v].size();\n        std::vector<E> lcum(sz\
+    \ + 1, e()), rcum(sz + 1, e());\n        for (int i = 0; i < sz; i++) {\n    \
+    \        lcum[i + 1] = merge(lcum[i], outs[v][i]);\n            rcum[sz - i -\
+    \ 1] = merge(outs[v][sz - i - 1], rcum[sz - i]);\n        }\n        for (int\
+    \ i = 0; i < sz; i++) {\n            auto edge = g[v][i];\n            E ret =\
+    \ put_edge(\n                edge.id, put_root(v, merge(merge(lcum[i], rcum[i\
+    \ + 1]), rev)));\n            self(self, edge.to, v, ret);\n        }\n      \
+    \  dp[v] = put_root(v, merge(lcum[sz], rev));\n    };\n    dfs_all(dfs_all, 0,\
+    \ -1, e());\n    return dp;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <utility>\n#include <vector>\n\
-    \n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T, class\
-    \ V, class E, E (*e)(), E (*merge)(E, E),\n          E (*put_edge)(T, V), V (*put_root)(int,\
-    \ E)>\nstruct rerooting {\n  private:\n    V dfs_sub(int v, int par = -1) {\n\
-    \        E ret = e();\n        for (auto &edge : g[v]) {\n            if (edge.to\
-    \ == par && g[v].back().to != par)\n                std::swap(g[v].back(), edge);\n\
-    \            if (edge.to == par) continue;\n            E val = put_edge(edge.cost,\
-    \ dfs_sub(edge.to, v));\n            outs[v].emplace_back(val);\n            ret\
-    \ = merge(ret, val);\n        }\n        sub[v] = put_root(v, ret);\n        return\
-    \ sub[v];\n    }\n\n    void dfs_all(int v, int par = -1, E rev = e()) {\n   \
-    \     int sz = outs[v].size();\n        std::vector<E> lcum(sz + 1, e()), rcum(sz\
+    \n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class V, class\
+    \ E, class T, class ID, class MERGE, class PUT_EDGE,\n          class PUT_ROOT>\n\
+    std::vector<V> rerooting_dp(Graph<T> g, const ID &e, const MERGE &merge,\n   \
+    \                         const PUT_EDGE &put_edge,\n                        \
+    \    const PUT_ROOT &put_root) {\n    int n = g.node_number();\n    std::vector<V>\
+    \ dp(n);\n    std::vector outs(n, std::vector<E>());\n    auto dfs_sub = [&](auto\
+    \ &&self, int v, int par = -1) -> V {\n        E ret = e();\n        for (auto\
+    \ &edge : g[v]) {\n            if (edge.to == par && g[v].back().to != par) {\n\
+    \                std::swap(edge, g[v].back());\n            }\n            if\
+    \ (edge.to == par) continue;\n            E val = put_edge(edge.id, self(self,\
+    \ edge.to, v));\n            outs[v].emplace_back(val);\n            ret = merge(ret,\
+    \ val);\n        }\n        return put_root(v, ret);\n    };\n    dfs_sub(dfs_sub,\
+    \ 0);\n    auto dfs_all = [&](auto &&self, int v, int par, E rev) -> void {\n\
+    \        int sz = outs[v].size();\n        std::vector<E> lcum(sz + 1, e()), rcum(sz\
     \ + 1, e());\n        for (int i = 0; i < sz; i++) {\n            lcum[i + 1]\
-    \ = merge(lcum[i], outs[v][i]);\n            rcum[sz - i - 1] = merge(rcum[sz\
-    \ - i], outs[v][sz - i - 1]);\n        }\n        for (int i = 0; i < sz; i++)\
-    \ {\n            auto edge = g[v][i];\n            E ret =\n                put_edge(edge.cost,\n\
-    \                         put_root(v, merge(merge(lcum[i], rcum[i + 1]), rev)));\n\
-    \            dfs_all(edge.to, v, ret);\n        }\n        dp[v] = put_root(v,\
-    \ merge(lcum[sz], rev));\n    }\n\n  public:\n    rerooting(const Graph<T> &g_)\n\
-    \        : n((int)g_.size()), g(g_), sub(n), dp(n), outs(n) {\n        dfs_sub(0);\n\
-    \        dfs_all(0);\n    }\n\n    V get(int v) const {\n        return dp[v];\n\
-    \    }\n\n  private:\n    int n;\n    Graph<T> g;\n    std::vector<V> sub;\n \
-    \   std::vector<V> dp;\n    std::vector<std::vector<E>> outs;\n};\n\n}  // namespace\
-    \ ebi\n"
+    \ = merge(lcum[i], outs[v][i]);\n            rcum[sz - i - 1] = merge(outs[v][sz\
+    \ - i - 1], rcum[sz - i]);\n        }\n        for (int i = 0; i < sz; i++) {\n\
+    \            auto edge = g[v][i];\n            E ret = put_edge(\n           \
+    \     edge.id, put_root(v, merge(merge(lcum[i], rcum[i + 1]), rev)));\n      \
+    \      self(self, edge.to, v, ret);\n        }\n        dp[v] = put_root(v, merge(lcum[sz],\
+    \ rev));\n    };\n    dfs_all(dfs_all, 0, -1, e());\n    return dp;\n}\n\n}  //\
+    \ namespace ebi\n"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
   path: tree/rerooting.hpp
   requiredBy: []
-  timestamp: '2024-06-04 23:11:40+09:00'
+  timestamp: '2024-06-10 19:51:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Tree_Path_Composite_Sum.test.cpp
@@ -141,10 +141,10 @@ title: Rerooting DP
 
 抽象化全方位木DPライブラリ。各頂点を根としたときの木DPを求める。$O(N)$
 
-### コンストラクタ
+### 使用方法
 
 ```
-rerooting<V, E, e, merge, put_edge, put_root> dp(int n, std::vector<std::pair<int,int>> edges);
+auto dp = rerooting<V, E>(g, e, merge, put_edge, put_root);
 ```
 
 - DPの値の型 `V`
@@ -154,4 +154,4 @@ rerooting<V, E, e, merge, put_edge, put_root> dp(int n, std::vector<std::pair<in
 - 辺 `i` を根に付与する関数 `E put_edge(T edge, V x)`
 - 頂点 $v$ を根として追加する関数 `V put_root(int v, E x)`
 
-をテンプレートとして用いている。
+を渡して使用する。
