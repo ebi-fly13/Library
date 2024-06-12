@@ -19,6 +19,23 @@ struct range_parallel_dsu {
         }
     }
 
+    template <class F> void merge_(int u, int v, int d, F f) {
+        if (d == 0) {
+            u = uf[0].leader(u);
+            v = uf[0].leader(v);
+            if (u == v) return;
+            uf[0].merge(u, v);
+            int leader = uf[0].leader(u);
+            f(leader, u ^ v ^ leader);
+            return;
+        } else if (d > 0) {
+            if (!uf[d].merge(u, v)) return;
+            merge_(u, v, d - 1, f);
+            merge_(u + (1 << (d - 1)), v + (1 << (d - 1)), d - 1, f);
+        } else
+            assert(0);
+    }
+
   public:
     range_parallel_dsu(int n_)
         : n(n_), uf(std::bit_width((unsigned int)n), dsu(n)) {}
@@ -30,6 +47,15 @@ struct range_parallel_dsu {
         int lg2 = std::bit_width((unsigned int)w) - 1;
         merge_(u, v, lg2);
         merge_(u + w - (1 << lg2), v + w - (1 << lg2), lg2);
+    }
+
+    template <class F> void merge(int u, int v, int w, F f) {
+        if (u > v) std::swap(u, v);
+        w = std::min(w, n - v);
+        if (w == 0 || u == v) return;
+        int lg2 = std::bit_width((unsigned int)w) - 1;
+        merge_(u, v, lg2, f);
+        merge_(u + w - (1 << lg2), v + w - (1 << lg2), lg2, f);
     }
 
     bool same(int u, int v) {
