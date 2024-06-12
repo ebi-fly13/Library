@@ -123,6 +123,10 @@ $x$ と $y$ が同じグループか判定。 $O(\alpha(N))$
 
 $i \in [0, w)$ について $x + i$ と $y + i$ を同じグループにする。
 
+### merge(int x, int y, int w, auto f)
+
+$i \in [0, w)$ について $x + i$ と $y + i$ を同じグループにする。 $v$ を $u$ にマージするときに $f(u, v)$ が実行される。
+
 ### leader(int x)
 
 $x$ のグループの代表を返す。 $O(\alpha(N))$
