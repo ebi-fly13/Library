@@ -13,8 +13,11 @@ data:
     title: Minimum Spanning Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/data_structure/Range_Parallel_DSU.test.cpp
-    title: test/data_structure/Range_Parallel_DSU.test.cpp
+    path: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+    title: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Parallel_Unionfind.test.cpp
+    title: test/data_structure/Range_Parallel_Unionfind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Union_Find.test.cpp
     title: test/data_structure/Union_Find.test.cpp
@@ -83,7 +86,8 @@ data:
   timestamp: '2024-04-24 16:34:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Range_Parallel_DSU.test.cpp
+  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+  - test/data_structure/Range_Parallel_Unionfind.test.cpp
   - test/data_structure/Union_Find.test.cpp
   - test/graph/Manhattan_MST.test.cpp
   - test/graph/Minimum_Spanning_Tree.test.cpp

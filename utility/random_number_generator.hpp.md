@@ -22,8 +22,8 @@ data:
     path: test/convolution/Convolution_2D.test.cpp
     title: test/convolution/Convolution_2D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/data_structure/Range_Parallel_DSU.test.cpp
-    title: test/data_structure/Range_Parallel_DSU.test.cpp
+    path: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+    title: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Negative_Binomial_Coefficient.test.cpp
     title: test/math/Negative_Binomial_Coefficient.test.cpp
@@ -69,7 +69,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
-  - test/data_structure/Range_Parallel_DSU.test.cpp
+  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp

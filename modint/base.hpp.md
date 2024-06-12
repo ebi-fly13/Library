@@ -221,6 +221,9 @@ data:
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Parallel_Unionfind.test.cpp
+    title: test/data_structure/Range_Parallel_Unionfind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - icon: ':heavy_check_mark:'
@@ -503,6 +506,7 @@ data:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Deque_Operate_All_Composite.test.cpp
   - test/data_structure/Range_Affine_Point_Get.test.cpp
+  - test/data_structure/Range_Parallel_Unionfind.test.cpp
   - test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/Queue_Operate_All_Composite.test.cpp

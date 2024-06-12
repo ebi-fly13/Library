@@ -139,8 +139,11 @@ data:
     path: test/data_structure/Range_Kth_Smallest.test.cpp
     title: test/data_structure/Range_Kth_Smallest.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/data_structure/Range_Parallel_DSU.test.cpp
-    title: test/data_structure/Range_Parallel_DSU.test.cpp
+    path: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+    title: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Parallel_Unionfind.test.cpp
+    title: test/data_structure/Range_Parallel_Unionfind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Add_Point_Get.test.cpp
     title: test/data_structure/Rectangle_Add_Point_Get.test.cpp
@@ -510,11 +513,12 @@ data:
   - test/aoj/aoj_3086.test.cpp
   - test/aoj/aoj_2450.test.cpp
   - test/aoj/aoj_2235.test.cpp
-  - test/data_structure/Range_Parallel_DSU.test.cpp
+  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/data_structure/Range_Affine_Point_Get.test.cpp
+  - test/data_structure/Range_Parallel_Unionfind.test.cpp
   - test/data_structure/Static_Range_Frequency.test.cpp
   - test/data_structure/Static_Rectangle_Sum.test.cpp
   - test/data_structure/Range_Kth_Smallest.test.cpp

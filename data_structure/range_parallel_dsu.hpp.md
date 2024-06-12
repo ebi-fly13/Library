@@ -7,8 +7,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/data_structure/Range_Parallel_DSU.test.cpp
-    title: test/data_structure/Range_Parallel_DSU.test.cpp
+    path: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+    title: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Parallel_Unionfind.test.cpp
+    title: test/data_structure/Range_Parallel_Unionfind.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -41,30 +44,52 @@ data:
     \ ebi {\n\nstruct range_parallel_dsu {\n  private:\n    void merge_(int u, int\
     \ v, int d) {\n        if (uf[d].same(u, v)) return;\n        uf[d].merge(u, v);\n\
     \        if (d > 0) {\n            merge_(u, v, d - 1);\n            merge_(u\
-    \ + (1 << (d - 1)), v + (1 << (d - 1)), d - 1);\n        }\n    }\n\n  public:\n\
-    \    range_parallel_dsu(int n_)\n        : n(n_), uf(std::bit_width((unsigned\
+    \ + (1 << (d - 1)), v + (1 << (d - 1)), d - 1);\n        }\n    }\n\n    template\
+    \ <class F> void merge_(int u, int v, int d, F f) {\n        if (d == 0) {\n \
+    \           u = uf[0].leader(u);\n            v = uf[0].leader(v);\n         \
+    \   if (u == v) return;\n            uf[0].merge(u, v);\n            int leader\
+    \ = uf[0].leader(u);\n            f(leader, u ^ v ^ leader);\n            return;\n\
+    \        } else if (d > 0) {\n            if (!uf[d].merge(u, v)) return;\n  \
+    \          merge_(u, v, d - 1, f);\n            merge_(u + (1 << (d - 1)), v +\
+    \ (1 << (d - 1)), d - 1, f);\n        } else\n            assert(0);\n    }\n\n\
+    \  public:\n    range_parallel_dsu(int n_)\n        : n(n_), uf(std::bit_width((unsigned\
     \ int)n), dsu(n)) {}\n\n    void merge(int u, int v, int w) {\n        if (u >\
     \ v) std::swap(u, v);\n        w = std::min(w, n - v);\n        if (w == 0 ||\
     \ u == v) return;\n        int lg2 = std::bit_width((unsigned int)w) - 1;\n  \
     \      merge_(u, v, lg2);\n        merge_(u + w - (1 << lg2), v + w - (1 << lg2),\
-    \ lg2);\n    }\n\n    bool same(int u, int v) {\n        return uf[0].same(u,\
-    \ v);\n    }\n\n    int size(int u) {\n        return uf[0].size(u);\n    }\n\n\
-    \    int leader(int u) {\n        return uf[0].leader(u);\n    }\n\n    std::vector<std::vector<int>>\
-    \ groups() {\n        return uf[0].groups();\n    }\n\n    int count_group() {\n\
-    \        return uf[0].count_group();\n    }\n\n  private:\n    int n;\n    std::vector<dsu>\
-    \ uf;\n};\n\n}  // namespace ebi\n"
+    \ lg2);\n    }\n\n    template <class F> void merge(int u, int v, int w, F f)\
+    \ {\n        if (u > v) std::swap(u, v);\n        w = std::min(w, n - v);\n  \
+    \      if (w == 0 || u == v) return;\n        int lg2 = std::bit_width((unsigned\
+    \ int)w) - 1;\n        merge_(u, v, lg2, f);\n        merge_(u + w - (1 << lg2),\
+    \ v + w - (1 << lg2), lg2, f);\n    }\n\n    bool same(int u, int v) {\n     \
+    \   return uf[0].same(u, v);\n    }\n\n    int size(int u) {\n        return uf[0].size(u);\n\
+    \    }\n\n    int leader(int u) {\n        return uf[0].leader(u);\n    }\n\n\
+    \    std::vector<std::vector<int>> groups() {\n        return uf[0].groups();\n\
+    \    }\n\n    int count_group() {\n        return uf[0].count_group();\n    }\n\
+    \n  private:\n    int n;\n    std::vector<dsu> uf;\n};\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <bit>\n#include <cassert>\n#include <vector>\n\n\
     #include \"../data_structure/dsu.hpp\"\n\nnamespace ebi {\n\nstruct range_parallel_dsu\
     \ {\n  private:\n    void merge_(int u, int v, int d) {\n        if (uf[d].same(u,\
     \ v)) return;\n        uf[d].merge(u, v);\n        if (d > 0) {\n            merge_(u,\
     \ v, d - 1);\n            merge_(u + (1 << (d - 1)), v + (1 << (d - 1)), d - 1);\n\
-    \        }\n    }\n\n  public:\n    range_parallel_dsu(int n_)\n        : n(n_),\
-    \ uf(std::bit_width((unsigned int)n), dsu(n)) {}\n\n    void merge(int u, int\
-    \ v, int w) {\n        if (u > v) std::swap(u, v);\n        w = std::min(w, n\
-    \ - v);\n        if (w == 0 || u == v) return;\n        int lg2 = std::bit_width((unsigned\
+    \        }\n    }\n\n    template <class F> void merge_(int u, int v, int d, F\
+    \ f) {\n        if (d == 0) {\n            u = uf[0].leader(u);\n            v\
+    \ = uf[0].leader(v);\n            if (u == v) return;\n            uf[0].merge(u,\
+    \ v);\n            int leader = uf[0].leader(u);\n            f(leader, u ^ v\
+    \ ^ leader);\n            return;\n        } else if (d > 0) {\n            if\
+    \ (!uf[d].merge(u, v)) return;\n            merge_(u, v, d - 1, f);\n        \
+    \    merge_(u + (1 << (d - 1)), v + (1 << (d - 1)), d - 1, f);\n        } else\n\
+    \            assert(0);\n    }\n\n  public:\n    range_parallel_dsu(int n_)\n\
+    \        : n(n_), uf(std::bit_width((unsigned int)n), dsu(n)) {}\n\n    void merge(int\
+    \ u, int v, int w) {\n        if (u > v) std::swap(u, v);\n        w = std::min(w,\
+    \ n - v);\n        if (w == 0 || u == v) return;\n        int lg2 = std::bit_width((unsigned\
     \ int)w) - 1;\n        merge_(u, v, lg2);\n        merge_(u + w - (1 << lg2),\
-    \ v + w - (1 << lg2), lg2);\n    }\n\n    bool same(int u, int v) {\n        return\
-    \ uf[0].same(u, v);\n    }\n\n    int size(int u) {\n        return uf[0].size(u);\n\
+    \ v + w - (1 << lg2), lg2);\n    }\n\n    template <class F> void merge(int u,\
+    \ int v, int w, F f) {\n        if (u > v) std::swap(u, v);\n        w = std::min(w,\
+    \ n - v);\n        if (w == 0 || u == v) return;\n        int lg2 = std::bit_width((unsigned\
+    \ int)w) - 1;\n        merge_(u, v, lg2, f);\n        merge_(u + w - (1 << lg2),\
+    \ v + w - (1 << lg2), lg2, f);\n    }\n\n    bool same(int u, int v) {\n     \
+    \   return uf[0].same(u, v);\n    }\n\n    int size(int u) {\n        return uf[0].size(u);\n\
     \    }\n\n    int leader(int u) {\n        return uf[0].leader(u);\n    }\n\n\
     \    std::vector<std::vector<int>> groups() {\n        return uf[0].groups();\n\
     \    }\n\n    int count_group() {\n        return uf[0].count_group();\n    }\n\
@@ -74,10 +99,11 @@ data:
   isVerificationFile: false
   path: data_structure/range_parallel_dsu.hpp
   requiredBy: []
-  timestamp: '2024-04-24 16:34:25+09:00'
+  timestamp: '2024-06-12 20:05:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Range_Parallel_DSU.test.cpp
+  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+  - test/data_structure/Range_Parallel_Unionfind.test.cpp
 documentation_of: data_structure/range_parallel_dsu.hpp
 layout: document
 title: Range Parallel DSU
