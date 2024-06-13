@@ -8,8 +8,14 @@ data:
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
+    path: graph/count_directed_euler_trail.hpp
+    title: Count Directed Euler Trail
+  - icon: ':heavy_check_mark:'
     path: graph/count_spanning_tree.hpp
     title: Count Spanning Tree
+  - icon: ':heavy_check_mark:'
+    path: graph/utility.hpp
+    title: "\u4FBF\u5229\u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
@@ -19,18 +25,38 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/graph/Counting_Eulerian_Circuits.test.cpp
-    title: test/graph/Counting_Eulerian_Circuits.test.cpp
+    path: modint/modint.hpp
+    title: modint/modint.hpp
+  - icon: ':heavy_check_mark:'
+    path: template/debug_template.hpp
+    title: template/debug_template.hpp
+  - icon: ':heavy_check_mark:'
+    path: template/int_alias.hpp
+    title: template/int_alias.hpp
+  - icon: ':heavy_check_mark:'
+    path: template/io.hpp
+    title: template/io.hpp
+  - icon: ':heavy_check_mark:'
+    path: template/template.hpp
+    title: template/template.hpp
+  - icon: ':heavy_check_mark:'
+    path: template/utility.hpp
+    title: template/utility.hpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"graph/count_directed_euler_trail.hpp\"\n\n#line 2 \"graph/base.hpp\"\
-    \n\n#include <cassert>\n#include <iostream>\n#include <ranges>\n#include <vector>\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/counting_eulerian_circuits
+    links:
+    - https://judge.yosupo.jp/problem/counting_eulerian_circuits
+  bundledCode: "#line 1 \"test/graph/Counting_Eulerian_Circuits.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/counting_eulerian_circuits\"\n\n#line\
+    \ 2 \"graph/count_directed_euler_trail.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n\
+    #include <cassert>\n#include <iostream>\n#include <ranges>\n#include <vector>\n\
     \n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
     \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
     \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
@@ -260,58 +286,156 @@ data:
     mint count_directed_euler_trail(const Graph<T> &g) {\n    int n = g.node_number();\n\
     \    std::vector a(n, std::vector<int>(n, 0));\n    for (auto e : g.get_edges())\
     \ {\n        a[e.from][e.to]++;\n    }\n    return count_directed_euler_trail<mint>(a);\n\
-    }\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include \"../graph/base.hpp\"\n#include \"../graph/count_spanning_tree.hpp\"\
-    \n#include \"../math/binomial.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint>\nmint count_directed_euler_circuit(const std::vector<std::vector<int>>\
-    \ &g) {\n    int n = (int)g.size();\n    if(n == 0) return 1;\n    std::vector<int>\
-    \ indeg(n, 0);\n    std::vector<int> outdeg(n, 0);\n    for (int i = 0; i < n;\
-    \ i++) {\n        for (int j = 0; j < n; j++) {\n            indeg[j] += g[i][j];\n\
-    \            outdeg[i] += g[i][j];\n        }\n    }\n    for (int i = 0; i <\
-    \ n; i++) {\n        if (indeg[i] != outdeg[i]) return 0;\n    }\n\n    mint res\
-    \ = count_directed_spanning_tree<mint>(g, 0, true);\n    for (int i = 0; i < n;\
-    \ i++) {\n        res *= Binomial<mint>::f(outdeg[i] - 1);\n    }\n    return\
-    \ res;\n}\n\ntemplate <Modint mint, class T>\nmint count_directed_euler_circuit(const\
-    \ Graph<T> &g) {\n    int n = g.node_number();\n    std::vector a(n, std::vector<int>(n,\
-    \ 0));\n    for (auto e : g.get_edges()) {\n        a[e.from][e.to]++;\n    }\n\
-    \    return count_directed_euler_circuit<mint>(a);\n}\n\ntemplate <Modint mint>\n\
-    mint count_directed_euler_trail(std::vector<std::vector<int>> g) {\n    int n\
-    \ = (int)g.size();\n    if(n == 0) return 1;\n    std::vector<int> indeg(n, 0);\n\
-    \    std::vector<int> outdeg(n, 0);\n    for (int i = 0; i < n; i++) {\n     \
-    \   for (int j = 0; j < n; j++) {\n            indeg[j] += g[i][j];\n        \
-    \    outdeg[i] += g[i][j];\n        }\n    }\n    int s = -1, t = -1;\n    mint\
-    \ m = 0;\n    for (int v = 0; v < n; v++) {\n        m += indeg[v];\n        if\
-    \ (indeg[v] + 1 == outdeg[v]) {\n            if (s != -1) return 0;\n        \
-    \    s = v;\n        } else if (indeg[v] == outdeg[v] + 1) {\n            if (t\
-    \ != -1) return 0;\n            t = v;\n        } else if (indeg[v] == outdeg[v])\n\
-    \            continue;\n        else\n            return 0;\n    }\n    if (s\
-    \ == -1 && t == -1) {\n        return m * count_directed_euler_circuit<mint>(g);\n\
-    \    } else if (s != -1 && t != -1) {\n        g[t][s]++;\n        return count_directed_euler_circuit<mint>(g);\n\
-    \    } else {\n        return 0;\n    }\n}\n\ntemplate <Modint mint, class T>\n\
-    mint count_directed_euler_trail(const Graph<T> &g) {\n    int n = g.node_number();\n\
-    \    std::vector a(n, std::vector<int>(n, 0));\n    for (auto e : g.get_edges())\
-    \ {\n        a[e.from][e.to]++;\n    }\n    return count_directed_euler_trail<mint>(a);\n\
-    }\n\n}  // namespace ebi"
+    }\n\n}  // namespace ebi\n#line 2 \"graph/utility.hpp\"\n\n#line 4 \"graph/utility.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> Graph<T> remove_isolated_vertex(const\
+    \ Graph<T> &g) {\n    const int n = g.node_number();\n    std::vector<int> seen(n,\
+    \ -1);\n    for (auto e : g.get_edges()) {\n        seen[e.from] = seen[e.to]\
+    \ = 1;\n    }\n    int sz = 0;\n    for (int i = 0; i < n; i++) {\n        if\
+    \ (seen[i] != -1) seen[i] = sz++;\n    }\n    Graph<T> gh(sz);\n    for (auto\
+    \ e : g.get_edges()) {\n        gh.add_undirected_edge(seen[e.from], seen[e.to],\
+    \ e.cost);\n    }\n    gh.build();\n    return gh;\n}\n\ntemplate <class T>\n\
+    std::vector<std::vector<T>> remove_isolated_vertex(\n    const std::vector<std::vector<T>>\
+    \ &g) {\n    const int n = (int)g.size();\n    std::vector<int> seen(n, -1);\n\
+    \    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n  \
+    \          if (g[i][j] != 0) seen[i] = seen[j] = 1;\n        }\n    }\n    int\
+    \ sz = 0;\n    for (int i = 0; i < n; i++) {\n        if (seen[i] != -1) seen[i]\
+    \ = sz++;\n    }\n    std::vector gh(sz, std::vector<int>(sz, 0));\n    for (int\
+    \ i = 0; i < n; i++) {\n        if (seen[i] == -1) continue;\n        for (int\
+    \ j = 0; j < n; j++) {\n            if (seen[j] == -1) continue;\n           \
+    \ gh[seen[i]][seen[j]] += g[i][j];\n        }\n    }\n    return gh;\n}\n\n} \
+    \ // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\
+    \n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
+    \ m> struct static_modint {\r\n  private:\r\n    using modint = static_modint;\r\
+    \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
+    \   }\r\n\r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n\
+    \        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint()\
+    \ : _v(0) {}\r\n\r\n    template <std::signed_integral T> constexpr static_modint(T\
+    \ v) {\r\n        long long x = (long long)(v % (long long)(umod()));\r\n    \
+    \    if (x < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\
+    \n    template <std::unsigned_integral T> constexpr static_modint(T v) {\r\n \
+    \       _v = (unsigned int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned\
+    \ int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned\
+    \ int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint\
+    \ &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n  \
+    \      return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n    \
+    \    if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n \
+    \   }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
+    \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
+    \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
+    \   _v += rhs._v;\r\n        if (_v >= umod()) _v -= umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator-=(const modint &rhs) {\r\n\
+    \        _v -= rhs._v;\r\n        if (_v >= umod()) _v += umod();\r\n        return\
+    \ *this;\r\n    }\r\n    constexpr modint &operator*=(const modint &rhs) {\r\n\
+    \        unsigned long long x = _v;\r\n        x *= rhs._v;\r\n        _v = (unsigned\
+    \ int)(x % (unsigned long long)umod());\r\n        return *this;\r\n    }\r\n\
+    \    constexpr modint &operator/=(const modint &rhs) {\r\n        return *this\
+    \ = *this * rhs.inv();\r\n    }\r\n\r\n    constexpr modint operator+() const\
+    \ {\r\n        return *this;\r\n    }\r\n    constexpr modint operator-() const\
+    \ {\r\n        return modint() - *this;\r\n    }\r\n\r\n    constexpr modint pow(long\
+    \ long n) const {\r\n        assert(0 <= n);\r\n        modint x = *this, res\
+    \ = 1;\r\n        while (n) {\r\n            if (n & 1) res *= x;\r\n        \
+    \    x *= x;\r\n            n >>= 1;\r\n        }\r\n        return res;\r\n \
+    \   }\r\n    constexpr modint inv() const {\r\n        assert(_v);\r\n       \
+    \ return pow(umod() - 2);\r\n    }\r\n\r\n    friend modint operator+(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) += rhs;\r\n    }\r\n\
+    \    friend modint operator-(const modint &lhs, const modint &rhs) {\r\n     \
+    \   return modint(lhs) -= rhs;\r\n    }\r\n    friend modint operator*(const modint\
+    \ &lhs, const modint &rhs) {\r\n        return modint(lhs) *= rhs;\r\n    }\r\n\
+    \r\n    friend modint operator/(const modint &lhs, const modint &rhs) {\r\n  \
+    \      return modint(lhs) /= rhs;\r\n    }\r\n    friend bool operator==(const\
+    \ modint &lhs, const modint &rhs) {\r\n        return lhs.val() == rhs.val();\r\
+    \n    }\r\n    friend bool operator!=(const modint &lhs, const modint &rhs) {\r\
+    \n        return !(lhs == rhs);\r\n    }\r\n\r\n  private:\r\n    unsigned int\
+    \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
+    \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
+    \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
+    #line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i,\
+    \ a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int\
+    \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
+    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
+    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
+    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
+    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
+    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
+    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
+    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
+    #line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
+    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
+    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
+    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
+    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
+    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
+    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
+    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
+    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 8 \"template/utility.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T> inline bool chmin(T &a, T b) {\n    if (a > b) {\n\
+    \        a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate\
+    \ <class T> inline bool chmax(T &a, T b) {\n    if (a < b) {\n        a = b;\n\
+    \        return true;\n    }\n    return false;\n}\n\ntemplate <class T> T safe_ceil(T\
+    \ a, T b) {\n    if (a % b == 0)\n        return a / b;\n    else if (a >= 0)\n\
+    \        return (a / b) + 1;\n    else\n        return -((-a) / b);\n}\n\ntemplate\
+    \ <class T> T safe_floor(T a, T b) {\n    if (a % b == 0)\n        return a /\
+    \ b;\n    else if (a >= 0)\n        return a / b;\n    else\n        return -((-a)\
+    \ / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max() / 4;\n\n\
+    constexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
+    \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 7 \"test/graph/Counting_Eulerian_Circuits.test.cpp\"\
+    \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    int\
+    \ n, m;\n    std::cin >> n >> m;\n    Graph<int> g(n);\n    g.read_graph(m, 0);\n\
+    \    std::cout << count_directed_euler_circuit<mint>(remove_isolated_vertex(g))\n\
+    \              << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/counting_eulerian_circuits\"\
+    \n\n#include \"../../graph/count_directed_euler_trail.hpp\"\n#include \"../../graph/utility.hpp\"\
+    \n#include \"../../modint/modint.hpp\"\n#include \"../../template/template.hpp\"\
+    \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    int\
+    \ n, m;\n    std::cin >> n >> m;\n    Graph<int> g(n);\n    g.read_graph(m, 0);\n\
+    \    std::cout << count_directed_euler_circuit<mint>(remove_isolated_vertex(g))\n\
+    \              << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    return 0;\n}"
   dependsOn:
+  - graph/count_directed_euler_trail.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   - graph/count_spanning_tree.hpp
   - matrix/base.hpp
   - modint/base.hpp
   - math/binomial.hpp
-  isVerificationFile: false
-  path: graph/count_directed_euler_trail.hpp
+  - graph/utility.hpp
+  - modint/modint.hpp
+  - template/template.hpp
+  - template/debug_template.hpp
+  - template/int_alias.hpp
+  - template/io.hpp
+  - template/utility.hpp
+  isVerificationFile: true
+  path: test/graph/Counting_Eulerian_Circuits.test.cpp
   requiredBy: []
-  timestamp: '2024-06-06 22:34:08+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/graph/Counting_Eulerian_Circuits.test.cpp
-documentation_of: graph/count_directed_euler_trail.hpp
+  timestamp: '2024-06-13 10:14:30+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/graph/Counting_Eulerian_Circuits.test.cpp
 layout: document
-title: Count Directed Euler Trail
+redirect_from:
+- /verify/test/graph/Counting_Eulerian_Circuits.test.cpp
+- /verify/test/graph/Counting_Eulerian_Circuits.test.cpp.html
+title: test/graph/Counting_Eulerian_Circuits.test.cpp
 ---
-
-## 説明
-
-与えられたグラフについて、オイラー路の個数を数える。頂点数を $N$ 辺数を $M$ として、 $O(N^3 + M)$ 。
-Euler Circuitはオイラー閉路を、Euler Trailはオイラー路のこととしている。

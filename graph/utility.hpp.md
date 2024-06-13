@@ -8,10 +8,13 @@ data:
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Eulerian_Circuits.test.cpp
+    title: test/graph/Counting_Eulerian_Circuits.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#include\
@@ -92,7 +95,7 @@ data:
     \ j = 0; j < n; j++) {\n            if (seen[j] == -1) continue;\n           \
     \ gh[seen[i]][seen[j]] += g[i][j];\n        }\n    }\n    return gh;\n}\n\n} \
     \ // namespace ebi\n"
-  code: "#pragma once\n\n#include \"graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+  code: "#pragma once\n\n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
     \ <class T> Graph<T> remove_isolated_vertex(const Graph<T> &g) {\n    const int\
     \ n = g.node_number();\n    std::vector<int> seen(n, -1);\n    for (auto e : g.get_edges())\
     \ {\n        seen[e.from] = seen[e.to] = 1;\n    }\n    int sz = 0;\n    for (int\
@@ -115,9 +118,10 @@ data:
   isVerificationFile: false
   path: graph/utility.hpp
   requiredBy: []
-  timestamp: '2024-06-06 22:34:08+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2024-06-13 10:14:30+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
 documentation_of: graph/utility.hpp
 layout: document
 title: "\u4FBF\u5229\u95A2\u6570"

@@ -78,7 +78,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/count_directed_euler_trail.hpp
     title: Count Directed Euler Trail
   - icon: ':heavy_check_mark:'
@@ -226,6 +226,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Eulerian_Circuits.test.cpp
+    title: test/graph/Counting_Eulerian_Circuits.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
     title: test/graph/Counting_Spanning_Trees_Directed.test.cpp
@@ -533,6 +536,7 @@ data:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
   - test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
   - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/math/Sharp_P_Subset_Sum.test.cpp

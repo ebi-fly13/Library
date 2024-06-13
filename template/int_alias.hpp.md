@@ -160,6 +160,9 @@ data:
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Eulerian_Circuits.test.cpp
+    title: test/graph/Counting_Eulerian_Circuits.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
     title: test/graph/Counting_Spanning_Trees_Directed.test.cpp
   - icon: ':heavy_check_mark:'
@@ -550,6 +553,7 @@ data:
   - test/graph/dijkstra.test.cpp
   - test/graph/Manhattan_MST.test.cpp
   - test/graph/Cycle_Detection_Directed.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
   - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - test/graph/Eulerian_Trail_Undirected.test.cpp
   - test/graph/Maximum_Independent_Set.test.cpp

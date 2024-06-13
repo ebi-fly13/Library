@@ -14,10 +14,13 @@ data:
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/count_directed_euler_trail.hpp
     title: Count Directed Euler Trail
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Eulerian_Circuits.test.cpp
+    title: test/graph/Counting_Eulerian_Circuits.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
     title: test/graph/Counting_Spanning_Trees_Directed.test.cpp
@@ -250,6 +253,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
   - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
 documentation_of: graph/count_spanning_tree.hpp
 layout: document

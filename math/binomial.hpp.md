@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/count_directed_euler_trail.hpp
     title: Count Directed Euler Trail
   - icon: ':heavy_check_mark:'
@@ -30,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3361.test.cpp
     title: test/aoj/aoj_3361.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Eulerian_Circuits.test.cpp
+    title: test/graph/Counting_Eulerian_Circuits.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
@@ -151,6 +154,7 @@ data:
   - test/aoj/aoj_3361.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/math/Stirling_Number_of_the_First_Kind.test.cpp

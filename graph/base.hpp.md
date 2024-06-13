@@ -20,7 +20,7 @@ data:
   - icon: ':warning:'
     path: graph/complement_graph_bfs.hpp
     title: Complement Graph BFS
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/count_directed_euler_trail.hpp
     title: Count Directed Euler Trail
   - icon: ':heavy_check_mark:'
@@ -59,7 +59,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/utility.hpp
     title: "\u4FBF\u5229\u95A2\u6570"
   - icon: ':heavy_check_mark:'
@@ -180,6 +180,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Counting_Eulerian_Circuits.test.cpp
+    title: test/graph/Counting_Eulerian_Circuits.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
     title: test/graph/Counting_Spanning_Trees_Directed.test.cpp
@@ -554,6 +557,7 @@ data:
   - test/graph/dijkstra.test.cpp
   - test/graph/Manhattan_MST.test.cpp
   - test/graph/Cycle_Detection_Directed.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
   - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - test/graph/Two_Edge_Connected_Components.test.cpp
   - test/graph/Eulerian_Trail_Undirected.test.cpp
