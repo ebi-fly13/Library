@@ -1,6 +1,6 @@
 #pragma once
 
-#include "graph/base.hpp"
+#include "../graph/base.hpp"
 
 namespace ebi {
 
