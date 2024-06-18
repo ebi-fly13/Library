@@ -43,7 +43,8 @@ void main_() {
     };
     auto query = [&](int v) -> void { ans[v] = res; };
     auto clear = [&](int v) -> void {
-        is_tree[v] = true;
+        auto [c, d] = cs[v];
+        is_tree[c] = is_tree[d] = true;
         uf.undo();
     };
     auto reset = [&]() -> void { res = 0; };
