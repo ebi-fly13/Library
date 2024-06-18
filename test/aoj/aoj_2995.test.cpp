@@ -18,7 +18,7 @@ void main_() {
         c--;
         d--;
     }
-    std::vector<bool> is_tree(n, true);
+    std::vector<bool> is_tree(k, true);
     undo_unionfind uf(k);
     std::vector<int> ans(n);
     int res = 0;
