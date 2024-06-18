@@ -34,8 +34,8 @@ void main_() {
             res -= val(c) + val(d);
         }
         if (uf.merge(c, d)) {
-            res += val(uf.leader(c));
             is_tree[uf.leader(c)] = is_tree[c] && is_tree[d];
+            res += val(uf.leader(c));
         } else if (is_tree[c]) {
             res++;
             is_tree[c] = false;
