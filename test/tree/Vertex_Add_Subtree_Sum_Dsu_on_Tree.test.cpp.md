@@ -4,31 +4,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: fenwick tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/dsu_on_tree.hpp
     title: Dsu on Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []

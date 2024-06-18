@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []

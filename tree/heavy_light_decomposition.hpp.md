@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/dsu_on_tree.hpp
     title: Dsu on Tree
   - icon: ':heavy_check_mark:'
@@ -18,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2995.test.cpp
     title: test/aoj/aoj_2995.test.cpp
   - icon: ':heavy_check_mark:'
@@ -45,9 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_901_2.test.cpp
     title: test/yuki/yuki_901_2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <algorithm>\n\
@@ -284,7 +284,7 @@ data:
   - tree/dsu_on_tree.hpp
   - tree/lca_based_auxiliary_tree.hpp
   timestamp: '2024-06-18 15:22:50+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_901_2.test.cpp

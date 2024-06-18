@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/undo_unionfind.hpp
     title: Undo UnionFind
   _extendedRequiredBy: []

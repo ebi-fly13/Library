@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   _extendedRequiredBy:
@@ -62,10 +62,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/utility.hpp
     title: "\u4FBF\u5229\u95A2\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
@@ -80,10 +80,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/dp_on_static_top_tree.hpp
     title: DP on Static Top Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/dsu_on_tree.hpp
     title: Dsu on Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   - icon: ':heavy_check_mark:'
@@ -117,7 +117,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2995.test.cpp
     title: test/aoj/aoj_2995.test.cpp
   - icon: ':heavy_check_mark:'
@@ -384,9 +384,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/base.hpp\"\n\n#include <cassert>\n#include <iostream>\n\
@@ -525,7 +525,7 @@ data:
   - tree/rerooting.hpp
   - tree/dp_on_static_top_tree.hpp
   timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_952.test.cpp
