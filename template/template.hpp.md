@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
+  - icon: ':x:'
+    path: test/aoj/aoj_2995.test.cpp
+    title: test/aoj/aoj_2995.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3086.test.cpp
     title: test/aoj/aoj_3086.test.cpp
@@ -214,6 +217,9 @@ data:
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+    title: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -249,9 +255,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define\
@@ -393,7 +399,7 @@ data:
   path: template/template.hpp
   requiredBy: []
   timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_952.test.cpp
@@ -406,6 +412,7 @@ data:
   - test/yuki/yuki_2439.test.cpp
   - test/yuki/yuki_2633.test.cpp
   - test/yuki/yuki_1796.test.cpp
+  - test/aoj/aoj_2995.test.cpp
   - test/aoj/aoj_grl_1_a.test.cpp
   - test/aoj/aoj_grl_1_b.test.cpp
   - test/aoj/aoj_3086.test.cpp
@@ -466,6 +473,7 @@ data:
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
   - test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   - test/tree/Cartesian_Tree.test.cpp
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp

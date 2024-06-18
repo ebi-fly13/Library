@@ -11,36 +11,39 @@ data:
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/aoj/aoj_2995.test.cpp
+    title: test/aoj/aoj_2995.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+    title: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+  _isVerificationFailed: true
+  _pathExtension: hpp
+  _verificationStatusIcon: ':question:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
-    links:
-    - https://judge.yosupo.jp/problem/jump_on_tree
-  bundledCode: "#line 1 \"test/tree/Jump_on_Tree_HLD.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/jump_on_tree\"\n\n#include <iostream>\n\n#line\
-    \ 2 \"graph/base.hpp\"\n\n#include <cassert>\n#line 5 \"graph/base.hpp\"\n#include\
-    \ <ranges>\n#include <vector>\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n\
-    #line 4 \"data_structure/simple_csr.hpp\"\n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
-    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
-    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
-    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
-    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
-    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
-    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
-    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
-    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
-    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
-    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
-    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
-    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
-    \                                   elist.begin() + start[i + 1]);\n    }\n  \
-    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    links: []
+  bundledCode: "#line 2 \"tree/dsu_on_tree.hpp\"\n\n#line 2 \"tree/heavy_light_decomposition.hpp\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <vector>\n\n#line 2 \"\
+    graph/base.hpp\"\n\n#line 4 \"graph/base.hpp\"\n#include <iostream>\n#include\
+    \ <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
+    \n\n#line 4 \"data_structure/simple_csr.hpp\"\n#include <utility>\n#line 6 \"\
+    data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E> struct\
+    \ simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const std::vector<std::pair<int,\
+    \ E>>& elements)\n        : start(n + 1, 0), elist(elements.size()) {\n      \
+    \  for (auto e : elements) {\n            start[e.first + 1]++;\n        }\n \
+    \       for (auto i : std::views::iota(0, n)) {\n            start[i + 1] += start[i];\n\
+    \        }\n        auto counter = start;\n        for (auto [i, e] : elements)\
+    \ {\n            elist[counter[i]++] = e;\n        }\n    }\n\n    simple_csr(const\
+    \ std::vector<std::vector<E>>& es)\n        : start(es.size() + 1, 0) {\n    \
+    \    int n = es.size();\n        for (auto i : std::views::iota(0, n)) {\n   \
+    \         start[i + 1] = (int)es[i].size() + start[i];\n        }\n        elist.resize(start.back());\n\
+    \        for (auto i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(),\
+    \ es[i].end(), elist.begin() + start[i]);\n        }\n    }\n\n    int size()\
+    \ const {\n        return (int)start.size() - 1;\n    }\n\n    const auto operator[](int\
+    \ i) const {\n        return std::ranges::subrange(elist.begin() + start[i],\n\
+    \                                     elist.begin() + start[i + 1]);\n    }\n\
+    \    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -81,23 +84,21 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"tree/heavy_light_decomposition.hpp\"\
-    \n\n#include <algorithm>\n#line 6 \"tree/heavy_light_decomposition.hpp\"\n\n#line\
-    \ 8 \"tree/heavy_light_decomposition.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ T> struct heavy_light_decomposition {\n  private:\n    void dfs_sz(int v) {\n\
-    \        for (auto &e : g[v]) {\n            if (e.to == par[v]) continue;\n \
-    \           par[e.to] = v;\n            depth_[e.to] = depth_[v] + 1;\n      \
-    \      dist[e.to] = dist[v] + e.cost;\n            dfs_sz(e.to);\n           \
-    \ sz[v] += sz[e.to];\n            if (sz[e.to] > sz[g[v][0].to] || g[v][0].to\
-    \ == par[v])\n                std::swap(e, g[v][0]);\n        }\n    }\n\n   \
-    \ void dfs_hld(int v) {\n        in[v] = num++;\n        rev[in[v]] = v;\n   \
-    \     for (auto e : g[v]) {\n            if (e.to == par[v]) continue;\n     \
-    \       nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);\n            dfs_hld(e.to);\n\
-    \        }\n        out[v] = num;\n    }\n\n    // [u, v) \u30D1\u30B9\u306E\u53D6\
-    \u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> ascend(int\
-    \ u, int v) const {\n        std::vector<std::pair<int, int>> res;\n        while\
-    \ (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n   \
-    \         u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"tree/heavy_light_decomposition.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> struct heavy_light_decomposition {\n\
+    \  private:\n    void dfs_sz(int v) {\n        for (auto &e : g[v]) {\n      \
+    \      if (e.to == par[v]) continue;\n            par[e.to] = v;\n           \
+    \ depth_[e.to] = depth_[v] + 1;\n            dist[e.to] = dist[v] + e.cost;\n\
+    \            dfs_sz(e.to);\n            sz[v] += sz[e.to];\n            if (sz[e.to]\
+    \ > sz[g[v][0].to] || g[v][0].to == par[v])\n                std::swap(e, g[v][0]);\n\
+    \        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n     \
+    \   rev[in[v]] = v;\n        for (auto e : g[v]) {\n            if (e.to == par[v])\
+    \ continue;\n            nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);\n \
+    \           dfs_hld(e.to);\n        }\n        out[v] = num;\n    }\n\n    //\
+    \ [u, v) \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
+    \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
+    \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
+    \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
     \ in[v] + 1);\n        return res;\n    }\n\n    // (u, v] \u30D1\u30B9\u306E\u53D6\
     \u5F97 (u \u306F v \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> descend(int\
     \ u, int v) const {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v])\
@@ -164,31 +165,51 @@ data:
     \n    std::pair<std::vector<int>, Graph<T>> lca_based_auxiliary_tree(\n      \
     \  std::vector<int> vs) const;\n\n  private:\n    int n, root;\n    Graph<T> g;\n\
     \    std::vector<int> sz, in, out, nxt, par, depth_, rev;\n    std::vector<T>\
-    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 7 \"test/tree/Jump_on_Tree_HLD.test.cpp\"\
-    \n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n    ebi::Graph<int>\
-    \ g(n);\n    g.read_tree(0);\n    ebi::heavy_light_decomposition hld(g);\n   \
-    \ while (q--) {\n        int s, t, i;\n        std::cin >> s >> t >> i;\n    \
-    \    std::cout << hld.jump(s, t, i) << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n\n#include\
-    \ <iostream>\n\n#include \"../../graph/base.hpp\"\n#include \"../../tree/heavy_light_decomposition.hpp\"\
-    \n\nint main() {\n    int n, q;\n    std::cin >> n >> q;\n    ebi::Graph<int>\
-    \ g(n);\n    g.read_tree(0);\n    ebi::heavy_light_decomposition hld(g);\n   \
-    \ while (q--) {\n        int s, t, i;\n        std::cin >> s >> t >> i;\n    \
-    \    std::cout << hld.jump(s, t, i) << '\\n';\n    }\n}"
+    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 4 \"tree/dsu_on_tree.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\ntemplate <class ADD, class QUERY, class\
+    \ CLEAR, class RESET>\nvoid heavy_light_decomposition<T>::dsu_on_tree(const ADD\
+    \ &add,\n                                               const QUERY &query,\n\
+    \                                               const CLEAR &clear,\n        \
+    \                                       const RESET &reset) const {\n    auto\
+    \ dfs = [&](auto &&self, int v) -> void {\n        for (auto e : g[v].next())\
+    \ {\n            if (e.to == parent(v)) continue;\n            self(self, e.to);\n\
+    \        }\n        if (sz[v] != 1) {\n            self(self, g[v][0].to);\n \
+    \           for (int i = out[g[v][0].to]; i < out[v]; i++) {\n               \
+    \ add(rev[i]);\n            }\n        }\n        add(v);\n        query(v);\n\
+    \        if (nxt[v] == v) {\n            for (int i = in[v]; i < out[v]; i++)\
+    \ {\n                clear(rev[i]);\n            }\n            reset();\n   \
+    \     }\n        return;\n    };\n    dfs(dfs, root);\n    return;\n}\n\n}  //\
+    \ namespace ebi\n"
+  code: "#pragma once\n\n#include \"../tree/heavy_light_decomposition.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T>\ntemplate <class ADD, class QUERY, class CLEAR,\
+    \ class RESET>\nvoid heavy_light_decomposition<T>::dsu_on_tree(const ADD &add,\n\
+    \                                               const QUERY &query,\n        \
+    \                                       const CLEAR &clear,\n                \
+    \                               const RESET &reset) const {\n    auto dfs = [&](auto\
+    \ &&self, int v) -> void {\n        for (auto e : g[v].next()) {\n           \
+    \ if (e.to == parent(v)) continue;\n            self(self, e.to);\n        }\n\
+    \        if (sz[v] != 1) {\n            self(self, g[v][0].to);\n            for\
+    \ (int i = out[g[v][0].to]; i < out[v]; i++) {\n                add(rev[i]);\n\
+    \            }\n        }\n        add(v);\n        query(v);\n        if (nxt[v]\
+    \ == v) {\n            for (int i = in[v]; i < out[v]; i++) {\n              \
+    \  clear(rev[i]);\n            }\n            reset();\n        }\n        return;\n\
+    \    };\n    dfs(dfs, root);\n    return;\n}\n\n}  // namespace ebi"
   dependsOn:
+  - tree/heavy_light_decomposition.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
-  - tree/heavy_light_decomposition.hpp
-  isVerificationFile: true
-  path: test/tree/Jump_on_Tree_HLD.test.cpp
+  isVerificationFile: false
+  path: tree/dsu_on_tree.hpp
   requiredBy: []
   timestamp: '2024-06-18 15:22:50+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: test/tree/Jump_on_Tree_HLD.test.cpp
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/aoj/aoj_2995.test.cpp
+  - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+documentation_of: tree/dsu_on_tree.hpp
 layout: document
 redirect_from:
-- /verify/test/tree/Jump_on_Tree_HLD.test.cpp
-- /verify/test/tree/Jump_on_Tree_HLD.test.cpp.html
-title: test/tree/Jump_on_Tree_HLD.test.cpp
+- /library/tree/dsu_on_tree.hpp
+- /library/tree/dsu_on_tree.hpp.html
+title: tree/dsu_on_tree.hpp
 ---

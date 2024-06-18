@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Inversion_Number.test.cpp
     title: test/math/Inversion_Number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+    title: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -79,6 +82,7 @@ data:
   - test/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/math/Inversion_Number.test.cpp
   - test/geometry/segment_intersection.test.cpp
+  - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 title: fenwick tree

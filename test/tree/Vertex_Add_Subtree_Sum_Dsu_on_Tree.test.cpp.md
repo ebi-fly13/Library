@@ -2,14 +2,32 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/segtree.hpp
-    title: segtree
+    path: data_structure/fenwick_tree.hpp
+    title: fenwick tree
   - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
+  - icon: ':question:'
+    path: template/debug_template.hpp
+    title: template/debug_template.hpp
+  - icon: ':question:'
+    path: template/int_alias.hpp
+    title: template/int_alias.hpp
+  - icon: ':question:'
+    path: template/io.hpp
+    title: template/io.hpp
+  - icon: ':question:'
+    path: template/template.hpp
+    title: template/template.hpp
+  - icon: ':question:'
+    path: template/utility.hpp
+    title: template/utility.hpp
+  - icon: ':question:'
+    path: tree/dsu_on_tree.hpp
+    title: tree/dsu_on_tree.hpp
   - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
@@ -23,51 +41,62 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
     links:
     - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
-  bundledCode: "#line 1 \"test/data_structure/Vertex_Add_Subtree_Sum.test.cpp\"\n\
+  bundledCode: "#line 1 \"test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\n\
-    #include <iostream>\n#include <vector>\n\n#line 2 \"data_structure/segtree.hpp\"\
-    \n\r\n#include <cassert>\r\n#line 5 \"data_structure/segtree.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)()> struct segtree {\r\n\
-    \  private:\r\n    int n;\r\n    int sz;\r\n    std::vector<S> data;\r\n\r\n \
-    \   void update(int i) {\r\n        data[i] = op(data[2 * i], data[2 * i + 1]);\r\
-    \n    }\r\n\r\n  public:\r\n    segtree(int n_) : segtree(std::vector<S>(n_, e()))\
-    \ {}\r\n    segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {\r\n \
-    \       while (sz < n) sz *= 2;\r\n        data = std::vector<S>(2 * sz, e());\r\
-    \n        for (int i = 0; i < n; i++) {\r\n            data[sz + i] = v[i];\r\n\
-    \        }\r\n        for (int i = sz - 1; i >= 1; i--) update(i);\r\n    }\r\n\
-    \r\n    void set(int p, S x) {\r\n        assert(0 <= p && p < n);\r\n       \
-    \ p += sz;\r\n        data[p] = x;\r\n        while (p > 1) {\r\n            p\
-    \ >>= 1;\r\n            update(p);\r\n        }\r\n    }\r\n\r\n    S get(int\
-    \ p) const {\r\n        assert(0 <= p && p < n);\r\n        return data[p + sz];\r\
-    \n    }\r\n\r\n    S prod(int l, int r) const {\r\n        assert(0 <= l && l\
-    \ <= r && r <= n);\r\n        S sml = e(), smr = e();\r\n        l += sz;\r\n\
-    \        r += sz;\r\n        while (l < r) {\r\n            if (l & 1) sml = op(sml,\
-    \ data[l++]);\r\n            if (r & 1) smr = op(data[--r], smr);\r\n        \
-    \    l >>= 1;\r\n            r >>= 1;\r\n        }\r\n        return op(sml, smr);\r\
-    \n    }\r\n\r\n    S all_prod() const {\r\n        return data[1];\r\n    }\r\n\
-    \r\n    template <class F> int max_right(int l, F f) const {\r\n        assert(0\
-    \ <= l && l < n);\r\n        assert(f(e()));\r\n        if (l == n) return n;\r\
-    \n        l += sz;\r\n        S sm = e();\r\n        do {\r\n            while\
-    \ (l % 2 == 0) l >>= 1;\r\n            if (!f(op(sm, data[l]))) {\r\n        \
-    \        while (l < sz) {\r\n                    l = 2 * l;\r\n              \
-    \      if (f(op(sm, data[l]))) {\r\n                        sm = op(sm, data[l]);\r\
-    \n                        l++;\r\n                    }\r\n                }\r\
-    \n                return l - sz;\r\n            }\r\n            sm = op(sm, data[l]);\r\
-    \n            l++;\r\n        } while ((l & -l) != l);\r\n        return n;\r\n\
-    \    }\r\n\r\n    template <class F> int min_left(int r, F f) const {\r\n    \
-    \    assert(0 <= r && r <= n);\r\n        assert(f(e()));\r\n        if (r ==\
-    \ 0) return 0;\r\n        r += sz;\r\n        S sm = e();\r\n        do {\r\n\
-    \            r--;\r\n            while (r > 1 && (r % 2)) r >>= 1;\r\n       \
-    \     if (!f(op(data[r], sm))) {\r\n                while (r < sz) {\r\n     \
-    \               r = 2 * r + 1;\r\n                    if (f(op(data[r], sm)))\
-    \ {\r\n                        sm = op(data[r], sm);\r\n                     \
-    \   r--;\r\n                    }\r\n                }\r\n                return\
-    \ r + 1 - sz;\r\n            }\r\n            sm = op(data[r], sm);\r\n      \
-    \  } while ((r & -r) != r);\r\n        return 0;\r\n    }\r\n\r\n    S operator[](int\
-    \ p) const {\r\n        return data[sz + p];\r\n    }\r\n};\r\n\r\n}  // namespace\
-    \ ebi\r\n#line 2 \"graph/base.hpp\"\n\n#line 5 \"graph/base.hpp\"\n#include <ranges>\n\
-    #line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line\
-    \ 4 \"data_structure/simple_csr.hpp\"\n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\
+    #line 2 \"data_structure/fenwick_tree.hpp\"\n\r\n#include <cassert>\r\n#include\
+    \ <vector>\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct fenwick_tree\
+    \ {\r\n  private:\r\n    int n;\r\n    std::vector<T> data;\r\n\r\n  public:\r\
+    \n    fenwick_tree(int _n) : n(_n), data(std::vector<T>(_n + 1, T(0))) {}\r\n\r\
+    \n    void add(int i, T val) {\r\n        i++;\r\n        for (int x = i; x <=\
+    \ n; x += x & -x) {\r\n            data[x] += val;\r\n        }\r\n    }\r\n\r\
+    \n    T prefix_sum(int i) const {\r\n        assert(0 <= i && i <= n);\r\n   \
+    \     T ret = 0;\r\n        for (int x = i; x > 0; x -= x & -x) {\r\n        \
+    \    ret += data[x];\r\n        }\r\n        return ret;\r\n    }\r\n\r\n    T\
+    \ sum(int l, int r) const {\r\n        return prefix_sum(r) - prefix_sum(l);\r\
+    \n    }\r\n\r\n    T all_sum() const {\r\n        return prefix_sum(n);\r\n  \
+    \  }\r\n\r\n    // prefix_sum(x) >= key \u3068\u306A\u308B\u6700\u5C0F\u306Ex\u3092\
+    \u8FD4\u3059\u95A2\u6570 O(log N)\r\n    int lower_bound(T key) {\r\n        if\
+    \ (key <= 0) return 0;\r\n        int x = 0;\r\n        int max = 1;\r\n     \
+    \   while ((max << 1) <= n) max <<= 1;\r\n        for (int k = max; k > 0; k >>=\
+    \ 1) {\r\n            if (x + k <= n && data[x + k] < key) {\r\n             \
+    \   x += k;\r\n                key -= data[x];\r\n            }\r\n        }\r\
+    \n        return x + 1;\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n#line 1 \"\
+    template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i, a, n) for\
+    \ (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1);\
+    \ i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n);\
+    \ i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n\
+    #define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\
+    \n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
+    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
+    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
+    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
+    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
+    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
+    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
+    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
+    #line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
+    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
+    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
+    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
+    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
+    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
+    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
+    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
+    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 5\
+    \ \"graph/base.hpp\"\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
+    \ \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
     \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
     \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
@@ -124,14 +153,26 @@ data:
     \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
     \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"tree/heavy_light_decomposition.hpp\"\
-    \n\n#include <algorithm>\n#line 6 \"tree/heavy_light_decomposition.hpp\"\n\n#line\
-    \ 8 \"tree/heavy_light_decomposition.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ T> struct heavy_light_decomposition {\n  private:\n    void dfs_sz(int v) {\n\
-    \        for (auto &e : g[v]) {\n            if (e.to == par[v]) continue;\n \
-    \           par[e.to] = v;\n            depth_[e.to] = depth_[v] + 1;\n      \
-    \      dist[e.to] = dist[v] + e.cost;\n            dfs_sz(e.to);\n           \
-    \ sz[v] += sz[e.to];\n            if (sz[e.to] > sz[g[v][0].to] || g[v][0].to\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"template/utility.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> inline bool chmin(T &a, T b) {\n   \
+    \ if (a > b) {\n        a = b;\n        return true;\n    }\n    return false;\n\
+    }\n\ntemplate <class T> inline bool chmax(T &a, T b) {\n    if (a < b) {\n   \
+    \     a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate <class\
+    \ T> T safe_ceil(T a, T b) {\n    if (a % b == 0)\n        return a / b;\n   \
+    \ else if (a >= 0)\n        return (a / b) + 1;\n    else\n        return -((-a)\
+    \ / b);\n}\n\ntemplate <class T> T safe_floor(T a, T b) {\n    if (a % b == 0)\n\
+    \        return a / b;\n    else if (a >= 0)\n        return a / b;\n    else\n\
+    \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
+    \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
+    \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"tree/dsu_on_tree.hpp\"\n\n\
+    #line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#line 6 \"tree/heavy_light_decomposition.hpp\"\
+    \n\n#line 8 \"tree/heavy_light_decomposition.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T> struct heavy_light_decomposition {\n  private:\n    void dfs_sz(int\
+    \ v) {\n        for (auto &e : g[v]) {\n            if (e.to == par[v]) continue;\n\
+    \            par[e.to] = v;\n            depth_[e.to] = depth_[v] + 1;\n     \
+    \       dist[e.to] = dist[v] + e.cost;\n            dfs_sz(e.to);\n          \
+    \  sz[v] += sz[e.to];\n            if (sz[e.to] > sz[g[v][0].to] || g[v][0].to\
     \ == par[v])\n                std::swap(e, g[v][0]);\n        }\n    }\n\n   \
     \ void dfs_hld(int v) {\n        in[v] = num++;\n        rev[in[v]] = v;\n   \
     \     for (auto e : g[v]) {\n            if (e.to == par[v]) continue;\n     \
@@ -207,51 +248,83 @@ data:
     \n    std::pair<std::vector<int>, Graph<T>> lca_based_auxiliary_tree(\n      \
     \  std::vector<int> vs) const;\n\n  private:\n    int n, root;\n    Graph<T> g;\n\
     \    std::vector<int> sz, in, out, nxt, par, depth_, rev;\n    std::vector<T>\
-    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 9 \"test/data_structure/Vertex_Add_Subtree_Sum.test.cpp\"\
-    \n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
-    i64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n\
-    \ >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n     \
-    \   std::cin >> a[i];\n    }\n    ebi::Graph<int> g(n);\n    g.read_parents(0);\n\
-    \    ebi::heavy_light_decomposition hld(g);\n    ebi::segtree<i64, op, e> seg(n);\n\
-    \    auto set = [&](int u, i64 x) {\n        int idx = hld.idx(u);\n        seg.set(idx,\
-    \ seg.get(idx) + x);\n    };\n    for (int i = 0; i < n; i++) set(i, a[i]);\n\
-    \    i64 ans = 0;\n    auto f = [&](int l, int r) { ans = op(ans, seg.prod(l,\
-    \ r)); };\n    while (q--) {\n        int flag;\n        std::cin >> flag;\n \
-    \       if (flag == 0) {\n            int u;\n            i64 x;\n           \
-    \ std::cin >> u >> x;\n            set(u, x);\n        } else {\n            int\
-    \ u;\n            std::cin >> u;\n            ans = e();\n            hld.subtree_query(u,\
-    \ true, f);\n            std::cout << ans << '\\n';\n        }\n    }\n}\n"
+    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 4 \"tree/dsu_on_tree.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\ntemplate <class ADD, class QUERY, class\
+    \ CLEAR, class RESET>\nvoid heavy_light_decomposition<T>::dsu_on_tree(const ADD\
+    \ &add,\n                                               const QUERY &query,\n\
+    \                                               const CLEAR &clear,\n        \
+    \                                       const RESET &reset) const {\n    auto\
+    \ dfs = [&](auto &&self, int v) -> void {\n        for (auto e : g[v].next())\
+    \ {\n            if (e.to == parent(v)) continue;\n            self(self, e.to);\n\
+    \        }\n        if (sz[v] != 1) {\n            self(self, g[v][0].to);\n \
+    \           for (int i = out[g[v][0].to]; i < out[v]; i++) {\n               \
+    \ add(rev[i]);\n            }\n        }\n        add(v);\n        query(v);\n\
+    \        if (nxt[v] == v) {\n            for (int i = in[v]; i < out[v]; i++)\
+    \ {\n                clear(rev[i]);\n            }\n            reset();\n   \
+    \     }\n        return;\n    };\n    dfs(dfs, root);\n    return;\n}\n\n}  //\
+    \ namespace ebi\n#line 7 \"test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, q;\n    std::cin >> n >> q;\n\
+    \    std::vector<i64> a(n);\n    std::cin >> a;\n    Graph<int> g(n);\n    g.read_parents(0);\n\
+    \    std::vector<std::tuple<int, int, i64>> qs(q);\n    std::vector q1(n, std::vector<int>()),\
+    \ q2(n, std::vector<int>());\n    for (int i = 0; auto &[t, u, x] : qs) {\n  \
+    \      std::cin >> t >> u;\n        if (t == 0) {\n            q1[u].emplace_back(i);\n\
+    \            std::cin >> x;\n        } else {\n            q2[u].emplace_back(i);\n\
+    \        }\n        i++;\n    }\n    i64 sum = 0;\n    std::vector<i64> ans(q,\
+    \ -1);\n    fenwick_tree<i64> fw(q);\n    auto add = [&](int v) -> void {\n  \
+    \      sum += a[v];\n        for (auto i : q1[v]) {\n            i64 x = std::get<2>(qs[i]);\n\
+    \            fw.add(i, x);\n        }\n    };\n    auto query = [&](int v) ->\
+    \ void {\n        for (auto i : q2[v]) {\n            ans[i] = sum + fw.prefix_sum(i);\n\
+    \        }\n    };\n    auto clear = [&](int v) -> void {\n        sum -= a[v];\n\
+    \        for (auto i : q1[v]) {\n            i64 x = std::get<2>(qs[i]);\n   \
+    \         fw.add(i, -x);\n        }\n    };\n    auto reset = [&]() -> void {\n\
+    \n    };\n    heavy_light_decomposition hld(g);\n    hld.dsu_on_tree(add, query,\
+    \ clear, reset);\n    rep(i, 0, q) {\n        if (ans[i] == -1) continue;\n  \
+    \      std::cout << ans[i] << '\\n';\n    }\n}\n\n}  // namespace ebi\n\nint main()\
+    \ {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while (t--)\
+    \ {\n        ebi::main_();\n    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../../data_structure/segtree.hpp\"\
-    \n#include \"../../graph/base.hpp\"\n#include \"../../tree/heavy_light_decomposition.hpp\"\
-    \n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
-    i64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n\
-    \ >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n     \
-    \   std::cin >> a[i];\n    }\n    ebi::Graph<int> g(n);\n    g.read_parents(0);\n\
-    \    ebi::heavy_light_decomposition hld(g);\n    ebi::segtree<i64, op, e> seg(n);\n\
-    \    auto set = [&](int u, i64 x) {\n        int idx = hld.idx(u);\n        seg.set(idx,\
-    \ seg.get(idx) + x);\n    };\n    for (int i = 0; i < n; i++) set(i, a[i]);\n\
-    \    i64 ans = 0;\n    auto f = [&](int l, int r) { ans = op(ans, seg.prod(l,\
-    \ r)); };\n    while (q--) {\n        int flag;\n        std::cin >> flag;\n \
-    \       if (flag == 0) {\n            int u;\n            i64 x;\n           \
-    \ std::cin >> u >> x;\n            set(u, x);\n        } else {\n            int\
-    \ u;\n            std::cin >> u;\n            ans = e();\n            hld.subtree_query(u,\
-    \ true, f);\n            std::cout << ans << '\\n';\n        }\n    }\n}"
+    \n\n#include \"../../data_structure/fenwick_tree.hpp\"\n#include \"../../template/template.hpp\"\
+    \n#include \"../../tree/dsu_on_tree.hpp\"\n#include \"../../tree/heavy_light_decomposition.hpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, q;\n    std::cin >> n >> q;\n\
+    \    std::vector<i64> a(n);\n    std::cin >> a;\n    Graph<int> g(n);\n    g.read_parents(0);\n\
+    \    std::vector<std::tuple<int, int, i64>> qs(q);\n    std::vector q1(n, std::vector<int>()),\
+    \ q2(n, std::vector<int>());\n    for (int i = 0; auto &[t, u, x] : qs) {\n  \
+    \      std::cin >> t >> u;\n        if (t == 0) {\n            q1[u].emplace_back(i);\n\
+    \            std::cin >> x;\n        } else {\n            q2[u].emplace_back(i);\n\
+    \        }\n        i++;\n    }\n    i64 sum = 0;\n    std::vector<i64> ans(q,\
+    \ -1);\n    fenwick_tree<i64> fw(q);\n    auto add = [&](int v) -> void {\n  \
+    \      sum += a[v];\n        for (auto i : q1[v]) {\n            i64 x = std::get<2>(qs[i]);\n\
+    \            fw.add(i, x);\n        }\n    };\n    auto query = [&](int v) ->\
+    \ void {\n        for (auto i : q2[v]) {\n            ans[i] = sum + fw.prefix_sum(i);\n\
+    \        }\n    };\n    auto clear = [&](int v) -> void {\n        sum -= a[v];\n\
+    \        for (auto i : q1[v]) {\n            i64 x = std::get<2>(qs[i]);\n   \
+    \         fw.add(i, -x);\n        }\n    };\n    auto reset = [&]() -> void {\n\
+    \n    };\n    heavy_light_decomposition hld(g);\n    hld.dsu_on_tree(add, query,\
+    \ clear, reset);\n    rep(i, 0, q) {\n        if (ans[i] == -1) continue;\n  \
+    \      std::cout << ans[i] << '\\n';\n    }\n}\n\n}  // namespace ebi\n\nint main()\
+    \ {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while (t--)\
+    \ {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
-  - data_structure/segtree.hpp
+  - data_structure/fenwick_tree.hpp
+  - template/template.hpp
+  - template/debug_template.hpp
+  - template/int_alias.hpp
+  - template/io.hpp
+  - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
+  - tree/dsu_on_tree.hpp
   - tree/heavy_light_decomposition.hpp
   isVerificationFile: true
-  path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+  path: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
   requiredBy: []
   timestamp: '2024-06-18 15:22:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+documentation_of: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
 layout: document
 redirect_from:
-- /verify/test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-- /verify/test/data_structure/Vertex_Add_Subtree_Sum.test.cpp.html
-title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
+- /verify/test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+- /verify/test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp.html
+title: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
 ---

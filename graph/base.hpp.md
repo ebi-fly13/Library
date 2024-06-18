@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   _extendedRequiredBy:
@@ -62,10 +62,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/utility.hpp
     title: "\u4FBF\u5229\u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
@@ -80,7 +80,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/dp_on_static_top_tree.hpp
     title: DP on Static Top Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: tree/dsu_on_tree.hpp
+    title: tree/dsu_on_tree.hpp
+  - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   - icon: ':heavy_check_mark:'
@@ -114,6 +117,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
+  - icon: ':x:'
+    path: test/aoj/aoj_2995.test.cpp
+    title: test/aoj/aoj_2995.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_3086.test.cpp
     title: test/aoj/aoj_3086.test.cpp
@@ -334,6 +340,9 @@ data:
     path: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
     title: test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+    title: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
     title: test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -375,9 +384,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/base.hpp\"\n\n#include <cassert>\n#include <iostream>\n\
@@ -505,6 +514,7 @@ data:
   - tree/heavy_light_decomposition.hpp
   - tree/contour_query_on_tree.hpp
   - tree/static_top_tree.hpp
+  - tree/dsu_on_tree.hpp
   - tree/lca_based_auxiliary_tree.hpp
   - tree/level_ancestor.hpp
   - tree/rooted_tree_hash.hpp
@@ -515,7 +525,7 @@ data:
   - tree/rerooting.hpp
   - tree/dp_on_static_top_tree.hpp
   timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_952.test.cpp
@@ -528,6 +538,7 @@ data:
   - test/yuki/yuki_2439.test.cpp
   - test/yuki/yuki_2633.test.cpp
   - test/yuki/yuki_1796.test.cpp
+  - test/aoj/aoj_2995.test.cpp
   - test/aoj/aoj_grl_1_a.test.cpp
   - test/aoj/aoj_grl_1_b.test.cpp
   - test/aoj/aoj_3086.test.cpp
@@ -598,6 +609,7 @@ data:
   - test/tree/Tree_Path_Composite_Sum.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
   - test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   - test/tree/Cartesian_Tree.test.cpp
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
