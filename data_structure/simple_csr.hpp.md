@@ -82,7 +82,7 @@ data:
     title: DP on Static Top Tree
   - icon: ':question:'
     path: tree/dsu_on_tree.hpp
-    title: tree/dsu_on_tree.hpp
+    title: Dsu on Tree
   - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition

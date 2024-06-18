@@ -10,7 +10,7 @@ data:
   _extendedRequiredBy:
   - icon: ':question:'
     path: tree/dsu_on_tree.hpp
-    title: tree/dsu_on_tree.hpp
+    title: Dsu on Tree
   - icon: ':heavy_check_mark:'
     path: tree/lca_based_auxiliary_tree.hpp
     title: LCA based Auxiliary Tree

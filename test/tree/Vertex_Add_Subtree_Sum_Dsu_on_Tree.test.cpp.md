@@ -27,7 +27,7 @@ data:
     title: template/utility.hpp
   - icon: ':question:'
     path: tree/dsu_on_tree.hpp
-    title: tree/dsu_on_tree.hpp
+    title: Dsu on Tree
   - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
