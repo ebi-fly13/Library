@@ -18,3 +18,7 @@ documentation_of: //tree/dsu_on_tree.hpp
   - 初期状態（頂点が何も追加されていない状態）にする関数。この関数は $O(N)$ 回実行される。
 
 `add(v)` と `reset(v)` の計算量を $O(1)$ とすると、 $O(N\log{N})$ となる。
+
+### 参考文献
+
+[ツリー上のマージテク亜種の話 camypaper](https://speakerdeck.com/camypaper/dsu-on-tree)
