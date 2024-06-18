@@ -19,7 +19,7 @@ void main_() {
         d--;
     }
     std::vector<bool> is_tree(n, true);
-    undo_unionfind uf(n);
+    undo_unionfind uf(k);
     std::vector<int> ans(n);
     int res = 0;
     auto val = [&](int v) -> int {
