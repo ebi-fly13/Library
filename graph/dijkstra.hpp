@@ -9,8 +9,9 @@
 
 namespace ebi {
 
-template <class T> std::vector<T> dijkstra(int s, int n, const Graph<T> &g) {
+template <class T> std::vector<T> dijkstra(int s, const Graph<T> &g) {
     typedef std::pair<T, int> P;
+    int n = g.node_number();
     std::vector<T> d(n, std::numeric_limits<T>::max());
     std::priority_queue<P, std::vector<P>, std::greater<P>> que;
     que.push(P(0, s));
