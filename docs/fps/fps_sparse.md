@@ -13,20 +13,20 @@ documentation_of: //fps/fps_sparse.hpp
 
 ### inv_sparse(std::vector<mint> f, int d)
 
-$f^{-1} \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
+$f^{-1} \mod x^d$ を求める。$f$ の非ゼロの項を $N$ 個として $O(ND)$
 
 ### exp_sparse(std::vector<mint> f, int d)
 
-$\exp(f) \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
+$\exp(f) \mod x^d$ を求める。$f$ の非ゼロの項を $N$ 個として $O(ND)$
 
 ### log_sparse(std::vector<mint> f, int d)
 
-$\log{f} \mod x^d$ を求める。$f$ の非ゼロの項を $M$ 個として $O(NM)$
+$\log{f} \mod x^d$ を求める。$f$ の非ゼロの項を $N$ 個として $O(ND)$
 
 ### pow_sparse(std::vector<mint> f, long long k, int d)
 
-$f^k \mod x^d$ を求める。$k$ は非負整数のみ正常に動作する。$f$ の非ゼロの項を $M$ 個として $O(NM)$
+$f^k \mod x^d$ を求める。$k$ は非負整数のみ正常に動作する。$f$ の非ゼロの項を $N$ 個として $O(ND)$
 
 ### pow_sparse_1(std::vector<mint> f, long long k, int d)
 
-$[x^0]f = 1$ であるような $f$ に対して $f^k \mod x^d$ を求める。 $k$ が負でも有理数でも動作する。 $f$ の非ゼロの項を $M$ 個として $O(NM)$
+$[x^0]f = 1$ であるような $f$ に対して $f^k \mod x^d$ を求める。 $k$ が負でも有理数でも動作する。 $f$ の非ゼロの項を $M$ 個として $O(ND)$
