@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/dijkstra.hpp
     title: dijkstra
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
@@ -174,7 +174,7 @@ data:
     \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 11 \"test/graph/dijkstra.test.cpp\"\
     \n\r\nusing ebi::i64;\r\n\r\nint main() {\r\n    int v, e, r;\r\n    std::cin\
     \ >> v >> e >> r;\r\n    ebi::Graph<i64> g(v);\r\n    g.read_graph(e, 0, true,\
-    \ true);\r\n    std::vector<i64> dest = ebi::dijkstra(r, v, g);\r\n    for (auto\
+    \ true);\r\n    std::vector<i64> dest = ebi::dijkstra(r, g);\r\n    for (auto\
     \ di : dest) {\r\n        if (di == std::numeric_limits<i64>::max()) {\r\n   \
     \         std::cout << \"INF\" << std::endl;\r\n            continue;\r\n    \
     \    }\r\n        std::cout << di << std::endl;\r\n    }\r\n}\n"
@@ -183,7 +183,7 @@ data:
     \ <limits>\r\n#include <vector>\r\n\r\n#include \"../../template/template.hpp\"\
     \r\n\r\nusing ebi::i64;\r\n\r\nint main() {\r\n    int v, e, r;\r\n    std::cin\
     \ >> v >> e >> r;\r\n    ebi::Graph<i64> g(v);\r\n    g.read_graph(e, 0, true,\
-    \ true);\r\n    std::vector<i64> dest = ebi::dijkstra(r, v, g);\r\n    for (auto\
+    \ true);\r\n    std::vector<i64> dest = ebi::dijkstra(r, g);\r\n    for (auto\
     \ di : dest) {\r\n        if (di == std::numeric_limits<i64>::max()) {\r\n   \
     \         std::cout << \"INF\" << std::endl;\r\n            continue;\r\n    \
     \    }\r\n        std::cout << di << std::endl;\r\n    }\r\n}"
@@ -199,8 +199,8 @@ data:
   isVerificationFile: true
   path: test/graph/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2024-06-20 19:56:59+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-06-20 20:05:46+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/dijkstra.test.cpp
 layout: document
