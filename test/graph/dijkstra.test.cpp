@@ -16,7 +16,7 @@ int main() {
     std::cin >> v >> e >> r;
     ebi::Graph<i64> g(v);
     g.read_graph(e, 0, true, true);
-    std::vector<i64> dest = ebi::dijkstra(r, v, g);
+    std::vector<i64> dest = ebi::dijkstra(r, g);
     for (auto di : dest) {
         if (di == std::numeric_limits<i64>::max()) {
             std::cout << "INF" << std::endl;
