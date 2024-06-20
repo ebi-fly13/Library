@@ -343,8 +343,8 @@ data:
   timestamp: '2024-04-21 17:56:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_2747.test.cpp
   - test/math/Factorial.test.cpp
+  - test/yuki/yuki_2747.test.cpp
 documentation_of: math/factorial_mod_998.hpp
 layout: document
 redirect_from:

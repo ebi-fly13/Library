@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
@@ -252,9 +252,9 @@ data:
   timestamp: '2024-06-06 18:49:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
-  - test/graph/Counting_Eulerian_Circuits.test.cpp
   - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
+  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
 documentation_of: graph/count_spanning_tree.hpp
 layout: document
 title: Count Spanning Tree

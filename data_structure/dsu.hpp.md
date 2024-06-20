@@ -81,8 +81,8 @@ data:
   path: data_structure/dsu.hpp
   requiredBy:
   - data_structure/range_parallel_dsu.hpp
-  - graph/mst.hpp
   - graph/manhattan_mst.hpp
+  - graph/mst.hpp
   timestamp: '2024-04-24 16:34:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

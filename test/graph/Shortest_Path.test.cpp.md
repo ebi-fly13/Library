@@ -1,28 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dijkstra.hpp
     title: dijkstra
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -99,16 +99,17 @@ data:
     \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"graph/dijkstra.hpp\"\
     \n\r\n#include <algorithm>\r\n#include <limits>\r\n#include <queue>\r\n#line 7\
     \ \"graph/dijkstra.hpp\"\n\r\n#line 9 \"graph/dijkstra.hpp\"\n\r\nnamespace ebi\
-    \ {\r\n\r\ntemplate <class T> std::vector<T> dijkstra(int s, int n, const Graph<T>\
-    \ &g) {\r\n    typedef std::pair<T, int> P;\r\n    std::vector<T> d(n, std::numeric_limits<T>::max());\r\
-    \n    std::priority_queue<P, std::vector<P>, std::greater<P>> que;\r\n    que.push(P(0,\
-    \ s));\r\n    d[s] = 0;\r\n    while (!que.empty()) {\r\n        auto [ret, v]\
-    \ = que.top();\r\n        que.pop();\r\n        if (d[v] < ret) continue;\r\n\
-    \        for (auto e : g[v]) {\r\n            if (d[e.to] > d[v] + e.cost) {\r\
-    \n                d[e.to] = d[v] + e.cost;\r\n                que.push(P(d[e.to],\
-    \ e.to));\r\n            }\r\n        }\r\n    }\r\n    return d;\r\n}\r\n\r\n\
-    template <class T> struct dijkstra_path {\r\n  public:\r\n    dijkstra_path(int\
-    \ s_, const Graph<T> &g)\r\n        : s(s_),\r\n          dist(g.size(), std::numeric_limits<T>::max()),\r\
+    \ {\r\n\r\ntemplate <class T> std::vector<T> dijkstra(int s, const Graph<T> &g)\
+    \ {\r\n    typedef std::pair<T, int> P;\r\n    int n = g.node_number();\r\n  \
+    \  std::vector<T> d(n, std::numeric_limits<T>::max());\r\n    std::priority_queue<P,\
+    \ std::vector<P>, std::greater<P>> que;\r\n    que.push(P(0, s));\r\n    d[s]\
+    \ = 0;\r\n    while (!que.empty()) {\r\n        auto [ret, v] = que.top();\r\n\
+    \        que.pop();\r\n        if (d[v] < ret) continue;\r\n        for (auto\
+    \ e : g[v]) {\r\n            if (d[e.to] > d[v] + e.cost) {\r\n              \
+    \  d[e.to] = d[v] + e.cost;\r\n                que.push(P(d[e.to], e.to));\r\n\
+    \            }\r\n        }\r\n    }\r\n    return d;\r\n}\r\n\r\ntemplate <class\
+    \ T> struct dijkstra_path {\r\n  public:\r\n    dijkstra_path(int s_, const Graph<T>\
+    \ &g)\r\n        : s(s_),\r\n          dist(g.size(), std::numeric_limits<T>::max()),\r\
     \n          prev(g.size(), -1) {\r\n        dist[s] = 0;\r\n        using P =\
     \ std::pair<T, int>;\r\n        std::priority_queue<P, std::vector<P>, std::greater<P>>\
     \ que;\r\n        que.push(P(0, s));\r\n        while (!que.empty()) {\r\n   \
@@ -202,7 +203,7 @@ data:
   isVerificationFile: true
   path: test/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-06-20 19:56:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Shortest_Path.test.cpp

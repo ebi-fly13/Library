@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
@@ -127,8 +127,8 @@ data:
   timestamp: '2024-03-13 15:52:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/level_ancestor_lca.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/level_ancestor_lca.test.cpp
 documentation_of: tree/level_ancestor.hpp
 layout: document
 title: Level Ancestor

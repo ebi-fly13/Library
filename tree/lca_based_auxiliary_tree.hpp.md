@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
@@ -253,8 +253,8 @@ data:
   timestamp: '2024-06-18 15:22:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_901.test.cpp
   - test/yuki/yuki_901_2.test.cpp
+  - test/yuki/yuki_901.test.cpp
 documentation_of: tree/lca_based_auxiliary_tree.hpp
 layout: document
 title: LCA based Auxiliary Tree

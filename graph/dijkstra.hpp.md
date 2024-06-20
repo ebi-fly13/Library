@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path.test.cpp
     title: test/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/dijkstra.test.cpp
     title: test/graph/dijkstra.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\r\n#include <algorithm>\r\n#include\
@@ -83,69 +83,69 @@ data:
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
     \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 9 \"graph/dijkstra.hpp\"\
     \n\r\nnamespace ebi {\r\n\r\ntemplate <class T> std::vector<T> dijkstra(int s,\
-    \ int n, const Graph<T> &g) {\r\n    typedef std::pair<T, int> P;\r\n    std::vector<T>\
-    \ d(n, std::numeric_limits<T>::max());\r\n    std::priority_queue<P, std::vector<P>,\
-    \ std::greater<P>> que;\r\n    que.push(P(0, s));\r\n    d[s] = 0;\r\n    while\
-    \ (!que.empty()) {\r\n        auto [ret, v] = que.top();\r\n        que.pop();\r\
-    \n        if (d[v] < ret) continue;\r\n        for (auto e : g[v]) {\r\n     \
-    \       if (d[e.to] > d[v] + e.cost) {\r\n                d[e.to] = d[v] + e.cost;\r\
-    \n                que.push(P(d[e.to], e.to));\r\n            }\r\n        }\r\n\
-    \    }\r\n    return d;\r\n}\r\n\r\ntemplate <class T> struct dijkstra_path {\r\
-    \n  public:\r\n    dijkstra_path(int s_, const Graph<T> &g)\r\n        : s(s_),\r\
-    \n          dist(g.size(), std::numeric_limits<T>::max()),\r\n          prev(g.size(),\
-    \ -1) {\r\n        dist[s] = 0;\r\n        using P = std::pair<T, int>;\r\n  \
-    \      std::priority_queue<P, std::vector<P>, std::greater<P>> que;\r\n      \
-    \  que.push(P(0, s));\r\n        while (!que.empty()) {\r\n            auto [ret,\
-    \ v] = que.top();\r\n            que.pop();\r\n            if (dist[v] < ret)\
-    \ continue;\r\n            for (auto e : g[v]) {\r\n                if (dist[e.to]\
-    \ > dist[v] + e.cost) {\r\n                    dist[e.to] = dist[v] + e.cost;\r\
-    \n                    prev[e.to] = v;\r\n                    que.push(P(dist[e.to],\
-    \ e.to));\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n\
-    \    std::pair<T, std::vector<int>> shortest_path(int v) const {\r\n        if\
-    \ (dist[v] == std::numeric_limits<T>::max()) return {dist[v], {}};\r\n       \
-    \ std::vector<int> path;\r\n        int u = v;\r\n        while (u != s) {\r\n\
-    \            path.emplace_back(u);\r\n            u = prev[u];\r\n        }\r\n\
-    \        path.emplace_back(u);\r\n        std::reverse(path.begin(), path.end());\r\
-    \n        return {dist[v], path};\r\n    }\r\n\r\n  private:\r\n    int s;\r\n\
-    \    std::vector<T> dist;\r\n    std::vector<int> prev;\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n"
+    \ const Graph<T> &g) {\r\n    typedef std::pair<T, int> P;\r\n    int n = g.node_number();\r\
+    \n    std::vector<T> d(n, std::numeric_limits<T>::max());\r\n    std::priority_queue<P,\
+    \ std::vector<P>, std::greater<P>> que;\r\n    que.push(P(0, s));\r\n    d[s]\
+    \ = 0;\r\n    while (!que.empty()) {\r\n        auto [ret, v] = que.top();\r\n\
+    \        que.pop();\r\n        if (d[v] < ret) continue;\r\n        for (auto\
+    \ e : g[v]) {\r\n            if (d[e.to] > d[v] + e.cost) {\r\n              \
+    \  d[e.to] = d[v] + e.cost;\r\n                que.push(P(d[e.to], e.to));\r\n\
+    \            }\r\n        }\r\n    }\r\n    return d;\r\n}\r\n\r\ntemplate <class\
+    \ T> struct dijkstra_path {\r\n  public:\r\n    dijkstra_path(int s_, const Graph<T>\
+    \ &g)\r\n        : s(s_),\r\n          dist(g.size(), std::numeric_limits<T>::max()),\r\
+    \n          prev(g.size(), -1) {\r\n        dist[s] = 0;\r\n        using P =\
+    \ std::pair<T, int>;\r\n        std::priority_queue<P, std::vector<P>, std::greater<P>>\
+    \ que;\r\n        que.push(P(0, s));\r\n        while (!que.empty()) {\r\n   \
+    \         auto [ret, v] = que.top();\r\n            que.pop();\r\n           \
+    \ if (dist[v] < ret) continue;\r\n            for (auto e : g[v]) {\r\n      \
+    \          if (dist[e.to] > dist[v] + e.cost) {\r\n                    dist[e.to]\
+    \ = dist[v] + e.cost;\r\n                    prev[e.to] = v;\r\n             \
+    \       que.push(P(dist[e.to], e.to));\r\n                }\r\n            }\r\
+    \n        }\r\n    }\r\n\r\n    std::pair<T, std::vector<int>> shortest_path(int\
+    \ v) const {\r\n        if (dist[v] == std::numeric_limits<T>::max()) return {dist[v],\
+    \ {}};\r\n        std::vector<int> path;\r\n        int u = v;\r\n        while\
+    \ (u != s) {\r\n            path.emplace_back(u);\r\n            u = prev[u];\r\
+    \n        }\r\n        path.emplace_back(u);\r\n        std::reverse(path.begin(),\
+    \ path.end());\r\n        return {dist[v], path};\r\n    }\r\n\r\n  private:\r\
+    \n    int s;\r\n    std::vector<T> dist;\r\n    std::vector<int> prev;\r\n};\r\
+    \n\r\n}  // namespace ebi\n"
   code: "#pragma once\r\n\r\n#include <algorithm>\r\n#include <limits>\r\n#include\
     \ <queue>\r\n#include <vector>\r\n\r\n#include \"../graph/base.hpp\"\r\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <class T> std::vector<T> dijkstra(int s, int n, const\
-    \ Graph<T> &g) {\r\n    typedef std::pair<T, int> P;\r\n    std::vector<T> d(n,\
-    \ std::numeric_limits<T>::max());\r\n    std::priority_queue<P, std::vector<P>,\
-    \ std::greater<P>> que;\r\n    que.push(P(0, s));\r\n    d[s] = 0;\r\n    while\
-    \ (!que.empty()) {\r\n        auto [ret, v] = que.top();\r\n        que.pop();\r\
-    \n        if (d[v] < ret) continue;\r\n        for (auto e : g[v]) {\r\n     \
-    \       if (d[e.to] > d[v] + e.cost) {\r\n                d[e.to] = d[v] + e.cost;\r\
-    \n                que.push(P(d[e.to], e.to));\r\n            }\r\n        }\r\n\
-    \    }\r\n    return d;\r\n}\r\n\r\ntemplate <class T> struct dijkstra_path {\r\
-    \n  public:\r\n    dijkstra_path(int s_, const Graph<T> &g)\r\n        : s(s_),\r\
-    \n          dist(g.size(), std::numeric_limits<T>::max()),\r\n          prev(g.size(),\
-    \ -1) {\r\n        dist[s] = 0;\r\n        using P = std::pair<T, int>;\r\n  \
-    \      std::priority_queue<P, std::vector<P>, std::greater<P>> que;\r\n      \
-    \  que.push(P(0, s));\r\n        while (!que.empty()) {\r\n            auto [ret,\
-    \ v] = que.top();\r\n            que.pop();\r\n            if (dist[v] < ret)\
-    \ continue;\r\n            for (auto e : g[v]) {\r\n                if (dist[e.to]\
-    \ > dist[v] + e.cost) {\r\n                    dist[e.to] = dist[v] + e.cost;\r\
-    \n                    prev[e.to] = v;\r\n                    que.push(P(dist[e.to],\
-    \ e.to));\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n\
-    \    std::pair<T, std::vector<int>> shortest_path(int v) const {\r\n        if\
-    \ (dist[v] == std::numeric_limits<T>::max()) return {dist[v], {}};\r\n       \
-    \ std::vector<int> path;\r\n        int u = v;\r\n        while (u != s) {\r\n\
-    \            path.emplace_back(u);\r\n            u = prev[u];\r\n        }\r\n\
-    \        path.emplace_back(u);\r\n        std::reverse(path.begin(), path.end());\r\
-    \n        return {dist[v], path};\r\n    }\r\n\r\n  private:\r\n    int s;\r\n\
-    \    std::vector<T> dist;\r\n    std::vector<int> prev;\r\n};\r\n\r\n}  // namespace\
-    \ ebi"
+    \ ebi {\r\n\r\ntemplate <class T> std::vector<T> dijkstra(int s, const Graph<T>\
+    \ &g) {\r\n    typedef std::pair<T, int> P;\r\n    int n = g.node_number();\r\n\
+    \    std::vector<T> d(n, std::numeric_limits<T>::max());\r\n    std::priority_queue<P,\
+    \ std::vector<P>, std::greater<P>> que;\r\n    que.push(P(0, s));\r\n    d[s]\
+    \ = 0;\r\n    while (!que.empty()) {\r\n        auto [ret, v] = que.top();\r\n\
+    \        que.pop();\r\n        if (d[v] < ret) continue;\r\n        for (auto\
+    \ e : g[v]) {\r\n            if (d[e.to] > d[v] + e.cost) {\r\n              \
+    \  d[e.to] = d[v] + e.cost;\r\n                que.push(P(d[e.to], e.to));\r\n\
+    \            }\r\n        }\r\n    }\r\n    return d;\r\n}\r\n\r\ntemplate <class\
+    \ T> struct dijkstra_path {\r\n  public:\r\n    dijkstra_path(int s_, const Graph<T>\
+    \ &g)\r\n        : s(s_),\r\n          dist(g.size(), std::numeric_limits<T>::max()),\r\
+    \n          prev(g.size(), -1) {\r\n        dist[s] = 0;\r\n        using P =\
+    \ std::pair<T, int>;\r\n        std::priority_queue<P, std::vector<P>, std::greater<P>>\
+    \ que;\r\n        que.push(P(0, s));\r\n        while (!que.empty()) {\r\n   \
+    \         auto [ret, v] = que.top();\r\n            que.pop();\r\n           \
+    \ if (dist[v] < ret) continue;\r\n            for (auto e : g[v]) {\r\n      \
+    \          if (dist[e.to] > dist[v] + e.cost) {\r\n                    dist[e.to]\
+    \ = dist[v] + e.cost;\r\n                    prev[e.to] = v;\r\n             \
+    \       que.push(P(dist[e.to], e.to));\r\n                }\r\n            }\r\
+    \n        }\r\n    }\r\n\r\n    std::pair<T, std::vector<int>> shortest_path(int\
+    \ v) const {\r\n        if (dist[v] == std::numeric_limits<T>::max()) return {dist[v],\
+    \ {}};\r\n        std::vector<int> path;\r\n        int u = v;\r\n        while\
+    \ (u != s) {\r\n            path.emplace_back(u);\r\n            u = prev[u];\r\
+    \n        }\r\n        path.emplace_back(u);\r\n        std::reverse(path.begin(),\
+    \ path.end());\r\n        return {dist[v], path};\r\n    }\r\n\r\n  private:\r\
+    \n    int s;\r\n    std::vector<T> dist;\r\n    std::vector<int> prev;\r\n};\r\
+    \n\r\n}  // namespace ebi"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-06-20 19:56:59+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/graph/Shortest_Path.test.cpp
   - test/graph/dijkstra.test.cpp

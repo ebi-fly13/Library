@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy:
@@ -300,16 +300,16 @@ data:
   isVerificationFile: false
   path: fps/middle_product.hpp
   requiredBy:
-  - string/wildcard_pattern_matching.hpp
-  - fps/composition_of_fps.hpp
-  - fps/middle_product_arbitrary.hpp
   - fps/compositional_inverse_of_fps_old.hpp
+  - fps/middle_product_arbitrary.hpp
+  - fps/composition_of_fps.hpp
+  - string/wildcard_pattern_matching.hpp
   timestamp: '2024-05-24 18:44:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_1796.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - test/yuki/yuki_1796.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
 documentation_of: fps/middle_product.hpp
 layout: document

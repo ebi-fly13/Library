@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy: []
@@ -163,8 +163,8 @@ data:
   timestamp: '2024-03-13 17:06:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Cycle_Detection_Directed.test.cpp
   - test/graph/Cycle_Detection_Undirected.test.cpp
+  - test/graph/Cycle_Detection_Directed.test.cpp
 documentation_of: graph/cycle_detection.hpp
 layout: document
 title: Cycle Detection

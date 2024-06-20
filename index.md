@@ -201,7 +201,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
     - icon: ':heavy_check_mark:'
@@ -310,7 +310,7 @@ data:
       title: geometry/polygon.hpp
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/base.hpp
       title: Graph (CSR format)
     - icon: ':heavy_check_mark:'
@@ -334,7 +334,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/cycle_detection.hpp
       title: Cycle Detection
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/dijkstra.hpp
       title: dijkstra
     - icon: ':heavy_check_mark:'
@@ -523,19 +523,19 @@ data:
       title: Wildcard Pattern Matching
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -926,7 +926,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Two_Edge_Connected_Components.test.cpp
       title: test/graph/Two_Edge_Connected_Components.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/dijkstra.test.cpp
       title: test/graph/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
