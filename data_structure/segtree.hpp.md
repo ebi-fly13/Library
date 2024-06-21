@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: data_structure/offline_segtree_2d.hpp
+    title: offline 2D segtree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_1068_1.test.cpp
@@ -124,7 +127,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data_structure/segtree.hpp
-  requiredBy: []
+  requiredBy:
+  - data_structure/offline_segtree_2d.hpp
   timestamp: '2023-10-31 01:04:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
