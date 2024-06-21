@@ -5,7 +5,6 @@
 
 #include "../../data_structure/compress.hpp"
 #include "../../data_structure/offline_segtree_2d.hpp"
-#include "../../data_structure/segtree.hpp"
 
 using i64 = std::int64_t;
 
@@ -39,13 +38,13 @@ int main() {
             std::cin >> query[i].l >> query[i].d >> query[i].r >> query[i].u;
         }
     }
-    ebi::offline_segtree_2d<i64, op, e, ebi::segtree<i64, op, e>> seg2d;
+    ebi::offline_segtree_2d<i64, op, e> seg2d;
     for (int i = 0; i < n; i++) {
-        seg2d.pre_set({x[i], y[i]});
+        seg2d.pre_set(x[i], y[i]);
     }
     for (int i = 0; i < q; i++) {
         if (query[i].flag == 0) {
-            seg2d.pre_set({query[i].x, query[i].y});
+            seg2d.pre_set(query[i].x, query[i].y);
         }
     }
     seg2d.build();

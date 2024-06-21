@@ -5,16 +5,19 @@
 
 /*
     reference: https://blog.hamayanhamayan.com/entry/2017/12/09/015937
-    verify   : http://codeforces.com/contest/893/submission/125531718
 */
 
 #include "../data_structure/compress.hpp"
+#include "../data_structure/segtree.hpp"
 
 namespace ebi {
 
-template <class S, S (*op)(S, S), S (*e)(), class data_structure>
-struct offline_segtree_2d {
+template <class S, S (*op)(S, S), S (*e)()> struct offline_segtree_2d {
     offline_segtree_2d() = default;
+
+    void pre_set(int i, int j) {
+        ps.emplace_back(i, j);
+    }
 
     void pre_set(std::pair<int, int> p) {
         ps.emplace_back(p);
@@ -37,7 +40,7 @@ struct offline_segtree_2d {
         }
         for (int i = 0; i < 2 * sz; i++) {
             ys[i].build();
-            data.emplace_back(data_structure(ys[i].size()));
+            data.emplace_back(ys[i].size());
         }
     }
 
@@ -87,7 +90,7 @@ struct offline_segtree_2d {
     std::vector<std::pair<int, int>> ps;
     compress<int> xs;
     std::vector<compress<int>> ys;
-    std::vector<data_structure> data;
+    std::vector<segtree<S, op, e>> data;
 };
 
 }  // namespace ebi
