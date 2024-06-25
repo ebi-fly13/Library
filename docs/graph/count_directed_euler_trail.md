@@ -7,3 +7,4 @@ documentation_of: //graph/count_directed_euler_trail.hpp
 
 与えられたグラフについて、オイラー路の個数を数える。頂点数を $N$ 辺数を $M$ として、 $O(N^3 + M)$ 。
 Euler Circuitはオイラー閉路を、Euler Trailはオイラー路のこととしている。
+`edge_count[i]` には辺 $i$ の本数を入れる。辺はすべて区別されているので注意。
