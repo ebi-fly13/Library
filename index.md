@@ -231,6 +231,9 @@ data:
   - name: fps
     pages:
     - icon: ':heavy_check_mark:'
+      path: fps/berlekamp_massey.hpp
+      title: Berlekamp Massey
+    - icon: ':heavy_check_mark:'
       path: fps/composition_of_fps.hpp
       title: $f(g(x))$ ( $O(N\log^2{N})$ )
     - icon: ':heavy_check_mark:'
@@ -952,6 +955,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Factorial.test.cpp
       title: test/math/Factorial.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Find_Linear_Recurrence.test.cpp
+      title: test/math/Find_Linear_Recurrence.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Inversion_Number.test.cpp
       title: test/math/Inversion_Number.test.cpp

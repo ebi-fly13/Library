@@ -21,6 +21,9 @@ data:
     path: convolution/ntt.hpp
     title: NTT
   - icon: ':heavy_check_mark:'
+    path: fps/berlekamp_massey.hpp
+    title: Berlekamp Massey
+  - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$ ( $O(N\log^2{N})$ )
   - icon: ':heavy_check_mark:'
@@ -248,6 +251,9 @@ data:
     path: test/math/Factorial.test.cpp
     title: test/math/Factorial.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Find_Linear_Recurrence.test.cpp
+    title: test/math/Find_Linear_Recurrence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -466,6 +472,7 @@ data:
   - fps/taylor_shift.hpp
   - fps/compositional_inverse_of_fps_old.hpp
   - fps/polynomial_interpolation.hpp
+  - fps/berlekamp_massey.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/sum_of_rational_fps.hpp
   - fps/compositional_inverse_of_fps.hpp
@@ -524,6 +531,7 @@ data:
   - test/math/Catalan_Convolution.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Find_Linear_Recurrence.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
