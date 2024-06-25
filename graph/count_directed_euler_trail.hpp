@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "../graph/base.hpp"
 #include "../graph/count_spanning_tree.hpp"
 #include "../math/binomial.hpp"
@@ -10,7 +12,7 @@ namespace ebi {
 template <Modint mint>
 mint count_directed_euler_circuit(const std::vector<std::vector<int>> &g) {
     int n = (int)g.size();
-    if(n == 0) return 1;
+    if (n == 0) return 1;
     std::vector<int> indeg(n, 0);
     std::vector<int> outdeg(n, 0);
     for (int i = 0; i < n; i++) {
@@ -31,11 +33,13 @@ mint count_directed_euler_circuit(const std::vector<std::vector<int>> &g) {
 }
 
 template <Modint mint, class T>
-mint count_directed_euler_circuit(const Graph<T> &g) {
+mint count_directed_euler_circuit(const Graph<T> &g,
+                                  std::vector<int> edge_count = {}) {
     int n = g.node_number();
+    if (edge_count.empty()) edge_count.assign(g.edge_number(), 1);
     std::vector a(n, std::vector<int>(n, 0));
     for (auto e : g.get_edges()) {
-        a[e.from][e.to]++;
+        a[e.from][e.to] += edge_count[e.id];
     }
     return count_directed_euler_circuit<mint>(a);
 }
@@ -43,7 +47,7 @@ mint count_directed_euler_circuit(const Graph<T> &g) {
 template <Modint mint>
 mint count_directed_euler_trail(std::vector<std::vector<int>> g) {
     int n = (int)g.size();
-    if(n == 0) return 1;
+    if (n == 0) return 1;
     std::vector<int> indeg(n, 0);
     std::vector<int> outdeg(n, 0);
     for (int i = 0; i < n; i++) {
@@ -78,11 +82,13 @@ mint count_directed_euler_trail(std::vector<std::vector<int>> g) {
 }
 
 template <Modint mint, class T>
-mint count_directed_euler_trail(const Graph<T> &g) {
+mint count_directed_euler_trail(const Graph<T> &g,
+                                std::vector<int> edge_count = {}) {
     int n = g.node_number();
+    if (edge_count.empty()) edge_count.assign(g.edge_number(), 1);
     std::vector a(n, std::vector<int>(n, 0));
     for (auto e : g.get_edges()) {
-        a[e.from][e.to]++;
+        a[e.from][e.to] += edge_count[e.id];
     }
     return count_directed_euler_trail<mint>(a);
 }
