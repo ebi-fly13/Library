@@ -58,11 +58,22 @@ template <class T> struct matrix {
         return Self(lhs) *= rhs;
     }
 
+    std::vector<T> operator*(const std::vector<T> &rhs) noexcept {
+        assert(m == (int)rhs.size());
+        std::vector<T> res(n, 0);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                res[i] += (*this)[i][j] * rhs[j];
+            }
+        }
+        return res;
+    }
+
     Self &operator+=(Self &rhs) noexcept {
         assert(this->size() == rhs.size());
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < m; ++j) {
-                data[i][j] += rhs[i][j];
+                (*this)[i][j] += rhs[i][j];
             }
         }
         return *this;
@@ -72,7 +83,7 @@ template <class T> struct matrix {
         assert(this->size() == rhs.size());
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < m; ++j) {
-                data[i][j] -= rhs[i][j];
+                (*this)[i][j] -= rhs[i][j];
             }
         }
         return *this;
@@ -126,7 +137,7 @@ template <class T> struct matrix {
         Self res(m, n);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                res[j][i] = data[i][j];
+                res[j][i] = (*this)[i][j];
             }
         }
         return res;
