@@ -11,6 +11,9 @@ data:
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
+    path: matrix/black_box_linear_algebra.hpp
+    title: Black Box Linear Algebra
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   - icon: ':heavy_check_mark:'
@@ -31,6 +34,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
+  - icon: ':heavy_check_mark:'
+    path: utility/random_number_generator.hpp
+    title: Random Number Generator
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -38,48 +44,73 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
+    PROBLEM: https://judge.yosupo.jp/problem/sparse_matrix_det
     links:
-    - https://judge.yosupo.jp/problem/find_linear_recurrence
-  bundledCode: "#line 1 \"test/math/Find_Linear_Recurrence.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/find_linear_recurrence\"\n\n#line 2 \"fps/berlekamp_massey.hpp\"\
-    \n\n#include <algorithm>\n#include <vector>\n\n#line 2 \"modint/base.hpp\"\n\n\
-    #include <concepts>\n#include <iostream>\n#include <utility>\n\nnamespace ebi\
-    \ {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n\
-    \    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
-    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
-    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
-    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
-    fps/berlekamp_massey.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint>\
-    \ berlekamp_massey(const std::vector<mint> &s) {\n    std::vector<mint> C = {1},\
-    \ B = {1};\n    int L = 0, m = 1;\n    mint b = 1;\n    for (int n = 0; n < (int)s.size();\
-    \ n++) {\n        mint d = s[n];\n        for (int i = 1; i <= L; i++) {\n   \
-    \         d += s[n - i] * C[i];\n        }\n        if (d == 0) {\n          \
-    \  m++;\n        } else if (2 * L <= n) {\n            auto T = C;\n         \
-    \   mint f = d / b;\n            C.resize((int)B.size() + m);\n            for\
-    \ (int i = 0; i < (int)B.size(); i++) {\n                C[i + m] -= f * B[i];\n\
-    \            }\n            L = n + 1 - L;\n            B = T;\n            b\
-    \ = d;\n            m = 1;\n        } else {\n            mint f = d / b;\n  \
-    \          for (int i = 0; i < (int)B.size(); i++) {\n                C[i + m]\
-    \ -= f * B[i];\n            }\n            m++;\n        }\n    }\n    return\
-    \ C;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#include <cassert>\r\
-    \n#line 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace\
-    \ ebi {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
-    \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
-    \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
-    \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
-    \    constexpr static_modint() : _v(0) {}\r\n\r\n    template <std::signed_integral\
-    \ T> constexpr static_modint(T v) {\r\n        long long x = (long long)(v % (long\
-    \ long)(umod()));\r\n        if (x < 0) x += umod();\r\n        _v = (unsigned\
-    \ int)(x);\r\n    }\r\n\r\n    template <std::unsigned_integral T> constexpr static_modint(T\
-    \ v) {\r\n        _v = (unsigned int)(v % umod());\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
-    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
-    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
-    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
-    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
-    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    - https://judge.yosupo.jp/problem/sparse_matrix_det
+  bundledCode: "#line 1 \"test/matrix/Determinant_of_Sparse_Matrix.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/sparse_matrix_det\"\n\n#line 2 \"\
+    matrix/black_box_linear_algebra.hpp\"\n\n#include <cassert>\n#include <vector>\n\
+    \n#line 2 \"fps/berlekamp_massey.hpp\"\n\n#include <algorithm>\n#line 5 \"fps/berlekamp_massey.hpp\"\
+    \n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\
+    #include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint =\
+    \ requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n\
+    \    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate\
+    \ <Modint mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long\
+    \ long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\n\
+    std::ostream &operator<<(std::ostream &os, const mint &a) {\n    return os <<\
+    \ a.val();\n}\n\n}  // namespace ebi\n#line 7 \"fps/berlekamp_massey.hpp\"\n\n\
+    namespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> berlekamp_massey(const\
+    \ std::vector<mint> &s) {\n    std::vector<mint> C = {1}, B = {1};\n    int L\
+    \ = 0, m = 1;\n    mint b = 1;\n    for (int n = 0; n < (int)s.size(); n++) {\n\
+    \        mint d = s[n];\n        for (int i = 1; i <= L; i++) {\n            d\
+    \ += s[n - i] * C[i];\n        }\n        if (d == 0) {\n            m++;\n  \
+    \      } else if (2 * L <= n) {\n            auto T = C;\n            mint f =\
+    \ d / b;\n            C.resize((int)B.size() + m);\n            for (int i = 0;\
+    \ i < (int)B.size(); i++) {\n                C[i + m] -= f * B[i];\n         \
+    \   }\n            L = n + 1 - L;\n            B = T;\n            b = d;\n  \
+    \          m = 1;\n        } else {\n            mint f = d / b;\n           \
+    \ for (int i = 0; i < (int)B.size(); i++) {\n                C[i + m] -= f * B[i];\n\
+    \            }\n            m++;\n        }\n    }\n    return C;\n}\n\n}  //\
+    \ namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\n\r\n#include\
+    \ <cstdint>\r\n#include <random>\r\n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator\
+    \ {\r\n    random_number_generator(int seed = -1) {\r\n        if (seed < 0) seed\
+    \ = rnd();\r\n        mt.seed(seed);\r\n    }\r\n\r\n    void set_seed(int seed)\
+    \ {\r\n        mt.seed(seed);\r\n    }\r\n\r\n    template <class T> T get(T a,\
+    \ T b) {\r\n        std::uniform_int_distribution<T> dist(a, b - 1);\r\n     \
+    \   return dist(mt);\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n\
+    \    std::random_device rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 9 \"matrix/black_box_linear_algebra.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint, class F>\nstd::vector<mint> matrix_minimum_poly(int\
+    \ n, F Ax) {\n    static random_number_generator rng;\n    std::vector<mint> s(2\
+    \ * n + 10, 0), u(n), b(n);\n    for (int i = 0; i < n; i++) {\n        u[i] =\
+    \ rng.get(0, mint::mod());\n        b[i] = rng.get(0, mint::mod());\n    }\n \
+    \   for (int i = 0; i < 2 * n + 10; i++) {\n        for (int j = 0; j < n; j++)\
+    \ {\n            s[i] += u[j] * b[j];\n        }\n        b = Ax(b);\n    }\n\
+    \    auto c = berlekamp_massey(s);\n    std::reverse(c.begin(), c.end());\n  \
+    \  return c;\n}\n\ntemplate <Modint mint, class F> mint det(int n, F Ax) {\n \
+    \   static random_number_generator rng;\n    std::vector<mint> d(n);\n    mint\
+    \ r = 1;\n    for (int i = 0; i < n; i++) {\n        d[i] = rng.get(1, mint::mod());\n\
+    \        r *= d[i];\n    }\n    auto ADx = [&](std::vector<mint> v) -> std::vector<mint>\
+    \ {\n        assert(n == (int)v.size());\n        for (int i = 0; i < n; i++)\
+    \ {\n            v[i] *= d[i];\n        }\n        return Ax(v);\n    };\n   \
+    \ auto f = matrix_minimum_poly<mint>(n, ADx);\n    mint res = ((int)f.size() ==\
+    \ n + 1 ? f[0] : 0);\n    if (n % 2 == 1) res = -res;\n    return res / r;\n}\n\
+    \n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\
+    \n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
+    \ m> struct static_modint {\r\n  private:\r\n    using modint = static_modint;\r\
+    \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
+    \   }\r\n\r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n\
+    \        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint()\
+    \ : _v(0) {}\r\n\r\n    template <std::signed_integral T> constexpr static_modint(T\
+    \ v) {\r\n        long long x = (long long)(v % (long long)(umod()));\r\n    \
+    \    if (x < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\
+    \n    template <std::unsigned_integral T> constexpr static_modint(T v) {\r\n \
+    \       _v = (unsigned int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned\
+    \ int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned\
+    \ int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint\
+    \ &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n  \
+    \      return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n    \
+    \    if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n \
+    \   }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
     \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
     \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
     \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
@@ -214,26 +245,32 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/math/Find_Linear_Recurrence.test.cpp\"\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/matrix/Determinant_of_Sparse_Matrix.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    int\
-    \ n;\n    std::cin >> n;\n    std::vector<mint> a(n);\n    std::cin >> a;\n  \
-    \  auto c = berlekamp_massey(a);\n    std::cout << c.size() - 1 << '\\n';\n  \
-    \  rep(i, 1, c.size()) {\n        std::cout << -c[i] << \" \\n\"[i + 1 == (int)c.size()];\n\
-    \    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int\
-    \ t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n  \
-    \  }\n    return 0;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/find_linear_recurrence\"\
-    \n\n#include \"../../fps/berlekamp_massey.hpp\"\n#include \"../../modint/modint.hpp\"\
+    \ n, k;\n    std::cin >> n >> k;\n    std::vector<std::tuple<int, int, mint>>\
+    \ a(k);\n    for (auto &[i, j, c] : a) {\n        std::cin >> i >> j >> c;\n \
+    \   }\n    auto Ax = [&](const std::vector<mint> &v) -> std::vector<mint> {\n\
+    \        std::vector<mint> res(n, 0);\n        for (auto [i, j, c] : a) {\n  \
+    \          res[i] += c * v[j];\n        }\n        return res;\n    };\n    std::cout\
+    \ << det<mint>(n, Ax) << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n  \
+    \  ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n\
+    \        ebi::main_();\n    }\n    return 0;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sparse_matrix_det\"\n\n\
+    #include \"../../matrix/black_box_linear_algebra.hpp\"\n#include \"../../modint/modint.hpp\"\
     \n#include \"../../template/template.hpp\"\n\nnamespace ebi {\n\nusing mint =\
-    \ modint998244353;\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<mint>\
-    \ a(n);\n    std::cin >> a;\n    auto c = berlekamp_massey(a);\n    std::cout\
-    \ << c.size() - 1 << '\\n';\n    rep(i, 1, c.size()) {\n        std::cout << -c[i]\
-    \ << \" \\n\"[i + 1 == (int)c.size()];\n    }\n}\n\n}  // namespace ebi\n\nint\
-    \ main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while\
-    \ (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
+    \ modint998244353;\n\nvoid main_() {\n    int n, k;\n    std::cin >> n >> k;\n\
+    \    std::vector<std::tuple<int, int, mint>> a(k);\n    for (auto &[i, j, c] :\
+    \ a) {\n        std::cin >> i >> j >> c;\n    }\n    auto Ax = [&](const std::vector<mint>\
+    \ &v) -> std::vector<mint> {\n        std::vector<mint> res(n, 0);\n        for\
+    \ (auto [i, j, c] : a) {\n            res[i] += c * v[j];\n        }\n       \
+    \ return res;\n    };\n    std::cout << det<mint>(n, Ax) << '\\n';\n}\n\n}  //\
+    \ namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin\
+    \ >> t;\n    while (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
+  - matrix/black_box_linear_algebra.hpp
   - fps/berlekamp_massey.hpp
   - modint/base.hpp
+  - utility/random_number_generator.hpp
   - modint/modint.hpp
   - template/template.hpp
   - template/debug_template.hpp
@@ -243,15 +280,15 @@ data:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: true
-  path: test/math/Find_Linear_Recurrence.test.cpp
+  path: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2024-06-25 15:37:23+09:00'
+  timestamp: '2024-06-25 15:42:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/math/Find_Linear_Recurrence.test.cpp
+documentation_of: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
 layout: document
 redirect_from:
-- /verify/test/math/Find_Linear_Recurrence.test.cpp
-- /verify/test/math/Find_Linear_Recurrence.test.cpp.html
-title: test/math/Find_Linear_Recurrence.test.cpp
+- /verify/test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+- /verify/test/matrix/Determinant_of_Sparse_Matrix.test.cpp.html
+title: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
 ---

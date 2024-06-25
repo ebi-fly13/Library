@@ -109,15 +109,19 @@ data:
     \ *= rhs;\n    }\n\n    Self operator/(Self &rhs) const noexcept {\n        return\
     \ Self(*this) /= rhs;\n    }\n\n    friend Self operator*(const T &lhs, const\
     \ Self &rhs) {\n        return Self(rhs) *= lhs;\n    }\n\n    friend Self operator*(const\
-    \ Self &lhs, const T &rhs) {\n        return Self(lhs) *= rhs;\n    }\n\n    Self\
+    \ Self &lhs, const T &rhs) {\n        return Self(lhs) *= rhs;\n    }\n\n    std::vector<T>\
+    \ operator*(const std::vector<T> &rhs) noexcept {\n        assert(m == (int)rhs.size());\n\
+    \        std::vector<T> res(n, 0);\n        for (int i = 0; i < n; i++) {\n  \
+    \          for (int j = 0; j < m; j++) {\n                res[i] += (*this)[i][j]\
+    \ * rhs[j];\n            }\n        }\n        return res;\n    }\n\n    Self\
     \ &operator+=(Self &rhs) noexcept {\n        assert(this->size() == rhs.size());\n\
     \        for (int i = 0; i < n; ++i) {\n            for (int j = 0; j < m; ++j)\
-    \ {\n                data[i][j] += rhs[i][j];\n            }\n        }\n    \
-    \    return *this;\n    }\n\n    Self &operator-=(Self &rhs) noexcept {\n    \
-    \    assert(this->size() == rhs.size());\n        for (int i = 0; i < n; ++i)\
-    \ {\n            for (int j = 0; j < m; ++j) {\n                data[i][j] -=\
-    \ rhs[i][j];\n            }\n        }\n        return *this;\n    }\n\n    Self\
-    \ &operator*=(Self &rhs) noexcept {\n        int h = n, w = rhs.column_size();\n\
+    \ {\n                (*this)[i][j] += rhs[i][j];\n            }\n        }\n \
+    \       return *this;\n    }\n\n    Self &operator-=(Self &rhs) noexcept {\n \
+    \       assert(this->size() == rhs.size());\n        for (int i = 0; i < n; ++i)\
+    \ {\n            for (int j = 0; j < m; ++j) {\n                (*this)[i][j]\
+    \ -= rhs[i][j];\n            }\n        }\n        return *this;\n    }\n\n  \
+    \  Self &operator*=(Self &rhs) noexcept {\n        int h = n, w = rhs.column_size();\n\
     \        assert(m == rhs.row_size());\n        Self ret(h, w);\n        for (int\
     \ i = 0; i < h; ++i) {\n            for (int k = 0; k < m; ++k) {\n          \
     \      for (int j = 0; j < w; ++j) {\n                    ret[i][j] += (*this)[i][k]\
@@ -135,8 +139,8 @@ data:
     \ + i * m, data.begin() + (i + 1) * m,\n                         data.begin()\
     \ + j * m);\n    }\n\n    Self transposition() const {\n        Self res(m, n);\n\
     \        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++)\
-    \ {\n                res[j][i] = data[i][j];\n            }\n        }\n     \
-    \   return res;\n    }\n\n    std::optional<Self> inv() const {\n        assert(row_size()\
+    \ {\n                res[j][i] = (*this)[i][j];\n            }\n        }\n  \
+    \      return res;\n    }\n\n    std::optional<Self> inv() const {\n        assert(row_size()\
     \ == column_size());\n        Self a = *this;\n        Self b = identify_matrix<T>(n);\n\
     \        for (int r = 0; r < n; r++) {\n            for (int i = r; i < n; i++)\
     \ {\n                if (a[i][r] != 0) {\n                    a.swap(r, i);\n\
@@ -249,7 +253,7 @@ data:
   path: graph/count_spanning_tree.hpp
   requiredBy:
   - graph/count_directed_euler_trail.hpp
-  timestamp: '2024-06-06 18:49:47+09:00'
+  timestamp: '2024-06-25 15:37:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Counting_Spanning_Trees_Undirected.test.cpp

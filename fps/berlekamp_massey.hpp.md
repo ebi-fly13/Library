@@ -4,11 +4,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: matrix/black_box_linear_algebra.hpp
+    title: Black Box Linear Algebra
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Find_Linear_Recurrence.test.cpp
     title: test/math/Find_Linear_Recurrence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+    title: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -25,40 +31,42 @@ data:
     \ a.val();\n}\n\n}  // namespace ebi\n#line 7 \"fps/berlekamp_massey.hpp\"\n\n\
     namespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> berlekamp_massey(const\
     \ std::vector<mint> &s) {\n    std::vector<mint> C = {1}, B = {1};\n    int L\
-    \ = 0, m = 1;\n    mint b = 1;\n    auto proceed = [](std::vector<mint> &C, const\
-    \ std::vector<mint> &B, mint d,\n                      mint b, int m) -> void\
-    \ {\n        C.resize(std::max(C.size(), B.size() + m));\n        mint f = d /\
-    \ b;\n        for (int i = 0; i < (int)B.size(); i++) {\n            C[i + m]\
-    \ -= f * B[i];\n        }\n    };\n    for (int n = 0; n < (int)s.size(); n++)\
-    \ {\n        mint d = s[n];\n        for (int i = 1; i <= L; i++) {\n        \
-    \    d += s[n - i] * C[i];\n        }\n        if (d == 0) {\n            m++;\n\
-    \        } else if (2 * L <= n) {\n            auto T = C;\n            proceed(C,\
-    \ B, d, b, m);\n            L = n + 1 - L;\n            B = T;\n            b\
-    \ = d;\n            m = 1;\n        } else {\n            proceed(C, B, d, b,\
-    \ m++);\n        }\n    }\n    return C;\n}\n\n}  // namespace ebi\n"
+    \ = 0, m = 1;\n    mint b = 1;\n    for (int n = 0; n < (int)s.size(); n++) {\n\
+    \        mint d = s[n];\n        for (int i = 1; i <= L; i++) {\n            d\
+    \ += s[n - i] * C[i];\n        }\n        if (d == 0) {\n            m++;\n  \
+    \      } else if (2 * L <= n) {\n            auto T = C;\n            mint f =\
+    \ d / b;\n            C.resize((int)B.size() + m);\n            for (int i = 0;\
+    \ i < (int)B.size(); i++) {\n                C[i + m] -= f * B[i];\n         \
+    \   }\n            L = n + 1 - L;\n            B = T;\n            b = d;\n  \
+    \          m = 1;\n        } else {\n            mint f = d / b;\n           \
+    \ for (int i = 0; i < (int)B.size(); i++) {\n                C[i + m] -= f * B[i];\n\
+    \            }\n            m++;\n        }\n    }\n    return C;\n}\n\n}  //\
+    \ namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <vector>\n\n#include \"../modint/base.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> berlekamp_massey(const\
     \ std::vector<mint> &s) {\n    std::vector<mint> C = {1}, B = {1};\n    int L\
-    \ = 0, m = 1;\n    mint b = 1;\n    auto proceed = [](std::vector<mint> &C, const\
-    \ std::vector<mint> &B, mint d,\n                      mint b, int m) -> void\
-    \ {\n        C.resize(std::max(C.size(), B.size() + m));\n        mint f = d /\
-    \ b;\n        for (int i = 0; i < (int)B.size(); i++) {\n            C[i + m]\
-    \ -= f * B[i];\n        }\n    };\n    for (int n = 0; n < (int)s.size(); n++)\
-    \ {\n        mint d = s[n];\n        for (int i = 1; i <= L; i++) {\n        \
-    \    d += s[n - i] * C[i];\n        }\n        if (d == 0) {\n            m++;\n\
-    \        } else if (2 * L <= n) {\n            auto T = C;\n            proceed(C,\
-    \ B, d, b, m);\n            L = n + 1 - L;\n            B = T;\n            b\
-    \ = d;\n            m = 1;\n        } else {\n            proceed(C, B, d, b,\
-    \ m++);\n        }\n    }\n    return C;\n}\n\n}  // namespace ebi"
+    \ = 0, m = 1;\n    mint b = 1;\n    for (int n = 0; n < (int)s.size(); n++) {\n\
+    \        mint d = s[n];\n        for (int i = 1; i <= L; i++) {\n            d\
+    \ += s[n - i] * C[i];\n        }\n        if (d == 0) {\n            m++;\n  \
+    \      } else if (2 * L <= n) {\n            auto T = C;\n            mint f =\
+    \ d / b;\n            C.resize((int)B.size() + m);\n            for (int i = 0;\
+    \ i < (int)B.size(); i++) {\n                C[i + m] -= f * B[i];\n         \
+    \   }\n            L = n + 1 - L;\n            B = T;\n            b = d;\n  \
+    \          m = 1;\n        } else {\n            mint f = d / b;\n           \
+    \ for (int i = 0; i < (int)B.size(); i++) {\n                C[i + m] -= f * B[i];\n\
+    \            }\n            m++;\n        }\n    }\n    return C;\n}\n\n}  //\
+    \ namespace ebi"
   dependsOn:
   - modint/base.hpp
   isVerificationFile: false
   path: fps/berlekamp_massey.hpp
-  requiredBy: []
-  timestamp: '2024-06-25 14:08:20+09:00'
+  requiredBy:
+  - matrix/black_box_linear_algebra.hpp
+  timestamp: '2024-06-25 15:37:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Find_Linear_Recurrence.test.cpp
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
 documentation_of: fps/berlekamp_massey.hpp
 layout: document
 title: Berlekamp Massey

@@ -453,6 +453,9 @@ data:
       path: matrix/base.hpp
       title: matrix/base.hpp
     - icon: ':heavy_check_mark:'
+      path: matrix/black_box_linear_algebra.hpp
+      title: Black Box Linear Algebra
+    - icon: ':heavy_check_mark:'
       path: matrix/det_arbitrary_mod.hpp
       title: matrix/det_arbitrary_mod.hpp
     - icon: ':heavy_check_mark:'
@@ -1020,6 +1023,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
       title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+      title: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/matrix/Inverse_Matrix.test.cpp
       title: test/matrix/Inverse_Matrix.test.cpp

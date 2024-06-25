@@ -145,6 +145,9 @@ data:
     path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
     title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+    title: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/matrix/Inverse_Matrix.test.cpp
     title: test/matrix/Inverse_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -347,6 +350,7 @@ data:
   - test/convolution/Convolution_2D.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/convolution/Online_Convolution.test.cpp
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Determinant_of_Matrix_2.test.cpp

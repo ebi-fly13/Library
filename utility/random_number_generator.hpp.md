@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: matrix/black_box_linear_algebra.hpp
+    title: Black Box Linear Algebra
+  - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
   - icon: ':heavy_check_mark:'
@@ -30,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+    title: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
@@ -63,6 +69,7 @@ data:
   requiredBy:
   - utility/hash.hpp
   - tree/rooted_tree_hash.hpp
+  - matrix/black_box_linear_algebra.hpp
   - string/rolling_hash.hpp
   - string/wildcard_pattern_matching.hpp
   timestamp: '2023-12-26 02:24:03+09:00'
@@ -74,6 +81,7 @@ data:
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/convolution/Convolution_2D.test.cpp
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
 documentation_of: utility/random_number_generator.hpp
 layout: document

@@ -136,6 +136,9 @@ data:
     path: math/sums_of_powers_iota.hpp
     title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
   - icon: ':heavy_check_mark:'
+    path: matrix/black_box_linear_algebra.hpp
+    title: Black Box Linear Algebra
+  - icon: ':heavy_check_mark:'
     path: matrix/det_arbitrary_mod.hpp
     title: matrix/det_arbitrary_mod.hpp
   - icon: ':heavy_check_mark:'
@@ -301,6 +304,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
     title: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+    title: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/matrix/Inverse_Matrix.test.cpp
     title: test/matrix/Inverse_Matrix.test.cpp
@@ -492,6 +498,7 @@ data:
   - convolution/ntt.hpp
   - convolution/convolution_2d.hpp
   - convolution/arbitrary_ntt.hpp
+  - matrix/black_box_linear_algebra.hpp
   - matrix/det_arbitrary_mod.hpp
   - modint/dynamic_modint.hpp
   - modint/modint61.hpp
@@ -571,6 +578,7 @@ data:
   - test/convolution/Convolution_2D.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Determinant_of_Matrix_2.test.cpp
