@@ -101,7 +101,7 @@ data:
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
     \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"graph/mst.hpp\"\
     \n\n#include <algorithm>\n#line 6 \"graph/mst.hpp\"\n\n#line 2 \"data_structure/dsu.hpp\"\
-    \n\r\n#line 4 \"data_structure/dsu.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct dsu\
+    \n\r\n#line 5 \"data_structure/dsu.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct dsu\
     \ {\r\n  private:\r\n    std::vector<int> par;\r\n\r\n  public:\r\n    dsu(int\
     \ n = 0) : par(n, -1) {}\r\n\r\n    bool same(int x, int y) {\r\n        return\
     \ leader(x) == leader(y);\r\n    }\r\n\r\n    bool merge(int x, int y) {\r\n \
@@ -205,7 +205,7 @@ data:
   isVerificationFile: true
   path: test/graph/Minimum_Spanning_Tree.test.cpp
   requiredBy: []
-  timestamp: '2024-05-23 21:35:59+09:00'
+  timestamp: '2024-06-25 16:50:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Minimum_Spanning_Tree.test.cpp

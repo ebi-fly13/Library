@@ -22,7 +22,7 @@ data:
     links: []
   bundledCode: "#line 2 \"graph/manhattan_mst.hpp\"\n\n#include <algorithm>\n#include\
     \ <map>\n#include <numeric>\n#include <tuple>\n#include <utility>\n#include <vector>\n\
-    \n#line 2 \"data_structure/dsu.hpp\"\n\r\n#line 4 \"data_structure/dsu.hpp\"\n\
+    \n#line 2 \"data_structure/dsu.hpp\"\n\r\n#line 5 \"data_structure/dsu.hpp\"\n\
     \r\nnamespace ebi {\r\n\r\nstruct dsu {\r\n  private:\r\n    std::vector<int>\
     \ par;\r\n\r\n  public:\r\n    dsu(int n = 0) : par(n, -1) {}\r\n\r\n    bool\
     \ same(int x, int y) {\r\n        return leader(x) == leader(y);\r\n    }\r\n\r\
@@ -152,7 +152,7 @@ data:
   isVerificationFile: false
   path: graph/manhattan_mst.hpp
   requiredBy: []
-  timestamp: '2024-04-24 16:34:25+09:00'
+  timestamp: '2024-06-25 16:50:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Manhattan_MST.test.cpp
