@@ -11,8 +11,8 @@ data:
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitrary_ntt.hpp
+  - icon: ':warning:'
+    path: convolution/arbitrary_convolution.hpp
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/convolution.hpp
@@ -23,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
     title: Convolution $\pmod{2^{64}}$
+  - icon: ':heavy_check_mark:'
+    path: fps/arbitrary_mod_fps.hpp
+    title: Formal Power Series (Arbitrary mod)
   - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$ ( $O(N\log^2{N})$ )
@@ -48,9 +51,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_2D.test.cpp
     title: test/convolution/Convolution_2D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_Mod_1000000007.test.cpp
-    title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
@@ -141,6 +141,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1112.test.cpp
+    title: test/yuki/yuki_1112.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
@@ -336,13 +339,14 @@ data:
   requiredBy:
   - fps/ntt_friendly_fps.hpp
   - fps/compositional_inverse_of_fps_old.hpp
+  - fps/arbitrary_mod_fps.hpp
   - fps/middle_product_arbitrary.hpp
   - fps/composition_of_fps.hpp
   - fps/middle_product.hpp
   - convolution/convolution_mod_2_64.hpp
+  - convolution/arbitrary_convolution.hpp
   - convolution/convolution.hpp
   - convolution/convolution_2d.hpp
-  - convolution/arbitrary_ntt.hpp
   - string/wildcard_pattern_matching.hpp
   timestamp: '2024-05-23 21:35:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -378,7 +382,7 @@ data:
   - test/convolution/Convolution.test.cpp
   - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/convolution/Convolution_2D.test.cpp
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/yuki/yuki_1112.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp

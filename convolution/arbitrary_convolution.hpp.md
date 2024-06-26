@@ -20,16 +20,13 @@ data:
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_Mod_1000000007.test.cpp
-    title: test/convolution/Convolution_Mod_1000000007.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"convolution/arbitrary_ntt.hpp\"\n\n#include <cstdint>\n\
+  bundledCode: "#line 2 \"convolution/arbitrary_convolution.hpp\"\n\n#include <cstdint>\n\
     #include <vector>\n\n#line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n\
     #include <bit>\n#line 6 \"convolution/convolution.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\
     \n\n#line 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 6 \"convolution/ntt.hpp\"\
@@ -191,30 +188,31 @@ data:
     \ _v = 0;\r\n\r\n    static constexpr unsigned int umod() {\r\n        return\
     \ m;\r\n    }\r\n};\r\n\r\nusing modint998244353 = static_modint<998244353>;\r\
     \nusing modint1000000007 = static_modint<1000000007>;\r\n\r\n}  // namespace ebi\n\
-    #line 9 \"convolution/arbitrary_ntt.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
-    \ {\n\ntemplate <class T, Modint mint>\nstd::vector<mint> multiply(const std::vector<T>&\
-    \ f, const std::vector<T>& g) {\n    std::vector<mint> a, b;\n    a.reserve(f.size());\n\
-    \    b.reserve(g.size());\n    for (auto x : f) a.emplace_back(x.val());\n   \
-    \ for (auto x : g) b.emplace_back(x.val());\n    return convolution<mint>(a, b);\n\
-    }\n\n}  // namespace internal\n\ntemplate <Modint mint>\nstd::vector<mint> arbitary_convolution(const\
-    \ std::vector<mint>& f,\n                                       const std::vector<mint>&\
-    \ g) {\n    if (f.empty() || g.empty()) return {};\n    using i32 = std::int32_t;\n\
-    \    using i64 = std::int64_t;\n    static constexpr i32 m0 = 167772161;  // 2^25\n\
-    \    static constexpr i32 m1 = 469762049;  // 2^26\n    static constexpr i32 m2\
-    \ = 754974721;  // 2^24\n    using mint0 = static_modint<m0>;\n    using mint1\
-    \ = static_modint<m1>;\n    using mint2 = static_modint<m2>;\n    static constexpr\
-    \ i32 inv01 = mint1(m0).inv().val();\n    static constexpr i32 inv02 = mint2(m0).inv().val();\n\
-    \    static constexpr i32 inv12 = mint2(m1).inv().val();\n    static constexpr\
-    \ i32 inv02inv12 = i64(inv02) * inv12 % m2;\n    static constexpr i64 w1 = m0;\n\
-    \    static constexpr i64 w2 = i64(m0) * m1;\n\n    const i32 mod = mint::mod();\n\
-    \n    auto d0 = internal::multiply<mint, mint0>(f, g);\n    auto d1 = internal::multiply<mint,\
-    \ mint1>(f, g);\n    auto d2 = internal::multiply<mint, mint2>(f, g);\n\n    int\
-    \ n = d0.size();\n    std::vector<mint> res(n);\n    const int W1 = w1 % mod;\n\
-    \    const int W2 = w2 % mod;\n\n    for (int i = 0; i < n; i++) {\n        i32\
-    \ n1 = d1[i].val(), n2 = d2[i].val(), a = d0[i].val();\n        i32 b = i64(n1\
-    \ + m1 - a) * inv01 % m1;\n        i32 c = (i64(n2 + m2 - a) * inv02inv12 + i64(m2\
-    \ - b) * inv12) % m2;\n        res[i] = (i64(a) + i64(b) * W1 + i64(c) * W2) %\
-    \ mod;\n    }\n    return res;\n}\n\n}  // namespace ebi\n"
+    #line 9 \"convolution/arbitrary_convolution.hpp\"\n\nnamespace ebi {\n\nnamespace\
+    \ internal {\n\ntemplate <class T, Modint mint>\nstd::vector<mint> multiply(const\
+    \ std::vector<T>& f, const std::vector<T>& g) {\n    std::vector<mint> a, b;\n\
+    \    a.reserve(f.size());\n    b.reserve(g.size());\n    for (auto x : f) a.emplace_back(x.val());\n\
+    \    for (auto x : g) b.emplace_back(x.val());\n    return convolution<mint>(a,\
+    \ b);\n}\n\n}  // namespace internal\n\ntemplate <Modint mint>\nstd::vector<mint>\
+    \ arbitary_convolution(const std::vector<mint>& f,\n                         \
+    \              const std::vector<mint>& g) {\n    if (f.empty() || g.empty())\
+    \ return {};\n    using i32 = std::int32_t;\n    using i64 = std::int64_t;\n \
+    \   static constexpr i32 m0 = 167772161;  // 2^25\n    static constexpr i32 m1\
+    \ = 469762049;  // 2^26\n    static constexpr i32 m2 = 754974721;  // 2^24\n \
+    \   using mint0 = static_modint<m0>;\n    using mint1 = static_modint<m1>;\n \
+    \   using mint2 = static_modint<m2>;\n    static constexpr i32 inv01 = mint1(m0).inv().val();\n\
+    \    static constexpr i32 inv02 = mint2(m0).inv().val();\n    static constexpr\
+    \ i32 inv12 = mint2(m1).inv().val();\n    static constexpr i32 inv02inv12 = i64(inv02)\
+    \ * inv12 % m2;\n    static constexpr i64 w1 = m0;\n    static constexpr i64 w2\
+    \ = i64(m0) * m1;\n\n    const i32 mod = mint::mod();\n\n    auto d0 = internal::multiply<mint,\
+    \ mint0>(f, g);\n    auto d1 = internal::multiply<mint, mint1>(f, g);\n    auto\
+    \ d2 = internal::multiply<mint, mint2>(f, g);\n\n    int n = d0.size();\n    std::vector<mint>\
+    \ res(n);\n    const int W1 = w1 % mod;\n    const int W2 = w2 % mod;\n\n    for\
+    \ (int i = 0; i < n; i++) {\n        i32 n1 = d1[i].val(), n2 = d2[i].val(), a\
+    \ = d0[i].val();\n        i32 b = i64(n1 + m1 - a) * inv01 % m1;\n        i32\
+    \ c = (i64(n2 + m2 - a) * inv02inv12 + i64(m2 - b) * inv12) % m2;\n        res[i]\
+    \ = (i64(a) + i64(b) * W1 + i64(c) * W2) % mod;\n    }\n    return res;\n}\n\n\
+    }  // namespace ebi\n"
   code: "#pragma once\n\n#include <cstdint>\n#include <vector>\n\n#include \"../convolution/convolution.hpp\"\
     \n#include \"../modint/base.hpp\"\n#include \"../modint/modint.hpp\"\n\nnamespace\
     \ ebi {\n\nnamespace internal {\n\ntemplate <class T, Modint mint>\nstd::vector<mint>\
@@ -249,13 +247,12 @@ data:
   - template/int_alias.hpp
   - modint/modint.hpp
   isVerificationFile: false
-  path: convolution/arbitrary_ntt.hpp
+  path: convolution/arbitrary_convolution.hpp
   requiredBy: []
-  timestamp: '2024-05-23 21:35:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
-documentation_of: convolution/arbitrary_ntt.hpp
+  timestamp: '2024-06-26 22:00:05+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: convolution/arbitrary_convolution.hpp
 layout: document
 title: Arbitrary Convolution
 ---

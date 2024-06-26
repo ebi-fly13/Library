@@ -42,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1112.test.cpp
+    title: test/yuki/yuki_1112.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -82,6 +85,7 @@ data:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/convolution/Convolution_2D.test.cpp
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - test/yuki/yuki_1112.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
 documentation_of: utility/random_number_generator.hpp
 layout: document

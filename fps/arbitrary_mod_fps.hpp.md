@@ -2,8 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: convolution/convolution.hpp
+    title: Convolution
+  - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT
+  - icon: ':heavy_check_mark:'
+    path: fps/fps.hpp
+    title: Formal Power Series
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
@@ -13,136 +19,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: convolution/arbitrary_convolution.hpp
-    title: Arbitrary Convolution
-  - icon: ':heavy_check_mark:'
-    path: convolution/convolution_2d.hpp
-    title: Convolution 2D
-  - icon: ':heavy_check_mark:'
-    path: convolution/convolution_mod_2_64.hpp
-    title: Convolution $\pmod{2^{64}}$
-  - icon: ':heavy_check_mark:'
-    path: fps/arbitrary_mod_fps.hpp
-    title: Formal Power Series (Arbitrary mod)
-  - icon: ':heavy_check_mark:'
-    path: fps/ntt_friendly_fps.hpp
-    title: Formal Power Series (NTT Friendly)
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution.test.cpp
-    title: test/convolution/Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_2D.test.cpp
-    title: test/convolution/Convolution_2D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_Mod_2_64.test.cpp
-    title: test/convolution/Convolution_Mod_2_64.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Berunoulli_Number.test.cpp
-    title: test/math/Berunoulli_Number.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Catalan_Convolution.test.cpp
-    title: test/math/Catalan_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-    title: test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Partition_Function_FPS.test.cpp
-    title: test/math/Partition_Function_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Partition_Function_Pentagonal.test.cpp
-    title: test/math/Partition_Function_Pentagonal.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Sharp_P_Subset_Sum.test.cpp
-    title: test/math/Sharp_P_Subset_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-    title: test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-    title: test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Sum_of_Powers_Iota.test.cpp
-    title: test/math/Sum_of_Powers_Iota.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
-    title: test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
-    title: test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Division_of_Polynomials.test.cpp
-    title: test/polynomial/Division_of_Polynomials.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Multipoint_Evaluation.test.cpp
-    title: test/polynomial/Multipoint_Evaluation.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Polynomial_Interpolation.test.cpp
-    title: test/polynomial/Polynomial_Interpolation.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-    title: test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-    title: test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-    title: test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-    title: test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-    title: test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-    title: test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1112.test.cpp
     title: test/yuki/yuki_1112.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1145.test.cpp
-    title: test/yuki/yuki_1145.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1302.test.cpp
-    title: test/yuki/yuki_1302.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/yuki_1857.test.cpp
-    title: test/yuki/yuki_1857.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n\
-    #include <bit>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\n\n#line\
-    \ 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 6 \"convolution/ntt.hpp\"\
+  bundledCode: "#line 2 \"fps/arbitrary_mod_fps.hpp\"\n\n#line 2 \"convolution/convolution.hpp\"\
+    \n\n#include <algorithm>\n#include <bit>\n#include <vector>\n\n#line 2 \"convolution/ntt.hpp\"\
+    \n\n#line 4 \"convolution/ntt.hpp\"\n#include <array>\n#line 6 \"convolution/ntt.hpp\"\
     \n#include <cassert>\n#line 8 \"convolution/ntt.hpp\"\n\n#line 2 \"math/internal_math.hpp\"\
     \n\n#line 4 \"math/internal_math.hpp\"\n\nnamespace ebi {\n\nnamespace internal\
     \ {\n\nconstexpr int primitive_root_constexpr(int m) {\n    if (m == 2) return\
@@ -254,93 +143,138 @@ data:
     \    internal::fft4(b);\n    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n\
     \    }\n    internal::ifft4(a);\n    a.resize(f.size() + g.size() - 1);\n    mint\
     \ inv_n = mint(n).inv();\n    for (auto& x : a) x *= inv_n;\n    return a;\n}\n\
-    \n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <algorithm>\n#include <bit>\n#include <vector>\n\
-    \n#include \"../convolution/ntt.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint>\nstd::vector<mint> convolution_naive(const std::vector<mint>&\
-    \ f,\n                                    const std::vector<mint>& g) {\n    if\
-    \ (f.empty() || g.empty()) return {};\n    int n = int(f.size()), m = int(g.size());\n\
-    \    std::vector<mint> c(n + m - 1);\n    if (n < m) {\n        for (int j = 0;\
-    \ j < m; j++) {\n            for (int i = 0; i < n; i++) {\n                c[i\
-    \ + j] += f[i] * g[j];\n            }\n        }\n    } else {\n        for (int\
-    \ i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++) {\n          \
-    \      c[i + j] += f[i] * g[j];\n            }\n        }\n    }\n    return c;\n\
-    }\n\ntemplate <Modint mint>\nstd::vector<mint> convolution(const std::vector<mint>&\
-    \ f,\n                              const std::vector<mint>& g) {\n    if (f.empty()\
-    \ || g.empty()) return {};\n    if (std::min(f.size(), g.size()) < 60) return\
-    \ convolution_naive(f, g);\n    int n = (int)std::bit_ceil(f.size() + g.size()\
-    \ - 1);\n    std::vector<mint> a(n), b(n);\n    std::copy(f.begin(), f.end(),\
-    \ a.begin());\n    std::copy(g.begin(), g.end(), b.begin());\n    internal::fft4(a);\n\
-    \    internal::fft4(b);\n    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n\
-    \    }\n    internal::ifft4(a);\n    a.resize(f.size() + g.size() - 1);\n    mint\
-    \ inv_n = mint(n).inv();\n    for (auto& x : a) x *= inv_n;\n    return a;\n}\n\
-    \n}  // namespace ebi"
+    \n}  // namespace ebi\n#line 2 \"fps/fps.hpp\"\n\n#line 5 \"fps/fps.hpp\"\n#include\
+    \ <optional>\n#line 7 \"fps/fps.hpp\"\n\n#line 9 \"fps/fps.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <Modint mint> struct FormalPowerSeries : std::vector<mint>\
+    \ {\n  private:\n    using std::vector<mint>::vector;\n    using std::vector<mint>::vector::operator=;\n\
+    \    using FPS = FormalPowerSeries;\n\n  public:\n    FormalPowerSeries(const\
+    \ std::vector<mint> &a) {\n        *this = a;\n    }\n\n    FPS operator+(const\
+    \ FPS &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS\
+    \ operator-(const FPS &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n\
+    \    }\n    FPS operator*(const FPS &rhs) const noexcept {\n        return FPS(*this)\
+    \ *= rhs;\n    }\n    FPS operator/(const FPS &rhs) const noexcept {\n       \
+    \ return FPS(*this) /= rhs;\n    }\n    FPS operator%(const FPS &rhs) const noexcept\
+    \ {\n        return FPS(*this) %= rhs;\n    }\n\n    FPS operator+(const mint\
+    \ &rhs) const noexcept {\n        return FPS(*this) += rhs;\n    }\n    FPS operator-(const\
+    \ mint &rhs) const noexcept {\n        return FPS(*this) -= rhs;\n    }\n    FPS\
+    \ operator*(const mint &rhs) const noexcept {\n        return FPS(*this) *= rhs;\n\
+    \    }\n    FPS operator/(const mint &rhs) const noexcept {\n        return FPS(*this)\
+    \ /= rhs;\n    }\n\n    FPS &operator+=(const FPS &rhs) noexcept {\n        if\
+    \ (this->size() < rhs.size()) this->resize(rhs.size());\n        for (int i =\
+    \ 0; i < (int)rhs.size(); ++i) {\n            (*this)[i] += rhs[i];\n        }\n\
+    \        return *this;\n    }\n\n    FPS &operator-=(const FPS &rhs) noexcept\
+    \ {\n        if (this->size() < rhs.size()) this->resize(rhs.size());\n      \
+    \  for (int i = 0; i < (int)rhs.size(); ++i) {\n            (*this)[i] -= rhs[i];\n\
+    \        }\n        return *this;\n    }\n\n    FPS &operator*=(const FPS &);\n\
+    \n    FPS &operator/=(const FPS &rhs) noexcept {\n        int n = deg() - 1;\n\
+    \        int m = rhs.deg() - 1;\n        if (n < m) {\n            *this = {};\n\
+    \            return *this;\n        }\n        *this = (*this).rev() * rhs.rev().inv(n\
+    \ - m + 1);\n        (*this).resize(n - m + 1);\n        std::reverse((*this).begin(),\
+    \ (*this).end());\n        return *this;\n    }\n\n    FPS &operator%=(const FPS\
+    \ &rhs) noexcept {\n        *this -= *this / rhs * rhs;\n        shrink();\n \
+    \       return *this;\n    }\n\n    FPS &operator+=(const mint &rhs) noexcept\
+    \ {\n        if (this->empty()) this->resize(1);\n        (*this)[0] += rhs;\n\
+    \        return *this;\n    }\n\n    FPS &operator-=(const mint &rhs) noexcept\
+    \ {\n        if (this->empty()) this->resize(1);\n        (*this)[0] -= rhs;\n\
+    \        return *this;\n    }\n\n    FPS &operator*=(const mint &rhs) noexcept\
+    \ {\n        for (int i = 0; i < deg(); ++i) {\n            (*this)[i] *= rhs;\n\
+    \        }\n        return *this;\n    }\n    FPS &operator/=(const mint &rhs)\
+    \ noexcept {\n        mint inv_rhs = rhs.inv();\n        for (int i = 0; i < deg();\
+    \ ++i) {\n            (*this)[i] *= inv_rhs;\n        }\n        return *this;\n\
+    \    }\n\n    FPS operator>>(int d) const {\n        if (deg() <= d) return {};\n\
+    \        FPS f = *this;\n        f.erase(f.begin(), f.begin() + d);\n        return\
+    \ f;\n    }\n\n    FPS operator<<(int d) const {\n        FPS f = *this;\n   \
+    \     f.insert(f.begin(), d, 0);\n        return f;\n    }\n\n    FPS operator-()\
+    \ const {\n        FPS g(this->size());\n        for (int i = 0; i < (int)this->size();\
+    \ i++) g[i] = -(*this)[i];\n        return g;\n    }\n\n    FPS pre(int sz) const\
+    \ {\n        return FPS(this->begin(), this->begin() + std::min(deg(), sz));\n\
+    \    }\n\n    FPS rev() const {\n        auto f = *this;\n        std::reverse(f.begin(),\
+    \ f.end());\n        return f;\n    }\n\n    FPS differential() const {\n    \
+    \    int n = deg();\n        FPS g(std::max(0, n - 1));\n        for (int i =\
+    \ 0; i < n - 1; i++) {\n            g[i] = (*this)[i + 1] * (i + 1);\n       \
+    \ }\n        return g;\n    }\n\n    FPS integral() const {\n        int n = deg();\n\
+    \        FPS g(n + 1);\n        g[0] = 0;\n        if (n > 0) g[1] = 1;\n    \
+    \    auto mod = mint::mod();\n        for (int i = 2; i <= n; i++) g[i] = (-g[mod\
+    \ % i]) * (mod / i);\n        for (int i = 0; i < n; i++) g[i + 1] *= (*this)[i];\n\
+    \        return g;\n    }\n\n    FPS inv(int d = -1) const {\n        int n =\
+    \ 1;\n        if (d < 0) d = deg();\n        FPS g(n);\n        g[0] = (*this)[0].inv();\n\
+    \        while (n < d) {\n            n <<= 1;\n            g = (g * 2 - g * g\
+    \ * this->pre(n)).pre(n);\n        }\n        g.resize(d);\n        return g;\n\
+    \    }\n\n    FPS log(int d = -1) const {\n        assert((*this)[0].val() ==\
+    \ 1);\n        if (d < 0) d = deg();\n        return ((*this).differential() *\
+    \ (*this).inv(d)).pre(d - 1).integral();\n    }\n\n    FPS exp(int d = -1) const\
+    \ {\n        assert((*this)[0].val() == 0);\n        int n = 1;\n        if (d\
+    \ < 0) d = deg();\n        FPS g(n);\n        g[0] = 1;\n        while (n < d)\
+    \ {\n            n <<= 1;\n            g = (g * (this->pre(n) - g.log(n) + 1)).pre(n);\n\
+    \        }\n        g.resize(d);\n        return g;\n    }\n\n    FPS pow(long\
+    \ long k, int d = -1) const {\n        assert(k >= 0);\n        int n = deg();\n\
+    \        if (d < 0) d = n;\n        if (k == 0) {\n            FPS f(d);\n   \
+    \         if (d > 0) f[0] = 1;\n            return f;\n        }\n        int\
+    \ low = d;\n        for (int i = n - 1; i >= 0; i--)\n            if ((*this)[i]\
+    \ != 0) low = i;\n        if (low >= (d + k - 1) / k) return FPS(d, 0);\n    \
+    \    int offset = k * low;\n        mint c = (*this)[low];\n        FPS g(d -\
+    \ offset);\n        for (int i = 0; i < std::min(n - low, d - offset); i++) {\n\
+    \            g[i] = (*this)[i + low];\n        }\n        g /= c;\n        g =\
+    \ g.pow_1(k);\n        return (g << offset) * c.pow(k);\n    }\n\n    FPS pow_1(mint\
+    \ k, int d = -1) const {\n        assert((*this)[0] == 1);\n        return ((*this).log(d)\
+    \ * k).exp(d);\n    }\n\n    FPS pow_newton(long long k, int d = -1) const {\n\
+    \        assert(k >= 0);\n        const int n = deg();\n        if (d < 0) d =\
+    \ n;\n        if (k == 0) {\n            FPS f(d);\n            if (d > 0) f[0]\
+    \ = 1;\n            return f;\n        }\n        for (int i = 0; i < n; i++)\
+    \ {\n            if ((*this)[i] != 0) {\n                mint rev = (*this)[i].inv();\n\
+    \                FPS f = (((*this * rev) >> i).log(d) * k).exp(d);\n         \
+    \       f *= (*this)[i].pow(k);\n                f = (f << (i * k)).pre(d);\n\
+    \                if (f.deg() < d) f.resize(d);\n                return f;\n  \
+    \          }\n            if (i + 1 >= (d + k - 1) / k) break;\n        }\n  \
+    \      return FPS(d);\n    }\n\n    int deg() const {\n        return (*this).size();\n\
+    \    }\n\n    void shrink() {\n        while ((!this->empty()) && this->back()\
+    \ == 0) this->pop_back();\n    }\n\n    int count_terms() const {\n        int\
+    \ c = 0;\n        for (int i = 0; i < deg(); i++) {\n            if ((*this)[i]\
+    \ != 0) c++;\n        }\n        return c;\n    }\n\n    std::optional<FPS> sqrt(int\
+    \ d = -1) const;\n\n    static FPS exp_x(int n) {\n        FPS f(n);\n       \
+    \ mint fact = 1;\n        for (int i = 1; i < n; i++) fact *= i;\n        f[n\
+    \ - 1] = fact.inv();\n        for (int i = n - 1; i >= 0; i--) f[i - 1] = f[i]\
+    \ * i;\n        return f;\n    }\n\n    void fft();\n    void ifft();\n};\n\n\
+    }  // namespace ebi\n#line 6 \"fps/arbitrary_mod_fps.hpp\"\n\nnamespace ebi {\n\
+    \ntemplate <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
+    \    const FormalPowerSeries<mint> &rhs) {\n    *this = convolution_naive(*this,\
+    \ rhs);\n    return *this;\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::fft()\
+    \ {\n    assert(false);\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::ifft()\
+    \ {\n    assert(false);\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include \"../convolution/convolution.hpp\"\n#include \"\
+    ../fps/fps.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <Modint mint>\nFormalPowerSeries<mint> &FormalPowerSeries<mint>::operator*=(\n\
+    \    const FormalPowerSeries<mint> &rhs) {\n    *this = convolution_naive(*this,\
+    \ rhs);\n    return *this;\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::fft()\
+    \ {\n    assert(false);\n}\n\ntemplate <Modint mint> void FormalPowerSeries<mint>::ifft()\
+    \ {\n    assert(false);\n}\n\n}  // namespace ebi"
   dependsOn:
+  - convolution/convolution.hpp
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - modint/base.hpp
   - template/int_alias.hpp
+  - fps/fps.hpp
   isVerificationFile: false
-  path: convolution/convolution.hpp
-  requiredBy:
-  - fps/ntt_friendly_fps.hpp
-  - fps/arbitrary_mod_fps.hpp
-  - convolution/convolution_mod_2_64.hpp
-  - convolution/arbitrary_convolution.hpp
-  - convolution/convolution_2d.hpp
-  timestamp: '2024-05-23 21:35:59+09:00'
+  path: fps/arbitrary_mod_fps.hpp
+  requiredBy: []
+  timestamp: '2024-06-26 22:00:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Berunoulli_Number.test.cpp
-  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/math/Sharp_P_Subset_Sum.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
-  - test/math/Partition_Function_Pentagonal.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Catalan_Convolution.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
-  - test/convolution/Convolution.test.cpp
-  - test/convolution/Convolution_Mod_2_64.test.cpp
-  - test/convolution/Convolution_2D.test.cpp
   - test/yuki/yuki_1112.test.cpp
-  - test/yuki/yuki_1302.test.cpp
-  - test/yuki/yuki_1857.test.cpp
-  - test/yuki/yuki_1145.test.cpp
-documentation_of: convolution/convolution.hpp
+documentation_of: fps/arbitrary_mod_fps.hpp
 layout: document
-title: Convolution
+title: Formal Power Series (Arbitrary mod)
 ---
 
 ## 説明
 
-$a$ と $b$ を畳み込み、その配列を返す。
+係数が任意modであるときに用いる。このままでは、乗算をナイーブにやった $O(N^2)$ であるが、arbitrary_convolutionを用いると乗算が $O(N\log{N})$ となる。
 
-### convolution_naive(std::vector<mint> a, std::vector<mint> b)
+### fft()
 
-愚直に畳み込む。
-$O(N^2)$
+できない。
 
-### convolution(std::vector<mint> a, std::vector<mint> b)
+### ifft()
 
-NTT friendlyな素数における $O(N\log N)$ 時間での畳み込み。
-$O(N\log N)$
+できない。

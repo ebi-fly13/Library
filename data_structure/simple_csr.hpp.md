@@ -364,6 +364,9 @@ data:
     path: test/yuki/yuki_1077.test.cpp
     title: test/yuki/yuki_1077.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1112.test.cpp
+    title: test/yuki/yuki_1112.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
@@ -569,6 +572,7 @@ data:
   - test/matrix/Matrix_Product.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
   - test/algorithm/Two_Sat.test.cpp
+  - test/yuki/yuki_1112.test.cpp
   - test/yuki/yuki_901_2.test.cpp
   - test/yuki/yuki_2747.test.cpp
   - test/yuki/yuki_901.test.cpp

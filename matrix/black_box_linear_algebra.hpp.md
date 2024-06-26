@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
     title: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1112.test.cpp
+    title: test/yuki/yuki_1112.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -213,6 +216,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - test/yuki/yuki_1112.test.cpp
 documentation_of: matrix/black_box_linear_algebra.hpp
 layout: document
 title: Black Box Linear Algebra

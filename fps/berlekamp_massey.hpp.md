@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
     title: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1112.test.cpp
+    title: test/yuki/yuki_1112.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -67,6 +70,7 @@ data:
   verifiedWith:
   - test/math/Find_Linear_Recurrence.test.cpp
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - test/yuki/yuki_1112.test.cpp
 documentation_of: fps/berlekamp_massey.hpp
 layout: document
 title: Berlekamp Massey

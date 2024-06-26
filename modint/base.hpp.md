@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitrary_ntt.hpp
+  - icon: ':warning:'
+    path: convolution/arbitrary_convolution.hpp
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/convolution.hpp
@@ -20,6 +20,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: convolution/ntt.hpp
     title: NTT
+  - icon: ':heavy_check_mark:'
+    path: fps/arbitrary_mod_fps.hpp
+    title: Formal Power Series (Arbitrary mod)
   - icon: ':heavy_check_mark:'
     path: fps/berlekamp_massey.hpp
     title: Berlekamp Massey
@@ -193,9 +196,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_2D.test.cpp
     title: test/convolution/Convolution_2D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_Mod_1000000007.test.cpp
-    title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
@@ -413,6 +413,9 @@ data:
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1112.test.cpp
+    title: test/yuki/yuki_1112.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
@@ -486,6 +489,7 @@ data:
   - fps/product_of_one_plus_xn.hpp
   - fps/sum_of_rational_fps.hpp
   - fps/compositional_inverse_of_fps.hpp
+  - fps/arbitrary_mod_fps.hpp
   - fps/product_of_fps.hpp
   - fps/middle_product_arbitrary.hpp
   - fps/fps_sqrt.hpp
@@ -498,10 +502,10 @@ data:
   - graph/count_directed_euler_trail.hpp
   - convolution/convolution_mod_2_64.hpp
   - convolution/dirichlet_convolution.hpp
+  - convolution/arbitrary_convolution.hpp
   - convolution/convolution.hpp
   - convolution/ntt.hpp
   - convolution/convolution_2d.hpp
-  - convolution/arbitrary_ntt.hpp
   - matrix/black_box_linear_algebra.hpp
   - matrix/det_arbitrary_mod.hpp
   - modint/dynamic_modint.hpp
@@ -581,7 +585,6 @@ data:
   - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/convolution/Convolution_2D.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
@@ -593,6 +596,7 @@ data:
   - test/matrix/Rank_of_Matrix.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+  - test/yuki/yuki_1112.test.cpp
   - test/yuki/yuki_2747.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_2633.test.cpp

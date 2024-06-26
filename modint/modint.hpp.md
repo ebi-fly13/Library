@@ -5,8 +5,8 @@ data:
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitrary_ntt.hpp
+  - icon: ':warning:'
+    path: convolution/arbitrary_convolution.hpp
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/convolution_mod_2_64.hpp
@@ -39,9 +39,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_2D.test.cpp
     title: test/convolution/Convolution_2D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_Mod_1000000007.test.cpp
-    title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
@@ -241,6 +238,9 @@ data:
     path: test/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/tree/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1112.test.cpp
+    title: test/yuki/yuki_1112.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
@@ -369,7 +369,7 @@ data:
   requiredBy:
   - fps/middle_product_arbitrary.hpp
   - convolution/convolution_mod_2_64.hpp
-  - convolution/arbitrary_ntt.hpp
+  - convolution/arbitrary_convolution.hpp
   - string/wildcard_pattern_matching.hpp
   timestamp: '2024-05-23 18:52:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -436,7 +436,6 @@ data:
   - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/convolution/Convolution_2D.test.cpp
   - test/convolution/Bitwise_OR_Convolution.test.cpp
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
@@ -447,6 +446,7 @@ data:
   - test/matrix/Rank_of_Matrix.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
+  - test/yuki/yuki_1112.test.cpp
   - test/yuki/yuki_2747.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1857.test.cpp

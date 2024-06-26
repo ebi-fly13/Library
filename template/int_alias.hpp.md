@@ -8,8 +8,8 @@ data:
   - icon: ':warning:'
     path: algorithm/monge_d_edge_shortest_path.hpp
     title: Monge d-edge shortest path
-  - icon: ':heavy_check_mark:'
-    path: convolution/arbitrary_ntt.hpp
+  - icon: ':warning:'
+    path: convolution/arbitrary_convolution.hpp
     title: Arbitrary Convolution
   - icon: ':heavy_check_mark:'
     path: convolution/convolution.hpp
@@ -38,6 +38,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/bitVector.hpp
     title: data_structure/bitVector.hpp
+  - icon: ':heavy_check_mark:'
+    path: fps/arbitrary_mod_fps.hpp
+    title: Formal Power Series (Arbitrary mod)
   - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$ ( $O(N\log^2{N})$ )
@@ -102,9 +105,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_2D.test.cpp
     title: test/convolution/Convolution_2D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/convolution/Convolution_Mod_1000000007.test.cpp
-    title: test/convolution/Convolution_Mod_1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_Mod_2_64.test.cpp
     title: test/convolution/Convolution_Mod_2_64.test.cpp
@@ -373,6 +373,9 @@ data:
     path: test/yuki/yuki_1077.test.cpp
     title: test/yuki/yuki_1077.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1112.test.cpp
+    title: test/yuki/yuki_1112.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
@@ -493,16 +496,17 @@ data:
   - math/linear_sieve.hpp
   - fps/ntt_friendly_fps.hpp
   - fps/compositional_inverse_of_fps_old.hpp
+  - fps/arbitrary_mod_fps.hpp
   - fps/middle_product_arbitrary.hpp
   - fps/composition_of_fps.hpp
   - fps/middle_product.hpp
   - convolution/convolution_mod_2_64.hpp
   - convolution/dirichlet_convolution.hpp
+  - convolution/arbitrary_convolution.hpp
   - convolution/convolution.hpp
   - convolution/online_convolution.hpp
   - convolution/ntt.hpp
   - convolution/convolution_2d.hpp
-  - convolution/arbitrary_ntt.hpp
   - template/template.hpp
   - template/utility.hpp
   - algorithm/monge_d_edge_shortest_path.hpp
@@ -596,7 +600,6 @@ data:
   - test/convolution/Convolution_Mod_2_64.test.cpp
   - test/convolution/Convolution_2D.test.cpp
   - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
   - test/convolution/Online_Convolution.test.cpp
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
@@ -606,6 +609,7 @@ data:
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   - test/matrix/Matrix_Product.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
+  - test/yuki/yuki_1112.test.cpp
   - test/yuki/yuki_901_2.test.cpp
   - test/yuki/yuki_2747.test.cpp
   - test/yuki/yuki_901.test.cpp

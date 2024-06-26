@@ -6,6 +6,9 @@ data:
     title: modint/base.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: fps/arbitrary_mod_fps.hpp
+    title: Formal Power Series (Arbitrary mod)
+  - icon: ':heavy_check_mark:'
     path: fps/composition_of_fps.hpp
     title: $f(g(x))$ ( $O(N\log^2{N})$ )
   - icon: ':heavy_check_mark:'
@@ -154,6 +157,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/string/Wildcard_Pattern_Matching.test.cpp
     title: test/string/Wildcard_Pattern_Matching.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1112.test.cpp
+    title: test/yuki/yuki_1112.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
@@ -384,6 +390,7 @@ data:
   - fps/product_of_one_plus_xn.hpp
   - fps/sum_of_rational_fps.hpp
   - fps/compositional_inverse_of_fps.hpp
+  - fps/arbitrary_mod_fps.hpp
   - fps/product_of_fps.hpp
   - fps/middle_product_arbitrary.hpp
   - fps/fps_sqrt.hpp
@@ -420,6 +427,7 @@ data:
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - test/yuki/yuki_1112.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp

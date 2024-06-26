@@ -40,8 +40,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/and_convolution.hpp
       title: Bitwise AND Convolution
-    - icon: ':heavy_check_mark:'
-      path: convolution/arbitrary_ntt.hpp
+    - icon: ':warning:'
+      path: convolution/arbitrary_convolution.hpp
       title: Arbitrary Convolution
     - icon: ':heavy_check_mark:'
       path: convolution/convolution.hpp
@@ -230,6 +230,9 @@ data:
       title: UnionFind with potential
   - name: fps
     pages:
+    - icon: ':heavy_check_mark:'
+      path: fps/arbitrary_mod_fps.hpp
+      title: Formal Power Series (Arbitrary mod)
     - icon: ':heavy_check_mark:'
       path: fps/berlekamp_massey.hpp
       title: Berlekamp Massey
@@ -683,7 +686,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/convolution/Convolution_2D.test.cpp
       title: test/convolution/Convolution_2D.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/convolution/Convolution_Mod_1000000007.test.cpp
       title: test/convolution/Convolution_Mod_1000000007.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1180,6 +1183,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1077.test.cpp
       title: test/yuki/yuki_1077.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_1112.test.cpp
+      title: test/yuki/yuki_1112.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1145.test.cpp
       title: test/yuki/yuki_1145.test.cpp
