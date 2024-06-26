@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../fps/berlekamp_massey.hpp"
+#include "../fps/poly_mod_pow.hpp"
 #include "../modint/base.hpp"
 #include "../utility/random_number_generator.hpp"
 
@@ -26,6 +27,20 @@ std::vector<mint> matrix_minimum_poly(int n, F Ax) {
     auto c = berlekamp_massey(s);
     std::reverse(c.begin(), c.end());
     return c;
+}
+
+template <Modint mint, class F>
+std::vector<mint> pow(int n, F Ax, const std::vector<mint> &b, long long k) {
+    assert(n == (int)b.size());
+    using FPS = FormalPowerSeries<mint>;
+    auto g = matrix_minimum_poly<mint>(n, Ax);
+    auto c = poly_mod_pow<mint>({0, 1}, k, g);
+    FPS res(n, 0), Ab = b;
+    for (int i = 0; i < (int)c.size(); i++) {
+        res += Ab * c[i];
+        Ab = FPS(Ax(Ab));
+    }
+    return res;
 }
 
 template <Modint mint, class F> mint det(int n, F Ax) {
