@@ -25,13 +25,16 @@ data:
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: fps/middle_product_arbitrary.hpp
-    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
+    title: $f^k \mod g$
   - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
     title: Formal Power Series (NTT Friendly)
+  - icon: ':heavy_check_mark:'
+    path: fps/poly_mod_pow.hpp
+    title: fps/poly_mod_pow.hpp
   - icon: ':heavy_check_mark:'
     path: fps/polynomial_interpolation.hpp
     title: Polynomial Interpolation
@@ -73,6 +76,9 @@ data:
     path: math/sums_of_powers_iota.hpp
     title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
   - icon: ':heavy_check_mark:'
+    path: matrix/black_box_linear_algebra.hpp
+    title: Black Box Linear Algebra
+  - icon: ':heavy_check_mark:'
     path: string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
   _extendedVerifiedWith:
@@ -97,6 +103,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Powers_Iota.test.cpp
     title: test/math/Sum_of_Powers_Iota.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+    title: test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
     title: test/polynomial/Composition_of_Formal_Power_Series.test.cpp
@@ -368,6 +377,7 @@ data:
   - math/sums_of_powers_iota.hpp
   - fps/ntt_friendly_fps.hpp
   - fps/power_projection_of_fps.hpp
+  - fps/poly_mod_pow.hpp
   - fps/taylor_shift.hpp
   - fps/compositional_inverse_of_fps_old.hpp
   - fps/polynomial_interpolation.hpp
@@ -382,6 +392,7 @@ data:
   - fps/multipoint_evaluation.hpp
   - fps/product_of_one_minus_xn.hpp
   - fps/middle_product.hpp
+  - matrix/black_box_linear_algebra.hpp
   - string/wildcard_pattern_matching.hpp
   timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -408,6 +419,7 @@ data:
   - test/polynomial/Log_of_Formal_Power_Series.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1857.test.cpp
   - test/yuki/yuki_1145.test.cpp

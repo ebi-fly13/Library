@@ -49,13 +49,16 @@ data:
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: fps/middle_product_arbitrary.hpp
-    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
+    title: $f^k \mod g$
   - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
   - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
     title: Formal Power Series (NTT Friendly)
+  - icon: ':heavy_check_mark:'
+    path: fps/poly_mod_pow.hpp
+    title: fps/poly_mod_pow.hpp
   - icon: ':heavy_check_mark:'
     path: fps/polynomial_interpolation.hpp
     title: Polynomial Interpolation
@@ -475,6 +478,7 @@ data:
   - fps/power_projection_of_fps.hpp
   - fps/fps.hpp
   - fps/fps_sparse.hpp
+  - fps/poly_mod_pow.hpp
   - fps/taylor_shift.hpp
   - fps/compositional_inverse_of_fps_old.hpp
   - fps/polynomial_interpolation.hpp

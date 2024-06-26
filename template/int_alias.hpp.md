@@ -49,7 +49,7 @@ data:
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: fps/middle_product_arbitrary.hpp
-    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
+    title: $f^k \mod g$
   - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
     title: Formal Power Series (NTT Friendly)
