@@ -1,6 +1,6 @@
 ---
 title: Arbitrary Convolution
-documentation_of: //convolution/arbitrary_ntt.hpp
+documentation_of: //convolution/arbitrary_convolution.hpp
 ---
 
 ## 説明
