@@ -127,8 +127,8 @@ data:
   timestamp: '2024-05-21 15:55:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/yuki/yuki_2747.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
 documentation_of: math/sum_of_powers_iota.hpp
 layout: document
 title: $\sum_{i = 0}^{n-1} i^k$

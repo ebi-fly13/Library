@@ -210,8 +210,8 @@ data:
   timestamp: '2024-05-21 15:55:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
 documentation_of: math/sum_of_exp_times_poly.hpp
 layout: document
 title: $\sum_{i = 0}^{n-1} a^i f(i)$

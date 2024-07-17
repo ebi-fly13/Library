@@ -5,6 +5,9 @@ data:
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: graph/maximum_matching_size.hpp
+    title: graph/maximum_matching_size.hpp
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
@@ -123,14 +126,15 @@ data:
   isVerificationFile: false
   path: modint/modint61.hpp
   requiredBy:
-  - utility/hash.hpp
-  - tree/rooted_tree_hash.hpp
   - string/rolling_hash.hpp
+  - tree/rooted_tree_hash.hpp
+  - utility/hash.hpp
+  - graph/maximum_matching_size.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_2444.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/aoj/aoj_2444.test.cpp
 documentation_of: modint/modint61.hpp
 layout: document
 redirect_from:

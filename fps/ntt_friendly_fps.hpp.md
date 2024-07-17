@@ -333,30 +333,30 @@ data:
   timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Berunoulli_Number.test.cpp
-  - test/math/Sharp_P_Subset_Sum.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
-  - test/math/Partition_Function_Pentagonal.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yuki/yuki_1857.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/yuki/yuki_1145.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
-  - test/yuki/yuki_1302.test.cpp
-  - test/yuki/yuki_1857.test.cpp
-  - test/yuki/yuki_1145.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/math/Berunoulli_Number.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Sharp_P_Subset_Sum.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
 documentation_of: fps/ntt_friendly_fps.hpp
 layout: document
 title: Formal Power Series (NTT Friendly)

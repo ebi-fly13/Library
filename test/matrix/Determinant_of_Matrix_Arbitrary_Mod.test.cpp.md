@@ -90,155 +90,155 @@ data:
     \ + i * m,\n                                     data.begin() + (i + 1) * m);\n\
     \    }\n\n    void swap(int i, int j) {\n        std::swap_ranges(data.begin()\
     \ + i * m, data.begin() + (i + 1) * m,\n                         data.begin()\
-    \ + j * m);\n    }\n\n    Self transposition() const {\n        Self res(m, n);\n\
-    \        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++)\
-    \ {\n                res[j][i] = (*this)[i][j];\n            }\n        }\n  \
-    \      return res;\n    }\n\n    std::optional<Self> inv() const {\n        assert(row_size()\
-    \ == column_size());\n        Self a = *this;\n        Self b = identify_matrix<T>(n);\n\
-    \        for (int r = 0; r < n; r++) {\n            for (int i = r; i < n; i++)\
-    \ {\n                if (a[i][r] != 0) {\n                    a.swap(r, i);\n\
-    \                    b.swap(r, i);\n                    break;\n             \
-    \   }\n            }\n            if (a[r][r] == 0) return std::nullopt;\n   \
-    \         T x = a[r][r].inv();\n            for (int j = 0; j < n; j++) {\n  \
-    \              if (r < j) a[r][j] *= x;\n                b[r][j] *= x;\n     \
-    \       }\n            for (int i = 0; i < n; i++) {\n                if (i ==\
-    \ r) continue;\n                for (int j = 0; j < n; j++) {\n              \
-    \      if (r < j) a[i][j] -= a[i][r] * a[r][j];\n                    b[i][j] -=\
-    \ a[i][r] * b[r][j];\n                }\n            }\n        }\n        return\
-    \ b;\n    }\n\n    Self pow(long long k) const {\n        assert(row_size() ==\
-    \ column_size() && k >= 0);\n        Self res = identify_matrix<T>(row_size());\n\
-    \        Self x = *this;\n        while (k) {\n            if (k & 1) res *= x;\n\
-    \            x *= x;\n            k >>= 1;\n        }\n        return res;\n \
-    \   }\n\n    int row_size() const {\n        return n;\n    }\n\n    int column_size()\
-    \ const {\n        return m;\n    }\n\n    std::pair<int, int> size() const {\n\
-    \        return {n, m};\n    }\n\n  private:\n    int n, m;\n    std::vector<T>\
-    \ data;\n};\n\ntemplate <class T> T det(matrix<T> a) {\n    assert(a.row_size()\
-    \ == a.column_size());\n    T d = 1;\n    int n = a.row_size();\n    for (int\
-    \ r = 0; r < n; r++) {\n        if (a[r][r] == 0) {\n            for (int i =\
-    \ r + 1; i < n; i++) {\n                if (a[i][r] != 0) {\n                \
-    \    a.swap(r, i);\n                    d = -d;\n                }\n         \
-    \   }\n        }\n        if (a[r][r] == 0) return 0;\n        d *= a[r][r];\n\
-    \        T inv = a[r][r].inv();\n        for (int i = r + 1; i < n; i++) {\n \
-    \           T x = a[i][r] * inv;\n            for (int j = r; j < n; j++) {\n\
-    \                a[i][j] -= x * a[r][j];\n            }\n        }\n    }\n  \
-    \  return d;\n}\n\ntemplate <class T> std::istream &operator>>(std::istream &os,\
-    \ matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int\
-    \ j = 0; j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n\
-    \    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n \
-    \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
-    \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
-    \ < a.row_size() - 1) os << '\\n';\n    }\n    return os;\n}\n\n}  // namespace\
-    \ ebi\n#line 2 \"matrix/det_arbitrary_mod.hpp\"\n\n#line 4 \"matrix/det_arbitrary_mod.hpp\"\
-    \n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
-    \n#include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint\
-    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n   \
-    \ a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
-    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
-    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
-    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
-    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"matrix/det_arbitrary_mod.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint> mint det_arbitrary_mod(matrix<mint>\
-    \ a) {\n    assert(a.row_size() == a.column_size());\n    bool sgn = true;\n \
-    \   int n = a.row_size();\n    for (int r = 0; r < n; r++) {\n        if (a[r][r]\
-    \ == 0) {\n            for (int i = r + 1; i < n; i++) {\n                if (a[i][r]\
-    \ != 0) {\n                    sgn = !sgn;\n                    a.swap(r, i);\n\
-    \                    break;\n                }\n            }\n        }\n   \
-    \     if (a[r][r] == 0) return 0;\n        for (int i = r + 1; i < n; i++) {\n\
-    \            while (a[i][r] != 0) {\n                long long q = a[r][r].val()\
-    \ / a[i][r].val();\n                for (int j = r; j < n; j++) {\n          \
-    \          a[r][j] -= a[i][j] * q;\n                }\n                a.swap(r,\
-    \ i);\n                sgn = !sgn;\n            }\n        }\n    }\n    mint\
-    \ d = sgn ? 1 : -1;\n    for (int i = 0; i < n; i++) d *= a[i][i];\n    return\
-    \ d;\n}\n\n}  // namespace ebi\n#line 2 \"modint/dynamic_modint.hpp\"\n\n#line\
-    \ 4 \"modint/dynamic_modint.hpp\"\n\n#line 6 \"modint/dynamic_modint.hpp\"\n\n\
-    namespace ebi {\n\ntemplate <int id> struct dynamic_modint {\n  private:\n   \
-    \ using modint = dynamic_modint;\n\n  public:\n    static void set_mod(int p)\
-    \ {\n        assert(1 <= p);\n        m = p;\n    }\n\n    static int mod() {\n\
-    \        return m;\n    }\n\n    modint raw(int v) {\n        modint x;\n    \
-    \    x._v = v;\n        return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n\n\
-    \    dynamic_modint(long long v) {\n        v %= (long long)umod();\n        if\
-    \ (v < 0) v += (long long)umod();\n        _v = (unsigned int)v;\n    }\n\n  \
-    \  unsigned int val() const {\n        return _v;\n    }\n\n    unsigned int value()\
-    \ const {\n        return val();\n    }\n\n    modint &operator++() {\n      \
-    \  _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n    }\n  \
-    \  modint &operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n\
-    \        return *this;\n    }\n    modint &operator+=(const modint &rhs) {\n \
-    \       _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
-    \ *this;\n    }\n    modint &operator-=(const modint &rhs) {\n        _v -= rhs._v;\n\
-    \        if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    modint\
-    \ &operator*=(const modint &rhs) {\n        unsigned long long x = _v;\n     \
-    \   x *= rhs._v;\n        _v = (unsigned int)(x % (unsigned long long)umod());\n\
-    \        return *this;\n    }\n    modint &operator/=(const modint &rhs) {\n \
-    \       return *this = *this * rhs.inv();\n    }\n\n    modint operator+() const\
-    \ {\n        return *this;\n    }\n    modint operator-() const {\n        return\
-    \ modint() - *this;\n    }\n\n    modint pow(long long n) const {\n        assert(0\
-    \ <= n);\n        modint x = *this, res = 1;\n        while (n) {\n          \
-    \  if (n & 1) res *= x;\n            x *= x;\n            n >>= 1;\n        }\n\
-    \        return res;\n    }\n    modint inv() const {\n        assert(_v);\n \
-    \       return pow(umod() - 2);\n    }\n\n    friend modint operator+(const modint\
-    \ &lhs, const modint &rhs) {\n        return modint(lhs) += rhs;\n    }\n    friend\
-    \ modint operator-(const modint &lhs, const modint &rhs) {\n        return modint(lhs)\
-    \ -= rhs;\n    }\n    friend modint operator*(const modint &lhs, const modint\
-    \ &rhs) {\n        return modint(lhs) *= rhs;\n    }\n\n    friend modint operator/(const\
-    \ modint &lhs, const modint &rhs) {\n        return modint(lhs) /= rhs;\n    }\n\
-    \    friend bool operator==(const modint &lhs, const modint &rhs) {\n        return\
-    \ lhs.val() == rhs.val();\n    }\n    friend bool operator!=(const modint &lhs,\
-    \ const modint &rhs) {\n        return !(lhs == rhs);\n    }\n\n  private:\n \
-    \   unsigned int _v = 0;\n    static int m;\n\n    static unsigned int umod()\
-    \ {\n        return m;\n    }\n};\n\ntemplate <int id> int dynamic_modint<id>::m\
-    \ = 998244353;\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\n#include\
-    \ <bits/stdc++.h>\n\n#define rep(i, a, n) for (int i = (int)(a); i < (int)(n);\
-    \ i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n\
-    #define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i,\
-    \ a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v) (v).begin(),\
-    \ (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\
-    \n\n#line 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n\
-    #define debug(...)                                                      \\\n \
-    \   std::cerr << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\",\
-    \ \\\n        debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid\
-    \ debug_out() {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename...\
-    \ Tail> void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n  \
-    \  if (sizeof...(t) > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  //\
-    \ namespace ebi\n#line 2 \"template/int_alias.hpp\"\n\n#line 4 \"template/int_alias.hpp\"\
-    \n\nnamespace ebi {\n\nusing ld = long double;\nusing std::size_t;\nusing i8 =\
-    \ std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16\
-    \ = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing\
-    \ i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
-    using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\
-    \n#line 5 \"template/io.hpp\"\n#include <optional>\n#line 7 \"template/io.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
-    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
-    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
-    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
-    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
-    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
-    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
-    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
-    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
-    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
-    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
-    \n\n#line 2 \"graph/base.hpp\"\n\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
-    \n\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
-    \ E> struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n,\
-    \ const std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0),\
-    \ elist(elements.size()) {\n        for (auto e : elements) {\n            start[e.first\
-    \ + 1]++;\n        }\n        for (auto i : std::views::iota(0, n)) {\n      \
-    \      start[i + 1] += start[i];\n        }\n        auto counter = start;\n \
-    \       for (auto [i, e] : elements) {\n            elist[counter[i]++] = e;\n\
-    \        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>& es)\n \
-    \       : start(es.size() + 1, 0) {\n        int n = es.size();\n        for (auto\
-    \ i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
-    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
-    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
-    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
-    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
-    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
-    \                                   elist.begin() + start[i + 1]);\n    }\n  \
-    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \ + j * m);\n    }\n\n    int rank() const;\n\n    Self transposition() const\
+    \ {\n        Self res(m, n);\n        for (int i = 0; i < n; i++) {\n        \
+    \    for (int j = 0; j < m; j++) {\n                res[j][i] = (*this)[i][j];\n\
+    \            }\n        }\n        return res;\n    }\n\n    std::optional<Self>\
+    \ inv() const {\n        assert(row_size() == column_size());\n        Self a\
+    \ = *this;\n        Self b = identify_matrix<T>(n);\n        for (int r = 0; r\
+    \ < n; r++) {\n            for (int i = r; i < n; i++) {\n                if (a[i][r]\
+    \ != 0) {\n                    a.swap(r, i);\n                    b.swap(r, i);\n\
+    \                    break;\n                }\n            }\n            if\
+    \ (a[r][r] == 0) return std::nullopt;\n            T x = a[r][r].inv();\n    \
+    \        for (int j = 0; j < n; j++) {\n                if (r < j) a[r][j] *=\
+    \ x;\n                b[r][j] *= x;\n            }\n            for (int i = 0;\
+    \ i < n; i++) {\n                if (i == r) continue;\n                for (int\
+    \ j = 0; j < n; j++) {\n                    if (r < j) a[i][j] -= a[i][r] * a[r][j];\n\
+    \                    b[i][j] -= a[i][r] * b[r][j];\n                }\n      \
+    \      }\n        }\n        return b;\n    }\n\n    Self pow(long long k) const\
+    \ {\n        assert(row_size() == column_size() && k >= 0);\n        Self res\
+    \ = identify_matrix<T>(row_size());\n        Self x = *this;\n        while (k)\
+    \ {\n            if (k & 1) res *= x;\n            x *= x;\n            k >>=\
+    \ 1;\n        }\n        return res;\n    }\n\n    int row_size() const {\n  \
+    \      return n;\n    }\n\n    int column_size() const {\n        return m;\n\
+    \    }\n\n    std::pair<int, int> size() const {\n        return {n, m};\n   \
+    \ }\n\n  private:\n    int n, m;\n    std::vector<T> data;\n};\n\ntemplate <class\
+    \ T> T det(matrix<T> a) {\n    assert(a.row_size() == a.column_size());\n    T\
+    \ d = 1;\n    int n = a.row_size();\n    for (int r = 0; r < n; r++) {\n     \
+    \   if (a[r][r] == 0) {\n            for (int i = r + 1; i < n; i++) {\n     \
+    \           if (a[i][r] != 0) {\n                    a.swap(r, i);\n         \
+    \           d = -d;\n                }\n            }\n        }\n        if (a[r][r]\
+    \ == 0) return 0;\n        d *= a[r][r];\n        T inv = a[r][r].inv();\n   \
+    \     for (int i = r + 1; i < n; i++) {\n            T x = a[i][r] * inv;\n  \
+    \          for (int j = r; j < n; j++) {\n                a[i][j] -= x * a[r][j];\n\
+    \            }\n        }\n    }\n    return d;\n}\n\ntemplate <class T> std::istream\
+    \ &operator>>(std::istream &os, matrix<T> &a) {\n    for (int i = 0; i < a.row_size();\
+    \ i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n            os\
+    \ >> a[i][j];\n        }\n    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const matrix<T> &a) {\n    for (int i = 0; i <\
+    \ a.row_size(); i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n\
+    \            os << a[i][j];\n            if (j < a.column_size() - 1) os << '\
+    \ ';\n        }\n        if (i < a.row_size() - 1) os << '\\n';\n    }\n    return\
+    \ os;\n}\n\n}  // namespace ebi\n#line 2 \"matrix/det_arbitrary_mod.hpp\"\n\n\
+    #line 4 \"matrix/det_arbitrary_mod.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include\
+    \ <concepts>\n#line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi\
+    \ {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n\
+    \    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
+    matrix/det_arbitrary_mod.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> mint\
+    \ det_arbitrary_mod(matrix<mint> a) {\n    assert(a.row_size() == a.column_size());\n\
+    \    bool sgn = true;\n    int n = a.row_size();\n    for (int r = 0; r < n; r++)\
+    \ {\n        if (a[r][r] == 0) {\n            for (int i = r + 1; i < n; i++)\
+    \ {\n                if (a[i][r] != 0) {\n                    sgn = !sgn;\n  \
+    \                  a.swap(r, i);\n                    break;\n               \
+    \ }\n            }\n        }\n        if (a[r][r] == 0) return 0;\n        for\
+    \ (int i = r + 1; i < n; i++) {\n            while (a[i][r] != 0) {\n        \
+    \        long long q = a[r][r].val() / a[i][r].val();\n                for (int\
+    \ j = r; j < n; j++) {\n                    a[r][j] -= a[i][j] * q;\n        \
+    \        }\n                a.swap(r, i);\n                sgn = !sgn;\n     \
+    \       }\n        }\n    }\n    mint d = sgn ? 1 : -1;\n    for (int i = 0; i\
+    \ < n; i++) d *= a[i][i];\n    return d;\n}\n\n}  // namespace ebi\n#line 2 \"\
+    modint/dynamic_modint.hpp\"\n\n#line 4 \"modint/dynamic_modint.hpp\"\n\n#line\
+    \ 6 \"modint/dynamic_modint.hpp\"\n\nnamespace ebi {\n\ntemplate <int id> struct\
+    \ dynamic_modint {\n  private:\n    using modint = dynamic_modint;\n\n  public:\n\
+    \    static void set_mod(int p) {\n        assert(1 <= p);\n        m = p;\n \
+    \   }\n\n    static int mod() {\n        return m;\n    }\n\n    modint raw(int\
+    \ v) {\n        modint x;\n        x._v = v;\n        return x;\n    }\n\n   \
+    \ dynamic_modint() : _v(0) {}\n\n    dynamic_modint(long long v) {\n        v\
+    \ %= (long long)umod();\n        if (v < 0) v += (long long)umod();\n        _v\
+    \ = (unsigned int)v;\n    }\n\n    unsigned int val() const {\n        return\
+    \ _v;\n    }\n\n    unsigned int value() const {\n        return val();\n    }\n\
+    \n    modint &operator++() {\n        _v++;\n        if (_v == umod()) _v = 0;\n\
+    \        return *this;\n    }\n    modint &operator--() {\n        if (_v == 0)\
+    \ _v = umod();\n        _v--;\n        return *this;\n    }\n    modint &operator+=(const\
+    \ modint &rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
+    \        return *this;\n    }\n    modint &operator-=(const modint &rhs) {\n \
+    \       _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n        return\
+    \ *this;\n    }\n    modint &operator*=(const modint &rhs) {\n        unsigned\
+    \ long long x = _v;\n        x *= rhs._v;\n        _v = (unsigned int)(x % (unsigned\
+    \ long long)umod());\n        return *this;\n    }\n    modint &operator/=(const\
+    \ modint &rhs) {\n        return *this = *this * rhs.inv();\n    }\n\n    modint\
+    \ operator+() const {\n        return *this;\n    }\n    modint operator-() const\
+    \ {\n        return modint() - *this;\n    }\n\n    modint pow(long long n) const\
+    \ {\n        assert(0 <= n);\n        modint x = *this, res = 1;\n        while\
+    \ (n) {\n            if (n & 1) res *= x;\n            x *= x;\n            n\
+    \ >>= 1;\n        }\n        return res;\n    }\n    modint inv() const {\n  \
+    \      assert(_v);\n        return pow(umod() - 2);\n    }\n\n    friend modint\
+    \ operator+(const modint &lhs, const modint &rhs) {\n        return modint(lhs)\
+    \ += rhs;\n    }\n    friend modint operator-(const modint &lhs, const modint\
+    \ &rhs) {\n        return modint(lhs) -= rhs;\n    }\n    friend modint operator*(const\
+    \ modint &lhs, const modint &rhs) {\n        return modint(lhs) *= rhs;\n    }\n\
+    \n    friend modint operator/(const modint &lhs, const modint &rhs) {\n      \
+    \  return modint(lhs) /= rhs;\n    }\n    friend bool operator==(const modint\
+    \ &lhs, const modint &rhs) {\n        return lhs.val() == rhs.val();\n    }\n\
+    \    friend bool operator!=(const modint &lhs, const modint &rhs) {\n        return\
+    \ !(lhs == rhs);\n    }\n\n  private:\n    unsigned int _v = 0;\n    static int\
+    \ m;\n\n    static unsigned int umod() {\n        return m;\n    }\n};\n\ntemplate\
+    \ <int id> int dynamic_modint<id>::m = 998244353;\n\n}  // namespace ebi\n#line\
+    \ 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i, a, n)\
+    \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
+    \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
+    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
+    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
+    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
+    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
+    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
+    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
+    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
+    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
+    #line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
+    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
+    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
+    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
+    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
+    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
+    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
+    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
+    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 7\
+    \ \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 6 \"\
+    data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E> struct\
+    \ simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const std::vector<std::pair<int,\
+    \ E>>& elements)\n        : start(n + 1, 0), elist(elements.size()) {\n      \
+    \  for (auto e : elements) {\n            start[e.first + 1]++;\n        }\n \
+    \       for (auto i : std::views::iota(0, n)) {\n            start[i + 1] += start[i];\n\
+    \        }\n        auto counter = start;\n        for (auto [i, e] : elements)\
+    \ {\n            elist[counter[i]++] = e;\n        }\n    }\n\n    simple_csr(const\
+    \ std::vector<std::vector<E>>& es)\n        : start(es.size() + 1, 0) {\n    \
+    \    int n = es.size();\n        for (auto i : std::views::iota(0, n)) {\n   \
+    \         start[i + 1] = (int)es[i].size() + start[i];\n        }\n        elist.resize(start.back());\n\
+    \        for (auto i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(),\
+    \ es[i].end(), elist.begin() + start[i]);\n        }\n    }\n\n    int size()\
+    \ const {\n        return (int)start.size() - 1;\n    }\n\n    const auto operator[](int\
+    \ i) const {\n        return std::ranges::subrange(elist.begin() + start[i],\n\
+    \                                     elist.begin() + start[i + 1]);\n    }\n\
+    \    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -322,7 +322,7 @@ data:
   isVerificationFile: true
   path: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
   requiredBy: []
-  timestamp: '2024-06-25 15:37:33+09:00'
+  timestamp: '2024-07-18 01:45:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp

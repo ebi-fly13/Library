@@ -104,9 +104,9 @@ data:
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Sqrt_Mod.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/math/Sqrt_Mod.test.cpp
 documentation_of: math/mod_sqrt.hpp
 layout: document
 title: Mod Sqrt

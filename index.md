@@ -364,6 +364,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/maximum_independent_set.hpp
       title: Maximum Independent Set
+    - icon: ':warning:'
+      path: graph/maximum_matching_size.hpp
+      title: graph/maximum_matching_size.hpp
     - icon: ':heavy_check_mark:'
       path: graph/mst.hpp
       title: Minimum Spanning Tree

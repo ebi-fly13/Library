@@ -62,66 +62,66 @@ data:
     \ + i * m,\n                                     data.begin() + (i + 1) * m);\n\
     \    }\n\n    void swap(int i, int j) {\n        std::swap_ranges(data.begin()\
     \ + i * m, data.begin() + (i + 1) * m,\n                         data.begin()\
-    \ + j * m);\n    }\n\n    Self transposition() const {\n        Self res(m, n);\n\
-    \        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++)\
-    \ {\n                res[j][i] = (*this)[i][j];\n            }\n        }\n  \
-    \      return res;\n    }\n\n    std::optional<Self> inv() const {\n        assert(row_size()\
-    \ == column_size());\n        Self a = *this;\n        Self b = identify_matrix<T>(n);\n\
-    \        for (int r = 0; r < n; r++) {\n            for (int i = r; i < n; i++)\
-    \ {\n                if (a[i][r] != 0) {\n                    a.swap(r, i);\n\
-    \                    b.swap(r, i);\n                    break;\n             \
-    \   }\n            }\n            if (a[r][r] == 0) return std::nullopt;\n   \
-    \         T x = a[r][r].inv();\n            for (int j = 0; j < n; j++) {\n  \
-    \              if (r < j) a[r][j] *= x;\n                b[r][j] *= x;\n     \
-    \       }\n            for (int i = 0; i < n; i++) {\n                if (i ==\
-    \ r) continue;\n                for (int j = 0; j < n; j++) {\n              \
-    \      if (r < j) a[i][j] -= a[i][r] * a[r][j];\n                    b[i][j] -=\
-    \ a[i][r] * b[r][j];\n                }\n            }\n        }\n        return\
-    \ b;\n    }\n\n    Self pow(long long k) const {\n        assert(row_size() ==\
-    \ column_size() && k >= 0);\n        Self res = identify_matrix<T>(row_size());\n\
-    \        Self x = *this;\n        while (k) {\n            if (k & 1) res *= x;\n\
-    \            x *= x;\n            k >>= 1;\n        }\n        return res;\n \
-    \   }\n\n    int row_size() const {\n        return n;\n    }\n\n    int column_size()\
-    \ const {\n        return m;\n    }\n\n    std::pair<int, int> size() const {\n\
-    \        return {n, m};\n    }\n\n  private:\n    int n, m;\n    std::vector<T>\
-    \ data;\n};\n\ntemplate <class T> T det(matrix<T> a) {\n    assert(a.row_size()\
-    \ == a.column_size());\n    T d = 1;\n    int n = a.row_size();\n    for (int\
-    \ r = 0; r < n; r++) {\n        if (a[r][r] == 0) {\n            for (int i =\
-    \ r + 1; i < n; i++) {\n                if (a[i][r] != 0) {\n                \
-    \    a.swap(r, i);\n                    d = -d;\n                }\n         \
-    \   }\n        }\n        if (a[r][r] == 0) return 0;\n        d *= a[r][r];\n\
-    \        T inv = a[r][r].inv();\n        for (int i = r + 1; i < n; i++) {\n \
-    \           T x = a[i][r] * inv;\n            for (int j = r; j < n; j++) {\n\
-    \                a[i][j] -= x * a[r][j];\n            }\n        }\n    }\n  \
-    \  return d;\n}\n\ntemplate <class T> std::istream &operator>>(std::istream &os,\
-    \ matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int\
-    \ j = 0; j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n\
-    \    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n \
-    \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
-    \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
-    \ < a.row_size() - 1) os << '\\n';\n    }\n    return os;\n}\n\n}  // namespace\
-    \ ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 5 \"modint/base.hpp\"\
-    \n#include <utility>\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint\
-    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n   \
-    \ a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
-    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
-    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
-    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
-    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"matrix/det_arbitrary_mod.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint> mint det_arbitrary_mod(matrix<mint>\
-    \ a) {\n    assert(a.row_size() == a.column_size());\n    bool sgn = true;\n \
-    \   int n = a.row_size();\n    for (int r = 0; r < n; r++) {\n        if (a[r][r]\
-    \ == 0) {\n            for (int i = r + 1; i < n; i++) {\n                if (a[i][r]\
-    \ != 0) {\n                    sgn = !sgn;\n                    a.swap(r, i);\n\
-    \                    break;\n                }\n            }\n        }\n   \
-    \     if (a[r][r] == 0) return 0;\n        for (int i = r + 1; i < n; i++) {\n\
-    \            while (a[i][r] != 0) {\n                long long q = a[r][r].val()\
-    \ / a[i][r].val();\n                for (int j = r; j < n; j++) {\n          \
-    \          a[r][j] -= a[i][j] * q;\n                }\n                a.swap(r,\
-    \ i);\n                sgn = !sgn;\n            }\n        }\n    }\n    mint\
-    \ d = sgn ? 1 : -1;\n    for (int i = 0; i < n; i++) d *= a[i][i];\n    return\
-    \ d;\n}\n\n}  // namespace ebi\n"
+    \ + j * m);\n    }\n\n    int rank() const;\n\n    Self transposition() const\
+    \ {\n        Self res(m, n);\n        for (int i = 0; i < n; i++) {\n        \
+    \    for (int j = 0; j < m; j++) {\n                res[j][i] = (*this)[i][j];\n\
+    \            }\n        }\n        return res;\n    }\n\n    std::optional<Self>\
+    \ inv() const {\n        assert(row_size() == column_size());\n        Self a\
+    \ = *this;\n        Self b = identify_matrix<T>(n);\n        for (int r = 0; r\
+    \ < n; r++) {\n            for (int i = r; i < n; i++) {\n                if (a[i][r]\
+    \ != 0) {\n                    a.swap(r, i);\n                    b.swap(r, i);\n\
+    \                    break;\n                }\n            }\n            if\
+    \ (a[r][r] == 0) return std::nullopt;\n            T x = a[r][r].inv();\n    \
+    \        for (int j = 0; j < n; j++) {\n                if (r < j) a[r][j] *=\
+    \ x;\n                b[r][j] *= x;\n            }\n            for (int i = 0;\
+    \ i < n; i++) {\n                if (i == r) continue;\n                for (int\
+    \ j = 0; j < n; j++) {\n                    if (r < j) a[i][j] -= a[i][r] * a[r][j];\n\
+    \                    b[i][j] -= a[i][r] * b[r][j];\n                }\n      \
+    \      }\n        }\n        return b;\n    }\n\n    Self pow(long long k) const\
+    \ {\n        assert(row_size() == column_size() && k >= 0);\n        Self res\
+    \ = identify_matrix<T>(row_size());\n        Self x = *this;\n        while (k)\
+    \ {\n            if (k & 1) res *= x;\n            x *= x;\n            k >>=\
+    \ 1;\n        }\n        return res;\n    }\n\n    int row_size() const {\n  \
+    \      return n;\n    }\n\n    int column_size() const {\n        return m;\n\
+    \    }\n\n    std::pair<int, int> size() const {\n        return {n, m};\n   \
+    \ }\n\n  private:\n    int n, m;\n    std::vector<T> data;\n};\n\ntemplate <class\
+    \ T> T det(matrix<T> a) {\n    assert(a.row_size() == a.column_size());\n    T\
+    \ d = 1;\n    int n = a.row_size();\n    for (int r = 0; r < n; r++) {\n     \
+    \   if (a[r][r] == 0) {\n            for (int i = r + 1; i < n; i++) {\n     \
+    \           if (a[i][r] != 0) {\n                    a.swap(r, i);\n         \
+    \           d = -d;\n                }\n            }\n        }\n        if (a[r][r]\
+    \ == 0) return 0;\n        d *= a[r][r];\n        T inv = a[r][r].inv();\n   \
+    \     for (int i = r + 1; i < n; i++) {\n            T x = a[i][r] * inv;\n  \
+    \          for (int j = r; j < n; j++) {\n                a[i][j] -= x * a[r][j];\n\
+    \            }\n        }\n    }\n    return d;\n}\n\ntemplate <class T> std::istream\
+    \ &operator>>(std::istream &os, matrix<T> &a) {\n    for (int i = 0; i < a.row_size();\
+    \ i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n            os\
+    \ >> a[i][j];\n        }\n    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const matrix<T> &a) {\n    for (int i = 0; i <\
+    \ a.row_size(); i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n\
+    \            os << a[i][j];\n            if (j < a.column_size() - 1) os << '\
+    \ ';\n        }\n        if (i < a.row_size() - 1) os << '\\n';\n    }\n    return\
+    \ os;\n}\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #line 5 \"modint/base.hpp\"\n#include <utility>\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 7 \"\
+    matrix/det_arbitrary_mod.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> mint\
+    \ det_arbitrary_mod(matrix<mint> a) {\n    assert(a.row_size() == a.column_size());\n\
+    \    bool sgn = true;\n    int n = a.row_size();\n    for (int r = 0; r < n; r++)\
+    \ {\n        if (a[r][r] == 0) {\n            for (int i = r + 1; i < n; i++)\
+    \ {\n                if (a[i][r] != 0) {\n                    sgn = !sgn;\n  \
+    \                  a.swap(r, i);\n                    break;\n               \
+    \ }\n            }\n        }\n        if (a[r][r] == 0) return 0;\n        for\
+    \ (int i = r + 1; i < n; i++) {\n            while (a[i][r] != 0) {\n        \
+    \        long long q = a[r][r].val() / a[i][r].val();\n                for (int\
+    \ j = r; j < n; j++) {\n                    a[r][j] -= a[i][j] * q;\n        \
+    \        }\n                a.swap(r, i);\n                sgn = !sgn;\n     \
+    \       }\n        }\n    }\n    mint d = sgn ? 1 : -1;\n    for (int i = 0; i\
+    \ < n; i++) d *= a[i][i];\n    return d;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n\n#include \"../matrix/base.hpp\"\n#include\
     \ \"../modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint mint> mint det_arbitrary_mod(matrix<mint>\
     \ a) {\n    assert(a.row_size() == a.column_size());\n    bool sgn = true;\n \
@@ -142,7 +142,7 @@ data:
   isVerificationFile: false
   path: matrix/det_arbitrary_mod.hpp
   requiredBy: []
-  timestamp: '2024-06-25 15:37:33+09:00'
+  timestamp: '2024-07-18 01:45:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp

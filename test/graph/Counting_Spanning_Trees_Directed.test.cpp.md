@@ -150,98 +150,98 @@ data:
     \ + i * m,\n                                     data.begin() + (i + 1) * m);\n\
     \    }\n\n    void swap(int i, int j) {\n        std::swap_ranges(data.begin()\
     \ + i * m, data.begin() + (i + 1) * m,\n                         data.begin()\
-    \ + j * m);\n    }\n\n    Self transposition() const {\n        Self res(m, n);\n\
-    \        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++)\
-    \ {\n                res[j][i] = (*this)[i][j];\n            }\n        }\n  \
-    \      return res;\n    }\n\n    std::optional<Self> inv() const {\n        assert(row_size()\
-    \ == column_size());\n        Self a = *this;\n        Self b = identify_matrix<T>(n);\n\
-    \        for (int r = 0; r < n; r++) {\n            for (int i = r; i < n; i++)\
-    \ {\n                if (a[i][r] != 0) {\n                    a.swap(r, i);\n\
-    \                    b.swap(r, i);\n                    break;\n             \
-    \   }\n            }\n            if (a[r][r] == 0) return std::nullopt;\n   \
-    \         T x = a[r][r].inv();\n            for (int j = 0; j < n; j++) {\n  \
-    \              if (r < j) a[r][j] *= x;\n                b[r][j] *= x;\n     \
-    \       }\n            for (int i = 0; i < n; i++) {\n                if (i ==\
-    \ r) continue;\n                for (int j = 0; j < n; j++) {\n              \
-    \      if (r < j) a[i][j] -= a[i][r] * a[r][j];\n                    b[i][j] -=\
-    \ a[i][r] * b[r][j];\n                }\n            }\n        }\n        return\
-    \ b;\n    }\n\n    Self pow(long long k) const {\n        assert(row_size() ==\
-    \ column_size() && k >= 0);\n        Self res = identify_matrix<T>(row_size());\n\
-    \        Self x = *this;\n        while (k) {\n            if (k & 1) res *= x;\n\
-    \            x *= x;\n            k >>= 1;\n        }\n        return res;\n \
-    \   }\n\n    int row_size() const {\n        return n;\n    }\n\n    int column_size()\
-    \ const {\n        return m;\n    }\n\n    std::pair<int, int> size() const {\n\
-    \        return {n, m};\n    }\n\n  private:\n    int n, m;\n    std::vector<T>\
-    \ data;\n};\n\ntemplate <class T> T det(matrix<T> a) {\n    assert(a.row_size()\
-    \ == a.column_size());\n    T d = 1;\n    int n = a.row_size();\n    for (int\
-    \ r = 0; r < n; r++) {\n        if (a[r][r] == 0) {\n            for (int i =\
-    \ r + 1; i < n; i++) {\n                if (a[i][r] != 0) {\n                \
-    \    a.swap(r, i);\n                    d = -d;\n                }\n         \
-    \   }\n        }\n        if (a[r][r] == 0) return 0;\n        d *= a[r][r];\n\
-    \        T inv = a[r][r].inv();\n        for (int i = r + 1; i < n; i++) {\n \
-    \           T x = a[i][r] * inv;\n            for (int j = r; j < n; j++) {\n\
-    \                a[i][j] -= x * a[r][j];\n            }\n        }\n    }\n  \
-    \  return d;\n}\n\ntemplate <class T> std::istream &operator>>(std::istream &os,\
-    \ matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int\
-    \ j = 0; j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n\
-    \    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n \
-    \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
-    \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
-    \ < a.row_size() - 1) os << '\\n';\n    }\n    return os;\n}\n\n}  // namespace\
-    \ ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 6 \"modint/base.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b)\
-    \ {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
-    \    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate <Modint\
-    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
-    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
-    }\n\n}  // namespace ebi\n#line 9 \"graph/count_spanning_tree.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint>\nmint count_spanning_tree(const std::vector<std::vector<int>>\
-    \ &g) {\n    const int n = (int)g.size();\n    if (n == 1) return 1;\n    std::vector<int>\
-    \ deg(n, 0);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n;\
-    \ j++) {\n            if (i == j) continue;\n            assert(g[i][j] == g[j][i]);\n\
-    \            deg[i] += g[i][j];\n        }\n    }\n    matrix<mint> L(n - 1, n\
-    \ - 1, 0);\n    for (int i = 1; i < n; i++) {\n        for (int j = 1; j < n;\
-    \ j++) {\n            if (i == j)\n                L[i - 1][j - 1] = deg[i];\n\
-    \            else\n                L[i - 1][j - 1] -= g[i][j];\n        }\n  \
-    \  }\n    return det(L);\n}\n\ntemplate <Modint mint, class T> mint count_spanning_tree(const\
-    \ Graph<T> &g) {\n    int n = g.node_number();\n    if (n == 1) return 1;\n  \
-    \  std::vector a(n, std::vector<int>(n, 0));\n    for (int i = 0; i < n; i++)\
-    \ {\n        for (auto e : g[i]) {\n            a[i][e.to]++;\n        }\n   \
-    \ }\n    return count_spanning_tree<mint>(a);\n}\n\ntemplate <Modint mint>\nmint\
-    \ count_directed_spanning_tree(const std::vector<std::vector<int>> &g,\n     \
-    \                             int root, bool in = false) {\n    const int n =\
-    \ (int)g.size();\n    if (n == 1) return 1;\n    std::vector<int> d(n, 0);\n \
-    \   for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n   \
-    \         if (i != j) d[i] += in ? g[i][j] : g[j][i];\n        }\n    }\n    matrix<mint>\
-    \ L(n - 1, n - 1, 0);\n    for (int i = 0; i < n; i++) {\n        for (int j =\
-    \ 0; j < n; j++) {\n            int a = i, b = j;\n            if (a == root ||\
-    \ b == root) continue;\n            if (root < a) a--;\n            if (root <\
-    \ b) b--;\n            if (a == b)\n                L[a][b] = d[i];\n        \
-    \    else\n                L[a][b] = in ? -g[i][j] : -g[j][i];\n        }\n  \
-    \  }\n    return det(L);\n}\n\ntemplate <Modint mint, class T>\nmint count_directed_spanning_tree(const\
-    \ Graph<T> &g, int root, bool in = false) {\n    const int n = g.node_number();\n\
-    \    if (n == 1) return 1;\n    std::vector d(n, std::vector<int>(n, 0));\n  \
-    \  for (int i = 0; i < n; i++) {\n        for (auto e : g[i]) {\n            d[i][e.to]++;\n\
-    \        }\n    }\n    return count_directed_spanning_tree<mint>(d, root, in);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\
-    \n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
-    \ m> struct static_modint {\r\n  private:\r\n    using modint = static_modint;\r\
-    \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
-    \   }\r\n\r\n    static constexpr modint raw(int v) {\r\n        modint x;\r\n\
-    \        x._v = v;\r\n        return x;\r\n    }\r\n\r\n    constexpr static_modint()\
-    \ : _v(0) {}\r\n\r\n    template <std::signed_integral T> constexpr static_modint(T\
-    \ v) {\r\n        long long x = (long long)(v % (long long)(umod()));\r\n    \
-    \    if (x < 0) x += umod();\r\n        _v = (unsigned int)(x);\r\n    }\r\n\r\
-    \n    template <std::unsigned_integral T> constexpr static_modint(T v) {\r\n \
-    \       _v = (unsigned int)(v % umod());\r\n    }\r\n\r\n    constexpr unsigned\
-    \ int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr unsigned\
-    \ int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr modint\
-    \ &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\n  \
-    \      return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n    \
-    \    if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n \
-    \   }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
+    \ + j * m);\n    }\n\n    int rank() const;\n\n    Self transposition() const\
+    \ {\n        Self res(m, n);\n        for (int i = 0; i < n; i++) {\n        \
+    \    for (int j = 0; j < m; j++) {\n                res[j][i] = (*this)[i][j];\n\
+    \            }\n        }\n        return res;\n    }\n\n    std::optional<Self>\
+    \ inv() const {\n        assert(row_size() == column_size());\n        Self a\
+    \ = *this;\n        Self b = identify_matrix<T>(n);\n        for (int r = 0; r\
+    \ < n; r++) {\n            for (int i = r; i < n; i++) {\n                if (a[i][r]\
+    \ != 0) {\n                    a.swap(r, i);\n                    b.swap(r, i);\n\
+    \                    break;\n                }\n            }\n            if\
+    \ (a[r][r] == 0) return std::nullopt;\n            T x = a[r][r].inv();\n    \
+    \        for (int j = 0; j < n; j++) {\n                if (r < j) a[r][j] *=\
+    \ x;\n                b[r][j] *= x;\n            }\n            for (int i = 0;\
+    \ i < n; i++) {\n                if (i == r) continue;\n                for (int\
+    \ j = 0; j < n; j++) {\n                    if (r < j) a[i][j] -= a[i][r] * a[r][j];\n\
+    \                    b[i][j] -= a[i][r] * b[r][j];\n                }\n      \
+    \      }\n        }\n        return b;\n    }\n\n    Self pow(long long k) const\
+    \ {\n        assert(row_size() == column_size() && k >= 0);\n        Self res\
+    \ = identify_matrix<T>(row_size());\n        Self x = *this;\n        while (k)\
+    \ {\n            if (k & 1) res *= x;\n            x *= x;\n            k >>=\
+    \ 1;\n        }\n        return res;\n    }\n\n    int row_size() const {\n  \
+    \      return n;\n    }\n\n    int column_size() const {\n        return m;\n\
+    \    }\n\n    std::pair<int, int> size() const {\n        return {n, m};\n   \
+    \ }\n\n  private:\n    int n, m;\n    std::vector<T> data;\n};\n\ntemplate <class\
+    \ T> T det(matrix<T> a) {\n    assert(a.row_size() == a.column_size());\n    T\
+    \ d = 1;\n    int n = a.row_size();\n    for (int r = 0; r < n; r++) {\n     \
+    \   if (a[r][r] == 0) {\n            for (int i = r + 1; i < n; i++) {\n     \
+    \           if (a[i][r] != 0) {\n                    a.swap(r, i);\n         \
+    \           d = -d;\n                }\n            }\n        }\n        if (a[r][r]\
+    \ == 0) return 0;\n        d *= a[r][r];\n        T inv = a[r][r].inv();\n   \
+    \     for (int i = r + 1; i < n; i++) {\n            T x = a[i][r] * inv;\n  \
+    \          for (int j = r; j < n; j++) {\n                a[i][j] -= x * a[r][j];\n\
+    \            }\n        }\n    }\n    return d;\n}\n\ntemplate <class T> std::istream\
+    \ &operator>>(std::istream &os, matrix<T> &a) {\n    for (int i = 0; i < a.row_size();\
+    \ i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n            os\
+    \ >> a[i][j];\n        }\n    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const matrix<T> &a) {\n    for (int i = 0; i <\
+    \ a.row_size(); i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n\
+    \            os << a[i][j];\n            if (j < a.column_size() - 1) os << '\
+    \ ';\n        }\n        if (i < a.row_size() - 1) os << '\\n';\n    }\n    return\
+    \ os;\n}\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
+    #line 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept\
+    \ Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n\
+    \    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
+    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
+    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
+    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
+    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 9 \"graph/count_spanning_tree.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nmint count_spanning_tree(const\
+    \ std::vector<std::vector<int>> &g) {\n    const int n = (int)g.size();\n    if\
+    \ (n == 1) return 1;\n    std::vector<int> deg(n, 0);\n    for (int i = 0; i <\
+    \ n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j) continue;\n\
+    \            assert(g[i][j] == g[j][i]);\n            deg[i] += g[i][j];\n   \
+    \     }\n    }\n    matrix<mint> L(n - 1, n - 1, 0);\n    for (int i = 1; i <\
+    \ n; i++) {\n        for (int j = 1; j < n; j++) {\n            if (i == j)\n\
+    \                L[i - 1][j - 1] = deg[i];\n            else\n               \
+    \ L[i - 1][j - 1] -= g[i][j];\n        }\n    }\n    return det(L);\n}\n\ntemplate\
+    \ <Modint mint, class T> mint count_spanning_tree(const Graph<T> &g) {\n    int\
+    \ n = g.node_number();\n    if (n == 1) return 1;\n    std::vector a(n, std::vector<int>(n,\
+    \ 0));\n    for (int i = 0; i < n; i++) {\n        for (auto e : g[i]) {\n   \
+    \         a[i][e.to]++;\n        }\n    }\n    return count_spanning_tree<mint>(a);\n\
+    }\n\ntemplate <Modint mint>\nmint count_directed_spanning_tree(const std::vector<std::vector<int>>\
+    \ &g,\n                                  int root, bool in = false) {\n    const\
+    \ int n = (int)g.size();\n    if (n == 1) return 1;\n    std::vector<int> d(n,\
+    \ 0);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++)\
+    \ {\n            if (i != j) d[i] += in ? g[i][j] : g[j][i];\n        }\n    }\n\
+    \    matrix<mint> L(n - 1, n - 1, 0);\n    for (int i = 0; i < n; i++) {\n   \
+    \     for (int j = 0; j < n; j++) {\n            int a = i, b = j;\n         \
+    \   if (a == root || b == root) continue;\n            if (root < a) a--;\n  \
+    \          if (root < b) b--;\n            if (a == b)\n                L[a][b]\
+    \ = d[i];\n            else\n                L[a][b] = in ? -g[i][j] : -g[j][i];\n\
+    \        }\n    }\n    return det(L);\n}\n\ntemplate <Modint mint, class T>\n\
+    mint count_directed_spanning_tree(const Graph<T> &g, int root, bool in = false)\
+    \ {\n    const int n = g.node_number();\n    if (n == 1) return 1;\n    std::vector\
+    \ d(n, std::vector<int>(n, 0));\n    for (int i = 0; i < n; i++) {\n        for\
+    \ (auto e : g[i]) {\n            d[i][e.to]++;\n        }\n    }\n    return count_directed_spanning_tree<mint>(d,\
+    \ root, in);\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line\
+    \ 5 \"modint/modint.hpp\"\n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi\
+    \ {\r\n\r\ntemplate <int m> struct static_modint {\r\n  private:\r\n    using\
+    \ modint = static_modint;\r\n\r\n  public:\r\n    static constexpr int mod() {\r\
+    \n        return m;\r\n    }\r\n\r\n    static constexpr modint raw(int v) {\r\
+    \n        modint x;\r\n        x._v = v;\r\n        return x;\r\n    }\r\n\r\n\
+    \    constexpr static_modint() : _v(0) {}\r\n\r\n    template <std::signed_integral\
+    \ T> constexpr static_modint(T v) {\r\n        long long x = (long long)(v % (long\
+    \ long)(umod()));\r\n        if (x < 0) x += umod();\r\n        _v = (unsigned\
+    \ int)(x);\r\n    }\r\n\r\n    template <std::unsigned_integral T> constexpr static_modint(T\
+    \ v) {\r\n        _v = (unsigned int)(v % umod());\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int val() const {\r\n        return _v;\r\n    }\r\n\r\n    constexpr\
+    \ unsigned int value() const {\r\n        return val();\r\n    }\r\n\r\n    constexpr\
+    \ modint &operator++() {\r\n        _v++;\r\n        if (_v == umod()) _v = 0;\r\
+    \n        return *this;\r\n    }\r\n    constexpr modint &operator--() {\r\n \
+    \       if (_v == 0) _v = umod();\r\n        _v--;\r\n        return *this;\r\n\
+    \    }\r\n\r\n    constexpr modint operator++(int) {\r\n        modint res = *this;\r\
     \n        ++*this;\r\n        return res;\r\n    }\r\n    constexpr modint operator--(int)\
     \ {\r\n        modint res = *this;\r\n        --*this;\r\n        return res;\r\
     \n    }\r\n\r\n    constexpr modint &operator+=(const modint &rhs) {\r\n     \
@@ -347,7 +347,7 @@ data:
   isVerificationFile: true
   path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
   requiredBy: []
-  timestamp: '2024-06-25 15:37:33+09:00'
+  timestamp: '2024-07-18 01:45:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Counting_Spanning_Trees_Directed.test.cpp

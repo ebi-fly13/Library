@@ -147,8 +147,8 @@ data:
   verifiedWith:
   - test/Dice/dice4.test.cpp
   - test/Dice/dice2.test.cpp
-  - test/Dice/dice1.test.cpp
   - test/Dice/dice3.test.cpp
+  - test/Dice/dice1.test.cpp
 documentation_of: Dice/Dice.hpp
 layout: document
 title: Dice

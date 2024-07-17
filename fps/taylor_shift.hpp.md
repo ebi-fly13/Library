@@ -183,8 +183,8 @@ data:
   timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
 documentation_of: fps/taylor_shift.hpp
 layout: document
 title: $f(x + c)$

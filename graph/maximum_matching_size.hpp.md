@@ -11,31 +11,27 @@ data:
     path: matrix/base.hpp
     title: matrix/base.hpp
   - icon: ':heavy_check_mark:'
+    path: matrix/gauss_jordan.hpp
+    title: matrix/gauss_jordan.hpp
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
-  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: graph/count_directed_euler_trail.hpp
-    title: Count Directed Euler Trail
-  _extendedVerifiedWith:
+    path: modint/modint61.hpp
+    title: modint/modint61.hpp
   - icon: ':heavy_check_mark:'
-    path: test/graph/Counting_Eulerian_Circuits.test.cpp
-    title: test/graph/Counting_Eulerian_Circuits.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/Counting_Spanning_Trees_Directed.test.cpp
-    title: test/graph/Counting_Spanning_Trees_Directed.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
-    title: test/graph/Counting_Spanning_Trees_Undirected.test.cpp
+    path: utility/random_number_generator.hpp
+    title: Random Number Generator
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"graph/count_spanning_tree.hpp\"\n\n#include <cassert>\n\
-    #include <vector>\n\n#line 2 \"graph/base.hpp\"\n\n#line 4 \"graph/base.hpp\"\n\
-    #include <iostream>\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
-    \ \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
+  bundledCode: "#line 2 \"graph/maximum_matching_size.hpp\"\n\n#line 2 \"graph/base.hpp\"\
+    \n\n#include <cassert>\n#include <iostream>\n#include <ranges>\n#include <vector>\n\
+    \n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
     \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
     \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
     \    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n     \
@@ -176,112 +172,132 @@ data:
     \ a.row_size(); i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n\
     \            os << a[i][j];\n            if (j < a.column_size() - 1) os << '\
     \ ';\n        }\n        if (i < a.row_size() - 1) os << '\\n';\n    }\n    return\
-    \ os;\n}\n\n}  // namespace ebi\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #line 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept\
-    \ Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n\
-    \    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
-    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
-    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
-    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
-    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 9 \"graph/count_spanning_tree.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint>\nmint count_spanning_tree(const\
-    \ std::vector<std::vector<int>> &g) {\n    const int n = (int)g.size();\n    if\
-    \ (n == 1) return 1;\n    std::vector<int> deg(n, 0);\n    for (int i = 0; i <\
-    \ n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j) continue;\n\
-    \            assert(g[i][j] == g[j][i]);\n            deg[i] += g[i][j];\n   \
-    \     }\n    }\n    matrix<mint> L(n - 1, n - 1, 0);\n    for (int i = 1; i <\
-    \ n; i++) {\n        for (int j = 1; j < n; j++) {\n            if (i == j)\n\
-    \                L[i - 1][j - 1] = deg[i];\n            else\n               \
-    \ L[i - 1][j - 1] -= g[i][j];\n        }\n    }\n    return det(L);\n}\n\ntemplate\
-    \ <Modint mint, class T> mint count_spanning_tree(const Graph<T> &g) {\n    int\
-    \ n = g.node_number();\n    if (n == 1) return 1;\n    std::vector a(n, std::vector<int>(n,\
-    \ 0));\n    for (int i = 0; i < n; i++) {\n        for (auto e : g[i]) {\n   \
-    \         a[i][e.to]++;\n        }\n    }\n    return count_spanning_tree<mint>(a);\n\
-    }\n\ntemplate <Modint mint>\nmint count_directed_spanning_tree(const std::vector<std::vector<int>>\
-    \ &g,\n                                  int root, bool in = false) {\n    const\
-    \ int n = (int)g.size();\n    if (n == 1) return 1;\n    std::vector<int> d(n,\
-    \ 0);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++)\
-    \ {\n            if (i != j) d[i] += in ? g[i][j] : g[j][i];\n        }\n    }\n\
-    \    matrix<mint> L(n - 1, n - 1, 0);\n    for (int i = 0; i < n; i++) {\n   \
-    \     for (int j = 0; j < n; j++) {\n            int a = i, b = j;\n         \
-    \   if (a == root || b == root) continue;\n            if (root < a) a--;\n  \
-    \          if (root < b) b--;\n            if (a == b)\n                L[a][b]\
-    \ = d[i];\n            else\n                L[a][b] = in ? -g[i][j] : -g[j][i];\n\
-    \        }\n    }\n    return det(L);\n}\n\ntemplate <Modint mint, class T>\n\
-    mint count_directed_spanning_tree(const Graph<T> &g, int root, bool in = false)\
-    \ {\n    const int n = g.node_number();\n    if (n == 1) return 1;\n    std::vector\
-    \ d(n, std::vector<int>(n, 0));\n    for (int i = 0; i < n; i++) {\n        for\
-    \ (auto e : g[i]) {\n            d[i][e.to]++;\n        }\n    }\n    return count_directed_spanning_tree<mint>(d,\
-    \ root, in);\n}\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../graph/base.hpp\"\
-    \n#include \"../matrix/base.hpp\"\n#include \"../modint/base.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint>\nmint count_spanning_tree(const std::vector<std::vector<int>>\
-    \ &g) {\n    const int n = (int)g.size();\n    if (n == 1) return 1;\n    std::vector<int>\
-    \ deg(n, 0);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n;\
-    \ j++) {\n            if (i == j) continue;\n            assert(g[i][j] == g[j][i]);\n\
-    \            deg[i] += g[i][j];\n        }\n    }\n    matrix<mint> L(n - 1, n\
-    \ - 1, 0);\n    for (int i = 1; i < n; i++) {\n        for (int j = 1; j < n;\
-    \ j++) {\n            if (i == j)\n                L[i - 1][j - 1] = deg[i];\n\
-    \            else\n                L[i - 1][j - 1] -= g[i][j];\n        }\n  \
-    \  }\n    return det(L);\n}\n\ntemplate <Modint mint, class T> mint count_spanning_tree(const\
-    \ Graph<T> &g) {\n    int n = g.node_number();\n    if (n == 1) return 1;\n  \
-    \  std::vector a(n, std::vector<int>(n, 0));\n    for (int i = 0; i < n; i++)\
-    \ {\n        for (auto e : g[i]) {\n            a[i][e.to]++;\n        }\n   \
-    \ }\n    return count_spanning_tree<mint>(a);\n}\n\ntemplate <Modint mint>\nmint\
-    \ count_directed_spanning_tree(const std::vector<std::vector<int>> &g,\n     \
-    \                             int root, bool in = false) {\n    const int n =\
-    \ (int)g.size();\n    if (n == 1) return 1;\n    std::vector<int> d(n, 0);\n \
-    \   for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n   \
-    \         if (i != j) d[i] += in ? g[i][j] : g[j][i];\n        }\n    }\n    matrix<mint>\
-    \ L(n - 1, n - 1, 0);\n    for (int i = 0; i < n; i++) {\n        for (int j =\
-    \ 0; j < n; j++) {\n            int a = i, b = j;\n            if (a == root ||\
-    \ b == root) continue;\n            if (root < a) a--;\n            if (root <\
-    \ b) b--;\n            if (a == b)\n                L[a][b] = d[i];\n        \
-    \    else\n                L[a][b] = in ? -g[i][j] : -g[j][i];\n        }\n  \
-    \  }\n    return det(L);\n}\n\ntemplate <Modint mint, class T>\nmint count_directed_spanning_tree(const\
-    \ Graph<T> &g, int root, bool in = false) {\n    const int n = g.node_number();\n\
-    \    if (n == 1) return 1;\n    std::vector d(n, std::vector<int>(n, 0));\n  \
-    \  for (int i = 0; i < n; i++) {\n        for (auto e : g[i]) {\n            d[i][e.to]++;\n\
-    \        }\n    }\n    return count_directed_spanning_tree<mint>(d, root, in);\n\
-    }\n\n}  // namespace ebi"
+    \ os;\n}\n\n}  // namespace ebi\n#line 2 \"matrix/gauss_jordan.hpp\"\n\n#line\
+    \ 4 \"matrix/gauss_jordan.hpp\"\n\nnamespace ebi {\n\ntemplate <class T> int find_pivot(const\
+    \ matrix<T> &a, int r, int w) {\n    for (int i = r; i < a.row_size(); i++) {\n\
+    \        if (a[i][w] != 0) return i;\n    }\n    return -1;\n}\n\ntemplate <class\
+    \ T> int gauss_jordan(matrix<T> &a) {\n    int h = a.row_size(), w = a.column_size();\n\
+    \    int rank = 0;\n    for (int j = 0; j < w; j++) {\n        int pivot = find_pivot(a,\
+    \ rank, j);\n        if (pivot == -1) continue;\n        a.swap(rank, pivot);\n\
+    \        T inv = T(1) / a[rank][j];\n        for (int k = j; k < w; k++) {\n \
+    \           a[rank][k] *= inv;\n        }\n        for (int i = 0; i < h; i++)\
+    \ {\n            if (i != rank && a[i][j] != 0) {\n                T x = a[i][j];\n\
+    \                for (int k = j; k < w; k++) {\n                    a[i][k] -=\
+    \ a[rank][k] * x;\n                }\n            }\n        }\n        rank++;\n\
+    \    }\n    return rank;\n}\n\ntemplate <class T> int matrix<T>::rank() const\
+    \ {\n    matrix<T> a = *this;\n    return gauss_jordan(a);\n}\n\ntemplate <class\
+    \ T> int gauss_jordan(matrix<T> &a, std::vector<T> &b) {\n    int h = a.row_size(),\
+    \ w = a.column_size();\n    assert(h == (int)b.size());\n    int rank = 0;\n \
+    \   for (int j = 0; j < w; j++) {\n        int pivot = find_pivot(a, rank, j);\n\
+    \        if (pivot == -1) continue;\n        a.swap(rank, pivot);\n        std::swap(b[rank],\
+    \ b[pivot]);\n        T inv = T(1) / a[rank][j];\n        for (int k = j; k <\
+    \ w; k++) {\n            a[rank][k] *= inv;\n        }\n        b[rank] *= inv;\n\
+    \        for (int i = 0; i < h; i++) {\n            if (i != rank && a[i][j] !=\
+    \ 0) {\n                T x = a[i][j];\n                for (int k = j; k < w;\
+    \ k++) {\n                    a[i][k] -= a[rank][k] * x;\n                }\n\
+    \                b[i] -= b[rank] * x;\n            }\n        }\n        rank++;\n\
+    \    }\n    return rank;\n}\n\ntemplate <class T>\nstd::optional<std::vector<std::vector<T>>>\
+    \ solve_linear_equations(\n    matrix<T> a, std::vector<T> b) {\n    assert(a.row_size()\
+    \ == (int)b.size());\n    int rank = gauss_jordan(a, b);\n    int h = a.row_size(),\
+    \ w = a.column_size();\n    for (int i = rank; i < h; i++) {\n        if (b[i]\
+    \ != 0) return std::nullopt;\n    }\n    std::vector res(1, std::vector<T>(w,\
+    \ 0));\n    std::vector<int> pivot(w, -1);\n    {\n        int p = 0;\n      \
+    \  for (int i = 0; i < rank; i++) {\n            while (a[i][p] == 0) p++;\n \
+    \           res[0][p] = b[i];\n            pivot[p] = i;\n        }\n    }\n \
+    \   for (int j = 0; j < w; j++) {\n        if (pivot[j] == -1) {\n           \
+    \ std::vector<T> x(w, 0);\n            x[j] = -1;\n            for (int i = 0;\
+    \ i < j; i++) {\n                if (pivot[i] != -1) x[i] = a[pivot[i]][j];\n\
+    \            }\n            res.emplace_back(x);\n        }\n    }\n    return\
+    \ res;\n}\n\n}  // namespace ebi\n#line 2 \"modint/modint61.hpp\"\n\n#line 4 \"\
+    modint/modint61.hpp\"\n#include <cstdint>\n#line 6 \"modint/modint61.hpp\"\n\n\
+    #line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 6 \"modint/base.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b)\
+    \ {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
+    \    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate <Modint\
+    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
+    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
+    }\n\n}  // namespace ebi\n#line 8 \"modint/modint61.hpp\"\n\nnamespace ebi {\n\
+    \nstruct modint61 {\n  private:\n    using mint = modint61;\n    using u64 = std::uint64_t;\n\
+    \    constexpr static u64 m = (1ull << 61) - 1;\n    constexpr static u64 MASK31\
+    \ = (1ull << 31) - 1;\n    constexpr static u64 MASK30 = (1ull << 30) - 1;\n\n\
+    \  public:\n    constexpr static u64 mod() {\n        return m;\n    }\n\n   \
+    \ constexpr modint61() : _v(0) {}\n\n    constexpr modint61(long long v) {\n \
+    \       v %= (long long)umod();\n        if (v < 0) v += (long long)umod();\n\
+    \        _v = u64(v);\n    }\n\n    constexpr u64 val() const {\n        return\
+    \ _v;\n    }\n\n    constexpr u64 value() const {\n        return val();\n   \
+    \ }\n\n    constexpr mint &operator++() {\n        _v++;\n        if (_v == umod())\
+    \ _v = 0;\n        return *this;\n    }\n\n    constexpr mint &operator--() {\n\
+    \        if (_v == 0) _v = umod();\n        _v--;\n        return *this;\n   \
+    \ }\n\n    constexpr mint &operator+=(const mint &rhs) {\n        _v += rhs._v;\n\
+    \        _v = safe_mod(_v);\n        return *this;\n    }\n\n    constexpr mint\
+    \ &operator-=(const mint &rhs) {\n        if (_v < rhs._v) _v += umod();\n   \
+    \     assert(_v >= rhs._v);\n        _v -= rhs._v;\n        return *this;\n  \
+    \  }\n\n    constexpr mint &operator*=(const mint &rhs) {\n        u64 au = _v\
+    \ >> 31, ad = _v & MASK31;\n        u64 bu = rhs._v >> 31, bd = rhs._v & MASK31;\n\
+    \        u64 mid = ad * bu + au * bd;\n        u64 midu = mid >> 30;\n       \
+    \ u64 midd = mid & MASK30;\n        _v = (au * bu * 2 + midu + (midd << 31) +\
+    \ ad * bd);\n        _v = safe_mod(_v);\n        return *this;\n    }\n\n    constexpr\
+    \ mint &operator/=(const mint &rhs) {\n        return *this *= rhs.inv();\n  \
+    \  }\n\n    constexpr mint pow(long long n) const {\n        assert(0 <= n);\n\
+    \        mint x = *this, res = 1;\n        while (n) {\n            if (n & 1)\
+    \ res *= x;\n            x *= x;\n            n >>= 1;\n        }\n        return\
+    \ res;\n    }\n\n    constexpr mint inv() const {\n        assert(_v);\n     \
+    \   return pow(umod() - 2);\n    }\n\n    friend mint operator+(const mint &lhs,\
+    \ const mint &rhs) {\n        return mint(lhs) += rhs;\n    }\n    friend mint\
+    \ operator-(const mint &lhs, const mint &rhs) {\n        return mint(lhs) -= rhs;\n\
+    \    }\n    friend mint operator*(const mint &lhs, const mint &rhs) {\n      \
+    \  return mint(lhs) *= rhs;\n    }\n    friend mint operator/(const mint &lhs,\
+    \ const mint &rhs) {\n        return mint(lhs) /= rhs;\n    }\n    friend bool\
+    \ operator==(const mint &lhs, const mint &rhs) {\n        return lhs.val() ==\
+    \ rhs.val();\n    }\n    friend bool operator!=(const mint &lhs, const mint &rhs)\
+    \ {\n        return !(lhs == rhs);\n    }\n    friend bool operator<(const mint\
+    \ &lhs, const mint &rhs) {\n        return lhs._v < rhs._v;\n    }\n    friend\
+    \ bool operator>(const mint &lhs, const mint &rhs) {\n        return rhs < lhs;\n\
+    \    }\n\n  private:\n    u64 _v = 0;\n\n    constexpr static u64 umod() {\n \
+    \       return m;\n    }\n\n    constexpr u64 safe_mod(const u64 &a) {\n     \
+    \   u64 au = a >> 61;\n        u64 ad = a & umod();\n        u64 res = au + ad;\n\
+    \        if (res >= umod()) res -= umod();\n        return res;\n    }\n};\n\n\
+    }  // namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\n\r\n#line\
+    \ 4 \"utility/random_number_generator.hpp\"\n#include <random>\r\n\r\nnamespace\
+    \ ebi {\r\n\r\nstruct random_number_generator {\r\n    random_number_generator(int\
+    \ seed = -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\
+    \n    }\r\n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n   \
+    \ }\r\n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n  private:\r\n \
+    \   std::mt19937_64 mt;\r\n    std::random_device rnd;\r\n};\r\n\r\n}  // namespace\
+    \ ebi\n#line 8 \"graph/maximum_matching_size.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T> int maximum_matching_size(const Graph<T> &g) {\n    static random_number_generator\
+    \ rng;\n    using mint = modint61;\n    int n = g.node_number();\n    matrix<mint>\
+    \ tutte(n, n, 0);\n    for (auto e : g.get_edges()) {\n        mint x = rng.get<std::uint64_t>(0,\
+    \ mint::mod());\n        tutte[e.from][e.to] += x;\n        tutte[e.to][e.from]\
+    \ -= x;\n    }\n    return tutte.rank() / 2;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include \"../graph/base.hpp\"\n#include \"../matrix/base.hpp\"\
+    \n#include \"../matrix/gauss_jordan.hpp\"\n#include \"../modint/modint61.hpp\"\
+    \n#include \"../utility/random_number_generator.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T> int maximum_matching_size(const Graph<T> &g) {\n    static random_number_generator\
+    \ rng;\n    using mint = modint61;\n    int n = g.node_number();\n    matrix<mint>\
+    \ tutte(n, n, 0);\n    for (auto e : g.get_edges()) {\n        mint x = rng.get<std::uint64_t>(0,\
+    \ mint::mod());\n        tutte[e.from][e.to] += x;\n        tutte[e.to][e.from]\
+    \ -= x;\n    }\n    return tutte.rank() / 2;\n}\n\n}  // namespace ebi"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   - matrix/base.hpp
+  - matrix/gauss_jordan.hpp
+  - modint/modint61.hpp
   - modint/base.hpp
+  - utility/random_number_generator.hpp
   isVerificationFile: false
-  path: graph/count_spanning_tree.hpp
-  requiredBy:
-  - graph/count_directed_euler_trail.hpp
+  path: graph/maximum_matching_size.hpp
+  requiredBy: []
   timestamp: '2024-07-18 01:45:02+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
-  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
-  - test/graph/Counting_Eulerian_Circuits.test.cpp
-documentation_of: graph/count_spanning_tree.hpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: graph/maximum_matching_size.hpp
 layout: document
-title: Count Spanning Tree
+redirect_from:
+- /library/graph/maximum_matching_size.hpp
+- /library/graph/maximum_matching_size.hpp.html
+title: graph/maximum_matching_size.hpp
 ---
-
-## 説明
-
-与えられたグラフについて、全域木の個数を数える。頂点数を $N$ として、 $O(N^3)$ 。
-
-### count_spanning_tree(std::vector<std::vector<int>> g)
-
-$g[i][j] := (i, j)の辺の本数$ とする。
-全域木の個数を返す。
-
-### count_spanning_tree(Graph<T> g)
-
-無向グラフ $g$ の全域木の個数を返す。
-
-### count_directed_spanning_tree(std::vector<std::vector<int>> g, int root, bool in)
-
-$g[i][j] := i から j への辺の本数$ とする。
-根を $root$ としたときの有向全域木の個数を返す。 $in$ が `true` のときは、全ての辺が根の方を向いている全域木を考える。 $in$ が `false` のときは、根から全頂点に到達できる全域木を考える。
-
-### count_directed_spanning_tree(Graph<T> g, int root, bool in)
-
-グラフ $g$ について、根を $root$ としたときの有向全域木の個数を返す。

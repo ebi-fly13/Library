@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/count_spanning_tree.hpp
     title: Count Spanning Tree
+  - icon: ':warning:'
+    path: graph/maximum_matching_size.hpp
+    title: graph/maximum_matching_size.hpp
   - icon: ':heavy_check_mark:'
     path: matrix/det_arbitrary_mod.hpp
     title: matrix/det_arbitrary_mod.hpp
@@ -91,46 +94,46 @@ data:
     \ + i * m,\n                                     data.begin() + (i + 1) * m);\n\
     \    }\n\n    void swap(int i, int j) {\n        std::swap_ranges(data.begin()\
     \ + i * m, data.begin() + (i + 1) * m,\n                         data.begin()\
-    \ + j * m);\n    }\n\n    Self transposition() const {\n        Self res(m, n);\n\
-    \        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++)\
-    \ {\n                res[j][i] = (*this)[i][j];\n            }\n        }\n  \
-    \      return res;\n    }\n\n    std::optional<Self> inv() const {\n        assert(row_size()\
-    \ == column_size());\n        Self a = *this;\n        Self b = identify_matrix<T>(n);\n\
-    \        for (int r = 0; r < n; r++) {\n            for (int i = r; i < n; i++)\
-    \ {\n                if (a[i][r] != 0) {\n                    a.swap(r, i);\n\
-    \                    b.swap(r, i);\n                    break;\n             \
-    \   }\n            }\n            if (a[r][r] == 0) return std::nullopt;\n   \
-    \         T x = a[r][r].inv();\n            for (int j = 0; j < n; j++) {\n  \
-    \              if (r < j) a[r][j] *= x;\n                b[r][j] *= x;\n     \
-    \       }\n            for (int i = 0; i < n; i++) {\n                if (i ==\
-    \ r) continue;\n                for (int j = 0; j < n; j++) {\n              \
-    \      if (r < j) a[i][j] -= a[i][r] * a[r][j];\n                    b[i][j] -=\
-    \ a[i][r] * b[r][j];\n                }\n            }\n        }\n        return\
-    \ b;\n    }\n\n    Self pow(long long k) const {\n        assert(row_size() ==\
-    \ column_size() && k >= 0);\n        Self res = identify_matrix<T>(row_size());\n\
-    \        Self x = *this;\n        while (k) {\n            if (k & 1) res *= x;\n\
-    \            x *= x;\n            k >>= 1;\n        }\n        return res;\n \
-    \   }\n\n    int row_size() const {\n        return n;\n    }\n\n    int column_size()\
-    \ const {\n        return m;\n    }\n\n    std::pair<int, int> size() const {\n\
-    \        return {n, m};\n    }\n\n  private:\n    int n, m;\n    std::vector<T>\
-    \ data;\n};\n\ntemplate <class T> T det(matrix<T> a) {\n    assert(a.row_size()\
-    \ == a.column_size());\n    T d = 1;\n    int n = a.row_size();\n    for (int\
-    \ r = 0; r < n; r++) {\n        if (a[r][r] == 0) {\n            for (int i =\
-    \ r + 1; i < n; i++) {\n                if (a[i][r] != 0) {\n                \
-    \    a.swap(r, i);\n                    d = -d;\n                }\n         \
-    \   }\n        }\n        if (a[r][r] == 0) return 0;\n        d *= a[r][r];\n\
-    \        T inv = a[r][r].inv();\n        for (int i = r + 1; i < n; i++) {\n \
-    \           T x = a[i][r] * inv;\n            for (int j = r; j < n; j++) {\n\
-    \                a[i][j] -= x * a[r][j];\n            }\n        }\n    }\n  \
-    \  return d;\n}\n\ntemplate <class T> std::istream &operator>>(std::istream &os,\
-    \ matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int\
-    \ j = 0; j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n\
-    \    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n \
-    \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
-    \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
-    \ < a.row_size() - 1) os << '\\n';\n    }\n    return os;\n}\n\n}  // namespace\
-    \ ebi\n"
+    \ + j * m);\n    }\n\n    int rank() const;\n\n    Self transposition() const\
+    \ {\n        Self res(m, n);\n        for (int i = 0; i < n; i++) {\n        \
+    \    for (int j = 0; j < m; j++) {\n                res[j][i] = (*this)[i][j];\n\
+    \            }\n        }\n        return res;\n    }\n\n    std::optional<Self>\
+    \ inv() const {\n        assert(row_size() == column_size());\n        Self a\
+    \ = *this;\n        Self b = identify_matrix<T>(n);\n        for (int r = 0; r\
+    \ < n; r++) {\n            for (int i = r; i < n; i++) {\n                if (a[i][r]\
+    \ != 0) {\n                    a.swap(r, i);\n                    b.swap(r, i);\n\
+    \                    break;\n                }\n            }\n            if\
+    \ (a[r][r] == 0) return std::nullopt;\n            T x = a[r][r].inv();\n    \
+    \        for (int j = 0; j < n; j++) {\n                if (r < j) a[r][j] *=\
+    \ x;\n                b[r][j] *= x;\n            }\n            for (int i = 0;\
+    \ i < n; i++) {\n                if (i == r) continue;\n                for (int\
+    \ j = 0; j < n; j++) {\n                    if (r < j) a[i][j] -= a[i][r] * a[r][j];\n\
+    \                    b[i][j] -= a[i][r] * b[r][j];\n                }\n      \
+    \      }\n        }\n        return b;\n    }\n\n    Self pow(long long k) const\
+    \ {\n        assert(row_size() == column_size() && k >= 0);\n        Self res\
+    \ = identify_matrix<T>(row_size());\n        Self x = *this;\n        while (k)\
+    \ {\n            if (k & 1) res *= x;\n            x *= x;\n            k >>=\
+    \ 1;\n        }\n        return res;\n    }\n\n    int row_size() const {\n  \
+    \      return n;\n    }\n\n    int column_size() const {\n        return m;\n\
+    \    }\n\n    std::pair<int, int> size() const {\n        return {n, m};\n   \
+    \ }\n\n  private:\n    int n, m;\n    std::vector<T> data;\n};\n\ntemplate <class\
+    \ T> T det(matrix<T> a) {\n    assert(a.row_size() == a.column_size());\n    T\
+    \ d = 1;\n    int n = a.row_size();\n    for (int r = 0; r < n; r++) {\n     \
+    \   if (a[r][r] == 0) {\n            for (int i = r + 1; i < n; i++) {\n     \
+    \           if (a[i][r] != 0) {\n                    a.swap(r, i);\n         \
+    \           d = -d;\n                }\n            }\n        }\n        if (a[r][r]\
+    \ == 0) return 0;\n        d *= a[r][r];\n        T inv = a[r][r].inv();\n   \
+    \     for (int i = r + 1; i < n; i++) {\n            T x = a[i][r] * inv;\n  \
+    \          for (int j = r; j < n; j++) {\n                a[i][j] -= x * a[r][j];\n\
+    \            }\n        }\n    }\n    return d;\n}\n\ntemplate <class T> std::istream\
+    \ &operator>>(std::istream &os, matrix<T> &a) {\n    for (int i = 0; i < a.row_size();\
+    \ i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n            os\
+    \ >> a[i][j];\n        }\n    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const matrix<T> &a) {\n    for (int i = 0; i <\
+    \ a.row_size(); i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n\
+    \            os << a[i][j];\n            if (j < a.column_size() - 1) os << '\
+    \ ';\n        }\n        if (i < a.row_size() - 1) os << '\\n';\n    }\n    return\
+    \ os;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <iostream>\n\
     #include <ranges>\n#include <vector>\n\nnamespace ebi {\n\ntemplate <class T>\
     \ struct matrix;\n\ntemplate <class T> matrix<T> identify_matrix(int n) {\n  \
@@ -175,66 +178,67 @@ data:
     \ + i * m,\n                                     data.begin() + (i + 1) * m);\n\
     \    }\n\n    void swap(int i, int j) {\n        std::swap_ranges(data.begin()\
     \ + i * m, data.begin() + (i + 1) * m,\n                         data.begin()\
-    \ + j * m);\n    }\n\n    Self transposition() const {\n        Self res(m, n);\n\
-    \        for (int i = 0; i < n; i++) {\n            for (int j = 0; j < m; j++)\
-    \ {\n                res[j][i] = (*this)[i][j];\n            }\n        }\n  \
-    \      return res;\n    }\n\n    std::optional<Self> inv() const {\n        assert(row_size()\
-    \ == column_size());\n        Self a = *this;\n        Self b = identify_matrix<T>(n);\n\
-    \        for (int r = 0; r < n; r++) {\n            for (int i = r; i < n; i++)\
-    \ {\n                if (a[i][r] != 0) {\n                    a.swap(r, i);\n\
-    \                    b.swap(r, i);\n                    break;\n             \
-    \   }\n            }\n            if (a[r][r] == 0) return std::nullopt;\n   \
-    \         T x = a[r][r].inv();\n            for (int j = 0; j < n; j++) {\n  \
-    \              if (r < j) a[r][j] *= x;\n                b[r][j] *= x;\n     \
-    \       }\n            for (int i = 0; i < n; i++) {\n                if (i ==\
-    \ r) continue;\n                for (int j = 0; j < n; j++) {\n              \
-    \      if (r < j) a[i][j] -= a[i][r] * a[r][j];\n                    b[i][j] -=\
-    \ a[i][r] * b[r][j];\n                }\n            }\n        }\n        return\
-    \ b;\n    }\n\n    Self pow(long long k) const {\n        assert(row_size() ==\
-    \ column_size() && k >= 0);\n        Self res = identify_matrix<T>(row_size());\n\
-    \        Self x = *this;\n        while (k) {\n            if (k & 1) res *= x;\n\
-    \            x *= x;\n            k >>= 1;\n        }\n        return res;\n \
-    \   }\n\n    int row_size() const {\n        return n;\n    }\n\n    int column_size()\
-    \ const {\n        return m;\n    }\n\n    std::pair<int, int> size() const {\n\
-    \        return {n, m};\n    }\n\n  private:\n    int n, m;\n    std::vector<T>\
-    \ data;\n};\n\ntemplate <class T> T det(matrix<T> a) {\n    assert(a.row_size()\
-    \ == a.column_size());\n    T d = 1;\n    int n = a.row_size();\n    for (int\
-    \ r = 0; r < n; r++) {\n        if (a[r][r] == 0) {\n            for (int i =\
-    \ r + 1; i < n; i++) {\n                if (a[i][r] != 0) {\n                \
-    \    a.swap(r, i);\n                    d = -d;\n                }\n         \
-    \   }\n        }\n        if (a[r][r] == 0) return 0;\n        d *= a[r][r];\n\
-    \        T inv = a[r][r].inv();\n        for (int i = r + 1; i < n; i++) {\n \
-    \           T x = a[i][r] * inv;\n            for (int j = r; j < n; j++) {\n\
-    \                a[i][j] -= x * a[r][j];\n            }\n        }\n    }\n  \
-    \  return d;\n}\n\ntemplate <class T> std::istream &operator>>(std::istream &os,\
-    \ matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n        for (int\
-    \ j = 0; j < a.column_size(); j++) {\n            os >> a[i][j];\n        }\n\
-    \    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const matrix<T> &a) {\n    for (int i = 0; i < a.row_size(); i++) {\n \
-    \       for (int j = 0; j < a.column_size(); j++) {\n            os << a[i][j];\n\
-    \            if (j < a.column_size() - 1) os << ' ';\n        }\n        if (i\
-    \ < a.row_size() - 1) os << '\\n';\n    }\n    return os;\n}\n\n}  // namespace\
-    \ ebi"
+    \ + j * m);\n    }\n\n    int rank() const;\n\n    Self transposition() const\
+    \ {\n        Self res(m, n);\n        for (int i = 0; i < n; i++) {\n        \
+    \    for (int j = 0; j < m; j++) {\n                res[j][i] = (*this)[i][j];\n\
+    \            }\n        }\n        return res;\n    }\n\n    std::optional<Self>\
+    \ inv() const {\n        assert(row_size() == column_size());\n        Self a\
+    \ = *this;\n        Self b = identify_matrix<T>(n);\n        for (int r = 0; r\
+    \ < n; r++) {\n            for (int i = r; i < n; i++) {\n                if (a[i][r]\
+    \ != 0) {\n                    a.swap(r, i);\n                    b.swap(r, i);\n\
+    \                    break;\n                }\n            }\n            if\
+    \ (a[r][r] == 0) return std::nullopt;\n            T x = a[r][r].inv();\n    \
+    \        for (int j = 0; j < n; j++) {\n                if (r < j) a[r][j] *=\
+    \ x;\n                b[r][j] *= x;\n            }\n            for (int i = 0;\
+    \ i < n; i++) {\n                if (i == r) continue;\n                for (int\
+    \ j = 0; j < n; j++) {\n                    if (r < j) a[i][j] -= a[i][r] * a[r][j];\n\
+    \                    b[i][j] -= a[i][r] * b[r][j];\n                }\n      \
+    \      }\n        }\n        return b;\n    }\n\n    Self pow(long long k) const\
+    \ {\n        assert(row_size() == column_size() && k >= 0);\n        Self res\
+    \ = identify_matrix<T>(row_size());\n        Self x = *this;\n        while (k)\
+    \ {\n            if (k & 1) res *= x;\n            x *= x;\n            k >>=\
+    \ 1;\n        }\n        return res;\n    }\n\n    int row_size() const {\n  \
+    \      return n;\n    }\n\n    int column_size() const {\n        return m;\n\
+    \    }\n\n    std::pair<int, int> size() const {\n        return {n, m};\n   \
+    \ }\n\n  private:\n    int n, m;\n    std::vector<T> data;\n};\n\ntemplate <class\
+    \ T> T det(matrix<T> a) {\n    assert(a.row_size() == a.column_size());\n    T\
+    \ d = 1;\n    int n = a.row_size();\n    for (int r = 0; r < n; r++) {\n     \
+    \   if (a[r][r] == 0) {\n            for (int i = r + 1; i < n; i++) {\n     \
+    \           if (a[i][r] != 0) {\n                    a.swap(r, i);\n         \
+    \           d = -d;\n                }\n            }\n        }\n        if (a[r][r]\
+    \ == 0) return 0;\n        d *= a[r][r];\n        T inv = a[r][r].inv();\n   \
+    \     for (int i = r + 1; i < n; i++) {\n            T x = a[i][r] * inv;\n  \
+    \          for (int j = r; j < n; j++) {\n                a[i][j] -= x * a[r][j];\n\
+    \            }\n        }\n    }\n    return d;\n}\n\ntemplate <class T> std::istream\
+    \ &operator>>(std::istream &os, matrix<T> &a) {\n    for (int i = 0; i < a.row_size();\
+    \ i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n            os\
+    \ >> a[i][j];\n        }\n    }\n    return os;\n}\n\ntemplate <class T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const matrix<T> &a) {\n    for (int i = 0; i <\
+    \ a.row_size(); i++) {\n        for (int j = 0; j < a.column_size(); j++) {\n\
+    \            os << a[i][j];\n            if (j < a.column_size() - 1) os << '\
+    \ ';\n        }\n        if (i < a.row_size() - 1) os << '\\n';\n    }\n    return\
+    \ os;\n}\n\n}  // namespace ebi"
   dependsOn: []
   isVerificationFile: false
   path: matrix/base.hpp
   requiredBy:
-  - graph/count_spanning_tree.hpp
-  - graph/count_directed_euler_trail.hpp
-  - matrix/gauss_jordan.hpp
   - matrix/det_arbitrary_mod.hpp
-  timestamp: '2024-06-25 15:37:33+09:00'
+  - matrix/gauss_jordan.hpp
+  - graph/count_directed_euler_trail.hpp
+  - graph/count_spanning_tree.hpp
+  - graph/maximum_matching_size.hpp
+  timestamp: '2024-07-18 01:45:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
-  - test/graph/Counting_Eulerian_Circuits.test.cpp
-  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
-  - test/matrix/System_of_Linear_Equations.test.cpp
-  - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Inverse_Matrix.test.cpp
-  - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
-  - test/matrix/Matrix_Product.test.cpp
+  - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
+  - test/matrix/Matrix_Product.test.cpp
+  - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+  - test/matrix/System_of_Linear_Equations.test.cpp
+  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
+  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
 documentation_of: matrix/base.hpp
 layout: document
 redirect_from:

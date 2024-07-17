@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: graph/maximum_matching_size.hpp
+    title: graph/maximum_matching_size.hpp
   - icon: ':heavy_check_mark:'
     path: matrix/black_box_linear_algebra.hpp
     title: Black Box Linear Algebra
@@ -70,23 +73,24 @@ data:
   isVerificationFile: false
   path: utility/random_number_generator.hpp
   requiredBy:
-  - utility/hash.hpp
-  - tree/rooted_tree_hash.hpp
-  - matrix/black_box_linear_algebra.hpp
-  - string/rolling_hash.hpp
   - string/wildcard_pattern_matching.hpp
+  - string/rolling_hash.hpp
+  - matrix/black_box_linear_algebra.hpp
+  - tree/rooted_tree_hash.hpp
+  - utility/hash.hpp
+  - graph/maximum_matching_size.hpp
   timestamp: '2023-12-26 02:24:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
-  - test/aoj/aoj_2444.test.cpp
-  - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Negative_Binomial_Coefficient.test.cpp
-  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-  - test/convolution/Convolution_2D.test.cpp
-  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/yuki/yuki_1112.test.cpp
+  - test/convolution/Convolution_2D.test.cpp
+  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+  - test/math/Negative_Binomial_Coefficient.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/aoj/aoj_2444.test.cpp
 documentation_of: utility/random_number_generator.hpp
 layout: document
 title: Random Number Generator

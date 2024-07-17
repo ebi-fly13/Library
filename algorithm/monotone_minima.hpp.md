@@ -81,13 +81,13 @@ data:
   isVerificationFile: false
   path: algorithm/monotone_minima.hpp
   requiredBy:
-  - convolution/min_plus_convolution.hpp
   - algorithm/enumerate_monge_d_edge_shortest_path.hpp
+  - convolution/min_plus_convolution.hpp
   timestamp: '2023-11-08 11:18:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
   - test/yuki/yuki_952.test.cpp
+  - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
 documentation_of: algorithm/monotone_minima.hpp
 layout: document
 title: Monotone Minima
