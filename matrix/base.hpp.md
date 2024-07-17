@@ -10,7 +10,7 @@ data:
     title: Count Spanning Tree
   - icon: ':warning:'
     path: graph/maximum_matching_size.hpp
-    title: graph/maximum_matching_size.hpp
+    title: Maximum Matching Size
   - icon: ':heavy_check_mark:'
     path: matrix/det_arbitrary_mod.hpp
     title: matrix/det_arbitrary_mod.hpp

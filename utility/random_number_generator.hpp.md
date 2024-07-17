@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: graph/maximum_matching_size.hpp
-    title: graph/maximum_matching_size.hpp
+    title: Maximum Matching Size
   - icon: ':heavy_check_mark:'
     path: matrix/black_box_linear_algebra.hpp
     title: Black Box Linear Algebra

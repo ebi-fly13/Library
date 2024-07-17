@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: graph/maximum_matching_size.hpp
-    title: graph/maximum_matching_size.hpp
+    title: Maximum Matching Size
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/matrix/Rank_of_Matrix.test.cpp

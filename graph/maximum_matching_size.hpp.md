@@ -296,8 +296,11 @@ data:
   verifiedWith: []
 documentation_of: graph/maximum_matching_size.hpp
 layout: document
-redirect_from:
-- /library/graph/maximum_matching_size.hpp
-- /library/graph/maximum_matching_size.hpp.html
-title: graph/maximum_matching_size.hpp
+title: Maximum Matching Size
 ---
+
+## 説明
+
+グラフを与えて、最大マッチングのサイズを返す。頂点数を $N$ として $O(N^3)$
+
+アルゴリズムとしてはtutte行列を用いている。
