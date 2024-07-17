@@ -133,6 +133,8 @@ template <class T> struct matrix {
                          data.begin() + j * m);
     }
 
+    int rank() const;
+
     Self transposition() const {
         Self res(m, n);
         for (int i = 0; i < n; i++) {

@@ -35,6 +35,11 @@ template <class T> int gauss_jordan(matrix<T> &a) {
     return rank;
 }
 
+template <class T> int matrix<T>::rank() const {
+    matrix<T> a = *this;
+    return gauss_jordan(a);
+}
+
 template <class T> int gauss_jordan(matrix<T> &a, std::vector<T> &b) {
     int h = a.row_size(), w = a.column_size();
     assert(h == (int)b.size());
