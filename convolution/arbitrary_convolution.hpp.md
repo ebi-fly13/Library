@@ -20,10 +20,13 @@ data:
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/convolution/Convolution_Mod_1000000007.test.cpp
+    title: test/convolution/Convolution_Mod_1000000007.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/arbitrary_convolution.hpp\"\n\n#include <cstdint>\n\
@@ -250,8 +253,9 @@ data:
   path: convolution/arbitrary_convolution.hpp
   requiredBy: []
   timestamp: '2024-06-26 22:00:05+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/convolution/Convolution_Mod_1000000007.test.cpp
 documentation_of: convolution/arbitrary_convolution.hpp
 layout: document
 title: Arbitrary Convolution
