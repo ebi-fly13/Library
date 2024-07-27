@@ -82,23 +82,23 @@ data:
   isVerificationFile: false
   path: math/mod_inv.hpp
   requiredBy:
-  - fps/fps_sparse.hpp
   - fps/product_of_one_minus_xn.hpp
-  - fps/product_of_one_plus_xn.hpp
   - fps/compositional_inverse_of_fps.hpp
+  - fps/fps_sparse.hpp
+  - fps/product_of_one_plus_xn.hpp
   - fps/fps_sqrt.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Pow_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Exp_of_Formal_Power_Series_Sparse.test.cpp
   - test/polynomial/Inv_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/aoj/aoj_3361.test.cpp
 documentation_of: math/mod_inv.hpp
 layout: document

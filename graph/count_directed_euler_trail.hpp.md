@@ -230,8 +230,9 @@ data:
     \       return f(n) * inv_f(r) * inv_f(n - r);\n    }\n\n    static mint neg_c(int\
     \ k, int d) {\n        assert(d > 0);\n        return c(k + d - 1, d - 1);\n \
     \   }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n < r) return\
-    \ 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint inv(int n)\
-    \ {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void reserve(int\
+    \ 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint catalan_number(int\
+    \ n) {\n        return c(2 * n, n) * inv(n + 1);\n    }\n\n    static mint inv(int\
+    \ n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void reserve(int\
     \ n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
     \ fact, inv_fact;\n};\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::fact\
     \ = std::vector<mint>(2, 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
@@ -312,7 +313,7 @@ data:
   isVerificationFile: false
   path: graph/count_directed_euler_trail.hpp
   requiredBy: []
-  timestamp: '2024-07-18 01:45:02+09:00'
+  timestamp: '2024-07-27 23:45:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Counting_Eulerian_Circuits.test.cpp

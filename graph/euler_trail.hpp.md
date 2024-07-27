@@ -165,8 +165,8 @@ data:
   timestamp: '2024-04-02 14:52:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Eulerian_Trail_Undirected.test.cpp
   - test/graph/Eulerian_Trail_Directed.test.cpp
+  - test/graph/Eulerian_Trail_Undirected.test.cpp
 documentation_of: graph/euler_trail.hpp
 layout: document
 title: Euler Trail

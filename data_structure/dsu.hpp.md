@@ -80,17 +80,17 @@ data:
   isVerificationFile: false
   path: data_structure/dsu.hpp
   requiredBy:
-  - data_structure/range_parallel_dsu.hpp
-  - graph/mst.hpp
   - graph/manhattan_mst.hpp
+  - graph/mst.hpp
+  - data_structure/range_parallel_dsu.hpp
   timestamp: '2024-06-25 16:50:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Range_Parallel_Unionfind.test.cpp
-  - test/data_structure/Union_Find.test.cpp
-  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
   - test/graph/Manhattan_MST.test.cpp
   - test/graph/Minimum_Spanning_Tree.test.cpp
+  - test/data_structure/Range_Parallel_Unionfind.test.cpp
+  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+  - test/data_structure/Union_Find.test.cpp
 documentation_of: data_structure/dsu.hpp
 layout: document
 title: DSU

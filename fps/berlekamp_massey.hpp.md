@@ -68,9 +68,9 @@ data:
   timestamp: '2024-06-25 15:37:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_1112.test.cpp
-  - test/math/Find_Linear_Recurrence.test.cpp
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - test/math/Find_Linear_Recurrence.test.cpp
+  - test/yuki/yuki_1112.test.cpp
 documentation_of: fps/berlekamp_massey.hpp
 layout: document
 title: Berlekamp Massey

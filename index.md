@@ -367,6 +367,9 @@ data:
     - icon: ':warning:'
       path: graph/maximum_matching_size.hpp
       title: Maximum Matching Size
+    - icon: ':warning:'
+      path: graph/minimum_steiner_tree.hpp
+      title: Minimum Steiner Tree
     - icon: ':heavy_check_mark:'
       path: graph/mst.hpp
       title: Minimum Spanning Tree
@@ -396,9 +399,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/catalan_convolution.hpp
       title: Catalan's Convolution Formula
-    - icon: ':heavy_check_mark:'
-      path: math/catalan_number.hpp
-      title: Catalan Number
     - icon: ':heavy_check_mark:'
       path: math/divisor_transform.hpp
       title: "Divisor Transform (Zeta / M\xF6bius)"

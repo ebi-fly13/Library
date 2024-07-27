@@ -18,9 +18,6 @@ data:
     path: math/catalan_convolution.hpp
     title: Catalan's Convolution Formula
   - icon: ':heavy_check_mark:'
-    path: math/catalan_number.hpp
-    title: Catalan Number
-  - icon: ':heavy_check_mark:'
     path: math/stirling_number_1st.hpp
     title: Stirling Numbers of the First Kind
   - icon: ':heavy_check_mark:'
@@ -100,12 +97,13 @@ data:
     \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
     \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
     \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
-    \    }\n\n    static mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n\
-    \    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n    }\n\n\
-    \  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate <Modint\
-    \ mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2, 1);\n\n\
-    template <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
-    \ 1);\n\n}  // namespace ebi\n"
+    \    }\n\n    static mint catalan_number(int n) {\n        return c(2 * n, n)\
+    \ * inv(n + 1);\n    }\n\n    static mint inv(int n) {\n        return inv_f(n)\
+    \ * f(n - 1);\n    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n\
+    \    }\n\n  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate\
+    \ <Modint mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2,\
+    \ 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact =\
+    \ std::vector<mint>(2, 1);\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <bit>\n#include <cassert>\n#include <cstdint>\n\
     #include <iostream>\n#include <ranges>\n#include <vector>\n\n#include \"../modint/base.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <Modint mint> struct Binomial {\n  private:\n\
@@ -127,40 +125,40 @@ data:
     \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
     \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
     \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
-    \    }\n\n    static mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n\
-    \    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n    }\n\n\
-    \  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate <Modint\
-    \ mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2, 1);\n\n\
-    template <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
-    \ 1);\n\n}  // namespace ebi\n"
+    \    }\n\n    static mint catalan_number(int n) {\n        return c(2 * n, n)\
+    \ * inv(n + 1);\n    }\n\n    static mint inv(int n) {\n        return inv_f(n)\
+    \ * f(n - 1);\n    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n\
+    \    }\n\n  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate\
+    \ <Modint mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2,\
+    \ 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact =\
+    \ std::vector<mint>(2, 1);\n\n}  // namespace ebi\n"
   dependsOn:
   - modint/base.hpp
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
-  - math/catalan_number.hpp
-  - math/stirling_number_1st.hpp
+  - graph/count_directed_euler_trail.hpp
   - math/sum_of_exp_times_poly.hpp
+  - math/stirling_number_1st.hpp
   - math/catalan_convolution.hpp
   - fps/shift_of_sampling_points_of_poly.hpp
   - fps/taylor_shift.hpp
-  - graph/count_directed_euler_trail.hpp
-  timestamp: '2024-05-12 18:17:23+09:00'
+  timestamp: '2024-07-27 23:45:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_1796.test.cpp
-  - test/yuki/yuki_1302.test.cpp
-  - test/yuki/yuki_2633.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/math/Negative_Binomial_Coefficient.test.cpp
-  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   - test/math/Catalan_Convolution.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Negative_Binomial_Coefficient.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
   - test/aoj/aoj_3361.test.cpp
-  - test/graph/Counting_Eulerian_Circuits.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/yuki/yuki_2633.test.cpp
+  - test/yuki/yuki_1796.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 title: Binomial Coefficient

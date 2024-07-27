@@ -204,8 +204,8 @@ data:
   timestamp: '2024-06-18 15:22:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
   - test/aoj/aoj_2995.test.cpp
+  - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
 documentation_of: tree/dsu_on_tree.hpp
 layout: document
 title: Dsu on Tree

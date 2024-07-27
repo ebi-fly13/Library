@@ -20,9 +20,6 @@ data:
     path: math/catalan_convolution.hpp
     title: Catalan's Convolution Formula
   - icon: ':heavy_check_mark:'
-    path: math/catalan_number.hpp
-    title: Catalan Number
-  - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
   - icon: ':heavy_check_mark:'
@@ -87,15 +84,16 @@ data:
     \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
     \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
     \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
-    \    }\n\n    static mint inv(int n) {\n        return inv_f(n) * f(n - 1);\n\
-    \    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n    }\n\n\
-    \  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate <Modint\
-    \ mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2, 1);\n\n\
-    template <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact = std::vector<mint>(2,\
-    \ 1);\n\n}  // namespace ebi\n#line 5 \"math/catalan_convolution.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <Modint mint> mint catalan_convolution(int pow, int n) {\n\
-    \    return Binomial<mint>::c(n + n + pow - 1, n) * pow *\n           Binomial<mint>::inv(n\
-    \ + pow);\n}\n\n}  // namespace ebi\n#line 4 \"test/math/Catalan_Convolution.test.cpp\"\
+    \    }\n\n    static mint catalan_number(int n) {\n        return c(2 * n, n)\
+    \ * inv(n + 1);\n    }\n\n    static mint inv(int n) {\n        return inv_f(n)\
+    \ * f(n - 1);\n    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n\
+    \    }\n\n  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate\
+    \ <Modint mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2,\
+    \ 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact =\
+    \ std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 5 \"math/catalan_convolution.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint> mint catalan_convolution(int pow,\
+    \ int n) {\n    return Binomial<mint>::c(n + n + pow - 1, n) * pow *\n       \
+    \    Binomial<mint>::inv(n + pow);\n}\n\n}  // namespace ebi\n#line 4 \"test/math/Catalan_Convolution.test.cpp\"\
     \n\n#line 2 \"convolution/convolution.hpp\"\n\n#include <algorithm>\n#line 6 \"\
     convolution/convolution.hpp\"\n\n#line 2 \"convolution/ntt.hpp\"\n\n#line 4 \"\
     convolution/ntt.hpp\"\n#include <array>\n#line 8 \"convolution/ntt.hpp\"\n\n#line\
@@ -202,10 +200,7 @@ data:
     \    internal::fft4(b);\n    for (int i = 0; i < n; i++) {\n        a[i] *= b[i];\n\
     \    }\n    internal::ifft4(a);\n    a.resize(f.size() + g.size() - 1);\n    mint\
     \ inv_n = mint(n).inv();\n    for (auto& x : a) x *= inv_n;\n    return a;\n}\n\
-    \n}  // namespace ebi\n#line 2 \"math/catalan_number.hpp\"\n\n#line 5 \"math/catalan_number.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <Modint mint> mint catalan_number(int n) {\n \
-    \   return Binomial<mint>::c(2 * n, n) * Binomial<mint>::inv(n + 1);\n}\n\n} \
-    \ // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\
+    \n}  // namespace ebi\n#line 2 \"modint/modint.hpp\"\n\r\n#line 5 \"modint/modint.hpp\"\
     \n\r\n#line 7 \"modint/modint.hpp\"\n\r\nnamespace ebi {\r\n\r\ntemplate <int\
     \ m> struct static_modint {\r\n  private:\r\n    using modint = static_modint;\r\
     \n\r\n  public:\r\n    static constexpr int mod() {\r\n        return m;\r\n \
@@ -353,22 +348,22 @@ data:
     \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 9 \"test/math/Catalan_Convolution.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    const\
     \ int n = 100000;\n    int t = 10;\n    std::vector<mint> c(n);\n    rep(i, 0,\
-    \ n) c[i] = catalan_number<mint>(i);\n    std::vector<mint> a = {1};\n    rep(i,\
-    \ 1, t) {\n        a = convolution(a, c);\n        a.resize(n);\n        rep(j,\
-    \ 0, n) assert(a[j] == catalan_convolution<mint>(i, j));\n    }\n    return;\n\
-    }\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int t = 1;\n\
-    \    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n    }\n    int\
-    \ a, b;\n    std::cin >> a >> b;\n    std::cout << a + b << '\\n';\n    return\
-    \ 0;\n}\n"
+    \ n) c[i] = Binomial<mint>::catalan_number(i);\n    std::vector<mint> a = {1};\n\
+    \    rep(i, 1, t) {\n        a = convolution(a, c);\n        a.resize(n);\n  \
+    \      rep(j, 0, n) assert(a[j] == catalan_convolution<mint>(i, j));\n    }\n\
+    \    return;\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    int a, b;\n    std::cin >> a >> b;\n    std::cout << a + b << '\\\
+    n';\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n#include \"\
     ../../math/catalan_convolution.hpp\"\n\n#include \"../../convolution/convolution.hpp\"\
-    \n#include \"../../math/catalan_number.hpp\"\n#include \"../../modint/modint.hpp\"\
-    \n#include \"../../template/template.hpp\"\n\nnamespace ebi {\n\nusing mint =\
-    \ modint998244353;\n\nvoid main_() {\n    const int n = 100000;\n    int t = 10;\n\
-    \    std::vector<mint> c(n);\n    rep(i, 0, n) c[i] = catalan_number<mint>(i);\n\
-    \    std::vector<mint> a = {1};\n    rep(i, 1, t) {\n        a = convolution(a,\
-    \ c);\n        a.resize(n);\n        rep(j, 0, n) assert(a[j] == catalan_convolution<mint>(i,\
-    \ j));\n    }\n    return;\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \n#include \"../../math/binomial.hpp\"\n#include \"../../modint/modint.hpp\"\n\
+    #include \"../../template/template.hpp\"\n\nnamespace ebi {\n\nusing mint = modint998244353;\n\
+    \nvoid main_() {\n    const int n = 100000;\n    int t = 10;\n    std::vector<mint>\
+    \ c(n);\n    rep(i, 0, n) c[i] = Binomial<mint>::catalan_number(i);\n    std::vector<mint>\
+    \ a = {1};\n    rep(i, 1, t) {\n        a = convolution(a, c);\n        a.resize(n);\n\
+    \        rep(j, 0, n) assert(a[j] == catalan_convolution<mint>(i, j));\n    }\n\
+    \    return;\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
     \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
     \    }\n    int a, b;\n    std::cin >> a >> b;\n    std::cout << a + b << '\\\
     n';\n    return 0;\n}"
@@ -380,7 +375,6 @@ data:
   - convolution/ntt.hpp
   - math/internal_math.hpp
   - template/int_alias.hpp
-  - math/catalan_number.hpp
   - modint/modint.hpp
   - template/template.hpp
   - template/debug_template.hpp
@@ -391,7 +385,7 @@ data:
   isVerificationFile: true
   path: test/math/Catalan_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-05-23 21:35:59+09:00'
+  timestamp: '2024-07-27 23:45:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Catalan_Convolution.test.cpp

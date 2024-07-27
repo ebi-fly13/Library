@@ -52,13 +52,13 @@ data:
   isVerificationFile: false
   path: set_function/subset_transform.hpp
   requiredBy:
-  - convolution/or_convolution.hpp
   - graph/chromatic_number.hpp
+  - convolution/or_convolution.hpp
   timestamp: '2023-10-26 18:43:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/graph/Chromatic_Number.test.cpp
+  - test/convolution/Bitwise_OR_Convolution.test.cpp
 documentation_of: set_function/subset_transform.hpp
 layout: document
 title: "Subset Transform (Zeta / M\xF6bius)"

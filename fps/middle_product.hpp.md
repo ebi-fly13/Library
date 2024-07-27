@@ -300,17 +300,17 @@ data:
   isVerificationFile: false
   path: fps/middle_product.hpp
   requiredBy:
-  - fps/composition_of_fps.hpp
-  - fps/compositional_inverse_of_fps_old.hpp
-  - fps/middle_product_arbitrary.hpp
   - string/wildcard_pattern_matching.hpp
+  - fps/compositional_inverse_of_fps_old.hpp
+  - fps/composition_of_fps.hpp
+  - fps/middle_product_arbitrary.hpp
   timestamp: '2024-05-24 18:44:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_1796.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
   - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
+  - test/yuki/yuki_1796.test.cpp
 documentation_of: fps/middle_product.hpp
 layout: document
 title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
