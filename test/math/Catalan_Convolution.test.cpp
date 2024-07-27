@@ -3,7 +3,7 @@
 #include "../../math/catalan_convolution.hpp"
 
 #include "../../convolution/convolution.hpp"
-#include "../../math/catalan_number.hpp"
+#include "../../math/binomial.hpp"
 #include "../../modint/modint.hpp"
 #include "../../template/template.hpp"
 
@@ -15,7 +15,7 @@ void main_() {
     const int n = 100000;
     int t = 10;
     std::vector<mint> c(n);
-    rep(i, 0, n) c[i] = catalan_number<mint>(i);
+    rep(i, 0, n) c[i] = Binomial<mint>::catalan_number(i);
     std::vector<mint> a = {1};
     rep(i, 1, t) {
         a = convolution(a, c);

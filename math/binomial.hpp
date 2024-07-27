@@ -70,6 +70,10 @@ template <Modint mint> struct Binomial {
         return f(n) * inv_f(n - r);
     }
 
+    static mint catalan_number(int n) {
+        return c(2 * n, n) * inv(n + 1);
+    }
+
     static mint inv(int n) {
         return inv_f(n) * f(n - 1);
     }
