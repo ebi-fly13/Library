@@ -430,9 +430,9 @@ data:
   - test/string/Wildcard_Pattern_Matching.test.cpp
 documentation_of: fps/middle_product_arbitrary.hpp
 layout: document
-title: $f^k \mod g$
+title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
 ---
 
 ## 説明
 
-$f^k \mod g$ を求める。 $O(N\log{N} \log{k})$
+任意mod係数の $N$ 次多項式 $a$ と $M$ 次多項式 $b$ について $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$ となる $N-M$ 次多項式 $c$ を求める。 $O(N\log N)$

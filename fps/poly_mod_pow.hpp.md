@@ -147,8 +147,8 @@ data:
   timestamp: '2024-06-26 21:18:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/yuki/yuki_1112.test.cpp
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
 documentation_of: fps/poly_mod_pow.hpp
 layout: document
 redirect_from:

@@ -125,8 +125,8 @@ data:
   timestamp: '2024-04-19 02:01:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/matrix/Determinant_of_Matrix.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
+  - test/matrix/Determinant_of_Matrix.test.cpp
 documentation_of: matrix/square_matrix.hpp
 layout: document
 redirect_from:

@@ -150,35 +150,38 @@ data:
     \ if (k & 1) {\n            res *= f;\n            res %= g;\n            res.shrink();\n\
     \        }\n        f *= f;\n        f %= g;\n        f.shrink();\n        k >>=\
     \ 1;\n    }\n    return res;\n}\n\n}  // namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\
-    \n\r\n#include <cstdint>\r\n#include <random>\r\n\r\nnamespace ebi {\r\n\r\nstruct\
-    \ random_number_generator {\r\n    random_number_generator(int seed = -1) {\r\n\
-    \        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\n    }\r\n\r\n\
-    \    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n    }\r\n\r\n    template\
-    \ <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T> dist(a,\
-    \ b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64\
-    \ mt;\r\n    std::random_device rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 10\
-    \ \"matrix/black_box_linear_algebra.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
-    \ mint, class F>\nstd::vector<mint> matrix_minimum_poly(int n, F Ax) {\n    static\
-    \ random_number_generator rng;\n    std::vector<mint> s(2 * n + 10, 0), u(n),\
-    \ b(n);\n    for (int i = 0; i < n; i++) {\n        u[i] = rng.get(0, mint::mod());\n\
-    \        b[i] = rng.get(0, mint::mod());\n    }\n    for (int i = 0; i < 2 * n\
-    \ + 10; i++) {\n        for (int j = 0; j < n; j++) {\n            s[i] += u[j]\
-    \ * b[j];\n        }\n        b = Ax(b);\n    }\n    auto c = berlekamp_massey(s);\n\
-    \    std::reverse(c.begin(), c.end());\n    return c;\n}\n\ntemplate <Modint mint,\
-    \ class F>\nstd::vector<mint> pow(int n, F Ax, const std::vector<mint> &b, long\
-    \ long k) {\n    assert(n == (int)b.size());\n    using FPS = FormalPowerSeries<mint>;\n\
-    \    auto g = matrix_minimum_poly<mint>(n, Ax);\n    auto c = poly_mod_pow<mint>({0,\
-    \ 1}, k, g);\n    FPS res(n, 0), Ab = b;\n    for (int i = 0; i < (int)c.size();\
-    \ i++) {\n        res += Ab * c[i];\n        Ab = FPS(Ax(Ab));\n    }\n    return\
-    \ res;\n}\n\ntemplate <Modint mint, class F> mint det(int n, F Ax) {\n    static\
-    \ random_number_generator rng;\n    std::vector<mint> d(n);\n    mint r = 1;\n\
-    \    for (int i = 0; i < n; i++) {\n        d[i] = rng.get(1, mint::mod());\n\
-    \        r *= d[i];\n    }\n    auto ADx = [&](std::vector<mint> v) -> std::vector<mint>\
-    \ {\n        assert(n == (int)v.size());\n        for (int i = 0; i < n; i++)\
-    \ {\n            v[i] *= d[i];\n        }\n        return Ax(v);\n    };\n   \
-    \ auto f = matrix_minimum_poly<mint>(n, ADx);\n    mint res = ((int)f.size() ==\
-    \ n + 1 ? f[0] : 0);\n    if (n % 2 == 1) res = -res;\n    return res / r;\n}\n\
-    \n}  // namespace ebi\n"
+    \n\r\n#line 4 \"utility/random_number_generator.hpp\"\n#include <cstdint>\r\n\
+    #include <numeric>\r\n#include <random>\r\n#line 8 \"utility/random_number_generator.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator {\r\n    random_number_generator(int\
+    \ seed = -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\
+    \n    }\r\n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n   \
+    \ }\r\n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n    std::vector<int>\
+    \ get_permutation(int n) {\r\n        std::vector<int> p(n);\r\n        std::iota(p.begin(),\
+    \ p.end(), 0);\r\n        std::shuffle(p.begin(), p.end(), mt);\r\n        return\
+    \ p;\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n    std::random_device\
+    \ rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 10 \"matrix/black_box_linear_algebra.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <Modint mint, class F>\nstd::vector<mint> matrix_minimum_poly(int\
+    \ n, F Ax) {\n    static random_number_generator rng;\n    std::vector<mint> s(2\
+    \ * n + 10, 0), u(n), b(n);\n    for (int i = 0; i < n; i++) {\n        u[i] =\
+    \ rng.get(0, mint::mod());\n        b[i] = rng.get(0, mint::mod());\n    }\n \
+    \   for (int i = 0; i < 2 * n + 10; i++) {\n        for (int j = 0; j < n; j++)\
+    \ {\n            s[i] += u[j] * b[j];\n        }\n        b = Ax(b);\n    }\n\
+    \    auto c = berlekamp_massey(s);\n    std::reverse(c.begin(), c.end());\n  \
+    \  return c;\n}\n\ntemplate <Modint mint, class F>\nstd::vector<mint> pow(int\
+    \ n, F Ax, const std::vector<mint> &b, long long k) {\n    assert(n == (int)b.size());\n\
+    \    using FPS = FormalPowerSeries<mint>;\n    auto g = matrix_minimum_poly<mint>(n,\
+    \ Ax);\n    auto c = poly_mod_pow<mint>({0, 1}, k, g);\n    FPS res(n, 0), Ab\
+    \ = b;\n    for (int i = 0; i < (int)c.size(); i++) {\n        res += Ab * c[i];\n\
+    \        Ab = FPS(Ax(Ab));\n    }\n    return res;\n}\n\ntemplate <Modint mint,\
+    \ class F> mint det(int n, F Ax) {\n    static random_number_generator rng;\n\
+    \    std::vector<mint> d(n);\n    mint r = 1;\n    for (int i = 0; i < n; i++)\
+    \ {\n        d[i] = rng.get(1, mint::mod());\n        r *= d[i];\n    }\n    auto\
+    \ ADx = [&](std::vector<mint> v) -> std::vector<mint> {\n        assert(n == (int)v.size());\n\
+    \        for (int i = 0; i < n; i++) {\n            v[i] *= d[i];\n        }\n\
+    \        return Ax(v);\n    };\n    auto f = matrix_minimum_poly<mint>(n, ADx);\n\
+    \    mint res = ((int)f.size() == n + 1 ? f[0] : 0);\n    if (n % 2 == 1) res\
+    \ = -res;\n    return res / r;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../fps/berlekamp_massey.hpp\"\
     \n#include \"../fps/poly_mod_pow.hpp\"\n#include \"../modint/base.hpp\"\n#include\
     \ \"../utility/random_number_generator.hpp\"\n\nnamespace ebi {\n\ntemplate <Modint\
@@ -212,11 +215,11 @@ data:
   isVerificationFile: false
   path: matrix/black_box_linear_algebra.hpp
   requiredBy: []
-  timestamp: '2024-06-26 21:18:26+09:00'
+  timestamp: '2024-08-06 16:15:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
   - test/yuki/yuki_1112.test.cpp
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
 documentation_of: matrix/black_box_linear_algebra.hpp
 layout: document
 title: Black Box Linear Algebra

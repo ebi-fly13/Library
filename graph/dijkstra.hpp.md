@@ -147,8 +147,8 @@ data:
   timestamp: '2024-06-20 19:56:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Shortest_Path.test.cpp
   - test/graph/dijkstra.test.cpp
+  - test/graph/Shortest_Path.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
 title: dijkstra

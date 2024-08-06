@@ -222,8 +222,8 @@ data:
   isVerificationFile: false
   path: matrix/base.hpp
   requiredBy:
-  - graph/maximum_matching_size.hpp
   - graph/count_directed_euler_trail.hpp
+  - graph/maximum_matching_size.hpp
   - graph/count_spanning_tree.hpp
   - matrix/det_arbitrary_mod.hpp
   - matrix/gauss_jordan.hpp
@@ -234,11 +234,11 @@ data:
   - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - test/graph/Counting_Spanning_Trees_Directed.test.cpp
   - test/matrix/Matrix_Product.test.cpp
+  - test/matrix/System_of_Linear_Equations.test.cpp
+  - test/matrix/Rank_of_Matrix.test.cpp
   - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/Determinant_of_Matrix_2.test.cpp
-  - test/matrix/Rank_of_Matrix.test.cpp
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
-  - test/matrix/System_of_Linear_Equations.test.cpp
 documentation_of: matrix/base.hpp
 layout: document
 redirect_from:

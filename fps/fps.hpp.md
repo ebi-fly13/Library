@@ -28,7 +28,7 @@ data:
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: fps/middle_product_arbitrary.hpp
-    title: $f^k \mod g$
+    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: Multipoint Evaluation
@@ -375,64 +375,64 @@ data:
   isVerificationFile: false
   path: fps/fps.hpp
   requiredBy:
-  - matrix/black_box_linear_algebra.hpp
+  - math/bernoulli_number.hpp
+  - math/partition_function.hpp
   - math/stirling_number_2nd.hpp
   - math/sums_of_powers.hpp
   - math/stirling_number_1st.hpp
-  - math/partition_function.hpp
   - math/sums_of_powers_iota.hpp
-  - math/bernoulli_number.hpp
   - string/wildcard_pattern_matching.hpp
-  - fps/compositional_inverse_of_fps_old.hpp
-  - fps/taylor_shift.hpp
-  - fps/multipoint_evaluation.hpp
-  - fps/ntt_friendly_fps.hpp
-  - fps/product_of_one_minus_xn.hpp
-  - fps/polynomial_interpolation.hpp
-  - fps/power_projection_of_fps.hpp
-  - fps/arbitrary_mod_fps.hpp
-  - fps/composition_of_fps.hpp
-  - fps/product_of_fps.hpp
-  - fps/compositional_inverse_of_fps.hpp
-  - fps/poly_mod_pow.hpp
   - fps/product_of_one_plus_xn.hpp
   - fps/composition_of_fps_old.hpp
+  - fps/product_of_one_minus_xn.hpp
+  - fps/polynomial_interpolation.hpp
+  - fps/ntt_friendly_fps.hpp
   - fps/middle_product_arbitrary.hpp
+  - fps/arbitrary_mod_fps.hpp
+  - fps/compositional_inverse_of_fps_old.hpp
+  - fps/compositional_inverse_of_fps.hpp
   - fps/middle_product.hpp
+  - fps/power_projection_of_fps.hpp
   - fps/sum_of_rational_fps.hpp
   - fps/fps_sqrt.hpp
+  - fps/taylor_shift.hpp
+  - fps/multipoint_evaluation.hpp
+  - fps/composition_of_fps.hpp
+  - fps/product_of_fps.hpp
+  - fps/poly_mod_pow.hpp
+  - matrix/black_box_linear_algebra.hpp
   timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
-  - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
-  - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
-  - test/math/Berunoulli_Number.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - test/math/Partition_Function_Pentagonal.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Sharp_P_Subset_Sum.test.cpp
-  - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/yuki/yuki_1857.test.cpp
-  - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_1112.test.cpp
   - test/yuki/yuki_1796.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Berunoulli_Number.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
+  - test/math/Sharp_P_Subset_Sum.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
 documentation_of: fps/fps.hpp
 layout: document
 title: Formal Power Series

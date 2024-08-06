@@ -259,19 +259,23 @@ data:
     \   u64 au = a >> 61;\n        u64 ad = a & umod();\n        u64 res = au + ad;\n\
     \        if (res >= umod()) res -= umod();\n        return res;\n    }\n};\n\n\
     }  // namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\n\r\n#line\
-    \ 4 \"utility/random_number_generator.hpp\"\n#include <random>\r\n\r\nnamespace\
-    \ ebi {\r\n\r\nstruct random_number_generator {\r\n    random_number_generator(int\
-    \ seed = -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\
-    \n    }\r\n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n   \
-    \ }\r\n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
-    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n  private:\r\n \
-    \   std::mt19937_64 mt;\r\n    std::random_device rnd;\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 8 \"graph/maximum_matching_size.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <class T> int maximum_matching_size(const Graph<T> &g) {\n    static random_number_generator\
-    \ rng;\n    using mint = modint61;\n    int n = g.node_number();\n    matrix<mint>\
-    \ tutte(n, n, 0);\n    for (auto e : g.get_edges()) {\n        mint x = rng.get<std::uint64_t>(0,\
-    \ mint::mod());\n        tutte[e.from][e.to] += x;\n        tutte[e.to][e.from]\
-    \ -= x;\n    }\n    return tutte.rank() / 2;\n}\n\n}  // namespace ebi\n"
+    \ 5 \"utility/random_number_generator.hpp\"\n#include <numeric>\r\n#include <random>\r\
+    \n#line 8 \"utility/random_number_generator.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
+    struct random_number_generator {\r\n    random_number_generator(int seed = -1)\
+    \ {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\n    }\r\
+    \n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n    }\r\n\r\n\
+    \    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n    std::vector<int>\
+    \ get_permutation(int n) {\r\n        std::vector<int> p(n);\r\n        std::iota(p.begin(),\
+    \ p.end(), 0);\r\n        std::shuffle(p.begin(), p.end(), mt);\r\n        return\
+    \ p;\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n    std::random_device\
+    \ rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 8 \"graph/maximum_matching_size.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> int maximum_matching_size(const Graph<T>\
+    \ &g) {\n    static random_number_generator rng;\n    using mint = modint61;\n\
+    \    int n = g.node_number();\n    matrix<mint> tutte(n, n, 0);\n    for (auto\
+    \ e : g.get_edges()) {\n        mint x = rng.get<std::uint64_t>(0, mint::mod());\n\
+    \        tutte[e.from][e.to] += x;\n        tutte[e.to][e.from] -= x;\n    }\n\
+    \    return tutte.rank() / 2;\n}\n\n}  // namespace ebi\n"
   code: "#pragma once\n\n#include \"../graph/base.hpp\"\n#include \"../matrix/base.hpp\"\
     \n#include \"../matrix/gauss_jordan.hpp\"\n#include \"../modint/modint61.hpp\"\
     \n#include \"../utility/random_number_generator.hpp\"\n\nnamespace ebi {\n\ntemplate\
@@ -291,7 +295,7 @@ data:
   isVerificationFile: false
   path: graph/maximum_matching_size.hpp
   requiredBy: []
-  timestamp: '2024-07-18 01:45:02+09:00'
+  timestamp: '2024-08-06 16:15:06+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/maximum_matching_size.hpp

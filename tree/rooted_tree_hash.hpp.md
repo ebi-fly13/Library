@@ -140,25 +140,29 @@ data:
     \n    constexpr u64 safe_mod(const u64 &a) {\n        u64 au = a >> 61;\n    \
     \    u64 ad = a & umod();\n        u64 res = au + ad;\n        if (res >= umod())\
     \ res -= umod();\n        return res;\n    }\n};\n\n}  // namespace ebi\n#line\
-    \ 2 \"utility/random_number_generator.hpp\"\n\r\n#line 4 \"utility/random_number_generator.hpp\"\
-    \n#include <random>\r\n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator\
-    \ {\r\n    random_number_generator(int seed = -1) {\r\n        if (seed < 0) seed\
-    \ = rnd();\r\n        mt.seed(seed);\r\n    }\r\n\r\n    void set_seed(int seed)\
-    \ {\r\n        mt.seed(seed);\r\n    }\r\n\r\n    template <class T> T get(T a,\
-    \ T b) {\r\n        std::uniform_int_distribution<T> dist(a, b - 1);\r\n     \
-    \   return dist(mt);\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n\
-    \    std::random_device rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 7 \"utility/hash.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <int BASE_NUM = 2> struct Hash : std::array<modint61,\
-    \ BASE_NUM> {\n  private:\n    using std::array<modint61, BASE_NUM>::array;\n\
-    \    using std::array<modint61, BASE_NUM>::operator=;\n\n  public:\n    Hash()\
-    \ : std::array<modint61, BASE_NUM>() {}\n\n    constexpr static Hash set(const\
-    \ modint61 &a) {\n        Hash res;\n        std::fill(res.begin(), res.end(),\
-    \ a);\n        return res;\n    }\n\n    constexpr Hash &operator+=(const Hash\
+    \ 2 \"utility/random_number_generator.hpp\"\n\r\n#include <algorithm>\r\n#line\
+    \ 5 \"utility/random_number_generator.hpp\"\n#include <numeric>\r\n#include <random>\r\
+    \n#line 8 \"utility/random_number_generator.hpp\"\n\r\nnamespace ebi {\r\n\r\n\
+    struct random_number_generator {\r\n    random_number_generator(int seed = -1)\
+    \ {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\n    }\r\
+    \n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n    }\r\n\r\n\
+    \    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n    std::vector<int>\
+    \ get_permutation(int n) {\r\n        std::vector<int> p(n);\r\n        std::iota(p.begin(),\
+    \ p.end(), 0);\r\n        std::shuffle(p.begin(), p.end(), mt);\r\n        return\
+    \ p;\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n    std::random_device\
+    \ rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 7 \"utility/hash.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <int BASE_NUM = 2> struct Hash : std::array<modint61, BASE_NUM>\
+    \ {\n  private:\n    using std::array<modint61, BASE_NUM>::array;\n    using std::array<modint61,\
+    \ BASE_NUM>::operator=;\n\n  public:\n    Hash() : std::array<modint61, BASE_NUM>()\
+    \ {}\n\n    constexpr static Hash set(const modint61 &a) {\n        Hash res;\n\
+    \        std::fill(res.begin(), res.end(), a);\n        return res;\n    }\n\n\
+    \    constexpr Hash &operator+=(const Hash &rhs) {\n        for (int i = 0; i\
+    \ < BASE_NUM; i++) {\n            (*this)[i] += rhs[i];\n        }\n        return\
+    \ *this;\n    }\n    constexpr Hash &operator-=(const Hash &rhs) {\n        for\
+    \ (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i] -= rhs[i];\n      \
+    \  }\n        return *this;\n    }\n    constexpr Hash &operator*=(const Hash\
     \ &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
-    \ += rhs[i];\n        }\n        return *this;\n    }\n    constexpr Hash &operator-=(const\
-    \ Hash &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
-    \ -= rhs[i];\n        }\n        return *this;\n    }\n    constexpr Hash &operator*=(const\
-    \ Hash &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
     \ *= rhs[i];\n        }\n        return *this;\n    }\n\n    constexpr Hash &operator+=(const\
     \ modint61 &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n           \
     \ (*this)[i] += rhs;\n        }\n        return *this;\n    }\n    constexpr Hash\
@@ -237,7 +241,7 @@ data:
   isVerificationFile: false
   path: tree/rooted_tree_hash.hpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-08-06 16:15:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp

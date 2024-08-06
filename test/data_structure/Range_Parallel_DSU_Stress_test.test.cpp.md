@@ -198,14 +198,16 @@ data:
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
     \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\
-    \n\r\n#line 5 \"utility/random_number_generator.hpp\"\n\r\nnamespace ebi {\r\n\
+    \n\r\n#line 8 \"utility/random_number_generator.hpp\"\n\r\nnamespace ebi {\r\n\
     \r\nstruct random_number_generator {\r\n    random_number_generator(int seed =\
     \ -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\n \
     \   }\r\n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n    }\r\
     \n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
-    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n  private:\r\n \
-    \   std::mt19937_64 mt;\r\n    std::random_device rnd;\r\n};\r\n\r\n}  // namespace\
-    \ ebi\n#line 8 \"test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp\"\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n    std::vector<int>\
+    \ get_permutation(int n) {\r\n        std::vector<int> p(n);\r\n        std::iota(p.begin(),\
+    \ p.end(), 0);\r\n        std::shuffle(p.begin(), p.end(), mt);\r\n        return\
+    \ p;\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n    std::random_device\
+    \ rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 8 \"test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    random_number_generator rng;\n    int\
     \ n = rng.get(1, 5000);\n    int q = rng.get(1, 5000);\n    range_parallel_dsu\
     \ rpd(n);\n    dsu uf(n);\n    rep(i, 0, q) {\n        int u = rng.get(0, n);\n\
@@ -251,7 +253,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
   requiredBy: []
-  timestamp: '2024-06-25 16:50:09+09:00'
+  timestamp: '2024-08-06 16:15:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp

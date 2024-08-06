@@ -76,8 +76,8 @@ data:
   timestamp: '2024-03-15 00:35:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Directed_MST.test.cpp
   - test/aoj/aoj_grl_1_a.test.cpp
+  - test/graph/Directed_MST.test.cpp
 documentation_of: data_structure/skew_heap.hpp
 layout: document
 redirect_from:

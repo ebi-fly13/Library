@@ -63,9 +63,9 @@ data:
   timestamp: '2023-10-26 16:27:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_2995.test.cpp
-  - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_1645.test.cpp
+  - test/aoj/aoj_2235.test.cpp
+  - test/aoj/aoj_2995.test.cpp
 documentation_of: data_structure/undo_unionfind.hpp
 layout: document
 title: Undo UnionFind

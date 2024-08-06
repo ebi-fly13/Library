@@ -12,7 +12,7 @@ data:
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: fps/middle_product_arbitrary.hpp
-    title: $f^k \mod g$
+    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
@@ -358,14 +358,17 @@ data:
     \ * inv41 - mint4(x2) * inv42 -\n                  mint4(x3) * inv43)\n      \
     \               .val();\n        res[i] = x0 + m0 * (x1 + m1 * (x2 + m2 * (x3\
     \ + m3 * (u64(x4)))));\n    }\n    return res;\n}\n\n}  // namespace ebi\n#line\
-    \ 2 \"utility/random_number_generator.hpp\"\n\r\n#line 4 \"utility/random_number_generator.hpp\"\
-    \n#include <random>\r\n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator\
-    \ {\r\n    random_number_generator(int seed = -1) {\r\n        if (seed < 0) seed\
-    \ = rnd();\r\n        mt.seed(seed);\r\n    }\r\n\r\n    void set_seed(int seed)\
-    \ {\r\n        mt.seed(seed);\r\n    }\r\n\r\n    template <class T> T get(T a,\
-    \ T b) {\r\n        std::uniform_int_distribution<T> dist(a, b - 1);\r\n     \
-    \   return dist(mt);\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n\
-    \    std::random_device rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 11 \"string/wildcard_pattern_matching.hpp\"\
+    \ 2 \"utility/random_number_generator.hpp\"\n\r\n#line 5 \"utility/random_number_generator.hpp\"\
+    \n#include <numeric>\r\n#include <random>\r\n#line 8 \"utility/random_number_generator.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator {\r\n    random_number_generator(int\
+    \ seed = -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\
+    \n    }\r\n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n   \
+    \ }\r\n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
+    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n    std::vector<int>\
+    \ get_permutation(int n) {\r\n        std::vector<int> p(n);\r\n        std::iota(p.begin(),\
+    \ p.end(), 0);\r\n        std::shuffle(p.begin(), p.end(), mt);\r\n        return\
+    \ p;\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n    std::random_device\
+    \ rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 11 \"string/wildcard_pattern_matching.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <char base = 'a', char wildcard = '*'>\nstd::vector<bool>\
     \ wildcard_pattern_matching_determistic(const std::string &s,\n              \
     \                                          const std::string &t) {\n    int n\
@@ -478,7 +481,7 @@ data:
   isVerificationFile: false
   path: string/wildcard_pattern_matching.hpp
   requiredBy: []
-  timestamp: '2024-05-26 14:01:36+09:00'
+  timestamp: '2024-08-06 16:15:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/string/Wildcard_Pattern_Matching.test.cpp

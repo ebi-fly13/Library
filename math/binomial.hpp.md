@@ -137,28 +137,28 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
-  - graph/count_directed_euler_trail.hpp
   - math/sum_of_exp_times_poly.hpp
-  - math/stirling_number_1st.hpp
   - math/catalan_convolution.hpp
+  - math/stirling_number_1st.hpp
+  - graph/count_directed_euler_trail.hpp
   - fps/shift_of_sampling_points_of_poly.hpp
   - fps/taylor_shift.hpp
   timestamp: '2024-07-27 23:45:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/graph/Counting_Eulerian_Circuits.test.cpp
-  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - test/math/Catalan_Convolution.test.cpp
-  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Negative_Binomial_Coefficient.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/aoj/aoj_3361.test.cpp
-  - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_2633.test.cpp
   - test/yuki/yuki_1796.test.cpp
+  - test/yuki/yuki_1302.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+  - test/math/Negative_Binomial_Coefficient.test.cpp
+  - test/math/Catalan_Convolution.test.cpp
+  - test/aoj/aoj_3361.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 title: Binomial Coefficient
