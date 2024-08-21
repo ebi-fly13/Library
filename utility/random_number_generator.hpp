@@ -1,7 +1,10 @@
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <numeric>
 #include <random>
+#include <vector>
 
 namespace ebi {
 
@@ -18,6 +21,13 @@ struct random_number_generator {
     template <class T> T get(T a, T b) {
         std::uniform_int_distribution<T> dist(a, b - 1);
         return dist(mt);
+    }
+
+    std::vector<int> get_permutation(int n) {
+        std::vector<int> p(n);
+        std::iota(p.begin(), p.end(), 0);
+        std::shuffle(p.begin(), p.end(), mt);
+        return p;
     }
 
   private:
