@@ -257,8 +257,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Counting_Eulerian_Circuits.test.cpp
-  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
 documentation_of: graph/count_spanning_tree.hpp
 layout: document
 title: Count Spanning Tree

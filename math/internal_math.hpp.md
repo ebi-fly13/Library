@@ -31,7 +31,7 @@ data:
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: fps/middle_product_arbitrary.hpp
-    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
+    title: $f^k \mod g$
   - icon: ':heavy_check_mark:'
     path: fps/ntt_friendly_fps.hpp
     title: Formal Power Series (NTT Friendly)
@@ -176,59 +176,59 @@ data:
   isVerificationFile: false
   path: math/internal_math.hpp
   requiredBy:
-  - convolution/arbitrary_convolution.hpp
   - convolution/convolution.hpp
   - convolution/convolution_2d.hpp
-  - convolution/ntt.hpp
+  - convolution/arbitrary_convolution.hpp
   - convolution/convolution_mod_2_64.hpp
+  - convolution/ntt.hpp
   - string/wildcard_pattern_matching.hpp
-  - fps/ntt_friendly_fps.hpp
   - fps/middle_product_arbitrary.hpp
-  - fps/arbitrary_mod_fps.hpp
   - fps/compositional_inverse_of_fps_old.hpp
+  - fps/ntt_friendly_fps.hpp
+  - fps/arbitrary_mod_fps.hpp
   - fps/middle_product.hpp
   - fps/composition_of_fps.hpp
   timestamp: '2023-08-31 02:52:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/convolution/Convolution_2D.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
+  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Division_of_Polynomials.test.cpp
   - test/convolution/Convolution.test.cpp
-  - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/convolution/Convolution_2D.test.cpp
   - test/convolution/Convolution_Mod_2_64.test.cpp
-  - test/yuki/yuki_1857.test.cpp
-  - test/yuki/yuki_1145.test.cpp
+  - test/convolution/Convolution_Mod_1000000007.test.cpp
+  - test/string/Wildcard_Pattern_Matching.test.cpp
+  - test/math/Catalan_Convolution.test.cpp
+  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
+  - test/math/Partition_Function_FPS.test.cpp
+  - test/math/Partition_Function_Pentagonal.test.cpp
+  - test/math/Berunoulli_Number.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
+  - test/math/Sharp_P_Subset_Sum.test.cpp
+  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
+  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/yuki/yuki_1112.test.cpp
   - test/yuki/yuki_1796.test.cpp
   - test/yuki/yuki_1302.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Division_of_Polynomials.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
-  - test/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/polynomial/Log_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series_Sparse.test.cpp
-  - test/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
-  - test/polynomial/Inv_of_Formal_Power_Series.test.cpp
-  - test/math/Stirling_Number_of_the_First_Kind.test.cpp
-  - test/math/Partition_Function_FPS.test.cpp
-  - test/math/Berunoulli_Number.test.cpp
-  - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/math/Stirling_Number_of_the_Second_Kind.test.cpp
-  - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Sharp_P_Subset_Sum.test.cpp
-  - test/math/Partition_Function_Pentagonal.test.cpp
-  - test/math/Catalan_Convolution.test.cpp
-  - test/string/Wildcard_Pattern_Matching.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+  - test/yuki/yuki_1145.test.cpp
+  - test/yuki/yuki_1857.test.cpp
 documentation_of: math/internal_math.hpp
 layout: document
 redirect_from:

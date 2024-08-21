@@ -109,8 +109,8 @@ data:
   timestamp: '2023-12-28 15:52:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Static_Range_Frequency.test.cpp
   - test/data_structure/Range_Kth_Smallest.test.cpp
+  - test/data_structure/Static_Range_Frequency.test.cpp
 documentation_of: data_structure/bitVector.hpp
 layout: document
 redirect_from:
