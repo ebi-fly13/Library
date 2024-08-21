@@ -8,9 +8,10 @@ namespace ebi {
 struct dsu {
   private:
     std::vector<int> par;
+    int c;
 
   public:
-    dsu(int n = 0) : par(n, -1) {}
+    dsu(int n = 0) : par(n, -1), c(n) {}
 
     bool same(int x, int y) {
         return leader(x) == leader(y);
@@ -23,6 +24,7 @@ struct dsu {
         if (par[x] > par[y]) std::swap(x, y);
         par[x] += par[y];
         par[y] = x;
+        c--;
         return true;
     }
 
@@ -37,11 +39,7 @@ struct dsu {
         return -par[leader(x)];
     }
 
-    int count_group() {
-        int c = 0;
-        for (int i = 0; i < int(par.size()); i++) {
-            if (par[i] < 0) c++;
-        }
+    int count_group() const {
         return c;
     }
 
