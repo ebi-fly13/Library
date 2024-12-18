@@ -5,14 +5,15 @@
 
 namespace ebi {
 
-template <class T> std::vector<int> cartesian_tree(const std::vector<T> &a) {
+template <class T, class Compare = std::less<T>>
+std::vector<int> cartesian_tree(const std::vector<T> &a) {
     int n = a.size();
     std::vector<int> par(n, -1);
     std::vector<int> stack;
     stack.reserve(n);
     for (int i : std::views::iota(0, n)) {
         int prev = -1;
-        while (!stack.empty() && a[i] < a[stack.back()]) {
+        while (!stack.empty() && Compare()(a[i], a[stack.back()])) {
             prev = stack.back();
             stack.pop_back();
         }
