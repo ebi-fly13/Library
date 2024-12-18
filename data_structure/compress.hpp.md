@@ -79,19 +79,19 @@ data:
   path: data_structure/compress.hpp
   requiredBy:
   - math/inversion_number.hpp
-  - data_structure/offline_segtree_2d.hpp
-  - data_structure/area_of_union_of_rectangles.hpp
-  - data_structure/offline_dual_segtree_2d.hpp
   - data_structure/static_rectangle_sum.hpp
+  - data_structure/offline_segtree_2d.hpp
+  - data_structure/offline_dual_segtree_2d.hpp
+  - data_structure/area_of_union_of_rectangles.hpp
   timestamp: '2024-02-25 23:03:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Inversion_Number.test.cpp
+  - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
+  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Static_Rectangle_Sum.test.cpp
-  - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
   - test/data_structure/Static_Range_Inversion_Query.test.cpp
-  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
   - test/data_structure/Rectangle_Sum_Segtree.test.cpp
   - test/geometry/segment_intersection.test.cpp
 documentation_of: data_structure/compress.hpp

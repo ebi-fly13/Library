@@ -71,8 +71,8 @@ data:
   path: set_function/ranked_subset_transform.hpp
   requiredBy:
   - convolution/subset_convolution.hpp
-  - set_function/egf_composite_sps.hpp
   - set_function/exp_of_sps.hpp
+  - set_function/egf_composite_sps.hpp
   - set_function/poly_composite_sps.hpp
   timestamp: '2023-10-31 00:17:11+09:00'
   verificationStatus: LIBRARY_ALL_AC

@@ -38,22 +38,23 @@ data:
   bundledCode: "#line 1 \"test/tree/Cartesian_Tree.test.cpp\"\n#define PROBLEM \"\
     https://judge.yosupo.jp/problem/cartesian_tree\"\n\n#line 2 \"tree/cartesian_tree.hpp\"\
     \n\n#include <ranges>\n#include <vector>\n\nnamespace ebi {\n\ntemplate <class\
-    \ T> std::vector<int> cartesian_tree(const std::vector<T> &a) {\n    int n = a.size();\n\
-    \    std::vector<int> par(n, -1);\n    std::vector<int> stack;\n    stack.reserve(n);\n\
-    \    for (int i : std::views::iota(0, n)) {\n        int prev = -1;\n        while\
-    \ (!stack.empty() && a[i] < a[stack.back()]) {\n            prev = stack.back();\n\
-    \            stack.pop_back();\n        }\n        if (prev != -1) {\n       \
-    \     par[prev] = i;\n        }\n        if (!stack.empty()) {\n            par[i]\
-    \ = stack.back();\n        }\n        stack.push_back(i);\n    }\n    return par;\n\
-    }\n\n}  // namespace ebi\n#line 4 \"test/tree/Cartesian_Tree.test.cpp\"\n\n#line\
-    \ 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i, a, n)\
-    \ for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int i\
-    \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
-    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
-    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
-    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
-    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
-    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    \ T, class Compare = std::less<T>>\nstd::vector<int> cartesian_tree(const std::vector<T>\
+    \ &a) {\n    int n = a.size();\n    std::vector<int> par(n, -1);\n    std::vector<int>\
+    \ stack;\n    stack.reserve(n);\n    for (int i : std::views::iota(0, n)) {\n\
+    \        int prev = -1;\n        while (!stack.empty() && Compare()(a[i], a[stack.back()]))\
+    \ {\n            prev = stack.back();\n            stack.pop_back();\n       \
+    \ }\n        if (prev != -1) {\n            par[prev] = i;\n        }\n      \
+    \  if (!stack.empty()) {\n            par[i] = stack.back();\n        }\n    \
+    \    stack.push_back(i);\n    }\n    return par;\n}\n\n}  // namespace ebi\n#line\
+    \ 4 \"test/tree/Cartesian_Tree.test.cpp\"\n\n#line 1 \"template/template.hpp\"\
+    \n#include <bits/stdc++.h>\n\n#define rep(i, a, n) for (int i = (int)(a); i <\
+    \ (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
+    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
+    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
+    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
+    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
+    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
+    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
@@ -174,7 +175,7 @@ data:
   isVerificationFile: true
   path: test/tree/Cartesian_Tree.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2024-12-19 02:29:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Cartesian_Tree.test.cpp

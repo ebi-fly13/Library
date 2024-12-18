@@ -316,8 +316,8 @@ data:
   timestamp: '2024-05-24 18:44:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
   - test/polynomial/Compositional_Inverse_of_Formal_Power_Series.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
 documentation_of: fps/composition_of_fps.hpp
 layout: document
 title: $f(g(x))$ ( $O(N\log^2{N})$ )

@@ -69,8 +69,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Find_Linear_Recurrence.test.cpp
-  - test/yuki/yuki_1112.test.cpp
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - test/yuki/yuki_1112.test.cpp
 documentation_of: fps/berlekamp_massey.hpp
 layout: document
 title: Berlekamp Massey
