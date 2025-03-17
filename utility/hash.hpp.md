@@ -11,13 +11,10 @@ data:
     path: utility/random_number_generator.hpp
     title: Random Number Generator
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: tree/rooted_tree_hash.hpp
-    title: Rooted Tree Hash
+    title: tree/rooted_tree_hash.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/aoj/aoj_2444.test.cpp
-    title: test/aoj/aoj_2444.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
@@ -186,7 +183,6 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-  - test/aoj/aoj_2444.test.cpp
 documentation_of: utility/hash.hpp
 layout: document
 title: Hash structure

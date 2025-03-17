@@ -17,9 +17,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: tree/rooted_tree_hash.hpp
-    title: Rooted Tree Hash
+    title: tree/rooted_tree_hash.hpp
+  - icon: ':heavy_check_mark:'
+    path: tree/subtree_hash.hpp
+    title: Subtree Hash
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
@@ -83,6 +86,7 @@ data:
   path: utility/random_number_generator.hpp
   requiredBy:
   - matrix/black_box_linear_algebra.hpp
+  - tree/subtree_hash.hpp
   - tree/rooted_tree_hash.hpp
   - string/wildcard_pattern_matching.hpp
   - string/rolling_hash.hpp

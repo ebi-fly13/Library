@@ -14,6 +14,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/lca_based_auxiliary_tree.hpp
     title: LCA based Auxiliary Tree
+  - icon: ':heavy_check_mark:'
+    path: tree/rerooting.hpp
+    title: Rerooting DP
+  - icon: ':heavy_check_mark:'
+    path: tree/subtree_hash.hpp
+    title: Subtree Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
@@ -33,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree_HLD.test.cpp
     title: test/tree/Jump_on_Tree_HLD.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+    title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Tree_Path_Composite_Sum.test.cpp
+    title: test/tree/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
     title: test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
@@ -281,13 +293,17 @@ data:
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy:
+  - tree/rerooting.hpp
   - tree/lca_based_auxiliary_tree.hpp
   - tree/dsu_on_tree.hpp
+  - tree/subtree_hash.hpp
   timestamp: '2024-06-18 15:22:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
   - test/tree/Jump_on_Tree_HLD.test.cpp
+  - test/tree/Tree_Path_Composite_Sum.test.cpp
+  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/aoj/aoj_2450.test.cpp
   - test/aoj/aoj_2995.test.cpp
   - test/data_structure/Vertex_Add_Subtree_Sum.test.cpp

@@ -29,6 +29,9 @@ data:
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
+    path: tree/heavy_light_decomposition.hpp
+    title: Heavy Light Decomposition
+  - icon: ':heavy_check_mark:'
     path: tree/rerooting.hpp
     title: Rerooting DP
   _extendedRequiredBy: []
@@ -201,58 +204,154 @@ data:
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
     \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"tree/rerooting.hpp\"\n\n#line\
-    \ 6 \"tree/rerooting.hpp\"\n\n#line 8 \"tree/rerooting.hpp\"\n\nnamespace ebi\
-    \ {\n\ntemplate <class V, class E, class T, class ID, class MERGE, class PUT_EDGE,\n\
-    \          class PUT_ROOT>\nstd::vector<V> rerooting_dp(Graph<T> g, const ID &e,\
-    \ const MERGE &merge,\n                            const PUT_EDGE &put_edge,\n\
-    \                            const PUT_ROOT &put_root) {\n    int n = g.node_number();\n\
-    \    std::vector<V> dp(n);\n    std::vector outs(n, std::vector<E>());\n    auto\
-    \ dfs_sub = [&](auto &&self, int v, int par = -1) -> V {\n        E ret = e();\n\
-    \        for (auto &edge : g[v]) {\n            if (edge.to == par && g[v].back().to\
-    \ != par) {\n                std::swap(edge, g[v].back());\n            }\n  \
-    \          if (edge.to == par) continue;\n            E val = put_edge(edge.id,\
-    \ self(self, edge.to, v));\n            outs[v].emplace_back(val);\n         \
-    \   ret = merge(ret, val);\n        }\n        return put_root(v, ret);\n    };\n\
-    \    dfs_sub(dfs_sub, 0);\n    auto dfs_all = [&](auto &&self, int v, int par,\
-    \ E rev) -> void {\n        int sz = outs[v].size();\n        std::vector<E> lcum(sz\
-    \ + 1, e()), rcum(sz + 1, e());\n        for (int i = 0; i < sz; i++) {\n    \
-    \        lcum[i + 1] = merge(lcum[i], outs[v][i]);\n            rcum[sz - i -\
-    \ 1] = merge(outs[v][sz - i - 1], rcum[sz - i]);\n        }\n        for (int\
-    \ i = 0; i < sz; i++) {\n            auto edge = g[v][i];\n            E ret =\
-    \ put_edge(\n                edge.id, put_root(v, merge(merge(lcum[i], rcum[i\
-    \ + 1]), rev)));\n            self(self, edge.to, v, ret);\n        }\n      \
-    \  dp[v] = put_root(v, merge(lcum[sz], rev));\n    };\n    dfs_all(dfs_all, 0,\
-    \ -1, e());\n    return dp;\n}\n\n}  // namespace ebi\n#line 6 \"test/tree/Tree_Path_Composite_Sum.test.cpp\"\
-    \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nstruct V {\n    mint a;\n\
-    \    int cnt;\n};\n\nusing E = V;\n\nvoid main_() {\n    int n;\n    std::cin\
-    \ >> n;\n    Graph<std::pair<mint, mint>> g(n);\n    std::vector<mint> a(n);\n\
-    \    std::cin >> a;\n    rep(i, 0, n - 1) {\n        int u, v;\n        mint b,\
-    \ c;\n        std::cin >> u >> v >> b >> c;\n        g.add_undirected_edge(u,\
-    \ v, {b, c});\n    }\n    g.build();\n    auto e = [&]() -> E { return {0, 0};\
-    \ };\n    auto merge = [&](E s, E t) -> E { return {s.a + t.a, s.cnt + t.cnt};\
-    \ };\n    auto put_edge = [&](int id, V s) -> E {\n        auto [b, c] = g.get_edge(id).cost;\n\
-    \        return {b * s.a + c * s.cnt, s.cnt};\n    };\n    auto put_root = [&](int\
-    \ v, E s) -> V { return {s.a + a[v], s.cnt + 1}; };\n    auto dp = rerooting_dp<V,\
-    \ E>(g, e, merge, put_edge, put_root);\n    rep(i, 0, n) {\n        std::cout\
-    \ << dp[i].a << \" \\n\"[i == n - 1];\n    }\n}\n\n}  // namespace ebi\n\nint\
-    \ main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while\
-    \ (t--) {\n        ebi::main_();\n    }\n    return 0;\n}\n"
+    \ 6 \"tree/rerooting.hpp\"\n\n#line 2 \"tree/heavy_light_decomposition.hpp\"\n\
+    \n#line 6 \"tree/heavy_light_decomposition.hpp\"\n\n#line 8 \"tree/heavy_light_decomposition.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> struct heavy_light_decomposition {\n\
+    \  private:\n    void dfs_sz(int v) {\n        for (auto &e : g[v]) {\n      \
+    \      if (e.to == par[v]) continue;\n            par[e.to] = v;\n           \
+    \ depth_[e.to] = depth_[v] + 1;\n            dist[e.to] = dist[v] + e.cost;\n\
+    \            dfs_sz(e.to);\n            sz[v] += sz[e.to];\n            if (sz[e.to]\
+    \ > sz[g[v][0].to] || g[v][0].to == par[v])\n                std::swap(e, g[v][0]);\n\
+    \        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n     \
+    \   rev[in[v]] = v;\n        for (auto e : g[v]) {\n            if (e.to == par[v])\
+    \ continue;\n            nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);\n \
+    \           dfs_hld(e.to);\n        }\n        out[v] = num;\n    }\n\n    //\
+    \ [u, v) \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
+    \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
+    \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
+    \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
+    \ in[v] + 1);\n        return res;\n    }\n\n    // (u, v] \u30D1\u30B9\u306E\u53D6\
+    \u5F97 (u \u306F v \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> descend(int\
+    \ u, int v) const {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v])\
+    \ return {{in[u] + 1, in[v]}};\n        auto res = descend(u, par[nxt[v]]);\n\
+    \        res.emplace_back(in[nxt[v]], in[v]);\n        return res;\n    }\n\n\
+    \  public:\n    heavy_light_decomposition(const Graph<T> &gh, int root_ = 0)\n\
+    \        : n(gh.size()),\n          root(root_),\n          g(gh),\n         \
+    \ sz(n, 1),\n          in(n),\n          out(n),\n          nxt(n),\n        \
+    \  par(n, -1),\n          depth_(n, 0),\n          rev(n),\n          dist(n,\
+    \ 0) {\n        nxt[root] = root;\n        dfs_sz(root);\n        dfs_hld(root);\n\
+    \    }\n\n    int idx(int u) const {\n        return in[u];\n    }\n\n    int\
+    \ rev_idx(int i) const {\n        return rev[i];\n    }\n\n    int la(int v, int\
+    \ k) const {\n        while (1) {\n            int u = nxt[v];\n            if\
+    \ (in[u] <= in[v] - k) return rev[in[v] - k];\n            k -= in[v] - in[u]\
+    \ + 1;\n            v = par[u];\n        }\n    }\n\n    int lca(int u, int v)\
+    \ const {\n        while (nxt[u] != nxt[v]) {\n            if (in[u] < in[v])\
+    \ std::swap(u, v);\n            u = par[nxt[u]];\n        }\n        return depth_[u]\
+    \ < depth_[v] ? u : v;\n    }\n\n    int jump(int s, int t, int i) const {\n \
+    \       if (i == 0) return s;\n        int l = lca(s, t);\n        int d = depth_[s]\
+    \ + depth_[t] - depth_[l] * 2;\n        if (d < i) return -1;\n        if (depth_[s]\
+    \ - depth_[l] >= i) return la(s, i);\n        i = d - i;\n        return la(t,\
+    \ i);\n    }\n\n    std::vector<int> path(int s, int t) const {\n        int l\
+    \ = lca(s, t);\n        std::vector<int> a, b;\n        for (; s != l; s = par[s])\
+    \ a.emplace_back(s);\n        for (; t != l; t = par[t]) b.emplace_back(t);\n\
+    \        a.emplace_back(l);\n        std::reverse(b.begin(), b.end());\n     \
+    \   a.insert(a.end(), b.begin(), b.end());\n        return a;\n    }\n\n    int\
+    \ root_of_heavy_path(int u) const {\n        return nxt[u];\n    }\n\n    int\
+    \ parent(int u) const {\n        return par[u];\n    }\n\n    T distance(int u,\
+    \ int v) const {\n        return dist[u] + dist[v] - 2 * dist[lca(u, v)];\n  \
+    \  }\n\n    T distance_from_root(int v) const {\n        return dist[v];\n   \
+    \ }\n\n    T depth(int v) const {\n        return depth_[v];\n    }\n\n    bool\
+    \ at_path(int u, int v, int s) const {\n        return distance(u, v) == distance(u,\
+    \ s) + distance(s, v);\n    }\n\n    std::pair<int, int> subtree_section(int v)\
+    \ const {\n        return {in[v], out[v]};\n    }\n\n    bool is_subtree(int u,\
+    \ int v) const {\n        return in[u] <= in[v] && in[v] < out[u];\n    }\n\n\
+    \    template <class F>\n    void path_noncommutative_query(int u, int v, bool\
+    \ vertex,\n                                   const F &f) const {\n        int\
+    \ l = lca(u, v);\n        for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n    \
+    \    if (vertex) f(in[l], in[l] + 1);\n        for (auto [a, b] : descend(l, v))\
+    \ f(a, b + 1);\n    }\n\n    std::vector<std::pair<int, int>> path_sections(int\
+    \ u, int v,\n                                                   bool vertex) const\
+    \ {\n        int l = lca(u, v);\n        std::vector<std::pair<int, int>> sections;\n\
+    \        for (auto [a, b] : ascend(u, l)) sections.emplace_back(a + 1, b);\n \
+    \       if (vertex) sections.emplace_back(in[l], in[l] + 1);\n        for (auto\
+    \ [a, b] : descend(l, v)) sections.emplace_back(a, b + 1);\n        return sections;\n\
+    \    }\n\n    template <class F>\n    int max_path(int u, int v, bool vertex,\
+    \ F binary_search) const {\n        int prev = -1;\n        int l = lca(u, v);\n\
+    \        for (auto [a, b] : ascend(u, l)) {\n            a++;\n            int\
+    \ m = binary_search(a, b);\n            if (m == b) {\n                prev =\
+    \ rev[b];\n            } else {\n                return (m == a ? prev : rev[m]);\n\
+    \            }\n        }\n        if (vertex) {\n            int m = binary_search(in[l],\
+    \ in[l] + 1);\n            if (m == in[l]) {\n                return prev;\n \
+    \           } else {\n                prev = l;\n            }\n        }\n  \
+    \      for (auto [a, b] : descend(l, v)) {\n            b++;\n            int\
+    \ m = binary_search(a, b);\n            if (m == b) {\n                prev =\
+    \ rev[b - 1];\n            } else {\n                return m == a ? prev : rev[m\
+    \ - 1];\n            }\n        }\n        return v;\n    }\n\n    template <class\
+    \ F> void subtree_query(int u, bool vertex, const F &f) {\n        f(in[u] + int(!vertex),\
+    \ out[u]);\n    }\n\n    const std::vector<int> &dfs_order() const {\n       \
+    \ return rev;\n    }\n\n    template <class ADD, class QUERY, class CLEAR, class\
+    \ RESET>\n    void dsu_on_tree(const ADD &add, const QUERY &query, const CLEAR\
+    \ &clear,\n                     const RESET &reset) const;\n\n    std::vector<std::pair<int,\
+    \ int>> lca_based_auxiliary_tree_dfs_order(\n        std::vector<int> vs) const;\n\
+    \n    std::pair<std::vector<int>, Graph<T>> lca_based_auxiliary_tree(\n      \
+    \  std::vector<int> vs) const;\n\n  private:\n    int n, root;\n    Graph<T> g;\n\
+    \    std::vector<int> sz, in, out, nxt, par, depth_, rev;\n    std::vector<T>\
+    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 9 \"tree/rerooting.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T, class V> struct rerooting_dp {\n   \
+    \ template <class MERGE, class PUT_EDGE, class PUT_ROOT>\n    rerooting_dp(const\
+    \ Graph<T> &tree, const V e, const MERGE &merge,\n                 const PUT_EDGE\
+    \ &put_edge, const PUT_ROOT &put_root)\n        : n(tree.node_number()),\n   \
+    \       hld(tree),\n          full_tree_dp(n, e),\n          child_dp(n, e),\n\
+    \          parent_dp(n, e) {\n        auto dfs_sub = [&](auto &&self, int v, int\
+    \ par = -1) -> void {\n            for (const auto &edge : tree[v]) {\n      \
+    \          if (edge.to == par) continue;\n                self(self, edge.to,\
+    \ v);\n                child_dp[v] =\n                    merge(child_dp[v], put_edge(edge,\
+    \ child_dp[edge.to]));\n            }\n            child_dp[v] = put_root(v, child_dp[v]);\n\
+    \        };\n        dfs_sub(dfs_sub, 0);\n        auto dfs_all = [&](auto &&self,\
+    \ int v, int par = -1) -> void {\n            std::vector<int> ch;\n         \
+    \   std::vector<V> dp;\n            V ret = e;\n            for (const auto &edge\
+    \ : tree[v]) {\n                if (edge.to == par) {\n                    ret\
+    \ = put_edge(edge, parent_dp[v]);\n                } else {\n                \
+    \    ch.emplace_back(edge.to);\n                    dp.emplace_back(put_edge(edge,\
+    \ child_dp[edge.to]));\n                }\n            }\n            int sz =\
+    \ (int)ch.size();\n            if (ch.empty()) {\n                full_tree_dp[v]\
+    \ = put_root(v, ret);\n                return;\n            }\n            std::vector<V>\
+    \ lcum(sz, ret);\n            for (int i = 0; i < sz - 1; i++) {\n           \
+    \     lcum[i + 1] = merge(lcum[i], dp[i]);\n            }\n            V rcum\
+    \ = e;\n            for (int i = sz - 1; i >= 0; i--) {\n                parent_dp[ch[i]]\
+    \ = put_root(v, merge(lcum[i], rcum));\n                rcum = merge(rcum, dp[i]);\n\
+    \            }\n            for (int i = 0; i < sz; i++) {\n                self(self,\
+    \ ch[i], v);\n            }\n            full_tree_dp[v] = put_root(v, merge(rcum,\
+    \ ret));\n        };\n        dfs_all(dfs_all, 0);\n    }\n\n    V get(int v)\
+    \ const {\n        return get(v, v);\n    }\n\n    V get(int v, int root) const\
+    \ {\n        if (root == v) return full_tree_dp[v];\n        if (!hld.is_subtree(v,\
+    \ root)) {\n            return child_dp[v];\n        }\n        return parent_dp[hld.jump(v,\
+    \ root, 1)];\n    }\n\n    std::vector<V> get_full_dp() const {\n        return\
+    \ full_tree_dp;\n    }\n\n  private:\n    int n;\n    heavy_light_decomposition<T>\
+    \ hld;\n    std::vector<V> full_tree_dp;\n    std::vector<V> child_dp;\n    std::vector<V>\
+    \ parent_dp;\n};\n\n}  // namespace ebi\n#line 6 \"test/tree/Tree_Path_Composite_Sum.test.cpp\"\
+    \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    int\
+    \ n;\n    std::cin >> n;\n    Graph<int> g(n);\n    std::vector<std::pair<mint,\
+    \ mint>> edges;\n    std::vector<mint> a(n);\n    std::cin >> a;\n    rep(i, 0,\
+    \ n - 1) {\n        int u, v;\n        mint b, c;\n        std::cin >> u >> v\
+    \ >> b >> c;\n        g.add_undirected_edge(u, v, 1);\n        edges.emplace_back(b,\
+    \ c);\n    }\n    g.build();\n    using V = std::pair<mint, mint>;\n    auto merge\
+    \ = [&](V x, V y) -> V {\n        return {x.first + y.first, x.second + y.second};\n\
+    \    };\n    auto put_edge = [&](Graph<int>::edge_type e, V x) -> V {\n      \
+    \  auto [b, c] = edges[e.id];\n        return {b * x.first + c * x.second, x.second};\n\
+    \    };\n    auto put_root = [&](int v, V x) -> V {\n        return {x.first +\
+    \ a[v], x.second + 1};\n    };\n    rerooting_dp dp(g, V{0, 0}, merge, put_edge,\
+    \ put_root);\n    rep(i, 0, n) {\n        std::cout << dp.get(i).first << \" \\\
+    n\"[i == n - 1];\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    return 0;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
     \n\n#include \"../../modint/modint.hpp\"\n#include \"../../template/template.hpp\"\
     \n#include \"../../tree/rerooting.hpp\"\n\nnamespace ebi {\n\nusing mint = modint998244353;\n\
-    \nstruct V {\n    mint a;\n    int cnt;\n};\n\nusing E = V;\n\nvoid main_() {\n\
-    \    int n;\n    std::cin >> n;\n    Graph<std::pair<mint, mint>> g(n);\n    std::vector<mint>\
-    \ a(n);\n    std::cin >> a;\n    rep(i, 0, n - 1) {\n        int u, v;\n     \
-    \   mint b, c;\n        std::cin >> u >> v >> b >> c;\n        g.add_undirected_edge(u,\
-    \ v, {b, c});\n    }\n    g.build();\n    auto e = [&]() -> E { return {0, 0};\
-    \ };\n    auto merge = [&](E s, E t) -> E { return {s.a + t.a, s.cnt + t.cnt};\
-    \ };\n    auto put_edge = [&](int id, V s) -> E {\n        auto [b, c] = g.get_edge(id).cost;\n\
-    \        return {b * s.a + c * s.cnt, s.cnt};\n    };\n    auto put_root = [&](int\
-    \ v, E s) -> V { return {s.a + a[v], s.cnt + 1}; };\n    auto dp = rerooting_dp<V,\
-    \ E>(g, e, merge, put_edge, put_root);\n    rep(i, 0, n) {\n        std::cout\
-    \ << dp[i].a << \" \\n\"[i == n - 1];\n    }\n}\n\n}  // namespace ebi\n\nint\
-    \ main() {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while\
-    \ (t--) {\n        ebi::main_();\n    }\n    return 0;\n}"
+    \nvoid main_() {\n    int n;\n    std::cin >> n;\n    Graph<int> g(n);\n    std::vector<std::pair<mint,\
+    \ mint>> edges;\n    std::vector<mint> a(n);\n    std::cin >> a;\n    rep(i, 0,\
+    \ n - 1) {\n        int u, v;\n        mint b, c;\n        std::cin >> u >> v\
+    \ >> b >> c;\n        g.add_undirected_edge(u, v, 1);\n        edges.emplace_back(b,\
+    \ c);\n    }\n    g.build();\n    using V = std::pair<mint, mint>;\n    auto merge\
+    \ = [&](V x, V y) -> V {\n        return {x.first + y.first, x.second + y.second};\n\
+    \    };\n    auto put_edge = [&](Graph<int>::edge_type e, V x) -> V {\n      \
+    \  auto [b, c] = edges[e.id];\n        return {b * x.first + c * x.second, x.second};\n\
+    \    };\n    auto put_root = [&](int v, V x) -> V {\n        return {x.first +\
+    \ a[v], x.second + 1};\n    };\n    rerooting_dp dp(g, V{0, 0}, merge, put_edge,\
+    \ put_root);\n    rep(i, 0, n) {\n        std::cout << dp.get(i).first << \" \\\
+    n\"[i == n - 1];\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
+    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
+    \    }\n    return 0;\n}"
   dependsOn:
   - modint/modint.hpp
   - modint/base.hpp
@@ -264,10 +363,11 @@ data:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   - tree/rerooting.hpp
+  - tree/heavy_light_decomposition.hpp
   isVerificationFile: true
   path: test/tree/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-06-10 19:51:09+09:00'
+  timestamp: '2025-03-18 00:43:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Tree_Path_Composite_Sum.test.cpp

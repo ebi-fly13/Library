@@ -104,12 +104,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/rerooting.hpp
     title: Rerooting DP
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: tree/rooted_tree_hash.hpp
-    title: Rooted Tree Hash
+    title: tree/rooted_tree_hash.hpp
   - icon: ':heavy_check_mark:'
     path: tree/static_top_tree.hpp
     title: Static Top Tree
+  - icon: ':heavy_check_mark:'
+    path: tree/subtree_hash.hpp
+    title: Subtree Hash
   - icon: ':heavy_check_mark:'
     path: tree/tree_diameter.hpp
     title: Tree Diameter
@@ -515,6 +518,7 @@ data:
   - tree/lca_based_auxiliary_tree.hpp
   - tree/dsu_on_tree.hpp
   - tree/block_cut_tree.hpp
+  - tree/subtree_hash.hpp
   - tree/static_top_tree.hpp
   - tree/lowest_common_ancestor.hpp
   - tree/rooted_tree_hash.hpp

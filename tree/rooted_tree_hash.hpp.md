@@ -20,13 +20,10 @@ data:
     path: utility/random_number_generator.hpp
     title: Random Number Generator
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-    title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/rooted_tree_hash.hpp\"\n\n#include <vector>\n\n#line\
@@ -242,22 +239,12 @@ data:
   path: tree/rooted_tree_hash.hpp
   requiredBy: []
   timestamp: '2024-08-06 16:15:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: tree/rooted_tree_hash.hpp
 layout: document
-title: Rooted Tree Hash
+redirect_from:
+- /library/tree/rooted_tree_hash.hpp
+- /library/tree/rooted_tree_hash.hpp.html
+title: tree/rooted_tree_hash.hpp
 ---
-
-## 説明
-
-根付き木のハッシュを計算する。木の同型判定に活用できる。
-
-## subtree_hash(graph g, int root)
-
-根を root として各部分木のハッシュを計算する。 $O(N)$
-
-## basis()
-
-各深さに割り当てられたランダムな値を返す。

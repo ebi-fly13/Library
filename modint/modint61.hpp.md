@@ -14,9 +14,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: tree/rooted_tree_hash.hpp
-    title: Rooted Tree Hash
+    title: tree/rooted_tree_hash.hpp
+  - icon: ':heavy_check_mark:'
+    path: tree/subtree_hash.hpp
+    title: Subtree Hash
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
@@ -129,6 +132,7 @@ data:
   isVerificationFile: false
   path: modint/modint61.hpp
   requiredBy:
+  - tree/subtree_hash.hpp
   - tree/rooted_tree_hash.hpp
   - string/rolling_hash.hpp
   - monoid/rolling_hash_monoid.hpp
