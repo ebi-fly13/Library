@@ -16,7 +16,7 @@ std::ostream& operator<<(std::ostream& os, std::vector<T> vec) {
 }
 
 #include "../../data_structure/segtree.hpp"
-#include "data_structure/undo_unionfind.hpp"
+#include "../../data_structure/undo_unionfind.hpp"
 
 namespace ebi {
 

@@ -24,11 +24,13 @@ template <class E> struct Graph {
     Graph() = default;
 
     void add_edge(int u, int v, cost_type c) {
+        assert(!prepared && u < n && v < n);
         buff.emplace_back(u, edge_type{u, v, c, m});
         edges.emplace_back(edge_type{u, v, c, m++});
     }
 
     void add_undirected_edge(int u, int v, cost_type c) {
+        assert(!prepared && u < n && v < n);
         buff.emplace_back(u, edge_type{u, v, c, m});
         buff.emplace_back(v, edge_type{v, u, c, m});
         edges.emplace_back(edge_type{u, v, c, m});
@@ -95,24 +97,28 @@ template <class E> struct Graph {
     }
 
     edge_type get_edge(int i) const {
+        assert(prepared);
         return edges[i];
     }
 
     std::vector<edge_type> get_edges() const {
+        assert(!prepared);
         return edges;
     }
 
     const auto operator[](int i) const {
+        assert(prepared);
         return csr[i];
     }
     auto operator[](int i) {
+        assert(prepared);
         return csr[i];
     }
 
   private:
     int n, m = 0;
 
-    std::vector<std::pair<int,edge_type>> buff;
+    std::vector<std::pair<int, edge_type>> buff;
 
     std::vector<edge_type> edges;
     simple_csr<edge_type> csr;
