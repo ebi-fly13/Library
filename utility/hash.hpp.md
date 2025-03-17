@@ -12,9 +12,6 @@ data:
     title: Random Number Generator
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: string/rolling_hash.hpp
-    title: Rolling Hash
-  - icon: ':heavy_check_mark:'
     path: tree/rooted_tree_hash.hpp
     title: Rooted Tree Hash
   _extendedVerifiedWith:
@@ -184,13 +181,12 @@ data:
   isVerificationFile: false
   path: utility/hash.hpp
   requiredBy:
-  - string/rolling_hash.hpp
   - tree/rooted_tree_hash.hpp
   timestamp: '2024-08-06 16:15:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_2444.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/aoj/aoj_2444.test.cpp
 documentation_of: utility/hash.hpp
 layout: document
 title: Hash structure

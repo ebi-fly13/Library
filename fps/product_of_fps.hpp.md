@@ -159,9 +159,9 @@ data:
   timestamp: '2024-05-24 14:53:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
   - test/yuki/yuki_1145.test.cpp
   - test/yuki/yuki_1857.test.cpp
-  - test/polynomial/Product_of_Polynomial_Sequence.test.cpp
 documentation_of: fps/product_of_fps.hpp
 layout: document
 title: $\prod f_i$

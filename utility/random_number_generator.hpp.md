@@ -9,6 +9,9 @@ data:
     path: matrix/black_box_linear_algebra.hpp
     title: Black Box Linear Algebra
   - icon: ':heavy_check_mark:'
+    path: monoid/rolling_hash_monoid.hpp
+    title: Rolling Hash Monoid
+  - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
   - icon: ':heavy_check_mark:'
@@ -80,23 +83,24 @@ data:
   path: utility/random_number_generator.hpp
   requiredBy:
   - matrix/black_box_linear_algebra.hpp
+  - tree/rooted_tree_hash.hpp
   - string/wildcard_pattern_matching.hpp
   - string/rolling_hash.hpp
+  - monoid/rolling_hash_monoid.hpp
   - graph/maximum_matching_size.hpp
-  - tree/rooted_tree_hash.hpp
   - utility/hash.hpp
   timestamp: '2024-08-06 16:15:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
+  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/convolution/Convolution_2D.test.cpp
   - test/math/Sum_of_Powers_Iota.test.cpp
   - test/math/Negative_Binomial_Coefficient.test.cpp
-  - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
-  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
-  - test/convolution/Convolution_2D.test.cpp
-  - test/yuki/yuki_1112.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/aoj/aoj_2444.test.cpp
-  - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+  - test/yuki/yuki_1112.test.cpp
 documentation_of: utility/random_number_generator.hpp
 layout: document
 title: Random Number Generator

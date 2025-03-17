@@ -101,8 +101,8 @@ data:
   timestamp: '2024-08-22 02:20:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
   - test/data_structure/Range_Parallel_Unionfind.test.cpp
+  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
 documentation_of: data_structure/range_parallel_dsu.hpp
 layout: document
 title: Range Parallel DSU

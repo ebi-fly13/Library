@@ -314,9 +314,9 @@ data:
   timestamp: '2024-03-13 15:52:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/yuki_1038.test.cpp
-  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+  - test/yuki/yuki_1038.test.cpp
 documentation_of: tree/contour_query_on_tree.hpp
 layout: document
 title: Contour Query on Tree

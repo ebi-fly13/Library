@@ -222,23 +222,23 @@ data:
   isVerificationFile: false
   path: matrix/base.hpp
   requiredBy:
-  - matrix/gauss_jordan.hpp
   - matrix/det_arbitrary_mod.hpp
+  - matrix/gauss_jordan.hpp
+  - graph/count_spanning_tree.hpp
   - graph/maximum_matching_size.hpp
   - graph/count_directed_euler_trail.hpp
-  - graph/count_spanning_tree.hpp
   timestamp: '2024-07-18 01:45:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/Determinant_of_Matrix_2.test.cpp
-  - test/matrix/Matrix_Product.test.cpp
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
-  - test/matrix/Rank_of_Matrix.test.cpp
+  - test/matrix/Inverse_Matrix.test.cpp
+  - test/matrix/Matrix_Product.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
+  - test/matrix/Rank_of_Matrix.test.cpp
+  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
   - test/graph/Counting_Spanning_Trees_Directed.test.cpp
   - test/graph/Counting_Eulerian_Circuits.test.cpp
-  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
 documentation_of: matrix/base.hpp
 layout: document
 redirect_from:

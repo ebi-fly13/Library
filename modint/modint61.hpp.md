@@ -9,6 +9,9 @@ data:
     path: graph/maximum_matching_size.hpp
     title: Maximum Matching Size
   - icon: ':heavy_check_mark:'
+    path: monoid/rolling_hash_monoid.hpp
+    title: Rolling Hash Monoid
+  - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
   - icon: ':heavy_check_mark:'
@@ -126,15 +129,16 @@ data:
   isVerificationFile: false
   path: modint/modint61.hpp
   requiredBy:
-  - string/rolling_hash.hpp
-  - graph/maximum_matching_size.hpp
   - tree/rooted_tree_hash.hpp
+  - string/rolling_hash.hpp
+  - monoid/rolling_hash_monoid.hpp
+  - graph/maximum_matching_size.hpp
   - utility/hash.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/aoj/aoj_2444.test.cpp
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  - test/aoj/aoj_2444.test.cpp
 documentation_of: modint/modint61.hpp
 layout: document
 redirect_from:

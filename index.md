@@ -262,7 +262,7 @@ data:
       title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
     - icon: ':heavy_check_mark:'
       path: fps/middle_product_arbitrary.hpp
-      title: $f^k \mod g$
+      title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
     - icon: ':heavy_check_mark:'
       path: fps/multipoint_evaluation.hpp
       title: Multipoint Evaluation
@@ -490,6 +490,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: modint/montgomery_modint.hpp
       title: modint/montgomery_modint.hpp
+  - name: monoid
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: monoid/rolling_hash_monoid.hpp
+      title: Rolling Hash Monoid
   - name: set_function
     pages:
     - icon: ':heavy_check_mark:'

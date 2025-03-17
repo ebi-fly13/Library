@@ -8,12 +8,12 @@ data:
     path: modint/modint61.hpp
     title: modint/modint61.hpp
   - icon: ':heavy_check_mark:'
-    path: monoid/rolling_hash_monoid.hpp
-    title: Rolling Hash Monoid
-  - icon: ':heavy_check_mark:'
     path: utility/random_number_generator.hpp
     title: Random Number Generator
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: string/rolling_hash.hpp
+    title: Rolling Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
@@ -22,15 +22,13 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links:
-    - https://qiita.com/keymoon/items/11fac5627672a6d6a9f6
-  bundledCode: "#line 2 \"string/rolling_hash.hpp\"\n\n#include <cassert>\n#include\
-    \ <vector>\n\n#line 2 \"monoid/rolling_hash_monoid.hpp\"\n\n#include <utility>\n\
-    \n#line 2 \"modint/modint61.hpp\"\n\n#line 4 \"modint/modint61.hpp\"\n#include\
-    \ <cstdint>\n#include <iostream>\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #line 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept\
-    \ Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n\
-    \    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
+    links: []
+  bundledCode: "#line 2 \"monoid/rolling_hash_monoid.hpp\"\n\n#include <utility>\n\
+    \n#line 2 \"modint/modint61.hpp\"\n\n#include <cassert>\n#include <cstdint>\n\
+    #include <iostream>\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line\
+    \ 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint\
+    \ = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n   \
+    \ a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
     };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
     \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
     \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
@@ -77,8 +75,8 @@ data:
     \ u64 res = au + ad;\n        if (res >= umod()) res -= umod();\n        return\
     \ res;\n    }\n};\n\n}  // namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\
     \n\r\n#include <algorithm>\r\n#line 5 \"utility/random_number_generator.hpp\"\n\
-    #include <numeric>\r\n#include <random>\r\n#line 8 \"utility/random_number_generator.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator {\r\n    random_number_generator(int\
+    #include <numeric>\r\n#include <random>\r\n#include <vector>\r\n\r\nnamespace\
+    \ ebi {\r\n\r\nstruct random_number_generator {\r\n    random_number_generator(int\
     \ seed = -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\
     \n    }\r\n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n   \
     \ }\r\n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
@@ -99,87 +97,39 @@ data:
     \    }\n\n    static modint61 get_base() {\n        static modint61 base = 0;\n\
     \        static random_number_generator rng;\n        while (base == 0) {\n  \
     \          base = rng.get<std::uint64_t>(2, modint61::mod());\n        }\n   \
-    \     return base;\n    }\n};\n\n}  // namespace ebi\n#line 7 \"string/rolling_hash.hpp\"\
-    \n\n/*\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\n\
-    */\n\nnamespace ebi {\n\nstruct rolling_hash {\n  private:\n  public:\n    rolling_hash(const\
-    \ std::string &s) {\n        prefix_hash.emplace_back(rolling_hash_monoid::e());\n\
-    \        for (auto c : s) {\n            prefix_hash.emplace_back(prefix_hash.back()\
-    \ + c);\n        }\n    }\n\n    template <class T> rolling_hash(const std::vector<T>\
-    \ &a) {\n        prefix_hash.emplace_back(rolling_hash_monoid::e());\n       \
-    \ for (auto x : a) {\n            prefix_hash.emplace_back(prefix_hash.back()\
-    \ + x);\n        }\n    }\n\n    rolling_hash_monoid get_prefix_hash(int r) const\
-    \ {\n        return prefix_hash[r];\n    }\n\n    rolling_hash_monoid get_hash(int\
-    \ l, int r) const {\n        assert(l <= r && r <= (int)prefix_hash.size());\n\
-    \        modint61 base_pow = prefix_hash[r - l].first;\n        return {base_pow,\n\
-    \                prefix_hash[r].second - prefix_hash[l].second * base_pow};\n\
-    \    }\n\n    rolling_hash &operator+=(const rolling_hash &rhs) noexcept {\n \
-    \       rolling_hash_monoid lhs = prefix_hash.back();\n        for (int i = 1;\
-    \ i <= (int)rhs.prefix_hash.size(); i++) {\n            prefix_hash.emplace_back(lhs\
-    \ + rhs.prefix_hash[i]);\n        }\n        return *this;\n    }\n\n    rolling_hash\
-    \ operator+(const rolling_hash &rhs) noexcept {\n        return rolling_hash(*this)\
-    \ += rhs;\n    }\n\n  private:\n    std::vector<rolling_hash_monoid> prefix_hash;\n\
-    };\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../monoid/rolling_hash_monoid.hpp\"\
-    \n\n/*\n    reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\n\
-    */\n\nnamespace ebi {\n\nstruct rolling_hash {\n  private:\n  public:\n    rolling_hash(const\
-    \ std::string &s) {\n        prefix_hash.emplace_back(rolling_hash_monoid::e());\n\
-    \        for (auto c : s) {\n            prefix_hash.emplace_back(prefix_hash.back()\
-    \ + c);\n        }\n    }\n\n    template <class T> rolling_hash(const std::vector<T>\
-    \ &a) {\n        prefix_hash.emplace_back(rolling_hash_monoid::e());\n       \
-    \ for (auto x : a) {\n            prefix_hash.emplace_back(prefix_hash.back()\
-    \ + x);\n        }\n    }\n\n    rolling_hash_monoid get_prefix_hash(int r) const\
-    \ {\n        return prefix_hash[r];\n    }\n\n    rolling_hash_monoid get_hash(int\
-    \ l, int r) const {\n        assert(l <= r && r <= (int)prefix_hash.size());\n\
-    \        modint61 base_pow = prefix_hash[r - l].first;\n        return {base_pow,\n\
-    \                prefix_hash[r].second - prefix_hash[l].second * base_pow};\n\
-    \    }\n\n    rolling_hash &operator+=(const rolling_hash &rhs) noexcept {\n \
-    \       rolling_hash_monoid lhs = prefix_hash.back();\n        for (int i = 1;\
-    \ i <= (int)rhs.prefix_hash.size(); i++) {\n            prefix_hash.emplace_back(lhs\
-    \ + rhs.prefix_hash[i]);\n        }\n        return *this;\n    }\n\n    rolling_hash\
-    \ operator+(const rolling_hash &rhs) noexcept {\n        return rolling_hash(*this)\
-    \ += rhs;\n    }\n\n  private:\n    std::vector<rolling_hash_monoid> prefix_hash;\n\
-    };\n\n}  // namespace ebi"
+    \     return base;\n    }\n};\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <utility>\n\n#include \"../modint/modint61.hpp\"\
+    \n#include \"../utility/random_number_generator.hpp\"\n\nnamespace ebi {\n\nstruct\
+    \ rolling_hash_monoid : std::pair<modint61, modint61> {\n  private:\n    using\
+    \ Self = rolling_hash_monoid;\n    using std::pair<modint61, modint61>::pair;\n\
+    \n  public:\n    template <class T> rolling_hash_monoid(T x) {\n        this->first\
+    \ = get_base();\n        this->second = x;\n    }\n\n    modint61 get_hash() {\n\
+    \        return this->second;\n    }\n\n    Self &operator+=(const Self &rhs)\
+    \ {\n        this->first = this->first * rhs.first;\n        this->second = this->second\
+    \ * rhs.first + rhs.second;\n        return *this;\n    }\n\n    friend Self operator+(const\
+    \ Self &lhs, const Self &rhs) {\n        return Self(lhs) += rhs;\n    }\n\n \
+    \   static Self e() {\n        return {1, 0};\n    }\n\n    static modint61 get_base()\
+    \ {\n        static modint61 base = 0;\n        static random_number_generator\
+    \ rng;\n        while (base == 0) {\n            base = rng.get<std::uint64_t>(2,\
+    \ modint61::mod());\n        }\n        return base;\n    }\n};\n\n}  // namespace\
+    \ ebi"
   dependsOn:
-  - monoid/rolling_hash_monoid.hpp
   - modint/modint61.hpp
   - modint/base.hpp
   - utility/random_number_generator.hpp
   isVerificationFile: false
-  path: string/rolling_hash.hpp
-  requiredBy: []
+  path: monoid/rolling_hash_monoid.hpp
+  requiredBy:
+  - string/rolling_hash.hpp
   timestamp: '2025-03-17 19:02:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/aoj/aoj_2444.test.cpp
-documentation_of: string/rolling_hash.hpp
+documentation_of: monoid/rolling_hash_monoid.hpp
 layout: document
-title: Rolling Hash
+title: Rolling Hash Monoid
 ---
 
 ## 説明
 
-文字列のハッシュを計算する。`rolling_hash<2>::set_base()`を事前に行い、baseをセットする必要あり。
-
-### prefix_hash(r)
-
-$[0, r)$ のハッシュを計算する。 $O(1)$
-
-### get_hash(int l, int r)
-
-文字列の $[l, r)$ のハッシュを計算する。 $O(1)$
-
-### get_hash(std::string str, int l, int r)
-
-文字列 $str$ の $[l, r)$ のハッシュを計算する。デフォルトでは文字列全体となる。
-
-### size()
-
-文字列のサイズを返す。
-
-### concat(Self lhs, Self rhs)
-
-lhs + rhs の文字列に対してハッシュを計算する。 $O(1)$
-
-### operator+(Self S, Self T)
-
-$S + T$ の文字列に対するローリングハッシュ構造体を計算する。計算量は $T$ のサイズを $N$ として $O(N)$
+ローリングハッシュのモノイド構造体。

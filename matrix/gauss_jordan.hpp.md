@@ -187,8 +187,8 @@ data:
   timestamp: '2024-07-18 01:45:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/matrix/Rank_of_Matrix.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
+  - test/matrix/Rank_of_Matrix.test.cpp
 documentation_of: matrix/gauss_jordan.hpp
 layout: document
 redirect_from:

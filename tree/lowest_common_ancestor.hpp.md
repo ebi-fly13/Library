@@ -151,8 +151,8 @@ data:
   timestamp: '2024-03-13 15:52:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Jump_on_Tree.test.cpp
   - test/tree/lowest_common_ancestor.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
 documentation_of: tree/lowest_common_ancestor.hpp
 layout: document
 title: Lowest Common Ancestor

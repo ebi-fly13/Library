@@ -61,14 +61,14 @@ data:
   isVerificationFile: false
   path: math/lagrange_interpolation.hpp
   requiredBy:
-  - math/sum_of_exp_times_poly.hpp
   - math/sum_of_powers_iota.hpp
+  - math/sum_of_exp_times_poly.hpp
   timestamp: '2023-10-26 02:38:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
   - test/yuki/yuki_2747.test.cpp
 documentation_of: math/lagrange_interpolation.hpp
 layout: document

@@ -12,7 +12,7 @@ data:
     title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: fps/middle_product_arbitrary.hpp
-    title: $f^k \mod g$
+    title: $[x^i]c = \sum_{j} [x^{i+j}]a [x^j]b$
   - icon: ':heavy_check_mark:'
     path: math/internal_math.hpp
     title: math/internal_math.hpp
