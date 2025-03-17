@@ -568,7 +568,7 @@ data:
       title: Cartesian Tree
     - icon: ':heavy_check_mark:'
       path: tree/centroid.hpp
-      title: tree/centroid.hpp
+      title: Centroid
     - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
@@ -610,7 +610,7 @@ data:
       title: Tree Diameter
     - icon: ':heavy_check_mark:'
       path: tree/tree_hash.hpp
-      title: tree/tree_hash.hpp
+      title: Tree Hash
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'

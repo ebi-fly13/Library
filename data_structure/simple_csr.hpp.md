@@ -79,7 +79,7 @@ data:
     title: Block Cut Tree
   - icon: ':heavy_check_mark:'
     path: tree/centroid.hpp
-    title: tree/centroid.hpp
+    title: Centroid
   - icon: ':heavy_check_mark:'
     path: tree/contour_query_on_tree.hpp
     title: Contour Query on Tree
@@ -118,7 +118,7 @@ data:
     title: Tree Diameter
   - icon: ':heavy_check_mark:'
     path: tree/tree_hash.hpp
-    title: tree/tree_hash.hpp
+    title: Tree Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/algorithm/Two_Sat.test.cpp

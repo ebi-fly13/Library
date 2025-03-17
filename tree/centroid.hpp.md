@@ -10,7 +10,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: tree/tree_hash.hpp
-    title: tree/tree_hash.hpp
+    title: Tree Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2821.test.cpp
@@ -116,8 +116,9 @@ data:
   - test/aoj/aoj_2821.test.cpp
 documentation_of: tree/centroid.hpp
 layout: document
-redirect_from:
-- /library/tree/centroid.hpp
-- /library/tree/centroid.hpp.html
-title: tree/centroid.hpp
+title: Centroid
 ---
+
+## 説明
+
+木を与えて重心を返す。重心は $1$ or $2$ 個である。

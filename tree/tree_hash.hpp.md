@@ -15,7 +15,7 @@ data:
     title: modint/modint61.hpp
   - icon: ':heavy_check_mark:'
     path: tree/centroid.hpp
-    title: tree/centroid.hpp
+    title: Centroid
   - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
@@ -337,8 +337,9 @@ data:
   - test/aoj/aoj_2821.test.cpp
 documentation_of: tree/tree_hash.hpp
 layout: document
-redirect_from:
-- /library/tree/tree_hash.hpp
-- /library/tree/tree_hash.hpp.html
-title: tree/tree_hash.hpp
+title: Tree Hash
 ---
+
+## 説明
+
+木を与えて重心のハッシュを返す。木の同型判定に活用できる。

@@ -16,7 +16,7 @@ data:
     title: Subtree Hash
   - icon: ':heavy_check_mark:'
     path: tree/tree_hash.hpp
-    title: tree/tree_hash.hpp
+    title: Tree Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2821.test.cpp

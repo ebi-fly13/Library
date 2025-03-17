@@ -22,7 +22,7 @@ data:
     title: Subtree Hash
   - icon: ':heavy_check_mark:'
     path: tree/tree_hash.hpp
-    title: tree/tree_hash.hpp
+    title: Tree Hash
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
