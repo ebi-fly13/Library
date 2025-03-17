@@ -102,7 +102,7 @@ template <class E> struct Graph {
     }
 
     std::vector<edge_type> get_edges() const {
-        assert(!prepared);
+        assert(prepared);
         return edges;
     }
 
