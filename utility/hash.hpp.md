@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   - icon: ':heavy_check_mark:'
@@ -10,10 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/random_number_generator.hpp
     title: Random Number Generator
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: tree/rooted_tree_hash.hpp
-    title: tree/rooted_tree_hash.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
@@ -177,8 +174,7 @@ data:
   - utility/random_number_generator.hpp
   isVerificationFile: false
   path: utility/hash.hpp
-  requiredBy:
-  - tree/rooted_tree_hash.hpp
+  requiredBy: []
   timestamp: '2024-08-06 16:15:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

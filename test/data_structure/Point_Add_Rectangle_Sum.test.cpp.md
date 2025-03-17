@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_segtree_2d.hpp
     title: offline 2D segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
   _extendedRequiredBy: []

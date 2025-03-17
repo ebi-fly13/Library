@@ -70,7 +70,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/online_convolution.hpp
       title: Online Convolution
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: convolution/or_convolution.hpp
       title: Bitwise OR Convolution
     - icon: ':heavy_check_mark:'
@@ -195,16 +195,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/section_set.hpp
       title: section set
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/segtree.hpp
       title: segtree
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/skew_heap.hpp
       title: data_structure/skew_heap.hpp
     - icon: ':heavy_check_mark:'
@@ -319,7 +319,7 @@ data:
       title: geometry/polygon.hpp
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/base.hpp
       title: Graph (CSR format)
     - icon: ':heavy_check_mark:'
@@ -328,16 +328,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/biconnected_components.hpp
       title: graph/biconnected_components.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/chromatic_number.hpp
       title: "Chromatic Number (\u5F69\u8272\u6570)"
     - icon: ':warning:'
       path: graph/complement_graph_bfs.hpp
       title: Complement Graph BFS
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/count_directed_euler_trail.hpp
       title: Count Directed Euler Trail
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/count_spanning_tree.hpp
       title: Count Spanning Tree
     - icon: ':heavy_check_mark:'
@@ -349,10 +349,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra_fibheap.hpp
       title: graph/dijkstra_fibheap.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/directed_mst.hpp
       title: Directed MST
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/euler_trail.hpp
       title: Euler Trail
     - icon: ':heavy_check_mark:'
@@ -379,7 +379,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/two_edge_connected_components.hpp
       title: Two Edge Connected Components
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/utility.hpp
       title: "\u4FBF\u5229\u95A2\u6570"
   - name: math
@@ -390,7 +390,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/binomial.hpp
       title: Binomial Coefficient
     - icon: ':heavy_check_mark:'
@@ -458,7 +458,7 @@ data:
       title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
   - name: matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: matrix/base.hpp
       title: matrix/base.hpp
     - icon: ':heavy_check_mark:'
@@ -475,13 +475,13 @@ data:
       title: matrix/square_matrix.hpp
   - name: modint
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: modint/base.hpp
       title: modint/base.hpp
     - icon: ':heavy_check_mark:'
       path: modint/dynamic_modint.hpp
       title: modint/dynamic_modint.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: modint/modint.hpp
       title: modint/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -512,7 +512,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: set_function/ranked_subset_transform.hpp
       title: Ranked Subset Transform (Zeta / Mobius)
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: set_function/subset_transform.hpp
       title: "Subset Transform (Zeta / M\xF6bius)"
     - icon: ':heavy_check_mark:'
@@ -543,19 +543,19 @@ data:
       title: Wildcard Pattern Matching
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -566,6 +566,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/cartesian_tree.hpp
       title: Cartesian Tree
+    - icon: ':heavy_check_mark:'
+      path: tree/centroid.hpp
+      title: tree/centroid.hpp
     - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
@@ -581,7 +584,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/dsu_on_tree.hpp
       title: Dsu on Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
@@ -596,9 +599,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/rerooting.hpp
       title: Rerooting DP
-    - icon: ':warning:'
-      path: tree/rooted_tree_hash.hpp
-      title: tree/rooted_tree_hash.hpp
     - icon: ':heavy_check_mark:'
       path: tree/static_top_tree.hpp
       title: Static Top Tree
@@ -608,6 +608,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/tree_diameter.hpp
       title: Tree Diameter
+    - icon: ':heavy_check_mark:'
+      path: tree/tree_hash.hpp
+      title: tree/tree_hash.hpp
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
@@ -659,6 +662,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2450.test.cpp
       title: test/aoj/aoj_2450.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/aoj/aoj_2821.test.cpp
+      title: test/aoj/aoj_2821.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/aoj/aoj_2863.test.cpp
       title: test/aoj/aoj_2863.test.cpp
@@ -819,13 +825,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Union_Find.test.cpp
       title: test/data_structure/Union_Find.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
       title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
       title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - name: test/geometry
@@ -907,10 +913,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Biconnected_Components.test.cpp
       title: test/graph/Biconnected_Components.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/Chromatic_Number.test.cpp
       title: test/graph/Chromatic_Number.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/Counting_Eulerian_Circuits.test.cpp
       title: test/graph/Counting_Eulerian_Circuits.test.cpp
     - icon: ':heavy_check_mark:'
@@ -925,10 +931,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Cycle_Detection_Undirected.test.cpp
       title: test/graph/Cycle_Detection_Undirected.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/Directed_MST.test.cpp
       title: test/graph/Directed_MST.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/Eulerian_Trail_Directed.test.cpp
       title: test/graph/Eulerian_Trail_Directed.test.cpp
     - icon: ':heavy_check_mark:'

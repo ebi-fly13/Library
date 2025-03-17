@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
@@ -14,16 +14,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/biconnected_components.hpp
     title: graph/biconnected_components.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/chromatic_number.hpp
     title: "Chromatic Number (\u5F69\u8272\u6570)"
   - icon: ':warning:'
     path: graph/complement_graph_bfs.hpp
     title: Complement Graph BFS
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/count_directed_euler_trail.hpp
     title: Count Directed Euler Trail
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/count_spanning_tree.hpp
     title: Count Spanning Tree
   - icon: ':heavy_check_mark:'
@@ -35,10 +35,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/directed_mst.hpp
     title: Directed MST
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/euler_trail.hpp
     title: Euler Trail
   - icon: ':heavy_check_mark:'
@@ -65,18 +65,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/utility.hpp
     title: "\u4FBF\u5229\u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
     path: tree/block_cut_tree.hpp
     title: Block Cut Tree
+  - icon: ':heavy_check_mark:'
+    path: tree/centroid.hpp
+    title: tree/centroid.hpp
   - icon: ':heavy_check_mark:'
     path: tree/contour_query_on_tree.hpp
     title: Contour Query on Tree
@@ -89,7 +92,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/dsu_on_tree.hpp
     title: Dsu on Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   - icon: ':heavy_check_mark:'
@@ -104,9 +107,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/rerooting.hpp
     title: Rerooting DP
-  - icon: ':warning:'
-    path: tree/rooted_tree_hash.hpp
-    title: tree/rooted_tree_hash.hpp
   - icon: ':heavy_check_mark:'
     path: tree/static_top_tree.hpp
     title: Static Top Tree
@@ -116,6 +116,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/tree_diameter.hpp
     title: Tree Diameter
+  - icon: ':heavy_check_mark:'
+    path: tree/tree_hash.hpp
+    title: tree/tree_hash.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/algorithm/Two_Sat.test.cpp
@@ -126,6 +129,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2821.test.cpp
+    title: test/aoj/aoj_2821.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2995.test.cpp
     title: test/aoj/aoj_2995.test.cpp
@@ -177,13 +183,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - icon: ':heavy_check_mark:'
@@ -192,10 +198,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Biconnected_Components.test.cpp
     title: test/graph/Biconnected_Components.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Counting_Eulerian_Circuits.test.cpp
     title: test/graph/Counting_Eulerian_Circuits.test.cpp
   - icon: ':heavy_check_mark:'
@@ -210,10 +216,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Undirected.test.cpp
     title: test/graph/Cycle_Detection_Undirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Directed_MST.test.cpp
     title: test/graph/Directed_MST.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Eulerian_Trail_Directed.test.cpp
     title: test/graph/Eulerian_Trail_Directed.test.cpp
   - icon: ':heavy_check_mark:'
@@ -402,9 +408,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/simple_csr.hpp\"\n\n#include <ranges>\n#include\
@@ -473,8 +479,9 @@ data:
   - tree/block_cut_tree.hpp
   - tree/subtree_hash.hpp
   - tree/static_top_tree.hpp
+  - tree/centroid.hpp
+  - tree/tree_hash.hpp
   - tree/lowest_common_ancestor.hpp
-  - tree/rooted_tree_hash.hpp
   - template/utility.hpp
   - template/template.hpp
   - graph/minimum_steiner_tree.hpp
@@ -500,7 +507,7 @@ data:
   - graph/base.hpp
   - algorithm/two_sat.hpp
   timestamp: '2024-03-11 18:04:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
@@ -570,6 +577,7 @@ data:
   - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_3086.test.cpp
   - test/aoj/aoj_2450.test.cpp
+  - test/aoj/aoj_2821.test.cpp
   - test/aoj/aoj_2995.test.cpp
   - test/aoj/aoj_grl_1_a.test.cpp
   - test/algorithm/Two_Sat.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   _extendedRequiredBy:
@@ -14,16 +14,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/biconnected_components.hpp
     title: graph/biconnected_components.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/chromatic_number.hpp
     title: "Chromatic Number (\u5F69\u8272\u6570)"
   - icon: ':warning:'
     path: graph/complement_graph_bfs.hpp
     title: Complement Graph BFS
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/count_directed_euler_trail.hpp
     title: Count Directed Euler Trail
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/count_spanning_tree.hpp
     title: Count Spanning Tree
   - icon: ':heavy_check_mark:'
@@ -35,10 +35,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/directed_mst.hpp
     title: Directed MST
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/euler_trail.hpp
     title: Euler Trail
   - icon: ':heavy_check_mark:'
@@ -65,18 +65,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/utility.hpp
     title: "\u4FBF\u5229\u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
     path: tree/block_cut_tree.hpp
     title: Block Cut Tree
+  - icon: ':heavy_check_mark:'
+    path: tree/centroid.hpp
+    title: tree/centroid.hpp
   - icon: ':heavy_check_mark:'
     path: tree/contour_query_on_tree.hpp
     title: Contour Query on Tree
@@ -89,7 +92,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/dsu_on_tree.hpp
     title: Dsu on Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   - icon: ':heavy_check_mark:'
@@ -104,9 +107,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/rerooting.hpp
     title: Rerooting DP
-  - icon: ':warning:'
-    path: tree/rooted_tree_hash.hpp
-    title: tree/rooted_tree_hash.hpp
   - icon: ':heavy_check_mark:'
     path: tree/static_top_tree.hpp
     title: Static Top Tree
@@ -116,6 +116,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/tree_diameter.hpp
     title: Tree Diameter
+  - icon: ':heavy_check_mark:'
+    path: tree/tree_hash.hpp
+    title: tree/tree_hash.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/algorithm/Two_Sat.test.cpp
@@ -126,6 +129,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2821.test.cpp
+    title: test/aoj/aoj_2821.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2995.test.cpp
     title: test/aoj/aoj_2995.test.cpp
@@ -177,13 +183,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
     title: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
   - icon: ':heavy_check_mark:'
@@ -192,10 +198,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Biconnected_Components.test.cpp
     title: test/graph/Biconnected_Components.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Counting_Eulerian_Circuits.test.cpp
     title: test/graph/Counting_Eulerian_Circuits.test.cpp
   - icon: ':heavy_check_mark:'
@@ -210,10 +216,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Undirected.test.cpp
     title: test/graph/Cycle_Detection_Undirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Directed_MST.test.cpp
     title: test/graph/Directed_MST.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Eulerian_Trail_Directed.test.cpp
     title: test/graph/Eulerian_Trail_Directed.test.cpp
   - icon: ':heavy_check_mark:'
@@ -402,9 +408,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/base.hpp\"\n\n#include <cassert>\n#include <iostream>\n\
@@ -437,45 +443,11 @@ data:
     \ {\n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
     \ id;\n};\n\ntemplate <class E> struct Graph {\n    using cost_type = E;\n   \
     \ using edge_type = Edge<cost_type>;\n\n    Graph(int n_) : n(n_) {}\n\n    Graph()\
-    \ = default;\n\n    void add_edge(int u, int v, cost_type c) {\n        buff.emplace_back(u,\
-    \ edge_type{u, v, c, m});\n        edges.emplace_back(edge_type{u, v, c, m++});\n\
-    \    }\n\n    void add_undirected_edge(int u, int v, cost_type c) {\n        buff.emplace_back(u,\
-    \ edge_type{u, v, c, m});\n        buff.emplace_back(v, edge_type{v, u, c, m});\n\
-    \        edges.emplace_back(edge_type{u, v, c, m});\n        m++;\n    }\n\n \
-    \   void read_tree(int offset = 1, bool is_weighted = false) {\n        read_graph(n\
-    \ - 1, offset, false, is_weighted);\n    }\n\n    void read_parents(int offset\
-    \ = 1) {\n        for (auto i : std::views::iota(1, n)) {\n            int p;\n\
-    \            std::cin >> p;\n            p -= offset;\n            add_undirected_edge(p,\
-    \ i, 1);\n        }\n        build();\n    }\n\n    void read_graph(int e, int\
-    \ offset = 1, bool is_directed = false,\n                    bool is_weighted\
-    \ = false) {\n        for (int i = 0; i < e; i++) {\n            int u, v;\n \
-    \           std::cin >> u >> v;\n            u -= offset;\n            v -= offset;\n\
-    \            if (is_weighted) {\n                cost_type c;\n              \
-    \  std::cin >> c;\n                if (is_directed) {\n                    add_edge(u,\
-    \ v, c);\n                } else {\n                    add_undirected_edge(u,\
-    \ v, c);\n                }\n            } else {\n                if (is_directed)\
-    \ {\n                    add_edge(u, v, 1);\n                } else {\n      \
-    \              add_undirected_edge(u, v, 1);\n                }\n            }\n\
-    \        }\n        build();\n    }\n\n    void build() {\n        assert(!prepared);\n\
-    \        csr = simple_csr<edge_type>(n, buff);\n        buff.clear();\n      \
-    \  prepared = true;\n    }\n\n    int size() const {\n        return n;\n    }\n\
-    \n    int node_number() const {\n        return n;\n    }\n\n    int edge_number()\
-    \ const {\n        return m;\n    }\n\n    edge_type get_edge(int i) const {\n\
-    \        return edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const\
-    \ {\n        return edges;\n    }\n\n    const auto operator[](int i) const {\n\
-    \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
-    \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
-    \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n"
-  code: "#pragma once\n\n#include <cassert>\n#include <iostream>\n#include <ranges>\n\
-    #include <vector>\n\n#include \"../data_structure/simple_csr.hpp\"\n\nnamespace\
-    \ ebi {\n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n\
-    \    int id;\n};\n\ntemplate <class E> struct Graph {\n    using cost_type = E;\n\
-    \    using edge_type = Edge<cost_type>;\n\n    Graph(int n_) : n(n_) {}\n\n  \
-    \  Graph() = default;\n\n    void add_edge(int u, int v, cost_type c) {\n    \
-    \    buff.emplace_back(u, edge_type{u, v, c, m});\n        edges.emplace_back(edge_type{u,\
-    \ v, c, m++});\n    }\n\n    void add_undirected_edge(int u, int v, cost_type\
-    \ c) {\n        buff.emplace_back(u, edge_type{u, v, c, m});\n        buff.emplace_back(v,\
+    \ = default;\n\n    void add_edge(int u, int v, cost_type c) {\n        assert(!prepared\
+    \ && u < n && v < n);\n        buff.emplace_back(u, edge_type{u, v, c, m});\n\
+    \        edges.emplace_back(edge_type{u, v, c, m++});\n    }\n\n    void add_undirected_edge(int\
+    \ u, int v, cost_type c) {\n        assert(!prepared && u < n && v < n);\n   \
+    \     buff.emplace_back(u, edge_type{u, v, c, m});\n        buff.emplace_back(v,\
     \ edge_type{v, u, c, m});\n        edges.emplace_back(edge_type{u, v, c, m});\n\
     \        m++;\n    }\n\n    void read_tree(int offset = 1, bool is_weighted =\
     \ false) {\n        read_graph(n - 1, offset, false, is_weighted);\n    }\n\n\
@@ -496,13 +468,52 @@ data:
     \ buff);\n        buff.clear();\n        prepared = true;\n    }\n\n    int size()\
     \ const {\n        return n;\n    }\n\n    int node_number() const {\n       \
     \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
-    \n    edge_type get_edge(int i) const {\n        return edges[i];\n    }\n\n \
-    \   std::vector<edge_type> get_edges() const {\n        return edges;\n    }\n\
-    \n    const auto operator[](int i) const {\n        return csr[i];\n    }\n  \
-    \  auto operator[](int i) {\n        return csr[i];\n    }\n\n  private:\n   \
-    \ int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>> buff;\n\n    std::vector<edge_type>\
-    \ edges;\n    simple_csr<edge_type> csr;\n    bool prepared = false;\n};\n\n}\
-    \  // namespace ebi"
+    \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
+    \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
+    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
+    \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
+    \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
+    \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n#include <iostream>\n#include <ranges>\n\
+    #include <vector>\n\n#include \"../data_structure/simple_csr.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n\
+    \    int id;\n};\n\ntemplate <class E> struct Graph {\n    using cost_type = E;\n\
+    \    using edge_type = Edge<cost_type>;\n\n    Graph(int n_) : n(n_) {}\n\n  \
+    \  Graph() = default;\n\n    void add_edge(int u, int v, cost_type c) {\n    \
+    \    assert(!prepared && u < n && v < n);\n        buff.emplace_back(u, edge_type{u,\
+    \ v, c, m});\n        edges.emplace_back(edge_type{u, v, c, m++});\n    }\n\n\
+    \    void add_undirected_edge(int u, int v, cost_type c) {\n        assert(!prepared\
+    \ && u < n && v < n);\n        buff.emplace_back(u, edge_type{u, v, c, m});\n\
+    \        buff.emplace_back(v, edge_type{v, u, c, m});\n        edges.emplace_back(edge_type{u,\
+    \ v, c, m});\n        m++;\n    }\n\n    void read_tree(int offset = 1, bool is_weighted\
+    \ = false) {\n        read_graph(n - 1, offset, false, is_weighted);\n    }\n\n\
+    \    void read_parents(int offset = 1) {\n        for (auto i : std::views::iota(1,\
+    \ n)) {\n            int p;\n            std::cin >> p;\n            p -= offset;\n\
+    \            add_undirected_edge(p, i, 1);\n        }\n        build();\n    }\n\
+    \n    void read_graph(int e, int offset = 1, bool is_directed = false,\n     \
+    \               bool is_weighted = false) {\n        for (int i = 0; i < e; i++)\
+    \ {\n            int u, v;\n            std::cin >> u >> v;\n            u -=\
+    \ offset;\n            v -= offset;\n            if (is_weighted) {\n        \
+    \        cost_type c;\n                std::cin >> c;\n                if (is_directed)\
+    \ {\n                    add_edge(u, v, c);\n                } else {\n      \
+    \              add_undirected_edge(u, v, c);\n                }\n            }\
+    \ else {\n                if (is_directed) {\n                    add_edge(u,\
+    \ v, 1);\n                } else {\n                    add_undirected_edge(u,\
+    \ v, 1);\n                }\n            }\n        }\n        build();\n    }\n\
+    \n    void build() {\n        assert(!prepared);\n        csr = simple_csr<edge_type>(n,\
+    \ buff);\n        buff.clear();\n        prepared = true;\n    }\n\n    int size()\
+    \ const {\n        return n;\n    }\n\n    int node_number() const {\n       \
+    \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
+    \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
+    \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
+    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
+    \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
+    \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
+    \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi"
   dependsOn:
   - data_structure/simple_csr.hpp
   isVerificationFile: false
@@ -520,8 +531,9 @@ data:
   - tree/block_cut_tree.hpp
   - tree/subtree_hash.hpp
   - tree/static_top_tree.hpp
+  - tree/centroid.hpp
+  - tree/tree_hash.hpp
   - tree/lowest_common_ancestor.hpp
-  - tree/rooted_tree_hash.hpp
   - template/utility.hpp
   - template/template.hpp
   - graph/minimum_steiner_tree.hpp
@@ -545,8 +557,8 @@ data:
   - graph/scc_graph.hpp
   - graph/complement_graph_bfs.hpp
   - algorithm/two_sat.hpp
-  timestamp: '2024-03-13 15:52:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-03-18 01:14:29+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
@@ -616,6 +628,7 @@ data:
   - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_3086.test.cpp
   - test/aoj/aoj_2450.test.cpp
+  - test/aoj/aoj_2821.test.cpp
   - test/aoj/aoj_2995.test.cpp
   - test/aoj/aoj_grl_1_a.test.cpp
   - test/algorithm/Two_Sat.test.cpp

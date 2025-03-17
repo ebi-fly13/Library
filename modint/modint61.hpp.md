@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
   _extendedRequiredBy:
@@ -14,12 +14,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: Rolling Hash
-  - icon: ':warning:'
-    path: tree/rooted_tree_hash.hpp
-    title: tree/rooted_tree_hash.hpp
   - icon: ':heavy_check_mark:'
     path: tree/subtree_hash.hpp
     title: Subtree Hash
+  - icon: ':heavy_check_mark:'
+    path: tree/tree_hash.hpp
+    title: tree/tree_hash.hpp
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2821.test.cpp
+    title: test/aoj/aoj_2821.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
     title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
@@ -133,7 +136,7 @@ data:
   path: modint/modint61.hpp
   requiredBy:
   - tree/subtree_hash.hpp
-  - tree/rooted_tree_hash.hpp
+  - tree/tree_hash.hpp
   - string/rolling_hash.hpp
   - monoid/rolling_hash_monoid.hpp
   - graph/maximum_matching_size.hpp
@@ -143,6 +146,7 @@ data:
   verifiedWith:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
   - test/aoj/aoj_2444.test.cpp
+  - test/aoj/aoj_2821.test.cpp
 documentation_of: modint/modint61.hpp
 layout: document
 redirect_from:

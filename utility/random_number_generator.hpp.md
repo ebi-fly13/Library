@@ -17,12 +17,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
-  - icon: ':warning:'
-    path: tree/rooted_tree_hash.hpp
-    title: tree/rooted_tree_hash.hpp
   - icon: ':heavy_check_mark:'
     path: tree/subtree_hash.hpp
     title: Subtree Hash
+  - icon: ':heavy_check_mark:'
+    path: tree/tree_hash.hpp
+    title: tree/tree_hash.hpp
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
@@ -30,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2821.test.cpp
+    title: test/aoj/aoj_2821.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/convolution/Convolution_2D.test.cpp
     title: test/convolution/Convolution_2D.test.cpp
@@ -87,7 +90,7 @@ data:
   requiredBy:
   - matrix/black_box_linear_algebra.hpp
   - tree/subtree_hash.hpp
-  - tree/rooted_tree_hash.hpp
+  - tree/tree_hash.hpp
   - string/wildcard_pattern_matching.hpp
   - string/rolling_hash.hpp
   - monoid/rolling_hash_monoid.hpp
@@ -103,6 +106,7 @@ data:
   - test/math/Negative_Binomial_Coefficient.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
   - test/aoj/aoj_2444.test.cpp
+  - test/aoj/aoj_2821.test.cpp
   - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
   - test/yuki/yuki_1112.test.cpp
 documentation_of: utility/random_number_generator.hpp

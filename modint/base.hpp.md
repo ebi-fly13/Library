@@ -87,10 +87,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/taylor_shift.hpp
     title: $f(x + c)$
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/count_directed_euler_trail.hpp
     title: Count Directed Euler Trail
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/count_spanning_tree.hpp
     title: Count Spanning Tree
   - icon: ':warning:'
@@ -102,7 +102,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/bernoulli_number.hpp
     title: Bernoulli Number
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: Binomial Coefficient
   - icon: ':heavy_check_mark:'
@@ -150,7 +150,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/dynamic_modint.hpp
     title: modint/dynamic_modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
   - icon: ':heavy_check_mark:'
@@ -168,12 +168,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
-  - icon: ':warning:'
-    path: tree/rooted_tree_hash.hpp
-    title: tree/rooted_tree_hash.hpp
   - icon: ':heavy_check_mark:'
     path: tree/subtree_hash.hpp
     title: Subtree Hash
+  - icon: ':heavy_check_mark:'
+    path: tree/tree_hash.hpp
+    title: tree/tree_hash.hpp
   - icon: ':heavy_check_mark:'
     path: utility/hash.hpp
     title: Hash structure
@@ -181,6 +181,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2444.test.cpp
     title: test/aoj/aoj_2444.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2821.test.cpp
+    title: test/aoj/aoj_2821.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2863.test.cpp
     title: test/aoj/aoj_2863.test.cpp
@@ -241,10 +244,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Parallel_Unionfind.test.cpp
     title: test/data_structure/Range_Parallel_Unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
     title: test/data_structure/Vertex_Set_Path_Compositie.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Counting_Eulerian_Circuits.test.cpp
     title: test/graph/Counting_Eulerian_Circuits.test.cpp
   - icon: ':heavy_check_mark:'
@@ -442,9 +445,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_2747.test.cpp
     title: test/yuki/yuki_2747.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#include <iostream>\n\
@@ -470,7 +473,7 @@ data:
   - matrix/black_box_linear_algebra.hpp
   - matrix/det_arbitrary_mod.hpp
   - tree/subtree_hash.hpp
-  - tree/rooted_tree_hash.hpp
+  - tree/tree_hash.hpp
   - convolution/dirichlet_convolution.hpp
   - convolution/arbitrary_convolution.hpp
   - convolution/convolution.hpp
@@ -526,7 +529,7 @@ data:
   - fps/arbitrary_mod_fps.hpp
   - fps/product_of_one_plus_xn.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
@@ -597,6 +600,7 @@ data:
   - test/graph/Counting_Eulerian_Circuits.test.cpp
   - test/aoj/aoj_2863.test.cpp
   - test/aoj/aoj_2444.test.cpp
+  - test/aoj/aoj_2821.test.cpp
   - test/aoj/aoj_3361.test.cpp
   - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp

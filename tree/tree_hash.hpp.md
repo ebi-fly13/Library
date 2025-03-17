@@ -13,6 +13,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: modint/modint61.hpp
     title: modint/modint61.hpp
+  - icon: ':heavy_check_mark:'
+    path: tree/centroid.hpp
+    title: tree/centroid.hpp
   - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
@@ -23,27 +26,22 @@ data:
     path: tree/subtree_hash.hpp
     title: Subtree Hash
   - icon: ':heavy_check_mark:'
-    path: utility/hash.hpp
-    title: Hash structure
-  - icon: ':heavy_check_mark:'
     path: utility/random_number_generator.hpp
     title: Random Number Generator
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2821.test.cpp
+    title: test/aoj/aoj_2821.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
-    links:
-    - https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification
-  bundledCode: "#line 1 \"test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp\"\
-    \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
-    \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#line 2 \"graph/base.hpp\"\
-    \n\n#include <cassert>\n#line 5 \"graph/base.hpp\"\n#include <ranges>\n#line 7\
-    \ \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"\
-    data_structure/simple_csr.hpp\"\n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\
+    links: []
+  bundledCode: "#line 2 \"tree/tree_hash.hpp\"\n\n#include <cassert>\n\n#line 2 \"\
+    graph/base.hpp\"\n\n#line 4 \"graph/base.hpp\"\n#include <iostream>\n#include\
+    \ <ranges>\n#include <vector>\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n\
+    #line 4 \"data_structure/simple_csr.hpp\"\n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
     \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
     \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
@@ -103,7 +101,16 @@ data:
     \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
     \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"tree/subtree_hash.hpp\"\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 2 \"tree/centroid.hpp\"\
+    \n\n#line 4 \"tree/centroid.hpp\"\n\nnamespace ebi {\n\ntemplate <class T> std::vector<int>\
+    \ get_centroid(const Graph<T> &tree) {\n    int n = tree.node_number();\n    std::vector<int>\
+    \ sz(n, 1);\n    std::vector<int> centroid;\n    auto dfs = [&](auto &&self, int\
+    \ v, int par = -1) -> void {\n        bool is_centroid = true;\n        for (auto\
+    \ e : tree[v]) {\n            if (e.to == par) continue;\n            self(self,\
+    \ e.to, v);\n            if (sz[e.to] > n / 2) is_centroid = false;\n        \
+    \    sz[v] += sz[e.to];\n        }\n        if (n - sz[v] > n / 2) is_centroid\
+    \ = false;\n        if (is_centroid) centroid.emplace_back(v);\n    };\n    dfs(dfs,\
+    \ 0);\n    return centroid;\n}\n\n}  // namespace ebi\n#line 2 \"tree/subtree_hash.hpp\"\
     \n\n#line 4 \"tree/subtree_hash.hpp\"\n\n#line 2 \"modint/modint61.hpp\"\n\n#line\
     \ 4 \"modint/modint61.hpp\"\n#include <cstdint>\n#line 6 \"modint/modint61.hpp\"\
     \n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 6 \"modint/base.hpp\"\
@@ -296,85 +303,42 @@ data:
     \    : dp(tree, V{0, 1}, merge(), put_edge(), put_root()) {}\n\n    modint61 get(int\
     \ v) const {\n        return dp.get(v).second;\n    }\n\n    modint61 get(int\
     \ v, int root) {\n        return dp.get(v, root).second;\n    }\n\n  private:\n\
-    \    rerooting_dp<T, V> dp;\n};\n\n}  // namespace ebi\n#line 2 \"utility/hash.hpp\"\
-    \n\n#include <array>\n\n#line 7 \"utility/hash.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <int BASE_NUM = 2> struct Hash : std::array<modint61, BASE_NUM> {\n  private:\n\
-    \    using std::array<modint61, BASE_NUM>::array;\n    using std::array<modint61,\
-    \ BASE_NUM>::operator=;\n\n  public:\n    Hash() : std::array<modint61, BASE_NUM>()\
-    \ {}\n\n    constexpr static Hash set(const modint61 &a) {\n        Hash res;\n\
-    \        std::fill(res.begin(), res.end(), a);\n        return res;\n    }\n\n\
-    \    constexpr Hash &operator+=(const Hash &rhs) {\n        for (int i = 0; i\
-    \ < BASE_NUM; i++) {\n            (*this)[i] += rhs[i];\n        }\n        return\
-    \ *this;\n    }\n    constexpr Hash &operator-=(const Hash &rhs) {\n        for\
-    \ (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i] -= rhs[i];\n      \
-    \  }\n        return *this;\n    }\n    constexpr Hash &operator*=(const Hash\
-    \ &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n            (*this)[i]\
-    \ *= rhs[i];\n        }\n        return *this;\n    }\n\n    constexpr Hash &operator+=(const\
-    \ modint61 &rhs) {\n        for (int i = 0; i < BASE_NUM; i++) {\n           \
-    \ (*this)[i] += rhs;\n        }\n        return *this;\n    }\n    constexpr Hash\
-    \ &operator-=(const modint61 &rhs) {\n        for (int i = 0; i < BASE_NUM; i++)\
-    \ {\n            (*this)[i] -= rhs;\n        }\n        return *this;\n    }\n\
-    \    constexpr Hash &operator*=(const modint61 &rhs) {\n        for (int i = 0;\
-    \ i < BASE_NUM; i++) {\n            (*this)[i] *= rhs;\n        }\n        return\
-    \ *this;\n    }\n\n    Hash operator+(const Hash &rhs) const {\n        return\
-    \ Hash(*this) += rhs;\n    }\n    Hash operator-(const Hash &rhs) const {\n  \
-    \      return Hash(*this) -= rhs;\n    }\n    Hash operator*(const Hash &rhs)\
-    \ const {\n        return Hash(*this) *= rhs;\n    }\n\n    Hash operator+(const\
-    \ modint61 &rhs) const {\n        return Hash(*this) += rhs;\n    }\n    Hash\
-    \ operator-(const modint61 &rhs) const {\n        return Hash(*this) -= rhs;\n\
-    \    }\n    Hash operator*(const modint61 &rhs) const {\n        return Hash(*this)\
-    \ *= rhs;\n    }\n\n    Hash pow(long long n) const {\n        Hash a = *this,\
-    \ res = set(1);\n        while (n) {\n            if (n & 1) res *= a;\n     \
-    \       a *= a;\n            n >>= 1;\n        }\n        return res;\n    }\n\
-    \n    static Hash get_basis() {\n        static random_number_generator rng;\n\
-    \        Hash h;\n        for (int i = 0; i < BASE_NUM; i++) {\n            h[i]\
-    \ = rng.get<std::uint64_t>(0, modint61::mod() - 1) + 1;\n        }\n        return\
-    \ h;\n    }\n\n    Hash inv() const {\n        Hash h;\n        for (int i = 0;\
-    \ i < BASE_NUM; i++) {\n            h[i] = (*this)[i].inv();\n        }\n    \
-    \    return h;\n    }\n\n    static Hash get_basis_primitive() {\n        static\
-    \ random_number_generator rng;\n        Hash h;\n        for (int i = 0; i < BASE_NUM;\
-    \ i++) {\n            while (!is_primitive(\n                (h[i] = rng.get<std::uint64_t>(0,\
-    \ modint61::mod() - 1) + 1)\n                    .val()))\n                ;\n\
-    \        }\n        return h;\n    }\n\n  private:\n    static bool is_primitive(long\
-    \ long x) {\n        for (long long d : {2, 3, 5, 7, 11, 13, 31, 41, 61, 151,\
-    \ 331, 1321}) {\n            if (modint61(x).pow((modint61::mod() - 1) / d).val()\
-    \ <= 1)\n                return false;\n        }\n        return true;\n    }\n\
-    };\n\n}  // namespace ebi\n#line 11 \"test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp\"\
-    \n\nint main() {\n    int n;\n    std::cin >> n;\n    ebi::Graph<int> g(n);\n\
-    \    g.read_parents(0);\n    ebi::subtree_hash hash(g);\n    int k = 0;\n    std::map<ebi::modint61,\
-    \ int> map;\n    for(int i = 0; i < n; i++) {\n        if(!map.contains(hash.get(i,\
-    \ 0))) {\n            map[hash.get(i, 0)] = k++;\n        }\n    }\n    std::cout\
-    \ << k << '\\n';\n    for (int i = 0; i < n; i++) {\n        std::cout << map[hash.get(i,\
-    \ 0)] << \" \\n\"[i == n - 1];\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/rooted_tree_isomorphism_classification\"\
-    \n\n#include <iostream>\n#include <map>\n#include <vector>\n\n#include \"../../graph/base.hpp\"\
-    \n#include \"../../tree/subtree_hash.hpp\"\n#include \"../../utility/hash.hpp\"\
-    \n\nint main() {\n    int n;\n    std::cin >> n;\n    ebi::Graph<int> g(n);\n\
-    \    g.read_parents(0);\n    ebi::subtree_hash hash(g);\n    int k = 0;\n    std::map<ebi::modint61,\
-    \ int> map;\n    for(int i = 0; i < n; i++) {\n        if(!map.contains(hash.get(i,\
-    \ 0))) {\n            map[hash.get(i, 0)] = k++;\n        }\n    }\n    std::cout\
-    \ << k << '\\n';\n    for (int i = 0; i < n; i++) {\n        std::cout << map[hash.get(i,\
-    \ 0)] << \" \\n\"[i == n - 1];\n    }\n}"
+    \    rerooting_dp<T, V> dp;\n};\n\n}  // namespace ebi\n#line 8 \"tree/tree_hash.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> std::vector<modint61> tree_hash(const\
+    \ Graph<T> &tree) {\n    subtree_hash hash(tree);\n    auto centroid = get_centroid(tree);\n\
+    \    if (centroid.size() == 1) centroid.emplace_back(centroid[0]);\n    assert(centroid.size()\
+    \ == 2);\n    std::vector<modint61> hs;\n    for (auto c : centroid) {\n     \
+    \   hs.emplace_back(hash.get(c));\n    }\n    if (hs[0] > hs[1]) std::swap(hs[0],\
+    \ hs[1]);\n    return hs;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include <cassert>\n\n#include \"../graph/base.hpp\"\n#include\
+    \ \"../tree/centroid.hpp\"\n#include \"../tree/subtree_hash.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T> std::vector<modint61> tree_hash(const Graph<T> &tree)\
+    \ {\n    subtree_hash hash(tree);\n    auto centroid = get_centroid(tree);\n \
+    \   if (centroid.size() == 1) centroid.emplace_back(centroid[0]);\n    assert(centroid.size()\
+    \ == 2);\n    std::vector<modint61> hs;\n    for (auto c : centroid) {\n     \
+    \   hs.emplace_back(hash.get(c));\n    }\n    if (hs[0] > hs[1]) std::swap(hs[0],\
+    \ hs[1]);\n    return hs;\n}\n\n}  // namespace ebi"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
+  - tree/centroid.hpp
   - tree/subtree_hash.hpp
   - modint/modint61.hpp
   - modint/base.hpp
   - tree/rerooting.hpp
   - tree/heavy_light_decomposition.hpp
   - utility/random_number_generator.hpp
-  - utility/hash.hpp
-  isVerificationFile: true
-  path: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  isVerificationFile: false
+  path: tree/tree_hash.hpp
   requiredBy: []
   timestamp: '2025-03-18 01:14:29+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/aoj/aoj_2821.test.cpp
+documentation_of: tree/tree_hash.hpp
 layout: document
 redirect_from:
-- /verify/test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
-- /verify/test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp.html
-title: test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp
+- /library/tree/tree_hash.hpp
+- /library/tree/tree_hash.hpp.html
+title: tree/tree_hash.hpp
 ---

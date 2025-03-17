@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: algorithm/two_sat.hpp
     title: algorithm/two_sat.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
@@ -56,9 +56,10 @@ data:
     \ from, to;\n    T cost;\n    int id;\n};\n\ntemplate <class E> struct Graph {\n\
     \    using cost_type = E;\n    using edge_type = Edge<cost_type>;\n\n    Graph(int\
     \ n_) : n(n_) {}\n\n    Graph() = default;\n\n    void add_edge(int u, int v,\
-    \ cost_type c) {\n        buff.emplace_back(u, edge_type{u, v, c, m});\n     \
-    \   edges.emplace_back(edge_type{u, v, c, m++});\n    }\n\n    void add_undirected_edge(int\
-    \ u, int v, cost_type c) {\n        buff.emplace_back(u, edge_type{u, v, c, m});\n\
+    \ cost_type c) {\n        assert(!prepared && u < n && v < n);\n        buff.emplace_back(u,\
+    \ edge_type{u, v, c, m});\n        edges.emplace_back(edge_type{u, v, c, m++});\n\
+    \    }\n\n    void add_undirected_edge(int u, int v, cost_type c) {\n        assert(!prepared\
+    \ && u < n && v < n);\n        buff.emplace_back(u, edge_type{u, v, c, m});\n\
     \        buff.emplace_back(v, edge_type{v, u, c, m});\n        edges.emplace_back(edge_type{u,\
     \ v, c, m});\n        m++;\n    }\n\n    void read_tree(int offset = 1, bool is_weighted\
     \ = false) {\n        read_graph(n - 1, offset, false, is_weighted);\n    }\n\n\
@@ -79,23 +80,24 @@ data:
     \ buff);\n        buff.clear();\n        prepared = true;\n    }\n\n    int size()\
     \ const {\n        return n;\n    }\n\n    int node_number() const {\n       \
     \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
-    \n    edge_type get_edge(int i) const {\n        return edges[i];\n    }\n\n \
-    \   std::vector<edge_type> get_edges() const {\n        return edges;\n    }\n\
-    \n    const auto operator[](int i) const {\n        return csr[i];\n    }\n  \
-    \  auto operator[](int i) {\n        return csr[i];\n    }\n\n  private:\n   \
-    \ int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>> buff;\n\n    std::vector<edge_type>\
-    \ edges;\n    simple_csr<edge_type> csr;\n    bool prepared = false;\n};\n\n}\
-    \  // namespace ebi\n#line 8 \"graph/scc_graph.hpp\"\n\r\nnamespace ebi {\r\n\r\
-    \nstruct scc_graph {\r\n  private:\r\n    std::vector<std::pair<int, int>> edges,\
-    \ redges;\r\n    simple_csr<int> g, rg;\r\n    int n, k;\r\n\r\n    std::vector<int>\
-    \ vs, cmp;\r\n    std::vector<bool> seen;\r\n\r\n    void dfs(int v) {\r\n   \
-    \     seen[v] = true;\r\n        for (auto &nv : g[v]) {\r\n            if (!seen[nv])\
-    \ dfs(nv);\r\n        }\r\n        vs.emplace_back(v);\r\n    }\r\n\r\n    void\
-    \ rdfs(int v) {\r\n        cmp[v] = k;\r\n        for (auto nv : rg[v]) {\r\n\
-    \            if (cmp[nv] < 0) {\r\n                rdfs(nv);\r\n            }\r\
-    \n        }\r\n    }\r\n\r\n  public:\r\n    scc_graph(int n_) : n(n_) {}\r\n\r\
-    \n    void add_edge(int from, int to) {\r\n        edges.emplace_back(from, to);\r\
-    \n        redges.emplace_back(to, from);\r\n    }\r\n\r\n    std::vector<std::vector<int>>\
+    \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
+    \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
+    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
+    \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
+    \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
+    \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"graph/scc_graph.hpp\"\
+    \n\r\nnamespace ebi {\r\n\r\nstruct scc_graph {\r\n  private:\r\n    std::vector<std::pair<int,\
+    \ int>> edges, redges;\r\n    simple_csr<int> g, rg;\r\n    int n, k;\r\n\r\n\
+    \    std::vector<int> vs, cmp;\r\n    std::vector<bool> seen;\r\n\r\n    void\
+    \ dfs(int v) {\r\n        seen[v] = true;\r\n        for (auto &nv : g[v]) {\r\
+    \n            if (!seen[nv]) dfs(nv);\r\n        }\r\n        vs.emplace_back(v);\r\
+    \n    }\r\n\r\n    void rdfs(int v) {\r\n        cmp[v] = k;\r\n        for (auto\
+    \ nv : rg[v]) {\r\n            if (cmp[nv] < 0) {\r\n                rdfs(nv);\r\
+    \n            }\r\n        }\r\n    }\r\n\r\n  public:\r\n    scc_graph(int n_)\
+    \ : n(n_) {}\r\n\r\n    void add_edge(int from, int to) {\r\n        edges.emplace_back(from,\
+    \ to);\r\n        redges.emplace_back(to, from);\r\n    }\r\n\r\n    std::vector<std::vector<int>>\
     \ scc() {\r\n        g = simple_csr<int>(n, edges);\r\n        rg = simple_csr<int>(n,\
     \ redges);\r\n        edges.clear();\r\n        redges.clear();\r\n        seen.assign(n,\
     \ false);\r\n        for (int i = 0; i < n; i++) {\r\n            if (!seen[i])\
@@ -154,7 +156,7 @@ data:
   isVerificationFile: true
   path: test/algorithm/Two_Sat.test.cpp
   requiredBy: []
-  timestamp: '2024-03-13 15:52:21+09:00'
+  timestamp: '2025-03-18 01:14:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/algorithm/Two_Sat.test.cpp

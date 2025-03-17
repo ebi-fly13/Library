@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: Compress
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/segtree.hpp
     title: segtree
   _extendedRequiredBy: []

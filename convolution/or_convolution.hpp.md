@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: set_function/subset_transform.hpp
     title: "Subset Transform (Zeta / M\xF6bius)"
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/chromatic_number.hpp
     title: "Chromatic Number (\u5F69\u8272\u6570)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/convolution/Bitwise_OR_Convolution.test.cpp
     title: test/convolution/Bitwise_OR_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"convolution/or_convolution.hpp\"\n\n#line 2 \"set_function/subset_transform.hpp\"\
@@ -53,7 +53,7 @@ data:
   requiredBy:
   - graph/chromatic_number.hpp
   timestamp: '2023-10-26 18:43:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/convolution/Bitwise_OR_Convolution.test.cpp
   - test/graph/Chromatic_Number.test.cpp

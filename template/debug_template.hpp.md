@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   _extendedVerifiedWith:
@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2450.test.cpp
     title: test/aoj/aoj_2450.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/aoj/aoj_2821.test.cpp
+    title: test/aoj/aoj_2821.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/aoj/aoj_2995.test.cpp
     title: test/aoj/aoj_2995.test.cpp
@@ -63,10 +66,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Rectangle_Sum.test.cpp
     title: test/data_structure/Static_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Counting_Eulerian_Circuits.test.cpp
     title: test/graph/Counting_Eulerian_Circuits.test.cpp
   - icon: ':heavy_check_mark:'
@@ -81,10 +84,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Undirected.test.cpp
     title: test/graph/Cycle_Detection_Undirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Directed_MST.test.cpp
     title: test/graph/Directed_MST.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Eulerian_Trail_Directed.test.cpp
     title: test/graph/Eulerian_Trail_Directed.test.cpp
   - icon: ':heavy_check_mark:'
@@ -249,9 +252,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/debug_template.hpp\"\n\n#include <iostream>\n\n\
@@ -276,7 +279,7 @@ data:
   requiredBy:
   - template/template.hpp
   timestamp: '2023-10-26 02:38:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
@@ -336,6 +339,7 @@ data:
   - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_3086.test.cpp
   - test/aoj/aoj_2450.test.cpp
+  - test/aoj/aoj_2821.test.cpp
   - test/aoj/aoj_2995.test.cpp
   - test/aoj/aoj_grl_1_a.test.cpp
   - test/data_structure/Rectangle_Add_Point_Get.test.cpp

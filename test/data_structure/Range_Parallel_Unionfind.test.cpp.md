@@ -7,31 +7,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: Range Parallel DSU
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/base.hpp
     title: modint/base.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -212,34 +212,37 @@ data:
     \ {\n\ntemplate <class T> struct Edge {\n    int from, to;\n    T cost;\n    int\
     \ id;\n};\n\ntemplate <class E> struct Graph {\n    using cost_type = E;\n   \
     \ using edge_type = Edge<cost_type>;\n\n    Graph(int n_) : n(n_) {}\n\n    Graph()\
-    \ = default;\n\n    void add_edge(int u, int v, cost_type c) {\n        buff.emplace_back(u,\
-    \ edge_type{u, v, c, m});\n        edges.emplace_back(edge_type{u, v, c, m++});\n\
-    \    }\n\n    void add_undirected_edge(int u, int v, cost_type c) {\n        buff.emplace_back(u,\
-    \ edge_type{u, v, c, m});\n        buff.emplace_back(v, edge_type{v, u, c, m});\n\
-    \        edges.emplace_back(edge_type{u, v, c, m});\n        m++;\n    }\n\n \
-    \   void read_tree(int offset = 1, bool is_weighted = false) {\n        read_graph(n\
-    \ - 1, offset, false, is_weighted);\n    }\n\n    void read_parents(int offset\
-    \ = 1) {\n        for (auto i : std::views::iota(1, n)) {\n            int p;\n\
-    \            std::cin >> p;\n            p -= offset;\n            add_undirected_edge(p,\
-    \ i, 1);\n        }\n        build();\n    }\n\n    void read_graph(int e, int\
-    \ offset = 1, bool is_directed = false,\n                    bool is_weighted\
-    \ = false) {\n        for (int i = 0; i < e; i++) {\n            int u, v;\n \
-    \           std::cin >> u >> v;\n            u -= offset;\n            v -= offset;\n\
-    \            if (is_weighted) {\n                cost_type c;\n              \
-    \  std::cin >> c;\n                if (is_directed) {\n                    add_edge(u,\
-    \ v, c);\n                } else {\n                    add_undirected_edge(u,\
-    \ v, c);\n                }\n            } else {\n                if (is_directed)\
-    \ {\n                    add_edge(u, v, 1);\n                } else {\n      \
-    \              add_undirected_edge(u, v, 1);\n                }\n            }\n\
-    \        }\n        build();\n    }\n\n    void build() {\n        assert(!prepared);\n\
-    \        csr = simple_csr<edge_type>(n, buff);\n        buff.clear();\n      \
-    \  prepared = true;\n    }\n\n    int size() const {\n        return n;\n    }\n\
-    \n    int node_number() const {\n        return n;\n    }\n\n    int edge_number()\
-    \ const {\n        return m;\n    }\n\n    edge_type get_edge(int i) const {\n\
-    \        return edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const\
-    \ {\n        return edges;\n    }\n\n    const auto operator[](int i) const {\n\
-    \        return csr[i];\n    }\n    auto operator[](int i) {\n        return csr[i];\n\
-    \    }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int,edge_type>>\
+    \ = default;\n\n    void add_edge(int u, int v, cost_type c) {\n        assert(!prepared\
+    \ && u < n && v < n);\n        buff.emplace_back(u, edge_type{u, v, c, m});\n\
+    \        edges.emplace_back(edge_type{u, v, c, m++});\n    }\n\n    void add_undirected_edge(int\
+    \ u, int v, cost_type c) {\n        assert(!prepared && u < n && v < n);\n   \
+    \     buff.emplace_back(u, edge_type{u, v, c, m});\n        buff.emplace_back(v,\
+    \ edge_type{v, u, c, m});\n        edges.emplace_back(edge_type{u, v, c, m});\n\
+    \        m++;\n    }\n\n    void read_tree(int offset = 1, bool is_weighted =\
+    \ false) {\n        read_graph(n - 1, offset, false, is_weighted);\n    }\n\n\
+    \    void read_parents(int offset = 1) {\n        for (auto i : std::views::iota(1,\
+    \ n)) {\n            int p;\n            std::cin >> p;\n            p -= offset;\n\
+    \            add_undirected_edge(p, i, 1);\n        }\n        build();\n    }\n\
+    \n    void read_graph(int e, int offset = 1, bool is_directed = false,\n     \
+    \               bool is_weighted = false) {\n        for (int i = 0; i < e; i++)\
+    \ {\n            int u, v;\n            std::cin >> u >> v;\n            u -=\
+    \ offset;\n            v -= offset;\n            if (is_weighted) {\n        \
+    \        cost_type c;\n                std::cin >> c;\n                if (is_directed)\
+    \ {\n                    add_edge(u, v, c);\n                } else {\n      \
+    \              add_undirected_edge(u, v, c);\n                }\n            }\
+    \ else {\n                if (is_directed) {\n                    add_edge(u,\
+    \ v, 1);\n                } else {\n                    add_undirected_edge(u,\
+    \ v, 1);\n                }\n            }\n        }\n        build();\n    }\n\
+    \n    void build() {\n        assert(!prepared);\n        csr = simple_csr<edge_type>(n,\
+    \ buff);\n        buff.clear();\n        prepared = true;\n    }\n\n    int size()\
+    \ const {\n        return n;\n    }\n\n    int node_number() const {\n       \
+    \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
+    \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
+    \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
+    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
+    \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
+    \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
     \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"template/utility.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <class T> inline bool chmin(T &a, T b) {\n   \
@@ -289,7 +292,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Parallel_Unionfind.test.cpp
   requiredBy: []
-  timestamp: '2024-08-22 02:20:33+09:00'
+  timestamp: '2025-03-18 01:14:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Parallel_Unionfind.test.cpp

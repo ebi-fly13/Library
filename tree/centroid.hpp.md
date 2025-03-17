@@ -7,23 +7,22 @@ data:
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: tree/tree_hash.hpp
+    title: tree/tree_hash.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/tree/Jump_on_Tree.test.cpp
-    title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/level_ancestor_lca.test.cpp
-    title: test/tree/level_ancestor_lca.test.cpp
+    path: test/aoj/aoj_2821.test.cpp
+    title: test/aoj/aoj_2821.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"tree/level_ancestor.hpp\"\n\r\n#include <algorithm>\r\n\
-    #include <cassert>\r\n#include <vector>\r\n\r\n#line 2 \"graph/base.hpp\"\n\n\
-    #line 4 \"graph/base.hpp\"\n#include <iostream>\n#include <ranges>\n#line 7 \"\
-    graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
+  bundledCode: "#line 2 \"tree/centroid.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#include\
+    \ <cassert>\n#include <iostream>\n#include <ranges>\n#include <vector>\n\n#line\
+    \ 2 \"data_structure/simple_csr.hpp\"\n\n#line 4 \"data_structure/simple_csr.hpp\"\
     \n#include <utility>\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi\
     \ {\n\ntemplate <class E> struct simple_csr {\n    simple_csr() = default;\n\n\
     \    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n     \
@@ -84,63 +83,41 @@ data:
     \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
     \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
     \ buff;\n\n    std::vector<edge_type> edges;\n    simple_csr<edge_type> csr;\n\
-    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 8 \"tree/level_ancestor.hpp\"\
-    \n\r\nnamespace ebi {\r\n\r\ntemplate <class T> struct level_ancestor {\r\n  private:\r\
-    \n    int n;\r\n    std::vector<int> in;\r\n    std::vector<int> inv_in;\r\n \
-    \   std::vector<int> depths;\r\n    std::vector<std::vector<int>> s;\r\n\r\n \
-    \ public:\r\n    level_ancestor(const Graph<T> &gh, int root = 0)\r\n        :\
-    \ n(gh.size()), in(n), inv_in(n), depths(n) {\r\n        int cnt = 0;\r\n    \
-    \    int max = 0;\r\n        auto dfs = [&](auto &&self, int v, int par = -1)\
-    \ -> void {\r\n            inv_in[cnt] = v;\r\n            in[v] = cnt++;\r\n\
-    \            max = std::max(max, depths[v]);\r\n            for (auto e : gh[v])\r\
-    \n                if (e.to != par) {\r\n                    depths[e.to] = depths[v]\
-    \ + 1;\r\n                    self(self, e.to, v);\r\n                }\r\n  \
-    \      };\r\n        dfs(dfs, root);\r\n        s.resize(max + 1);\r\n       \
-    \ for (int i = 0; i < n; i++) {\r\n            int u = inv_in[i];\r\n        \
-    \    s[depths[u]].emplace_back(i);\r\n        }\r\n    }\r\n\r\n    int query(int\
-    \ u, int k) const {\r\n        int m = depths[u] - k;\r\n        assert(m >= 0);\r\
-    \n        return inv_in[*std::prev(\r\n            std::upper_bound(s[m].begin(),\
-    \ s[m].end(), in[u]))];\r\n    }\r\n\r\n    int depth(int u) const {\r\n     \
-    \   return depths[u];\r\n    }\r\n};\r\n\r\n}  // namespace ebi\n"
-  code: "#pragma once\r\n\r\n#include <algorithm>\r\n#include <cassert>\r\n#include\
-    \ <vector>\r\n\r\n#include \"../graph/base.hpp\"\r\n\r\nnamespace ebi {\r\n\r\n\
-    template <class T> struct level_ancestor {\r\n  private:\r\n    int n;\r\n   \
-    \ std::vector<int> in;\r\n    std::vector<int> inv_in;\r\n    std::vector<int>\
-    \ depths;\r\n    std::vector<std::vector<int>> s;\r\n\r\n  public:\r\n    level_ancestor(const\
-    \ Graph<T> &gh, int root = 0)\r\n        : n(gh.size()), in(n), inv_in(n), depths(n)\
-    \ {\r\n        int cnt = 0;\r\n        int max = 0;\r\n        auto dfs = [&](auto\
-    \ &&self, int v, int par = -1) -> void {\r\n            inv_in[cnt] = v;\r\n \
-    \           in[v] = cnt++;\r\n            max = std::max(max, depths[v]);\r\n\
-    \            for (auto e : gh[v])\r\n                if (e.to != par) {\r\n  \
-    \                  depths[e.to] = depths[v] + 1;\r\n                    self(self,\
-    \ e.to, v);\r\n                }\r\n        };\r\n        dfs(dfs, root);\r\n\
-    \        s.resize(max + 1);\r\n        for (int i = 0; i < n; i++) {\r\n     \
-    \       int u = inv_in[i];\r\n            s[depths[u]].emplace_back(i);\r\n  \
-    \      }\r\n    }\r\n\r\n    int query(int u, int k) const {\r\n        int m\
-    \ = depths[u] - k;\r\n        assert(m >= 0);\r\n        return inv_in[*std::prev(\r\
-    \n            std::upper_bound(s[m].begin(), s[m].end(), in[u]))];\r\n    }\r\n\
-    \r\n    int depth(int u) const {\r\n        return depths[u];\r\n    }\r\n};\r\
-    \n\r\n}  // namespace ebi"
+    \    bool prepared = false;\n};\n\n}  // namespace ebi\n#line 4 \"tree/centroid.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T> std::vector<int> get_centroid(const\
+    \ Graph<T> &tree) {\n    int n = tree.node_number();\n    std::vector<int> sz(n,\
+    \ 1);\n    std::vector<int> centroid;\n    auto dfs = [&](auto &&self, int v,\
+    \ int par = -1) -> void {\n        bool is_centroid = true;\n        for (auto\
+    \ e : tree[v]) {\n            if (e.to == par) continue;\n            self(self,\
+    \ e.to, v);\n            if (sz[e.to] > n / 2) is_centroid = false;\n        \
+    \    sz[v] += sz[e.to];\n        }\n        if (n - sz[v] > n / 2) is_centroid\
+    \ = false;\n        if (is_centroid) centroid.emplace_back(v);\n    };\n    dfs(dfs,\
+    \ 0);\n    return centroid;\n}\n\n}  // namespace ebi\n"
+  code: "#pragma once\n\n#include \"../graph/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T> std::vector<int> get_centroid(const Graph<T> &tree) {\n    int n =\
+    \ tree.node_number();\n    std::vector<int> sz(n, 1);\n    std::vector<int> centroid;\n\
+    \    auto dfs = [&](auto &&self, int v, int par = -1) -> void {\n        bool\
+    \ is_centroid = true;\n        for (auto e : tree[v]) {\n            if (e.to\
+    \ == par) continue;\n            self(self, e.to, v);\n            if (sz[e.to]\
+    \ > n / 2) is_centroid = false;\n            sz[v] += sz[e.to];\n        }\n \
+    \       if (n - sz[v] > n / 2) is_centroid = false;\n        if (is_centroid)\
+    \ centroid.emplace_back(v);\n    };\n    dfs(dfs, 0);\n    return centroid;\n\
+    }\n\n}  // namespace ebi"
   dependsOn:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
-  path: tree/level_ancestor.hpp
-  requiredBy: []
+  path: tree/centroid.hpp
+  requiredBy:
+  - tree/tree_hash.hpp
   timestamp: '2025-03-18 01:14:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/level_ancestor_lca.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
-documentation_of: tree/level_ancestor.hpp
+  - test/aoj/aoj_2821.test.cpp
+documentation_of: tree/centroid.hpp
 layout: document
-title: Level Ancestor
+redirect_from:
+- /library/tree/centroid.hpp
+- /library/tree/centroid.hpp.html
+title: tree/centroid.hpp
 ---
-
-## 説明
-
-根付き木のLevel Ancestorを構築 $O(N)$ / クエリ $O(\log N)$
-
-### query(u, k)
-
-頂点`u`の根方向に $k$ だけ上った頂点を返す。 $O(\log N)$
