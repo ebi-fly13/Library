@@ -7,29 +7,29 @@ data:
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/euler_trail.hpp
     title: Euler Trail
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/eulerian_trail_directed
@@ -95,7 +95,7 @@ data:
     \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
     \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
     \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
-    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ assert(prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
     \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
     \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
     \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
@@ -209,8 +209,8 @@ data:
   isVerificationFile: true
   path: test/graph/Eulerian_Trail_Directed.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 01:14:29+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-03-18 03:40:16+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Eulerian_Trail_Directed.test.cpp
 layout: document

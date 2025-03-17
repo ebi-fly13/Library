@@ -70,7 +70,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: convolution/online_convolution.hpp
       title: Online Convolution
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: convolution/or_convolution.hpp
       title: Bitwise OR Convolution
     - icon: ':heavy_check_mark:'
@@ -204,7 +204,7 @@ data:
     - icon: ':question:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/skew_heap.hpp
       title: data_structure/skew_heap.hpp
     - icon: ':heavy_check_mark:'
@@ -328,16 +328,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/biconnected_components.hpp
       title: graph/biconnected_components.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/chromatic_number.hpp
       title: "Chromatic Number (\u5F69\u8272\u6570)"
     - icon: ':warning:'
       path: graph/complement_graph_bfs.hpp
       title: Complement Graph BFS
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/count_directed_euler_trail.hpp
       title: Count Directed Euler Trail
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/count_spanning_tree.hpp
       title: Count Spanning Tree
     - icon: ':heavy_check_mark:'
@@ -349,10 +349,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra_fibheap.hpp
       title: graph/dijkstra_fibheap.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/directed_mst.hpp
       title: Directed MST
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/euler_trail.hpp
       title: Euler Trail
     - icon: ':heavy_check_mark:'
@@ -379,7 +379,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/two_edge_connected_components.hpp
       title: Two Edge Connected Components
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/utility.hpp
       title: "\u4FBF\u5229\u95A2\u6570"
   - name: math
@@ -390,7 +390,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/bernoulli_number.hpp
       title: Bernoulli Number
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: Binomial Coefficient
     - icon: ':heavy_check_mark:'
@@ -458,7 +458,7 @@ data:
       title: "$\\sum_{i = 0}^{n-1} i^k$ \u306E $k$ \u306B\u95A2\u3059\u308B\u5217\u6319"
   - name: matrix
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: matrix/base.hpp
       title: matrix/base.hpp
     - icon: ':heavy_check_mark:'
@@ -512,7 +512,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: set_function/ranked_subset_transform.hpp
       title: Ranked Subset Transform (Zeta / Mobius)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: set_function/subset_transform.hpp
       title: "Subset Transform (Zeta / M\xF6bius)"
     - icon: ':heavy_check_mark:'
@@ -543,19 +543,19 @@ data:
       title: Wildcard Pattern Matching
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -913,10 +913,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Biconnected_Components.test.cpp
       title: test/graph/Biconnected_Components.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Chromatic_Number.test.cpp
       title: test/graph/Chromatic_Number.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Counting_Eulerian_Circuits.test.cpp
       title: test/graph/Counting_Eulerian_Circuits.test.cpp
     - icon: ':heavy_check_mark:'
@@ -931,10 +931,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Cycle_Detection_Undirected.test.cpp
       title: test/graph/Cycle_Detection_Undirected.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Directed_MST.test.cpp
       title: test/graph/Directed_MST.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Eulerian_Trail_Directed.test.cpp
       title: test/graph/Eulerian_Trail_Directed.test.cpp
     - icon: ':heavy_check_mark:'

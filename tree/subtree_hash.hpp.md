@@ -96,7 +96,7 @@ data:
     \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
     \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
     \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
-    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ assert(prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
     \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
     \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
     \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
@@ -324,7 +324,7 @@ data:
   path: tree/subtree_hash.hpp
   requiredBy:
   - tree/tree_hash.hpp
-  timestamp: '2025-03-18 01:14:29+09:00'
+  timestamp: '2025-03-18 03:40:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Rooted_Tree_Isomorphism_Classification.test.cpp

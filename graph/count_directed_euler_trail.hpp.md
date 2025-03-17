@@ -7,13 +7,13 @@ data:
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/count_spanning_tree.hpp
     title: Count Spanning Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: Binomial Coefficient
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: matrix/base.hpp
     title: matrix/base.hpp
   - icon: ':question:'
@@ -21,12 +21,12 @@ data:
     title: modint/base.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Counting_Eulerian_Circuits.test.cpp
     title: test/graph/Counting_Eulerian_Circuits.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/count_directed_euler_trail.hpp\"\n\n#include <vector>\n\
@@ -87,7 +87,7 @@ data:
     \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
     \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
     \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
-    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ assert(prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
     \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
     \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
     \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
@@ -316,8 +316,8 @@ data:
   isVerificationFile: false
   path: graph/count_directed_euler_trail.hpp
   requiredBy: []
-  timestamp: '2025-03-18 01:14:29+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2025-03-18 03:40:16+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Counting_Eulerian_Circuits.test.cpp
 documentation_of: graph/count_directed_euler_trail.hpp

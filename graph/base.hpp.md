@@ -14,16 +14,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/biconnected_components.hpp
     title: graph/biconnected_components.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/chromatic_number.hpp
     title: "Chromatic Number (\u5F69\u8272\u6570)"
   - icon: ':warning:'
     path: graph/complement_graph_bfs.hpp
     title: Complement Graph BFS
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/count_directed_euler_trail.hpp
     title: Count Directed Euler Trail
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/count_spanning_tree.hpp
     title: Count Spanning Tree
   - icon: ':heavy_check_mark:'
@@ -35,10 +35,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/dijkstra_fibheap.hpp
     title: graph/dijkstra_fibheap.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/directed_mst.hpp
     title: Directed MST
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/euler_trail.hpp
     title: Euler Trail
   - icon: ':heavy_check_mark:'
@@ -65,13 +65,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/utility.hpp
     title: "\u4FBF\u5229\u95A2\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   - icon: ':heavy_check_mark:'
@@ -198,10 +198,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Biconnected_Components.test.cpp
     title: test/graph/Biconnected_Components.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Chromatic_Number.test.cpp
     title: test/graph/Chromatic_Number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Counting_Eulerian_Circuits.test.cpp
     title: test/graph/Counting_Eulerian_Circuits.test.cpp
   - icon: ':heavy_check_mark:'
@@ -216,10 +216,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Cycle_Detection_Undirected.test.cpp
     title: test/graph/Cycle_Detection_Undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Directed_MST.test.cpp
     title: test/graph/Directed_MST.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Eulerian_Trail_Directed.test.cpp
     title: test/graph/Eulerian_Trail_Directed.test.cpp
   - icon: ':heavy_check_mark:'
@@ -470,7 +470,7 @@ data:
     \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
     \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
     \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
-    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ assert(prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
     \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
     \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
     \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
@@ -508,7 +508,7 @@ data:
     \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
     \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
     \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
-    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ assert(prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
     \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
     \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
     \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
@@ -557,7 +557,7 @@ data:
   - graph/scc_graph.hpp
   - graph/complement_graph_bfs.hpp
   - algorithm/two_sat.hpp
-  timestamp: '2025-03-18 01:14:29+09:00'
+  timestamp: '2025-03-18 03:40:16+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/matrix/Determinant_of_Matrix_2.test.cpp

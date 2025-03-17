@@ -34,19 +34,19 @@ data:
   - icon: ':question:'
     path: modint/modint.hpp
     title: modint/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
   _extendedRequiredBy: []
@@ -433,7 +433,7 @@ data:
     \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
     \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
     \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
-    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ assert(prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
     \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
     \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
     \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
@@ -486,7 +486,7 @@ data:
   isVerificationFile: true
   path: test/polynomial/Polynomial_Interpolation.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 01:14:29+09:00'
+  timestamp: '2025-03-18 03:40:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/polynomial/Polynomial_Interpolation.test.cpp

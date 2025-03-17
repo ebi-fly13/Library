@@ -9,15 +9,15 @@ data:
     title: Graph (CSR format)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Eulerian_Trail_Directed.test.cpp
     title: test/graph/Eulerian_Trail_Directed.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Eulerian_Trail_Undirected.test.cpp
     title: test/graph/Eulerian_Trail_Undirected.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/euler_trail.hpp\"\n\n#include <algorithm>\n#include\
@@ -79,7 +79,7 @@ data:
     \ return n;\n    }\n\n    int edge_number() const {\n        return m;\n    }\n\
     \n    edge_type get_edge(int i) const {\n        assert(prepared);\n        return\
     \ edges[i];\n    }\n\n    std::vector<edge_type> get_edges() const {\n       \
-    \ assert(!prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
+    \ assert(prepared);\n        return edges;\n    }\n\n    const auto operator[](int\
     \ i) const {\n        assert(prepared);\n        return csr[i];\n    }\n    auto\
     \ operator[](int i) {\n        assert(prepared);\n        return csr[i];\n   \
     \ }\n\n  private:\n    int n, m = 0;\n\n    std::vector<std::pair<int, edge_type>>\
@@ -165,8 +165,8 @@ data:
   isVerificationFile: false
   path: graph/euler_trail.hpp
   requiredBy: []
-  timestamp: '2025-03-18 01:14:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2025-03-18 03:40:16+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Eulerian_Trail_Undirected.test.cpp
   - test/graph/Eulerian_Trail_Directed.test.cpp
