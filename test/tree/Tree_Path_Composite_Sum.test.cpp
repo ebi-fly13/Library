@@ -8,36 +8,35 @@ namespace ebi {
 
 using mint = modint998244353;
 
-struct V {
-    mint a;
-    int cnt;
-};
-
-using E = V;
-
 void main_() {
     int n;
     std::cin >> n;
-    Graph<std::pair<mint, mint>> g(n);
+    Graph<int> g(n);
+    std::vector<std::pair<mint, mint>> edges;
     std::vector<mint> a(n);
     std::cin >> a;
     rep(i, 0, n - 1) {
         int u, v;
         mint b, c;
         std::cin >> u >> v >> b >> c;
-        g.add_undirected_edge(u, v, {b, c});
+        g.add_undirected_edge(u, v, 1);
+        edges.emplace_back(b, c);
     }
     g.build();
-    auto e = [&]() -> E { return {0, 0}; };
-    auto merge = [&](E s, E t) -> E { return {s.a + t.a, s.cnt + t.cnt}; };
-    auto put_edge = [&](int id, V s) -> E {
-        auto [b, c] = g.get_edge(id).cost;
-        return {b * s.a + c * s.cnt, s.cnt};
+    using V = std::pair<mint, mint>;
+    auto merge = [&](V x, V y) -> V {
+        return {x.first + y.first, x.second + y.second};
     };
-    auto put_root = [&](int v, E s) -> V { return {s.a + a[v], s.cnt + 1}; };
-    auto dp = rerooting_dp<V, E>(g, e, merge, put_edge, put_root);
+    auto put_edge = [&](Graph<int>::edge_type e, V x) -> V {
+        auto [b, c] = edges[e.id];
+        return {b * x.first + c * x.second, x.second};
+    };
+    auto put_root = [&](int v, V x) -> V {
+        return {x.first + a[v], x.second + 1};
+    };
+    rerooting_dp dp(g, V{0, 0}, merge, put_edge, put_root);
     rep(i, 0, n) {
-        std::cout << dp[i].a << " \n"[i == n - 1];
+        std::cout << dp.get(i).first << " \n"[i == n - 1];
     }
 }
 

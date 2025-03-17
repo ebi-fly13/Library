@@ -9,9 +9,6 @@
 #include <vector>
 
 #include "../../string/rolling_hash.hpp"
-#include "../../utility/hash.hpp"
-
-using u64 = std::uint64_t;
 
 int main() {
     int n, m;
