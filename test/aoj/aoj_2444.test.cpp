@@ -18,9 +18,8 @@ int main() {
     std::cin >> n >> m;
     std::string s;
     std::cin >> s;
-    std::set<ebi::Hash<2>> set;
-    ebi::rolling_hash<2>::set_base();
-    ebi::rolling_hash<2> rh(s);
+    ebi::rolling_hash rh(s);
+    std::set<ebi::rolling_hash_monoid> set;
     int l = 0;
     int r = 1;
     while (m--) {
