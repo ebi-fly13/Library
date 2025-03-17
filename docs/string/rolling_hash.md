@@ -5,9 +5,9 @@ documentation_of: //string/rolling_hash.hpp
 
 ## 説明
 
-文字列のハッシュを計算する。`rolling_hash<2>::set_base()`を事前に行い、baseをセットする必要あり。
+文字列のハッシュを計算する。
 
-### prefix_hash(r)
+### get_prefix_hash(r)
 
 $[0, r)$ のハッシュを計算する。 $O(1)$
 
@@ -15,18 +15,10 @@ $[0, r)$ のハッシュを計算する。 $O(1)$
 
 文字列の $[l, r)$ のハッシュを計算する。 $O(1)$
 
-### get_hash(std::string str, int l, int r)
+### get_hash(int l, int r)
 
-文字列 $str$ の $[l, r)$ のハッシュを計算する。デフォルトでは文字列全体となる。
+文字列の $[l, r)$ のハッシュを計算する。
 
-### size()
+### operator+(rolling_hash S, rolling_hash T)
 
-文字列のサイズを返す。
-
-### concat(Self lhs, Self rhs)
-
-lhs + rhs の文字列に対してハッシュを計算する。 $O(1)$
-
-### operator+(Self S, Self T)
-
-$S + T$ の文字列に対するローリングハッシュ構造体を計算する。計算量は $T$ のサイズを $N$ として $O(N)$
+$S$, $T$ の扱っている文字列に対するローリングハッシュ構造体を計算する。計算量は $T$ のサイズを $N$ として $O(N)$
