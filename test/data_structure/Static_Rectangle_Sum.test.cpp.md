@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: fenwick tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
   - icon: ':heavy_check_mark:'
     path: data_structure/static_rectangle_sum.hpp
     title: Static Rectangle Sum
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'

@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/poly_mod_pow.hpp
     title: fps/poly_mod_pow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: modint/base.hpp
     title: modint/base.hpp
   - icon: ':heavy_check_mark:'

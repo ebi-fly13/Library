@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
@@ -25,7 +25,7 @@ data:
     - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
   bundledCode: "#line 1 \"test/data_structure/Vertex_Add_Subtree_Sum.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\n\
-    #include <iostream>\n#include <vector>\n\n#line 2 \"data_structure/segtree.hpp\"\
+    #include <cstdint>\n#include <iostream>\n#include <vector>\n\n#line 2 \"data_structure/segtree.hpp\"\
     \n\r\n#include <cassert>\r\n#line 5 \"data_structure/segtree.hpp\"\n\r\nnamespace\
     \ ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)()> struct segtree {\r\n\
     \  private:\r\n    int n;\r\n    int sz;\r\n    std::vector<S> data;\r\n\r\n \
@@ -210,7 +210,7 @@ data:
     \n    std::pair<std::vector<int>, Graph<T>> lca_based_auxiliary_tree(\n      \
     \  std::vector<int> vs) const;\n\n  private:\n    int n, root;\n    Graph<T> g;\n\
     \    std::vector<int> sz, in, out, nxt, par, depth_, rev;\n    std::vector<T>\
-    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 9 \"test/data_structure/Vertex_Add_Subtree_Sum.test.cpp\"\
+    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 10 \"test/data_structure/Vertex_Add_Subtree_Sum.test.cpp\"\
     \n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
     i64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n\
     \ >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n     \
@@ -225,21 +225,22 @@ data:
     \ u;\n            std::cin >> u;\n            ans = e();\n            hld.subtree_query(u,\
     \ true, f);\n            std::cout << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
-    \n\n#include <iostream>\n#include <vector>\n\n#include \"../../data_structure/segtree.hpp\"\
-    \n#include \"../../graph/base.hpp\"\n#include \"../../tree/heavy_light_decomposition.hpp\"\
-    \n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
-    i64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n\
-    \ >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n     \
-    \   std::cin >> a[i];\n    }\n    ebi::Graph<int> g(n);\n    g.read_parents(0);\n\
-    \    ebi::heavy_light_decomposition hld(g);\n    ebi::segtree<i64, op, e> seg(n);\n\
-    \    auto set = [&](int u, i64 x) {\n        int idx = hld.idx(u);\n        seg.set(idx,\
-    \ seg.get(idx) + x);\n    };\n    for (int i = 0; i < n; i++) set(i, a[i]);\n\
-    \    i64 ans = 0;\n    auto f = [&](int l, int r) { ans = op(ans, seg.prod(l,\
-    \ r)); };\n    while (q--) {\n        int flag;\n        std::cin >> flag;\n \
-    \       if (flag == 0) {\n            int u;\n            i64 x;\n           \
-    \ std::cin >> u >> x;\n            set(u, x);\n        } else {\n            int\
-    \ u;\n            std::cin >> u;\n            ans = e();\n            hld.subtree_query(u,\
-    \ true, f);\n            std::cout << ans << '\\n';\n        }\n    }\n}"
+    \n\n#include <cstdint>\n#include <iostream>\n#include <vector>\n\n#include \"\
+    ../../data_structure/segtree.hpp\"\n#include \"../../graph/base.hpp\"\n#include\
+    \ \"../../tree/heavy_light_decomposition.hpp\"\n\nusing i64 = std::int64_t;\n\
+    i64 op(i64 a, i64 b) {\n    return a + b;\n}\ni64 e() {\n    return 0;\n}\n\n\
+    int main() {\n    int n, q;\n    std::cin >> n >> q;\n    std::vector<i64> a(n);\n\
+    \    for (int i = 0; i < n; ++i) {\n        std::cin >> a[i];\n    }\n    ebi::Graph<int>\
+    \ g(n);\n    g.read_parents(0);\n    ebi::heavy_light_decomposition hld(g);\n\
+    \    ebi::segtree<i64, op, e> seg(n);\n    auto set = [&](int u, i64 x) {\n  \
+    \      int idx = hld.idx(u);\n        seg.set(idx, seg.get(idx) + x);\n    };\n\
+    \    for (int i = 0; i < n; i++) set(i, a[i]);\n    i64 ans = 0;\n    auto f =\
+    \ [&](int l, int r) { ans = op(ans, seg.prod(l, r)); };\n    while (q--) {\n \
+    \       int flag;\n        std::cin >> flag;\n        if (flag == 0) {\n     \
+    \       int u;\n            i64 x;\n            std::cin >> u >> x;\n        \
+    \    set(u, x);\n        } else {\n            int u;\n            std::cin >>\
+    \ u;\n            ans = e();\n            hld.subtree_query(u, true, f);\n   \
+    \         std::cout << ans << '\\n';\n        }\n    }\n}"
   dependsOn:
   - data_structure/segtree.hpp
   - graph/base.hpp
@@ -248,8 +249,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-03-18 13:27:59+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Subtree_Sum.test.cpp
 layout: document

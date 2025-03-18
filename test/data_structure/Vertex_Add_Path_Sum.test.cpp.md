@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segtree.hpp
     title: segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
@@ -25,23 +25,23 @@ data:
     - https://judge.yosupo.jp/problem/vertex_add_path_sum
   bundledCode: "#line 1 \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\n#include\
-    \ <iostream>\n#include <vector>\n\n#line 2 \"data_structure/segtree.hpp\"\n\r\n\
-    #include <cassert>\r\n#line 5 \"data_structure/segtree.hpp\"\n\r\nnamespace ebi\
-    \ {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)()> struct segtree {\r\n  private:\r\
-    \n    int n;\r\n    int sz;\r\n    std::vector<S> data;\r\n\r\n    void update(int\
-    \ i) {\r\n        data[i] = op(data[2 * i], data[2 * i + 1]);\r\n    }\r\n\r\n\
-    \  public:\r\n    segtree(int n_) : segtree(std::vector<S>(n_, e())) {}\r\n  \
-    \  segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {\r\n        while\
-    \ (sz < n) sz *= 2;\r\n        data = std::vector<S>(2 * sz, e());\r\n       \
-    \ for (int i = 0; i < n; i++) {\r\n            data[sz + i] = v[i];\r\n      \
-    \  }\r\n        for (int i = sz - 1; i >= 1; i--) update(i);\r\n    }\r\n\r\n\
-    \    void set(int p, S x) {\r\n        assert(0 <= p && p < n);\r\n        p +=\
-    \ sz;\r\n        data[p] = x;\r\n        while (p > 1) {\r\n            p >>=\
-    \ 1;\r\n            update(p);\r\n        }\r\n    }\r\n\r\n    S get(int p) const\
-    \ {\r\n        assert(0 <= p && p < n);\r\n        return data[p + sz];\r\n  \
-    \  }\r\n\r\n    S prod(int l, int r) const {\r\n        assert(0 <= l && l <=\
-    \ r && r <= n);\r\n        S sml = e(), smr = e();\r\n        l += sz;\r\n   \
-    \     r += sz;\r\n        while (l < r) {\r\n            if (l & 1) sml = op(sml,\
+    \ <cstdint>\n#include <iostream>\n#include <vector>\n\n#line 2 \"data_structure/segtree.hpp\"\
+    \n\r\n#include <cassert>\r\n#line 5 \"data_structure/segtree.hpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\ntemplate <class S, S (*op)(S, S), S (*e)()> struct segtree {\r\n\
+    \  private:\r\n    int n;\r\n    int sz;\r\n    std::vector<S> data;\r\n\r\n \
+    \   void update(int i) {\r\n        data[i] = op(data[2 * i], data[2 * i + 1]);\r\
+    \n    }\r\n\r\n  public:\r\n    segtree(int n_) : segtree(std::vector<S>(n_, e()))\
+    \ {}\r\n    segtree(const std::vector<S> &v) : n((int)v.size()), sz(1) {\r\n \
+    \       while (sz < n) sz *= 2;\r\n        data = std::vector<S>(2 * sz, e());\r\
+    \n        for (int i = 0; i < n; i++) {\r\n            data[sz + i] = v[i];\r\n\
+    \        }\r\n        for (int i = sz - 1; i >= 1; i--) update(i);\r\n    }\r\n\
+    \r\n    void set(int p, S x) {\r\n        assert(0 <= p && p < n);\r\n       \
+    \ p += sz;\r\n        data[p] = x;\r\n        while (p > 1) {\r\n            p\
+    \ >>= 1;\r\n            update(p);\r\n        }\r\n    }\r\n\r\n    S get(int\
+    \ p) const {\r\n        assert(0 <= p && p < n);\r\n        return data[p + sz];\r\
+    \n    }\r\n\r\n    S prod(int l, int r) const {\r\n        assert(0 <= l && l\
+    \ <= r && r <= n);\r\n        S sml = e(), smr = e();\r\n        l += sz;\r\n\
+    \        r += sz;\r\n        while (l < r) {\r\n            if (l & 1) sml = op(sml,\
     \ data[l++]);\r\n            if (r & 1) smr = op(data[--r], smr);\r\n        \
     \    l >>= 1;\r\n            r >>= 1;\r\n        }\r\n        return op(sml, smr);\r\
     \n    }\r\n\r\n    S all_prod() const {\r\n        return data[1];\r\n    }\r\n\
@@ -210,11 +210,11 @@ data:
     \n    std::pair<std::vector<int>, Graph<T>> lca_based_auxiliary_tree(\n      \
     \  std::vector<int> vs) const;\n\n  private:\n    int n, root;\n    Graph<T> g;\n\
     \    std::vector<int> sz, in, out, nxt, par, depth_, rev;\n    std::vector<T>\
-    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 9 \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\
-    \n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
-    i64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n\
-    \ >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n     \
-    \   std::cin >> a[i];\n    }\n    ebi::Graph<int> g(n);\n    g.read_tree(0);\n\
+    \ dist;\n\n    int num = 0;\n};\n\n}  // namespace ebi\n#line 10 \"test/data_structure/Vertex_Add_Path_Sum.test.cpp\"\
+    \n\nusing i64 = std::int64_t;\n\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
+    \ni64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >>\
+    \ n >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n   \
+    \     std::cin >> a[i];\n    }\n    ebi::Graph<int> g(n);\n    g.read_tree(0);\n\
     \    ebi::heavy_light_decomposition hld(g);\n    ebi::segtree<i64, op, e> seg(n);\n\
     \    i64 ans = e();\n    auto set = [&](int u, i64 x) {\n        int idx = hld.idx(u);\n\
     \        seg.set(idx, seg.get(idx) + x);\n    };\n    auto f = [&](int l, int\
@@ -227,12 +227,12 @@ data:
     \            ans = e();\n            hld.path_noncommutative_query(u, v, true,\
     \ f);\n            std::cout << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
-    \n#include <iostream>\n#include <vector>\n\n#include \"../../data_structure/segtree.hpp\"\
+    \n#include <cstdint>\n#include <iostream>\n#include <vector>\n\n#include \"../../data_structure/segtree.hpp\"\
     \n#include \"../../graph/base.hpp\"\n#include \"../../tree/heavy_light_decomposition.hpp\"\
-    \n\nusing i64 = std::int64_t;\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
-    i64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >> n\
-    \ >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n     \
-    \   std::cin >> a[i];\n    }\n    ebi::Graph<int> g(n);\n    g.read_tree(0);\n\
+    \n\nusing i64 = std::int64_t;\n\ni64 op(i64 a, i64 b) {\n    return a + b;\n}\n\
+    \ni64 e() {\n    return 0;\n}\n\nint main() {\n    int n, q;\n    std::cin >>\
+    \ n >> q;\n    std::vector<i64> a(n);\n    for (int i = 0; i < n; ++i) {\n   \
+    \     std::cin >> a[i];\n    }\n    ebi::Graph<int> g(n);\n    g.read_tree(0);\n\
     \    ebi::heavy_light_decomposition hld(g);\n    ebi::segtree<i64, op, e> seg(n);\n\
     \    i64 ans = e();\n    auto set = [&](int u, i64 x) {\n        int idx = hld.idx(u);\n\
     \        seg.set(idx, seg.get(idx) + x);\n    };\n    auto f = [&](int l, int\
@@ -252,8 +252,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-03-18 13:27:59+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Vertex_Add_Path_Sum.test.cpp
 layout: document

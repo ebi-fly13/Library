@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_dual_segtree_2d.hpp
     title: offline 2D dual segtree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'

@@ -7,10 +7,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: Range Parallel DSU
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
