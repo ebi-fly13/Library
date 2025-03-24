@@ -1,43 +1,47 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: Sparse Table
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/io.hpp
     title: template/io.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utility.hpp
     title: template/utility.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/common_interval_decomposition_tree.hpp
     title: Common Interval Decomposition Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    links: []
-  bundledCode: "#line 2 \"tree/common_interval_decomposition_tree.hpp\"\n\n#include\
-    \ <cassert>\n#include <numeric>\n#include <vector>\n\n#line 2 \"data_structure/sparse_table.hpp\"\
+    PROBLEM: https://judge.yosupo.jp/problem/common_interval_decomposition_tree
+    links:
+    - https://judge.yosupo.jp/problem/common_interval_decomposition_tree
+  bundledCode: "#line 1 \"test/tree/Common_Interval_Decomposition_Tree.test.cpp\"\n\
+    #define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/common_interval_decomposition_tree\"\
+    \n\n#line 2 \"tree/common_interval_decomposition_tree.hpp\"\n\n#include <cassert>\n\
+    #include <numeric>\n#include <vector>\n\n#line 2 \"data_structure/sparse_table.hpp\"\
     \n\r\n#line 4 \"data_structure/sparse_table.hpp\"\n\r\n/*\r\n    reference: https://scrapbox.io/data-structures/Sparse_Table\r\
     \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class Band, Band (*op)(Band, Band)>\
     \ struct sparse_table {\r\n  public:\r\n    sparse_table() = default;\r\n\r\n\
@@ -106,7 +110,7 @@ data:
     \ = common.r;\n            }\n        }\n    }\n\n  public:\n    common_interval_decomposition_tree(const\
     \ std::vector<int> &p) {\n        build(p);\n    }\n\n    std::vector<Node> get_tree()\
     \ const {\n        return tree;\n    }\n\n  private:\n    std::vector<Node> tree;\n\
-    };\n\n}  // namespace ebi\n#line 2 \"test/tree/Common_Interval_Decomposition_Tree.test.cpp\"\
+    };\n\n}  // namespace ebi\n#line 5 \"test/tree/Common_Interval_Decomposition_Tree.test.cpp\"\
     \n\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i,\
     \ a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int\
     \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
@@ -214,7 +218,7 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 4 \"test/tree/Common_Interval_Decomposition_Tree.test.cpp\"\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 7 \"test/tree/Common_Interval_Decomposition_Tree.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<int>\
     \ p(n);\n    std::cin >> p;\n    common_interval_decomposition_tree permutation_tree(p);\n\
     \    auto tree = permutation_tree.get_tree();\n    std::cout << tree.size() <<\
@@ -225,7 +229,8 @@ data:
     \    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int\
     \ t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n  \
     \  }\n    return 0;\n}\n"
-  code: "#include \"../../tree/common_interval_decomposition_tree.hpp\"\n\n#include\
+  code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/common_interval_decomposition_tree\"\
+    \n\n#include \"../../tree/common_interval_decomposition_tree.hpp\"\n\n#include\
     \ \"../../template/template.hpp\"\n\nnamespace ebi {\n\nvoid main_() {\n    int\
     \ n;\n    std::cin >> n;\n    std::vector<int> p(n);\n    std::cin >> p;\n   \
     \ common_interval_decomposition_tree permutation_tree(p);\n    auto tree = permutation_tree.get_tree();\n\
@@ -249,8 +254,8 @@ data:
   isVerificationFile: true
   path: test/tree/Common_Interval_Decomposition_Tree.test.cpp
   requiredBy: []
-  timestamp: '2025-03-24 18:22:31+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-03-24 18:45:56+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Common_Interval_Decomposition_Tree.test.cpp
 layout: document

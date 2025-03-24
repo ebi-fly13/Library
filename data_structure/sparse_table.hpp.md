@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/common_interval_decomposition_tree.hpp
     title: Common Interval Decomposition Tree
   - icon: ':heavy_check_mark:'
@@ -12,7 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Rmq.test.cpp
     title: test/data_structure/Static_Rmq.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Common_Interval_Decomposition_Tree.test.cpp
     title: test/tree/Common_Interval_Decomposition_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -21,9 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/lowest_common_ancestor.test.cpp
     title: test/tree/lowest_common_ancestor.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://scrapbox.io/data-structures/Sparse_Table
@@ -73,7 +73,7 @@ data:
   - tree/common_interval_decomposition_tree.hpp
   - tree/lowest_common_ancestor.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Jump_on_Tree.test.cpp

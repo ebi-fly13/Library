@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: Sparse Table
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Common_Interval_Decomposition_Tree.test.cpp
     title: test/tree/Common_Interval_Decomposition_Tree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://www.mathenachia.blog/permutation-tree/
@@ -143,7 +143,7 @@ data:
   path: tree/common_interval_decomposition_tree.hpp
   requiredBy: []
   timestamp: '2025-03-24 18:22:31+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Common_Interval_Decomposition_Tree.test.cpp
 documentation_of: tree/common_interval_decomposition_tree.hpp
