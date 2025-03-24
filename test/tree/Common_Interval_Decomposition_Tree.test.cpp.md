@@ -4,9 +4,9 @@ data:
   - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
-    path: data_structure/skew_heap.hpp
-    title: data_structure/skew_heap.hpp
+  - icon: ':question:'
+    path: data_structure/sparse_table.hpp
+    title: Sparse Table
   - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
@@ -25,52 +25,96 @@ data:
   - icon: ':question:'
     path: template/utility.hpp
     title: template/utility.hpp
+  - icon: ':x:'
+    path: tree/common_interval_decomposition_tree.hpp
+    title: Common Interval Decomposition Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-    links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "#line 1 \"test/aoj/aoj_grl_1_a.test.cpp\"\n#define PROBLEM \\\n  \
-    \  \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\n\n#line\
-    \ 2 \"data_structure/skew_heap.hpp\"\n\n#include <cassert>\n#include <functional>\n\
-    #include <memory>\n#include <vector>\n\nnamespace ebi {\n\ntemplate <class Key,\
-    \ class T, class Compare = std::less<Key>> struct skew_heap {\n  private:\n  \
-    \  using value_type = Key;\n    using Self = skew_heap<Key, T, Compare>;\n\n \
-    \   struct Node;\n    using iterator = std::shared_ptr<Node>;\n\n    struct Node\
-    \ {\n        Node(value_type x_, T info_) : x(x_), info(info_) {}\n\n        void\
-    \ propagate() {\n            if (lhs) lhs->lazy += lazy;\n            if (rhs)\
-    \ rhs->lazy += lazy;\n            x += lazy;\n            lazy = value_type();\n\
-    \        }\n\n        value_type x;\n        T info;\n        value_type lazy\
-    \ = value_type();\n        iterator lhs = nullptr, rhs = nullptr;\n    };\n\n\
-    \    iterator internal_meld(iterator lhs, iterator rhs) {\n        if (lhs ==\
-    \ nullptr) return rhs;\n        if (rhs == nullptr) return lhs;\n        lhs->propagate();\n\
-    \        rhs->propagate();\n        if (Compare()(lhs->x, rhs->x)) {\n       \
-    \     std::swap(lhs, rhs);\n        }\n        lhs->rhs = internal_meld(lhs->rhs,\
-    \ rhs);\n        std::swap(lhs->lhs, lhs->rhs);\n        return lhs;\n    }\n\n\
-    \  public:\n    skew_heap() = default;\n\n    void push(value_type x, T info)\
-    \ {\n        root = internal_meld(root, std::make_shared<Node>(x, info));\n  \
-    \      sz++;\n    }\n\n    void pop() {\n        assert(!empty());\n        root\
-    \ = internal_meld(root->lhs, root->rhs);\n        sz--;\n    }\n\n    void meld(Self\
-    \ &heap) {\n        root = internal_meld(root, heap.root);\n        sz += heap.sz;\n\
-    \    }\n\n    void add(value_type lazy) {\n        if (root == nullptr) return;\n\
-    \        root->lazy += lazy;\n        root->propagate();\n    }\n\n    bool empty()\
-    \ const {\n        return root == nullptr;\n    }\n\n    std::pair<value_type,\
-    \ T> top() const {\n        return {root->x, root->info};\n    }\n\n    int size()\
-    \ const {\n        return sz;\n    }\n\n  private:\n    iterator root = nullptr;\n\
-    \    int sz = 0;\n};\n\n}  // namespace ebi\n#line 1 \"template/template.hpp\"\
-    \n#include <bits/stdc++.h>\n\n#define rep(i, a, n) for (int i = (int)(a); i <\
-    \ (int)(n); i++)\n#define rrep(i, a, n) for (int i = ((int)(n)-1); i >= (int)(a);\
-    \ i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a); i < (i64)(n); i++)\n#define\
-    \ RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i >= (i64)(a); i--)\n#define all(v)\
-    \ (v).begin(), (v).end()\n#define rall(v) (v).rbegin(), (v).rend()\n\n#line 2\
-    \ \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\n\
-    \nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                        \
-    \                              \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
+    links: []
+  bundledCode: "#line 2 \"tree/common_interval_decomposition_tree.hpp\"\n\n#include\
+    \ <cassert>\n#include <numeric>\n#include <vector>\n\n#line 2 \"data_structure/sparse_table.hpp\"\
+    \n\r\n#line 4 \"data_structure/sparse_table.hpp\"\n\r\n/*\r\n    reference: https://scrapbox.io/data-structures/Sparse_Table\r\
+    \n*/\r\n\r\nnamespace ebi {\r\n\r\ntemplate <class Band, Band (*op)(Band, Band)>\
+    \ struct sparse_table {\r\n  public:\r\n    sparse_table() = default;\r\n\r\n\
+    \    sparse_table(const std::vector<Band> &a) : n(a.size()) {\r\n        table\
+    \ = std::vector(std::__lg(n) + 1, std::vector<Band>(n));\r\n        for (int i\
+    \ = 0; i < n; i++) {\r\n            table[0][i] = a[i];\r\n        }\r\n     \
+    \   for (int k = 1; (1 << k) <= n; k++) {\r\n            for (int i = 0; i + (1\
+    \ << k) <= n; i++) {\r\n                table[k][i] =\r\n                    op(table[k\
+    \ - 1][i], table[k - 1][i + (1 << (k - 1))]);\r\n            }\r\n        }\r\n\
+    \    }\r\n\r\n    void build(const std::vector<Band> &a) {\r\n        n = (int)a.size();\r\
+    \n        table = std::vector(std::__lg(n) + 1, std::vector<Band>(n));\r\n   \
+    \     for (int i = 0; i < n; i++) {\r\n            table[0][i] = a[i];\r\n   \
+    \     }\r\n        for (int k = 1; (1 << k) <= n; k++) {\r\n            for (int\
+    \ i = 0; i + (1 << k) <= n; i++) {\r\n                table[k][i] =\r\n      \
+    \              op(table[k - 1][i], table[k - 1][i + (1 << (k - 1))]);\r\n    \
+    \        }\r\n        }\r\n    }\r\n\r\n    // [l, r)\r\n    Band fold(int l,\
+    \ int r) {\r\n        int k = std::__lg(r - l);\r\n        return op(table[k][l],\
+    \ table[k][r - (1 << k)]);\r\n    }\r\n\r\n  private:\r\n    int n;\r\n    std::vector<std::vector<Band>>\
+    \ table;\r\n};\r\n\r\n}  // namespace ebi\n#line 8 \"tree/common_interval_decomposition_tree.hpp\"\
+    \n\n/*\nreference: https://www.mathenachia.blog/permutation-tree/\n*/\n\nnamespace\
+    \ ebi {\n\nstruct common_interval_decomposition_tree {\n  public:\n    enum NodeType\
+    \ {\n        Prime,\n        Dec,\n        Inc,\n        One,\n    };\n\n    struct\
+    \ Node {\n        int parent;\n        NodeType type;\n        int l, r;\n   \
+    \ };\n\n  private:\n    static int op(int a, int b) {\n        return a < b ?\
+    \ a : b;\n    }\n\n    void build(const std::vector<int> &p) {\n        int n\
+    \ = (int)p.size();\n        std::vector<int> q(n, -1);\n        for (int i = 0;\
+    \ i < n; i++) {\n            assert(0 <= p[i] && p[i] < n && q[p[i]] == -1);\n\
+    \            q[p[i]] = i;\n        }\n        sparse_table<int, op> static_range_min(q);\n\
+    \        struct LeftBase {\n            int l;\n            int vl, vr;\n    \
+    \    };\n        struct Common {\n            int l, r, v;\n        };\n     \
+    \   std::vector<LeftBase> stack;\n        std::vector<Common> commons;\n     \
+    \   for (int r = 1; r <= n; r++) {\n            int a = p[r - 1];\n          \
+    \  LeftBase y = {r - 1, a, a + 1};\n            while (!stack.empty()) {\n   \
+    \             if (y.vl < stack.back().vl) stack.back().vl = y.vl;\n          \
+    \      if (y.vr > stack.back().vr) stack.back().vr = y.vr;\n                auto\
+    \ x = stack.back();\n                if (static_range_min.fold(x.vl, x.vr) < x.l)\
+    \ {\n                    stack.pop_back();\n                    auto &new_x =\
+    \ stack.back();\n                    if (x.vl < new_x.vl) new_x.vl = x.vl;\n \
+    \                   if (x.vr > new_x.vr) new_x.vr = x.vr;\n                } else\
+    \ if (x.vr - x.vl == r - x.l) {\n                    y = x;\n                \
+    \    stack.pop_back();\n                    commons.emplace_back(x.l, r, x.vl);\n\
+    \                } else {\n                    break;\n                }\n   \
+    \         }\n            stack.push_back(y);\n        }\n        while (stack.size()\
+    \ >= 2) {\n            auto x = stack.back();\n            stack.pop_back();\n\
+    \            auto &new_x = stack.back();\n            if (x.vl < new_x.vl) new_x.vl\
+    \ = x.vl;\n            if (x.vr > new_x.vr) new_x.vr = x.vr;\n            if (new_x.vr\
+    \ - new_x.vl == n - new_x.l) {\n                commons.emplace_back(new_x.l,\
+    \ n, new_x.vl);\n            }\n        }\n        assert(stack.size() == 1);\n\
+    \        for (int i = 0; i < n; i++) tree.emplace_back(-1, One, i, i + 1);\n \
+    \       std::vector<int> id(n);\n        std::iota(id.begin(), id.end(), 0);\n\
+    \        std::vector<int> right_list(n);\n        std::iota(right_list.begin(),\
+    \ right_list.end(), 1);\n        for (auto common : commons) {\n            int\
+    \ m = right_list[common.l];\n            if (right_list[m] == common.r) {\n  \
+    \              int a = id[common.l];\n                int b = id[m];\n       \
+    \         right_list[common.l] = common.r;\n                auto t = p[common.l]\
+    \ < p[common.r - 1] ? Inc : Dec;\n                if (tree[a].type == t) {\n \
+    \                   tree[b].parent = a;\n                    tree[a].r = common.r;\n\
+    \                } else {\n                    int c = (int)tree.size();\n   \
+    \                 tree.emplace_back(-1, t, common.l, common.r);\n            \
+    \        tree[a].parent = c;\n                    tree[b].parent = c;\n      \
+    \              id[common.l] = c;\n                }\n            } else {\n  \
+    \              int c = (int)tree.size();\n                tree.emplace_back(-1,\
+    \ Prime, common.l, common.r);\n                for (int i = common.l; i < common.r;\
+    \ i = right_list[i]) {\n                    tree[id[i]].parent = c;\n        \
+    \        }\n                id[common.l] = c;\n                right_list[common.l]\
+    \ = common.r;\n            }\n        }\n    }\n\n  public:\n    common_interval_decomposition_tree(const\
+    \ std::vector<int> &p) {\n        build(p);\n    }\n\n    std::vector<Node> get_tree()\
+    \ const {\n        return tree;\n    }\n\n  private:\n    std::vector<Node> tree;\n\
+    };\n\n}  // namespace ebi\n#line 2 \"test/tree/Common_Interval_Decomposition_Tree.test.cpp\"\
+    \n\n#line 1 \"template/template.hpp\"\n#include <bits/stdc++.h>\n\n#define rep(i,\
+    \ a, n) for (int i = (int)(a); i < (int)(n); i++)\n#define rrep(i, a, n) for (int\
+    \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
+    \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
+    \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
+    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
+    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
+    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
     \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
     #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
     }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
@@ -170,35 +214,31 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 6 \"test/aoj/aoj_grl_1_a.test.cpp\"\
-    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m, r;\n    std::cin >> n >>\
-    \ m >> r;\n    Graph<i64> g(n);\n    g.read_graph(m, 0, true, true);\n    skew_heap<i64,\
-    \ int, std::greater<i64>> heap;\n    std::vector<i64> dp(n, LNF);\n    dp[r] =\
-    \ 0;\n    heap.push(0, r);\n    while (!heap.empty()) {\n        auto [ret, v]\
-    \ = heap.top();\n        heap.pop();\n        if (dp[v] < ret) continue;\n   \
-    \     for (auto e : g[v]) {\n            if (chmin(dp[e.to], dp[v] + e.cost))\
-    \ {\n                heap.push(dp[e.to], e.to);\n            }\n        }\n  \
-    \  }\n    for (auto ans : dp) {\n        if (ans == LNF) {\n            std::cout\
-    \ << \"INF\\n\";\n        } else {\n            std::cout << ans << '\\n';\n \
-    \       }\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
-    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    return 0;\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \n\n#include \"../../data_structure/skew_heap.hpp\"\n#include \"../../template/template.hpp\"\
-    \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m, r;\n    std::cin >> n >>\
-    \ m >> r;\n    Graph<i64> g(n);\n    g.read_graph(m, 0, true, true);\n    skew_heap<i64,\
-    \ int, std::greater<i64>> heap;\n    std::vector<i64> dp(n, LNF);\n    dp[r] =\
-    \ 0;\n    heap.push(0, r);\n    while (!heap.empty()) {\n        auto [ret, v]\
-    \ = heap.top();\n        heap.pop();\n        if (dp[v] < ret) continue;\n   \
-    \     for (auto e : g[v]) {\n            if (chmin(dp[e.to], dp[v] + e.cost))\
-    \ {\n                heap.push(dp[e.to], e.to);\n            }\n        }\n  \
-    \  }\n    for (auto ans : dp) {\n        if (ans == LNF) {\n            std::cout\
-    \ << \"INF\\n\";\n        } else {\n            std::cout << ans << '\\n';\n \
-    \       }\n    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
-    \    int t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n\
-    \    }\n    return 0;\n}"
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 4 \"test/tree/Common_Interval_Decomposition_Tree.test.cpp\"\
+    \n\nnamespace ebi {\n\nvoid main_() {\n    int n;\n    std::cin >> n;\n    std::vector<int>\
+    \ p(n);\n    std::cin >> p;\n    common_interval_decomposition_tree permutation_tree(p);\n\
+    \    auto tree = permutation_tree.get_tree();\n    std::cout << tree.size() <<\
+    \ '\\n';\n    for (auto node : tree) {\n        std::cout << node.parent << \"\
+    \ \" << node.l << \" \" << node.r - 1 << \" \"\n                  << (node.type\
+    \ == common_interval_decomposition_tree::Prime\n                          ? \"\
+    prime\"\n                          : \"linear\")\n                  << '\\n';\n\
+    \    }\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n    int\
+    \ t = 1;\n    // std::cin >> t;\n    while (t--) {\n        ebi::main_();\n  \
+    \  }\n    return 0;\n}\n"
+  code: "#include \"../../tree/common_interval_decomposition_tree.hpp\"\n\n#include\
+    \ \"../../template/template.hpp\"\n\nnamespace ebi {\n\nvoid main_() {\n    int\
+    \ n;\n    std::cin >> n;\n    std::vector<int> p(n);\n    std::cin >> p;\n   \
+    \ common_interval_decomposition_tree permutation_tree(p);\n    auto tree = permutation_tree.get_tree();\n\
+    \    std::cout << tree.size() << '\\n';\n    for (auto node : tree) {\n      \
+    \  std::cout << node.parent << \" \" << node.l << \" \" << node.r - 1 << \" \"\
+    \n                  << (node.type == common_interval_decomposition_tree::Prime\n\
+    \                          ? \"prime\"\n                          : \"linear\"\
+    )\n                  << '\\n';\n    }\n}\n\n}  // namespace ebi\n\nint main()\
+    \ {\n    ebi::fast_io();\n    int t = 1;\n    // std::cin >> t;\n    while (t--)\
+    \ {\n        ebi::main_();\n    }\n    return 0;\n}"
   dependsOn:
-  - data_structure/skew_heap.hpp
+  - tree/common_interval_decomposition_tree.hpp
+  - data_structure/sparse_table.hpp
   - template/template.hpp
   - template/debug_template.hpp
   - template/int_alias.hpp
@@ -207,15 +247,15 @@ data:
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: true
-  path: test/aoj/aoj_grl_1_a.test.cpp
+  path: test/tree/Common_Interval_Decomposition_Tree.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-03-24 18:22:31+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/aoj/aoj_grl_1_a.test.cpp
+documentation_of: test/tree/Common_Interval_Decomposition_Tree.test.cpp
 layout: document
 redirect_from:
-- /verify/test/aoj/aoj_grl_1_a.test.cpp
-- /verify/test/aoj/aoj_grl_1_a.test.cpp.html
-title: test/aoj/aoj_grl_1_a.test.cpp
+- /verify/test/tree/Common_Interval_Decomposition_Tree.test.cpp
+- /verify/test/tree/Common_Interval_Decomposition_Tree.test.cpp.html
+title: test/tree/Common_Interval_Decomposition_Tree.test.cpp
 ---

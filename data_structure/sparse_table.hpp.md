@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':x:'
+    path: tree/common_interval_decomposition_tree.hpp
+    title: Common Interval Decomposition Tree
   - icon: ':heavy_check_mark:'
     path: tree/lowest_common_ancestor.hpp
     title: Lowest Common Ancestor
@@ -9,15 +12,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Rmq.test.cpp
     title: test/data_structure/Static_Rmq.test.cpp
+  - icon: ':x:'
+    path: test/tree/Common_Interval_Decomposition_Tree.test.cpp
+    title: test/tree/Common_Interval_Decomposition_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/lowest_common_ancestor.test.cpp
     title: test/tree/lowest_common_ancestor.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://scrapbox.io/data-structures/Sparse_Table
@@ -64,12 +70,14 @@ data:
   isVerificationFile: false
   path: data_structure/sparse_table.hpp
   requiredBy:
+  - tree/common_interval_decomposition_tree.hpp
   - tree/lowest_common_ancestor.hpp
   timestamp: '2023-05-08 16:51:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/tree/lowest_common_ancestor.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Common_Interval_Decomposition_Tree.test.cpp
   - test/data_structure/Static_Rmq.test.cpp
 documentation_of: data_structure/sparse_table.hpp
 layout: document

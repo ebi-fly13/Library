@@ -201,7 +201,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segtree_2d.hpp
       title: 2D segtree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/simple_csr.hpp
       title: Simple CSR
     - icon: ':heavy_check_mark:'
@@ -210,7 +210,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/slope_trick.hpp
       title: Slope Trick
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/sparse_table.hpp
       title: Sparse Table
     - icon: ':heavy_check_mark:'
@@ -319,7 +319,7 @@ data:
       title: geometry/polygon.hpp
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/base.hpp
       title: Graph (CSR format)
     - icon: ':heavy_check_mark:'
@@ -543,19 +543,19 @@ data:
       title: Wildcard Pattern Matching
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/debug_template.hpp
       title: template/debug_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/int_alias.hpp
       title: template/int_alias.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/io.hpp
       title: template/io.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utility.hpp
       title: template/utility.hpp
   - name: tree
@@ -572,6 +572,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: Centroid Decomposition
+    - icon: ':x:'
+      path: tree/common_interval_decomposition_tree.hpp
+      title: Common Interval Decomposition Tree
     - icon: ':heavy_check_mark:'
       path: tree/contour_query_on_tree.hpp
       title: Contour Query on Tree
@@ -1147,6 +1150,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Cartesian_Tree.test.cpp
       title: test/tree/Cartesian_Tree.test.cpp
+    - icon: ':x:'
+      path: test/tree/Common_Interval_Decomposition_Tree.test.cpp
+      title: test/tree/Common_Interval_Decomposition_Tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
       title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp

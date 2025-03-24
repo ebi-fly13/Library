@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/simple_csr.hpp
     title: Simple CSR
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/base.hpp
     title: Graph (CSR format)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/int_alias.hpp
     title: template/int_alias.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   _extendedVerifiedWith:
@@ -198,6 +198,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Cartesian_Tree.test.cpp
     title: test/tree/Cartesian_Tree.test.cpp
+  - icon: ':x:'
+    path: test/tree/Common_Interval_Decomposition_Tree.test.cpp
+    title: test/tree/Common_Interval_Decomposition_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
     title: test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
@@ -261,9 +264,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_952.test.cpp
     title: test/yuki/yuki_952.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/utility.hpp\"\n\n#include <limits>\n#include <vector>\n\
@@ -369,7 +372,7 @@ data:
   requiredBy:
   - template/template.hpp
   timestamp: '2025-03-18 03:40:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
@@ -390,6 +393,7 @@ data:
   - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
   - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+  - test/tree/Common_Interval_Decomposition_Tree.test.cpp
   - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
   - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
   - test/tree/Tree_Path_Composite_Sum.test.cpp
