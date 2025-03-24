@@ -154,6 +154,9 @@ data:
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1720.test.cpp
+    title: test/yuki/yuki_1720.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
   - icon: ':heavy_check_mark:'
@@ -387,6 +390,7 @@ data:
   - test/math/Sharp_P_Subset_Sum.test.cpp
   - test/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
+  - test/yuki/yuki_1720.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_1112.test.cpp
   - test/yuki/yuki_1145.test.cpp

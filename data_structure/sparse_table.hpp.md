@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/lowest_common_ancestor.test.cpp
     title: test/tree/lowest_common_ancestor.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1720.test.cpp
+    title: test/yuki/yuki_1720.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -79,6 +82,7 @@ data:
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Common_Interval_Decomposition_Tree.test.cpp
   - test/data_structure/Static_Rmq.test.cpp
+  - test/yuki/yuki_1720.test.cpp
 documentation_of: data_structure/sparse_table.hpp
 layout: document
 title: Sparse Table

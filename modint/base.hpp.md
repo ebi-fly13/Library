@@ -434,6 +434,9 @@ data:
     path: test/yuki/yuki_1302.test.cpp
     title: test/yuki/yuki_1302.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1720.test.cpp
+    title: test/yuki/yuki_1720.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
   - icon: ':heavy_check_mark:'
@@ -614,6 +617,7 @@ data:
   - test/data_structure/Deque_Operate_All_Composite.test.cpp
   - test/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yuki/yuki_2633.test.cpp
+  - test/yuki/yuki_1720.test.cpp
   - test/yuki/yuki_1302.test.cpp
   - test/yuki/yuki_2747.test.cpp
   - test/yuki/yuki_1112.test.cpp

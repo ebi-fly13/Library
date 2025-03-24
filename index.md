@@ -1216,6 +1216,9 @@ data:
       path: test/yuki/yuki_1302.test.cpp
       title: test/yuki/yuki_1302.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/yuki/yuki_1720.test.cpp
+      title: test/yuki/yuki_1720.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yuki/yuki_1796.test.cpp
       title: test/yuki/yuki_1796.test.cpp
     - icon: ':heavy_check_mark:'

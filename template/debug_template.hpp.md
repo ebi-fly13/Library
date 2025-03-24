@@ -232,6 +232,9 @@ data:
     path: test/yuki/yuki_1145.test.cpp
     title: test/yuki/yuki_1145.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/yuki_1720.test.cpp
+    title: test/yuki/yuki_1720.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/yuki_1796.test.cpp
     title: test/yuki/yuki_1796.test.cpp
   - icon: ':heavy_check_mark:'
@@ -356,6 +359,7 @@ data:
   - test/data_structure/Range_Affine_Point_Get.test.cpp
   - test/data_structure/Static_Rectangle_Sum.test.cpp
   - test/yuki/yuki_2633.test.cpp
+  - test/yuki/yuki_1720.test.cpp
   - test/yuki/yuki_901_2.test.cpp
   - test/yuki/yuki_2439.test.cpp
   - test/yuki/yuki_2747.test.cpp
