@@ -1,3 +1,6 @@
+#define PROBLEM \
+    "https://judge.yosupo.jp/problem/common_interval_decomposition_tree"
+
 #include "../../tree/common_interval_decomposition_tree.hpp"
 
 #include "../../template/template.hpp"
