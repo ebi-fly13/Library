@@ -17,8 +17,8 @@ struct common_interval_decomposition_tree {
   public:
     enum NodeType {
         Prime,
-        Dec,
         Inc,
+        Dec,
         One,
     };
 
@@ -27,6 +27,18 @@ struct common_interval_decomposition_tree {
         NodeType type;
         int l, r;
         std::vector<int> child;
+
+        bool is_prime() const {
+            return type == Prime;
+        }
+
+        bool is_linear() const {
+            return type != Prime;
+        }
+
+        bool is_leaf() const {
+            return type == One;
+        }
     };
 
   private:
@@ -119,6 +131,7 @@ struct common_interval_decomposition_tree {
                 right_list[common.l] = common.r;
             }
         }
+        root = id[0];
     }
 
   public:
@@ -131,7 +144,7 @@ struct common_interval_decomposition_tree {
     }
 
     int root_id() const {
-        return (int)tree.size() - 1;
+        return root;
     }
 
     Node get_node(int i) const {
@@ -153,6 +166,7 @@ struct common_interval_decomposition_tree {
     }
 
   private:
+    int root;
     std::vector<Node> tree;
 };
 
