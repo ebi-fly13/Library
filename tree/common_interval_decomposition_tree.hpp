@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cassert>
+#include <cstdint>
 #include <numeric>
 #include <vector>
 
@@ -25,6 +26,7 @@ struct common_interval_decomposition_tree {
         int parent;
         NodeType type;
         int l, r;
+        std::vector<int> child;
     };
 
   private:
@@ -97,9 +99,11 @@ struct common_interval_decomposition_tree {
                 if (tree[a].type == t) {
                     tree[b].parent = a;
                     tree[a].r = common.r;
+                    tree[a].child.push_back(b);
                 } else {
                     int c = (int)tree.size();
-                    tree.emplace_back(-1, t, common.l, common.r);
+                    tree.emplace_back(-1, t, common.l, common.r,
+                                      std::vector<int>{a, b});
                     tree[a].parent = c;
                     tree[b].parent = c;
                     id[common.l] = c;
@@ -109,6 +113,7 @@ struct common_interval_decomposition_tree {
                 tree.emplace_back(-1, Prime, common.l, common.r);
                 for (int i = common.l; i < common.r; i = right_list[i]) {
                     tree[id[i]].parent = c;
+                    tree.back().child.push_back(id[i]);
                 }
                 id[common.l] = c;
                 right_list[common.l] = common.r;
@@ -123,6 +128,28 @@ struct common_interval_decomposition_tree {
 
     std::vector<Node> get_tree() const {
         return tree;
+    }
+
+    int root_id() const {
+        return (int)tree.size() - 1;
+    }
+
+    Node get_node(int i) const {
+        assert(0 <= i && i < (int)tree.size());
+        return tree[i];
+    }
+
+    std::int64_t count_connected_interval() const {
+        std::int64_t count = 0;
+        for (const auto &node : tree) {
+            if (node.type == Inc || node.type == Dec) {
+                std::int64_t len = (int)node.child.size();
+                count += len * (len - 1) / 2;
+            } else {
+                count++;
+            }
+        }
+        return count;
     }
 
   private:
