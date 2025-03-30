@@ -65,6 +65,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/two_edge_connected_components.hpp
     title: Two Edge Connected Components
+  - icon: ':warning:'
+    path: graph/unicyclic_graph.hpp
+    title: Unicyclic Graph
   - icon: ':heavy_check_mark:'
     path: graph/utility.hpp
     title: "\u4FBF\u5229\u95A2\u6570"
@@ -509,6 +512,7 @@ data:
   - graph/chromatic_number.hpp
   - graph/dijkstra.hpp
   - graph/scc_graph.hpp
+  - graph/unicyclic_graph.hpp
   - graph/complement_graph_bfs.hpp
   - graph/base.hpp
   - algorithm/two_sat.hpp

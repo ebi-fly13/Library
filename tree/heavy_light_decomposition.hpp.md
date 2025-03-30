@@ -8,6 +8,9 @@ data:
     path: graph/base.hpp
     title: Graph (CSR format)
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: graph/unicyclic_graph.hpp
+    title: Unicyclic Graph
   - icon: ':heavy_check_mark:'
     path: tree/dsu_on_tree.hpp
     title: Dsu on Tree
@@ -307,6 +310,7 @@ data:
   - tree/dsu_on_tree.hpp
   - tree/subtree_hash.hpp
   - tree/tree_hash.hpp
+  - graph/unicyclic_graph.hpp
   timestamp: '2025-03-18 03:40:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
