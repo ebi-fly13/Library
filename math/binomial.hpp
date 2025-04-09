@@ -42,6 +42,9 @@ template <Modint mint> struct Binomial {
     }
 
     static mint f(int n) {
+        if (n < 0) [[unlikely]] {
+            return 0;
+        }
         if (n >= (int)fact.size()) [[unlikely]] {
             extend(n + 1);
         }
@@ -49,6 +52,9 @@ template <Modint mint> struct Binomial {
     }
 
     static mint inv_f(int n) {
+        if (n < 0) [[unlikely]] {
+            return 0;
+        }
         if (n >= (int)fact.size()) [[unlikely]] {
             extend(n + 1);
         }
