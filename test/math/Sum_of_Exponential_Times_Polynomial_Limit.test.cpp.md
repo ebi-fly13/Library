@@ -74,21 +74,22 @@ data:
     \ | std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n \
     \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    Binomial(int n)\
     \ {\n        extend(n + 1);\n    }\n\n    static mint f(int n) {\n        if (n\
-    \ >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n        }\n\
-    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        if\
-    \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
-    \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
-    \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
-    \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
-    \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
-    \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
-    \    }\n\n    static mint catalan_number(int n) {\n        return c(2 * n, n)\
-    \ * inv(n + 1);\n    }\n\n    static mint inv(int n) {\n        return inv_f(n)\
-    \ * f(n - 1);\n    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n\
-    \    }\n\n  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate\
-    \ <Modint mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2,\
-    \ 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact =\
-    \ std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 2 \"math/lagrange_interpolation.hpp\"\
+    \ < 0) [[unlikely]] {\n            return 0;\n        }\n        if (n >= (int)fact.size())\
+    \ [[unlikely]] {\n            extend(n + 1);\n        }\n        return fact[n];\n\
+    \    }\n\n    static mint inv_f(int n) {\n        if (n < 0) [[unlikely]] {\n\
+    \            return 0;\n        }\n        if (n >= (int)fact.size()) [[unlikely]]\
+    \ {\n            extend(n + 1);\n        }\n        return inv_fact[n];\n    }\n\
+    \n    static mint c(int n, int r) {\n        if (r < 0 || n < r) return 0;\n \
+    \       return f(n) * inv_f(r) * inv_f(n - r);\n    }\n\n    static mint neg_c(int\
+    \ k, int d) {\n        assert(d > 0);\n        return c(k + d - 1, d - 1);\n \
+    \   }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n < r) return\
+    \ 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint catalan_number(int\
+    \ n) {\n        return c(2 * n, n) * inv(n + 1);\n    }\n\n    static mint inv(int\
+    \ n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void reserve(int\
+    \ n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
+    \ fact, inv_fact;\n};\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::fact\
+    \ = std::vector<mint>(2, 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
+    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 2 \"math/lagrange_interpolation.hpp\"\
     \n\n#line 4 \"math/lagrange_interpolation.hpp\"\n\n/*\n    reference: https://atcoder.jp/contests/abc208/editorial/2195\n\
     \    verify: https://atcoder.jp/contests/abc208/tasks/abc208_f\n*/\n\nnamespace\
     \ ebi {\n\ntemplate <class mint>\nmint lagrange_interpolation(const std::vector<mint>\
@@ -366,7 +367,7 @@ data:
   isVerificationFile: true
   path: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
+  timestamp: '2025-04-09 23:43:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp

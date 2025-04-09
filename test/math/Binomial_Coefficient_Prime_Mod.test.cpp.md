@@ -64,21 +64,22 @@ data:
     \ | std::views::reverse) {\n            inv_fact[i - 1] = inv_fact[i] * i;\n \
     \       }\n    }\n\n  public:\n    Binomial() = default;\n\n    Binomial(int n)\
     \ {\n        extend(n + 1);\n    }\n\n    static mint f(int n) {\n        if (n\
-    \ >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n        }\n\
-    \        return fact[n];\n    }\n\n    static mint inv_f(int n) {\n        if\
-    \ (n >= (int)fact.size()) [[unlikely]] {\n            extend(n + 1);\n       \
-    \ }\n        return inv_fact[n];\n    }\n\n    static mint c(int n, int r) {\n\
-    \        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(r) * inv_f(n\
-    \ - r);\n    }\n\n    static mint neg_c(int k, int d) {\n        assert(d > 0);\n\
-    \        return c(k + d - 1, d - 1);\n    }\n\n    static mint p(int n, int r)\
-    \ {\n        if (r < 0 || n < r) return 0;\n        return f(n) * inv_f(n - r);\n\
-    \    }\n\n    static mint catalan_number(int n) {\n        return c(2 * n, n)\
-    \ * inv(n + 1);\n    }\n\n    static mint inv(int n) {\n        return inv_f(n)\
-    \ * f(n - 1);\n    }\n\n    static void reserve(int n) {\n        extend(n + 1);\n\
-    \    }\n\n  private:\n    static std::vector<mint> fact, inv_fact;\n};\n\ntemplate\
-    \ <Modint mint>\nstd::vector<mint> Binomial<mint>::fact = std::vector<mint>(2,\
-    \ 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact =\
-    \ std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 2 \"modint/dynamic_modint.hpp\"\
+    \ < 0) [[unlikely]] {\n            return 0;\n        }\n        if (n >= (int)fact.size())\
+    \ [[unlikely]] {\n            extend(n + 1);\n        }\n        return fact[n];\n\
+    \    }\n\n    static mint inv_f(int n) {\n        if (n < 0) [[unlikely]] {\n\
+    \            return 0;\n        }\n        if (n >= (int)fact.size()) [[unlikely]]\
+    \ {\n            extend(n + 1);\n        }\n        return inv_fact[n];\n    }\n\
+    \n    static mint c(int n, int r) {\n        if (r < 0 || n < r) return 0;\n \
+    \       return f(n) * inv_f(r) * inv_f(n - r);\n    }\n\n    static mint neg_c(int\
+    \ k, int d) {\n        assert(d > 0);\n        return c(k + d - 1, d - 1);\n \
+    \   }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n < r) return\
+    \ 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint catalan_number(int\
+    \ n) {\n        return c(2 * n, n) * inv(n + 1);\n    }\n\n    static mint inv(int\
+    \ n) {\n        return inv_f(n) * f(n - 1);\n    }\n\n    static void reserve(int\
+    \ n) {\n        extend(n + 1);\n    }\n\n  private:\n    static std::vector<mint>\
+    \ fact, inv_fact;\n};\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::fact\
+    \ = std::vector<mint>(2, 1);\n\ntemplate <Modint mint>\nstd::vector<mint> Binomial<mint>::inv_fact\
+    \ = std::vector<mint>(2, 1);\n\n}  // namespace ebi\n#line 2 \"modint/dynamic_modint.hpp\"\
     \n\n#line 4 \"modint/dynamic_modint.hpp\"\n\n#line 6 \"modint/dynamic_modint.hpp\"\
     \n\nnamespace ebi {\n\ntemplate <int id> struct dynamic_modint {\n  private:\n\
     \    using modint = dynamic_modint;\n\n  public:\n    static void set_mod(int\
@@ -253,7 +254,7 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
+  timestamp: '2025-04-09 23:43:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp

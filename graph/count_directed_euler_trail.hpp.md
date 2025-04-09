@@ -225,12 +225,14 @@ data:
     \ = fact[len - 1].inv();\n        for (int i : std::views::iota(sz, len) | std::views::reverse)\
     \ {\n            inv_fact[i - 1] = inv_fact[i] * i;\n        }\n    }\n\n  public:\n\
     \    Binomial() = default;\n\n    Binomial(int n) {\n        extend(n + 1);\n\
-    \    }\n\n    static mint f(int n) {\n        if (n >= (int)fact.size()) [[unlikely]]\
+    \    }\n\n    static mint f(int n) {\n        if (n < 0) [[unlikely]] {\n    \
+    \        return 0;\n        }\n        if (n >= (int)fact.size()) [[unlikely]]\
     \ {\n            extend(n + 1);\n        }\n        return fact[n];\n    }\n\n\
-    \    static mint inv_f(int n) {\n        if (n >= (int)fact.size()) [[unlikely]]\
-    \ {\n            extend(n + 1);\n        }\n        return inv_fact[n];\n    }\n\
-    \n    static mint c(int n, int r) {\n        if (r < 0 || n < r) return 0;\n \
-    \       return f(n) * inv_f(r) * inv_f(n - r);\n    }\n\n    static mint neg_c(int\
+    \    static mint inv_f(int n) {\n        if (n < 0) [[unlikely]] {\n         \
+    \   return 0;\n        }\n        if (n >= (int)fact.size()) [[unlikely]] {\n\
+    \            extend(n + 1);\n        }\n        return inv_fact[n];\n    }\n\n\
+    \    static mint c(int n, int r) {\n        if (r < 0 || n < r) return 0;\n  \
+    \      return f(n) * inv_f(r) * inv_f(n - r);\n    }\n\n    static mint neg_c(int\
     \ k, int d) {\n        assert(d > 0);\n        return c(k + d - 1, d - 1);\n \
     \   }\n\n    static mint p(int n, int r) {\n        if (r < 0 || n < r) return\
     \ 0;\n        return f(n) * inv_f(n - r);\n    }\n\n    static mint catalan_number(int\
@@ -316,7 +318,7 @@ data:
   isVerificationFile: false
   path: graph/count_directed_euler_trail.hpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
+  timestamp: '2025-04-09 23:43:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Counting_Eulerian_Circuits.test.cpp
