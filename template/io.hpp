@@ -5,6 +5,8 @@
 #include <optional>
 #include <vector>
 
+#include "../modint/base.hpp"
+
 namespace ebi {
 
 template <typename T1, typename T2>
