@@ -17,6 +17,9 @@ data:
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
+    path: modint/base.hpp
+    title: modint/base.hpp
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
   - icon: ':heavy_check_mark:'
@@ -177,8 +180,16 @@ data:
     \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
     \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/io.hpp\"\
     \n\n#line 5 \"template/io.hpp\"\n#include <optional>\n#line 7 \"template/io.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    \n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 6 \"modint/base.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b)\
+    \ {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
+    \    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate <Modint\
+    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
+    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
+    }\n\n}  // namespace ebi\n#line 9 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
     \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
     template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
@@ -288,13 +299,14 @@ data:
   - template/template.hpp
   - template/debug_template.hpp
   - template/io.hpp
+  - modint/base.hpp
   - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: true
   path: test/data_structure/Area_of_Union_of_Rectangles.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
+  timestamp: '2025-06-21 00:39:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Area_of_Union_of_Rectangles.test.cpp

@@ -170,11 +170,11 @@ data:
   timestamp: '2024-05-21 15:55:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
-  - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
   - test/yuki/yuki_2747.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
 documentation_of: math/linear_sieve.hpp
 layout: document
 title: Linear Sieve

@@ -8,6 +8,9 @@ data:
     path: graph/base.hpp
     title: Graph (CSR format)
   - icon: ':heavy_check_mark:'
+    path: modint/base.hpp
+    title: modint/base.hpp
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
   - icon: ':heavy_check_mark:'
@@ -297,39 +300,47 @@ data:
     using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
     using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
     \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\
-    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
-    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
-    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
-    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
-    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
-    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
-    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
-    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
-    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
-    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
-    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
-    \n\n#line 2 \"graph/base.hpp\"\n\n#line 5 \"graph/base.hpp\"\n#include <ranges>\n\
-    #line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line\
-    \ 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E>\
-    \ struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const\
-    \ std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0), elist(elements.size())\
-    \ {\n        for (auto e : elements) {\n            start[e.first + 1]++;\n  \
-    \      }\n        for (auto i : std::views::iota(0, n)) {\n            start[i\
-    \ + 1] += start[i];\n        }\n        auto counter = start;\n        for (auto\
-    \ [i, e] : elements) {\n            elist[counter[i]++] = e;\n        }\n    }\n\
-    \n    simple_csr(const std::vector<std::vector<E>>& es)\n        : start(es.size()\
-    \ + 1, 0) {\n        int n = es.size();\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] = (int)es[i].size() + start[i];\n        }\n\
-    \        elist.resize(start.back());\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            std::copy(es[i].begin(), es[i].end(), elist.begin() + start[i]);\n\
-    \        }\n    }\n\n    int size() const {\n        return (int)start.size()\
-    \ - 1;\n    }\n\n    const auto operator[](int i) const {\n        return std::ranges::subrange(elist.begin()\
-    \ + start[i],\n                                     elist.begin() + start[i +\
-    \ 1]);\n    }\n    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 9 \"\
+    template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\n\
+    std::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa) {\n  \
+    \  return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2> &pa) {\n \
+    \   return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for (std::size_t\
+    \ i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 == vec.size() ?\
+    \ \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream &operator>>(std::istream\
+    \ &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin >> e;\n    return\
+    \ os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream &os,\
+    \ const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 5\
+    \ \"graph/base.hpp\"\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
+    \ \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
+    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
+    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
+    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
+    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
+    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
+    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
+    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
+    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
+    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
+    \                                   elist.begin() + start[i + 1]);\n    }\n  \
+    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -413,99 +424,100 @@ data:
   - template/debug_template.hpp
   - template/int_alias.hpp
   - template/io.hpp
+  - modint/base.hpp
   - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
   isVerificationFile: false
   path: template/template.hpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
+  timestamp: '2025-06-21 00:39:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/matrix/Determinant_of_Matrix_2.test.cpp
-  - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+  - test/convolution/Convolution_2D.test.cpp
+  - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
+  - test/convolution/Convolution.test.cpp
+  - test/convolution/Online_Convolution.test.cpp
+  - test/yuki/yuki_901.test.cpp
+  - test/yuki/yuki_1112.test.cpp
+  - test/yuki/yuki_1038.test.cpp
+  - test/yuki/yuki_901_2.test.cpp
+  - test/yuki/yuki_952.test.cpp
+  - test/yuki/yuki_2439.test.cpp
+  - test/yuki/yuki_1077.test.cpp
+  - test/yuki/yuki_1145.test.cpp
+  - test/yuki/yuki_2633.test.cpp
+  - test/yuki/yuki_1720.test.cpp
+  - test/yuki/yuki_1857.test.cpp
+  - test/yuki/yuki_1796.test.cpp
+  - test/yuki/yuki_2747.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
+  - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
+  - test/tree/Tree_Path_Composite_Sum.test.cpp
+  - test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
+  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
+  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
+  - test/tree/Common_Interval_Decomposition_Tree.test.cpp
+  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
+  - test/tree/Cartesian_Tree.test.cpp
   - test/matrix/Determinant_of_Sparse_Matrix.test.cpp
-  - test/matrix/Inverse_Matrix.test.cpp
   - test/matrix/Matrix_Product.test.cpp
   - test/matrix/System_of_Linear_Equations.test.cpp
   - test/matrix/Rank_of_Matrix.test.cpp
+  - test/matrix/Determinant_of_Matrix_2.test.cpp
   - test/matrix/Pow_of_Matrix.test.cpp
-  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
-  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/polynomial/Polynomial_Interpolation.test.cpp
-  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/polynomial/Multipoint_Evaluation.test.cpp
-  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
-  - test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
-  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree.test.cpp
-  - test/tree/Vertex_Add_Subtree_Sum_Dsu_on_Tree.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_1.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_2.test.cpp
-  - test/tree/Common_Interval_Decomposition_Tree.test.cpp
-  - test/tree/Vertex_Add_Range_Contour_Sum_on_Tree_2.test.cpp
-  - test/tree/Vertex_Get_Range_Contour_Add_on_Tree.test.cpp
-  - test/tree/Tree_Path_Composite_Sum.test.cpp
-  - test/tree/Frequency_Table_of_Tree_Distance_MODE_0.test.cpp
-  - test/tree/Cartesian_Tree.test.cpp
-  - test/convolution/Online_Convolution.test.cpp
-  - test/convolution/Convolution.test.cpp
-  - test/convolution/Min_Plus_Convolution_Convex_and_Arbitary.test.cpp
-  - test/convolution/Convolution_2D.test.cpp
-  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
-  - test/math/Catalan_Convolution.test.cpp
-  - test/math/Find_Linear_Recurrence.test.cpp
-  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
-  - test/math/Factorial.test.cpp
-  - test/math/Sum_of_Powers_Iota.test.cpp
-  - test/math/Stern-Brocot_Tree.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Negative_Binomial_Coefficient.test.cpp
-  - test/math/Sum_of_Totient_Function.test.cpp
+  - test/matrix/Determinant_of_Matrix_Arbitrary_Mod.test.cpp
+  - test/matrix/Inverse_Matrix.test.cpp
   - test/string/Wildcard_Pattern_Matching.test.cpp
-  - test/graph/Cycle_Detection_Undirected.test.cpp
-  - test/graph/Cycle_Detection_Directed.test.cpp
-  - test/graph/Eulerian_Trail_Undirected.test.cpp
-  - test/graph/Directed_MST.test.cpp
-  - test/graph/Minimum_Spanning_Tree.test.cpp
-  - test/graph/Maximum_Independent_Set.test.cpp
-  - test/graph/dijkstra.test.cpp
-  - test/graph/Shortest_Path.test.cpp
-  - test/graph/Manhattan_MST.test.cpp
-  - test/graph/Eulerian_Trail_Directed.test.cpp
-  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
-  - test/graph/fibonacci_heap.test.cpp
-  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
-  - test/graph/Chromatic_Number.test.cpp
-  - test/graph/Counting_Eulerian_Circuits.test.cpp
+  - test/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - test/data_structure/Static_Rectangle_Sum.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
+  - test/data_structure/Range_Parallel_Unionfind.test.cpp
+  - test/data_structure/Range_Affine_Point_Get.test.cpp
+  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
+  - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
+  - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
   - test/aoj/aoj_grl_1_b.test.cpp
-  - test/aoj/aoj_2235.test.cpp
+  - test/aoj/aoj_2995.test.cpp
   - test/aoj/aoj_3086.test.cpp
   - test/aoj/aoj_2450.test.cpp
-  - test/aoj/aoj_2821.test.cpp
-  - test/aoj/aoj_2995.test.cpp
+  - test/aoj/aoj_2235.test.cpp
   - test/aoj/aoj_grl_1_a.test.cpp
-  - test/data_structure/Rectangle_Add_Point_Get.test.cpp
-  - test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/data_structure/Area_of_Union_of_Rectangles.test.cpp
-  - test/data_structure/Range_Parallel_Unionfind.test.cpp
-  - test/data_structure/Double-Ended_Priority_Queue.test.cpp
-  - test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
-  - test/data_structure/Range_Affine_Point_Get_Dynamic_Segtree.test.cpp
-  - test/data_structure/Range_Affine_Point_Get.test.cpp
-  - test/data_structure/Static_Rectangle_Sum.test.cpp
-  - test/yuki/yuki_2633.test.cpp
-  - test/yuki/yuki_1720.test.cpp
-  - test/yuki/yuki_901_2.test.cpp
-  - test/yuki/yuki_2439.test.cpp
-  - test/yuki/yuki_2747.test.cpp
-  - test/yuki/yuki_1038.test.cpp
-  - test/yuki/yuki_1112.test.cpp
-  - test/yuki/yuki_1145.test.cpp
-  - test/yuki/yuki_952.test.cpp
-  - test/yuki/yuki_1077.test.cpp
-  - test/yuki/yuki_1857.test.cpp
-  - test/yuki/yuki_1796.test.cpp
-  - test/yuki/yuki_901.test.cpp
+  - test/aoj/aoj_2821.test.cpp
+  - test/graph/dijkstra.test.cpp
+  - test/graph/Maximum_Independent_Set.test.cpp
+  - test/graph/Eulerian_Trail_Directed.test.cpp
+  - test/graph/Counting_Spanning_Trees_Undirected.test.cpp
+  - test/graph/Cycle_Detection_Undirected.test.cpp
+  - test/graph/Eulerian_Trail_Undirected.test.cpp
+  - test/graph/Minimum_Spanning_Tree.test.cpp
+  - test/graph/fibonacci_heap.test.cpp
+  - test/graph/Cycle_Detection_Directed.test.cpp
+  - test/graph/Counting_Spanning_Trees_Directed.test.cpp
+  - test/graph/Directed_MST.test.cpp
+  - test/graph/Chromatic_Number.test.cpp
+  - test/graph/Manhattan_MST.test.cpp
+  - test/graph/Counting_Eulerian_Circuits.test.cpp
+  - test/graph/Shortest_Path.test.cpp
+  - test/polynomial/Polynomial_Interpolation.test.cpp
+  - test/polynomial/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/polynomial/Composition_of_Formal_Power_Series_Large.test.cpp
+  - test/polynomial/Multipoint_Evaluation.test.cpp
+  - test/polynomial/Compositional_Inverse_of_Formal_Power_Series_Large.test.cpp
+  - test/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
+  - test/math/Find_Linear_Recurrence.test.cpp
+  - test/math/Sum_of_Powers_Iota.test.cpp
+  - test/math/Sum_of_Exponential_Times_Polynomial_Limit.test.cpp
+  - test/math/Sum_of_Totient_Function.test.cpp
+  - test/math/Factorial.test.cpp
+  - test/math/Negative_Binomial_Coefficient.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Stern-Brocot_Tree.test.cpp
+  - test/math/Catalan_Convolution.test.cpp
 documentation_of: template/template.hpp
 layout: document
 redirect_from:

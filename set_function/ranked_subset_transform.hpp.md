@@ -78,8 +78,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/convolution/Subset_Convolution.test.cpp
-  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
   - test/set_function/Exp_of_Set_Power_Series.test.cpp
+  - test/set_function/Polynomial_Composite_Set_Power_Series.test.cpp
 documentation_of: set_function/ranked_subset_transform.hpp
 layout: document
 title: Ranked Subset Transform (Zeta / Mobius)

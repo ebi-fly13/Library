@@ -174,8 +174,8 @@ data:
   timestamp: '2025-03-24 22:30:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Common_Interval_Decomposition_Tree.test.cpp
   - test/yuki/yuki_1720.test.cpp
+  - test/tree/Common_Interval_Decomposition_Tree.test.cpp
 documentation_of: tree/common_interval_decomposition_tree.hpp
 layout: document
 title: Common Interval Decomposition Tree

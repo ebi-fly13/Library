@@ -199,9 +199,9 @@ data:
     using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
     using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
     \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\
-    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate\
-    \ <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os, const\
-    \ std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\n#line 9 \"template/io.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
     \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
     template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
@@ -314,7 +314,7 @@ data:
   isVerificationFile: true
   path: test/matrix/Determinant_of_Matrix_2.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
+  timestamp: '2025-06-21 00:39:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/matrix/Determinant_of_Matrix_2.test.cpp

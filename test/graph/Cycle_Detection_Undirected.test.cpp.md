@@ -11,6 +11,9 @@ data:
     path: graph/cycle_detection.hpp
     title: Cycle Detection
   - icon: ':heavy_check_mark:'
+    path: modint/base.hpp
+    title: modint/base.hpp
+  - icon: ':heavy_check_mark:'
     path: template/debug_template.hpp
     title: template/debug_template.hpp
   - icon: ':heavy_check_mark:'
@@ -155,33 +158,41 @@ data:
     \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
     \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
     using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
-    \ 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\n\nnamespace ebi {\n\n\
-    template <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os,\
-    \ const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
-    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
-    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
-    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
-    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
-    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
-    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
-    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
-    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
-    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
-    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
-    \n\n#line 8 \"template/utility.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\
-    \ inline bool chmin(T &a, T b) {\n    if (a > b) {\n        a = b;\n        return\
-    \ true;\n    }\n    return false;\n}\n\ntemplate <class T> inline bool chmax(T\
-    \ &a, T b) {\n    if (a < b) {\n        a = b;\n        return true;\n    }\n\
-    \    return false;\n}\n\ntemplate <class T> T safe_ceil(T a, T b) {\n    if (a\
-    \ % b == 0)\n        return a / b;\n    else if (a >= 0)\n        return (a /\
-    \ b) + 1;\n    else\n        return -((-a) / b);\n}\n\ntemplate <class T> T safe_floor(T\
+    \ 2 \"template/io.hpp\"\n\n#line 7 \"template/io.hpp\"\n\n#line 2 \"modint/base.hpp\"\
+    \n\n#include <concepts>\n#line 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T>\nconcept Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n \
+    \   a * b;\n    a / b;\n    a.inv();\n    a.val();\n    a.pow(std::declval<long\
+    \ long>());\n    T::mod();\n};\n\ntemplate <Modint mint> std::istream &operator>>(std::istream\
+    \ &os, mint &a) {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n\
+    }\n\ntemplate <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ mint &a) {\n    return os << a.val();\n}\n\n}  // namespace ebi\n#line 9 \"\
+    template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\n\
+    std::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa) {\n  \
+    \  return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2> &pa) {\n \
+    \   return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for (std::size_t\
+    \ i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 == vec.size() ?\
+    \ \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream &operator>>(std::istream\
+    \ &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin >> e;\n    return\
+    \ os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream &os,\
+    \ const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 8 \"template/utility.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <class T> inline bool chmin(T &a, T b) {\n    if (a > b) {\n\
+    \        a = b;\n        return true;\n    }\n    return false;\n}\n\ntemplate\
+    \ <class T> inline bool chmax(T &a, T b) {\n    if (a < b) {\n        a = b;\n\
+    \        return true;\n    }\n    return false;\n}\n\ntemplate <class T> T safe_ceil(T\
     \ a, T b) {\n    if (a % b == 0)\n        return a / b;\n    else if (a >= 0)\n\
-    \        return a / b;\n    else\n        return -((-a) / b) - 1;\n}\n\nconstexpr\
-    \ i64 LNF = std::numeric_limits<i64>::max() / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max()\
-    \ / 2;\n\nconst std::vector<int> dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int>\
-    \ dx = {0, 1, 0, -1, 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 5 \"test/graph/Cycle_Detection_Undirected.test.cpp\"\
+    \        return (a / b) + 1;\n    else\n        return -((-a) / b);\n}\n\ntemplate\
+    \ <class T> T safe_floor(T a, T b) {\n    if (a % b == 0)\n        return a /\
+    \ b;\n    else if (a >= 0)\n        return a / b;\n    else\n        return -((-a)\
+    \ / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max() / 4;\n\n\
+    constexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
+    \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 5 \"test/graph/Cycle_Detection_Undirected.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    int n, m;\n    std::cin >> n >> m;\n\
     \    Graph<int> g(n);\n    g.read_graph(m, 0);\n    auto res = cycle_detection_undirected(g);\n\
     \    if (res) {\n        auto [vs, es] = res.value();\n        std::cout << vs.size()\
@@ -206,11 +217,12 @@ data:
   - template/debug_template.hpp
   - template/int_alias.hpp
   - template/io.hpp
+  - modint/base.hpp
   - template/utility.hpp
   isVerificationFile: true
   path: test/graph/Cycle_Detection_Undirected.test.cpp
   requiredBy: []
-  timestamp: '2025-03-18 03:40:16+09:00'
+  timestamp: '2025-06-21 00:39:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Cycle_Detection_Undirected.test.cpp

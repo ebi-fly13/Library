@@ -119,8 +119,8 @@ data:
   isVerificationFile: false
   path: modint/dynamic_modint.hpp
   requiredBy:
-  - math/mod_sqrt.hpp
   - fps/fps_sqrt.hpp
+  - math/mod_sqrt.hpp
   timestamp: '2023-10-26 11:41:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
