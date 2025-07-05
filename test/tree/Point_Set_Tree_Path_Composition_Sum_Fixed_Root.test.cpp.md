@@ -105,53 +105,46 @@ data:
     \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
     \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
     \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
-    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
-    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
-    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
-    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
-    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
-    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
-    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
-    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
-    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
-    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
-    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
-    \ 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
-    #line 7 \"template/io.hpp\"\n\n#line 9 \"template/io.hpp\"\n\nnamespace ebi {\n\
-    \ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os,\
-    \ const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
-    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
-    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
-    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
-    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
-    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
-    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
-    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
-    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
-    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
-    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
-    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
-    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
-    \n\n#line 2 \"graph/base.hpp\"\n\n#line 5 \"graph/base.hpp\"\n#include <ranges>\n\
-    #line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line\
-    \ 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E>\
-    \ struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const\
-    \ std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0), elist(elements.size())\
-    \ {\n        for (auto e : elements) {\n            start[e.first + 1]++;\n  \
-    \      }\n        for (auto i : std::views::iota(0, n)) {\n            start[i\
-    \ + 1] += start[i];\n        }\n        auto counter = start;\n        for (auto\
-    \ [i, e] : elements) {\n            elist[counter[i]++] = e;\n        }\n    }\n\
-    \n    simple_csr(const std::vector<std::vector<E>>& es)\n        : start(es.size()\
-    \ + 1, 0) {\n        int n = es.size();\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            start[i + 1] = (int)es[i].size() + start[i];\n        }\n\
-    \        elist.resize(start.back());\n        for (auto i : std::views::iota(0,\
-    \ n)) {\n            std::copy(es[i].begin(), es[i].end(), elist.begin() + start[i]);\n\
-    \        }\n    }\n\n    int size() const {\n        return (int)start.size()\
-    \ - 1;\n    }\n\n    const auto operator[](int i) const {\n        return std::ranges::subrange(elist.begin()\
-    \ + start[i],\n                                     elist.begin() + start[i +\
-    \ 1]);\n    }\n    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \ (v).rend()\n\n#line 2 \"template/int_alias.hpp\"\n\n#line 4 \"template/int_alias.hpp\"\
+    \n\nnamespace ebi {\n\nusing ld = long double;\nusing std::size_t;\nusing i8 =\
+    \ std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16\
+    \ = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing\
+    \ i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
+    using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\
+    \n#line 5 \"template/io.hpp\"\n#include <optional>\n#line 7 \"template/io.hpp\"\
+    \n\n#line 9 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
+    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
+    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
+    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
+    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
+    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
+    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
+    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
+    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
+    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
+    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
+    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
+    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 5\
+    \ \"graph/base.hpp\"\n#include <ranges>\n#line 7 \"graph/base.hpp\"\n\n#line 2\
+    \ \"data_structure/simple_csr.hpp\"\n\n#line 6 \"data_structure/simple_csr.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class E> struct simple_csr {\n    simple_csr()\
+    \ = default;\n\n    simple_csr(int n, const std::vector<std::pair<int, E>>& elements)\n\
+    \        : start(n + 1, 0), elist(elements.size()) {\n        for (auto e : elements)\
+    \ {\n            start[e.first + 1]++;\n        }\n        for (auto i : std::views::iota(0,\
+    \ n)) {\n            start[i + 1] += start[i];\n        }\n        auto counter\
+    \ = start;\n        for (auto [i, e] : elements) {\n            elist[counter[i]++]\
+    \ = e;\n        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>&\
+    \ es)\n        : start(es.size() + 1, 0) {\n        int n = es.size();\n     \
+    \   for (auto i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
+    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
+    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
+    \                                   elist.begin() + start[i + 1]);\n    }\n  \
+    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -207,30 +200,38 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"tree/dp_on_static_top_tree.hpp\"\
-    \n\n#line 2 \"tree/static_top_tree.hpp\"\n\n#line 4 \"tree/static_top_tree.hpp\"\
-    \n\nnamespace ebi {\n\nenum Type { Vertex, Compress, Rake, AddEdge, AddVertex\
-    \ };\n\ntemplate <class T> struct static_top_tree {\n  private:\n    struct Node\
-    \ {\n        int par = -1, lch = -1, rch = -1;\n        Type ty = Type::Vertex;\n\
-    \    };\n\n    void dfs_sz(int v) {\n        for (auto &e : g[v]) {\n        \
-    \    if (e.to == par[v]) continue;\n            par[e.to] = v;\n            dfs_sz(e.to);\n\
-    \            sz[v] += sz[e.to];\n            if (sz[e.to] > sz[g[v][0].to] ||\
-    \ g[v][0].to == par[v]) {\n                std::swap(e, g[v][0]);\n          \
-    \  }\n        }\n    }\n\n    int new_node(int k, int l, int r, Type t) {\n  \
-    \      if (k == -1) {\n            k = (int)stt.size();\n            stt.emplace_back(-1,\
-    \ l, r, t);\n        } else {\n            stt[k].lch = l;\n            stt[k].rch\
-    \ = r;\n            stt[k].ty = t;\n        }\n        if (l != -1) stt[l].par\
-    \ = k;\n        if (r != -1) stt[r].par = k;\n        return k;\n    }\n\n   \
-    \ std::pair<int, int> merge(const std::vector<std::pair<int, int>> &a,\n     \
-    \                         Type t) {\n        if (a.size() == 1) {\n          \
-    \  return a[0];\n        }\n        int sum = 0;\n        for (auto [v_, s] :\
-    \ a) sum += s;\n        std::vector<std::pair<int, int>> b, c;\n        for (auto\
-    \ [i, s] : a) {\n            if (sum > s)\n                b.emplace_back(i, s);\n\
-    \            else\n                c.emplace_back(i, s);\n            sum -= 2\
-    \ * s;\n        }\n        auto [i, si] = merge(b, t);\n        auto [j, sj] =\
-    \ merge(c, t);\n        return {new_node(-1, i, j, t), si + sj};\n    }\n\n  \
-    \  std::pair<int, int> compress(int v) {\n        std::vector<std::pair<int, int>>\
-    \ path{add_vertex(v)};\n        while (g[v][0].to != par[v]) {\n            path.emplace_back(add_vertex(v\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"template/debug_template.hpp\"\
+    \n\n#line 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n\
+    #define debug(...)                                                      \\\n \
+    \   std::cerr << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\",\
+    \ \\\n        debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid\
+    \ debug_out() {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename...\
+    \ Tail> void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n  \
+    \  if (sizeof...(t) > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  //\
+    \ namespace ebi\n#line 2 \"tree/dp_on_static_top_tree.hpp\"\n\n#line 2 \"tree/static_top_tree.hpp\"\
+    \n\n#line 4 \"tree/static_top_tree.hpp\"\n\nnamespace ebi {\n\nenum Type { Vertex,\
+    \ Compress, Rake, AddEdge, AddVertex };\n\ntemplate <class T> struct static_top_tree\
+    \ {\n  private:\n    struct Node {\n        int par = -1, lch = -1, rch = -1;\n\
+    \        Type ty = Type::Vertex;\n    };\n\n    void dfs_sz(int v) {\n       \
+    \ for (auto &e : g[v]) {\n            if (e.to == par[v]) continue;\n        \
+    \    par[e.to] = v;\n            dfs_sz(e.to);\n            sz[v] += sz[e.to];\n\
+    \            if (sz[e.to] > sz[g[v][0].to] || g[v][0].to == par[v]) {\n      \
+    \          std::swap(e, g[v][0]);\n            }\n        }\n    }\n\n    int\
+    \ new_node(int k, int l, int r, Type t) {\n        if (k == -1) {\n          \
+    \  k = (int)stt.size();\n            stt.emplace_back(-1, l, r, t);\n        }\
+    \ else {\n            stt[k].lch = l;\n            stt[k].rch = r;\n         \
+    \   stt[k].ty = t;\n        }\n        if (l != -1) stt[l].par = k;\n        if\
+    \ (r != -1) stt[r].par = k;\n        return k;\n    }\n\n    std::pair<int, int>\
+    \ merge(const std::vector<std::pair<int, int>> &a,\n                         \
+    \     Type t) {\n        if (a.size() == 1) {\n            return a[0];\n    \
+    \    }\n        int sum = 0;\n        for (auto [v_, s] : a) sum += s;\n     \
+    \   std::vector<std::pair<int, int>> b, c;\n        for (auto [i, s] : a) {\n\
+    \            if (sum > s)\n                b.emplace_back(i, s);\n           \
+    \ else\n                c.emplace_back(i, s);\n            sum -= 2 * s;\n   \
+    \     }\n        auto [i, si] = merge(b, t);\n        auto [j, sj] = merge(c,\
+    \ t);\n        return {new_node(-1, i, j, t), si + sj};\n    }\n\n    std::pair<int,\
+    \ int> compress(int v) {\n        std::vector<std::pair<int, int>> path{add_vertex(v)};\n\
+    \        while (g[v][0].to != par[v]) {\n            path.emplace_back(add_vertex(v\
     \ = g[v][0].to));\n        }\n        return merge(path, Type::Compress);\n  \
     \  }\n\n    std::pair<int, int> rake(int v) {\n        std::vector<std::pair<int,\
     \ int>> ch;\n        for (int i = 1; i < (int)g[v].size(); i++) {\n          \
@@ -333,18 +334,18 @@ data:
   - modint/modint.hpp
   - modint/base.hpp
   - template/template.hpp
-  - template/debug_template.hpp
   - template/int_alias.hpp
   - template/io.hpp
   - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
+  - template/debug_template.hpp
   - tree/dp_on_static_top_tree.hpp
   - tree/static_top_tree.hpp
   isVerificationFile: true
   path: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp
   requiredBy: []
-  timestamp: '2025-06-21 00:39:05+09:00'
+  timestamp: '2025-07-06 00:36:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Point_Set_Tree_Path_Composition_Sum_Fixed_Root.test.cpp

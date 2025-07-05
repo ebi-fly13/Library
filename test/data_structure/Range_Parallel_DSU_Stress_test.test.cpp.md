@@ -100,30 +100,23 @@ data:
     \ = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
     \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
     \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
-    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
-    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
-    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
-    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
-    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
-    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
-    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
-    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/int_alias.hpp\"\
-    \n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\n\
-    using std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16\
-    \ = std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
-    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
-    \ 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
-    #line 7 \"template/io.hpp\"\n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n\
-    #line 6 \"modint/base.hpp\"\n\nnamespace ebi {\n\ntemplate <class T>\nconcept\
-    \ Modint = requires(T a, T b) {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n\
-    \    a.inv();\n    a.val();\n    a.pow(std::declval<long long>());\n    T::mod();\n\
-    };\n\ntemplate <Modint mint> std::istream &operator>>(std::istream &os, mint &a)\
-    \ {\n    long long x;\n    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate\
-    \ <Modint mint>\nstd::ostream &operator<<(std::ostream &os, const mint &a) {\n\
-    \    return os << a.val();\n}\n\n}  // namespace ebi\n#line 9 \"template/io.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    \ (v).rend()\n\n#line 2 \"template/int_alias.hpp\"\n\n#line 4 \"template/int_alias.hpp\"\
+    \n\nnamespace ebi {\n\nusing ld = long double;\nusing std::size_t;\nusing i8 =\
+    \ std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16\
+    \ = std::uint16_t;\nusing i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing\
+    \ i64 = std::int64_t;\nusing u64 = std::uint64_t;\nusing i128 = __int128_t;\n\
+    using u128 = __uint128_t;\n\n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\
+    \n#line 5 \"template/io.hpp\"\n#include <optional>\n#line 7 \"template/io.hpp\"\
+    \n\n#line 2 \"modint/base.hpp\"\n\n#include <concepts>\n#line 6 \"modint/base.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <class T>\nconcept Modint = requires(T a, T b)\
+    \ {\n    a + b;\n    a - b;\n    a * b;\n    a / b;\n    a.inv();\n    a.val();\n\
+    \    a.pow(std::declval<long long>());\n    T::mod();\n};\n\ntemplate <Modint\
+    \ mint> std::istream &operator>>(std::istream &os, mint &a) {\n    long long x;\n\
+    \    os >> x;\n    a = x;\n    return os;\n}\n\ntemplate <Modint mint>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const mint &a) {\n    return os << a.val();\n\
+    }\n\n}  // namespace ebi\n#line 9 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os, const\
+    \ std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
     \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
     template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
@@ -209,16 +202,24 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\
-    \n\r\n#line 8 \"utility/random_number_generator.hpp\"\n\r\nnamespace ebi {\r\n\
-    \r\nstruct random_number_generator {\r\n    random_number_generator(int seed =\
-    \ -1) {\r\n        if (seed < 0) seed = rnd();\r\n        mt.seed(seed);\r\n \
-    \   }\r\n\r\n    void set_seed(int seed) {\r\n        mt.seed(seed);\r\n    }\r\
-    \n\r\n    template <class T> T get(T a, T b) {\r\n        std::uniform_int_distribution<T>\
-    \ dist(a, b - 1);\r\n        return dist(mt);\r\n    }\r\n\r\n    std::vector<int>\
-    \ get_permutation(int n) {\r\n        std::vector<int> p(n);\r\n        std::iota(p.begin(),\
-    \ p.end(), 0);\r\n        std::shuffle(p.begin(), p.end(), mt);\r\n        return\
-    \ p;\r\n    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n    std::random_device\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"template/debug_template.hpp\"\
+    \n\n#line 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n\
+    #define debug(...)                                                      \\\n \
+    \   std::cerr << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\",\
+    \ \\\n        debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid\
+    \ debug_out() {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename...\
+    \ Tail> void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n  \
+    \  if (sizeof...(t) > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  //\
+    \ namespace ebi\n#line 2 \"utility/random_number_generator.hpp\"\n\r\n#line 8\
+    \ \"utility/random_number_generator.hpp\"\n\r\nnamespace ebi {\r\n\r\nstruct random_number_generator\
+    \ {\r\n    random_number_generator(int seed = -1) {\r\n        if (seed < 0) seed\
+    \ = rnd();\r\n        mt.seed(seed);\r\n    }\r\n\r\n    void set_seed(int seed)\
+    \ {\r\n        mt.seed(seed);\r\n    }\r\n\r\n    template <class T> T get(T a,\
+    \ T b) {\r\n        std::uniform_int_distribution<T> dist(a, b - 1);\r\n     \
+    \   return dist(mt);\r\n    }\r\n\r\n    std::vector<int> get_permutation(int\
+    \ n) {\r\n        std::vector<int> p(n);\r\n        std::iota(p.begin(), p.end(),\
+    \ 0);\r\n        std::shuffle(p.begin(), p.end(), mt);\r\n        return p;\r\n\
+    \    }\r\n\r\n  private:\r\n    std::mt19937_64 mt;\r\n    std::random_device\
     \ rnd;\r\n};\r\n\r\n}  // namespace ebi\n#line 8 \"test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp\"\
     \n\nnamespace ebi {\n\nvoid main_() {\n    random_number_generator rng;\n    int\
     \ n = rng.get(1, 5000);\n    int q = rng.get(1, 5000);\n    range_parallel_dsu\
@@ -255,18 +256,18 @@ data:
   - data_structure/range_parallel_dsu.hpp
   - data_structure/dsu.hpp
   - template/template.hpp
-  - template/debug_template.hpp
   - template/int_alias.hpp
   - template/io.hpp
   - modint/base.hpp
   - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
+  - template/debug_template.hpp
   - utility/random_number_generator.hpp
   isVerificationFile: true
   path: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp
   requiredBy: []
-  timestamp: '2025-06-21 00:39:05+09:00'
+  timestamp: '2025-07-06 00:36:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Parallel_DSU_Stress_test.test.cpp

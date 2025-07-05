@@ -214,18 +214,10 @@ data:
     \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
     \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
     \ i >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v)\
-    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line\
-    \ 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n#define\
-    \ debug(...)                                                      \\\n    std::cerr\
-    \ << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\", \\\n       \
-    \ debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid debug_out()\
-    \ {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename... Tail>\
-    \ void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t)\
-    \ > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n\
-    #line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
-    #line 7 \"template/io.hpp\"\n\n#line 9 \"template/io.hpp\"\n\nnamespace ebi {\n\
-    \ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os,\
-    \ const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\
+    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\n#line 9 \"template/io.hpp\"\
+    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
     \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
     template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
@@ -311,12 +303,20 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 7 \"test/convolution/Convolution.test.cpp\"\
-    \n\r\nnamespace ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nvoid main_()\
-    \ {\r\n    int n, m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint> a(n),\
-    \ b(m);\r\n    std::cin >> a >> b;\r\n    std::cout << convolution(a, b) << '\\\
-    n';\r\n}\r\n\r\n}  // namespace ebi\r\n\r\nint main() {\r\n    ebi::fast_io();\r\
-    \n    int t = 1;\r\n    // std::cin >> t;\r\n    while (t--) {\r\n        ebi::main_();\r\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"template/debug_template.hpp\"\
+    \n\n#line 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n\
+    #define debug(...)                                                      \\\n \
+    \   std::cerr << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\",\
+    \ \\\n        debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid\
+    \ debug_out() {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename...\
+    \ Tail> void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n  \
+    \  if (sizeof...(t) > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  //\
+    \ namespace ebi\n#line 7 \"test/convolution/Convolution.test.cpp\"\n\r\nnamespace\
+    \ ebi {\r\n\r\nusing mint = modint998244353;\r\n\r\nvoid main_() {\r\n    int\
+    \ n, m;\r\n    std::cin >> n >> m;\r\n    std::vector<mint> a(n), b(m);\r\n  \
+    \  std::cin >> a >> b;\r\n    std::cout << convolution(a, b) << '\\n';\r\n}\r\n\
+    \r\n}  // namespace ebi\r\n\r\nint main() {\r\n    ebi::fast_io();\r\n    int\
+    \ t = 1;\r\n    // std::cin >> t;\r\n    while (t--) {\r\n        ebi::main_();\r\
     \n    }\r\n    return 0;\r\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\r\n\r\
     \n#include \"../../convolution/convolution.hpp\"\r\n\r\n#include \"../../modint/modint.hpp\"\
@@ -335,15 +335,15 @@ data:
   - template/int_alias.hpp
   - modint/modint.hpp
   - template/template.hpp
-  - template/debug_template.hpp
   - template/io.hpp
   - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
+  - template/debug_template.hpp
   isVerificationFile: true
   path: test/convolution/Convolution.test.cpp
   requiredBy: []
-  timestamp: '2025-06-21 00:39:05+09:00'
+  timestamp: '2025-07-06 00:36:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/convolution/Convolution.test.cpp

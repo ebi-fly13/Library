@@ -104,23 +104,16 @@ data:
     \ a, n) for (int i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for\
     \ (i64 i = (i64)(a); i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1));\
     \ i >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v)\
-    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line\
-    \ 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n#define\
-    \ debug(...)                                                      \\\n    std::cerr\
-    \ << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\", \\\n       \
-    \ debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid debug_out()\
-    \ {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename... Tail>\
-    \ void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t)\
-    \ > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n\
-    #line 2 \"template/int_alias.hpp\"\n\n#line 4 \"template/int_alias.hpp\"\n\nnamespace\
-    \ ebi {\n\nusing ld = long double;\nusing std::size_t;\nusing i8 = std::int8_t;\n\
-    using u8 = std::uint8_t;\nusing i16 = std::int16_t;\nusing u16 = std::uint16_t;\n\
-    using i32 = std::int32_t;\nusing u32 = std::uint32_t;\nusing i64 = std::int64_t;\n\
-    using u64 = std::uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    \n}  // namespace ebi\n#line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\
-    \n#include <optional>\n#line 7 \"template/io.hpp\"\n\n#line 9 \"template/io.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    \ (v).rbegin(), (v).rend()\n\n#line 2 \"template/int_alias.hpp\"\n\n#line 4 \"\
+    template/int_alias.hpp\"\n\nnamespace ebi {\n\nusing ld = long double;\nusing\
+    \ std::size_t;\nusing i8 = std::int8_t;\nusing u8 = std::uint8_t;\nusing i16 =\
+    \ std::int16_t;\nusing u16 = std::uint16_t;\nusing i32 = std::int32_t;\nusing\
+    \ u32 = std::uint32_t;\nusing i64 = std::int64_t;\nusing u64 = std::uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\n\n}  // namespace ebi\n#line\
+    \ 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include <optional>\n\
+    #line 7 \"template/io.hpp\"\n\n#line 9 \"template/io.hpp\"\n\nnamespace ebi {\n\
+    \ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream &os,\
+    \ const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
     }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
     \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
     template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
@@ -206,23 +199,31 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"tree/rerooting.hpp\"\n\n#line\
-    \ 6 \"tree/rerooting.hpp\"\n\n#line 2 \"tree/heavy_light_decomposition.hpp\"\n\
-    \n#line 6 \"tree/heavy_light_decomposition.hpp\"\n\n#line 8 \"tree/heavy_light_decomposition.hpp\"\
-    \n\nnamespace ebi {\n\ntemplate <class T> struct heavy_light_decomposition {\n\
-    \  private:\n    void dfs_sz(int v) {\n        for (auto &e : g[v]) {\n      \
-    \      if (e.to == par[v]) continue;\n            par[e.to] = v;\n           \
-    \ depth_[e.to] = depth_[v] + 1;\n            dist[e.to] = dist[v] + e.cost;\n\
-    \            dfs_sz(e.to);\n            sz[v] += sz[e.to];\n            if (sz[e.to]\
-    \ > sz[g[v][0].to] || g[v][0].to == par[v])\n                std::swap(e, g[v][0]);\n\
-    \        }\n    }\n\n    void dfs_hld(int v) {\n        in[v] = num++;\n     \
-    \   rev[in[v]] = v;\n        for (auto e : g[v]) {\n            if (e.to == par[v])\
-    \ continue;\n            nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);\n \
-    \           dfs_hld(e.to);\n        }\n        out[v] = num;\n    }\n\n    //\
-    \ [u, v) \u30D1\u30B9\u306E\u53D6\u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int,\
-    \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
-    \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
-    \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"template/debug_template.hpp\"\
+    \n\n#line 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n\
+    #define debug(...)                                                      \\\n \
+    \   std::cerr << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\",\
+    \ \\\n        debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid\
+    \ debug_out() {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename...\
+    \ Tail> void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n  \
+    \  if (sizeof...(t) > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  //\
+    \ namespace ebi\n#line 2 \"tree/rerooting.hpp\"\n\n#line 6 \"tree/rerooting.hpp\"\
+    \n\n#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#line 6 \"tree/heavy_light_decomposition.hpp\"\
+    \n\n#line 8 \"tree/heavy_light_decomposition.hpp\"\n\nnamespace ebi {\n\ntemplate\
+    \ <class T> struct heavy_light_decomposition {\n  private:\n    void dfs_sz(int\
+    \ v) {\n        for (auto &e : g[v]) {\n            if (e.to == par[v]) continue;\n\
+    \            par[e.to] = v;\n            depth_[e.to] = depth_[v] + 1;\n     \
+    \       dist[e.to] = dist[v] + e.cost;\n            dfs_sz(e.to);\n          \
+    \  sz[v] += sz[e.to];\n            if (sz[e.to] > sz[g[v][0].to] || g[v][0].to\
+    \ == par[v])\n                std::swap(e, g[v][0]);\n        }\n    }\n\n   \
+    \ void dfs_hld(int v) {\n        in[v] = num++;\n        rev[in[v]] = v;\n   \
+    \     for (auto e : g[v]) {\n            if (e.to == par[v]) continue;\n     \
+    \       nxt[e.to] = (e.to == g[v][0].to ? nxt[v] : e.to);\n            dfs_hld(e.to);\n\
+    \        }\n        out[v] = num;\n    }\n\n    // [u, v) \u30D1\u30B9\u306E\u53D6\
+    \u5F97 (v \u306F u \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> ascend(int\
+    \ u, int v) const {\n        std::vector<std::pair<int, int>> res;\n        while\
+    \ (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n   \
+    \         u = par[nxt[u]];\n        }\n        if (u != v) res.emplace_back(in[u],\
     \ in[v] + 1);\n        return res;\n    }\n\n    // (u, v] \u30D1\u30B9\u306E\u53D6\
     \u5F97 (u \u306F v \u306E\u7956\u5148)\n    std::vector<std::pair<int, int>> descend(int\
     \ u, int v) const {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v])\
@@ -359,18 +360,18 @@ data:
   - modint/modint.hpp
   - modint/base.hpp
   - template/template.hpp
-  - template/debug_template.hpp
   - template/int_alias.hpp
   - template/io.hpp
   - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
+  - template/debug_template.hpp
   - tree/rerooting.hpp
   - tree/heavy_light_decomposition.hpp
   isVerificationFile: true
   path: test/tree/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-06-21 00:39:05+09:00'
+  timestamp: '2025-07-06 00:36:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Tree_Path_Composite_Sum.test.cpp

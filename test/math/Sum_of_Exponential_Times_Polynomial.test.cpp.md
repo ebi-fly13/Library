@@ -241,47 +241,40 @@ data:
     \ i = ((int)(n)-1); i >= (int)(a); i--)\n#define Rep(i, a, n) for (i64 i = (i64)(a);\
     \ i < (i64)(n); i++)\n#define RRep(i, a, n) for (i64 i = ((i64)(n)-i64(1)); i\
     \ >= (i64)(a); i--)\n#define all(v) (v).begin(), (v).end()\n#define rall(v) (v).rbegin(),\
-    \ (v).rend()\n\n#line 2 \"template/debug_template.hpp\"\n\n#line 4 \"template/debug_template.hpp\"\
-    \n\nnamespace ebi {\n\n#ifdef LOCAL\n#define debug(...)                      \
-    \                                \\\n    std::cerr << \"LINE: \" << __LINE__ <<\
-    \ \"  [\" << #__VA_ARGS__ << \"]:\", \\\n        debug_out(__VA_ARGS__)\n#else\n\
-    #define debug(...)\n#endif\n\nvoid debug_out() {\n    std::cerr << std::endl;\n\
-    }\n\ntemplate <typename Head, typename... Tail> void debug_out(Head h, Tail...\
-    \ t) {\n    std::cerr << \" \" << h;\n    if (sizeof...(t) > 0) std::cerr << \"\
-    \ :\";\n    debug_out(t...);\n}\n\n}  // namespace ebi\n#line 2 \"template/io.hpp\"\
-    \n\n#line 5 \"template/io.hpp\"\n#include <optional>\n#line 7 \"template/io.hpp\"\
-    \n\n#line 9 \"template/io.hpp\"\n\nnamespace ebi {\n\ntemplate <typename T1, typename\
-    \ T2>\nstd::ostream &operator<<(std::ostream &os, const std::pair<T1, T2> &pa)\
-    \ {\n    return os << pa.first << \" \" << pa.second;\n}\n\ntemplate <typename\
-    \ T1, typename T2>\nstd::istream &operator>>(std::istream &os, std::pair<T1, T2>\
-    \ &pa) {\n    return os >> pa.first >> pa.second;\n}\n\ntemplate <typename T>\n\
-    std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec) {\n    for\
-    \ (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i] << (i + 1 ==\
-    \ vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename T>\nstd::istream\
-    \ &operator>>(std::istream &os, std::vector<T> &vec) {\n    for (T &e : vec) std::cin\
-    \ >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream &operator<<(std::ostream\
-    \ &os, const std::optional<T> &opt) {\n    if (opt) {\n        os << opt.value();\n\
-    \    } else {\n        os << \"invalid value\";\n    }\n    return os;\n}\n\n\
-    void fast_io() {\n    std::cout << std::fixed << std::setprecision(15);\n    std::cin.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n}\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\
-    \n\n#line 5 \"template/utility.hpp\"\n\n#line 2 \"graph/base.hpp\"\n\n#line 7\
-    \ \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\n\n#line 6 \"\
-    data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class E> struct\
-    \ simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n, const std::vector<std::pair<int,\
-    \ E>>& elements)\n        : start(n + 1, 0), elist(elements.size()) {\n      \
-    \  for (auto e : elements) {\n            start[e.first + 1]++;\n        }\n \
-    \       for (auto i : std::views::iota(0, n)) {\n            start[i + 1] += start[i];\n\
-    \        }\n        auto counter = start;\n        for (auto [i, e] : elements)\
-    \ {\n            elist[counter[i]++] = e;\n        }\n    }\n\n    simple_csr(const\
-    \ std::vector<std::vector<E>>& es)\n        : start(es.size() + 1, 0) {\n    \
-    \    int n = es.size();\n        for (auto i : std::views::iota(0, n)) {\n   \
-    \         start[i + 1] = (int)es[i].size() + start[i];\n        }\n        elist.resize(start.back());\n\
-    \        for (auto i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(),\
-    \ es[i].end(), elist.begin() + start[i]);\n        }\n    }\n\n    int size()\
-    \ const {\n        return (int)start.size() - 1;\n    }\n\n    const auto operator[](int\
-    \ i) const {\n        return std::ranges::subrange(elist.begin() + start[i],\n\
-    \                                     elist.begin() + start[i + 1]);\n    }\n\
-    \    auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
+    \ (v).rend()\n\n#line 2 \"template/io.hpp\"\n\n#line 5 \"template/io.hpp\"\n#include\
+    \ <optional>\n#line 7 \"template/io.hpp\"\n\n#line 9 \"template/io.hpp\"\n\nnamespace\
+    \ ebi {\n\ntemplate <typename T1, typename T2>\nstd::ostream &operator<<(std::ostream\
+    \ &os, const std::pair<T1, T2> &pa) {\n    return os << pa.first << \" \" << pa.second;\n\
+    }\n\ntemplate <typename T1, typename T2>\nstd::istream &operator>>(std::istream\
+    \ &os, std::pair<T1, T2> &pa) {\n    return os >> pa.first >> pa.second;\n}\n\n\
+    template <typename T>\nstd::ostream &operator<<(std::ostream &os, const std::vector<T>\
+    \ &vec) {\n    for (std::size_t i = 0; i < vec.size(); i++)\n        os << vec[i]\
+    \ << (i + 1 == vec.size() ? \"\" : \" \");\n    return os;\n}\n\ntemplate <typename\
+    \ T>\nstd::istream &operator>>(std::istream &os, std::vector<T> &vec) {\n    for\
+    \ (T &e : vec) std::cin >> e;\n    return os;\n}\n\ntemplate <typename T>\nstd::ostream\
+    \ &operator<<(std::ostream &os, const std::optional<T> &opt) {\n    if (opt) {\n\
+    \        os << opt.value();\n    } else {\n        os << \"invalid value\";\n\
+    \    }\n    return os;\n}\n\nvoid fast_io() {\n    std::cout << std::fixed <<\
+    \ std::setprecision(15);\n    std::cin.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    }\n\n}  // namespace ebi\n#line 2 \"template/utility.hpp\"\n\n#line 5 \"template/utility.hpp\"\
+    \n\n#line 2 \"graph/base.hpp\"\n\n#line 7 \"graph/base.hpp\"\n\n#line 2 \"data_structure/simple_csr.hpp\"\
+    \n\n#line 6 \"data_structure/simple_csr.hpp\"\n\nnamespace ebi {\n\ntemplate <class\
+    \ E> struct simple_csr {\n    simple_csr() = default;\n\n    simple_csr(int n,\
+    \ const std::vector<std::pair<int, E>>& elements)\n        : start(n + 1, 0),\
+    \ elist(elements.size()) {\n        for (auto e : elements) {\n            start[e.first\
+    \ + 1]++;\n        }\n        for (auto i : std::views::iota(0, n)) {\n      \
+    \      start[i + 1] += start[i];\n        }\n        auto counter = start;\n \
+    \       for (auto [i, e] : elements) {\n            elist[counter[i]++] = e;\n\
+    \        }\n    }\n\n    simple_csr(const std::vector<std::vector<E>>& es)\n \
+    \       : start(es.size() + 1, 0) {\n        int n = es.size();\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            start[i + 1] = (int)es[i].size()\
+    \ + start[i];\n        }\n        elist.resize(start.back());\n        for (auto\
+    \ i : std::views::iota(0, n)) {\n            std::copy(es[i].begin(), es[i].end(),\
+    \ elist.begin() + start[i]);\n        }\n    }\n\n    int size() const {\n   \
+    \     return (int)start.size() - 1;\n    }\n\n    const auto operator[](int i)\
+    \ const {\n        return std::ranges::subrange(elist.begin() + start[i],\n  \
+    \                                   elist.begin() + start[i + 1]);\n    }\n  \
+    \  auto operator[](int i) {\n        return std::ranges::subrange(elist.begin()\
     \ + start[i],\n                                     elist.begin() + start[i +\
     \ 1]);\n    }\n\n    const auto operator()(int i, int l, int r) const {\n    \
     \    return std::ranges::subrange(elist.begin() + start[i] + l,\n            \
@@ -337,7 +330,15 @@ data:
     \        return -((-a) / b) - 1;\n}\n\nconstexpr i64 LNF = std::numeric_limits<i64>::max()\
     \ / 4;\n\nconstexpr int INF = std::numeric_limits<int>::max() / 2;\n\nconst std::vector<int>\
     \ dy = {1, 0, -1, 0, 1, 1, -1, -1};\nconst std::vector<int> dx = {0, 1, 0, -1,\
-    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 7 \"test/math/Sum_of_Exponential_Times_Polynomial.test.cpp\"\
+    \ 1, -1, 1, -1};\n\n}  // namespace ebi\n#line 2 \"template/debug_template.hpp\"\
+    \n\n#line 4 \"template/debug_template.hpp\"\n\nnamespace ebi {\n\n#ifdef LOCAL\n\
+    #define debug(...)                                                      \\\n \
+    \   std::cerr << \"LINE: \" << __LINE__ << \"  [\" << #__VA_ARGS__ << \"]:\",\
+    \ \\\n        debug_out(__VA_ARGS__)\n#else\n#define debug(...)\n#endif\n\nvoid\
+    \ debug_out() {\n    std::cerr << std::endl;\n}\n\ntemplate <typename Head, typename...\
+    \ Tail> void debug_out(Head h, Tail... t) {\n    std::cerr << \" \" << h;\n  \
+    \  if (sizeof...(t) > 0) std::cerr << \" :\";\n    debug_out(t...);\n}\n\n}  //\
+    \ namespace ebi\n#line 7 \"test/math/Sum_of_Exponential_Times_Polynomial.test.cpp\"\
     \n\nnamespace ebi {\n\nusing mint = modint998244353;\n\nvoid main_() {\n    i64\
     \ r, d, n;\n    std::cin >> r >> d >> n;\n    std::cout << sum_of_exp2<mint>(r,\
     \ d, n) << '\\n';\n}\n\n}  // namespace ebi\n\nint main() {\n    ebi::fast_io();\n\
@@ -359,15 +360,15 @@ data:
   - template/int_alias.hpp
   - modint/modint.hpp
   - template/template.hpp
-  - template/debug_template.hpp
   - template/io.hpp
   - template/utility.hpp
   - graph/base.hpp
   - data_structure/simple_csr.hpp
+  - template/debug_template.hpp
   isVerificationFile: true
   path: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
   requiredBy: []
-  timestamp: '2025-06-21 00:39:05+09:00'
+  timestamp: '2025-07-06 00:36:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Sum_of_Exponential_Times_Polynomial.test.cpp
