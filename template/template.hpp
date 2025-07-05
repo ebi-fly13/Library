@@ -7,7 +7,7 @@
 #define all(v) (v).begin(), (v).end()
 #define rall(v) (v).rbegin(), (v).rend()
 
-#include "debug_template.hpp"
 #include "int_alias.hpp"
 #include "io.hpp"
 #include "utility.hpp"
+#include "debug_template.hpp"
